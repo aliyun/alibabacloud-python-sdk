@@ -151,6 +151,214 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.AddAttendeeHeaders()
         return await self.add_attendee_with_options_async(request, headers, runtime)
 
+    def add_meeting_rooms_with_options(
+        self,
+        tmp_req: aliding_20230426_models.AddMeetingRoomsRequest,
+        tmp_header: aliding_20230426_models.AddMeetingRoomsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddMeetingRoomsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddMeetingRoomsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.meeting_rooms_to_add):
+            request.meeting_rooms_to_add_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meeting_rooms_to_add, 'MeetingRoomsToAdd', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.event_id):
+            body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.meeting_rooms_to_add_shrink):
+            body['MeetingRoomsToAdd'] = request.meeting_rooms_to_add_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddMeetingRooms',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/addMeetingRooms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddMeetingRoomsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_meeting_rooms_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.AddMeetingRoomsRequest,
+        tmp_header: aliding_20230426_models.AddMeetingRoomsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.AddMeetingRoomsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.AddMeetingRoomsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.meeting_rooms_to_add):
+            request.meeting_rooms_to_add_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meeting_rooms_to_add, 'MeetingRoomsToAdd', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.event_id):
+            body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.meeting_rooms_to_add_shrink):
+            body['MeetingRoomsToAdd'] = request.meeting_rooms_to_add_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddMeetingRooms',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/addMeetingRooms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddMeetingRoomsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_meeting_rooms(
+        self,
+        request: aliding_20230426_models.AddMeetingRoomsRequest,
+    ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddMeetingRoomsHeaders()
+        return self.add_meeting_rooms_with_options(request, headers, runtime)
+
+    async def add_meeting_rooms_async(
+        self,
+        request: aliding_20230426_models.AddMeetingRoomsRequest,
+    ) -> aliding_20230426_models.AddMeetingRoomsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddMeetingRoomsHeaders()
+        return await self.add_meeting_rooms_with_options_async(request, headers, runtime)
+
+    def add_scenegroup_member_with_options(
+        self,
+        request: aliding_20230426_models.AddScenegroupMemberRequest,
+        tmp_header: aliding_20230426_models.AddScenegroupMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.AddScenegroupMemberShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.user_ids):
+            body['UserIds'] = request.user_ids
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddScenegroupMember',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/addScenegroupMember',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddScenegroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_scenegroup_member_with_options_async(
+        self,
+        request: aliding_20230426_models.AddScenegroupMemberRequest,
+        tmp_header: aliding_20230426_models.AddScenegroupMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.AddScenegroupMemberShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.user_ids):
+            body['UserIds'] = request.user_ids
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddScenegroupMember',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/addScenegroupMember',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.AddScenegroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_scenegroup_member(
+        self,
+        request: aliding_20230426_models.AddScenegroupMemberRequest,
+    ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddScenegroupMemberHeaders()
+        return self.add_scenegroup_member_with_options(request, headers, runtime)
+
+    async def add_scenegroup_member_async(
+        self,
+        request: aliding_20230426_models.AddScenegroupMemberRequest,
+    ) -> aliding_20230426_models.AddScenegroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.AddScenegroupMemberHeaders()
+        return await self.add_scenegroup_member_with_options_async(request, headers, runtime)
+
     def add_workspace_with_options(
         self,
         tmp_req: aliding_20230426_models.AddWorkspaceRequest,
@@ -1505,6 +1713,136 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.CreateMeetingRoomGroupHeaders()
         return await self.create_meeting_room_group_with_options_async(request, headers, runtime)
 
+    def create_org_honor_template_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateOrgHonorTemplateRequest,
+        tmp_header: aliding_20230426_models.CreateOrgHonorTemplateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateOrgHonorTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateOrgHonorTemplateShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.avatar_frame_media_id):
+            body['avatarFrameMediaId'] = request.avatar_frame_media_id
+        if not UtilClient.is_unset(request.default_bg_color):
+            body['defaultBgColor'] = request.default_bg_color
+        if not UtilClient.is_unset(request.medal_desc):
+            body['medalDesc'] = request.medal_desc
+        if not UtilClient.is_unset(request.medal_media_id):
+            body['medalMediaId'] = request.medal_media_id
+        if not UtilClient.is_unset(request.medal_name):
+            body['medalName'] = request.medal_name
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOrgHonorTemplate',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/createOrgHonorTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateOrgHonorTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_org_honor_template_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateOrgHonorTemplateRequest,
+        tmp_header: aliding_20230426_models.CreateOrgHonorTemplateHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateOrgHonorTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateOrgHonorTemplateShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.avatar_frame_media_id):
+            body['avatarFrameMediaId'] = request.avatar_frame_media_id
+        if not UtilClient.is_unset(request.default_bg_color):
+            body['defaultBgColor'] = request.default_bg_color
+        if not UtilClient.is_unset(request.medal_desc):
+            body['medalDesc'] = request.medal_desc
+        if not UtilClient.is_unset(request.medal_media_id):
+            body['medalMediaId'] = request.medal_media_id
+        if not UtilClient.is_unset(request.medal_name):
+            body['medalName'] = request.medal_name
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOrgHonorTemplate',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/createOrgHonorTemplate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateOrgHonorTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_org_honor_template(
+        self,
+        request: aliding_20230426_models.CreateOrgHonorTemplateRequest,
+    ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateOrgHonorTemplateHeaders()
+        return self.create_org_honor_template_with_options(request, headers, runtime)
+
+    async def create_org_honor_template_async(
+        self,
+        request: aliding_20230426_models.CreateOrgHonorTemplateRequest,
+    ) -> aliding_20230426_models.CreateOrgHonorTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateOrgHonorTemplateHeaders()
+        return await self.create_org_honor_template_with_options_async(request, headers, runtime)
+
     def create_report_with_options(
         self,
         tmp_req: aliding_20230426_models.CreateReportRequest,
@@ -1642,6 +1980,176 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateReportHeaders()
         return await self.create_report_with_options_async(request, headers, runtime)
+
+    def create_scenegroup_with_options(
+        self,
+        request: aliding_20230426_models.CreateScenegroupRequest,
+        tmp_header: aliding_20230426_models.CreateScenegroupHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateScenegroupResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.CreateScenegroupShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.add_friend_forbidden):
+            body['AddFriendForbidden'] = request.add_friend_forbidden
+        if not UtilClient.is_unset(request.all_members_can_create_calendar):
+            body['AllMembersCanCreateCalendar'] = request.all_members_can_create_calendar
+        if not UtilClient.is_unset(request.all_members_can_create_mcs_conf):
+            body['AllMembersCanCreateMcsConf'] = request.all_members_can_create_mcs_conf
+        if not UtilClient.is_unset(request.chat_banned_type):
+            body['ChatBannedType'] = request.chat_banned_type
+        if not UtilClient.is_unset(request.group_email_disabled):
+            body['GroupEmailDisabled'] = request.group_email_disabled
+        if not UtilClient.is_unset(request.group_live_switch):
+            body['GroupLiveSwitch'] = request.group_live_switch
+        if not UtilClient.is_unset(request.icon):
+            body['Icon'] = request.icon
+        if not UtilClient.is_unset(request.management_type):
+            body['ManagementType'] = request.management_type
+        if not UtilClient.is_unset(request.members_to_admin_chat):
+            body['MembersToAdminChat'] = request.members_to_admin_chat
+        if not UtilClient.is_unset(request.mention_all_authority):
+            body['MentionAllAuthority'] = request.mention_all_authority
+        if not UtilClient.is_unset(request.only_admin_can_ding):
+            body['OnlyAdminCanDing'] = request.only_admin_can_ding
+        if not UtilClient.is_unset(request.only_admin_can_set_msg_top):
+            body['OnlyAdminCanSetMsgTop'] = request.only_admin_can_set_msg_top
+        if not UtilClient.is_unset(request.searchable):
+            body['Searchable'] = request.searchable
+        if not UtilClient.is_unset(request.show_history_type):
+            body['ShowHistoryType'] = request.show_history_type
+        if not UtilClient.is_unset(request.subadmin_ids):
+            body['SubadminIds'] = request.subadmin_ids
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_ids):
+            body['UserIds'] = request.user_ids
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.validation_type):
+            body['ValidationType'] = request.validation_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateScenegroup',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/createScenegroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateScenegroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scenegroup_with_options_async(
+        self,
+        request: aliding_20230426_models.CreateScenegroupRequest,
+        tmp_header: aliding_20230426_models.CreateScenegroupHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateScenegroupResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.CreateScenegroupShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.add_friend_forbidden):
+            body['AddFriendForbidden'] = request.add_friend_forbidden
+        if not UtilClient.is_unset(request.all_members_can_create_calendar):
+            body['AllMembersCanCreateCalendar'] = request.all_members_can_create_calendar
+        if not UtilClient.is_unset(request.all_members_can_create_mcs_conf):
+            body['AllMembersCanCreateMcsConf'] = request.all_members_can_create_mcs_conf
+        if not UtilClient.is_unset(request.chat_banned_type):
+            body['ChatBannedType'] = request.chat_banned_type
+        if not UtilClient.is_unset(request.group_email_disabled):
+            body['GroupEmailDisabled'] = request.group_email_disabled
+        if not UtilClient.is_unset(request.group_live_switch):
+            body['GroupLiveSwitch'] = request.group_live_switch
+        if not UtilClient.is_unset(request.icon):
+            body['Icon'] = request.icon
+        if not UtilClient.is_unset(request.management_type):
+            body['ManagementType'] = request.management_type
+        if not UtilClient.is_unset(request.members_to_admin_chat):
+            body['MembersToAdminChat'] = request.members_to_admin_chat
+        if not UtilClient.is_unset(request.mention_all_authority):
+            body['MentionAllAuthority'] = request.mention_all_authority
+        if not UtilClient.is_unset(request.only_admin_can_ding):
+            body['OnlyAdminCanDing'] = request.only_admin_can_ding
+        if not UtilClient.is_unset(request.only_admin_can_set_msg_top):
+            body['OnlyAdminCanSetMsgTop'] = request.only_admin_can_set_msg_top
+        if not UtilClient.is_unset(request.searchable):
+            body['Searchable'] = request.searchable
+        if not UtilClient.is_unset(request.show_history_type):
+            body['ShowHistoryType'] = request.show_history_type
+        if not UtilClient.is_unset(request.subadmin_ids):
+            body['SubadminIds'] = request.subadmin_ids
+        if not UtilClient.is_unset(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.user_ids):
+            body['UserIds'] = request.user_ids
+        if not UtilClient.is_unset(request.uuid):
+            body['Uuid'] = request.uuid
+        if not UtilClient.is_unset(request.validation_type):
+            body['ValidationType'] = request.validation_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateScenegroup',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/createScenegroup',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateScenegroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scenegroup(
+        self,
+        request: aliding_20230426_models.CreateScenegroupRequest,
+    ) -> aliding_20230426_models.CreateScenegroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateScenegroupHeaders()
+        return self.create_scenegroup_with_options(request, headers, runtime)
+
+    async def create_scenegroup_async(
+        self,
+        request: aliding_20230426_models.CreateScenegroupRequest,
+    ) -> aliding_20230426_models.CreateScenegroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateScenegroupHeaders()
+        return await self.create_scenegroup_with_options_async(request, headers, runtime)
 
     def create_schedule_conference_with_options(
         self,
@@ -1866,6 +2374,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.CreateSheetHeaders()
         return await self.create_sheet_with_options_async(request, headers, runtime)
+
+    def create_subscribed_calendar_with_options(
+        self,
+        tmp_req: aliding_20230426_models.CreateSubscribedCalendarRequest,
+        tmp_header: aliding_20230426_models.CreateSubscribedCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateSubscribedCalendarShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateSubscribedCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.subscribe_scope):
+            request.subscribe_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscribe_scope, 'SubscribeScope', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.managers_shrink):
+            body['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.subscribe_scope_shrink):
+            body['SubscribeScope'] = request.subscribe_scope_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSubscribedCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/createSubscribedCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateSubscribedCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_subscribed_calendar_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.CreateSubscribedCalendarRequest,
+        tmp_header: aliding_20230426_models.CreateSubscribedCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.CreateSubscribedCalendarShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.CreateSubscribedCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.subscribe_scope):
+            request.subscribe_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscribe_scope, 'SubscribeScope', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.managers_shrink):
+            body['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.subscribe_scope_shrink):
+            body['SubscribeScope'] = request.subscribe_scope_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSubscribedCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/createSubscribedCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.CreateSubscribedCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_subscribed_calendar(
+        self,
+        request: aliding_20230426_models.CreateSubscribedCalendarRequest,
+    ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateSubscribedCalendarHeaders()
+        return self.create_subscribed_calendar_with_options(request, headers, runtime)
+
+    async def create_subscribed_calendar_async(
+        self,
+        request: aliding_20230426_models.CreateSubscribedCalendarRequest,
+    ) -> aliding_20230426_models.CreateSubscribedCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.CreateSubscribedCalendarHeaders()
+        return await self.create_subscribed_calendar_with_options_async(request, headers, runtime)
 
     def create_todo_task_with_options(
         self,
@@ -3043,6 +3669,104 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.DeleteRowsHeaders()
         return await self.delete_rows_with_options_async(request, headers, runtime)
 
+    def delete_scenegroup_member_with_options(
+        self,
+        request: aliding_20230426_models.DeleteScenegroupMemberRequest,
+        tmp_header: aliding_20230426_models.DeleteScenegroupMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.DeleteScenegroupMemberShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.user_ids):
+            body['UserIds'] = request.user_ids
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteScenegroupMember',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/deleteScenegroupMember',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteScenegroupMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scenegroup_member_with_options_async(
+        self,
+        request: aliding_20230426_models.DeleteScenegroupMemberRequest,
+        tmp_header: aliding_20230426_models.DeleteScenegroupMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.DeleteScenegroupMemberShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.open_conversation_id):
+            body['OpenConversationId'] = request.open_conversation_id
+        if not UtilClient.is_unset(request.user_ids):
+            body['UserIds'] = request.user_ids
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteScenegroupMember',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/im/deleteScenegroupMember',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteScenegroupMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scenegroup_member(
+        self,
+        request: aliding_20230426_models.DeleteScenegroupMemberRequest,
+    ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteScenegroupMemberHeaders()
+        return self.delete_scenegroup_member_with_options(request, headers, runtime)
+
+    async def delete_scenegroup_member_async(
+        self,
+        request: aliding_20230426_models.DeleteScenegroupMemberRequest,
+    ) -> aliding_20230426_models.DeleteScenegroupMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteScenegroupMemberHeaders()
+        return await self.delete_scenegroup_member_with_options_async(request, headers, runtime)
+
     def delete_sheet_with_options(
         self,
         tmp_req: aliding_20230426_models.DeleteSheetRequest,
@@ -3152,6 +3876,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.DeleteSheetHeaders()
         return await self.delete_sheet_with_options_async(request, headers, runtime)
+
+    def delete_subscribed_calendar_with_options(
+        self,
+        request: aliding_20230426_models.DeleteSubscribedCalendarRequest,
+        tmp_header: aliding_20230426_models.DeleteSubscribedCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.DeleteSubscribedCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubscribedCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/deleteSubscribedCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteSubscribedCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_subscribed_calendar_with_options_async(
+        self,
+        request: aliding_20230426_models.DeleteSubscribedCalendarRequest,
+        tmp_header: aliding_20230426_models.DeleteSubscribedCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.DeleteSubscribedCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteSubscribedCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/deleteSubscribedCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.DeleteSubscribedCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_subscribed_calendar(
+        self,
+        request: aliding_20230426_models.DeleteSubscribedCalendarRequest,
+    ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteSubscribedCalendarHeaders()
+        return self.delete_subscribed_calendar_with_options(request, headers, runtime)
+
+    async def delete_subscribed_calendar_async(
+        self,
+        request: aliding_20230426_models.DeleteSubscribedCalendarRequest,
+    ) -> aliding_20230426_models.DeleteSubscribedCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.DeleteSubscribedCalendarHeaders()
+        return await self.delete_subscribed_calendar_with_options_async(request, headers, runtime)
 
     def delete_todo_task_with_options(
         self,
@@ -3707,6 +4525,116 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetEventHeaders()
         return await self.get_event_with_options_async(request, headers, runtime)
 
+    def get_meeting_rooms_schedule_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GetMeetingRoomsScheduleRequest,
+        tmp_header: aliding_20230426_models.GetMeetingRoomsScheduleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMeetingRoomsScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMeetingRoomsScheduleShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.room_ids):
+            request.room_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_ids, 'RoomIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.room_ids_shrink):
+            body['RoomIds'] = request.room_ids_shrink
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMeetingRoomsSchedule',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/getMeetingRoomsSchedule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMeetingRoomsScheduleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_meeting_rooms_schedule_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GetMeetingRoomsScheduleRequest,
+        tmp_header: aliding_20230426_models.GetMeetingRoomsScheduleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GetMeetingRoomsScheduleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GetMeetingRoomsScheduleShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.room_ids):
+            request.room_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_ids, 'RoomIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.room_ids_shrink):
+            body['RoomIds'] = request.room_ids_shrink
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetMeetingRoomsSchedule',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/getMeetingRoomsSchedule',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetMeetingRoomsScheduleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_meeting_rooms_schedule(
+        self,
+        request: aliding_20230426_models.GetMeetingRoomsScheduleRequest,
+    ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMeetingRoomsScheduleHeaders()
+        return self.get_meeting_rooms_schedule_with_options(request, headers, runtime)
+
+    async def get_meeting_rooms_schedule_async(
+        self,
+        request: aliding_20230426_models.GetMeetingRoomsScheduleRequest,
+    ) -> aliding_20230426_models.GetMeetingRoomsScheduleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetMeetingRoomsScheduleHeaders()
+        return await self.get_meeting_rooms_schedule_with_options_async(request, headers, runtime)
+
     def get_mine_workspace_with_options(
         self,
         tmp_req: aliding_20230426_models.GetMineWorkspaceRequest,
@@ -4162,6 +5090,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetNodesHeaders()
         return await self.get_nodes_with_options_async(request, headers, runtime)
+
+    def get_open_url_with_options(
+        self,
+        request: aliding_20230426_models.GetOpenUrlRequest,
+        tmp_header: aliding_20230426_models.GetOpenUrlHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetOpenUrlResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.GetOpenUrlShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_type):
+            body['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.system_token):
+            body['SystemToken'] = request.system_token
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOpenUrl',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/yida/getOpenUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetOpenUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_open_url_with_options_async(
+        self,
+        request: aliding_20230426_models.GetOpenUrlRequest,
+        tmp_header: aliding_20230426_models.GetOpenUrlHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetOpenUrlResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.GetOpenUrlShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.app_type):
+            body['AppType'] = request.app_type
+        if not UtilClient.is_unset(request.file_url):
+            body['FileUrl'] = request.file_url
+        if not UtilClient.is_unset(request.language):
+            body['Language'] = request.language
+        if not UtilClient.is_unset(request.system_token):
+            body['SystemToken'] = request.system_token
+        if not UtilClient.is_unset(request.timeout):
+            body['Timeout'] = request.timeout
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetOpenUrl',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/yida/getOpenUrl',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetOpenUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_open_url(
+        self,
+        request: aliding_20230426_models.GetOpenUrlRequest,
+    ) -> aliding_20230426_models.GetOpenUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetOpenUrlHeaders()
+        return self.get_open_url_with_options(request, headers, runtime)
+
+    async def get_open_url_async(
+        self,
+        request: aliding_20230426_models.GetOpenUrlRequest,
+    ) -> aliding_20230426_models.GetOpenUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetOpenUrlHeaders()
+        return await self.get_open_url_with_options_async(request, headers, runtime)
 
     def get_range_with_options(
         self,
@@ -4725,6 +5763,100 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.GetSpaceDirectoriesHeaders()
         return await self.get_space_directories_with_options_async(request, headers, runtime)
 
+    def get_subscribed_calendar_with_options(
+        self,
+        request: aliding_20230426_models.GetSubscribedCalendarRequest,
+        tmp_header: aliding_20230426_models.GetSubscribedCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.GetSubscribedCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSubscribedCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/getSubscribedCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetSubscribedCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_subscribed_calendar_with_options_async(
+        self,
+        request: aliding_20230426_models.GetSubscribedCalendarRequest,
+        tmp_header: aliding_20230426_models.GetSubscribedCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.GetSubscribedCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSubscribedCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/getSubscribedCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GetSubscribedCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_subscribed_calendar(
+        self,
+        request: aliding_20230426_models.GetSubscribedCalendarRequest,
+    ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetSubscribedCalendarHeaders()
+        return self.get_subscribed_calendar_with_options(request, headers, runtime)
+
+    async def get_subscribed_calendar_async(
+        self,
+        request: aliding_20230426_models.GetSubscribedCalendarRequest,
+    ) -> aliding_20230426_models.GetSubscribedCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GetSubscribedCalendarHeaders()
+        return await self.get_subscribed_calendar_with_options_async(request, headers, runtime)
+
     def get_template_list_by_user_id_with_options(
         self,
         tmp_req: aliding_20230426_models.GetTemplateListByUserIdRequest,
@@ -5168,6 +6300,156 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.GetWorkspacesHeaders()
         return await self.get_workspaces_with_options_async(request, headers, runtime)
+
+    def grant_honor_with_options(
+        self,
+        tmp_req: aliding_20230426_models.GrantHonorRequest,
+        tmp_header: aliding_20230426_models.GrantHonorHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GrantHonorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GrantHonorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GrantHonorShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.open_conversation_ids):
+            request.open_conversation_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_conversation_ids, 'openConversationIds', 'json')
+        if not UtilClient.is_unset(tmp_req.receiver_user_ids):
+            request.receiver_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.receiver_user_ids, 'receiverUserIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.expiration_time):
+            body['expirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.grant_reason):
+            body['grantReason'] = request.grant_reason
+        if not UtilClient.is_unset(request.granter_name):
+            body['granterName'] = request.granter_name
+        if not UtilClient.is_unset(request.honor_id):
+            body['honorId'] = request.honor_id
+        if not UtilClient.is_unset(request.notice_announcer):
+            body['noticeAnnouncer'] = request.notice_announcer
+        if not UtilClient.is_unset(request.notice_single):
+            body['noticeSingle'] = request.notice_single
+        if not UtilClient.is_unset(request.open_conversation_ids_shrink):
+            body['openConversationIds'] = request.open_conversation_ids_shrink
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.receiver_user_ids_shrink):
+            body['receiverUserIds'] = request.receiver_user_ids_shrink
+        if not UtilClient.is_unset(request.sender_user_id):
+            body['senderUserId'] = request.sender_user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantHonor',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/grantHonor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GrantHonorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_honor_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.GrantHonorRequest,
+        tmp_header: aliding_20230426_models.GrantHonorHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.GrantHonorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.GrantHonorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.GrantHonorShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        if not UtilClient.is_unset(tmp_req.open_conversation_ids):
+            request.open_conversation_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.open_conversation_ids, 'openConversationIds', 'json')
+        if not UtilClient.is_unset(tmp_req.receiver_user_ids):
+            request.receiver_user_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.receiver_user_ids, 'receiverUserIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.expiration_time):
+            body['expirationTime'] = request.expiration_time
+        if not UtilClient.is_unset(request.grant_reason):
+            body['grantReason'] = request.grant_reason
+        if not UtilClient.is_unset(request.granter_name):
+            body['granterName'] = request.granter_name
+        if not UtilClient.is_unset(request.honor_id):
+            body['honorId'] = request.honor_id
+        if not UtilClient.is_unset(request.notice_announcer):
+            body['noticeAnnouncer'] = request.notice_announcer
+        if not UtilClient.is_unset(request.notice_single):
+            body['noticeSingle'] = request.notice_single
+        if not UtilClient.is_unset(request.open_conversation_ids_shrink):
+            body['openConversationIds'] = request.open_conversation_ids_shrink
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.receiver_user_ids_shrink):
+            body['receiverUserIds'] = request.receiver_user_ids_shrink
+        if not UtilClient.is_unset(request.sender_user_id):
+            body['senderUserId'] = request.sender_user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantHonor',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/grantHonor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.GrantHonorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_honor(
+        self,
+        request: aliding_20230426_models.GrantHonorRequest,
+    ) -> aliding_20230426_models.GrantHonorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GrantHonorHeaders()
+        return self.grant_honor_with_options(request, headers, runtime)
+
+    async def grant_honor_async(
+        self,
+        request: aliding_20230426_models.GrantHonorRequest,
+    ) -> aliding_20230426_models.GrantHonorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.GrantHonorHeaders()
+        return await self.grant_honor_with_options_async(request, headers, runtime)
 
     def insert_columns_before_with_options(
         self,
@@ -5746,6 +7028,120 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.ListEventsHeaders()
         return await self.list_events_with_options_async(request, headers, runtime)
+
+    def list_events_view_with_options(
+        self,
+        request: aliding_20230426_models.ListEventsViewRequest,
+        tmp_header: aliding_20230426_models.ListEventsViewHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListEventsViewResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.ListEventsViewShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.max_attendees):
+            body['MaxAttendees'] = request.max_attendees
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.time_max):
+            body['TimeMax'] = request.time_max
+        if not UtilClient.is_unset(request.time_min):
+            body['TimeMin'] = request.time_min
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListEventsView',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/listEventsView',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListEventsViewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_events_view_with_options_async(
+        self,
+        request: aliding_20230426_models.ListEventsViewRequest,
+        tmp_header: aliding_20230426_models.ListEventsViewHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.ListEventsViewResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.ListEventsViewShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.max_attendees):
+            body['MaxAttendees'] = request.max_attendees
+        if not UtilClient.is_unset(request.max_results):
+            body['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.time_max):
+            body['TimeMax'] = request.time_max
+        if not UtilClient.is_unset(request.time_min):
+            body['TimeMin'] = request.time_min
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListEventsView',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/listEventsView',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.ListEventsViewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_events_view(
+        self,
+        request: aliding_20230426_models.ListEventsViewRequest,
+    ) -> aliding_20230426_models.ListEventsViewResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListEventsViewHeaders()
+        return self.list_events_view_with_options(request, headers, runtime)
+
+    async def list_events_view_async(
+        self,
+        request: aliding_20230426_models.ListEventsViewRequest,
+    ) -> aliding_20230426_models.ListEventsViewResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.ListEventsViewHeaders()
+        return await self.list_events_view_with_options_async(request, headers, runtime)
 
     def list_nodes_with_options(
         self,
@@ -7709,6 +9105,120 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.QueryMeetingRoomListHeaders()
         return await self.query_meeting_room_list_with_options_async(request, headers, runtime)
 
+    def query_org_honors_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryOrgHonorsRequest,
+        tmp_header: aliding_20230426_models.QueryOrgHonorsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryOrgHonorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryOrgHonorsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrgHonors',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/queryOrgHonors',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryOrgHonorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_org_honors_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryOrgHonorsRequest,
+        tmp_header: aliding_20230426_models.QueryOrgHonorsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryOrgHonorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryOrgHonorsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrgHonors',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/queryOrgHonors',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryOrgHonorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_org_honors(
+        self,
+        request: aliding_20230426_models.QueryOrgHonorsRequest,
+    ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryOrgHonorsHeaders()
+        return self.query_org_honors_with_options(request, headers, runtime)
+
+    async def query_org_honors_async(
+        self,
+        request: aliding_20230426_models.QueryOrgHonorsRequest,
+    ) -> aliding_20230426_models.QueryOrgHonorsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryOrgHonorsHeaders()
+        return await self.query_org_honors_with_options_async(request, headers, runtime)
+
     def query_org_todo_tasks_with_options(
         self,
         tmp_req: aliding_20230426_models.QueryOrgTodoTasksRequest,
@@ -7924,6 +9434,238 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.QueryScheduleConferenceHeaders()
         return await self.query_schedule_conference_with_options_async(request, headers, runtime)
+
+    def query_user_honors_with_options(
+        self,
+        tmp_req: aliding_20230426_models.QueryUserHonorsRequest,
+        tmp_header: aliding_20230426_models.QueryUserHonorsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryUserHonorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryUserHonorsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryUserHonors',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/queryUserHonors',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryUserHonorsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_user_honors_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.QueryUserHonorsRequest,
+        tmp_header: aliding_20230426_models.QueryUserHonorsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.QueryUserHonorsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.QueryUserHonorsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryUserHonors',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/queryUserHonors',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.QueryUserHonorsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_user_honors(
+        self,
+        request: aliding_20230426_models.QueryUserHonorsRequest,
+    ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryUserHonorsHeaders()
+        return self.query_user_honors_with_options(request, headers, runtime)
+
+    async def query_user_honors_async(
+        self,
+        request: aliding_20230426_models.QueryUserHonorsRequest,
+    ) -> aliding_20230426_models.QueryUserHonorsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.QueryUserHonorsHeaders()
+        return await self.query_user_honors_with_options_async(request, headers, runtime)
+
+    def recall_honor_with_options(
+        self,
+        tmp_req: aliding_20230426_models.RecallHonorRequest,
+        tmp_header: aliding_20230426_models.RecallHonorHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RecallHonorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.RecallHonorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.RecallHonorShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.honor_id):
+            body['honorId'] = request.honor_id
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecallHonor',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/recallHonor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.RecallHonorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recall_honor_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.RecallHonorRequest,
+        tmp_header: aliding_20230426_models.RecallHonorHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RecallHonorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.RecallHonorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.RecallHonorShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.honor_id):
+            body['honorId'] = request.honor_id
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RecallHonor',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/recallHonor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.RecallHonorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recall_honor(
+        self,
+        request: aliding_20230426_models.RecallHonorRequest,
+    ) -> aliding_20230426_models.RecallHonorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RecallHonorHeaders()
+        return self.recall_honor_with_options(request, headers, runtime)
+
+    async def recall_honor_async(
+        self,
+        request: aliding_20230426_models.RecallHonorRequest,
+    ) -> aliding_20230426_models.RecallHonorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RecallHonorHeaders()
+        return await self.recall_honor_with_options_async(request, headers, runtime)
 
     def receiver_list_report_with_options(
         self,
@@ -8148,6 +9890,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.RemoveAttendeeHeaders()
         return await self.remove_attendee_with_options_async(request, headers, runtime)
+
+    def remove_meeting_rooms_with_options(
+        self,
+        tmp_req: aliding_20230426_models.RemoveMeetingRoomsRequest,
+        tmp_header: aliding_20230426_models.RemoveMeetingRoomsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.RemoveMeetingRoomsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.RemoveMeetingRoomsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.meeting_rooms_to_remove):
+            request.meeting_rooms_to_remove_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meeting_rooms_to_remove, 'MeetingRoomsToRemove', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.event_id):
+            body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.meeting_rooms_to_remove_shrink):
+            body['MeetingRoomsToRemove'] = request.meeting_rooms_to_remove_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveMeetingRooms',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/removeMeetingRooms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.RemoveMeetingRoomsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_meeting_rooms_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.RemoveMeetingRoomsRequest,
+        tmp_header: aliding_20230426_models.RemoveMeetingRoomsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.RemoveMeetingRoomsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.RemoveMeetingRoomsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.meeting_rooms_to_remove):
+            request.meeting_rooms_to_remove_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.meeting_rooms_to_remove, 'MeetingRoomsToRemove', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.event_id):
+            body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.meeting_rooms_to_remove_shrink):
+            body['MeetingRoomsToRemove'] = request.meeting_rooms_to_remove_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='RemoveMeetingRooms',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/removeMeetingRooms',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.RemoveMeetingRoomsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_meeting_rooms(
+        self,
+        request: aliding_20230426_models.RemoveMeetingRoomsRequest,
+    ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RemoveMeetingRoomsHeaders()
+        return self.remove_meeting_rooms_with_options(request, headers, runtime)
+
+    async def remove_meeting_rooms_async(
+        self,
+        request: aliding_20230426_models.RemoveMeetingRoomsRequest,
+    ) -> aliding_20230426_models.RemoveMeetingRoomsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.RemoveMeetingRoomsHeaders()
+        return await self.remove_meeting_rooms_with_options_async(request, headers, runtime)
 
     def save_content_with_options(
         self,
@@ -9077,6 +10929,194 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.StopCloudRecordHeaders()
         return await self.stop_cloud_record_with_options_async(request, headers, runtime)
 
+    def subscribe_calendar_with_options(
+        self,
+        request: aliding_20230426_models.SubscribeCalendarRequest,
+        tmp_header: aliding_20230426_models.SubscribeCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.SubscribeCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubscribeCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/subscribeCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SubscribeCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def subscribe_calendar_with_options_async(
+        self,
+        request: aliding_20230426_models.SubscribeCalendarRequest,
+        tmp_header: aliding_20230426_models.SubscribeCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.SubscribeCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubscribeCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/subscribeCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.SubscribeCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def subscribe_calendar(
+        self,
+        request: aliding_20230426_models.SubscribeCalendarRequest,
+    ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SubscribeCalendarHeaders()
+        return self.subscribe_calendar_with_options(request, headers, runtime)
+
+    async def subscribe_calendar_async(
+        self,
+        request: aliding_20230426_models.SubscribeCalendarRequest,
+    ) -> aliding_20230426_models.SubscribeCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.SubscribeCalendarHeaders()
+        return await self.subscribe_calendar_with_options_async(request, headers, runtime)
+
+    def unsubscribe_calendar_with_options(
+        self,
+        request: aliding_20230426_models.UnsubscribeCalendarRequest,
+        tmp_header: aliding_20230426_models.UnsubscribeCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.UnsubscribeCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnsubscribeCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/unsubscribeCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UnsubscribeCalendarResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unsubscribe_calendar_with_options_async(
+        self,
+        request: aliding_20230426_models.UnsubscribeCalendarRequest,
+        tmp_header: aliding_20230426_models.UnsubscribeCalendarHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        UtilClient.validate_model(request)
+        headers = aliding_20230426_models.UnsubscribeCalendarShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UnsubscribeCalendar',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/unsubscribeCalendar',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UnsubscribeCalendarResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unsubscribe_calendar(
+        self,
+        request: aliding_20230426_models.UnsubscribeCalendarRequest,
+    ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UnsubscribeCalendarHeaders()
+        return self.unsubscribe_calendar_with_options(request, headers, runtime)
+
+    async def unsubscribe_calendar_async(
+        self,
+        request: aliding_20230426_models.UnsubscribeCalendarRequest,
+    ) -> aliding_20230426_models.UnsubscribeCalendarResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UnsubscribeCalendarHeaders()
+        return await self.unsubscribe_calendar_with_options_async(request, headers, runtime)
+
     def update_live_with_options(
         self,
         tmp_req: aliding_20230426_models.UpdateLiveRequest,
@@ -9719,6 +11759,128 @@ class Client(OpenApiClient):
         headers = aliding_20230426_models.UpdateScheduleConferenceHeaders()
         return await self.update_schedule_conference_with_options_async(request, headers, runtime)
 
+    def update_subscribed_calendars_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UpdateSubscribedCalendarsRequest,
+        tmp_header: aliding_20230426_models.UpdateSubscribedCalendarsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateSubscribedCalendarsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateSubscribedCalendarsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.subscribe_scope):
+            request.subscribe_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscribe_scope, 'SubscribeScope', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.managers_shrink):
+            body['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.subscribe_scope_shrink):
+            body['SubscribeScope'] = request.subscribe_scope_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubscribedCalendars',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/updateSubscribedCalendars',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateSubscribedCalendarsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_subscribed_calendars_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UpdateSubscribedCalendarsRequest,
+        tmp_header: aliding_20230426_models.UpdateSubscribedCalendarsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UpdateSubscribedCalendarsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UpdateSubscribedCalendarsShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.managers):
+            request.managers_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.managers, 'Managers', 'json')
+        if not UtilClient.is_unset(tmp_req.subscribe_scope):
+            request.subscribe_scope_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.subscribe_scope, 'SubscribeScope', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.calendar_id):
+            body['CalendarId'] = request.calendar_id
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.managers_shrink):
+            body['Managers'] = request.managers_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.subscribe_scope_shrink):
+            body['SubscribeScope'] = request.subscribe_scope_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateSubscribedCalendars',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/dingtalk/v1/calendar/updateSubscribedCalendars',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UpdateSubscribedCalendarsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_subscribed_calendars(
+        self,
+        request: aliding_20230426_models.UpdateSubscribedCalendarsRequest,
+    ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateSubscribedCalendarsHeaders()
+        return self.update_subscribed_calendars_with_options(request, headers, runtime)
+
+    async def update_subscribed_calendars_async(
+        self,
+        request: aliding_20230426_models.UpdateSubscribedCalendarsRequest,
+    ) -> aliding_20230426_models.UpdateSubscribedCalendarsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UpdateSubscribedCalendarsHeaders()
+        return await self.update_subscribed_calendars_with_options_async(request, headers, runtime)
+
     def update_todo_task_with_options(
         self,
         tmp_req: aliding_20230426_models.UpdateTodoTaskRequest,
@@ -10206,3 +12368,239 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = aliding_20230426_models.UpdateWorkspaceMembersHeaders()
         return await self.update_workspace_members_with_options_async(request, headers, runtime)
+
+    def upload_media_with_options(
+        self,
+        tmp_req: aliding_20230426_models.UploadMediaRequest,
+        tmp_header: aliding_20230426_models.UploadMediaHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UploadMediaResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UploadMediaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UploadMediaShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.media_name):
+            body['mediaName'] = request.media_name
+        if not UtilClient.is_unset(request.media_type):
+            body['mediaType'] = request.media_type
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadMedia',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/documents/uploadMedia',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UploadMediaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_media_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.UploadMediaRequest,
+        tmp_header: aliding_20230426_models.UploadMediaHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.UploadMediaResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.UploadMediaShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.UploadMediaShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.media_name):
+            body['mediaName'] = request.media_name
+        if not UtilClient.is_unset(request.media_type):
+            body['mediaType'] = request.media_type
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.url):
+            body['url'] = request.url
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UploadMedia',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/documents/uploadMedia',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.UploadMediaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_media(
+        self,
+        request: aliding_20230426_models.UploadMediaRequest,
+    ) -> aliding_20230426_models.UploadMediaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UploadMediaHeaders()
+        return self.upload_media_with_options(request, headers, runtime)
+
+    async def upload_media_async(
+        self,
+        request: aliding_20230426_models.UploadMediaRequest,
+    ) -> aliding_20230426_models.UploadMediaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.UploadMediaHeaders()
+        return await self.upload_media_with_options_async(request, headers, runtime)
+
+    def wear_org_honor_with_options(
+        self,
+        tmp_req: aliding_20230426_models.WearOrgHonorRequest,
+        tmp_header: aliding_20230426_models.WearOrgHonorHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.WearOrgHonorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.WearOrgHonorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.WearOrgHonorShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.honor_id):
+            body['honorId'] = request.honor_id
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        if not UtilClient.is_unset(request.wear):
+            body['wear'] = request.wear
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='WearOrgHonor',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/wearOrgHonor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.WearOrgHonorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def wear_org_honor_with_options_async(
+        self,
+        tmp_req: aliding_20230426_models.WearOrgHonorRequest,
+        tmp_header: aliding_20230426_models.WearOrgHonorHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> aliding_20230426_models.WearOrgHonorResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aliding_20230426_models.WearOrgHonorShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        headers = aliding_20230426_models.WearOrgHonorShrinkHeaders()
+        OpenApiUtilClient.convert(tmp_header, headers)
+        if not UtilClient.is_unset(tmp_header.account_context):
+            headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
+        if not UtilClient.is_unset(request.honor_id):
+            body['honorId'] = request.honor_id
+        if not UtilClient.is_unset(request.org_id):
+            body['orgId'] = request.org_id
+        if not UtilClient.is_unset(request.user_id):
+            body['userId'] = request.user_id
+        if not UtilClient.is_unset(request.wear):
+            body['wear'] = request.wear
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.account_context_shrink):
+            real_headers['AccountContext'] = UtilClient.to_jsonstring(headers.account_context_shrink)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='WearOrgHonor',
+            version='2023-04-26',
+            protocol='HTTPS',
+            pathname=f'/aliding/v1/honor/wearOrgHonor',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aliding_20230426_models.WearOrgHonorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def wear_org_honor(
+        self,
+        request: aliding_20230426_models.WearOrgHonorRequest,
+    ) -> aliding_20230426_models.WearOrgHonorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.WearOrgHonorHeaders()
+        return self.wear_org_honor_with_options(request, headers, runtime)
+
+    async def wear_org_honor_async(
+        self,
+        request: aliding_20230426_models.WearOrgHonorRequest,
+    ) -> aliding_20230426_models.WearOrgHonorResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = aliding_20230426_models.WearOrgHonorHeaders()
+        return await self.wear_org_honor_with_options_async(request, headers, runtime)
