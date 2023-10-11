@@ -1,3 +1,6 @@
+2023-10-11 Version: 1.1.4
+- Generated python 2015-04-01 for Sts.
+
 2023-03-02 Version: 1.1.3
 - Publish AssumeRole API With ExternalId Parameter.
 
