@@ -3275,34 +3275,75 @@ class CreateDataArchiveOrderRequestParamTableIncludes(TeaModel):
         return self
 
 
+class CreateDataArchiveOrderRequestParamVariables(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        pattern: str = None,
+    ):
+        self.name = name
+        self.pattern = pattern
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.pattern is not None:
+            result['Pattern'] = self.pattern
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Pattern') is not None:
+            self.pattern = m.get('Pattern')
+        return self
+
+
 class CreateDataArchiveOrderRequestParam(TeaModel):
     def __init__(
         self,
         archive_method: str = None,
-        db_schema: str = None,
+        cron_str: str = None,
         logic: bool = None,
         order_after: List[str] = None,
         run_method: str = None,
-        source_database_id: int = None,
+        source_catalog_name: str = None,
+        source_instance_name: str = None,
+        source_schema_name: str = None,
         table_includes: List[CreateDataArchiveOrderRequestParamTableIncludes] = None,
         table_mapping: List[str] = None,
-        target_instance_id: str = None,
-        variables: List[str] = None,
+        target_instance_host: str = None,
+        variables: List[CreateDataArchiveOrderRequestParamVariables] = None,
     ):
         self.archive_method = archive_method
-        self.db_schema = db_schema
+        self.cron_str = cron_str
         self.logic = logic
         self.order_after = order_after
         self.run_method = run_method
-        self.source_database_id = source_database_id
+        self.source_catalog_name = source_catalog_name
+        self.source_instance_name = source_instance_name
+        self.source_schema_name = source_schema_name
         self.table_includes = table_includes
         self.table_mapping = table_mapping
-        self.target_instance_id = target_instance_id
+        self.target_instance_host = target_instance_host
         self.variables = variables
 
     def validate(self):
         if self.table_includes:
             for k in self.table_includes:
+                if k:
+                    k.validate()
+        if self.variables:
+            for k in self.variables:
                 if k:
                     k.validate()
 
@@ -3314,42 +3355,52 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         result = dict()
         if self.archive_method is not None:
             result['ArchiveMethod'] = self.archive_method
-        if self.db_schema is not None:
-            result['DbSchema'] = self.db_schema
+        if self.cron_str is not None:
+            result['CronStr'] = self.cron_str
         if self.logic is not None:
             result['Logic'] = self.logic
         if self.order_after is not None:
             result['OrderAfter'] = self.order_after
         if self.run_method is not None:
             result['RunMethod'] = self.run_method
-        if self.source_database_id is not None:
-            result['SourceDatabaseId'] = self.source_database_id
+        if self.source_catalog_name is not None:
+            result['SourceCatalogName'] = self.source_catalog_name
+        if self.source_instance_name is not None:
+            result['SourceInstanceName'] = self.source_instance_name
+        if self.source_schema_name is not None:
+            result['SourceSchemaName'] = self.source_schema_name
         result['TableIncludes'] = []
         if self.table_includes is not None:
             for k in self.table_includes:
                 result['TableIncludes'].append(k.to_map() if k else None)
         if self.table_mapping is not None:
             result['TableMapping'] = self.table_mapping
-        if self.target_instance_id is not None:
-            result['TargetInstanceId'] = self.target_instance_id
+        if self.target_instance_host is not None:
+            result['TargetInstanceHost'] = self.target_instance_host
+        result['Variables'] = []
         if self.variables is not None:
-            result['Variables'] = self.variables
+            for k in self.variables:
+                result['Variables'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ArchiveMethod') is not None:
             self.archive_method = m.get('ArchiveMethod')
-        if m.get('DbSchema') is not None:
-            self.db_schema = m.get('DbSchema')
+        if m.get('CronStr') is not None:
+            self.cron_str = m.get('CronStr')
         if m.get('Logic') is not None:
             self.logic = m.get('Logic')
         if m.get('OrderAfter') is not None:
             self.order_after = m.get('OrderAfter')
         if m.get('RunMethod') is not None:
             self.run_method = m.get('RunMethod')
-        if m.get('SourceDatabaseId') is not None:
-            self.source_database_id = m.get('SourceDatabaseId')
+        if m.get('SourceCatalogName') is not None:
+            self.source_catalog_name = m.get('SourceCatalogName')
+        if m.get('SourceInstanceName') is not None:
+            self.source_instance_name = m.get('SourceInstanceName')
+        if m.get('SourceSchemaName') is not None:
+            self.source_schema_name = m.get('SourceSchemaName')
         self.table_includes = []
         if m.get('TableIncludes') is not None:
             for k in m.get('TableIncludes'):
@@ -3357,10 +3408,13 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
                 self.table_includes.append(temp_model.from_map(k))
         if m.get('TableMapping') is not None:
             self.table_mapping = m.get('TableMapping')
-        if m.get('TargetInstanceId') is not None:
-            self.target_instance_id = m.get('TargetInstanceId')
+        if m.get('TargetInstanceHost') is not None:
+            self.target_instance_host = m.get('TargetInstanceHost')
+        self.variables = []
         if m.get('Variables') is not None:
-            self.variables = m.get('Variables')
+            for k in m.get('Variables'):
+                temp_model = CreateDataArchiveOrderRequestParamVariables()
+                self.variables.append(temp_model.from_map(k))
         return self
 
 
