@@ -391,6 +391,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def clear_pair_drill_with_options(
+        self,
+        request: ebs_20210730_models.ClearPairDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ClearPairDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.pair_id):
+            query['PairId'] = request.pair_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearPairDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearPairDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_pair_drill_with_options_async(
+        self,
+        request: ebs_20210730_models.ClearPairDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ClearPairDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.pair_id):
+            query['PairId'] = request.pair_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearPairDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearPairDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_pair_drill(
+        self,
+        request: ebs_20210730_models.ClearPairDrillRequest,
+    ) -> ebs_20210730_models.ClearPairDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.clear_pair_drill_with_options(request, runtime)
+
+    async def clear_pair_drill_async(
+        self,
+        request: ebs_20210730_models.ClearPairDrillRequest,
+    ) -> ebs_20210730_models.ClearPairDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.clear_pair_drill_with_options_async(request, runtime)
+
+    def clear_replica_group_drill_with_options(
+        self,
+        request: ebs_20210730_models.ClearReplicaGroupDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ClearReplicaGroupDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearReplicaGroupDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearReplicaGroupDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clear_replica_group_drill_with_options_async(
+        self,
+        request: ebs_20210730_models.ClearReplicaGroupDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.ClearReplicaGroupDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClearReplicaGroupDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.ClearReplicaGroupDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clear_replica_group_drill(
+        self,
+        request: ebs_20210730_models.ClearReplicaGroupDrillRequest,
+    ) -> ebs_20210730_models.ClearReplicaGroupDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.clear_replica_group_drill_with_options(request, runtime)
+
+    async def clear_replica_group_drill_async(
+        self,
+        request: ebs_20210730_models.ClearReplicaGroupDrillRequest,
+    ) -> ebs_20210730_models.ClearReplicaGroupDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.clear_replica_group_drill_with_options_async(request, runtime)
+
     def create_dedicated_block_storage_cluster_with_options(
         self,
         request: ebs_20210730_models.CreateDedicatedBlockStorageClusterRequest,
@@ -2175,6 +2331,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_lens_service_status_with_options_async(runtime)
 
+    def describe_pair_drills_with_options(
+        self,
+        request: ebs_20210730_models.DescribePairDrillsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribePairDrillsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pair_id):
+            query['PairId'] = request.pair_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePairDrills',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribePairDrillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pair_drills_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribePairDrillsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribePairDrillsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pair_id):
+            query['PairId'] = request.pair_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePairDrills',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribePairDrillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pair_drills(
+        self,
+        request: ebs_20210730_models.DescribePairDrillsRequest,
+    ) -> ebs_20210730_models.DescribePairDrillsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pair_drills_with_options(request, runtime)
+
+    async def describe_pair_drills_async(
+        self,
+        request: ebs_20210730_models.DescribePairDrillsRequest,
+    ) -> ebs_20210730_models.DescribePairDrillsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pair_drills_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: ebs_20210730_models.DescribeRegionsRequest,
@@ -2252,6 +2502,100 @@ class Client(OpenApiClient):
     ) -> ebs_20210730_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
+
+    def describe_replica_group_drills_with_options(
+        self,
+        request: ebs_20210730_models.DescribeReplicaGroupDrillsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeReplicaGroupDrillsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReplicaGroupDrills',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_replica_group_drills_with_options_async(
+        self,
+        request: ebs_20210730_models.DescribeReplicaGroupDrillsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.DescribeReplicaGroupDrillsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.drill_id):
+            query['DrillId'] = request.drill_id
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeReplicaGroupDrills',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.DescribeReplicaGroupDrillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_replica_group_drills(
+        self,
+        request: ebs_20210730_models.DescribeReplicaGroupDrillsRequest,
+    ) -> ebs_20210730_models.DescribeReplicaGroupDrillsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_replica_group_drills_with_options(request, runtime)
+
+    async def describe_replica_group_drills_async(
+        self,
+        request: ebs_20210730_models.DescribeReplicaGroupDrillsRequest,
+    ) -> ebs_20210730_models.DescribeReplicaGroupDrillsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_replica_group_drills_with_options_async(request, runtime)
 
     def failover_disk_replica_group_with_options(
         self,
@@ -3077,6 +3421,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.replica_group_id):
             query['ReplicaGroupId'] = request.replica_group_id
+        if not UtilClient.is_unset(request.reverse_replicate):
+            query['ReverseReplicate'] = request.reverse_replicate
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3116,6 +3462,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.replica_group_id):
             query['ReplicaGroupId'] = request.replica_group_id
+        if not UtilClient.is_unset(request.reverse_replicate):
+            query['ReverseReplicate'] = request.reverse_replicate
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3181,6 +3529,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.replica_pair_id):
             query['ReplicaPairId'] = request.replica_pair_id
+        if not UtilClient.is_unset(request.reverse_replicate):
+            query['ReverseReplicate'] = request.reverse_replicate
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3220,6 +3570,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.replica_pair_id):
             query['ReplicaPairId'] = request.replica_pair_id
+        if not UtilClient.is_unset(request.reverse_replicate):
+            query['ReverseReplicate'] = request.reverse_replicate
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3596,6 +3948,162 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_disk_replica_pair_with_options_async(request, runtime)
+
+    def start_pair_drill_with_options(
+        self,
+        request: ebs_20210730_models.StartPairDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StartPairDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.pair_id):
+            query['PairId'] = request.pair_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartPairDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartPairDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_pair_drill_with_options_async(
+        self,
+        request: ebs_20210730_models.StartPairDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StartPairDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.pair_id):
+            query['PairId'] = request.pair_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartPairDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartPairDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_pair_drill(
+        self,
+        request: ebs_20210730_models.StartPairDrillRequest,
+    ) -> ebs_20210730_models.StartPairDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_pair_drill_with_options(request, runtime)
+
+    async def start_pair_drill_async(
+        self,
+        request: ebs_20210730_models.StartPairDrillRequest,
+    ) -> ebs_20210730_models.StartPairDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_pair_drill_with_options_async(request, runtime)
+
+    def start_replica_group_drill_with_options(
+        self,
+        request: ebs_20210730_models.StartReplicaGroupDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartReplicaGroupDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartReplicaGroupDrillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_replica_group_drill_with_options_async(
+        self,
+        request: ebs_20210730_models.StartReplicaGroupDrillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartReplicaGroupDrill',
+            version='2021-07-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ebs_20210730_models.StartReplicaGroupDrillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_replica_group_drill(
+        self,
+        request: ebs_20210730_models.StartReplicaGroupDrillRequest,
+    ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_replica_group_drill_with_options(request, runtime)
+
+    async def start_replica_group_drill_async(
+        self,
+        request: ebs_20210730_models.StartReplicaGroupDrillRequest,
+    ) -> ebs_20210730_models.StartReplicaGroupDrillResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_replica_group_drill_with_options_async(request, runtime)
 
     def stop_disk_monitor_with_options(
         self,
