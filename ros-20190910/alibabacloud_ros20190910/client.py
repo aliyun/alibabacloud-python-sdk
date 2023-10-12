@@ -561,6 +561,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_change_set_with_options_async(request, runtime)
 
+    def create_diagnostic_with_options(
+        self,
+        request: ros20190910_models.CreateDiagnosticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CreateDiagnosticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.diagnostic_key):
+            query['DiagnosticKey'] = request.diagnostic_key
+        if not UtilClient.is_unset(request.diagnostic_type):
+            query['DiagnosticType'] = request.diagnostic_type
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnostic',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CreateDiagnosticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_diagnostic_with_options_async(
+        self,
+        request: ros20190910_models.CreateDiagnosticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.CreateDiagnosticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.diagnostic_key):
+            query['DiagnosticKey'] = request.diagnostic_key
+        if not UtilClient.is_unset(request.diagnostic_type):
+            query['DiagnosticType'] = request.diagnostic_type
+        if not UtilClient.is_unset(request.product):
+            query['Product'] = request.product
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDiagnostic',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.CreateDiagnosticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_diagnostic(
+        self,
+        request: ros20190910_models.CreateDiagnosticRequest,
+    ) -> ros20190910_models.CreateDiagnosticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_diagnostic_with_options(request, runtime)
+
+    async def create_diagnostic_async(
+        self,
+        request: ros20190910_models.CreateDiagnosticRequest,
+    ) -> ros20190910_models.CreateDiagnosticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_diagnostic_with_options_async(request, runtime)
+
     def create_stack_with_options(
         self,
         request: ros20190910_models.CreateStackRequest,
@@ -1508,6 +1586,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_change_set_with_options_async(request, runtime)
+
+    def delete_diagnostic_with_options(
+        self,
+        request: ros20190910_models.DeleteDiagnosticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.DeleteDiagnosticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnostic',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.DeleteDiagnosticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_diagnostic_with_options_async(
+        self,
+        request: ros20190910_models.DeleteDiagnosticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.DeleteDiagnosticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDiagnostic',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.DeleteDiagnosticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_diagnostic(
+        self,
+        request: ros20190910_models.DeleteDiagnosticRequest,
+    ) -> ros20190910_models.DeleteDiagnosticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_diagnostic_with_options(request, runtime)
+
+    async def delete_diagnostic_async(
+        self,
+        request: ros20190910_models.DeleteDiagnosticRequest,
+    ) -> ros20190910_models.DeleteDiagnosticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_diagnostic_with_options_async(request, runtime)
 
     def delete_stack_with_options(
         self,
@@ -2918,6 +3066,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_change_set_with_options_async(request, runtime)
+
+    def get_diagnostic_with_options(
+        self,
+        request: ros20190910_models.GetDiagnosticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetDiagnosticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDiagnostic',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetDiagnosticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_diagnostic_with_options_async(
+        self,
+        request: ros20190910_models.GetDiagnosticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.GetDiagnosticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.report_id):
+            query['ReportId'] = request.report_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDiagnostic',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.GetDiagnosticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_diagnostic(
+        self,
+        request: ros20190910_models.GetDiagnosticRequest,
+    ) -> ros20190910_models.GetDiagnosticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_diagnostic_with_options(request, runtime)
+
+    async def get_diagnostic_async(
+        self,
+        request: ros20190910_models.GetDiagnosticRequest,
+    ) -> ros20190910_models.GetDiagnosticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_diagnostic_with_options_async(request, runtime)
 
     def get_feature_details_with_options(
         self,
@@ -5098,6 +5316,92 @@ class Client(OpenApiClient):
     ) -> ros20190910_models.ListChangeSetsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_change_sets_with_options_async(request, runtime)
+
+    def list_diagnostics_with_options(
+        self,
+        request: ros20190910_models.ListDiagnosticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListDiagnosticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.diagnostic_key):
+            query['DiagnosticKey'] = request.diagnostic_key
+        if not UtilClient.is_unset(request.diagnostic_product):
+            query['DiagnosticProduct'] = request.diagnostic_product
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDiagnostics',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListDiagnosticsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_diagnostics_with_options_async(
+        self,
+        request: ros20190910_models.ListDiagnosticsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ros20190910_models.ListDiagnosticsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.diagnostic_key):
+            query['DiagnosticKey'] = request.diagnostic_key
+        if not UtilClient.is_unset(request.diagnostic_product):
+            query['DiagnosticProduct'] = request.diagnostic_product
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListDiagnostics',
+            version='2019-09-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ros20190910_models.ListDiagnosticsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_diagnostics(
+        self,
+        request: ros20190910_models.ListDiagnosticsRequest,
+    ) -> ros20190910_models.ListDiagnosticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_diagnostics_with_options(request, runtime)
+
+    async def list_diagnostics_async(
+        self,
+        request: ros20190910_models.ListDiagnosticsRequest,
+    ) -> ros20190910_models.ListDiagnosticsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_diagnostics_with_options_async(request, runtime)
 
     def list_resource_type_registrations_with_options(
         self,

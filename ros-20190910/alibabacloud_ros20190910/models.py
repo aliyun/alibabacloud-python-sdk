@@ -1086,6 +1086,152 @@ class CreateChangeSetResponse(TeaModel):
         return self
 
 
+class CreateDiagnosticRequest(TeaModel):
+    def __init__(
+        self,
+        diagnostic_key: str = None,
+        diagnostic_type: str = None,
+        product: str = None,
+    ):
+        self.diagnostic_key = diagnostic_key
+        self.diagnostic_type = diagnostic_type
+        self.product = product
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnostic_key is not None:
+            result['DiagnosticKey'] = self.diagnostic_key
+        if self.diagnostic_type is not None:
+            result['DiagnosticType'] = self.diagnostic_type
+        if self.product is not None:
+            result['Product'] = self.product
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnosticKey') is not None:
+            self.diagnostic_key = m.get('DiagnosticKey')
+        if m.get('DiagnosticType') is not None:
+            self.diagnostic_type = m.get('DiagnosticType')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        return self
+
+
+class CreateDiagnosticResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        diagnostic_type: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        report_id: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.diagnostic_type = diagnostic_type
+        self.http_status_code = http_status_code
+        self.message = message
+        self.report_id = report_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.diagnostic_type is not None:
+            result['DiagnosticType'] = self.diagnostic_type
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DiagnosticType') is not None:
+            self.diagnostic_type = m.get('DiagnosticType')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateDiagnosticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDiagnosticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDiagnosticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateStackRequestParameters(TeaModel):
     def __init__(
         self,
@@ -3601,6 +3747,128 @@ class DeleteChangeSetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteChangeSetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDiagnosticRequest(TeaModel):
+    def __init__(
+        self,
+        report_id: str = None,
+    ):
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        return self
+
+
+class DeleteDiagnosticResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteDiagnosticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDiagnosticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDiagnosticResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -6304,6 +6572,223 @@ class GetChangeSetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetChangeSetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDiagnosticRequest(TeaModel):
+    def __init__(
+        self,
+        report_id: str = None,
+    ):
+        self.report_id = report_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        return self
+
+
+class GetDiagnosticResponseBodyDiagnosticResult(TeaModel):
+    def __init__(
+        self,
+        failed_resources: Dict[str, Any] = None,
+        ros_action_messages: Dict[str, Any] = None,
+        stack_messages: Dict[str, Any] = None,
+    ):
+        self.failed_resources = failed_resources
+        self.ros_action_messages = ros_action_messages
+        self.stack_messages = stack_messages
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_resources is not None:
+            result['FailedResources'] = self.failed_resources
+        if self.ros_action_messages is not None:
+            result['RosActionMessages'] = self.ros_action_messages
+        if self.stack_messages is not None:
+            result['StackMessages'] = self.stack_messages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedResources') is not None:
+            self.failed_resources = m.get('FailedResources')
+        if m.get('RosActionMessages') is not None:
+            self.ros_action_messages = m.get('RosActionMessages')
+        if m.get('StackMessages') is not None:
+            self.stack_messages = m.get('StackMessages')
+        return self
+
+
+class GetDiagnosticResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        diagnostic_key: str = None,
+        diagnostic_product: str = None,
+        diagnostic_result: GetDiagnosticResponseBodyDiagnosticResult = None,
+        diagnostic_time: str = None,
+        http_code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        recommends: Dict[str, Any] = None,
+        report_id: str = None,
+        request_id: str = None,
+        status: str = None,
+        status_reason: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.diagnostic_key = diagnostic_key
+        self.diagnostic_product = diagnostic_product
+        self.diagnostic_result = diagnostic_result
+        self.diagnostic_time = diagnostic_time
+        self.http_code = http_code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.recommends = recommends
+        self.report_id = report_id
+        self.request_id = request_id
+        self.status = status
+        self.status_reason = status_reason
+        self.success = success
+
+    def validate(self):
+        if self.diagnostic_result:
+            self.diagnostic_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.diagnostic_key is not None:
+            result['DiagnosticKey'] = self.diagnostic_key
+        if self.diagnostic_product is not None:
+            result['DiagnosticProduct'] = self.diagnostic_product
+        if self.diagnostic_result is not None:
+            result['DiagnosticResult'] = self.diagnostic_result.to_map()
+        if self.diagnostic_time is not None:
+            result['DiagnosticTime'] = self.diagnostic_time
+        if self.http_code is not None:
+            result['HttpCode'] = self.http_code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.recommends is not None:
+            result['Recommends'] = self.recommends
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_reason is not None:
+            result['StatusReason'] = self.status_reason
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DiagnosticKey') is not None:
+            self.diagnostic_key = m.get('DiagnosticKey')
+        if m.get('DiagnosticProduct') is not None:
+            self.diagnostic_product = m.get('DiagnosticProduct')
+        if m.get('DiagnosticResult') is not None:
+            temp_model = GetDiagnosticResponseBodyDiagnosticResult()
+            self.diagnostic_result = temp_model.from_map(m['DiagnosticResult'])
+        if m.get('DiagnosticTime') is not None:
+            self.diagnostic_time = m.get('DiagnosticTime')
+        if m.get('HttpCode') is not None:
+            self.http_code = m.get('HttpCode')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Recommends') is not None:
+            self.recommends = m.get('Recommends')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusReason') is not None:
+            self.status_reason = m.get('StatusReason')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDiagnosticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDiagnosticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDiagnosticResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13501,6 +13986,217 @@ class ListChangeSetsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListChangeSetsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDiagnosticsRequest(TeaModel):
+    def __init__(
+        self,
+        diagnostic_key: str = None,
+        diagnostic_product: str = None,
+        max_results: str = None,
+        next_token: str = None,
+        status: str = None,
+    ):
+        self.diagnostic_key = diagnostic_key
+        self.diagnostic_product = diagnostic_product
+        self.max_results = max_results
+        self.next_token = next_token
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.diagnostic_key is not None:
+            result['DiagnosticKey'] = self.diagnostic_key
+        if self.diagnostic_product is not None:
+            result['DiagnosticProduct'] = self.diagnostic_product
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiagnosticKey') is not None:
+            self.diagnostic_key = m.get('DiagnosticKey')
+        if m.get('DiagnosticProduct') is not None:
+            self.diagnostic_product = m.get('DiagnosticProduct')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDiagnosticsResponseBodyDiagnostics(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        diagnostic_key: str = None,
+        diagnostic_product: str = None,
+        report_id: str = None,
+        status: str = None,
+    ):
+        self.create_time = create_time
+        self.diagnostic_key = diagnostic_key
+        self.diagnostic_product = diagnostic_product
+        self.report_id = report_id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.diagnostic_key is not None:
+            result['DiagnosticKey'] = self.diagnostic_key
+        if self.diagnostic_product is not None:
+            result['DiagnosticProduct'] = self.diagnostic_product
+        if self.report_id is not None:
+            result['ReportId'] = self.report_id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DiagnosticKey') is not None:
+            self.diagnostic_key = m.get('DiagnosticKey')
+        if m.get('DiagnosticProduct') is not None:
+            self.diagnostic_product = m.get('DiagnosticProduct')
+        if m.get('ReportId') is not None:
+            self.report_id = m.get('ReportId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListDiagnosticsResponseBody(TeaModel):
+    def __init__(
+        self,
+        diagnostics: List[ListDiagnosticsResponseBodyDiagnostics] = None,
+        http_status_code: int = None,
+        message: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.diagnostics = diagnostics
+        self.http_status_code = http_status_code
+        self.message = message
+        self.next_token = next_token
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.diagnostics:
+            for k in self.diagnostics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Diagnostics'] = []
+        if self.diagnostics is not None:
+            for k in self.diagnostics:
+                result['Diagnostics'].append(k.to_map() if k else None)
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.diagnostics = []
+        if m.get('Diagnostics') is not None:
+            for k in m.get('Diagnostics'):
+                temp_model = ListDiagnosticsResponseBodyDiagnostics()
+                self.diagnostics.append(temp_model.from_map(k))
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListDiagnosticsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDiagnosticsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDiagnosticsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
