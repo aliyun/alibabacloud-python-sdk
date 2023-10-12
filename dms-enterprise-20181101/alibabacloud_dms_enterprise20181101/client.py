@@ -7629,6 +7629,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_database_export_order_detail_with_options_async(request, runtime)
 
+    def get_db_export_download_urlwith_options(
+        self,
+        request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDbExportDownloadURL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDbExportDownloadURLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_db_export_download_urlwith_options_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order_id):
+            query['OrderId'] = request.order_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDbExportDownloadURL',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.GetDbExportDownloadURLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_db_export_download_url(
+        self,
+        request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
+    ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_db_export_download_urlwith_options(request, runtime)
+
+    async def get_db_export_download_url_async(
+        self,
+        request: dms_enterprise_20181101_models.GetDbExportDownloadURLRequest,
+    ) -> dms_enterprise_20181101_models.GetDbExportDownloadURLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_db_export_download_urlwith_options_async(request, runtime)
+
     def get_instance_with_options(
         self,
         request: dms_enterprise_20181101_models.GetInstanceRequest,

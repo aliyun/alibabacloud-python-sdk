@@ -19712,6 +19712,175 @@ class GetDatabaseExportOrderDetailResponse(TeaModel):
         return self
 
 
+class GetDbExportDownloadURLRequest(TeaModel):
+    def __init__(
+        self,
+        order_id: int = None,
+        tid: int = None,
+    ):
+        self.order_id = order_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class GetDbExportDownloadURLResponseBodyDownloadURLResult(TeaModel):
+    def __init__(
+        self,
+        has_result: bool = None,
+        tip_message: str = None,
+        url: str = None,
+    ):
+        self.has_result = has_result
+        self.tip_message = tip_message
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.has_result is not None:
+            result['HasResult'] = self.has_result
+        if self.tip_message is not None:
+            result['TipMessage'] = self.tip_message
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HasResult') is not None:
+            self.has_result = m.get('HasResult')
+        if m.get('TipMessage') is not None:
+            self.tip_message = m.get('TipMessage')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class GetDbExportDownloadURLResponseBody(TeaModel):
+    def __init__(
+        self,
+        download_urlresult: GetDbExportDownloadURLResponseBodyDownloadURLResult = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.download_urlresult = download_urlresult
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.download_urlresult:
+            self.download_urlresult.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_urlresult is not None:
+            result['DownloadURLResult'] = self.download_urlresult.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadURLResult') is not None:
+            temp_model = GetDbExportDownloadURLResponseBodyDownloadURLResult()
+            self.download_urlresult = temp_model.from_map(m['DownloadURLResult'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDbExportDownloadURLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDbExportDownloadURLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDbExportDownloadURLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -22383,12 +22552,14 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserNickList(TeaModel):
 class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
     def __init__(
         self,
+        attachment_key: str = None,
         comment: str = None,
         committer: str = None,
         committer_id: int = None,
         create_time: str = None,
         last_modify_time: str = None,
         order_id: int = None,
+        origin_attachment_name: str = None,
         plugin_type: str = None,
         related_user_list: GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserList = None,
         related_user_nick_list: GetOrderBaseInfoResponseBodyOrderBaseInfoRelatedUserNickList = None,
@@ -22397,6 +22568,7 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
         workflow_instance_id: int = None,
         workflow_status_desc: str = None,
     ):
+        self.attachment_key = attachment_key
         # The remarks of the ticket.
         self.comment = comment
         # The applicant.
@@ -22409,6 +22581,7 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
         self.last_modify_time = last_modify_time
         # The ID of the ticket.
         self.order_id = order_id
+        self.origin_attachment_name = origin_attachment_name
         # The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](~~465865~~) operation.
         self.plugin_type = plugin_type
         # The IDs of the operators that are related to the ticket.
@@ -22444,6 +22617,8 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
             return _map
 
         result = dict()
+        if self.attachment_key is not None:
+            result['AttachmentKey'] = self.attachment_key
         if self.comment is not None:
             result['Comment'] = self.comment
         if self.committer is not None:
@@ -22456,6 +22631,8 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
             result['LastModifyTime'] = self.last_modify_time
         if self.order_id is not None:
             result['OrderId'] = self.order_id
+        if self.origin_attachment_name is not None:
+            result['OriginAttachmentName'] = self.origin_attachment_name
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
         if self.related_user_list is not None:
@@ -22474,6 +22651,8 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AttachmentKey') is not None:
+            self.attachment_key = m.get('AttachmentKey')
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
         if m.get('Committer') is not None:
@@ -22486,6 +22665,8 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
             self.last_modify_time = m.get('LastModifyTime')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
+        if m.get('OriginAttachmentName') is not None:
+            self.origin_attachment_name = m.get('OriginAttachmentName')
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
         if m.get('RelatedUserList') is not None:
