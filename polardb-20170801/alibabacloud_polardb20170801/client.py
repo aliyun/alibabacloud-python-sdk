@@ -999,6 +999,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_with_options_async(request, runtime)
 
+    def create_cold_storage_instance_with_options(
+        self,
+        request: polardb_20170801_models.CreateColdStorageInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cold_storage_instance_description):
+            query['ColdStorageInstanceDescription'] = request.cold_storage_instance_description
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateColdStorageInstance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateColdStorageInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cold_storage_instance_with_options_async(
+        self,
+        request: polardb_20170801_models.CreateColdStorageInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cold_storage_instance_description):
+            query['ColdStorageInstanceDescription'] = request.cold_storage_instance_description
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateColdStorageInstance',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.CreateColdStorageInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cold_storage_instance(
+        self,
+        request: polardb_20170801_models.CreateColdStorageInstanceRequest,
+    ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_cold_storage_instance_with_options(request, runtime)
+
+    async def create_cold_storage_instance_async(
+        self,
+        request: polardb_20170801_models.CreateColdStorageInstanceRequest,
+    ) -> polardb_20170801_models.CreateColdStorageInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cold_storage_instance_with_options_async(request, runtime)
+
     def create_dbcluster_with_options(
         self,
         request: polardb_20170801_models.CreateDBClusterRequest,
@@ -9316,6 +9414,116 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.DisableDBClusterServerlessResponse:
         runtime = util_models.RuntimeOptions()
         return await self.disable_dbcluster_serverless_with_options_async(request, runtime)
+
+    def enable_dbcluster_serverless_with_options(
+        self,
+        request: polardb_20170801_models.EnableDBClusterServerlessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.EnableDBClusterServerlessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_ap_ro_num_max):
+            query['ScaleApRoNumMax'] = request.scale_ap_ro_num_max
+        if not UtilClient.is_unset(request.scale_ap_ro_num_min):
+            query['ScaleApRoNumMin'] = request.scale_ap_ro_num_min
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.scale_ro_num_max):
+            query['ScaleRoNumMax'] = request.scale_ro_num_max
+        if not UtilClient.is_unset(request.scale_ro_num_min):
+            query['ScaleRoNumMin'] = request.scale_ro_num_min
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDBClusterServerless',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.EnableDBClusterServerlessResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_dbcluster_serverless_with_options_async(
+        self,
+        request: polardb_20170801_models.EnableDBClusterServerlessRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.EnableDBClusterServerlessResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scale_ap_ro_num_max):
+            query['ScaleApRoNumMax'] = request.scale_ap_ro_num_max
+        if not UtilClient.is_unset(request.scale_ap_ro_num_min):
+            query['ScaleApRoNumMin'] = request.scale_ap_ro_num_min
+        if not UtilClient.is_unset(request.scale_max):
+            query['ScaleMax'] = request.scale_max
+        if not UtilClient.is_unset(request.scale_min):
+            query['ScaleMin'] = request.scale_min
+        if not UtilClient.is_unset(request.scale_ro_num_max):
+            query['ScaleRoNumMax'] = request.scale_ro_num_max
+        if not UtilClient.is_unset(request.scale_ro_num_min):
+            query['ScaleRoNumMin'] = request.scale_ro_num_min
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDBClusterServerless',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.EnableDBClusterServerlessResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_dbcluster_serverless(
+        self,
+        request: polardb_20170801_models.EnableDBClusterServerlessRequest,
+    ) -> polardb_20170801_models.EnableDBClusterServerlessResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.enable_dbcluster_serverless_with_options(request, runtime)
+
+    async def enable_dbcluster_serverless_async(
+        self,
+        request: polardb_20170801_models.EnableDBClusterServerlessRequest,
+    ) -> polardb_20170801_models.EnableDBClusterServerlessResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_dbcluster_serverless_with_options_async(request, runtime)
 
     def enable_firewall_rules_with_options(
         self,
