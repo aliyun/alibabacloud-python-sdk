@@ -1,3 +1,6 @@
+2023-10-12 Version: 1.0.8
+- Generated python 2016-08-01 for Push.
+
 2023-03-15 Version: 1.0.7
 - Supported AndroidMessageVivoCategory for Push and MassPush.
 - Supported AndroidHuaweiTargetUserType, AndroidHuaweiReceiptId for Push and MassPush.

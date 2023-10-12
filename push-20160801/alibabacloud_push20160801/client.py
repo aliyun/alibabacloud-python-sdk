@@ -485,7 +485,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated
+        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -523,7 +523,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated
+        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -560,7 +560,7 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDeviceRequest,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated
+        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @return: CheckDeviceResponse
@@ -574,7 +574,7 @@ class Client(OpenApiClient):
         request: push_20160801_models.CheckDeviceRequest,
     ) -> push_20160801_models.CheckDeviceResponse:
         """
-        @deprecated
+        @deprecated : CheckDevice is deprecated, please use Push::2016-08-01::CheckDevices instead.
         
         @param request: CheckDeviceRequest
         @return: CheckDeviceResponse
@@ -818,7 +818,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated
+        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @param request: ListSummaryAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -847,7 +847,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated
+        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @param request: ListSummaryAppsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -873,7 +873,7 @@ class Client(OpenApiClient):
 
     def list_summary_apps(self) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated
+        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @return: ListSummaryAppsResponse
         Deprecated
@@ -883,7 +883,7 @@ class Client(OpenApiClient):
 
     async def list_summary_apps_async(self) -> push_20160801_models.ListSummaryAppsResponse:
         """
-        @deprecated
+        @deprecated : ListSummaryApps is deprecated, please use Mhub::2017-08-25::ListApps instead.
         
         @return: ListSummaryAppsResponse
         Deprecated
@@ -1056,6 +1056,8 @@ class Client(OpenApiClient):
             query['AndroidBigTitle'] = request.android_big_title
         if not UtilClient.is_unset(request.android_ext_parameters):
             query['AndroidExtParameters'] = request.android_ext_parameters
+        if not UtilClient.is_unset(request.android_honor_target_user_type):
+            query['AndroidHonorTargetUserType'] = request.android_honor_target_user_type
         if not UtilClient.is_unset(request.android_huawei_receipt_id):
             query['AndroidHuaweiReceiptId'] = request.android_huawei_receipt_id
         if not UtilClient.is_unset(request.android_huawei_target_user_type):
@@ -1106,6 +1108,8 @@ class Client(OpenApiClient):
             query['AndroidRemind'] = request.android_remind
         if not UtilClient.is_unset(request.android_render_style):
             query['AndroidRenderStyle'] = request.android_render_style
+        if not UtilClient.is_unset(request.android_target_user_type):
+            query['AndroidTargetUserType'] = request.android_target_user_type
         if not UtilClient.is_unset(request.android_vivo_push_mode):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
         if not UtilClient.is_unset(request.android_xiao_mi_activity):
@@ -1222,6 +1226,8 @@ class Client(OpenApiClient):
             query['AndroidBigTitle'] = request.android_big_title
         if not UtilClient.is_unset(request.android_ext_parameters):
             query['AndroidExtParameters'] = request.android_ext_parameters
+        if not UtilClient.is_unset(request.android_honor_target_user_type):
+            query['AndroidHonorTargetUserType'] = request.android_honor_target_user_type
         if not UtilClient.is_unset(request.android_huawei_receipt_id):
             query['AndroidHuaweiReceiptId'] = request.android_huawei_receipt_id
         if not UtilClient.is_unset(request.android_huawei_target_user_type):
@@ -1272,6 +1278,8 @@ class Client(OpenApiClient):
             query['AndroidRemind'] = request.android_remind
         if not UtilClient.is_unset(request.android_render_style):
             query['AndroidRenderStyle'] = request.android_render_style
+        if not UtilClient.is_unset(request.android_target_user_type):
+            query['AndroidTargetUserType'] = request.android_target_user_type
         if not UtilClient.is_unset(request.android_vivo_push_mode):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
         if not UtilClient.is_unset(request.android_xiao_mi_activity):
@@ -1398,6 +1406,8 @@ class Client(OpenApiClient):
             query['Body'] = request.body
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.store_offline):
+            query['StoreOffline'] = request.store_offline
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
         if not UtilClient.is_unset(request.target_value):
@@ -1436,6 +1446,8 @@ class Client(OpenApiClient):
             query['Body'] = request.body
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.store_offline):
+            query['StoreOffline'] = request.store_offline
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
         if not UtilClient.is_unset(request.target_value):
@@ -1488,6 +1500,8 @@ class Client(OpenApiClient):
             query['Body'] = request.body
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.store_offline):
+            query['StoreOffline'] = request.store_offline
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
         if not UtilClient.is_unset(request.target_value):
@@ -1526,6 +1540,8 @@ class Client(OpenApiClient):
             query['Body'] = request.body
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.store_offline):
+            query['StoreOffline'] = request.store_offline
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
         if not UtilClient.is_unset(request.target_value):
@@ -1580,6 +1596,8 @@ class Client(OpenApiClient):
             query['ExtParameters'] = request.ext_parameters
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.store_offline):
+            query['StoreOffline'] = request.store_offline
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
         if not UtilClient.is_unset(request.target_value):
@@ -1620,6 +1638,8 @@ class Client(OpenApiClient):
             query['ExtParameters'] = request.ext_parameters
         if not UtilClient.is_unset(request.job_key):
             query['JobKey'] = request.job_key
+        if not UtilClient.is_unset(request.store_offline):
+            query['StoreOffline'] = request.store_offline
         if not UtilClient.is_unset(request.target):
             query['Target'] = request.target
         if not UtilClient.is_unset(request.target_value):
