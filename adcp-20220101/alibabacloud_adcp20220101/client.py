@@ -1714,6 +1714,8 @@ class Client(OpenApiClient):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.enable_mesh):
             query['EnableMesh'] = request.enable_mesh
+        if not UtilClient.is_unset(request.mseenabled):
+            query['MSEEnabled'] = request.mseenabled
         if not UtilClient.is_unset(request.monitor_enabled):
             query['MonitorEnabled'] = request.monitor_enabled
         if not UtilClient.is_unset(request.name):
@@ -1780,6 +1782,8 @@ class Client(OpenApiClient):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.enable_mesh):
             query['EnableMesh'] = request.enable_mesh
+        if not UtilClient.is_unset(request.mseenabled):
+            query['MSEEnabled'] = request.mseenabled
         if not UtilClient.is_unset(request.monitor_enabled):
             query['MonitorEnabled'] = request.monitor_enabled
         if not UtilClient.is_unset(request.name):
