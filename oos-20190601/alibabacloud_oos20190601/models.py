@@ -10,7 +10,9 @@ class CancelExecutionRequest(TeaModel):
         execution_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the execution.
         self.execution_id = execution_id
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -42,6 +44,7 @@ class CancelExecutionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -369,8 +372,11 @@ class CreateApplicationRequestAlarmConfig(TeaModel):
         health_check_url: str = None,
         template_ids: List[str] = None,
     ):
+        # The alert contact groups.
         self.contact_groups = contact_groups
+        # The health check URL of the application.
         self.health_check_url = health_check_url
+        # The alert templates.
         self.template_ids = template_ids
 
     def validate(self):
@@ -410,8 +416,10 @@ class CreateApplicationRequest(TeaModel):
         name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        service_id: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # The configurations of application alerts.
         self.alarm_config = alarm_config
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -423,6 +431,7 @@ class CreateApplicationRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.service_id = service_id
         # The tags.
         self.tags = tags
 
@@ -448,6 +457,8 @@ class CreateApplicationRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.tags is not None:
             result['Tags'] = self.tags
         return result
@@ -467,6 +478,8 @@ class CreateApplicationRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         return self
@@ -481,8 +494,10 @@ class CreateApplicationShrinkRequest(TeaModel):
         name: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        service_id: str = None,
         tags_shrink: str = None,
     ):
+        # The configurations of application alerts.
         self.alarm_config_shrink = alarm_config_shrink
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -494,6 +509,7 @@ class CreateApplicationShrinkRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.service_id = service_id
         # The tags.
         self.tags_shrink = tags_shrink
 
@@ -518,6 +534,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
         return result
@@ -536,6 +554,8 @@ class CreateApplicationShrinkRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
         return self
@@ -944,18 +964,107 @@ class CreateOpsItemRequest(TeaModel):
         tags: Dict[str, Any] = None,
         title: str = None,
     ):
+        # The category.
+        # 
+        # Valid values:
+        # 
+        # *   Availability
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Performance
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Security
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Cost
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Recovery
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.category = category
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The string to be deduplicated.
         self.dedup_string = dedup_string
+        # The description of the operation.
         self.description = description
+        # The priority. Valid values: 1 to 5. 1 indicates the highest priority.
         self.priority = priority
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The Alibaba Cloud Resource Names (ARNs) of the associated resources.
         self.resources = resources
+        # The severity level.
+        # 
+        # Valid values:
+        # 
+        # *   High
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Low
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Medium
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Critical
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.severity = severity
+        # The list of solutions.
         self.solutions = solutions
+        # The source business.
         self.source = source
+        # The tags.
         self.tags = tags
+        # The title of the O\&M item.
         self.title = title
 
     def validate(self):
@@ -1043,18 +1152,107 @@ class CreateOpsItemShrinkRequest(TeaModel):
         tags_shrink: str = None,
         title: str = None,
     ):
+        # The category.
+        # 
+        # Valid values:
+        # 
+        # *   Availability
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Performance
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Security
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Cost
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Recovery
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.category = category
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The string to be deduplicated.
         self.dedup_string = dedup_string
+        # The description of the operation.
         self.description = description
+        # The priority. Valid values: 1 to 5. 1 indicates the highest priority.
         self.priority = priority
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The Alibaba Cloud Resource Names (ARNs) of the associated resources.
         self.resources = resources
+        # The severity level.
+        # 
+        # Valid values:
+        # 
+        # *   High
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Low
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Medium
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Critical
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.severity = severity
+        # The list of solutions.
         self.solutions = solutions
+        # The source business.
         self.source = source
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The title of the O\&M item.
         self.title = title
 
     def validate(self):
@@ -1146,22 +1344,39 @@ class CreateOpsItemResponseBodyOpsItem(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
+        # The information about the properties of the O\&M item.
         self.attributes = attributes
+        # The category.
         self.category = category
+        # The time when the O\&M item was created.
         self.create_date = create_date
+        # The user who created the OpsItem.
         self.created_by = created_by
+        # The description.
         self.description = description
+        # The user who modified the O\&M item.
         self.last_modified_by = last_modified_by
+        # The ID of the O\&M item.
         self.ops_item_id = ops_item_id
+        # The priority.
         self.priority = priority
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ARN of the associated resource.
         self.resources = resources
+        # The severity level.
         self.severity = severity
+        # The solution.
         self.solutions = solutions
+        # The source business.
         self.source = source
+        # The status.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The title of the O\&M item.
         self.title = title
+        # The time when the O\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -1254,7 +1469,9 @@ class CreateOpsItemResponseBody(TeaModel):
         ops_item: CreateOpsItemResponseBodyOpsItem = None,
         request_id: str = None,
     ):
+        # The O\&M item.
         self.ops_item = ops_item
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1704,7 +1921,9 @@ class CreatePatchBaselineRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -1750,7 +1969,9 @@ class CreatePatchBaselineRequest(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches = approved_patches
+        # Specifies whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -1771,10 +1992,15 @@ class CreatePatchBaselineRequest(TeaModel):
         self.operation_system = operation_system
         # The ID of the region in which you want to create a patch baseline.
         self.region_id = region_id
+        # The rejected patches.
         self.rejected_patches = rejected_patches
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The patch source configurations.
         self.sources = sources
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -1872,7 +2098,9 @@ class CreatePatchBaselineShrinkRequest(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches_shrink = approved_patches_shrink
+        # Specifies whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -1893,10 +2121,15 @@ class CreatePatchBaselineShrinkRequest(TeaModel):
         self.operation_system = operation_system
         # The ID of the region in which you want to create a patch baseline.
         self.region_id = region_id
+        # The rejected patches.
         self.rejected_patches_shrink = rejected_patches_shrink
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The patch source configurations.
         self.sources_shrink = sources_shrink
+        # The tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -1973,7 +2206,9 @@ class CreatePatchBaselineResponseBodyPatchBaselineTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -2023,7 +2258,9 @@ class CreatePatchBaselineResponseBodyPatchBaseline(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches = approved_patches
+        # Indicates whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The creator of the patch baseline.
         self.created_by = created_by
@@ -2037,12 +2274,17 @@ class CreatePatchBaselineResponseBodyPatchBaseline(TeaModel):
         self.name = name
         # The type of the operating system.
         self.operation_system = operation_system
+        # The rejected patches.
         self.rejected_patches = rejected_patches
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The share type of the patch baseline.
         self.share_type = share_type
+        # The patch source configurations.
         self.sources = sources
+        # The tags.
         self.tags = tags
         # The Alibaba Cloud account that last modified the information about the patch baseline.
         self.updated_by = updated_by
@@ -4480,7 +4722,12 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         region_id: str = None,
     ):
+        # The supported natural language. Valid values:
+        # 
+        # *   zh-CN: Chinese
+        # *   en-US: English
         self.accept_language = accept_language
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -4854,6 +5101,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         description: str = None,
         name: str = None,
         resource_group_id: str = None,
+        service_id: str = None,
         tags: Dict[str, Any] = None,
         update_date: str = None,
     ):
@@ -4867,6 +5115,7 @@ class GetApplicationResponseBodyApplication(TeaModel):
         self.name = name
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        self.service_id = service_id
         # The tags.
         self.tags = tags
         # The time when the application was updated.
@@ -4894,6 +5143,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             result['Name'] = self.name
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+        if self.service_id is not None:
+            result['ServiceId'] = self.service_id
         if self.tags is not None:
             result['Tags'] = self.tags
         if self.update_date is not None:
@@ -4915,6 +5166,8 @@ class GetApplicationResponseBodyApplication(TeaModel):
             self.name = m.get('Name')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ServiceId') is not None:
+            self.service_id = m.get('ServiceId')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         if m.get('UpdateDate') is not None:
@@ -5733,7 +5986,9 @@ class GetOpsItemRequest(TeaModel):
         ops_item_id: str = None,
         region_id: str = None,
     ):
+        # The O\&M item ID.
         self.ops_item_id = ops_item_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -5782,23 +6037,41 @@ class GetOpsItemResponseBodyOpsItem(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
+        # The information about the attributes of the O\&M item.
         self.attributes = attributes
+        # The category of the O\&M item.
         self.category = category
+        # The user who created the O\&M item.
         self.create_by = create_by
+        # The time when the O\&M item was created.
         self.create_date = create_date
+        # The duplicated string.
         self.dedup_string = dedup_string
+        # The description.
         self.description = description
+        # The user who modified the O\&M item.
         self.last_modified_by = last_modified_by
+        # The O\&M item ID.
         self.ops_item_id = ops_item_id
+        # The priority of the O\&M item.
         self.priority = priority
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The Alibaba Cloud Resource Names (ARNs) of the associated resources.
         self.resources = resources
+        # The severity level of the O\&M item.
         self.severity = severity
+        # The solutions to the O\&M item.
         self.solutions = solutions
+        # The source business of the O\&M item.
         self.source = source
+        # The status of the O\&M item.
         self.status = status
+        # The tags attached to the O\&M item.
         self.tags = tags
+        # The title of the O\&M item.
         self.title = title
+        # The time when the O\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -5895,7 +6168,9 @@ class GetOpsItemResponseBody(TeaModel):
         ops_item: GetOpsItemResponseBodyOpsItem = None,
         request_id: str = None,
     ):
+        # The information about the O\&M item.
         self.ops_item = ops_item
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6223,7 +6498,9 @@ class GetParametersRequest(TeaModel):
         names: str = None,
         region_id: str = None,
     ):
+        # The names of the common parameters.
         self.names = names
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -6268,19 +6545,33 @@ class GetParametersResponseBodyParameters(TeaModel):
         updated_date: str = None,
         value: str = None,
     ):
+        # The constraints of the common parameter.
         self.constraints = constraints
+        # The user who created the common parameter.
         self.created_by = created_by
+        # The time when the common parameter was created.
         self.created_date = created_date
+        # The description of the common parameter.
         self.description = description
+        # The ID of the common parameter.
         self.id = id
+        # The name of the common parameter.
         self.name = name
+        # The version number of the common parameter.
         self.parameter_version = parameter_version
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The share type of the common parameter.
         self.share_type = share_type
+        # The tags.
         self.tags = tags
+        # The type of the parameter.
         self.type = type
+        # The user who updated the common parameter.
         self.updated_by = updated_by
+        # The time when the parameter was updated.
         self.updated_date = updated_date
+        # The value of the common parameter.
         self.value = value
 
     def validate(self):
@@ -6362,8 +6653,11 @@ class GetParametersResponseBody(TeaModel):
         parameters: List[GetParametersResponseBodyParameters] = None,
         request_id: str = None,
     ):
+        # Invalid parameters.
         self.invalid_parameters = invalid_parameters
+        # The information about the common parameters.
         self.parameters = parameters
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6455,10 +6749,18 @@ class GetParametersByPathRequest(TeaModel):
         recursive: bool = None,
         region_id: str = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
         self.path = path
+        # Specifies whether to recursively query encryption parameters from all levels of directories in the specified path. Valid values: true and false. For example, if you want to query the /secretParameter/mySecretParameter and /secretParameter/secretParameter 1/mySecretParameter parameters, the valid values specify the parameters to be returned.
+        # 
+        # *   true: returns both of the /secretParameter/mySecretParameter and /secretParameter/secretParameter1/mySecretParameter parameters.
+        # *   false: returns only the /secretParameter/mySecretParameter parameter.
         self.recursive = recursive
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -6618,11 +6920,15 @@ class GetParametersByPathResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries per page.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
         # The information about the common parameters.
         self.parameters = parameters
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -6754,7 +7060,9 @@ class GetPatchBaselineResponseBodyPatchBaselineTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -6805,7 +7113,9 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches = approved_patches
+        # Indicates whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The creator of the patch baseline.
         self.created_by = created_by
@@ -6821,12 +7131,17 @@ class GetPatchBaselineResponseBodyPatchBaseline(TeaModel):
         self.name = name
         # The type of the operating system.
         self.operation_system = operation_system
+        # The rejected patches.
         self.rejected_patches = rejected_patches
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The share type of the patch baseline.
         self.share_type = share_type
+        # The patch source configurations.
         self.sources = sources
+        # The tags.
         self.tags = tags
         # The user who last modified the patch baseline.
         self.updated_by = updated_by
@@ -7825,6 +8140,7 @@ class GetServiceSettingsRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -7857,11 +8173,17 @@ class GetServiceSettingsResponseBodyServiceSettings(TeaModel):
         delivery_sls_project_name: str = None,
         rdc_enterprise_id: str = None,
     ):
+        # The name of OSS bucket to deliver.
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
+        # Whether to enable OSS delivery.
         self.delivery_oss_enabled = delivery_oss_enabled
+        # The key prefix of OSS to deliver.
         self.delivery_oss_key_prefix = delivery_oss_key_prefix
+        # Whether to enable SLS delivery.
         self.delivery_sls_enabled = delivery_sls_enabled
+        # The name of SLS project to deliver.
         self.delivery_sls_project_name = delivery_sls_project_name
+        # The id of RDC Enterprise.
         self.rdc_enterprise_id = rdc_enterprise_id
 
     def validate(self):
@@ -7910,7 +8232,9 @@ class GetServiceSettingsResponseBody(TeaModel):
         request_id: str = None,
         service_settings: List[GetServiceSettingsResponseBodyServiceSettings] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of service settings.
         self.service_settings = service_settings
 
     def validate(self):
@@ -7996,8 +8320,11 @@ class GetTemplateRequest(TeaModel):
         template_name: str = None,
         template_version: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
         self.template_name = template_name
+        # The version of the template. The default value is the latest version of the template.
         self.template_version = template_version
 
     def validate(self):
@@ -8048,21 +8375,37 @@ class GetTemplateResponseBodyTemplate(TeaModel):
         updated_date: str = None,
         version_name: str = None,
     ):
+        # The creator of the template.
         self.created_by = created_by
+        # The time when the template was created.
         self.created_date = created_date
+        # The description of the template.
         self.description = description
+        # Indicates whether the template was configured with a trigger.
         self.has_trigger = has_trigger
+        # The SHA-256 value of the template content.
         self.hash = hash
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The share type of the template. The share type of a user-created template is **Private**.
         self.share_type = share_type
+        # The tag keys and values. The number of key-value pairs ranges from 1 to 20.
         self.tags = tags
+        # The format of the template. The system automatically determines whether the format is JSON or YAML.
         self.template_format = template_format
+        # The ID of the template.
         self.template_id = template_id
+        # The name of the template.
         self.template_name = template_name
+        # The type of the template.
         self.template_type = template_type
+        # The version of the template. The name of the version consists of the letter v and a number. The number starts from 1.
         self.template_version = template_version
+        # The user who last updated the template.
         self.updated_by = updated_by
+        # The time when the template was last updated.
         self.updated_date = updated_date
+        # The name of the version of the template.
         self.version_name = version_name
 
     def validate(self):
@@ -8152,8 +8495,11 @@ class GetTemplateResponseBody(TeaModel):
         request_id: str = None,
         template: GetTemplateResponseBodyTemplate = None,
     ):
+        # The content of the template.
         self.content = content
+        # The request ID.
         self.request_id = request_id
+        # The metadata of the template.
         self.template = template
 
     def validate(self):
@@ -9539,6 +9885,7 @@ class ListExecutionsRequest(TeaModel):
         self.category = category
         # The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
         self.depth = depth
+        # The description of the execution.
         self.description = description
         # The earliest end time. The executions that stop running at or later than the specified time are queried.
         self.end_date_after = end_date_after
@@ -9744,6 +10091,7 @@ class ListExecutionsShrinkRequest(TeaModel):
         self.category = category
         # The depth of execution. Valid values: RootDepth and FirstChildDepth. If you set this parameter to RootDepth, only the parent execution is returned. If you set this parameter to FirstChildDepth, only the child executions at the first level are returned. You can specify only one of the Depth and IncludeChildExecution parameters. We recommend that you specify Depth.
         self.depth = depth
+        # The description of the execution.
         self.description = description
         # The earliest end time. The executions that stop running at or later than the specified time are queried.
         self.end_date_after = end_date_after
@@ -10013,9 +10361,11 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         self.is_parent = is_parent
         # The time when the template was last successfully triggered.
         self.last_successful_trigger_time = last_successful_trigger_time
+        # The outputs of last trigger.
         self.last_trigger_outputs = last_trigger_outputs
         # The status of the execution after the template was last triggered.
         self.last_trigger_status = last_trigger_status
+        # The status message of last trigger.
         self.last_trigger_status_message = last_trigger_status_message
         # The time when the template was last successfully triggered.
         self.last_trigger_time = last_trigger_time
@@ -11053,8 +11403,11 @@ class ListOpsItemsRequestFilter(TeaModel):
         operator: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter.
         self.name = name
+        # The comparison operator that is used to filter property values.
         self.operator = operator
+        # The parameter values of the filter.
         self.value = value
 
     def validate(self):
@@ -11095,11 +11448,17 @@ class ListOpsItemsRequest(TeaModel):
         resource_tags: Dict[str, Any] = None,
         tags: Dict[str, Any] = None,
     ):
+        # The filter rules for the component.
         self.filter = filter
+        # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The information about resource tags.
         self.resource_tags = resource_tags
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -11157,8 +11516,11 @@ class ListOpsItemsShrinkRequestFilter(TeaModel):
         operator: str = None,
         value: List[str] = None,
     ):
+        # The parameter name of the filter.
         self.name = name
+        # The comparison operator that is used to filter property values.
         self.operator = operator
+        # The parameter values of the filter.
         self.value = value
 
     def validate(self):
@@ -11199,11 +11561,17 @@ class ListOpsItemsShrinkRequest(TeaModel):
         resource_tags_shrink: str = None,
         tags_shrink: str = None,
     ):
+        # The filter rules for the component.
         self.filter = filter
+        # The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
+        # The region ID.
         self.region_id = region_id
+        # The information about resource tags.
         self.resource_tags_shrink = resource_tags_shrink
+        # The tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -11269,16 +11637,27 @@ class ListOpsItemsResponseBodyOpsItems(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
+        # The category.
         self.category = category
+        # The time when the O\&M item was created.
         self.create_date = create_date
+        # The ID of the O\&M item.
         self.ops_item_id = ops_item_id
+        # The priority.
         self.priority = priority
+        # The Alibaba Resource Names (ARNs) of the associated resources.
         self.resources = resources
+        # The severity level.
         self.severity = severity
+        # The source business.
         self.source = source
+        # The status of the O\&M item.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The title of the O\&M item.
         self.title = title
+        # The time when the O\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -11350,10 +11729,15 @@ class ListOpsItemsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries returned on each page.
         self.max_results = max_results
+        # The pagination token that can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The list of O\&M items.
         self.ops_items = ops_items
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -11715,17 +12099,40 @@ class ListParametersRequest(TeaModel):
         tags: Dict[str, Any] = None,
         type: str = None,
     ):
+        # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
+        # The name of the common parameter.
         self.name = name
+        # The pagination token that can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
         self.path = path
+        # Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
         self.recursive = recursive
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The share type of the common parameter. Valid values:
+        # 
+        # *   Public
+        # *   Private
+        # 
+        # Default value: Private.
         self.share_type = share_type
+        # The field used to sort the query results. Valid values:
+        # 
+        # *   Name
+        # *   CreatedDate
         self.sort_field = sort_field
+        # The order in which the entries are sorted. Valid values:
+        # 
+        # *   Ascending
+        # *   Descending (Default)
         self.sort_order = sort_order
+        # The tags.
         self.tags = tags
+        # The data type of the common parameter.
         self.type = type
 
     def validate(self):
@@ -11808,17 +12215,40 @@ class ListParametersShrinkRequest(TeaModel):
         tags_shrink: str = None,
         type: str = None,
     ):
+        # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
+        # The name of the common parameter.
         self.name = name
+        # The pagination token that can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
         self.path = path
+        # Specifies whether to query parameters from all levels of directories in the specified path. Default value: false.
         self.recursive = recursive
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The share type of the common parameter. Valid values:
+        # 
+        # *   Public
+        # *   Private
+        # 
+        # Default value: Private.
         self.share_type = share_type
+        # The field used to sort the query results. Valid values:
+        # 
+        # *   Name
+        # *   CreatedDate
         self.sort_field = sort_field
+        # The order in which the entries are sorted. Valid values:
+        # 
+        # *   Ascending
+        # *   Descending (Default)
         self.sort_order = sort_order
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The data type of the common parameter.
         self.type = type
 
     def validate(self):
@@ -11901,17 +12331,29 @@ class ListParametersResponseBodyParameters(TeaModel):
         updated_by: str = None,
         updated_date: str = None,
     ):
+        # The user who created the common parameter.
         self.created_by = created_by
+        # The time when the common parameter was created.
         self.created_date = created_date
+        # The description of the common parameter.
         self.description = description
+        # The common parameter ID.
         self.id = id
+        # The name of the common parameter.
         self.name = name
+        # The version number of the common parameter.
         self.parameter_version = parameter_version
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The share type of the common parameter.
         self.share_type = share_type
+        # The tags added to the common parameter.
         self.tags = tags
+        # The data type of the common parameter.
         self.type = type
+        # The user who updated the common parameter.
         self.updated_by = updated_by
+        # The time when the common parameter was updated.
         self.updated_date = updated_date
 
     def validate(self):
@@ -11987,10 +12429,15 @@ class ListParametersResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The number of entries per page. Valid values: 10 to 100. Default value: 50.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The information about the common parameter.
         self.parameters = parameters
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -12087,9 +12534,9 @@ class ListPatchBaselinesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.key = key
-        # The tag value.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -12133,7 +12580,7 @@ class ListPatchBaselinesRequest(TeaModel):
     ):
         # The approved patches.
         self.approved_patches = approved_patches
-        # Whether the approved patch includes updates other than security.
+        # Specifies whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The number of entries returned per page.
         self.max_results = max_results
@@ -12154,13 +12601,14 @@ class ListPatchBaselinesRequest(TeaModel):
         self.operation_system = operation_system
         # The ID of the region.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The share type of the template. Valid values:
         # 
         # *   **Public**\
         # *   **Private**\
         self.share_type = share_type
-        # The list of patch source configurations.
+        # The patch source configurations.
         self.sources = sources
         # The tags.
         self.tags = tags
@@ -12250,7 +12698,7 @@ class ListPatchBaselinesShrinkRequest(TeaModel):
     ):
         # The approved patches.
         self.approved_patches_shrink = approved_patches_shrink
-        # Whether the approved patch includes updates other than security.
+        # Specifies whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The number of entries returned per page.
         self.max_results = max_results
@@ -12271,13 +12719,14 @@ class ListPatchBaselinesShrinkRequest(TeaModel):
         self.operation_system = operation_system
         # The ID of the region.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The share type of the template. Valid values:
         # 
         # *   **Public**\
         # *   **Private**\
         self.share_type = share_type
-        # The list of patch source configurations.
+        # The patch source configurations.
         self.sources_shrink = sources_shrink
         # The tags.
         self.tags_shrink = tags_shrink
@@ -12348,9 +12797,9 @@ class ListPatchBaselinesResponseBodyPatchBaselinesTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # 标签键。
+        # The key of the tag.
         self.tag_key = tag_key
-        # 标签值。
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -12396,34 +12845,35 @@ class ListPatchBaselinesResponseBodyPatchBaselines(TeaModel):
         updated_by: str = None,
         updated_date: str = None,
     ):
-        # 批准补丁的列表。
+        # The approved patches.
         self.approved_patches = approved_patches
-        # 批准补丁是否包括除安全性之外的更新
+        # Indicates whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
-        # The name of the patch baseline.
+        # The user who created the patch baseline.
         self.created_by = created_by
-        # The ID of the patch baseline.
-        self.created_date = created_date
-        # The user who last modified the patch baseline.
-        self.description = description
-        # Queries the details of patch baselines.
-        self.id = id
-        # The time when the patch baseline was last modified.
-        self.is_default = is_default
-        # The share type of the patch baseline.
-        self.name = name
-        # The description of the patch baseline.
-        self.operation_system = operation_system
-        self.resource_group_id = resource_group_id
-        # Queries the details of patch baselines.
-        self.share_type = share_type
-        # 补丁源配置列表。
-        self.sources = sources
-        # 标签。
-        self.tags = tags
         # The time when the patch baseline was created.
+        self.created_date = created_date
+        # The description of the patch baseline.
+        self.description = description
+        # The ID of the patch baseline.
+        self.id = id
+        # Indicates whether the patch baseline is set as the default patch baseline.
+        self.is_default = is_default
+        # The name of the patch baseline.
+        self.name = name
+        # The type of the operating system.
+        self.operation_system = operation_system
+        # The resource group ID.
+        self.resource_group_id = resource_group_id
+        # The share type of the patch baseline.
+        self.share_type = share_type
+        # The patch source configurations.
+        self.sources = sources
+        # The tags.
+        self.tags = tags
+        # The user who last updated the patch baseline.
         self.updated_by = updated_by
-        # The creator of the patch baseline.
+        # The time when the patch baseline was updated.
         self.updated_date = updated_date
 
     def validate(self):
@@ -12518,13 +12968,13 @@ class ListPatchBaselinesResponseBody(TeaModel):
         patch_baselines: List[ListPatchBaselinesResponseBodyPatchBaselines] = None,
         request_id: str = None,
     ):
-        # The type of the operating system.
+        # The number of entries per page.
         self.max_results = max_results
-        # gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
-        # Indicates whether the patch baseline is set as the default patch baseline.
+        # The patch baselines.
         self.patch_baselines = patch_baselines
-        # The details of the patch baselines.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15115,6 +15565,32 @@ class ListTemplatesRequest(TeaModel):
         # The name of the template. All templates whose names contain the specified template name are to be returned.
         self.template_name = template_name
         # The type of the template.
+        # 
+        # Valid values:
+        # 
+        # *   Automation
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   State
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Package
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.template_type = template_type
 
     def validate(self):
@@ -15269,6 +15745,32 @@ class ListTemplatesShrinkRequest(TeaModel):
         # The name of the template. All templates whose names contain the specified template name are to be returned.
         self.template_name = template_name
         # The type of the template.
+        # 
+        # Valid values:
+        # 
+        # *   Automation
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   State
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   Package
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.template_type = template_type
 
     def validate(self):
@@ -15838,8 +16340,9 @@ class RegisterDefaultPatchBaselineResponseBodyPatchBaseline(TeaModel):
         self.id = id
         # The name of the patch baseline.
         self.name = name
-        # The type of the operating system.
+        # The operating system.
         self.operation_system = operation_system
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The share type of the patch baseline.
         self.share_type = share_type
@@ -15916,7 +16419,7 @@ class RegisterDefaultPatchBaselineResponseBody(TeaModel):
     ):
         # The details of the patch baseline.
         self.patch_baseline = patch_baseline
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16207,12 +16710,19 @@ class SetServiceSettingsRequest(TeaModel):
         rdc_enterprise_id: str = None,
         region_id: str = None,
     ):
+        # The name of OSS bucket to deliver.
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
+        # Whether to enable OSS delivery.
         self.delivery_oss_enabled = delivery_oss_enabled
+        # The key prefix of OSS to deliver.
         self.delivery_oss_key_prefix = delivery_oss_key_prefix
+        # Whether to enable SLS delivery.
         self.delivery_sls_enabled = delivery_sls_enabled
+        # The name of SLS project to deliver.
         self.delivery_sls_project_name = delivery_sls_project_name
+        # The id of RDC Enterprise.
         self.rdc_enterprise_id = rdc_enterprise_id
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -16269,11 +16779,17 @@ class SetServiceSettingsResponseBodyServiceSettings(TeaModel):
         delivery_sls_project_name: str = None,
         rdc_enterprise_id: str = None,
     ):
+        # The name of OSS bucket to deliver.
         self.delivery_oss_bucket_name = delivery_oss_bucket_name
+        # Whether to enable OSS delivery.
         self.delivery_oss_enabled = delivery_oss_enabled
+        # The key prefix of OSS to deliver.
         self.delivery_oss_key_prefix = delivery_oss_key_prefix
+        # Whether to enable SLS delivery.
         self.delivery_sls_enabled = delivery_sls_enabled
+        # The name of SLS project to deliver.
         self.delivery_sls_project_name = delivery_sls_project_name
+        # The id of RDC Enterprise.
         self.rdc_enterprise_id = rdc_enterprise_id
 
     def validate(self):
@@ -16322,7 +16838,9 @@ class SetServiceSettingsResponseBody(TeaModel):
         request_id: str = None,
         service_settings: List[SetServiceSettingsResponseBodyServiceSettings] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The information of service settings.
         self.service_settings = service_settings
 
     def validate(self):
@@ -17522,8 +18040,11 @@ class UpdateApplicationRequestAlarmConfig(TeaModel):
         health_check_url: str = None,
         template_ids: List[str] = None,
     ):
+        # The alert contact groups.
         self.contact_groups = contact_groups
+        # The health check URL of the application.
         self.health_check_url = health_check_url
+        # The alert templates.
         self.template_ids = template_ids
 
     def validate(self):
@@ -17564,7 +18085,9 @@ class UpdateApplicationRequest(TeaModel):
         region_id: str = None,
         tags: Dict[str, Any] = None,
     ):
+        # The configurations of application alerts.
         self.alarm_config = alarm_config
+        # Specifies whether to delete existing alert rules before applying the alert template. Default value: false.
         self.delete_alarm_rules_before_update = delete_alarm_rules_before_update
         # The description to be updated for the application.
         self.description = description
@@ -17627,7 +18150,9 @@ class UpdateApplicationShrinkRequest(TeaModel):
         region_id: str = None,
         tags_shrink: str = None,
     ):
+        # The configurations of application alerts.
         self.alarm_config_shrink = alarm_config_shrink
+        # Specifies whether to delete existing alert rules before applying the alert template. Default value: false.
         self.delete_alarm_rules_before_update = delete_alarm_rules_before_update
         # The description to be updated for the application.
         self.description = description
@@ -18050,7 +18575,9 @@ class UpdateExecutionRequest(TeaModel):
         self.parameters = parameters
         # The ID of the region.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The tags of the execution.
         self.tags = tags
 
     def validate(self):
@@ -18188,20 +18715,35 @@ class UpdateOpsItemRequest(TeaModel):
         tags: Dict[str, Any] = None,
         title: str = None,
     ):
+        # The category.
         self.category = category
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The string to be deduplicated.
         self.dedup_string = dedup_string
+        # The description of the O\&M item.
         self.description = description
+        # The ID of the O\&M item.
         self.ops_item_id = ops_item_id
+        # The priority.
         self.priority = priority
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The Alibaba Resource Names (ARNs) of the associated resources.
         self.resources = resources
+        # The severity level.
         self.severity = severity
+        # The list of solutions.
         self.solutions = solutions
+        # The source business.
         self.source = source
+        # The status.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The title of the O\&M item.
         self.title = title
 
     def validate(self):
@@ -18299,20 +18841,35 @@ class UpdateOpsItemShrinkRequest(TeaModel):
         tags_shrink: str = None,
         title: str = None,
     ):
+        # The category.
         self.category = category
+        # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
+        # The string to be deduplicated.
         self.dedup_string = dedup_string
+        # The description of the O\&M item.
         self.description = description
+        # The ID of the O\&M item.
         self.ops_item_id = ops_item_id
+        # The priority.
         self.priority = priority
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The Alibaba Resource Names (ARNs) of the associated resources.
         self.resources = resources
+        # The severity level.
         self.severity = severity
+        # The list of solutions.
         self.solutions = solutions
+        # The source business.
         self.source = source
+        # The status.
         self.status = status
+        # The tags.
         self.tags_shrink = tags_shrink
+        # The title of the O\&M item.
         self.title = title
 
     def validate(self):
@@ -18412,22 +18969,39 @@ class UpdateOpsItemResponseBodyOpsItem(TeaModel):
         title: str = None,
         update_date: str = None,
     ):
+        # The information about the properties of the O\&M item.
         self.attributes = attributes
+        # The category.
         self.category = category
+        # The time when the O\&M item was created.
         self.create_date = create_date
+        # The user who created the patch baseline.
         self.created_by = created_by
+        # The description.
         self.description = description
+        # The user who modified the O\&M item.
         self.last_modified_by = last_modified_by
+        # The ID of the O\&M item.
         self.ops_item_id = ops_item_id
+        # The priority.
         self.priority = priority
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The ARNs of the associated resources.
         self.resources = resources
+        # The severity level.
         self.severity = severity
+        # The list of solutions.
         self.solutions = solutions
+        # The source business.
         self.source = source
+        # The status.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The title of the O\&M item.
         self.title = title
+        # The time when the O\&M item was updated.
         self.update_date = update_date
 
     def validate(self):
@@ -18520,7 +19094,9 @@ class UpdateOpsItemResponseBody(TeaModel):
         ops_item: UpdateOpsItemResponseBodyOpsItem = None,
         request_id: str = None,
     ):
+        # The O\&M item.
         self.ops_item = ops_item
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18855,7 +19431,9 @@ class UpdatePatchBaselineRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -18900,7 +19478,9 @@ class UpdatePatchBaselineRequest(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches = approved_patches
+        # Indicates whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -18910,10 +19490,15 @@ class UpdatePatchBaselineRequest(TeaModel):
         self.name = name
         # The ID of the region.
         self.region_id = region_id
+        # The rejected patches.
         self.rejected_patches = rejected_patches
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The patch source configurations.
         self.sources = sources
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -19006,7 +19591,9 @@ class UpdatePatchBaselineShrinkRequest(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches_shrink = approved_patches_shrink
+        # Indicates whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
@@ -19016,10 +19603,15 @@ class UpdatePatchBaselineShrinkRequest(TeaModel):
         self.name = name
         # The ID of the region.
         self.region_id = region_id
+        # The rejected patches.
         self.rejected_patches_shrink = rejected_patches_shrink
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The patch source configurations.
         self.sources_shrink = sources_shrink
+        # The tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -19092,7 +19684,9 @@ class UpdatePatchBaselineResponseBodyPatchBaselineTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -19142,7 +19736,9 @@ class UpdatePatchBaselineResponseBodyPatchBaseline(TeaModel):
     ):
         # The rules of scanning and installing patches for the specified operating system.
         self.approval_rules = approval_rules
+        # The approved patches.
         self.approved_patches = approved_patches
+        # Indicates whether the approved patch involves updates other than security-related updates.
         self.approved_patches_enable_non_security = approved_patches_enable_non_security
         # The creator of the patch baseline.
         self.created_by = created_by
@@ -19156,12 +19752,17 @@ class UpdatePatchBaselineResponseBodyPatchBaseline(TeaModel):
         self.name = name
         # The operating system.
         self.operation_system = operation_system
+        # The rejected patches.
         self.rejected_patches = rejected_patches
+        # The action of the rejected patch.
         self.rejected_patches_action = rejected_patches_action
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The share type of the patch baseline.
         self.share_type = share_type
+        # The patch source configurations.
         self.sources = sources
+        # The tags.
         self.tags = tags
         # The user who updated the patch baseline.
         self.updated_by = updated_by

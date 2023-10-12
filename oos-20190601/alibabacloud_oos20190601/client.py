@@ -304,6 +304,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
@@ -350,6 +352,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
         req = open_api_models.OpenApiRequest(
