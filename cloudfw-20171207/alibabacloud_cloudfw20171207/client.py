@@ -186,6 +186,15 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
+        """
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_action):
@@ -208,6 +217,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.lang):
@@ -218,12 +229,22 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -248,6 +269,15 @@ class Client(OpenApiClient):
         request: cloudfw_20171207_models.AddControlPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
+        """
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddControlPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddControlPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_action):
@@ -270,6 +300,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.lang):
@@ -280,12 +312,22 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -309,6 +351,14 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.AddControlPolicyRequest,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
+        """
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddControlPolicyRequest
+        @return: AddControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_control_policy_with_options(request, runtime)
 
@@ -316,6 +366,14 @@ class Client(OpenApiClient):
         self,
         request: cloudfw_20171207_models.AddControlPolicyRequest,
     ) -> cloudfw_20171207_models.AddControlPolicyResponse:
+        """
+        You can call the AddControlPolicy operation to create an access control policy to allow, block, or monitor traffic that reaches Cloud Firewall.
+        ## Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AddControlPolicyRequest
+        @return: AddControlPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_control_policy_with_options_async(request, runtime)
 
@@ -585,6 +643,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.lang):
@@ -597,10 +657,20 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -654,6 +724,8 @@ class Client(OpenApiClient):
             query['Direction'] = request.direction
         if not UtilClient.is_unset(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.ip_version):
             query['IpVersion'] = request.ip_version
         if not UtilClient.is_unset(request.lang):
@@ -666,10 +738,20 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1257,6 +1339,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
@@ -1267,10 +1351,20 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.vpc_firewall_id):
             query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
@@ -1326,6 +1420,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.member_uid):
@@ -1336,10 +1432,20 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.vpc_firewall_id):
             query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
@@ -2635,6 +2741,8 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -2696,6 +2804,8 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -3451,6 +3561,8 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -3508,6 +3620,8 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
@@ -5423,6 +5537,8 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.vpc_firewall_id):
@@ -5482,6 +5598,8 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.vpc_firewall_id):
@@ -6335,16 +6453,28 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proto):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6402,16 +6532,28 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.direction):
             query['Direction'] = request.direction
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proto):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6911,6 +7053,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -6919,10 +7063,20 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6976,6 +7130,8 @@ class Client(OpenApiClient):
             query['DestinationType'] = request.destination_type
         if not UtilClient.is_unset(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -6984,10 +7140,20 @@ class Client(OpenApiClient):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7897,16 +8063,28 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proto):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.vpc_firewall_id):
             query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
@@ -7964,16 +8142,28 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proto):
             query['Proto'] = request.proto
         if not UtilClient.is_unset(request.release):
             query['Release'] = request.release
+        if not UtilClient.is_unset(request.repeat_days):
+            query['RepeatDays'] = request.repeat_days
+        if not UtilClient.is_unset(request.repeat_end_time):
+            query['RepeatEndTime'] = request.repeat_end_time
+        if not UtilClient.is_unset(request.repeat_start_time):
+            query['RepeatStartTime'] = request.repeat_start_time
+        if not UtilClient.is_unset(request.repeat_type):
+            query['RepeatType'] = request.repeat_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.source_type):
             query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
         if not UtilClient.is_unset(request.vpc_firewall_id):
             query['VpcFirewallId'] = request.vpc_firewall_id
         req = open_api_models.OpenApiRequest(
