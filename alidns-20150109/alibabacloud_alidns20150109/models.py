@@ -11725,6 +11725,7 @@ class DescribeDnsProductInstanceResponseBodyDnsServers(TeaModel):
 class DescribeDnsProductInstanceResponseBody(TeaModel):
     def __init__(
         self,
+        auto_renewal: bool = None,
         bind_count: int = None,
         bind_domain_count: int = None,
         bind_domain_used_count: int = None,
@@ -11761,6 +11762,7 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
         version_code: str = None,
         version_name: str = None,
     ):
+        self.auto_renewal = auto_renewal
         # The number of times that you can change the domain names that are bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of the custom edition.
         self.bind_count = bind_count
         # The number of domain names that can be bound to the paid Alibaba Cloud DNS instance. This parameter applies to Alibaba Cloud DNS instances of Personal Edition, Enterprise Standard Edition, and Enterprise Ultimate Edition.
@@ -11851,6 +11853,8 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_renewal is not None:
+            result['AutoRenewal'] = self.auto_renewal
         if self.bind_count is not None:
             result['BindCount'] = self.bind_count
         if self.bind_domain_count is not None:
@@ -11925,6 +11929,8 @@ class DescribeDnsProductInstanceResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenewal') is not None:
+            self.auto_renewal = m.get('AutoRenewal')
         if m.get('BindCount') is not None:
             self.bind_count = m.get('BindCount')
         if m.get('BindDomainCount') is not None:
