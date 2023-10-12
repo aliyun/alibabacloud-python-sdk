@@ -2002,7 +2002,7 @@ class CreateServerGroupRequest(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.connection_drain_enabled = connection_drain_enabled
-        # The timeout period of connection draining. Unit: seconds. Valid values: **10** to **900**.
+        # The timeout period of connection draining. Unit: seconds. Valid values: **0** to **900**.
         self.connection_drain_timeout = connection_drain_timeout
         # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
