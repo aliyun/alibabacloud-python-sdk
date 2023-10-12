@@ -389,8 +389,12 @@ class Client(OpenApiClient):
             query['EnterpriseSecurityGroup'] = request.enterprise_security_group
         if not UtilClient.is_unset(request.internet_slb_spec):
             query['InternetSlbSpec'] = request.internet_slb_spec
+        if not UtilClient.is_unset(request.mser_version):
+            query['MserVersion'] = request.mser_version
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.nlb_network_type):
+            query['NlbNetworkType'] = request.nlb_network_type
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.replica):
@@ -459,8 +463,12 @@ class Client(OpenApiClient):
             query['EnterpriseSecurityGroup'] = request.enterprise_security_group
         if not UtilClient.is_unset(request.internet_slb_spec):
             query['InternetSlbSpec'] = request.internet_slb_spec
+        if not UtilClient.is_unset(request.mser_version):
+            query['MserVersion'] = request.mser_version
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.nlb_network_type):
+            query['NlbNetworkType'] = request.nlb_network_type
         if not UtilClient.is_unset(request.region):
             query['Region'] = request.region
         if not UtilClient.is_unset(request.replica):
@@ -4592,7 +4600,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4633,7 +4641,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4673,7 +4681,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigsRequest,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @return: DeleteNacosConfigsResponse
@@ -4686,7 +4694,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigsRequest,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @return: DeleteNacosConfigsResponse
@@ -12129,6 +12137,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12159,6 +12169,8 @@ class Client(OpenApiClient):
             query['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.gateway_unique_id):
             query['GatewayUniqueId'] = request.gateway_unique_id
+        if not UtilClient.is_unset(request.source):
+            query['Source'] = request.source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -15331,6 +15343,10 @@ class Client(OpenApiClient):
             query['ClusterAliasName'] = request.cluster_alias_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.maintenance_end_time):
+            query['MaintenanceEndTime'] = request.maintenance_end_time
+        if not UtilClient.is_unset(request.maintenance_start_time):
+            query['MaintenanceStartTime'] = request.maintenance_start_time
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         req = open_api_models.OpenApiRequest(
@@ -15365,6 +15381,10 @@ class Client(OpenApiClient):
             query['ClusterAliasName'] = request.cluster_alias_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.maintenance_end_time):
+            query['MaintenanceEndTime'] = request.maintenance_end_time
+        if not UtilClient.is_unset(request.maintenance_start_time):
+            query['MaintenanceStartTime'] = request.maintenance_start_time
         if not UtilClient.is_unset(request.request_pars):
             query['RequestPars'] = request.request_pars
         req = open_api_models.OpenApiRequest(
@@ -15406,7 +15426,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15451,7 +15471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15495,7 +15515,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @return: UpdateClusterSpecResponse
@@ -15508,7 +15528,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @return: UpdateClusterSpecResponse
@@ -17608,7 +17628,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing](~~250950~~).
+        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
         
         @param request: UpdateGatewaySpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17649,7 +17669,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing](~~250950~~).
+        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
         
         @param request: UpdateGatewaySpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17689,7 +17709,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewaySpecRequest,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing](~~250950~~).
+        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
         
         @param request: UpdateGatewaySpecRequest
         @return: UpdateGatewaySpecResponse
@@ -17702,7 +17722,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewaySpecRequest,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go cloud-native gateway. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing](~~250950~~).
+        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
         
         @param request: UpdateGatewaySpecRequest
         @return: UpdateGatewaySpecResponse
@@ -18112,7 +18132,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18171,7 +18191,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18229,7 +18249,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosConfigRequest,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @return: UpdateNacosConfigResponse
@@ -18242,7 +18262,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosConfigRequest,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @return: UpdateNacosConfigResponse
