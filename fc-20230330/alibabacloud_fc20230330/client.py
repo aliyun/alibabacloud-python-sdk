@@ -49,7 +49,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateAliasResponse:
         """
-        创建函数别名
+        创建函数别名。
         
         @param request: CreateAliasRequest
         @param headers: map
@@ -85,7 +85,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateAliasResponse:
         """
-        创建函数别名
+        创建函数别名。
         
         @param request: CreateAliasRequest
         @param headers: map
@@ -119,7 +119,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateAliasRequest,
     ) -> fc20230330_models.CreateAliasResponse:
         """
-        创建函数别名
+        创建函数别名。
         
         @param request: CreateAliasRequest
         @return: CreateAliasResponse
@@ -134,7 +134,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateAliasRequest,
     ) -> fc20230330_models.CreateAliasResponse:
         """
-        创建函数别名
+        创建函数别名。
         
         @param request: CreateAliasRequest
         @return: CreateAliasResponse
@@ -150,7 +150,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateCustomDomainResponse:
         """
-        创建自定义域名
+        创建自定义域名。
         
         @param request: CreateCustomDomainRequest
         @param headers: map
@@ -185,7 +185,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateCustomDomainResponse:
         """
-        创建自定义域名
+        创建自定义域名。
         
         @param request: CreateCustomDomainRequest
         @param headers: map
@@ -218,7 +218,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateCustomDomainRequest,
     ) -> fc20230330_models.CreateCustomDomainResponse:
         """
-        创建自定义域名
+        创建自定义域名。
         
         @param request: CreateCustomDomainRequest
         @return: CreateCustomDomainResponse
@@ -232,7 +232,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateCustomDomainRequest,
     ) -> fc20230330_models.CreateCustomDomainResponse:
         """
-        创建自定义域名
+        创建自定义域名。
         
         @param request: CreateCustomDomainRequest
         @return: CreateCustomDomainResponse
@@ -248,7 +248,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateFunctionResponse:
         """
-        创建函数
+        创建函数。
         
         @param request: CreateFunctionRequest
         @param headers: map
@@ -283,7 +283,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateFunctionResponse:
         """
-        创建函数
+        创建函数。
         
         @param request: CreateFunctionRequest
         @param headers: map
@@ -316,7 +316,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateFunctionRequest,
     ) -> fc20230330_models.CreateFunctionResponse:
         """
-        创建函数
+        创建函数。
         
         @param request: CreateFunctionRequest
         @return: CreateFunctionResponse
@@ -330,7 +330,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateFunctionRequest,
     ) -> fc20230330_models.CreateFunctionResponse:
         """
-        创建函数
+        创建函数。
         
         @param request: CreateFunctionRequest
         @return: CreateFunctionResponse
@@ -347,7 +347,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateLayerVersionResponse:
         """
-        创建层版本
+        创建层版本。
         
         @param request: CreateLayerVersionRequest
         @param headers: map
@@ -383,7 +383,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateLayerVersionResponse:
         """
-        创建层版本
+        创建层版本。
         
         @param request: CreateLayerVersionRequest
         @param headers: map
@@ -417,7 +417,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateLayerVersionRequest,
     ) -> fc20230330_models.CreateLayerVersionResponse:
         """
-        创建层版本
+        创建层版本。
         
         @param request: CreateLayerVersionRequest
         @return: CreateLayerVersionResponse
@@ -432,7 +432,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateLayerVersionRequest,
     ) -> fc20230330_models.CreateLayerVersionResponse:
         """
-        创建层版本
+        创建层版本。
         
         @param request: CreateLayerVersionRequest
         @return: CreateLayerVersionResponse
@@ -449,7 +449,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateTriggerResponse:
         """
-        创建函数触发器
+        创建函数触发器。
         
         @param request: CreateTriggerRequest
         @param headers: map
@@ -485,7 +485,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateTriggerResponse:
         """
-        创建函数触发器
+        创建函数触发器。
         
         @param request: CreateTriggerRequest
         @param headers: map
@@ -519,7 +519,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateTriggerRequest,
     ) -> fc20230330_models.CreateTriggerResponse:
         """
-        创建函数触发器
+        创建函数触发器。
         
         @param request: CreateTriggerRequest
         @return: CreateTriggerResponse
@@ -534,7 +534,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateTriggerRequest,
     ) -> fc20230330_models.CreateTriggerResponse:
         """
-        创建函数触发器
+        创建函数触发器。
         
         @param request: CreateTriggerRequest
         @return: CreateTriggerResponse
@@ -551,7 +551,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateVpcBindingResponse:
         """
-        创建VPC绑定
+        创建VPC绑定。
         
         @param request: CreateVpcBindingRequest
         @param headers: map
@@ -587,7 +587,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.CreateVpcBindingResponse:
         """
-        创建VPC绑定
+        创建VPC绑定。
         
         @param request: CreateVpcBindingRequest
         @param headers: map
@@ -621,7 +621,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateVpcBindingRequest,
     ) -> fc20230330_models.CreateVpcBindingResponse:
         """
-        创建VPC绑定
+        创建VPC绑定。
         
         @param request: CreateVpcBindingRequest
         @return: CreateVpcBindingResponse
@@ -636,7 +636,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.CreateVpcBindingRequest,
     ) -> fc20230330_models.CreateVpcBindingResponse:
         """
-        创建VPC绑定
+        创建VPC绑定。
         
         @param request: CreateVpcBindingRequest
         @return: CreateVpcBindingResponse
@@ -653,7 +653,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAliasResponse:
         """
-        删除函数别名
+        删除函数别名。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -686,7 +686,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAliasResponse:
         """
-        删除函数别名
+        删除函数别名。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -717,7 +717,7 @@ class Client(OpenApiClient):
         alias_name: str,
     ) -> fc20230330_models.DeleteAliasResponse:
         """
-        删除函数别名
+        删除函数别名。
         
         @return: DeleteAliasResponse
         """
@@ -731,7 +731,7 @@ class Client(OpenApiClient):
         alias_name: str,
     ) -> fc20230330_models.DeleteAliasResponse:
         """
-        删除函数别名
+        删除函数别名。
         
         @return: DeleteAliasResponse
         """
@@ -747,7 +747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
         """
-        删除函数异步调用配置
+        删除函数异步调用配置。
         
         @param request: DeleteAsyncInvokeConfigRequest
         @param headers: map
@@ -786,7 +786,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
         """
-        删除函数异步调用配置
+        删除函数异步调用配置。
         
         @param request: DeleteAsyncInvokeConfigRequest
         @param headers: map
@@ -823,7 +823,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteAsyncInvokeConfigRequest,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
         """
-        删除函数异步调用配置
+        删除函数异步调用配置。
         
         @param request: DeleteAsyncInvokeConfigRequest
         @return: DeleteAsyncInvokeConfigResponse
@@ -838,7 +838,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteAsyncInvokeConfigRequest,
     ) -> fc20230330_models.DeleteAsyncInvokeConfigResponse:
         """
-        删除函数异步调用配置
+        删除函数异步调用配置。
         
         @param request: DeleteAsyncInvokeConfigRequest
         @return: DeleteAsyncInvokeConfigResponse
@@ -854,7 +854,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
         """
-        删除函数并发度配置
+        删除函数并发度配置。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -886,7 +886,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
         """
-        删除函数并发度配置
+        删除函数并发度配置。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -916,7 +916,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
         """
-        删除函数并发度配置
+        删除函数并发度配置。
         
         @return: DeleteConcurrencyConfigResponse
         """
@@ -929,7 +929,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.DeleteConcurrencyConfigResponse:
         """
-        删除函数并发度配置
+        删除函数并发度配置。
         
         @return: DeleteConcurrencyConfigResponse
         """
@@ -944,7 +944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
         """
-        删除自定义域名
+        删除自定义域名。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -976,7 +976,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
         """
-        删除自定义域名
+        删除自定义域名。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1006,7 +1006,7 @@ class Client(OpenApiClient):
         domain_name: str,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
         """
-        删除自定义域名
+        删除自定义域名。
         
         @return: DeleteCustomDomainResponse
         """
@@ -1019,7 +1019,7 @@ class Client(OpenApiClient):
         domain_name: str,
     ) -> fc20230330_models.DeleteCustomDomainResponse:
         """
-        删除自定义域名
+        删除自定义域名。
         
         @return: DeleteCustomDomainResponse
         """
@@ -1034,7 +1034,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionResponse:
         """
-        删除函数
+        删除函数。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1066,7 +1066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionResponse:
         """
-        删除函数
+        删除函数。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1096,7 +1096,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.DeleteFunctionResponse:
         """
-        删除函数
+        删除函数。
         
         @return: DeleteFunctionResponse
         """
@@ -1109,7 +1109,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.DeleteFunctionResponse:
         """
-        删除函数
+        删除函数。
         
         @return: DeleteFunctionResponse
         """
@@ -1125,7 +1125,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        删除函数版本
+        删除函数版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1158,7 +1158,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        删除函数版本
+        删除函数版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1189,7 +1189,7 @@ class Client(OpenApiClient):
         version_id: str,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        删除函数版本
+        删除函数版本。
         
         @return: DeleteFunctionVersionResponse
         """
@@ -1203,7 +1203,7 @@ class Client(OpenApiClient):
         version_id: str,
     ) -> fc20230330_models.DeleteFunctionVersionResponse:
         """
-        删除函数版本
+        删除函数版本。
         
         @return: DeleteFunctionVersionResponse
         """
@@ -1219,7 +1219,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
         """
-        删除层版本
+        删除层版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1252,7 +1252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
         """
-        删除层版本
+        删除层版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1283,7 +1283,7 @@ class Client(OpenApiClient):
         version: str,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
         """
-        删除层版本
+        删除层版本。
         
         @return: DeleteLayerVersionResponse
         """
@@ -1297,7 +1297,7 @@ class Client(OpenApiClient):
         version: str,
     ) -> fc20230330_models.DeleteLayerVersionResponse:
         """
-        删除层版本
+        删除层版本。
         
         @return: DeleteLayerVersionResponse
         """
@@ -1313,7 +1313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
         """
-        删除函数预留配置
+        删除函数预留配置。
         
         @param request: DeleteProvisionConfigRequest
         @param headers: map
@@ -1352,7 +1352,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
         """
-        删除函数预留配置
+        删除函数预留配置。
         
         @param request: DeleteProvisionConfigRequest
         @param headers: map
@@ -1389,7 +1389,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteProvisionConfigRequest,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
         """
-        删除函数预留配置
+        删除函数预留配置。
         
         @param request: DeleteProvisionConfigRequest
         @return: DeleteProvisionConfigResponse
@@ -1404,7 +1404,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.DeleteProvisionConfigRequest,
     ) -> fc20230330_models.DeleteProvisionConfigResponse:
         """
-        删除函数预留配置
+        删除函数预留配置。
         
         @param request: DeleteProvisionConfigRequest
         @return: DeleteProvisionConfigResponse
@@ -1421,7 +1421,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteTriggerResponse:
         """
-        删除函数触发器
+        删除函数触发器。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1454,7 +1454,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteTriggerResponse:
         """
-        删除函数触发器
+        删除函数触发器。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1485,7 +1485,7 @@ class Client(OpenApiClient):
         trigger_name: str,
     ) -> fc20230330_models.DeleteTriggerResponse:
         """
-        删除函数触发器
+        删除函数触发器。
         
         @return: DeleteTriggerResponse
         """
@@ -1499,7 +1499,7 @@ class Client(OpenApiClient):
         trigger_name: str,
     ) -> fc20230330_models.DeleteTriggerResponse:
         """
-        删除函数触发器
+        删除函数触发器。
         
         @return: DeleteTriggerResponse
         """
@@ -1515,7 +1515,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
         """
-        删除VPC绑定
+        删除VPC绑定。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1548,7 +1548,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
         """
-        删除VPC绑定
+        删除VPC绑定。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1579,7 +1579,7 @@ class Client(OpenApiClient):
         vpc_id: str,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
         """
-        删除VPC绑定
+        删除VPC绑定。
         
         @return: DeleteVpcBindingResponse
         """
@@ -1593,7 +1593,7 @@ class Client(OpenApiClient):
         vpc_id: str,
     ) -> fc20230330_models.DeleteVpcBindingResponse:
         """
-        删除VPC绑定
+        删除VPC绑定。
         
         @return: DeleteVpcBindingResponse
         """
@@ -1609,7 +1609,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAliasResponse:
         """
-        获取函数别名信息
+        获取函数别名信息。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1642,7 +1642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAliasResponse:
         """
-        获取函数别名信息
+        获取函数别名信息。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1673,7 +1673,7 @@ class Client(OpenApiClient):
         alias_name: str,
     ) -> fc20230330_models.GetAliasResponse:
         """
-        获取函数别名信息
+        获取函数别名信息。
         
         @return: GetAliasResponse
         """
@@ -1687,7 +1687,7 @@ class Client(OpenApiClient):
         alias_name: str,
     ) -> fc20230330_models.GetAliasResponse:
         """
-        获取函数别名信息
+        获取函数别名信息。
         
         @return: GetAliasResponse
         """
@@ -1703,7 +1703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
         """
-        获取函数异步调用配置
+        获取函数异步调用配置。
         
         @param request: GetAsyncInvokeConfigRequest
         @param headers: map
@@ -1742,7 +1742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
         """
-        获取函数异步调用配置
+        获取函数异步调用配置。
         
         @param request: GetAsyncInvokeConfigRequest
         @param headers: map
@@ -1779,7 +1779,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetAsyncInvokeConfigRequest,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
         """
-        获取函数异步调用配置
+        获取函数异步调用配置。
         
         @param request: GetAsyncInvokeConfigRequest
         @return: GetAsyncInvokeConfigResponse
@@ -1794,7 +1794,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetAsyncInvokeConfigRequest,
     ) -> fc20230330_models.GetAsyncInvokeConfigResponse:
         """
-        获取函数异步调用配置
+        获取函数异步调用配置。
         
         @param request: GetAsyncInvokeConfigRequest
         @return: GetAsyncInvokeConfigResponse
@@ -1810,7 +1810,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
         """
-        获取函数并发度配置
+        获取函数并发度配置。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1842,7 +1842,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
         """
-        获取函数并发度配置
+        获取函数并发度配置。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1872,7 +1872,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
         """
-        获取函数并发度配置
+        获取函数并发度配置。
         
         @return: GetConcurrencyConfigResponse
         """
@@ -1885,7 +1885,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.GetConcurrencyConfigResponse:
         """
-        获取函数并发度配置
+        获取函数并发度配置。
         
         @return: GetConcurrencyConfigResponse
         """
@@ -1900,7 +1900,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetCustomDomainResponse:
         """
-        获取自定义域名
+        获取自定义域名。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1932,7 +1932,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetCustomDomainResponse:
         """
-        获取自定义域名
+        获取自定义域名。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -1962,7 +1962,7 @@ class Client(OpenApiClient):
         domain_name: str,
     ) -> fc20230330_models.GetCustomDomainResponse:
         """
-        获取自定义域名
+        获取自定义域名。
         
         @return: GetCustomDomainResponse
         """
@@ -1975,7 +1975,7 @@ class Client(OpenApiClient):
         domain_name: str,
     ) -> fc20230330_models.GetCustomDomainResponse:
         """
-        获取自定义域名
+        获取自定义域名。
         
         @return: GetCustomDomainResponse
         """
@@ -1991,7 +1991,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionResponse:
         """
-        获取函数信息
+        获取函数信息。
         
         @param request: GetFunctionRequest
         @param headers: map
@@ -2030,7 +2030,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionResponse:
         """
-        获取函数信息
+        获取函数信息。
         
         @param request: GetFunctionRequest
         @param headers: map
@@ -2067,7 +2067,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetFunctionRequest,
     ) -> fc20230330_models.GetFunctionResponse:
         """
-        获取函数信息
+        获取函数信息。
         
         @param request: GetFunctionRequest
         @return: GetFunctionResponse
@@ -2082,7 +2082,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetFunctionRequest,
     ) -> fc20230330_models.GetFunctionResponse:
         """
-        获取函数信息
+        获取函数信息。
         
         @param request: GetFunctionRequest
         @return: GetFunctionResponse
@@ -2099,7 +2099,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionCodeResponse:
         """
-        获取函数代码
+        获取函数代码。
         
         @param request: GetFunctionCodeRequest
         @param headers: map
@@ -2138,7 +2138,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetFunctionCodeResponse:
         """
-        获取函数代码
+        获取函数代码。
         
         @param request: GetFunctionCodeRequest
         @param headers: map
@@ -2175,7 +2175,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetFunctionCodeRequest,
     ) -> fc20230330_models.GetFunctionCodeResponse:
         """
-        获取函数代码
+        获取函数代码。
         
         @param request: GetFunctionCodeRequest
         @return: GetFunctionCodeResponse
@@ -2190,7 +2190,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetFunctionCodeRequest,
     ) -> fc20230330_models.GetFunctionCodeResponse:
         """
-        获取函数代码
+        获取函数代码。
         
         @param request: GetFunctionCodeRequest
         @return: GetFunctionCodeResponse
@@ -2207,7 +2207,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionResponse:
         """
-        获取层版本
+        获取层版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2240,7 +2240,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionResponse:
         """
-        获取层版本
+        获取层版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2271,7 +2271,7 @@ class Client(OpenApiClient):
         version: str,
     ) -> fc20230330_models.GetLayerVersionResponse:
         """
-        获取层版本
+        获取层版本。
         
         @return: GetLayerVersionResponse
         """
@@ -2285,7 +2285,7 @@ class Client(OpenApiClient):
         version: str,
     ) -> fc20230330_models.GetLayerVersionResponse:
         """
-        获取层版本
+        获取层版本。
         
         @return: GetLayerVersionResponse
         """
@@ -2300,7 +2300,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
         """
-        根据资源标识获取层版本
+        根据资源标识获取层版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2332,7 +2332,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
         """
-        根据资源标识获取层版本
+        根据资源标识获取层版本。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2362,7 +2362,7 @@ class Client(OpenApiClient):
         arn: str,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
         """
-        根据资源标识获取层版本
+        根据资源标识获取层版本。
         
         @return: GetLayerVersionByArnResponse
         """
@@ -2375,7 +2375,7 @@ class Client(OpenApiClient):
         arn: str,
     ) -> fc20230330_models.GetLayerVersionByArnResponse:
         """
-        根据资源标识获取层版本
+        根据资源标识获取层版本。
         
         @return: GetLayerVersionByArnResponse
         """
@@ -2391,7 +2391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetProvisionConfigResponse:
         """
-        获取函数预留配置
+        获取函数预留配置。
         
         @param request: GetProvisionConfigRequest
         @param headers: map
@@ -2430,7 +2430,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetProvisionConfigResponse:
         """
-        获取函数预留配置
+        获取函数预留配置。
         
         @param request: GetProvisionConfigRequest
         @param headers: map
@@ -2467,7 +2467,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetProvisionConfigRequest,
     ) -> fc20230330_models.GetProvisionConfigResponse:
         """
-        获取函数预留配置
+        获取函数预留配置。
         
         @param request: GetProvisionConfigRequest
         @return: GetProvisionConfigResponse
@@ -2482,7 +2482,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetProvisionConfigRequest,
     ) -> fc20230330_models.GetProvisionConfigResponse:
         """
-        获取函数预留配置
+        获取函数预留配置。
         
         @param request: GetProvisionConfigRequest
         @return: GetProvisionConfigResponse
@@ -2498,7 +2498,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetResourceTagsResponse:
         """
-        获取资源标签
+        获取资源标签。
         
         @param request: GetResourceTagsRequest
         @param headers: map
@@ -2536,7 +2536,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetResourceTagsResponse:
         """
-        获取资源标签
+        获取资源标签。
         
         @param request: GetResourceTagsRequest
         @param headers: map
@@ -2572,7 +2572,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetResourceTagsRequest,
     ) -> fc20230330_models.GetResourceTagsResponse:
         """
-        获取资源标签
+        获取资源标签。
         
         @param request: GetResourceTagsRequest
         @return: GetResourceTagsResponse
@@ -2586,7 +2586,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.GetResourceTagsRequest,
     ) -> fc20230330_models.GetResourceTagsResponse:
         """
-        获取资源标签
+        获取资源标签。
         
         @param request: GetResourceTagsRequest
         @return: GetResourceTagsResponse
@@ -2603,7 +2603,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetTriggerResponse:
         """
-        获取函数触发器
+        获取函数触发器。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2636,7 +2636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.GetTriggerResponse:
         """
-        获取函数触发器
+        获取函数触发器。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2667,7 +2667,7 @@ class Client(OpenApiClient):
         trigger_name: str,
     ) -> fc20230330_models.GetTriggerResponse:
         """
-        获取函数触发器
+        获取函数触发器。
         
         @return: GetTriggerResponse
         """
@@ -2681,7 +2681,7 @@ class Client(OpenApiClient):
         trigger_name: str,
     ) -> fc20230330_models.GetTriggerResponse:
         """
-        获取函数触发器
+        获取函数触发器。
         
         @return: GetTriggerResponse
         """
@@ -2697,7 +2697,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.InvokeFunctionResponse:
         """
-        调用函数
+        调用函数。
         
         @param request: InvokeFunctionRequest
         @param headers: InvokeFunctionHeaders
@@ -2753,7 +2753,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.InvokeFunctionResponse:
         """
-        调用函数
+        调用函数。
         
         @param request: InvokeFunctionRequest
         @param headers: InvokeFunctionHeaders
@@ -2807,7 +2807,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.InvokeFunctionRequest,
     ) -> fc20230330_models.InvokeFunctionResponse:
         """
-        调用函数
+        调用函数。
         
         @param request: InvokeFunctionRequest
         @return: InvokeFunctionResponse
@@ -2822,7 +2822,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.InvokeFunctionRequest,
     ) -> fc20230330_models.InvokeFunctionResponse:
         """
-        调用函数
+        调用函数。
         
         @param request: InvokeFunctionRequest
         @return: InvokeFunctionResponse
@@ -2839,7 +2839,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAliasesResponse:
         """
-        列出函数别名
+        列出函数别名。
         
         @param request: ListAliasesRequest
         @param headers: map
@@ -2882,7 +2882,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAliasesResponse:
         """
-        列出函数别名
+        列出函数别名。
         
         @param request: ListAliasesRequest
         @param headers: map
@@ -2923,7 +2923,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListAliasesRequest,
     ) -> fc20230330_models.ListAliasesResponse:
         """
-        列出函数别名
+        列出函数别名。
         
         @param request: ListAliasesRequest
         @return: ListAliasesResponse
@@ -2938,7 +2938,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListAliasesRequest,
     ) -> fc20230330_models.ListAliasesResponse:
         """
-        列出函数别名
+        列出函数别名。
         
         @param request: ListAliasesRequest
         @return: ListAliasesResponse
@@ -2954,7 +2954,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
         """
-        列出函数异步调用配置
+        列出函数异步调用配置。
         
         @param request: ListAsyncInvokeConfigsRequest
         @param headers: map
@@ -2996,7 +2996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
         """
-        列出函数异步调用配置
+        列出函数异步调用配置。
         
         @param request: ListAsyncInvokeConfigsRequest
         @param headers: map
@@ -3036,7 +3036,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListAsyncInvokeConfigsRequest,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
         """
-        列出函数异步调用配置
+        列出函数异步调用配置。
         
         @param request: ListAsyncInvokeConfigsRequest
         @return: ListAsyncInvokeConfigsResponse
@@ -3050,7 +3050,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListAsyncInvokeConfigsRequest,
     ) -> fc20230330_models.ListAsyncInvokeConfigsResponse:
         """
-        列出函数异步调用配置
+        列出函数异步调用配置。
         
         @param request: ListAsyncInvokeConfigsRequest
         @return: ListAsyncInvokeConfigsResponse
@@ -3066,7 +3066,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
         """
-        列出函数并发度配置
+        列出函数并发度配置。
         
         @param request: ListConcurrencyConfigsRequest
         @param headers: map
@@ -3108,7 +3108,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
         """
-        列出函数并发度配置
+        列出函数并发度配置。
         
         @param request: ListConcurrencyConfigsRequest
         @param headers: map
@@ -3148,7 +3148,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListConcurrencyConfigsRequest,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
         """
-        列出函数并发度配置
+        列出函数并发度配置。
         
         @param request: ListConcurrencyConfigsRequest
         @return: ListConcurrencyConfigsResponse
@@ -3162,7 +3162,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListConcurrencyConfigsRequest,
     ) -> fc20230330_models.ListConcurrencyConfigsResponse:
         """
-        列出函数并发度配置
+        列出函数并发度配置。
         
         @param request: ListConcurrencyConfigsRequest
         @return: ListConcurrencyConfigsResponse
@@ -3178,7 +3178,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListCustomDomainsResponse:
         """
-        列出自定义域名
+        列出自定义域名。
         
         @param request: ListCustomDomainsRequest
         @param headers: map
@@ -3220,7 +3220,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListCustomDomainsResponse:
         """
-        列出自定义域名
+        列出自定义域名。
         
         @param request: ListCustomDomainsRequest
         @param headers: map
@@ -3260,7 +3260,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListCustomDomainsRequest,
     ) -> fc20230330_models.ListCustomDomainsResponse:
         """
-        列出自定义域名
+        列出自定义域名。
         
         @param request: ListCustomDomainsRequest
         @return: ListCustomDomainsResponse
@@ -3274,7 +3274,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListCustomDomainsRequest,
     ) -> fc20230330_models.ListCustomDomainsResponse:
         """
-        列出自定义域名
+        列出自定义域名。
         
         @param request: ListCustomDomainsRequest
         @return: ListCustomDomainsResponse
@@ -3291,7 +3291,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
         """
-        列出函数版本
+        列出函数版本。
         
         @param request: ListFunctionVersionsRequest
         @param headers: map
@@ -3334,7 +3334,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
         """
-        列出函数版本
+        列出函数版本。
         
         @param request: ListFunctionVersionsRequest
         @param headers: map
@@ -3375,7 +3375,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListFunctionVersionsRequest,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
         """
-        列出函数版本
+        列出函数版本。
         
         @param request: ListFunctionVersionsRequest
         @return: ListFunctionVersionsResponse
@@ -3390,7 +3390,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListFunctionVersionsRequest,
     ) -> fc20230330_models.ListFunctionVersionsResponse:
         """
-        列出函数版本
+        列出函数版本。
         
         @param request: ListFunctionVersionsRequest
         @return: ListFunctionVersionsResponse
@@ -3406,7 +3406,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionsResponse:
         """
-        列出函数
+        列出函数。
         
         @param request: ListFunctionsRequest
         @param headers: map
@@ -3448,7 +3448,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListFunctionsResponse:
         """
-        列出函数
+        列出函数。
         
         @param request: ListFunctionsRequest
         @param headers: map
@@ -3488,7 +3488,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListFunctionsRequest,
     ) -> fc20230330_models.ListFunctionsResponse:
         """
-        列出函数
+        列出函数。
         
         @param request: ListFunctionsRequest
         @return: ListFunctionsResponse
@@ -3502,7 +3502,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListFunctionsRequest,
     ) -> fc20230330_models.ListFunctionsResponse:
         """
-        列出函数
+        列出函数。
         
         @param request: ListFunctionsRequest
         @return: ListFunctionsResponse
@@ -3519,7 +3519,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListInstancesResponse:
         """
-        列出函数实例
+        列出函数实例。
         
         @param request: ListInstancesRequest
         @param headers: map
@@ -3560,7 +3560,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListInstancesResponse:
         """
-        列出函数实例
+        列出函数实例。
         
         @param request: ListInstancesRequest
         @param headers: map
@@ -3599,7 +3599,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListInstancesRequest,
     ) -> fc20230330_models.ListInstancesResponse:
         """
-        列出函数实例
+        列出函数实例。
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -3614,7 +3614,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListInstancesRequest,
     ) -> fc20230330_models.ListInstancesResponse:
         """
-        列出函数实例
+        列出函数实例。
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -3631,7 +3631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayerVersionsResponse:
         """
-        列出层版本
+        列出层版本。
         
         @param request: ListLayerVersionsRequest
         @param headers: map
@@ -3672,7 +3672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayerVersionsResponse:
         """
-        列出层版本
+        列出层版本。
         
         @param request: ListLayerVersionsRequest
         @param headers: map
@@ -3711,7 +3711,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListLayerVersionsRequest,
     ) -> fc20230330_models.ListLayerVersionsResponse:
         """
-        列出层版本
+        列出层版本。
         
         @param request: ListLayerVersionsRequest
         @return: ListLayerVersionsResponse
@@ -3726,7 +3726,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListLayerVersionsRequest,
     ) -> fc20230330_models.ListLayerVersionsResponse:
         """
-        列出层版本
+        列出层版本。
         
         @param request: ListLayerVersionsRequest
         @return: ListLayerVersionsResponse
@@ -3742,7 +3742,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayersResponse:
         """
-        列出层
+        列出层。
         
         @param request: ListLayersRequest
         @param headers: map
@@ -3788,7 +3788,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListLayersResponse:
         """
-        列出层
+        列出层。
         
         @param request: ListLayersRequest
         @param headers: map
@@ -3832,7 +3832,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListLayersRequest,
     ) -> fc20230330_models.ListLayersResponse:
         """
-        列出层
+        列出层。
         
         @param request: ListLayersRequest
         @return: ListLayersResponse
@@ -3846,7 +3846,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListLayersRequest,
     ) -> fc20230330_models.ListLayersResponse:
         """
-        列出层
+        列出层。
         
         @param request: ListLayersRequest
         @return: ListLayersResponse
@@ -3862,7 +3862,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
         """
-        列出函数预留配置
+        列出函数预留配置。
         
         @param request: ListProvisionConfigsRequest
         @param headers: map
@@ -3904,7 +3904,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
         """
-        列出函数预留配置
+        列出函数预留配置。
         
         @param request: ListProvisionConfigsRequest
         @param headers: map
@@ -3944,7 +3944,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListProvisionConfigsRequest,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
         """
-        列出函数预留配置
+        列出函数预留配置。
         
         @param request: ListProvisionConfigsRequest
         @return: ListProvisionConfigsResponse
@@ -3958,7 +3958,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListProvisionConfigsRequest,
     ) -> fc20230330_models.ListProvisionConfigsResponse:
         """
-        列出函数预留配置
+        列出函数预留配置。
         
         @param request: ListProvisionConfigsRequest
         @return: ListProvisionConfigsResponse
@@ -3974,7 +3974,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTaggedResourcesResponse:
         """
-        列出具有标签的资源
+        列出具有标签的资源。
         
         @param request: ListTaggedResourcesRequest
         @param headers: map
@@ -3987,6 +3987,8 @@ class Client(OpenApiClient):
             query['limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4014,7 +4016,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTaggedResourcesResponse:
         """
-        列出具有标签的资源
+        列出具有标签的资源。
         
         @param request: ListTaggedResourcesRequest
         @param headers: map
@@ -4027,6 +4029,8 @@ class Client(OpenApiClient):
             query['limit'] = request.limit
         if not UtilClient.is_unset(request.next_token):
             query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_type):
+            query['resourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4052,7 +4056,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListTaggedResourcesRequest,
     ) -> fc20230330_models.ListTaggedResourcesResponse:
         """
-        列出具有标签的资源
+        列出具有标签的资源。
         
         @param request: ListTaggedResourcesRequest
         @return: ListTaggedResourcesResponse
@@ -4066,7 +4070,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListTaggedResourcesRequest,
     ) -> fc20230330_models.ListTaggedResourcesResponse:
         """
-        列出具有标签的资源
+        列出具有标签的资源。
         
         @param request: ListTaggedResourcesRequest
         @return: ListTaggedResourcesResponse
@@ -4083,7 +4087,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTriggersResponse:
         """
-        列出函数触发器
+        列出函数触发器。
         
         @param request: ListTriggersRequest
         @param headers: map
@@ -4126,7 +4130,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListTriggersResponse:
         """
-        列出函数触发器
+        列出函数触发器。
         
         @param request: ListTriggersRequest
         @param headers: map
@@ -4167,7 +4171,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListTriggersRequest,
     ) -> fc20230330_models.ListTriggersResponse:
         """
-        列出函数触发器
+        列出函数触发器。
         
         @param request: ListTriggersRequest
         @return: ListTriggersResponse
@@ -4182,7 +4186,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.ListTriggersRequest,
     ) -> fc20230330_models.ListTriggersResponse:
         """
-        列出函数触发器
+        列出函数触发器。
         
         @param request: ListTriggersRequest
         @return: ListTriggersResponse
@@ -4198,7 +4202,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListVpcBindingsResponse:
         """
-        列出VPC绑定配置
+        列出VPC绑定配置。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4230,7 +4234,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.ListVpcBindingsResponse:
         """
-        列出VPC绑定配置
+        列出VPC绑定配置。
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -4260,7 +4264,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.ListVpcBindingsResponse:
         """
-        列出VPC绑定配置
+        列出VPC绑定配置。
         
         @return: ListVpcBindingsResponse
         """
@@ -4273,7 +4277,7 @@ class Client(OpenApiClient):
         function_name: str,
     ) -> fc20230330_models.ListVpcBindingsResponse:
         """
-        列出VPC绑定配置
+        列出VPC绑定配置。
         
         @return: ListVpcBindingsResponse
         """
@@ -4289,7 +4293,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
         """
-        发布函数版本
+        发布函数版本。
         
         @param request: PublishFunctionVersionRequest
         @param headers: map
@@ -4325,7 +4329,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
         """
-        发布函数版本
+        发布函数版本。
         
         @param request: PublishFunctionVersionRequest
         @param headers: map
@@ -4359,7 +4363,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PublishFunctionVersionRequest,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
         """
-        发布函数版本
+        发布函数版本。
         
         @param request: PublishFunctionVersionRequest
         @return: PublishFunctionVersionResponse
@@ -4374,7 +4378,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PublishFunctionVersionRequest,
     ) -> fc20230330_models.PublishFunctionVersionResponse:
         """
-        发布函数版本
+        发布函数版本。
         
         @param request: PublishFunctionVersionRequest
         @return: PublishFunctionVersionResponse
@@ -4391,7 +4395,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
         """
-        设置函数异步调用配置
+        设置函数异步调用配置。
         
         @param request: PutAsyncInvokeConfigRequest
         @param headers: map
@@ -4431,7 +4435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
         """
-        设置函数异步调用配置
+        设置函数异步调用配置。
         
         @param request: PutAsyncInvokeConfigRequest
         @param headers: map
@@ -4469,7 +4473,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutAsyncInvokeConfigRequest,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
         """
-        设置函数异步调用配置
+        设置函数异步调用配置。
         
         @param request: PutAsyncInvokeConfigRequest
         @return: PutAsyncInvokeConfigResponse
@@ -4484,7 +4488,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutAsyncInvokeConfigRequest,
     ) -> fc20230330_models.PutAsyncInvokeConfigResponse:
         """
-        设置函数异步调用配置
+        设置函数异步调用配置。
         
         @param request: PutAsyncInvokeConfigRequest
         @return: PutAsyncInvokeConfigResponse
@@ -4501,7 +4505,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
         """
-        设置函数并发度配置
+        设置函数并发度配置。
         
         @param request: PutConcurrencyConfigRequest
         @param headers: map
@@ -4537,7 +4541,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
         """
-        设置函数并发度配置
+        设置函数并发度配置。
         
         @param request: PutConcurrencyConfigRequest
         @param headers: map
@@ -4571,7 +4575,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutConcurrencyConfigRequest,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
         """
-        设置函数并发度配置
+        设置函数并发度配置。
         
         @param request: PutConcurrencyConfigRequest
         @return: PutConcurrencyConfigResponse
@@ -4586,7 +4590,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutConcurrencyConfigRequest,
     ) -> fc20230330_models.PutConcurrencyConfigResponse:
         """
-        设置函数并发度配置
+        设置函数并发度配置。
         
         @param request: PutConcurrencyConfigRequest
         @return: PutConcurrencyConfigResponse
@@ -4603,7 +4607,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutLayerACLResponse:
         """
-        设置层的访问权限
+        设置层的访问权限。
         
         @param request: PutLayerACLRequest
         @param headers: map
@@ -4642,7 +4646,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutLayerACLResponse:
         """
-        设置层的访问权限
+        设置层的访问权限。
         
         @param request: PutLayerACLRequest
         @param headers: map
@@ -4679,7 +4683,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutLayerACLRequest,
     ) -> fc20230330_models.PutLayerACLResponse:
         """
-        设置层的访问权限
+        设置层的访问权限。
         
         @param request: PutLayerACLRequest
         @return: PutLayerACLResponse
@@ -4694,7 +4698,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutLayerACLRequest,
     ) -> fc20230330_models.PutLayerACLResponse:
         """
-        设置层的访问权限
+        设置层的访问权限。
         
         @param request: PutLayerACLRequest
         @return: PutLayerACLResponse
@@ -4711,7 +4715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutProvisionConfigResponse:
         """
-        设置函数预留配置
+        设置函数预留配置。
         
         @param request: PutProvisionConfigRequest
         @param headers: map
@@ -4751,7 +4755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.PutProvisionConfigResponse:
         """
-        设置函数预留配置
+        设置函数预留配置。
         
         @param request: PutProvisionConfigRequest
         @param headers: map
@@ -4789,7 +4793,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutProvisionConfigRequest,
     ) -> fc20230330_models.PutProvisionConfigResponse:
         """
-        设置函数预留配置
+        设置函数预留配置。
         
         @param request: PutProvisionConfigRequest
         @return: PutProvisionConfigResponse
@@ -4804,7 +4808,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.PutProvisionConfigRequest,
     ) -> fc20230330_models.PutProvisionConfigResponse:
         """
-        设置函数预留配置
+        设置函数预留配置。
         
         @param request: PutProvisionConfigRequest
         @return: PutProvisionConfigResponse
@@ -4820,7 +4824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.TagResourceResponse:
         """
-        设置资源标签
+        设置资源标签。
         
         @param request: TagResourceRequest
         @param headers: map
@@ -4855,7 +4859,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.TagResourceResponse:
         """
-        设置资源标签
+        设置资源标签。
         
         @param request: TagResourceRequest
         @param headers: map
@@ -4888,7 +4892,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.TagResourceRequest,
     ) -> fc20230330_models.TagResourceResponse:
         """
-        设置资源标签
+        设置资源标签。
         
         @param request: TagResourceRequest
         @return: TagResourceResponse
@@ -4902,7 +4906,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.TagResourceRequest,
     ) -> fc20230330_models.TagResourceResponse:
         """
-        设置资源标签
+        设置资源标签。
         
         @param request: TagResourceRequest
         @return: TagResourceResponse
@@ -4918,7 +4922,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UntagResourceResponse:
         """
-        删除资源标签
+        删除资源标签。
         
         @param request: UntagResourceRequest
         @param headers: map
@@ -4960,7 +4964,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UntagResourceResponse:
         """
-        删除资源标签
+        删除资源标签。
         
         @param request: UntagResourceRequest
         @param headers: map
@@ -5000,7 +5004,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UntagResourceRequest,
     ) -> fc20230330_models.UntagResourceResponse:
         """
-        删除资源标签
+        删除资源标签。
         
         @param request: UntagResourceRequest
         @return: UntagResourceResponse
@@ -5014,7 +5018,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UntagResourceRequest,
     ) -> fc20230330_models.UntagResourceResponse:
         """
-        删除资源标签
+        删除资源标签。
         
         @param request: UntagResourceRequest
         @return: UntagResourceResponse
@@ -5032,7 +5036,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateAliasResponse:
         """
-        更新函数别名
+        更新函数别名。
         
         @param request: UpdateAliasRequest
         @param headers: map
@@ -5069,7 +5073,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateAliasResponse:
         """
-        更新函数别名
+        更新函数别名。
         
         @param request: UpdateAliasRequest
         @param headers: map
@@ -5104,7 +5108,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateAliasRequest,
     ) -> fc20230330_models.UpdateAliasResponse:
         """
-        更新函数别名
+        更新函数别名。
         
         @param request: UpdateAliasRequest
         @return: UpdateAliasResponse
@@ -5120,7 +5124,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateAliasRequest,
     ) -> fc20230330_models.UpdateAliasResponse:
         """
-        更新函数别名
+        更新函数别名。
         
         @param request: UpdateAliasRequest
         @return: UpdateAliasResponse
@@ -5137,7 +5141,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
         """
-        更新自定义域名
+        更新自定义域名。
         
         @param request: UpdateCustomDomainRequest
         @param headers: map
@@ -5173,7 +5177,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
         """
-        更新自定义域名
+        更新自定义域名。
         
         @param request: UpdateCustomDomainRequest
         @param headers: map
@@ -5207,7 +5211,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateCustomDomainRequest,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
         """
-        更新自定义域名
+        更新自定义域名。
         
         @param request: UpdateCustomDomainRequest
         @return: UpdateCustomDomainResponse
@@ -5222,7 +5226,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateCustomDomainRequest,
     ) -> fc20230330_models.UpdateCustomDomainResponse:
         """
-        更新自定义域名
+        更新自定义域名。
         
         @param request: UpdateCustomDomainRequest
         @return: UpdateCustomDomainResponse
@@ -5239,7 +5243,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateFunctionResponse:
         """
-        更新函数
+        更新函数。
         
         @param request: UpdateFunctionRequest
         @param headers: map
@@ -5275,7 +5279,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateFunctionResponse:
         """
-        更新函数
+        更新函数。
         
         @param request: UpdateFunctionRequest
         @param headers: map
@@ -5309,7 +5313,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateFunctionRequest,
     ) -> fc20230330_models.UpdateFunctionResponse:
         """
-        更新函数
+        更新函数。
         
         @param request: UpdateFunctionRequest
         @return: UpdateFunctionResponse
@@ -5324,7 +5328,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateFunctionRequest,
     ) -> fc20230330_models.UpdateFunctionResponse:
         """
-        更新函数
+        更新函数。
         
         @param request: UpdateFunctionRequest
         @return: UpdateFunctionResponse
@@ -5342,7 +5346,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateTriggerResponse:
         """
-        更新函数触发器
+        更新函数触发器。
         
         @param request: UpdateTriggerRequest
         @param headers: map
@@ -5379,7 +5383,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc20230330_models.UpdateTriggerResponse:
         """
-        更新函数触发器
+        更新函数触发器。
         
         @param request: UpdateTriggerRequest
         @param headers: map
@@ -5414,7 +5418,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateTriggerRequest,
     ) -> fc20230330_models.UpdateTriggerResponse:
         """
-        更新函数触发器
+        更新函数触发器。
         
         @param request: UpdateTriggerRequest
         @return: UpdateTriggerResponse
@@ -5430,7 +5434,7 @@ class Client(OpenApiClient):
         request: fc20230330_models.UpdateTriggerRequest,
     ) -> fc20230330_models.UpdateTriggerResponse:
         """
-        更新函数触发器
+        更新函数触发器。
         
         @param request: UpdateTriggerRequest
         @return: UpdateTriggerResponse

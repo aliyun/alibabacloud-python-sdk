@@ -2208,9 +2208,11 @@ class Function(TeaModel):
 class GetResourceTagsOutput(TeaModel):
     def __init__(
         self,
+        resouce_type: str = None,
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
+        self.resouce_type = resouce_type
         self.resource_arn = resource_arn
         self.tags = tags
 
@@ -2223,6 +2225,8 @@ class GetResourceTagsOutput(TeaModel):
             return _map
 
         result = dict()
+        if self.resouce_type is not None:
+            result['resouceType'] = self.resouce_type
         if self.resource_arn is not None:
             result['resourceArn'] = self.resource_arn
         if self.tags is not None:
@@ -2231,6 +2235,8 @@ class GetResourceTagsOutput(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('resouceType') is not None:
+            self.resouce_type = m.get('resouceType')
         if m.get('resourceArn') is not None:
             self.resource_arn = m.get('resourceArn')
         if m.get('tags') is not None:
@@ -2986,9 +2992,11 @@ class ListProvisionConfigsOutput(TeaModel):
 class Resource(TeaModel):
     def __init__(
         self,
+        resouce_type: str = None,
         resource_arn: str = None,
         tags: Dict[str, str] = None,
     ):
+        self.resouce_type = resouce_type
         self.resource_arn = resource_arn
         self.tags = tags
 
@@ -3001,6 +3009,8 @@ class Resource(TeaModel):
             return _map
 
         result = dict()
+        if self.resouce_type is not None:
+            result['resouceType'] = self.resouce_type
         if self.resource_arn is not None:
             result['resourceArn'] = self.resource_arn
         if self.tags is not None:
@@ -3009,6 +3019,8 @@ class Resource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('resouceType') is not None:
+            self.resouce_type = m.get('resouceType')
         if m.get('resourceArn') is not None:
             self.resource_arn = m.get('resourceArn')
         if m.get('tags') is not None:
@@ -6276,9 +6288,11 @@ class ListTaggedResourcesRequest(TeaModel):
         self,
         limit: int = None,
         next_token: str = None,
+        resource_type: str = None,
     ):
         self.limit = limit
         self.next_token = next_token
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -6293,6 +6307,8 @@ class ListTaggedResourcesRequest(TeaModel):
             result['limit'] = self.limit
         if self.next_token is not None:
             result['nextToken'] = self.next_token
+        if self.resource_type is not None:
+            result['resourceType'] = self.resource_type
         return result
 
     def from_map(self, m: dict = None):
@@ -6301,6 +6317,8 @@ class ListTaggedResourcesRequest(TeaModel):
             self.limit = m.get('limit')
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
+        if m.get('resourceType') is not None:
+            self.resource_type = m.get('resourceType')
         return self
 
 
