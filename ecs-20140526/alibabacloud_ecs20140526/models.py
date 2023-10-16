@@ -13659,10 +13659,12 @@ class CreateLaunchTemplateResponseBody(TeaModel):
     def __init__(
         self,
         launch_template_id: str = None,
+        launch_template_version_number: int = None,
         request_id: str = None,
     ):
         # The ID of the launch template.
         self.launch_template_id = launch_template_id
+        self.launch_template_version_number = launch_template_version_number
         # The ID of the request.
         self.request_id = request_id
 
@@ -13677,6 +13679,8 @@ class CreateLaunchTemplateResponseBody(TeaModel):
         result = dict()
         if self.launch_template_id is not None:
             result['LaunchTemplateId'] = self.launch_template_id
+        if self.launch_template_version_number is not None:
+            result['LaunchTemplateVersionNumber'] = self.launch_template_version_number
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -13685,6 +13689,8 @@ class CreateLaunchTemplateResponseBody(TeaModel):
         m = m or dict()
         if m.get('LaunchTemplateId') is not None:
             self.launch_template_id = m.get('LaunchTemplateId')
+        if m.get('LaunchTemplateVersionNumber') is not None:
+            self.launch_template_version_number = m.get('LaunchTemplateVersionNumber')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
