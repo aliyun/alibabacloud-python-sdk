@@ -1085,6 +1085,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_prometheus_grafana_instance_with_options_async(request, runtime)
 
+    def block_alarm_notification_with_options(
+        self,
+        request: arms20190808_models.BlockAlarmNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.BlockAlarmNotificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BlockAlarmNotification',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.BlockAlarmNotificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def block_alarm_notification_with_options_async(
+        self,
+        request: arms20190808_models.BlockAlarmNotificationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.BlockAlarmNotificationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BlockAlarmNotification',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.BlockAlarmNotificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def block_alarm_notification(
+        self,
+        request: arms20190808_models.BlockAlarmNotificationRequest,
+    ) -> arms20190808_models.BlockAlarmNotificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.block_alarm_notification_with_options(request, runtime)
+
+    async def block_alarm_notification_async(
+        self,
+        request: arms20190808_models.BlockAlarmNotificationRequest,
+    ) -> arms20190808_models.BlockAlarmNotificationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.block_alarm_notification_with_options_async(request, runtime)
+
+    def change_alarm_severity_with_options(
+        self,
+        request: arms20190808_models.ChangeAlarmSeverityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ChangeAlarmSeverityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeAlarmSeverity',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ChangeAlarmSeverityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_alarm_severity_with_options_async(
+        self,
+        request: arms20190808_models.ChangeAlarmSeverityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ChangeAlarmSeverityResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.severity):
+            query['Severity'] = request.severity
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeAlarmSeverity',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ChangeAlarmSeverityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_alarm_severity(
+        self,
+        request: arms20190808_models.ChangeAlarmSeverityRequest,
+    ) -> arms20190808_models.ChangeAlarmSeverityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_alarm_severity_with_options(request, runtime)
+
+    async def change_alarm_severity_async(
+        self,
+        request: arms20190808_models.ChangeAlarmSeverityRequest,
+    ) -> arms20190808_models.ChangeAlarmSeverityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_alarm_severity_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: arms20190808_models.ChangeResourceGroupRequest,
@@ -1240,6 +1404,166 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.CheckServiceStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.check_service_status_with_options_async(request, runtime)
+
+    def claim_alarm_with_options(
+        self,
+        request: arms20190808_models.ClaimAlarmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ClaimAlarmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClaimAlarm',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ClaimAlarmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def claim_alarm_with_options_async(
+        self,
+        request: arms20190808_models.ClaimAlarmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.ClaimAlarmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ClaimAlarm',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.ClaimAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def claim_alarm(
+        self,
+        request: arms20190808_models.ClaimAlarmRequest,
+    ) -> arms20190808_models.ClaimAlarmResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.claim_alarm_with_options(request, runtime)
+
+    async def claim_alarm_async(
+        self,
+        request: arms20190808_models.ClaimAlarmRequest,
+    ) -> arms20190808_models.ClaimAlarmResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.claim_alarm_with_options_async(request, runtime)
+
+    def close_alarm_with_options(
+        self,
+        request: arms20190808_models.CloseAlarmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CloseAlarmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.solution):
+            query['Solution'] = request.solution
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseAlarm',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CloseAlarmResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def close_alarm_with_options_async(
+        self,
+        request: arms20190808_models.CloseAlarmRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CloseAlarmResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.alarm_id):
+            query['AlarmId'] = request.alarm_id
+        if not UtilClient.is_unset(request.handler_id):
+            query['HandlerId'] = request.handler_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.solution):
+            query['Solution'] = request.solution
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CloseAlarm',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CloseAlarmResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def close_alarm(
+        self,
+        request: arms20190808_models.CloseAlarmRequest,
+    ) -> arms20190808_models.CloseAlarmResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.close_alarm_with_options(request, runtime)
+
+    async def close_alarm_async(
+        self,
+        request: arms20190808_models.CloseAlarmRequest,
+    ) -> arms20190808_models.CloseAlarmResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.close_alarm_with_options_async(request, runtime)
 
     def config_app_with_options(
         self,
@@ -1756,6 +2080,8 @@ class Client(OpenApiClient):
             body['MetricsType'] = request.metrics_type
         if not UtilClient.is_unset(request.notice):
             body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.notify_mode):
+            body['NotifyMode'] = request.notify_mode
         if not UtilClient.is_unset(request.notify_strategy):
             body['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.pids):
@@ -1834,6 +2160,8 @@ class Client(OpenApiClient):
             body['MetricsType'] = request.metrics_type
         if not UtilClient.is_unset(request.notice):
             body['Notice'] = request.notice
+        if not UtilClient.is_unset(request.notify_mode):
+            body['NotifyMode'] = request.notify_mode
         if not UtilClient.is_unset(request.notify_strategy):
             body['NotifyStrategy'] = request.notify_strategy
         if not UtilClient.is_unset(request.pids):
