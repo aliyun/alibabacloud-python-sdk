@@ -4785,7 +4785,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
-        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
@@ -4826,7 +4826,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
-        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
@@ -4866,7 +4866,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnCertificateListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
-        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
@@ -4881,7 +4881,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnCertificateListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnCertificateListResponse:
         """
-        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnCertificateList instead.
+        @deprecated : DescribeDcdnCertificateList is deprecated, please use dcdn::2018-01-15::DescribeDcdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeDcdnCertificateListRequest
@@ -14223,6 +14223,8 @@ class Client(OpenApiClient):
             query['FuncFilter'] = request.func_filter
         if not UtilClient.is_unset(request.func_id):
             query['FuncId'] = request.func_id
+        if not UtilClient.is_unset(request.match_type):
+            query['MatchType'] = request.match_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -14268,6 +14270,8 @@ class Client(OpenApiClient):
             query['FuncFilter'] = request.func_filter
         if not UtilClient.is_unset(request.func_id):
             query['FuncId'] = request.func_id
+        if not UtilClient.is_unset(request.match_type):
+            query['MatchType'] = request.match_type
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
