@@ -26779,6 +26779,10 @@ class Client(OpenApiClient):
             query['AttachTypes'] = request.attach_types
         if not UtilClient.is_unset(request.container_name):
             query['ContainerName'] = request.container_name
+        if not UtilClient.is_unset(request.create_ts_end):
+            query['CreateTsEnd'] = request.create_ts_end
+        if not UtilClient.is_unset(request.create_ts_start):
+            query['CreateTsStart'] = request.create_ts_start
         if not UtilClient.is_unset(request.cve_id):
             query['CveId'] = request.cve_id
         if not UtilClient.is_unset(request.dealed):
@@ -26843,6 +26847,10 @@ class Client(OpenApiClient):
             query['AttachTypes'] = request.attach_types
         if not UtilClient.is_unset(request.container_name):
             query['ContainerName'] = request.container_name
+        if not UtilClient.is_unset(request.create_ts_end):
+            query['CreateTsEnd'] = request.create_ts_end
+        if not UtilClient.is_unset(request.create_ts_start):
+            query['CreateTsStart'] = request.create_ts_start
         if not UtilClient.is_unset(request.cve_id):
             query['CveId'] = request.cve_id
         if not UtilClient.is_unset(request.dealed):
