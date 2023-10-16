@@ -1,3 +1,6 @@
+2023-10-16 Version: 1.0.2
+- Generated python 2018-06-12 for VoiceNavigator.
+
 2022-10-13 Version: 1.0.1
 - Generated python 2018-06-12 for VoiceNavigator.
 
