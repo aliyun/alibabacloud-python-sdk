@@ -1176,6 +1176,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_update_cdn_domain_with_options_async(request, runtime)
 
+    def cdn_migrate_register_with_options(
+        self,
+        request: cdn_20180510_models.CdnMigrateRegisterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.CdnMigrateRegisterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CdnMigrateRegister',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.CdnMigrateRegisterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cdn_migrate_register_with_options_async(
+        self,
+        request: cdn_20180510_models.CdnMigrateRegisterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.CdnMigrateRegisterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CdnMigrateRegister',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.CdnMigrateRegisterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cdn_migrate_register(
+        self,
+        request: cdn_20180510_models.CdnMigrateRegisterRequest,
+    ) -> cdn_20180510_models.CdnMigrateRegisterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cdn_migrate_register_with_options(request, runtime)
+
+    async def cdn_migrate_register_async(
+        self,
+        request: cdn_20180510_models.CdnMigrateRegisterRequest,
+    ) -> cdn_20180510_models.CdnMigrateRegisterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cdn_migrate_register_with_options_async(request, runtime)
+
     def change_cdn_domain_to_dcdn_with_options(
         self,
         request: cdn_20180510_models.ChangeCdnDomainToDcdnRequest,
@@ -1261,6 +1331,170 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.ChangeCdnDomainToDcdnResponse:
         runtime = util_models.RuntimeOptions()
         return await self.change_cdn_domain_to_dcdn_with_options_async(request, runtime)
+
+    def check_cdn_domain_exist_with_options(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainExistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.CheckCdnDomainExistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCdnDomainExist',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.CheckCdnDomainExistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_cdn_domain_exist_with_options_async(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainExistRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.CheckCdnDomainExistResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCdnDomainExist',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.CheckCdnDomainExistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_cdn_domain_exist(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainExistRequest,
+    ) -> cdn_20180510_models.CheckCdnDomainExistResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_cdn_domain_exist_with_options(request, runtime)
+
+    async def check_cdn_domain_exist_async(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainExistRequest,
+    ) -> cdn_20180510_models.CheckCdnDomainExistResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_cdn_domain_exist_with_options_async(request, runtime)
+
+    def check_cdn_domain_icpwith_options(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainICPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.CheckCdnDomainICPResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCdnDomainICP',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.CheckCdnDomainICPResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_cdn_domain_icpwith_options_async(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainICPRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.CheckCdnDomainICPResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCdnDomainICP',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.CheckCdnDomainICPResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_cdn_domain_icp(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainICPRequest,
+    ) -> cdn_20180510_models.CheckCdnDomainICPResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_cdn_domain_icpwith_options(request, runtime)
+
+    async def check_cdn_domain_icp_async(
+        self,
+        request: cdn_20180510_models.CheckCdnDomainICPRequest,
+    ) -> cdn_20180510_models.CheckCdnDomainICPResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_cdn_domain_icpwith_options_async(request, runtime)
 
     def create_cdn_certificate_signing_request_with_options(
         self,
@@ -3158,11 +3392,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         """
+        @deprecated : DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeCdnCertificateListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCdnCertificateListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3197,11 +3433,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         """
+        @deprecated : DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeCdnCertificateListRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: DescribeCdnCertificateListResponse
+        Deprecated
         """
         UtilClient.validate_model(request)
         query = {}
@@ -3235,10 +3473,12 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnCertificateListRequest,
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         """
+        @deprecated : DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeCdnCertificateListRequest
         @return: DescribeCdnCertificateListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return self.describe_cdn_certificate_list_with_options(request, runtime)
@@ -3248,10 +3488,12 @@ class Client(OpenApiClient):
         request: cdn_20180510_models.DescribeCdnCertificateListRequest,
     ) -> cdn_20180510_models.DescribeCdnCertificateListResponse:
         """
+        @deprecated : DescribeCdnCertificateList is deprecated, please use Cdn::2018-05-10::DescribeCdnSSLCertificateList instead.
         > You can call this operation up to 30 times per second per account.
         
         @param request: DescribeCdnCertificateListRequest
         @return: DescribeCdnCertificateListResponse
+        Deprecated
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_certificate_list_with_options_async(request, runtime)
@@ -3966,6 +4208,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_domain_logs_with_options_async(request, runtime)
 
+    def describe_cdn_domain_logs_ex_ttl_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnDomainLogsExTtlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnDomainLogsExTtlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainLogsExTtl',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnDomainLogsExTtlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_domain_logs_ex_ttl_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnDomainLogsExTtlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnDomainLogsExTtlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnDomainLogsExTtl',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnDomainLogsExTtlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_domain_logs_ex_ttl(
+        self,
+        request: cdn_20180510_models.DescribeCdnDomainLogsExTtlRequest,
+    ) -> cdn_20180510_models.DescribeCdnDomainLogsExTtlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_domain_logs_ex_ttl_with_options(request, runtime)
+
+    async def describe_cdn_domain_logs_ex_ttl_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnDomainLogsExTtlRequest,
+    ) -> cdn_20180510_models.DescribeCdnDomainLogsExTtlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_domain_logs_ex_ttl_with_options_async(request, runtime)
+
     def describe_cdn_domain_staging_config_with_options(
         self,
         request: cdn_20180510_models.DescribeCdnDomainStagingConfigRequest,
@@ -4169,6 +4497,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_https_domain_list_with_options_async(request, runtime)
+
+    def describe_cdn_migrate_register_status_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnMigrateRegisterStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnMigrateRegisterStatusResponse:
+        """
+        >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
+        
+        @param request: DescribeCdnMigrateRegisterStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnMigrateRegisterStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnMigrateRegisterStatus',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnMigrateRegisterStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_migrate_register_status_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnMigrateRegisterStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnMigrateRegisterStatusResponse:
+        """
+        >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
+        
+        @param request: DescribeCdnMigrateRegisterStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCdnMigrateRegisterStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnMigrateRegisterStatus',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnMigrateRegisterStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_migrate_register_status(
+        self,
+        request: cdn_20180510_models.DescribeCdnMigrateRegisterStatusRequest,
+    ) -> cdn_20180510_models.DescribeCdnMigrateRegisterStatusResponse:
+        """
+        >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
+        
+        @param request: DescribeCdnMigrateRegisterStatusRequest
+        @return: DescribeCdnMigrateRegisterStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_migrate_register_status_with_options(request, runtime)
+
+    async def describe_cdn_migrate_register_status_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnMigrateRegisterStatusRequest,
+    ) -> cdn_20180510_models.DescribeCdnMigrateRegisterStatusResponse:
+        """
+        >  If a domain name is not transferred from Alibaba Cloud CDN to DCDN after it is registered in the routing center of DCDN, the registration information is retained for only one day.
+        
+        @param request: DescribeCdnMigrateRegisterStatusRequest
+        @return: DescribeCdnMigrateRegisterStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_migrate_register_status_with_options_async(request, runtime)
 
     def describe_cdn_order_commodity_code_with_options(
         self,
@@ -4869,6 +5293,80 @@ class Client(OpenApiClient):
     ) -> cdn_20180510_models.DescribeCdnSSLCertificateListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_cdn_sslcertificate_list_with_options_async(request, runtime)
+
+    def describe_cdn_sec_func_info_with_options(
+        self,
+        request: cdn_20180510_models.DescribeCdnSecFuncInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSecFuncInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.sec_func_type):
+            query['SecFuncType'] = request.sec_func_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSecFuncInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSecFuncInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cdn_sec_func_info_with_options_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSecFuncInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cdn_20180510_models.DescribeCdnSecFuncInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.sec_func_type):
+            query['SecFuncType'] = request.sec_func_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCdnSecFuncInfo',
+            version='2018-05-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cdn_20180510_models.DescribeCdnSecFuncInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cdn_sec_func_info(
+        self,
+        request: cdn_20180510_models.DescribeCdnSecFuncInfoRequest,
+    ) -> cdn_20180510_models.DescribeCdnSecFuncInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cdn_sec_func_info_with_options(request, runtime)
+
+    async def describe_cdn_sec_func_info_async(
+        self,
+        request: cdn_20180510_models.DescribeCdnSecFuncInfoRequest,
+    ) -> cdn_20180510_models.DescribeCdnSecFuncInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cdn_sec_func_info_with_options_async(request, runtime)
 
     def describe_cdn_service_with_options(
         self,
