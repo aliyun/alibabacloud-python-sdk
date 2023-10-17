@@ -7004,6 +7004,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         storage_type: str = None,
         sync_percent: str = None,
         tags: DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags = None,
+        use_cluster_backup: bool = None,
         vpccloud_instance_ids: str = None,
         vpcid: str = None,
         v_switch_id: str = None,
@@ -7211,6 +7212,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.sync_percent = sync_percent
         # The details of the instance tags.
         self.tags = tags
+        self.use_cluster_backup = use_cluster_backup
         # The instance ID.
         # 
         # > This parameter is returned if the network type of the instance is VPC.
@@ -7340,6 +7342,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
             result['SyncPercent'] = self.sync_percent
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
+        if self.use_cluster_backup is not None:
+            result['UseClusterBackup'] = self.use_cluster_backup
         if self.vpccloud_instance_ids is not None:
             result['VPCCloudInstanceIds'] = self.vpccloud_instance_ids
         if self.vpcid is not None:
@@ -7449,6 +7453,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         if m.get('Tags') is not None:
             temp_model = DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags()
             self.tags = temp_model.from_map(m['Tags'])
+        if m.get('UseClusterBackup') is not None:
+            self.use_cluster_backup = m.get('UseClusterBackup')
         if m.get('VPCCloudInstanceIds') is not None:
             self.vpccloud_instance_ids = m.get('VPCCloudInstanceIds')
         if m.get('VPCId') is not None:
@@ -12215,20 +12221,21 @@ class DescribeParametersRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The type of the database account. Valid values:
+        # The role of the instance. Valid values:
         # 
-        # *   mongos: an account that can be used to log on to a mongos node.
-        # *   shard: an account that can be used to log on to a shard node.
+        # *   db: a shard node.
+        # *   cs: a Configserver node.
+        # *   mongos: a mongos node.
         self.character_type = character_type
-        # The ID of the instance
+        # The instance ID.
         # 
-        # > If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
+        # >  If you set this parameter to the ID of a sharded cluster instance, you must also specify the **NodeId** parameter.
         self.dbinstance_id = dbinstance_id
-        # terrform use
+        # The parameter that is available in the future.
         self.extra_param = extra_param
         # The ID of the mongos or shard node in the specified sharded cluster instance.
         # 
-        # > This parameter is valid when the **DBInstanceId** parameter is set to the ID of a sharded cluster instance.
+        # >  This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a sharded cluster instance.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12300,15 +12307,15 @@ class DescribeParametersResponseBodyConfigParametersParameter(TeaModel):
     ):
         # The valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether a restart is required for parameter modifications to take effect.
+        # Indicates whether a restart is required for parameter modifications to take effect. Valid values:
         # 
         # *   **false**: A restart is not required. Modifications take effect immediately.
         # *   **true**: A restart is required for parameter modifications to take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter value can be changed.
+        # Indicates whether the parameter value can be modified. Valid values:
         # 
-        # *   **false**: The parameter value cannot be changed.
-        # *   **true**: The parameter value can be changed.
+        # *   **false**: The parameter value cannot be modified.
+        # *   **true**: The parameter value can be modified.
         self.modifiable_status = modifiable_status
         # The description of the parameter.
         self.parameter_description = parameter_description
@@ -12403,23 +12410,23 @@ class DescribeParametersResponseBodyRunningParametersParameter(TeaModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # 实例的角色类型，取值说明：
+        # The role of the instance. Valid values:
         # 
-        # - **db**：shard角色。
-        # - **cs**：config server角色。
-        # - **mongos**：mongos角色。
+        # *   **db**: a shard node.
+        # *   **cs**: a Configserver node.
+        # *   **mongos**: a mongos node.
         self.character_type = character_type
         # The valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether a restart is required for parameter modifications to take effect.
+        # Indicates whether a restart is required for parameter modifications to take effect. Valid values:
         # 
         # *   **false**: A restart is not required. Modifications take effect immediately.
         # *   **true**: A restart is required for parameter modifications to take effect.
         self.force_restart = force_restart
-        # Indicates whether the parameter value can be changed.
+        # Indicates whether the parameter value can be modified. Valid values:
         # 
-        # *   **false**: The parameter value cannot be changed.
-        # *   **true**: The parameter value can be changed.
+        # *   **false**: The parameter value cannot be modified.
+        # *   **true**: The parameter value can be modified.
         self.modifiable_status = modifiable_status
         # The description of the parameter.
         self.parameter_description = parameter_description
@@ -12516,15 +12523,15 @@ class DescribeParametersResponseBody(TeaModel):
         request_id: str = None,
         running_parameters: DescribeParametersResponseBodyRunningParameters = None,
     ):
-        # The parameter settings in the configuration template.
+        # The settings of parameters that are being configured.
         self.config_parameters = config_parameters
         # The database engine of the instance. Default value: **mongodb**.
         self.engine = engine
-        # The version of the database engine.
+        # The database engine version of the instance.
         self.engine_version = engine_version
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The parameter settings for the running instance.
+        # The settings of the parameters that have taken effect.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -18919,6 +18926,7 @@ class ModifyDBInstanceMonitorResponse(TeaModel):
 class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
     def __init__(
         self,
+        category: str = None,
         classic_expend_expired_days: int = None,
         connection_string: str = None,
         dbinstance_id: str = None,
@@ -18928,6 +18936,7 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        self.category = category
         # The retention period of the original classic network address. Valid values: **14**, **30**, **60**, and** 120**. Unit: day.
         self.classic_expend_expired_days = classic_expend_expired_days
         # The connection string of the instance
@@ -18949,6 +18958,8 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.classic_expend_expired_days is not None:
             result['ClassicExpendExpiredDays'] = self.classic_expend_expired_days
         if self.connection_string is not None:
@@ -18969,6 +18980,8 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('ClassicExpendExpiredDays') is not None:
             self.classic_expend_expired_days = m.get('ClassicExpendExpiredDays')
         if m.get('ConnectionString') is not None:
