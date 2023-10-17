@@ -1,3 +1,6 @@
+2023-10-17 Version: 1.0.5
+- Generated python 2022-06-01 for Hologram.
+
 2023-07-13 Version: 1.0.4
 open hologram api 
 

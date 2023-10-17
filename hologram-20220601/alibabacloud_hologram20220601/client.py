@@ -47,6 +47,32 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.CreateInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+        *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+        <!---->
+        cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+        cn-beijing: cn-beijing-i, cn-beijing-g
+        cn-zhangjiakou: cn-zhangjiakou-b
+        cn-shenzhen: cn-shenzhen-e
+        cn-hongkong: cn-hongkong-b
+        cn-shanghai-finance-1: cn-shanghai-finance-1z
+        ap-northeast-1: ap-northeast-1a
+        ap-southeast-1: ap-southeast-1c
+        ap-southeast-3: ap-southeast-3b
+        ap-southeast-5: ap-southeast-5b
+        ap-south-1: ap-south-1b
+        eu-central-1: eu-central-1a
+        us-east-1: us-east-1a
+        us-west-1: us-west-1b
+        
+        @param request: CreateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -109,6 +135,32 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.CreateInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+        *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+        <!---->
+        cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+        cn-beijing: cn-beijing-i, cn-beijing-g
+        cn-zhangjiakou: cn-zhangjiakou-b
+        cn-shenzhen: cn-shenzhen-e
+        cn-hongkong: cn-hongkong-b
+        cn-shanghai-finance-1: cn-shanghai-finance-1z
+        ap-northeast-1: ap-northeast-1a
+        ap-southeast-1: ap-southeast-1c
+        ap-southeast-3: ap-southeast-3b
+        ap-southeast-5: ap-southeast-5b
+        ap-south-1: ap-south-1b
+        eu-central-1: eu-central-1a
+        us-east-1: us-east-1a
+        us-west-1: us-west-1b
+        
+        @param request: CreateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -169,6 +221,30 @@ class Client(OpenApiClient):
         self,
         request: hologram_20220601_models.CreateInstanceRequest,
     ) -> hologram_20220601_models.CreateInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+        *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+        <!---->
+        cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+        cn-beijing: cn-beijing-i, cn-beijing-g
+        cn-zhangjiakou: cn-zhangjiakou-b
+        cn-shenzhen: cn-shenzhen-e
+        cn-hongkong: cn-hongkong-b
+        cn-shanghai-finance-1: cn-shanghai-finance-1z
+        ap-northeast-1: ap-northeast-1a
+        ap-southeast-1: ap-southeast-1c
+        ap-southeast-3: ap-southeast-3b
+        ap-southeast-5: ap-southeast-5b
+        ap-south-1: ap-south-1b
+        eu-central-1: eu-central-1a
+        us-east-1: us-east-1a
+        us-west-1: us-west-1b
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_instance_with_options(request, headers, runtime)
@@ -177,6 +253,30 @@ class Client(OpenApiClient):
         self,
         request: hologram_20220601_models.CreateInstanceRequest,
     ) -> hologram_20220601_models.CreateInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/developer-reference/api-hologram-2022-06-01-createinstance).
+        *   When you purchase a Hologres instance, you must specify the region and zone in which the Hologres instance resides. A region may correspond to multiple zones. Example:
+        <!---->
+        cn-hangzhou: cn-hangzhou-h, cn-hangzhou-j
+        cn-shanghai: cn-shanghai-e, cn-shanghai-f
+        cn-beijing: cn-beijing-i, cn-beijing-g
+        cn-zhangjiakou: cn-zhangjiakou-b
+        cn-shenzhen: cn-shenzhen-e
+        cn-hongkong: cn-hongkong-b
+        cn-shanghai-finance-1: cn-shanghai-finance-1z
+        ap-northeast-1: ap-northeast-1a
+        ap-southeast-1: ap-southeast-1c
+        ap-southeast-3: ap-southeast-3b
+        ap-southeast-5: ap-southeast-5b
+        ap-south-1: ap-south-1b
+        eu-central-1: eu-central-1a
+        us-east-1: us-east-1a
+        us-west-1: us-west-1b
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
@@ -188,6 +288,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.DeleteInstanceResponse:
+        """
+        > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+        *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+        *   You can delete only pay-as-you-go instances.
+        *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+        
+        @param request: DeleteInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -219,6 +330,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.DeleteInstanceResponse:
+        """
+        > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+        *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+        *   You can delete only pay-as-you-go instances.
+        *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+        
+        @param request: DeleteInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -248,6 +370,15 @@ class Client(OpenApiClient):
         instance_id: str,
         request: hologram_20220601_models.DeleteInstanceRequest,
     ) -> hologram_20220601_models.DeleteInstanceResponse:
+        """
+        > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+        *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+        *   You can delete only pay-as-you-go instances.
+        *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_instance_with_options(instance_id, request, headers, runtime)
@@ -257,6 +388,15 @@ class Client(OpenApiClient):
         instance_id: str,
         request: hologram_20220601_models.DeleteInstanceRequest,
     ) -> hologram_20220601_models.DeleteInstanceResponse:
+        """
+        > Before you call this operation, read the documentation and make sure that you understand the prerequisites and impacts of this operation.
+        *   After you delete a Hologres instance, data and objects in the instance cannot be restored. Proceed with caution. For more information, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview#section-h6a-x58-jc0).
+        *   You can delete only pay-as-you-go instances.
+        *   If you want to unsubscribe from a subscription instance, submit a ticket.[](https://help.aliyun.com/document_detail/150284.html#section-ogc-9vc-858)
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, request, headers, runtime)
@@ -418,6 +558,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RenewInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+        *   You can renew only subscription instances.
+        
+        @param request: RenewInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -451,6 +602,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.RenewInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+        *   You can renew only subscription instances.
+        
+        @param request: RenewInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -482,6 +644,15 @@ class Client(OpenApiClient):
         instance_id: str,
         request: hologram_20220601_models.RenewInstanceRequest,
     ) -> hologram_20220601_models.RenewInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+        *   You can renew only subscription instances.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.renew_instance_with_options(instance_id, request, headers, runtime)
@@ -491,6 +662,15 @@ class Client(OpenApiClient):
         instance_id: str,
         request: hologram_20220601_models.RenewInstanceRequest,
     ) -> hologram_20220601_models.RenewInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about billing details of Hologres, see [Pricing](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   For more information about how to renew a Hologres instance, see [Manage renewals](https://www.alibabacloud.com/help/en/hologres/product-overview/manage-renewals?spm=a2c63.p38356.0.0.73f27c8d1Q0FUi).
+        *   You can renew only subscription instances.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.renew_instance_with_options_async(instance_id, request, headers, runtime)
@@ -634,12 +814,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ScaleInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+        
+        @param request: ScaleInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cold_storage_size):
             body['coldStorageSize'] = request.cold_storage_size
         if not UtilClient.is_unset(request.cpu):
             body['cpu'] = request.cpu
+        if not UtilClient.is_unset(request.gateway_count):
+            body['gatewayCount'] = request.gateway_count
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
         if not UtilClient.is_unset(request.storage_size):
@@ -671,12 +863,24 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> hologram_20220601_models.ScaleInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+        
+        @param request: ScaleInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ScaleInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cold_storage_size):
             body['coldStorageSize'] = request.cold_storage_size
         if not UtilClient.is_unset(request.cpu):
             body['cpu'] = request.cpu
+        if not UtilClient.is_unset(request.gateway_count):
+            body['gatewayCount'] = request.gateway_count
         if not UtilClient.is_unset(request.scale_type):
             body['scaleType'] = request.scale_type
         if not UtilClient.is_unset(request.storage_size):
@@ -706,6 +910,14 @@ class Client(OpenApiClient):
         instance_id: str,
         request: hologram_20220601_models.ScaleInstanceRequest,
     ) -> hologram_20220601_models.ScaleInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+        
+        @param request: ScaleInstanceRequest
+        @return: ScaleInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.scale_instance_with_options(instance_id, request, headers, runtime)
@@ -715,6 +927,14 @@ class Client(OpenApiClient):
         instance_id: str,
         request: hologram_20220601_models.ScaleInstanceRequest,
     ) -> hologram_20220601_models.ScaleInstanceResponse:
+        """
+        > Before you call this operation, make sure that you understand the billing method and pricing of Hologres because this operation is charged.
+        *   For more information about the billing details of Hologres, see [Billing overview](https://www.alibabacloud.com/help/en/hologres/product-overview/billing-overview).
+        *   During the change of computing resource specifications of a Hologres instance, the instance is unavailable. During the change of storage resources of a Hologres instance, the instance can work normally. Do not frequently change instance specifications. For more information, see [Upgrade and downgrade instance specifications](https://www.alibabacloud.com/help/en/hologres/product-overview/upgrade-or-downgrade-instance-specifications?spm=a2c63.p38356.0.0.2bb57c8dbVt68U).
+        
+        @param request: ScaleInstanceRequest
+        @return: ScaleInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.scale_instance_with_options_async(instance_id, request, headers, runtime)

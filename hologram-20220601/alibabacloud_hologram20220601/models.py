@@ -25,22 +25,106 @@ class CreateInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to enable auto-payment. Default value: true. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # > The default value is true. If the balance of your account is insufficient, you can set this parameter to false. In this case, an unpaid order is generated. You can log on to the User Center to pay for the order.
         self.auto_pay = auto_pay
+        # Specifies whether to enable monthly auto-renewal. Default value: false. Valid values:
+        # 
+        # *   true
+        # *   false
         self.auto_renew = auto_renew
+        # The billing method of the instance. Valid values:
+        # 
+        # *   PrePaid: subscription
+        # *   PostPaid: pay-as-you-go
+        # 
+        # > This parameter is invalid for shared instances. Shared instances have fixed specifications and are pay-as-you-go instances.
         self.charge_type = charge_type
+        # The infrequent access (IA) storage space of the instance. Unit: GB.
+        # 
+        # > This parameter is invalid for pay-as-you-go instances.
         self.cold_storage_size = cold_storage_size
+        # The instance specifications. Valid values:
+        # 
+        # *   8-core 32 GB (number of compute nodes: 1)
+        # *   16-core 64 GB (number of compute nodes: 1)
+        # *   32-core 128 GB (number of compute nodes: 2)
+        # *   64-core 256 GB (number of compute nodes: 4)
+        # *   96-core 384 GB (number of compute nodes: 6)
+        # *   128-core 512 GB (number of compute nodes: 8)
+        # *   Others
+        # 
+        # > 
+        # 
+        # *   Set this parameter to the number of cores.
+        # 
+        # *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+        # 
+        # *   If you want to purchase a shared instance, you do not need to configure this parameter.
+        # 
+        # *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
         self.cpu = cpu
+        # The validity period of the instance that you want to purchase. For example, you can specify a validity period of two months.
+        # 
+        # > You do not need to configure this parameter for pay-as-you-go instances.
         self.duration = duration
+        # The number of gateways. Valid values: 2 to 50.
+        # 
+        # > This parameter is required only for virtual warehouse instances.
         self.gateway_count = gateway_count
+        # The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
         self.instance_name = instance_name
+        # The type of the instance. Valid values:
+        # 
+        # *   Standard: general-purpose instance
+        # *   Follower: read-only secondary instance
+        # *   Warehouse: virtual warehouse instance
+        # *   Shared: shared instance
         self.instance_type = instance_type
+        # The ID of the primary instance. This parameter is required for read-only secondary instances.
+        # 
+        # > The primary instance and secondary instances must meet the following requirements:
+        # 
+        # *   The primary instance is in the Running state.
+        # 
+        # *   The primary instance and secondary instances are deployed in the same region.
+        # 
+        # *   The primary instance and secondary instances are deployed in the same zone.
+        # 
+        # *   Less than 10 secondary instances are associated with the primary instance.
+        # 
+        # *   The primary and secondary instances belong to the same Alibaba Cloud account.
         self.leader_instance_id = leader_instance_id
+        # The billing cycle. Valid values:
+        # 
+        # *   Month
+        # *   Hour
+        # 
+        # > 
+        # 
+        # *   This parameter can only be set to Month for subscription instances.
+        # 
+        # *   This parameter can only be set to Hour for pay-as-you-go instances.
+        # 
+        # *   By default, this parameter is set to Hour for shared instances.
         self.pricing_cycle = pricing_cycle
+        # The ID of the region. You can go to the [OpenAPI Explorer](https://api.aliyun.com/product/Hologram) or the Usage notes section to view the ID of the region.
         self.region_id = region_id
+        # The resource group. If you do not specify this parameter, the default resource group of the account is used.
         self.resource_group_id = resource_group_id
+        # The standard storage space of the instance. Unit: GB.
+        # 
+        # > This parameter is invalid for pay-as-you-go instances.
         self.storage_size = storage_size
+        # The ID of the vSwitch. The zone in which the vSwitch resides must be the same as the zone in which the instance resides.
         self.v_switch_id = v_switch_id
+        # The ID of the virtual private cloud (VPC). The region in which the VPC resides must be the same as the region in which the Hologres instance resides.
         self.vpc_id = vpc_id
+        # The ID of the zone. For more information about how to obtain the ID of the zone, see the Usage notes section.
         self.zone_id = zone_id
 
     def validate(self):
@@ -136,10 +220,18 @@ class CreateInstanceResponseBodyData(TeaModel):
         order_id: str = None,
         success: str = None,
     ):
+        # The error code returned.
         self.code = code
+        # The instance ID.
         self.instance_id = instance_id
+        # The error details.
         self.message = message
+        # The order ID.
         self.order_id = order_id
+        # Indicates whether the instance was created.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -187,11 +279,15 @@ class CreateInstanceResponseBody(TeaModel):
         http_status_code: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -281,6 +377,7 @@ class DeleteInstanceRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region in which the Hologres instance resides.
         self.region_id = region_id
 
     def validate(self):
@@ -313,12 +410,35 @@ class DeleteInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The returned result, which indicates whether the request was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status Code
         self.http_status_code = http_status_code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):
@@ -608,6 +728,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         instance_type: str = None,
         leader_instance_id: str = None,
         memory: int = None,
+        region_id: str = None,
         resource_group_id: str = None,
         suspend_reason: str = None,
         tags: List[GetInstanceResponseBodyInstanceTags] = None,
@@ -880,6 +1001,7 @@ class GetInstanceResponseBodyInstance(TeaModel):
         self.leader_instance_id = leader_instance_id
         # The memory size. Unit: GB.
         self.memory = memory
+        self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The reason for the suspension.
@@ -951,6 +1073,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             result['LeaderInstanceId'] = self.leader_instance_id
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.suspend_reason is not None:
@@ -1012,6 +1136,8 @@ class GetInstanceResponseBodyInstance(TeaModel):
             self.leader_instance_id = m.get('LeaderInstanceId')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SuspendReason') is not None:
@@ -1405,10 +1531,12 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         instance_status: str = None,
         instance_type: str = None,
         leader_instance_id: str = None,
+        region_id: str = None,
         resource_group_id: str = None,
         suspend_reason: str = None,
         tags: List[ListInstancesResponseBodyInstanceListTags] = None,
         version: str = None,
+        zone_id: str = None,
     ):
         # The commodity code, which is the same as that on the Billing Management page.
         self.commodity_code = commodity_code
@@ -1544,6 +1672,7 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         self.instance_type = instance_type
         # The ID of the primary instance.
         self.leader_instance_id = leader_instance_id
+        self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # The reason for the suspension.
@@ -1552,6 +1681,7 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
         self.tags = tags
         # The version of the cluster.
         self.version = version
+        self.zone_id = zone_id
 
     def validate(self):
         if self.endpoints:
@@ -1593,6 +1723,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
             result['InstanceType'] = self.instance_type
         if self.leader_instance_id is not None:
             result['LeaderInstanceId'] = self.leader_instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.suspend_reason is not None:
@@ -1603,6 +1735,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
                 result['Tags'].append(k.to_map() if k else None)
         if self.version is not None:
             result['Version'] = self.version
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -1632,6 +1766,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
             self.instance_type = m.get('InstanceType')
         if m.get('LeaderInstanceId') is not None:
             self.leader_instance_id = m.get('LeaderInstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SuspendReason') is not None:
@@ -1643,6 +1779,8 @@ class ListInstancesResponseBodyInstanceList(TeaModel):
                 self.tags.append(temp_model.from_map(k))
         if m.get('Version') is not None:
             self.version = m.get('Version')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -1767,7 +1905,14 @@ class RenewInstanceRequest(TeaModel):
         auto_renew: bool = None,
         duration: int = None,
     ):
+        # Specifies whether to enable monthly auto-renewal. The default value is false. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # >  If you enable auto-renewal for an instance for which auto-renewal is enabled, an error is reported.
         self.auto_renew = auto_renew
+        # The renewal duration. Unit: month.
         self.duration = duration
 
     def validate(self):
@@ -1802,9 +1947,16 @@ class RenewInstanceResponseBodyData(TeaModel):
         order_id: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.code = code
+        # The error details.
         self.message = message
+        # The ID of the order.
         self.order_id = order_id
+        # Indicates whether the renewal was successful.
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1849,12 +2001,17 @@ class RenewInstanceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
+        # The request result, which indicates whether the request was successful.
         self.success = success
 
     def validate(self):
@@ -2180,12 +2337,49 @@ class ScaleInstanceRequest(TeaModel):
         self,
         cold_storage_size: int = None,
         cpu: int = None,
+        gateway_count: int = None,
         scale_type: str = None,
         storage_size: int = None,
     ):
+        # The infrequent access (IA) storage space of the instance. Unit: GB.
+        # 
+        # > This parameter is invalid for pay-as-you-go instances.
         self.cold_storage_size = cold_storage_size
+        # The specifications of the instance. Valid values:
+        # 
+        # *   8-core 32 GB (number of compute Nodes: 1)
+        # *   16-core 64 GB (number of compute nodes: 1)
+        # *   32-core 128 GB (number of compute nodes: 2)
+        # *   64-core 256 GB (number of compute nodes: 4)
+        # *   96-core 384 GB (number of compute nodes: 6)
+        # *   128-core 512 GB (number of compute nodes: 8)
+        # *   Others
+        # 
+        # > 
+        # 
+        # *   Set this parameter to the number of cores.
+        # 
+        # *   If you want to set this parameter to specifications with more than 1,024 compute units (CUs), you must submit a ticket.
+        # 
+        # *   This parameter is invalid for shared instances.
+        # 
+        # *   The specifications of 8-core 32 GB (number of compute nodes: 1) are for trial use only and cannot be used for production.
         self.cpu = cpu
+        self.gateway_count = gateway_count
+        # The specification change type. Valid values:
+        # 
+        # *   UPGRADE
+        # *   DOWNGRADE
+        # 
+        # > 
+        # 
+        # *   If you set this parameter to UPGRADE, the new specifications must be higher than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
+        # 
+        # *   If you set this parameter to DOWNGRADE, the new specifications must be lower than the original specifications. You must configure at least one of the cpu, storageSize, and coldStorageSize parameters. If you leave a parameter empty, the related configuration remains unchanged.
         self.scale_type = scale_type
+        # The standard storage space of the instance. Unit: GB.
+        # 
+        # > This parameter is invalid for pay-as-you-go instances.
         self.storage_size = storage_size
 
     def validate(self):
@@ -2201,6 +2395,8 @@ class ScaleInstanceRequest(TeaModel):
             result['coldStorageSize'] = self.cold_storage_size
         if self.cpu is not None:
             result['cpu'] = self.cpu
+        if self.gateway_count is not None:
+            result['gatewayCount'] = self.gateway_count
         if self.scale_type is not None:
             result['scaleType'] = self.scale_type
         if self.storage_size is not None:
@@ -2213,6 +2409,8 @@ class ScaleInstanceRequest(TeaModel):
             self.cold_storage_size = m.get('coldStorageSize')
         if m.get('cpu') is not None:
             self.cpu = m.get('cpu')
+        if m.get('gatewayCount') is not None:
+            self.gateway_count = m.get('gatewayCount')
         if m.get('scaleType') is not None:
             self.scale_type = m.get('scaleType')
         if m.get('storageSize') is not None:
@@ -2228,9 +2426,31 @@ class ScaleInstanceResponseBodyData(TeaModel):
         order_id: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.code = code
+        # The error details.
         self.message = message
+        # The ID of the order.
         self.order_id = order_id
+        # Indicates whether the change to specifications was successful.
+        # 
+        # Valid values:
+        # 
+        # *   true
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.success = success
 
     def validate(self):
@@ -2274,11 +2494,15 @@ class ScaleInstanceResponseBody(TeaModel):
         http_status_code: str = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # The HTTP status code.
         self.http_status_code = http_status_code
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
