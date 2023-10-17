@@ -30999,11 +30999,13 @@ class PushObjectCacheResponse(TeaModel):
 class RefreshObjectCachesRequest(TeaModel):
     def __init__(
         self,
+        force: bool = None,
         object_path: str = None,
         object_type: str = None,
         owner_id: int = None,
         security_token: str = None,
     ):
+        self.force = force
         self.object_path = object_path
         # The type of the object that you want to refresh. Valid values:
         # 
@@ -31028,6 +31030,8 @@ class RefreshObjectCachesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.force is not None:
+            result['Force'] = self.force
         if self.object_path is not None:
             result['ObjectPath'] = self.object_path
         if self.object_type is not None:
@@ -31040,6 +31044,8 @@ class RefreshObjectCachesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Force') is not None:
+            self.force = m.get('Force')
         if m.get('ObjectPath') is not None:
             self.object_path = m.get('ObjectPath')
         if m.get('ObjectType') is not None:
