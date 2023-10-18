@@ -7884,6 +7884,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_release_time):
             query['AutoReleaseTime'] = request.auto_release_time
+        if not UtilClient.is_unset(request.credit_specification):
+            query['CreditSpecification'] = request.credit_specification
         if not UtilClient.is_unset(request.data_disk):
             query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.deletion_protection):
@@ -8017,6 +8019,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_release_time):
             query['AutoReleaseTime'] = request.auto_release_time
+        if not UtilClient.is_unset(request.credit_specification):
+            query['CreditSpecification'] = request.credit_specification
         if not UtilClient.is_unset(request.data_disk):
             query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.deletion_protection):
@@ -8182,6 +8186,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_release_time):
             query['AutoReleaseTime'] = request.auto_release_time
+        if not UtilClient.is_unset(request.credit_specification):
+            query['CreditSpecification'] = request.credit_specification
         if not UtilClient.is_unset(request.data_disk):
             query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.deletion_protection):
@@ -8307,6 +8313,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_release_time):
             query['AutoReleaseTime'] = request.auto_release_time
+        if not UtilClient.is_unset(request.credit_specification):
+            query['CreditSpecification'] = request.credit_specification
         if not UtilClient.is_unset(request.data_disk):
             query['DataDisk'] = request.data_disk
         if not UtilClient.is_unset(request.deletion_protection):

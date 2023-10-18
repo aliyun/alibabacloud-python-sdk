@@ -13222,6 +13222,7 @@ class CreateLaunchTemplateRequest(TeaModel):
         self,
         system_disk: CreateLaunchTemplateRequestSystemDisk = None,
         auto_release_time: str = None,
+        credit_specification: str = None,
         data_disk: List[CreateLaunchTemplateRequestDataDisk] = None,
         deletion_protection: bool = None,
         deployment_set_id: str = None,
@@ -13274,6 +13275,7 @@ class CreateLaunchTemplateRequest(TeaModel):
         # *   The release time must be at least 30 minutes later than the current time.
         # *   The release time must be at most three years from the current time.
         self.auto_release_time = auto_release_time
+        self.credit_specification = credit_specification
         # The data disks.
         self.data_disk = data_disk
         # Specifies whether to enable release protection for the instance. This parameter determines whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to release the instance. Valid values:
@@ -13447,6 +13449,8 @@ class CreateLaunchTemplateRequest(TeaModel):
             result['SystemDisk'] = self.system_disk.to_map()
         if self.auto_release_time is not None:
             result['AutoReleaseTime'] = self.auto_release_time
+        if self.credit_specification is not None:
+            result['CreditSpecification'] = self.credit_specification
         result['DataDisk'] = []
         if self.data_disk is not None:
             for k in self.data_disk:
@@ -13552,6 +13556,8 @@ class CreateLaunchTemplateRequest(TeaModel):
             self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('AutoReleaseTime') is not None:
             self.auto_release_time = m.get('AutoReleaseTime')
+        if m.get('CreditSpecification') is not None:
+            self.credit_specification = m.get('CreditSpecification')
         self.data_disk = []
         if m.get('DataDisk') is not None:
             for k in m.get('DataDisk'):
@@ -14145,6 +14151,7 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
         self,
         system_disk: CreateLaunchTemplateVersionRequestSystemDisk = None,
         auto_release_time: str = None,
+        credit_specification: str = None,
         data_disk: List[CreateLaunchTemplateVersionRequestDataDisk] = None,
         deletion_protection: bool = None,
         deployment_set_id: str = None,
@@ -14196,6 +14203,7 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
         # *   The specified time must be at least 30 minutes later than the current time.
         # *   The specified time can be at most three years from the current time.
         self.auto_release_time = auto_release_time
+        self.credit_specification = credit_specification
         # The data disks.
         self.data_disk = data_disk
         # Specifies whether to enable release protection for the instance. This parameter determines whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to release the instance. Valid values:
@@ -14363,6 +14371,8 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
             result['SystemDisk'] = self.system_disk.to_map()
         if self.auto_release_time is not None:
             result['AutoReleaseTime'] = self.auto_release_time
+        if self.credit_specification is not None:
+            result['CreditSpecification'] = self.credit_specification
         result['DataDisk'] = []
         if self.data_disk is not None:
             for k in self.data_disk:
@@ -14464,6 +14474,8 @@ class CreateLaunchTemplateVersionRequest(TeaModel):
             self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('AutoReleaseTime') is not None:
             self.auto_release_time = m.get('AutoReleaseTime')
+        if m.get('CreditSpecification') is not None:
+            self.credit_specification = m.get('CreditSpecification')
         self.data_disk = []
         if m.get('DataDisk') is not None:
             for k in m.get('DataDisk'):
@@ -55749,6 +55761,7 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         self,
         system_disk: DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataSystemDisk = None,
         auto_release_time: str = None,
+        credit_specification: str = None,
         data_disks: DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisks = None,
         deletion_protection: bool = None,
         deployment_set_id: str = None,
@@ -55788,6 +55801,7 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
         self.system_disk = system_disk
         # The automatic release time of the instance.
         self.auto_release_time = auto_release_time
+        self.credit_specification = credit_specification
         # Details about the data disks.
         self.data_disks = data_disks
         # Specifies whether to enable release protection for the instance. This parameter determines whether you can use the ECS console or call the [DeleteInstance](~~25507~~) operation to release the instance. Valid values:
@@ -55912,6 +55926,8 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
             result['SystemDisk'] = self.system_disk.to_map()
         if self.auto_release_time is not None:
             result['AutoReleaseTime'] = self.auto_release_time
+        if self.credit_specification is not None:
+            result['CreditSpecification'] = self.credit_specification
         if self.data_disks is not None:
             result['DataDisks'] = self.data_disks.to_map()
         if self.deletion_protection is not None:
@@ -55991,6 +56007,8 @@ class DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchT
             self.system_disk = temp_model.from_map(m['SystemDisk'])
         if m.get('AutoReleaseTime') is not None:
             self.auto_release_time = m.get('AutoReleaseTime')
+        if m.get('CreditSpecification') is not None:
+            self.credit_specification = m.get('CreditSpecification')
         if m.get('DataDisks') is not None:
             temp_model = DescribeLaunchTemplateVersionsResponseBodyLaunchTemplateVersionSetsLaunchTemplateVersionSetLaunchTemplateDataDataDisks()
             self.data_disks = temp_model.from_map(m['DataDisks'])
