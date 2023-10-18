@@ -5098,6 +5098,8 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.DetachInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.decrease_desired_capacity):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
         if not UtilClient.is_unset(request.detach_option):
@@ -5142,6 +5144,8 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.DetachInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.decrease_desired_capacity):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
         if not UtilClient.is_unset(request.detach_option):
@@ -8116,6 +8120,8 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.RemoveInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.decrease_desired_capacity):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
         if not UtilClient.is_unset(request.instance_ids):
@@ -8160,6 +8166,8 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.RemoveInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.decrease_desired_capacity):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
         if not UtilClient.is_unset(request.instance_ids):

@@ -16846,6 +16846,7 @@ class DetachDBInstancesResponse(TeaModel):
 class DetachInstancesRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         decrease_desired_capacity: bool = None,
         detach_option: str = None,
         instance_ids: List[str] = None,
@@ -16856,6 +16857,7 @@ class DetachInstancesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
+        self.client_token = client_token
         self.decrease_desired_capacity = decrease_desired_capacity
         self.detach_option = detach_option
         self.instance_ids = instance_ids
@@ -16875,6 +16877,8 @@ class DetachInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.decrease_desired_capacity is not None:
             result['DecreaseDesiredCapacity'] = self.decrease_desired_capacity
         if self.detach_option is not None:
@@ -16897,6 +16901,8 @@ class DetachInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DecreaseDesiredCapacity') is not None:
             self.decrease_desired_capacity = m.get('DecreaseDesiredCapacity')
         if m.get('DetachOption') is not None:
@@ -25627,6 +25633,7 @@ class RecordLifecycleActionHeartbeatResponse(TeaModel):
 class RemoveInstancesRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         decrease_desired_capacity: bool = None,
         instance_ids: List[str] = None,
         owner_account: str = None,
@@ -25637,6 +25644,7 @@ class RemoveInstancesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
+        self.client_token = client_token
         self.decrease_desired_capacity = decrease_desired_capacity
         self.instance_ids = instance_ids
         self.owner_account = owner_account
@@ -25656,6 +25664,8 @@ class RemoveInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.decrease_desired_capacity is not None:
             result['DecreaseDesiredCapacity'] = self.decrease_desired_capacity
         if self.instance_ids is not None:
@@ -25678,6 +25688,8 @@ class RemoveInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('DecreaseDesiredCapacity') is not None:
             self.decrease_desired_capacity = m.get('DecreaseDesiredCapacity')
         if m.get('InstanceIds') is not None:
