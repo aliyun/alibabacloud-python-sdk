@@ -1,3 +1,6 @@
+2023-10-18 Version: 6.0.0
+- Generated python 2016-04-28 for Vpc.
+
 2023-09-15 Version: 5.1.0
 - Generated python 2016-04-28 for Vpc.
 

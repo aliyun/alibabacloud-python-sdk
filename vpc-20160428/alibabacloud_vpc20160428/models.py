@@ -443,23 +443,23 @@ class AddCommonBandwidthPackageIpRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The ID of the EIP.
+        # The EIP ID.
         # 
-        # You can call the [DescribeEipAddresses](~~36018~~) operation to query the most recent region list.
+        # You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
         self.ip_instance_id = ip_instance_id
-        # The type of IP address. Set the value to **EIP** to associate an EIP with the EIP bandwidth plan.
+        # The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the EIP bandwidth plan.
+        # The region ID of the Internet Shared Bandwidth instance.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -523,7 +523,7 @@ class AddCommonBandwidthPackageIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -603,20 +603,23 @@ class AddCommonBandwidthPackageIpsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The list of EIPs that you want to associate with the Internet Shared Bandwidth instance.
+        # 
+        # You can specify at most 10 EIP IDs at a time.
         self.ip_instance_ids = ip_instance_ids
-        # The type of IP address. Set the value to **EIP** to associate EIPs with the EIP bandwidth plan.
+        # The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the EIP bandwidth plan.
+        # The region ID of the Internet Shared Bandwidth instance.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -680,7 +683,7 @@ class AddCommonBandwidthPackageIpsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1230,14 +1233,14 @@ class AddSourcesToTrafficMirrorSessionRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request format, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. After the request passes the check, the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1251,6 +1254,7 @@ class AddSourcesToTrafficMirrorSessionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the traffic mirror session.
         self.traffic_mirror_session_id = traffic_mirror_session_id
+        # The ID of the traffic mirror source. You can specify only an elastic network interface (ENI) as the traffic mirror source. The default value of **N** is **1**, which indicates that you can add only one traffic mirror source to a traffic mirror session.
         self.traffic_mirror_source_ids = traffic_mirror_source_ids
 
     def validate(self):
@@ -1310,7 +1314,7 @@ class AddSourcesToTrafficMirrorSessionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1404,50 +1408,50 @@ class AllocateEipAddressRequest(TeaModel):
         security_protection_types: List[str] = None,
         zone: str = None,
     ):
-        # The promotion code. Ignore this parameter.
+        # The promotion code. This parameter is not required.
         self.activity_id = activity_id
-        # Specifies whether to enable automatic payment. Default value: false. Valid values:
+        # Specifies whether to enable automatic payment. Valid values:
         # 
-        # *   **false**: disables automatic payment. This is the default value. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
-        # *   **true**: enables automatic payment. Payments are automatically completed.
+        # *   **false** (default): The automatic payment is disabled. If you select this option, you must go to the Order Center to complete the payment after an order is generated.
+        # *   **true**: The automatic payment is enabled. Payments are automatically complete after an order is generated.
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+        # If **InstanceChargeType** is set to **PrePaid**, this parameter is required. If **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
         self.auto_pay = auto_pay
         # The maximum bandwidth of the EIP. Unit: Mbit/s.
         # 
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
-        # *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****\
+        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****\
+        # *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****\
         # 
         # Default value: **5**. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The **client token** can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
         # The description of the EIP.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         # 
-        # >  This parameter is unavailable when you create a subscription EIP.
+        # >  You cannot specify this parameter if you create a subscription EIP.
         self.description = description
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) lines All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP** (default): BGP (Multi-ISP) All regions support BGP (Multi-ISP) EIPs.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the "Line types" section of [What is EIP?](~~32321~~)
         # 
         # *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
-        #     *   **ChinaTelecom**: China Telecom
-        #     *   **ChinaUnicom**: China Unicom
-        #     *   **ChinaMobile**: China Mobile
-        #     *   **ChinaTelecom_L2**: China Telecom L2
-        #     *   **ChinaUnicom_L2**: China Unicom L2
-        #     *   **ChinaMobile_L2**: China Mobile L2
+        #     *   **ChinaTelecom**\
+        #     *   **ChinaUnicom**\
+        #     *   **ChinaMobile**\
+        #     *   **ChinaTelecom_L2**\
+        #     *   **ChinaUnicom_L2**\
+        #     *   **ChinaMobile_L2**\
         # 
         # *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
         self.isp = isp
@@ -1456,59 +1460,76 @@ class AllocateEipAddressRequest(TeaModel):
         # *   **PrePaid**: subscription
         # *   **PostPaid** (default): pay-as-you-go
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, set **InternetChargeType** to **PayByBandwidth**. When **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+        # If **InstanceChargeType** is set to **PrePaid**, set **InternetChargeType** to **PayByBandwidth**. If **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
         self.instance_charge_type = instance_charge_type
+        # The EIP ID.
+        # 
+        # Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
         self.instance_id = instance_id
         # The metering method of the EIP. Valid values:
         # 
         # *   **PayByBandwidth** (default): pay-by-bandwidth
         # *   **PayByTraffic**: pay-by-data-transfer
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+        # If **InstanceChargeType** is set to **PrePaid**, set **InternetChargeType** to **PayByBandwidth**.
         # 
-        # When **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+        # If **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
         self.internet_charge_type = internet_charge_type
+        # The IP address of the EIP that you want to request.
+        # 
+        # Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
         self.ip_address = ip_address
-        # The name of the EIP.
+        # The EIP name.
         # 
-        # The name must be 1 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 128 characters in length and start with a letter, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         # 
-        # >  This parameter is unavailable when you create a subscription EIP.
+        # >  You cannot specify this parameter if you create a subscription EIP.
         self.name = name
-        # The network type. Set the value to **public**, which specifies the Internet.
+        # The network type. Default value: **public**.
         self.netmode = netmode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance.
+        # The subscription duration of the EIP.
         # 
-        # When **PricingCycle** is set to **Month**, set **Period** to a value from **1** to **9**.
+        # Valid values when **PricingCycle** is set to **Month**: **1** to **9**.****\
         # 
-        # When **PricingCycle** is set to **Year**, set **Period** to a value from **1** to **5**.
+        # Valid values when **PricingCycle** is set to **Year**: **1** to **5**.****\
         # 
-        # This parameter is required when **InstanceChargeType** is set to **PrePaid**. This parameter is optional when **InstanceChargeType** is set to **PostPaid**.
+        # This parameter must be specified when **InstanceChargeType** is set to **PrePaid**. This parameter is optional when **InstanceChargeType** is set to **PostPaid**.
         self.period = period
         # The billing cycle of the subscription EIP. Valid values:
         # 
-        # *   **Month** (default): The EIP is billed on a monthly basis.
-        # *   **Year**: The EIP is billed on an annual basis.
+        # *   **Month** (default)
+        # *   **Year**\
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+        # If **InstanceChargeType** is set to **PrePaid**, this parameter is required. If **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
         self.pricing_cycle = pricing_cycle
         # The ID of the IP address pool.
         # 
         # The EIP is allocated from the IP address pool.
         # 
-        # You cannot use the IP address pool feature by default. To use the IP address pool feature, apply for the privilege in the Quota Center console. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+        # By default, the IP address pool feature is unavailable. To use the IP address pool, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in [Manage EIP quotas](~~108213~~).
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the region to which the EIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The editions of Anti-DDoS.
+        # 
+        # *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+        # *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+        # 
+        # You can specify up to 10 editions of Anti-DDoS.
         self.security_protection_types = security_protection_types
+        # The zone of the EIP.
+        # 
+        # When the service type of the IP address pool specified by **PublicIpAddressPoolId** is CloudBox, the default value is the zone of the IP address pool.
+        # 
+        # For more information, see [ListPublicIpAddressPools](~~429433~~).
         self.zone = zone
 
     def validate(self):
@@ -1628,13 +1649,13 @@ class AllocateEipAddressResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the EIP.
+        # The EIP ID.
         self.allocation_id = allocation_id
         # The EIP that is allocated. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
         self.eip_address = eip_address
-        # The ID of the order. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
+        # The order ID. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the resource group. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
         self.resource_group_id = resource_group_id
@@ -1742,105 +1763,111 @@ class AllocateEipAddressProRequest(TeaModel):
         resource_owner_id: int = None,
         security_protection_types: List[str] = None,
     ):
-        # Specifies whether to enable automatic payment. Valid values:
+        # Specifies whether to enable automatic payment. Default value: true. Valid values:
         # 
-        # *   **false**: disables automatic payment. After an order is generated, you must go to the Order Center to complete the payment.
-        # *   **true**: enabled. Payments are automatically completed.
+        # *   **false**: Automatic payment is disabled. After an order is generated, you must go to the Order Center to complete the payment.
+        # *   **true**: Automatic payment is enabled. After an order is generated, the payment is automatically completed.
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+        # This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
         self.auto_pay = auto_pay
-        # The maximum bandwidth of the specified EIP. Unit: Mbit/s.
+        # The maximum bandwidth of the EIP. Unit: Mbit/s.
         # 
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, valid values for **Bandwidth** are **1** to **500**.
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, valid values for **Bandwidth** are **1** to **200**.
-        # *   When **InstanceChargeType** is set to **PrePaid**, valid values for **Bandwidth** are **1** to **1000**.
+        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****\
+        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****\
+        # *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****\
         # 
         # Default value: **5**. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) lines All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
         # 
         # *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
-        #     *   **ChinaTelecom**: China Telecom
-        #     *   **ChinaUnicom**: China Unicom
-        #     *   **ChinaMobile**: China Mobile
-        #     *   **ChinaTelecom_L2**: China Telecom L2
-        #     *   **ChinaUnicom_L2**: China Unicom L2
-        #     *   **ChinaMobile_L2**: China Mobile L2
+        #     *   **ChinaTelecom**\
+        #     *   **ChinaUnicom**\
+        #     *   **ChinaMobile**\
+        #     *   **ChinaTelecom_L2**\
+        #     *   **ChinaUnicom_L2**\
+        #     *   **ChinaMobile_L2**\
         # 
-        # *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+        # *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
         self.isp = isp
-        # The billing method of the specified EIP. Valid values:
+        # The billing method of the EIP. Valid values:
         # 
         # *   **PrePaid**: subscription
         # *   **PostPaid** (default): pay-as-you-go
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+        # Set the value of **InternetChargeType** to **PayByBandwidth** if **InstanceChargeType** is set to **PrePaid**.
         # 
-        # When **InstanceChargeType** is set to **PostPaid**, you must set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+        # Valid values when **InstanceChargeType** is set to **PostPaid**: **PayByBandwidth** or **PayByTraffic**.
         self.instance_charge_type = instance_charge_type
-        # The ID of the EIP.
+        # The EIP ID.
         # 
-        # Set **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+        # Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
         self.instance_id = instance_id
-        # The metering method of the specified EIP. Valid values:
+        # The metering method of the EIP. Valid values:
         # 
-        # *   **PayByBandwidth** (default): pay-by-bandwidth
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth** (default)
+        # *   **PayByTraffic**\
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+        # Set the value of **InternetChargeType** to **PayByBandwidth** if **InstanceChargeType** is set to **PrePaid**.
         # 
-        # When **InstanceChargeType** is set to **PostPaid**, you must set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+        # Valid values when **InstanceChargeType** is set to **PostPaid**: **PayByBandwidth** or **PayByTraffic**.
         self.internet_charge_type = internet_charge_type
-        # The IP address of the EIP that you want to request.
+        # The IP address of the EIP.
         # 
-        # Set **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
+        # Specify **IpAddress** or **InstanceId**. If you leave both parameters empty, the system randomly allocates an EIP.
         self.ip_address = ip_address
-        # The network type. Set the value to **public**, which specifies the Internet.
+        # The network type. By default, this value is set to **public**, which specifies the public network type.
         self.netmode = netmode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the bandwidth plan.
+        # The subscription duration.
         # 
-        # *   If **PricingCycle** is set to **Month**, set **Period** to a value from **1 to 9**.
-        # *   If **PricingCycle** is set to **Year**, set **Period** to a value from **1 to 3**.
+        # *   Valid values when **PricingCycle** is set to **Month**: **1 to 9**.****\
+        # *   Valid values when **PricingCycle** is set to **Year**: **1 to 3**.****\
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, this parameter is required.
+        # This parameter is required if **InstanceChargeType** is set to **PrePaid**.
         # 
-        # Ignore this parameter when **InstanceChargeType** is set to **PostPaid**.
+        # Leave this parameter empty if **InstanceChargeType** is set to **PostPaid**.
         self.period = period
         # The billing cycle of the subscription EIP. Valid values:
         # 
-        # *   **Month** (default): The EIP is billed on a monthly basis.
-        # *   **Year**: The EIP is billed on an annual basis.
+        # *   **Month** (default)
+        # *   **Year**\
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, this parameter is required. When **InstanceChargeType** is set to **PostPaid**, this parameter is not required.
+        # This parameter is required if **InstanceChargeType** is set to **PrePaid**. This parameter is optional if **InstanceChargeType** is set to **PostPaid**.
         self.pricing_cycle = pricing_cycle
         # The ID of the IP address pool.
         # 
         # The EIP is allocated from the IP address pool.
         # 
-        # You cannot use the IP address pool feature by default. To use this feature, apply for the privilege in the Quota Center console. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+        # By default, you cannot use the IP address pool. To use this feature, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section of [Manage EIP quotas](~~108213~~).
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The ID of the region where you want to request a specified EIP.
+        # The ID of the region to which the EIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group to which the EIP belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The editions of Anti-DDoS.
+        # 
+        # *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+        # *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+        # 
+        # You can configure Anti-DDoS editions for up to 10 EIPs.
         self.security_protection_types = security_protection_types
 
     def validate(self):
@@ -1944,15 +1971,15 @@ class AllocateEipAddressProResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the specified EIP.
+        # The EIP ID.
         self.allocation_id = allocation_id
-        # The IP address of the requested EIP.
+        # The IP address that is allocated to the EIP. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
         self.eip_address = eip_address
-        # The order number. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
+        # The order ID. This parameter is returned only when **InstanceChargeType** is set to **PrePaid**.
         self.order_id = order_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The ID of the resource group. This parameter is returned only when **InstanceChargeType** is set to **PostPaid**.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2052,65 +2079,66 @@ class AllocateEipSegmentAddressRequest(TeaModel):
         resource_owner_id: int = None,
         zone: str = None,
     ):
-        # The maximum bandwidth of the EIP. Unit: Mbit/s.
+        # The maximum bandwidth of the contiguous EIP group. Unit: Mbit/s.
         # 
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**, the valid values for **Bandwidth** are **1** to **500**.
-        # *   When **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**, the valid values for **Bandwidth** are **1** to **200**.
-        # *   When **InstanceChargeType** is set to **PrePaid**, the valid values for **Bandwidth** are **1** to **1000**.
+        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByBandwidth**: **1** to **500**.****\
+        # *   Valid values when **InstanceChargeType** is set to **PostPaid** and **InternetChargeType** is set to **PayByTraffic**: **1** to **200**.****\
+        # *   Valid values when **InstanceChargeType** is set to **PrePaid**: **1** to **1000**.****\
         # 
         # Default value: **5**. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The client token that is used to ensure the idempotence of the request. 
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among all requests. The **client token** can contain only ASCII characters. 
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The subnet mask length of the contiguous EIPs. Valid values:
+        # The subnet mask of the contiguous EIP group. Valid values:
         # 
-        # - **28**: applies for 16 contiguous EIPs in each call.
-        # - **27**: applies for 32 contiguous EIPs in each call.
-        # - **26**: applies for 64 contiguous EIPs each call.
-        # - **25**: applies for 128 contiguous EIPs in each call.
-        # - **24**: applies for 256 contiguous EIPs in each call.
+        # *   **28**: applies for 16 contiguous EIPs in each call.
+        # *   **27**: applies for 32 contiguous EIPs in each call.
+        # *   **26**: applies for 64 contiguous EIPs in each call.
+        # *   **25**: applies for 128 contiguous EIPs in each call.
+        # *   **24**: applies for 256 contiguous EIPs in each call.
         # 
-        # >  The number of contiguous EIPs allocated by the system may be less than the requested number because one, three, or four EIPs may be reserved.
+        # >  Some IP address are reserved for specific purposes. Therefore, the actual number of the contiguous EIPs may be one, three, or four less than the expected number.
         self.eip_mask = eip_mask
-        # The metering method of the contiguous EIPs. Valid values:
+        # The metering method of the contiguous EIP group. Valid values:
         # 
-        # *   **PayByBandwidth** (default): pay-by-bandwidth
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth** (default)
+        # *   **PayByTraffic**\
         self.internet_charge_type = internet_charge_type
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) lines All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP** (default): BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see [EIP line types](~~32321~~).
         # 
-        # If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+        # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
         # 
-        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
         self.isp = isp
-        # Set the value to **public**, which specifies the Internet.
+        # The network type. Set the value to **public**, which specifies the public network type.
         self.netmode = netmode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the contiguous EIPs.
+        # The ID of the region in which the contiguous EIP group resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The zone of the contiguous EIP group.
         self.zone = zone
 
     def validate(self):
@@ -2189,7 +2217,7 @@ class AllocateEipSegmentAddressResponseBody(TeaModel):
     ):
         # The ID of the contiguous EIP group.
         self.eip_segment_instance_id = eip_segment_instance_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2274,18 +2302,18 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Internet bandwidth that you want to purchase for the IPv6 gateway. Valid values: **1 to 5000**. Unit: Mbit/s.
+        # The Internet bandwidth of the IPv6 gateway. Unit: Mbit/s. Valid values: **1 to 5000**.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The metering method of the Internet bandwidth of the IPv6 gateway. Valid values:
+        # The metering method of the Internet bandwidth for the IPv6 address. Valid values:
         # 
-        # *   **PayByTraffic**: the pay-by-data-transfer metering method
-        # *   **PayByBandwidth**: the pay-by-bandwidth metering method
+        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth** (default): pay-by-bandwidth
         self.internet_charge_type = internet_charge_type
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
@@ -2293,7 +2321,7 @@ class AllocateIpv6InternetBandwidthRequest(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2365,7 +2393,7 @@ class AllocateIpv6InternetBandwidthResponseBody(TeaModel):
         self.internet_bandwidth_id = internet_bandwidth_id
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2904,54 +2932,54 @@ class AssociateEipAddressRequest(TeaModel):
         self.allocation_id = allocation_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the instance with which you want to associate the EIP.
         # 
         # You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
         self.instance_id = instance_id
-        # The region ID of the instance with which you want to associate the EIP.
+        # The ID of the region in which the instance with which you want to associate the EIP resides.
         # 
-        # >  This parameter is required only when the EIP is associated with a shared-bandwidth Global Accelerator (GA) instance.
+        # >  This parameter is required only when the EIP is added to a shared Global Accelerator (GA) instance.
         self.instance_region_id = instance_region_id
-        # The type of instance with which you want to associate the EIP. Valid values:
+        # The type of the instance with which you want to associate the EIP. Valid values:
         # 
-        # *   **Nat**: a NAT gateway
-        # *   **SlbInstance**: a CLB instance
-        # *   **EcsInstance** (default): an ECS instance in a VPC
-        # *   **NetworkInterface**: a secondary ENI
-        # *   **HaVip**: an HAVIP
-        # *   **IpAddress**: an IP address
+        # *   **Nat**: NAT gateway
+        # *   **SlbInstance**: CLB instance
+        # *   **EcsInstance** (default): ECS instance
+        # *   **NetworkInterface**: secondary ENI
+        # *   **HaVip**: HAVIP
+        # *   **IpAddress**: IP address
         # 
-        # >  If you do not set this parameter, the type of the instance with which you want to associate the EIP is **EcsInstance**. If the type of the instance with which you want to associate the EIP is not **EcsInstance**, this parameter is required.
+        # >  The default value is **EcsInstance**. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
         self.instance_type = instance_type
         # The association mode. Valid values:
         # 
         # *   **NAT** (default): NAT mode
         # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-        # *   **BINDED**: cut-through mode
+        # *   **BINDED**: cut-network interface controller mode
         # 
         # >  This parameter is required only when **InstanceType** is set to **NetworkInterface**.
         self.mode = mode
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # An IP address in the CIDR block of the vSwitch.
+        # The IP address in the CIDR block of the vSwitch.
         # 
-        # If you do not set this parameter, the system allocates a private IP address based on the VPC ID and vSwitch ID.
+        # If you leave this parameter empty, the system allocates a private IP address based on the VPC ID and vSwitch ID.
         self.private_ip_address = private_ip_address
         # The ID of the region to which the EIP belongs.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP.
+        # The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
         # 
         # When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
         # 
-        # >  This parameter is required if **InstanceType** is set to **IpAddress**. In this case, the EIP is associated with an IP address.
+        # >  This parameter is required if **InstanceType** is set to **IpAddress**, which indicates that the EIP is to be associated with an IP address.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -3027,7 +3055,7 @@ class AssociateEipAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3107,30 +3135,31 @@ class AssociateEipAddressBatchRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance to be associated with EIPs.
+        # The ID of the instance with which you want to associate the EIPs.
         # 
         # The instance can be a NAT gateway or a secondary ENI.
         self.binded_instance_id = binded_instance_id
-        # The type of instance with which you want to associate the EIPs. Valid values:
+        # The type of the instance with which you want to associate the EIPs. Valid values:
         # 
-        # *   **Nat**: a NAT gateway
-        # *   **NetworkInterface**: a secondary ENI
+        # *   **Nat**: NAT gateway
+        # *   **NetworkInterface**: secondary ENI
         self.binded_instance_type = binded_instance_type
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** might be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # The EIPs to be associated with the instance.
+        # 
+        # You must enter at least one EIP. You can enter up to 50 EIPs.
         self.instance_ids = instance_ids
         # The association mode. Set the value to **MULTI_BINDED**, which specifies the Multi-EIP-to-ENI mode.
         # 
-        # This parameter is required only if **InstanceType** is set to **NetworkInterface**.
+        # This parameter is required only when **BindedInstanceType** is set to **NetworkInterface**.
         self.mode = mode
         self.owner_id = owner_id
-        # The ID of the region to which the EIPs belong.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # The ID of the region to which the EIPs belong. You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3192,7 +3221,7 @@ class AssociateEipAddressBatchResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3255,161 +3284,6 @@ class AssociateEipAddressBatchResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = AssociateEipAddressBatchResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class AssociateGlobalAccelerationInstanceRequest(TeaModel):
-    def __init__(
-        self,
-        backend_server_id: str = None,
-        backend_server_region_id: str = None,
-        backend_server_type: str = None,
-        global_acceleration_instance_id: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-    ):
-        # The ID of the backend server.
-        self.backend_server_id = backend_server_id
-        # The region of the backend server. The region must belong to the service area of the GA instance.
-        self.backend_server_region_id = backend_server_region_id
-        # The backend server type. Valid values:
-        # 
-        # *   **EcsInstance** (default): ECS instance
-        # *   **SlbInstance**: SLB instance
-        self.backend_server_type = backend_server_type
-        # The ID of the GA instance.
-        self.global_acceleration_instance_id = global_acceleration_instance_id
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The region ID of the GA instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.backend_server_id is not None:
-            result['BackendServerId'] = self.backend_server_id
-        if self.backend_server_region_id is not None:
-            result['BackendServerRegionId'] = self.backend_server_region_id
-        if self.backend_server_type is not None:
-            result['BackendServerType'] = self.backend_server_type
-        if self.global_acceleration_instance_id is not None:
-            result['GlobalAccelerationInstanceId'] = self.global_acceleration_instance_id
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('BackendServerId') is not None:
-            self.backend_server_id = m.get('BackendServerId')
-        if m.get('BackendServerRegionId') is not None:
-            self.backend_server_region_id = m.get('BackendServerRegionId')
-        if m.get('BackendServerType') is not None:
-            self.backend_server_type = m.get('BackendServerType')
-        if m.get('GlobalAccelerationInstanceId') is not None:
-            self.global_acceleration_instance_id = m.get('GlobalAccelerationInstanceId')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        return self
-
-
-class AssociateGlobalAccelerationInstanceResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The request ID.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class AssociateGlobalAccelerationInstanceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: AssociateGlobalAccelerationInstanceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = AssociateGlobalAccelerationInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4007,9 +3881,9 @@ class AssociateRouteTableRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, **ClientToken** is set to the value of **RequestId**. **RequestId** might be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4077,7 +3951,7 @@ class AssociateRouteTableResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4320,13 +4194,13 @@ class AssociateRouteTablesWithVpcGatewayEndpointRequest(TeaModel):
         resource_owner_id: int = None,
         route_table_ids: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The **client token** can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate a client token. Make sure that a unique client token is used for each request. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **true**: performs only a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the dry run, the DryRunOperation error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the gateway endpoint to be associated with the route table.
@@ -4339,6 +4213,7 @@ class AssociateRouteTablesWithVpcGatewayEndpointRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can associate a gateway endpoint with at most 20 route tables at a time.
         self.route_table_ids = route_table_ids
 
     def validate(self):
@@ -4398,7 +4273,7 @@ class AssociateRouteTablesWithVpcGatewayEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4480,46 +4355,47 @@ class AssociateVpcCidrBlockRequest(TeaModel):
         secondary_cidr_block: str = None,
         vpc_id: str = None,
     ):
-        # The IPv6 CIDR block.
+        # The IPv6 CIDR block to be added.
         # 
-        # >  You must set one of the **SecondaryCidrBlock** and **Ipv6CidrBlock** parameters.
+        # >  You must and can specify only one of **SecondaryCidrBlock** and **Ipv6CidrBlock**.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The IP version. Valid values:
+        # The version of the IP address. Valid values:
         # 
-        # *   **IPV4**: IPv4
-        # *   **IPV6**: IPv6. If you set **IpVersion** to **IPV6** and do not set **SecondaryCidrBlock**, you can add IPv6 CIDR blocks to the VPC.
+        # *   **IPV4**: the IPv4 address.
+        # *   **IPV6**: the IPv6 address. If you set **IpVersion** to **IPV6** and do not specify **SecondaryCidrBlock**, you can add a secondary IPv6 CIDR block to the VPC.
         self.ip_version = ip_version
+        # The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         self.ipam_pool_id = ipam_pool_id
         # The type of the IPv6 CIDR block. Valid values:
         # 
-        # *   **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP) IPv6
-        # *   **ChinaMobile**: China Mobile (single line)
-        # *   **ChinaUnicom**: China Unicom (single line)
-        # *   **ChinaTelecom**: China Telecom (single line)
+        # *   **BGP** (default)
+        # *   **ChinaMobile**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaTelecom**\
         # 
-        # >  If your Alibaba Cloud account is allowed to use single-ISP bandwidth, valid values are: **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**.
+        # >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
         self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the VPC to which you want to add a secondary CIDR block.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The secondary IPv4 CIDR block. Take note of the following requirements:
+        # The IPv4 CIDR block to be added. Take note of the following requirements:
         # 
-        # *   You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
+        # *   You can specify one of the following standard IPv4 CIDR blocks or their subnets as the secondary IPv4 CIDR block of the VPC: 192.168.0.0/16, 172.16.0.0/12, and 10.0.0.0/8.
         # *   You can also use a custom CIDR block other than 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, 169.254.0.0/16, or their subnets as the secondary IPv4 CIDR block of the VPC.
         # 
-        # In addition, the following requirements must be met:
+        # The CIDR block must meet the following requirements:
         # 
         # *   The CIDR block cannot start with 0. The subnet mask must be 8 to 28 bits in length.
-        # *   The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
+        # *   The CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block of the VPC.
         # 
-        # >  You must set one of the **SecondaryCidrBlock** and **Ipv6CidrBlock** parameters.
+        # >  You must and can specify only one of **SecondaryCidrBlock** and **Ipv6CidrBlock**.
         self.secondary_cidr_block = secondary_cidr_block
-        # The ID of the VPC.
+        # The ID of the VPC to which you want to add a secondary CIDR block.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4587,7 +4463,7 @@ class AssociateVpcCidrBlockResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6191,7 +6067,7 @@ class ConnectRouterInterfaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -6973,60 +6849,64 @@ class CreateCommonBandwidthPackageRequest(TeaModel):
         security_protection_types: List[str] = None,
         zone: str = None,
     ):
-        # The maximum bandwidth of the EIP bandwidth plan.
+        # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         # 
-        # Valid values: **1** to **1000**. Unit: Mbit/s.
+        # Valid values: **1** to **1000**. Default value: **1**.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically sets the **ClientToken** parameter to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
-        # The description of the EIP bandwidth plan.
+        # The description of the Internet Shared Bandwidth instance.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
         # The line type. Valid values:
         # 
-        # *   **BGP**: BGP (Multi-ISP) lines. BGP (Multi-ISP) lines are available in all regions.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro is available only in the China (Hong Kong), Singapore, Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        # *   **BGP**: BGP (Multi-ISP) All regions support BGP (Multi-ISP).
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok).
         # 
         # If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
         # 
-        # If your services are deployed in China East 1 Finance, you must set this parameter to **BGP_FinanceCloud**.
+        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
         self.isp = isp
-        # The billing method of the EIP bandwidth plan. Set the value to **PayByTraffic**, which refers to the pay-by-data-transfer metering method.
+        # The billing method of the Internet Shared Bandwidth instance. Valid values: **PayByTraffic**: pay-by-data-transfer
         self.internet_charge_type = internet_charge_type
-        # The name of the EIP bandwidth plan.
+        # The name of the Internet Shared Bandwidth instance.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 2 to 128 characters in length and start with a letter, and can contain letters, digits, underscores (\_), and hyphens (-).
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The percentage of the minimum bandwidth commitment. Set the parameter to **20**.
         # 
-        # >  This parameter is available only on the Alibaba Cloud China site.
+        # >  This parameter is supported only on the Alibaba Cloud China site.
         self.ratio = ratio
-        # The region ID of the EIP bandwidth plan.
+        # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_protection_types = security_protection_types
-        # The zone of the EIP bandwidth plan.
+        # The editions of Anti-DDoS.
         # 
-        # You do not need to set this parameter.
+        # *   If you do not specify this parameter, Anti-DDoS Origin Basic is used.
+        # *   If you set the parameter to **AntiDDoS_Enhanced**, Anti-DDoS Pro/Premium is used.
+        # 
+        # You can specify up to 10 editions of Anti-DDoS.
+        self.security_protection_types = security_protection_types
+        # The zone of the Internet Shared Bandwidth instance. This parameter must be specified when you create an Internet Shared Bandwidth instance for a cloud box.
         self.zone = zone
 
     def validate(self):
@@ -7112,9 +6992,9 @@ class CreateCommonBandwidthPackageResponseBody(TeaModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -8842,37 +8722,37 @@ class CreateFullNatEntryRequest(TeaModel):
     ):
         # The backend IP address to be modified in FULLNAT address translation.
         self.access_ip = access_ip
-        # The backend port to be modified in FULLNAT port mapping. Valid values: **1** to **65535**.
+        # The backend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
         self.access_port = access_port
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
+        # Specifies whether to only precheck this request. Valid values:
         # 
-        # *   **true**: prechecks the request but does not add the FULLNAT entry. The system checks your AccessKey pair, the RAM user permissions, and the required parameters. If the request fails the precheck, an error code is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the API request. After the request passes the precheck, a 2XX HTTP status code is returned and the FULLNAT entry is added. This is the default value.
+        # *   **true**: prechecks the request without adding the FULLNAT entry. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the API request. This is the default value. After the request passes the precheck, a 2XX HTTP status code is returned and the FULLNAT entry is added.
         self.dry_run = dry_run
         # The description of the FULLNAT entry.
         # 
         # This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.full_nat_entry_description = full_nat_entry_description
-        # The name of the FULLNAT entry. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://.
+        # The FULLNAT entry name. The name must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://.
         self.full_nat_entry_name = full_nat_entry_name
         # The ID of the FULLNAT table to which the FULLNAT entry belongs.
         self.full_nat_table_id = full_nat_table_id
         # The protocol of the packets that are forwarded by the port. Valid values:
         # 
-        # *   **TCP**: forwards TCP packets.
-        # *   **UDP**: forwards UDP packets.
+        # *   **TCP**\
+        # *   **UDP**\
         self.ip_protocol = ip_protocol
         # The NAT IP address that provides address translation.
         self.nat_ip = nat_ip
-        # The frontend port to be modified in FULLNAT port mapping. Valid values: **1** to **65535**.
+        # The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
         self.nat_ip_port = nat_ip_port
-        # The ID of the elastic network interface (ENI).
+        # The elastic network interface (ENI) ID.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8969,9 +8849,9 @@ class CreateFullNatEntryResponseBody(TeaModel):
         full_nat_entry_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the FULLNAT entry.
+        # The FULLNAT entry ID.
         self.full_nat_entry_id = full_nat_entry_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9246,7 +9126,13 @@ class CreateHaVipRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -9315,6 +9201,7 @@ class CreateHaVipRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag of the resource.
         self.tag = tag
         # The ID of the vSwitch to which the HAVIP belongs.
         self.v_switch_id = v_switch_id
@@ -9473,6 +9360,472 @@ class CreateHaVipResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateHaVipResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateHighReliablePhysicalConnectionRequestApList(TeaModel):
+    def __init__(
+        self,
+        access_point_id: str = None,
+        bandwidth: int = None,
+        circuit_code: str = None,
+        description: str = None,
+        line_operator: str = None,
+        name: str = None,
+        peer_location: str = None,
+        port_num: int = None,
+        region_id: str = None,
+        type: str = None,
+    ):
+        self.access_point_id = access_point_id
+        self.bandwidth = bandwidth
+        self.circuit_code = circuit_code
+        self.description = description
+        self.line_operator = line_operator
+        self.name = name
+        self.peer_location = peer_location
+        self.port_num = port_num
+        self.region_id = region_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_point_id is not None:
+            result['AccessPointId'] = self.access_point_id
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.circuit_code is not None:
+            result['CircuitCode'] = self.circuit_code
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.line_operator is not None:
+            result['LineOperator'] = self.line_operator
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.peer_location is not None:
+            result['PeerLocation'] = self.peer_location
+        if self.port_num is not None:
+            result['PortNum'] = self.port_num
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessPointId') is not None:
+            self.access_point_id = m.get('AccessPointId')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('CircuitCode') is not None:
+            self.circuit_code = m.get('CircuitCode')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('LineOperator') is not None:
+            self.line_operator = m.get('LineOperator')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PeerLocation') is not None:
+            self.peer_location = m.get('PeerLocation')
+        if m.get('PortNum') is not None:
+            self.port_num = m.get('PortNum')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateHighReliablePhysicalConnectionRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateHighReliablePhysicalConnectionRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        ap_list: List[CreateHighReliablePhysicalConnectionRequestApList] = None,
+        client_token: str = None,
+        device_advanced_capacity: List[str] = None,
+        dry_run: str = None,
+        high_reliable_type: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        port_type: str = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        tag: List[CreateHighReliablePhysicalConnectionRequestTag] = None,
+    ):
+        self.accept_language = accept_language
+        self.ap_list = ap_list
+        self.client_token = client_token
+        self.device_advanced_capacity = device_advanced_capacity
+        self.dry_run = dry_run
+        self.high_reliable_type = high_reliable_type
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.port_type = port_type
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.tag = tag
+
+    def validate(self):
+        if self.ap_list:
+            for k in self.ap_list:
+                if k:
+                    k.validate()
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        result['ApList'] = []
+        if self.ap_list is not None:
+            for k in self.ap_list:
+                result['ApList'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.device_advanced_capacity is not None:
+            result['DeviceAdvancedCapacity'] = self.device_advanced_capacity
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.high_reliable_type is not None:
+            result['HighReliableType'] = self.high_reliable_type
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.port_type is not None:
+            result['PortType'] = self.port_type
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        self.ap_list = []
+        if m.get('ApList') is not None:
+            for k in m.get('ApList'):
+                temp_model = CreateHighReliablePhysicalConnectionRequestApList()
+                self.ap_list.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('DeviceAdvancedCapacity') is not None:
+            self.device_advanced_capacity = m.get('DeviceAdvancedCapacity')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('HighReliableType') is not None:
+            self.high_reliable_type = m.get('HighReliableType')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PortType') is not None:
+            self.port_type = m.get('PortType')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateHighReliablePhysicalConnectionRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        instance_id: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList(TeaModel):
+    def __init__(
+        self,
+        error_info_list: List[CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList] = None,
+    ):
+        self.error_info_list = error_info_list
+
+    def validate(self):
+        if self.error_info_list:
+            for k in self.error_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['errorInfoList'] = []
+        if self.error_info_list is not None:
+            for k in self.error_info_list:
+                result['errorInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.error_info_list = []
+        if m.get('errorInfoList') is not None:
+            for k in m.get('errorInfoList'):
+                temp_model = CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList()
+                self.error_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        region_no: str = None,
+    ):
+        self.instance_id = instance_id
+        self.region_no = region_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
+        return self
+
+
+class CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList(TeaModel):
+    def __init__(
+        self,
+        physical_connection_list: List[CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList] = None,
+    ):
+        self.physical_connection_list = physical_connection_list
+
+    def validate(self):
+        if self.physical_connection_list:
+            for k in self.physical_connection_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['physicalConnectionList'] = []
+        if self.physical_connection_list is not None:
+            for k in self.physical_connection_list:
+                result['physicalConnectionList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.physical_connection_list = []
+        if m.get('physicalConnectionList') is not None:
+            for k in m.get('physicalConnectionList'):
+                temp_model = CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhysicalConnectionList()
+                self.physical_connection_list.append(temp_model.from_map(k))
+        return self
+
+
+class CreateHighReliablePhysicalConnectionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_info_list: CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList = None,
+        physical_connection_list: CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList = None,
+        request_id: str = None,
+    ):
+        self.error_info_list = error_info_list
+        self.physical_connection_list = physical_connection_list
+        self.request_id = request_id
+
+    def validate(self):
+        if self.error_info_list:
+            self.error_info_list.validate()
+        if self.physical_connection_list:
+            self.physical_connection_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_info_list is not None:
+            result['ErrorInfoList'] = self.error_info_list.to_map()
+        if self.physical_connection_list is not None:
+            result['PhysicalConnectionList'] = self.physical_connection_list.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorInfoList') is not None:
+            temp_model = CreateHighReliablePhysicalConnectionResponseBodyErrorInfoList()
+            self.error_info_list = temp_model.from_map(m['ErrorInfoList'])
+        if m.get('PhysicalConnectionList') is not None:
+            temp_model = CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList()
+            self.physical_connection_list = temp_model.from_map(m['PhysicalConnectionList'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateHighReliablePhysicalConnectionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateHighReliablePhysicalConnectionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateHighReliablePhysicalConnectionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -10078,51 +10431,51 @@ class CreateIpsecServerRequest(TeaModel):
         region_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The client CIDR block. It refers to the CIDR block that is used to allocate an IP address to the client.
+        # The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client.
         # 
-        # >  The client CIDR block must not overlap with the CIDR block of the virtual private cloud (VPC).
+        # >  The client CIDR block must not overlap with the CIDR blocks of the VPC.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to only precheck this request. Valid values:
         # 
-        # *   **true**: only prechecks the request. After the request passes the precheck, the system does not create the IPsec server. The system checks the required parameters, the request format, and the service limits. If the request fails the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): prechecks the request. After the request passes the precheck, the system creates the IPsec server.
+        # *   **true**: prechecks the request without creating the IPsec server. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false** (default): sends the request. This is the default value. If the request passes the precheck, the system creates the IPsec server.
         self.dry_run = dry_run
-        # Specifies whether you want the configuration to immediately take effect. Valid values:
+        # Specify whether to start connection negotiations immediately. Valid values:
         # 
-        # *   **true**: initiates negotiations after the configuration is completed.
-        # *   **false** (default): initiates negotiations when inbound traffic is detected.
+        # *   **true**: immediately initiates negotiations after the configuration is complete.
+        # *   **false** (default): initiates negotiations when inbound traffic is detected. This is the default value.
         self.effect_immediately = effect_immediately
-        # The configuration of Phase 1 negotiations. Valid values:
+        # The configuration of Phase 1 negotiation. Valid values:
         # 
         # *   **IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev2**.
         # *   **IkeMode**: the IKE negotiation mode. Default value: **main**.
-        # *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Default value: **aes**.
-        # *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Default value: **sha1**.
-        # *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.
-        # *   **IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiation. Default value: **aes**.
+        # *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiation. Default value: **sha1**.
+        # *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiation. Default value: **group2**.
+        # *   **IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         # *   **LocalId**: the identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
-        # *   **RemoteId**: the identifier of the peer. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+        # *   **RemoteId**: the peer identifier. The value can be an FQDN or an IP address. The default value is empty.
         self.ike_config = ike_config
-        # The name of the IPsec server.
+        # The IPsec server name.
         # 
         # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         self.ip_sec_server_name = ip_sec_server_name
-        # The configuration of Phase 2 negotiations. Valid values:
+        # The configuration of Phase 2 negotiation. Valid values:
         # 
-        # *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations. Default value: **aes**.
-        # *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations. Default value: **sha1**.
-        # *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: **group2**.
-        # *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiation. Default value: **aes**.
+        # *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiation. Default value: **sha1**.
+        # *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiation. Default value: **group2**.
+        # *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_config = ipsec_config
-        # The local CIDR blocks, which refer to the CIDR blocks on the virtual private cloud (VPC) side.
+        # The local CIDR blocks, which are the CIDR blocks of the virtual private cloud (VPC) for the client to access.
         # 
-        # Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+        # Multiple CIDR blocks are separated with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
         self.local_subnet = local_subnet
         # The pre-shared key.
         # 
@@ -10130,7 +10483,7 @@ class CreateIpsecServerRequest(TeaModel):
         # 
         # If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](~~205453~~) operation to query the pre-shared keys that are generated by the system.
         # 
-        # >  The pre-shared key of the IPsec server must be the same as the authentication key of the client. Otherwise, a connection cannot be established between the IPsec server and the client.
+        # >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
         self.psk = psk
         # Specifies whether to enable pre-shared key authentication. If you set the value to **true**, pre-shared key authentication is enabled.
         self.psk_enabled = psk_enabled
@@ -10217,13 +10570,13 @@ class CreateIpsecServerResponseBody(TeaModel):
         # 
         # T is used as a delimiter. Z indicates that the time is in UTC.
         self.creation_time = creation_time
-        # The ID of the IPsec server.
+        # The IPsec server ID.
         self.ipsec_server_id = ipsec_server_id
-        # The name of the IPsec server.
+        # The IPsec server name.
         self.ipsec_server_name = ipsec_server_name
         # The ID of the region where the VPN gateway is deployed.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -10571,9 +10924,9 @@ class CreateIpv6EgressOnlyRuleRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the value of RequestId as the client token. The value of RequestId is different for each API request.
         self.client_token = client_token
         # The description of the egress-only rule.
         # 
@@ -10583,7 +10936,7 @@ class CreateIpv6EgressOnlyRuleRequest(TeaModel):
         self.instance_id = instance_id
         # The type of the instance for which you want to create an egress-only rule.
         # 
-        # Set the value to **Ipv6Address** (default). This value specifies the IPv6 address type.
+        # Default value: **Ipv6Address**\
         self.instance_type = instance_type
         # The ID of the IPv6 gateway.
         self.ipv_6gateway_id = ipv_6gateway_id
@@ -10593,9 +10946,9 @@ class CreateIpv6EgressOnlyRuleRequest(TeaModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPv6 gateway.
+        # The ID of the region in which the IPv6 gateway is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10668,7 +11021,7 @@ class CreateIpv6EgressOnlyRuleResponseBody(TeaModel):
     ):
         # The ID of the egress-only rule.
         self.ipv_6egress_rule_id = ipv_6egress_rule_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12488,6 +12841,7 @@ class CreatePhysicalConnectionRequest(TeaModel):
         circuit_code: str = None,
         client_token: str = None,
         description: str = None,
+        device_advanced_capacity: List[str] = None,
         line_operator: str = None,
         name: str = None,
         owner_account: str = None,
@@ -12517,6 +12871,7 @@ class CreatePhysicalConnectionRequest(TeaModel):
         # 
         # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
+        self.device_advanced_capacity = device_advanced_capacity
         # The connectivity provider of the Express Connect circuit. Valid values:
         # 
         # *   **CT**: China Telecom
@@ -12584,6 +12939,8 @@ class CreatePhysicalConnectionRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.description is not None:
             result['Description'] = self.description
+        if self.device_advanced_capacity is not None:
+            result['DeviceAdvancedCapacity'] = self.device_advanced_capacity
         if self.line_operator is not None:
             result['LineOperator'] = self.line_operator
         if self.name is not None:
@@ -12626,6 +12983,8 @@ class CreatePhysicalConnectionRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('DeviceAdvancedCapacity') is not None:
+            self.device_advanced_capacity = m.get('DeviceAdvancedCapacity')
         if m.get('LineOperator') is not None:
             self.line_operator = m.get('LineOperator')
         if m.get('Name') is not None:
@@ -13169,7 +13528,13 @@ class CreatePublicIpAddressPoolRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -13214,43 +13579,47 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         tag: List[CreatePublicIpAddressPoolRequestTag] = None,
         zones: List[str] = None,
     ):
+        # The service type of the IP address pool. Valid values:
+        # 
+        # *   **CloudBox** Only cloud box users can select this type.
+        # *   **Default**: This is the default value.
         self.biz_type = biz_type
-        # The client token that you want to use to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
         self.client_token = client_token
         # The description of the IP address pool.
         # 
         # This parameter is optional. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to precheck only this request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: prechecks the request without creating an IP address pool. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the IP address pool is created.
         self.dry_run = dry_run
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) lines.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
+        # *   **BGP** (default)
+        # *   **BGP_PRO**\
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about BGP (Multi-ISP) lines and BGP (Multi-ISP) Pro lines, see the "Line types" section in the [What is EIP?](~~32321~~) topic.
         # 
-        # *   If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+        # *   If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
-        #     *   **ChinaTelecom**: China Telecom
-        #     *   **ChinaUnicom**: China Unicom
-        #     *   **ChinaMobile**: China Mobile
-        #     *   **ChinaTelecom_L2**: China Telecom L2
-        #     *   **ChinaUnicom_L2**: China Unicom L2
-        #     *   **ChinaMobile_L2**: China Mobile L2
+        #     *   **ChinaTelecom**\
+        #     *   **ChinaUnicom**\
+        #     *   **ChinaMobile**\
+        #     *   **ChinaTelecom_L2**\
+        #     *   **ChinaUnicom_L2**\
+        #     *   **ChinaMobile_L2**\
         # 
         # *   If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
         self.isp = isp
         # The name of the IP address pool.
         # 
-        # This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # This parameter is optional. The name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13260,7 +13629,9 @@ class CreatePublicIpAddressPoolRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag of the resource.
         self.tag = tag
+        # The zone of the IP address pool. If you set **BizType** to **CloudBox**, this parameter is required.
         self.zones = zones
 
     def validate(self):
@@ -13352,7 +13723,7 @@ class CreatePublicIpAddressPoolResponseBody(TeaModel):
     ):
         # The ID of the IP address pool.
         self.pulbic_ip_address_pool_id = pulbic_ip_address_pool_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
@@ -14668,32 +15039,54 @@ class CreateSnatEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. `The token can contain only ASCII characters.`
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `client token` can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # **\
+        # 
+        # **Description** If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to enable EIP affinity. Valid values:
         # 
         # *   **0**: no
         # *   **1**: yes
         # 
-        # >  If EIP affinity is enabled and the SNAT entry is associated with multiple EIPs, a client uses the same EIP to access the Internet. Otherwise, the client uses an EIP selected from the associated EIPs to access the Internet.
+        # **\
+        # 
+        # **Description** After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
         self.eip_affinity = eip_affinity
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the NAT gateway is deployed.
+        # The region ID of the NAT gateway.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # 
+        # Valid values:
+        # 
+        # *   ap-northeast-2-pop
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     ap-northeast-2-pop
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Enter a name for the SNAT entry.
+        # The name of the SNAT entry.
         # 
         # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.snat_entry_name = snat_entry_name
         # *   The EIPs in the SNAT entry when you add an SNAT entry to an Internet NAT gateway. Separate EIPs with commas (,).
         # 
-        # >  If you select multiple EIPs to create an SNAT address pool, connections are hashed to these EIPs. Network traffic may not be evenly distributed to the EIPs because the amount of traffic that passes through each connection varies. We recommend that you associate these EIPs with the same EIP bandwidth plan to prevent service interruptions due to the bandwidth limit of an individual EIP.
+        # **\
+        # 
+        # **Description** If you specify multiple EIPs in the SNAT IP address pool, the service connection is allocated to multiple EIPs by using the hashing algorithm. The traffic of each EIP may be different. Therefore, we recommend that you associate the EIPs with an Internet Shared Bandwidth instance to prevent service interruptions caused by bandwidth exhaustion.
         # 
         # *   When you add an SNAT entry to a VPC NAT gateway, this parameter specifies the NAT IP address in the SNAT entry.
         self.snat_ip = snat_ip
@@ -14712,7 +15105,7 @@ class CreateSnatEntryRequest(TeaModel):
         # 
         # If **SnatIp** is set to multiple EIPs, the ECS instance randomly selects an EIP specified in the **SnatIp** parameter to access the Internet.
         # 
-        # You cannot set this parameter and **SourceVSwtichId** at the same time. If the **SourceVSwitchId** parameter is set, you cannot set the **SourceCIDR** parameter. If the **SourceCIDR** parameter is set, you cannot set the **SourceVSwitchId** parameter.
+        # You cannot specify this parameter and **SourceVSwtichId** at the same time. If **SourceVSwitchId** is specified, you cannot specify **SourceCIDR**. If **SourceCIDR** is specified, you cannot specify **SourceVSwitchId**.
         self.source_cidr = source_cidr
         # The ID of the vSwitch.
         # 
@@ -14790,7 +15183,7 @@ class CreateSnatEntryResponseBody(TeaModel):
         request_id: str = None,
         snat_entry_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the SNAT entry.
         self.snat_entry_id = snat_entry_id
@@ -15051,65 +15444,65 @@ class CreateSslVpnServerRequest(TeaModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
-        # The encryption algorithm that is used in the SSL-VPN connection. Valid values:
+        # The encryption algorithm that is used for the SSL-VPN connection. Valid values:
         # 
-        # *   **AES-128-CBC** (default): AES-128-CBC
-        # *   **AES-192-CBC**: AES-192-CBC
-        # *   **AES-256-CBC**: AES-256-CBC
-        # *   **none**: does not use an encryption algorithm.
+        # *   **AES-128-CBC** (default)
+        # *   **AES-192-CBC**\
+        # *   **AES-256-CBC**\
+        # *   **none**\
         self.cipher = cipher
         # The client CIDR block.
         # 
-        # The CIDR block that is allocated to the virtual network interface of the client. It is not the CIDR block where the client resides.
+        # The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client. It is not the CIDR block where the client resides.
         # 
-        # When the client accesses the destination network through an SSL-VPN connection, the VPN gateway allocates an IP address from the client CIDR block to the client.
+        # When the client accesses the local virtual private cloud (VPC) by using an SSL-VPN connection, the VPN gateway allocates an IP address from the client CIDR block to the client.
         # 
-        # >  This CIDR block cannot conflict with the CIDR block specified by **LocalSubnet**.
+        # >  This CIDR block cannot overlap with the CIDR block specified by **LocalSubnet**.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to enable data compression. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.compress = compress
         # Specifies whether to enable two-factor authentication. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default):
         # 
-        # >  To enable two-factor authentication, make sure that the VPN gateway was created after 00:00:00 (UTC+8), March 5, 2020. Otherwise, two-factor authentication is not supported.
+        # >  If you want to use the two-factor authentication feature, you must make sure that your VPN gateway is created after 00:00:00, March 5, 2020. Otherwise, the two-factor authentication feature is not supported.
         self.enable_multi_factor_auth = enable_multi_factor_auth
-        # The ID of the IDaaS instance.
+        # The Identity as a Service (IDaaS) instance ID.
         self.idaa_sinstance_id = idaa_sinstance_id
         # The ID of the region where the IDaaS instance is created.
         self.idaa_sregion_id = idaa_sregion_id
         # The local CIDR block.
         # 
-        # The CIDR block to be accessed by the client through the SSL-VPN connection.
+        # The CIDR block to be accessed by the client by using the SSL-VPN connection.
         # 
-        # This value can be the CIDR block of a virtual private cloud (VPC), a vSwitch, a data center that is connected to a VPC through an Express Connect circuit, or Object Storage Service (OSS).
+        # This value can be the CIDR block of a VPC, a vSwitch, a data center that is connected to a VPC by using an Express Connect circuit, or an Alibaba Cloud service such as Object Storage Service (OSS).
         self.local_subnet = local_subnet
-        # The name of the SSL server.
+        # The SSL server name.
         # 
-        # The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The port used by the SSL server. Default value: **1194**. The following ports cannot be used:
+        # The port that is used by the SSL server. Default value: **1194**. The following ports cannot be used:
         # 
         # **22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, and 4500**.
         self.port = port
         # The protocol that is used by the SSL server. Valid values:
         # 
-        # *   **TCP**: TCP
-        # *   **UDP** (default): UDP
+        # *   **TCP**\
+        # *   **UDP** (default)
         self.proto = proto
-        # The ID of the region where the VPN gateway is created.
+        # The region ID of the VPN gateway.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -15209,9 +15602,9 @@ class CreateSslVpnServerResponseBody(TeaModel):
         request_id: str = None,
         ssl_vpn_server_id: str = None,
     ):
-        # The name of the SSL server.
+        # The SSL server name.
         self.name = name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
@@ -15462,7 +15855,13 @@ class CreateTrafficMirrorFilterRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # 
+        # You can add up to 20 tags in each call.
         self.key = key
+        # The value of tag N that is added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The value must start with a letter but cannot start with `aliyun` or `acs:`. The value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -15529,6 +15928,7 @@ class CreateTrafficMirrorFilterRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags.
         self.tag = tag
         # The description of the filter.
         # 
@@ -16159,7 +16559,11 @@ class CreateTrafficMirrorSessionRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The tag value. The format of Tag.N.Value when you call the operation. Valid values of N: 1 to 20. It cannot be an empty string. It can be up to 128 characters in length and cannot start with acs: or aliyun. It cannot contain http:// or https://.
         self.value = value
 
     def validate(self):
@@ -16896,9 +17300,9 @@ class CreateVcoRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the destination-based route.
         self.description = description
@@ -16907,7 +17311,7 @@ class CreateVcoRouteEntryRequest(TeaModel):
         # The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
-        # The region ID of the IPsec-VPN connection.
+        # The ID of the region where the IPsec-VPN connection is established.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -16998,7 +17402,7 @@ class CreateVcoRouteEntryResponseBody(TeaModel):
     ):
         # The timestamp when the destination-based route was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the destination-based route.
         self.description = description
@@ -17008,7 +17412,7 @@ class CreateVcoRouteEntryResponseBody(TeaModel):
         # 
         # The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The destination CIDR block of the destination-based route.
         self.route_dest = route_dest
@@ -17018,7 +17422,7 @@ class CreateVcoRouteEntryResponseBody(TeaModel):
         self.state = state
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
-        # The weight of the destination-based route.
+        # The weight of the destination-based route. Valid values:
         # 
         # *   **0**: a low priority
         # *   **100**: a high priority
@@ -17699,7 +18103,13 @@ class CreateVpcRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -17754,35 +18164,36 @@ class CreateVpcRequest(TeaModel):
         self.cidr_block = cidr_block
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the VPC.
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # Specifies whether to enable IPv6. Valid values:
         # 
-        # *   **false** (default): no
-        # *   **true**: yes
+        # *   **false** (default)
+        # *   **true**\
         self.enable_ipv_6 = enable_ipv_6
+        # The ID of the IP Address Manager (IPAM) pool of the IPv4 type.
         self.ipv_4ipam_pool_id = ipv_4ipam_pool_id
-        # The IPv6 CIDR blocks of the VPC.
+        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The type of the IPv6 CIDR block. Valid values:
+        # The type of the IPv6 CIDR block of the VPC. Valid values:
         # 
-        # *   **BGP** (default): Alibaba Cloud Border Gateway Protocol (BGP)
-        # *   **ChinaMobile**: China Mobile (single ISP).
-        # *   **ChinaUnicom**: China Unicom (single ISP).
-        # *   **ChinaTelecom**: China Telecom (single ISP).
+        # *   **BGP** (default)
+        # *   **ChinaMobile**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaTelecom**\
         # 
-        # >  If your Alibaba Cloud account is allowed to use single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
+        # >  If you are allowed to use single-ISP bandwidth, you can set the value to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
         self.ipv_6isp = ipv_6isp
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17796,6 +18207,7 @@ class CreateVpcRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag of the resource.
         self.tag = tag
         # The user CIDR block. Separate user CIDR blocks with commas (,). You can specify up to three user CIDR blocks.
         # 
@@ -17907,9 +18319,9 @@ class CreateVpcResponseBody(TeaModel):
         vrouter_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The ID of the route table that is automatically created by the system after the VPC is created.
         self.route_table_id = route_table_id
@@ -18004,7 +18416,13 @@ class CreateVpcGatewayEndpointRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # A tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -18049,14 +18467,18 @@ class CreateVpcGatewayEndpointRequest(TeaModel):
         tag: List[CreateVpcGatewayEndpointRequestTag] = None,
         vpc_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** of each API request may be different.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # > 
+        # 
+        # If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks your AccessKey pair, the RAM user permissions, and the required parameters If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The description of the gateway endpoint.
         # 
@@ -18076,6 +18498,7 @@ class CreateVpcGatewayEndpointRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18177,14 +18600,15 @@ class CreateVpcGatewayEndpointResponseBody(TeaModel):
         resource_group_id: str = None,
         service_name: str = None,
     ):
-        # The time when the gateway endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The time when the gateway endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The ID of the gateway endpoint.
         self.endpoint_id = endpoint_id
         # The name of the gateway endpoint.
         self.endpoint_name = endpoint_name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         # The name of the endpoint service.
         self.service_name = service_name
@@ -18796,14 +19220,10 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values: **true** and **false**. Default value: false.
         # *   **BgpConfig.LocalAsn**: the ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
-        # *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must fall within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
-        # *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
-        # 
-        # > 
-        # 
-        # *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see Notice of BGP dynamic routing.
-        # 
-        # *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+        # *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
+        #  >- Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [BGP dynamic routing ](~~170235~~).
+        #  >- We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -18832,32 +19252,33 @@ class CreateVpnAttachmentRequest(TeaModel):
         # 
         # *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**. Default value: false.
         # 
-        # *   **HealthCheckConfig.dip**: the destination IP address that is used for health checks. Enter the IP address on the data center side that the VPC can communicate with through the IPsec-VPN connection.
+        # *   **HealthCheckConfig.dip**: the destination IP address configured for health checks. Enter the IP address on the data center side that the VPC can communicate with through the IPsec-VPN connection.
         # 
-        # *   **HealthCheckConfig.sip**: the source IP address that is used for health checks. Enter the IP address on the VPC side that the data center can communicate with through the IPsec-VPN connection.
+        # *   **HealthCheckConfig.sip**: the source IP address configured for health checks. Enter the IP address on the VPC side that the data center can communicate with through the IPsec-VPN connection.
         # 
-        # *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds. Default value: **3**.
+        # *   **HealthCheckConfig.interval**: the time interval of health check retries. Unit: seconds. Default value: **3**.
         # 
         # *   **HealthCheckConfig.retry**: the maximum number of health check retries. Default value: **3**.
         # 
         # *   **HealthCheckConfig.Policy**: specifies whether to withdraw published routes when health checks fail. Valid values:
         # 
-        #         - **revoke_route**(default): revokes published routes. 
-        #           - **reserve_route**: does not revoke published routes.
+        #     *   **revoke_route** (default): withdraws published routes.
+        #     *   **reserve_route**: does not withdraw published routes.
         self.health_check_config = health_check_config
         # The configuration of Phase 1 negotiations:
         # 
-        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
         # 
-        #         If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key generated by the system. 
+        #     *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
         # 
-        #           The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, the connection between the data center and the VPN gateway cannot be established. 
+        #     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, a connection cannot be established between the data center and the VPN gateway.
         # 
         # *   **IkeConfig.IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
         # 
         # *   **IkeConfig.IkeMode**: the negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**.
         # 
-        # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+        # *   **IkeConfig.IkeEncAlg:** the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
         # 
         # *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
         # 
@@ -19192,17 +19613,17 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaMod
         local_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**. 
+        # The ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
-        # > - After you enable BGP for the IPsec-VPN connection, you need to set **EnableTunnelsBgp** to true. 
-        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-        # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+        # > *   If you set **EnableTunnelsBgp** to **true**, this parameter is required.
+        # > *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # > *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
         self.local_asn = local_asn
-        # The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
+        # The BGP address on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block range.
         self.local_bgp_ip = local_bgp_ip
-        # The BGP CIDR block of the tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length. 
+        # The BGP CIDR block of the tunnel. The CIDR block must fall within the 169.254.0.0/16 range. The subnet mask of the CIDR block must be 30 bits in length.
         # 
-        # >The BGP CIDR block of each tunnel on a VPN gateway must be unique.
+        # >  The BGP CIDR block of a tunnel associated with a VPN gateway must be unique.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -19246,55 +19667,44 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaMod
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm that is used in Phase 1 negotiations. 
+        # The authentication algorithm that is used in Phase 1 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
+        # Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm that is used in Phase 1 negotiations. 
+        # The encryption algorithm that is used in Phase 1 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
+        # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
         self.ike_enc_alg = ike_enc_alg
-        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. 
+        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
         # 
         # Valid values: **0** to **86400**. Default value: **86400**.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values: **main** and **aggressive**. Default value: **main**. 
+        # The negotiation mode of IKE. Valid values: **main** and **aggressive**. Default value: **main**.
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate. 
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则协商模式仅支持**main**。</ph></props>
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. 
-        # Default value: **group2**. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        # The DH key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.\
+        # Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
-        # The IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**. 
-        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used. 
-        #    
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则IKE版本仅支持**ikev1**。</ph></props>
+        # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
+        # 
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         self.ike_version = ike_version
-        # The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. 
-        # The description can be up to 100 characters in length. The default identifier is the tunnel IP address. 
-        # You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
+        # The identifier on the Alibaba Cloud side, which is used in Phase 1 negotiations. The value can be up to 100 characters in length. The default identifier is the IP address of the tunnel.
+        # 
+        # You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set IkeMode to **aggressive**.
         self.local_id = local_id
-        # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer. 
+        # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
         # 
-        # - The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
-        # - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system. 
+        #    - The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
+        #    - If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection (~~120374~~) operation to query the pre-shared key that is generated by the system.      
         # 
-        # > Make sure that the tunnel and peer use the same pre-shared key. Otherwise, tunnel communication cannot be established.
+        #    > The pre-shared key of the tunnel and that of the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
         self.psk = psk
-        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. 
-        # The description can be up to 100 characters in length. The default identifier is the IP address of the customer gateway. 
-        # You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
+        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. The value can be up to 100 characters in length. The default identifier is the IP address of the customer gateway associated with the tunnel.
+        # 
+        # You can set **RemoteId** to an FQDN. In this case, we recommend that you set IkeMode to **aggressive**.
         self.remote_id = remote_id
 
     def validate(self):
@@ -19357,27 +19767,19 @@ class CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig(TeaM
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm that was used in Phase 2 negotiations. 
+        # The authentication algorithm that is used in Phase 2 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **md5**, **sha1**, **sha256**, **sha384**, **sha512**. Default value: **md5**. </ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。默认值：**md5**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm3**（默认值）。</ph></props>
+        # Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm that is used in Phase 2 negotiations. 
+        # The encryption algorithm that is used in Phase 2 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **aes**, **aes192**, **aes256**, **des**, **3des**. Default value: **aes**. </ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。默认值：**aes**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则取值为**sm4**（默认值）。</ph></props>
+        # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. 
+        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
         # 
         # Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_lifetime = ipsec_lifetime
-        # The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**. 
+        # The DH key exchange algorithm that is used in Phase 2 negotiations. Default value: **group2**.
         # 
         # Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
@@ -19426,37 +19828,38 @@ class CreateVpnConnectionRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: CreateVpnConnectionRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
-        # The ID of the customer gateway associated with the tunnel. 
+        # The ID of the customer gateway associated with the tunnel.
         # 
-        # > - This parameter is required if the VPN gateway supports the dual-tunnel mode. 
-        # > - If the VPN gateway supports the dual-tunnel mode, you need to configure the active tunnel and standby tunnel by specifying the parameters in the **TunnelOptionsSpecification** array. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
+        # 
+        # 
+        # > *   This parameter is required if the VPN gateway supports the dual-tunnel mode.
+        # > *   If the VPN gateway supports the dual-tunnel mode, you must configure the active tunnel and standby tunnel by specifying **TunnelOptionsSpecification**. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Specifies whether to enable the DPD feature for the tunnel. Valid values:
+        # Specifies whether to enable the Dead Peer Detection (DPD) feature for the tunnel. Valid values:
         # 
-        # - **true** (default): The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted. 
-        # - **false**\
+        # *   **true** (default): The DPD feature is enabled. The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SAs and IPsec SAs are deleted. The IPsec tunnel is also deleted.
+        # *   **false**: The DPD feature is disabled. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal for the tunnel. Valid values:
         # 
-        # - **true** (default): After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found. 
-        # 
-        # - **false**: no
+        # *   **true** (default): NAT traversal is enabled. After NAT traversal is enabled, the verification process for the peer UDP port is deleted from IKE negotiations. In addition, the NAT gateway in the tunnel can be found.
+        # *   **false**: NAT traversal is disabled.
         self.enable_nat_traversal = enable_nat_traversal
-        # If the VPN gateway is of the SM type, you need to configure a CA certificate for the peer gateway device. 
+        # The CA certificate. If the VPN gateway is of the SM type, you must configure a CA certificate for the peer gateway device.
         # 
-        # - This parameter is required for an SM VPN gateway. 
-        # - You can ignore this parameter when a standard VPN gateway is used to create the IPsec-VPN connection.
+        # *   If an SM VPN gateway is used to create the IPsec-VPN connection, this parameter is required.
+        # *   If a standard VPN gateway is used to create the IPsec-VPN connection, leave this parameter empty.
         self.remote_ca_certificate = remote_ca_certificate
-        # The tunnel role. Valid values: 
+        # The role of the tunnel. Valid values:
         # 
-        # - **master**\
-        # - **slave**\
+        # *   **master**: The tunnel is the active tunnel.
+        # *   **slave**: The tunnel is the standby tunnel.
         self.role = role
-        # The BGP configurations.
+        # The BGP configurations for the tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
-        # The configuration of Phase 1 negotiations.
+        # The configurations of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
-        # The configuration of Phase 2 negotiations.
+        # The configurations of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
 
     def validate(self):
@@ -19547,19 +19950,20 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   **true** (default)
         # *   **false**\
         self.auto_config_route = auto_config_route
-        # The Border Gateway Protocol (BGP) configuration:
+        # The Border Gateway Protocol (BGP) configurations:
         # 
         # *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values: **true** and **false**. Default value: false.
-        # *   **BgpConfig.LocalAsn**: the ASN on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
-        # *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must fall within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
-        # *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
         # 
-        # > 
+        # *   **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
-        # *   This parameter is required when the VPN gateway has dynamic BGP enabled.
+        # *   **BgpConfig.TunnelCidr**: the CIDR block of the IPsec tunnel. The CIDR block must fall within the 169.254.0.0/16 range. The subnet mask of the CIDR block must be 30 bits in length.
         # 
-        # *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-        # *   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+        #     The CIDR block of an IPsec tunnel associated with a VPN gateway must be unique.
+        # 
+        # *   **LocalBgpIp**: the BGP address on the Alibaba Cloud side. This IP address must fall within the CIDR block range of the IPsec tunnel.
+        # 
+        # > *   Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. For information about the range of private ASNs, see the relevant documentation.
         self.bgp_config = bgp_config
         # The client token that is used to ensure the idempotence of the request.
         # 
@@ -19568,6 +19972,8 @@ class CreateVpnConnectionRequest(TeaModel):
         # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the customer gateway.
+        # 
+        # >  If the VPN gateway supports only the single-tunnel mode, this parameter is required.
         self.customer_gateway_id = customer_gateway_id
         # Specify whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
@@ -19584,7 +19990,7 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   **true** (default) After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
         # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
-        # Specifies whether to enable the BGP feature for the tunnel. Valid values: **true** and **false**. Default value: **false**.
+        # Specifies whether to enable the BGP feature for the tunnel. Valid values: **true** and **false**. Default value: false.
         self.enable_tunnels_bgp = enable_tunnels_bgp
         # The health check configuration:
         # 
@@ -19594,40 +20000,57 @@ class CreateVpnConnectionRequest(TeaModel):
         # *   **HealthCheckConfig.interval**: the time interval of health check retries. Unit: seconds. Default value: **3**.
         # *   **HealthCheckConfig.retry**: the maximum number of health check retries. Default value: **3**.
         self.health_check_config = health_check_config
-        # The configuration of Phase 1 negotiations:
+        # The configurations of Phase 1 negotiations:
         # 
-        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the on-premises database.
         # 
-        #         If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key generated by the system. 
+        #     *   The key must be 1 to 100 characters in length and can contain digits, letters, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
         # 
-        #           The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, the connection between the data center and the VPN gateway cannot be established. 
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+        #        >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the on-premises database. Otherwise, the on-premises database and the VPN gateway cannot establish a connection.
         # 
-        # *   **IkeConfig.IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
+        # *   **IkeConfig.IkeVersion**: the version of the Internet Key Exchange (IKE) protocol. Valid values: **ikev1** and **ikev2**. Default value: **ikev1**.
         # 
-        # *   **IkeConfig.IkeMode**: the negotiation mode of IKEv1. Valid values: **main** and **aggressive**. Default value: **main**.
+        #     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         # 
-        # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+        # *   **IkeConfig.IkeMode**: the negotiation mode of IKE. Valid values: **main** and **aggressive**. Default value: **main**.
         # 
-        # *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
+        #     *   **main:** This mode offers higher security during negotiations.
+        #     *   **aggressive:** This mode is faster and has a higher success rate.
         # 
-        # *   **IkeConfig.IkePfs**: The Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+        # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations.
+        # 
+        #     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+        # 
+        # *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations.
+        # 
+        #     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
+        # 
+        # *   **IkeConfig.IkePfs**: the Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
         # 
         # *   **IkeConfig.IkeLifetime**: the SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         # 
-        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The identifier of the VPN gateway cannot exceed 100 characters in length. The default value is the IP address of the VPN gateway.
+        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The value can be up to 100 characters in length. The default value is the IP address of the VPN gateway.
         # 
-        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The identifier of the customer gateway cannot exceed 100 characters in length. The default value is the IP address of the customer gateway.
+        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The value can be up to 100 characters in length. The default value is the IP address of the customer gateway.
         self.ike_config = ike_config
         # The configurations of Phase 2 negotiations:
         # 
-        # *   **IpsecConfig.IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
-        # *   **IpsecConfig. IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
-        # *   **IpsecConfig. IpsecPfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+        # *   **IpsecConfig.IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations.
+        # 
+        #     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**. Default value: **aes**.
+        # 
+        # *   **IpsecConfig. IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations.
+        # 
+        #     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. Default value: **md5**.
+        # 
+        # *   **IpsecConfig. IpsecPfs**: the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**. Default value: **group2**.
+        # 
         # *   **IpsecConfig. IpsecLifetime**: the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_config = ipsec_config
-        # The CIDR block on the virtual private cloud (VPC) side. The CIDR block is used in Phase 2 negotiations.
+        # The CIDR block of the virtual private cloud (VPC) that needs to communicate with the on-premises database. The CIDR block is used in Phase 2 negotiations.
         # 
-        # Separate CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+        # Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
         # 
         # The following routing modes are supported:
         # 
@@ -19642,14 +20065,14 @@ class CreateVpnConnectionRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the IPsec-VPN connection is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The peer CA certificate when a ShangMi (SM) VPN gateway is used to establish the IPsec-VPN connection.
+        # The certificate authority (CA) certificate. If the VPN gateway is of the ShangMi (SM) type, you need to configure a CA certificate for the peer gateway device.
         # 
-        # *   This parameter is required when an SM VPN gateway is used to establish the IPsec-VPN connection.
-        # *   You can ignore this parameter when a standard VPN gateway is used to create the IPsec-VPN connection.
+        # *   If an SM VPN gateway is used to create the IPsec-VPN connection, this parameter is required.
+        # *   If a standard VPN gateway is used to create the IPsec-VPN connection, leave this parameter empty.
         self.remote_ca_certificate = remote_ca_certificate
-        # The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.
+        # The CIDR block of the on-premises database that needs to communicate with the VPC. The CIDR block is used in Phase 2 negotiations.
         # 
-        # Separate CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
+        # Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
         # 
         # The following routing modes are supported:
         # 
@@ -19664,7 +20087,9 @@ class CreateVpnConnectionRequest(TeaModel):
         # 
         # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
         self.tags = tags
-        # TunnelOptionsSpecification parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+        # The tunnel configurations.
+        # 
+        # If the VPN gateway supports the dual-tunnel mode, you must configure the active tunnel and standby tunnel by specifying **TunnelOptionsSpecification**. Each IPsec-VPN connection supports only one active tunnel and one standby tunnel.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -19926,18 +20351,17 @@ class CreateVpnGatewayRequest(TeaModel):
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** for each API request is different.
         self.client_token = client_token
         # The second vSwitch with which you want to associate the VPN gateway.
         # 
-        # -  If you call this operation in a region that supports the dual-tunnel mode, this parameter is required. 
-        # - You need to specify two vSwitches in different zones from the VPC associated with the VPN gateway to implement disaster recovery across zones. 
-        # - For a region that supports only one zone, disaster recovery across zones is not supported. We recommend that you specify two vSwitches in the zone to implement high availability. You can specify the same vSwitch. 
+        # *   If you call this operation in a region that supports the IPsec-VPN connections in dual-tunnel mode, this parameter is required.
+        # *   You need to specify two vSwitches in different zones in the virtual private cloud (VPC) that is associated with the VPN gateway to implement disaster recovery across zones.
+        # *   For a region that supports only one zone, disaster recovery across zones is not supported. We recommend that you specify two vSwitches in the zone to implement high availability. You can specify the same vSwitch.
         # 
-        # 
-        # > For more information about the regions and zones that support the dual-tunnel mode, see [Upgrade a VPN gateway to enable the dual-tunnel mode](~~2358946~~).
+        # For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
         # Specifies whether to enable the IPsec-VPN feature. Valid values:
         # 
@@ -19951,11 +20375,11 @@ class CreateVpnGatewayRequest(TeaModel):
         self.enable_ssl = enable_ssl
         # The billing method of the VPN gateway. Set the value to **POSTPAY**, which specifies the pay-as-you-go billing method.
         # 
-        # >  This parameter is required when you create a VPN gateway.
+        # > This parameter is required when you create a VPN gateway.
         self.instance_charge_type = instance_charge_type
         # The name of the VPN gateway. The default value is the ID of the VPN gateway.
         # 
-        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). Other special characters are not supported.
         self.name = name
         # The network type of the VPN gateway. Valid values:
         # 
@@ -19972,11 +20396,14 @@ class CreateVpnGatewayRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
         self.ssl_connections = ssl_connections
-        # The ID of the vSwitch to which the VPN gateway belongs.
+        # The vSwitch with which you want to associate the VPN gateway.
+        # 
+        # *   If you call this operation in a region that supports the IPsec-VPN connections in dual-tunnel mode, this parameter is required. You must specify a vSwitch and specify **DisasterRecoveryVSwitchId**.
+        # *   If you call this operation in a region that supports the IPsec-VPN connections in single-tunnel mode and do not specify a vSwitch, the system automatically specifies a vSwitch.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC) where you want to create the VPN gateway.
         self.vpc_id = vpc_id
-        # The type of the VPN gateway.
+        # The type of the VPN gateway. Valid values:
         # 
         # Set the value to **Normal** (default), which specifies a standard NAT gateway.
         self.vpn_type = vpn_type
@@ -20189,9 +20616,9 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token.******** ****The request ID may be different for each request.
         self.client_token = client_token
         # The description of the policy-based route.
         # 
@@ -20206,15 +20633,13 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
         # The priority of the policy-based route. Valid values: **1** to **100**. Default value: **10**.
         # 
         # A smaller value indicates a higher priority.
-        # 
-        # >  Only some VPN gateways in specific regions allow you to configure priorities for policy-based routes. For more information about the regions, see [Match rules of policy-based routes](~~110777~~).
         self.priority = priority
         # Specifies whether to advertise the policy-based route to a virtual private cloud (VPC) route table. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.publish_vpc = publish_vpc
-        # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20222,18 +20647,18 @@ class CreateVpnPbrRouteEntryRequest(TeaModel):
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
         self.route_source = route_source
-        # The ID of the VPN gateway.
+        # The VPN gateway ID.
         self.vpn_gateway_id = vpn_gateway_id
         # The weight of the policy-based route.
         # 
-        # If you use the same VPN gateway to establish active/standby IPsec-VPN connections, you can configure route weights to specify which connection is active. A value of 100 specifies the active connection while a value of 0 specifies the standby connection.
+        # If you use the same VPN gateway to establish active/standby IPsec-VPN connections, you can configure route weights to specify which connection is active. A value of 100 specifies the active connection, whereas a value of 0 specifies the standby connection.
         # 
-        # You can configure health checks to automatically check the connection connectivity. If the active connection is down, the standby connection automatically takes over. For more information, see [CreateVpnConnection](~~120391~~).
+        # You can configure health checks to automatically check the connectivity of IPsec-VPN connections. If the active connection is down, the standby connection automatically takes over. For more information, see [CreateVpnConnection](~~120391~~).
         # 
         # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
         # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
         # 
-        # >  When you specify the active or standby connection, the primary route and secondary route must use the same source CIDR block and destination CIDR block.
+        # >  If you specify active/standby IPsec-VPN connections, the active policy-based route and the standby policy-based route must have the same source and destination CIDR blocks.
         self.weight = weight
 
     def validate(self):
@@ -20327,19 +20752,19 @@ class CreateVpnPbrRouteEntryResponseBody(TeaModel):
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The timestamp generated when the policy-based route was created. Unit: milliseconds.
+        # The time when the policy-based route was created.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the policy-based route.
         self.description = description
         # The next hop of the policy-based route.
         self.next_hop = next_hop
-        # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
+        # The tunneling protocol. The value is **Ipsec**.
         self.overlay_mode = overlay_mode
         # The priority of the policy-based route.
         self.priority = priority
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The destination CIDR block of the policy-based route.
         self.route_dest = route_dest
@@ -20350,9 +20775,9 @@ class CreateVpnPbrRouteEntryResponseBody(TeaModel):
         # *   **published**: advertised to the VPC route table.
         # *   **normal**: not advertised to the VPC route table.
         self.state = state
-        # The ID of the VPN gateway.
+        # The VPN gateway ID.
         self.vpn_instance_id = vpn_instance_id
-        # The weight of the policy-based route.
+        # The weight of the policy-based route. Valid values:
         # 
         # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
         # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
@@ -20481,9 +20906,9 @@ class CreateVpnRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the destination-based route.
         # 
@@ -20491,14 +20916,14 @@ class CreateVpnRouteEntryRequest(TeaModel):
         self.description = description
         # The next hop of the destination-based route.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec**.
+        # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
         # Specifies whether to advertise the destination-based route to a virtual private cloud (VPC) route table. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.publish_vpc = publish_vpc
         # The ID of the region where the VPN gateway is created.
         # 
@@ -20607,7 +21032,7 @@ class CreateVpnRouteEntryResponseBody(TeaModel):
         self.next_hop = next_hop
         # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The destination CIDR block of the destination-based route.
         self.route_dest = route_dest
@@ -23032,14 +23457,14 @@ class DeleteIpsecServerRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: only prechecks the request. After the request passes the precheck, the system does not delete the IPsec server. The system checks the required parameters, the request format, and the service limits. If the request fails the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): prechecks the request. After the request passes the precheck, the system deletes the IPsec server.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the IPsec server.
         self.ipsec_server_id = ipsec_server_id
@@ -23083,7 +23508,7 @@ class DeleteIpsecServerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23317,9 +23742,9 @@ class DeleteIpv6EgressOnlyRuleRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate a value, but you must make sure that the value is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** might be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
         # The ID of the egress-only rule that you want to delete.
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
@@ -23379,7 +23804,7 @@ class DeleteIpv6EgressOnlyRuleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -24487,12 +24912,12 @@ class DeletePublicIpAddressPoolRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -24556,7 +24981,7 @@ class DeletePublicIpAddressPoolResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25707,9 +26132,9 @@ class DeleteSslVpnClientCertRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25771,7 +26196,7 @@ class DeleteSslVpnClientCertResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25851,13 +26276,13 @@ class DeleteSslVpnServerRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the SSL servers are created.
+        # The region ID of the SSL server.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -25915,7 +26340,7 @@ class DeleteSslVpnServerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26861,16 +27286,16 @@ class DeleteVcoRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the destination-based route that you want to delete.
         self.next_hop = next_hop
         # The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The ID of the region where the IPsec-VPN connection is established.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -26878,7 +27303,7 @@ class DeleteVcoRouteEntryRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The destination CIDR block of the destination-based route that you want to delete.
         self.route_dest = route_dest
-        # The ID of the IPsec-VPN connection.
+        # The ID of the IPsec-VPN attachment.
         self.vpn_connection_id = vpn_connection_id
         # The weight of the destination-based route that you want to delete. Valid values:
         # 
@@ -26947,7 +27372,7 @@ class DeleteVcoRouteEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -27630,12 +28055,12 @@ class DeleteVpnAttachmentRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The ID of the region where the IPsec-VPN connection is established.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -27692,16 +28117,16 @@ class DeleteVpnAttachmentResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned for the operation. A value of **200** indicates that the operation is performed.
+        # The status code returned by the current operation. **200** indicates that the operation is successful.
         self.code = code
-        # The information returned for the operation.
+        # The information returned by the current operation.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the operation is performed.
+        # Indicates whether the current operation is successful.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -27793,13 +28218,13 @@ class DeleteVpnConnectionRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPsec-VPN connection.
+        # The ID of the region where the IPsec-VPN connection is created.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -27857,7 +28282,7 @@ class DeleteVpnConnectionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28087,9 +28512,9 @@ class DeleteVpnPbrRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the policy-based route.
         self.next_hop = next_hop
@@ -28103,7 +28528,7 @@ class DeleteVpnPbrRouteEntryRequest(TeaModel):
         # 
         # *   If the route was assigned a priority, this parameter is optional.
         # 
-        #     If you set this parameter, set the value to the priority that was assigned to the route. Otherwise, the operation fails.
+        #         If you specify this parameter, set the value to the priority configured for the policy-based route. Otherwise, the operation cannot be performed.
         self.priority = priority
         # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -28191,7 +28616,7 @@ class DeleteVpnPbrRouteEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28275,13 +28700,13 @@ class DeleteVpnRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the destination-based route.
         self.next_hop = next_hop
-        # The tunnel protocol. Set the value to **Ipsec**.
+        # The tunneling protocol. Set the value to **Ipsec**.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28364,7 +28789,7 @@ class DeleteVpnRouteEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30006,7 +30431,13 @@ class DescribeCommonBandwidthPackagesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key to add to the Internet Shared Bandwidth instance. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value to add to the Internet Shared Bandwidth instance. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -30051,29 +30482,29 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
         security_protection_enabled: bool = None,
         tag: List[DescribeCommonBandwidthPackagesRequestTag] = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false**: performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # Specifies whether to return the information about pending orders. Valid values:
         # 
-        # *   **false**: does not return the information about pending orders. This is the default value.
-        # *   **true**: returns the information about pending orders.
+        # *   **false** (default)
+        # *   **true**\
         self.include_reservation_data = include_reservation_data
-        # The name of the EIP bandwidth plan.
+        # The name of the Internet Shared Bandwidth instance.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Valid values: **1 to 50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the EIP bandwidth plan.
+        # The ID of the region where the Internet Shared Bandwidth instance resides.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -30081,9 +30512,10 @@ class DescribeCommonBandwidthPackagesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
         # 
-        # *   **false**: disables Anti-DDoS Pro/Premium. This is the default value.
-        # *   **true**: enables Anti-DDoS Pro/Premium.
+        # *   **false** (default)
+        # *   **true**\
         self.security_protection_enabled = security_protection_enabled
+        # The tags to add to the Internet Shared Bandwidth instance.
         self.tag = tag
 
     def validate(self):
@@ -30175,10 +30607,10 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
     ):
         # The ID of the EIP.
         self.allocation_id = allocation_id
-        # Indicates whether the EIP is associated with the EIP bandwidth plan.
+        # Indicates whether the EIP is associated with the Internet Shared Bandwidth instance. Valid values:
         # 
-        # *   **BINDED**: The EIP is associated with the EIP bandwidth plan.
-        # *   **BINDING**: The EIP is being associated with the EIP bandwidth plan.
+        # *   **BINDED**\
+        # *   **BINDING**\
         self.bandwidth_package_ip_relation_status = bandwidth_package_ip_relation_status
         # The public IP address.
         self.ip_address = ip_address
@@ -30279,7 +30711,9 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         key: str = None,
         value: str = None,
     ):
+        # The tag key that is added to the Internet Shared Bandwidth instance.
         self.key = key
+        # The tag value that is added to the Internet Shared Bandwidth instance.
         self.value = value
 
     def validate(self):
@@ -30371,99 +30805,105 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         tags: DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags = None,
         zone: str = None,
     ):
-        # The maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
+        # The service type of the Internet Shared Bandwidth instance. Valid values:
+        # 
+        # *   **CloudBox** The cloud box. Only cloud box users can select this type.
+        # *   **Default** (default): The general service type.
         self.biz_type = biz_type
-        # The service state of the EIP bandwidth plan.
+        # The service status of the Internet Shared Bandwidth instance. Valid values:
         # 
-        # *   **Normal**: The EIP bandwidth plan works as expected.
-        # *   **FinancialLocked**: The EIP bandwidth plan has an overdue payment.
-        # *   **Unactivated**: The EIP bandwidth plan is not activated.
+        # *   **Normal**: The Internet Shared Bandwidth instance runs as expected.
+        # *   **FinancialLocked**: An overdue payment occurs in the Internet Shared Bandwidth instance
+        # *   **Unactivated**: The Internet Shared Bandwidth instance is not activated.
         self.business_status = business_status
-        # The time when the EIP bandwidth plan was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the Internet Shared Bandwidth instance was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
-        # Indicates whether deletion protection was enabled.
+        # Indicates whether deletion protection is enabled. Valid values:
         # 
-        # *   **true**: Deletion protection was enabled.
-        # *   **false**: Deletion protection was disabled.
+        # *   **true**\
+        # *   **false**\
         self.deletion_protection = deletion_protection
-        # The description of the EIP bandwidth plan.
+        # The description of the Internet Shared Bandwidth instance.
         self.description = description
-        # The time when the EIP bandwidth plan expired. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the Internet Shared Bandwidth instance expired. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.expired_time = expired_time
-        # Indicates whether the information about pending orders was returned.
+        # Indicates whether the information about pending orders is returned. Valid values:
         # 
-        # *   **false**: The information about pending orders was not returned.
-        # *   **true**: The information about pending orders was returned.
+        # *   **false**\
+        # *   **true**\
         self.has_reservation_data = has_reservation_data
-        # The line type.
+        # The line type. Valid values:
         # 
-        # *   **BGP**: BGP (Multi-ISP) lines. BGP (Multi-ISP) lines are available in all regions.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro lines are available only in the China (Hong Kong), Singapore, Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
+        # *   **BGP**: BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore (Singapore), Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
         # If you are allowed to use single-ISP bandwidth, one of the following values is returned:
         # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
         # 
         # If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
         self.isp = isp
-        # The billing method of the EIP bandwidth plan.
+        # The billing method of the Internet Shared Bandwidth instance. Valid value:
         # 
-        # **PostPaid**: the pay-as-you-go billing method
+        # **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
-        # The metering method of the EIP bandwidth plan.
+        # The metering method of the Internet Shared Bandwidth instance. Valid value:
         # 
-        # **PayByTraffic**: the pay-by-data-transfer metering method.
+        # **PayByTraffic**\
         self.internet_charge_type = internet_charge_type
-        # The name of the EIP bandwidth plan.
+        # The name of the Internet Shared Bandwidth instance.
         self.name = name
-        # The elastic IP addresses (EIPs) associated with the EIP bandwidth plan.
+        # The elastic IP addresses (EIPs) that are associated with the Internet Shared Bandwidth instance.
         self.public_ip_addresses = public_ip_addresses
-        # The percentage of the minimum bandwidth commitment. **20** is returned.
+        # The percentage of the minimum bandwidth commitment. Only **20** is returned.
         # 
-        # >  This parameter is available only on the Alibaba Cloud China site.
+        # >  This parameter is supported only on the Alibaba Cloud China site.
         self.ratio = ratio
-        # The region ID of the EIP bandwidth plan.
+        # The ID of the region where the Internet Shared Bandwidth instance resides.
         self.region_id = region_id
         # The time when the renewal took effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
-        # The new maximum bandwidth. Unit: Mbit/s.
+        # The new maximum bandwidth after the configurations are changed. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
-        # The new metering method.
+        # The metering method after the configurations are changed. Valid value:
         # 
-        # **PayByTraffic**: the pay-by-data-transfer metering method
+        # **PayByTraffic**\
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The renewal method.
+        # The renewal method. Valid values:
         # 
-        # *   **RENEWCHANGE**: renewal with an upgrade or a downgrade
-        # *   **TEMP_UPGRADE**: temporary upgrade
-        # *   **UPGRADE**: upgrade
+        # *   **RENEWCHANGE**: renewal with a specification change
+        # *   **TEMP_UPGRADE**: renewal with a temporary upgrade
+        # *   **UPGRADE**: renewal with an upgrade
         self.reservation_order_type = reservation_order_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The edition of Anti-DDoS. 
+        # The editions of Anti-DDoS.
         # 
-        # - If this parameter is empty, it indicates that Anti-DDoS Origin Basic was enabled.
-        # - If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium was enabled.
+        # *   If this parameter is empty, Anti-DDoS Origin Basic is enabled.
+        # *   If **AntiDDoS_Enhanced** is returned, Anti-DDoS Pro/Premium is enabled.
         self.security_protection_types = security_protection_types
-        # Indicates whether the EIP bandwidth plan was created by the service account.
+        # Indicates whether the resource is created by the service account. Valid values:
         # 
-        # *   **0**: The EIP bandwidth plan was not created by the service account.
-        # *   **1**: The EIP bandwidth plan was created by the service account.
+        # *   **0**: The resource is not created by the service account.
+        # *   **1**: The resource is created by the service account.
         self.service_managed = service_managed
-        # The status of the EIP bandwidth plan. Valid values:
+        # The status of the Internet Shared Bandwidth instance. Valid values:
         # 
-        # *   **Available**: The EIP bandwidth plan is available.
-        # *   **Modifying**: The EIP bandwidth plan is being modified.
+        # *   **Available**: The Internet Shared Bandwidth instance is available.
+        # *   **Modifying**: The Internet Shared Bandwidth instance is being modified.
         self.status = status
+        # The tag that is added to the Internet Shared Bandwidth instance.
         self.tags = tags
+        # The zone of the Internet Shared Bandwidth instance. This parameter is returned only when BizType is set to CloudBox. If BizType is set to Default, an empty value is returned.
         self.zone = zone
 
     def validate(self):
@@ -30638,13 +31078,13 @@ class DescribeCommonBandwidthPackagesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the EIP bandwidth plan.
+        # The details of the Internet Shared Bandwidth instance.
         self.common_bandwidth_packages = common_bandwidth_packages
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -31711,9 +32151,9 @@ class DescribeEipAddressesRequestFilter(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The filter key used to query resources. Set the value to **CreationStartTime**, which indicates the time when the system started to create the resource.
+        # The filter key used to query resources. Set the value to **CreationStartTime**, which specifies the time when the system started to create the resource.
         self.key = key
-        # The filter value used to query resources. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mmZ` format. The time must be in UTC.
+        # The filter value used to query resources. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time must be in Coordinated Universal Time (UTC).
         self.value = value
 
     def validate(self):
@@ -31746,7 +32186,13 @@ class DescribeEipAddressesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
         self.value = value
 
     def validate(self):
@@ -31804,38 +32250,38 @@ class DescribeEipAddressesRequest(TeaModel):
         self.filter = filter
         # The ID of the EIP that you want to query.
         # 
-        # You can enter up to 50 IDs of EIPs. Separate multiple IDs with commas (,).
+        # You can specify up to 50 EIP IDs. Separate multiple IDs with commas (,).
         # 
-        # >  If both the **EipAddress** and **AllocationId** parameters are set, you can enter up to 50 IDs of EIPs in **AllocationId**, and enter up to 50 IP addresses of EIPs in **EipAddress**.
+        # >  If both **EipAddress** and **AllocationId** are specified, you can specify up to 50 EIP IDs for **AllocationId**, and specify up to 50 EIPs for **EipAddress**.
         self.allocation_id = allocation_id
-        # The ID of the cloud resource.
+        # The ID of the instance associated with the EIP.
         self.associated_instance_id = associated_instance_id
         # The type of the cloud resource with which you want to associate the EIP. Valid values:
         # 
-        # *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC)
-        # *   **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC
-        # *   **Nat**: a NAT gateway
-        # *   **HaVip**: a high-availability virtual IP address (HAVIP)
-        # *   **NetworkInterface**: a secondary ENI
-        # *   **IpAddress**: an IP address
+        # *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
+        # *   **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC.
+        # *   **Nat**: a NAT gateway.
+        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
+        # *   **NetworkInterface**: a secondary elastic network interface (ENI).
+        # *   **IpAddress**: an IP address.
         # 
-        # >  You can associate only one EIP with each ECS instance, SLB instance, HAVIP, or IP address. You can associate multiple EIPs with each NAT gateway. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [EIP overview](~~72125~~).
+        # >  You can associate only one EIP with each ECS instance, SLB instance, HAVIP, or IP address. You can associate multiple EIPs with each NAT gateway. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [Associate EIPs with and disassociate EIPs from cloud resources](~~72125~~).
         self.associated_instance_type = associated_instance_type
         # The billing method of the EIP. Valid values:
         # 
-        # *   **PostPaid**: pay-as-you-go
-        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go.
+        # *   **PrePaid**: subscription.
         self.charge_type = charge_type
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
-        # The IP address of the EIP that you want to query.
+        # The EIP that you want to query.
         # 
-        # You can enter up to 50 IP addresses of EIPs. Separate multiple IP addresses with commas (,).
+        # You can specify up to 50 EIPs. Separate multiple EIPs with commas (,).
         # 
-        # >  If both the **EipAddress** and **AllocationId** parameters are set, you can enter up to 50 IP addresses of EIPs in **EipAddress**, and enter up to 50 IDs of EIPs in **AllocationId**.
+        # >  If both **EipAddress** and **AllocationId** are specified, you can specify up to 50 EIPs for **EipAddress**, and specify up to 50 EIP IDs for **AllocationId**.
         self.eip_address = eip_address
         # The name of the EIP.
         # 
@@ -31843,26 +32289,26 @@ class DescribeEipAddressesRequest(TeaModel):
         self.eip_name = eip_name
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP** (default): Border Gateway Protocol (BGP) (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
         # 
-        # If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
+        # If you are allowed to use single-ISP bandwidth, you can also use one of the following values:
         # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
         # 
-        # If your services are deployed in China East 1 Finance, you must set this parameter to **BGP_FinanceCloud**.
+        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
         self.isp = isp
         # Specifies whether to return information about pending orders. Valid values:
         # 
-        # *   **false** (default): does not return information about pending orders.
-        # *   **true**: returns information about pending orders.
+        # *   **false** (default)
+        # *   **true**\
         self.include_reservation_data = include_reservation_data
         # The reason why the EIP is locked. Valid values:
         # 
@@ -31871,35 +32317,36 @@ class DescribeEipAddressesRequest(TeaModel):
         self.lock_reason = lock_reason
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **100**. Default value: **10**.
+        # The number of entries per page. Valid values: 1 to **100**. Default value: **10**.
         self.page_size = page_size
         # The IP address pool to which the EIP that you want to query belongs.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the EIP.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the EIPs belong.
+        # The ID of the resource group to which the EIP belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
         # 
-        # *   **false** (default): no
-        # *   **true**: yes
+        # *   **false** (default)
+        # *   **true**\
         self.security_protection_enabled = security_protection_enabled
-        # The IDs of the contiguous EIPs.
+        # The ID of the contiguous EIP group.
         self.segment_instance_id = segment_instance_id
-        # The status of the EIP. Valid values:
+        # The state of the EIP. Valid values:
         # 
-        # *   **Associating**: being associated
-        # *   **Unassociating**: being disassociated
-        # *   **InUse**: allocated
-        # *   **Available**: available
-        # *   **Releasing**: being released
+        # *   **Associating**\
+        # *   **Unassociating**\
+        # *   **InUse**\
+        # *   **Available**\
+        # *   **Releasing**\
         self.status = status
+        # The tags used to filter EIPs.
         self.tag = tag
 
     def validate(self):
@@ -32239,63 +32686,67 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
     ):
         # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The time when the EIP was created. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the EIP was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.allocation_time = allocation_time
         # The maximum bandwidth of the EIP. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The maximum bandwidth of the EIP bandwidth plan with which the EIP is associated. Unit: Mbit/s.
+        # The maximum bandwidth of the Internet Shared Bandwidth instance with which the EIP is associated. Unit: Mbit/s.
         self.bandwidth_package_bandwidth = bandwidth_package_bandwidth
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The type of the bandwidth. Only **CommonBandwidthPackage** (EIP Bandwidth Plan) is returned.
+        # The type of the bandwidth. Only **CommonBandwidthPackage** may be returned, which indicates Internet Shared Bandwidth.
         self.bandwidth_package_type = bandwidth_package_type
-        self.biz_type = biz_type
-        # The service status of the EIP. Valid values:
+        # The service type. Valid values:
         # 
-        # *   **Normal**: active
-        # *   **FinancialLocked**: locked
+        # *   **CloudBox** Only cloud box users can select this type.
+        # *   **Default** (default)
+        self.biz_type = biz_type
+        # The service state of the EIP. Valid values:
+        # 
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.business_status = business_status
         # The billing method of the EIP. Valid values:
         # 
-        # *   **PostPaid**: pay-as-you-go
-        # *   **PrePaid**: subscription
+        # *   **PostPaid**: pay-as-you-go.
+        # *   **PrePaid**: subscription.
         self.charge_type = charge_type
         # Indicates whether deletion protection is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.deletion_protection = deletion_protection
         # The description of the EIP.
         self.description = description
-        # The maximum bandwidth of the EIP when it is not associated with an EIP bandwidth plan. Unit: Mbit/s.
+        # The maximum bandwidth of the EIP when it is not associated with an Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.eip_bandwidth = eip_bandwidth
-        # The time when the EIP expires. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the EIP expires. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.expired_time = expired_time
         # Indicates whether fine-grained monitoring is enabled for the EIP. Valid values:
         # 
-        # *   **false**: no
-        # *   **true**: yes
+        # *   **false**\
+        # *   **true**\
         self.hdmonitor_status = hdmonitor_status
-        # Indicates whether renewal data is included.
+        # Indicates whether renewal data is included. Valid values:
         # 
-        # *   **false**: no
-        # *   **true**: yes This parameter returns **true** only when the **IncludeReservationData** parameter is set to **true** and some orders have not taken effect.
+        # *   **false**\
+        # *   **true** A value of **true** is returned only when **IncludeReservationData** is set to **true** and some orders have not taken effect.
         self.has_reservation_data = has_reservation_data
-        # The line type.
+        # The line type. Valid values:
         # 
-        # *   **BGP**: BGP (Multi-ISP). All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP**: BGP (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
         # 
-        # If you are allowed to use single-ISP bandwidth, one of the following values is returned:
+        # If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
         # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
         # 
         # If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
         self.isp = isp
@@ -32305,85 +32756,85 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.instance_region_id = instance_region_id
         # The type of the associated instance. Valid values:
         # 
-        # *   **EcsInstance**: an ECS instance in a VPC
-        # *   **SlbInstance**: an SLB instance in a VPC
-        # *   **Nat**: a NAT gateway
-        # *   **HaVip**: an HAVIP
-        # *   **NetworkInterface**: a secondary ENI
-        # *   **IpAddress**: an IP address
+        # *   **EcsInstance**: an ECS instance in a VPC.
+        # *   **SlbInstance**: an SLB instance in a VPC.
+        # *   **Nat**: a NAT gateway.
+        # *   **HaVip**: an HAVIP.
+        # *   **NetworkInterface**: a secondary ENI.
+        # *   **IpAddress**: an IP address.
         self.instance_type = instance_type
         # The metering method of the EIP. Valid values:
         # 
-        # *   **PayByBandwidth**: pay-by-bandwidth
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth**: pay-by-bandwidth.
+        # *   **PayByTraffic**: pay-by-traffic.
         self.internet_charge_type = internet_charge_type
-        # The IP address of the EIP.
+        # The EIP.
         self.ip_address = ip_address
         # The name of the EIP.
         self.name = name
-        # The network type. The value is set to **public**, which indicates the Internet.
+        # The network type. Only **public** may be returned.
         self.netmode = netmode
-        # The details about the locked EIPs.
+        # The details about the locked EIP.
         self.operation_locks = operation_locks
         # The ID of the IP address pool to which the EIP belongs.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The region ID of the EIP.
         self.region_id = region_id
-        # The time when the renewal takes effect. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
+        # The time when the renewal took effect. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
-        # The bandwidth after the renewal takes effect. Unit: Mbit/s.
+        # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
         # The metering method that is used after the renewal takes effect. Valid values:
         # 
-        # *   **PayByBandwidth**: pay-by-bandwidth
-        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth**: pay-by-bandwidth.
+        # *   **PayByTraffic**: pay-by-traffic.
         self.reservation_internet_charge_type = reservation_internet_charge_type
         # The type of the renewal order. Valid values:
         # 
-        # *   **RENEWCHANGE**: renewal with an upgrade or a downgrade
-        # *   **TEMP_UPGRADE**: temporary upgrade
-        # *   **UPGRADE**: upgrade
+        # *   **RENEWCHANGE**: renewal with an upgrade or a downgrade.
+        # *   **TEMP_UPGRADE**: temporary upgrade.
+        # *   **UPGRADE**: upgrade.
         self.reservation_order_type = reservation_order_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         # Indicates whether level-2 throttling is configured. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.second_limited = second_limited
-        # The edition of Anti-DDoS. 
+        # The edition of Anti-DDoS.
         # 
-        # - If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
-        # - If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium is used.
+        # *   If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
+        # *   If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium is used.
         self.security_protection_types = security_protection_types
-        # The IDs of contiguous EIPs.
+        # The ID of the contiguous EIP group.
         # 
-        # This value is returned only when you query contiguous EIP groups.
+        # This value is returned only when you query contiguous EIPs.
         self.segment_instance_id = segment_instance_id
-        # Indicates whether the resource is created by the service account.
+        # Indicates whether the resource is created by the service account. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes
+        # *   **0**: The resource is not created by the service account.
+        # *   **1**: The resource is created by the service account.
         self.service_managed = service_managed
-        # The status of the EIP. Valid values:
+        # The state of the EIP. Valid values:
         # 
-        # *   **Associating**: being associated
-        # *   **Unassociating**: being disassociated
-        # *   **InUse**: allocated
-        # *   **Available**: available
-        # *   **Releasing**: being released
+        # *   **Associating**\
+        # *   **Unassociating**\
+        # *   **InUse**\
+        # *   **Available**\
+        # *   **Releasing**\
         self.status = status
-        # The tag list of the EIP.
+        # The tags of the EIP.
         self.tags = tags
-        # The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. 
+        # The ID of the VPC in which an IPv4 gateway is created and that is deployed in the same region as the EIP.
         # 
-        # When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. 
+        # When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
         # 
-        # >  This parameter is returned if **InstanceType** is set to **IpAddress**. In this case, the EIP is associated with an IP address.
+        # >  This parameter is returned if the value of **InstanceType** is **IpAddress**. In this case, the EIP is associated with an IP address.
         self.vpc_id = vpc_id
-        # The zone of the EIP. 
+        # The zone of the EIP.
         # 
-        # This parameter is returned only if your account is included in the whitelist.
+        # This parameter is returned only when the service type is CloudBox.
         self.zone = zone
 
     def validate(self):
@@ -32610,13 +33061,13 @@ class DescribeEipAddressesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the EIP.
+        # The details about the EIPs.
         self.eip_addresses = eip_addresses
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -32949,7 +33400,7 @@ class DescribeEipMonitorDataRequest(TeaModel):
     ):
         # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The end of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
+        # The end of the time range to query. The time must be in UTC. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. For example, `2013-01-10T12:00:00Z` specifies 20:00:00 (UTC+8) on January 10, 2013.
         # 
         # If the value of seconds (ss) is not 00, the end time is automatically rounded up to the next minute.
         self.end_time = end_time
@@ -32960,9 +33411,7 @@ class DescribeEipMonitorDataRequest(TeaModel):
         # *   If the value of **(EndTime** - **StartTime**)/**Period** is greater than 200, a maximum of 200 monitoring data entries are returned at a time.
         # *   If the value of (**EndTime** - **StartTime**)/**Period** is less than or equal to 200, only the monitoring data collected between the start time and end time is returned.
         self.period = period
-        # The ID of the region to which the EIP belongs.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query available regions.
+        # The ID of the region to which the EIP belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -33128,7 +33577,7 @@ class DescribeEipMonitorDataResponseBody(TeaModel):
     ):
         # The detailed information about the monitoring data of the EIP.
         self.eip_monitor_datas = eip_monitor_datas
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33216,15 +33665,15 @@ class DescribeEipSegmentRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The ID of the region to which the contiguous EIP group belongs. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -33298,7 +33747,7 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(TeaModel):
         status: str = None,
         zone: str = None,
     ):
-        # The time when the contiguous EIP group was created. The time is displayed in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+        # The time when the contiguous EIP group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the contiguous EIP group.
         self.descritpion = descritpion
@@ -33312,12 +33761,13 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(TeaModel):
         self.region_id = region_id
         # The CIDR block and mask of the contiguous EIP group.
         self.segment = segment
-        # The status of the contiguous EIP group.
+        # The status of the contiguous EIP group. Valid values:
         # 
-        # *   **Allocating**: being allocated
-        # *   **Allocated**: allocated
-        # *   **Releasing**: being released
+        # *   **Allocating**\
+        # *   **Allocated**\
+        # *   **Releasing**\
         self.status = status
+        # The zone of the contiguous EIP group.
         self.zone = zone
 
     def validate(self):
@@ -33418,13 +33868,13 @@ class DescribeEipSegmentResponseBody(TeaModel):
     ):
         # The details of the contiguous EIP group.
         self.eip_segments = eip_segments
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -33515,13 +33965,13 @@ class DescribeFlowLogsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -33573,13 +34023,13 @@ class DescribeFlowLogsRequest(TeaModel):
     ):
         # The description of the flow log.
         # 
-        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the flow log.
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
         # The Logstore that stores the captured traffic data.
         self.log_store_name = log_store_name
@@ -33601,7 +34051,7 @@ class DescribeFlowLogsRequest(TeaModel):
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource from which traffic is captured. Valid values:
+        # The type of resource from which traffic is captured. Valid values:
         # 
         # *   **NetworkInterface**: elastic network interface (ENI)
         # *   **VSwitch**: all ENIs in a vSwitch
@@ -33609,9 +34059,9 @@ class DescribeFlowLogsRequest(TeaModel):
         self.resource_type = resource_type
         # The status of the flow log. Valid values:
         # 
-        # *   **Active**: enabled
-        # *   **Activating**: being enabled
-        # *   **Inactive**: disabled
+        # *   **Active**\
+        # *   **Activating**\
+        # *   **Inactive**\
         self.status = status
         self.tags = tags
         # The type of traffic that is captured. Valid values:
@@ -33729,9 +34179,9 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -33843,18 +34293,26 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         traffic_path: DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath = None,
         traffic_type: str = None,
     ):
-        # The sampling interval of the flow log. Unit: seconds.
+        # The sampling interval of the flow log. Unit: minutes.
         self.aggregation_interval = aggregation_interval
         # The business status of the flow log. Valid values:
         # 
-        # *   **Normal**: active
-        # *   **FinancialLocked**: locked due to overdue payments
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.business_status = business_status
         # The time when the flow log was created.
         self.creation_time = creation_time
         # The description of the flow log.
         self.description = description
+        # If the flow log failed to be delivered, you can troubleshoot based on the following error messages that may be returned:
+        # 
+        # *   **UnavaliableTarget**: The Logstore of SLS is unavailable and cannot receive logs. Check whether the Logstore is available.
+        # *   **ProjectNotExist**: The project of SLS does not exist. We recommend that you delete the project and create a new one.
+        # *   **UnknownError**: An internal error occurred. Try again later.
         self.flow_log_deliver_error_message = flow_log_deliver_error_message
+        # Indicates whether the flow log is delivered. Valid values:
+        # - **SUCCESS**\
+        # - **FAILED**\
         self.flow_log_deliver_status = flow_log_deliver_status
         # The ID of the flow log.
         self.flow_log_id = flow_log_id
@@ -33872,31 +34330,31 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.resource_id = resource_id
         # The type of the resource from which traffic is captured. Valid values:
         # 
-        # *   **NetworkInterface**: an ENI
+        # *   **NetworkInterface**: ENI
         # *   **VSwitch**: all ENIs in a vSwitch
         # *   **VPC**: all ENIs in a VPC
         self.resource_type = resource_type
         # The hosting type of the cloud service.
         # 
         # *   This parameter can be empty, which indicates that the flow log is created by the user.
-        # *   If this parameter is not empty, the value is fixed as **sls**. The value sls indicates that the flow log is created in the Log Service console.
+        # *   If this parameter is not empty, the value is set to **sls**. The value sls indicates that the flow log is created in the Simple Log Service (SLS) console.
         # 
-        # >  A flow log that is created in the Log Service console can be displayed in the VPC list. However, you cannot modify, start, stop, or delete the flow log in the VPC console. If you want to manage the flow log, you can log on to the [Log Service console](https://sls.console.aliyun.com) and perform required operations.
+        # > A flow log that is created in the SLS console can be displayed in the VPC list. However, you cannot modify, start, stop, or delete the flow log in the VPC console. If you want to manage the flow log, you can log on to the [SLS console](https://sls.console.aliyun.com) and perform required operations.
         self.service_type = service_type
         # The status of the flow log. Valid values:
         # 
-        # *   **Active**: enabled
-        # *   **Activating**: being enabled
-        # *   **Inactive**: disabled
+        # *   **Active**\
+        # *   **Activating**\
+        # *   **Inactive**\
         self.status = status
-        # An array that consists of the details of the returned tags.
+        # The list of tags.
         self.tags = tags
-        # The scope of the traffic that you want to capture. Valid values:
+        # The sampling scope of the traffic that is collected. Valid values:
         # 
         # *   **all** (default value): all traffic
         # *   **internetGateway**: Internet traffic
         # 
-        # >  By default, the traffic path feature is unavailable. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex).
+        # > By default, the traffic path feature is unavailable. To use this feature, [submit a ticket](https://workorder-intl.console.aliyun.com/?spm=5176.11182188.console-base-top.dworkorder.18ae4882n3v6ZW#/ticket/createIndex).
         self.traffic_path = traffic_path
         # The type of traffic that is captured by the flow log. Valid values:
         # 
@@ -34051,14 +34509,14 @@ class DescribeFlowLogsResponseBody(TeaModel):
         self.flow_logs = flow_logs
         # The number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the operation is successful. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.success = success
         # The number of flow logs that are queried.
         self.total_count = total_count
@@ -34188,7 +34646,9 @@ class DescribeForwardTableEntriesRequest(TeaModel):
         self.forward_entry_name = forward_entry_name
         # The ID of the DNAT table.
         # 
-        # >  You must set at least one of the **ForwardTableId** and **NatGatewayId** parameters.
+        # **\
+        # 
+        # **Description** You must specify at least one of **ForwardTableId** and **NatGatewayId**.
         self.forward_table_id = forward_table_id
         # The private IP address.
         # 
@@ -34200,21 +34660,23 @@ class DescribeForwardTableEntriesRequest(TeaModel):
         self.internal_port = internal_port
         # The protocol. Valid values:
         # 
-        # *   **TCP**: The NAT gateway forwards TCP packets.
-        # *   **UDP**: The NAT gateway forwards UDP packets.
-        # *   **Any**: The NAT gateway forwards packets of all protocols.
+        # *   **TCP**\
+        # *   **UDP**\
+        # *   **Any**\
         self.ip_protocol = ip_protocol
         # The ID of the NAT gateway.
         # 
-        # >  You must set at least one of the **ForwardTableId** and **NatGatewayId** parameters.
+        # **\
+        # 
+        # **Description** You must specify at least one of **ForwardTableId** and **NatGatewayId**.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The page number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the NAT gateway.
+        # The ID of the region where you want to create the NAT gateway.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -34337,16 +34799,17 @@ class DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntr
         self.internal_port = internal_port
         # The protocol. Valid values:
         # 
-        # *   **TCP**: The NAT gateway forwards TCP packets.
-        # *   **UDP**: The NAT gateway forwards UDP packets.
-        # *   **Any**: The NAT gateway forwards packets of all protocols.
+        # *   **TCP**\
+        # *   **UDP**\
+        # *   **Any**\
         self.ip_protocol = ip_protocol
+        # The ID of the NAT gateway to which the DNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
         # The status of the DNAT entry. Valid values:
         # 
-        # *   **Pending**: being created or modified
-        # *   **Available**: available
-        # *   **Deleting**: being deleted
+        # *   **Pending**\
+        # *   **Available**\
+        # *   **Deleting**\
         self.status = status
 
     def validate(self):
@@ -34451,11 +34914,11 @@ class DescribeForwardTableEntriesResponseBody(TeaModel):
     ):
         # The details of DNAT entries.
         self.forward_table_entries = forward_table_entries
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
@@ -36010,15 +36473,15 @@ class DescribeHighDefinitionMonitorLogAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the fine-grained monitoring instance.
+        # The ID of the instance whose fine-grained monitoring configurations you want to query.
         self.instance_id = instance_id
-        # The ID of the instance. Set the value to **EIP**.
+        # The type of the instance. Set the value to **EIP**.
         self.instance_type = instance_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the instance is deployed.
+        # The region ID of the instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -36077,20 +36540,20 @@ class DescribeHighDefinitionMonitorLogAttributeResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The ID of the fine-grained monitoring instance.
+        # The ID of the instance whose fine-grained monitoring configurations you want to query.
         self.instance_id = instance_id
-        # The type of the monitoring instance that is queried. The value is set to **EIP**.
+        # The type of instance for which you want to query fine-grained monitoring. Only **EIP** may be returned.
         self.instance_type = instance_type
-        # The name of the log project of Log Service.
+        # The name of the project.
         self.log_project = log_project
-        # The name of the Logstore of Log Service.
+        # The name of the Logstore.
         self.log_store = log_store
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the operation is performed. Valid values:
         # 
-        # *   **true**: The operation is performed.
-        # *   **false**: The operation is not performed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -37582,10 +38045,14 @@ class DescribeIpv6AddressesRequest(TeaModel):
         # 
         # Set the value to **EcsInstance**, which specifies an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC). This is the default value.
         self.associated_instance_type = associated_instance_type
+        # Specifies whether to return information about pending orders. Valid values:
+        # 
+        # *   **false** (default)
+        # *   **true**\
         self.include_reservation_data = include_reservation_data
         # The IPv6 address that you want to query.
         self.ipv_6address = ipv_6address
-        # The ID of the IPv6 address that you want to query. You can enter at most 20 IPv6 IDs in each API request. Separate IPv6 IDs with commas (,).
+        # The ID of the IPv6 address that you want to query. You can enter at most 20 IPv6 address IDs in each API request. Separate IPv6 address IDs with commas (,).
         self.ipv_6address_id = ipv_6address_id
         # The ID of the Internet bandwidth that you purchased for the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
@@ -37595,8 +38062,8 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.name = name
         # The type of communication supported by the IPv6 address. Valid values:
         # 
-        # *   **Private**: communication within private networks
-        # *   **Public**: communication over the Internet
+        # *   **Private**\
+        # *   **Public**\
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -37715,14 +38182,18 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         self.bandwidth = bandwidth
         # The status of the Internet bandwidth of the IPv6 address. Valid values:
         # 
-        # *   **Normal**: normal
-        # *   **FinancialLocked**: locked due to overdue payments
-        # *   **SecurityLocked**: locked due to security reasons
+        # *   **Normal**\
+        # *   **FinancialLocked**\
+        # *   **SecurityLocked**\
         self.business_status = business_status
-        self.has_reservation_data = has_reservation_data
-        # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
+        # Indicates whether renewal data is included.
         # 
-        # **PostPaid**: pay-as-you-go
+        # *   **false**\
+        # *   **true** This parameter returns **true** only if **IncludeReservationData** is set to **true** and some orders have not taken effect.
+        self.has_reservation_data = has_reservation_data
+        # The billing method of the Internet bandwidth of the IPv6 address.
+        # 
+        # Only **PostPaid** may be returned, which indicates the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
         # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
         # 
@@ -37731,9 +38202,16 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         self.internet_charge_type = internet_charge_type
         # The instance ID of the Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
+        # The time when the renewal took effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
+        # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
+        # The metering method that is used after the renewal takes effect.
+        # 
+        # *   **PayByTraffic**: pay-by-data-transfer
+        # *   **PayByBandwidth**: pay-by-bandwidth
         self.reservation_internet_charge_type = reservation_internet_charge_type
+        # The type of the renewal order. Only **RENEW** may be returned, which indicates that the order is placed for service renewal.
         self.reservation_order_type = reservation_order_type
 
     def validate(self):
@@ -37816,7 +38294,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.associated_instance_id = associated_instance_id
         # The type of the instance that is assigned the IPv6 address.
         self.associated_instance_type = associated_instance_type
-        # The IPv6 address.
+        # The IPv6 address of the instance.
         self.ipv_6address = ipv_6address
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
@@ -37828,15 +38306,15 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.ipv_6internet_bandwidth = ipv_6internet_bandwidth
         # The service provider of the IPv6 address. Valid values:
         # 
-        # *   **BGP**: Alibaba Cloud Border Gateway Protocol (BGP) IPv6. This is the default value.
-        # *   **ChinaMobile**: China Mobile (single ISP).
-        # *   **ChinaUnicom**: China Unicom (single ISP).
-        # *   **ChinaTelecom**: China Telecom (single ISP).
+        # *   **BGP** (default)
+        # *   **ChinaMobile**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaTelecom**\
         self.ipv_6isp = ipv_6isp
         # The type of communication supported by the IPv6 address. Valid values:
         # 
-        # *   **Private**: communication within private networks
-        # *   **Public**: communication over the Internet
+        # *   **Private**\
+        # *   **Public**\
         self.network_type = network_type
         # The maximum bandwidth value of the IPv6 address.
         # 
@@ -37846,8 +38324,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.real_bandwidth = real_bandwidth
         # The status of the IPv6 address. Valid values:
         # 
-        # *   **Pending**: being configured
-        # *   **Available**: available
+        # *   **Pending**\
+        # *   **Available**\
         self.status = status
         # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
@@ -37974,13 +38452,13 @@ class DescribeIpv6AddressesResponseBody(TeaModel):
     ):
         # The details about the IPv6 addresses.
         self.ipv_6addresses = ipv_6addresses
-        # The number of the returned page. Default value: **1**.
+        # The page number of the returned page. Default value: **1**.
         self.page_number = page_number
-        # The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries returned per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -38668,17 +39146,13 @@ class DescribeIpv6GatewaysRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. The tag key cannot be an empty string.
+        # The tag keys of the resources. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # It must be 1 to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
-        # 
-        # You can specify at most 20 tag keys in each call.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag.
+        # The tag values of the resources. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value can be an empty string and must be 1 to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values in each call.
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -38725,22 +39199,21 @@ class DescribeIpv6GatewaysRequest(TeaModel):
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         # 
-        # The name must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. It cannot start with `http://` or `https://`.
+        # The name must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return.
+        # The page number.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the region where the IPv6 gateway is deployed.
-        # 
-        # >  IPv6 gateways are available in the following regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), China (Hong Kong), Philippines (Manila), Singapore, US (Virginia), and Germany (Frankfurt).
+        # The ID of the region in which the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The information about the tags.
         self.tags = tags
         # The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
         self.vpc_id = vpc_id
@@ -38823,9 +39296,9 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -38906,7 +39379,7 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         # The state of the IPv6 gateway. Valid values:
         # 
         # *   **Normal**: The IPv6 gateway runs as expected.
-        # *   **FinancialLocked**: The IPv6 gateway is locked due to overdue payments.
+        # *   **FinancialLocked:** The IPv6 gateway is locked due to overdue payments.
         self.business_status = business_status
         # The time when the IPv6 gateway was created.
         self.creation_time = creation_time
@@ -38916,22 +39389,22 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(TeaModel):
         self.expired_time = expired_time
         # The billing method of the IPv6 gateway.
         # 
-        # The value is set to **PostPaid**. This value indicates the pay-as-you-go billing method.
+        # Only **PostPaid** may be returned, which indicates that the IPv6 gateway uses the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
         # The ID of the IPv6 gateway.
         self.ipv_6gateway_id = ipv_6gateway_id
         # The name of the IPv6 gateway.
         self.name = name
-        # The region ID of the IPv6 gateway.
+        # The ID of the region in which the IPv6 gateway is deployed.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The state of the IPv6 gateway. Valid values:
+        # The status of the IPv6 gateway. Valid values:
         # 
         # *   **Pending**: The IPv6 gateway is being configured.
         # *   **Available**: The IPv6 gateway is available.
         self.status = status
-        # The list of tags.
+        # The information about the tags.
         self.tags = tags
         # The ID of the VPC to which the IPv6 gateway belongs.
         self.vpc_id = vpc_id
@@ -39046,13 +39519,13 @@ class DescribeIpv6GatewaysResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the IPv6 gateways.
+        # The information about the IPv6 gateway.
         self.ipv_6gateways = ipv_6gateways
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -42743,15 +43216,13 @@ class DescribePublicIpAddressRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: **1** to **100**. Default value: **100**.
         self.page_size = page_size
-        # The region that you want to query.
-        # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region that you want to query. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -42813,26 +43284,26 @@ class DescribePublicIpAddressResponseBody(TeaModel):
         success: bool = None,
         total_count: int = None,
     ):
-        # The HTTP status code.
+        # The HTTP status codes returned.
         self.code = code
-        # The response message.
+        # The response messages.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
         # The range of the public IP addresses of the VPC in the region.
         self.public_ip_address = public_ip_address
         # The ID of the region to which the public IP addresses belong.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.success = success
-        # The total number of entries returned.
+        # The number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -46454,15 +46925,15 @@ class DescribeSnatTableEntriesRequest(TeaModel):
     ):
         # The ID of the NAT gateway.
         # 
-        # >  You must set at least one of the **SnatTableId** and **NatGatewayId** parameters.
+        # >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
         self.nat_gateway_id = nat_gateway_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the NAT gateway.
+        # The ID of the region where you want to create the NAT gateway.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -46479,7 +46950,7 @@ class DescribeSnatTableEntriesRequest(TeaModel):
         self.snat_ip = snat_ip
         # The ID of the SNAT table.
         # 
-        # >  You must set at least one of the **SnatTableId** and **NatGatewayId** parameters.
+        # >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
         self.snat_table_id = snat_table_id
         # The source CIDR block specified in the SNAT entry.
         self.source_cidr = source_cidr
@@ -46573,6 +47044,7 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
         source_vswitch_id: str = None,
         status: str = None,
     ):
+        # The ID of the NAT gateway to which the SNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
         # The ID of the SNAT entry.
         self.snat_entry_id = snat_entry_id
@@ -46590,9 +47062,9 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(TeaMode
         self.source_vswitch_id = source_vswitch_id
         # The status of the SNAT entry. Valid values:
         # 
-        # *   **Pending**: being created or modified
-        # *   **Available**: available
-        # *   **Deleting**: being deleted
+        # *   **Pending**\
+        # *   **Available**\
+        # *   **Deleting**\
         self.status = status
 
     def validate(self):
@@ -46687,15 +47159,15 @@ class DescribeSnatTableEntriesResponseBody(TeaModel):
         snat_table_entries: DescribeSnatTableEntriesResponseBodySnatTableEntries = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The number of the returned page.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The details of the SNAT entries.
+        # Details of SNAT entries.
         self.snat_table_entries = snat_table_entries
-        # The number of entries returned.
+        # The number of returned entries.
         self.total_count = total_count
 
     def validate(self):
@@ -47314,11 +47786,13 @@ class DescribeSslVpnClientsRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Valid values: **1** to **50**. Default value: **10**.
+        # The number of entries per page. Valid values: **1** to **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the VPN gateway.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -47387,9 +47861,11 @@ class DescribeSslVpnClientsResponseBodyClientInfoList(TeaModel):
     ):
         # The SSL client certificate used by the client.
         # 
-        # > If the client uses two-factor authentication to establish an SSL-VPN connection to Alibaba Cloud, the value is the username of the client.
+        # >  If the client uses two-factor authentication to establish an SSL-VPN connection to Alibaba Cloud, the return value is the username of the client.
         self.common_name = common_name
-        # The timestamp that indicates when the client connected to Alibaba Cloud through an SSL-VPN connection. Unit: milliseconds. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # The timestamp that indicates when the client connected to Alibaba Cloud through an SSL-VPN connection. Unit: milliseconds.
+        # 
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.connected_time = connected_time
         # The actual public IP address used by the client when the client established an SSL-VPN connection to Alibaba Cloud.
         self.ip = ip
@@ -47401,7 +47877,9 @@ class DescribeSslVpnClientsResponseBodyClientInfoList(TeaModel):
         self.receive_bytes = receive_bytes
         # The amount of data transferred from the VPN gateway to the client through the SSL-VPN connection. Unit: bytes.
         self.send_bytes = send_bytes
-        # The status of the SSL-VPN connection. The value is set to **online**, which indicates that the client has connected to Alibaba Cloud through an SSL-VPN connection.
+        # The status of the SSL-VPN connection.
+        # 
+        # The value is set to **online**, which indicates that the client has connected to Alibaba Cloud through an SSL-VPN connection.
         self.status = status
 
     def validate(self):
@@ -47465,15 +47943,15 @@ class DescribeSslVpnClientsResponseBody(TeaModel):
     ):
         # The list of clients.
         self.client_info_list = client_info_list
-        # The number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The region ID of the VPN gateway.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The number of entries returned.
+        # The number of returned entries.
         self.total_count = total_count
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -53840,7 +54318,7 @@ class DescribeVpnConnectionRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPsec-VPN connection is established.
+        # The ID of the region where the IPsec-VPN connection is created.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -53902,18 +54380,18 @@ class DescribeVpnConnectionResponseBodyIkeConfig(TeaModel):
         psk: str = None,
         remote_id: str = None,
     ):
-        # The IKE authentication algorithm.
+        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The IKE encryption algorithm.
+        # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The IKE lifetime. Unit: seconds.
+        # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode.
         # 
         # *   **main**: This mode offers higher security during negotiations.
         # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The DH group.
+        # The Diffie-Hellman (DH) group in the IKE phase.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol.
         # 
@@ -53922,11 +54400,11 @@ class DescribeVpnConnectionResponseBodyIkeConfig(TeaModel):
         # 
         # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         self.ike_version = ike_version
-        # The identifier on the data center side.
+        # The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The identifier on the Alibaba Cloud side.
+        # The identifier of the IPsec-VPN connection on the data center side.
         self.remote_id = remote_id
 
     def validate(self):
@@ -53989,13 +54467,13 @@ class DescribeVpnConnectionResponseBodyIpsecConfig(TeaModel):
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The IPsec authentication algorithm.
+        # The authentication algorithm in the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The IPsec encryption algorithm.
+        # The encryption algorithm in the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The IPsec lifetime. Unit: seconds.
+        # The lifetime in the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group.
+        # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -54036,9 +54514,9 @@ class DescribeVpnConnectionResponseBodyTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the IPsec-VPN connection.
         self.key = key
-        # The tag value.
+        # The tag value of the IPsec-VPN connection.
         self.value = value
 
     def validate(self):
@@ -54110,18 +54588,18 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTu
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The negotiation status of BGP. Valid values: 
+        # The negotiation state of BGP. Valid values:
         # 
-        # - **success**\
-        # - **false**\
+        # *   **success**: normal
+        # *   **false**: abnormal
         self.bgp_status = bgp_status
-        # The ASN on the Alibaba Cloud side.
+        # The ASN of the tunnel on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # The BGP IP address on the Alibaba Cloud side.
+        # The BGP IP address of the tunnel on the Alibaba Cloud side.
         self.local_bgp_ip = local_bgp_ip
-        # The peer ASN.
+        # The ASN of the tunnel peer.
         self.peer_asn = peer_asn
-        # The peer BGP IP address.
+        # The BGP IP address of the tunnel peer.
         self.peer_bgp_ip = peer_bgp_ip
         # The BGP CIDR block of the tunnel.
         self.tunnel_cidr = tunnel_cidr
@@ -54185,20 +54663,20 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptionsTu
         self.ike_enc_alg = ike_enc_alg
         # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values: 
+        # The IKE negotiation mode.
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
-        # The IKE version.
+        # The version of the IKE protocol.
         self.ike_version = ike_version
-        # The identifier on the Alibaba Cloud side.
+        # The identifier of the tunnel on the Alibaba Cloud side.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The peer identifier.
+        # The identifier of the tunnel peer.
         self.remote_id = remote_id
 
     def validate(self):
@@ -54321,47 +54799,51 @@ class DescribeVpnConnectionResponseBodyTunnelOptionsSpecificationTunnelOptions(T
     ):
         # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether DPD is enabled for the tunnel. Valid values: 
+        # Indicates whether the DPD feature is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **false**\
+        # *   **true**\
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the tunnel.
+        # Indicates whether NAT traversal is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **false**\
+        # *   **true**\
         self.enable_nat_traversal = enable_nat_traversal
         # The tunnel IP address.
         self.internet_ip = internet_ip
-        # The CA certificate of the tunnel peer. This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
+        # The CA certificate of the tunnel peer.
+        # 
+        # This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
         self.remote_ca_certificate = remote_ca_certificate
         # The tunnel role. Valid values:
         # 
-        # - **master**\
-        # - **slave**\
+        # *   **master**: The tunnel is an active tunnel.
+        # *   **slave**: The tunnel is a standby tunnel.
         self.role = role
         # The tunnel status. Valid values: 
         # 
-        # - **active**\
-        # - **updating**\
-        # - **deleting**\
+        # *   **active**\
+        # *   **updating**\
+        # *   **deleted**\
         self.state = state
-        # The status of the IPsec-VPN connection. Valid values:
+        # The state of the IPsec-VPN connection. Valid values:
         # 
         # *   **ike_sa_not_established**: Phase 1 negotiations failed.
-        # *   **ike_sa_established**: Phase 1 negotiations were successful.
+        # *   **ike_sa_established**: Phase 1 negotiations succeeded.
         # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-        # *   **ipsec_sa_established**: Phase 2 negotiations were successful.
+        # *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
         self.status = status
-        # The BGP configurations.
+        # The BGP configuration.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # The configurations of Phase 1 negotiations.
+        # The configuration of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
-        # The configurations of Phase 2 negotiations.
+        # The configuration of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
-        # The zone where the tunnel is deployed. You can call [DescribeZones](~~36064~~) to query zone IDs.
+        # The zone of the tunnel.
+        # 
+        # You can call [DescribeZones](~~36064~~) to query zone IDs and mapping between zone IDs and zone names.
         self.zone_no = zone_no
 
     def validate(self):
@@ -54488,25 +54970,25 @@ class DescribeVpnConnectionResponseBodyVcoHealthCheck(TeaModel):
     ):
         # The destination IP address.
         self.dip = dip
-        # Indicates whether health checks are enabled.
+        # Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **false**: disabled
-        # *   **true**: enabled
+        # *   **false**\
+        # *   **true**\
         self.enable = enable
-        # The interval of health check retries. Unit: seconds.
+        # The interval between two consecutive health checks. Unit: seconds.
         self.interval = interval
-        # Indicates whether advertised routes are withdrawn when the health check fails.
+        # Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
         # 
-        # *   **revoke_route**: published routes are withdrawn.
-        # *   **reserve_route**: published routes are not withdrawn.
+        # *   **revoke_route**: Advertised routes are withdrawn.
+        # *   **reserve_route**: Advertised routes are not withdrawn.
         self.policy = policy
         # The maximum number of health check retries.
         self.retry = retry
         # The source IP address.
         self.sip = sip
-        # The status of the health check.
+        # The state of the health check. Valid values:
         # 
-        # *   **failed**: abnormal
+        # *   **failed**\
         # *   **success**: normal
         self.status = status
 
@@ -54568,10 +55050,10 @@ class DescribeVpnConnectionResponseBodyVpnBgpConfig(TeaModel):
     ):
         # The authentication key of the BGP routing protocol.
         self.auth_key = auth_key
-        # The status of the BGP routing protocol. Valid values:
+        # Indicates whether BGP is enabled. Valid values:
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
         # The ASN on the Alibaba Cloud side.
         self.local_asn = local_asn
@@ -54581,12 +55063,12 @@ class DescribeVpnConnectionResponseBodyVpnBgpConfig(TeaModel):
         self.peer_asn = peer_asn
         # The BGP IP address of the peer.
         self.peer_bgp_ip = peer_bgp_ip
-        # The negotiation status of the BGP routing protocol.
+        # The negotiation state of the BGP routing protocol. Valid values:
         # 
         # *   **success**: normal
-        # *   **failed**: abnormal
+        # *   **failed**\
         self.status = status
-        # The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        # The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -54673,78 +55155,78 @@ class DescribeVpnConnectionResponseBody(TeaModel):
     ):
         # The ID of the CEN instance to which the transit router belongs.
         self.attach_instance_id = attach_instance_id
-        # The type of resource that is associated with the IPsec-VPN connection. Valid values:
+        # The type of the resource that is associated with the IPsec-VPN connection. Valid values:
         # 
         # *   **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
-        # *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with a resource.
+        # *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
         # *   **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
         self.attach_type = attach_type
-        # The timestamp that indicates when the IPsec-VPN connection was established. Unit: milliseconds.
+        # The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.cross_account_authorized = cross_account_authorized
-        # The ID of the customer gateway.
+        # The ID of the customer gateway associated with the IPsec-VPN connection.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether IPsec negotiations immediately start.
+        # Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
         # 
         # *   **true**: Negotiations are reinitiated after the configuration is changed.
-        # *   **false**: Negotiations are reinitiated when traffic is detected.
+        # *   **false**: Negotiations are reinitiated after traffic is detected.
         self.effect_immediately = effect_immediately
-        # Indicates whether dead peer detection (DPD) is enabled.
+        # Indicates whether the dead peer detection (DPD) feature is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **false**: disabled
-        # *   **true**: enabled
+        # *   **false**\
+        # *   **true**\
         # 
-        # After you enable DPD, the initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no response is received from the peer within a specified period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # After you enable the DPD feature, the initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no response is received from the peer within a specified period of time, the connection fails. Then, the ISAKMP security association (SA), IPsec SA, and IPsec tunnel are deleted.
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled. Valid values:
+        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true**: NAT traversal is enabled.
-        # *   **false**: NAT traversal is disabled.
+        # *   **true**\
+        # *   **false**\
         # 
-        # After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the VPN tunnel.
+        # After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
         self.enable_nat_traversal = enable_nat_traversal
-        # The BGP status of the tunnel. Valid values: 
+        # Indicates whether BGP is enabled for the tunnel. Valid values:
         # 
-        # - **true**\
-        # - **false**\
+        # *   **true**\
+        # *   **false**\
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # The configurations of Phase 1 negotiations.
+        # The configuration of Phase 1 negotiations.
         self.ike_config = ike_config
         # The gateway IP address of the IPsec-VPN connection.
         self.internet_ip = internet_ip
-        # The configuration of phase 2 negotiations.
+        # The configuration of Phase 2 negotiations.
         self.ipsec_config = ipsec_config
         # The CIDR block on the Alibaba Cloud side.
         # 
-        # CIDR blocks are separated with commas (,).
+        # Multiple CIDR blocks are separated by commas (,).
         self.local_subnet = local_subnet
         # The name of the IPsec-VPN connection.
         self.name = name
         # The network type of the IPsec-VPN connection. Valid values:
         # 
-        # *   **public**: an encrypted connection over the Internet.
-        # *   **private**: an encrypted connection over private networks.
+        # *   **public**: an encrypted connection over the Internet
+        # *   **private**: an encrypted connection over private networks
         self.network_type = network_type
-        # The CA certificate of the peer.
+        # The certificate authority (CA) certificate of the peer.
         self.remote_ca_certificate = remote_ca_certificate
         # The CIDR block on the data center side.
         # 
-        # CIDR blocks are separated with commas (,).
+        # Multiple CIDR blocks are separated by commas (,).
         self.remote_subnet = remote_subnet
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.spec = spec
-        # The association status of the IPsec-VPN connection. Valid values:
+        # The association state of the IPsec-VPN connection. Valid values:
         # 
         # *   **active**: The IPsec-VPN connection is associated with a VPN gateway.
-        # *   **init**: The IPsec-VPN connection is not associated with a resource and is being initialized.
+        # *   **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
         # *   **attaching**: The IPsec-VPN connection is being associated with a transit router.
         # *   **attached**: The IPsec-VPN connection is associated with a transit router.
         # *   **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
@@ -54754,12 +55236,12 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         # *   **Upgrading**: The IPsec-VPN connection is being upgraded.
         # *   **deleted**: The IPsec-VPN connection is deleted.
         self.state = state
-        # The status of the IPsec-VPN connection. Valid values:
+        # The state of the IPsec-VPN connection. Valid values:
         # 
         # *   **ike_sa_not_established**: Phase 1 negotiations failed.
-        # *   **ike_sa_established**: Phase 1 negotiations were successful.
+        # *   **ike_sa_established**: Phase 1 negotiations succeeded.
         # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-        # *   **ipsec_sa_established**: Phase 2 negotiations were successful.
+        # *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
         self.status = status
         # The list of tags added to the IPsec-VPN connection.
         self.tags = tags
@@ -54767,11 +55249,13 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
-        # The tunnel configuration of the IPsec-VPN connection. Parameters in** TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
+        # The tunnel configuration of the IPsec-VPN connection.
+        # 
+        # Parameters in **TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
         self.tunnel_options_specification = tunnel_options_specification
-        # The information about health checks.
+        # The health check information about the IPsec-VPN connection.
         self.vco_health_check = vco_health_check
-        # The configurations of the BGP routing protocol.
+        # The Border Gateway Protocol (BGP) configuration of the IPsec-VPN connection.
         self.vpn_bgp_config = vpn_bgp_config
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
@@ -54779,7 +55263,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.vpn_gateway_id = vpn_gateway_id
         # The ID of the zone where the IPsec-VPN connection is deployed.
         # 
-        # You can call [DescribeZones](~~36064~~) to query zone IDs.
+        # You can call [DescribeZones](~~36064~~) to query zone IDs and mapping between zone IDs and zone names.
         self.zone_no = zone_no
 
     def validate(self):
@@ -55393,18 +55877,18 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig(Tea
         psk: str = None,
         remote_id: str = None,
     ):
-        # The IKE authentication algorithm.
+        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The IKE encryption algorithm.
+        # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The IKE lifetime. Unit: seconds.
+        # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode.
         # 
         # *   **main**: This mode offers higher security during negotiations.
         # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The DH group.
+        # The Diffie-Hellman (DH) group in the IKE phase.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol.
         # 
@@ -55413,11 +55897,11 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIkeConfig(Tea
         # 
         # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         self.ike_version = ike_version
-        # The identifier on the data center side.
+        # The identifier of the IPsec-VPN connection on the data center side.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The identifier on the Alibaba Cloud side.
+        # The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
         self.remote_id = remote_id
 
     def validate(self):
@@ -55480,13 +55964,13 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionIpsecConfig(T
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The IPsec authentication algorithm.
+        # The authentication algorithm in the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The IPsec encryption algorithm.
+        # The encryption algorithm in the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The IPsec lifetime. Unit: seconds.
+        # The lifetime in the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group.
+        # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -55527,9 +56011,9 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTagTag(TeaMod
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key of the IPsec-VPN connection.
         self.key = key
-        # The tag value.
+        # The tag value of the IPsec-VPN connection.
         self.value = value
 
     def validate(self):
@@ -55601,18 +56085,18 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The negotiation status of BGP. Valid values: 
+        # The negotiation state of BGP. Valid values:
         # 
-        # - **success**\
-        # - **false**\
+        # *   **success**: normal
+        # *   **false**: abnormal
         self.bgp_status = bgp_status
-        # The ASN on the Alibaba Cloud side.
+        # The ASN of the tunnel on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # The BGP IP address on the Alibaba Cloud side.
+        # The BGP IP address of the tunnel on the Alibaba Cloud side.
         self.local_bgp_ip = local_bgp_ip
-        # The peer ASN.
+        # The ASN of the tunnel peer.
         self.peer_asn = peer_asn
-        # The peer BGP IP address.
+        # The BGP IP address of the tunnel peer.
         self.peer_bgp_ip = peer_bgp_ip
         # The BGP CIDR block of the tunnel.
         self.tunnel_cidr = tunnel_cidr
@@ -55676,20 +56160,20 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
         self.ike_enc_alg = ike_enc_alg
         # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. 
+        # The IKE negotiation mode.
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
-        # The IKE version.
+        # The version of the IKE protocol.
         self.ike_version = ike_version
-        # The identifier on the Alibaba Cloud side.
+        # The identifier of the tunnel on the Alibaba Cloud side.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The peer identifier.
+        # The identifier of the tunnel peer.
         self.remote_id = remote_id
 
     def validate(self):
@@ -55812,38 +56296,39 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionTunnelOptions
     ):
         # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether DPD is enabled for the tunnel. Valid values: 
+        # Indicates whether the DPD feature is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **false**\
+        # *   **true**\
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the tunnel. Valid values: 
+        # Indicates whether NAT traversal is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **false**\
+        # *   **true**\
         self.enable_nat_traversal = enable_nat_traversal
         # The tunnel IP address.
         self.internet_ip = internet_ip
-        # The CA certificate of the tunnel peer. 
+        # The CA certificate of the tunnel peer.
         # 
         # This parameter is returned only if the VPN gateway is of the ShangMi (SM) type.
         self.remote_ca_certificate = remote_ca_certificate
-        # The tunnel role. Valid values: 
+        # The tunnel role. Valid values:
         # 
-        # - **master**\
-        # - **slave**\
+        # *   **master**: The tunnel is an active tunnel.
+        # *   **slave**: The tunnel is a standby tunnel.
         self.role = role
-        # The tunnel status. Valid values: 
-        # - **active**\
-        # - **updating**\
-        # - **deleting**\
+        # The tunnel status. Valid values:
+        # 
+        # *   **active**\
+        # *   **updating**\
+        # *   **deleted**\
         self.state = state
-        # The status of the IPsec-VPN connection. Valid values:
+        # The state of the IPsec-VPN connection. Valid values:
         # 
         # *   **ike_sa_not_established**: Phase 1 negotiations failed.
-        # *   **ike_sa_established**: Phase 1 negotiations were successful.
+        # *   **ike_sa_established**: Phase 1 negotiations succeeded.
         # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
-        # *   **ipsec_sa_established**: Phase 2 negotiations were successful.
+        # *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
         self.status = status
         # The BGP configuration.
         self.tunnel_bgp_config = tunnel_bgp_config
@@ -55980,23 +56465,23 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVcoHealthChec
     ):
         # The destination IP address.
         self.dip = dip
-        # Indicates whether health checks are enabled.
+        # Indicates whether the health check feature is enabled.
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
         # The interval between two consecutive health checks. Unit: seconds.
         self.interval = interval
-        # Indicates whether advertised routes are withdrawn when the health check fails.
+        # Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
         # 
-        # *   **revoke_route**: yes
-        # *   **reserve_route**: no
+        # *   **revoke_route**: Advertised routes are withdrawn.
+        # *   **reserve_route**: Advertised routes are not withdrawn.
         self.policy = policy
         # The maximum number of health check retries.
         self.retry = retry
         # The source IP address.
         self.sip = sip
-        # The status of the health check.
+        # The state of the health check. Valid values:
         # 
         # *   **success**: normal
         # *   **failed**: abnormal
@@ -56067,12 +56552,12 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnectionVpnBgpConfig(
         self.peer_asn = peer_asn
         # The BGP IP address of the peer.
         self.peer_bgp_ip = peer_bgp_ip
-        # The negotiation status of the BGP routing protocol. Valid values:
+        # The negotiation state of the BGP routing protocol. Valid values:
         # 
         # *   **success**: normal
         # *   **false**: abnormal
         self.status = status
-        # The CIDR block of the IPsec tunnel. The CIDR block falls within 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        # The BGP CIDR block of the IPsec-VPN connection. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -56153,80 +56638,80 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
     ):
         # The ID of the CEN instance to which the transit router belongs.
         self.attach_instance_id = attach_instance_id
-        # The type of resource that is associated with the IPsec-VPN connection. Valid values:
+        # The type of the resource that is associated with the IPsec-VPN connection. Valid values:
         # 
         # *   **CEN**: indicates that the IPsec-VPN connection is associated with a transit router of a Cloud Enterprise Network (CEN) instance.
-        # *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with a resource.
+        # *   **NO_ASSOCIATED**: indicates that the IPsec-VPN connection is not associated with any resource.
         # *   **VPNGW**: indicates that the IPsec-VPN connection is associated with a VPN gateway.
         self.attach_type = attach_type
-        # The timestamp that indicates the time when the IPsec-VPN connection was established. Unit: milliseconds.
+        # The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # Indicates whether the IPsec-VPN connection is associated with a transit router that belongs to another Alibaba Cloud account. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.cross_account_authorized = cross_account_authorized
-        # The ID of the customer gateway.
+        # The ID of the customer gateway associated with the IPsec-VPN connection.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether IPsec negotiations immediately start.
+        # Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
         # 
-        # *   **true**: Negotiations are re-initiated after the configuration is changed.
-        # *   **false**: Negotiations are re-initiated when traffic is detected.
+        # *   **true**: Negotiations are reinitiated after the configuration is changed.
+        # *   **false**: Negotiations are reinitiated after traffic is detected.
         self.effect_immediately = effect_immediately
-        # Indicates whether dead peer detection (DPD) is enabled. Valid values:
+        # Indicates whether the dead peer detection (DPD) feature is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true**: enabled.
+        # *   **true**: The DPD feature is enabled.
         # 
-        #     The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted.
+        #     The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP security association (SA), IPsec SA, and IPsec tunnel are deleted.
         # 
-        # *   **false**: disabled. The IPsec initiator does not send DPD packets.
+        # *   **false**: The DPD feature is disabled. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled. Valid values:
+        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true**: enabled
+        # *   **true**\
         # 
         #     After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
         # 
-        # *   **false**: disabled
+        # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
-        # The BGP status of the tunnel. Valid values:
+        # Indicates whether BGP is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **true**\
+        # *   **false**\
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # The configurations of phase 1 negotiations.
+        # The configuration of Phase 1 negotiations.
         self.ike_config = ike_config
         # The gateway IP address of the IPsec-VPN connection.
         # 
-        # >  This parameter is returned only when the IPsec-VPN connection is associated with a transit router.
+        # >  This parameter is returned only if the IPsec-VPN connection is associated with a transit router.
         self.internet_ip = internet_ip
-        # The configuration of phase 2 negotiations.
+        # The configuration of Phase 2 negotiations.
         self.ipsec_config = ipsec_config
         # The CIDR block on the Alibaba Cloud side.
         # 
-        # CIDR blocks are separated by commas (,).
+        # Multiple CIDR blocks are separated by commas (,).
         self.local_subnet = local_subnet
         # The name of the IPsec-VPN connection.
         self.name = name
         # The network type of the IPsec-VPN connection. Valid values:
         # 
-        # *   **public**: an encrypted connection over the Internet.
-        # *   **private**: an encrypted connection over private networks.
+        # *   **public**: an encrypted connection over the Internet
+        # *   **private**: an encrypted connection over private networks
         self.network_type = network_type
-        # The CA certificate of the peer.
+        # The certificate authority (CA) certificate of the peer.
         self.remote_ca_certificate = remote_ca_certificate
         # The CIDR block on the data center side.
         # 
-        # CIDR blocks are separated by commas (,).
+        # Multiple CIDR blocks are separated by commas (,).
         self.remote_subnet = remote_subnet
         # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.spec = spec
-        # The status of the IPsec-VPN connection. Valid values:
+        # The association state of the IPsec-VPN connection. Valid values:
         # 
         # *   **active**: The IPsec-VPN connection is associated with a VPN gateway.
-        # *   **init**: The IPsec-VPN connection is not associated with a resource and is being initialized.
+        # *   **init**: The IPsec-VPN connection is not associated with any resource and is being initialized.
         # *   **attaching**: The IPsec-VPN connection is being associated with a transit router.
         # *   **attached**: The IPsec-VPN connection is associated with a transit router.
         # *   **detaching**: The IPsec-VPN connection is being disassociated from a transit router.
@@ -56236,7 +56721,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         # *   **Upgrading**: The IPsec-VPN connection is being upgraded.
         # *   **deleted**: The IPsec-VPN connection is deleted.
         self.state = state
-        # The status of the IPsec-VPN connection. Valid values:
+        # The state of the IPsec-VPN connection. Valid values:
         # 
         # *   **ike_sa_not_established**: Phase 1 negotiations failed.
         # *   **ike_sa_established**: Phase 1 negotiations succeeded.
@@ -56249,13 +56734,13 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
-        # The tunnel configuration of the IPsec-VPN connection. 
+        # The tunnel configuration of the IPsec-VPN connection.
         # 
         # Parameters in **TunnelOptionsSpecification** are returned only if you query IPsec-VPN connections in dual-tunnel mode.
         self.tunnel_options_specification = tunnel_options_specification
-        # The health check configurations.
+        # The health check configuration of the IPsec-VPN connection.
         self.vco_health_check = vco_health_check
-        # The configurations of the BGP routing protocol.
+        # The BGP configuration of the IPsec-VPN connection.
         self.vpn_bgp_config = vpn_bgp_config
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
@@ -56459,7 +56944,7 @@ class DescribeVpnConnectionsResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The tag value.
+        # The information about the IPsec-VPN connection.
         self.vpn_connections = vpn_connections
 
     def validate(self):
@@ -56810,7 +57295,7 @@ class DescribeVpnGatewayRequest(TeaModel):
         resource_owner_id: int = None,
         vpn_gateway_id: str = None,
     ):
-        # Specifies whether to return information about pending orders. Valid values:
+        # Specifies whether to include the data about pending orders. Valid values:
         # 
         # *   **false** (default)
         # *   **true**\
@@ -56961,7 +57446,7 @@ class DescribeVpnGatewayResponseBodyTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key
+        # The tag key.
         self.key = key
         # The tag value.
         self.value = value
@@ -57075,10 +57560,11 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # The second IP address assigned by the system to create an IPsec-VPN connection. 
+        # The second IP address assigned by the system to create an IPsec-VPN connection.
+        # 
         # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # The ID of the second vSwitch associated with the VPN gateway. 
+        # The ID of the second vSwitch associated with the VPN gateway.
         # 
         # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
@@ -57091,10 +57577,11 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection. 
-        # - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection. 
+        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
         # 
-        # If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+        # 
+        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
         self.internet_ip = internet_ip
         # Indicates whether the IPsec-VPN feature is enabled. Valid values:
         # 
@@ -57123,7 +57610,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # *   **enable**\
         # *   **disable**\
         self.ssl_vpn = ssl_vpn
-        # The IP address of the SSL-VPN connection. 
+        # The IP address of the SSL-VPN connection.
         # 
         # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
@@ -57531,34 +58018,34 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData(TeaMod
         reservation_ssl: str = None,
         status: str = None,
     ):
-        # If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires. 
+        # If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
         # 
-        # If the order type is **RENEWCHANGE** (renewal with an upgrade or a downgrade) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with an upgrade or a downgrade takes effect.
+        # If the order type is **RENEWCHANGE** (renewal with a specification change) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
         self.reservation_end_time = reservation_end_time
-        # The IPsec-VPN status of the order that has not taken effect. Valid values: 
+        # The IPsec-VPN status of the order that has not taken effect. Valid values:
         # 
-        # - **enable**: enabled
-        # - **disable**: disabled
+        # *   **enable**\
+        # *   **disable**\
         self.reservation_ipsec = reservation_ipsec
         # The maximum number of concurrent SSL-VPN connections of the pending order.
         self.reservation_max_connections = reservation_max_connections
-        # The type of the order that has not taken effect. Valid values: 
+        # The type of the order that has not taken effect. Valid values:
         # 
-        # - **RENEWCHANGE**: renewal with a specification change
-        # - **TEMP_UPGRADE**: temporary upgrade
-        # - **RENEW**: renewal
+        # *   **RENEWCHANGE**: renewal with a specification change
+        # *   **TEMP_UPGRADE**: temporary upgrade
+        # *   **RENEW**: renewal
         self.reservation_order_type = reservation_order_type
-        # The bandwidth specification of the order that has not taken effect. Unit: Mbit/s.
+        # The bandwidth of the pending order. Unit: Mbit/s.
         self.reservation_spec = reservation_spec
-        # The SSL-VPN status of the order that has not taken effect. Valid values: 
+        # The SSL-VPN status of the order that has not taken effect. Valid values:
         # 
-        # - **enable**: enabled
-        # - **disable**: disabled
+        # *   **enable**\
+        # *   **disable**\
         self.reservation_ssl = reservation_ssl
-        # The status of the pending order. 
+        # The status of the order that has not taken effect.
         # 
-        # - **1**: indicates that the order for renewal or the order for renewal with a specification change has not taken effect.
-        # - **2**: indicates that the order for a temporary upgrade has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
+        # *   **1**: indicates that the order is an order for renewal or renewal with a specification change and the order has not taken effect.
+        # *   **2**: indicates that the order is an order for temporary upgrade and the order has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
         self.status = status
 
     def validate(self):
@@ -57611,9 +58098,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N added to the resource.
         self.key = key
-        # The tag value.
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -57706,59 +58193,60 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
     ):
         # Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.auto_propagate = auto_propagate
         # The payment status of the VPN gateway.
         # 
-        # *   **Normal:** The VPN gateway is running as expected.
-        # *   **FinancialLocked**: The VPN gateway is locked due to overdue payments.
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.business_status = business_status
         # The billing method of the VPN gateway.
         # 
-        # The value is set to **POSTPAY**, which indicates the pay-as-you-go billing method.
+        # The value is fixed as **POSTPAY**, which indicates the pay-as-you-go billing method.
         self.charge_type = charge_type
         # The timestamp when the VPN gateway was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # The second IP address assigned by the system to create an IPsec-VPN connection. 
+        # The second IP address assigned by the system to create an IPsec-VPN connection.
         # 
         # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # The ID of the second vSwitch associated with the VPN gateway. 
+        # The ID of the second vSwitch associated with the VPN gateway.
         # 
         # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
         self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # The BGP status of the VPN gateway.
+        # Indicates whether BGP is enabled for the VPN gateway.
         # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
         # The timestamp when the VPN gateway expires. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection. 
-        # - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection. 
+        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
         # 
-        # If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+        # 
+        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
         self.internet_ip = internet_ip
         # Indicates whether IPsec-VPN is enabled for the VPN gateway.
         # 
-        # *   **enable**: enabled
-        # *   **disable**: disabled
+        # *   **enable**\
+        # *   **disable**\
         self.ipsec_vpn = ipsec_vpn
         # The name of the VPN gateway.
         self.name = name
         # The network type of the VPN gateway.
         # 
-        # *   **public**: public VPN gateway
-        # *   **private**: private VPN gateway
+        # *   **public**\
+        # *   **private**\
         self.network_type = network_type
-        # The information about the pending orders. 
+        # The information about pending orders.
         # 
         # >  This parameter is returned only when **IncludeReservationData** is set to **true**.
         self.reservation_data = reservation_data
@@ -57768,55 +58256,58 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         self.ssl_max_connections = ssl_max_connections
         # Indicates whether SSL-VPN is enabled for the VPN gateway.
         # 
-        # *   **enable**: enabled
-        # *   **disable**: disabled
+        # *   **enable**\
+        # *   **disable**\
         self.ssl_vpn = ssl_vpn
-        # The IP address of the SSL-VPN connection. 
+        # The IP address of the SSL-VPN connection.
         # 
         # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
-        # The status of the pending order.
+        # The status of the VPN gateway. Valid values:
         # 
-        # *   **1**: indicates that the order for renewal or the order for renewal with a specification change has not taken effect.
-        # *   **2**: indicates that the order for a temporary upgrade has taken effect. After the temporary upgrade expires, the system restores the VPN gateway to its previous specifications. In this case, **ReservationIpsec**, **ReservationMaxConnections**, **ReservationSpec**, and **ReservationSsl** indicate the previous specification.
+        # *   **init**\
+        # *   **provisioning**\
+        # *   **active**\
+        # *   **updating**\
+        # *   **deleting**\
         self.status = status
         # The automatically generated tag of the VPN gateway.
         # 
         # *   **VpnEnableBgp**: indicates whether the VPN gateway supports BGP. Valid values:
         # 
-        #     *   **true**: yes
-        #     *   **false**: no
+        #     *   **true**\
+        #     *   **false**\
         # 
         # *   **VisuallySsl**: indicates whether the VPN gateway allows you to view information about connected SSL clients.
         # 
-        #     *   **true**: yes
-        #     *   **false**: no
+        #     *   **true**\
+        #     *   **false**\
         # 
         # *   **PbrPriority**: indicates whether the VPN gateway allows you to configure priorities for policy-based routes.
         # 
-        #     *   **true**: yes
-        #     *   **false**: no
+        #     *   **true**\
+        #     *   **false**\
         # 
         # *   **VpnNewImage**: indicates whether the VPN gateway is upgraded.
         # 
-        #     *   **true**: yes
-        #     *   **false**: no
+        #     *   **true**\
+        #     *   **false**\
         # 
-        # *   **description**: the description of the VPN gateway. This parameter is for internal system use only.
+        # *   **description**\
         # 
-        # *   **VpnVersion**: the version of the VPN gateway.
+        # *   **VpnVersion**\
         self.tag = tag
-        # The list of tags added to the VPN gateway.
+        # The tags to be added to the VPN gateway.
         self.tags = tags
         # The ID of the vSwitch to which the VPN gateway belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the VPN gateway belongs.
+        # The ID of the virtual private cloud (VPC) to which the VPN gateway belongs.
         self.vpc_id = vpc_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
         # The type of the VPN gateway.
         # 
-        # The value is set to **Normal**, which indicates a standard NAT gateway.
+        # Only **Normal** may be returned, which indicates a standard NAT gateway.
         self.vpn_type = vpn_type
 
     def validate(self):
@@ -57992,9 +58483,7 @@ class DescribeVpnGatewaysResponseBody(TeaModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # If the order type is **TEMP_UPGRADE** (temporary upgrade), this parameter specifies the time when the temporary upgrade expires.
-        # 
-        # If the order type is **RENEWCHANGE** (renewal with a specification change) or **RENEW** (renewal), this parameter indicates the time when the renewal or renewal with a specification change takes effect.
+        # The information about VPN gateways.
         self.vpn_gateways = vpn_gateways
 
     def validate(self):
@@ -59369,9 +59858,9 @@ class DiagnoseVpnGatewayRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The ID of each request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The configuration when you check the connectivity of the IPsec-VPN connection. Valid values:
         # 
@@ -59437,9 +59926,9 @@ class DiagnoseVpnGatewayResponseBody(TeaModel):
         diagnose_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the diagnostic operation.
+        # The ID of the diagnostic.
         self.diagnose_id = diagnose_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60103,7 +60592,7 @@ class DissociateVpnGatewayWithCertificateRequest(TeaModel):
     ):
         # The certificate ID.
         # 
-        # > The certificate ID is generated after the SSL certificate is associated with the VPN gateway. It is not the ID of the SSL certificate. You can call [ListVpnCertificateAssociations](~~203359~~) to query certificate IDs.
+        # >  The certificate ID refers to the ID generated after the SSL certificate is associated with a VPN gateway. It is not the ID of the certificate itself. You can call [ListVpnCertificateAssociations](~~448813~~) to query certificate IDs.
         self.certificate_id = certificate_id
         # The certificate type. Valid values:
         # 
@@ -60252,7 +60741,7 @@ class DownloadVpnConnectionConfigRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where you want to create the IPsec-VPN connection.
+        # The ID of the region where the IPsec-VPN connection is created.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -60314,23 +60803,26 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIkeConfig(TeaMod
         psk: str = None,
         remote_id: str = None,
     ):
-        # The IKE authentication algorithm. Valid values: **sha1** and **MD5**.
+        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The IKE encryption algorithm.
+        # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The IKE lifetime. Unit: seconds.
+        # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE mode. Valid values: **main** and **aggressive**. The **main** mode offers higher security. If NAT traversal is enabled, we recommend that you use the **aggressive** mode.
+        # The IKE negotiation mode. Valid values:
+        # 
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The DH group.
+        # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
         # The IKE version.
         self.ike_version = ike_version
-        # The local ID. The default value is the IP address of the VPN gateway. You can specify the value as an IP address or in the FQDN format.
+        # The identifier of the customer gateway. FQDN and IP formats are supported. The default value is the IP address of the customer gateway.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The peer ID. The default value is the IP address of the customer gateway. You can specify the value as an IP address or in the fully qualified domain name (FQDN) format.
+        # The identifier of the VPN gateway. FQDN and IP formats are supported. The default value is the IP address of the VPN gateway.
         self.remote_id = remote_id
 
     def validate(self):
@@ -60393,13 +60885,13 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigIpsecConfig(TeaM
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The IPsec authentication algorithm. Valid values: **sha1** and **md5**.
+        # The authentication algorithm in the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The IPsec encryption algorithm.
+        # The encryption algorithm in the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The IPsec lifetime. Unit: seconds.
+        # The lifetime in the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group.
+        # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -60453,10 +60945,10 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         self.ike_enc_alg = ike_enc_alg
         # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values: 
+        # The IKE negotiation mode. Valid values:
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
@@ -60677,19 +61169,21 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(TeaModel):
         remote_subnet: str = None,
         tunnels_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfig = None,
     ):
-        # The IKE configuration.
+        # The configurations of Phase 1 negotiations.
         self.ike_config = ike_config
-        # The configuration of the IPsec-VPN connection.
+        # The configurations of Phase 2 negotiations.
         self.ipsec_config = ipsec_config
-        # The identifier of the VPN gateway.
-        self.local = local
-        # The CIDR block on the virtual private cloud (VPC) side.
-        self.local_subnet = local_subnet
         # The identifier of the customer gateway.
-        self.remote = remote
+        self.local = local
         # The CIDR block on the data center side.
+        self.local_subnet = local_subnet
+        # The identifier of the VPN gateway.
+        self.remote = remote
+        # The CIDR block on the virtual private cloud (VPC) side.
         self.remote_subnet = remote_subnet
-        # The tunnel configuration of the peer gateway device. Parameters in TunnelsConfig are returned only if the IPsec-VPN connection is in dual-tunnel mode.
+        # The tunnel configurations of the peer gateway device.
+        # 
+        # The parameters in **TunnelsConfig** are returned only when the IPsec-VPN connection supports the dual-tunnel mode.
         self.tunnels_config = tunnels_config
 
     def validate(self):
@@ -60750,9 +61244,9 @@ class DownloadVpnConnectionConfigResponseBody(TeaModel):
         request_id: str = None,
         vpn_connection_config: DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The configuration of the IPsec-VPN connection.
+        # The configurations of the peer gateway device.
         self.vpn_connection_config = vpn_connection_config
 
     def validate(self):
@@ -63122,7 +63616,9 @@ class GetVpcGatewayEndpointAttributeResponseBodyTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the resource.
         self.key = key
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -63165,7 +63661,7 @@ class GetVpcGatewayEndpointAttributeResponseBody(TeaModel):
         tags: List[GetVpcGatewayEndpointAttributeResponseBodyTags] = None,
         vpc_id: str = None,
     ):
-        # The time when the endpoint was created. The time follows the ISO 8601 standard in UTC in the YYYY-MM-DDThh:mm:ssZ format.
+        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the gateway endpoint.
         self.endpoint_description = endpoint_description
@@ -63175,22 +63671,24 @@ class GetVpcGatewayEndpointAttributeResponseBody(TeaModel):
         self.endpoint_name = endpoint_name
         # The status of the gateway endpoint. Valid values:
         # 
-        # *   **Creating**: being created
-        # *   **Created**: created
-        # *   **Modifying**: being modified
-        # *   **Associating**: being associated
-        # *   **Dissociating**: being disassociated
-        # *   **Deleting**: being deleted
+        # *   **Creating**\
+        # *   **Created**\
+        # *   **Modifying**\
+        # *   **Associating**\
+        # *   **Dissociating**\
+        # *   **Deleting**\
         self.endpoint_status = endpoint_status
         # The access policy for the cloud service.
         self.policy_document = policy_document
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         # The ID of the route table associated with the gateway endpoint.
         self.route_tables = route_tables
         # The name of the endpoint service.
         self.service_name = service_name
+        # The tag list.
         self.tags = tags
         # The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
         self.vpc_id = vpc_id
@@ -64087,17 +64585,19 @@ class GetVpnGatewayDiagnoseResultRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, ClientToken is set to the value of RequestId. The ID of each request may be different.
+        # **\
+        # 
+        # **Description** If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
-        # The ID of the diagnostic.
+        # The ID of the diagnostic operation.
         # 
         # When you call the [DiagnoseVpnGateway](~~469751~~) operation, the system returns a corresponding ID.
         self.diagnose_id = diagnose_id
         # The region ID of the VPN gateway.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
@@ -64250,7 +64750,7 @@ class GetVpnGatewayDiagnoseResultResponseBody(TeaModel):
     ):
         # The time when the diagnostic started.
         # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.begin_time = begin_time
         # The ID of the diagnostic.
         self.diagnose_id = diagnose_id
@@ -64258,11 +64758,11 @@ class GetVpnGatewayDiagnoseResultResponseBody(TeaModel):
         self.diagnose_result = diagnose_result
         # The timestamp when the system finishes diagnosing the item.
         # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+        # The time follows the ISO8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.finish_time = finish_time
         # The number of diagnostic items that have been diagnosed.
         self.finished_count = finished_count
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the resource that is diagnosed.
         self.resource_instance_id = resource_instance_id
@@ -68787,13 +69287,13 @@ class ListPublicIpAddressPoolsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of the tag. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The tag value to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -68838,46 +69338,49 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         status: str = None,
         tags: List[ListPublicIpAddressPoolsRequestTags] = None,
     ):
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, an HTTP 2xx status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The line type. Valid values:
         # 
-        # *   **BGP** (default): BGP (Multi-ISP) lines
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
+        # *   **BGP** (default): BGP (Multi-ISP) line
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line
         # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
         # 
         # If you are allowed to use single-ISP bandwidth, you can also choose one of the following values:
         # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
         # 
-        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the value to **BGP_FinanceCloud**.
+        # If your services are deployed in China East 1 Finance, this parameter is required and you must set the parameter to **BGP_FinanceCloud**.
         self.isp = isp
         # The maximum number of entries to return. Valid values: **10** to **100**. Default value: **10**.
         self.max_results = max_results
         # The name of the IP address pool.
         # 
-        # This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
-        # The token that determines the start point of the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # *   If this is your first query and no subsequent queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.public_ip_address_pool_ids = public_ip_address_pool_ids
-        # The ID of the region where you want to query IP address pools.
+        # The IDs of the IP address pool.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can enter up to 100 IDs.
+        self.public_ip_address_pool_ids = public_ip_address_pool_ids
+        # The ID of the region in which the IP address pool that you want to query resides.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         # The ID of the resource group to which the IP address pool belongs.
         self.resource_group_id = resource_group_id
@@ -68885,10 +69388,11 @@ class ListPublicIpAddressPoolsRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The status of the IP address pool. Valid values:
         # 
-        # *   **Created**: The IP address pool is available.
-        # *   **Deleting**: The IP address pool is being deleted.
-        # *   **Modifying**: The IP address pool is being modified.
+        # *   **Created**\
+        # *   **Deleting**\
+        # *   **Modifying**\
         self.status = status
+        # The tags to add to the resource.
         self.tags = tags
 
     def validate(self):
@@ -68977,9 +69481,9 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolListTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The list of tags.
+        # The tag key.
         self.key = key
-        # The key of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -69027,62 +69531,71 @@ class ListPublicIpAddressPoolsResponseBodyPublicIpAddressPoolList(TeaModel):
         user_type: bool = None,
         zones: List[str] = None,
     ):
+        # The service type of the IP address pool. Valid values:
+        # 
+        # *   **CloudBox**: the cloud box service type. Only cloud box users can select this type.
+        # *   **Default** (default): the general service type.
         self.biz_type = biz_type
-        # The region ID of the IP address pool.
+        # The time when the IP address pool was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
-        # The status of the IP address pool. Valid values:
-        # 
-        # *   **Created**: The IP address pool is available.
-        # *   **Deleting**: The IP address pool is being deleted.
-        # *   **Modifying**: The IP address pool is being modified.
+        # The information about the IP address pool.
         self.description = description
-        # The number of occupied IP addresses in the public IP address pool.
-        self.ip_address_remaining = ip_address_remaining
-        # The time when the IP address pool was created. The time is displayed in `YYYY-MM-DDThh:mm:ssZ` format.
-        self.isp = isp
-        # The line type.
-        # 
-        # *   **BGP**: BGP (Multi-ISP) lines
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines
-        # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see [EIP line types](~~32321~~).
-        # 
-        # If you are allowed to use single-ISP bandwidth, one of the following values is returned:
-        # 
-        # *   **ChinaTelecom**: China Telecom
-        # *   **ChinaUnicom**: China Unicom
-        # *   **ChinaMobile**: China Mobile
-        # *   **ChinaTelecom_L2**: China Telecom L2
-        # *   **ChinaUnicom_L2**: China Unicom L2
-        # *   **ChinaMobile_L2**: China Mobile L2
-        # 
-        # If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
-        self.name = name
         # Indicates whether the IP address pool has idle IP addresses. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
+        self.ip_address_remaining = ip_address_remaining
+        # The line type. Valid values:
+        # 
+        # *   **BGP**: BGP (Multi-ISP) line
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line
+        # 
+        # For more information about the BGP (Multi-ISP) line and BGP (Multi-ISP) Pro line, see the "Line types" section of [What is EIP?](~~32321~~)
+        # 
+        # If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
+        # 
+        # *   **ChinaTelecom**\
+        # *   **ChinaUnicom**\
+        # *   **ChinaMobile**\
+        # *   **ChinaTelecom_L2**\
+        # *   **ChinaUnicom_L2**\
+        # *   **ChinaMobile_L2**\
+        # 
+        # If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
+        self.isp = isp
+        # The name of the IP address pool.
+        self.name = name
+        # The Alibaba Cloud account to which the IP address pool belongs.
         self.owner_id = owner_id
-        # The list of IP address pools.
-        self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the IP address pool.
+        self.public_ip_address_pool_id = public_ip_address_pool_id
+        # The ID of the region in which the IP address pool that you want to query resides.
         self.region_id = region_id
+        # The ID of the resource group to which the IP address pool belongs.
+        self.resource_group_id = resource_group_id
         # Indicates whether the IP address pool is shared.
         # 
-        # *   **Shared**: The IP address pool is shared.
+        # *   Only **Shared** may be returned.
         # *   An empty value indicates that the IP address pool is not shared.
-        self.resource_group_id = resource_group_id
-        # The Alibaba Cloud account to which the IP address pool belongs.
         self.share_type = share_type
-        # The name of the IP address pool.
+        # The status of the IP address pool. Valid values:
+        # 
+        # *   **Created**\
+        # *   **Deleting**\
+        # *   **Modifying**\
         self.status = status
-        # The ID of the resource group to which the IP address pool belongs.
+        # The tags.
         self.tags = tags
-        # The description of the IP address pool.
-        self.total_ip_num = total_ip_num
         # The total number of IP addresses in the public IP address pool.
+        self.total_ip_num = total_ip_num
+        # The number of occupied IP addresses in the public IP address pool.
         self.used_ip_num = used_ip_num
+        # The user type. Valid values:
+        # 
+        # *   **admin**: administrator. An administrator can delete, modify, and query IP address pools and allocate elastic IP addresses (EIPs) to IP address pools.
+        # *   **user**: regular user. A regular user can only allocate EIPs to IP address pools and query IP address pools. A regular user cannot modify or delete IP address pools.
         self.user_type = user_type
+        # The zones of the IP address pool. This parameter is returned only when BizType is set to CloudBox.
         self.zones = zones
 
     def validate(self):
@@ -69185,16 +69698,16 @@ class ListPublicIpAddressPoolsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The token that determines the start point of the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         # 
-        # *   If **NextToken** is returned, it indicates that no additional results exist.
-        # *   If **NextToken** is returned, the value indicates the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is used to retrieve a new page of results.
         self.next_token = next_token
-        # The total number of entries returned.
+        # The IP address pools.
         self.public_ip_address_pool_list = public_ip_address_pool_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The maximum number of entries returned.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -69937,13 +70450,13 @@ class ListTrafficMirrorFiltersRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The key of tag N to add to the resource. You can specify at most 20 tag keys. The tag key cannot be an empty string.
         # 
-        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
+        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -69989,10 +70502,10 @@ class ListTrafficMirrorFiltersRequest(TeaModel):
         # 
         # Valid values: **1** to **100**. Default value: **10**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -70094,8 +70607,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
     ):
         # The action of the outbound rule. Valid values:
         # 
-        # *   **accept**: collects network traffic.
-        # *   **drop**: does not collect network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.action = action
         # The destination CIDR block of the outbound traffic.
         self.destination_cidr_block = destination_cidr_block
@@ -70105,10 +70618,10 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
         self.priority = priority
         # The protocol that is used by the outbound traffic to be mirrored. Valid values:
         # 
-        # *   **ALL**: all protocols
-        # *   **ICMP**: ICMP
-        # *   **TCP**: TCP
-        # *   **UDP**: UDP
+        # *   **ALL**\
+        # *   **ICMP**\
+        # *   **TCP**\
+        # *   **UDP**\
         self.protocol = protocol
         # The source CIDR block of the outbound traffic.
         self.source_cidr_block = source_cidr_block
@@ -70116,8 +70629,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersEgressRules(TeaMod
         self.source_port_range = source_port_range
         # The direction of the network traffic. Valid values:
         # 
-        # *   **egress**: outbound
-        # *   **ingress**: inbound
+        # *   **egress**\
+        # *   **ingress**\
         self.traffic_direction = traffic_direction
         # The ID of the filter associated with the outbound rule.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
@@ -70208,8 +70721,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
     ):
         # The action of the inbound rule. Valid values:
         # 
-        # *   **accept**: accepts network traffic.
-        # *   **drop**: does not collect network traffic.
+        # *   **accept**\
+        # *   **drop**\
         self.action = action
         # The destination CIDR block of the inbound traffic.
         self.destination_cidr_block = destination_cidr_block
@@ -70219,10 +70732,10 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
         self.priority = priority
         # The protocol that is used by the inbound traffic to be mirrored. Valid values:
         # 
-        # *   **ALL**: all protocols
-        # *   **ICMP**: ICMP
-        # *   **TCP**: TCP
-        # *   **UDP**: UDP
+        # *   **ALL**\
+        # *   **ICMP**\
+        # *   **TCP**\
+        # *   **UDP**\
         self.protocol = protocol
         # The source CIDR block of the inbound traffic.
         self.source_cidr_block = source_cidr_block
@@ -70230,8 +70743,8 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersIngressRules(TeaMo
         self.source_port_range = source_port_range
         # The direction of the network traffic. Valid values:
         # 
-        # *   **egress**: outbound
-        # *   **ingress**: inbound
+        # *   **egress**\
+        # *   **ingress**\
         self.traffic_direction = traffic_direction
         # The ID of the filter associated with the inbound rule.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
@@ -70311,9 +70824,9 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFiltersTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -70362,7 +70875,7 @@ class ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters(TeaModel):
         self.tags = tags
         # The description of the filter.
         self.traffic_mirror_filter_description = traffic_mirror_filter_description
-        # The ID of the filter.
+        # The ID of the traffic mirror filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
         # The name of the filter.
         self.traffic_mirror_filter_name = traffic_mirror_filter_name
@@ -70458,14 +70971,16 @@ class ListTrafficMirrorFiltersResponseBody(TeaModel):
         total_count: str = None,
         traffic_mirror_filters: List[ListTrafficMirrorFiltersResponseBodyTrafficMirrorFilters] = None,
     ):
+        # The number of entries returned.
         self.count = count
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If the return value of **NextToken** is not empty, the value indicates the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value is the token that is used for the next query.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
@@ -71745,8 +72260,8 @@ class ListVpcEndpointServicesByEndUserResponseBodyServices(TeaModel):
         self.service_name = service_name
         # Indicate whether the endpoint service supports the access policy. Valid values:
         # 
-        # *   **false**: no
-        # *   **true**: yes
+        # *   **false**\
+        # *   **true**\
         self.support_policy = support_policy
 
     def validate(self):
@@ -71805,6 +72320,7 @@ class ListVpcEndpointServicesByEndUserResponseBody(TeaModel):
         self.request_id = request_id
         # The list of entries returned.
         self.services = services
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -71901,7 +72417,13 @@ class ListVpcGatewayEndpointsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the resource. You can specify at most 20 tag keys. It cannot be an empty string.
+        # 
+        # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N added to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -71950,12 +72472,12 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length.
         self.endpoint_name = endpoint_name
-        # The number of entries to return per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListListenerCertificates operation.
+        # *   You do not need to specify this parameter for the first request.
+        # *   If a value is returned for NextToken, specify the value in the next request to retrieve a new page of results.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -71963,11 +72485,13 @@ class ListVpcGatewayEndpointsRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the endpoint service.
         self.service_name = service_name
+        # The tag list.
         self.tags = tags
 
     def validate(self):
@@ -72048,7 +72572,9 @@ class ListVpcGatewayEndpointsResponseBodyEndpointsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N added to the resource.
         self.key = key
+        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -72092,7 +72618,7 @@ class ListVpcGatewayEndpointsResponseBodyEndpoints(TeaModel):
     ):
         # The ID of the route table associated with the gateway endpoint.
         self.associated_route_tables = associated_route_tables
-        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+        # The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The description of the gateway endpoint.
         self.endpoint_description = endpoint_description
@@ -72113,9 +72639,11 @@ class ListVpcGatewayEndpointsResponseBodyEndpoints(TeaModel):
         # 
         # For more information about the syntax and structure of the access policy, see [Policy syntax and structure](~~93739~~).
         self.policy_document = policy_document
+        # The ID of the resource group to which the gateway endpoint belongs.
         self.resource_group_id = resource_group_id
         # The name of the endpoint service.
         self.service_name = service_name
+        # The tag list.
         self.tags = tags
         # The ID of the virtual private cloud (VPC) to which the gateway endpoint belongs.
         self.vpc_id = vpc_id
@@ -72199,16 +72727,16 @@ class ListVpcGatewayEndpointsResponseBody(TeaModel):
     ):
         # The list of gateway endpoints.
         self.endpoints = endpoints
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
         # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+        # *   If a value is returned for **NextToken**, the value can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The total number of entries returned.
+        # The number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -72383,13 +72911,13 @@ class ListVpnCertificateAssociationsResponseBodyVpnCertificateRelations(TeaModel
         region_id: str = None,
         vpn_gateway_id: str = None,
     ):
-        # The time when the certificate was associated.
+        # The time when the Anycast EIP was associated.
         # 
-        # The time follows the ISO8601 standard in the YYYY-MM-DDThh:mmZ format. The time is displayed in UTC.
+        # The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
         self.association_time = association_time
         # The certificate ID.
         self.certificate_id = certificate_id
-        # The certificate type.
+        # The type of the certificate.
         # 
         # *   **Encryption**\
         # *   **Signature**\
@@ -73102,15 +73630,15 @@ class ModifyCommonBandwidthPackageIpBandwidthRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        # The maximum bandwidth for the EIP. This value cannot be larger than the maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The ID of the EIP that is associated with the EIP bandwidth plan.
+        # The ID of the EIP that is associated with the Internet Shared Bandwidth instance.
         self.eip_id = eip_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the EIP bandwidth plan. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the Internet Shared Bandwidth instance. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -73168,7 +73696,7 @@ class ModifyCommonBandwidthPackageIpBandwidthResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73246,15 +73774,15 @@ class ModifyCommonBandwidthPackageSpecRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The maximum bandwidth of the EIP bandwidth plan. Unit: Mbit/s.
+        # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         # 
         # Valid values: **1** to **1000**.
         self.bandwidth = bandwidth
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the EIP bandwidth plan.
+        # The region ID of the Internet Shared Bandwidth instance.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -73310,7 +73838,7 @@ class ModifyCommonBandwidthPackageSpecResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73397,9 +73925,9 @@ class ModifyCustomerGatewayAttributeRequest(TeaModel):
         self.auth_key = auth_key
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the customer gateway.
         self.customer_gateway_id = customer_gateway_id
@@ -73413,7 +73941,7 @@ class ModifyCustomerGatewayAttributeRequest(TeaModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the NAT gateway is deployed.
+        # The ID of the region where the customer gateway is deployed.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -73496,7 +74024,7 @@ class ModifyCustomerGatewayAttributeResponseBody(TeaModel):
         self.ip_address = ip_address
         # The name of the customer gateway.
         self.name = name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -73605,7 +74133,7 @@ class ModifyEipAddressAttributeRequest(TeaModel):
         self.bandwidth = bandwidth
         # The new description of the EIP.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
+        # The description must be 2 to 256 characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         self.description = description
         # The new name of the EIP.
         # 
@@ -73677,7 +74205,7 @@ class ModifyEipAddressAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -75952,13 +76480,13 @@ class ModifyIpv6AddressAttributeRequest(TeaModel):
     ):
         # The description of the IPv6 address.
         # 
-        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter but cannot start with `http://` or `https://`.
+        # It must be 2 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
         # The name of the IPv6 address.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. The name must start with a letter but cannot start with `http://` or `https://`.
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -76020,7 +76548,7 @@ class ModifyIpv6AddressAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -76234,153 +76762,6 @@ class ModifyIpv6GatewayAttributeResponse(TeaModel):
         return self
 
 
-class ModifyIpv6GatewaySpecRequest(TeaModel):
-    def __init__(
-        self,
-        client_token: str = None,
-        ipv_6gateway_id: str = None,
-        owner_account: str = None,
-        owner_id: int = None,
-        region_id: str = None,
-        resource_owner_account: str = None,
-        resource_owner_id: int = None,
-        spec: str = None,
-    ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length.
-        self.client_token = client_token
-        # The ID of the IPv6 gateway.
-        self.ipv_6gateway_id = ipv_6gateway_id
-        self.owner_account = owner_account
-        self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the available regions.
-        self.region_id = region_id
-        self.resource_owner_account = resource_owner_account
-        self.resource_owner_id = resource_owner_id
-        # This parameter is no longer used because no specifications options are available for the IPv6 gateway.
-        self.spec = spec
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.client_token is not None:
-            result['ClientToken'] = self.client_token
-        if self.ipv_6gateway_id is not None:
-            result['Ipv6GatewayId'] = self.ipv_6gateway_id
-        if self.owner_account is not None:
-            result['OwnerAccount'] = self.owner_account
-        if self.owner_id is not None:
-            result['OwnerId'] = self.owner_id
-        if self.region_id is not None:
-            result['RegionId'] = self.region_id
-        if self.resource_owner_account is not None:
-            result['ResourceOwnerAccount'] = self.resource_owner_account
-        if self.resource_owner_id is not None:
-            result['ResourceOwnerId'] = self.resource_owner_id
-        if self.spec is not None:
-            result['Spec'] = self.spec
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ClientToken') is not None:
-            self.client_token = m.get('ClientToken')
-        if m.get('Ipv6GatewayId') is not None:
-            self.ipv_6gateway_id = m.get('Ipv6GatewayId')
-        if m.get('OwnerAccount') is not None:
-            self.owner_account = m.get('OwnerAccount')
-        if m.get('OwnerId') is not None:
-            self.owner_id = m.get('OwnerId')
-        if m.get('RegionId') is not None:
-            self.region_id = m.get('RegionId')
-        if m.get('ResourceOwnerAccount') is not None:
-            self.resource_owner_account = m.get('ResourceOwnerAccount')
-        if m.get('ResourceOwnerId') is not None:
-            self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('Spec') is not None:
-            self.spec = m.get('Spec')
-        return self
-
-
-class ModifyIpv6GatewaySpecResponseBody(TeaModel):
-    def __init__(
-        self,
-        request_id: str = None,
-    ):
-        # The ID of the request.
-        self.request_id = request_id
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class ModifyIpv6GatewaySpecResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: ModifyIpv6GatewaySpecResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = ModifyIpv6GatewaySpecResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class ModifyIpv6InternetBandwidthRequest(TeaModel):
     def __init__(
         self,
@@ -76394,25 +76775,25 @@ class ModifyIpv6InternetBandwidthRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The Internet bandwidth for the IPv6 CIDR block. Valid values: **1** to **5000**. Unit: Mbit/s.
+        # The Internet bandwidth for the IPv6 CIDR block. Unit: Mbit/s. Valid values: **1** to **5000**.
         self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that the value is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The ID of the IPv6 address.
         # 
-        # >  You must set one of the **Ipv6AddressId** and **Ipv6InternetBandwidthId** parameters.
+        # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
         self.ipv_6address_id = ipv_6address_id
-        # The ID of the Internet bandwidth that you purchase for the IPv6 CIDR block.
+        # The ID of the Internet bandwidth that you purchased for the IPv6 CIDR block.
         # 
-        # >  You must set one of the **Ipv6AddressId** and **Ipv6InternetBandwidthId** parameters.
+        # >  You must specify one of **Ipv6AddressId** and **Ipv6InternetBandwidthId**.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to obtain the region ID.
+        # The ID of the region where the IPv6 gateway is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -76474,7 +76855,7 @@ class ModifyIpv6InternetBandwidthResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77937,26 +78318,26 @@ class ModifyRouterInterfaceAttributeRequest(TeaModel):
     ):
         # Specifies whether to delete the health check IP addresses configured on the router interface. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.delete_health_check_ip = delete_health_check_ip
         # The description of the router interface.
         # 
         # The value must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
-        # The rate of the heath check. Unit: milliseconds. The recommended value is **2000**. This value specifies the interval at which probe packets are sent during a health check.
+        # The rate of health checks. Unit: milliseconds. The recommended value is **2000**. This value specifies the interval at which probe packets are sent during a health check.
         # 
         # In this example, **HcThreshold** is set to **8** and **HcRate** is set to **2000**. In this example, probe packets are sent from **HealthCheckSourceIp** (source address) to **HealthCheckTargetIp** (destination address) every 2,000 seconds. If no response is returned for eight consecutive times, the health check fails.
         self.hc_rate = hc_rate
-        # The health check threshold. Unit: packets. We recommend that you set the value to **8**. This value specifies the number of probe packets that are sent during a health check.
+        # The healthy threshold. Unit: packets. We recommend that you set the value to **8**. This value specifies the number of probe packets that are sent during a health check.
         self.hc_threshold = hc_threshold
         # The source IP address that is used to perform health checks. The source IP address must be an idle IP address of the local virtual private cloud (VPC).
         # 
-        # >  You can set this parameter if an Express Connect circuit is used.
+        # >  You can set this parameter when an Express Connect circuit is used.
         self.health_check_source_ip = health_check_source_ip
         # The destination IP address that is used to perform health checks.
         # 
-        # >  This parameter is required when the **HealthCheckSourceIp** parameter is set.
+        # >  This parameter is required when **HealthCheckSourceIp** is specified.
         self.health_check_target_ip = health_check_target_ip
         # The name of the router interface.
         # 
@@ -77970,11 +78351,11 @@ class ModifyRouterInterfaceAttributeRequest(TeaModel):
         self.opposite_router_id = opposite_router_id
         # The type of router to which the peer router interface belongs. Valid values:
         # 
-        # *   **VRouter**: vRouter
-        # *   **VBR** (default): virtual border router (VBR)
+        # *   **VRouter**\
+        # *   **VBR** (default)
         self.opposite_router_type = opposite_router_type
         self.owner_id = owner_id
-        # The ID of the region to which the router interface belongs.
+        # The region ID of the router interface.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -78068,7 +78449,7 @@ class ModifyRouterInterfaceAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -78680,30 +79061,30 @@ class ModifySslVpnServerRequest(TeaModel):
         resource_owner_id: int = None,
         ssl_vpn_server_id: str = None,
     ):
-        # The encryption algorithm that is used by the SSL server. Valid values:
+        # The encryption algorithm that is used in the SSL-VPN connection. Valid values:
         # 
-        # *   **AES-128-CBC** (default): AES-128-CBC
-        # *   **AES-192-CBC**: AES-192-CBC
-        # *   **AES-256-CBC**: AES-256-CBC
-        # *   **none**: does not use an encryption algorithm.
+        # *   **AES-128-CBC** (default)
+        # *   **AES-192-CBC**\
+        # *   **AES-256-CBC**\
+        # *   **none**\
         self.cipher = cipher
         # The client IP address pool.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to enable data compression. Valid values:
         # 
-        # *   **true** (default): yes
-        # *   **false**: no
+        # *   **true** (default)
+        # *   **false**\
         self.compress = compress
         # Specifies whether to enable two-factor authentication.
         # 
-        # *   **true**: yes
-        # *   **false** (default): no
+        # *   **true**\
+        # *   **false** (default)
         self.enable_multi_factor_auth = enable_multi_factor_auth
         # The ID of the Identity as a Service (IDaaS) instance.
         self.idaa_sinstance_id = idaa_sinstance_id
@@ -78723,10 +79104,10 @@ class ModifySslVpnServerRequest(TeaModel):
         self.port = port
         # The protocol that is used by the SSL server. Valid values:
         # 
-        # *   **TCP**: TCP
-        # *   **UDP** (default): UDP
+        # *   **TCP**\
+        # *   **UDP** (default)
         self.proto = proto
-        # The ID of the region where the VPN gateway is created.
+        # The region ID of the VPN gateway.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -78852,8 +79233,8 @@ class ModifySslVpnServerResponseBody(TeaModel):
         self.create_time = create_time
         # Indicates whether two-factor authentication is enabled.
         # 
-        # *   **true**: enabled
-        # *   **false** (default): disabled
+        # *   **true**\
+        # *   **false** (default)
         self.enable_multi_factor_auth = enable_multi_factor_auth
         # The ID of the IDaaS instance.
         self.idaa_sinstance_id = idaa_sinstance_id
@@ -78871,7 +79252,7 @@ class ModifySslVpnServerResponseBody(TeaModel):
         self.proto = proto
         # The ID of the region where the SSL server is created.
         self.region_id = region_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
@@ -79017,7 +79398,9 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig(TeaM
         self.local_asn = local_asn
         # The BGP IP address of the tunnel. The IP address must fall into the **CIDR block** of the tunnel.
         self.local_bgp_ip = local_bgp_ip
-        # The CIDR block of the tunnel. The CIDR block must fall into 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # The CIDR block of the tunnel.
+        # 
+        # The CIDR block must fall into 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -79061,36 +79444,35 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig(TeaM
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm that is used in Phase 1 negotiations. 
+        # The authentication algorithm that is used in IKE Phase 1 negotiations.
         # 
-        # - If the IPsec connection is attached to a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384**, and **sha512**. 
-        # - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm3**.
+        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm3**.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm that is used in Phase 1 negotiations. 
+        # The encryption algorithm that is used in IKE Phase 1 negotiations.
         # 
-        # - If the IPsec connection is attached to a standard VPN gateway, the valid values are **aes**, **aes192**, **sha256**, **des**, and **3des**. 
-        # - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **aes**, **aes192**, **sha256**, **des**, and **3des**.
+        # *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm4**.
         self.ike_enc_alg = ike_enc_alg
-        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+        # The SA lifetime that is used in IKE Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode. Valid values:
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main:** This mode offers higher security during negotiations.
+        # *   **aggressive:** This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        # The Diffie-Hellman (DH) key exchange algorithm that is used in IKE Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
-        # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
+        # The IKE version. Valid values: **ikev1** and **ikev2**.
         self.ike_version = ike_version
         # The tunnel identifier. The identifier can be up to 100 characters in length, and supports fully qualified domain names (FQDNs) and IP addresses. The default identifier is the tunnel IP address.
         self.local_id = local_id
-        # The pre-shared key that is used to verify identities between the tunnel and peer. 
+        # The pre-shared key that is used to verify identities between the tunnel and peer.
         # 
+        # *   It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
         # 
-        # - The key must be 1 to 100 characters in length, and can contain digits, letters, and the following characters: ```~!`@#$%^&*()_-+={}[]|;:\",.<>/?```
-        # - If you do not specify a pre-shared key, the system generates a random 16-bit string as the pre-shared key. You can call the DescribeVpnConnection operation to query the pre-shared key that is generated by the system. 
-        # 
-        # > The tunnel and the peer must use the same pre-shared key. Otherwise, tunnel communication cannot be established.
+        # >  The pre-shared key that is configured for the tunnel and the tunnel peer must be the same. Otherwise, the system cannot establish the tunnel.
         self.psk = psk
         # The peer identifier. The identifier can be up to 100 characters in length, and supports FQDNs and IP addresses. The default identifier is the IP address of the customer gateway associated with the tunnel.
         self.remote_id = remote_id
@@ -79155,19 +79537,19 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig(Te
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm that is used in Phase 2 negotiations. 
+        # The authentication algorithm that is used in IPsec Phase 2 negotiations.
         # 
-        # - If the IPsec connection is attached to a standard VPN gateway, the valid values are **md5**, **sha1**, **sha256**, **sha384,** and **sha512**. 
-        # - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm3**.
+        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm3**.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm that is used in Phase 2 negotiations. 
+        # The encryption algorithm that is used in IPsec Phase 2 negotiations.
         # 
-        # - If the IPsec connection is attached to a standard VPN gateway, the valid values are **aes**, **aes192**, **sha256**, **des**, and **3des**. 
-        # - If the IPsec connection is attached to a VPN gateway that uses an SM certificate, set the value to **sm4**.
+        # *   Valid values when the IPsec connection is attached to a standard VPN gateway: **aes**, **aes192**, **sha256**, **des**, and **3des**.
+        # *   Valid values when the IPsec connection is attached to a VPN gateway that uses an SM certificate: **sm4**.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+        # The SA lifetime that is used in IPsec Phase 2 negotiations. Unit: seconds. Valid values: **0 to 86400**.
         self.ipsec_lifetime = ipsec_lifetime
-        # The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+        # The DH key exchange algorithm that is used in IPsec Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -79213,24 +79595,24 @@ class ModifyTunnelAttributeRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ipsec_config: ModifyTunnelAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
         # Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
-        # - **true**: DPD is enabled. The IPsec initiator sends DPD packets to verify the existence and availability of the IPsec peer. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted. 
         # 
-        # - **false**: DPD is disabled. The IPsec initiator does not send DPD packets.
+        # *   **true**: DPD is enabled. The IPsec initiator sends DPD packets to verify the existence and availability of the IPsec peer. If no response is received from the peer within a specified period of time, the IPsec peer is considered disconnected. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # *   **false**: DPD is disabled. The IPsec initiator does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal. Valid values:
         # 
-        # - **true**\
-        # 
-        #     After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel. 
-        # - **false**\
+        # *   **true**: NAT traversal is enabled. After NAT traversal is enabled, the initiator does not check the UDP ports during Internet Key Exchange (IKE) negotiations and can automatically discover NAT gateway devices along the IPsec-VPN tunnel.
+        # *   **false**: NAT traversal is disabled.
         self.enable_nat_traversal = enable_nat_traversal
-        # If you want to attach the IPsec connection to a VPN gateway that uses a ShangMi (SM) certificate, set the value to the peer CA certificate.
+        # The peer certificate authority (CA) certificate when you want to attach the IPsec connection to a virtual private network (VPN) gateway that uses a ShangMi (SM) certificate.
         self.remote_ca_certificate = remote_ca_certificate
-        # The BGP configurations.
+        # The Border Gateway Protocol (BGP) configurations of the tunnel.
+        # 
+        # If the BGP feature is not enabled for the tunnel, you must call the [ModifyVpnConnectionAttribute](~~120381~~) operation to enable the BGP feature for the tunnel and configure BGP.
         self.tunnel_bgp_config = tunnel_bgp_config
-        # The IKE settings for Phase 1 negotiations.
+        # The configurations of IKE Phase 1.
         self.tunnel_ike_config = tunnel_ike_config
-        # The IPsec settings for Phase 2 negotiations.
+        # The configurations of IPsec Phase 2.
         self.tunnel_ipsec_config = tunnel_ipsec_config
 
     def validate(self):
@@ -79294,13 +79676,17 @@ class ModifyTunnelAttributeRequest(TeaModel):
         tunnel_options_specification: ModifyTunnelAttributeRequestTunnelOptionsSpecification = None,
         vpn_connection_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters. 
+        # The client token that is used to ensure the idempotence of the request.
         # 
-        # > If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # You can use the client to generate a token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the **client token**. The value of **RequestId** is different for each API request.
         self.client_token = client_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the IPsec connection. You can call the [DescribeRegions](~~36063~~) operation to query the most recent list of regions.
+        # The ID of the region in which the IPsec connection is established.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -79375,10 +79761,10 @@ class ModifyTunnelAttributeResponseBodyTunnelBgpConfig(TeaModel):
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # Indicates whether BGP is enabled. Valid values: 
+        # Indicates whether the BGP feature is enabled. Valid values:
         # 
-        # - **true**\
-        # - **false**\
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
         # The local ASN.
         self.local_asn = local_asn
@@ -79450,21 +79836,21 @@ class ModifyTunnelAttributeResponseBodyTunnelIkeConfig(TeaModel):
         self.ike_enc_alg = ike_enc_alg
         # The IKE lifetime. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values: 
+        # The IKE negotiation mode. Valid values:
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main:** This mode offers higher security during negotiations.
+        # *   **aggressive:** This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman group.
+        # The DH group.
         self.ike_pfs = ike_pfs
-        # The version of the IKE protocol. 
+        # The IKE version. Valid values:
         # 
-        # - **ikev1**\
-        # - **ikev2**\
+        # *   **ikev1**\
+        # *   **ikev2**\
         # 
         # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         self.ike_version = ike_version
-        # The tunnel identifier. The identifier supports FQDNs and IP addresses. The default identifier is the tunnel IP address.
+        # The tunnel identifier. The identifier supports FQDNs and IP addresses. The default value is the tunnel IP address.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
@@ -79537,7 +79923,7 @@ class ModifyTunnelAttributeResponseBodyTunnelIpsecConfig(TeaModel):
         self.ipsec_enc_alg = ipsec_enc_alg
         # The IPsec lifetime. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The Diffie-Hellman group.
+        # The DH group.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -79593,38 +79979,38 @@ class ModifyTunnelAttributeResponseBody(TeaModel):
         self.customer_gateway_id = customer_gateway_id
         # Indicates whether DPD is enabled. Valid values:
         # 
-        # - **true**\
-        # - **false**\
+        # *   **false**\
+        # *   **true**\
         self.enable_dpd = enable_dpd
-        # Indicates whether BAT traversal is enabled. Valid values:
+        # Indicates whether NAT traversal is enabled. Valid values:
         # 
-        # - **true**\
-        # - **false**\
+        # *   **false**\
+        # *   **true**\
         self.enable_nat_traversal = enable_nat_traversal
         # The tunnel IP address.
         self.internet_ip = internet_ip
-        # The peer CA certificate when a ShangMi (SM) VPN gateway is associated with the IPsec connection.
+        # The peer CA certificate when a VPN gateway that uses an SM certificate is used to create the IPsec connection.
         self.remote_ca_certificate = remote_ca_certificate
         # The request ID.
         self.request_id = request_id
-        # The tunnel role. Valid values: 
+        # The tunnel role. Valid values:
         # 
-        # - **master**\
-        # - **slave**\
+        # *   **master**\
+        # *   **slave**\
         self.role = role
-        # The tunnel status. Valid values: 
+        # The tunnel status. Valid values:
         # 
-        # - **active**\
-        # - **updating**\
-        # - d**eleting**\
+        # *   **active**\
+        # *   **updating**\
+        # *   **deleting**\
         self.state = state
-        # The BGP configurations.
+        # The BGP configuration.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # The IKE settings for Phase 1 negotiations.
+        # The configurations of IKE Phase 1.
         self.tunnel_ike_config = tunnel_ike_config
-        # The IPsec settings for Phase 2 negotiations.
+        # The configurations of IPsec Phase 2.
         self.tunnel_ipsec_config = tunnel_ipsec_config
         # The tunnel zone.
         self.zone_no = zone_no
@@ -80094,9 +80480,9 @@ class ModifyVcoRouteEntryWeightRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The new weight of the destination-based route that you want to modify. Valid values:
         # 
@@ -80108,7 +80494,7 @@ class ModifyVcoRouteEntryWeightRequest(TeaModel):
         # The tunneling protocol. Set the value to **Ipsec**, which specifies the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The ID of the region where the IPsec-VPN connection is established.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -80189,7 +80575,7 @@ class ModifyVcoRouteEntryWeightResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -81048,99 +81434,101 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
     ):
         # Specifies whether to automatically configure routes. Valid values:
         # 
-        # *   **true:** automatically configures routes.
-        # *   **false:** does not automatically configure routes.
+        # *   **true**\
+        # *   **false**\
         self.auto_config_route = auto_config_route
-        # The Border Gateway Protocol (BGP) configurations:
+        # The Border Gateway Protocol (BGP) configuration:
         # 
-        # *   **BgpConfig.EnableBgp:** specifies whether to enable BGP. Valid values:
+        # *   **BgpConfig.EnableBgp**: specifies whether to enable BGP. Valid values:
         # 
-        #     *   **true:** enables BGP.
-        #     *   **false:** disables BGP.
+        #     *   **true**\
+        #     *   **false**\
         # 
-        # *   **BgpConfig.LocalAsn:** the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
+        # *   **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
         # 
-        # *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
         # 
         # *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
         # 
-        # > 
-        # *   Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-        # *   We recommend that you use a private ASN to establish a connection to Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+        # >*   Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.bgp_config = bgp_config
-        # The client token that you want to use to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses the value of **RequestId** as the value of **ClientToken**. The value of the **RequestId** parameter may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The customer gateways to be associated with the IPsec-VPN connections.
+        # The customer gateway associated with the IPsec-VPN connection.
         self.customer_gateway_id = customer_gateway_id
-        # Specifies whether to immediately start IPsec negotiations after the configuration is complete. Valid values:
+        # Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
-        # *   **true:** immediately starts IPsec negotiations after the configuration is complete.
-        # *   **false:** starts IPsec negotiations when inbound traffic is detected.
+        # *   **true**: immediately starts IPsec negotiations after the configuration is complete.
+        # *   **false**: starts IPsec negotiations when inbound traffic is detected.
         self.effect_immediately = effect_immediately
         # Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
         # 
-        # *   **true:** enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to verify the peer is active. If no feedback is received from the peer within a specified period of time, the connection fails, and ISAKMP SA, IPsec SA, and security tunnel are deleted.
-        # *   **false:** disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
+        # *   **true**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # *   **false**: disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal. Valid values:
         # 
-        # *   **true:** enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
-        # *   **false:** disables NAT traversal.
+        # *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+        # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
-        # The health check configurations:
+        # The health check configuration:
         # 
-        # *   **HealthCheckConfig.enable:** specifies whether to enable the health check feature. Valid values:
+        # *   **HealthCheckConfig.enable**: specifies whether to enable the health check feature. Valid values:
         # 
-        #     *   **true:** enables the health check feature.
-        #     *   **false:** disables the health check feature.
+        #     *   **true**\
+        #     *   **false**\
         # 
-        # *   **HealthCheckConfig.dip:** the destination IP address that is used for health checks. Enter the IP address on the data center side that the VPC can communicate with through the IPsec-VPN connection.
+        # *   **HealthCheckConfig.dip**: the destination IP address that is used for health checks. Enter the IP address of the data center with which the VPC can communicate based on the IPsec-VPN connection.
         # 
-        # *   **HealthCheckConfig.sip:** the source IP address that is used for health checks. Enter the IP address on the VPC side that the data center can communicate with through the IPsec-VPN connection.
+        # *   **HealthCheckConfig.sip**: the source IP address that is used for health checks. Enter the IP address of the VPC with which the data center can communicate based on the IPsec-VPN connection.
         # 
-        # *   **HealthCheckConfig.interval:** the interval between two consecutive health checks. Unit: seconds.
+        # *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds.
         # 
-        # *   **HealthCheckConfig.retry:** the maximum number of health check retries.
+        # *   **HealthCheckConfig.retry**: the maximum number of health check retries.
         # 
-        # *   **HealthCheckConfig.Policy:** specifies whether to withdraw published routes when health checks fail. Valid values:
+        # *   **HealthCheckConfig.Policy**: specifies whether to withdraw advertised routes when health checks fail. Valid values:
         # 
-        #     *   **revoke_route:** withdraw published routes when health checks fail.
-        #     *   **reserve_route:** does not withdraw published routes when health checks fail.
+        #     - **revoke_route**: withdraws advertised routes.
+        #     - **reserve_route**: does not withdraw advertised routes.
         self.health_check_config = health_check_config
-        # The configurations of Phase 1 negotiations:
+        # The configuration of Phase 1 negotiations:
         # 
-        # *   **IkeConfig.Psk:** The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
         # 
-        #     The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
+        #     *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~ ! ` @ # $ % ^ & * () _ - + = {} [] | ; : \" , . < > / ?``
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
         # 
-        # *   **IkeConfig.IkeVersion:** the version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
+        #     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
         # 
-        # *   **IkeConfig.IkeMode:** the negotiation mode. Valid values: **main** and **aggressive**.
+        # *   **IkeConfig.IkeVersion**: the Internet Key Exchange (IKE) version. Valid values: **ikev1** and **ikev2**.
         # 
-        # *   **IkeConfig.IkeEncAlg:** the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+        # *   **IkeConfig.IkeMode**: the negotiation mode. Valid values: **main** and **aggressive**.
         # 
-        # *   **IkeConfig.IkeAuthAlg:** the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         # 
-        # *   **IkeConfig.IkePfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        # *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         # 
-        # *   **IkeConfig.IkeLifetime:** the security association (SA) lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+        # *   **IkeConfig.IkePfs**: the Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
         # 
-        # *   **IkeConfig.LocalIdIPsec:** the identifier on the Alibaba Cloud side. The identifier cannot exceed 100 characters in length.
+        # *   **IkeConfig.IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
         # 
-        # *   **IkeConfig.RemoteId:** the identifier on the data center side. The identifier cannot exceed 100 characters in length.
+        # *   **IkeConfig.LocalIdIPsec**: the identifier of the IPsec-VPN connection on the Alibaba Cloud side. The identifier can be up to 100 characters in length.
+        # 
+        # *   **IkeConfig.RemoteId**: the identifier of the IPsec-VPN connection on the data center side. The identifier can be up to 100 characters in length.
         self.ike_config = ike_config
-        # The configurations of Phase 2 negotiations:
+        # The configuration of Phase 2 negotiations:
         # 
         # *   **IpsecConfig.IpsecEncAlg:** the encryption algorithm that is used in Phase 2 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         # *   **IpsecConfig. IpsecAuthAlg:** the authentication algorithm that is used in Phase 2 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-        # *   **IpsecConfig. IpsecPfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
-        # *   **IpsecConfig. IpsecLifetime:** the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
+        # *   **IpsecConfig. IpsecPfs:** the DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+        # *   **IpsecConfig. IpsecLifetime**: the SA lifetime determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
         self.ipsec_config = ipsec_config
-        # The CIDR block on the VPC side. The CIDR block is used in Phase 2 negotiations.
+        # The CIDR block of the virtual private cloud (VPC) that communicates with the data center. The CIDR block is used in Phase 2 negotiations.
         # 
         # Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
         # 
@@ -81155,17 +81543,17 @@ class ModifyVpnAttachmentAttributeRequest(TeaModel):
         self.name = name
         # The network type of the IPsec-VPN connection. Valid values:
         # 
-        # *   **public:** an encrypted connection over the Internet.
-        # *   **private:** an encrypted connection over private networks.
+        # *   **public**: an encrypted connection over the Internet
+        # *   **private**: an encrypted connection over private networks
         self.network_type = network_type
         self.owner_account = owner_account
-        # The ID of the region to which the IPsec-VPN connection belongs.
+        # The ID of the region in which the IPsec-VPN connection is established.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the IDs of available regions.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         # The peer CA certificate when a ShangMi (SM) VPN gateway is used to create the IPsec-VPN connection.
         self.remote_ca_cert = remote_ca_cert
-        # The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.
+        # The CIDR block of the data center that communicates with the VPC. This CIDR block is used in Phase 2 negotiations.
         # 
         # Separate multiple CIDR blocks with commas (,). Example: 192.168.3.0/24,192.168.4.0/24.
         # 
@@ -81288,25 +81676,25 @@ class ModifyVpnAttachmentAttributeResponseBodyIkeConfig(TeaModel):
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm that was used in Phase 1 negotiations.
+        # The authentication algorithm that is used in Phase 1 negotiations.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm that was used in Phase 1 negotiations.
+        # The encryption algorithm that is used in Phase 1 negotiations.
         self.ike_enc_alg = ike_enc_alg
-        # The SA lifetime that was determined by Phase 1 negotiations. Unit: seconds.
+        # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds.
         self.ike_lifetime = ike_lifetime
         # The negotiation mode.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman key exchange algorithm that was used in Phase 1 negotiations.
+        # The DH key exchange algorithm that is used in Phase 1 negotiations.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol.
         self.ike_version = ike_version
-        # The identifier on the Alibaba Cloud side.
+        # The identifier of the IPsec-VPN connection on the Alibaba Cloud side.
         self.local_id = local_id
-        # The pre-shared key that was used for identity authentication between the VPN gateway and the data center.
+        # The pre-shared key that is used for identity authentication between the VPN gateway and the data center.
         # 
         # >  The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
         self.psk = psk
-        # The identifier on the data center side.
+        # The identifier of the IPsec-VPN connection on the data center side.
         self.remote_id = remote_id
 
     def validate(self):
@@ -81369,13 +81757,13 @@ class ModifyVpnAttachmentAttributeResponseBodyIpsecConfig(TeaModel):
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm that was used in Phase 2 negotiations.
+        # The authentication algorithm that is used in Phase 2 negotiations.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm that was used in Phase 2 negotiations.
+        # The encryption algorithm that is used in Phase 2 negotiations.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The SA lifetime that was determined by Phase 2 negotiations. Unit: seconds.
+        # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The Diffie-Hellman key exchange algorithm that was used in Phase 2 negotiations.
+        # The DH key exchange algorithm that is used in Phase 2 negotiations.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -81420,23 +81808,23 @@ class ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck(TeaModel):
         retry: int = None,
         sip: str = None,
     ):
-        # The destination IP address that was used for health checks.
+        # The destination IP address that is used for health checks.
         self.dip = dip
-        # Indicates whether the health check feature is enabled for the IPsec-VPN connection.
+        # Indicates whether the health check feature is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true:** The health check feature is enabled.
-        # *   **false:** The health check feature is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
         # The interval between two consecutive health check retries. Unit: seconds.
         self.interval = interval
-        # Indicates whether published routes are withdrawn when the health check fails.
+        # Indicates whether advertised routes are withdrawn when the health check fails. Valid values:
         # 
-        # *   **revoke_route:** Published routes were withdrawn when the health check failed.
-        # *   **reserve_route:** Published routes were not withdrawn when the health check failed.
+        # *   **revoke_route**: Advertised routes are withdrawn.
+        # *   **reserve_route**: Advertised routes are not withdrawn.
         self.policy = policy
         # The maximum number of health check retries.
         self.retry = retry
-        # The source IP address that was used for health checks.
+        # The source IP address that is used for health checks.
         self.sip = sip
 
     def validate(self):
@@ -81490,10 +81878,10 @@ class ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig(TeaModel):
         status: str = None,
         tunnel_cidr: str = None,
     ):
-        # Indicates whether BGP is enabled for the IPsec-VPN connection.
+        # Indicates whether BGP is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true:** BGP is enabled.
-        # *   **false:** BGP is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
         # The ASN on the Alibaba Cloud side.
         self.local_asn = local_asn
@@ -81503,10 +81891,10 @@ class ModifyVpnAttachmentAttributeResponseBodyVpnBgpConfig(TeaModel):
         self.peer_asn = peer_asn
         # The BGP IP address on the data center side.
         self.peer_bgp_ip = peer_bgp_ip
-        # The negotiation status of BGP.
+        # The negotiation state of BGP. Valid values:
         # 
-        # *   **success:** normal.
-        # *   **false:** abnormal.
+        # *   **success**: normal
+        # *   **false**: abnormal
         self.status = status
         # The CIDR block of the IPsec tunnel.
         self.tunnel_cidr = tunnel_cidr
@@ -81582,11 +81970,11 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
     ):
         # The ID of the Cloud Enterprise Network (CEN) instance to which the transit router associated with the IPsec-VPN connection belongs.
         self.attach_instance_id = attach_instance_id
-        # The type of resource that is associated with the IPsec-VPN connection.
+        # The type of the resource that is associated with the IPsec-VPN connection. Valid values:
         # 
-        # *   **CEN:** indicates that the IPsec-VPN connection is associated with a transit router.
-        # *   **VPNGW:** indicates that the IPsec-VPN connection is associated with a VPN gateway.
-        # *   **NO_ASSOCIATED:** indicates that the IPsec-VPN connection is not associated with any resource.
+        # *   **CEN**: The IPsec-VPN connection is associated with a transit router.
+        # *   **VPNGW**: The IPsec-VPN connection is associated with a VPN gateway.
+        # *   **NO_ASSOCIATED**: The IPsec-VPN connection is not associated with any resource.
         self.attach_type = attach_type
         # The timestamp generated when the IPsec-VPN connection was established. Unit: milliseconds.
         # 
@@ -81596,52 +81984,52 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         self.customer_gateway_id = customer_gateway_id
         # The description of the IPsec-VPN connection.
         self.description = description
-        # Indicates whether IPsec negotiations immediately start after the configuration is complete. Valid values:
+        # Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
         # 
-        # *   **true:** IPsec negotiations immediately start after the configuration is complete.
-        # *   **false:** IPsec negotiations start when inbound traffic is detected.
+        # *   **true**\
+        # *   **false**\
         self.effect_immediately = effect_immediately
-        # Indicates whether the DPD feature is enabled for the IPsec-VPN connection.
+        # Indicates whether the DPD feature is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true:** The DPD feature is enabled.
-        # *   **false:** The DPD feature is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection.
+        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **true:** NAT traversal is enabled.
-        # *   **false:** NAT traversal is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
-        # The configurations of Phase 1 negotiations.
+        # The configuration of Phase 1 negotiations.
         self.ike_config = ike_config
-        # The configurations of Phase 2 negotiations.
+        # The configuration of Phase 2 negotiations.
         self.ipsec_config = ipsec_config
-        # The CIDR block on the VPC side.
+        # The CIDR block of the VPC with which the data center can communicate.
         self.local_subnet = local_subnet
         # The name of the IPsec-VPN connection.
         self.name = name
-        # The network type of the IPsec-VPN connection.
+        # The network type of the IPsec-VPN connection. Valid values:
         # 
-        # *   **public:** Internet.
-        # *   **private:** private networks.
+        # *   **public**: an encrypted connection over the Internet
+        # *   **private**: an encrypted connection over private networks
         self.network_type = network_type
-        # The CIDR block on the data center side.
+        # The CIDR block of the data center with which the VPC can communicate.
         self.remote_subnet = remote_subnet
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The bandwidth specification of the IPsec-VPN connection.
         # 
-        # **M** in the response indicates **Mbit/s**.
+        # A value of **M** in the response indicates **Mbit/s**.
         self.spec = spec
-        # The status of the IPsec-VPN connection.
+        # The state of the IPsec-VPN connection. Valid values:
         # 
-        # *   **ike_sa_not_established:** Phase 1 negotiations failed.
-        # *   **ike_sa_established:** Phase 1 negotiations were successful.
-        # *   **ipsec_sa_not_established:** Phase 2 negotiations failed.
-        # *   **ipsec_sa_established:** Phase 2 negotiations were successful.
+        # *   **ike_sa_not_established**: Phase 1 negotiations failed.
+        # *   **ike_sa_established**: Phase 1 negotiations succeeded.
+        # *   **ipsec_sa_not_established**: Phase 2 negotiations failed.
+        # *   **ipsec_sa_established**: Phase 2 negotiations succeeded.
         self.status = status
-        # The health check configurations of the IPsec-VPN connection.
+        # The health check configuration of the IPsec-VPN connection.
         self.vco_health_check = vco_health_check
-        # The BGP configurations of the IPsec-VPN connection.
+        # The BGP configuration of the IPsec-VPN connection.
         self.vpn_bgp_config = vpn_bgp_config
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
@@ -81810,17 +82198,17 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConf
         local_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The local ASN (Alibaba Cloud side). Valid values: **1 ** to **4294967295**. Default value: **45104**. 
+        # The ASN of the tunnel on the Alibaba Cloud side. Valid values: **1** to **4294967295**. Default value: **45104**.
         # 
-        # > - You can set or modify this parameter if BGP is enabled for the IPsecVPN connection (**EnableTunnelsBgp** is set to **true**). 
-        # > - Before you configure BGP, we recommend that you learn about how BGP works and its limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~). 
-        # > - We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+        # > *   You can specify or modify this parameter if **EnableTunnelsBgp** is set to **true**. This indicateds that BGP is enabled for the IPsec-VPN connection.
+        # >*   Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.local_asn = local_asn
-        # The local BGP address (Alibaba Cloud side). The BGP address is an IP address that falls into the BGP CIDR block.
+        # The BGP IP address of the tunnel on the Alibaba Cloud side. The address is an IP address that falls within the BGP CIDR block.
         self.local_bgp_ip = local_bgp_ip
-        # The BGP CIDR block. The CIDR block must fall within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length. 
+        # The BGP CIDR block of the tunnel. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
         # 
-        # > The BGP CIDR block of each tunnel on a VPN gateway must be unique.
+        # >  The BGP CIDR block of each tunnel must be unique on a VPN gateway.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -81864,49 +82252,41 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConf
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm that is used in Phase 1 negotiations. 
+        # The authentication algorithm that is used in Phase 1 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **md5**,**sha1**,**sha256**,**sha384**,**sha512**.</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm3**。</ph></props>
+        # Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm that is used in Phase 1 negotiations. 
+        # The encryption algorithm that is used in Phase 1 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **aes**,**aes192**,**aes256**,**des**或**3des**.</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm4**。</ph></props>
+        # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ike_enc_alg = ike_enc_alg
         # The SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**.
         self.ike_lifetime = ike_lifetime
         # The IKE negotiation mode. Valid values:
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate. 
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则协商模式仅支持**main**。</ph></props>
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
         self.ike_pfs = ike_pfs
-        # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**. Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
+        # The version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
         # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则IKE版本仅支持**ikev1**。</ph></props>
+        # Compared with IKEv1, IKEv2 simplifies the SA negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         self.ike_version = ike_version
-        # The local identifier (Alibaba Cloud side) used for Phase 1 negotiation. The identifier cannot exceed 100 characters in length. The default identifier is the tunnel IP address.
-        #  You can set **LocalId **to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
+        # The identifier of the tunnel on the Alibaba Cloud side, which is used in Phase 1 negotiations. The identifier can be up to 100 characters in length. The default identifier is the tunnel IP address.
+        # 
+        # You can set **LocalId** to a fully qualified domain name (FQDN). In this case, we recommend that you set Negotiation Mode to **aggressive**.
         self.local_id = local_id
-        # The pre-shared key that is used for authentication between the tunnel and peer. 
+        # The pre-shared key, which is used for identity authentication between the tunnel and the tunnel peer.
         # 
-        # - It must be 1 to 100 characters in length, and can contain letters, digits, and the following characters: ```~!\`@#$%^&*()_-+={}[]|;:\",.<>/?```
-        # - If you do not specify a pre-shared key, the system generates a random 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system. 
+        # *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~!\`@#$%^&*()_-+={}[]|;:\",.<>/?``
+        # *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
         # 
-        # > Make sure that the tunnels and peers use the same pre-shared key. Otherwise, tunnel communication cannot be established.
+        # >  The tunnel and the tunnel peer must use the same pre-shared key. Otherwise, the tunnel cannot be built.
         self.psk = psk
-        # The peer identifier used for Phase 1 negotiation. The identifier cannot exceed 100 characters in length. 
-        # The default identifier is the IP address of the customer gateway. You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
+        # The identifier of the tunnel peer, which is used in Phase 1 negotiations. The identifier can be up to 100 characters in length. The default identifier is the IP address of the customer gateway.
+        # 
+        # You can set **RemoteId** to an FQDN. In this case, we recommend that you set Negotiation Mode to **aggressive**.
         self.remote_id = remote_id
 
     def validate(self):
@@ -81969,25 +82349,19 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecCo
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm that was used in Phase 2 negotiations.
+        # The authentication algorithm that is used in Phase 2 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **md5**,**sha1**,**sha256**,**sha384**,**sha512**.</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值：**md5**、**sha1**、**sha256**、**sha384**、**sha512**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm3**。</ph></props>
+        # Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm that is used in Phase 2 negotiations. 
+        # The encryption algorithm that is used in Phase 2 negotiations.
         # 
-        # <props="intl"><ph>Valid values: **aes**,**aes192**,**aes256**,**des**或**3des**.</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为普通型，则取值为**aes**、**aes192**、**aes256**、**des**或**3des**。</ph></props>
-        # 
-        # <props="china"><ph>如果VPN网关实例类型为国密型，则仅取值：**sm4**。</ph></props>
+        # Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         self.ipsec_enc_alg = ipsec_enc_alg
         # The SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH key exchange algorithm that is used in Phase 2 negotiations. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+        # The DH key exchange algorithm that is used in Phase 2 negotiations.
+        # 
+        # Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -82033,21 +82407,24 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
         tunnel_ike_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
         tunnel_ipsec_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIpsecConfig = None,
     ):
-        # Specifies whether to enable DPD for the tunnel. Valid values:
+        # Specifies whether to enable the DPD feature for the tunnel. Valid values:
         # 
-        # - **true**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to verify the existence and availability of the peer. If no feedback is received from the peer within a specified period of time, the connection fails. ISAKMP SA and IPsec SA are deleted. The security tunnel is also deleted. 
-        # - **false**: disables DPD. The IPsec initiator does not send DPD packets.
+        # *   **true:**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # *   **false**: disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
         # Specifies whether to enable NAT traversal for the tunnel. Valid values:
         # 
-        # - **true**: yes After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel. 
-        # - **false**: disables NAT traversal.
+        # *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+        # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
         # If the VPN gateway uses an SM certificate, you can modify the CA certificate used by the IPsec peer.
-        # If the VPN gateway does not use an SM certificate, this parameter is not supported.
+        # 
+        # If the VPN gateway does not use an SM certificate, you cannot specify this parameter.
         self.remote_ca_certificate = remote_ca_certificate
-        # The BGP configurations.
+        # The BGP configuration to be modified for the IPsec tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
+        # You can specify **TunnelOptionsSpecification** parameters if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+        # 
         # The tunnel ID.
         self.tunnel_id = tunnel_id
         # The configuration of Phase 1 negotiations.
@@ -82134,84 +82511,119 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
     ):
         # Specifies whether to automatically advertise routes. Valid values:
         # 
-        # *   **true:** automatically advertise routes.
-        # *   **false:** does not automatically advertise routes.
+        # *   **true**\
+        # *   **false**\
         self.auto_config_route = auto_config_route
-        # The Border Gateway Protocol (BGP) configurations:
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
+        # 
+        # The Border Gateway Protocol (BGP) configuration:
         # 
         # *   **BgpConfig.EnableBgp:** specifies whether to enable BGP. Valid values: **true** and **false**.
-        # *   **BgpConfig.LocalAsn:** the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
-        # *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block must belong to 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
-        # *   **LocalBgpIp:** the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
         # 
-        # > 
-        # *   This parameter is required when the VPN gateway has dynamic BGP enabled.
-        # *   Before you configure BGP, we recommend that you learn about how BGP works and the limits. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
-        # *   We recommend that you use a private ASN to establish a connection to Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
+        # *   **BgpConfig.LocalAsn**: the autonomous system number (ASN) on the Alibaba Cloud side. Valid values: **1** to **4294967295**.
+        # 
+        # *   **BgpConfig.TunnelCidr:** the CIDR block of the IPsec tunnel. The CIDR block falls within 169.254.0.0/16. The subnet mask of the CIDR block must be 30 bits in length.
+        # 
+        #     >The CIDR block of the IPsec tunnel of each IPsec-VPN connection must be unique on a VPN gateway.
+        # 
+        # *   **LocalBgpIp**: the BGP IP address on the Alibaba Cloud side. This IP address must fall within the CIDR block of the IPsec tunnel.
+        # 
+        # > *   This parameter is required when the VPN gateway has dynamic BGP enabled.
+        # >*   Before you configure BGP, we recommend that you learn how BGP dynamic routing works and the limits of using BGP dynamic routing. For more information, see [VPN Gateway supports BGP dynamic routing](~~170235~~).
+        # >*   We recommend that you use a private ASN to establish a connection with Alibaba Cloud over BGP. Refer to the relevant documentation for the private ASN range.
         self.bgp_config = bgp_config
-        # The client token that you want to use to ensure the idempotence of the request.
+        # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses the value of **RequestId** as the value of **ClientToken**. The value of the **RequestId** parameter may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
         # Specifies whether to immediately start IPsec negotiations after the configuration takes effect. Valid values:
         # 
-        # *   **true:** immediately starts IPsec negotiations after the configuration takes effect.
-        # *   **false:** starts IPsec negotiations when inbound traffic is detected.
+        # *   **true**: immediately starts IPsec negotiations after the configuration takes effect.
+        # *   **false**: IPsec negotiations start when inbound traffic is detected.
         self.effect_immediately = effect_immediately
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
+        # 
         # Specifies whether to enable the dead peer detection (DPD) feature. Valid values:
         # 
-        # *   **true:** enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to verify the peer is active. If no feedback is received from the peer within a specified period of time, the connection fails, and ISAKMP SA, IPsec SA, and security tunnel are deleted.
-        # *   **false:** disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
+        # *   **true:**: enables the DPD feature. The initiator of the IPsec-VPN connection sends DPD packets to check the existence and availability of the peer. If no feedback is received from the peer within a specific period of time, the connection fails. Then, the ISAKMP SA, IPsec SA, and IPsec tunnel are deleted.
+        # *   **false**: disables the DPD feature. The initiator of the IPsec-VPN connection does not send DPD packets.
         self.enable_dpd = enable_dpd
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
+        # 
         # Specifies whether to enable NAT traversal. Valid values:
         # 
-        # *   **true:** enables NAT traversal. After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
-        # *   **false:** disables NAT traversal.
+        # *   **true** After NAT traversal is enabled, the initiator does not check the UDP ports during IKE negotiations and can automatically discover NAT gateway devices along the IPsec tunnel.
+        # *   **false**\
         self.enable_nat_traversal = enable_nat_traversal
-        # This parameter is supported by dual-tunnel IPsec-VPN connections. Specifies whether to enable BGP for the tunnel. Valid values: **true** and **false**.
+        # You can specify this parameter if you modify the configuration of a dual-tunnel IPsec-VPN connection.
+        # 
+        # Specifies whether to enable BGP for the tunnel. Valid values: **true** and **false**.
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # The health check configurations:
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
         # 
-        # *   **HealthCheckConfig.enable:** specifies whether to enable the health check feature. Valid values: **true** and **false**.
-        # *   **HealthCheckConfig.dip:** the destination IP address that is used for health checks.
-        # *   **HealthCheckConfig.sip:** the source IP address that is used for health checks.
-        # *   **HealthCheckConfig.interval:** the interval between two consecutive health checks. Unit: seconds.
-        # *   **HealthCheckConfig.retry:** the maximum number of health check retries.
+        # The health check configuration:
+        # 
+        # *   **HealthCheckConfig.enable**: specifies whether to enable health checks. Valid values: **true** and **false**.
+        # *   **HealthCheckConfig.dip**: the destination IP address that is used for health checks.
+        # *   **HealthCheckConfig.sip**: the source IP address that is used for health checks.
+        # *   **HealthCheckConfig.interval**: the interval between two consecutive health checks. Unit: seconds.
+        # *   **HealthCheckConfig.retry**: the maximum number of health check retries.
         self.health_check_config = health_check_config
-        # The configurations of Phase 1 negotiations:
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
         # 
-        # *   **IkeConfig.Psk:** The pre-shared key that is used for authentication between the VPN gateway and the data center. The key must be 1 to 100 characters in length.
+        # The configuration of Phase 1 negotiations:
         # 
-        #     If you do not specify a pre-shared key, the system generates a random 16-bit string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
+        # *   **IkeConfig.Psk**: The pre-shared key that is used for authentication between the VPN gateway and the data center.
         # 
-        # > The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
+        #     *   The pre-shared key must be 1 to 100 characters in length and can contain letters, digits, and the following characters: ``~!`@#$%^&*()_-+={}[]|;:\",.<>/?``
+        #     *   If you do not specify a pre-shared key, the system generates a random 16-character string as the pre-shared key. You can call the [DescribeVpnConnection](~~120374~~) operation to query the pre-shared key that is generated by the system.
         # 
-        # *   **IkeConfig.IkeVersion:** the version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
+        #     >The pre-shared key of the IPsec-VPN connection must be the same as the authentication key of the data center. Otherwise, you cannot establish a connection between the data center and the VPN gateway.
         # 
-        # *   **IkeConfig.IkeMode:** the negotiation mode of IKE V1. Valid values: **main** and **aggressive**.
+        # *   **IkeConfig.IkeVersion**: the version of the IKE protocol. Valid values: **ikev1** and **ikev2**.
         # 
-        # *   **IkeConfig.IkeEncAlg:** the encryption algorithm that is used in Phase 1 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+        #     Compared with IKEv1, IKEv2 simplifies the security association (SA) negotiation process and is more suitable for scenarios in which multiple CIDR blocks are used.
         # 
-        # *   **IkeConfig.IkeAuthAlg:** the authentication algorithm that is used in Phase 1 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # *   **IkeConfig.IkeMode**: the negotiation mode of IKE. Valid values: **main** and **aggressive**.
         # 
-        # *   **IkeConfig.IkePfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        #     *   **main**: This mode offers higher security during negotiations.
+        #     *   **aggressive**: This mode is faster and has a higher success rate.
         # 
-        # *   **IkeConfig.IkeLifetime:** the security association (SA) lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+        # *   **IkeConfig.IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations.
         # 
-        # *   **IkeConfig.LocalId:** the identifier of the VPN gateway. The identifier cannot exceed 100 characters in length. The default value is the IP address of the VPN gateway.
+        #     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
         # 
-        # *   **IkeConfig.RemoteId:** the identifier of the customer gateway. The identifier cannot exceed 100 characters in length. The default value is the IP address of the customer gateway.
+        # *   **IkeConfig.IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations.
+        # 
+        #     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # 
+        # *   **IkeConfig.IkePfs**: The Diffie-Hellman (DH) key exchange algorithm that is used in Phase 1 negotiations. Valid values: **group1**, **group2**, **group5**, and **group14**.
+        # 
+        # *   **IkeConfig.IkeLifetime**: the SA lifetime that is determined by Phase 1 negotiations. Unit: seconds. Valid values: **0 to 86400**.
+        # 
+        # *   **IkeConfig.LocalId**: the identifier of the VPN gateway. The identifier can be up to 100 characters in length. The default value is the IP address of the VPN gateway.
+        # 
+        # *   **IkeConfig.RemoteId**: the identifier of the customer gateway. The identifier can be up to 100 characters in length. The default value is the IP address of the customer gateway.
         self.ike_config = ike_config
-        # The configurations of Phase 2 negotiations:
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
         # 
-        # *   **IpsecConfig.IpsecEncAlg:** the encryption algorithm that is used in Phase 2 negotiations. Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
-        # *   **IpsecConfig. IpsecAuthAlg:** the authentication algorithm that is used in Phase 2 negotiations. Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
-        # *   **IpsecConfig. IpsecPfs:** the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. If you specify this parameter, packets of all protocols are forwarded. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+        # The configuration of Phase 2 negotiations:
+        # 
+        # *   **IpsecConfig.IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations.
+        # 
+        #     Valid values: **aes**, **aes192**, **aes256**, **des**, and **3des**.
+        # 
+        # *   **IpsecConfig. IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations.
+        # 
+        #     Valid values: **md5**, **sha1**, **sha256**, **sha384**, and **sha512**.
+        # 
+        # *   **IpsecConfig. IpsecPfs**: the DH key exchange algorithm that is used in Phase 1 negotiations. If you specify this parameter, packets of all protocols are forwarded. Valid values: **disabled**, **group1**, **group2**, **group5**, and **group14**.
+        # 
         # *   **IpsecConfig. IpsecLifetime:** the SA lifetime that is determined by Phase 2 negotiations. Unit: seconds. Valid values: **0 to 86400**.
         self.ipsec_config = ipsec_config
-        # The CIDR block on the virtual private cloud (VPC) side. The CIDR block is used in Phase 2 negotiations.
+        # The CIDR block used to connect the virtual private cloud (VPC) to the data center. The CIDR block is used in Phase 2 negotiations.
         # 
         # Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
         # 
@@ -82226,14 +82638,15 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region where the IPsec-VPN connection is established.
+        # The ID of the region in which the IPsec-VPN connection is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the IDs of available regions.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The peer CA certificate when a ShangMi (SM) VPN gateway is used to establish the IPsec-VPN connection.
+        # You can specify this parameter if you modify the configuration of a single-tunnel IPsec-VPN connection.
         # 
-        # *   This parameter is required when an SM VPN gateway is used to establish the IPsec-VPN connection.
-        # *   You can ignore this parameter when a standard VPN gateway is used to establish the IPsec-VPN connection.
+        # If the VPN gateway uses a ShangMi (SM) certificate, you can modify the CA certificate used by the IPsec peer.
+        # 
+        # If the VPN gateway does not use an SM certificate, you cannot specify this parameter.
         self.remote_ca_certificate = remote_ca_certificate
         # The CIDR block on the data center side. This CIDR block is used in Phase 2 negotiations.
         # 
@@ -82246,7 +82659,9 @@ class ModifyVpnConnectionAttributeRequest(TeaModel):
         self.remote_subnet = remote_subnet
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # **TunnelOptionsSpecification** parameters are supported by dual-tunnel IPsec-VPN gateways. You can modify both the active and standby tunnels of the IPsec-VPN connection.
+        # The IPsec tunnel configuration to be modified.
+        # 
+        # You can specify **TunnelOptionsSpecification** parameters if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
         self.tunnel_options_specification = tunnel_options_specification
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
@@ -82372,18 +82787,18 @@ class ModifyVpnConnectionAttributeResponseBodyIkeConfig(TeaModel):
         psk: str = None,
         remote_id: str = None,
     ):
-        # The IKE authentication algorithm.
+        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The IKE encryption algorithm.
+        # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The IKE lifetime. Unit: seconds.
+        # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values:
+        # The IKE negotiation mode.
         # 
-        # *   **main:** This mode offers higher security during negotiations.
-        # *   **aggressive:** This mode is faster and has a higher success rate.
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The Diffie-Hellman group.
+        # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol.
         # 
@@ -82396,7 +82811,7 @@ class ModifyVpnConnectionAttributeResponseBodyIkeConfig(TeaModel):
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The identifier on the data center side. The default value is the IP address of the customer gateway. The value can be a fully qualified domain name (FQDN) or an IP address.
+        # The identifier on the data center side. The default value is the IP address of the customer gateway. The value can be a FQDN or an IP address.
         self.remote_id = remote_id
 
     def validate(self):
@@ -82459,13 +82874,13 @@ class ModifyVpnConnectionAttributeResponseBodyIpsecConfig(TeaModel):
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The IPsec authentication algorithm.
+        # The authentication algorithm in the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The IPsec encryption algorithm.
+        # The encryption algorithm in the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The IPsec lifetime. Unit: seconds.
+        # The lifetime in the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The Diffie-Hellman group.
+        # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -82509,13 +82924,13 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The local ASN (Alibaba Cloud side).
+        # The ASN of the tunnel on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # The local BGP address (Alibaba Cloud side).
+        # The BGP IP address of the tunnel on the Alibaba Cloud side.
         self.local_bgp_ip = local_bgp_ip
-        # The peer ASN.
+        # The ASN of the tunnel peer.
         self.peer_asn = peer_asn
-        # The peer BGP address.
+        # The BGP IP address of the tunnel peer.
         self.peer_bgp_ip = peer_bgp_ip
         # The BGP CIDR block of the tunnel.
         self.tunnel_cidr = tunnel_cidr
@@ -82569,26 +82984,26 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         psk: str = None,
         remote_id: str = None,
     ):
-        # The algorithm in the IKE phase.
+        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
         # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
         # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. 
+        # The IKE negotiation mode.
         # 
-        # - **main**: This mode offers higher security during negotiations. 
-        # - **aggressive**: This mode is faster and has a higher success rate.
+        # *   **main**: This mode offers higher security during negotiations.
+        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
         # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
         # The version of the IKE protocol.
         self.ike_version = ike_version
-        # The local identifier (Alibaba Cloud side).
+        # The identifier of the tunnel on the Alibaba Cloud side.
         self.local_id = local_id
         # The pre-shared key.
         self.psk = psk
-        # The peer identifier.
+        # The identifier of the tunnel peer.
         self.remote_id = remote_id
 
     def validate(self):
@@ -82708,36 +83123,36 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         tunnel_ipsec_config: ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
-        # The ID of the customer gateway that is associated with the tunnel.
+        # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether DPD is enabled for the tunnel. Valid values: 
+        # Indicates whether the DPD feature is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **false**\
+        # *   **true**\
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the tunnel. Valid values: 
+        # Indicates whether NAT traversal is enabled for the tunnel. Valid values:
         # 
-        # - **false**\
-        # - **true**\
+        # *   **false**\
+        # *   **true**\
         self.enable_nat_traversal = enable_nat_traversal
         # The IP address on the Alibaba Cloud side.
         self.internet_ip = internet_ip
-        # The CA certificate used by the IPsec peer. 
+        # The CA certificate of the tunnel peer.
         # 
-        # This parameter is returned only by VPN gateways that use SM certificates.
+        # This parameter is returned only if the VPN gateway is of the SM type.
         self.remote_ca_certificate = remote_ca_certificate
-        # The tunnel role. Valid values: 
+        # The tunnel role. Valid values:
         # 
-        # - **master**\
-        # - **slave**\
+        # *   **master**: The tunnel is an active tunnel.
+        # *   **slave**: The tunnel is a standby tunnel.
         self.role = role
-        # The tunnel status. Valid values: 
+        # The tunnel status. Valid values:
         # 
-        # - **active**\
-        # - **updating**\
-        # - **deleting**\
+        # *   **active**\
+        # *   **updating**\
+        # *   **deleting**\
         self.state = state
-        # The BGP configurations.
+        # The BGP configuration.
         self.tunnel_bgp_config = tunnel_bgp_config
         # The tunnel ID.
         self.tunnel_id = tunnel_id
@@ -82864,18 +83279,18 @@ class ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck(TeaModel):
         retry: int = None,
         sip: str = None,
     ):
-        # The destination IP address that was used for health checks.
+        # The destination IP address.
         self.dip = dip
-        # Indicates whether the health check feature is enabled. Valid values:
+        # Indicates whether the health check feature is enabled for the IPsec-VPN connection.
         # 
-        # *   **true:** The health check feature is enabled.
-        # *   **false:** The health check feature is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
-        # The interval between two consecutive health check retries. Unit: seconds.
+        # The interval between two consecutive health checks. Unit: seconds.
         self.interval = interval
         # The maximum number of health check retries.
         self.retry = retry
-        # The source IP address that was used for health checks.
+        # The source IP address that is used for health checks.
         self.sip = sip
 
     def validate(self):
@@ -82927,8 +83342,8 @@ class ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig(TeaModel):
     ):
         # Indicates whether BGP is enabled. Valid values:
         # 
-        # *   **true:** BGP is enabled.
-        # *   **false:** BGP is disabled.
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
         # The ASN on the Alibaba Cloud side.
         self.local_asn = local_asn
@@ -82936,14 +83351,14 @@ class ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig(TeaModel):
         self.local_bgp_ip = local_bgp_ip
         # The ASN on the data center side.
         self.peer_asn = peer_asn
-        # The BGP IP address on the data center side.
+        # The BGP IP address of the data center.
         self.peer_bgp_ip = peer_bgp_ip
-        # The negotiation status of BGP. Valid values:
+        # The negotiation state of BGP. Valid values:
         # 
-        # *   **success:** normal.
-        # *   **false:** abnormal.
+        # *   **success**: normal
+        # *   **false**: abnormal
         self.status = status
-        # The CIDR block of the IPsec tunnel.
+        # The BGP CIDR block of the IPsec-VPN connection.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):
@@ -83016,34 +83431,45 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The ID of the customer gateway.
+        # The ID of the customer gateway associated with the IPsec-VPN connection.
+        # 
+        # This parameter is returned only for single-tunnel IPsec-VPN connections.
         self.customer_gateway_id = customer_gateway_id
         # The description of the IPsec-VPN connection.
         self.description = description
         # Indicates whether IPsec negotiations immediately start after the configuration takes effect. Valid values:
         # 
-        # *   **true:** IPsec negotiations immediately start after the configuration takes effect.
-        # *   **false:** IPsec negotiations start when inbound traffic is detected.
+        # *   **true**: IPsec negotiations immediately start after the configuration takes effect.
+        # *   **false**: IPsec negotiations start when inbound traffic is detected.
         self.effect_immediately = effect_immediately
-        # Indicates whether DPD is enabled. Valid values:
+        # Indicates whether the DPD feature is enabled for the IPsec-VPN connection. Valid values:
         # 
-        # *   **false:** The DPD feature is disabled.
-        # *   **true:** The DPD feature is enabled.
+        # *   **false**\
+        # *   **true**\
+        # 
+        # This parameter is returned only for single-tunnel IPsec-VPN connections.
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled. Valid values:
+        # Indicates whether NAT traversal is enabled for the IPsec-VPN connection. Valid values: Valid values:
         # 
-        # *   **false:** NAT traversal is disabled.
-        # *   **true:** NAT traversal is enabled.
+        # *   **false**\
+        # *   **true**\
+        # 
+        # This parameter is returned only for single-tunnel IPsec-VPN connections.
         self.enable_nat_traversal = enable_nat_traversal
-        # Indicates whether BGP is enabled for the tunnel. Valid values: 
-        # - **true**\
-        # - **false**\
+        # Indicates whether BGP is enabled for the tunnel. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         # 
         # This parameter is returned only by dual-tunnel IPsec-VPN connections.
         self.enable_tunnels_bgp = enable_tunnels_bgp
-        # The configurations of Phase 1 negotiations.
+        # The configuration of Phase 1 negotiations.
+        # 
+        # **IkeConfig** parameters are returned only for single-tunnel IPsec-VPN connections.
         self.ike_config = ike_config
-        # The configurations of Phase 2 negotiations.
+        # The configuration of Phase 2 negotiations.
+        # 
+        # **IpsecConfig** parameters are returned only for single-tunnel IPsec-VPN connections.
         self.ipsec_config = ipsec_config
         # The CIDR block on the VPC side.
         self.local_subnet = local_subnet
@@ -83051,15 +83477,19 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         self.name = name
         # The CIDR block on the data center side.
         self.remote_subnet = remote_subnet
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The tunnel configurations of the IPsec-VPN connection. 
+        # The tunnel configuration of the IPsec-VPN connection.
         # 
         # **TunnelOptionsSpecification** parameters are returned only for dual-tunnel IPsec-VPN connections.
         self.tunnel_options_specification = tunnel_options_specification
-        # The health check configurations.
+        # The health check configuration.
+        # 
+        # **VcoHealthCheck** parameters are returned only for single-tunnel IPsec-VPN connections.
         self.vco_health_check = vco_health_check
-        # The BGP configurations.
+        # The BGP configuration.
+        # 
+        # **VpnBgpConfig** parameters are returned only for single-tunnel IPsec-VPN connections.
         self.vpn_bgp_config = vpn_bgp_config
         # The ID of the IPsec-VPN connection.
         self.vpn_connection_id = vpn_connection_id
@@ -83228,14 +83658,14 @@ class ModifyVpnGatewayAttributeRequest(TeaModel):
     ):
         # Specifies whether to automatically advertise BGP routes to the virtual private cloud (VPC). Valid values:
         # 
-        # *   **true:** yes.
-        # *   **false:** no.
+        # *   **true**\
+        # *   **false**\
         self.auto_propagate = auto_propagate
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The value of RequestId may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
         # The new description of the VPN gateway.
         # 
@@ -83243,7 +83673,7 @@ class ModifyVpnGatewayAttributeRequest(TeaModel):
         self.description = description
         # The new name of the VPN gateway.
         # 
-        # The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 2 to 100 characters in length and cannot start with `http://` or `https://`. It must start with a letter and can contain letters, digits, underscores (\_), hyphens (-), and periods (.). Other characters are not supported.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -83334,55 +83764,66 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
     ):
         # Indicates whether BGP routes are automatically advertised to the VPC. Valid values:
         # 
-        # *   **true:** yes.
-        # *   **false:** no.
+        # *   **true**\
+        # *   **false**\
         self.auto_propagate = auto_propagate
         # The payment status of the VPN gateway. Valid values:
         # 
-        # *   **Normal:** The VPN gateway is running as expected.
-        # *   **FinancialLocked:** The VPN gateway is locked due to overdue payments.
+        # *   **Normal**\
+        # *   **FinancialLocked**\
         self.business_status = business_status
-        # The timestamp is generated when the VPN gateway was created. Unit: milliseconds.
+        # The time when the VPN gateway was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
         # The description of the VPN gateway.
         self.description = description
-        # The second IP address assigned by the system to create an IPsec-VPN connection. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
-        self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
-        # The ID of the second vSwitch associated with the VPN gateway. This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
-        self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
-        # The BGP status of the VPN gateway. Valid values:
+        # The second IP address assigned by the system to create an IPsec-VPN connection.
         # 
-        # *   **true:** enabled.
-        # *   **false:** disabled.
+        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        self.disaster_recovery_internet_ip = disaster_recovery_internet_ip
+        # The ID of the second vSwitch associated with the VPN gateway.
+        # 
+        # This parameter is returned only when the VPN gateway supports the dual-tunnel mode.
+        self.disaster_recovery_vswitch_id = disaster_recovery_vswitch_id
+        # Indicates whether BGP is enabled for the VPN gateway. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable_bgp = enable_bgp
-        # The timestamp generated when the VPN gateway expires. Unit: milliseconds.
+        # The time when the VPN gateway expires. Unit: milliseconds.
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # - If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection. 
-        # - If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection. If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
+        # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
+        # 
+        # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the address is the first IP address used to create an IPsec-VPN connection. The address cannot be used to create an SSL-VPN connection.
+        # 
+        #     If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the system assigns two IP addresses to the VPN gateway to create two encrypted tunnels.
         self.internet_ip = internet_ip
-        # The private IP address of the VPN gateway.
+        # The IP address of the VPN gateway.
+        # 
+        # This parameter is returned only when the VPN gateway is a private VPN gateway and supports only the single-tunnel mode.
         self.intranet_ip = intranet_ip
         # The name of the VPN gateway.
         self.name = name
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
-        # The IP address of the SSL-VPN connection. This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
+        # The IP address of the SSL-VPN connection.
+        # 
+        # This parameter is returned only when the VPN gateway is a public VPN gateway and supports only the single-tunnel mode. In addition, the VPN gateway must have the SSL-VPN feature enabled.
         self.ssl_vpn_internet_ip = ssl_vpn_internet_ip
         # The status of the VPN gateway. Valid values:
         # 
-        # *   **init:** The VPN gateway is being initialized.
-        # *   **provisioning:** The VPN gateway is being prepared.
-        # *   **active:** The VPN gateway is ready.
-        # *   **updating:** The VPN gateway is being updated.
-        # *   **deleting:** The VPN gateway is being deleted.
+        # *   **init**\
+        # *   **provisioning**\
+        # *   **active**\
+        # *   **updating**\
+        # *   **deleting**\
         self.status = status
-        # The ID of the vSwitch to which the VPN gateway belongs.
+        # The ID of the vSwitch associated with the VPN gateway.
         self.v_switch_id = v_switch_id
         # The ID of the VPC to which the VPN gateway belongs.
         self.vpc_id = vpc_id
@@ -83541,9 +83982,9 @@ class ModifyVpnPbrRouteEntryAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The new priority of the policy-based route. Valid values: **1** to **100**.
         # 
@@ -83661,7 +84102,7 @@ class ModifyVpnPbrRouteEntryAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83747,9 +84188,9 @@ class ModifyVpnPbrRouteEntryPriorityRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system sets **ClientToken** to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The new priority of the policy-based route. Valid values: **1** to **100**.
         # 
@@ -83775,7 +84216,7 @@ class ModifyVpnPbrRouteEntryPriorityRequest(TeaModel):
         self.route_source = route_source
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
-        # The weight of the policy-based route.
+        # The weight of the policy-based route. Valid values:
         self.weight = weight
 
     def validate(self):
@@ -83851,7 +84292,7 @@ class ModifyVpnPbrRouteEntryPriorityResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83938,9 +84379,9 @@ class ModifyVpnPbrRouteEntryWeightRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The new weight of the policy-based route. Valid values:
         # 
@@ -83949,7 +84390,7 @@ class ModifyVpnPbrRouteEntryWeightRequest(TeaModel):
         self.new_weight = new_weight
         # The next hop of the policy-based route.
         self.next_hop = next_hop
-        # The tunneling protocol. Set the value to **Ipsec**.
+        # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -83959,7 +84400,7 @@ class ModifyVpnPbrRouteEntryWeightRequest(TeaModel):
         # 
         # *   If the route was assigned a priority, this parameter is optional.
         # 
-        #     If you set this parameter, set the value to the priority that was assigned to the route. Otherwise, the operation fails.
+        #         If you specify this parameter, set the value to the priority that was assigned to the policy-based route. Otherwise, the operation fails.
         self.priority = priority
         # The ID of the region where the VPN gateway is created. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -84054,7 +84495,7 @@ class ModifyVpnPbrRouteEntryWeightResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84139,9 +84580,9 @@ class ModifyVpnRouteEntryWeightRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** of each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The new weight that you want to set for the destination-based route. Valid values:
         # 
@@ -84237,7 +84678,7 @@ class ModifyVpnRouteEntryWeightResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84316,9 +84757,9 @@ class MoveResourceGroupRequest(TeaModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The ID of the resource group to which the cloud resource is to be moved.
+        # The ID of the resource group to which you want to move the resource.
         # 
-        # >  You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is resource management?](~~94475~~).
+        # >  You can use resource groups to facilitate resource grouping and permission management for an Alibaba Cloud. For more information, see [What is resource management?](~~94475~~)
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -84326,15 +84767,25 @@ class MoveResourceGroupRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the instance that you want to move.
+        # The resource ID.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Valid values:
+        # The type of the resource for which you want to modify the resource group. Valid values:
         # 
-        # *   **vpc**: a virtual private cloud (VPC)
-        # *   **eip**: an elastic IP address (EIP)
-        # *   **bandwidthpackage**: an EIP bandwidth plan
+        # *   **Vpc**\
+        # *   **Eip**\
+        # *   **BandwidthPackage**\
+        # *   **PrefixList**\
+        # *   **PublicIpAddressPool**\
+        # *   **FlowLog**\
+        # *   **HaVip**\
+        # *   **TrafficMirrorFilter**\
+        # *   **TrafficMirrorSession**\
+        # *   **IPv4Gateway**\
+        # *   **IPv6Gateway**\
+        # *   **DhcpOptionsSet**\
+        # *   **GatewayEndpoint**\
         self.resource_type = resource_type
 
     def validate(self):
@@ -84390,7 +84841,7 @@ class MoveResourceGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84892,9 +85343,9 @@ class PublishVpnRouteEntryRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The next hop of the VPN gateway route.
         self.next_hop = next_hop
@@ -84902,8 +85353,8 @@ class PublishVpnRouteEntryRequest(TeaModel):
         self.owner_id = owner_id
         # Specifies whether to advertise the VPN gateway route to the VPC route table. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.publish_vpc = publish_vpc
         # The ID of the region where the VPN gateway is created.
         # 
@@ -84986,7 +85437,7 @@ class PublishVpnRouteEntryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85389,7 +85840,7 @@ class ReleaseEipAddressResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85612,21 +86063,21 @@ class RemoveCommonBandwidthPackageIpRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the EIP bandwidth plan.
+        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # The ID of the EIP.
+        # The EIP ID.
         # 
-        # You can call the [DescribeEipAddresses](~~36018~~) operation to query the most recent region list.
+        # You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
         self.ip_instance_id = ip_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the EIP bandwidth plan.
+        # The region ID of the Internet Shared Bandwidth instance.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -85686,7 +86137,7 @@ class RemoveCommonBandwidthPackageIpResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89688,20 +90139,20 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The client token can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the gateway route table.
         # 
         # The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block of the route entry.
+        # The destination CIDR block of the route entry in the gateway route table.
         self.destination_cidr_block = destination_cidr_block
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to precheck only this request. Valid values:
         # 
-        # *   **true**: checks the request but does not modify the route entry. The system checks the required parameters, request syntax, and limits. If the request fails to pass the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the route entry is modified.
+        # *   **true**: prechecks the request without modifying the gateway route table. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the gateway route table is modified.
         self.dry_run = dry_run
         # The ID of the gateway route table that you want to modify.
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
@@ -89709,19 +90160,19 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         # 
         # The name must be 2 to 128 characters in length and can contain letter, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         self.name = name
-        # The next hop ID of the route entry after the route entry is modified.
+        # The new next hop ID of the route entry.
         # 
-        # *   If you set **NextHopType** to **Instance**, specify an ECS instance ID for the **NextHopId** parameter.
-        # *   If you set **NextHopType** to **NetworkInterface**, specify an ENI ID for the **NextHopId** parameter.
-        # *   If you set **NextHopType** to **Local**, leave the **NextHopId** parameter empty, which specifies a local next hop.
+        # *   If you set **NextHopType** to **Instance**, specify an ECS instance ID for **NextHopId**.
+        # *   If you set **NextHopType** to **NetworkInterface**, specify an ENI ID for **NextHopId**.
+        # *   If you set **NextHopType** to **Local**, leave **NextHopId** empty. This indicates a local next hop.
         # 
-        # >  If you want to modify a route entry whose next hop type is **Instance** or **NetworkInterface**, you must first change the value of the **NextHopType** parameter to **Local**. Then, change the value of **NextHopType** to **Instance** or **NetworkInterface** and specify the **NextHopId** parameter. When you modify a route entry whose next hop type is Instance or NetworkInterface, you cannot directly specify a different ENI ID or ECS instance ID for the NextHopId parameter.
+        # >  If the value of NextHopType is **Instance** or **NetworkInterface**, and you want to modify the next hop, you must set **NextHopType** to **Local** first. Then, set **NextHopType** to **Instance** or **NetworkInterface** and specify **NextHopId** based on your requirements. If the next hop type of a route entry is Instance or NetworkInterface, you cannot directly specify a different ENI ID or ECS instance ID for the NextHopId parameter.
         self.next_hop_id = next_hop_id
-        # The next hop type of the route entry after the route entry is modified. Valid values:
+        # The new next hop type of the route entry. Valid values:
         # 
-        # *   **EcsInstance**: an Elastic Compute Service (ECS) instance
-        # *   **NetworkInterface**: an elastic network interface (ENI)
-        # *   **Local**: a local next hop
+        # *   **EcsInstance**: an Elastic Compute Service (ECS) instance.
+        # *   **NetworkInterface**: an elastic network interface (ENI).
+        # *   **Local**: a local next hop.
         self.next_hop_type = next_hop_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -89805,7 +90256,7 @@ class UpdateGatewayRouteTableEntryAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -89888,61 +90339,61 @@ class UpdateIpsecServerRequest(TeaModel):
         psk_enabled: bool = None,
         region_id: str = None,
     ):
-        # The client CIDR block. It refers to the CIDR block that is used to allocate an IP address to the client.
+        # The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client.
         # 
-        # >  The client CIDR block must not overlap with the CIDR block of the virtual private cloud (VPC).
+        # >  The client CIDR block must not overlap with the CIDR blocks of the VPC.
         self.client_ip_pool = client_ip_pool
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to precheck the request without performing the operation. Valid values:
+        # Specifies whether to only precheck this request. Valid values:
         # 
-        # *   **true**: only prechecks the request. After the request passes the precheck, the system does not modify the configurations of the IPsec server. The system checks whether the required parameters are set, whether the values are in valid formats, and the service limits. If the request fails to pass the precheck, a corresponding error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false** (default): prechecks the request. After the request passes the precheck, the system modifies the configurations of the IPsec server.
+        # *   **true**: prechecks the request without modifying the configurations of the IPsec server. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. This is the default value. If the request passes the precheck, the system modifies the configurations of the IPsec server.
         self.dry_run = dry_run
-        # Specifies whether to delete the current IPsec tunnel and reinitiate negotiations. Valid values:
+        # Specifies whether to delete the current IPsec tunnel and initiate negotiations again. Valid values:
         # 
-        # *   **true**: starts the negotiation immediately after the configuration is completed.
-        # *   **false** (default): initiates negotiations when inbound traffic is detected.
+        # *   **true**: immediately initiates negotiations after the configuration is complete.
+        # *   **false**: initiates negotiations when inbound traffic is detected. This is the default value.
         self.effect_immediately = effect_immediately
-        # The configuration of Phase 1 negotiations. Valid values:
+        # The configuration of Phase 1 negotiation. Valid values:
         # 
         # *   **IkeVersion**: the IKE version. Valid values: **ikev1** and **ikev2**. Default value: **ikev2**.
         # *   **IkeMode**: the IKE negotiation mode. Default value: **main**.
-        # *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiations. Default value: **aes**.
-        # *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiations. Default value: **sha1**.
-        # *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.
-        # *   **IkeLifetime**: the SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
-        # *   **LocalId**: the ID of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. By default, the ID of the IPsec server is the public IP address of the VPN gateway.
-        # *   **RemoteId**: the identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+        # *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiation. Default value: **aes**.
+        # *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiation. Default value: **sha1**.
+        # *   **IkePfs**: the Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiation. Default value: **group2**.
+        # *   **IkeLifetime**: the security association (SA) lifetime determined by Phase 1 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **LocalId**: the identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+        # *   **RemoteId**: the peer identifier. The value can be an FQDN or an IP address. The default value is empty.
         self.ike_config = ike_config
-        # The configuration of Phase 2 negotiations. Valid values:
+        # The configuration of Phase 2 negotiation. Valid values:
         # 
-        # *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiations. Default value: **aes**.
-        # *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiations. Default value: **sha1**.
-        # *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: **group2**.
-        # *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiation. Default value: **aes**.
+        # *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiation. Default value: **sha1**.
+        # *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiation. Default value: **group2**.
+        # *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
         self.ipsec_config = ipsec_config
-        # The ID of the IPsec server.
+        # The IPsec server ID.
         self.ipsec_server_id = ipsec_server_id
-        # The name of the IPsec server.
+        # The IPsec server name.
         # 
-        # The name must be 1 to 100 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 100 characters in length and cannot start with `http://` or `https://`.
         self.ipsec_server_name = ipsec_server_name
-        # The local CIDR blocks, which refer to the CIDR blocks on the virtual private cloud (VPC) side.
+        # The local CIDR blocks, which are the CIDR blocks of the virtual private cloud (VPC) for the client to access.
         # 
-        # Separate multiple CIDR blocks with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+        # Multiple CIDR blocks are separated with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
         self.local_subnet = local_subnet
         # The pre-shared key.
         # 
-        # Enter the pre-shared key that is used for identity authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
+        # The pre-shared key is used for identity authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
         # 
         # If you do not specify a pre-shared key, the system randomly generates a 16-character string as the pre-shared key. You can call the [ListIpsecServers](~~205453~~) operation to query the pre-shared keys that are generated by the system.
         # 
-        # >  The pre-shared key of the IPsec server must be the same as the authentication key of the client. Otherwise, a connection cannot be established between the IPsec server and the client.
+        # >  The pre-shared key of the IPsec server must be the same as the client key. Otherwise, the IPsec server cannot be connected to the client.
         self.psk = psk
         # Specifies whether to enable pre-shared key authentication. If you set the value to **true**, pre-shared key authentication is enabled.
         self.psk_enabled = psk_enabled
@@ -90020,7 +90471,7 @@ class UpdateIpsecServerResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90103,14 +90554,14 @@ class UpdateIpv4GatewayAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to check the request without performing the operation. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the check, an error message is returned. If the request passes the check, the `DryRunOperation` error code is returned.
-        # *   **false** (default): sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The new description of the IPv4 gateway.
         self.ipv_4gateway_description = ipv_4gateway_description
@@ -90188,7 +90639,7 @@ class UpdateIpv4GatewayAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90271,15 +90722,15 @@ class UpdateNatGatewayNatTypeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, **ClientToken** is set to the value of **RequestId**. The value of **RequestId** for each API request may be different.
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether only to precheck this request. Valid values:
+        # Specifies whether to only precheck this request. Valid values:
         # 
-        # **true**: prechecks the request but does not upgrade the Internet NAT gateway. The system checks your AccessKey pair, the Resource Access Management (RAM) user permissions, and the required parameters. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # **true**: prechecks the request without upgrading the Internet NAT gateway. The system checks whether your AccessKey pair is valid, whether RAM users are granted required permissions, and whether the required parameters are set. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # 
-        # **false** (default): If the request passes the precheck, a 2XX HTTP status code is returned and the standard NAT gateway is upgraded.
+        # **false**: sends the API request. This is the default value. After the request passes the precheck, a 2XX HTTP status code is returned and the Internet NAT gateway is upgraded.
         self.dry_run = dry_run
         # The ID of the standard NAT gateway to be upgraded.
         self.nat_gateway_id = nat_gateway_id
@@ -90295,7 +90746,7 @@ class UpdateNatGatewayNatTypeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The vSwitch to which the enhanced Internet NAT gateway belongs.
         # 
-        # >  If you do not set this parameter, the system creates an Internet NAT gateway in a random vSwitch of a virtual private cloud (VPC).
+        # >  If you do not set this parameter, the system generates an Internet NAT gateway in a random vSwitch of a virtual private cloud (VPC).
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -90359,7 +90810,7 @@ class UpdateNatGatewayNatTypeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -90819,22 +91270,22 @@ class UpdatePublicIpAddressPoolAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. The value of **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the IP address pool.
         # 
         # This parameter is optional. If you enter a description, the description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The name of the IP address pool.
         # 
-        # This parameter is optional. If you enter a name, the name must be 1 to 128 characters in length and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
+        # This parameter is optional. The name must be 1 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -90906,7 +91357,7 @@ class UpdatePublicIpAddressPoolAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -91383,48 +91834,51 @@ class UpdateTrafficMirrorSessionAttributeRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not specify this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to precheck the request without performing the operation. Valid values:
+        # Specifies whether to perform a dry run. Valid values:
         # 
-        # *   **true**: checks the request without performing the operation. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **true**: performs a dry run, without performing the actual request. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false**: sends the request. If the request passes the check, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
         self.dry_run = dry_run
-        # Specifies whether to enable the traffic mirror session.
+        # Specifies whether to enable the traffic mirror session. Valid values:
         # 
-        # *   **false**: disables the traffic mirror session. This is the default value.
-        # *   **true**: enables the traffic mirror session.
+        # *   **false** (default)
+        # *   **true**\
         self.enabled = enabled
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.packet_length = packet_length
-        # The priority of the traffic mirror session. Valid values: **1** to **32766**.
+        # The maximum transmission unit (MTU).
         # 
-        # A smaller value specifies a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
+        # Valid values: **64 to 9600**. Default value: **1500**.
+        self.packet_length = packet_length
+        # The new priority of the traffic mirror session. Valid values: **1** to **32766**.
+        # 
+        # A smaller value indicates a higher priority. You cannot specify identical priorities for traffic mirror sessions that are created in the same region by using the same account.
         self.priority = priority
-        # The region ID of the traffic mirror session. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
+        # The region ID of the traffic mirror session. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list. For more information about the regions that support traffic mirroring, see [Overview of traffic mirroring](~~207513~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the traffic mirror filter.
         self.traffic_mirror_filter_id = traffic_mirror_filter_id
-        # The description of the traffic mirror session.
+        # The new description of the traffic mirror session.
         # 
         # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_description = traffic_mirror_session_description
         # The ID of the traffic mirror session.
         self.traffic_mirror_session_id = traffic_mirror_session_id
-        # The name of the traffic mirror session.
+        # The new name of the traffic mirror session.
         # 
-        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.traffic_mirror_session_name = traffic_mirror_session_name
         # The ID of the traffic mirror destination.
         self.traffic_mirror_target_id = traffic_mirror_target_id
-        # The type of the traffic mirror destination. Valid values:
+        # The new type of the traffic mirror destination. Valid values:
         # 
-        # *   **NetworkInterface**: an ENI
+        # *   **NetworkInterface**: an elastic network interface (ENI)
         # *   **SLB**: an internal-facing Server Load Balancer (SLB) instance
         self.traffic_mirror_target_type = traffic_mirror_target_type
         # The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: **0** to **16777215**.
@@ -91521,7 +91975,7 @@ class UpdateTrafficMirrorSessionAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -439,13 +439,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpResponse:
         """
-        When you call this operation to associate an EIP with an EIP bandwidth plan, make sure that the EIP meets the following requirements:
+        Before you call this operation, take note of the following items:
+        *   When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
         *   The EIP uses the pay-as-you-go billing method.
-        *   The EIP and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIP is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIp** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIP is being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIP is associated with the EIP bandwidth plan.
+        *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIp** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the operation.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -496,13 +497,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpResponse:
         """
-        When you call this operation to associate an EIP with an EIP bandwidth plan, make sure that the EIP meets the following requirements:
+        Before you call this operation, take note of the following items:
+        *   When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
         *   The EIP uses the pay-as-you-go billing method.
-        *   The EIP and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIP is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIp** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIP is being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIP is associated with the EIP bandwidth plan.
+        *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIp** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the operation.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -552,13 +554,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddCommonBandwidthPackageIpRequest,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpResponse:
         """
-        When you call this operation to associate an EIP with an EIP bandwidth plan, make sure that the EIP meets the following requirements:
+        Before you call this operation, take note of the following items:
+        *   When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
         *   The EIP uses the pay-as-you-go billing method.
-        *   The EIP and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIP is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIp** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIP is being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIP is associated with the EIP bandwidth plan.
+        *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIp** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the operation.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpRequest
         @return: AddCommonBandwidthPackageIpResponse
@@ -571,13 +574,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddCommonBandwidthPackageIpRequest,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpResponse:
         """
-        When you call this operation to associate an EIP with an EIP bandwidth plan, make sure that the EIP meets the following requirements:
+        Before you call this operation, take note of the following items:
+        *   When you call this operation to associate an EIP with an Internet Shared Bandwidth instance, make sure that the EIP meets the following requirements:
         *   The EIP uses the pay-as-you-go billing method.
-        *   The EIP and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIP is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIp** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIP is being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIP is associated with the EIP bandwidth plan.
+        *   The EIP and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIp** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the operation.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIP is being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIP is associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpRequest
         @return: AddCommonBandwidthPackageIpResponse
@@ -591,13 +595,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpsResponse:
         """
-        When you call this operation to associate EIPs with an EIP bandwidth plan, make sure that the EIPs meet the following requirements:
+        When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
         *   The EIPs use the pay-as-you-go billing method.
-        *   The EIPs and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIPs is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIps** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIPs are being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIPs are associated with the EIP bandwidth plan.
+        *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -648,13 +652,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpsResponse:
         """
-        When you call this operation to associate EIPs with an EIP bandwidth plan, make sure that the EIPs meet the following requirements:
+        When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
         *   The EIPs use the pay-as-you-go billing method.
-        *   The EIPs and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIPs is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIps** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIPs are being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIPs are associated with the EIP bandwidth plan.
+        *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -704,13 +708,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddCommonBandwidthPackageIpsRequest,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpsResponse:
         """
-        When you call this operation to associate EIPs with an EIP bandwidth plan, make sure that the EIPs meet the following requirements:
+        When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
         *   The EIPs use the pay-as-you-go billing method.
-        *   The EIPs and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIPs is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIps** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIPs are being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIPs are associated with the EIP bandwidth plan.
+        *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpsRequest
         @return: AddCommonBandwidthPackageIpsResponse
@@ -723,13 +727,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddCommonBandwidthPackageIpsRequest,
     ) -> vpc_20160428_models.AddCommonBandwidthPackageIpsResponse:
         """
-        When you call this operation to associate EIPs with an EIP bandwidth plan, make sure that the EIPs meet the following requirements:
+        When you call this operation to associate EIPs with an Internet Shared Bandwidth instance, make sure that the EIPs meet the following requirements:
         *   The EIPs use the pay-as-you-go billing method.
-        *   The EIPs and the EIP bandwidth plan belong to the same region.
-        *   The line type of the EIPs is the same as that of the EIP bandwidth plan.
-        *   The **AddCommonBandwidthPackageIps** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **BINDING** state, the EIPs are being associated with the EIP bandwidth plan. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **BINDED** state, the EIPs are associated with the EIP bandwidth plan.
+        *   The EIPs and the Internet Shared Bandwidth instance belong to the same region.
+        *   The line type of the EIPs is the same as that of the Internet Shared Bandwidth instance.
+        *   **AddCommonBandwidthPackageIps** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **BINDING** state, the EIPs are being associated with the Internet Shared Bandwidth instance. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **BINDED** state, the EIPs are associated with the Internet Shared Bandwidth instance.
         
         @param request: AddCommonBandwidthPackageIpsRequest
         @return: AddCommonBandwidthPackageIpsResponse
@@ -1121,9 +1125,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
+        **AddSourcesToTrafficMirrorSession** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
+        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is added to the traffic mirror session.
         *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
@@ -1175,9 +1179,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
+        **AddSourcesToTrafficMirrorSession** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
+        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is added to the traffic mirror session.
         *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
@@ -1228,9 +1232,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddSourcesToTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
+        **AddSourcesToTrafficMirrorSession** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
+        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is added to the traffic mirror session.
         *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
@@ -1244,9 +1248,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AddSourcesToTrafficMirrorSessionRequest,
     ) -> vpc_20160428_models.AddSourcesToTrafficMirrorSessionResponse:
         """
-        The **AddSourcesToTrafficMirrorSession** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session:
+        **AddSourcesToTrafficMirrorSession** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the traffic mirror source is being added to the traffic mirror session.
-        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is being added to the traffic mirror session.
+        *   If the traffic mirror session is in the **Created** state, the traffic mirror source is added to the traffic mirror session.
         *   You cannot repeatedly call the **AddSourcesToTrafficMirrorSession** operation to add a traffic mirror source to a traffic mirror session within the specified period of time.
         
         @param request: AddSourcesToTrafficMirrorSessionRequest
@@ -1261,8 +1265,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
+        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
         
         @param request: AllocateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1341,8 +1345,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
+        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
         
         @param request: AllocateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1420,8 +1424,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipAddressRequest,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
+        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
         
         @param request: AllocateEipAddressRequest
         @return: AllocateEipAddressResponse
@@ -1434,8 +1438,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipAddressRequest,
     ) -> vpc_20160428_models.AllocateEipAddressResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
-        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only ICMP, TCP, and UDP at the transport layer. IGMP and SCTP are not supported.
+        Before you call this operation, make sure that you are familiar with the billing methods and pricing of EIPs. For more information, see [Billing overview](~~122035~~).
+        After you call this operation, the system randomly allocates an EIP that is in the **Available** state in the specified region. EIPs support only the ICMP, TCP, and UDP transport layer protocols. The IGMP and SCTP protocols are not supported.
         
         @param request: AllocateEipAddressRequest
         @return: AllocateEipAddressResponse
@@ -1591,9 +1595,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
+        *   If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
+        *   If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
         
         @param request: AllocateEipSegmentAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1652,9 +1656,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
+        *   If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
+        *   If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
         
         @param request: AllocateEipSegmentAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1712,9 +1716,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipSegmentAddressRequest,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
+        *   If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
+        *   If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
         
         @param request: AllocateEipSegmentAddressRequest
         @return: AllocateEipSegmentAddressResponse
@@ -1727,9 +1731,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateEipSegmentAddressRequest,
     ) -> vpc_20160428_models.AllocateEipSegmentAddressResponse:
         """
-        *AllocateEipSegmentAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipSegment](/help/en/elastic-ip-address/latest/156063) operation to query the status of a contiguous EIP group:
-        - If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
-        - If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
+        *AllocateEipSegmentAddress** is an asynchronous operation. After a request is sent, the system returns the ID of a contiguous EIP group and runs the task in the background. You can call the [DescribeEipSegment](~~156063~~) operation to query the status of the task.
+        *   If the contiguous EIP group is in the **Allocating** state, the EIPs are being allocated. In this case, you can only perform the query operation and cannot perform other operations.
+        *   If the contiguous EIP group is in the **Allocated** state, the EIPs are allocated.
         
         @param request: AllocateEipSegmentAddressRequest
         @return: AllocateEipSegmentAddressResponse
@@ -1743,7 +1747,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateIpv6InternetBandwidthResponse:
         """
-        You cannot call the *AllocateIpv6InternetBandwidth** operation to purchase Internet bandwidth for an IPv6 gateway at the same time.
+        You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1798,7 +1802,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AllocateIpv6InternetBandwidthResponse:
         """
-        You cannot call the *AllocateIpv6InternetBandwidth** operation to purchase Internet bandwidth for an IPv6 gateway at the same time.
+        You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1852,7 +1856,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateIpv6InternetBandwidthRequest,
     ) -> vpc_20160428_models.AllocateIpv6InternetBandwidthResponse:
         """
-        You cannot call the *AllocateIpv6InternetBandwidth** operation to purchase Internet bandwidth for an IPv6 gateway at the same time.
+        You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @return: AllocateIpv6InternetBandwidthResponse
@@ -1865,7 +1869,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AllocateIpv6InternetBandwidthRequest,
     ) -> vpc_20160428_models.AllocateIpv6InternetBandwidthResponse:
         """
-        You cannot call the *AllocateIpv6InternetBandwidth** operation to purchase Internet bandwidth for an IPv6 gateway at the same time.
+        You cannot repeatedly call the *AllocateIpv6InternetBandwidth** operation within a specific time period.
         
         @param request: AllocateIpv6InternetBandwidthRequest
         @return: AllocateIpv6InternetBandwidthResponse
@@ -2146,10 +2150,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
         You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
+        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
         *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddress** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2209,10 +2213,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
         You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
+        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
         *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddress** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2271,10 +2275,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
         You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
+        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
         *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddress** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
@@ -2288,10 +2292,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.AssociateEipAddressResponse:
         """
         You can associate an EIP with an Elastic Compute Service (ECS) instance, a Classic Load Balancer (CLB) instance, a secondary elastic network interface (ENI), a NAT gateway, or a high-availability virtual IP address (HAVIP) in the same region. The ECS instance and CLB instance must be deployed in a virtual private cloud (VPC).
-        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
+        *   **AssociateEipAddress** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
         *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddress** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddress** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressRequest
         @return: AssociateEipAddressResponse
@@ -2305,11 +2309,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateEipAddressBatchResponse:
         """
-        You can call the **AssociateEipAddressBatch** operation to associate EIPs with a NAT gateway or a secondary elastic network interface (ENI) in the same region. For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
-        *   The **AssociateEipAddressBatch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
+        You can call the **AssociateEipAddressBatch** operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
+        *   **AssociateEipAddressBatch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
+        *   If the EIP is in the **Associating** state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddressBatch** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddressBatch** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2362,11 +2366,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateEipAddressBatchResponse:
         """
-        You can call the **AssociateEipAddressBatch** operation to associate EIPs with a NAT gateway or a secondary elastic network interface (ENI) in the same region. For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
-        *   The **AssociateEipAddressBatch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
+        You can call the **AssociateEipAddressBatch** operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
+        *   **AssociateEipAddressBatch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
+        *   If the EIP is in the **Associating** state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddressBatch** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddressBatch** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressBatchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2418,11 +2422,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateEipAddressBatchRequest,
     ) -> vpc_20160428_models.AssociateEipAddressBatchResponse:
         """
-        You can call the **AssociateEipAddressBatch** operation to associate EIPs with a NAT gateway or a secondary elastic network interface (ENI) in the same region. For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
-        *   The **AssociateEipAddressBatch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
+        You can call the **AssociateEipAddressBatch** operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
+        *   **AssociateEipAddressBatch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
+        *   If the EIP is in the **Associating** state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddressBatch** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddressBatch** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressBatchRequest
         @return: AssociateEipAddressBatchResponse
@@ -2435,185 +2439,17 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateEipAddressBatchRequest,
     ) -> vpc_20160428_models.AssociateEipAddressBatchResponse:
         """
-        You can call the **AssociateEipAddressBatch** operation to associate EIPs with a NAT gateway or a secondary elastic network interface (ENI) in the same region. For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
-        *   The **AssociateEipAddressBatch** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP.
-        *   If the EIP is in the **Associating** state, the EIP is being associated. In this state, you can only query the EIP and cannot perform other operations.
+        You can call the **AssociateEipAddressBatch** operation to associate EIPs with an instance in the same region. The instance must be a NAT gateway or a secondary elastic network interface (ENI). For more information about how to associate EIPs with other instances, see [AssociateEipAddress](~~120195~~).
+        *   **AssociateEipAddressBatch** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task.
+        *   If the EIP is in the **Associating** state, the EIP is being associated. You can only query the EIP and cannot perform other operations.
         *   If the EIP is in the **InUse** state, the EIP is associated.
-        *   You cannot repeatedly call **AssociateEipAddressBatch** to associate an EIP with an instance within the specified period of time.
+        *   You cannot call the **AssociateEipAddressBatch** operation to associate an EIP with multiple instances at a time.
         
         @param request: AssociateEipAddressBatchRequest
         @return: AssociateEipAddressBatchResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.associate_eip_address_batch_with_options_async(request, runtime)
-
-    def associate_global_acceleration_instance_with_options(
-        self,
-        request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
-        """
-        ## Usage notes
-        When you call this operation, take note of the following items:
-        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
-        *   You can associate each GA instance with only one backend server.
-        *   You can associate multiple GA instances with the same backend server.
-        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
-        *   The region of the backend server must belong to the service area of the GA instance.
-        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
-        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
-        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
-        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
-        
-        @param request: AssociateGlobalAccelerationInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssociateGlobalAccelerationInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backend_server_id):
-            query['BackendServerId'] = request.backend_server_id
-        if not UtilClient.is_unset(request.backend_server_region_id):
-            query['BackendServerRegionId'] = request.backend_server_region_id
-        if not UtilClient.is_unset(request.backend_server_type):
-            query['BackendServerType'] = request.backend_server_type
-        if not UtilClient.is_unset(request.global_acceleration_instance_id):
-            query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AssociateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def associate_global_acceleration_instance_with_options_async(
-        self,
-        request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
-        """
-        ## Usage notes
-        When you call this operation, take note of the following items:
-        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
-        *   You can associate each GA instance with only one backend server.
-        *   You can associate multiple GA instances with the same backend server.
-        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
-        *   The region of the backend server must belong to the service area of the GA instance.
-        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
-        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
-        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
-        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
-        
-        @param request: AssociateGlobalAccelerationInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssociateGlobalAccelerationInstanceResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backend_server_id):
-            query['BackendServerId'] = request.backend_server_id
-        if not UtilClient.is_unset(request.backend_server_region_id):
-            query['BackendServerRegionId'] = request.backend_server_region_id
-        if not UtilClient.is_unset(request.backend_server_type):
-            query['BackendServerType'] = request.backend_server_type
-        if not UtilClient.is_unset(request.global_acceleration_instance_id):
-            query['GlobalAccelerationInstanceId'] = request.global_acceleration_instance_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='AssociateGlobalAccelerationInstance',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def associate_global_acceleration_instance(
-        self,
-        request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
-    ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
-        """
-        ## Usage notes
-        When you call this operation, take note of the following items:
-        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
-        *   You can associate each GA instance with only one backend server.
-        *   You can associate multiple GA instances with the same backend server.
-        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
-        *   The region of the backend server must belong to the service area of the GA instance.
-        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
-        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
-        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
-        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
-        
-        @param request: AssociateGlobalAccelerationInstanceRequest
-        @return: AssociateGlobalAccelerationInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.associate_global_acceleration_instance_with_options(request, runtime)
-
-    async def associate_global_acceleration_instance_async(
-        self,
-        request: vpc_20160428_models.AssociateGlobalAccelerationInstanceRequest,
-    ) -> vpc_20160428_models.AssociateGlobalAccelerationInstanceResponse:
-        """
-        ## Usage notes
-        When you call this operation, take note of the following items:
-        *   You can specify only an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC) or a Server Load Balancer (SLB) instance as a backend server.
-        *   You can associate each GA instance with only one backend server.
-        *   You can associate multiple GA instances with the same backend server.
-        *   The backend server and the GA instance must belong to the same Alibaba Cloud account.
-        *   The region of the backend server must belong to the service area of the GA instance.
-        *   You can call this operation to associate only a dedicated-bandwidth GA instance with a backend server.
-        To associate a shared-bandwidth GA instance with a backend server, perform the following operations:
-        1.  Associate an elastic IP address (EIP) with the shared-bandwidth GA instance: For more information, see [AddGlobalAccelerationInstanceIp](~~86045~~).
-        2.  Associate the EIP with a backend server. For more information, see [AssociateEipAddress](~~120195~~). When you call AssociateEipAddress, specify **InstanceRegionId**.
-        
-        @param request: AssociateGlobalAccelerationInstanceRequest
-        @return: AssociateGlobalAccelerationInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.associate_global_acceleration_instance_with_options_async(request, runtime)
 
     def associate_ha_vip_with_options(
         self,
@@ -3055,7 +2891,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTableResponse:
         """
-        The *AssociateRouteTable** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
+        *AssociateRouteTable** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of the task:
         *   If the vSwitch is in the **Pending** state, the route table is being associated with the vSwitch.
         *   If the vSwitch is in the **Available** state, the route table is associated with the vSwitch.
         
@@ -3108,7 +2944,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateRouteTableResponse:
         """
-        The *AssociateRouteTable** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
+        *AssociateRouteTable** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of the task:
         *   If the vSwitch is in the **Pending** state, the route table is being associated with the vSwitch.
         *   If the vSwitch is in the **Available** state, the route table is associated with the vSwitch.
         
@@ -3160,7 +2996,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateRouteTableRequest,
     ) -> vpc_20160428_models.AssociateRouteTableResponse:
         """
-        The *AssociateRouteTable** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
+        *AssociateRouteTable** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of the task:
         *   If the vSwitch is in the **Pending** state, the route table is being associated with the vSwitch.
         *   If the vSwitch is in the **Available** state, the route table is associated with the vSwitch.
         
@@ -3175,7 +3011,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateRouteTableRequest,
     ) -> vpc_20160428_models.AssociateRouteTableResponse:
         """
-        The *AssociateRouteTable** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of a vSwitch:
+        *AssociateRouteTable** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVSwitchAttributes](~~94567~~) operation to query the status of the task:
         *   If the vSwitch is in the **Pending** state, the route table is being associated with the vSwitch.
         *   If the vSwitch is in the **Available** state, the route table is associated with the vSwitch.
         
@@ -3304,7 +3140,7 @@ class Client(OpenApiClient):
         *   The route table cannot be shared.
         *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
         *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
+        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
         *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
         *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
         *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
@@ -3365,7 +3201,7 @@ class Client(OpenApiClient):
         *   The route table cannot be shared.
         *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
         *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
+        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
         *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
         *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
         *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
@@ -3425,7 +3261,7 @@ class Client(OpenApiClient):
         *   The route table cannot be shared.
         *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
         *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
+        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
         *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
         *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
         *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
@@ -3448,7 +3284,7 @@ class Client(OpenApiClient):
         *   The route table cannot be shared.
         *   You cannot associate a gateway endpoint with a virtual border router (VBR) route table.
         *   You can associate a gateway endpoint with at most 20 route tables at a time.
-        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
+        *   **AssociateRouteTablesWithVpcGatewayEndpoint** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query whether a route table is associated with a gateway endpoint.
         *   If the **Associating** status is returned, the route table is being associated with the gateway endpoint.
         *   If the **Created** status is returned, the route table is associated with the gateway endpoint.
         *   You cannot repeatedly call the **AssociateRouteTablesWithVpcGatewayEndpoint** operation within a specific period of time.
@@ -3465,9 +3301,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
+        ## [](#)
+        *   Take note of the following limits:
+        *   Each VPC can contain up to five secondary IPv4 CIDR blocks.
+        *   Each VPC can contain up to three secondary IPv6 CIDR blocks.
         *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
         
         @param request: AssociateVpcCidrBlockRequest
@@ -3525,9 +3362,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
+        ## [](#)
+        *   Take note of the following limits:
+        *   Each VPC can contain up to five secondary IPv4 CIDR blocks.
+        *   Each VPC can contain up to three secondary IPv6 CIDR blocks.
         *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
         
         @param request: AssociateVpcCidrBlockRequest
@@ -3584,9 +3422,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpcCidrBlockRequest,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
+        ## [](#)
+        *   Take note of the following limits:
+        *   Each VPC can contain up to five secondary IPv4 CIDR blocks.
+        *   Each VPC can contain up to three secondary IPv6 CIDR blocks.
         *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
         
         @param request: AssociateVpcCidrBlockRequest
@@ -3600,9 +3439,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.AssociateVpcCidrBlockRequest,
     ) -> vpc_20160428_models.AssociateVpcCidrBlockResponse:
         """
-        The following list describes the limits on the maximum number of secondary CIDR blocks that can be added:
-        *   You can add up to five secondary IPv4 CIDR blocks to each VPC.
-        *   You can add up to three secondary IPv6 CIDR blocks to each VPC.
+        ## [](#)
+        *   Take note of the following limits:
+        *   Each VPC can contain up to five secondary IPv4 CIDR blocks.
+        *   Each VPC can contain up to three secondary IPv6 CIDR blocks.
         *   You cannot repeatedly call the **AssociateVpcCidrBlock** operation to add secondary CIDR blocks to a VPC within the specified period of time.
         
         @param request: AssociateVpcCidrBlockRequest
@@ -3621,12 +3461,11 @@ class Client(OpenApiClient):
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
         *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
-        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
         *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
         *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
         *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
-        ## Prerequisites
+        ## [](#)Prerequisites
         Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
         
         @param request: AssociateVpnGatewayWithCertificateRequest
@@ -3676,12 +3515,11 @@ class Client(OpenApiClient):
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
         *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
-        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
         *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
         *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
         *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
-        ## Prerequisites
+        ## [](#)Prerequisites
         Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
         
         @param request: AssociateVpnGatewayWithCertificateRequest
@@ -3730,12 +3568,11 @@ class Client(OpenApiClient):
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
         *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
-        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
         *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
         *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
         *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
-        ## Prerequisites
+        ## [](#)Prerequisites
         Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
         
         @param request: AssociateVpnGatewayWithCertificateRequest
@@ -3753,12 +3590,11 @@ class Client(OpenApiClient):
         *   You can associate only VPN gateways of the ShangMi (SM) type with SSL certificates. You need to associate a VPN gateway of the SM type with two SSL certificates, one as the encryption certificate and the other as the signature certificate.
         *   The SSL certificates must use the SM algorithm.
         *   You cannot specify one SSL certificate as both the encryption certificate and signature certificate for one VPN gateway.
-        *   The first time you associate a VPN gateway of the SM type with an SSL certificate, the system automatically creates the AliyunServiceRoleForVPNCertificate service-linked role. In addition, the system adds the AliyunServiceRolePolicyForVPNCertificate policy to the role, which allows the VPN gateway to access other cloud resources. For more information, see [AliyunServiceRoleForVPNCertificate](~~203323~~).
         *   **AssociateVpnGatewayWithCertificate** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL certificate is being associated.
         *   If the VPN gateway is in the **active** state, the SSL certificate is being associated.
         *   You cannot call **AssociateVpnGatewayWithCertificate** within a specific period of time.
-        ## Prerequisites
+        ## [](#)Prerequisites
         Make sure that you have two SSL certificates that use the SM algorithm in the Certificate Management Service console. For more information about SSL certificates, see [What is Certificate Management Service?](~~28535~~).
         
         @param request: AssociateVpnGatewayWithCertificateRequest
@@ -4756,7 +4592,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.ConnectRouterInterfaceResponse:
         """
         After you call this operation, the router interface enters the *Connecting** state. When the connection is established, it enters the **Active** state.
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   Only an initiator router interface in the **Idle** state can initiate a connection.
         *   You can create only one pair of connected router interfaces between two routers.
         *   You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
@@ -4803,7 +4639,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.ConnectRouterInterfaceResponse:
         """
         After you call this operation, the router interface enters the *Connecting** state. When the connection is established, it enters the **Active** state.
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   Only an initiator router interface in the **Idle** state can initiate a connection.
         *   You can create only one pair of connected router interfaces between two routers.
         *   You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
@@ -4849,7 +4685,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.ConnectRouterInterfaceResponse:
         """
         After you call this operation, the router interface enters the *Connecting** state. When the connection is established, it enters the **Active** state.
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   Only an initiator router interface in the **Idle** state can initiate a connection.
         *   You can create only one pair of connected router interfaces between two routers.
         *   You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
@@ -4866,7 +4702,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.ConnectRouterInterfaceResponse:
         """
         After you call this operation, the router interface enters the *Connecting** state. When the connection is established, it enters the **Active** state.
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   Only an initiator router interface in the **Idle** state can initiate a connection.
         *   You can create only one pair of connected router interfaces between two routers.
         *   You cannot initiate a connection if your Alibaba Cloud account has a router interface with overdue payments.
@@ -6621,10 +6457,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
+        **CreateFullNatEntry** is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
+        *   If the FULLNAT entry is in the **Creating** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
         *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        *   You cannot repeatedly call the **CreateFullNatEntry** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateFullNatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6689,10 +6525,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
+        **CreateFullNatEntry** is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
+        *   If the FULLNAT entry is in the **Creating** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
         *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        *   You cannot repeatedly call the **CreateFullNatEntry** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateFullNatEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6756,10 +6592,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFullNatEntryRequest,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
+        **CreateFullNatEntry** is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
+        *   If the FULLNAT entry is in the **Creating** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
         *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        *   You cannot repeatedly call the **CreateFullNatEntry** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateFullNatEntryRequest
         @return: CreateFullNatEntryResponse
@@ -6772,10 +6608,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateFullNatEntryRequest,
     ) -> vpc_20160428_models.CreateFullNatEntryResponse:
         """
-        **CreateFullNatEntry** is an asynchronous operation. After you make a request, a FULLNAT entry ID is returned but the specified FULLNAT entry is not added. The system adds the entry in the background. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
-        *   If the FULLNAT entry is in the **Pending** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
+        **CreateFullNatEntry** is an asynchronous operation. After you send a request to call this operation, the system returns a FULLNAT entry and the FULLNAT entry is being added in the backend. You can call the [ListFullNatEntries](~~348779~~) operation to query the status of a FULLNAT entry.
+        *   If the FULLNAT entry is in the **Creating** state, the system is adding the FULLNAT entry. You can only query the status of the FULLNAT entry, but cannot perform other operations.
         *   If the FULLNAT entry is in the **Available** state, the FULLNAT entry is added.
-        *   You cannot repeatedly call the **CreateFullNatEntry** operation to add a FULLNAT entry to the FULLNAT table within the specified period of time.
+        *   You cannot repeatedly call the **CreateFullNatEntry** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateFullNatEntryRequest
         @return: CreateFullNatEntryResponse
@@ -6929,7 +6765,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        *CreateHaVip** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
+        *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of the task:
         *   If the HAVIP is in the **Creating** state, the HAVIP is being created.
         *   If the HAVIP is in the **Available** state, the HAVIP is created.
         
@@ -6988,7 +6824,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        *CreateHaVip** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
+        *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of the task:
         *   If the HAVIP is in the **Creating** state, the HAVIP is being created.
         *   If the HAVIP is in the **Available** state, the HAVIP is created.
         
@@ -7046,7 +6882,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateHaVipRequest,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        *CreateHaVip** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
+        *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of the task:
         *   If the HAVIP is in the **Creating** state, the HAVIP is being created.
         *   If the HAVIP is in the **Available** state, the HAVIP is created.
         
@@ -7061,7 +6897,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateHaVipRequest,
     ) -> vpc_20160428_models.CreateHaVipResponse:
         """
-        *CreateHaVip** is an asynchronous operation. After you send the request, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of an HAVIP:
+        *CreateHaVip** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeHaVips](~~114611~~) operation to query the status of the task:
         *   If the HAVIP is in the **Creating** state, the HAVIP is being created.
         *   If the HAVIP is in the **Available** state, the HAVIP is created.
         
@@ -7070,6 +6906,132 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_ha_vip_with_options_async(request, runtime)
+
+    def create_high_reliable_physical_connection_with_options(
+        self,
+        request: vpc_20160428_models.CreateHighReliablePhysicalConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ap_list):
+            query['ApList'] = request.ap_list
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.device_advanced_capacity):
+            query['DeviceAdvancedCapacity'] = request.device_advanced_capacity
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.high_reliable_type):
+            query['HighReliableType'] = request.high_reliable_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_type):
+            query['PortType'] = request.port_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHighReliablePhysicalConnection',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_high_reliable_physical_connection_with_options_async(
+        self,
+        request: vpc_20160428_models.CreateHighReliablePhysicalConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ap_list):
+            query['ApList'] = request.ap_list
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.device_advanced_capacity):
+            query['DeviceAdvancedCapacity'] = request.device_advanced_capacity
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.high_reliable_type):
+            query['HighReliableType'] = request.high_reliable_type
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.port_type):
+            query['PortType'] = request.port_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHighReliablePhysicalConnection',
+            version='2016-04-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_high_reliable_physical_connection(
+        self,
+        request: vpc_20160428_models.CreateHighReliablePhysicalConnectionRequest,
+    ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_high_reliable_physical_connection_with_options(request, runtime)
+
+    async def create_high_reliable_physical_connection_async(
+        self,
+        request: vpc_20160428_models.CreateHighReliablePhysicalConnectionRequest,
+    ) -> vpc_20160428_models.CreateHighReliablePhysicalConnectionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_high_reliable_physical_connection_with_options_async(request, runtime)
 
     def create_ipv_6translator_with_options(
         self,
@@ -7510,10 +7472,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   The **CreateIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   **CreateIpsecServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the IPsec server is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call **CreateIpsecServer** to create an IPsec server for a VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7571,10 +7533,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   The **CreateIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   **CreateIpsecServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the IPsec server is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call **CreateIpsecServer** to create an IPsec server for a VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7631,10 +7593,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   The **CreateIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   **CreateIpsecServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the IPsec server is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call **CreateIpsecServer** to create an IPsec server for a VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @return: CreateIpsecServerResponse
@@ -7648,10 +7610,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateIpsecServerResponse:
         """
         Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](~~120363~~).
-        *   The **CreateIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   **CreateIpsecServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the IPsec server is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the IPsec server is being created.
         *   If the VPN gateway is in the **active** state, the IPsec server is created.
-        *   You cannot repeatedly call **CreateIpsecServer** to create an IPsec server for a VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **CreateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: CreateIpsecServerRequest
         @return: CreateIpsecServerResponse
@@ -7821,7 +7783,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse:
         """
-        The **CreateIpv6EgressOnlyRule** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of an egress-only rule.
+        **CreateIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
         *   If the egress-only rule is in the **Creating** state, the egress-only rule is being created.
         *   If the egress-only rule is in the **Created** state, the egress-only rule is created.
         *   You cannot repeatedly call the **CreateIpv6EgressOnlyRule** operation to add egress-only rules for an IPv6 address within the specified period of time.
@@ -7881,7 +7843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse:
         """
-        The **CreateIpv6EgressOnlyRule** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of an egress-only rule.
+        **CreateIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
         *   If the egress-only rule is in the **Creating** state, the egress-only rule is being created.
         *   If the egress-only rule is in the **Created** state, the egress-only rule is created.
         *   You cannot repeatedly call the **CreateIpv6EgressOnlyRule** operation to add egress-only rules for an IPv6 address within the specified period of time.
@@ -7940,7 +7902,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIpv6EgressOnlyRuleRequest,
     ) -> vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse:
         """
-        The **CreateIpv6EgressOnlyRule** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of an egress-only rule.
+        **CreateIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
         *   If the egress-only rule is in the **Creating** state, the egress-only rule is being created.
         *   If the egress-only rule is in the **Created** state, the egress-only rule is created.
         *   You cannot repeatedly call the **CreateIpv6EgressOnlyRule** operation to add egress-only rules for an IPv6 address within the specified period of time.
@@ -7956,7 +7918,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateIpv6EgressOnlyRuleRequest,
     ) -> vpc_20160428_models.CreateIpv6EgressOnlyRuleResponse:
         """
-        The **CreateIpv6EgressOnlyRule** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of an egress-only rule.
+        **CreateIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and creates the rule in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
         *   If the egress-only rule is in the **Creating** state, the egress-only rule is being created.
         *   If the egress-only rule is in the **Created** state, the egress-only rule is created.
         *   You cannot repeatedly call the **CreateIpv6EgressOnlyRule** operation to add egress-only rules for an IPv6 address within the specified period of time.
@@ -8756,6 +8718,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.device_advanced_capacity):
+            query['DeviceAdvancedCapacity'] = request.device_advanced_capacity
         if not UtilClient.is_unset(request.line_operator):
             query['LineOperator'] = request.line_operator
         if not UtilClient.is_unset(request.name):
@@ -8830,6 +8794,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.device_advanced_capacity):
+            query['DeviceAdvancedCapacity'] = request.device_advanced_capacity
         if not UtilClient.is_unset(request.line_operator):
             query['LineOperator'] = request.line_operator
         if not UtilClient.is_unset(request.name):
@@ -9165,8 +9131,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePublicIpAddressPoolResponse:
         """
-        ## Limits
-        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** on the Quota Center page. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the *IP address pool feature** in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](~~108213~~) topic.
         
         @param request: CreatePublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9227,8 +9192,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreatePublicIpAddressPoolResponse:
         """
-        ## Limits
-        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** on the Quota Center page. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the *IP address pool feature** in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](~~108213~~) topic.
         
         @param request: CreatePublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9288,8 +9252,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.CreatePublicIpAddressPoolResponse:
         """
-        ## Limits
-        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** on the Quota Center page. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the *IP address pool feature** in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](~~108213~~) topic.
         
         @param request: CreatePublicIpAddressPoolRequest
         @return: CreatePublicIpAddressPoolResponse
@@ -9302,8 +9265,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreatePublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.CreatePublicIpAddressPoolResponse:
         """
-        ## Limits
-        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the **IP address pool feature** on the Quota Center page. For more information, see [Request a quota increase in the Quota Center console](~~108213~~).
+        By default, the IP address pool feature is unavailable. You can apply for the privilege to use the *IP address pool feature** in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section in the [Manage EIP quotas](~~108213~~) topic.
         
         @param request: CreatePublicIpAddressPoolRequest
         @return: CreatePublicIpAddressPoolResponse
@@ -10109,13 +10071,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSnatEntryResponse:
         """
-        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a NAT gateway refers to both gateway types.
+        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a *NAT gateway** refers to both gateway types.
         Before you call this operation, take note of the following limits:
-        *   **CreateSnatEntry** is an asynchronous operation. After you make a request, an SNAT entry ID is returned but the specified SNAT entry is not added. The system adds the entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the SNAT entry.
+        *   **CreateSnatEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the task.
         *   If the SNAT entry is in the **Pending** state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
         *   If the SNAT entry is in the **Available** state, the SNAT entry is added.
         *   You cannot repeatedly call the **CreateSnatEntry** operation to add an SNAT entry to an SNAT table within the specified period of time.
-        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the virtual private cloud (VPC) where the NAT gateway is deployed.
+        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
         *   Each vSwitch or ECS instance can be specified in only one SNAT entry.
         *   If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
         
@@ -10174,13 +10136,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSnatEntryResponse:
         """
-        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a NAT gateway refers to both gateway types.
+        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a *NAT gateway** refers to both gateway types.
         Before you call this operation, take note of the following limits:
-        *   **CreateSnatEntry** is an asynchronous operation. After you make a request, an SNAT entry ID is returned but the specified SNAT entry is not added. The system adds the entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the SNAT entry.
+        *   **CreateSnatEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the task.
         *   If the SNAT entry is in the **Pending** state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
         *   If the SNAT entry is in the **Available** state, the SNAT entry is added.
         *   You cannot repeatedly call the **CreateSnatEntry** operation to add an SNAT entry to an SNAT table within the specified period of time.
-        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the virtual private cloud (VPC) where the NAT gateway is deployed.
+        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
         *   Each vSwitch or ECS instance can be specified in only one SNAT entry.
         *   If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
         
@@ -10238,13 +10200,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateSnatEntryRequest,
     ) -> vpc_20160428_models.CreateSnatEntryResponse:
         """
-        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a NAT gateway refers to both gateway types.
+        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a *NAT gateway** refers to both gateway types.
         Before you call this operation, take note of the following limits:
-        *   **CreateSnatEntry** is an asynchronous operation. After you make a request, an SNAT entry ID is returned but the specified SNAT entry is not added. The system adds the entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the SNAT entry.
+        *   **CreateSnatEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the task.
         *   If the SNAT entry is in the **Pending** state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
         *   If the SNAT entry is in the **Available** state, the SNAT entry is added.
         *   You cannot repeatedly call the **CreateSnatEntry** operation to add an SNAT entry to an SNAT table within the specified period of time.
-        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the virtual private cloud (VPC) where the NAT gateway is deployed.
+        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
         *   Each vSwitch or ECS instance can be specified in only one SNAT entry.
         *   If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
         
@@ -10259,13 +10221,13 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateSnatEntryRequest,
     ) -> vpc_20160428_models.CreateSnatEntryResponse:
         """
-        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a NAT gateway refers to both gateway types.
+        You can call this operation to add SNAT entries to Internet NAT gateways and Virtual Private Cloud (VPC) NAT gateways. In this topic, a *NAT gateway** refers to both gateway types.
         Before you call this operation, take note of the following limits:
-        *   **CreateSnatEntry** is an asynchronous operation. After you make a request, an SNAT entry ID is returned but the specified SNAT entry is not added. The system adds the entry in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the SNAT entry.
+        *   **CreateSnatEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeSnatTableEntries](~~42677~~) operation to query the status of the task.
         *   If the SNAT entry is in the **Pending** state, the system is adding the SNAT entry. You can only query the status of the SNAT entry, but cannot perform other operations.
         *   If the SNAT entry is in the **Available** state, the SNAT entry is added.
         *   You cannot repeatedly call the **CreateSnatEntry** operation to add an SNAT entry to an SNAT table within the specified period of time.
-        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the virtual private cloud (VPC) where the NAT gateway is deployed.
+        *   The vSwitch and Elastic Compute Service (ECS) instance specified in an SNAT entry must be created in the VPC where the NAT gateway is deployed.
         *   Each vSwitch or ECS instance can be specified in only one SNAT entry.
         *   If a high-availability virtual IP address (HAVIP) exists in a vSwitch, you cannot create SNAT entries.
         
@@ -10379,7 +10341,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnServerResponse:
         """
-        The **CreateSslVpnServer** operation is asynchronous. After you send the request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the associated VPN gateway and determine whether the SSL server is created.
+        **CreateSslVpnServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the SSL server is still being created in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
         *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
@@ -10449,7 +10411,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateSslVpnServerResponse:
         """
-        The **CreateSslVpnServer** operation is asynchronous. After you send the request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the associated VPN gateway and determine whether the SSL server is created.
+        **CreateSslVpnServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the SSL server is still being created in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
         *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
@@ -10518,7 +10480,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateSslVpnServerRequest,
     ) -> vpc_20160428_models.CreateSslVpnServerResponse:
         """
-        The **CreateSslVpnServer** operation is asynchronous. After you send the request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the associated VPN gateway and determine whether the SSL server is created.
+        **CreateSslVpnServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the SSL server is still being created in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
         *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
@@ -10534,7 +10496,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateSslVpnServerRequest,
     ) -> vpc_20160428_models.CreateSslVpnServerResponse:
         """
-        The **CreateSslVpnServer** operation is asynchronous. After you send the request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the associated VPN gateway and determine whether the SSL server is created.
+        **CreateSslVpnServer** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the SSL server is still being created in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the SSL server is being created.
         *   If the VPN gateway is in the **active** state, the SSL server is created.
         *   You cannot repeatedly call the **CreateSslVpnServer** operation for the same VPN gateway within the specified period of time.
@@ -11323,7 +11285,7 @@ class Client(OpenApiClient):
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
         *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
         *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
@@ -11383,7 +11345,7 @@ class Client(OpenApiClient):
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
         *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
         *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
@@ -11442,7 +11404,7 @@ class Client(OpenApiClient):
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
         *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
         *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
@@ -11460,7 +11422,7 @@ class Client(OpenApiClient):
         """
         You cannot create a destination-based route whose destination CIDR block is 0.0.0.0/0.
         *   Do not add a route whose destination CIDR block is 100.64.0.0/10, a subset of 100.64.0.0/10, or a CIDR block that contains 100.64.0.0/10. If such a route is added, the status of the IPsec-VPN connection cannot be displayed in the console or IPsec negotiations fail.
-        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        *   **CreateVcoRouteEntry** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being created.
         *   If the IPsec-VPN connection is in the **attached** state, the route is created.
         *   You cannot repeatedly call **CreateVcoRouteEntry** to create a route for the same IPsec-VPN connection within the specified period of time.
@@ -11797,16 +11759,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcResponse:
         """
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   You can specify only one CIDR block for each VPC.
         *   After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
         *   In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
         *   After you create a VPC, a vRouter and a route table are automatically created.
-        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
-        *   The **CreateVpc** operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a VPC:
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
         *   If the VPC is in the **Creating** state, the VPC is being created.
         *   If the VPC is in the **Created** state, the VPC is created.
-        *   You cannot repeatedly call the **CreateVpc** operation to create default VPCs within the specified period of time. However, you can repeatedly call this operation to create custom VPCs within the specified period of time.
+        *   You cannot repeatedly call the **DeleteRouteEntry** operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
         
         @param request: CreateVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11873,16 +11835,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcResponse:
         """
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   You can specify only one CIDR block for each VPC.
         *   After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
         *   In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
         *   After you create a VPC, a vRouter and a route table are automatically created.
-        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
-        *   The **CreateVpc** operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a VPC:
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
         *   If the VPC is in the **Creating** state, the VPC is being created.
         *   If the VPC is in the **Created** state, the VPC is created.
-        *   You cannot repeatedly call the **CreateVpc** operation to create default VPCs within the specified period of time. However, you can repeatedly call this operation to create custom VPCs within the specified period of time.
+        *   You cannot repeatedly call the **DeleteRouteEntry** operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
         
         @param request: CreateVpcRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11948,16 +11910,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcRequest,
     ) -> vpc_20160428_models.CreateVpcResponse:
         """
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   You can specify only one CIDR block for each VPC.
         *   After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
         *   In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
         *   After you create a VPC, a vRouter and a route table are automatically created.
-        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
-        *   The **CreateVpc** operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a VPC:
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
         *   If the VPC is in the **Creating** state, the VPC is being created.
         *   If the VPC is in the **Created** state, the VPC is created.
-        *   You cannot repeatedly call the **CreateVpc** operation to create default VPCs within the specified period of time. However, you can repeatedly call this operation to create custom VPCs within the specified period of time.
+        *   You cannot repeatedly call the **DeleteRouteEntry** operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
         
         @param request: CreateVpcRequest
         @return: CreateVpcResponse
@@ -11970,16 +11932,16 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcRequest,
     ) -> vpc_20160428_models.CreateVpcResponse:
         """
-        When you call this operation, take note of the following rules:
+        When you call this operation, take note of the following items:
         *   You can specify only one CIDR block for each VPC.
         *   After you create a VPC, you cannot change its CIDR block. However, you can add secondary IPv4 CIDR blocks to the VPC.
         *   In each VPC, cloud services can use a maximum of 60,000 private IP addresses. You cannot increase the quota.
         *   After you create a VPC, a vRouter and a route table are automatically created.
-        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
-        *   The **CreateVpc** operation is asynchronous. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of a VPC:
+        *   At most three user CIDR blocks can be added to a VPC. If a user CIDR block includes another user CIDR block, the one with the shorter subnet mask takes effect. For example, if both 10.0.0.0/8 and 10.1.0.0/16 are specified, only 10.0.0.0/8 takes effect.
+        *   **CreateVpc** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpcAttribute](~~94565~~) operation to query the status of the task:
         *   If the VPC is in the **Creating** state, the VPC is being created.
         *   If the VPC is in the **Created** state, the VPC is created.
-        *   You cannot repeatedly call the **CreateVpc** operation to create default VPCs within the specified period of time. However, you can repeatedly call this operation to create custom VPCs within the specified period of time.
+        *   You cannot repeatedly call the **DeleteRouteEntry** operation to create default VPCs within a specific time period. However, you can repeatedly call this operation to create custom VPCs within a specific time period.
         
         @param request: CreateVpcRequest
         @return: CreateVpcResponse
@@ -11992,16 +11954,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
-        """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
-        
-        @param request: CreateVpcGatewayEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVpcGatewayEndpointResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12056,16 +12008,6 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
-        """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
-        
-        @param request: CreateVpcGatewayEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVpcGatewayEndpointResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12119,15 +12061,6 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
-        """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
-        
-        @param request: CreateVpcGatewayEndpointRequest
-        @return: CreateVpcGatewayEndpointResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.create_vpc_gateway_endpoint_with_options(request, runtime)
 
@@ -12135,15 +12068,6 @@ class Client(OpenApiClient):
         self,
         request: vpc_20160428_models.CreateVpcGatewayEndpointRequest,
     ) -> vpc_20160428_models.CreateVpcGatewayEndpointResponse:
-        """
-        **CreateVpcGatewayEndpoint** is an asynchronous operation. After you send a request, the system returns an **EndpointId** and runs the task in the background. You can call the [GetDhcpOptionsSet](~~189208~~) operation to query the status of a gateway endpoint.
-        *   If the gateway endpoint is in the **Creating** state, the gateway endpoint is being created.
-        *   If the gateway endpoint is in the **Created** state, the gateway endpoint is created.
-        *   You cannot repeatedly call the **CreateVpcGatewayEndpoint** operation for the same endpoint service within the specified period of time.
-        
-        @param request: CreateVpcGatewayEndpointRequest
-        @return: CreateVpcGatewayEndpointResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.create_vpc_gateway_endpoint_with_options_async(request, runtime)
 
@@ -12434,7 +12358,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ### Prerequisites
+        ###  Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12510,7 +12434,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ### Prerequisites
+        ###  Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12585,7 +12509,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ### Prerequisites
+        ###  Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12601,7 +12525,7 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.CreateVpnAttachmentResponse:
         """
         By default, an IPsec-VPN connection created by calling the `CreateVpnAttachment` operation is not associated with a resource. You can associate an IPsec-VPN connection with a transit router by calling the [CreateTransitRouterVpnAttachment](~~443993~~) operation.
-        ### Prerequisites
+        ###  Prerequisites
         Before you create an IPsec-VPN connection, make sure that you created a customer gateway in the region where you want to create the IPsec-VPN connection. For more information, see [CreateCustomerGateway](~~120368~~).
         If you want to add BGP configurations to an IPsec-VPN connection, make sure that an autonomous system number (ASN) is assigned to the customer gateway.
         
@@ -12617,10 +12541,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If the VPN gateway supports only the single-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags**.
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
-        *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
+        *   You cannot call **CreateVpnConnection** to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
         
         @param request: CreateVpnConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12704,10 +12632,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If the VPN gateway supports only the single-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags**.
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
-        *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
+        *   You cannot call **CreateVpnConnection** to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
         
         @param request: CreateVpnConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12790,10 +12722,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnConnectionRequest,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If the VPN gateway supports only the single-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags**.
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
-        *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
+        *   You cannot call **CreateVpnConnection** to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
         
         @param request: CreateVpnConnectionRequest
         @return: CreateVpnConnectionResponse
@@ -12806,10 +12742,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnConnectionRequest,
     ) -> vpc_20160428_models.CreateVpnConnectionResponse:
         """
-        **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        If the VPN gateway supports the dual-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **Name**, **EffectImmediately**, **AutoConfigRoute**, **Tags**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If the VPN gateway supports only the single-tunnel mode, you can specify the following parameters in addition to the required parameters when you call `CreateVpnConnection`:
+        **ClientToken**, **CustomerGatewayId**, **Name**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, **RemoteCaCertificate**, and **Tags**.
+        *   **CreateVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being created.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is created.
-        *   You cannot repeatedly call **CreateVpnConnection** to create an IPsec-VPN connection on a VPN gateway within the specified period of time.
+        *   You cannot call **CreateVpnConnection** to create multiple IPsec-VPN connections associated with a VPN gateway at the same time.
         
         @param request: CreateVpnConnectionRequest
         @return: CreateVpnConnectionResponse
@@ -12823,10 +12763,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](~~65290~~) section in the "Create and manage a VPN gateway" topic.
+        *   VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId** and **DisasterRecoveryVSwitchId** in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+        *   **CreateVpnGateway** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
         
         @param request: CreateVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12897,10 +12838,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](~~65290~~) section in the "Create and manage a VPN gateway" topic.
+        *   VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId** and **DisasterRecoveryVSwitchId** in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+        *   **CreateVpnGateway** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
         
         @param request: CreateVpnGatewayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12970,10 +12912,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnGatewayRequest,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](~~65290~~) section in the "Create and manage a VPN gateway" topic.
+        *   VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId** and **DisasterRecoveryVSwitchId** in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+        *   **CreateVpnGateway** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
         
         @param request: CreateVpnGatewayRequest
         @return: CreateVpnGatewayResponse
@@ -12986,10 +12929,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnGatewayRequest,
     ) -> vpc_20160428_models.CreateVpnGatewayResponse:
         """
-        Before you create a VPN gateway, we recommend that you understand its limits. For more information, see [Limits on VPN gateways](~~65290~~).
-        *   The **CreateVpnGateway** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        Before you create a VPN gateway, we recommend that you know more about the limits of VPN gateways. For more information, see the [Limits](~~65290~~) section in the "Create and manage a VPN gateway" topic.
+        *   VPN gateways in some regions support only IPsec-VPN connections in dual-tunnel mode. If you call `CreateVpnGateway` in these regions, you must specify **VSwitchId** and **DisasterRecoveryVSwitchId** in addition to the required parameters. For more information about the regions and zones that support the IPsec-VPN connections in dual-tunnel mode, see [IPsec-VPN connections support the dual-tunnel mode](~~2358946~~).
+        *   **CreateVpnGateway** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the endpoint service is being created in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **provisioning** state, the VPN gateway is being created.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been created.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is created.
         
         @param request: CreateVpnGatewayRequest
         @return: CreateVpnGatewayResponse
@@ -13003,12 +12947,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnPbrRouteEntryResponse:
         """
-        Before you call this operation, we recommend that you learn about the match rules of policy-based routes and limits on policy-based routes. For more information, see [Work with policy-based routes](~~110777~~).
+        Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](~~110777~~).
         *   Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](~~120391~~).
-        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After you send the request, the route information is returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being created.
-        *   If a VPN gateway is in the **active** state, the policy-based route entry is created.
-        *   You cannot repeatedly call **CreateVpnPbrRouteEntry** to create a policy-based route for a VPN gateway within the specified period of time.
+        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        *   If the VPN gateway is in the **active** state, the policy-based route is created.
+        *   You cannot call the **CreateVpnPbrRouteEntry** operation to create multiple policy-based routes for a VPN gateway at a time.
         
         @param request: CreateVpnPbrRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13071,12 +13015,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnPbrRouteEntryResponse:
         """
-        Before you call this operation, we recommend that you learn about the match rules of policy-based routes and limits on policy-based routes. For more information, see [Work with policy-based routes](~~110777~~).
+        Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](~~110777~~).
         *   Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](~~120391~~).
-        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After you send the request, the route information is returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being created.
-        *   If a VPN gateway is in the **active** state, the policy-based route entry is created.
-        *   You cannot repeatedly call **CreateVpnPbrRouteEntry** to create a policy-based route for a VPN gateway within the specified period of time.
+        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        *   If the VPN gateway is in the **active** state, the policy-based route is created.
+        *   You cannot call the **CreateVpnPbrRouteEntry** operation to create multiple policy-based routes for a VPN gateway at a time.
         
         @param request: CreateVpnPbrRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13138,12 +13082,12 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnPbrRouteEntryRequest,
     ) -> vpc_20160428_models.CreateVpnPbrRouteEntryResponse:
         """
-        Before you call this operation, we recommend that you learn about the match rules of policy-based routes and limits on policy-based routes. For more information, see [Work with policy-based routes](~~110777~~).
+        Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](~~110777~~).
         *   Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](~~120391~~).
-        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After you send the request, the route information is returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being created.
-        *   If a VPN gateway is in the **active** state, the policy-based route entry is created.
-        *   You cannot repeatedly call **CreateVpnPbrRouteEntry** to create a policy-based route for a VPN gateway within the specified period of time.
+        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        *   If the VPN gateway is in the **active** state, the policy-based route is created.
+        *   You cannot call the **CreateVpnPbrRouteEntry** operation to create multiple policy-based routes for a VPN gateway at a time.
         
         @param request: CreateVpnPbrRouteEntryRequest
         @return: CreateVpnPbrRouteEntryResponse
@@ -13156,12 +13100,12 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnPbrRouteEntryRequest,
     ) -> vpc_20160428_models.CreateVpnPbrRouteEntryResponse:
         """
-        Before you call this operation, we recommend that you learn about the match rules of policy-based routes and limits on policy-based routes. For more information, see [Work with policy-based routes](~~110777~~).
+        Before you call this operation, make sure that you are familiar with the match rules of and limits on policy-based routes. For more information, see [Manage policy-based routes](~~110777~~).
         *   Before you create a policy-based route, make sure that an IPsec-VPN connection is created. For more information, see [CreateVpnConnection](~~120391~~).
-        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After you send the request, the route information is returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being created.
-        *   If a VPN gateway is in the **active** state, the policy-based route entry is created.
-        *   You cannot repeatedly call **CreateVpnPbrRouteEntry** to create a policy-based route for a VPN gateway within the specified period of time.
+        *   **CreateVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        *   If the VPN gateway is in the **active** state, the policy-based route is created.
+        *   You cannot call the **CreateVpnPbrRouteEntry** operation to create multiple policy-based routes for a VPN gateway at a time.
         
         @param request: CreateVpnPbrRouteEntryRequest
         @return: CreateVpnPbrRouteEntryResponse
@@ -13175,7 +13119,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnRouteEntryResponse:
         """
-        **CreateVpnRouteEntry** is an asynchronous operation. After you call the operation, the route configurations are returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a destination-based route entry.
+        **CreateVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route entry is being created.
         *   If a VPN gateway is in the **active** state, the destination-based route entry has been created.
         *   You cannot repeatedly call **CreateVpnRouteEntry** to create a destination-based route entry for a VPN gateway within the specified period of time.
@@ -13237,7 +13181,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.CreateVpnRouteEntryResponse:
         """
-        **CreateVpnRouteEntry** is an asynchronous operation. After you call the operation, the route configurations are returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a destination-based route entry.
+        **CreateVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route entry is being created.
         *   If a VPN gateway is in the **active** state, the destination-based route entry has been created.
         *   You cannot repeatedly call **CreateVpnRouteEntry** to create a destination-based route entry for a VPN gateway within the specified period of time.
@@ -13298,7 +13242,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnRouteEntryRequest,
     ) -> vpc_20160428_models.CreateVpnRouteEntryResponse:
         """
-        **CreateVpnRouteEntry** is an asynchronous operation. After you call the operation, the route configurations are returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a destination-based route entry.
+        **CreateVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route entry is being created.
         *   If a VPN gateway is in the **active** state, the destination-based route entry has been created.
         *   You cannot repeatedly call **CreateVpnRouteEntry** to create a destination-based route entry for a VPN gateway within the specified period of time.
@@ -13314,7 +13258,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.CreateVpnRouteEntryRequest,
     ) -> vpc_20160428_models.CreateVpnRouteEntryResponse:
         """
-        **CreateVpnRouteEntry** is an asynchronous operation. After you call the operation, the route configurations are returned but the operation is still being performed in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a destination-based route entry.
+        **CreateVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route entry is being created.
         *   If a VPN gateway is in the **active** state, the destination-based route entry has been created.
         *   You cannot repeatedly call **CreateVpnRouteEntry** to create a destination-based route entry for a VPN gateway within the specified period of time.
@@ -15211,9 +15155,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpsecServerResponse:
         """
-        The **DeleteIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        *   If a VPN gateway is in the **active** state, the IPsec server has been deleted.
+        *   If a VPN gateway is in the **active** state, the IPsec server is deleted.
         *   You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
@@ -15255,9 +15199,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpsecServerResponse:
         """
-        The **DeleteIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        *   If a VPN gateway is in the **active** state, the IPsec server has been deleted.
+        *   If a VPN gateway is in the **active** state, the IPsec server is deleted.
         *   You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
@@ -15298,9 +15242,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIpsecServerRequest,
     ) -> vpc_20160428_models.DeleteIpsecServerResponse:
         """
-        The **DeleteIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        *   If a VPN gateway is in the **active** state, the IPsec server has been deleted.
+        *   If a VPN gateway is in the **active** state, the IPsec server is deleted.
         *   You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
@@ -15314,9 +15258,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIpsecServerRequest,
     ) -> vpc_20160428_models.DeleteIpsecServerResponse:
         """
-        The **DeleteIpsecServer** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
-        *   If a VPN gateway is in the **active** state, the IPsec server has been deleted.
+        *   If a VPN gateway is in the **active** state, the IPsec server is deleted.
         *   You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
         
         @param request: DeleteIpsecServerRequest
@@ -15475,10 +15419,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse:
         """
-        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query whether the egress-only rule is deleted.
-        *   If the egress-only rule is in the **Deleting** state, it indicates that the egress-only rule is being deleted.
-        *   If you cannot query the egress-only rule, it indicates that the egress-only rule is deleted.
-        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule again when the rule is being deleted.
+        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
+        *   If the egress-only rule is in the **Deleting** state, the egress-only rule is being deleted.
+        *   If you cannot query the egress-only rule, the egress-only rule is deleted.
+        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule within the specified period of time.
         
         @param request: DeleteIpv6EgressOnlyRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15527,10 +15471,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse:
         """
-        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query whether the egress-only rule is deleted.
-        *   If the egress-only rule is in the **Deleting** state, it indicates that the egress-only rule is being deleted.
-        *   If you cannot query the egress-only rule, it indicates that the egress-only rule is deleted.
-        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule again when the rule is being deleted.
+        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
+        *   If the egress-only rule is in the **Deleting** state, the egress-only rule is being deleted.
+        *   If you cannot query the egress-only rule, the egress-only rule is deleted.
+        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule within the specified period of time.
         
         @param request: DeleteIpv6EgressOnlyRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15578,10 +15522,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIpv6EgressOnlyRuleRequest,
     ) -> vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse:
         """
-        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query whether the egress-only rule is deleted.
-        *   If the egress-only rule is in the **Deleting** state, it indicates that the egress-only rule is being deleted.
-        *   If you cannot query the egress-only rule, it indicates that the egress-only rule is deleted.
-        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule again when the rule is being deleted.
+        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
+        *   If the egress-only rule is in the **Deleting** state, the egress-only rule is being deleted.
+        *   If you cannot query the egress-only rule, the egress-only rule is deleted.
+        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule within the specified period of time.
         
         @param request: DeleteIpv6EgressOnlyRuleRequest
         @return: DeleteIpv6EgressOnlyRuleResponse
@@ -15594,10 +15538,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteIpv6EgressOnlyRuleRequest,
     ) -> vpc_20160428_models.DeleteIpv6EgressOnlyRuleResponse:
         """
-        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query whether the egress-only rule is deleted.
-        *   If the egress-only rule is in the **Deleting** state, it indicates that the egress-only rule is being deleted.
-        *   If you cannot query the egress-only rule, it indicates that the egress-only rule is deleted.
-        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule again when the rule is being deleted.
+        **DeleteIpv6EgressOnlyRule** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeIpv6EgressOnlyRules](~~102208~~) operation to query the status of the task.
+        *   If the egress-only rule is in the **Deleting** state, the egress-only rule is being deleted.
+        *   If you cannot query the egress-only rule, the egress-only rule is deleted.
+        *   You cannot call the **DeleteIpv6EgressOnlyRule** operation to delete an egress-only rule within the specified period of time.
         
         @param request: DeleteIpv6EgressOnlyRuleRequest
         @return: DeleteIpv6EgressOnlyRuleResponse
@@ -16527,12 +16471,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
+        Before you call this operation, take note of the following items:
+        *   Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        *   **DeletePublicIpAddressPool** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of the task.
         *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
         *   If you cannot query the IP address pool, the IP address pool is deleted.
         *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
         
         @param request: DeletePublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16581,12 +16525,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
+        Before you call this operation, take note of the following items:
+        *   Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        *   **DeletePublicIpAddressPool** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of the task.
         *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
         *   If you cannot query the IP address pool, the IP address pool is deleted.
         *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
         
         @param request: DeletePublicIpAddressPoolRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16634,12 +16578,12 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeletePublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
+        Before you call this operation, take note of the following items:
+        *   Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        *   **DeletePublicIpAddressPool** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of the task.
         *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
         *   If you cannot query the IP address pool, the IP address pool is deleted.
         *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
         
         @param request: DeletePublicIpAddressPoolRequest
         @return: DeletePublicIpAddressPoolResponse
@@ -16652,12 +16596,12 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeletePublicIpAddressPoolRequest,
     ) -> vpc_20160428_models.DeletePublicIpAddressPoolResponse:
         """
-        The **DeletePublicIpAddressPool** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of an IP address pool:
+        Before you call this operation, take note of the following items:
+        *   Before you delete an IP address pool, make sure that no IP address in the pool is being used.
+        *   **DeletePublicIpAddressPool** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListPublicIpAddressPools](~~429433~~) operation to query the status of the task.
         *   If the IP address pool is in the **Deleting** state, the IP address pool is being deleted. In this state. you can only query the IP address pool and cannot perform other operations.
         *   If you cannot query the IP address pool, the IP address pool is deleted.
         *   You cannot repeatedly call the **DeletePublicIpAddressPool** operation to delete an IP address pool within the specified period of time.
-        ## Prerequisites
-        Before you delete an IP address pool, make sure that no IP address in the pool is being used.
         
         @param request: DeletePublicIpAddressPoolRequest
         @return: DeletePublicIpAddressPoolResponse
@@ -17519,7 +17463,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnClientCertResponse:
         """
-        The **DeleteSslVpnClientCert** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway associated with an SSL server. You can check whether an SSL client certificate is deleted based on the status of the VPN gateway.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
         *   You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
@@ -17569,7 +17513,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnClientCertResponse:
         """
-        The **DeleteSslVpnClientCert** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway associated with an SSL server. You can check whether an SSL client certificate is deleted based on the status of the VPN gateway.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
         *   You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
@@ -17618,7 +17562,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSslVpnClientCertRequest,
     ) -> vpc_20160428_models.DeleteSslVpnClientCertResponse:
         """
-        The **DeleteSslVpnClientCert** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway associated with an SSL server. You can check whether an SSL client certificate is deleted based on the status of the VPN gateway.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
         *   You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
@@ -17634,7 +17578,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSslVpnClientCertRequest,
     ) -> vpc_20160428_models.DeleteSslVpnClientCertResponse:
         """
-        The **DeleteSslVpnClientCert** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway associated with an SSL server. You can check whether an SSL client certificate is deleted based on the status of the VPN gateway.
+        **DeleteSslVpnClientCert** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL client certificate is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL client certificate is deleted.
         *   You cannot repeatedly call **DeleteSslVpnClientCert** to delete an SSL client certificate from the same VPN gateway within the specified period of time.
@@ -17651,7 +17595,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnServerResponse:
         """
-        The **DeleteSslVpnServer** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of an SSL server based on the status of the associated VPN gateway.
+        **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL server is deleted.
         *   You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -17701,7 +17645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteSslVpnServerResponse:
         """
-        The **DeleteSslVpnServer** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of an SSL server based on the status of the associated VPN gateway.
+        **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL server is deleted.
         *   You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -17750,7 +17694,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSslVpnServerRequest,
     ) -> vpc_20160428_models.DeleteSslVpnServerResponse:
         """
-        The **DeleteSslVpnServer** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of an SSL server based on the status of the associated VPN gateway.
+        **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL server is deleted.
         *   You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -17766,7 +17710,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteSslVpnServerRequest,
     ) -> vpc_20160428_models.DeleteSslVpnServerResponse:
         """
-        The **DeleteSslVpnServer** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of an SSL server based on the status of the associated VPN gateway.
+        **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         *   If the VPN gateway is in the **active** state, the SSL server is deleted.
         *   You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -18523,10 +18467,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVcoRouteEntryResponse:
         """
-        The **DeleteVcoRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        **DeleteVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being deleted.
         *   If the IPsec-VPN connection is in the **attached** state, the route is deleted.
-        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation to delete a route from the same IPsec-VPN connection within the specified period of time.
+        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation within a specific time period.
         
         @param request: DeleteVcoRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18579,10 +18523,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVcoRouteEntryResponse:
         """
-        The **DeleteVcoRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        **DeleteVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being deleted.
         *   If the IPsec-VPN connection is in the **attached** state, the route is deleted.
-        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation to delete a route from the same IPsec-VPN connection within the specified period of time.
+        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation within a specific time period.
         
         @param request: DeleteVcoRouteEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18634,10 +18578,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVcoRouteEntryRequest,
     ) -> vpc_20160428_models.DeleteVcoRouteEntryResponse:
         """
-        The **DeleteVcoRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        **DeleteVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being deleted.
         *   If the IPsec-VPN connection is in the **attached** state, the route is deleted.
-        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation to delete a route from the same IPsec-VPN connection within the specified period of time.
+        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation within a specific time period.
         
         @param request: DeleteVcoRouteEntryRequest
         @return: DeleteVcoRouteEntryResponse
@@ -18650,10 +18594,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVcoRouteEntryRequest,
     ) -> vpc_20160428_models.DeleteVcoRouteEntryResponse:
         """
-        The **DeleteVcoRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of a route based on the status of the associated IPsec-VPN connection.
+        **DeleteVcoRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
         *   If the IPsec-VPN connection is in the **updating** state, the route is being deleted.
         *   If the IPsec-VPN connection is in the **attached** state, the route is deleted.
-        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation to delete a route from the same IPsec-VPN connection within the specified period of time.
+        *   You cannot repeatedly call the **DeleteVcoRouteEntry** operation within a specific time period.
         
         @param request: DeleteVcoRouteEntryRequest
         @return: DeleteVcoRouteEntryResponse
@@ -19293,7 +19237,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnConnectionResponse:
         """
-        The **DeleteVpnConnection** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        **DeleteVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being deleted.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is deleted.
         *   You cannot repeatedly call **DeleteVpnConnection** to delete an IPsec-VPN connection from the same VPN gateway within the specified period of time.
@@ -19344,7 +19288,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnConnectionResponse:
         """
-        The **DeleteVpnConnection** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        **DeleteVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being deleted.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is deleted.
         *   You cannot repeatedly call **DeleteVpnConnection** to delete an IPsec-VPN connection from the same VPN gateway within the specified period of time.
@@ -19394,7 +19338,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnConnectionRequest,
     ) -> vpc_20160428_models.DeleteVpnConnectionResponse:
         """
-        The **DeleteVpnConnection** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        **DeleteVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being deleted.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is deleted.
         *   You cannot repeatedly call **DeleteVpnConnection** to delete an IPsec-VPN connection from the same VPN gateway within the specified period of time.
@@ -19411,7 +19355,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnConnectionRequest,
     ) -> vpc_20160428_models.DeleteVpnConnectionResponse:
         """
-        The **DeleteVpnConnection** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        **DeleteVpnConnection** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the IPsec-VPN connection is being deleted.
         *   If the VPN gateway is in the **active** state, the IPsec-VPN connection is deleted.
         *   You cannot repeatedly call **DeleteVpnConnection** to delete an IPsec-VPN connection from the same VPN gateway within the specified period of time.
@@ -19549,7 +19493,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnPbrRouteEntryResponse:
         """
-        The **DeleteVpnPbrRouteEntry** operation is asynchronous. After you call the operation, the request ID is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route is being deleted.
         *   If a VPN gateway is in the **active** state, the policy-based route has been deleted.
         *   You cannot repeatedly call **DeleteVpnPbrRouteEntry** to delete a policy-based route within the specified period of time.
@@ -19611,7 +19555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnPbrRouteEntryResponse:
         """
-        The **DeleteVpnPbrRouteEntry** operation is asynchronous. After you call the operation, the request ID is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route is being deleted.
         *   If a VPN gateway is in the **active** state, the policy-based route has been deleted.
         *   You cannot repeatedly call **DeleteVpnPbrRouteEntry** to delete a policy-based route within the specified period of time.
@@ -19672,7 +19616,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnPbrRouteEntryRequest,
     ) -> vpc_20160428_models.DeleteVpnPbrRouteEntryResponse:
         """
-        The **DeleteVpnPbrRouteEntry** operation is asynchronous. After you call the operation, the request ID is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route is being deleted.
         *   If a VPN gateway is in the **active** state, the policy-based route has been deleted.
         *   You cannot repeatedly call **DeleteVpnPbrRouteEntry** to delete a policy-based route within the specified period of time.
@@ -19688,7 +19632,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnPbrRouteEntryRequest,
     ) -> vpc_20160428_models.DeleteVpnPbrRouteEntryResponse:
         """
-        The **DeleteVpnPbrRouteEntry** operation is asynchronous. After you call the operation, the request ID is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnPbrRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route is being deleted.
         *   If a VPN gateway is in the **active** state, the policy-based route has been deleted.
         *   You cannot repeatedly call **DeleteVpnPbrRouteEntry** to delete a policy-based route within the specified period of time.
@@ -19705,9 +19649,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnRouteEntryResponse:
         """
-        The **DeleteRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route is being deleted.
-        *   If the VPN gateway is in the **active** state, the destination-based route has been deleted.
+        *   If the VPN gateway is in the **active** state, the destination-based route is deleted.
         *   You cannot repeatedly call **DeleteVpnRouteEntry** to delete a destination-based route from a VPN gateway within the specified period of time.
         
         @param request: DeleteVpnRouteEntryRequest
@@ -19763,9 +19707,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DeleteVpnRouteEntryResponse:
         """
-        The **DeleteRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route is being deleted.
-        *   If the VPN gateway is in the **active** state, the destination-based route has been deleted.
+        *   If the VPN gateway is in the **active** state, the destination-based route is deleted.
         *   You cannot repeatedly call **DeleteVpnRouteEntry** to delete a destination-based route from a VPN gateway within the specified period of time.
         
         @param request: DeleteVpnRouteEntryRequest
@@ -19820,9 +19764,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnRouteEntryRequest,
     ) -> vpc_20160428_models.DeleteVpnRouteEntryResponse:
         """
-        The **DeleteRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route is being deleted.
-        *   If the VPN gateway is in the **active** state, the destination-based route has been deleted.
+        *   If the VPN gateway is in the **active** state, the destination-based route is deleted.
         *   You cannot repeatedly call **DeleteVpnRouteEntry** to delete a destination-based route from a VPN gateway within the specified period of time.
         
         @param request: DeleteVpnRouteEntryRequest
@@ -19836,9 +19780,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DeleteVpnRouteEntryRequest,
     ) -> vpc_20160428_models.DeleteVpnRouteEntryResponse:
         """
-        The **DeleteRouteEntry** operation is asynchronous. After you send the request, the system returns a request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **DeleteVpnRouteEntry** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the destination-based route is being deleted.
-        *   If the VPN gateway is in the **active** state, the destination-based route has been deleted.
+        *   If the VPN gateway is in the **active** state, the destination-based route is deleted.
         *   You cannot repeatedly call **DeleteVpnRouteEntry** to delete a destination-based route from a VPN gateway within the specified period of time.
         
         @param request: DeleteVpnRouteEntryRequest
@@ -20789,7 +20733,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
         
         @param request: DescribeEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20870,7 +20814,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
         
         @param request: DescribeEipAddressesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20950,7 +20894,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeEipAddressesRequest,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
         
         @param request: DescribeEipAddressesRequest
         @return: DescribeEipAddressesResponse
@@ -20963,7 +20907,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeEipAddressesRequest,
     ) -> vpc_20160428_models.DescribeEipAddressesResponse:
         """
-        You can call this operation to query the information about EIPs in a specified region, including the maximum bandwidth, billing methods, and associated instances.
+        You can call this operation to query information about EIPs in a region, including maximum bandwidth, billing methods, and associated instances.
         
         @param request: DescribeEipAddressesRequest
         @return: DescribeEipAddressesResponse
@@ -24931,7 +24875,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
         """
-        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see Upgrade a VPN gateway. If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](~~303968~~).
+        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24980,7 +24925,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
         """
-        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see Upgrade a VPN gateway. If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](~~303968~~).
+        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -25028,7 +24974,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeSslVpnClientsRequest,
     ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
         """
-        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see Upgrade a VPN gateway. If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](~~303968~~).
+        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @return: DescribeSslVpnClientsResponse
@@ -25041,7 +24988,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.DescribeSslVpnClientsRequest,
     ) -> vpc_20160428_models.DescribeSslVpnClientsResponse:
         """
-        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see Upgrade a VPN gateway. If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
+        If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](~~303968~~).
+        If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
         @return: DescribeSslVpnClientsResponse
@@ -29907,7 +29855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
         """
-        When you call the *GetVpnGatewayDiagnoseResult** operation, you must set one of the **DiagnoseId** and **VpnGatewayId** parameters.
+        When you call the *GetVpnGatewayDiagnoseResult** operation, you must specify one of **DiagnoseId** and **VpnGatewayId**.
         
         @param request: GetVpnGatewayDiagnoseResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29948,7 +29896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
         """
-        When you call the *GetVpnGatewayDiagnoseResult** operation, you must set one of the **DiagnoseId** and **VpnGatewayId** parameters.
+        When you call the *GetVpnGatewayDiagnoseResult** operation, you must specify one of **DiagnoseId** and **VpnGatewayId**.
         
         @param request: GetVpnGatewayDiagnoseResultRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -29988,7 +29936,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.GetVpnGatewayDiagnoseResultRequest,
     ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
         """
-        When you call the *GetVpnGatewayDiagnoseResult** operation, you must set one of the **DiagnoseId** and **VpnGatewayId** parameters.
+        When you call the *GetVpnGatewayDiagnoseResult** operation, you must specify one of **DiagnoseId** and **VpnGatewayId**.
         
         @param request: GetVpnGatewayDiagnoseResultRequest
         @return: GetVpnGatewayDiagnoseResultResponse
@@ -30001,7 +29949,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.GetVpnGatewayDiagnoseResultRequest,
     ) -> vpc_20160428_models.GetVpnGatewayDiagnoseResultResponse:
         """
-        When you call the *GetVpnGatewayDiagnoseResult** operation, you must set one of the **DiagnoseId** and **VpnGatewayId** parameters.
+        When you call the *GetVpnGatewayDiagnoseResult** operation, you must specify one of **DiagnoseId** and **VpnGatewayId**.
         
         @param request: GetVpnGatewayDiagnoseResultRequest
         @return: GetVpnGatewayDiagnoseResultResponse
@@ -33089,11 +33037,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse:
         """
-        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan. This prevents an EIP from exhausting the bandwidth resources of an EIP bandwidth plan.
-        For example, two EIPs are associated with an EIP bandwidth plan whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
+        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
+        For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
         When you call this operation, take note of the following items:
         *   This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
-        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an EIP bandwidth plan. The feature is not supported in the console.
+        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
         *   You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -33143,11 +33091,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse:
         """
-        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan. This prevents an EIP from exhausting the bandwidth resources of an EIP bandwidth plan.
-        For example, two EIPs are associated with an EIP bandwidth plan whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
+        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
+        For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
         When you call this operation, take note of the following items:
         *   This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
-        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an EIP bandwidth plan. The feature is not supported in the console.
+        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
         *   You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -33196,11 +33144,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthRequest,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse:
         """
-        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan. This prevents an EIP from exhausting the bandwidth resources of an EIP bandwidth plan.
-        For example, two EIPs are associated with an EIP bandwidth plan whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
+        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
+        For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
         When you call this operation, take note of the following items:
         *   This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
-        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an EIP bandwidth plan. The feature is not supported in the console.
+        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
         *   You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -33214,11 +33162,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthRequest,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageIpBandwidthResponse:
         """
-        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an EIP bandwidth plan. This prevents an EIP from exhausting the bandwidth resources of an EIP bandwidth plan.
-        For example, two EIPs are associated with an EIP bandwidth plan whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
+        You can call the *ModifyCommonBandwidthPackageIpBandwidth** operation to set the maximum bandwidth of an EIP that is associated with an Internet Shared Bandwidth instance. This prevents an EIP from exhausting the bandwidth resources of an Internet Shared Bandwidth instance.
+        For example, two EIPs are associated with an Internet Shared Bandwidth instance whose maximum bandwidth is 800 Mbit/s. In this case, you can set the maximum bandwidth of one EIP to 500 Mbit/s and that of the other EIP to 400 Mbit/s. After you set the maximum bandwidth values, the first EIP cannot consume bandwidth higher than 500 Mbit/s. The second EIP cannot consume bandwidth higher than 400 Mbit/s.
         When you call this operation, take note of the following items:
         *   This operation is valid only for EIPs that are associated with Elastic Compute Service (ECS) instances. This operation is invalid for EIPs that are associated with Server Load Balancer (SLB) instances, NAT gateways, secondary elastic network interfaces (ENIs), or high-availability virtual IP addresses (HAVIPs).
-        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an EIP bandwidth plan. The feature is not supported in the console.
+        *   This operation is in public preview. You can call this operation to set the maximum bandwidth of EIPs only if the EIPs are associated with an Internet Shared Bandwidth instance. The feature is not supported in the console.
         *   You cannot repeatedly call this operation to set the maximum bandwidth of an EIP within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageIpBandwidthRequest
@@ -33233,10 +33181,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        Before you call this operation, take note of the following items:
+        *   **ModifyCommonBandwidthPackageSpec** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **Modifying** state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **Available** state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
+        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33283,10 +33232,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        Before you call this operation, take note of the following items:
+        *   **ModifyCommonBandwidthPackageSpec** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **Modifying** state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **Available** state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
+        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33332,10 +33282,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCommonBandwidthPackageSpecRequest,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        Before you call this operation, take note of the following items:
+        *   **ModifyCommonBandwidthPackageSpec** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **Modifying** state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **Available** state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
+        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @return: ModifyCommonBandwidthPackageSpecResponse
@@ -33348,10 +33299,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCommonBandwidthPackageSpecRequest,
     ) -> vpc_20160428_models.ModifyCommonBandwidthPackageSpecResponse:
         """
-        The **ModifyCommonBandwidthPackageSpec** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of an EIP bandwidth plan:
-        *   If the EIP bandwidth plan is in the **Modifying** state, the maximum bandwidth of the EIP bandwidth plan is being modified. In this state, you can only query the EIP bandwidth plan and cannot perform other operations.
-        *   If the EIP bandwidth plan is in the **Available** state, the maximum bandwidth of the EIP bandwidth plan is modified.
-        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an EIP bandwidth plan within the specified period of time.
+        Before you call this operation, take note of the following items:
+        *   **ModifyCommonBandwidthPackageSpec** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeCommonBandwidthPackages](~~120309~~) operation to query the status of the task.
+        *   If the Internet Shared Bandwidth instance is in the **Modifying** state, the maximum bandwidth of the Internet Shared Bandwidth instance is being modified. In this state, you can only query the Internet Shared Bandwidth instance and cannot perform other operations.
+        *   If the Internet Shared Bandwidth instance is in the **Available** state, the maximum bandwidth of the Internet Shared Bandwidth instance is modified.
+        *   You cannot repeatedly call the **ModifyCommonBandwidthPackageSpec** operation to modify the maximum bandwidth of an Internet Shared Bandwidth instance within the specified period of time.
         
         @param request: ModifyCommonBandwidthPackageSpecRequest
         @return: ModifyCommonBandwidthPackageSpecResponse
@@ -33365,9 +33317,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCustomerGatewayAttributeResponse:
         """
-        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After you call the operation, the information about the customer gateway is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a customer gateway.
+        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations are modified.
         *   When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
         *   You cannot repeatedly call **ModifyCustomerGatewayAttribute** to modify the configurations of a customer gateway within the specified period of time.
         
@@ -33422,9 +33374,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyCustomerGatewayAttributeResponse:
         """
-        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After you call the operation, the information about the customer gateway is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a customer gateway.
+        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations are modified.
         *   When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
         *   You cannot repeatedly call **ModifyCustomerGatewayAttribute** to modify the configurations of a customer gateway within the specified period of time.
         
@@ -33478,9 +33430,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCustomerGatewayAttributeRequest,
     ) -> vpc_20160428_models.ModifyCustomerGatewayAttributeResponse:
         """
-        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After you call the operation, the information about the customer gateway is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a customer gateway.
+        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations are modified.
         *   When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
         *   You cannot repeatedly call **ModifyCustomerGatewayAttribute** to modify the configurations of a customer gateway within the specified period of time.
         
@@ -33495,9 +33447,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyCustomerGatewayAttributeRequest,
     ) -> vpc_20160428_models.ModifyCustomerGatewayAttributeResponse:
         """
-        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After you call the operation, the information about the customer gateway is returned but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a customer gateway.
+        When you call **ModifyCustomerGatewayAttribute**, if a value is assigned to **AuthKey**, the operation is asynchronous. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations are modified.
         *   When you call **ModifyCustomerGatewayAttribute**, if no value is assigned to **AuthKey**, the operation is synchronous.
         *   You cannot repeatedly call **ModifyCustomerGatewayAttribute** to modify the configurations of a customer gateway within the specified period of time.
         
@@ -35433,141 +35385,13 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_ipv_6gateway_attribute_with_options_async(request, runtime)
 
-    def modify_ipv_6gateway_spec_with_options(
-        self,
-        request: vpc_20160428_models.ModifyIpv6GatewaySpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.ModifyIpv6GatewaySpecResponse:
-        """
-        You cannot repeatedly call the *ModifyIpv6GatewaySpec** operation to change the specification of an IPv6 gateway within the specified period of time.
-        
-        @param request: ModifyIpv6GatewaySpecRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyIpv6GatewaySpecResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.ipv_6gateway_id):
-            query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.spec):
-            query['Spec'] = request.spec
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6GatewaySpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6GatewaySpecResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_ipv_6gateway_spec_with_options_async(
-        self,
-        request: vpc_20160428_models.ModifyIpv6GatewaySpecRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> vpc_20160428_models.ModifyIpv6GatewaySpecResponse:
-        """
-        You cannot repeatedly call the *ModifyIpv6GatewaySpec** operation to change the specification of an IPv6 gateway within the specified period of time.
-        
-        @param request: ModifyIpv6GatewaySpecRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyIpv6GatewaySpecResponse
-        """
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.ipv_6gateway_id):
-            query['Ipv6GatewayId'] = request.ipv_6gateway_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.spec):
-            query['Spec'] = request.spec
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyIpv6GatewaySpec',
-            version='2016-04-28',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            vpc_20160428_models.ModifyIpv6GatewaySpecResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_ipv_6gateway_spec(
-        self,
-        request: vpc_20160428_models.ModifyIpv6GatewaySpecRequest,
-    ) -> vpc_20160428_models.ModifyIpv6GatewaySpecResponse:
-        """
-        You cannot repeatedly call the *ModifyIpv6GatewaySpec** operation to change the specification of an IPv6 gateway within the specified period of time.
-        
-        @param request: ModifyIpv6GatewaySpecRequest
-        @return: ModifyIpv6GatewaySpecResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return self.modify_ipv_6gateway_spec_with_options(request, runtime)
-
-    async def modify_ipv_6gateway_spec_async(
-        self,
-        request: vpc_20160428_models.ModifyIpv6GatewaySpecRequest,
-    ) -> vpc_20160428_models.ModifyIpv6GatewaySpecResponse:
-        """
-        You cannot repeatedly call the *ModifyIpv6GatewaySpec** operation to change the specification of an IPv6 gateway within the specified period of time.
-        
-        @param request: ModifyIpv6GatewaySpecRequest
-        @return: ModifyIpv6GatewaySpecResponse
-        """
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_ipv_6gateway_spec_with_options_async(request, runtime)
-
     def modify_ipv_6internet_bandwidth_with_options(
         self,
         request: vpc_20160428_models.ModifyIpv6InternetBandwidthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        You cannot call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block at the same time.
+        You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
         @param request: ModifyIpv6InternetBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35620,7 +35444,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        You cannot call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block at the same time.
+        You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
         @param request: ModifyIpv6InternetBandwidthRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35672,7 +35496,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIpv6InternetBandwidthRequest,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        You cannot call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block at the same time.
+        You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
         @param request: ModifyIpv6InternetBandwidthRequest
         @return: ModifyIpv6InternetBandwidthResponse
@@ -35685,7 +35509,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyIpv6InternetBandwidthRequest,
     ) -> vpc_20160428_models.ModifyIpv6InternetBandwidthResponse:
         """
-        You cannot call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block at the same time.
+        You cannot repeatedly call the *ModifyIpv6InternetBandwidth** operation to modify the Internet bandwidth value of an IPv6 CIDR block within the specified period of time.
         
         @param request: ModifyIpv6InternetBandwidthRequest
         @return: ModifyIpv6InternetBandwidthResponse
@@ -37283,10 +37107,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySslVpnServerResponse:
         """
-        If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
-        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns the request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        If you only modify the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
+        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations of the SSL server have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
         *   You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
@@ -37354,10 +37178,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifySslVpnServerResponse:
         """
-        If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
-        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns the request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        If you only modify the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
+        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations of the SSL server have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
         *   You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
@@ -37424,10 +37248,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifySslVpnServerRequest,
     ) -> vpc_20160428_models.ModifySslVpnServerResponse:
         """
-        If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
-        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns the request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        If you only modify the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
+        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations of the SSL server have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
         *   You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
@@ -37441,10 +37265,10 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifySslVpnServerRequest,
     ) -> vpc_20160428_models.ModifySslVpnServerResponse:
         """
-        If you modify only the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
-        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns the request ID but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        If you only modify the **name** of the SSL server, the operation is synchronous. If you also modify other configurations, the operation is asynchronous.
+        *   When **ModifySslVpnServer** is an asynchronous operation, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the configurations of the SSL server are being modified.
-        *   If a VPN gateway is in the **active** state, the configurations of the SSL server have been modified.
+        *   If a VPN gateway is in the **active** state, the configurations of the SSL server are modified.
         *   You cannot repeatedly call **ModifySslVpnServer** to modify the configurations of an SSL server within the specified period of time.
         
         @param request: ModifySslVpnServerRequest
@@ -37833,7 +37657,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVcoRouteEntryWeightResponse:
         """
-        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
+        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
         *   If the IPsec-VPN connection is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the IPsec-VPN connection is in the **attached** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVcoRouteEntryWeight** operation for the same IPsec-VPN connection within the specified period of time.
@@ -37891,7 +37715,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVcoRouteEntryWeightResponse:
         """
-        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
+        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
         *   If the IPsec-VPN connection is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the IPsec-VPN connection is in the **attached** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVcoRouteEntryWeight** operation for the same IPsec-VPN connection within the specified period of time.
@@ -37948,7 +37772,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVcoRouteEntryWeightRequest,
     ) -> vpc_20160428_models.ModifyVcoRouteEntryWeightResponse:
         """
-        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
+        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
         *   If the IPsec-VPN connection is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the IPsec-VPN connection is in the **attached** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVcoRouteEntryWeight** operation for the same IPsec-VPN connection within the specified period of time.
@@ -37964,7 +37788,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVcoRouteEntryWeightRequest,
     ) -> vpc_20160428_models.ModifyVcoRouteEntryWeightResponse:
         """
-        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
+        **ModifyVcoRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the associated IPsec-VPN connection and determine whether the weight of the specified destination-based route is modified.
         *   If the IPsec-VPN connection is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the IPsec-VPN connection is in the **attached** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVcoRouteEntryWeight** operation for the same IPsec-VPN connection within the specified period of time.
@@ -38485,9 +38309,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnAttachmentAttributeResponse:
         """
-        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of an IPsec-VPN connection.
-        *   If the IPsec-VPN connection is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the IPsec-VPN connection is in the **attached** state, it indicates that the IPsec-VPN connection is modified.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
         *   You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
         *   When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
         *   If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
@@ -38564,9 +38388,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnAttachmentAttributeResponse:
         """
-        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of an IPsec-VPN connection.
-        *   If the IPsec-VPN connection is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the IPsec-VPN connection is in the **attached** state, it indicates that the IPsec-VPN connection is modified.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
         *   You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
         *   When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
         *   If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
@@ -38642,9 +38466,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnAttachmentAttributeRequest,
     ) -> vpc_20160428_models.ModifyVpnAttachmentAttributeResponse:
         """
-        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of an IPsec-VPN connection.
-        *   If the IPsec-VPN connection is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the IPsec-VPN connection is in the **attached** state, it indicates that the IPsec-VPN connection is modified.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
         *   You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
         *   When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
         *   If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
@@ -38661,9 +38485,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnAttachmentAttributeRequest,
     ) -> vpc_20160428_models.ModifyVpnAttachmentAttributeResponse:
         """
-        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of an IPsec-VPN connection.
-        *   If the IPsec-VPN connection is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the IPsec-VPN connection is in the **attached** state, it indicates that the IPsec-VPN connection is modified.
+        **ModifyVpnAttachmentAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task to modify the configuration of an IPsec-VPN connection in the background. You can call the [DescribeVpnConnection](~~53046~~) operation to query the status of the task.
+        *   If the IPsec-VPN connection is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the IPsec-VPN connection is in the **attached** state, the configuration of the IPsec-VPN connection is modified.
         *   You cannot call the **ModifyVpnAttachmentAttribute** operation again on the same IPsec-VPN connection before the previous operation is complete.
         *   When you call the **ModifyVpnAttachmentAttribute** operation, take note of the following items:
         *   If the IPsec-VPN connection is associated with a transit router, you cannot change the type of the gateway connected to the IPsec-VPN connection.
@@ -38681,10 +38505,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnConnectionAttributeResponse:
         """
-        **ModifyVpnConnectionAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway. The status of the VPN gateway indicates whether the IPsec-VPN connection is modified.
-        *   If the VPN gateway is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the VPN gateway is in the **active** state, it indicates that the IPsec-VPN connection is modified.
-        *   You cannot call the **ModifyVpnConnectionAttribute** operation again on the same VPN gateway to modify the configuration of an IPsec-VPN connection before the previous operation is complete.
+        If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
+        *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the VPN gateway is in the **active** state, the configuration of the IPsec-VPN connection is modified.
+        *   You cannot repeatedly call the **ModifyVpnConnectionAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnConnectionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38764,10 +38592,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnConnectionAttributeResponse:
         """
-        **ModifyVpnConnectionAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway. The status of the VPN gateway indicates whether the IPsec-VPN connection is modified.
-        *   If the VPN gateway is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the VPN gateway is in the **active** state, it indicates that the IPsec-VPN connection is modified.
-        *   You cannot call the **ModifyVpnConnectionAttribute** operation again on the same VPN gateway to modify the configuration of an IPsec-VPN connection before the previous operation is complete.
+        If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
+        *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the VPN gateway is in the **active** state, the configuration of the IPsec-VPN connection is modified.
+        *   You cannot repeatedly call the **ModifyVpnConnectionAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnConnectionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -38846,10 +38678,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnConnectionAttributeRequest,
     ) -> vpc_20160428_models.ModifyVpnConnectionAttributeResponse:
         """
-        **ModifyVpnConnectionAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway. The status of the VPN gateway indicates whether the IPsec-VPN connection is modified.
-        *   If the VPN gateway is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the VPN gateway is in the **active** state, it indicates that the IPsec-VPN connection is modified.
-        *   You cannot call the **ModifyVpnConnectionAttribute** operation again on the same VPN gateway to modify the configuration of an IPsec-VPN connection before the previous operation is complete.
+        If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
+        *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the VPN gateway is in the **active** state, the configuration of the IPsec-VPN connection is modified.
+        *   You cannot repeatedly call the **ModifyVpnConnectionAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnConnectionAttributeRequest
         @return: ModifyVpnConnectionAttributeResponse
@@ -38862,10 +38698,14 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnConnectionAttributeRequest,
     ) -> vpc_20160428_models.ModifyVpnConnectionAttributeResponse:
         """
-        **ModifyVpnConnectionAttribute** is an asynchronous operation. After you send a request, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of the VPN gateway. The status of the VPN gateway indicates whether the IPsec-VPN connection is modified.
-        *   If the VPN gateway is in the **updating** state, it indicates that the IPsec-VPN connection is being modified.
-        *   If the VPN gateway is in the **active** state, it indicates that the IPsec-VPN connection is modified.
-        *   You cannot call the **ModifyVpnConnectionAttribute** operation again on the same VPN gateway to modify the configuration of an IPsec-VPN connection before the previous operation is complete.
+        If you want to modify a IPsec-VPN connection in dual-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **AutoConfigRoute**, **TunnelOptionsSpecification**, and **EnableTunnelsBgp**.
+        *   If you want to modify a IPsec-VPN connection in single-tunnel mode, call the `ModifyVpnConnectionAttribute` operation. You can modify the required parameters and the following request parameters:
+        **ClientToken**, **Name**, **LocalSubnet**, **RemoteSubnet**, **EffectImmediately**, **IkeConfig**, **IpsecConfig**, **HealthCheckConfig**, **AutoConfigRoute**, **EnableDpd**, **EnableNatTraversal**, **BgpConfig**, and **RemoteCaCertificate**.
+        *   **ModifyVpnConnectionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and modifies the configuration of the IPsec-VPN connection in the backend. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
+        *   If the VPN gateway is in the **updating** state, the configuration of the IPsec-VPN connection is being modified.
+        *   If the VPN gateway is in the **active** state, the configuration of the IPsec-VPN connection is modified.
+        *   You cannot repeatedly call the **ModifyVpnConnectionAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnConnectionAttributeRequest
         @return: ModifyVpnConnectionAttributeResponse
@@ -38879,9 +38719,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnGatewayAttributeResponse:
         """
-        **ModifyVpnGatewayAttribute** is an asynchronous operation. After you send the request, the information about the VPN gateway is returned but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the VPN gateway is being modified.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been modified.
+        **ModifyVpnGatewayAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the VPN gateway is being modified.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is modified.
         *   You cannot repeatedly call **ModifyVpnGatewayAttribute** to modify a VPN gateway within the specified period of time.
         
         @param request: ModifyVpnGatewayAttributeRequest
@@ -38935,9 +38775,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnGatewayAttributeResponse:
         """
-        **ModifyVpnGatewayAttribute** is an asynchronous operation. After you send the request, the information about the VPN gateway is returned but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the VPN gateway is being modified.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been modified.
+        **ModifyVpnGatewayAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the VPN gateway is being modified.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is modified.
         *   You cannot repeatedly call **ModifyVpnGatewayAttribute** to modify a VPN gateway within the specified period of time.
         
         @param request: ModifyVpnGatewayAttributeRequest
@@ -38990,9 +38830,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnGatewayAttributeRequest,
     ) -> vpc_20160428_models.ModifyVpnGatewayAttributeResponse:
         """
-        **ModifyVpnGatewayAttribute** is an asynchronous operation. After you send the request, the information about the VPN gateway is returned but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the VPN gateway is being modified.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been modified.
+        **ModifyVpnGatewayAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the VPN gateway is being modified.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is modified.
         *   You cannot repeatedly call **ModifyVpnGatewayAttribute** to modify a VPN gateway within the specified period of time.
         
         @param request: ModifyVpnGatewayAttributeRequest
@@ -39006,9 +38846,9 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnGatewayAttributeRequest,
     ) -> vpc_20160428_models.ModifyVpnGatewayAttributeResponse:
         """
-        **ModifyVpnGatewayAttribute** is an asynchronous operation. After you send the request, the information about the VPN gateway is returned but the operation is still being performed in the system background. You can call the [DescribeVpnGateway](~~73720~~) operation to query the status of a VPN gateway.
-        *   If a VPN gateway is in the **updating** state, the VPN gateway is being modified.
-        *   If a VPN gateway is in the **active** state, the VPN gateway has been modified.
+        **ModifyVpnGatewayAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If the VPN gateway is in the **updating** state, the VPN gateway is being modified.
+        *   If the VPN gateway is in the **active** state, the VPN gateway is modified.
         *   You cannot repeatedly call **ModifyVpnGatewayAttribute** to modify a VPN gateway within the specified period of time.
         
         @param request: ModifyVpnGatewayAttributeRequest
@@ -39028,9 +38868,9 @@ class Client(OpenApiClient):
         *   If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](~~466870~~).
         *   If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](~~127249~~) to modify its weight.
         *   The **ModifyVpnPbrRouteEntryAttribute** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
-        *   If the VPN gateway is in the **active** state, the policy-based route is created.
-        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
+        *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
+        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnPbrRouteEntryAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39096,9 +38936,9 @@ class Client(OpenApiClient):
         *   If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](~~466870~~).
         *   If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](~~127249~~) to modify its weight.
         *   The **ModifyVpnPbrRouteEntryAttribute** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
-        *   If the VPN gateway is in the **active** state, the policy-based route is created.
-        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
+        *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
+        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnPbrRouteEntryAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -39163,9 +39003,9 @@ class Client(OpenApiClient):
         *   If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](~~466870~~).
         *   If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](~~127249~~) to modify its weight.
         *   The **ModifyVpnPbrRouteEntryAttribute** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
-        *   If the VPN gateway is in the **active** state, the policy-based route is created.
-        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
+        *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
+        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnPbrRouteEntryAttributeRequest
         @return: ModifyVpnPbrRouteEntryAttributeResponse
@@ -39183,9 +39023,9 @@ class Client(OpenApiClient):
         *   If you want to modify only the priority of a policy-based route, call [ModifyVpnPbrRouteEntryPriority](~~466870~~).
         *   If a policy-based route does not support priorities, you can only call [ModifyVpnPbrRouteEntryWeight](~~127249~~) to modify its weight.
         *   The **ModifyVpnPbrRouteEntryAttribute** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
-        *   If the VPN gateway is in the **active** state, the policy-based route is created.
-        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
+        *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
+        *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryAttribute** operation for the same VPN gateway within the specified period of time.
         
         @param request: ModifyVpnPbrRouteEntryAttributeRequest
         @return: ModifyVpnPbrRouteEntryAttributeResponse
@@ -39199,8 +39039,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
         """
-        The **ModifyVpnPbrRouteEntryPriority** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        **ModifyVpnPbrRouteEntryPriority** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If the VPN gateway is in the **active** state, the policy-based route is created.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority** operation for the same VPN gateway within the specified period of time.
         
@@ -39261,8 +39101,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
         """
-        The **ModifyVpnPbrRouteEntryPriority** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        **ModifyVpnPbrRouteEntryPriority** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If the VPN gateway is in the **active** state, the policy-based route is created.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority** operation for the same VPN gateway within the specified period of time.
         
@@ -39322,8 +39162,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityRequest,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
         """
-        The **ModifyVpnPbrRouteEntryPriority** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        **ModifyVpnPbrRouteEntryPriority** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If the VPN gateway is in the **active** state, the policy-based route is created.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority** operation for the same VPN gateway within the specified period of time.
         
@@ -39338,8 +39178,8 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityRequest,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryPriorityResponse:
         """
-        The **ModifyVpnPbrRouteEntryPriority** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
-        *   If the VPN gateway is in the **updating** state, the policy-based route is being created.
+        **ModifyVpnPbrRouteEntryPriority** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
+        *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If the VPN gateway is in the **active** state, the policy-based route is created.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryPriority** operation for the same VPN gateway within the specified period of time.
         
@@ -39355,7 +39195,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse:
         """
-        The **ModifyVpnPbrRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnPbrRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight** operation for the same VPN gateway within the specified period of time.
@@ -39419,7 +39259,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse:
         """
-        The **ModifyVpnPbrRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnPbrRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight** operation for the same VPN gateway within the specified period of time.
@@ -39482,7 +39322,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnPbrRouteEntryWeightRequest,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse:
         """
-        The **ModifyVpnPbrRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnPbrRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight** operation for the same VPN gateway within the specified period of time.
@@ -39498,7 +39338,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnPbrRouteEntryWeightRequest,
     ) -> vpc_20160428_models.ModifyVpnPbrRouteEntryWeightResponse:
         """
-        The **ModifyVpnPbrRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnPbrRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If a VPN gateway is in the **updating** state, the policy-based route entry is being modified.
         *   If a VPN gateway is in the **active** state, the policy-based route entry is modified.
         *   You cannot repeatedly call the **ModifyVpnPbrRouteEntryWeight** operation for the same VPN gateway within the specified period of time.
@@ -39515,7 +39355,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnRouteEntryWeightResponse:
         """
-        The **ModifyVpnRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the VPN gateway is in the **active** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVpnRouteEntryWeight** operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
@@ -39575,7 +39415,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ModifyVpnRouteEntryWeightResponse:
         """
-        The **ModifyVpnRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the VPN gateway is in the **active** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVpnRouteEntryWeight** operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
@@ -39634,7 +39474,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnRouteEntryWeightRequest,
     ) -> vpc_20160428_models.ModifyVpnRouteEntryWeightResponse:
         """
-        The **ModifyVpnRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the VPN gateway is in the **active** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVpnRouteEntryWeight** operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
@@ -39650,7 +39490,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ModifyVpnRouteEntryWeightRequest,
     ) -> vpc_20160428_models.ModifyVpnRouteEntryWeightResponse:
         """
-        The **ModifyVpnRouteEntryWeight** operation is asynchronous. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        **ModifyVpnRouteEntryWeight** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](~~73720~~) to query the status of the task.
         *   If the VPN gateway is in the **updating** state, the weight of the destination-based route is being modified.
         *   If the VPN gateway is in the **active** state, the weight of the destination-based route is modified.
         *   You cannot repeatedly call the **ModifyVpnRouteEntryWeight** operation to modify the weight of destination-based route for the same VPN gateway within the specified period of time.
@@ -40445,11 +40285,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReleaseEipAddressResponse:
         """
-        Before you call this operation, take note of the following limits:
+        Before you call this operation, take note of the following items:
         *   Before you release an EIP, make sure that the EIP meets the following requirements:
         *   You can release only an EIP that is in the **Available** state.
         *   You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
-        *   The **ReleaseEipAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+        *   **ReleaseEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task:
         *   If the EIP is in the **Releasing** state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
         *   If you cannot query the EIP, the EIP is released.
         *   You cannot repeatedly call the **ReleaseEipAddress** operation to release an EIP within the specified period of time.
@@ -40497,11 +40337,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.ReleaseEipAddressResponse:
         """
-        Before you call this operation, take note of the following limits:
+        Before you call this operation, take note of the following items:
         *   Before you release an EIP, make sure that the EIP meets the following requirements:
         *   You can release only an EIP that is in the **Available** state.
         *   You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
-        *   The **ReleaseEipAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+        *   **ReleaseEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task:
         *   If the EIP is in the **Releasing** state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
         *   If you cannot query the EIP, the EIP is released.
         *   You cannot repeatedly call the **ReleaseEipAddress** operation to release an EIP within the specified period of time.
@@ -40548,11 +40388,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ReleaseEipAddressRequest,
     ) -> vpc_20160428_models.ReleaseEipAddressResponse:
         """
-        Before you call this operation, take note of the following limits:
+        Before you call this operation, take note of the following items:
         *   Before you release an EIP, make sure that the EIP meets the following requirements:
         *   You can release only an EIP that is in the **Available** state.
         *   You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
-        *   The **ReleaseEipAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+        *   **ReleaseEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task:
         *   If the EIP is in the **Releasing** state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
         *   If you cannot query the EIP, the EIP is released.
         *   You cannot repeatedly call the **ReleaseEipAddress** operation to release an EIP within the specified period of time.
@@ -40568,11 +40408,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.ReleaseEipAddressRequest,
     ) -> vpc_20160428_models.ReleaseEipAddressResponse:
         """
-        Before you call this operation, take note of the following limits:
+        Before you call this operation, take note of the following items:
         *   Before you release an EIP, make sure that the EIP meets the following requirements:
         *   You can release only an EIP that is in the **Available** state.
         *   You can release only a pay-as-you-go EIP. You cannot release a subscription EIP.
-        *   The **ReleaseEipAddress** operation is asynchronous. After you send the request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of an EIP:
+        *   **ReleaseEipAddress** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEipAddresses](~~120193~~) operation to query the status of the task:
         *   If the EIP is in the **Releasing** state, the EIP is being released. In this state, you can only query the EIP and cannot perform other operations.
         *   If you cannot query the EIP, the EIP is released.
         *   You cannot repeatedly call the **ReleaseEipAddress** operation to release an EIP within the specified period of time.
@@ -41301,8 +41141,6 @@ class Client(OpenApiClient):
         *   If the prefix list is in the **ModifyFailed** state, the prefix list fails to be re-applied.
         *   If the prefix list is in the **Created** state, the prefix list is re-applied.
         *   After you call the **RetryVpcPrefixListAssociation** operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
-        ## Scenarios
-        A prefix list can be successfully modified if the following requirements are met: CIDR blocks are valid, CIDR blocks do not conflict, and the number of CIDR blocks does not exceed the maximum number of CIDR blocks supported by the prefix list. If issues occur on the resource that references the prefix list, the reference may fail. The issues include the number of prefix list entries exceeding the quota or CIDR blocks conflicting with existing routes. After you resolve the issues, you can call the **RetryVpcPrefixListAssociation** operation to re-apply the prefix list.
         
         @param request: RetryVpcPrefixListAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41361,8 +41199,6 @@ class Client(OpenApiClient):
         *   If the prefix list is in the **ModifyFailed** state, the prefix list fails to be re-applied.
         *   If the prefix list is in the **Created** state, the prefix list is re-applied.
         *   After you call the **RetryVpcPrefixListAssociation** operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
-        ## Scenarios
-        A prefix list can be successfully modified if the following requirements are met: CIDR blocks are valid, CIDR blocks do not conflict, and the number of CIDR blocks does not exceed the maximum number of CIDR blocks supported by the prefix list. If issues occur on the resource that references the prefix list, the reference may fail. The issues include the number of prefix list entries exceeding the quota or CIDR blocks conflicting with existing routes. After you resolve the issues, you can call the **RetryVpcPrefixListAssociation** operation to re-apply the prefix list.
         
         @param request: RetryVpcPrefixListAssociationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -41420,8 +41256,6 @@ class Client(OpenApiClient):
         *   If the prefix list is in the **ModifyFailed** state, the prefix list fails to be re-applied.
         *   If the prefix list is in the **Created** state, the prefix list is re-applied.
         *   After you call the **RetryVpcPrefixListAssociation** operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
-        ## Scenarios
-        A prefix list can be successfully modified if the following requirements are met: CIDR blocks are valid, CIDR blocks do not conflict, and the number of CIDR blocks does not exceed the maximum number of CIDR blocks supported by the prefix list. If issues occur on the resource that references the prefix list, the reference may fail. The issues include the number of prefix list entries exceeding the quota or CIDR blocks conflicting with existing routes. After you resolve the issues, you can call the **RetryVpcPrefixListAssociation** operation to re-apply the prefix list.
         
         @param request: RetryVpcPrefixListAssociationRequest
         @return: RetryVpcPrefixListAssociationResponse
@@ -41440,8 +41274,6 @@ class Client(OpenApiClient):
         *   If the prefix list is in the **ModifyFailed** state, the prefix list fails to be re-applied.
         *   If the prefix list is in the **Created** state, the prefix list is re-applied.
         *   After you call the **RetryVpcPrefixListAssociation** operation to re-apply a prefix list, you cannot call the operation again until the current task is complete.
-        ## Scenarios
-        A prefix list can be successfully modified if the following requirements are met: CIDR blocks are valid, CIDR blocks do not conflict, and the number of CIDR blocks does not exceed the maximum number of CIDR blocks supported by the prefix list. If issues occur on the resource that references the prefix list, the reference may fail. The issues include the number of prefix list entries exceeding the quota or CIDR blocks conflicting with existing routes. After you resolve the issues, you can call the **RetryVpcPrefixListAssociation** operation to re-apply the prefix list.
         
         @param request: RetryVpcPrefixListAssociationRequest
         @return: RetryVpcPrefixListAssociationResponse
@@ -43852,10 +43684,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateIpsecServerResponse:
         """
         If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send the request. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         *   If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        *   You cannot repeatedly call **UpdateIpsecServer** to modify the configuration of an IPsec server of the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43913,10 +43745,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateIpsecServerResponse:
         """
         If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send the request. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         *   If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        *   You cannot repeatedly call **UpdateIpsecServer** to modify the configuration of an IPsec server of the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -43973,10 +43805,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateIpsecServerResponse:
         """
         If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send the request. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         *   If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        *   You cannot repeatedly call **UpdateIpsecServer** to modify the configuration of an IPsec server of the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @return: UpdateIpsecServerResponse
@@ -43990,10 +43822,10 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateIpsecServerResponse:
         """
         If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send the request. However, the operation is still being performed in the system background. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
+        *   When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](~~73720~~) to query the status of a VPN gateway.
         *   If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         *   If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
-        *   You cannot repeatedly call **UpdateIpsecServer** to modify the configuration of an IPsec server of the same VPN gateway within the specified period of time.
+        *   You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
         
         @param request: UpdateIpsecServerRequest
         @return: UpdateIpsecServerResponse
@@ -44144,13 +43976,13 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
         Before you call this operation, take note of the following limits:
-        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
-        *   If a NAT gateway is in the **processing** state, it indicates that the NAT gateway is being upgraded. You can only query the state of the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **successful** state, it indicates that the NAT gateway is upgraded.
-        *   If a NAT gateway is in the **failed** state, it indicates that the system failed to upgrade the NAT gateway.
-        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation to upgrade a NAT gateway within the specified period of time.
+        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
+        *   If the NAT gateway is in the **processing** state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
+        *   If the NAT gateway is in the **successful** state, the NAT gateway is upgraded.
+        *   If the NAT gateway is in the **failed** state, the system failed to upgrade the NAT gateway.
+        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation for the same VPN gateway within the specified period of time.
         *   The billing method and billable items remain the same after the upgrade.
-        *   It takes about 5 minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connections may occur once or twice. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
+        *   It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
         *   You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
         
         @param request: UpdateNatGatewayNatTypeRequest
@@ -44207,13 +44039,13 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
         Before you call this operation, take note of the following limits:
-        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
-        *   If a NAT gateway is in the **processing** state, it indicates that the NAT gateway is being upgraded. You can only query the state of the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **successful** state, it indicates that the NAT gateway is upgraded.
-        *   If a NAT gateway is in the **failed** state, it indicates that the system failed to upgrade the NAT gateway.
-        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation to upgrade a NAT gateway within the specified period of time.
+        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
+        *   If the NAT gateway is in the **processing** state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
+        *   If the NAT gateway is in the **successful** state, the NAT gateway is upgraded.
+        *   If the NAT gateway is in the **failed** state, the system failed to upgrade the NAT gateway.
+        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation for the same VPN gateway within the specified period of time.
         *   The billing method and billable items remain the same after the upgrade.
-        *   It takes about 5 minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connections may occur once or twice. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
+        *   It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
         *   You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
         
         @param request: UpdateNatGatewayNatTypeRequest
@@ -44269,13 +44101,13 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
         Before you call this operation, take note of the following limits:
-        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
-        *   If a NAT gateway is in the **processing** state, it indicates that the NAT gateway is being upgraded. You can only query the state of the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **successful** state, it indicates that the NAT gateway is upgraded.
-        *   If a NAT gateway is in the **failed** state, it indicates that the system failed to upgrade the NAT gateway.
-        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation to upgrade a NAT gateway within the specified period of time.
+        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
+        *   If the NAT gateway is in the **processing** state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
+        *   If the NAT gateway is in the **successful** state, the NAT gateway is upgraded.
+        *   If the NAT gateway is in the **failed** state, the system failed to upgrade the NAT gateway.
+        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation for the same VPN gateway within the specified period of time.
         *   The billing method and billable items remain the same after the upgrade.
-        *   It takes about 5 minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connections may occur once or twice. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
+        *   It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
         *   You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
         
         @param request: UpdateNatGatewayNatTypeRequest
@@ -44290,13 +44122,13 @@ class Client(OpenApiClient):
     ) -> vpc_20160428_models.UpdateNatGatewayNatTypeResponse:
         """
         Before you call this operation, take note of the following limits:
-        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you make a request, the ID of the request is returned but the NAT gateway is not upgraded. The system upgrades the NAT gateway in the background. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
-        *   If a NAT gateway is in the **processing** state, it indicates that the NAT gateway is being upgraded. You can only query the state of the NAT gateway but cannot perform other operations.
-        *   If a NAT gateway is in the **successful** state, it indicates that the NAT gateway is upgraded.
-        *   If a NAT gateway is in the **failed** state, it indicates that the system failed to upgrade the NAT gateway.
-        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation to upgrade a NAT gateway within the specified period of time.
+        *   **UpdateNatGatewayNatType** is an asynchronous operation. After you send a request to call this operation, the system returns a request ID and the NAT gateway is still being upgraded in the backend. You can call the GetNatGatewayConvertStatus operation to query the upgrade progress of a NAT gateway. For more information, see [GetNatGatewayConvertStatus](~~184744~~).
+        *   If the NAT gateway is in the **processing** state, the NAT gateway is being upgraded. You can only query the status of the NAT gateway but cannot perform other operations.
+        *   If the NAT gateway is in the **successful** state, the NAT gateway is upgraded.
+        *   If the NAT gateway is in the **failed** state, the system failed to upgrade the NAT gateway.
+        *   You cannot repeatedly call the **UpdateNatGatewayNatType** operation for the same VPN gateway within the specified period of time.
         *   The billing method and billable items remain the same after the upgrade.
-        *   It takes about 5 minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connections may occur once or twice. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
+        *   It takes about five minutes to upgrade a standard NAT gateway to an enhanced NAT gateway. During the upgrade, transient connection errors may occur once or twice. The service can be recovered by reconnection. You can determine whether to enable automatic reconnection or use manual reconnection based on your business requirements.
         *   You can only upgrade standard NAT gateways to enhanced NAT gateways. You are not allowed to downgrade enhanced NAT gateways to standard NAT gateways.
         
         @param request: UpdateNatGatewayNatTypeRequest
@@ -44887,10 +44719,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
+        ## Usage notes
+        *   **UpdateTrafficMirrorSessionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
         *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        *   You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute** operation within a specific period of time.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -44957,10 +44790,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
+        ## Usage notes
+        *   **UpdateTrafficMirrorSessionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
         *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        *   You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute** operation within a specific period of time.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -45026,10 +44860,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorSessionAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
+        ## Usage notes
+        *   **UpdateTrafficMirrorSessionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
         *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        *   You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute** operation within a specific period of time.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @return: UpdateTrafficMirrorSessionAttributeResponse
@@ -45042,10 +44877,11 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateTrafficMirrorSessionAttributeRequest,
     ) -> vpc_20160428_models.UpdateTrafficMirrorSessionAttributeResponse:
         """
-        The **UpdateTrafficMirrorSessionAttribute** operation is asynchronous. After you send a request, the system returns the request ID. However, the operation is still being performed in the system background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of a traffic mirror session.
+        ## Usage notes
+        *   **UpdateTrafficMirrorSessionAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListTrafficMirrorSessions](~~261367~~) operation to query the status of the task.
         *   If the traffic mirror session is in the **Modifying** state, the configuration of the traffic mirror session is being modified.
         *   If the traffic mirror session is in the **Created** state, the configuration of the traffic mirror session is modified.
-        *   After you call the **UpdateTrafficMirrorSessionAttribute** operation to modify the configuration of a traffic mirror session, you cannot call the operation again to modify the configuration of the traffic mirror session until the previous modification task is complete.
+        *   You cannot repeatedly call the **UpdateTrafficMirrorSessionAttribute** operation within a specific period of time.
         
         @param request: UpdateTrafficMirrorSessionAttributeRequest
         @return: UpdateTrafficMirrorSessionAttributeResponse
@@ -45247,7 +45083,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
+        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of the task.
         *   If the gateway endpoint is in the **Updating** state, it is being modified.
         *   If the gateway endpoint is in the **Created** state, it is modified.
         *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
@@ -45305,7 +45141,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
+        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of the task.
         *   If the gateway endpoint is in the **Updating** state, it is being modified.
         *   If the gateway endpoint is in the **Created** state, it is modified.
         *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
@@ -45362,7 +45198,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateVpcGatewayEndpointAttributeRequest,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
+        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of the task.
         *   If the gateway endpoint is in the **Updating** state, it is being modified.
         *   If the gateway endpoint is in the **Created** state, it is modified.
         *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
@@ -45378,7 +45214,7 @@ class Client(OpenApiClient):
         request: vpc_20160428_models.UpdateVpcGatewayEndpointAttributeRequest,
     ) -> vpc_20160428_models.UpdateVpcGatewayEndpointAttributeResponse:
         """
-        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After you send a request, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of a gateway endpoint.
+        **UpdateVpcGatewayEndpointAttribute** is an asynchronous operation. After a request is sent, the system returns a **request ID** and runs the task in the background. You can call the [GetVpcGatewayEndpointAttribute](~~311017~~) operation to query the status of the task.
         *   If the gateway endpoint is in the **Updating** state, it is being modified.
         *   If the gateway endpoint is in the **Created** state, it is modified.
         *   You cannot call the **UpdateVpcGatewayEndpointAttribute** operation within a specific period of time.
