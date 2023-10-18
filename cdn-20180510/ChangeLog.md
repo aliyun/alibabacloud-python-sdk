@@ -1,3 +1,6 @@
+2023-10-18 Version: 3.1.2
+- Generated python 2018-05-10 for Cdn.
+
 2023-10-17 Version: 3.1.1
 - Generated python 2018-05-10 for Cdn.
 
