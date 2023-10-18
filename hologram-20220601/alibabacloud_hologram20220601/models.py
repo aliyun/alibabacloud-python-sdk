@@ -14,6 +14,7 @@ class CreateInstanceRequest(TeaModel):
         cpu: int = None,
         duration: int = None,
         gateway_count: int = None,
+        initial_databases: str = None,
         instance_name: str = None,
         instance_type: str = None,
         leader_instance_id: str = None,
@@ -76,6 +77,7 @@ class CreateInstanceRequest(TeaModel):
         # 
         # > This parameter is required only for virtual warehouse instances.
         self.gateway_count = gateway_count
+        self.initial_databases = initial_databases
         # The name of the Hologres instance that you want to purchase. The name must be 2 to 64 characters in length.
         self.instance_name = instance_name
         # The type of the instance. Valid values:
@@ -150,6 +152,8 @@ class CreateInstanceRequest(TeaModel):
             result['duration'] = self.duration
         if self.gateway_count is not None:
             result['gatewayCount'] = self.gateway_count
+        if self.initial_databases is not None:
+            result['initialDatabases'] = self.initial_databases
         if self.instance_name is not None:
             result['instanceName'] = self.instance_name
         if self.instance_type is not None:
@@ -188,6 +192,8 @@ class CreateInstanceRequest(TeaModel):
             self.duration = m.get('duration')
         if m.get('gatewayCount') is not None:
             self.gateway_count = m.get('gatewayCount')
+        if m.get('initialDatabases') is not None:
+            self.initial_databases = m.get('initialDatabases')
         if m.get('instanceName') is not None:
             self.instance_name = m.get('instanceName')
         if m.get('instanceType') is not None:

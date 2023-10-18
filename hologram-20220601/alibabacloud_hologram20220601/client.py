@@ -89,6 +89,8 @@ class Client(OpenApiClient):
             body['duration'] = request.duration
         if not UtilClient.is_unset(request.gateway_count):
             body['gatewayCount'] = request.gateway_count
+        if not UtilClient.is_unset(request.initial_databases):
+            body['initialDatabases'] = request.initial_databases
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_type):
@@ -177,6 +179,8 @@ class Client(OpenApiClient):
             body['duration'] = request.duration
         if not UtilClient.is_unset(request.gateway_count):
             body['gatewayCount'] = request.gateway_count
+        if not UtilClient.is_unset(request.initial_databases):
+            body['initialDatabases'] = request.initial_databases
         if not UtilClient.is_unset(request.instance_name):
             body['instanceName'] = request.instance_name
         if not UtilClient.is_unset(request.instance_type):
