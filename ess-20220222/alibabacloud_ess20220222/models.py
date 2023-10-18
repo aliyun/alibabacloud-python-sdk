@@ -3402,6 +3402,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         ingress_bandwidth: int = None,
         init_containers: List[CreateEciScalingConfigurationRequestInitContainers] = None,
         instance_family_level: str = None,
+        instance_types: List[str] = None,
         ipv_6address_count: int = None,
         load_balancer_weight: int = None,
         memory: float = None,
@@ -3488,6 +3489,7 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
         # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
         self.instance_family_level = instance_family_level
+        self.instance_types = instance_types
         # The number of IPv6 addresses.
         self.ipv_6address_count = ipv_6address_count
         # The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
@@ -3654,6 +3656,8 @@ class CreateEciScalingConfigurationRequest(TeaModel):
                 result['InitContainers'].append(k.to_map() if k else None)
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
         if self.ipv_6address_count is not None:
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.load_balancer_weight is not None:
@@ -3770,6 +3774,8 @@ class CreateEciScalingConfigurationRequest(TeaModel):
                 self.init_containers.append(temp_model.from_map(k))
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
         if m.get('Ipv6AddressCount') is not None:
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('LoadBalancerWeight') is not None:
@@ -10908,6 +10914,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         ingress_bandwidth: int = None,
         init_containers: List[DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers] = None,
         instance_family_level: str = None,
+        instance_types: List[str] = None,
         ipv_6address_count: int = None,
         lifecycle_state: str = None,
         load_balancer_weight: int = None,
@@ -10989,6 +10996,7 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.init_containers = init_containers
         # 5292
         self.instance_family_level = instance_family_level
+        self.instance_types = instance_types
         # The bandwidth of the EIP. Default value: 5 Mbit/s.
         self.ipv_6address_count = ipv_6address_count
         # The instance family level, which is used to filter the range of instance types that meet the requirements. This parameter takes effect when the `CostOptimization` parameter is set to true. Valid values:
@@ -11156,6 +11164,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
                 result['InitContainers'].append(k.to_map() if k else None)
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
         if self.ipv_6address_count is not None:
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.lifecycle_state is not None:
@@ -11276,6 +11286,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
                 self.init_containers.append(temp_model.from_map(k))
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
         if m.get('Ipv6AddressCount') is not None:
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('LifecycleState') is not None:
@@ -14546,6 +14558,39 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(TeaModel):
         return self
 
 
+class DescribeScalingGroupsResponseBodyScalingGroupsTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
+        return self
+
+
 class DescribeScalingGroupsResponseBodyScalingGroupsVServerGroupsVServerGroupAttributes(TeaModel):
     def __init__(
         self,
@@ -14680,6 +14725,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         stopped_capacity: int = None,
         suspended_processes: List[str] = None,
         system_suspended: bool = None,
+        tags: List[DescribeScalingGroupsResponseBodyScalingGroupsTags] = None,
         total_capacity: int = None,
         total_instance_count: int = None,
         vserver_groups: List[DescribeScalingGroupsResponseBodyScalingGroupsVServerGroups] = None,
@@ -14738,6 +14784,7 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
         self.stopped_capacity = stopped_capacity
         self.suspended_processes = suspended_processes
         self.system_suspended = system_suspended
+        self.tags = tags
         self.total_capacity = total_capacity
         self.total_instance_count = total_instance_count
         self.vserver_groups = vserver_groups
@@ -14760,6 +14807,10 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
                     k.validate()
         if self.server_groups:
             for k in self.server_groups:
+                if k:
+                    k.validate()
+        if self.tags:
+            for k in self.tags:
                 if k:
                     k.validate()
         if self.vserver_groups:
@@ -14883,6 +14934,10 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             result['SuspendedProcesses'] = self.suspended_processes
         if self.system_suspended is not None:
             result['SystemSuspended'] = self.system_suspended
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.total_capacity is not None:
             result['TotalCapacity'] = self.total_capacity
         if self.total_instance_count is not None:
@@ -15015,6 +15070,11 @@ class DescribeScalingGroupsResponseBodyScalingGroups(TeaModel):
             self.suspended_processes = m.get('SuspendedProcesses')
         if m.get('SystemSuspended') is not None:
             self.system_suspended = m.get('SystemSuspended')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = DescribeScalingGroupsResponseBodyScalingGroupsTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TotalCapacity') is not None:
             self.total_capacity = m.get('TotalCapacity')
         if m.get('TotalInstanceCount') is not None:
@@ -21329,6 +21389,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         ingress_bandwidth: int = None,
         init_containers: List[ModifyEciScalingConfigurationRequestInitContainers] = None,
         instance_family_level: str = None,
+        instance_types: List[str] = None,
         ipv_6address_count: int = None,
         load_balancer_weight: int = None,
         memory: float = None,
@@ -21420,6 +21481,7 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         # *   EnterpriseLevel: Instances of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Instance family](~~25378~~).
         # *   CreditEntryLevel: This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instances of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the [Overview](~~59977~~) topic of burstable instances.
         self.instance_family_level = instance_family_level
+        self.instance_types = instance_types
         # The number of IPv6 addresses.
         self.ipv_6address_count = ipv_6address_count
         # The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
@@ -21583,6 +21645,8 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
                 result['InitContainers'].append(k.to_map() if k else None)
         if self.instance_family_level is not None:
             result['InstanceFamilyLevel'] = self.instance_family_level
+        if self.instance_types is not None:
+            result['InstanceTypes'] = self.instance_types
         if self.ipv_6address_count is not None:
             result['Ipv6AddressCount'] = self.ipv_6address_count
         if self.load_balancer_weight is not None:
@@ -21701,6 +21765,8 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
                 self.init_containers.append(temp_model.from_map(k))
         if m.get('InstanceFamilyLevel') is not None:
             self.instance_family_level = m.get('InstanceFamilyLevel')
+        if m.get('InstanceTypes') is not None:
+            self.instance_types = m.get('InstanceTypes')
         if m.get('Ipv6AddressCount') is not None:
             self.ipv_6address_count = m.get('Ipv6AddressCount')
         if m.get('LoadBalancerWeight') is not None:
@@ -24347,6 +24413,7 @@ class ModifyScalingGroupRequest(TeaModel):
         custom_policy_arn: str = None,
         default_cooldown: int = None,
         desired_capacity: int = None,
+        disable_desired_capacity: bool = None,
         group_deletion_protection: bool = None,
         health_check_type: str = None,
         launch_template_id: str = None,
@@ -24406,6 +24473,7 @@ class ModifyScalingGroupRequest(TeaModel):
         # *   true: enables deletion protection for the scaling group. This way, the scaling group cannot be deleted.
         # *   false: disables deletion protection for the scaling group.
         self.desired_capacity = desired_capacity
+        self.disable_desired_capacity = disable_desired_capacity
         # The scaling policy for the multi-zone scaling group that contains ECS instances. Valid values:
         # 
         # *   PRIORITY: ECS instances are scaled based on the vSwitch priority. The first vSwitch specified by using the VSwitchIds parameter has the highest priority. Auto Scaling preferentially scales instances in the zone where the vSwitch that has the highest priority resides. If the scaling fails, Auto Scaling scales instances in the zone where the vSwitch that has the next highest priority resides.
@@ -24515,6 +24583,8 @@ class ModifyScalingGroupRequest(TeaModel):
             result['DefaultCooldown'] = self.default_cooldown
         if self.desired_capacity is not None:
             result['DesiredCapacity'] = self.desired_capacity
+        if self.disable_desired_capacity is not None:
+            result['DisableDesiredCapacity'] = self.disable_desired_capacity
         if self.group_deletion_protection is not None:
             result['GroupDeletionProtection'] = self.group_deletion_protection
         if self.health_check_type is not None:
@@ -24579,6 +24649,8 @@ class ModifyScalingGroupRequest(TeaModel):
             self.default_cooldown = m.get('DefaultCooldown')
         if m.get('DesiredCapacity') is not None:
             self.desired_capacity = m.get('DesiredCapacity')
+        if m.get('DisableDesiredCapacity') is not None:
+            self.disable_desired_capacity = m.get('DisableDesiredCapacity')
         if m.get('GroupDeletionProtection') is not None:
             self.group_deletion_protection = m.get('GroupDeletionProtection')
         if m.get('HealthCheckType') is not None:

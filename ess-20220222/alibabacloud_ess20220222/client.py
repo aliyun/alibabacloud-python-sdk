@@ -1090,6 +1090,8 @@ class Client(OpenApiClient):
             query['InitContainers'] = request.init_containers
         if not UtilClient.is_unset(request.instance_family_level):
             query['InstanceFamilyLevel'] = request.instance_family_level
+        if not UtilClient.is_unset(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.ipv_6address_count):
             query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.load_balancer_weight):
@@ -1212,6 +1214,8 @@ class Client(OpenApiClient):
             query['InitContainers'] = request.init_containers
         if not UtilClient.is_unset(request.instance_family_level):
             query['InstanceFamilyLevel'] = request.instance_family_level
+        if not UtilClient.is_unset(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.ipv_6address_count):
             query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.load_balancer_weight):
@@ -6697,6 +6701,8 @@ class Client(OpenApiClient):
             query['InitContainers'] = request.init_containers
         if not UtilClient.is_unset(request.instance_family_level):
             query['InstanceFamilyLevel'] = request.instance_family_level
+        if not UtilClient.is_unset(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.ipv_6address_count):
             query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.load_balancer_weight):
@@ -6820,6 +6826,8 @@ class Client(OpenApiClient):
             query['InitContainers'] = request.init_containers
         if not UtilClient.is_unset(request.instance_family_level):
             query['InstanceFamilyLevel'] = request.instance_family_level
+        if not UtilClient.is_unset(request.instance_types):
+            query['InstanceTypes'] = request.instance_types
         if not UtilClient.is_unset(request.ipv_6address_count):
             query['Ipv6AddressCount'] = request.ipv_6address_count
         if not UtilClient.is_unset(request.load_balancer_weight):
@@ -7456,6 +7464,8 @@ class Client(OpenApiClient):
             query['DefaultCooldown'] = request.default_cooldown
         if not UtilClient.is_unset(request.desired_capacity):
             query['DesiredCapacity'] = request.desired_capacity
+        if not UtilClient.is_unset(request.disable_desired_capacity):
+            query['DisableDesiredCapacity'] = request.disable_desired_capacity
         if not UtilClient.is_unset(request.group_deletion_protection):
             query['GroupDeletionProtection'] = request.group_deletion_protection
         if not UtilClient.is_unset(request.health_check_type):
@@ -7540,6 +7550,8 @@ class Client(OpenApiClient):
             query['DefaultCooldown'] = request.default_cooldown
         if not UtilClient.is_unset(request.desired_capacity):
             query['DesiredCapacity'] = request.desired_capacity
+        if not UtilClient.is_unset(request.disable_desired_capacity):
+            query['DisableDesiredCapacity'] = request.disable_desired_capacity
         if not UtilClient.is_unset(request.group_deletion_protection):
             query['GroupDeletionProtection'] = request.group_deletion_protection
         if not UtilClient.is_unset(request.health_check_type):
