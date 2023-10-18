@@ -633,7 +633,7 @@ class CreateDomainRequestListen(TeaModel):
         # *   **2:** strong cipher suites. You can select this value only if you set **TLSVersion** to **tlsv1.2**.
         # *   **99:** custom cipher suites.
         self.cipher_suite = cipher_suite
-        # The custom cipher suites.
+        # The custom cipher suite that you want to add.
         self.custom_ciphers = custom_ciphers
         # Specifies whether to support TLS 1.3. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
@@ -645,14 +645,14 @@ class CreateDomainRequestListen(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.exclusive_ip = exclusive_ip
-        # Specifies whether to enable the HTTP to HTTPS redirection feature. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
+        # Specifies whether to enable HTTP to HTTPS redirection. This parameter is available only if you specify HttpsPorts and leave HttpPorts empty. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.focus_https = focus_https
         # Specifies whether to enable HTTP/2. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   true
+        # *   **true**\
         # *   **false** (default)
         self.http_2enabled = http_2enabled
         # The HTTP listener port.
@@ -666,7 +666,7 @@ class CreateDomainRequestListen(TeaModel):
         self.ipv_6enabled = ipv_6enabled
         # The type of the protection resource. Valid values:
         # 
-        # *   **share:** shared cluster. This is the default value.
+        # *   **share:** a shared cluster. This is the default value.
         # *   **gslb:** shared cluster-based intelligent load balancing.
         self.protection_resource = protection_resource
         # Specifies whether to allow access only from SM certificate-based clients. This parameter is available only if you set SM2Enabled to true.
@@ -676,7 +676,7 @@ class CreateDomainRequestListen(TeaModel):
         self.sm2access_only = sm2access_only
         # The ID of the SM certificate that you want to add. This parameter is available only if you set SM2Enabled to true.
         self.sm2cert_id = sm2cert_id
-        # Specifies whether to enable the SM certificate.
+        # Specifies whether to enable the ShangMi (SM) certificate.
         self.sm2enabled = sm2enabled
         # The version of the Transport Layer Security (TLS) protocol. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
@@ -690,7 +690,7 @@ class CreateDomainRequestListen(TeaModel):
         # *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the IP address of the client.
         # *   **2:** WAF reads the value of a custom header field as the IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The custom header field that you want WAF to use to obtain the IP address of a client.
+        # The custom header field that you want WAF to use to obtain the actual IP address of a client.
         self.xff_headers = xff_headers
 
     def validate(self):
@@ -831,7 +831,7 @@ class CreateDomainRequestRedirect(TeaModel):
         sni_host: str = None,
         write_timeout: int = None,
     ):
-        # The back-to-origin IP addresses or domain names.
+        # The IP addresses or domain names of the origin server.
         self.backends = backends
         # Specifies whether to enable the public cloud disaster recovery feature. Valid values:
         # 
@@ -854,7 +854,7 @@ class CreateDomainRequestRedirect(TeaModel):
         # 
         # > This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period of persistent connections that are in the Idle state. Unit: seconds. Valid values: 1 to 60. Default value: 15.
+        # The timeout period of persistent connections that are in the Idle state. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         # 
         # > This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
         self.keepalive_timeout = keepalive_timeout
@@ -866,16 +866,16 @@ class CreateDomainRequestRedirect(TeaModel):
         self.loadbalance = loadbalance
         # The read timeout period. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The key-value pairs that you want to use to mark the requests that pass through the WAF instance.
+        # The key-value pairs that you want to use to label the requests that pass through the WAF instance.
         # 
-        # WAF adds the key-value pairs to the request headers. This way, the requests that pass through WAF are identified.
+        # WAF automatically adds the key-value pairs to request headers. This way, the backend service can identify requests that pass through WAF.
         self.request_headers = request_headers
         # Specifies whether WAF retries to forward requests when the requests fail to be forwarded to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
         self.retry = retry
-        # The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. Set this parameter to a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. Set the value to a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
         # *   **rs:** The back-to-origin IP addresses or CNAMEs. The value must be of the ARRAY type.
         # *   **location:** The name of the protection node. The value must be of the STRING type.
@@ -886,9 +886,9 @@ class CreateDomainRequestRedirect(TeaModel):
         # *   **true**\
         # *   **false** (default)
         self.sni_enabled = sni_enabled
-        # The value of the custom SNI field. If you do not specify this parameter, the value of the **Host** field in the request header is used. If you want WAF to use an SNI field value that is different from the value of the Host field in back-to-origin requests, you can specify a custom value for the SNI field.
+        # The value of the SNI field. If you do not specify this parameter, the **Host** field value in the request header is used. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
         # 
-        # > This parameter is available only if you set **SniEnabled** to **true**.
+        # > You must specify this parameter only if you set **SniEnabled** to **true**.
         self.sni_host = sni_host
         # The write timeout period. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
@@ -2349,7 +2349,7 @@ class DescribeDefenseResourcesRequest(TeaModel):
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The source IP address of the request. The value of this parameter is specified by the system.
         self.source_ip = source_ip
-        # The tag of the resource. You can specify up to 20 tags.
+        # The tags of the resources that you want to query. You can specify up to 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -2427,29 +2427,26 @@ class DescribeDefenseResourcesResponseBodyResources(TeaModel):
         resource_origin: str = None,
         xff_status: int = None,
     ):
-        # 跟踪cookie开关状态。
+        # The status of the tracking cookie.
         # 
-        # - **0**：表示关闭。
-        # 
-        # - **1**：表示开启。
+        # *   **0:** disabled.
+        # *   **1:** enabled.
         self.acw_cookie_status = acw_cookie_status
-        # 跟踪cookie的secure属性状态。
+        # The status of the secure attribute of the tracking cookie.
         # 
-        # - **0**：表示关闭。
-        # 
-        # - **1**：表示开启。
+        # *   **0:** disabled.
+        # *   **1:** enabled.
         self.acw_secure_status = acw_secure_status
-        # 滑块cookie的secure属性状态。
+        # The status of the secure attribute of the slider verification cookie.
         # 
-        # - **0**：表示关闭。
-        # 
-        # - **1**：表示开启。
+        # *   **0:** disabled.
+        # *   **1:** enabled.
         self.acw_v3secure_status = acw_v3secure_status
-        # An array of custom XFF headers that are used to identify the originating IP addresses of clients. If the value of the XffStatus parameter is 1 and the CustomHeaders field is left empty, the first IP address in the XFF header is the originating IP address of the client.
+        # The custom XFF headers that are used to identify the originating IP addresses of clients. If the value of XffStatus is 1 and CustomHeaders is left empty, the first IP address in the XFF header is the originating IP address of the client.
         self.custom_headers = custom_headers
         # The description of the protected object.
         self.description = description
-        # The description of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
+        # The details of the protected object. Different key-value pairs in a map indicate different properties of the protected object.
         self.detail = detail
         # The creation time of the protected object. Unit: seconds.
         self.gmt_create = gmt_create
@@ -2555,7 +2552,7 @@ class DescribeDefenseResourcesResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # An array of protected objects.
+        # The protected objects.
         self.resources = resources
         # The total number of entries that are returned.
         self.total_count = total_count
@@ -3635,7 +3632,7 @@ class DescribeDomainDetailResponseBodyRedirectBackends(TeaModel):
         self,
         backend: str = None,
     ):
-        # The back-to-origin IP address or domain name.
+        # The IP address or domain name of the origin server.
         self.backend = backend
 
     def validate(self):
@@ -3852,11 +3849,17 @@ class DescribeDomainDetailResponseBodySM2CertDetail(TeaModel):
         sans: List[str] = None,
         start_time: int = None,
     ):
+        # The domain name of your website.
         self.common_name = common_name
+        # The end of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
+        # The ID of the SSL certificate.
         self.id = id
+        # The name of the SSL certificate.
         self.name = name
+        # All domain names that are bound to the certificate.
         self.sans = sans
+        # The beginning of the validity period of the SSL certificate. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -3926,6 +3929,7 @@ class DescribeDomainDetailResponseBody(TeaModel):
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        # The information about the SM certificate.
         self.sm2cert_detail = sm2cert_detail
         # The status of the domain name. Valid values:
         # 
@@ -6769,10 +6773,8 @@ class DescribeInstanceResponseBody(TeaModel):
         self.end_time = end_time
         # Indicates whether the WAF instance has overdue payments. Valid values:
         # 
-        # *   **0:** The WAF instance has overdue payments.
-        # *   **1:** The WAF instance does not have overdue payments.
-        # 
-        # >  This parameter is returned only when the value of the **PayType** parameter is **POSTPAY**.
+        # *   **0**: The WAF instance does not have overdue payments.
+        # *   **1**: The WAF instance has overdue payments.
         self.in_debt = in_debt
         # The ID of the WAF instance.
         self.instance_id = instance_id
@@ -8564,6 +8566,7 @@ class DescribeRuleHitsTopRuleIdRequest(TeaModel):
         self,
         end_timestamp: str = None,
         instance_id: str = None,
+        is_group_resource: str = None,
         region_id: str = None,
         resource: str = None,
         resource_manager_resource_group_id: str = None,
@@ -8576,6 +8579,7 @@ class DescribeRuleHitsTopRuleIdRequest(TeaModel):
         # 
         # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
         self.instance_id = instance_id
+        self.is_group_resource = is_group_resource
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou:** the Chinese mainland.
@@ -8609,6 +8613,8 @@ class DescribeRuleHitsTopRuleIdRequest(TeaModel):
             result['EndTimestamp'] = self.end_timestamp
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.is_group_resource is not None:
+            result['IsGroupResource'] = self.is_group_resource
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource is not None:
@@ -8627,6 +8633,8 @@ class DescribeRuleHitsTopRuleIdRequest(TeaModel):
             self.end_timestamp = m.get('EndTimestamp')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('IsGroupResource') is not None:
+            self.is_group_resource = m.get('IsGroupResource')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Resource') is not None:

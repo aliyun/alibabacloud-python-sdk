@@ -3098,6 +3098,8 @@ class Client(OpenApiClient):
             query['EndTimestamp'] = request.end_timestamp
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_group_resource):
+            query['IsGroupResource'] = request.is_group_resource
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
@@ -3138,6 +3140,8 @@ class Client(OpenApiClient):
             query['EndTimestamp'] = request.end_timestamp
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.is_group_resource):
+            query['IsGroupResource'] = request.is_group_resource
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
