@@ -3079,8 +3079,9 @@ class DeleteInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        self.global_instance_id = global_instance_id
         # The ID of the distributed instance to which the instance belongs. This parameter is applicable to only China site (aliyun.com).
+        self.global_instance_id = global_instance_id
+        # The ID of the instance that you want to release.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3137,6 +3138,7 @@ class DeleteInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4567,6 +4569,11 @@ class DescribeAvailableResourceRequest(TeaModel):
         # 
         # > This parameter is available and required only if the **OrderType** parameter is set to **UPGRADE** or **DOWNGRADE**.
         self.instance_id = instance_id
+        # Redis产品系列，取值如下：
+        # 
+        # - **professional**：标准版，支持单副本、主备、读写分离、集群四种架构，扩展性强。
+        #  <props="china">
+        # -  **economical**：仅支持主备架构，具有价格优势，更多信息请参见[经济版实例](~~2489678~~)。</props>
         self.instance_scene = instance_scene
         # The ID of the data node for which you want to query available resources that can be created. You can call the [DescribeLogicInstanceTopology](~~94665~~) operation to query the ID of the data node. Remove the number sign (`#`) and the content that follows the number sign. For example, retain only r-bp10noxlhcoim2\*\*\*\*-db-0.
         # 
@@ -8619,23 +8626,351 @@ class DescribeEngineVersionRequest(TeaModel):
         return self
 
 
+class DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        level: str = None,
+        release_note: str = None,
+        release_note_en: str = None,
+        release_version: str = None,
+    ):
+        self.create_time = create_time
+        self.level = level
+        self.release_note = release_note
+        self.release_note_en = release_note_en
+        self.release_version = release_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.release_note is not None:
+            result['ReleaseNote'] = self.release_note
+        if self.release_note_en is not None:
+            result['ReleaseNoteEn'] = self.release_note_en
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('ReleaseNote') is not None:
+            self.release_note = m.get('ReleaseNote')
+        if m.get('ReleaseNoteEn') is not None:
+            self.release_note_en = m.get('ReleaseNoteEn')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        return self
+
+
+class DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo(TeaModel):
+    def __init__(
+        self,
+        release_info_list: List[DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList] = None,
+    ):
+        self.release_info_list = release_info_list
+
+    def validate(self):
+        if self.release_info_list:
+            for k in self.release_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReleaseInfoList'] = []
+        if self.release_info_list is not None:
+            for k in self.release_info_list:
+                result['ReleaseInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.release_info_list = []
+        if m.get('ReleaseInfoList') is not None:
+            for k in m.get('ReleaseInfoList'):
+                temp_model = DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList()
+                self.release_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease(TeaModel):
+    def __init__(
+        self,
+        release_info: DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo = None,
+        version_changes_level: str = None,
+    ):
+        self.release_info = release_info
+        self.version_changes_level = version_changes_level
+
+    def validate(self):
+        if self.release_info:
+            self.release_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release_info is not None:
+            result['ReleaseInfo'] = self.release_info.to_map()
+        if self.version_changes_level is not None:
+            result['VersionChangesLevel'] = self.version_changes_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReleaseInfo') is not None:
+            temp_model = DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionReleaseReleaseInfo()
+            self.release_info = temp_model.from_map(m['ReleaseInfo'])
+        if m.get('VersionChangesLevel') is not None:
+            self.version_changes_level = m.get('VersionChangesLevel')
+        return self
+
+
+class DescribeEngineVersionResponseBodyDBLatestMinorVersion(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        minor_version: str = None,
+        version_release: DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease = None,
+    ):
+        self.level = level
+        self.minor_version = minor_version
+        self.version_release = version_release
+
+    def validate(self):
+        if self.version_release:
+            self.version_release.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
+        if self.version_release is not None:
+            result['VersionRelease'] = self.version_release.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
+        if m.get('VersionRelease') is not None:
+            temp_model = DescribeEngineVersionResponseBodyDBLatestMinorVersionVersionRelease()
+            self.version_release = temp_model.from_map(m['VersionRelease'])
+        return self
+
+
+class DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        level: str = None,
+        release_note: str = None,
+        release_note_en: str = None,
+        release_version: str = None,
+    ):
+        self.create_time = create_time
+        self.level = level
+        self.release_note = release_note
+        self.release_note_en = release_note_en
+        self.release_version = release_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.release_note is not None:
+            result['ReleaseNote'] = self.release_note
+        if self.release_note_en is not None:
+            result['ReleaseNoteEn'] = self.release_note_en
+        if self.release_version is not None:
+            result['ReleaseVersion'] = self.release_version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('ReleaseNote') is not None:
+            self.release_note = m.get('ReleaseNote')
+        if m.get('ReleaseNoteEn') is not None:
+            self.release_note_en = m.get('ReleaseNoteEn')
+        if m.get('ReleaseVersion') is not None:
+            self.release_version = m.get('ReleaseVersion')
+        return self
+
+
+class DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo(TeaModel):
+    def __init__(
+        self,
+        release_info_list: List[DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList] = None,
+    ):
+        self.release_info_list = release_info_list
+
+    def validate(self):
+        if self.release_info_list:
+            for k in self.release_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ReleaseInfoList'] = []
+        if self.release_info_list is not None:
+            for k in self.release_info_list:
+                result['ReleaseInfoList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.release_info_list = []
+        if m.get('ReleaseInfoList') is not None:
+            for k in m.get('ReleaseInfoList'):
+                temp_model = DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfoReleaseInfoList()
+                self.release_info_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease(TeaModel):
+    def __init__(
+        self,
+        release_info: DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo = None,
+        version_changes_level: str = None,
+    ):
+        self.release_info = release_info
+        self.version_changes_level = version_changes_level
+
+    def validate(self):
+        if self.release_info:
+            self.release_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release_info is not None:
+            result['ReleaseInfo'] = self.release_info.to_map()
+        if self.version_changes_level is not None:
+            result['VersionChangesLevel'] = self.version_changes_level
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReleaseInfo') is not None:
+            temp_model = DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionReleaseReleaseInfo()
+            self.release_info = temp_model.from_map(m['ReleaseInfo'])
+        if m.get('VersionChangesLevel') is not None:
+            self.version_changes_level = m.get('VersionChangesLevel')
+        return self
+
+
+class DescribeEngineVersionResponseBodyProxyLatestMinorVersion(TeaModel):
+    def __init__(
+        self,
+        level: str = None,
+        minor_version: str = None,
+        version_release: DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease = None,
+    ):
+        self.level = level
+        self.minor_version = minor_version
+        self.version_release = version_release
+
+    def validate(self):
+        if self.version_release:
+            self.version_release.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.minor_version is not None:
+            result['MinorVersion'] = self.minor_version
+        if self.version_release is not None:
+            result['VersionRelease'] = self.version_release.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('MinorVersion') is not None:
+            self.minor_version = m.get('MinorVersion')
+        if m.get('VersionRelease') is not None:
+            temp_model = DescribeEngineVersionResponseBodyProxyLatestMinorVersionVersionRelease()
+            self.version_release = temp_model.from_map(m['VersionRelease'])
+        return self
+
+
 class DescribeEngineVersionResponseBody(TeaModel):
     def __init__(
         self,
+        dblatest_minor_version: DescribeEngineVersionResponseBodyDBLatestMinorVersion = None,
         dbversion_release: str = None,
         enable_upgrade_major_version: bool = None,
         enable_upgrade_minor_version: bool = None,
         engine: str = None,
+        is_auto_upgrade_open: str = None,
         is_latest_version: bool = None,
         is_new_sslmode: str = None,
         is_redis_compatible_version: str = None,
         is_sslenable: str = None,
         major_version: str = None,
         minor_version: str = None,
+        proxy_latest_minor_version: DescribeEngineVersionResponseBodyProxyLatestMinorVersion = None,
         proxy_minor_version: str = None,
         proxy_version_release: str = None,
         request_id: str = None,
     ):
+        self.dblatest_minor_version = dblatest_minor_version
         # The release notes for the minor version of the instance, including the release date, minor version number, release type such as new feature, and description.
         self.dbversion_release = dbversion_release
         # Indicates whether the instance major version can be upgraded. Valid values:
@@ -8654,6 +8989,7 @@ class DescribeEngineVersionResponseBody(TeaModel):
         self.enable_upgrade_minor_version = enable_upgrade_minor_version
         # The database engine of the instance. Valid values: **redis** and **memcache**.
         self.engine = engine
+        self.is_auto_upgrade_open = is_auto_upgrade_open
         # Indicates whether the instance uses the latest minor version. Valid values:
         # 
         # *   **true**\
@@ -8669,6 +9005,7 @@ class DescribeEngineVersionResponseBody(TeaModel):
         self.major_version = major_version
         # The minor version of the instance.
         self.minor_version = minor_version
+        self.proxy_latest_minor_version = proxy_latest_minor_version
         # The minor version of proxy nodes.
         # 
         # > This parameter is returned only for cluster and read/write splitting instances.
@@ -8681,7 +9018,10 @@ class DescribeEngineVersionResponseBody(TeaModel):
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.dblatest_minor_version:
+            self.dblatest_minor_version.validate()
+        if self.proxy_latest_minor_version:
+            self.proxy_latest_minor_version.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -8689,6 +9029,8 @@ class DescribeEngineVersionResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.dblatest_minor_version is not None:
+            result['DBLatestMinorVersion'] = self.dblatest_minor_version.to_map()
         if self.dbversion_release is not None:
             result['DBVersionRelease'] = self.dbversion_release
         if self.enable_upgrade_major_version is not None:
@@ -8697,6 +9039,8 @@ class DescribeEngineVersionResponseBody(TeaModel):
             result['EnableUpgradeMinorVersion'] = self.enable_upgrade_minor_version
         if self.engine is not None:
             result['Engine'] = self.engine
+        if self.is_auto_upgrade_open is not None:
+            result['IsAutoUpgradeOpen'] = self.is_auto_upgrade_open
         if self.is_latest_version is not None:
             result['IsLatestVersion'] = self.is_latest_version
         if self.is_new_sslmode is not None:
@@ -8709,6 +9053,8 @@ class DescribeEngineVersionResponseBody(TeaModel):
             result['MajorVersion'] = self.major_version
         if self.minor_version is not None:
             result['MinorVersion'] = self.minor_version
+        if self.proxy_latest_minor_version is not None:
+            result['ProxyLatestMinorVersion'] = self.proxy_latest_minor_version.to_map()
         if self.proxy_minor_version is not None:
             result['ProxyMinorVersion'] = self.proxy_minor_version
         if self.proxy_version_release is not None:
@@ -8719,6 +9065,9 @@ class DescribeEngineVersionResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DBLatestMinorVersion') is not None:
+            temp_model = DescribeEngineVersionResponseBodyDBLatestMinorVersion()
+            self.dblatest_minor_version = temp_model.from_map(m['DBLatestMinorVersion'])
         if m.get('DBVersionRelease') is not None:
             self.dbversion_release = m.get('DBVersionRelease')
         if m.get('EnableUpgradeMajorVersion') is not None:
@@ -8727,6 +9076,8 @@ class DescribeEngineVersionResponseBody(TeaModel):
             self.enable_upgrade_minor_version = m.get('EnableUpgradeMinorVersion')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
+        if m.get('IsAutoUpgradeOpen') is not None:
+            self.is_auto_upgrade_open = m.get('IsAutoUpgradeOpen')
         if m.get('IsLatestVersion') is not None:
             self.is_latest_version = m.get('IsLatestVersion')
         if m.get('IsNewSSLMode') is not None:
@@ -8739,6 +9090,9 @@ class DescribeEngineVersionResponseBody(TeaModel):
             self.major_version = m.get('MajorVersion')
         if m.get('MinorVersion') is not None:
             self.minor_version = m.get('MinorVersion')
+        if m.get('ProxyLatestMinorVersion') is not None:
+            temp_model = DescribeEngineVersionResponseBodyProxyLatestMinorVersion()
+            self.proxy_latest_minor_version = temp_model.from_map(m['ProxyLatestMinorVersion'])
         if m.get('ProxyMinorVersion') is not None:
             self.proxy_minor_version = m.get('ProxyMinorVersion')
         if m.get('ProxyVersionRelease') is not None:
@@ -10061,6 +10415,8 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         secondary_zone_id: str = None,
         security_iplist: str = None,
         shard_count: int = None,
+        storage: str = None,
+        storage_type: str = None,
         tags: DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags = None,
         v_switch_id: str = None,
         vpc_auth_mode: str = None,
@@ -10228,6 +10584,8 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
         # 
         # This parameter is returned only when the instance is a [cluster instance](~~52228~~) that uses cloud disks.
         self.shard_count = shard_count
+        self.storage = storage
+        self.storage_type = storage_type
         # Details of the tags.
         self.tags = tags
         # The ID of the vSwitch.
@@ -10345,6 +10703,10 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
             result['SecurityIPList'] = self.security_iplist
         if self.shard_count is not None:
             result['ShardCount'] = self.shard_count
+        if self.storage is not None:
+            result['Storage'] = self.storage
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.v_switch_id is not None:
@@ -10449,6 +10811,10 @@ class DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttribute(TeaModel
             self.security_iplist = m.get('SecurityIPList')
         if m.get('ShardCount') is not None:
             self.shard_count = m.get('ShardCount')
+        if m.get('Storage') is not None:
+            self.storage = m.get('Storage')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
         if m.get('Tags') is not None:
             temp_model = DescribeInstanceAttributeResponseBodyInstancesDBInstanceAttributeTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -12909,13 +13275,13 @@ class DescribeLogicInstanceTopologyResponseBodyRedisProxyListNodeInfo(TeaModel):
         node_id: str = None,
         node_type: str = None,
     ):
-        # The bandwidth throttling of the node. Unit: MB/s.
+        # The maximum bandwidth of the node. Unit: Mbit/s.
         self.bandwidth = bandwidth
         # The storage capacity of the node. Unit: MB.
         self.capacity = capacity
         # The maximum number of connections.
         self.connection = connection
-        # The ID of the node.
+        # The node ID.
         self.node_id = node_id
         # The node type. Valid values:
         # 
@@ -13004,11 +13370,23 @@ class DescribeLogicInstanceTopologyResponseBodyRedisShardListNodeInfo(TeaModel):
         node_type: str = None,
         sub_instance_type: str = None,
     ):
+        # The maximum bandwidth of the node. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # The storage capacity of the node. Unit: MB.
         self.capacity = capacity
+        # The maximum number of connections.
         self.connection = connection
+        # The node ID.
         self.node_id = node_id
+        # The node type. Valid values:
+        # 
+        # *   **proxy**: proxy node
+        # *   **db**: data node
         self.node_type = node_type
+        # The type of the child instance. Valid values:
+        # 
+        # *   **master**: master node
+        # *   **readonly**: read-only instance
         self.sub_instance_type = sub_instance_type
 
     def validate(self):
@@ -13098,6 +13476,7 @@ class DescribeLogicInstanceTopologyResponseBody(TeaModel):
         self.instance_id = instance_id
         # The detailed proxy information, including information about proxy nodes.
         self.redis_proxy_list = redis_proxy_list
+        # Details of data shards, including node information such as NodeInfo.
         self.redis_shard_list = redis_shard_list
         # The ID of the request.
         self.request_id = request_id
@@ -18737,15 +19116,30 @@ class MigrateToOtherZoneRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the ApsaraDB for Redis instance.
         self.dbinstance_id = dbinstance_id
+        # Specifies the time when the database is switched after data is migrated. Valid values:
+        # 
+        # *   **Immediately**: immediately switched after the data is migrated.
+        # *   **MaintainTime**: switched within the maintenance window.
+        # 
+        # >  Default value: **Immediately**.
         self.effective_time = effective_time
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the destination secondary zone. You can call the [DescribeZones](~~DescribeZones~~) operation to query zone IDs.
+        # 
+        # >  You can specify this parameter to deploy the master node and replica node in different zones to implement zone-disaster recovery. This helps withstand data center-level breakdowns.
         self.secondary_zone_id = secondary_zone_id
         self.security_token = security_token
+        # The ID of the vSwitch.
+        # 
+        # > *   The vSwitch must be deployed in the zone that is specified by the ZoneId parameter.
+        # > *   If the network type of the instance is VPC, this parameter is required.
         self.v_switch_id = v_switch_id
+        # The ID of the destination primary zone. You can call the [DescribeZones](~~94527~~) operation to query zone IDs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -18809,6 +19203,7 @@ class MigrateToOtherZoneResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -23445,8 +23840,11 @@ class RestartInstanceResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the request.
         self.request_id = request_id
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
