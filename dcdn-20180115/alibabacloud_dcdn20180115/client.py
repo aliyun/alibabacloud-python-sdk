@@ -18721,6 +18721,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_dcdn_kv_with_options_async(request, runtime)
 
+    def get_dcdn_kv_status_with_options(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.GetDcdnKvStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDcdnKvStatus',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.GetDcdnKvStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_dcdn_kv_status_with_options_async(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.GetDcdnKvStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.key):
+            query['Key'] = request.key
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDcdnKvStatus',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.GetDcdnKvStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_dcdn_kv_status(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvStatusRequest,
+    ) -> dcdn_20180115_models.GetDcdnKvStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_dcdn_kv_status_with_options(request, runtime)
+
+    async def get_dcdn_kv_status_async(
+        self,
+        request: dcdn_20180115_models.GetDcdnKvStatusRequest,
+    ) -> dcdn_20180115_models.GetDcdnKvStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_dcdn_kv_status_with_options_async(request, runtime)
+
     def list_dcdn_kv_with_options(
         self,
         request: dcdn_20180115_models.ListDcdnKvRequest,
