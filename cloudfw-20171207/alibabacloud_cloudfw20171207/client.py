@@ -826,8 +826,12 @@ class Client(OpenApiClient):
             query['RouteMode'] = request.route_mode
         if not UtilClient.is_unset(request.tr_attachment_master_cidr):
             query['TrAttachmentMasterCidr'] = request.tr_attachment_master_cidr
+        if not UtilClient.is_unset(request.tr_attachment_master_zone):
+            query['TrAttachmentMasterZone'] = request.tr_attachment_master_zone
         if not UtilClient.is_unset(request.tr_attachment_slave_cidr):
             query['TrAttachmentSlaveCidr'] = request.tr_attachment_slave_cidr
+        if not UtilClient.is_unset(request.tr_attachment_slave_zone):
+            query['TrAttachmentSlaveZone'] = request.tr_attachment_slave_zone
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
@@ -878,8 +882,12 @@ class Client(OpenApiClient):
             query['RouteMode'] = request.route_mode
         if not UtilClient.is_unset(request.tr_attachment_master_cidr):
             query['TrAttachmentMasterCidr'] = request.tr_attachment_master_cidr
+        if not UtilClient.is_unset(request.tr_attachment_master_zone):
+            query['TrAttachmentMasterZone'] = request.tr_attachment_master_zone
         if not UtilClient.is_unset(request.tr_attachment_slave_cidr):
             query['TrAttachmentSlaveCidr'] = request.tr_attachment_slave_cidr
+        if not UtilClient.is_unset(request.tr_attachment_slave_zone):
+            query['TrAttachmentSlaveZone'] = request.tr_attachment_slave_zone
         if not UtilClient.is_unset(request.transit_router_id):
             query['TransitRouterId'] = request.transit_router_id
         req = open_api_models.OpenApiRequest(
@@ -2424,6 +2432,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vpc_firewall_control_policy_with_options_async(request, runtime)
+
+    def describe_aclprotect_trend_with_options(
+        self,
+        request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeACLProtectTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeACLProtectTrendResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aclprotect_trend_with_options_async(
+        self,
+        request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeACLProtectTrend',
+            version='2017-12-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudfw_20171207_models.DescribeACLProtectTrendResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aclprotect_trend(
+        self,
+        request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_aclprotect_trend_with_options(request, runtime)
+
+    async def describe_aclprotect_trend_async(
+        self,
+        request: cloudfw_20171207_models.DescribeACLProtectTrendRequest,
+    ) -> cloudfw_20171207_models.DescribeACLProtectTrendResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_aclprotect_trend_with_options_async(request, runtime)
 
     def describe_address_book_with_options(
         self,
