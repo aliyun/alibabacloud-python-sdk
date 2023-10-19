@@ -1,3 +1,6 @@
+2023-10-19 Version: 3.3.1
+- The input parameter SourceResources of CreateTemplateScratch has added RegionId, which only takes effect when TemplateScratchType is ArchitectureDetection.
+
 2023-10-12 Version: 3.3.0
 - Generated python 2019-09-10 for ROS.
 

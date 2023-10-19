@@ -3140,9 +3140,11 @@ class CreateTemplateScratchRequestSourceResourceGroup(TeaModel):
 class CreateTemplateScratchRequestSourceResources(TeaModel):
     def __init__(
         self,
+        region_id: str = None,
         resource_id: str = None,
         resource_type: str = None,
     ):
+        self.region_id = region_id
         # The ID of the resource.
         self.resource_id = resource_id
         # The type of the resource.
@@ -3157,6 +3159,8 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
             return _map
 
         result = dict()
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
         if self.resource_type is not None:
@@ -3165,6 +3169,8 @@ class CreateTemplateScratchRequestSourceResources(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
         if m.get('ResourceType') is not None:
@@ -17332,9 +17338,11 @@ class ListStacksRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the request.
+        # The key of tag N.\
+        # Valid values of N: 1 to 20.
         self.key = key
-        # The page number of the returned page.
+        # The value of tag N.\
+        # Valid values of N: 1 to 20.
         self.value = value
 
     def validate(self):
@@ -17378,80 +17386,45 @@ class ListStacksRequest(TeaModel):
         status: List[str] = None,
         tag: List[ListStacksRequestTag] = None,
     ):
-        # The reason why the stack is in its current state.
+        # 按创建时间查询，创建时间区间的终止点。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
         self.end_time = end_time
-        # The tags.
+        # The page number.
+        # 
+        # Pages start from page 1.
+        # 
+        # Default value: 1.
         self.page_number = page_number
-        # The state N of the stack. Valid values:
-        # 
-        # *   CREATE_IN_PROGRESS: The stack is being created.
-        # *   CREATE_FAILED: The stack fails to be created.
-        # *   CREATE_COMPLETE: The stack is created.
-        # *   UPDATE_IN_PROGRESS: The stack is being updated.
-        # *   UPDATE_FAILED: The stack fails to be updated.
-        # *   UPDATE_COMPLETE: The stack is updated.
-        # *   DELETE_IN_PROGRESS: The stack is being deleted.
-        # *   DELETE_FAILED: The stack fails to be deleted.
-        # *   CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be created.
-        # *   CREATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be created.
-        # *   CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be created.
-        # *   ROLLBACK_IN_PROGRESS: The resources of the stack are being rolled back.
-        # *   ROLLBACK_FAILED: The resources of the stack fail to be rolled back.
-        # *   ROLLBACK_COMPLETE: The resources of the stack are rolled back.
-        # *   CHECK_IN_PROGRESS: The stack is being validated.
-        # *   CHECK_FAILED: The stack fails to be validated.
-        # *   CHECK_COMPLETE: The stack is validated.
-        # *   REVIEW_IN_PROGRESS: The stack is being reviewed.
-        # *   IMPORT_CREATE_IN_PROGRESS: The stack is being created by using imported resources.
-        # *   IMPORT_CREATE_FAILED: The stack fails to be created by using imported resources.
-        # *   IMPORT_CREATE_COMPLETE: The stack is created by using imported resources.
-        # *   IMPORT_CREATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be created by using imported resources.
-        # *   IMPORT_CREATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be created by using imported resources.
-        # *   IMPORT_CREATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be created by using imported resources.
-        # *   IMPORT_UPDATE_IN_PROGRESS: The stack is being updated by using imported resources.
-        # *   IMPORT_UPDATE_FAILED: The stack fails to be updated by using imported resources.
-        # *   IMPORT_UPDATE_COMPLETE: The stack is updated by using imported resources.
-        # *   IMPORT_UPDATE_ROLLBACK_IN_PROGRESS: The resources are being rolled back after the stack fails to be updated by using imported resources.
-        # *   IMPORT_UPDATE_ROLLBACK_FAILED: The resources fail to be rolled back after the stack fails to be updated by using imported resources.
-        # *   IMPORT_UPDATE_ROLLBACK_COMPLETE: The resources are rolled back after the stack fails to be updated by using imported resources.
-        self.page_size = page_size
-        # The name of stack N.
-        self.parent_stack_id = parent_stack_id
-        # The name of stack N.
-        # 
-        # The name can be up to 255 characters in length, and can contain digits, letters, hyphens (-), and underscores (\_). The name must start with a digit or letter. You can use the wildcard character (∗) for fuzzy search.
-        # 
-        # Valid values of N: 1 to 5.
-        self.region_id = region_id
-        # The list of stacks.
-        self.resource_group_id = resource_group_id
-        # The key of tag N of the stack.
-        # 
-        # Valid values of N: 1 to 20.
-        self.show_nested_stack = show_nested_stack
-        # The value of tag N of the stack.
-        # 
-        # Valid values of N: 1 to 20.
-        self.stack_id = stack_id
-        # The state of the stack.
-        self.stack_ids = stack_ids
-        # The ID of stack N.
-        # 
-        # You can specify one or more IDs to query one or more stacks at the same time.
-        # 
-        # Valid values of N: 1 to 10.
-        self.stack_name = stack_name
-        # The time when the last successful drift detection was performed on the stack.
-        self.start_time = start_time
-        # The ID of the resource group.
-        # 
-        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
-        self.status = status
-        # The number of entries returned per page.
+        # The number of entries per page.
         # 
         # Maximum value: 50.
         # 
         # Default value: 10.
+        self.page_size = page_size
+        # The ID of the parent stack.
+        self.parent_stack_id = parent_stack_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group.\
+        # For more information about resource groups, see the "Resource Group" section of the [What is Resource Management?](~~94475~~) topic.
+        self.resource_group_id = resource_group_id
+        # Specifies whether to return nested stacks. Valid values:
+        # 
+        # *   true
+        # *   false (default)
+        # 
+        # > If you specify ParentStackId, you must set ShowNestedStack to true.
+        self.show_nested_stack = show_nested_stack
+        # The stack ID. You can specify this parameter to query only the stack ID. If you want to query the detailed information about the stack, call the GetStack operation.
+        self.stack_id = stack_id
+        # The IDs of the stacks.
+        self.stack_ids = stack_ids
+        # The names of the stacks.
+        self.stack_name = stack_name
+        # 按创建时间查询，创建时间区间的起始点。按照[ISO 8601](~~25696~~)标准表示，并需要使用UTC +0时间，格式为yyyy-MM-ddTHH:mm:ssZ。
+        self.start_time = start_time
+        # The status of the stack.
+        self.status = status
+        # The tags of the stack.
         self.tag = tag
 
     def validate(self):
@@ -17540,11 +17513,17 @@ class ListStacksResponseBodyStacksOperationInfo(TeaModel):
         request_id: str = None,
         resource_type: str = None,
     ):
+        # The name of the API operation that belongs to another Alibaba Cloud service.
         self.action = action
+        # The error code.
         self.code = code
+        # The logical ID of the resource on which the operation error occurred.
         self.logical_resource_id = logical_resource_id
+        # The error message.
         self.message = message
+        # The ID of the request that is initiated to call the API operation of another Alibaba Cloud service.
         self.request_id = request_id
+        # The type of the resource on which the operation error occurred.
         self.resource_type = resource_type
 
     def validate(self):
@@ -17593,12 +17572,9 @@ class ListStacksResponseBodyStacksTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The ID of the resource group.
+        # The key of the tag.
         self.key = key
-        # Indicates whether the stack is a managed stack. Valid values:
-        # 
-        # *   true
-        # *   false
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -17648,48 +17624,57 @@ class ListStacksResponseBodyStacks(TeaModel):
         timeout_in_minutes: int = None,
         update_time: str = None,
     ):
-        # The ID of the stack.
+        # The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.create_time = create_time
         self.deletion_protection = deletion_protection
-        # The state of the stack on which the last successful drift detection was performed. Valid values:
+        # Indicates whether rollback is disabled when the stack fails to be created. Valid values:
         # 
-        # *   DRIFTED: Drift detection is being performed on the stack.
+        # *   true
+        # *   false (default)
+        self.disable_rollback = disable_rollback
+        # The time when the most recent successful drift detection was performed on the stack.
+        self.drift_detection_time = drift_detection_time
+        # The supplementary information that is returned when an error occurs on a stack operation.
+        # 
+        # > This parameter is returned only if an error occurs on a stack operation. The system returns at least one sub-property. For example, an error occurred when an API operation of another Alibaba Cloud service was called.
+        self.operation_info = operation_info
+        # The ID of the parent stack.
+        self.parent_stack_id = parent_stack_id
+        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
+        self.region_id = region_id
+        # The ID of the resource group.
+        self.resource_group_id = resource_group_id
+        # Indicates whether the stack is a managed stack. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.service_managed = service_managed
+        # The name of the service to which the managed stack belongs.
+        self.service_name = service_name
+        # The state of the stack on which the most recent successful drift detection was performed. Valid values:
+        # 
+        # *   DRIFTED: The stack has drifted.
         # *   NOT_CHECKED: No successful drift detection is performed on the stack.
         # *   IN_SYNC: The stack is being synchronized.
-        self.disable_rollback = disable_rollback
-        # The region ID of the stack. You can call the [DescribeRegions](~~131035~~) operation to query the most recent region list.
-        self.drift_detection_time = drift_detection_time
-        self.operation_info = operation_info
-        # The error message.
-        self.parent_stack_id = parent_stack_id
-        # The error code.
-        self.region_id = region_id
-        # The logical ID of the resource on which an operation fails to be performed.
-        self.resource_group_id = resource_group_id
-        self.service_managed = service_managed
-        self.service_name = service_name
-        # The name of the API operation that belongs to another Alibaba Cloud service.
         self.stack_drift_status = stack_drift_status
-        # The ID of the request that is initiated to call the API operation of another Alibaba Cloud service.
+        # The stack ID.
         self.stack_id = stack_id
-        # The name of the service to which the managed stack belongs.
+        # The stack name.
         self.stack_name = stack_name
-        # The type of the resource on which an operation fails to be performed.
-        self.stack_type = stack_type
-        # The name of the stack.
-        self.status = status
-        # The ID of the parent stack.
-        self.status_reason = status_reason
-        # The type of the stack. Valid values:
+        # The stack type. Valid values:
         # 
-        # *   ROS: ROS stack. The stack is created by using a Resource Orchestration Service (ROS) template.
+        # *   ROS: Resource Orchestration Service (ROS) stack. The stack is created by using a ROS template.
         # *   Terraform: Terraform stack. The stack is created by using a Terraform template.
+        self.stack_type = stack_type
+        # The state of the stack.
+        self.status = status
+        # The reason why the stack is in its current state.
+        self.status_reason = status_reason
+        # The tags of the stack.
         self.tags = tags
-        # The supplementary information that is returned when an operation fails to be performed on the stack.
-        # 
-        # >  This parameter is returned if an operation fails to be performed on the stack. The system returns at least one sub-property. Example: An error occurred when the API operation of another Alibaba Cloud service was called.
-        self.timeout_in_minutes = timeout_in_minutes
         # The timeout period that is allowed to create the stack. Unit: minutes.
+        self.timeout_in_minutes = timeout_in_minutes
+        # The time when the stack was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -17804,18 +17789,19 @@ class ListStacksResponseBody(TeaModel):
         stacks: List[ListStacksResponseBodyStacks] = None,
         total_count: int = None,
     ):
-        # The tag key of the stack.
+        # The page number.
         self.page_number = page_number
-        # Indicates whether rollback is disabled when the stack fails to be created. Default value: false. Valid values:
+        # The number of entries per page.
         # 
-        # *   true
-        # *   false
+        # Maximum value: 50.
+        # 
+        # Default value: 10.
         self.page_size = page_size
-        # The tags of the stack.
+        # The request ID.
         self.request_id = request_id
-        # The tag value of the stack.
+        # The stacks.
         self.stacks = stacks
-        # The time when the stack was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+        # The total number of stacks.
         self.total_count = total_count
 
     def validate(self):
