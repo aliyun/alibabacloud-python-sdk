@@ -3093,6 +3093,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_do_not_call_numbers_with_options_async(request, runtime)
 
+    def get_access_channel_of_staging_with_options(
+        self,
+        request: ccc20200701_models.GetAccessChannelOfStagingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccessChannelOfStaging',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAccessChannelOfStagingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_access_channel_of_staging_with_options_async(
+        self,
+        request: ccc20200701_models.GetAccessChannelOfStagingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccessChannelOfStaging',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.GetAccessChannelOfStagingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_access_channel_of_staging(
+        self,
+        request: ccc20200701_models.GetAccessChannelOfStagingRequest,
+    ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_access_channel_of_staging_with_options(request, runtime)
+
+    async def get_access_channel_of_staging_async(
+        self,
+        request: ccc20200701_models.GetAccessChannelOfStagingRequest,
+    ) -> ccc20200701_models.GetAccessChannelOfStagingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_access_channel_of_staging_with_options_async(request, runtime)
+
     def get_audio_file_with_options(
         self,
         request: ccc20200701_models.GetAudioFileRequest,
@@ -10061,6 +10127,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
+    def list_voicemails_with_options(
+        self,
+        request: ccc20200701_models.ListVoicemailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListVoicemailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVoicemails',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListVoicemailsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_voicemails_with_options_async(
+        self,
+        request: ccc20200701_models.ListVoicemailsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ListVoicemailsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.caller):
+            query['Caller'] = request.caller
+        if not UtilClient.is_unset(request.contact_id):
+            query['ContactId'] = request.contact_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListVoicemails',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ListVoicemailsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_voicemails(
+        self,
+        request: ccc20200701_models.ListVoicemailsRequest,
+    ) -> ccc20200701_models.ListVoicemailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_voicemails_with_options(request, runtime)
+
+    async def list_voicemails_async(
+        self,
+        request: ccc20200701_models.ListVoicemailsRequest,
+    ) -> ccc20200701_models.ListVoicemailsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_voicemails_with_options_async(request, runtime)
+
     def make_call_with_options(
         self,
         request: ccc20200701_models.MakeCallRequest,
@@ -11224,6 +11388,80 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.PollUserStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.poll_user_status_with_options_async(request, runtime)
+
+    def process_ali_me_callback_of_staging_with_options(
+        self,
+        request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ProcessAliMeCallbackOfStaging',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ProcessAliMeCallbackOfStagingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def process_ali_me_callback_of_staging_with_options_async(
+        self,
+        request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ProcessAliMeCallbackOfStaging',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ProcessAliMeCallbackOfStagingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def process_ali_me_callback_of_staging(
+        self,
+        request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
+    ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.process_ali_me_callback_of_staging_with_options(request, runtime)
+
+    async def process_ali_me_callback_of_staging_async(
+        self,
+        request: ccc20200701_models.ProcessAliMeCallbackOfStagingRequest,
+    ) -> ccc20200701_models.ProcessAliMeCallbackOfStagingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.process_ali_me_callback_of_staging_with_options_async(request, runtime)
 
     def publish_contact_flow_with_options(
         self,
@@ -14196,6 +14434,104 @@ class Client(OpenApiClient):
     ) -> ccc20200701_models.UnregisterDeviceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.unregister_device_with_options_async(request, runtime)
+
+    def update_campaign_with_options(
+        self,
+        request: ccc20200701_models.UpdateCampaignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateCampaignResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callable_time):
+            query['CallableTime'] = request.callable_time
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy_parameters):
+            query['StrategyParameters'] = request.strategy_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCampaign',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateCampaignResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_campaign_with_options_async(
+        self,
+        request: ccc20200701_models.UpdateCampaignRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.UpdateCampaignResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.callable_time):
+            query['CallableTime'] = request.callable_time
+        if not UtilClient.is_unset(request.campaign_id):
+            query['CampaignId'] = request.campaign_id
+        if not UtilClient.is_unset(request.contact_flow_id):
+            query['ContactFlowId'] = request.contact_flow_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.strategy_parameters):
+            query['StrategyParameters'] = request.strategy_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCampaign',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.UpdateCampaignResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_campaign(
+        self,
+        request: ccc20200701_models.UpdateCampaignRequest,
+    ) -> ccc20200701_models.UpdateCampaignResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_campaign_with_options(request, runtime)
+
+    async def update_campaign_async(
+        self,
+        request: ccc20200701_models.UpdateCampaignRequest,
+    ) -> ccc20200701_models.UpdateCampaignResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_campaign_with_options_async(request, runtime)
 
     def update_config_items_with_options(
         self,
