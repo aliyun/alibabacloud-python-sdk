@@ -48,6 +48,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not UtilClient.is_unset(request.app_name):
             body['appName'] = request.app_name
@@ -59,12 +62,15 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.network):
             body['network'] = request.network
+        if not UtilClient.is_unset(request.quota_info):
+            body['quotaInfo'] = request.quota_info
         if not UtilClient.is_unset(request.region_id):
             body['regionId'] = request.region_id
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -90,6 +96,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.CreateAppResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dry_run):
+            query['dryRun'] = request.dry_run
         body = {}
         if not UtilClient.is_unset(request.app_name):
             body['appName'] = request.app_name
@@ -101,12 +110,15 @@ class Client(OpenApiClient):
             body['description'] = request.description
         if not UtilClient.is_unset(request.network):
             body['network'] = request.network
+        if not UtilClient.is_unset(request.quota_info):
+            body['quotaInfo'] = request.quota_info
         if not UtilClient.is_unset(request.region_id):
             body['regionId'] = request.region_id
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
             headers=headers,
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
