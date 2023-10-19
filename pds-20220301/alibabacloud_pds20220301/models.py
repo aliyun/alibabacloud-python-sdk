@@ -574,6 +574,354 @@ class AudioPreviewPlayInfo(TeaModel):
         return self
 
 
+class AuthenticationInfo(TeaModel):
+    def __init__(
+        self,
+        authentication_display_name: str = None,
+        authentication_type: str = None,
+        extra: str = None,
+        identity: str = None,
+    ):
+        self.authentication_display_name = authentication_display_name
+        self.authentication_type = authentication_type
+        self.extra = extra
+        self.identity = identity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authentication_display_name is not None:
+            result['authentication_display_name'] = self.authentication_display_name
+        if self.authentication_type is not None:
+            result['authentication_type'] = self.authentication_type
+        if self.extra is not None:
+            result['extra'] = self.extra
+        if self.identity is not None:
+            result['identity'] = self.identity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('authentication_display_name') is not None:
+            self.authentication_display_name = m.get('authentication_display_name')
+        if m.get('authentication_type') is not None:
+            self.authentication_type = m.get('authentication_type')
+        if m.get('extra') is not None:
+            self.extra = m.get('extra')
+        if m.get('identity') is not None:
+            self.identity = m.get('identity')
+        return self
+
+
+class Identity(TeaModel):
+    def __init__(
+        self,
+        identity_id: str = None,
+        identity_type: str = None,
+    ):
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        return self
+
+
+class BaseAssignmentResponse(TeaModel):
+    def __init__(
+        self,
+        associated_role_tag_id: str = None,
+        created_at: str = None,
+        creator: str = None,
+        disinherit_sub_group: bool = None,
+        domain_id: str = None,
+        identity: Identity = None,
+        manage_resource_id: str = None,
+        manage_resource_type: str = None,
+        role_id: str = None,
+        updated_at: str = None,
+    ):
+        self.associated_role_tag_id = associated_role_tag_id
+        self.created_at = created_at
+        self.creator = creator
+        self.disinherit_sub_group = disinherit_sub_group
+        self.domain_id = domain_id
+        self.identity = identity
+        self.manage_resource_id = manage_resource_id
+        self.manage_resource_type = manage_resource_type
+        self.role_id = role_id
+        self.updated_at = updated_at
+
+    def validate(self):
+        if self.identity:
+            self.identity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associated_role_tag_id is not None:
+            result['associated_role_tag_id'] = self.associated_role_tag_id
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.disinherit_sub_group is not None:
+            result['disinherit_sub_group'] = self.disinherit_sub_group
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.manage_resource_id is not None:
+            result['manage_resource_id'] = self.manage_resource_id
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('associated_role_tag_id') is not None:
+            self.associated_role_tag_id = m.get('associated_role_tag_id')
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('disinherit_sub_group') is not None:
+            self.disinherit_sub_group = m.get('disinherit_sub_group')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('manage_resource_id') is not None:
+            self.manage_resource_id = m.get('manage_resource_id')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        return self
+
+
+class BaseDomainResponse(TeaModel):
+    def __init__(
+        self,
+        created_at: str = None,
+        description: str = None,
+        domain_id: str = None,
+        domain_name: str = None,
+        init_drive_enable: bool = None,
+        init_drive_size: int = None,
+        parent_domain_id: str = None,
+        published_app_access_strategy: AppAccessStrategy = None,
+        share_link_enabled: bool = None,
+        size_quota: int = None,
+        size_quota_used: int = None,
+        status: int = None,
+        updated_at: str = None,
+        used_size: int = None,
+    ):
+        self.created_at = created_at
+        self.description = description
+        self.domain_id = domain_id
+        self.domain_name = domain_name
+        self.init_drive_enable = init_drive_enable
+        self.init_drive_size = init_drive_size
+        self.parent_domain_id = parent_domain_id
+        self.published_app_access_strategy = published_app_access_strategy
+        self.share_link_enabled = share_link_enabled
+        self.size_quota = size_quota
+        self.size_quota_used = size_quota_used
+        self.status = status
+        self.updated_at = updated_at
+        self.used_size = used_size
+
+    def validate(self):
+        if self.published_app_access_strategy:
+            self.published_app_access_strategy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.domain_name is not None:
+            result['domain_name'] = self.domain_name
+        if self.init_drive_enable is not None:
+            result['init_drive_enable'] = self.init_drive_enable
+        if self.init_drive_size is not None:
+            result['init_drive_size'] = self.init_drive_size
+        if self.parent_domain_id is not None:
+            result['parent_domain_id'] = self.parent_domain_id
+        if self.published_app_access_strategy is not None:
+            result['published_app_access_strategy'] = self.published_app_access_strategy.to_map()
+        if self.share_link_enabled is not None:
+            result['share_link_enabled'] = self.share_link_enabled
+        if self.size_quota is not None:
+            result['size_quota'] = self.size_quota
+        if self.size_quota_used is not None:
+            result['size_quota_used'] = self.size_quota_used
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.used_size is not None:
+            result['used_size'] = self.used_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('domain_name') is not None:
+            self.domain_name = m.get('domain_name')
+        if m.get('init_drive_enable') is not None:
+            self.init_drive_enable = m.get('init_drive_enable')
+        if m.get('init_drive_size') is not None:
+            self.init_drive_size = m.get('init_drive_size')
+        if m.get('parent_domain_id') is not None:
+            self.parent_domain_id = m.get('parent_domain_id')
+        if m.get('published_app_access_strategy') is not None:
+            temp_model = AppAccessStrategy()
+            self.published_app_access_strategy = temp_model.from_map(m['published_app_access_strategy'])
+        if m.get('share_link_enabled') is not None:
+            self.share_link_enabled = m.get('share_link_enabled')
+        if m.get('size_quota') is not None:
+            self.size_quota = m.get('size_quota')
+        if m.get('size_quota_used') is not None:
+            self.size_quota_used = m.get('size_quota_used')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        if m.get('used_size') is not None:
+            self.used_size = m.get('used_size')
+        return self
+
+
+class BaseRoleMemberResponse(TeaModel):
+    def __init__(
+        self,
+        assignment_list: List[BaseAssignmentResponse] = None,
+        created_at: str = None,
+        creator: str = None,
+        domain_id: str = None,
+        identity: Identity = None,
+        identity_name: str = None,
+        is_admin: bool = None,
+        subdomain_id: str = None,
+    ):
+        self.assignment_list = assignment_list
+        self.created_at = created_at
+        self.creator = creator
+        self.domain_id = domain_id
+        self.identity = identity
+        self.identity_name = identity_name
+        self.is_admin = is_admin
+        self.subdomain_id = subdomain_id
+
+    def validate(self):
+        if self.assignment_list:
+            for k in self.assignment_list:
+                if k:
+                    k.validate()
+        if self.identity:
+            self.identity.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['assignment_list'] = []
+        if self.assignment_list is not None:
+            for k in self.assignment_list:
+                result['assignment_list'].append(k.to_map() if k else None)
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.identity is not None:
+            result['identity'] = self.identity.to_map()
+        if self.identity_name is not None:
+            result['identity_name'] = self.identity_name
+        if self.is_admin is not None:
+            result['is_admin'] = self.is_admin
+        if self.subdomain_id is not None:
+            result['subdomain_id'] = self.subdomain_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.assignment_list = []
+        if m.get('assignment_list') is not None:
+            for k in m.get('assignment_list'):
+                temp_model = BaseAssignmentResponse()
+                self.assignment_list.append(temp_model.from_map(k))
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('identity') is not None:
+            temp_model = Identity()
+            self.identity = temp_model.from_map(m['identity'])
+        if m.get('identity_name') is not None:
+            self.identity_name = m.get('identity_name')
+        if m.get('is_admin') is not None:
+            self.is_admin = m.get('is_admin')
+        if m.get('subdomain_id') is not None:
+            self.subdomain_id = m.get('subdomain_id')
+        return self
+
+
 class BenefitPkgDeliveryInfo(TeaModel):
     def __init__(
         self,
@@ -837,6 +1185,670 @@ class CsiCondition(TeaModel):
         if m.get('file_data_punish') is not None:
             temp_model = Condition()
             self.file_data_punish = temp_model.from_map(m['file_data_punish'])
+        return self
+
+
+class CssInstanceProperty(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        global_key: str = None,
+        name: str = None,
+        unit: str = None,
+        value: str = None,
+    ):
+        self.code = code
+        self.global_key = global_key
+        self.name = name
+        self.unit = unit
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.global_key is not None:
+            result['globalKey'] = self.global_key
+        if self.name is not None:
+            result['name'] = self.name
+        if self.unit is not None:
+            result['unit'] = self.unit
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('globalKey') is not None:
+            self.global_key = m.get('globalKey')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('unit') is not None:
+            self.unit = m.get('unit')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class CssInstanceComponent(TeaModel):
+    def __init__(
+        self,
+        component_code: str = None,
+        component_name: str = None,
+        global_key: str = None,
+        instance_property: List[CssInstanceProperty] = None,
+        module_attr_status: int = None,
+        tag: str = None,
+    ):
+        self.component_code = component_code
+        self.component_name = component_name
+        self.global_key = global_key
+        self.instance_property = instance_property
+        self.module_attr_status = module_attr_status
+        self.tag = tag
+
+    def validate(self):
+        if self.instance_property:
+            for k in self.instance_property:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.component_code is not None:
+            result['componentCode'] = self.component_code
+        if self.component_name is not None:
+            result['componentName'] = self.component_name
+        if self.global_key is not None:
+            result['globalKey'] = self.global_key
+        result['instanceProperty'] = []
+        if self.instance_property is not None:
+            for k in self.instance_property:
+                result['instanceProperty'].append(k.to_map() if k else None)
+        if self.module_attr_status is not None:
+            result['moduleAttrStatus'] = self.module_attr_status
+        if self.tag is not None:
+            result['tag'] = self.tag
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('componentCode') is not None:
+            self.component_code = m.get('componentCode')
+        if m.get('componentName') is not None:
+            self.component_name = m.get('componentName')
+        if m.get('globalKey') is not None:
+            self.global_key = m.get('globalKey')
+        self.instance_property = []
+        if m.get('instanceProperty') is not None:
+            for k in m.get('instanceProperty'):
+                temp_model = CssInstanceProperty()
+                self.instance_property.append(temp_model.from_map(k))
+        if m.get('moduleAttrStatus') is not None:
+            self.module_attr_status = m.get('moduleAttrStatus')
+        if m.get('tag') is not None:
+            self.tag = m.get('tag')
+        return self
+
+
+class CssInstanceCommodity(TeaModel):
+    def __init__(
+        self,
+        activity_id: int = None,
+        aliyun_produce_code: str = None,
+        charge_type: str = None,
+        commodity_code: str = None,
+        components: List[CssInstanceComponent] = None,
+        duration: int = None,
+        instance_id: str = None,
+        is_free: bool = None,
+        is_pre_pay_post_charge: bool = None,
+        is_renew_change: bool = None,
+        is_sync_to_subscription: bool = None,
+        order_params: Dict[str, str] = None,
+        order_type: str = None,
+        plan_item_id: int = None,
+        pricing_cycle: str = None,
+        quantity: int = None,
+        redeem_no_list: List[str] = None,
+        redeem_order_type: str = None,
+        refund_spec_code: str = None,
+        spec_code: str = None,
+        spec_upgrade_origin_spec_codes: List[str] = None,
+        specify_start_date: int = None,
+        upgrade_inquire_financial_value: bool = None,
+    ):
+        self.activity_id = activity_id
+        self.aliyun_produce_code = aliyun_produce_code
+        self.charge_type = charge_type
+        self.commodity_code = commodity_code
+        self.components = components
+        self.duration = duration
+        self.instance_id = instance_id
+        self.is_free = is_free
+        self.is_pre_pay_post_charge = is_pre_pay_post_charge
+        self.is_renew_change = is_renew_change
+        self.is_sync_to_subscription = is_sync_to_subscription
+        self.order_params = order_params
+        self.order_type = order_type
+        self.plan_item_id = plan_item_id
+        self.pricing_cycle = pricing_cycle
+        self.quantity = quantity
+        self.redeem_no_list = redeem_no_list
+        self.redeem_order_type = redeem_order_type
+        self.refund_spec_code = refund_spec_code
+        self.spec_code = spec_code
+        self.spec_upgrade_origin_spec_codes = spec_upgrade_origin_spec_codes
+        self.specify_start_date = specify_start_date
+        self.upgrade_inquire_financial_value = upgrade_inquire_financial_value
+
+    def validate(self):
+        if self.components:
+            for k in self.components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.activity_id is not None:
+            result['activityId'] = self.activity_id
+        if self.aliyun_produce_code is not None:
+            result['aliyunProduceCode'] = self.aliyun_produce_code
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
+        if self.commodity_code is not None:
+            result['commodityCode'] = self.commodity_code
+        result['components'] = []
+        if self.components is not None:
+            for k in self.components:
+                result['components'].append(k.to_map() if k else None)
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.is_free is not None:
+            result['isFree'] = self.is_free
+        if self.is_pre_pay_post_charge is not None:
+            result['isPrePayPostCharge'] = self.is_pre_pay_post_charge
+        if self.is_renew_change is not None:
+            result['isRenewChange'] = self.is_renew_change
+        if self.is_sync_to_subscription is not None:
+            result['isSyncToSubscription'] = self.is_sync_to_subscription
+        if self.order_params is not None:
+            result['orderParams'] = self.order_params
+        if self.order_type is not None:
+            result['orderType'] = self.order_type
+        if self.plan_item_id is not None:
+            result['planItemId'] = self.plan_item_id
+        if self.pricing_cycle is not None:
+            result['pricingCycle'] = self.pricing_cycle
+        if self.quantity is not None:
+            result['quantity'] = self.quantity
+        if self.redeem_no_list is not None:
+            result['redeemNoList'] = self.redeem_no_list
+        if self.redeem_order_type is not None:
+            result['redeemOrderType'] = self.redeem_order_type
+        if self.refund_spec_code is not None:
+            result['refundSpecCode'] = self.refund_spec_code
+        if self.spec_code is not None:
+            result['specCode'] = self.spec_code
+        if self.spec_upgrade_origin_spec_codes is not None:
+            result['specUpgradeOriginSpecCodes'] = self.spec_upgrade_origin_spec_codes
+        if self.specify_start_date is not None:
+            result['specifyStartDate'] = self.specify_start_date
+        if self.upgrade_inquire_financial_value is not None:
+            result['upgradeInquireFinancialValue'] = self.upgrade_inquire_financial_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('activityId') is not None:
+            self.activity_id = m.get('activityId')
+        if m.get('aliyunProduceCode') is not None:
+            self.aliyun_produce_code = m.get('aliyunProduceCode')
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
+        if m.get('commodityCode') is not None:
+            self.commodity_code = m.get('commodityCode')
+        self.components = []
+        if m.get('components') is not None:
+            for k in m.get('components'):
+                temp_model = CssInstanceComponent()
+                self.components.append(temp_model.from_map(k))
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('isFree') is not None:
+            self.is_free = m.get('isFree')
+        if m.get('isPrePayPostCharge') is not None:
+            self.is_pre_pay_post_charge = m.get('isPrePayPostCharge')
+        if m.get('isRenewChange') is not None:
+            self.is_renew_change = m.get('isRenewChange')
+        if m.get('isSyncToSubscription') is not None:
+            self.is_sync_to_subscription = m.get('isSyncToSubscription')
+        if m.get('orderParams') is not None:
+            self.order_params = m.get('orderParams')
+        if m.get('orderType') is not None:
+            self.order_type = m.get('orderType')
+        if m.get('planItemId') is not None:
+            self.plan_item_id = m.get('planItemId')
+        if m.get('pricingCycle') is not None:
+            self.pricing_cycle = m.get('pricingCycle')
+        if m.get('quantity') is not None:
+            self.quantity = m.get('quantity')
+        if m.get('redeemNoList') is not None:
+            self.redeem_no_list = m.get('redeemNoList')
+        if m.get('redeemOrderType') is not None:
+            self.redeem_order_type = m.get('redeemOrderType')
+        if m.get('refundSpecCode') is not None:
+            self.refund_spec_code = m.get('refundSpecCode')
+        if m.get('specCode') is not None:
+            self.spec_code = m.get('specCode')
+        if m.get('specUpgradeOriginSpecCodes') is not None:
+            self.spec_upgrade_origin_spec_codes = m.get('specUpgradeOriginSpecCodes')
+        if m.get('specifyStartDate') is not None:
+            self.specify_start_date = m.get('specifyStartDate')
+        if m.get('upgradeInquireFinancialValue') is not None:
+            self.upgrade_inquire_financial_value = m.get('upgradeInquireFinancialValue')
+        return self
+
+
+class CssCreateOrderParam(TeaModel):
+    def __init__(
+        self,
+        agent_id: str = None,
+        auto_pay: bool = None,
+        auto_use_coupon: bool = None,
+        bid: str = None,
+        buyer_id: int = None,
+        certificate: str = None,
+        child_id: int = None,
+        cilent_ip: str = None,
+        commodities: List[CssInstanceCommodity] = None,
+        creater_nick: str = None,
+        css_auth_request_param: Any = None,
+        from_app: str = None,
+        language: str = None,
+        market_type: int = None,
+        memo: str = None,
+        order_origin: str = None,
+        order_params: Dict[str, str] = None,
+        payer_id: int = None,
+        plan_group_id: int = None,
+        plan_id: int = None,
+        plan_instance_id: str = None,
+        promotion_code: str = None,
+        promotion_input_param: Any = None,
+        request_id: str = None,
+        skip_channel: bool = None,
+        token: str = None,
+        transient_access: Any = None,
+        umid_token: str = None,
+        user_id: int = None,
+    ):
+        self.agent_id = agent_id
+        self.auto_pay = auto_pay
+        self.auto_use_coupon = auto_use_coupon
+        self.bid = bid
+        self.buyer_id = buyer_id
+        self.certificate = certificate
+        self.child_id = child_id
+        self.cilent_ip = cilent_ip
+        self.commodities = commodities
+        self.creater_nick = creater_nick
+        self.css_auth_request_param = css_auth_request_param
+        self.from_app = from_app
+        self.language = language
+        self.market_type = market_type
+        self.memo = memo
+        self.order_origin = order_origin
+        self.order_params = order_params
+        self.payer_id = payer_id
+        self.plan_group_id = plan_group_id
+        self.plan_id = plan_id
+        self.plan_instance_id = plan_instance_id
+        self.promotion_code = promotion_code
+        self.promotion_input_param = promotion_input_param
+        self.request_id = request_id
+        self.skip_channel = skip_channel
+        self.token = token
+        self.transient_access = transient_access
+        self.umid_token = umid_token
+        self.user_id = user_id
+
+    def validate(self):
+        if self.commodities:
+            for k in self.commodities:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_id is not None:
+            result['agentId'] = self.agent_id
+        if self.auto_pay is not None:
+            result['autoPay'] = self.auto_pay
+        if self.auto_use_coupon is not None:
+            result['autoUseCoupon'] = self.auto_use_coupon
+        if self.bid is not None:
+            result['bid'] = self.bid
+        if self.buyer_id is not None:
+            result['buyerId'] = self.buyer_id
+        if self.certificate is not None:
+            result['certificate'] = self.certificate
+        if self.child_id is not None:
+            result['childId'] = self.child_id
+        if self.cilent_ip is not None:
+            result['cilentIp'] = self.cilent_ip
+        result['commodities'] = []
+        if self.commodities is not None:
+            for k in self.commodities:
+                result['commodities'].append(k.to_map() if k else None)
+        if self.creater_nick is not None:
+            result['createrNick'] = self.creater_nick
+        if self.css_auth_request_param is not None:
+            result['cssAuthRequestParam'] = self.css_auth_request_param
+        if self.from_app is not None:
+            result['fromApp'] = self.from_app
+        if self.language is not None:
+            result['language'] = self.language
+        if self.market_type is not None:
+            result['marketType'] = self.market_type
+        if self.memo is not None:
+            result['memo'] = self.memo
+        if self.order_origin is not None:
+            result['orderOrigin'] = self.order_origin
+        if self.order_params is not None:
+            result['orderParams'] = self.order_params
+        if self.payer_id is not None:
+            result['payerId'] = self.payer_id
+        if self.plan_group_id is not None:
+            result['planGroupId'] = self.plan_group_id
+        if self.plan_id is not None:
+            result['planId'] = self.plan_id
+        if self.plan_instance_id is not None:
+            result['planInstanceId'] = self.plan_instance_id
+        if self.promotion_code is not None:
+            result['promotionCode'] = self.promotion_code
+        if self.promotion_input_param is not None:
+            result['promotionInputParam'] = self.promotion_input_param
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.skip_channel is not None:
+            result['skipChannel'] = self.skip_channel
+        if self.token is not None:
+            result['token'] = self.token
+        if self.transient_access is not None:
+            result['transientAccess'] = self.transient_access
+        if self.umid_token is not None:
+            result['umidToken'] = self.umid_token
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('agentId') is not None:
+            self.agent_id = m.get('agentId')
+        if m.get('autoPay') is not None:
+            self.auto_pay = m.get('autoPay')
+        if m.get('autoUseCoupon') is not None:
+            self.auto_use_coupon = m.get('autoUseCoupon')
+        if m.get('bid') is not None:
+            self.bid = m.get('bid')
+        if m.get('buyerId') is not None:
+            self.buyer_id = m.get('buyerId')
+        if m.get('certificate') is not None:
+            self.certificate = m.get('certificate')
+        if m.get('childId') is not None:
+            self.child_id = m.get('childId')
+        if m.get('cilentIp') is not None:
+            self.cilent_ip = m.get('cilentIp')
+        self.commodities = []
+        if m.get('commodities') is not None:
+            for k in m.get('commodities'):
+                temp_model = CssInstanceCommodity()
+                self.commodities.append(temp_model.from_map(k))
+        if m.get('createrNick') is not None:
+            self.creater_nick = m.get('createrNick')
+        if m.get('cssAuthRequestParam') is not None:
+            self.css_auth_request_param = m.get('cssAuthRequestParam')
+        if m.get('fromApp') is not None:
+            self.from_app = m.get('fromApp')
+        if m.get('language') is not None:
+            self.language = m.get('language')
+        if m.get('marketType') is not None:
+            self.market_type = m.get('marketType')
+        if m.get('memo') is not None:
+            self.memo = m.get('memo')
+        if m.get('orderOrigin') is not None:
+            self.order_origin = m.get('orderOrigin')
+        if m.get('orderParams') is not None:
+            self.order_params = m.get('orderParams')
+        if m.get('payerId') is not None:
+            self.payer_id = m.get('payerId')
+        if m.get('planGroupId') is not None:
+            self.plan_group_id = m.get('planGroupId')
+        if m.get('planId') is not None:
+            self.plan_id = m.get('planId')
+        if m.get('planInstanceId') is not None:
+            self.plan_instance_id = m.get('planInstanceId')
+        if m.get('promotionCode') is not None:
+            self.promotion_code = m.get('promotionCode')
+        if m.get('promotionInputParam') is not None:
+            self.promotion_input_param = m.get('promotionInputParam')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('skipChannel') is not None:
+            self.skip_channel = m.get('skipChannel')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('transientAccess') is not None:
+            self.transient_access = m.get('transientAccess')
+        if m.get('umidToken') is not None:
+            self.umid_token = m.get('umidToken')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
+class CssPurchase(TeaModel):
+    def __init__(
+        self,
+        charge_type: str = None,
+        commodity_code: str = None,
+        end_date: int = None,
+        gmt_create: int = None,
+        instance_components: List[CssInstanceComponent] = None,
+        instance_id: str = None,
+        order_type: str = None,
+        purchase_params: Dict[str, str] = None,
+        start_date: int = None,
+    ):
+        self.charge_type = charge_type
+        self.commodity_code = commodity_code
+        self.end_date = end_date
+        self.gmt_create = gmt_create
+        self.instance_components = instance_components
+        self.instance_id = instance_id
+        self.order_type = order_type
+        self.purchase_params = purchase_params
+        self.start_date = start_date
+
+    def validate(self):
+        if self.instance_components:
+            for k in self.instance_components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charge_type is not None:
+            result['chargeType'] = self.charge_type
+        if self.commodity_code is not None:
+            result['commodityCode'] = self.commodity_code
+        if self.end_date is not None:
+            result['endDate'] = self.end_date
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        result['instanceComponents'] = []
+        if self.instance_components is not None:
+            for k in self.instance_components:
+                result['instanceComponents'].append(k.to_map() if k else None)
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.order_type is not None:
+            result['orderType'] = self.order_type
+        if self.purchase_params is not None:
+            result['purchaseParams'] = self.purchase_params
+        if self.start_date is not None:
+            result['startDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('chargeType') is not None:
+            self.charge_type = m.get('chargeType')
+        if m.get('commodityCode') is not None:
+            self.commodity_code = m.get('commodityCode')
+        if m.get('endDate') is not None:
+            self.end_date = m.get('endDate')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        self.instance_components = []
+        if m.get('instanceComponents') is not None:
+            for k in m.get('instanceComponents'):
+                temp_model = CssInstanceComponent()
+                self.instance_components.append(temp_model.from_map(k))
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('orderType') is not None:
+            self.order_type = m.get('orderType')
+        if m.get('purchaseParams') is not None:
+            self.purchase_params = m.get('purchaseParams')
+        if m.get('startDate') is not None:
+            self.start_date = m.get('startDate')
+        return self
+
+
+class CssProduce(TeaModel):
+    def __init__(
+        self,
+        bid: str = None,
+        buyer_id: int = None,
+        child_id: int = None,
+        from_app: str = None,
+        order_id: int = None,
+        payer_id: int = None,
+        purchases: List[CssPurchase] = None,
+        request_id: str = None,
+        skip_channel: bool = None,
+        token: str = None,
+        user_id: int = None,
+    ):
+        self.bid = bid
+        self.buyer_id = buyer_id
+        self.child_id = child_id
+        self.from_app = from_app
+        self.order_id = order_id
+        self.payer_id = payer_id
+        self.purchases = purchases
+        self.request_id = request_id
+        self.skip_channel = skip_channel
+        self.token = token
+        self.user_id = user_id
+
+    def validate(self):
+        if self.purchases:
+            for k in self.purchases:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bid is not None:
+            result['bid'] = self.bid
+        if self.buyer_id is not None:
+            result['buyerId'] = self.buyer_id
+        if self.child_id is not None:
+            result['childId'] = self.child_id
+        if self.from_app is not None:
+            result['fromApp'] = self.from_app
+        if self.order_id is not None:
+            result['orderId'] = self.order_id
+        if self.payer_id is not None:
+            result['payerId'] = self.payer_id
+        result['purchases'] = []
+        if self.purchases is not None:
+            for k in self.purchases:
+                result['purchases'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.skip_channel is not None:
+            result['skipChannel'] = self.skip_channel
+        if self.token is not None:
+            result['token'] = self.token
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bid') is not None:
+            self.bid = m.get('bid')
+        if m.get('buyerId') is not None:
+            self.buyer_id = m.get('buyerId')
+        if m.get('childId') is not None:
+            self.child_id = m.get('childId')
+        if m.get('fromApp') is not None:
+            self.from_app = m.get('fromApp')
+        if m.get('orderId') is not None:
+            self.order_id = m.get('orderId')
+        if m.get('payerId') is not None:
+            self.payer_id = m.get('payerId')
+        self.purchases = []
+        if m.get('purchases') is not None:
+            for k in m.get('purchases'):
+                temp_model = CssPurchase()
+                self.purchases.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('skipChannel') is not None:
+            self.skip_channel = m.get('skipChannel')
+        if m.get('token') is not None:
+            self.token = m.get('token')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
         return self
 
 
@@ -1279,6 +2291,152 @@ class FileInvestigationInfo(TeaModel):
         return self
 
 
+class VideoMediaAudioStream(TeaModel):
+    def __init__(
+        self,
+        bit_rate: str = None,
+        code_name: str = None,
+        duration: str = None,
+    ):
+        self.bit_rate = bit_rate
+        self.code_name = code_name
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bit_rate is not None:
+            result['bit_rate'] = self.bit_rate
+        if self.code_name is not None:
+            result['code_name'] = self.code_name
+        if self.duration is not None:
+            result['duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bit_rate') is not None:
+            self.bit_rate = m.get('bit_rate')
+        if m.get('code_name') is not None:
+            self.code_name = m.get('code_name')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        return self
+
+
+class VideoMediaVideoStream(TeaModel):
+    def __init__(
+        self,
+        bitrate: str = None,
+        code_name: str = None,
+        duration: str = None,
+        frame_count: str = None,
+    ):
+        self.bitrate = bitrate
+        self.code_name = code_name
+        self.duration = duration
+        self.frame_count = frame_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bitrate is not None:
+            result['bitrate'] = self.bitrate
+        if self.code_name is not None:
+            result['code_name'] = self.code_name
+        if self.duration is not None:
+            result['duration'] = self.duration
+        if self.frame_count is not None:
+            result['frame_count'] = self.frame_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bitrate') is not None:
+            self.bitrate = m.get('bitrate')
+        if m.get('code_name') is not None:
+            self.code_name = m.get('code_name')
+        if m.get('duration') is not None:
+            self.duration = m.get('duration')
+        if m.get('frame_count') is not None:
+            self.frame_count = m.get('frame_count')
+        return self
+
+
+class VideoMediaMetadata(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        video_media_audio_stream: List[VideoMediaAudioStream] = None,
+        video_media_video_stream: List[VideoMediaVideoStream] = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.video_media_audio_stream = video_media_audio_stream
+        self.video_media_video_stream = video_media_video_stream
+        self.width = width
+
+    def validate(self):
+        if self.video_media_audio_stream:
+            for k in self.video_media_audio_stream:
+                if k:
+                    k.validate()
+        if self.video_media_video_stream:
+            for k in self.video_media_video_stream:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['height'] = self.height
+        result['video_media_audio_stream'] = []
+        if self.video_media_audio_stream is not None:
+            for k in self.video_media_audio_stream:
+                result['video_media_audio_stream'].append(k.to_map() if k else None)
+        result['video_media_video_stream'] = []
+        if self.video_media_video_stream is not None:
+            for k in self.video_media_video_stream:
+                result['video_media_video_stream'].append(k.to_map() if k else None)
+        if self.width is not None:
+            result['width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('height') is not None:
+            self.height = m.get('height')
+        self.video_media_audio_stream = []
+        if m.get('video_media_audio_stream') is not None:
+            for k in m.get('video_media_audio_stream'):
+                temp_model = VideoMediaAudioStream()
+                self.video_media_audio_stream.append(temp_model.from_map(k))
+        self.video_media_video_stream = []
+        if m.get('video_media_video_stream') is not None:
+            for k in m.get('video_media_video_stream'):
+                temp_model = VideoMediaVideoStream()
+                self.video_media_video_stream.append(temp_model.from_map(k))
+        if m.get('width') is not None:
+            self.width = m.get('width')
+        return self
+
+
 class File(TeaModel):
     def __init__(
         self,
@@ -1312,6 +2470,7 @@ class File(TeaModel):
         updated_at: str = None,
         upload_id: str = None,
         user_tags: Dict[str, str] = None,
+        video_media_metadata: VideoMediaMetadata = None,
     ):
         self.category = category
         self.content_hash = content_hash
@@ -1343,10 +2502,13 @@ class File(TeaModel):
         self.updated_at = updated_at
         self.upload_id = upload_id
         self.user_tags = user_tags
+        self.video_media_metadata = video_media_metadata
 
     def validate(self):
         if self.investigation_info:
             self.investigation_info.validate()
+        if self.video_media_metadata:
+            self.video_media_metadata.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1414,6 +2576,8 @@ class File(TeaModel):
             result['upload_id'] = self.upload_id
         if self.user_tags is not None:
             result['user_tags'] = self.user_tags
+        if self.video_media_metadata is not None:
+            result['video_media_metadata'] = self.video_media_metadata.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -1479,6 +2643,9 @@ class File(TeaModel):
             self.upload_id = m.get('upload_id')
         if m.get('user_tags') is not None:
             self.user_tags = m.get('user_tags')
+        if m.get('video_media_metadata') is not None:
+            temp_model = VideoMediaMetadata()
+            self.video_media_metadata = temp_model.from_map(m['video_media_metadata'])
         return self
 
 
@@ -1536,39 +2703,6 @@ class FileDownloadCallbackInfo(TeaModel):
             self.object = m.get('object')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
-        return self
-
-
-class Identity(TeaModel):
-    def __init__(
-        self,
-        identity_id: str = None,
-        identity_type: str = None,
-    ):
-        self.identity_id = identity_id
-        self.identity_type = identity_type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.identity_id is not None:
-            result['identity_id'] = self.identity_id
-        if self.identity_type is not None:
-            result['identity_type'] = self.identity_type
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('identity_id') is not None:
-            self.identity_id = m.get('identity_id')
-        if m.get('identity_type') is not None:
-            self.identity_type = m.get('identity_type')
         return self
 
 
@@ -2665,6 +3799,87 @@ class LocationDateCluster(TeaModel):
         return self
 
 
+class Membership(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        creator: str = None,
+        description: str = None,
+        domain_id: str = None,
+        group_id: str = None,
+        member_role: str = None,
+        member_type: str = None,
+        sub_group_id: str = None,
+        updated_at: int = None,
+        user_id: str = None,
+    ):
+        self.created_at = created_at
+        self.creator = creator
+        self.description = description
+        self.domain_id = domain_id
+        self.group_id = group_id
+        self.member_role = member_role
+        self.member_type = member_type
+        self.sub_group_id = sub_group_id
+        self.updated_at = updated_at
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.domain_id is not None:
+            result['domain_id'] = self.domain_id
+        if self.group_id is not None:
+            result['group_id'] = self.group_id
+        if self.member_role is not None:
+            result['member_role'] = self.member_role
+        if self.member_type is not None:
+            result['member_type'] = self.member_type
+        if self.sub_group_id is not None:
+            result['sub_group_id'] = self.sub_group_id
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('domain_id') is not None:
+            self.domain_id = m.get('domain_id')
+        if m.get('group_id') is not None:
+            self.group_id = m.get('group_id')
+        if m.get('member_role') is not None:
+            self.member_role = m.get('member_role')
+        if m.get('member_type') is not None:
+            self.member_type = m.get('member_type')
+        if m.get('sub_group_id') is not None:
+            self.sub_group_id = m.get('sub_group_id')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class NameCheckResult(TeaModel):
     def __init__(
         self,
@@ -2695,6 +3910,33 @@ class NameCheckResult(TeaModel):
             self.exist_file_id = m.get('exist_file_id')
         if m.get('exist_file_type') is not None:
             self.exist_file_type = m.get('exist_file_type')
+        return self
+
+
+class PermissionActionList(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+    ):
+        self.action = action
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
         return self
 
 
@@ -2862,6 +4104,218 @@ class PermissionCondition(TeaModel):
         return self
 
 
+class Permission(TeaModel):
+    def __init__(
+        self,
+        action_list: List[PermissionActionList] = None,
+        collection: str = None,
+        condition: PermissionCondition = None,
+        created_at: int = None,
+        effect: str = None,
+        identity_id: str = None,
+        identity_type: str = None,
+        resource: str = None,
+        resource_type: str = None,
+        updated_at: int = None,
+        user_tags: List[str] = None,
+    ):
+        self.action_list = action_list
+        self.collection = collection
+        self.condition = condition
+        self.created_at = created_at
+        self.effect = effect
+        self.identity_id = identity_id
+        self.identity_type = identity_type
+        self.resource = resource
+        self.resource_type = resource_type
+        self.updated_at = updated_at
+        self.user_tags = user_tags
+
+    def validate(self):
+        if self.action_list:
+            for k in self.action_list:
+                if k:
+                    k.validate()
+        if self.condition:
+            self.condition.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['action_list'] = []
+        if self.action_list is not None:
+            for k in self.action_list:
+                result['action_list'].append(k.to_map() if k else None)
+        if self.collection is not None:
+            result['collection'] = self.collection
+        if self.condition is not None:
+            result['condition'] = self.condition.to_map()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.effect is not None:
+            result['effect'] = self.effect
+        if self.identity_id is not None:
+            result['identity_id'] = self.identity_id
+        if self.identity_type is not None:
+            result['identity_type'] = self.identity_type
+        if self.resource is not None:
+            result['resource'] = self.resource
+        if self.resource_type is not None:
+            result['resource_type'] = self.resource_type
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        if self.user_tags is not None:
+            result['user_tags'] = self.user_tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.action_list = []
+        if m.get('action_list') is not None:
+            for k in m.get('action_list'):
+                temp_model = PermissionActionList()
+                self.action_list.append(temp_model.from_map(k))
+        if m.get('collection') is not None:
+            self.collection = m.get('collection')
+        if m.get('condition') is not None:
+            temp_model = PermissionCondition()
+            self.condition = temp_model.from_map(m['condition'])
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('effect') is not None:
+            self.effect = m.get('effect')
+        if m.get('identity_id') is not None:
+            self.identity_id = m.get('identity_id')
+        if m.get('identity_type') is not None:
+            self.identity_type = m.get('identity_type')
+        if m.get('resource') is not None:
+            self.resource = m.get('resource')
+        if m.get('resource_type') is not None:
+            self.resource_type = m.get('resource_type')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
+        if m.get('user_tags') is not None:
+            self.user_tags = m.get('user_tags')
+        return self
+
+
+class PunishRule(TeaModel):
+    def __init__(
+        self,
+        action_code: str = None,
+        ends_at: str = None,
+        impermanent: bool = None,
+        starts_at: str = None,
+    ):
+        self.action_code = action_code
+        self.ends_at = ends_at
+        self.impermanent = impermanent
+        self.starts_at = starts_at
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_code is not None:
+            result['action_code'] = self.action_code
+        if self.ends_at is not None:
+            result['ends_at'] = self.ends_at
+        if self.impermanent is not None:
+            result['impermanent'] = self.impermanent
+        if self.starts_at is not None:
+            result['starts_at'] = self.starts_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action_code') is not None:
+            self.action_code = m.get('action_code')
+        if m.get('ends_at') is not None:
+            self.ends_at = m.get('ends_at')
+        if m.get('impermanent') is not None:
+            self.impermanent = m.get('impermanent')
+        if m.get('starts_at') is not None:
+            self.starts_at = m.get('starts_at')
+        return self
+
+
+class RefundNoticeParam(TeaModel):
+    def __init__(
+        self,
+        aliuid: int = None,
+        aliyun_produce_code: str = None,
+        commodity_code: str = None,
+        instance_id: str = None,
+        new_expire_time: Any = None,
+        order_ids: List[int] = None,
+        refund_param_map: Dict[str, str] = None,
+        refund_type: str = None,
+    ):
+        self.aliuid = aliuid
+        self.aliyun_produce_code = aliyun_produce_code
+        self.commodity_code = commodity_code
+        self.instance_id = instance_id
+        self.new_expire_time = new_expire_time
+        self.order_ids = order_ids
+        self.refund_param_map = refund_param_map
+        self.refund_type = refund_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliuid is not None:
+            result['aliuid'] = self.aliuid
+        if self.aliyun_produce_code is not None:
+            result['aliyunProduceCode'] = self.aliyun_produce_code
+        if self.commodity_code is not None:
+            result['commodityCode'] = self.commodity_code
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.new_expire_time is not None:
+            result['newExpireTime'] = self.new_expire_time
+        if self.order_ids is not None:
+            result['orderIds'] = self.order_ids
+        if self.refund_param_map is not None:
+            result['refundParamMap'] = self.refund_param_map
+        if self.refund_type is not None:
+            result['refundType'] = self.refund_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliuid') is not None:
+            self.aliuid = m.get('aliuid')
+        if m.get('aliyunProduceCode') is not None:
+            self.aliyun_produce_code = m.get('aliyunProduceCode')
+        if m.get('commodityCode') is not None:
+            self.commodity_code = m.get('commodityCode')
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('newExpireTime') is not None:
+            self.new_expire_time = m.get('newExpireTime')
+        if m.get('orderIds') is not None:
+            self.order_ids = m.get('orderIds')
+        if m.get('refundParamMap') is not None:
+            self.refund_param_map = m.get('refundParamMap')
+        if m.get('refundType') is not None:
+            self.refund_type = m.get('refundType')
+        return self
+
+
 class Revision(TeaModel):
     def __init__(
         self,
@@ -3006,6 +4460,89 @@ class Revision(TeaModel):
             self.updated_at = m.get('updated_at')
         if m.get('url') is not None:
             self.url = m.get('url')
+        return self
+
+
+class Role(TeaModel):
+    def __init__(
+        self,
+        created_at: int = None,
+        creator: str = None,
+        description: str = None,
+        manage_resource_type: str = None,
+        name: str = None,
+        permissions: List[Permission] = None,
+        role_id: str = None,
+        status: str = None,
+        updated_at: int = None,
+    ):
+        self.created_at = created_at
+        self.creator = creator
+        self.description = description
+        self.manage_resource_type = manage_resource_type
+        self.name = name
+        self.permissions = permissions
+        self.role_id = role_id
+        self.status = status
+        self.updated_at = updated_at
+
+    def validate(self):
+        if self.permissions:
+            for k in self.permissions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.created_at is not None:
+            result['created_at'] = self.created_at
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.description is not None:
+            result['description'] = self.description
+        if self.manage_resource_type is not None:
+            result['manage_resource_type'] = self.manage_resource_type
+        if self.name is not None:
+            result['name'] = self.name
+        result['permissions'] = []
+        if self.permissions is not None:
+            for k in self.permissions:
+                result['permissions'].append(k.to_map() if k else None)
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.status is not None:
+            result['status'] = self.status
+        if self.updated_at is not None:
+            result['updated_at'] = self.updated_at
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created_at') is not None:
+            self.created_at = m.get('created_at')
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('manage_resource_type') is not None:
+            self.manage_resource_type = m.get('manage_resource_type')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.permissions = []
+        if m.get('permissions') is not None:
+            for k in m.get('permissions'):
+                temp_model = Permission()
+                self.permissions.append(temp_model.from_map(k))
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('updated_at') is not None:
+            self.updated_at = m.get('updated_at')
         return self
 
 
@@ -3890,39 +5427,6 @@ class UserTag(TeaModel):
         return self
 
 
-class VideoMediaMetadata(TeaModel):
-    def __init__(
-        self,
-        duration: str = None,
-        taken_at: str = None,
-    ):
-        self.duration = duration
-        self.taken_at = taken_at
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.duration is not None:
-            result['duration'] = self.duration
-        if self.taken_at is not None:
-            result['taken_at'] = self.taken_at
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('duration') is not None:
-            self.duration = m.get('duration')
-        if m.get('taken_at') is not None:
-            self.taken_at = m.get('taken_at')
-        return self
-
-
 class VideoPreviewPlayInfoLiveTranscodingTaskList(TeaModel):
     def __init__(
         self,
@@ -4511,6 +6015,51 @@ class ViewFile(TeaModel):
             self.upload_id = m.get('upload_id')
         if m.get('view_id') is not None:
             self.view_id = m.get('view_id')
+        return self
+
+
+class WatermarkConfig(TeaModel):
+    def __init__(
+        self,
+        display_access_user_name: bool = None,
+        display_share_link_creator_name: bool = None,
+        enable_doc_preview: bool = None,
+        enable_on_preview: bool = None,
+    ):
+        self.display_access_user_name = display_access_user_name
+        self.display_share_link_creator_name = display_share_link_creator_name
+        self.enable_doc_preview = enable_doc_preview
+        self.enable_on_preview = enable_on_preview
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.display_access_user_name is not None:
+            result['display_access_user_name'] = self.display_access_user_name
+        if self.display_share_link_creator_name is not None:
+            result['display_shareLink_creator_name'] = self.display_share_link_creator_name
+        if self.enable_doc_preview is not None:
+            result['enable_doc_preview'] = self.enable_doc_preview
+        if self.enable_on_preview is not None:
+            result['enable_on_preview'] = self.enable_on_preview
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('display_access_user_name') is not None:
+            self.display_access_user_name = m.get('display_access_user_name')
+        if m.get('display_shareLink_creator_name') is not None:
+            self.display_share_link_creator_name = m.get('display_shareLink_creator_name')
+        if m.get('enable_doc_preview') is not None:
+            self.enable_doc_preview = m.get('enable_doc_preview')
+        if m.get('enable_on_preview') is not None:
+            self.enable_on_preview = m.get('enable_on_preview')
         return self
 
 
@@ -6146,14 +7695,14 @@ class CreateDriveResponse(TeaModel):
         return self
 
 
-class CreateFileRequestPartInfoList(TeaModel):
+class CreateFileRequestPartInfoListParallelSha1Ctx(TeaModel):
     def __init__(
         self,
-        content_md_5: str = None,
-        part_number: int = None,
+        h: List[int] = None,
+        part_offset: int = None,
     ):
-        self.content_md_5 = content_md_5
-        self.part_number = part_number
+        self.h = h
+        self.part_offset = part_offset
 
     def validate(self):
         pass
@@ -6164,8 +7713,46 @@ class CreateFileRequestPartInfoList(TeaModel):
             return _map
 
         result = dict()
+        if self.h is not None:
+            result['h'] = self.h
+        if self.part_offset is not None:
+            result['part_offset'] = self.part_offset
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('h') is not None:
+            self.h = m.get('h')
+        if m.get('part_offset') is not None:
+            self.part_offset = m.get('part_offset')
+        return self
+
+
+class CreateFileRequestPartInfoList(TeaModel):
+    def __init__(
+        self,
+        content_md_5: str = None,
+        parallel_sha_1ctx: CreateFileRequestPartInfoListParallelSha1Ctx = None,
+        part_number: int = None,
+    ):
+        self.content_md_5 = content_md_5
+        self.parallel_sha_1ctx = parallel_sha_1ctx
+        self.part_number = part_number
+
+    def validate(self):
+        if self.parallel_sha_1ctx:
+            self.parallel_sha_1ctx.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.content_md_5 is not None:
             result['content_md5'] = self.content_md_5
+        if self.parallel_sha_1ctx is not None:
+            result['parallel_sha1_ctx'] = self.parallel_sha_1ctx.to_map()
         if self.part_number is not None:
             result['part_number'] = self.part_number
         return result
@@ -6174,6 +7761,9 @@ class CreateFileRequestPartInfoList(TeaModel):
         m = m or dict()
         if m.get('content_md5') is not None:
             self.content_md_5 = m.get('content_md5')
+        if m.get('parallel_sha1_ctx') is not None:
+            temp_model = CreateFileRequestPartInfoListParallelSha1Ctx()
+            self.parallel_sha_1ctx = temp_model.from_map(m['parallel_sha1_ctx'])
         if m.get('part_number') is not None:
             self.part_number = m.get('part_number')
         return self
@@ -6662,6 +8252,164 @@ class CreateIdentityToBenefitPkgMappingResponse(TeaModel):
         return self
 
 
+class CreateOrderRequest(TeaModel):
+    def __init__(
+        self,
+        auto_pay: bool = None,
+        auto_renew: bool = None,
+        code: str = None,
+        instance_id: str = None,
+        order_type: str = None,
+        package: str = None,
+        period: int = None,
+        period_unit: str = None,
+        total_size: int = None,
+        user_count: int = None,
+    ):
+        self.auto_pay = auto_pay
+        self.auto_renew = auto_renew
+        self.code = code
+        self.instance_id = instance_id
+        self.order_type = order_type
+        self.package = package
+        self.period = period
+        self.period_unit = period_unit
+        self.total_size = total_size
+        self.user_count = user_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_pay is not None:
+            result['auto_pay'] = self.auto_pay
+        if self.auto_renew is not None:
+            result['auto_renew'] = self.auto_renew
+        if self.code is not None:
+            result['code'] = self.code
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.order_type is not None:
+            result['order_type'] = self.order_type
+        if self.package is not None:
+            result['package'] = self.package
+        if self.period is not None:
+            result['period'] = self.period
+        if self.period_unit is not None:
+            result['period_unit'] = self.period_unit
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.user_count is not None:
+            result['user_count'] = self.user_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('auto_pay') is not None:
+            self.auto_pay = m.get('auto_pay')
+        if m.get('auto_renew') is not None:
+            self.auto_renew = m.get('auto_renew')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('order_type') is not None:
+            self.order_type = m.get('order_type')
+        if m.get('package') is not None:
+            self.package = m.get('package')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('total_size') is not None:
+            self.total_size = m.get('total_size')
+        if m.get('user_count') is not None:
+            self.user_count = m.get('user_count')
+        return self
+
+
+class CreateOrderResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        order_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.order_id = order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.order_id is not None:
+            result['order_id'] = self.order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('order_id') is not None:
+            self.order_id = m.get('order_id')
+        return self
+
+
+class CreateOrderResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOrderResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOrderResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateShareLinkRequest(TeaModel):
     def __init__(
         self,
@@ -7113,7 +8861,7 @@ class CreateUserRequest(TeaModel):
         phone: str = None,
         role: str = None,
         status: str = None,
-        user_data: str = None,
+        user_data: Dict[str, Any] = None,
         user_id: str = None,
         user_name: str = None,
     ):
@@ -7212,7 +8960,7 @@ class CreateUserResponseBody(TeaModel):
         role: str = None,
         status: str = None,
         updated_at: int = None,
-        user_data: Dict[str, str] = None,
+        user_data: Dict[str, Any] = None,
         user_id: str = None,
         user_name: str = None,
     ):
@@ -9325,16 +11073,21 @@ class GetFileRequest(TeaModel):
         fields: str = None,
         file_id: str = None,
         share_id: str = None,
+        thumbnail_processes: Dict[str, ImageProcess] = None,
         url_expire_sec: int = None,
     ):
         self.drive_id = drive_id
         self.fields = fields
         self.file_id = file_id
         self.share_id = share_id
+        self.thumbnail_processes = thumbnail_processes
         self.url_expire_sec = url_expire_sec
 
     def validate(self):
-        pass
+        if self.thumbnail_processes:
+            for v in self.thumbnail_processes.values():
+                if v:
+                    v.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9350,6 +11103,10 @@ class GetFileRequest(TeaModel):
             result['file_id'] = self.file_id
         if self.share_id is not None:
             result['share_id'] = self.share_id
+        result['thumbnail_processes'] = {}
+        if self.thumbnail_processes is not None:
+            for k, v in self.thumbnail_processes.items():
+                result['thumbnail_processes'][k] = v.to_map()
         if self.url_expire_sec is not None:
             result['url_expire_sec'] = self.url_expire_sec
         return result
@@ -9364,6 +11121,11 @@ class GetFileRequest(TeaModel):
             self.file_id = m.get('file_id')
         if m.get('share_id') is not None:
             self.share_id = m.get('share_id')
+        self.thumbnail_processes = {}
+        if m.get('thumbnail_processes') is not None:
+            for k, v in m.get('thumbnail_processes').items():
+                temp_model = ImageProcess()
+                self.thumbnail_processes[k] = temp_model.from_map(v)
         if m.get('url_expire_sec') is not None:
             self.url_expire_sec = m.get('url_expire_sec')
         return self
@@ -14175,6 +15937,158 @@ class MoveFileResponse(TeaModel):
         return self
 
 
+class QueryOrderPriceRequest(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        instance_id: str = None,
+        order_type: str = None,
+        package: str = None,
+        period: int = None,
+        period_unit: str = None,
+        total_size: int = None,
+        user_count: int = None,
+    ):
+        self.code = code
+        self.instance_id = instance_id
+        self.order_type = order_type
+        self.package = package
+        self.period = period
+        self.period_unit = period_unit
+        self.total_size = total_size
+        self.user_count = user_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
+        if self.order_type is not None:
+            result['order_type'] = self.order_type
+        if self.package is not None:
+            result['package'] = self.package
+        if self.period is not None:
+            result['period'] = self.period
+        if self.period_unit is not None:
+            result['period_unit'] = self.period_unit
+        if self.total_size is not None:
+            result['total_size'] = self.total_size
+        if self.user_count is not None:
+            result['user_count'] = self.user_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
+        if m.get('order_type') is not None:
+            self.order_type = m.get('order_type')
+        if m.get('package') is not None:
+            self.package = m.get('package')
+        if m.get('period') is not None:
+            self.period = m.get('period')
+        if m.get('period_unit') is not None:
+            self.period_unit = m.get('period_unit')
+        if m.get('total_size') is not None:
+            self.total_size = m.get('total_size')
+        if m.get('user_count') is not None:
+            self.user_count = m.get('user_count')
+        return self
+
+
+class QueryOrderPriceResponseBody(TeaModel):
+    def __init__(
+        self,
+        discount_price: float = None,
+        original_price: float = None,
+        trade_price: float = None,
+    ):
+        self.discount_price = discount_price
+        self.original_price = original_price
+        self.trade_price = trade_price
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.discount_price is not None:
+            result['discount_price'] = self.discount_price
+        if self.original_price is not None:
+            result['original_price'] = self.original_price
+        if self.trade_price is not None:
+            result['trade_price'] = self.trade_price
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('discount_price') is not None:
+            self.discount_price = m.get('discount_price')
+        if m.get('original_price') is not None:
+            self.original_price = m.get('original_price')
+        if m.get('trade_price') is not None:
+            self.trade_price = m.get('trade_price')
+        return self
+
+
+class QueryOrderPriceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryOrderPriceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryOrderPriceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveFaceGroupFileRequest(TeaModel):
     def __init__(
         self,
@@ -14958,11 +16872,13 @@ class SearchAddressGroupsResponse(TeaModel):
 class SearchDomainsRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         limit: int = None,
         marker: str = None,
         name: str = None,
         order_by: str = None,
     ):
+        self.instance_id = instance_id
         self.limit = limit
         self.marker = marker
         self.name = name
@@ -14977,6 +16893,8 @@ class SearchDomainsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['instance_id'] = self.instance_id
         if self.limit is not None:
             result['limit'] = self.limit
         if self.marker is not None:
@@ -14989,6 +16907,8 @@ class SearchDomainsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('instance_id') is not None:
+            self.instance_id = m.get('instance_id')
         if m.get('limit') is not None:
             self.limit = m.get('limit')
         if m.get('marker') is not None:
@@ -15225,17 +17145,44 @@ class SearchFileRequest(TeaModel):
     def __init__(
         self,
         drive_id: str = None,
+        fields: str = None,
         limit: int = None,
         marker: str = None,
         order_by: str = None,
         query: str = None,
         return_total_count: bool = None,
     ):
+        # The drive ID.
         self.drive_id = drive_id
+        self.fields = fields
+        # The maximum number of results to return. Valid values: 1 to 100.
+        # 
+        # The number of returned results must be less than or equal to the specified number.
         self.limit = limit
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\
+        # By default, this parameter is left empty.
         self.marker = marker
+        # The field by which to sort the returned results. Default value: created_at. Valid values:
+        # 
+        # *   created_at: sorts the results by the time when the file was created.
+        # *   updated_at: sorts the results by the time when the file was modified.
+        # *   size: sorts the results by the size of the file.
+        # *   name: sorts the results by the name of the file.
+        # 
+        # The order in which you want to sort the returned results. Valid values:
+        # 
+        # *   ASC: sorts the results in ascending order.
+        # *   DESC: sorts the results in descending order.
+        # 
+        # You must specify this parameter in the \<field name> \<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
+        # 
+        # *   If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
+        # *   If you want to sort the results based on the creation time in descending order, set this parameter to "created_at DESC".
+        # *   If you want to sort the results based on the creation time in descending order first, and then sort the results based on the file name in ascending order if the creation time is the same, set this parameter to "created_at DESC,name ASC".
         self.order_by = order_by
+        # The search condition. Fuzzy searches based on the file name or directory name are supported. The search condition can be up to 4,096 characters in length.
         self.query = query
+        # Specifies whether to return the total number of retrieved files.
         self.return_total_count = return_total_count
 
     def validate(self):
@@ -15249,6 +17196,8 @@ class SearchFileRequest(TeaModel):
         result = dict()
         if self.drive_id is not None:
             result['drive_id'] = self.drive_id
+        if self.fields is not None:
+            result['fields'] = self.fields
         if self.limit is not None:
             result['limit'] = self.limit
         if self.marker is not None:
@@ -15265,6 +17214,8 @@ class SearchFileRequest(TeaModel):
         m = m or dict()
         if m.get('drive_id') is not None:
             self.drive_id = m.get('drive_id')
+        if m.get('fields') is not None:
+            self.fields = m.get('fields')
         if m.get('limit') is not None:
             self.limit = m.get('limit')
         if m.get('marker') is not None:
@@ -15285,8 +17236,11 @@ class SearchFileResponseBody(TeaModel):
         next_marker: str = None,
         total_count: int = None,
     ):
+        # The information about the files.
         self.items = items
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If next_marker is empty, no next page exists.
         self.next_marker = next_marker
+        # The total number of retrieved files.
         self.total_count = total_count
 
     def validate(self):

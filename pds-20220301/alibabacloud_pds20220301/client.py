@@ -1533,6 +1533,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
 
+    def create_order_with_options(
+        self,
+        request: pds_20220301_models.CreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateOrderResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['auto_pay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['auto_renew'] = request.auto_renew
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.instance_id):
+            body['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.order_type):
+            body['order_type'] = request.order_type
+        if not UtilClient.is_unset(request.package):
+            body['package'] = request.package
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['period_unit'] = request.period_unit
+        if not UtilClient.is_unset(request.total_size):
+            body['total_size'] = request.total_size
+        if not UtilClient.is_unset(request.user_count):
+            body['user_count'] = request.user_count
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOrder',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/create_order',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateOrderResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_order_with_options_async(
+        self,
+        request: pds_20220301_models.CreateOrderRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.CreateOrderResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            body['auto_pay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            body['auto_renew'] = request.auto_renew
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.instance_id):
+            body['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.order_type):
+            body['order_type'] = request.order_type
+        if not UtilClient.is_unset(request.package):
+            body['package'] = request.package
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['period_unit'] = request.period_unit
+        if not UtilClient.is_unset(request.total_size):
+            body['total_size'] = request.total_size
+        if not UtilClient.is_unset(request.user_count):
+            body['user_count'] = request.user_count
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOrder',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/create_order',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.CreateOrderResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_order(
+        self,
+        request: pds_20220301_models.CreateOrderRequest,
+    ) -> pds_20220301_models.CreateOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_order_with_options(request, headers, runtime)
+
+    async def create_order_async(
+        self,
+        request: pds_20220301_models.CreateOrderRequest,
+    ) -> pds_20220301_models.CreateOrderResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_order_with_options_async(request, headers, runtime)
+
     def create_share_link_with_options(
         self,
         request: pds_20220301_models.CreateShareLinkRequest,
@@ -3613,6 +3725,8 @@ class Client(OpenApiClient):
             body['file_id'] = request.file_id
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         if not UtilClient.is_unset(request.url_expire_sec):
             body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
@@ -3651,6 +3765,8 @@ class Client(OpenApiClient):
             body['file_id'] = request.file_id
         if not UtilClient.is_unset(request.share_id):
             body['share_id'] = request.share_id
+        if not UtilClient.is_unset(request.thumbnail_processes):
+            body['thumbnail_processes'] = request.thumbnail_processes
         if not UtilClient.is_unset(request.url_expire_sec):
             body['url_expire_sec'] = request.url_expire_sec
         req = open_api_models.OpenApiRequest(
@@ -6913,6 +7029,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.move_file_with_options_async(request, headers, runtime)
 
+    def query_order_price_with_options(
+        self,
+        request: pds_20220301_models.QueryOrderPriceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.QueryOrderPriceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.instance_id):
+            body['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.order_type):
+            body['order_type'] = request.order_type
+        if not UtilClient.is_unset(request.package):
+            body['package'] = request.package
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['period_unit'] = request.period_unit
+        if not UtilClient.is_unset(request.total_size):
+            body['total_size'] = request.total_size
+        if not UtilClient.is_unset(request.user_count):
+            body['user_count'] = request.user_count
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrderPrice',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/query_order_price',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.QueryOrderPriceResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def query_order_price_with_options_async(
+        self,
+        request: pds_20220301_models.QueryOrderPriceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.QueryOrderPriceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['code'] = request.code
+        if not UtilClient.is_unset(request.instance_id):
+            body['instance_id'] = request.instance_id
+        if not UtilClient.is_unset(request.order_type):
+            body['order_type'] = request.order_type
+        if not UtilClient.is_unset(request.package):
+            body['package'] = request.package
+        if not UtilClient.is_unset(request.period):
+            body['period'] = request.period
+        if not UtilClient.is_unset(request.period_unit):
+            body['period_unit'] = request.period_unit
+        if not UtilClient.is_unset(request.total_size):
+            body['total_size'] = request.total_size
+        if not UtilClient.is_unset(request.user_count):
+            body['user_count'] = request.user_count
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryOrderPrice',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/query_order_price',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.QueryOrderPriceResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def query_order_price(
+        self,
+        request: pds_20220301_models.QueryOrderPriceRequest,
+    ) -> pds_20220301_models.QueryOrderPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.query_order_price_with_options(request, headers, runtime)
+
+    async def query_order_price_async(
+        self,
+        request: pds_20220301_models.QueryOrderPriceRequest,
+    ) -> pds_20220301_models.QueryOrderPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.query_order_price_with_options_async(request, headers, runtime)
+
     def remove_face_group_file_with_options(
         self,
         request: pds_20220301_models.RemoveFaceGroupFileRequest,
@@ -7525,6 +7745,8 @@ class Client(OpenApiClient):
     ) -> pds_20220301_models.SearchDomainsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['instance_id'] = request.instance_id
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -7561,6 +7783,8 @@ class Client(OpenApiClient):
     ) -> pds_20220301_models.SearchDomainsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['instance_id'] = request.instance_id
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -7707,6 +7931,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
@@ -7747,6 +7973,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.drive_id):
             body['drive_id'] = request.drive_id
+        if not UtilClient.is_unset(request.fields):
+            body['fields'] = request.fields
         if not UtilClient.is_unset(request.limit):
             body['limit'] = request.limit
         if not UtilClient.is_unset(request.marker):
