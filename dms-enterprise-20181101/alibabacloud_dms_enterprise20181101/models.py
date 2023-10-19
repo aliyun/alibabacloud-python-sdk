@@ -3145,6 +3145,7 @@ class CreateAuthorityTemplateResponseBody(TeaModel):
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
+        tid: int = None,
     ):
         # The details of the permission template.
         self.authority_template_view = authority_template_view
@@ -3159,6 +3160,7 @@ class CreateAuthorityTemplateResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        self.tid = tid
 
     def validate(self):
         if self.authority_template_view:
@@ -3180,6 +3182,8 @@ class CreateAuthorityTemplateResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -3195,6 +3199,8 @@ class CreateAuthorityTemplateResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -13441,6 +13447,7 @@ class GetAuthorityTemplateResponseBody(TeaModel):
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
+        tid: int = None,
     ):
         # The details of the permission template.
         self.authority_template_view = authority_template_view
@@ -13455,6 +13462,7 @@ class GetAuthorityTemplateResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        self.tid = tid
 
     def validate(self):
         if self.authority_template_view:
@@ -13476,6 +13484,8 @@ class GetAuthorityTemplateResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -13491,6 +13501,8 @@ class GetAuthorityTemplateResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -13699,6 +13711,7 @@ class GetAuthorityTemplateItemResponseBody(TeaModel):
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
+        tid: int = None,
     ):
         # The permission templates.
         self.authority_template_item_list = authority_template_item_list
@@ -13713,6 +13726,7 @@ class GetAuthorityTemplateItemResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        self.tid = tid
 
     def validate(self):
         if self.authority_template_item_list:
@@ -13734,6 +13748,8 @@ class GetAuthorityTemplateItemResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -13749,6 +13765,8 @@ class GetAuthorityTemplateItemResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
@@ -51388,6 +51406,7 @@ class UpdateAuthorityTemplateResponseBody(TeaModel):
         error_message: str = None,
         request_id: str = None,
         success: bool = None,
+        tid: int = None,
     ):
         # The details of the permission template.
         self.authority_template_view = authority_template_view
@@ -51402,6 +51421,7 @@ class UpdateAuthorityTemplateResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        self.tid = tid
 
     def validate(self):
         if self.authority_template_view:
@@ -51423,6 +51443,8 @@ class UpdateAuthorityTemplateResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.success is not None:
             result['Success'] = self.success
+        if self.tid is not None:
+            result['Tid'] = self.tid
         return result
 
     def from_map(self, m: dict = None):
@@ -51438,6 +51460,8 @@ class UpdateAuthorityTemplateResponseBody(TeaModel):
             self.request_id = m.get('RequestId')
         if m.get('Success') is not None:
             self.success = m.get('Success')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
         return self
 
 
