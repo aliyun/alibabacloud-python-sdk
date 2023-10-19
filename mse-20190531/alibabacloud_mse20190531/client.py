@@ -15557,6 +15557,8 @@ class Client(OpenApiClient):
             query['ConfigSecretEnabled'] = request.config_secret_enabled
         if not UtilClient.is_unset(request.config_type):
             query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.console_uienabled):
+            query['ConsoleUIEnabled'] = request.console_uienabled
         if not UtilClient.is_unset(request.eureka_supported):
             query['EurekaSupported'] = request.eureka_supported
         if not UtilClient.is_unset(request.extended_types_enable):
@@ -15635,6 +15637,8 @@ class Client(OpenApiClient):
             query['ConfigSecretEnabled'] = request.config_secret_enabled
         if not UtilClient.is_unset(request.config_type):
             query['ConfigType'] = request.config_type
+        if not UtilClient.is_unset(request.console_uienabled):
+            query['ConsoleUIEnabled'] = request.console_uienabled
         if not UtilClient.is_unset(request.eureka_supported):
             query['EurekaSupported'] = request.eureka_supported
         if not UtilClient.is_unset(request.extended_types_enable):
