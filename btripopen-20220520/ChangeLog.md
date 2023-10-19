@@ -1,3 +1,6 @@
+2023-10-19 Version: 1.5.0
+- Generated python 2022-05-20 for btripOpen.
+
 2023-10-13 Version: 1.4.11
 - Generated python 2022-05-20 for btripOpen.
 
