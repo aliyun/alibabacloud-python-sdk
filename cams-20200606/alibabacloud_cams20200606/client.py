@@ -2123,6 +2123,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_chatapp_verify_code_with_options_async(request, runtime)
 
+    def get_commerce_setting_with_options(
+        self,
+        request: cams_20200606_models.GetCommerceSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetCommerceSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCommerceSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetCommerceSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_commerce_setting_with_options_async(
+        self,
+        request: cams_20200606_models.GetCommerceSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetCommerceSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCommerceSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetCommerceSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_commerce_setting(
+        self,
+        request: cams_20200606_models.GetCommerceSettingRequest,
+    ) -> cams_20200606_models.GetCommerceSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_commerce_setting_with_options(request, runtime)
+
+    async def get_commerce_setting_async(
+        self,
+        request: cams_20200606_models.GetCommerceSettingRequest,
+    ) -> cams_20200606_models.GetCommerceSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_commerce_setting_with_options_async(request, runtime)
+
     def get_migration_verify_code_with_options(
         self,
         request: cams_20200606_models.GetMigrationVerifyCodeRequest,
@@ -2410,6 +2484,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetWhatsappConnectionCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWhatsappConnectionCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2446,6 +2527,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetWhatsappConnectionCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWhatsappConnectionCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cust_space_id):
@@ -2481,6 +2569,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
     ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetWhatsappConnectionCatalogRequest
+        @return: GetWhatsappConnectionCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_whatsapp_connection_catalog_with_options(request, runtime)
 
@@ -2488,6 +2582,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.GetWhatsappConnectionCatalogRequest,
     ) -> cams_20200606_models.GetWhatsappConnectionCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetWhatsappConnectionCatalogRequest
+        @return: GetWhatsappConnectionCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_whatsapp_connection_catalog_with_options_async(request, runtime)
 
@@ -2728,6 +2828,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ListProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ListProductResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.after):
@@ -2774,6 +2881,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ListProductRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ListProductResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.after):
@@ -2819,6 +2933,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ListProductRequest,
     ) -> cams_20200606_models.ListProductResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductRequest
+        @return: ListProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_with_options(request, runtime)
 
@@ -2826,6 +2946,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ListProductRequest,
     ) -> cams_20200606_models.ListProductResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductRequest
+        @return: ListProductResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_with_options_async(request, runtime)
 
@@ -2834,6 +2960,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ListProductCatalogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ListProductCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.after):
@@ -2878,6 +3011,13 @@ class Client(OpenApiClient):
         request: cams_20200606_models.ListProductCatalogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cams_20200606_models.ListProductCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductCatalogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProductCatalogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.after):
@@ -2921,6 +3061,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ListProductCatalogRequest,
     ) -> cams_20200606_models.ListProductCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductCatalogRequest
+        @return: ListProductCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_product_catalog_with_options(request, runtime)
 
@@ -2928,6 +3074,12 @@ class Client(OpenApiClient):
         self,
         request: cams_20200606_models.ListProductCatalogRequest,
     ) -> cams_20200606_models.ListProductCatalogResponse:
+        """
+        You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: ListProductCatalogRequest
+        @return: ListProductCatalogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_product_catalog_with_options_async(request, runtime)
 
@@ -4210,6 +4362,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_account_webhook_with_options_async(request, runtime)
+
+    def update_commerce_setting_with_options(
+        self,
+        request: cams_20200606_models.UpdateCommerceSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateCommerceSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cart_enable):
+            query['CartEnable'] = request.cart_enable
+        if not UtilClient.is_unset(request.catalog_visible):
+            query['CatalogVisible'] = request.catalog_visible
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCommerceSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateCommerceSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_commerce_setting_with_options_async(
+        self,
+        request: cams_20200606_models.UpdateCommerceSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateCommerceSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cart_enable):
+            query['CartEnable'] = request.cart_enable
+        if not UtilClient.is_unset(request.catalog_visible):
+            query['CatalogVisible'] = request.catalog_visible
+        if not UtilClient.is_unset(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            query['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCommerceSetting',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateCommerceSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_commerce_setting(
+        self,
+        request: cams_20200606_models.UpdateCommerceSettingRequest,
+    ) -> cams_20200606_models.UpdateCommerceSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_commerce_setting_with_options(request, runtime)
+
+    async def update_commerce_setting_async(
+        self,
+        request: cams_20200606_models.UpdateCommerceSettingRequest,
+    ) -> cams_20200606_models.UpdateCommerceSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_commerce_setting_with_options_async(request, runtime)
 
     def update_phone_webhook_with_options(
         self,
