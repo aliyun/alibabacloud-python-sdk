@@ -8498,10 +8498,16 @@ class DescribeDBInstanceTDEInfoRequest(TeaModel):
 class DescribeDBInstanceTDEInfoResponseBody(TeaModel):
     def __init__(
         self,
+        encryption_key: str = None,
+        encryptor_name: str = None,
         request_id: str = None,
+        role_arn: str = None,
         tdestatus: str = None,
     ):
+        self.encryption_key = encryption_key
+        self.encryptor_name = encryptor_name
         self.request_id = request_id
+        self.role_arn = role_arn
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -8513,16 +8519,28 @@ class DescribeDBInstanceTDEInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
+        if self.encryptor_name is not None:
+            result['EncryptorName'] = self.encryptor_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.role_arn is not None:
+            result['RoleARN'] = self.role_arn
         if self.tdestatus is not None:
             result['TDEStatus'] = self.tdestatus
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
+        if m.get('EncryptorName') is not None:
+            self.encryptor_name = m.get('EncryptorName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('RoleARN') is not None:
+            self.role_arn = m.get('RoleARN')
         if m.get('TDEStatus') is not None:
             self.tdestatus = m.get('TDEStatus')
         return self
