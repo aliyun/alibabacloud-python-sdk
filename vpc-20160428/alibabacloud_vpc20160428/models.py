@@ -455,7 +455,7 @@ class AddCommonBandwidthPackageIpRequest(TeaModel):
         # 
         # You can call the [DescribeEipAddresses](~~36018~~) operation to query EIP IDs.
         self.ip_instance_id = ip_instance_id
-        # The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
+        # The type of IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -615,13 +615,13 @@ class AddCommonBandwidthPackageIpsRequest(TeaModel):
         # 
         # You can specify at most 10 EIP IDs at a time.
         self.ip_instance_ids = ip_instance_ids
-        # The type of the IP address. Set the value to **EIP** to associate EIPs with the Internet Shared Bandwidth instance.
+        # The type of the IP address. Set the value to **EIP** to associate EIPs with the EIP bandwidth plan.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Internet Shared Bandwidth instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](~~448570~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7126,6 +7126,7 @@ class CreateCustomerGatewayRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tags: List[CreateCustomerGatewayRequestTags] = None,
@@ -7162,6 +7163,7 @@ class CreateCustomerGatewayRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tag value.
@@ -7201,6 +7203,8 @@ class CreateCustomerGatewayRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -7231,6 +7235,8 @@ class CreateCustomerGatewayRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -19207,6 +19213,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         region_id: str = None,
         remote_ca_cert: str = None,
         remote_subnet: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tags: List[CreateVpnAttachmentRequestTags] = None,
@@ -19331,6 +19338,7 @@ class CreateVpnAttachmentRequest(TeaModel):
         # *   If you set **LocalSubnet** and **RemoteSubnet** to 0.0.0.0/0, the routing mode of the IPsec-VPN connection is set to Destination Routing Mode.
         # *   If you set **LocalSubnet** and **RemoteSubnet** to specific CIDR blocks, the routing mode of the IPsec-VPN connection is set to Protected Data Flows.
         self.remote_subnet = remote_subnet
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tag value.
@@ -19386,6 +19394,8 @@ class CreateVpnAttachmentRequest(TeaModel):
             result['RemoteCaCert'] = self.remote_ca_cert
         if self.remote_subnet is not None:
             result['RemoteSubnet'] = self.remote_subnet
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -19432,6 +19442,8 @@ class CreateVpnAttachmentRequest(TeaModel):
             self.remote_ca_cert = m.get('RemoteCaCert')
         if m.get('RemoteSubnet') is not None:
             self.remote_subnet = m.get('RemoteSubnet')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -20330,6 +20342,7 @@ class CreateVpnGatewayRequest(TeaModel):
         owner_id: int = None,
         period: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         ssl_connections: int = None,
@@ -20392,6 +20405,7 @@ class CreateVpnGatewayRequest(TeaModel):
         self.period = period
         # The region ID of the VPN gateway. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The maximum number of clients that can be connected at the same time. Valid values: **5** (default), **10**, **20**, **50**, **100**, **200**, **500**, and **1000**.
@@ -20443,6 +20457,8 @@ class CreateVpnGatewayRequest(TeaModel):
             result['Period'] = self.period
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -20485,6 +20501,8 @@ class CreateVpnGatewayRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -31313,6 +31331,7 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
         ip_address: str = None,
         name: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         tags: DescribeCustomerGatewayResponseBodyTags = None,
     ):
         # The autonomous system number (ASN) of the gateway device in the data center.
@@ -31333,6 +31352,7 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
         self.name = name
         # The ID of the request.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The list of tags added to the customer gateway.
         self.tags = tags
 
@@ -31362,6 +31382,8 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
             result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         return result
@@ -31384,6 +31406,8 @@ class DescribeCustomerGatewayResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Tags') is not None:
             temp_model = DescribeCustomerGatewayResponseBodyTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -31486,6 +31510,7 @@ class DescribeCustomerGatewaysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[DescribeCustomerGatewaysRequestTag] = None,
@@ -31504,6 +31529,7 @@ class DescribeCustomerGatewaysRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tag value.
@@ -31537,6 +31563,8 @@ class DescribeCustomerGatewaysRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -31561,6 +31589,8 @@ class DescribeCustomerGatewaysRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -31653,6 +31683,7 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
         description: str = None,
         ip_address: str = None,
         name: str = None,
+        resource_group_id: str = None,
         tags: DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags = None,
     ):
         # The autonomous system number (ASN) of the gateway device in the data center.
@@ -31671,6 +31702,7 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
         self.ip_address = ip_address
         # The name of the customer gateway.
         self.name = name
+        self.resource_group_id = resource_group_id
         # The list of tags added to the customer gateway.
         self.tags = tags
 
@@ -31698,6 +31730,8 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
             result['IpAddress'] = self.ip_address
         if self.name is not None:
             result['Name'] = self.name
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         return result
@@ -31718,6 +31752,8 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(TeaMod
             self.ip_address = m.get('IpAddress')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Tags') is not None:
             temp_model = DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags()
             self.tags = temp_model.from_map(m['Tags'])
@@ -47323,6 +47359,7 @@ class DescribeSslVpnClientCertResponseBody(TeaModel):
         name: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         ssl_vpn_client_cert_id: str = None,
         ssl_vpn_server_id: str = None,
         status: str = None,
@@ -47349,6 +47386,7 @@ class DescribeSslVpnClientCertResponseBody(TeaModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
         # The ID of the SSL server.
@@ -47387,6 +47425,8 @@ class DescribeSslVpnClientCertResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.ssl_vpn_client_cert_id is not None:
             result['SslVpnClientCertId'] = self.ssl_vpn_client_cert_id
         if self.ssl_vpn_server_id is not None:
@@ -47415,6 +47455,8 @@ class DescribeSslVpnClientCertResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SslVpnClientCertId') is not None:
             self.ssl_vpn_client_cert_id = m.get('SslVpnClientCertId')
         if m.get('SslVpnServerId') is not None:
@@ -47477,6 +47519,7 @@ class DescribeSslVpnClientCertsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         ssl_vpn_client_cert_id: str = None,
@@ -47494,6 +47537,7 @@ class DescribeSslVpnClientCertsRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL client certificate.
@@ -47522,6 +47566,8 @@ class DescribeSslVpnClientCertsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -47546,6 +47592,8 @@ class DescribeSslVpnClientCertsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -47564,6 +47612,7 @@ class DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertK
         end_time: int = None,
         name: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         ssl_vpn_client_cert_id: str = None,
         ssl_vpn_server_id: str = None,
         status: str = None,
@@ -47580,6 +47629,7 @@ class DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertK
         self.name = name
         # The region where the SSL client certificate is created.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
         # The ID of the SSL server.
@@ -47608,6 +47658,8 @@ class DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertK
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.ssl_vpn_client_cert_id is not None:
             result['SslVpnClientCertId'] = self.ssl_vpn_client_cert_id
         if self.ssl_vpn_server_id is not None:
@@ -47626,6 +47678,8 @@ class DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertK
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SslVpnClientCertId') is not None:
             self.ssl_vpn_client_cert_id = m.get('SslVpnClientCertId')
         if m.get('SslVpnServerId') is not None:
@@ -48061,6 +48115,7 @@ class DescribeSslVpnServersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         ssl_vpn_server_id: str = None,
@@ -48080,6 +48135,7 @@ class DescribeSslVpnServersRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the SSL-VPN server.
@@ -48108,6 +48164,8 @@ class DescribeSslVpnServersRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -48132,6 +48190,8 @@ class DescribeSslVpnServersRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -48161,6 +48221,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         port: int = None,
         proto: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         ssl_vpn_server_id: str = None,
         vpn_gateway_id: str = None,
     ):
@@ -48200,6 +48261,7 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
         self.proto = proto
         # The ID of the region where the SSL server is created.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
         # The ID of the VPN gateway.
@@ -48244,6 +48306,8 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
             result['Proto'] = self.proto
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.ssl_vpn_server_id is not None:
             result['SslVpnServerId'] = self.ssl_vpn_server_id
         if self.vpn_gateway_id is not None:
@@ -48282,6 +48346,8 @@ class DescribeSslVpnServersResponseBodySslVpnServersSslVpnServer(TeaModel):
             self.proto = m.get('Proto')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SslVpnServerId') is not None:
             self.ssl_vpn_server_id = m.get('SslVpnServerId')
         if m.get('VpnGatewayId') is not None:
@@ -55140,6 +55206,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         remote_ca_certificate: str = None,
         remote_subnet: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         spec: str = None,
         state: str = None,
         status: str = None,
@@ -55221,6 +55288,7 @@ class DescribeVpnConnectionResponseBody(TeaModel):
         self.remote_subnet = remote_subnet
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.spec = spec
         # The association state of the IPsec-VPN connection. Valid values:
@@ -55322,6 +55390,8 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             result['RemoteSubnet'] = self.remote_subnet
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.state is not None:
@@ -55388,6 +55458,8 @@ class DescribeVpnConnectionResponseBody(TeaModel):
             self.remote_subnet = m.get('RemoteSubnet')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('State') is not None:
@@ -55765,6 +55837,7 @@ class DescribeVpnConnectionsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[DescribeVpnConnectionsRequestTag] = None,
@@ -55783,6 +55856,7 @@ class DescribeVpnConnectionsRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tag value.
@@ -55820,6 +55894,8 @@ class DescribeVpnConnectionsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -55848,6 +55924,8 @@ class DescribeVpnConnectionsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -56624,6 +56702,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         network_type: str = None,
         remote_ca_certificate: str = None,
         remote_subnet: str = None,
+        resource_group_id: str = None,
         spec: str = None,
         state: str = None,
         status: str = None,
@@ -56706,6 +56785,7 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
         # 
         # Multiple CIDR blocks are separated by commas (,).
         self.remote_subnet = remote_subnet
+        self.resource_group_id = resource_group_id
         # The bandwidth specification of the IPsec-VPN connection. Unit: **Mbit/s**.
         self.spec = spec
         # The association state of the IPsec-VPN connection. Valid values:
@@ -56801,6 +56881,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             result['RemoteCaCertificate'] = self.remote_ca_certificate
         if self.remote_subnet is not None:
             result['RemoteSubnet'] = self.remote_subnet
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.state is not None:
@@ -56863,6 +56945,8 @@ class DescribeVpnConnectionsResponseBodyVpnConnectionsVpnConnection(TeaModel):
             self.remote_ca_certificate = m.get('RemoteCaCertificate')
         if m.get('RemoteSubnet') is not None:
             self.remote_subnet = m.get('RemoteSubnet')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('State') is not None:
@@ -57528,6 +57612,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         network_type: str = None,
         request_id: str = None,
         reservation_data: DescribeVpnGatewayResponseBodyReservationData = None,
+        resource_group_id: str = None,
         spec: str = None,
         ssl_max_connections: int = None,
         ssl_vpn: str = None,
@@ -57601,6 +57686,7 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         # 
         # > This set of parameters is returned only when **IncludeReservationData** is set to **true**.
         self.reservation_data = reservation_data
+        self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
         # The maximum number of concurrent SSL-VPN connections.
@@ -57703,6 +57789,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
             result['RequestId'] = self.request_id
         if self.reservation_data is not None:
             result['ReservationData'] = self.reservation_data.to_map()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.ssl_max_connections is not None:
@@ -57760,6 +57848,8 @@ class DescribeVpnGatewayResponseBody(TeaModel):
         if m.get('ReservationData') is not None:
             temp_model = DescribeVpnGatewayResponseBodyReservationData()
             self.reservation_data = temp_model.from_map(m['ReservationData'])
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('SslMaxConnections') is not None:
@@ -57883,6 +57973,7 @@ class DescribeVpnGatewaysRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         status: str = None,
@@ -57910,6 +58001,7 @@ class DescribeVpnGatewaysRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The status of the VPN gateway. Valid values:
@@ -57957,6 +58049,8 @@ class DescribeVpnGatewaysRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -57989,6 +58083,8 @@ class DescribeVpnGatewaysRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -58179,6 +58275,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         name: str = None,
         network_type: str = None,
         reservation_data: DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData = None,
+        resource_group_id: str = None,
         spec: str = None,
         ssl_max_connections: int = None,
         ssl_vpn: str = None,
@@ -58250,6 +58347,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         # 
         # >  This parameter is returned only when **IncludeReservationData** is set to **true**.
         self.reservation_data = reservation_data
+        self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. **M** indicates Mbit/s.
         self.spec = spec
         # The number of SSL-VPN connections supported by the VPN gateway.
@@ -58350,6 +58448,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
             result['NetworkType'] = self.network_type
         if self.reservation_data is not None:
             result['ReservationData'] = self.reservation_data.to_map()
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.ssl_max_connections is not None:
@@ -58405,6 +58505,8 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(TeaModel):
         if m.get('ReservationData') is not None:
             temp_model = DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayReservationData()
             self.reservation_data = temp_model.from_map(m['ReservationData'])
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('SslMaxConnections') is not None:
@@ -67092,6 +67194,7 @@ class ListIpsecServersRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         vpn_gateway_id: str = None,
     ):
         # The ID of the IPsec server.
@@ -67111,6 +67214,7 @@ class ListIpsecServersRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
@@ -67133,6 +67237,8 @@ class ListIpsecServersRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.vpn_gateway_id is not None:
             result['VpnGatewayId'] = self.vpn_gateway_id
         return result
@@ -67149,6 +67255,8 @@ class ListIpsecServersRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('VpnGatewayId') is not None:
             self.vpn_gateway_id = m.get('VpnGatewayId')
         return self
@@ -67301,6 +67409,7 @@ class ListIpsecServersResponseBodyIpsecServers(TeaModel):
         psk: str = None,
         psk_enabled: bool = None,
         region_id: str = None,
+        resource_group_id: str = None,
         vpn_gateway_id: str = None,
     ):
         # The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
@@ -67345,6 +67454,7 @@ class ListIpsecServersResponseBodyIpsecServers(TeaModel):
         self.psk_enabled = psk_enabled
         # The ID of the region where the IPsec server is created.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the VPN gateway.
         self.vpn_gateway_id = vpn_gateway_id
 
@@ -67392,6 +67502,8 @@ class ListIpsecServersResponseBodyIpsecServers(TeaModel):
             result['PskEnabled'] = self.psk_enabled
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.vpn_gateway_id is not None:
             result['VpnGatewayId'] = self.vpn_gateway_id
         return result
@@ -67432,6 +67544,8 @@ class ListIpsecServersResponseBodyIpsecServers(TeaModel):
             self.psk_enabled = m.get('PskEnabled')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('VpnGatewayId') is not None:
             self.vpn_gateway_id = m.get('VpnGatewayId')
         return self
@@ -74013,6 +74127,7 @@ class ModifyCustomerGatewayAttributeResponseBody(TeaModel):
         ip_address: str = None,
         name: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
     ):
         # The timestamp generated when the customer gateway was created.
         self.create_time = create_time
@@ -74026,6 +74141,7 @@ class ModifyCustomerGatewayAttributeResponseBody(TeaModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -74048,6 +74164,8 @@ class ModifyCustomerGatewayAttributeResponseBody(TeaModel):
             result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -74064,6 +74182,8 @@ class ModifyCustomerGatewayAttributeResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -79218,6 +79338,7 @@ class ModifySslVpnServerResponseBody(TeaModel):
         proto: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         ssl_vpn_server_id: str = None,
         vpn_gateway_id: str = None,
     ):
@@ -79254,6 +79375,7 @@ class ModifySslVpnServerResponseBody(TeaModel):
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
         # The ID of the VPN gateway.
@@ -79298,6 +79420,8 @@ class ModifySslVpnServerResponseBody(TeaModel):
             result['RegionId'] = self.region_id
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.ssl_vpn_server_id is not None:
             result['SslVpnServerId'] = self.ssl_vpn_server_id
         if self.vpn_gateway_id is not None:
@@ -79336,6 +79460,8 @@ class ModifySslVpnServerResponseBody(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SslVpnServerId') is not None:
             self.ssl_vpn_server_id = m.get('SslVpnServerId')
         if m.get('VpnGatewayId') is not None:
@@ -81961,6 +82087,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         network_type: str = None,
         remote_subnet: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         spec: str = None,
         status: str = None,
         vco_health_check: ModifyVpnAttachmentAttributeResponseBodyVcoHealthCheck = None,
@@ -82016,6 +82143,7 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
         self.remote_subnet = remote_subnet
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The bandwidth specification of the IPsec-VPN connection.
         # 
         # A value of **M** in the response indicates **Mbit/s**.
@@ -82082,6 +82210,8 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             result['RemoteSubnet'] = self.remote_subnet
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.status is not None:
@@ -82130,6 +82260,8 @@ class ModifyVpnAttachmentAttributeResponseBody(TeaModel):
             self.remote_subnet = m.get('RemoteSubnet')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('Status') is not None:
@@ -82402,6 +82534,7 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
         enable_dpd: bool = None,
         enable_nat_traversal: bool = None,
         remote_ca_certificate: str = None,
+        role: str = None,
         tunnel_bgp_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig = None,
         tunnel_id: str = None,
         tunnel_ike_config: ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelIkeConfig = None,
@@ -82421,6 +82554,7 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
         # 
         # If the VPN gateway does not use an SM certificate, you cannot specify this parameter.
         self.remote_ca_certificate = remote_ca_certificate
+        self.role = role
         # The BGP configuration to be modified for the IPsec tunnel.
         self.tunnel_bgp_config = tunnel_bgp_config
         # You can specify **TunnelOptionsSpecification** parameters if you modify the configuration of a dual-tunnel IPsec-VPN connection. You can modify both the active and standby tunnels of the IPsec-VPN connection.
@@ -82452,6 +82586,8 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
             result['EnableNatTraversal'] = self.enable_nat_traversal
         if self.remote_ca_certificate is not None:
             result['RemoteCaCertificate'] = self.remote_ca_certificate
+        if self.role is not None:
+            result['Role'] = self.role
         if self.tunnel_bgp_config is not None:
             result['TunnelBgpConfig'] = self.tunnel_bgp_config.to_map()
         if self.tunnel_id is not None:
@@ -82470,6 +82606,8 @@ class ModifyVpnConnectionAttributeRequestTunnelOptionsSpecification(TeaModel):
             self.enable_nat_traversal = m.get('EnableNatTraversal')
         if m.get('RemoteCaCertificate') is not None:
             self.remote_ca_certificate = m.get('RemoteCaCertificate')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
         if m.get('TunnelBgpConfig') is not None:
             temp_model = ModifyVpnConnectionAttributeRequestTunnelOptionsSpecificationTunnelBgpConfig()
             self.tunnel_bgp_config = temp_model.from_map(m['TunnelBgpConfig'])
@@ -83421,6 +83559,7 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         name: str = None,
         remote_subnet: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         tunnel_options_specification: ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification = None,
         vco_health_check: ModifyVpnConnectionAttributeResponseBodyVcoHealthCheck = None,
         vpn_bgp_config: ModifyVpnConnectionAttributeResponseBodyVpnBgpConfig = None,
@@ -83479,6 +83618,7 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
         self.remote_subnet = remote_subnet
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The tunnel configuration of the IPsec-VPN connection.
         # 
         # **TunnelOptionsSpecification** parameters are returned only for dual-tunnel IPsec-VPN connections.
@@ -83540,6 +83680,8 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             result['RemoteSubnet'] = self.remote_subnet
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.tunnel_options_specification is not None:
             result['TunnelOptionsSpecification'] = self.tunnel_options_specification.to_map()
         if self.vco_health_check is not None:
@@ -83582,6 +83724,8 @@ class ModifyVpnConnectionAttributeResponseBody(TeaModel):
             self.remote_subnet = m.get('RemoteSubnet')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('TunnelOptionsSpecification') is not None:
             temp_model = ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecification()
             self.tunnel_options_specification = temp_model.from_map(m['TunnelOptionsSpecification'])
@@ -83755,6 +83899,7 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         intranet_ip: str = None,
         name: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         spec: str = None,
         ssl_vpn_internet_ip: str = None,
         status: str = None,
@@ -83809,6 +83954,7 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         # The maximum bandwidth of the VPN gateway. Unit: Mbit/s.
         self.spec = spec
         # The IP address of the SSL-VPN connection.
@@ -83863,6 +84009,8 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
             result['Name'] = self.name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.spec is not None:
             result['Spec'] = self.spec
         if self.ssl_vpn_internet_ip is not None:
@@ -83903,6 +84051,8 @@ class ModifyVpnGatewayAttributeResponseBody(TeaModel):
             self.name = m.get('Name')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         if m.get('SslVpnInternetIp') is not None:
@@ -87609,7 +87759,7 @@ class SetHighDefinitionMonitorLogStatusRequest(TeaModel):
     ):
         # The ID of the instance for which you want to configure fine-grained monitoring.
         self.instance_id = instance_id
-        # The type of the instance. Set the value to **EIP**.
+        # The instance type. Set the value to **EIP**.
         self.instance_type = instance_type
         # The name of the Simple Log Service (SLS) project.
         self.log_project = log_project
