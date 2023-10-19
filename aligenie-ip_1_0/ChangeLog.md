@@ -1,3 +1,6 @@
+2023-10-19 Version: 2.6.0
+- Generated python ip_1.0 for AliGenie.
+
 2023-08-31 Version: 2.5.0
 - Generated python ip_1.0 for AliGenie.
 

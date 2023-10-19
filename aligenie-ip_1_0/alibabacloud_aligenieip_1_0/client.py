@@ -7281,6 +7281,112 @@ class Client(OpenApiClient):
         headers = ali_genieip__1__0_models.PushHotelMessageHeaders()
         return await self.push_hotel_message_with_options_async(request, headers, runtime)
 
+    def push_voice_box_commands_with_options(
+        self,
+        tmp_req: ali_genieip__1__0_models.PushVoiceBoxCommandsRequest,
+        headers: ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.PushVoiceBoxCommandsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.commands):
+            request.commands_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.commands, 'Commands', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.commands_shrink):
+            body['Commands'] = request.commands_shrink
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushVoiceBoxCommands',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/pushVoiceBoxCommands',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def push_voice_box_commands_with_options_async(
+        self,
+        tmp_req: ali_genieip__1__0_models.PushVoiceBoxCommandsRequest,
+        headers: ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ali_genieip__1__0_models.PushVoiceBoxCommandsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.commands):
+            request.commands_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.commands, 'Commands', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.commands_shrink):
+            body['Commands'] = request.commands_shrink
+        if not UtilClient.is_unset(request.hotel_id):
+            body['HotelId'] = request.hotel_id
+        if not UtilClient.is_unset(request.room_no):
+            body['RoomNo'] = request.room_no
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_aligenie_access_token):
+            real_headers['x-acs-aligenie-access-token'] = UtilClient.to_jsonstring(headers.x_acs_aligenie_access_token)
+        if not UtilClient.is_unset(headers.authorization):
+            real_headers['Authorization'] = UtilClient.to_jsonstring(headers.authorization)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PushVoiceBoxCommands',
+            version='ip_1.0',
+            protocol='HTTPS',
+            pathname=f'/v1.0/ip/pushVoiceBoxCommands',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ali_genieip__1__0_models.PushVoiceBoxCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def push_voice_box_commands(
+        self,
+        request: ali_genieip__1__0_models.PushVoiceBoxCommandsRequest,
+    ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders()
+        return self.push_voice_box_commands_with_options(request, headers, runtime)
+
+    async def push_voice_box_commands_async(
+        self,
+        request: ali_genieip__1__0_models.PushVoiceBoxCommandsRequest,
+    ) -> ali_genieip__1__0_models.PushVoiceBoxCommandsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ali_genieip__1__0_models.PushVoiceBoxCommandsHeaders()
+        return await self.push_voice_box_commands_with_options_async(request, headers, runtime)
+
     def push_welcome_with_options(
         self,
         request: ali_genieip__1__0_models.PushWelcomeRequest,
