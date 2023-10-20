@@ -3986,6 +3986,8 @@ class InitializeRequest(TeaModel):
     def __init__(
         self,
         authorize: str = None,
+        callback_token: str = None,
+        callback_url: str = None,
         crop: str = None,
         doc_scan_mode: str = None,
         doc_type: str = None,
@@ -4008,6 +4010,8 @@ class InitializeRequest(TeaModel):
         service_level: str = None,
     ):
         self.authorize = authorize
+        self.callback_token = callback_token
+        self.callback_url = callback_url
         self.crop = crop
         self.doc_scan_mode = doc_scan_mode
         self.doc_type = doc_type
@@ -4041,6 +4045,10 @@ class InitializeRequest(TeaModel):
         result = dict()
         if self.authorize is not None:
             result['Authorize'] = self.authorize
+        if self.callback_token is not None:
+            result['CallbackToken'] = self.callback_token
+        if self.callback_url is not None:
+            result['CallbackUrl'] = self.callback_url
         if self.crop is not None:
             result['Crop'] = self.crop
         if self.doc_scan_mode is not None:
@@ -4087,6 +4095,10 @@ class InitializeRequest(TeaModel):
         m = m or dict()
         if m.get('Authorize') is not None:
             self.authorize = m.get('Authorize')
+        if m.get('CallbackToken') is not None:
+            self.callback_token = m.get('CallbackToken')
+        if m.get('CallbackUrl') is not None:
+            self.callback_url = m.get('CallbackUrl')
         if m.get('Crop') is not None:
             self.crop = m.get('Crop')
         if m.get('DocScanMode') is not None:

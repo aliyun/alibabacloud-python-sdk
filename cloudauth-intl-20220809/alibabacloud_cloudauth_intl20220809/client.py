@@ -1554,6 +1554,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
+        if not UtilClient.is_unset(request.callback_token):
+            query['CallbackToken'] = request.callback_token
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
         if not UtilClient.is_unset(request.doc_scan_mode):
@@ -1622,6 +1626,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.authorize):
             query['Authorize'] = request.authorize
+        if not UtilClient.is_unset(request.callback_token):
+            query['CallbackToken'] = request.callback_token
+        if not UtilClient.is_unset(request.callback_url):
+            query['CallbackUrl'] = request.callback_url
         if not UtilClient.is_unset(request.crop):
             query['Crop'] = request.crop
         if not UtilClient.is_unset(request.doc_scan_mode):
