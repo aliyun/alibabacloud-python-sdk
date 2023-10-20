@@ -3436,6 +3436,186 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_backups_with_options_async(request, runtime)
 
+    def describe_cluster_backups_with_options(
+        self,
+        request: dds_20151201_models.DescribeClusterBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeClusterBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_only_get_cluster_back_up):
+            query['IsOnlyGetClusterBackUp'] = request.is_only_get_cluster_back_up
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterBackups',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeClusterBackupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_backups_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeClusterBackupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeClusterBackupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.backup_id):
+            query['BackupId'] = request.backup_id
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_only_get_cluster_back_up):
+            query['IsOnlyGetClusterBackUp'] = request.is_only_get_cluster_back_up
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterBackups',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeClusterBackupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_backups(
+        self,
+        request: dds_20151201_models.DescribeClusterBackupsRequest,
+    ) -> dds_20151201_models.DescribeClusterBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_backups_with_options(request, runtime)
+
+    async def describe_cluster_backups_async(
+        self,
+        request: dds_20151201_models.DescribeClusterBackupsRequest,
+    ) -> dds_20151201_models.DescribeClusterBackupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_backups_with_options_async(request, runtime)
+
+    def describe_cluster_recover_time_with_options(
+        self,
+        request: dds_20151201_models.DescribeClusterRecoverTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeClusterRecoverTimeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterRecoverTime',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeClusterRecoverTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_recover_time_with_options_async(
+        self,
+        request: dds_20151201_models.DescribeClusterRecoverTimeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.DescribeClusterRecoverTimeResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeClusterRecoverTime',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.DescribeClusterRecoverTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_recover_time(
+        self,
+        request: dds_20151201_models.DescribeClusterRecoverTimeRequest,
+    ) -> dds_20151201_models.DescribeClusterRecoverTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cluster_recover_time_with_options(request, runtime)
+
+    async def describe_cluster_recover_time_async(
+        self,
+        request: dds_20151201_models.DescribeClusterRecoverTimeRequest,
+    ) -> dds_20151201_models.DescribeClusterRecoverTimeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cluster_recover_time_with_options_async(request, runtime)
+
     def describe_dbinstance_attribute_with_options(
         self,
         request: dds_20151201_models.DescribeDBInstanceAttributeRequest,
@@ -11547,6 +11727,96 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def transfer_cluster_backup_with_options(
+        self,
+        request: dds_20151201_models.TransferClusterBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.TransferClusterBackupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferClusterBackup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.TransferClusterBackupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def transfer_cluster_backup_with_options_async(
+        self,
+        request: dds_20151201_models.TransferClusterBackupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dds_20151201_models.TransferClusterBackupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TransferClusterBackup',
+            version='2015-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dds_20151201_models.TransferClusterBackupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def transfer_cluster_backup(
+        self,
+        request: dds_20151201_models.TransferClusterBackupRequest,
+    ) -> dds_20151201_models.TransferClusterBackupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.transfer_cluster_backup_with_options(request, runtime)
+
+    async def transfer_cluster_backup_async(
+        self,
+        request: dds_20151201_models.TransferClusterBackupRequest,
+    ) -> dds_20151201_models.TransferClusterBackupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.transfer_cluster_backup_with_options_async(request, runtime)
 
     def transform_instance_charge_type_with_options(
         self,
