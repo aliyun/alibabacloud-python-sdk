@@ -17598,6 +17598,8 @@ class Client(OpenApiClient):
             query['ApiProductIds'] = request.api_product_ids_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auth_valid_time):
+            query['AuthValidTime'] = request.auth_valid_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):
@@ -17636,6 +17638,8 @@ class Client(OpenApiClient):
             query['ApiProductIds'] = request.api_product_ids_shrink
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.auth_valid_time):
+            query['AuthValidTime'] = request.auth_valid_time
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_token):

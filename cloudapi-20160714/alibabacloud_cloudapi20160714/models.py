@@ -17880,7 +17880,7 @@ class DescribeAppAttributesRequestTag(TeaModel):
         # 
         # N can be an integer from 1 to 20.``
         self.key = key
-        # The key of the tag.
+        # The value of the tag.
         # 
         # N can be an integer from 1 to 20.``
         self.value = value
@@ -17934,6 +17934,7 @@ class DescribeAppAttributesRequest(TeaModel):
         self.app_name = app_name
         # Specifies whether to enable tag verification.
         self.enable_tag_auth = enable_tag_auth
+        # Extended Fields.
         self.extend = extend
         # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -18105,6 +18106,7 @@ class DescribeAppAttributesResponseBodyAppsAppAttribute(TeaModel):
         self.created_time = created_time
         # The description of the app.
         self.description = description
+        # Extended Fields.
         self.extend = extend
         # The modification time (UTC) of the app.
         self.modified_time = modified_time
@@ -41408,11 +41410,13 @@ class SetApiProductsAuthoritiesRequest(TeaModel):
         self,
         api_product_ids: List[str] = None,
         app_id: int = None,
+        auth_valid_time: str = None,
         description: str = None,
         security_token: str = None,
     ):
         self.api_product_ids = api_product_ids
         self.app_id = app_id
+        self.auth_valid_time = auth_valid_time
         self.description = description
         self.security_token = security_token
 
@@ -41429,6 +41433,8 @@ class SetApiProductsAuthoritiesRequest(TeaModel):
             result['ApiProductIds'] = self.api_product_ids
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.auth_valid_time is not None:
+            result['AuthValidTime'] = self.auth_valid_time
         if self.description is not None:
             result['Description'] = self.description
         if self.security_token is not None:
@@ -41441,6 +41447,8 @@ class SetApiProductsAuthoritiesRequest(TeaModel):
             self.api_product_ids = m.get('ApiProductIds')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AuthValidTime') is not None:
+            self.auth_valid_time = m.get('AuthValidTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SecurityToken') is not None:
@@ -41453,11 +41461,13 @@ class SetApiProductsAuthoritiesShrinkRequest(TeaModel):
         self,
         api_product_ids_shrink: str = None,
         app_id: int = None,
+        auth_valid_time: str = None,
         description: str = None,
         security_token: str = None,
     ):
         self.api_product_ids_shrink = api_product_ids_shrink
         self.app_id = app_id
+        self.auth_valid_time = auth_valid_time
         self.description = description
         self.security_token = security_token
 
@@ -41474,6 +41484,8 @@ class SetApiProductsAuthoritiesShrinkRequest(TeaModel):
             result['ApiProductIds'] = self.api_product_ids_shrink
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.auth_valid_time is not None:
+            result['AuthValidTime'] = self.auth_valid_time
         if self.description is not None:
             result['Description'] = self.description
         if self.security_token is not None:
@@ -41486,6 +41498,8 @@ class SetApiProductsAuthoritiesShrinkRequest(TeaModel):
             self.api_product_ids_shrink = m.get('ApiProductIds')
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AuthValidTime') is not None:
+            self.auth_valid_time = m.get('AuthValidTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('SecurityToken') is not None:
