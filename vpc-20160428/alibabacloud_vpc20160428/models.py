@@ -14,7 +14,7 @@ class ActivateRouterInterfaceRequest(TeaModel):
         router_interface_id: str = None,
     ):
         self.owner_id = owner_id
-        # The ID of the region to which the router interface belongs.
+        # The region ID of the router interface.
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
@@ -64,7 +64,7 @@ class ActivateRouterInterfaceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4024,6 +4024,7 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         gateway_id: str = None,
+        gateway_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -4046,6 +4047,7 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
         # 
         # The IPv4 gateway must be in the **Activated** state.
         self.gateway_id = gateway_id
+        self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway with which you want to associate the gateway route table.
@@ -4072,6 +4074,8 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -4094,6 +4098,8 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -7708,7 +7714,13 @@ class CreateDhcpOptionsSetRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # A tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The value of tag N to add to the resource. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -7756,17 +7768,17 @@ class CreateDhcpOptionsSetRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that the value is unique among different requests. The token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
         # The description of the DHCP options set.
         # 
-        # The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`. You can also leave the description empty.
+        # The description must be 1 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
         self.dhcp_options_set_description = dhcp_options_set_description
         # The name of the DHCP options set.
         # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 128 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
         self.dhcp_options_set_name = dhcp_options_set_name
         # The root domain. For example, you can set the value to example.com.
         # 
@@ -7774,11 +7786,11 @@ class CreateDhcpOptionsSetRequest(TeaModel):
         self.domain_name = domain_name
         # The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
         # 
-        # >  If you do not specify a DNS server IP address, Elastic Compute Service (ECS) instances use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
+        # >  If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
         self.domain_name_servers = domain_name_servers
-        # Specifies whether to perform a dry run. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request.
         # 
-        # **true**: performs a dry run. The system checks the required parameters, request format, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # 
         # **false** (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
@@ -7787,14 +7799,14 @@ class CreateDhcpOptionsSetRequest(TeaModel):
         # *   If you use hours as the unit, valid values are **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
         # *   If you use days as the unit, valid values are **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
         # 
-        # >  When you specify a value, you must also specify the unit.
+        # >  When you enter a value, you must also specify the unit.
         self.ipv_6lease_time = ipv_6lease_time
         # The lease time of the IPv4 addresses for the DHCP options set.
         # 
         # *   If you use hours as the unit, valid values are **24h to 1176h** and **87600h to 175200h**. Default value: **87600h**.
         # *   If you use days as the unit, valid values are **1d to 49d** and **3650d to 7300d**. Default value: **3650d**.
         # 
-        # >  When you specify a value, you must also specify the unit.
+        # >  When you enter a value, you must also specify the unit.
         self.lease_time = lease_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7802,9 +7814,11 @@ class CreateDhcpOptionsSetRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag of the resource.
         self.tag = tag
 
     def validate(self):
@@ -7900,8 +7914,9 @@ class CreateDhcpOptionsSetResponseBody(TeaModel):
     ):
         # The ID of the DHCP options set that is created.
         self.dhcp_options_set_id = dhcp_options_set_id
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
+        # The ID of the resource group to which the DHCP options set belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -25231,19 +25246,19 @@ class DeleteRouteEntriesRequestRouteEntries(TeaModel):
         route_entry_id: str = None,
         route_table_id: str = None,
     ):
-        # The destination CIDR block of the route entry that you want to delete. IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks.
+        # The destination CIDR block of the route that you want to delete. IPv4 and IPv6 CIDR blocks are supported. You can specify up to 50 destination CIDR blocks.
         # 
-        # >  If the **RouteEntryId** parameter is not specified, you must specify the **DstCidrBlock** and **NextHop** parameters.
+        # >  If **RouteEntryId** is not specified, **DstCidrBlock** and **NextHop** are required.
         self.dst_cidr_block = dst_cidr_block
         # The ID of the next hop that you want to delete. You can specify up to 50 next hop IDs.
         # 
-        # >  If the **RouteEntryId** parameter is not specified, you must specify the **DstCidrBlock** and **NextHop** parameters.
+        # >  If **RouteEntryId** is not specified, **DstCidrBlock** and **NextHop** are required.
         self.next_hop = next_hop
-        # The ID of the route entry that you want to delete. You can specify up to 50 route entry IDs.
+        # The ID of the route that you want to delete. You can specify up to 50 route IDs.
         # 
-        # >  If the **RouteEntryId** parameter is not specified, you must specify the **DstCidrBlock** and **NextHop** parameters.
+        # >  If **RouteEntryId** is not specified, **DstCidrBlock** and **NextHop** are required.
         self.route_entry_id = route_entry_id
-        # The ID of the route table in which the route entry to be deleted resides. You can specify up to 50 route table IDs.
+        # The ID of the route table to which the routes to be deleted belongs. You can specify up to 50 route table IDs.
         self.route_table_id = route_table_id
 
     def validate(self):
@@ -25296,6 +25311,7 @@ class DeleteRouteEntriesRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The information about the routes that you want to delete.
         self.route_entries = route_entries
 
     def validate(self):
@@ -25414,7 +25430,7 @@ class DeleteRouteEntriesResponseBody(TeaModel):
         self.failed_count = failed_count
         # The information about the route entry that failed to be deleted.
         self.failed_route_entries = failed_route_entries
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The number of route entries that were deleted.
         self.success_count = success_count
@@ -38054,6 +38070,39 @@ class DescribeIPv6TranslatorsResponse(TeaModel):
         return self
 
 
+class DescribeIpv6AddressesRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class DescribeIpv6AddressesRequest(TeaModel):
     def __init__(
         self,
@@ -38070,8 +38119,10 @@ class DescribeIpv6AddressesRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag: List[DescribeIpv6AddressesRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -38109,15 +38160,20 @@ class DescribeIpv6AddressesRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region in which you want to query IPv6 addresses. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag = tag
         # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
         # The ID of the VPC to which the IPv6 address belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38151,10 +38207,16 @@ class DescribeIpv6AddressesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -38189,10 +38251,17 @@ class DescribeIpv6AddressesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeIpv6AddressesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -38306,6 +38375,74 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         return self
 
 
+class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags(TeaModel):
+    def __init__(
+        self,
+        tag: List[DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
     def __init__(
         self,
@@ -38313,6 +38450,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         associated_instance_id: str = None,
         associated_instance_type: str = None,
         ipv_6address: str = None,
+        ipv_6address_description: str = None,
         ipv_6address_id: str = None,
         ipv_6address_name: str = None,
         ipv_6gateway_id: str = None,
@@ -38320,7 +38458,9 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         ipv_6isp: str = None,
         network_type: str = None,
         real_bandwidth: int = None,
+        resource_group_id: str = None,
         status: str = None,
+        tags: DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
@@ -38332,6 +38472,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         self.associated_instance_type = associated_instance_type
         # The IPv6 address of the instance.
         self.ipv_6address = ipv_6address
+        self.ipv_6address_description = ipv_6address_description
         # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
         # The name of the IPv6 address.
@@ -38358,11 +38499,13 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
         # *   If the IPv6 address is not associated with an EIP bandwidth plan, the value of **RealBandwidth** is the maximum bandwidth value of the Internet bandwidth of the IPv6 address.
         # *   If the IPv6 address is not associated with an EIP bandwidth plan or an Internet bandwidth plan, the values of **RealBandwidth** and **Bandwidth** are both 0.
         self.real_bandwidth = real_bandwidth
+        self.resource_group_id = resource_group_id
         # The status of the IPv6 address. Valid values:
         # 
         # *   **Pending**\
         # *   **Available**\
         self.status = status
+        self.tags = tags
         # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
         # The ID of the VPC to which the IPv6 address belongs.
@@ -38371,6 +38514,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
     def validate(self):
         if self.ipv_6internet_bandwidth:
             self.ipv_6internet_bandwidth.validate()
+        if self.tags:
+            self.tags.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -38386,6 +38531,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             result['AssociatedInstanceType'] = self.associated_instance_type
         if self.ipv_6address is not None:
             result['Ipv6Address'] = self.ipv_6address
+        if self.ipv_6address_description is not None:
+            result['Ipv6AddressDescription'] = self.ipv_6address_description
         if self.ipv_6address_id is not None:
             result['Ipv6AddressId'] = self.ipv_6address_id
         if self.ipv_6address_name is not None:
@@ -38400,8 +38547,12 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             result['NetworkType'] = self.network_type
         if self.real_bandwidth is not None:
             result['RealBandwidth'] = self.real_bandwidth
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.status is not None:
             result['Status'] = self.status
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -38418,6 +38569,8 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             self.associated_instance_type = m.get('AssociatedInstanceType')
         if m.get('Ipv6Address') is not None:
             self.ipv_6address = m.get('Ipv6Address')
+        if m.get('Ipv6AddressDescription') is not None:
+            self.ipv_6address_description = m.get('Ipv6AddressDescription')
         if m.get('Ipv6AddressId') is not None:
             self.ipv_6address_id = m.get('Ipv6AddressId')
         if m.get('Ipv6AddressName') is not None:
@@ -38433,8 +38586,13 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(TeaModel):
             self.network_type = m.get('NetworkType')
         if m.get('RealBandwidth') is not None:
             self.real_bandwidth = m.get('RealBandwidth')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('Tags') is not None:
+            temp_model = DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTags()
+            self.tags = temp_model.from_map(m['Tags'])
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -39018,6 +39176,7 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         creation_time: str = None,
         description: str = None,
         expired_time: str = None,
+        gateway_route_table_id: str = None,
         instance_charge_type: str = None,
         ipv_6gateway_id: str = None,
         name: str = None,
@@ -39040,6 +39199,7 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
         self.description = description
         # The time when the IPv6 gateway expires.
         self.expired_time = expired_time
+        self.gateway_route_table_id = gateway_route_table_id
         # The metering method of the IPv6 gateway.
         self.instance_charge_type = instance_charge_type
         # The ID of the IPv6 gateway.
@@ -39080,6 +39240,8 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             result['Description'] = self.description
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.gateway_route_table_id is not None:
+            result['GatewayRouteTableId'] = self.gateway_route_table_id
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.ipv_6gateway_id is not None:
@@ -39110,6 +39272,8 @@ class DescribeIpv6GatewayAttributeResponseBody(TeaModel):
             self.description = m.get('Description')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('GatewayRouteTableId') is not None:
+            self.gateway_route_table_id = m.get('GatewayRouteTableId')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('Ipv6GatewayId') is not None:
@@ -44813,36 +44977,39 @@ class DescribeRouteTablesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**\
+        # The page number. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
-        # The region ID of the virtual private cloud (VPC) to which the route table belongs.
+        # The region ID of the VPC to which the route table belongs.
+        # 
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
-        # The ID of the resource group to which the route table belongs.
+        # The ID of the resource group to which the route table to be queried belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the route table that you want to query.
         self.route_table_id = route_table_id
         # The name of the route table that you want to query.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.route_table_name = route_table_name
-        # The ID of the vRouter or VBR to which the route table belongs.
+        # The ID of the router to which the route table belongs.
         self.router_id = router_id
         # The type of the router to which the route table belongs. Valid values:
         # 
-        # *   **VRouter**: a vRouter
-        # *   **VBR**: a virtual border router (VBR)
+        # *   **VRouter** (default)
+        # *   **VBR**\
         self.router_type = router_type
-        # The type of route table that you want to query. Valid values:
+        # The route type. Valid values:
         # 
-        # *   **System** : a system route table
-        # *   **Custom**: a custom route table
-        # *   **BGP**: a Border Gateway Protocol (BGP) route table
+        # *   **Custom**\
+        # *   **System**\
+        # *   **BGP**\
+        # *   **CEN**\
         self.type = type
-        # The ID of the vRouter to which the route table belongs.
-        # 
-        # After you set this parameter, **RouterType** is automatically set to **VRouter**.
+        # The ID of the vRouter.
         self.vrouter_id = vrouter_id
 
     def validate(self):
@@ -44925,24 +45092,25 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryN
         next_hop_type: str = None,
         weight: int = None,
     ):
-        # Indicates whether the next hop feature is enabled.
+        # Indicates whether the route is available. Valid values:
         # 
-        # *   **0**: The next hop feature is disabled.
-        # *   **1**: The next hop feature is enabled.
+        # *   **0**: unavailable
+        # *   **1**: available
         self.enabled = enabled
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of the next hop.
+        # The type of the next hop. Valid values:
         # 
-        # *   **Instance**: The next hop is an Elastic Compute Service (ECS) instance.
-        # *   **HaVip**: The next hop is a high-availability virtual IP address (HAVIP).
-        # *   **VpnGateway**: The next hop is a VPN gateway.
-        # *   **NatGateway**: The next hop is a NAT gateway.
-        # *   **NetworkInterface**: The next hop is a secondary elastic network interface (ENI).
-        # *   **RouterInterface**: The next hop is a router interface.
-        # *   **IPv6Gateway**: The next hop is an IPv6 gateway.
+        # *   **Instance**: an ECS instance
+        # *   **HaVip**: an HAVIP
+        # *   **VpnGateway**: a VPN gateway
+        # *   **NatGateway**: a NAT gateway
+        # *   **NetworkInterface**: a secondary ENI
+        # *   **RouterInterface**: a router interface
+        # *   **IPv6Gateway**: an IPv6 gateway
+        # *   **Attachment**: a transit router
         self.next_hop_type = next_hop_type
-        # The route weight of the next hop.
+        # The weight of the route.
         self.weight = weight
 
     def validate(self):
@@ -45026,36 +45194,48 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry(
         status: str = None,
         type: str = None,
     ):
-        # The description of the router entry.
+        # The description of the route. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block of the route entry.
+        # The destination CIDR block of the route. The destination CIDR block supports IPv4 and IPv6. Make sure that the destination CIDR block meets the following requirements:
+        # 
+        # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
+        # *   The destination CIDR block of each route in the route table is unique.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the next hop.
+        # The ID of the instance associated with the next hop.
         self.instance_id = instance_id
-        # The type of the route.
+        # The type of the next hop. Valid values:
         # 
-        # *   **local**: a vSwitch route
-        # *   **service**: a cloud service route
-        # *   **classicLink**: a route added by the system after ClassicLink is enabled
+        # *   **Instance** (default): an Elastic Compute Service (ECS) instance
+        # *   **HaVip**: a high-availability virtual IP address (HAVIP).
+        # *   **VpnGateway**: a VPN gateway
+        # *   **NatGateway**: a NAT gateway
+        # *   **NetworkInterface**: a secondary elastic network interface (ENI)
+        # *   **RouterInterface**: a router interface
+        # *   **IPv6Gateway**: an IPv6 gateway
+        # *   **Attachment**: a transit router
         self.next_hop_type = next_hop_type
-        # The list of next hops of equal-cost multi-path routing (ECMP) routes.
+        # The information about the next hop.
         self.next_hops = next_hops
+        # The ID of the route.
         self.route_entry_id = route_entry_id
-        # The name of the route entry.
+        # The route name.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
         self.route_entry_name = route_entry_name
-        # The ID of the route table to which the route entry belongs.
+        # The route table ID.
         self.route_table_id = route_table_id
-        # The state of the route entry.
+        # The route status. Valid values:
         # 
-        # *   **Pending**: The route entry is being configured.
-        # *   **Available**: The route entry is available.
-        # *   **Modifying**: The route entry is being modified.
+        # *   **Pending**\
+        # *   **Available**\
+        # *   **Modifying**\
         self.status = status
-        # The type of the route entry.
+        # The route type. Valid values:
         # 
-        # *   **System** : a system route entry
-        # *   **Custom**: a custom route entry
-        # *   **BGP**: a BGP route entry
+        # *   **Custom**\
+        # *   **System**\
+        # *   **BGP**\
+        # *   **CEN**\
         self.type = type
 
     def validate(self):
@@ -45191,22 +45371,28 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTable(TeaModel):
         v_switch_ids: DescribeRouteTablesResponseBodyRouteTablesRouteTableVSwitchIds = None,
     ):
         # The time when the route table was created.
-        self.creation_time = creation_time
-        # The ID of the resource group to which the elastic IP address (EIP) belongs.
-        self.resource_group_id = resource_group_id
-        # Detailed information about the route entry.
-        self.route_entrys = route_entrys
-        # The ID of the route table to which the route entry belongs.
-        self.route_table_id = route_table_id
-        self.route_table_type = route_table_type
-        # The state of the route table.
         # 
-        # *   **Pending**: The route table is being configured.
-        # *   **Available**: The route table is available.
+        # The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
+        self.creation_time = creation_time
+        # The ID of the resource group to which the route table belongs.
+        self.resource_group_id = resource_group_id
+        # The information about the route.
+        self.route_entrys = route_entrys
+        # The ID of the route table.
+        self.route_table_id = route_table_id
+        # The type of the route table. Valid values:
+        # 
+        # *   **Custom**\
+        # *   **System**\
+        self.route_table_type = route_table_type
+        # The status of the route table. Valid values:
+        # 
+        # *   **Pending**\
+        # *   **Available**\
         self.status = status
-        # The ID of the vRouter.
+        # The vRouter ID.
         self.vrouter_id = vrouter_id
-        # The list of vSwitches that belong to the VPC.
+        # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -45306,14 +45492,15 @@ class DescribeRouteTablesResponseBody(TeaModel):
         route_tables: DescribeRouteTablesResponseBodyRouteTables = None,
         total_count: int = None,
     ):
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Details about the route table.
+        # The detailed information about the route tables.
         self.route_tables = route_tables
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -60369,6 +60556,7 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
         client_token: str = None,
         dry_run: bool = None,
         gateway_id: str = None,
+        gateway_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -60389,6 +60577,7 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the IPv4 gateway.
         self.gateway_id = gateway_id
+        self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IPv4 gateway from which you want to disassociate the gateway route table.
@@ -60415,6 +60604,8 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
             result['DryRun'] = self.dry_run
         if self.gateway_id is not None:
             result['GatewayId'] = self.gateway_id
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -60437,6 +60628,8 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
             self.dry_run = m.get('DryRun')
         if m.get('GatewayId') is not None:
             self.gateway_id = m.get('GatewayId')
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -64199,12 +64392,12 @@ class GetVpcPrefixListEntriesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a next query is to be performed, set the value to the NextToken value returned in the last call to the ListenerCertificates operation.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -64212,7 +64405,7 @@ class GetVpcPrefixListEntriesRequest(TeaModel):
         self.prefix_list_id = prefix_list_id
         # The region ID of the prefix list.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query available regions.
+        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -64325,14 +64518,14 @@ class GetVpcPrefixListEntriesResponseBody(TeaModel):
     ):
         # The number of entries.
         self.count = count
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If **NextToken** is not empty, the value indicates the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value indicates the token that is used for the next request to retrieve a new page of results.
         self.next_token = next_token
         # The information about the prefix list.
         self.prefix_list_entry = prefix_list_entry
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -68702,13 +68895,13 @@ class ListPrefixListsRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
         # 
         # The key cannot exceed 64 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value. You can specify at most 20 tag values. It can be an empty string.
+        # The tag value. You can specify up to 20 tag values. The tag value can be an empty string.
         # 
-        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter but cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+        # The tag value cannot exceed 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The key must start with a letter but cannot start with `aliyun` or `acs:`. The key cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -68750,19 +68943,20 @@ class ListPrefixListsRequest(TeaModel):
         resource_owner_id: int = None,
         tags: List[ListPrefixListsRequestTags] = None,
     ):
-        # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
-        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        # *   You do not need to specify this parameter for the first request.
+        # *   You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The IDs of prefix lists to be queried. Valid values of **N** are **1** to **100**, which specifies that you can query up to 100 prefix lists at a time.
         self.prefix_list_ids = prefix_list_ids
         # The name of the prefix list to query.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.prefix_list_name = prefix_list_name
         # The ID of the region where you want to query prefix lists.
         # 
@@ -68772,6 +68966,7 @@ class ListPrefixListsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -68901,7 +69096,7 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
         self.creation_time = creation_time
         # The IP version of the prefix list. Valid values:
         # 
-        # *   **IPv4**\
+        # *   **IPV4**\
         # *   **IPV6**\
         self.ip_version = ip_version
         # The maximum number of CIDR blocks that you can specify in the prefix list.
@@ -68929,7 +69124,7 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
         # Indicates whether the prefix list is shared. Valid values:
         # 
         # *   **Shared**: The prefix list is shared.
-        # *   If an empty value is returned, it indicates that the prefix list is not shared.
+        # *   If an empty value is returned, the prefix list is not shared.
         self.share_type = share_type
         # The status of the prefix list. Valid values:
         # 
@@ -68937,7 +69132,7 @@ class ListPrefixListsResponseBodyPrefixLists(TeaModel):
         # *   **Deleted**\
         # *   **Modifying**\
         self.status = status
-        # The list of tags that are added to the resource group.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -69029,16 +69224,16 @@ class ListPrefixListsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The number of entries returned per page. Valid values: **1** to **100**. Default value: **20**.
+        # The number of entries per page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
-        # The token that is used for the next query. Valid values:
+        # A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
         # 
-        # *   If no value is returned for **NextToken**, no next queries are sent.
-        # *   If a value is returned for **NextToken**, the value indicates the token that is used for the next query.
+        # *   If **NextToken** is empty, no next page exists.
+        # *   If a value is returned for **NextToken**, the value indicates the token that is used for the next request to retrieve a new page of results.
         self.next_token = next_token
         # The information about the prefix lists.
         self.prefix_lists = prefix_lists
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
@@ -74709,17 +74904,17 @@ class ModifyFlowLogAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The new sampling interval of the flow log. Unit: seconds. Valid values: **1**, **5**, and **10**.
+        # The new sampling interval of the flow log. Unit: minutes. Valid values: **1**, **5**, and **10**.
         self.aggregation_interval = aggregation_interval
         # The new description of the flow log.
         # 
-        # The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+        # The description must be 1 to 256 characters in length and cannot start with `http://` or `https://`.
         self.description = description
         # The ID of the flow log.
         self.flow_log_id = flow_log_id
         # The new name of the flow log.
         # 
-        # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+        # The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
         self.flow_log_name = flow_log_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -90277,6 +90472,7 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         description: str = None,
         destination_cidr_block: str = None,
         dry_run: bool = None,
+        gateway_route_table_id: str = None,
         ipv_4gateway_route_table_id: str = None,
         name: str = None,
         next_hop_id: str = None,
@@ -90304,6 +90500,7 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
         # *   **true**: prechecks the request without modifying the gateway route table. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
         # *   **false**: sends the request. This is the default value. If the request passes the precheck, a 2xx HTTP status code is returned and the gateway route table is modified.
         self.dry_run = dry_run
+        self.gateway_route_table_id = gateway_route_table_id
         # The ID of the gateway route table that you want to modify.
         self.ipv_4gateway_route_table_id = ipv_4gateway_route_table_id
         # The name of the gateway route table.
@@ -90350,6 +90547,8 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
             result['DestinationCidrBlock'] = self.destination_cidr_block
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
+        if self.gateway_route_table_id is not None:
+            result['GatewayRouteTableId'] = self.gateway_route_table_id
         if self.ipv_4gateway_route_table_id is not None:
             result['IPv4GatewayRouteTableId'] = self.ipv_4gateway_route_table_id
         if self.name is not None:
@@ -90380,6 +90579,8 @@ class UpdateGatewayRouteTableEntryAttributeRequest(TeaModel):
             self.destination_cidr_block = m.get('DestinationCidrBlock')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
+        if m.get('GatewayRouteTableId') is not None:
+            self.gateway_route_table_id = m.get('GatewayRouteTableId')
         if m.get('IPv4GatewayRouteTableId') is not None:
             self.ipv_4gateway_route_table_id = m.get('IPv4GatewayRouteTableId')
         if m.get('Name') is not None:
