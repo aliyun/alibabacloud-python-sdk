@@ -15282,6 +15282,7 @@ class CostCenterSaveResponseBody(TeaModel):
         self.module = module
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -17856,6 +17857,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         insurance_fee: float = None,
         insurance_number: str = None,
         invoice_title: str = None,
+        item_type: str = None,
         itinerary_num: str = None,
         itinerary_price: float = None,
         mileage: str = None,
@@ -17896,6 +17898,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         traveler_name: str = None,
         upgrade_cost: float = None,
         voucher_type: int = None,
+        voyage_name: str = None,
     ):
         self.advance_day = advance_day
         self.airline_corp_code = airline_corp_code
@@ -17950,6 +17953,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.insurance_fee = insurance_fee
         self.insurance_number = insurance_number
         self.invoice_title = invoice_title
+        self.item_type = item_type
         self.itinerary_num = itinerary_num
         self.itinerary_price = itinerary_price
         self.mileage = mileage
@@ -17991,6 +17995,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.traveler_name = traveler_name
         self.upgrade_cost = upgrade_cost
         self.voucher_type = voucher_type
+        self.voyage_name = voyage_name
 
     def validate(self):
         pass
@@ -18105,6 +18110,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['insurance_number'] = self.insurance_number
         if self.invoice_title is not None:
             result['invoice_title'] = self.invoice_title
+        if self.item_type is not None:
+            result['item_type'] = self.item_type
         if self.itinerary_num is not None:
             result['itinerary_num'] = self.itinerary_num
         if self.itinerary_price is not None:
@@ -18185,6 +18192,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['upgrade_cost'] = self.upgrade_cost
         if self.voucher_type is not None:
             result['voucher_type'] = self.voucher_type
+        if self.voyage_name is not None:
+            result['voyage_name'] = self.voyage_name
         return result
 
     def from_map(self, m: dict = None):
@@ -18293,6 +18302,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.insurance_number = m.get('insurance_number')
         if m.get('invoice_title') is not None:
             self.invoice_title = m.get('invoice_title')
+        if m.get('item_type') is not None:
+            self.item_type = m.get('item_type')
         if m.get('itinerary_num') is not None:
             self.itinerary_num = m.get('itinerary_num')
         if m.get('itinerary_price') is not None:
@@ -18373,6 +18384,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.upgrade_cost = m.get('upgrade_cost')
         if m.get('voucher_type') is not None:
             self.voucher_type = m.get('voucher_type')
+        if m.get('voyage_name') is not None:
+            self.voyage_name = m.get('voyage_name')
         return self
 
 
@@ -20038,9 +20051,12 @@ class FlightCreateOrderV2ResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
+        # module
         self.module = module
+        # requestId
         self.request_id = request_id
         self.success = success
+        # traceId
         self.trace_id = trace_id
 
     def validate(self):
@@ -47573,12 +47589,14 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
     def __init__(
         self,
         depart_ids: List[str] = None,
+        email: str = None,
         leave_status: int = None,
         manager_user_id: str = None,
         position_level: str = None,
         sub_corp_id: str = None,
     ):
         self.depart_ids = depart_ids
+        self.email = email
         self.leave_status = leave_status
         self.manager_user_id = manager_user_id
         self.position_level = position_level
@@ -47595,6 +47613,8 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
         result = dict()
         if self.depart_ids is not None:
             result['depart_ids'] = self.depart_ids
+        if self.email is not None:
+            result['email'] = self.email
         if self.leave_status is not None:
             result['leave_status'] = self.leave_status
         if self.manager_user_id is not None:
@@ -47609,6 +47629,8 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
         m = m or dict()
         if m.get('depart_ids') is not None:
             self.depart_ids = m.get('depart_ids')
+        if m.get('email') is not None:
+            self.email = m.get('email')
         if m.get('leave_status') is not None:
             self.leave_status = m.get('leave_status')
         if m.get('manager_user_id') is not None:
