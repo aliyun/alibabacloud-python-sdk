@@ -2024,10 +2024,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -2061,10 +2065,14 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.product_type):
             query['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            query['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_type):
             query['ResourceType'] = request.resource_type
         req = open_api_models.OpenApiRequest(
@@ -3847,6 +3855,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.page_number):
@@ -3855,12 +3865,16 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_types):
             query['ProductTypes'] = request.product_types
+        if not UtilClient.is_unset(request.quota_ids):
+            query['QuotaIds'] = request.quota_ids
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
+        if not UtilClient.is_unset(request.verbose_fields):
+            query['VerboseFields'] = request.verbose_fields
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -3893,6 +3907,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
         if not UtilClient.is_unset(request.option):
             query['Option'] = request.option
         if not UtilClient.is_unset(request.page_number):
@@ -3901,12 +3917,16 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_types):
             query['ProductTypes'] = request.product_types
+        if not UtilClient.is_unset(request.quota_ids):
+            query['QuotaIds'] = request.quota_ids
         if not UtilClient.is_unset(request.resource_name):
             query['ResourceName'] = request.resource_name
         if not UtilClient.is_unset(request.resource_types):
             query['ResourceTypes'] = request.resource_types
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
+        if not UtilClient.is_unset(request.verbose_fields):
+            query['VerboseFields'] = request.verbose_fields
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -5142,10 +5162,16 @@ class Client(OpenApiClient):
             body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -5179,10 +5205,16 @@ class Client(OpenApiClient):
             body['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.is_default):
             body['IsDefault'] = request.is_default
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
         if not UtilClient.is_unset(request.product_type):
             body['ProductType'] = request.product_type
+        if not UtilClient.is_unset(request.resource_ids):
+            body['ResourceIds'] = request.resource_ids
         if not UtilClient.is_unset(request.resource_type):
             body['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)

@@ -2663,6 +2663,39 @@ class CreateWorkspaceResponse(TeaModel):
         return self
 
 
+class CreateWorkspaceResourceRequestResourcesLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateWorkspaceResourceRequestResourcesQuotas(TeaModel):
     def __init__(
         self,
@@ -2696,6 +2729,7 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         env_type: str = None,
         group_name: str = None,
         is_default: bool = None,
+        labels: List[CreateWorkspaceResourceRequestResourcesLabels] = None,
         name: str = None,
         product_type: str = None,
         quotas: List[CreateWorkspaceResourceRequestResourcesQuotas] = None,
@@ -2706,6 +2740,7 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         self.env_type = env_type
         self.group_name = group_name
         self.is_default = is_default
+        self.labels = labels
         self.name = name
         self.product_type = product_type
         self.quotas = quotas
@@ -2714,6 +2749,10 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
         self.workspace_id = workspace_id
 
     def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
         if self.quotas:
             for k in self.quotas:
                 if k:
@@ -2731,6 +2770,10 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
             result['GroupName'] = self.group_name
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         if self.product_type is not None:
@@ -2755,6 +2798,11 @@ class CreateWorkspaceResourceRequestResources(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = CreateWorkspaceResourceRequestResourcesLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductType') is not None:
@@ -3701,13 +3749,17 @@ class DeleteWorkspaceResourceRequest(TeaModel):
     def __init__(
         self,
         group_name: str = None,
+        labels: str = None,
         option: str = None,
         product_type: str = None,
+        resource_ids: str = None,
         resource_type: str = None,
     ):
         self.group_name = group_name
+        self.labels = labels
         self.option = option
         self.product_type = product_type
+        self.resource_ids = resource_ids
         self.resource_type = resource_type
 
     def validate(self):
@@ -3721,10 +3773,14 @@ class DeleteWorkspaceResourceRequest(TeaModel):
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.option is not None:
             result['Option'] = self.option
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
         return result
@@ -3733,10 +3789,14 @@ class DeleteWorkspaceResourceRequest(TeaModel):
         m = m or dict()
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('Option') is not None:
             self.option = m.get('Option')
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
         return self
@@ -7643,23 +7703,29 @@ class ListResourcesRequest(TeaModel):
     def __init__(
         self,
         group_name: str = None,
+        labels: str = None,
         option: str = None,
         page_number: int = None,
         page_size: int = None,
         product_types: str = None,
+        quota_ids: str = None,
         resource_name: str = None,
         resource_types: str = None,
         verbose: bool = None,
+        verbose_fields: str = None,
         workspace_id: str = None,
     ):
         self.group_name = group_name
+        self.labels = labels
         self.option = option
         self.page_number = page_number
         self.page_size = page_size
         self.product_types = product_types
+        self.quota_ids = quota_ids
         self.resource_name = resource_name
         self.resource_types = resource_types
         self.verbose = verbose
+        self.verbose_fields = verbose_fields
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7673,6 +7739,8 @@ class ListResourcesRequest(TeaModel):
         result = dict()
         if self.group_name is not None:
             result['GroupName'] = self.group_name
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.option is not None:
             result['Option'] = self.option
         if self.page_number is not None:
@@ -7681,12 +7749,16 @@ class ListResourcesRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.product_types is not None:
             result['ProductTypes'] = self.product_types
+        if self.quota_ids is not None:
+            result['QuotaIds'] = self.quota_ids
         if self.resource_name is not None:
             result['ResourceName'] = self.resource_name
         if self.resource_types is not None:
             result['ResourceTypes'] = self.resource_types
         if self.verbose is not None:
             result['Verbose'] = self.verbose
+        if self.verbose_fields is not None:
+            result['VerboseFields'] = self.verbose_fields
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -7695,6 +7767,8 @@ class ListResourcesRequest(TeaModel):
         m = m or dict()
         if m.get('GroupName') is not None:
             self.group_name = m.get('GroupName')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
         if m.get('Option') is not None:
             self.option = m.get('Option')
         if m.get('PageNumber') is not None:
@@ -7703,12 +7777,16 @@ class ListResourcesRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProductTypes') is not None:
             self.product_types = m.get('ProductTypes')
+        if m.get('QuotaIds') is not None:
+            self.quota_ids = m.get('QuotaIds')
         if m.get('ResourceName') is not None:
             self.resource_name = m.get('ResourceName')
         if m.get('ResourceTypes') is not None:
             self.resource_types = m.get('ResourceTypes')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
+        if m.get('VerboseFields') is not None:
+            self.verbose_fields = m.get('VerboseFields')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -7777,6 +7855,39 @@ class ListResourcesResponseBodyResourcesExecutor(TeaModel):
         m = m or dict()
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+        return self
+
+
+class ListResourcesResponseBodyResourcesLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
         return self
 
 
@@ -7900,6 +8011,7 @@ class ListResourcesResponseBodyResources(TeaModel):
         group_name: str = None,
         id: str = None,
         is_default: bool = None,
+        labels: List[ListResourcesResponseBodyResourcesLabels] = None,
         name: str = None,
         product_type: str = None,
         quotas: List[ListResourcesResponseBodyResourcesQuotas] = None,
@@ -7914,6 +8026,7 @@ class ListResourcesResponseBodyResources(TeaModel):
         self.group_name = group_name
         self.id = id
         self.is_default = is_default
+        self.labels = labels
         self.name = name
         self.product_type = product_type
         self.quotas = quotas
@@ -7926,6 +8039,10 @@ class ListResourcesResponseBodyResources(TeaModel):
             self.encryption.validate()
         if self.executor:
             self.executor.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
         if self.quotas:
             for k in self.quotas:
                 if k:
@@ -7951,6 +8068,10 @@ class ListResourcesResponseBodyResources(TeaModel):
             result['Id'] = self.id
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
         if self.product_type is not None:
@@ -7985,6 +8106,11 @@ class ListResourcesResponseBodyResources(TeaModel):
             self.id = m.get('Id')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListResourcesResponseBodyResourcesLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('ProductType') is not None:
@@ -9718,21 +9844,63 @@ class UpdateWorkspaceResponse(TeaModel):
         return self
 
 
+class UpdateWorkspaceResourceRequestLabels(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateWorkspaceResourceRequest(TeaModel):
     def __init__(
         self,
         group_name: str = None,
         is_default: bool = None,
+        labels: List[UpdateWorkspaceResourceRequestLabels] = None,
         product_type: str = None,
+        resource_ids: List[str] = None,
         resource_type: str = None,
+        spec: Dict[str, Any] = None,
     ):
         self.group_name = group_name
         self.is_default = is_default
+        self.labels = labels
         self.product_type = product_type
+        self.resource_ids = resource_ids
         self.resource_type = resource_type
+        self.spec = spec
 
     def validate(self):
-        pass
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9744,10 +9912,18 @@ class UpdateWorkspaceResourceRequest(TeaModel):
             result['GroupName'] = self.group_name
         if self.is_default is not None:
             result['IsDefault'] = self.is_default
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.product_type is not None:
             result['ProductType'] = self.product_type
+        if self.resource_ids is not None:
+            result['ResourceIds'] = self.resource_ids
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
+        if self.spec is not None:
+            result['Spec'] = self.spec
         return result
 
     def from_map(self, m: dict = None):
@@ -9756,10 +9932,19 @@ class UpdateWorkspaceResourceRequest(TeaModel):
             self.group_name = m.get('GroupName')
         if m.get('IsDefault') is not None:
             self.is_default = m.get('IsDefault')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = UpdateWorkspaceResourceRequestLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('ProductType') is not None:
             self.product_type = m.get('ProductType')
+        if m.get('ResourceIds') is not None:
+            self.resource_ids = m.get('ResourceIds')
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
         return self
 
 
