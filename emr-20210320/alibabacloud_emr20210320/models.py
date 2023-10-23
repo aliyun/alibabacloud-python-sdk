@@ -1772,6 +1772,7 @@ class Cluster(TeaModel):
         resource_group_id: str = None,
         security_mode: str = None,
         state_change_reason: ClusterStateChangeReason = None,
+        status: str = None,
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
@@ -1799,7 +1800,7 @@ class Cluster(TeaModel):
         self.payment_type = payment_type
         # 可用时间。
         self.ready_time = ready_time
-        # 区域ID。
+        # 地域ID。
         self.region_id = region_id
         # EMR发行版。
         self.release_version = release_version
@@ -1808,6 +1809,8 @@ class Cluster(TeaModel):
         # Kerberos安全模式。
         self.security_mode = security_mode
         self.state_change_reason = state_change_reason
+        # 集群状态，值同clusterState
+        self.status = status
         # 预付费配置。
         self.subscription_config = subscription_config
         # 集群标签。
@@ -1865,6 +1868,8 @@ class Cluster(TeaModel):
             result['SecurityMode'] = self.security_mode
         if self.state_change_reason is not None:
             result['StateChangeReason'] = self.state_change_reason.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
         if self.subscription_config is not None:
             result['SubscriptionConfig'] = self.subscription_config.to_map()
         result['Tags'] = []
@@ -1911,6 +1916,8 @@ class Cluster(TeaModel):
         if m.get('StateChangeReason') is not None:
             temp_model = ClusterStateChangeReason()
             self.state_change_reason = temp_model.from_map(m['StateChangeReason'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         if m.get('SubscriptionConfig') is not None:
             temp_model = SubscriptionConfig()
             self.subscription_config = temp_model.from_map(m['SubscriptionConfig'])
@@ -2062,6 +2069,7 @@ class ClusterSummary(TeaModel):
         release_version: str = None,
         resource_group_id: str = None,
         state_change_reason: ClusterStateChangeReason = None,
+        status: str = None,
         tags: List[Tag] = None,
     ):
         # 集群ID。
@@ -2104,6 +2112,16 @@ class ClusterSummary(TeaModel):
         self.resource_group_id = resource_group_id
         # 失败原因。
         self.state_change_reason = state_change_reason
+        # 集群状态。取值范围：
+        # - STARTING：启动中。
+        # - START_FAILED：启动失败。
+        # - BOOTSTRAPPING：引导操作初始化。
+        # - RUNNING：运行中。
+        # - TERMINATING：终止中。
+        # - TERMINATED：已终止。
+        # - TERMINATED_WITH_ERRORS：发生异常导致终止。
+        # - TERMINATE_FAILED：终止失败。
+        self.status = status
         # 标签列表。
         self.tags = tags
 
@@ -2147,6 +2165,8 @@ class ClusterSummary(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.state_change_reason is not None:
             result['StateChangeReason'] = self.state_change_reason.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -2182,6 +2202,8 @@ class ClusterSummary(TeaModel):
         if m.get('StateChangeReason') is not None:
             temp_model = ClusterStateChangeReason()
             self.state_change_reason = temp_model.from_map(m['StateChangeReason'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -8097,7 +8119,7 @@ class GetClusterRequest(TeaModel):
     ):
         # 集群ID。
         self.cluster_id = cluster_id
-        # 区域ID。
+        # 地域ID。
         self.region_id = region_id
 
     def validate(self):
@@ -42063,11 +42085,9 @@ class RunApplicationActionRequest(TeaModel):
         self.component_instance_selector = component_instance_selector
         # 描述。
         self.description = description
-        # 运行失败策略。取值范围：
-        # - FAILED_BLOCK：失败后阻塞。
-        # - FAILED_CONTINUE：失败后继续。
+        # 运行策略。
         self.execute_strategy = execute_strategy
-        # 滚动执行间隔时间。
+        # 间隔时间。
         self.interval = interval
         # 区域ID。
         self.region_id = region_id
