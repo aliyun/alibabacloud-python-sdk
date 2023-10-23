@@ -3807,10 +3807,14 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_pools):
+            query['ResourcePools'] = request.resource_pools
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -3856,10 +3860,14 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.resource_pools):
+            query['ResourcePools'] = request.resource_pools
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
         req = open_api_models.OpenApiRequest(
@@ -6096,96 +6104,6 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeRegionsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
-
-    def describe_sqlpattern_attribute_with_options(
-        self,
-        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.pattern_id):
-            query['PatternId'] = request.pattern_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSQLPatternAttribute',
-            version='2019-03-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20190315_models.DescribeSQLPatternAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_sqlpattern_attribute_with_options_async(
-        self,
-        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.pattern_id):
-            query['PatternId'] = request.pattern_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSQLPatternAttribute',
-            version='2019-03-15',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20190315_models.DescribeSQLPatternAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_sqlpattern_attribute(
-        self,
-        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
-    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqlpattern_attribute_with_options(request, runtime)
-
-    async def describe_sqlpattern_attribute_async(
-        self,
-        request: adb_20190315_models.DescribeSQLPatternAttributeRequest,
-    ) -> adb_20190315_models.DescribeSQLPatternAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqlpattern_attribute_with_options_async(request, runtime)
 
     def describe_sqlpatterns_with_options(
         self,
