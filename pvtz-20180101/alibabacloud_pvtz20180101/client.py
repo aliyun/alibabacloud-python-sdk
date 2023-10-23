@@ -310,6 +310,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.AddZoneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proxy_pattern):
@@ -348,6 +350,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.AddZoneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proxy_pattern):
@@ -400,8 +404,12 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.remark):
@@ -416,6 +424,8 @@ class Client(OpenApiClient):
             query['UserClientIp'] = request.user_client_ip
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -444,8 +454,12 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.AddZoneRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.remark):
@@ -460,6 +474,8 @@ class Client(OpenApiClient):
             query['UserClientIp'] = request.user_client_ip
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -580,6 +596,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.user_client_ip):
@@ -614,6 +632,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.BindZoneVpcResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.user_client_ip):
@@ -962,6 +982,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.DeleteZoneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.user_client_ip):
@@ -994,6 +1016,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.DeleteZoneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.user_client_ip):
@@ -1040,6 +1064,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.record_id):
@@ -1072,6 +1098,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.record_id):
@@ -1226,6 +1254,8 @@ class Client(OpenApiClient):
             query['AuthorizedUserId'] = request.authorized_user_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
         if not UtilClient.is_unset(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
         if not UtilClient.is_unset(request.vpc_type):
@@ -1262,6 +1292,8 @@ class Client(OpenApiClient):
             query['AuthorizedUserId'] = request.authorized_user_id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.scene):
+            query['Scene'] = request.scene
         if not UtilClient.is_unset(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
         if not UtilClient.is_unset(request.vpc_type):
@@ -2564,6 +2596,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -2596,6 +2630,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.MoveResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -2642,6 +2678,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proxy_pattern):
@@ -2676,6 +2714,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.SetProxyPatternResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.proxy_pattern):
@@ -2724,6 +2764,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.record_id):
@@ -2758,6 +2800,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.record_id):
@@ -2978,6 +3022,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.record_id):
@@ -3010,6 +3056,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.record_id):
@@ -3302,8 +3350,12 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.record_id):
@@ -3318,6 +3370,8 @@ class Client(OpenApiClient):
             query['UserClientIp'] = request.user_client_ip
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3344,8 +3398,12 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.line):
+            query['Line'] = request.line
         if not UtilClient.is_unset(request.priority):
             query['Priority'] = request.priority
         if not UtilClient.is_unset(request.record_id):
@@ -3360,6 +3418,8 @@ class Client(OpenApiClient):
             query['UserClientIp'] = request.user_client_ip
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
+        if not UtilClient.is_unset(request.weight):
+            query['Weight'] = request.weight
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3400,6 +3460,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.remark):
@@ -3434,6 +3496,8 @@ class Client(OpenApiClient):
     ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.remark):

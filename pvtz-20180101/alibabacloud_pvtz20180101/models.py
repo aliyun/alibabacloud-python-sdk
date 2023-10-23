@@ -485,6 +485,7 @@ class AddUserVpcAuthorizationResponse(TeaModel):
 class AddZoneRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         proxy_pattern: str = None,
         resource_group_id: str = None,
@@ -492,6 +493,7 @@ class AddZoneRequest(TeaModel):
         zone_tag: str = None,
         zone_type: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.proxy_pattern = proxy_pattern
         self.resource_group_id = resource_group_id
@@ -508,6 +510,8 @@ class AddZoneRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.proxy_pattern is not None:
@@ -524,6 +528,8 @@ class AddZoneRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('ProxyPattern') is not None:
@@ -632,7 +638,9 @@ class AddZoneResponse(TeaModel):
 class AddZoneRecordRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
+        line: str = None,
         priority: int = None,
         remark: str = None,
         rr: str = None,
@@ -640,9 +648,12 @@ class AddZoneRecordRequest(TeaModel):
         type: str = None,
         user_client_ip: str = None,
         value: str = None,
+        weight: int = None,
         zone_id: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
+        self.line = line
         self.priority = priority
         self.remark = remark
         self.rr = rr
@@ -650,6 +661,7 @@ class AddZoneRecordRequest(TeaModel):
         self.type = type
         self.user_client_ip = user_client_ip
         self.value = value
+        self.weight = weight
         # Zone ID。
         self.zone_id = zone_id
 
@@ -662,8 +674,12 @@ class AddZoneRecordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.line is not None:
+            result['Line'] = self.line
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.remark is not None:
@@ -678,14 +694,20 @@ class AddZoneRecordRequest(TeaModel):
             result['UserClientIp'] = self.user_client_ip
         if self.value is not None:
             result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('Line') is not None:
+            self.line = m.get('Line')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('Remark') is not None:
@@ -700,6 +722,8 @@ class AddZoneRecordRequest(TeaModel):
             self.user_client_ip = m.get('UserClientIp')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -988,11 +1012,13 @@ class BindZoneVpcRequestVpcs(TeaModel):
 class BindZoneVpcRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         user_client_ip: str = None,
         vpcs: List[BindZoneVpcRequestVpcs] = None,
         zone_id: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.user_client_ip = user_client_ip
         self.vpcs = vpcs
@@ -1010,6 +1036,8 @@ class BindZoneVpcRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.user_client_ip is not None:
@@ -1024,6 +1052,8 @@ class BindZoneVpcRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('UserClientIp') is not None:
@@ -1546,10 +1576,12 @@ class DeleteUserVpcAuthorizationResponse(TeaModel):
 class DeleteZoneRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.user_client_ip = user_client_ip
         # zone ID
@@ -1564,6 +1596,8 @@ class DeleteZoneRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.user_client_ip is not None:
@@ -1574,6 +1608,8 @@ class DeleteZoneRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('UserClientIp') is not None:
@@ -1664,10 +1700,12 @@ class DeleteZoneResponse(TeaModel):
 class DeleteZoneRecordRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         record_id: int = None,
         user_client_ip: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.record_id = record_id
         self.user_client_ip = user_client_ip
@@ -1681,6 +1719,8 @@ class DeleteZoneRecordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.record_id is not None:
@@ -1691,6 +1731,8 @@ class DeleteZoneRecordRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('RecordId') is not None:
@@ -1856,6 +1898,9 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(TeaModel):
     def __init__(
         self,
         content: str = None,
+        creator_id: str = None,
+        creator_sub_type: str = None,
+        creator_type: str = None,
         entity_id: str = None,
         entity_name: str = None,
         id: int = None,
@@ -1866,6 +1911,9 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(TeaModel):
         oper_timestamp: int = None,
     ):
         self.content = content
+        self.creator_id = creator_id
+        self.creator_sub_type = creator_sub_type
+        self.creator_type = creator_type
         self.entity_id = entity_id
         self.entity_name = entity_name
         self.id = id
@@ -1886,6 +1934,12 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(TeaModel):
         result = dict()
         if self.content is not None:
             result['Content'] = self.content
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
         if self.entity_id is not None:
             result['EntityId'] = self.entity_id
         if self.entity_name is not None:
@@ -1908,6 +1962,12 @@ class DescribeChangeLogsResponseBodyChangeLogsChangeLog(TeaModel):
         m = m or dict()
         if m.get('Content') is not None:
             self.content = m.get('Content')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
         if m.get('EntityId') is not None:
             self.entity_id = m.get('EntityId')
         if m.get('EntityName') is not None:
@@ -2071,12 +2131,14 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         authorized_user_id: int = None,
         lang: str = None,
+        scene: str = None,
         user_client_ip: str = None,
         vpc_type: str = None,
     ):
         self.accept_language = accept_language
         self.authorized_user_id = authorized_user_id
         self.lang = lang
+        self.scene = scene
         self.user_client_ip = user_client_ip
         self.vpc_type = vpc_type
 
@@ -2095,6 +2157,8 @@ class DescribeRegionsRequest(TeaModel):
             result['AuthorizedUserId'] = self.authorized_user_id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.scene is not None:
+            result['Scene'] = self.scene
         if self.user_client_ip is not None:
             result['UserClientIp'] = self.user_client_ip
         if self.vpc_type is not None:
@@ -2109,6 +2173,8 @@ class DescribeRegionsRequest(TeaModel):
             self.authorized_user_id = m.get('AuthorizedUserId')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('Scene') is not None:
+            self.scene = m.get('Scene')
         if m.get('UserClientIp') is not None:
             self.user_client_ip = m.get('UserClientIp')
         if m.get('VpcType') is not None:
@@ -3244,6 +3310,7 @@ class DescribeResolverRuleResponseBodyBindVpcs(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
         vpc_type: str = None,
+        vpc_user_id: str = None,
     ):
         self.region_id = region_id
         self.region_name = region_name
@@ -3251,6 +3318,7 @@ class DescribeResolverRuleResponseBodyBindVpcs(TeaModel):
         self.vpc_id = vpc_id
         self.vpc_name = vpc_name
         self.vpc_type = vpc_type
+        self.vpc_user_id = vpc_user_id
 
     def validate(self):
         pass
@@ -3271,6 +3339,8 @@ class DescribeResolverRuleResponseBodyBindVpcs(TeaModel):
             result['VpcName'] = self.vpc_name
         if self.vpc_type is not None:
             result['VpcType'] = self.vpc_type
+        if self.vpc_user_id is not None:
+            result['VpcUserId'] = self.vpc_user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3285,6 +3355,8 @@ class DescribeResolverRuleResponseBodyBindVpcs(TeaModel):
             self.vpc_name = m.get('VpcName')
         if m.get('VpcType') is not None:
             self.vpc_type = m.get('VpcType')
+        if m.get('VpcUserId') is not None:
+            self.vpc_user_id = m.get('VpcUserId')
         return self
 
 
@@ -3546,6 +3618,7 @@ class DescribeResolverRulesResponseBodyRulesBindVpcs(TeaModel):
         vpc_id: str = None,
         vpc_name: str = None,
         vpc_type: str = None,
+        vpc_user_id: str = None,
     ):
         self.region_id = region_id
         self.region_name = region_name
@@ -3553,6 +3626,7 @@ class DescribeResolverRulesResponseBodyRulesBindVpcs(TeaModel):
         self.vpc_id = vpc_id
         self.vpc_name = vpc_name
         self.vpc_type = vpc_type
+        self.vpc_user_id = vpc_user_id
 
     def validate(self):
         pass
@@ -3573,6 +3647,8 @@ class DescribeResolverRulesResponseBodyRulesBindVpcs(TeaModel):
             result['VpcName'] = self.vpc_name
         if self.vpc_type is not None:
             result['VpcType'] = self.vpc_type
+        if self.vpc_user_id is not None:
+            result['VpcUserId'] = self.vpc_user_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3587,6 +3663,8 @@ class DescribeResolverRulesResponseBodyRulesBindVpcs(TeaModel):
             self.vpc_name = m.get('VpcName')
         if m.get('VpcType') is not None:
             self.vpc_type = m.get('VpcType')
+        if m.get('VpcUserId') is not None:
+            self.vpc_user_id = m.get('VpcUserId')
         return self
 
 
@@ -4631,10 +4709,14 @@ class DescribeUserVpcAuthorizationsResponseBodyUsers(TeaModel):
         auth_type: str = None,
         authorized_aliyun_id: str = None,
         authorized_user_id: int = None,
+        create_time: str = None,
+        create_timestamp: int = None,
     ):
         self.auth_type = auth_type
         self.authorized_aliyun_id = authorized_aliyun_id
         self.authorized_user_id = authorized_user_id
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
 
     def validate(self):
         pass
@@ -4651,6 +4733,10 @@ class DescribeUserVpcAuthorizationsResponseBodyUsers(TeaModel):
             result['AuthorizedAliyunId'] = self.authorized_aliyun_id
         if self.authorized_user_id is not None:
             result['AuthorizedUserId'] = self.authorized_user_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
         return result
 
     def from_map(self, m: dict = None):
@@ -4661,6 +4747,10 @@ class DescribeUserVpcAuthorizationsResponseBodyUsers(TeaModel):
             self.authorized_aliyun_id = m.get('AuthorizedAliyunId')
         if m.get('AuthorizedUserId') is not None:
             self.authorized_user_id = m.get('AuthorizedUserId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
         return self
 
 
@@ -4906,6 +4996,10 @@ class DescribeZoneInfoResponseBody(TeaModel):
         bind_vpcs: DescribeZoneInfoResponseBodyBindVpcs = None,
         create_time: str = None,
         create_timestamp: int = None,
+        creator: str = None,
+        creator_type: str = None,
+        dns_group: str = None,
+        dns_group_changing: bool = None,
         is_ptr: bool = None,
         proxy_pattern: str = None,
         record_count: int = None,
@@ -4923,6 +5017,10 @@ class DescribeZoneInfoResponseBody(TeaModel):
         self.bind_vpcs = bind_vpcs
         self.create_time = create_time
         self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_type = creator_type
+        self.dns_group = dns_group
+        self.dns_group_changing = dns_group_changing
         self.is_ptr = is_ptr
         self.proxy_pattern = proxy_pattern
         self.record_count = record_count
@@ -4954,6 +5052,14 @@ class DescribeZoneInfoResponseBody(TeaModel):
             result['CreateTime'] = self.create_time
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.dns_group is not None:
+            result['DnsGroup'] = self.dns_group
+        if self.dns_group_changing is not None:
+            result['DnsGroupChanging'] = self.dns_group_changing
         if self.is_ptr is not None:
             result['IsPtr'] = self.is_ptr
         if self.proxy_pattern is not None:
@@ -4991,6 +5097,14 @@ class DescribeZoneInfoResponseBody(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('DnsGroup') is not None:
+            self.dns_group = m.get('DnsGroup')
+        if m.get('DnsGroupChanging') is not None:
+            self.dns_group_changing = m.get('DnsGroupChanging')
         if m.get('IsPtr') is not None:
             self.is_ptr = m.get('IsPtr')
         if m.get('ProxyPattern') is not None:
@@ -5137,6 +5251,9 @@ class DescribeZoneRecordsRequest(TeaModel):
 class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
     def __init__(
         self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        line: str = None,
         priority: int = None,
         record_id: int = None,
         remark: str = None,
@@ -5144,8 +5261,15 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
         status: str = None,
         ttl: int = None,
         type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
         value: str = None,
+        weight: int = None,
+        zone_id: str = None,
     ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.line = line
         self.priority = priority
         self.record_id = record_id
         self.remark = remark
@@ -5153,7 +5277,11 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
         self.status = status
         self.ttl = ttl
         self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
         self.value = value
+        self.weight = weight
+        self.zone_id = zone_id
 
     def validate(self):
         pass
@@ -5164,6 +5292,12 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
             return _map
 
         result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.line is not None:
+            result['Line'] = self.line
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.record_id is not None:
@@ -5178,12 +5312,26 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
             result['Ttl'] = self.ttl
         if self.type is not None:
             result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
         if self.value is not None:
             result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Line') is not None:
+            self.line = m.get('Line')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RecordId') is not None:
@@ -5198,8 +5346,16 @@ class DescribeZoneRecordsResponseBodyRecordsRecord(TeaModel):
             self.ttl = m.get('Ttl')
         if m.get('Type') is not None:
             self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -5467,6 +5623,10 @@ class DescribeZoneVpcTreeResponseBodyZonesZone(TeaModel):
         self,
         create_time: str = None,
         create_timestamp: int = None,
+        creator: str = None,
+        creator_type: str = None,
+        dns_group: str = None,
+        dns_group_changing: bool = None,
         is_ptr: bool = None,
         record_count: int = None,
         remark: str = None,
@@ -5480,6 +5640,10 @@ class DescribeZoneVpcTreeResponseBodyZonesZone(TeaModel):
     ):
         self.create_time = create_time
         self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_type = creator_type
+        self.dns_group = dns_group
+        self.dns_group_changing = dns_group_changing
         self.is_ptr = is_ptr
         self.record_count = record_count
         self.remark = remark
@@ -5506,6 +5670,14 @@ class DescribeZoneVpcTreeResponseBodyZonesZone(TeaModel):
             result['CreateTime'] = self.create_time
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_type is not None:
+            result['CreatorType'] = self.creator_type
+        if self.dns_group is not None:
+            result['DnsGroup'] = self.dns_group
+        if self.dns_group_changing is not None:
+            result['DnsGroupChanging'] = self.dns_group_changing
         if self.is_ptr is not None:
             result['IsPtr'] = self.is_ptr
         if self.record_count is not None:
@@ -5534,6 +5706,14 @@ class DescribeZoneVpcTreeResponseBodyZonesZone(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorType') is not None:
+            self.creator_type = m.get('CreatorType')
+        if m.get('DnsGroup') is not None:
+            self.dns_group = m.get('DnsGroup')
+        if m.get('DnsGroupChanging') is not None:
+            self.dns_group_changing = m.get('DnsGroupChanging')
         if m.get('IsPtr') is not None:
             self.is_ptr = m.get('IsPtr')
         if m.get('RecordCount') is not None:
@@ -5874,6 +6054,10 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
         self,
         create_time: str = None,
         create_timestamp: int = None,
+        creator: str = None,
+        creator_sub_type: str = None,
+        dns_group: str = None,
+        dns_group_changing: bool = None,
         is_ptr: bool = None,
         proxy_pattern: str = None,
         record_count: int = None,
@@ -5889,6 +6073,10 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
     ):
         self.create_time = create_time
         self.create_timestamp = create_timestamp
+        self.creator = creator
+        self.creator_sub_type = creator_sub_type
+        self.dns_group = dns_group
+        self.dns_group_changing = dns_group_changing
         self.is_ptr = is_ptr
         self.proxy_pattern = proxy_pattern
         self.record_count = record_count
@@ -5917,6 +6105,14 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
             result['CreateTime'] = self.create_time
         if self.create_timestamp is not None:
             result['CreateTimestamp'] = self.create_timestamp
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.creator_sub_type is not None:
+            result['CreatorSubType'] = self.creator_sub_type
+        if self.dns_group is not None:
+            result['DnsGroup'] = self.dns_group
+        if self.dns_group_changing is not None:
+            result['DnsGroupChanging'] = self.dns_group_changing
         if self.is_ptr is not None:
             result['IsPtr'] = self.is_ptr
         if self.proxy_pattern is not None:
@@ -5949,6 +6145,14 @@ class DescribeZonesResponseBodyZonesZone(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('CreateTimestamp') is not None:
             self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('CreatorSubType') is not None:
+            self.creator_sub_type = m.get('CreatorSubType')
+        if m.get('DnsGroup') is not None:
+            self.dns_group = m.get('DnsGroup')
+        if m.get('DnsGroupChanging') is not None:
+            self.dns_group_changing = m.get('DnsGroupChanging')
         if m.get('IsPtr') is not None:
             self.is_ptr = m.get('IsPtr')
         if m.get('ProxyPattern') is not None:
@@ -6352,10 +6556,12 @@ class ListTagResourcesResponse(TeaModel):
 class MoveResourceGroupRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         new_resource_group_id: str = None,
         resource_id: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.new_resource_group_id = new_resource_group_id
         # Zone Id。
@@ -6370,6 +6576,8 @@ class MoveResourceGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.new_resource_group_id is not None:
@@ -6380,6 +6588,8 @@ class MoveResourceGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('NewResourceGroupId') is not None:
@@ -6463,11 +6673,13 @@ class MoveResourceGroupResponse(TeaModel):
 class SetProxyPatternRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         proxy_pattern: str = None,
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.proxy_pattern = proxy_pattern
         self.user_client_ip = user_client_ip
@@ -6482,6 +6694,8 @@ class SetProxyPatternRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.proxy_pattern is not None:
@@ -6494,6 +6708,8 @@ class SetProxyPatternRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('ProxyPattern') is not None:
@@ -6585,11 +6801,13 @@ class SetProxyPatternResponse(TeaModel):
 class SetZoneRecordStatusRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         record_id: int = None,
         status: str = None,
         user_client_ip: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.record_id = record_id
         self.status = status
@@ -6604,6 +6822,8 @@ class SetZoneRecordStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.record_id is not None:
@@ -6616,6 +6836,8 @@ class SetZoneRecordStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('RecordId') is not None:
@@ -6998,10 +7220,12 @@ class UntagResourcesResponse(TeaModel):
 class UpdateRecordRemarkRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         record_id: int = None,
         remark: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.record_id = record_id
         self.remark = remark
@@ -7015,6 +7239,8 @@ class UpdateRecordRemarkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.record_id is not None:
@@ -7025,6 +7251,8 @@ class UpdateRecordRemarkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('RecordId') is not None:
@@ -7603,7 +7831,9 @@ class UpdateSyncEcsHostTaskResponse(TeaModel):
 class UpdateZoneRecordRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
+        line: str = None,
         priority: int = None,
         record_id: int = None,
         rr: str = None,
@@ -7611,8 +7841,11 @@ class UpdateZoneRecordRequest(TeaModel):
         type: str = None,
         user_client_ip: str = None,
         value: str = None,
+        weight: int = None,
     ):
+        self.client_token = client_token
         self.lang = lang
+        self.line = line
         self.priority = priority
         self.record_id = record_id
         self.rr = rr
@@ -7620,6 +7853,7 @@ class UpdateZoneRecordRequest(TeaModel):
         self.type = type
         self.user_client_ip = user_client_ip
         self.value = value
+        self.weight = weight
 
     def validate(self):
         pass
@@ -7630,8 +7864,12 @@ class UpdateZoneRecordRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.line is not None:
+            result['Line'] = self.line
         if self.priority is not None:
             result['Priority'] = self.priority
         if self.record_id is not None:
@@ -7646,12 +7884,18 @@ class UpdateZoneRecordRequest(TeaModel):
             result['UserClientIp'] = self.user_client_ip
         if self.value is not None:
             result['Value'] = self.value
+        if self.weight is not None:
+            result['Weight'] = self.weight
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('Line') is not None:
+            self.line = m.get('Line')
         if m.get('Priority') is not None:
             self.priority = m.get('Priority')
         if m.get('RecordId') is not None:
@@ -7666,6 +7910,8 @@ class UpdateZoneRecordRequest(TeaModel):
             self.user_client_ip = m.get('UserClientIp')
         if m.get('Value') is not None:
             self.value = m.get('Value')
+        if m.get('Weight') is not None:
+            self.weight = m.get('Weight')
         return self
 
 
@@ -7749,11 +7995,13 @@ class UpdateZoneRecordResponse(TeaModel):
 class UpdateZoneRemarkRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         lang: str = None,
         remark: str = None,
         user_client_ip: str = None,
         zone_id: str = None,
     ):
+        self.client_token = client_token
         self.lang = lang
         self.remark = remark
         self.user_client_ip = user_client_ip
@@ -7769,6 +8017,8 @@ class UpdateZoneRemarkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.remark is not None:
@@ -7781,6 +8031,8 @@ class UpdateZoneRemarkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('Remark') is not None:
