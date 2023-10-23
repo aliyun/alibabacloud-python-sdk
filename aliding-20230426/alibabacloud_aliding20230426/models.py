@@ -138,10 +138,14 @@ class AddAttendeeRequest(TeaModel):
         attendees_to_add: List[AddAttendeeRequestAttendeesToAdd] = None,
         calendar_id: str = None,
         event_id: str = None,
+        chat_notification: bool = None,
+        push_notification: bool = None,
     ):
         self.attendees_to_add = attendees_to_add
         self.calendar_id = calendar_id
         self.event_id = event_id
+        self.chat_notification = chat_notification
+        self.push_notification = push_notification
 
     def validate(self):
         if self.attendees_to_add:
@@ -163,6 +167,10 @@ class AddAttendeeRequest(TeaModel):
             result['CalendarId'] = self.calendar_id
         if self.event_id is not None:
             result['EventId'] = self.event_id
+        if self.chat_notification is not None:
+            result['chatNotification'] = self.chat_notification
+        if self.push_notification is not None:
+            result['pushNotification'] = self.push_notification
         return result
 
     def from_map(self, m: dict = None):
@@ -176,6 +184,10 @@ class AddAttendeeRequest(TeaModel):
             self.calendar_id = m.get('CalendarId')
         if m.get('EventId') is not None:
             self.event_id = m.get('EventId')
+        if m.get('chatNotification') is not None:
+            self.chat_notification = m.get('chatNotification')
+        if m.get('pushNotification') is not None:
+            self.push_notification = m.get('pushNotification')
         return self
 
 
@@ -185,10 +197,14 @@ class AddAttendeeShrinkRequest(TeaModel):
         attendees_to_add_shrink: str = None,
         calendar_id: str = None,
         event_id: str = None,
+        chat_notification: bool = None,
+        push_notification: bool = None,
     ):
         self.attendees_to_add_shrink = attendees_to_add_shrink
         self.calendar_id = calendar_id
         self.event_id = event_id
+        self.chat_notification = chat_notification
+        self.push_notification = push_notification
 
     def validate(self):
         pass
@@ -205,6 +221,10 @@ class AddAttendeeShrinkRequest(TeaModel):
             result['CalendarId'] = self.calendar_id
         if self.event_id is not None:
             result['EventId'] = self.event_id
+        if self.chat_notification is not None:
+            result['chatNotification'] = self.chat_notification
+        if self.push_notification is not None:
+            result['pushNotification'] = self.push_notification
         return result
 
     def from_map(self, m: dict = None):
@@ -215,6 +235,10 @@ class AddAttendeeShrinkRequest(TeaModel):
             self.calendar_id = m.get('CalendarId')
         if m.get('EventId') is not None:
             self.event_id = m.get('EventId')
+        if m.get('chatNotification') is not None:
+            self.chat_notification = m.get('chatNotification')
+        if m.get('pushNotification') is not None:
+            self.push_notification = m.get('pushNotification')
         return self
 
 
@@ -9520,9 +9544,11 @@ class DeleteEventRequest(TeaModel):
         self,
         calendar_id: str = None,
         event_id: str = None,
+        push_notification: bool = None,
     ):
         self.calendar_id = calendar_id
         self.event_id = event_id
+        self.push_notification = push_notification
 
     def validate(self):
         pass
@@ -9537,6 +9563,8 @@ class DeleteEventRequest(TeaModel):
             result['CalendarId'] = self.calendar_id
         if self.event_id is not None:
             result['EventId'] = self.event_id
+        if self.push_notification is not None:
+            result['pushNotification'] = self.push_notification
         return result
 
     def from_map(self, m: dict = None):
@@ -9545,6 +9573,8 @@ class DeleteEventRequest(TeaModel):
             self.calendar_id = m.get('CalendarId')
         if m.get('EventId') is not None:
             self.event_id = m.get('EventId')
+        if m.get('pushNotification') is not None:
+            self.push_notification = m.get('pushNotification')
         return self
 
 

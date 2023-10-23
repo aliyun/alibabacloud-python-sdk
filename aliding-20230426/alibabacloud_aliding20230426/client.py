@@ -63,6 +63,10 @@ class Client(OpenApiClient):
             body['CalendarId'] = request.calendar_id
         if not UtilClient.is_unset(request.event_id):
             body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.chat_notification):
+            body['chatNotification'] = request.chat_notification
+        if not UtilClient.is_unset(request.push_notification):
+            body['pushNotification'] = request.push_notification
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -110,6 +114,10 @@ class Client(OpenApiClient):
             body['CalendarId'] = request.calendar_id
         if not UtilClient.is_unset(request.event_id):
             body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.chat_notification):
+            body['chatNotification'] = request.chat_notification
+        if not UtilClient.is_unset(request.push_notification):
+            body['pushNotification'] = request.push_notification
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3151,6 +3159,8 @@ class Client(OpenApiClient):
             body['CalendarId'] = request.calendar_id
         if not UtilClient.is_unset(request.event_id):
             body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.push_notification):
+            body['pushNotification'] = request.push_notification
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3192,6 +3202,8 @@ class Client(OpenApiClient):
             body['CalendarId'] = request.calendar_id
         if not UtilClient.is_unset(request.event_id):
             body['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.push_notification):
+            body['pushNotification'] = request.push_notification
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
