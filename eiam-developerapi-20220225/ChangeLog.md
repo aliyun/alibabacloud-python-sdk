@@ -1,3 +1,6 @@
+2023-10-24 Version: 1.0.8
+- Generated python 2022-02-25 for Eiam-developerapi.
+
 2023-09-12 Version: 1.0.7
 - Generated python 2022-02-25 for Eiam-developerapi.
 
