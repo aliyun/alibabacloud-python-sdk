@@ -1,3 +1,6 @@
+2023-10-24 Version: 3.2.0
+- Generated python 2016-07-14 for CloudAPI.
+
 2023-10-21 Version: 3.1.1
 - Generated python 2016-07-14 for CloudAPI.
 

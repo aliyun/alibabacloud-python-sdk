@@ -9349,6 +9349,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_with_options_async(request, runtime)
 
+    def describe_group_latency_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeGroupLatencyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupLatency',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeGroupLatencyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_group_latency_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeGroupLatencyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupLatency',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeGroupLatencyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_group_latency(
+        self,
+        request: cloud_api20160714_models.DescribeGroupLatencyRequest,
+    ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_group_latency_with_options(request, runtime)
+
+    async def describe_group_latency_async(
+        self,
+        request: cloud_api20160714_models.DescribeGroupLatencyRequest,
+    ) -> cloud_api20160714_models.DescribeGroupLatencyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_group_latency_with_options_async(request, runtime)
+
     def describe_group_qps_with_options(
         self,
         request: cloud_api20160714_models.DescribeGroupQpsRequest,
@@ -9434,6 +9520,92 @@ class Client(OpenApiClient):
     ) -> cloud_api20160714_models.DescribeGroupQpsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_group_qps_with_options_async(request, runtime)
+
+    def describe_group_traffic_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeGroupTrafficRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupTraffic',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeGroupTrafficResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_group_traffic_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeGroupTrafficRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_id):
+            query['GroupId'] = request.group_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.stage_name):
+            query['StageName'] = request.stage_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGroupTraffic',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeGroupTrafficResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_group_traffic(
+        self,
+        request: cloud_api20160714_models.DescribeGroupTrafficRequest,
+    ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_group_traffic_with_options(request, runtime)
+
+    async def describe_group_traffic_async(
+        self,
+        request: cloud_api20160714_models.DescribeGroupTrafficRequest,
+    ) -> cloud_api20160714_models.DescribeGroupTrafficResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_group_traffic_with_options_async(request, runtime)
 
     def describe_history_apis_with_options(
         self,
