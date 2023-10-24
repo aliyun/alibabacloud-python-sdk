@@ -201,6 +201,8 @@ class Client(OpenApiClient):
             body['Mode'] = request.mode
         if not UtilClient.is_unset(request.model_id):
             body['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_config):
+            body['OutputConfig'] = request.output_config
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         if not UtilClient.is_unset(request.tts_voice_id):
@@ -261,6 +263,8 @@ class Client(OpenApiClient):
             body['Mode'] = request.mode
         if not UtilClient.is_unset(request.model_id):
             body['ModelId'] = request.model_id
+        if not UtilClient.is_unset(request.output_config):
+            body['OutputConfig'] = request.output_config
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         if not UtilClient.is_unset(request.tts_voice_id):
@@ -1056,6 +1060,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.LoginModelScopeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.login_model_scope_with_options_async(request, runtime)
+
+    def pop_batch_query_object_generation_project_status_with_options(
+        self,
+        request: xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.project_ids):
+            body['ProjectIds'] = request.project_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBatchQueryObjectGenerationProjectStatus',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_batch_query_object_generation_project_status_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.project_ids):
+            body['ProjectIds'] = request.project_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopBatchQueryObjectGenerationProjectStatus',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_batch_query_object_generation_project_status(
+        self,
+        request: xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusRequest,
+    ) -> xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_batch_query_object_generation_project_status_with_options(request, runtime)
+
+    async def pop_batch_query_object_generation_project_status_async(
+        self,
+        request: xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusRequest,
+    ) -> xr_engine_20230313_models.PopBatchQueryObjectGenerationProjectStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_batch_query_object_generation_project_status_with_options_async(request, runtime)
 
     def pop_batch_query_object_project_status_with_options(
         self,
@@ -2832,6 +2914,88 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopListObjectCaseResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_list_object_case_with_options_async(request, runtime)
+
+    def pop_list_object_generation_project_with_options(
+        self,
+        request: xr_engine_20230313_models.PopListObjectGenerationProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListObjectGenerationProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListObjectGenerationProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListObjectGenerationProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_list_object_generation_project_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopListObjectGenerationProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopListObjectGenerationProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopListObjectGenerationProject',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopListObjectGenerationProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_list_object_generation_project(
+        self,
+        request: xr_engine_20230313_models.PopListObjectGenerationProjectRequest,
+    ) -> xr_engine_20230313_models.PopListObjectGenerationProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_list_object_generation_project_with_options(request, runtime)
+
+    async def pop_list_object_generation_project_async(
+        self,
+        request: xr_engine_20230313_models.PopListObjectGenerationProjectRequest,
+    ) -> xr_engine_20230313_models.PopListObjectGenerationProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_list_object_generation_project_with_options_async(request, runtime)
 
     def pop_list_object_project_with_options(
         self,

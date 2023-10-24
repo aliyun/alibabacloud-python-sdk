@@ -188,6 +188,7 @@ class CreateDigitalHumanProjectRequest(TeaModel):
         jwt_token: str = None,
         mode: str = None,
         model_id: str = None,
+        output_config: str = None,
         title: str = None,
         tts_voice_id: str = None,
         watermark_image_url: str = None,
@@ -205,6 +206,7 @@ class CreateDigitalHumanProjectRequest(TeaModel):
         self.jwt_token = jwt_token
         self.mode = mode
         self.model_id = model_id
+        self.output_config = output_config
         self.title = title
         self.tts_voice_id = tts_voice_id
         self.watermark_image_url = watermark_image_url
@@ -243,6 +245,8 @@ class CreateDigitalHumanProjectRequest(TeaModel):
             result['Mode'] = self.mode
         if self.model_id is not None:
             result['ModelId'] = self.model_id
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
         if self.title is not None:
             result['Title'] = self.title
         if self.tts_voice_id is not None:
@@ -279,6 +283,8 @@ class CreateDigitalHumanProjectRequest(TeaModel):
             self.mode = m.get('Mode')
         if m.get('ModelId') is not None:
             self.model_id = m.get('ModelId')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('TtsVoiceId') is not None:
@@ -2061,6 +2067,210 @@ class LoginModelScopeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LoginModelScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopBatchQueryObjectGenerationProjectStatusRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        project_ids: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.project_ids = project_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.project_ids is not None:
+            result['ProjectIds'] = self.project_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('ProjectIds') is not None:
+            self.project_ids = m.get('ProjectIds')
+        return self
+
+
+class PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+    ):
+        self.build_result_url = build_result_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        return self
+
+
+class PopBatchQueryObjectGenerationProjectStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        dataset: PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset = None,
+        id: str = None,
+        status: str = None,
+    ):
+        self.dataset = dataset
+        self.id = id
+        self.status = status
+
+    def validate(self):
+        if self.dataset:
+            self.dataset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Dataset') is not None:
+            temp_model = PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PopBatchQueryObjectGenerationProjectStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[PopBatchQueryObjectGenerationProjectStatusResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PopBatchQueryObjectGenerationProjectStatusResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopBatchQueryObjectGenerationProjectStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopBatchQueryObjectGenerationProjectStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopBatchQueryObjectGenerationProjectStatusResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12972,6 +13182,318 @@ class PopListObjectCaseResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PopListObjectCaseResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopListObjectGenerationProjectRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        jwt_token: str = None,
+        size: int = None,
+    ):
+        self.current = current
+        self.jwt_token = jwt_token
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class PopListObjectGenerationProjectResponseBodyDataBuildDetail(TeaModel):
+    def __init__(
+        self,
+        completed_time: str = None,
+        error_message: str = None,
+        estimated_duration: int = None,
+        running_time: str = None,
+        submit_time: str = None,
+    ):
+        self.completed_time = completed_time
+        self.error_message = error_message
+        self.estimated_duration = estimated_duration
+        self.running_time = running_time
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.completed_time is not None:
+            result['CompletedTime'] = self.completed_time
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.estimated_duration is not None:
+            result['EstimatedDuration'] = self.estimated_duration
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CompletedTime') is not None:
+            self.completed_time = m.get('CompletedTime')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('EstimatedDuration') is not None:
+            self.estimated_duration = m.get('EstimatedDuration')
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class PopListObjectGenerationProjectResponseBodyDataDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+    ):
+        self.build_result_url = build_result_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        return self
+
+
+class PopListObjectGenerationProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        build_detail: PopListObjectGenerationProjectResponseBodyDataBuildDetail = None,
+        dataset: PopListObjectGenerationProjectResponseBodyDataDataset = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        status: str = None,
+        title: str = None,
+    ):
+        self.build_detail = build_detail
+        self.dataset = dataset
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildDetail') is not None:
+            temp_model = PopListObjectGenerationProjectResponseBodyDataBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('Dataset') is not None:
+            temp_model = PopListObjectGenerationProjectResponseBodyDataDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PopListObjectGenerationProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current: int = None,
+        data: List[PopListObjectGenerationProjectResponseBodyData] = None,
+        message: str = None,
+        pages: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.current = current
+        self.data = data
+        self.message = message
+        self.pages = pages
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current is not None:
+            result['Current'] = self.current
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PopListObjectGenerationProjectResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class PopListObjectGenerationProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopListObjectGenerationProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopListObjectGenerationProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
