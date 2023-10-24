@@ -1,3 +1,6 @@
+2023-10-24 Version: 1.1.7
+- Generated python 2022-01-01 for quickbi-public.
+
 2023-06-28 Version: 1.1.6
 - Add QueryCubePerformance, QueryComponentPerformance, QueryCubeOptimization, and QueryReportPerformance APIs.
 - Update error code description.
