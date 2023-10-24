@@ -436,6 +436,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_client_user_define_rule_with_options_async(request, runtime)
 
+    def add_image_event_operation_with_options(
+        self,
+        request: sas_20181203_models.AddImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditions):
+            query['Conditions'] = request.conditions
+        if not UtilClient.is_unset(request.event_key):
+            query['EventKey'] = request.event_key
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.operation_code):
+            query['OperationCode'] = request.operation_code
+        if not UtilClient.is_unset(request.scenarios):
+            query['Scenarios'] = request.scenarios
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddImageEventOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_image_event_operation_with_options_async(
+        self,
+        request: sas_20181203_models.AddImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditions):
+            query['Conditions'] = request.conditions
+        if not UtilClient.is_unset(request.event_key):
+            query['EventKey'] = request.event_key
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.operation_code):
+            query['OperationCode'] = request.operation_code
+        if not UtilClient.is_unset(request.scenarios):
+            query['Scenarios'] = request.scenarios
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddImageEventOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_image_event_operation(
+        self,
+        request: sas_20181203_models.AddImageEventOperationRequest,
+    ) -> sas_20181203_models.AddImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_image_event_operation_with_options(request, runtime)
+
+    async def add_image_event_operation_async(
+        self,
+        request: sas_20181203_models.AddImageEventOperationRequest,
+    ) -> sas_20181203_models.AddImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_image_event_operation_with_options_async(request, runtime)
+
     def add_image_vul_white_list_with_options(
         self,
         request: sas_20181203_models.AddImageVulWhiteListRequest,
@@ -6049,6 +6139,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteHoneypotProbeBindResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_honeypot_probe_bind_with_options_async(request, runtime)
+
+    def delete_image_event_operation_with_options(
+        self,
+        request: sas_20181203_models.DeleteImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteImageEventOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_image_event_operation_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteImageEventOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_image_event_operation(
+        self,
+        request: sas_20181203_models.DeleteImageEventOperationRequest,
+    ) -> sas_20181203_models.DeleteImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_image_event_operation_with_options(request, runtime)
+
+    async def delete_image_event_operation_async(
+        self,
+        request: sas_20181203_models.DeleteImageEventOperationRequest,
+    ) -> sas_20181203_models.DeleteImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_image_event_operation_with_options_async(request, runtime)
 
     def delete_image_vul_whitelist_with_options(
         self,
@@ -14651,6 +14811,174 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DescribeImageCriteriaResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_criteria_with_options_async(request, runtime)
+
+    def describe_image_event_operation_condition_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageEventOperationConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageEventOperationCondition',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageEventOperationConditionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_event_operation_condition_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationConditionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageEventOperationConditionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageEventOperationCondition',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageEventOperationConditionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_event_operation_condition(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationConditionRequest,
+    ) -> sas_20181203_models.DescribeImageEventOperationConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_event_operation_condition_with_options(request, runtime)
+
+    async def describe_image_event_operation_condition_async(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationConditionRequest,
+    ) -> sas_20181203_models.DescribeImageEventOperationConditionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_event_operation_condition_with_options_async(request, runtime)
+
+    def describe_image_event_operation_page_with_options(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageEventOperationPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_key):
+            query['EventKey'] = request.event_key
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageEventOperationPage',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageEventOperationPageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_event_operation_page_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationPageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeImageEventOperationPageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.event_key):
+            query['EventKey'] = request.event_key
+        if not UtilClient.is_unset(request.event_name):
+            query['EventName'] = request.event_name
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageEventOperationPage',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeImageEventOperationPageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_event_operation_page(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationPageRequest,
+    ) -> sas_20181203_models.DescribeImageEventOperationPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_event_operation_page_with_options(request, runtime)
+
+    async def describe_image_event_operation_page_async(
+        self,
+        request: sas_20181203_models.DescribeImageEventOperationPageRequest,
+    ) -> sas_20181203_models.DescribeImageEventOperationPageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_event_operation_page_with_options_async(request, runtime)
 
     def describe_image_fix_cycle_config_with_options(
         self,
@@ -29054,6 +29382,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_common_switch_config_with_options_async(request, runtime)
 
+    def get_container_defense_rule_detail_with_options(
+        self,
+        request: sas_20181203_models.GetContainerDefenseRuleDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetContainerDefenseRuleDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetContainerDefenseRuleDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetContainerDefenseRuleDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_container_defense_rule_detail_with_options_async(
+        self,
+        request: sas_20181203_models.GetContainerDefenseRuleDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetContainerDefenseRuleDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetContainerDefenseRuleDetail',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetContainerDefenseRuleDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_container_defense_rule_detail(
+        self,
+        request: sas_20181203_models.GetContainerDefenseRuleDetailRequest,
+    ) -> sas_20181203_models.GetContainerDefenseRuleDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_container_defense_rule_detail_with_options(request, runtime)
+
+    async def get_container_defense_rule_detail_async(
+        self,
+        request: sas_20181203_models.GetContainerDefenseRuleDetailRequest,
+    ) -> sas_20181203_models.GetContainerDefenseRuleDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_container_defense_rule_detail_with_options_async(request, runtime)
+
     def get_file_detect_api_invoke_info_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -29993,6 +30391,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetHoneypotStatisticsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_honeypot_statistics_with_options_async(request, runtime)
+
+    def get_image_event_operation_with_options(
+        self,
+        request: sas_20181203_models.GetImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetImageEventOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_image_event_operation_with_options_async(
+        self,
+        request: sas_20181203_models.GetImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetImageEventOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_image_event_operation(
+        self,
+        request: sas_20181203_models.GetImageEventOperationRequest,
+    ) -> sas_20181203_models.GetImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_image_event_operation_with_options(request, runtime)
+
+    async def get_image_event_operation_async(
+        self,
+        request: sas_20181203_models.GetImageEventOperationRequest,
+    ) -> sas_20181203_models.GetImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_image_event_operation_with_options_async(request, runtime)
 
     def get_image_scan_num_in_period_with_options(
         self,
@@ -31187,6 +31659,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetSecurityScoreRuleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_security_score_rule_with_options_async(request, runtime)
+
+    def get_sensitive_define_rule_config_with_options(
+        self,
+        request: sas_20181203_models.GetSensitiveDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSensitiveDefineRuleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSensitiveDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSensitiveDefineRuleConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sensitive_define_rule_config_with_options_async(
+        self,
+        request: sas_20181203_models.GetSensitiveDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSensitiveDefineRuleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSensitiveDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSensitiveDefineRuleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sensitive_define_rule_config(
+        self,
+        request: sas_20181203_models.GetSensitiveDefineRuleConfigRequest,
+    ) -> sas_20181203_models.GetSensitiveDefineRuleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sensitive_define_rule_config_with_options(request, runtime)
+
+    async def get_sensitive_define_rule_config_async(
+        self,
+        request: sas_20181203_models.GetSensitiveDefineRuleConfigRequest,
+    ) -> sas_20181203_models.GetSensitiveDefineRuleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sensitive_define_rule_config_with_options_async(request, runtime)
 
     def get_service_trail_with_options(
         self,
@@ -34477,6 +35019,96 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListClusterInterceptionConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_interception_config_with_options_async(request, runtime)
+
+    def list_container_defense_rule_with_options(
+        self,
+        request: sas_20181203_models.ListContainerDefenseRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListContainerDefenseRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditions):
+            query['Conditions'] = request.conditions
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.is_default_rule):
+            query['IsDefaultRule'] = request.is_default_rule
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListContainerDefenseRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListContainerDefenseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_container_defense_rule_with_options_async(
+        self,
+        request: sas_20181203_models.ListContainerDefenseRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListContainerDefenseRuleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.conditions):
+            query['Conditions'] = request.conditions
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.is_default_rule):
+            query['IsDefaultRule'] = request.is_default_rule
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListContainerDefenseRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListContainerDefenseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_container_defense_rule(
+        self,
+        request: sas_20181203_models.ListContainerDefenseRuleRequest,
+    ) -> sas_20181203_models.ListContainerDefenseRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_container_defense_rule_with_options(request, runtime)
+
+    async def list_container_defense_rule_async(
+        self,
+        request: sas_20181203_models.ListContainerDefenseRuleRequest,
+    ) -> sas_20181203_models.ListContainerDefenseRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_container_defense_rule_with_options_async(request, runtime)
 
     def list_criteria_strategy_with_options(
         self,
@@ -45110,6 +45742,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.set_cluster_interception_config_with_options_async(request, runtime)
 
+    def set_image_sensitive_file_status_with_options(
+        self,
+        request: sas_20181203_models.SetImageSensitiveFileStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetImageSensitiveFileStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_uuids):
+            query['ImageUuids'] = request.image_uuids
+        if not UtilClient.is_unset(request.sensitive_file_key):
+            query['SensitiveFileKey'] = request.sensitive_file_key
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetImageSensitiveFileStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetImageSensitiveFileStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_image_sensitive_file_status_with_options_async(
+        self,
+        request: sas_20181203_models.SetImageSensitiveFileStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetImageSensitiveFileStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.image_uuids):
+            query['ImageUuids'] = request.image_uuids
+        if not UtilClient.is_unset(request.sensitive_file_key):
+            query['SensitiveFileKey'] = request.sensitive_file_key
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetImageSensitiveFileStatus',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetImageSensitiveFileStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_image_sensitive_file_status(
+        self,
+        request: sas_20181203_models.SetImageSensitiveFileStatusRequest,
+    ) -> sas_20181203_models.SetImageSensitiveFileStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_image_sensitive_file_status_with_options(request, runtime)
+
+    async def set_image_sensitive_file_status_async(
+        self,
+        request: sas_20181203_models.SetImageSensitiveFileStatusRequest,
+    ) -> sas_20181203_models.SetImageSensitiveFileStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_image_sensitive_file_status_with_options_async(request, runtime)
+
     def set_registry_scan_day_num_with_options(
         self,
         request: sas_20181203_models.SetRegistryScanDayNumRequest,
@@ -45179,6 +45889,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.SetRegistryScanDayNumResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_registry_scan_day_num_with_options_async(request, runtime)
+
+    def set_sensitive_define_rule_config_with_options(
+        self,
+        request: sas_20181203_models.SetSensitiveDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetSensitiveDefineRuleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSensitiveDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetSensitiveDefineRuleConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_sensitive_define_rule_config_with_options_async(
+        self,
+        request: sas_20181203_models.SetSensitiveDefineRuleConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.SetSensitiveDefineRuleConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetSensitiveDefineRuleConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.SetSensitiveDefineRuleConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_sensitive_define_rule_config(
+        self,
+        request: sas_20181203_models.SetSensitiveDefineRuleConfigRequest,
+    ) -> sas_20181203_models.SetSensitiveDefineRuleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_sensitive_define_rule_config_with_options(request, runtime)
+
+    async def set_sensitive_define_rule_config_async(
+        self,
+        request: sas_20181203_models.SetSensitiveDefineRuleConfigRequest,
+    ) -> sas_20181203_models.SetSensitiveDefineRuleConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_sensitive_define_rule_config_with_options_async(request, runtime)
 
     def start_baseline_security_check_with_options(
         self,
@@ -46967,6 +47747,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.UpdateHoneypotProbeBindResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_honeypot_probe_bind_with_options_async(request, runtime)
+
+    def update_image_event_operation_with_options(
+        self,
+        request: sas_20181203_models.UpdateImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.scenarios):
+            query['Scenarios'] = request.scenarios
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateImageEventOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_image_event_operation_with_options_async(
+        self,
+        request: sas_20181203_models.UpdateImageEventOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.UpdateImageEventOperationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.scenarios):
+            query['Scenarios'] = request.scenarios
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateImageEventOperation',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.UpdateImageEventOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_image_event_operation(
+        self,
+        request: sas_20181203_models.UpdateImageEventOperationRequest,
+    ) -> sas_20181203_models.UpdateImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_image_event_operation_with_options(request, runtime)
+
+    async def update_image_event_operation_async(
+        self,
+        request: sas_20181203_models.UpdateImageEventOperationRequest,
+    ) -> sas_20181203_models.UpdateImageEventOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_image_event_operation_with_options_async(request, runtime)
 
     def update_image_vul_whitelist_target_with_options(
         self,
