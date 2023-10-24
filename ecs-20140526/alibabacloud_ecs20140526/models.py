@@ -5900,6 +5900,7 @@ class CreateActivationRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[CreateActivationRequestTag] = None,
@@ -5925,6 +5926,7 @@ class CreateActivationRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tags to add to the activation code.
@@ -5960,6 +5962,8 @@ class CreateActivationRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -5988,6 +5992,8 @@ class CreateActivationRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -8108,6 +8114,7 @@ class CreateCommandRequest(TeaModel):
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[CreateCommandRequestTag] = None,
@@ -8145,6 +8152,7 @@ class CreateCommandRequest(TeaModel):
         self.owner_id = owner_id
         # The name of the command. The name supports all character sets and can be up to 128 characters in length.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # Tag N to add to the command.
@@ -8221,6 +8229,8 @@ class CreateCommandRequest(TeaModel):
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -8255,6 +8265,8 @@ class CreateCommandRequest(TeaModel):
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -24948,6 +24960,7 @@ class DescribeActivationsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[DescribeActivationsRequestTag] = None,
@@ -24974,6 +24987,7 @@ class DescribeActivationsRequest(TeaModel):
         # 
         # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tags of the activation code.
@@ -25005,6 +25019,8 @@ class DescribeActivationsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -25031,6 +25047,8 @@ class DescribeActivationsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -25090,6 +25108,7 @@ class DescribeActivationsResponseBodyActivationList(TeaModel):
         instance_name: str = None,
         ip_address_range: str = None,
         registered_count: int = None,
+        resource_group_id: str = None,
         tags: List[DescribeActivationsResponseBodyActivationListTags] = None,
         time_to_live_in_hours: int = None,
     ):
@@ -25111,6 +25130,7 @@ class DescribeActivationsResponseBodyActivationList(TeaModel):
         self.ip_address_range = ip_address_range
         # The number of instances that were registered.
         self.registered_count = registered_count
+        self.resource_group_id = resource_group_id
         # The tags of the activation code.
         self.tags = tags
         # The validity period of the activation code. Unit: hours.
@@ -25146,6 +25166,8 @@ class DescribeActivationsResponseBodyActivationList(TeaModel):
             result['IpAddressRange'] = self.ip_address_range
         if self.registered_count is not None:
             result['RegisteredCount'] = self.registered_count
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         result['Tags'] = []
         if self.tags is not None:
             for k in self.tags:
@@ -25174,6 +25196,8 @@ class DescribeActivationsResponseBodyActivationList(TeaModel):
             self.ip_address_range = m.get('IpAddressRange')
         if m.get('RegisteredCount') is not None:
             self.registered_count = m.get('RegisteredCount')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         self.tags = []
         if m.get('Tags') is not None:
             for k in m.get('Tags'):
@@ -30149,6 +30173,7 @@ class DescribeCommandsRequest(TeaModel):
         page_size: int = None,
         provider: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tag: List[DescribeCommandsRequestTag] = None,
@@ -30201,6 +30226,7 @@ class DescribeCommandsRequest(TeaModel):
         self.provider = provider
         # The region ID of the command. You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The tags of the command.
@@ -30246,6 +30272,8 @@ class DescribeCommandsRequest(TeaModel):
             result['Provider'] = self.provider
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -30282,6 +30310,8 @@ class DescribeCommandsRequest(TeaModel):
             self.provider = m.get('Provider')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -30533,6 +30563,7 @@ class DescribeCommandsResponseBodyCommandsCommand(TeaModel):
         parameter_definitions: DescribeCommandsResponseBodyCommandsCommandParameterDefinitions = None,
         parameter_names: DescribeCommandsResponseBodyCommandsCommandParameterNames = None,
         provider: str = None,
+        resource_group_id: str = None,
         tags: DescribeCommandsResponseBodyCommandsCommandTags = None,
         timeout: int = None,
         type: str = None,
@@ -30563,6 +30594,7 @@ class DescribeCommandsResponseBodyCommandsCommand(TeaModel):
         self.parameter_names = parameter_names
         # The provider of the common command.
         self.provider = provider
+        self.resource_group_id = resource_group_id
         # The tags of the command.
         self.tags = tags
         # The timeout period.
@@ -30612,6 +30644,8 @@ class DescribeCommandsResponseBodyCommandsCommand(TeaModel):
             result['ParameterNames'] = self.parameter_names.to_map()
         if self.provider is not None:
             result['Provider'] = self.provider
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.tags is not None:
             result['Tags'] = self.tags.to_map()
         if self.timeout is not None:
@@ -30652,6 +30686,8 @@ class DescribeCommandsResponseBodyCommandsCommand(TeaModel):
             self.parameter_names = temp_model.from_map(m['ParameterNames'])
         if m.get('Provider') is not None:
             self.provider = m.get('Provider')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Tags') is not None:
             temp_model = DescribeCommandsResponseBodyCommandsCommandTags()
             self.tags = temp_model.from_map(m['Tags'])
