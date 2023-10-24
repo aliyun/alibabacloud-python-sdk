@@ -14319,9 +14319,11 @@ class GetFileBlobsResponseBodyResult(TeaModel):
     def __init__(
         self,
         content: str = None,
+        size: int = None,
         total_lines: int = None,
     ):
         self.content = content
+        self.size = size
         self.total_lines = total_lines
 
     def validate(self):
@@ -14335,6 +14337,8 @@ class GetFileBlobsResponseBodyResult(TeaModel):
         result = dict()
         if self.content is not None:
             result['content'] = self.content
+        if self.size is not None:
+            result['size'] = self.size
         if self.total_lines is not None:
             result['totalLines'] = self.total_lines
         return result
@@ -14343,6 +14347,8 @@ class GetFileBlobsResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('content') is not None:
             self.content = m.get('content')
+        if m.get('size') is not None:
+            self.size = m.get('size')
         if m.get('totalLines') is not None:
             self.total_lines = m.get('totalLines')
         return self
