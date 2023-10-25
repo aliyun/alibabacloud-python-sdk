@@ -1,3 +1,6 @@
+2023-10-25 Version: 1.1.0
+- Generated python 2022-08-01 for PAIElasticDatasetAccelerator.
+
 2023-05-22 Version: 1.0.4
 - Add provider type for instance.
 

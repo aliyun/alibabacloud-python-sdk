@@ -1015,6 +1015,249 @@ class CreateSlotResponse(TeaModel):
         return self
 
 
+class CreateSlotsRequestSlotsTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateSlotsRequestSlots(TeaModel):
+    def __init__(
+        self,
+        capacity: str = None,
+        description: str = None,
+        endpoint_ids: str = None,
+        instance_id: str = None,
+        life_cycle: SlotLifeCycle = None,
+        name: str = None,
+        storage_type: str = None,
+        storage_uri: str = None,
+        tags: List[CreateSlotsRequestSlotsTags] = None,
+    ):
+        self.capacity = capacity
+        self.description = description
+        self.endpoint_ids = endpoint_ids
+        self.instance_id = instance_id
+        self.life_cycle = life_cycle
+        self.name = name
+        self.storage_type = storage_type
+        self.storage_uri = storage_uri
+        self.tags = tags
+
+    def validate(self):
+        if self.life_cycle:
+            self.life_cycle.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity is not None:
+            result['Capacity'] = self.capacity
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.endpoint_ids is not None:
+            result['EndpointIds'] = self.endpoint_ids
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.life_cycle is not None:
+            result['LifeCycle'] = self.life_cycle.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        if self.storage_uri is not None:
+            result['StorageUri'] = self.storage_uri
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Capacity') is not None:
+            self.capacity = m.get('Capacity')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('EndpointIds') is not None:
+            self.endpoint_ids = m.get('EndpointIds')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('LifeCycle') is not None:
+            temp_model = SlotLifeCycle()
+            self.life_cycle = temp_model.from_map(m['LifeCycle'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        if m.get('StorageUri') is not None:
+            self.storage_uri = m.get('StorageUri')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateSlotsRequestSlotsTags()
+                self.tags.append(temp_model.from_map(k))
+        return self
+
+
+class CreateSlotsRequest(TeaModel):
+    def __init__(
+        self,
+        dry_run: bool = None,
+        slots: List[CreateSlotsRequestSlots] = None,
+    ):
+        self.dry_run = dry_run
+        self.slots = slots
+
+    def validate(self):
+        if self.slots:
+            for k in self.slots:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        result['Slots'] = []
+        if self.slots is not None:
+            for k in self.slots:
+                result['Slots'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        self.slots = []
+        if m.get('Slots') is not None:
+            for k in m.get('Slots'):
+                temp_model = CreateSlotsRequestSlots()
+                self.slots.append(temp_model.from_map(k))
+        return self
+
+
+class CreateSlotsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        slot_ids: str = None,
+        summary: Dict[str, str] = None,
+    ):
+        self.request_id = request_id
+        self.slot_ids = slot_ids
+        self.summary = summary
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.slot_ids is not None:
+            result['SlotIds'] = self.slot_ids
+        if self.summary is not None:
+            result['Summary'] = self.summary
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SlotIds') is not None:
+            self.slot_ids = m.get('SlotIds')
+        if m.get('Summary') is not None:
+            self.summary = m.get('Summary')
+        return self
+
+
+class CreateSlotsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSlotsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSlotsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTagRequest(TeaModel):
     def __init__(
         self,
@@ -1880,6 +2123,7 @@ class DescribeInstanceResponseBody(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        io_type: str = None,
         max_endpoint: int = None,
         max_slot: int = None,
         name: str = None,
@@ -1898,14 +2142,18 @@ class DescribeInstanceResponseBody(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.io_type = io_type
+        # 数据集加速实例的最大挂载点个数。
         self.max_endpoint = max_endpoint
         self.max_slot = max_slot
         self.name = name
         self.owner_id = owner_id
         self.payment_type = payment_type
+        # 数据集加速实例的资源提供者类型。
         self.provider_type = provider_type
         self.request_id = request_id
         self.status = status
+        # 数据集加速实例的存储类型。
         self.storage_type = storage_type
         self.tags = tags
         self.type = type
@@ -1934,6 +2182,8 @@ class DescribeInstanceResponseBody(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.io_type is not None:
+            result['IoType'] = self.io_type
         if self.max_endpoint is not None:
             result['MaxEndpoint'] = self.max_endpoint
         if self.max_slot is not None:
@@ -1974,6 +2224,8 @@ class DescribeInstanceResponseBody(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('IoType') is not None:
+            self.io_type = m.get('IoType')
         if m.get('MaxEndpoint') is not None:
             self.max_endpoint = m.get('MaxEndpoint')
         if m.get('MaxSlot') is not None:
@@ -2890,6 +3142,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         description: str = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
+        io_type: str = None,
         max_endpoint: int = None,
         max_slot: int = None,
         name: str = None,
@@ -2907,6 +3160,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.description = description
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
+        self.io_type = io_type
         # 数据集加速实例的最大挂载点个数。
         self.max_endpoint = max_endpoint
         self.max_slot = max_slot
@@ -2945,6 +3199,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
             result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.io_type is not None:
+            result['IoType'] = self.io_type
         if self.max_endpoint is not None:
             result['MaxEndpoint'] = self.max_endpoint
         if self.max_slot is not None:
@@ -2983,6 +3239,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
             self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('IoType') is not None:
+            self.io_type = m.get('IoType')
         if m.get('MaxEndpoint') is not None:
             self.max_endpoint = m.get('MaxEndpoint')
         if m.get('MaxSlot') is not None:
@@ -4281,6 +4539,77 @@ class QueryStatisticResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReloadSlotResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ReloadSlotResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReloadSlotResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReloadSlotResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

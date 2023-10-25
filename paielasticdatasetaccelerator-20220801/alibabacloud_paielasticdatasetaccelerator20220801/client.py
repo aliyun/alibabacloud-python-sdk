@@ -427,6 +427,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_slot_with_options_async(request, headers, runtime)
 
+    def create_slots_with_options(
+        self,
+        request: paielastic_dataset_accelerator_20220801_models.CreateSlotsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.slots):
+            body['Slots'] = request.slots
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSlots',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/batch/slots/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paielastic_dataset_accelerator_20220801_models.CreateSlotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_slots_with_options_async(
+        self,
+        request: paielastic_dataset_accelerator_20220801_models.CreateSlotsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.slots):
+            body['Slots'] = request.slots
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSlots',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/batch/slots/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paielastic_dataset_accelerator_20220801_models.CreateSlotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_slots(
+        self,
+        request: paielastic_dataset_accelerator_20220801_models.CreateSlotsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_slots_with_options(request, headers, runtime)
+
+    async def create_slots_async(
+        self,
+        request: paielastic_dataset_accelerator_20220801_models.CreateSlotsRequest,
+    ) -> paielastic_dataset_accelerator_20220801_models.CreateSlotsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_slots_with_options_async(request, headers, runtime)
+
     def create_tag_with_options(
         self,
         request: paielastic_dataset_accelerator_20220801_models.CreateTagRequest,
@@ -1928,6 +2008,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_statistic_with_options_async(request, headers, runtime)
+
+    def reload_slot_with_options(
+        self,
+        slot_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paielastic_dataset_accelerator_20220801_models.ReloadSlotResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ReloadSlot',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/slots/{OpenApiUtilClient.get_encode_param(slot_id)}/action/reload',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paielastic_dataset_accelerator_20220801_models.ReloadSlotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reload_slot_with_options_async(
+        self,
+        slot_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paielastic_dataset_accelerator_20220801_models.ReloadSlotResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ReloadSlot',
+            version='2022-08-01',
+            protocol='HTTPS',
+            pathname=f'/api/v1/slots/{OpenApiUtilClient.get_encode_param(slot_id)}/action/reload',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paielastic_dataset_accelerator_20220801_models.ReloadSlotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reload_slot(
+        self,
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.ReloadSlotResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.reload_slot_with_options(slot_id, headers, runtime)
+
+    async def reload_slot_async(
+        self,
+        slot_id: str,
+    ) -> paielastic_dataset_accelerator_20220801_models.ReloadSlotResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.reload_slot_with_options_async(slot_id, headers, runtime)
 
     def stop_slot_with_options(
         self,
