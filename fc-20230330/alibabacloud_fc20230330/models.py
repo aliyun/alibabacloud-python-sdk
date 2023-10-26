@@ -870,6 +870,7 @@ class CustomContainerConfig(TeaModel):
         health_check_config: CustomHealthCheckConfig = None,
         image: str = None,
         port: int = None,
+        resolved_image_uri: str = None,
     ):
         self.acceleration_info = acceleration_info
         self.acceleration_type = acceleration_type
@@ -879,6 +880,7 @@ class CustomContainerConfig(TeaModel):
         self.health_check_config = health_check_config
         self.image = image
         self.port = port
+        self.resolved_image_uri = resolved_image_uri
 
     def validate(self):
         if self.acceleration_info:
@@ -908,6 +910,8 @@ class CustomContainerConfig(TeaModel):
             result['image'] = self.image
         if self.port is not None:
             result['port'] = self.port
+        if self.resolved_image_uri is not None:
+            result['resolvedImageUri'] = self.resolved_image_uri
         return result
 
     def from_map(self, m: dict = None):
@@ -930,6 +934,8 @@ class CustomContainerConfig(TeaModel):
             self.image = m.get('image')
         if m.get('port') is not None:
             self.port = m.get('port')
+        if m.get('resolvedImageUri') is not None:
+            self.resolved_image_uri = m.get('resolvedImageUri')
         return self
 
 
@@ -1994,6 +2000,9 @@ class Function(TeaModel):
         instance_lifecycle_config: InstanceLifecycleConfig = None,
         internet_access: bool = None,
         last_modified_time: str = None,
+        last_update_status: str = None,
+        last_update_status_reason: str = None,
+        last_update_status_reason_code: str = None,
         layers: List[FunctionLayer] = None,
         log_config: LogConfig = None,
         memory_size: int = None,
@@ -2001,6 +2010,9 @@ class Function(TeaModel):
         oss_mount_config: OSSMountConfig = None,
         role: str = None,
         runtime: str = None,
+        state: str = None,
+        state_reason: str = None,
+        state_reason_code: str = None,
         timeout: int = None,
         tracing_config: TracingConfig = None,
         vpc_config: VPCConfig = None,
@@ -2024,6 +2036,9 @@ class Function(TeaModel):
         self.instance_lifecycle_config = instance_lifecycle_config
         self.internet_access = internet_access
         self.last_modified_time = last_modified_time
+        self.last_update_status = last_update_status
+        self.last_update_status_reason = last_update_status_reason
+        self.last_update_status_reason_code = last_update_status_reason_code
         self.layers = layers
         self.log_config = log_config
         self.memory_size = memory_size
@@ -2031,6 +2046,9 @@ class Function(TeaModel):
         self.oss_mount_config = oss_mount_config
         self.role = role
         self.runtime = runtime
+        self.state = state
+        self.state_reason = state_reason
+        self.state_reason_code = state_reason_code
         self.timeout = timeout
         self.tracing_config = tracing_config
         self.vpc_config = vpc_config
@@ -2105,6 +2123,12 @@ class Function(TeaModel):
             result['internetAccess'] = self.internet_access
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+        if self.last_update_status is not None:
+            result['lastUpdateStatus'] = self.last_update_status
+        if self.last_update_status_reason is not None:
+            result['lastUpdateStatusReason'] = self.last_update_status_reason
+        if self.last_update_status_reason_code is not None:
+            result['lastUpdateStatusReasonCode'] = self.last_update_status_reason_code
         result['layers'] = []
         if self.layers is not None:
             for k in self.layers:
@@ -2121,6 +2145,12 @@ class Function(TeaModel):
             result['role'] = self.role
         if self.runtime is not None:
             result['runtime'] = self.runtime
+        if self.state is not None:
+            result['state'] = self.state
+        if self.state_reason is not None:
+            result['stateReason'] = self.state_reason
+        if self.state_reason_code is not None:
+            result['stateReasonCode'] = self.state_reason_code
         if self.timeout is not None:
             result['timeout'] = self.timeout
         if self.tracing_config is not None:
@@ -2174,6 +2204,12 @@ class Function(TeaModel):
             self.internet_access = m.get('internetAccess')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('lastUpdateStatus') is not None:
+            self.last_update_status = m.get('lastUpdateStatus')
+        if m.get('lastUpdateStatusReason') is not None:
+            self.last_update_status_reason = m.get('lastUpdateStatusReason')
+        if m.get('lastUpdateStatusReasonCode') is not None:
+            self.last_update_status_reason_code = m.get('lastUpdateStatusReasonCode')
         self.layers = []
         if m.get('layers') is not None:
             for k in m.get('layers'):
@@ -2194,6 +2230,12 @@ class Function(TeaModel):
             self.role = m.get('role')
         if m.get('runtime') is not None:
             self.runtime = m.get('runtime')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('stateReason') is not None:
+            self.state_reason = m.get('stateReason')
+        if m.get('stateReasonCode') is not None:
+            self.state_reason_code = m.get('stateReasonCode')
         if m.get('timeout') is not None:
             self.timeout = m.get('timeout')
         if m.get('tracingConfig') is not None:
