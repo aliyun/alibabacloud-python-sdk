@@ -1493,6 +1493,8 @@ class Client(OpenApiClient):
             query['ConfigRequirementIds'] = request.config_requirement_ids_shrink
         if not UtilClient.is_unset(request.config_standard_ids_shrink):
             query['ConfigStandardIds'] = request.config_standard_ids_shrink
+        if not UtilClient.is_unset(request.configure):
+            query['Configure'] = request.configure
         if not UtilClient.is_unset(request.cycle_days):
             query['CycleDays'] = request.cycle_days
         if not UtilClient.is_unset(request.enable_add_check):
@@ -1509,6 +1511,8 @@ class Client(OpenApiClient):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.vendors):
+            query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1547,6 +1551,8 @@ class Client(OpenApiClient):
             query['ConfigRequirementIds'] = request.config_requirement_ids_shrink
         if not UtilClient.is_unset(request.config_standard_ids_shrink):
             query['ConfigStandardIds'] = request.config_standard_ids_shrink
+        if not UtilClient.is_unset(request.configure):
+            query['Configure'] = request.configure
         if not UtilClient.is_unset(request.cycle_days):
             query['CycleDays'] = request.cycle_days
         if not UtilClient.is_unset(request.enable_add_check):
@@ -1563,6 +1569,8 @@ class Client(OpenApiClient):
             query['StandardIds'] = request.standard_ids
         if not UtilClient.is_unset(request.start_time):
             query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.vendors):
+            query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
