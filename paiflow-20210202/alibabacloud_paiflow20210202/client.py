@@ -21,23 +21,7 @@ class Client(OpenApiClient):
         config: open_api_models.Config,
     ):
         super().__init__(config)
-        self._endpoint_rule = 'central'
-        self._endpoint_map = {
-            'cn-beijing': 'pai.cn-beijing.aliyuncs.com',
-            'cn-hangzhou': 'pai.cn-hangzhou.data.aliyun.com',
-            'cn-shanghai': 'pai.cn-shanghai.aliyuncs.com',
-            'cn-shenzhen': 'pai.cn-shenzhen.aliyuncs.com',
-            'cn-hongkong': 'pai.cn-hongkong.aliyuncs.com',
-            'ap-southeast-1': 'pai.ap-southeast-1.aliyuncs.com',
-            'ap-southeast-2': 'pai.ap-southeast-2.aliyuncs.com',
-            'ap-southeast-3': 'pai.ap-southeast-3.aliyuncs.com',
-            'ap-southeast-5': 'pai.ap-southeast-5.aliyuncs.com',
-            'us-west-1': 'pai.us-west-1.aliyuncs.com',
-            'us-east-1': 'pai.us-east-1.aliyuncs.com',
-            'eu-central-1': 'pai.eu-central-1.aliyuncs.com',
-            'me-east-1': 'pai.me-east-1.aliyuncs.com',
-            'ap-south-1': 'pai.ap-south-1.aliyuncs.com'
-        }
+        self._endpoint_rule = ''
         self.check_config(config)
         self._endpoint = self.get_endpoint('paiflow', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
 
@@ -56,22 +40,6 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
-
-    def create_pipeline(
-        self,
-        request: paiflow_20210202_models.CreatePipelineRequest,
-    ) -> paiflow_20210202_models.CreatePipelineResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_pipeline_with_options(request, headers, runtime)
-
-    async def create_pipeline_async(
-        self,
-        request: paiflow_20210202_models.CreatePipelineRequest,
-    ) -> paiflow_20210202_models.CreatePipelineResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_pipeline_with_options_async(request, headers, runtime)
 
     def create_pipeline_with_options(
         self,
@@ -137,197 +105,181 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_pipeline_release(
+    def create_pipeline(
         self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.CreatePipelineReleaseRequest,
-    ) -> paiflow_20210202_models.CreatePipelineReleaseResponse:
+        request: paiflow_20210202_models.CreatePipelineRequest,
+    ) -> paiflow_20210202_models.CreatePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_pipeline_release_with_options(pipeline_id, request, headers, runtime)
+        return self.create_pipeline_with_options(request, headers, runtime)
 
-    async def create_pipeline_release_async(
+    async def create_pipeline_async(
         self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.CreatePipelineReleaseRequest,
-    ) -> paiflow_20210202_models.CreatePipelineReleaseResponse:
+        request: paiflow_20210202_models.CreatePipelineRequest,
+    ) -> paiflow_20210202_models.CreatePipelineResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_pipeline_release_with_options_async(pipeline_id, request, headers, runtime)
+        return await self.create_pipeline_with_options_async(request, headers, runtime)
 
-    def create_pipeline_release_with_options(
+    def create_pipeline_run_with_options(
         self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.CreatePipelineReleaseRequest,
+        request: paiflow_20210202_models.CreatePipelineRunRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.CreatePipelineReleaseResponse:
+    ) -> paiflow_20210202_models.CreatePipelineRunResponse:
         UtilClient.validate_model(request)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         body = {}
-        if not UtilClient.is_unset(request.target_pipeline_provider):
-            body['TargetPipelineProvider'] = request.target_pipeline_provider
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.arguments):
+            body['Arguments'] = request.arguments
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.no_confirm_required):
+            body['NoConfirmRequired'] = request.no_confirm_required
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.pipeline_id):
+            body['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.pipeline_manifest):
+            body['PipelineManifest'] = request.pipeline_manifest
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreatePipelineRelease',
+            action='CreatePipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/releases',
-            method='PUT',
+            pathname=f'/api/v1/pipelineruns',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.CreatePipelineReleaseResponse(),
+            paiflow_20210202_models.CreatePipelineRunResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_pipeline_release_with_options_async(
+    async def create_pipeline_run_with_options_async(
         self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.CreatePipelineReleaseRequest,
+        request: paiflow_20210202_models.CreatePipelineRunRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.CreatePipelineReleaseResponse:
+    ) -> paiflow_20210202_models.CreatePipelineRunResponse:
         UtilClient.validate_model(request)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
         body = {}
-        if not UtilClient.is_unset(request.target_pipeline_provider):
-            body['TargetPipelineProvider'] = request.target_pipeline_provider
+        if not UtilClient.is_unset(request.accessibility):
+            body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.arguments):
+            body['Arguments'] = request.arguments
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.no_confirm_required):
+            body['NoConfirmRequired'] = request.no_confirm_required
+        if not UtilClient.is_unset(request.options):
+            body['Options'] = request.options
+        if not UtilClient.is_unset(request.pipeline_id):
+            body['PipelineId'] = request.pipeline_id
+        if not UtilClient.is_unset(request.pipeline_manifest):
+            body['PipelineManifest'] = request.pipeline_manifest
+        if not UtilClient.is_unset(request.source_id):
+            body['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='CreatePipelineRelease',
+            action='CreatePipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/releases',
-            method='PUT',
+            pathname=f'/api/v1/pipelineruns',
+            method='POST',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.CreatePipelineReleaseResponse(),
+            paiflow_20210202_models.CreatePipelineRunResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def create_run(
+    def create_pipeline_run(
         self,
-        request: paiflow_20210202_models.CreateRunRequest,
-    ) -> paiflow_20210202_models.CreateRunResponse:
+        request: paiflow_20210202_models.CreatePipelineRunRequest,
+    ) -> paiflow_20210202_models.CreatePipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.create_run_with_options(request, headers, runtime)
+        return self.create_pipeline_run_with_options(request, headers, runtime)
 
-    async def create_run_async(
+    async def create_pipeline_run_async(
         self,
-        request: paiflow_20210202_models.CreateRunRequest,
-    ) -> paiflow_20210202_models.CreateRunResponse:
+        request: paiflow_20210202_models.CreatePipelineRunRequest,
+    ) -> paiflow_20210202_models.CreatePipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.create_run_with_options_async(request, headers, runtime)
+        return await self.create_pipeline_run_with_options_async(request, headers, runtime)
 
-    def create_run_with_options(
+    def delete_pipeline_with_options(
         self,
-        request: paiflow_20210202_models.CreateRunRequest,
+        pipeline_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.CreateRunResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.accessibility):
-            body['Accessibility'] = request.accessibility
-        if not UtilClient.is_unset(request.arguments):
-            body['Arguments'] = request.arguments
-        if not UtilClient.is_unset(request.experiment_id):
-            body['ExperimentId'] = request.experiment_id
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.no_confirm_required):
-            body['NoConfirmRequired'] = request.no_confirm_required
-        if not UtilClient.is_unset(request.options):
-            body['Options'] = request.options
-        if not UtilClient.is_unset(request.pipeline_id):
-            body['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.pipeline_manifest):
-            body['PipelineManifest'] = request.pipeline_manifest
-        if not UtilClient.is_unset(request.source):
-            body['Source'] = request.source
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
+    ) -> paiflow_20210202_models.DeletePipelineResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='CreateRun',
+            action='DeletePipeline',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs',
-            method='POST',
+            pathname=f'/api/v1/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
+            method='DELETE',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.CreateRunResponse(),
+            paiflow_20210202_models.DeletePipelineResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def create_run_with_options_async(
+    async def delete_pipeline_with_options_async(
         self,
-        request: paiflow_20210202_models.CreateRunRequest,
+        pipeline_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.CreateRunResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.accessibility):
-            body['Accessibility'] = request.accessibility
-        if not UtilClient.is_unset(request.arguments):
-            body['Arguments'] = request.arguments
-        if not UtilClient.is_unset(request.experiment_id):
-            body['ExperimentId'] = request.experiment_id
-        if not UtilClient.is_unset(request.name):
-            body['Name'] = request.name
-        if not UtilClient.is_unset(request.no_confirm_required):
-            body['NoConfirmRequired'] = request.no_confirm_required
-        if not UtilClient.is_unset(request.options):
-            body['Options'] = request.options
-        if not UtilClient.is_unset(request.pipeline_id):
-            body['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.pipeline_manifest):
-            body['PipelineManifest'] = request.pipeline_manifest
-        if not UtilClient.is_unset(request.source):
-            body['Source'] = request.source
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
+    ) -> paiflow_20210202_models.DeletePipelineResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='CreateRun',
+            action='DeletePipeline',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs',
-            method='POST',
+            pathname=f'/api/v1/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
+            method='DELETE',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.CreateRunResponse(),
+            paiflow_20210202_models.DeletePipelineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -347,149 +299,111 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_pipeline_with_options_async(pipeline_id, headers, runtime)
 
-    def delete_pipeline_with_options(
+    def delete_pipeline_run_with_options(
+        self,
+        pipeline_run_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.DeletePipelineRunResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePipelineRun',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.DeletePipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_pipeline_run_with_options_async(
+        self,
+        pipeline_run_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.DeletePipelineRunResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeletePipelineRun',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.DeletePipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_pipeline_run(
+        self,
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.DeletePipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_pipeline_run_with_options(pipeline_run_id, headers, runtime)
+
+    async def delete_pipeline_run_async(
+        self,
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.DeletePipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_pipeline_run_with_options_async(pipeline_run_id, headers, runtime)
+
+    def get_pipeline_with_options(
         self,
         pipeline_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.DeletePipelineResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+    ) -> paiflow_20210202_models.GetPipelineResponse:
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeletePipeline',
+            action='GetPipeline',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}',
-            method='DELETE',
+            pathname=f'/api/v1/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
+            method='GET',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.DeletePipelineResponse(),
+            paiflow_20210202_models.GetPipelineResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def delete_pipeline_with_options_async(
+    async def get_pipeline_with_options_async(
         self,
         pipeline_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.DeletePipelineResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+    ) -> paiflow_20210202_models.GetPipelineResponse:
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
         params = open_api_models.Params(
-            action='DeletePipeline',
+            action='GetPipeline',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.DeletePipelineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def delete_run(
-        self,
-        run_id: str,
-    ) -> paiflow_20210202_models.DeleteRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.delete_run_with_options(run_id, headers, runtime)
-
-    async def delete_run_async(
-        self,
-        run_id: str,
-    ) -> paiflow_20210202_models.DeleteRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.delete_run_with_options_async(run_id, headers, runtime)
-
-    def delete_run_with_options(
-        self,
-        run_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.DeleteRunResponse:
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteRun',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.DeleteRunResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def delete_run_with_options_async(
-        self,
-        run_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.DeleteRunResponse:
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='DeleteRun',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.DeleteRunResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_caller_provider(self) -> paiflow_20210202_models.GetCallerProviderResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_caller_provider_with_options(headers, runtime)
-
-    async def get_caller_provider_async(self) -> paiflow_20210202_models.GetCallerProviderResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_caller_provider_with_options_async(headers, runtime)
-
-    def get_caller_provider_with_options(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetCallerProviderResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetCallerProvider',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/provider',
+            pathname=f'/api/v1/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -497,119 +411,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.GetCallerProviderResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_caller_provider_with_options_async(
-        self,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetCallerProviderResponse:
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetCallerProvider',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/provider',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetCallerProviderResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_node(
-        self,
-        run_id: str,
-        node_id: str,
-        request: paiflow_20210202_models.GetNodeRequest,
-    ) -> paiflow_20210202_models.GetNodeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_node_with_options(run_id, node_id, request, headers, runtime)
-
-    async def get_node_async(
-        self,
-        run_id: str,
-        node_id: str,
-        request: paiflow_20210202_models.GetNodeRequest,
-    ) -> paiflow_20210202_models.GetNodeResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_node_with_options_async(run_id, node_id, request, headers, runtime)
-
-    def get_node_with_options(
-        self,
-        run_id: str,
-        node_id: str,
-        request: paiflow_20210202_models.GetNodeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetNodeResponse:
-        UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
-        query = {}
-        if not UtilClient.is_unset(request.depth):
-            query['Depth'] = request.depth
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetNode',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetNodeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_node_with_options_async(
-        self,
-        run_id: str,
-        node_id: str,
-        request: paiflow_20210202_models.GetNodeRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetNodeResponse:
-        UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
-        query = {}
-        if not UtilClient.is_unset(request.depth):
-            query['Depth'] = request.depth
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='GetNode',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetNodeResponse(),
+            paiflow_20210202_models.GetPipelineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -629,153 +431,14 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_pipeline_with_options_async(pipeline_id, headers, runtime)
 
-    def get_pipeline_with_options(
+    def get_pipeline_run_with_options(
         self,
-        pipeline_id: str,
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.GetPipelineRunRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetPipelineResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetPipeline',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetPipelineResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_pipeline_with_options_async(
-        self,
-        pipeline_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetPipelineResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetPipeline',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetPipelineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_pipeline_schema(
-        self,
-        pipeline_id: str,
-    ) -> paiflow_20210202_models.GetPipelineSchemaResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_pipeline_schema_with_options(pipeline_id, headers, runtime)
-
-    async def get_pipeline_schema_async(
-        self,
-        pipeline_id: str,
-    ) -> paiflow_20210202_models.GetPipelineSchemaResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_pipeline_schema_with_options_async(pipeline_id, headers, runtime)
-
-    def get_pipeline_schema_with_options(
-        self,
-        pipeline_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetPipelineSchemaResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetPipelineSchema',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/schema',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetPipelineSchemaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_pipeline_schema_with_options_async(
-        self,
-        pipeline_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetPipelineSchemaResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='GetPipelineSchema',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/schema',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.GetPipelineSchemaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_run(
-        self,
-        run_id: str,
-        request: paiflow_20210202_models.GetRunRequest,
-    ) -> paiflow_20210202_models.GetRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.get_run_with_options(run_id, request, headers, runtime)
-
-    async def get_run_async(
-        self,
-        run_id: str,
-        request: paiflow_20210202_models.GetRunRequest,
-    ) -> paiflow_20210202_models.GetRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.get_run_with_options_async(run_id, request, headers, runtime)
-
-    def get_run_with_options(
-        self,
-        run_id: str,
-        request: paiflow_20210202_models.GetRunRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetRunResponse:
+    ) -> paiflow_20210202_models.GetPipelineRunResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
         query = {}
         if not UtilClient.is_unset(request.manifest_type):
             query['ManifestType'] = request.manifest_type
@@ -786,10 +449,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetRun',
+            action='GetPipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -797,19 +460,18 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.GetRunResponse(),
+            paiflow_20210202_models.GetPipelineRunResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_run_with_options_async(
+    async def get_pipeline_run_with_options_async(
         self,
-        run_id: str,
-        request: paiflow_20210202_models.GetRunRequest,
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.GetPipelineRunRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetRunResponse:
+    ) -> paiflow_20210202_models.GetPipelineRunResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
         query = {}
         if not UtilClient.is_unset(request.manifest_type):
             query['ManifestType'] = request.manifest_type
@@ -820,10 +482,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetRun',
+            action='GetPipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -831,63 +493,51 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.GetRunResponse(),
+            paiflow_20210202_models.GetPipelineRunResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_run_statistics(
+    def get_pipeline_run(
         self,
-        request: paiflow_20210202_models.GetRunStatisticsRequest,
-    ) -> paiflow_20210202_models.GetRunStatisticsResponse:
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.GetPipelineRunRequest,
+    ) -> paiflow_20210202_models.GetPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_run_statistics_with_options(request, headers, runtime)
+        return self.get_pipeline_run_with_options(pipeline_run_id, request, headers, runtime)
 
-    async def get_run_statistics_async(
+    async def get_pipeline_run_async(
         self,
-        request: paiflow_20210202_models.GetRunStatisticsRequest,
-    ) -> paiflow_20210202_models.GetRunStatisticsResponse:
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.GetPipelineRunRequest,
+    ) -> paiflow_20210202_models.GetPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_run_statistics_with_options_async(request, headers, runtime)
+        return await self.get_pipeline_run_with_options_async(pipeline_run_id, request, headers, runtime)
 
-    def get_run_statistics_with_options(
+    def get_pipeline_run_node_with_options(
         self,
-        tmp_req: paiflow_20210202_models.GetRunStatisticsRequest,
+        pipeline_run_id: str,
+        node_id: str,
+        request: paiflow_20210202_models.GetPipelineRunNodeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetRunStatisticsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = paiflow_20210202_models.GetRunStatisticsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.status):
-            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'Status', 'json')
+    ) -> paiflow_20210202_models.GetPipelineRunNodeResponse:
+        UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            query['ExperimentId'] = request.experiment_id
-        if not UtilClient.is_unset(request.is_show_all):
-            query['IsShowAll'] = request.is_show_all
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.pipeline_id):
-            query['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.scope):
-            query['Scope'] = request.scope
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.status_shrink):
-            query['Status'] = request.status_shrink
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.depth):
+            query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetRunStatistics',
+            action='GetPipelineRunNode',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/statistics/runs',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -895,47 +545,33 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.GetRunStatisticsResponse(),
+            paiflow_20210202_models.GetPipelineRunNodeResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_run_statistics_with_options_async(
+    async def get_pipeline_run_node_with_options_async(
         self,
-        tmp_req: paiflow_20210202_models.GetRunStatisticsRequest,
+        pipeline_run_id: str,
+        node_id: str,
+        request: paiflow_20210202_models.GetPipelineRunNodeRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.GetRunStatisticsResponse:
-        UtilClient.validate_model(tmp_req)
-        request = paiflow_20210202_models.GetRunStatisticsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.status):
-            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'Status', 'json')
+    ) -> paiflow_20210202_models.GetPipelineRunNodeResponse:
+        UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            query['ExperimentId'] = request.experiment_id
-        if not UtilClient.is_unset(request.is_show_all):
-            query['IsShowAll'] = request.is_show_all
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.pipeline_id):
-            query['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.scope):
-            query['Scope'] = request.scope
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.status_shrink):
-            query['Status'] = request.status_shrink
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.depth):
+            query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetRunStatistics',
+            action='GetPipelineRunNode',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/statistics/runs',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -943,41 +579,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.GetRunStatisticsResponse(),
+            paiflow_20210202_models.GetPipelineRunNodeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_node_logs(
+    def get_pipeline_run_node(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeLogsRequest,
-    ) -> paiflow_20210202_models.ListNodeLogsResponse:
+        request: paiflow_20210202_models.GetPipelineRunNodeRequest,
+    ) -> paiflow_20210202_models.GetPipelineRunNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_node_logs_with_options(run_id, node_id, request, headers, runtime)
+        return self.get_pipeline_run_node_with_options(pipeline_run_id, node_id, request, headers, runtime)
 
-    async def list_node_logs_async(
+    async def get_pipeline_run_node_async(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeLogsRequest,
-    ) -> paiflow_20210202_models.ListNodeLogsResponse:
+        request: paiflow_20210202_models.GetPipelineRunNodeRequest,
+    ) -> paiflow_20210202_models.GetPipelineRunNodeResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_node_logs_with_options_async(run_id, node_id, request, headers, runtime)
+        return await self.get_pipeline_run_node_with_options_async(pipeline_run_id, node_id, request, headers, runtime)
 
-    def list_node_logs_with_options(
+    def list_pipeline_run_node_logs_with_options(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeLogsRequest,
+        request: paiflow_20210202_models.ListPipelineRunNodeLogsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListNodeLogsResponse:
+    ) -> paiflow_20210202_models.ListPipelineRunNodeLogsResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
         query = {}
         if not UtilClient.is_unset(request.from_time_in_seconds):
             query['FromTimeInSeconds'] = request.from_time_in_seconds
@@ -996,10 +630,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListNodeLogs',
+            action='ListPipelineRunNodeLogs',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}/logs',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1007,21 +641,19 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListNodeLogsResponse(),
+            paiflow_20210202_models.ListPipelineRunNodeLogsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_node_logs_with_options_async(
+    async def list_pipeline_run_node_logs_with_options_async(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeLogsRequest,
+        request: paiflow_20210202_models.ListPipelineRunNodeLogsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListNodeLogsResponse:
+    ) -> paiflow_20210202_models.ListPipelineRunNodeLogsResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
         query = {}
         if not UtilClient.is_unset(request.from_time_in_seconds):
             query['FromTimeInSeconds'] = request.from_time_in_seconds
@@ -1040,10 +672,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListNodeLogs',
+            action='ListPipelineRunNodeLogs',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}/logs',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}/logs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1051,41 +683,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListNodeLogsResponse(),
+            paiflow_20210202_models.ListPipelineRunNodeLogsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_node_outputs(
+    def list_pipeline_run_node_logs(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeOutputsRequest,
-    ) -> paiflow_20210202_models.ListNodeOutputsResponse:
+        request: paiflow_20210202_models.ListPipelineRunNodeLogsRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunNodeLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_node_outputs_with_options(run_id, node_id, request, headers, runtime)
+        return self.list_pipeline_run_node_logs_with_options(pipeline_run_id, node_id, request, headers, runtime)
 
-    async def list_node_outputs_async(
+    async def list_pipeline_run_node_logs_async(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeOutputsRequest,
-    ) -> paiflow_20210202_models.ListNodeOutputsResponse:
+        request: paiflow_20210202_models.ListPipelineRunNodeLogsRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunNodeLogsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_node_outputs_with_options_async(run_id, node_id, request, headers, runtime)
+        return await self.list_pipeline_run_node_logs_with_options_async(pipeline_run_id, node_id, request, headers, runtime)
 
-    def list_node_outputs_with_options(
+    def list_pipeline_run_node_outputs_with_options(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeOutputsRequest,
+        request: paiflow_20210202_models.ListPipelineRunNodeOutputsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListNodeOutputsResponse:
+    ) -> paiflow_20210202_models.ListPipelineRunNodeOutputsResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
@@ -1106,10 +736,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListNodeOutputs',
+            action='ListPipelineRunNodeOutputs',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}/outputs',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}/outputs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1117,21 +747,19 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListNodeOutputsResponse(),
+            paiflow_20210202_models.ListPipelineRunNodeOutputsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_node_outputs_with_options_async(
+    async def list_pipeline_run_node_outputs_with_options_async(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeOutputsRequest,
+        request: paiflow_20210202_models.ListPipelineRunNodeOutputsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListNodeOutputsResponse:
+    ) -> paiflow_20210202_models.ListPipelineRunNodeOutputsResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
@@ -1152,10 +780,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListNodeOutputs',
+            action='ListPipelineRunNodeOutputs',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}/outputs',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}/outputs',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1163,41 +791,39 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListNodeOutputsResponse(),
+            paiflow_20210202_models.ListPipelineRunNodeOutputsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_node_status(
+    def list_pipeline_run_node_outputs(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeStatusRequest,
-    ) -> paiflow_20210202_models.ListNodeStatusResponse:
+        request: paiflow_20210202_models.ListPipelineRunNodeOutputsRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunNodeOutputsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_node_status_with_options(run_id, node_id, request, headers, runtime)
+        return self.list_pipeline_run_node_outputs_with_options(pipeline_run_id, node_id, request, headers, runtime)
 
-    async def list_node_status_async(
+    async def list_pipeline_run_node_outputs_async(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeStatusRequest,
-    ) -> paiflow_20210202_models.ListNodeStatusResponse:
+        request: paiflow_20210202_models.ListPipelineRunNodeOutputsRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunNodeOutputsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_node_status_with_options_async(run_id, node_id, request, headers, runtime)
+        return await self.list_pipeline_run_node_outputs_with_options_async(pipeline_run_id, node_id, request, headers, runtime)
 
-    def list_node_status_with_options(
+    def list_pipeline_run_node_status_with_options(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeStatusRequest,
+        request: paiflow_20210202_models.ListPipelineRunNodeStatusRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListNodeStatusResponse:
+    ) -> paiflow_20210202_models.ListPipelineRunNodeStatusResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
@@ -1208,10 +834,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListNodeStatus',
+            action='ListPipelineRunNodeStatus',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}/status',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1219,21 +845,19 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListNodeStatusResponse(),
+            paiflow_20210202_models.ListPipelineRunNodeStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_node_status_with_options_async(
+    async def list_pipeline_run_node_status_with_options_async(
         self,
-        run_id: str,
+        pipeline_run_id: str,
         node_id: str,
-        request: paiflow_20210202_models.ListNodeStatusRequest,
+        request: paiflow_20210202_models.ListPipelineRunNodeStatusRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListNodeStatusResponse:
+    ) -> paiflow_20210202_models.ListPipelineRunNodeStatusResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        node_id = OpenApiUtilClient.get_encode_param(node_id)
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
@@ -1244,10 +868,10 @@ class Client(OpenApiClient):
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListNodeStatus',
+            action='ListPipelineRunNodeStatus',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/nodes/{node_id}/status',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/nodes/{OpenApiUtilClient.get_encode_param(node_id)}/status',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1255,41 +879,71 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListNodeStatusResponse(),
+            paiflow_20210202_models.ListPipelineRunNodeStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipeline_privileges(
+    def list_pipeline_run_node_status(
         self,
-        pipeline_id: str,
-    ) -> paiflow_20210202_models.ListPipelinePrivilegesResponse:
+        pipeline_run_id: str,
+        node_id: str,
+        request: paiflow_20210202_models.ListPipelineRunNodeStatusRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunNodeStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipeline_privileges_with_options(pipeline_id, headers, runtime)
+        return self.list_pipeline_run_node_status_with_options(pipeline_run_id, node_id, request, headers, runtime)
 
-    async def list_pipeline_privileges_async(
+    async def list_pipeline_run_node_status_async(
         self,
-        pipeline_id: str,
-    ) -> paiflow_20210202_models.ListPipelinePrivilegesResponse:
+        pipeline_run_id: str,
+        node_id: str,
+        request: paiflow_20210202_models.ListPipelineRunNodeStatusRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunNodeStatusResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipeline_privileges_with_options_async(pipeline_id, headers, runtime)
+        return await self.list_pipeline_run_node_status_with_options_async(pipeline_run_id, node_id, request, headers, runtime)
 
-    def list_pipeline_privileges_with_options(
+    def list_pipeline_runs_with_options(
         self,
-        pipeline_id: str,
+        request: paiflow_20210202_models.ListPipelineRunsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListPipelinePrivilegesResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+    ) -> paiflow_20210202_models.ListPipelineRunsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.pipeline_run_id):
+            query['PipelineRunId'] = request.pipeline_run_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListPipelinePrivileges',
+            action='ListPipelineRuns',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/privileges',
+            pathname=f'/api/v1/pipelineruns',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1297,25 +951,51 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListPipelinePrivilegesResponse(),
+            paiflow_20210202_models.ListPipelineRunsResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_pipeline_privileges_with_options_async(
+    async def list_pipeline_runs_with_options_async(
         self,
-        pipeline_id: str,
+        request: paiflow_20210202_models.ListPipelineRunsRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListPipelinePrivilegesResponse:
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
+    ) -> paiflow_20210202_models.ListPipelineRunsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.pipeline_ids):
+            query['PipelineIds'] = request.pipeline_ids
+        if not UtilClient.is_unset(request.pipeline_run_id):
+            query['PipelineRunId'] = request.pipeline_run_id
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.source_id):
+            query['SourceId'] = request.source_id
+        if not UtilClient.is_unset(request.source_type):
+            query['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        if not UtilClient.is_unset(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='ListPipelinePrivileges',
+            action='ListPipelineRuns',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/privileges',
+            pathname=f'/api/v1/pipelineruns',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -1323,25 +1003,113 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListPipelinePrivilegesResponse(),
+            paiflow_20210202_models.ListPipelineRunsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_pipelines(
+    def list_pipeline_runs(
         self,
-        request: paiflow_20210202_models.ListPipelinesRequest,
-    ) -> paiflow_20210202_models.ListPipelinesResponse:
+        request: paiflow_20210202_models.ListPipelineRunsRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_pipelines_with_options(request, headers, runtime)
+        return self.list_pipeline_runs_with_options(request, headers, runtime)
 
-    async def list_pipelines_async(
+    async def list_pipeline_runs_async(
         self,
-        request: paiflow_20210202_models.ListPipelinesRequest,
-    ) -> paiflow_20210202_models.ListPipelinesResponse:
+        request: paiflow_20210202_models.ListPipelineRunsRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunsResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_pipelines_with_options_async(request, headers, runtime)
+        return await self.list_pipeline_runs_with_options_async(request, headers, runtime)
+
+    def list_pipeline_runs_status_with_options(
+        self,
+        request: paiflow_20210202_models.ListPipelineRunsStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.ListPipelineRunsStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.nodes):
+            body['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.output_type):
+            body['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.pipeline_runs):
+            body['PipelineRuns'] = request.pipeline_runs
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRunsStatus',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.ListPipelineRunsStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_pipeline_runs_status_with_options_async(
+        self,
+        request: paiflow_20210202_models.ListPipelineRunsStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.ListPipelineRunsStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.nodes):
+            body['Nodes'] = request.nodes
+        if not UtilClient.is_unset(request.output_type):
+            body['OutputType'] = request.output_type
+        if not UtilClient.is_unset(request.pipeline_runs):
+            body['PipelineRuns'] = request.pipeline_runs
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPipelineRunsStatus',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.ListPipelineRunsStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_pipeline_runs_status(
+        self,
+        request: paiflow_20210202_models.ListPipelineRunsStatusRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunsStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_pipeline_runs_status_with_options(request, headers, runtime)
+
+    async def list_pipeline_runs_status_async(
+        self,
+        request: paiflow_20210202_models.ListPipelineRunsStatusRequest,
+    ) -> paiflow_20210202_models.ListPipelineRunsStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_pipeline_runs_status_with_options_async(request, headers, runtime)
 
     def list_pipelines_with_options(
         self,
@@ -1427,169 +1195,240 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_runs(
+    def list_pipelines(
         self,
-        request: paiflow_20210202_models.ListRunsRequest,
-    ) -> paiflow_20210202_models.ListRunsResponse:
+        request: paiflow_20210202_models.ListPipelinesRequest,
+    ) -> paiflow_20210202_models.ListPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_runs_with_options(request, headers, runtime)
+        return self.list_pipelines_with_options(request, headers, runtime)
 
-    async def list_runs_async(
+    async def list_pipelines_async(
         self,
-        request: paiflow_20210202_models.ListRunsRequest,
-    ) -> paiflow_20210202_models.ListRunsResponse:
+        request: paiflow_20210202_models.ListPipelinesRequest,
+    ) -> paiflow_20210202_models.ListPipelinesResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_runs_with_options_async(request, headers, runtime)
+        return await self.list_pipelines_with_options_async(request, headers, runtime)
 
-    def list_runs_with_options(
+    def rerun_pipeline_run_with_options(
         self,
-        request: paiflow_20210202_models.ListRunsRequest,
+        pipeline_run_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListRunsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            query['ExperimentId'] = request.experiment_id
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pipeline_id):
-            query['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.pipeline_ids):
-            query['PipelineIds'] = request.pipeline_ids
-        if not UtilClient.is_unset(request.run_id):
-            query['RunId'] = request.run_id
-        if not UtilClient.is_unset(request.sort_by):
-            query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+    ) -> paiflow_20210202_models.RerunPipelineRunResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='ListRuns',
+            action='RerunPipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs',
-            method='GET',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/rerun',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListRunsResponse(),
+            paiflow_20210202_models.RerunPipelineRunResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_runs_with_options_async(
+    async def rerun_pipeline_run_with_options_async(
         self,
-        request: paiflow_20210202_models.ListRunsRequest,
+        pipeline_run_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListRunsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.experiment_id):
-            query['ExperimentId'] = request.experiment_id
-        if not UtilClient.is_unset(request.name):
-            query['Name'] = request.name
-        if not UtilClient.is_unset(request.order):
-            query['Order'] = request.order
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pipeline_id):
-            query['PipelineId'] = request.pipeline_id
-        if not UtilClient.is_unset(request.pipeline_ids):
-            query['PipelineIds'] = request.pipeline_ids
-        if not UtilClient.is_unset(request.run_id):
-            query['RunId'] = request.run_id
-        if not UtilClient.is_unset(request.sort_by):
-            query['SortBy'] = request.sort_by
-        if not UtilClient.is_unset(request.source):
-            query['Source'] = request.source
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.user_id):
-            query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.workspace_id):
-            query['WorkspaceId'] = request.workspace_id
+    ) -> paiflow_20210202_models.RerunPipelineRunResponse:
         req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+            headers=headers
         )
         params = open_api_models.Params(
-            action='ListRuns',
+            action='RerunPipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs',
-            method='GET',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/rerun',
+            method='PUT',
             auth_type='AK',
             style='ROA',
             req_body_type='json',
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListRunsResponse(),
+            paiflow_20210202_models.RerunPipelineRunResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_runs_status(
+    def rerun_pipeline_run(
         self,
-        request: paiflow_20210202_models.ListRunsStatusRequest,
-    ) -> paiflow_20210202_models.ListRunsStatusResponse:
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.RerunPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_runs_status_with_options(request, headers, runtime)
+        return self.rerun_pipeline_run_with_options(pipeline_run_id, headers, runtime)
 
-    async def list_runs_status_async(
+    async def rerun_pipeline_run_async(
         self,
-        request: paiflow_20210202_models.ListRunsStatusRequest,
-    ) -> paiflow_20210202_models.ListRunsStatusResponse:
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.RerunPipelineRunResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_runs_status_with_options_async(request, headers, runtime)
+        return await self.rerun_pipeline_run_with_options_async(pipeline_run_id, headers, runtime)
 
-    def list_runs_status_with_options(
+    def start_pipeline_run_with_options(
         self,
-        request: paiflow_20210202_models.ListRunsStatusRequest,
+        pipeline_run_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListRunsStatusResponse:
+    ) -> paiflow_20210202_models.StartPipelineRunResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartPipelineRun',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/start',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.StartPipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_pipeline_run_with_options_async(
+        self,
+        pipeline_run_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.StartPipelineRunResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='StartPipelineRun',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/start',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.StartPipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_pipeline_run(
+        self,
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.StartPipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.start_pipeline_run_with_options(pipeline_run_id, headers, runtime)
+
+    async def start_pipeline_run_async(
+        self,
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.StartPipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.start_pipeline_run_with_options_async(pipeline_run_id, headers, runtime)
+
+    def terminate_pipeline_run_with_options(
+        self,
+        pipeline_run_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.TerminatePipelineRunResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='TerminatePipelineRun',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/termination',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.TerminatePipelineRunResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_pipeline_run_with_options_async(
+        self,
+        pipeline_run_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.TerminatePipelineRunResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='TerminatePipelineRun',
+            version='2021-02-02',
+            protocol='HTTPS',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}/termination',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            paiflow_20210202_models.TerminatePipelineRunResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_pipeline_run(
+        self,
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.TerminatePipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.terminate_pipeline_run_with_options(pipeline_run_id, headers, runtime)
+
+    async def terminate_pipeline_run_async(
+        self,
+        pipeline_run_id: str,
+    ) -> paiflow_20210202_models.TerminatePipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.terminate_pipeline_run_with_options_async(pipeline_run_id, headers, runtime)
+
+    def update_pipeline_with_options(
+        self,
+        pipeline_id: str,
+        request: paiflow_20210202_models.UpdatePipelineRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> paiflow_20210202_models.UpdatePipelineResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.nodes):
-            body['Nodes'] = request.nodes
-        if not UtilClient.is_unset(request.runs):
-            body['Runs'] = request.runs
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.manifest):
+            body['Manifest'] = request.manifest
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='ListRunsStatus',
+            action='UpdatePipeline',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs',
+            pathname=f'/api/v1/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1597,33 +1436,30 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListRunsStatusResponse(),
+            paiflow_20210202_models.UpdatePipelineResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def list_runs_status_with_options_async(
+    async def update_pipeline_with_options_async(
         self,
-        request: paiflow_20210202_models.ListRunsStatusRequest,
+        pipeline_id: str,
+        request: paiflow_20210202_models.UpdatePipelineRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.ListRunsStatusResponse:
+    ) -> paiflow_20210202_models.UpdatePipelineResponse:
         UtilClient.validate_model(request)
         body = {}
-        if not UtilClient.is_unset(request.nodes):
-            body['Nodes'] = request.nodes
-        if not UtilClient.is_unset(request.runs):
-            body['Runs'] = request.runs
-        if not UtilClient.is_unset(request.workspace_id):
-            body['WorkspaceId'] = request.workspace_id
+        if not UtilClient.is_unset(request.manifest):
+            body['Manifest'] = request.manifest
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='ListRunsStatus',
+            action='UpdatePipeline',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs',
+            pathname=f'/api/v1/pipelines/{OpenApiUtilClient.get_encode_param(pipeline_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1631,143 +1467,7 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.ListRunsStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def start_run(
-        self,
-        run_id: str,
-    ) -> paiflow_20210202_models.StartRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.start_run_with_options(run_id, headers, runtime)
-
-    async def start_run_async(
-        self,
-        run_id: str,
-    ) -> paiflow_20210202_models.StartRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.start_run_with_options_async(run_id, headers, runtime)
-
-    def start_run_with_options(
-        self,
-        run_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.StartRunResponse:
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StartRun',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/start',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.StartRunResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def start_run_with_options_async(
-        self,
-        run_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.StartRunResponse:
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='StartRun',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/start',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.StartRunResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def terminate_run(
-        self,
-        run_id: str,
-    ) -> paiflow_20210202_models.TerminateRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.terminate_run_with_options(run_id, headers, runtime)
-
-    async def terminate_run_async(
-        self,
-        run_id: str,
-    ) -> paiflow_20210202_models.TerminateRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.terminate_run_with_options_async(run_id, headers, runtime)
-
-    def terminate_run_with_options(
-        self,
-        run_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.TerminateRunResponse:
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='TerminateRun',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/termination',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.TerminateRunResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def terminate_run_with_options_async(
-        self,
-        run_id: str,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.TerminateRunResponse:
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
-        req = open_api_models.OpenApiRequest(
-            headers=headers
-        )
-        params = open_api_models.Params(
-            action='TerminateRun',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}/termination',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.TerminateRunResponse(),
+            paiflow_20210202_models.UpdatePipelineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
@@ -1789,179 +1489,14 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_pipeline_with_options_async(pipeline_id, request, headers, runtime)
 
-    def update_pipeline_with_options(
+    def update_pipeline_run_with_options(
         self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.UpdatePipelineRequest,
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.UpdatePipelineRunRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.UpdatePipelineResponse:
+    ) -> paiflow_20210202_models.UpdatePipelineRunResponse:
         UtilClient.validate_model(request)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        body = {}
-        if not UtilClient.is_unset(request.manifest):
-            body['Manifest'] = request.manifest
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePipeline',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.UpdatePipelineResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_pipeline_with_options_async(
-        self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.UpdatePipelineRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.UpdatePipelineResponse:
-        UtilClient.validate_model(request)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        body = {}
-        if not UtilClient.is_unset(request.manifest):
-            body['Manifest'] = request.manifest
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePipeline',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.UpdatePipelineResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_pipeline_privileges(
-        self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.UpdatePipelinePrivilegesRequest,
-    ) -> paiflow_20210202_models.UpdatePipelinePrivilegesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_pipeline_privileges_with_options(pipeline_id, request, headers, runtime)
-
-    async def update_pipeline_privileges_async(
-        self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.UpdatePipelinePrivilegesRequest,
-    ) -> paiflow_20210202_models.UpdatePipelinePrivilegesResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_pipeline_privileges_with_options_async(pipeline_id, request, headers, runtime)
-
-    def update_pipeline_privileges_with_options(
-        self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.UpdatePipelinePrivilegesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.UpdatePipelinePrivilegesResponse:
-        UtilClient.validate_model(request)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        body = {}
-        if not UtilClient.is_unset(request.users):
-            body['Users'] = request.users
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePipelinePrivileges',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/privileges',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.UpdatePipelinePrivilegesResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def update_pipeline_privileges_with_options_async(
-        self,
-        pipeline_id: str,
-        request: paiflow_20210202_models.UpdatePipelinePrivilegesRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.UpdatePipelinePrivilegesResponse:
-        UtilClient.validate_model(request)
-        pipeline_id = OpenApiUtilClient.get_encode_param(pipeline_id)
-        body = {}
-        if not UtilClient.is_unset(request.users):
-            body['Users'] = request.users
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='UpdatePipelinePrivileges',
-            version='2021-02-02',
-            protocol='HTTPS',
-            pathname=f'/api/v1/pipelines/{pipeline_id}/privileges',
-            method='PUT',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            paiflow_20210202_models.UpdatePipelinePrivilegesResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def update_run(
-        self,
-        run_id: str,
-        request: paiflow_20210202_models.UpdateRunRequest,
-    ) -> paiflow_20210202_models.UpdateRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.update_run_with_options(run_id, request, headers, runtime)
-
-    async def update_run_async(
-        self,
-        run_id: str,
-        request: paiflow_20210202_models.UpdateRunRequest,
-    ) -> paiflow_20210202_models.UpdateRunResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.update_run_with_options_async(run_id, request, headers, runtime)
-
-    def update_run_with_options(
-        self,
-        run_id: str,
-        request: paiflow_20210202_models.UpdateRunRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.UpdateRunResponse:
-        UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
@@ -1970,10 +1505,10 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateRun',
+            action='UpdatePipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -1981,19 +1516,18 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.UpdateRunResponse(),
+            paiflow_20210202_models.UpdatePipelineRunResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def update_run_with_options_async(
+    async def update_pipeline_run_with_options_async(
         self,
-        run_id: str,
-        request: paiflow_20210202_models.UpdateRunRequest,
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.UpdatePipelineRunRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> paiflow_20210202_models.UpdateRunResponse:
+    ) -> paiflow_20210202_models.UpdatePipelineRunResponse:
         UtilClient.validate_model(request)
-        run_id = OpenApiUtilClient.get_encode_param(run_id)
         body = {}
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
@@ -2002,10 +1536,10 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UpdateRun',
+            action='UpdatePipelineRun',
             version='2021-02-02',
             protocol='HTTPS',
-            pathname=f'/api/v1/runs/{run_id}',
+            pathname=f'/api/v1/pipelineruns/{OpenApiUtilClient.get_encode_param(pipeline_run_id)}',
             method='PUT',
             auth_type='AK',
             style='ROA',
@@ -2013,6 +1547,24 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            paiflow_20210202_models.UpdateRunResponse(),
+            paiflow_20210202_models.UpdatePipelineRunResponse(),
             await self.call_api_async(params, req, runtime)
         )
+
+    def update_pipeline_run(
+        self,
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.UpdatePipelineRunRequest,
+    ) -> paiflow_20210202_models.UpdatePipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_pipeline_run_with_options(pipeline_run_id, request, headers, runtime)
+
+    async def update_pipeline_run_async(
+        self,
+        pipeline_run_id: str,
+        request: paiflow_20210202_models.UpdatePipelineRunRequest,
+    ) -> paiflow_20210202_models.UpdatePipelineRunResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_pipeline_run_with_options_async(pipeline_run_id, request, headers, runtime)
