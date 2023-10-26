@@ -614,10 +614,14 @@ class CreateClusterRequestNetworks(TeaModel):
         self,
         ip_allocation_policy: List[CreateClusterRequestNetworksIpAllocationPolicy] = None,
         new_vpd_info: CreateClusterRequestNetworksNewVpdInfo = None,
+        security_group_id: str = None,
+        v_switch_zone_id: str = None,
         vpd_info: CreateClusterRequestNetworksVpdInfo = None,
     ):
         self.ip_allocation_policy = ip_allocation_policy
         self.new_vpd_info = new_vpd_info
+        self.security_group_id = security_group_id
+        self.v_switch_zone_id = v_switch_zone_id
         # 复用VPD信息
         self.vpd_info = vpd_info
 
@@ -643,6 +647,10 @@ class CreateClusterRequestNetworks(TeaModel):
                 result['IpAllocationPolicy'].append(k.to_map() if k else None)
         if self.new_vpd_info is not None:
             result['NewVpdInfo'] = self.new_vpd_info.to_map()
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.v_switch_zone_id is not None:
+            result['VSwitchZoneId'] = self.v_switch_zone_id
         if self.vpd_info is not None:
             result['VpdInfo'] = self.vpd_info.to_map()
         return result
@@ -657,6 +665,10 @@ class CreateClusterRequestNetworks(TeaModel):
         if m.get('NewVpdInfo') is not None:
             temp_model = CreateClusterRequestNetworksNewVpdInfo()
             self.new_vpd_info = temp_model.from_map(m['NewVpdInfo'])
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('VSwitchZoneId') is not None:
+            self.v_switch_zone_id = m.get('VSwitchZoneId')
         if m.get('VpdInfo') is not None:
             temp_model = CreateClusterRequestNetworksVpdInfo()
             self.vpd_info = temp_model.from_map(m['VpdInfo'])
@@ -825,8 +837,10 @@ class CreateClusterRequest(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         components: List[CreateClusterRequestComponents] = None,
+        hpn_zone: str = None,
         ignore_failed_node_tasks: bool = None,
         networks: CreateClusterRequestNetworks = None,
+        nimiz_vswitches: List[str] = None,
         node_groups: List[CreateClusterRequestNodeGroups] = None,
         resource_group_id: str = None,
         tag: List[CreateClusterRequestTag] = None,
@@ -835,8 +849,10 @@ class CreateClusterRequest(TeaModel):
         self.cluster_name = cluster_name
         self.cluster_type = cluster_type
         self.components = components
+        self.hpn_zone = hpn_zone
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         self.networks = networks
+        self.nimiz_vswitches = nimiz_vswitches
         self.node_groups = node_groups
         self.resource_group_id = resource_group_id
         self.tag = tag
@@ -873,10 +889,14 @@ class CreateClusterRequest(TeaModel):
         if self.components is not None:
             for k in self.components:
                 result['Components'].append(k.to_map() if k else None)
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.ignore_failed_node_tasks is not None:
             result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
         if self.networks is not None:
             result['Networks'] = self.networks.to_map()
+        if self.nimiz_vswitches is not None:
+            result['NimizVSwitches'] = self.nimiz_vswitches
         result['NodeGroups'] = []
         if self.node_groups is not None:
             for k in self.node_groups:
@@ -902,11 +922,15 @@ class CreateClusterRequest(TeaModel):
             for k in m.get('Components'):
                 temp_model = CreateClusterRequestComponents()
                 self.components.append(temp_model.from_map(k))
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('IgnoreFailedNodeTasks') is not None:
             self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
         if m.get('Networks') is not None:
             temp_model = CreateClusterRequestNetworks()
             self.networks = temp_model.from_map(m['Networks'])
+        if m.get('NimizVSwitches') is not None:
+            self.nimiz_vswitches = m.get('NimizVSwitches')
         self.node_groups = []
         if m.get('NodeGroups') is not None:
             for k in m.get('NodeGroups'):
@@ -962,8 +986,10 @@ class CreateClusterShrinkRequest(TeaModel):
         cluster_name: str = None,
         cluster_type: str = None,
         components_shrink: str = None,
+        hpn_zone: str = None,
         ignore_failed_node_tasks: bool = None,
         networks_shrink: str = None,
+        nimiz_vswitches_shrink: str = None,
         node_groups_shrink: str = None,
         resource_group_id: str = None,
         tag: List[CreateClusterShrinkRequestTag] = None,
@@ -972,8 +998,10 @@ class CreateClusterShrinkRequest(TeaModel):
         self.cluster_name = cluster_name
         self.cluster_type = cluster_type
         self.components_shrink = components_shrink
+        self.hpn_zone = hpn_zone
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         self.networks_shrink = networks_shrink
+        self.nimiz_vswitches_shrink = nimiz_vswitches_shrink
         self.node_groups_shrink = node_groups_shrink
         self.resource_group_id = resource_group_id
         self.tag = tag
@@ -998,10 +1026,14 @@ class CreateClusterShrinkRequest(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.components_shrink is not None:
             result['Components'] = self.components_shrink
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.ignore_failed_node_tasks is not None:
             result['IgnoreFailedNodeTasks'] = self.ignore_failed_node_tasks
         if self.networks_shrink is not None:
             result['Networks'] = self.networks_shrink
+        if self.nimiz_vswitches_shrink is not None:
+            result['NimizVSwitches'] = self.nimiz_vswitches_shrink
         if self.node_groups_shrink is not None:
             result['NodeGroups'] = self.node_groups_shrink
         if self.resource_group_id is not None:
@@ -1022,10 +1054,14 @@ class CreateClusterShrinkRequest(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('Components') is not None:
             self.components_shrink = m.get('Components')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('IgnoreFailedNodeTasks') is not None:
             self.ignore_failed_node_tasks = m.get('IgnoreFailedNodeTasks')
         if m.get('Networks') is not None:
             self.networks_shrink = m.get('Networks')
+        if m.get('NimizVSwitches') is not None:
+            self.nimiz_vswitches_shrink = m.get('NimizVSwitches')
         if m.get('NodeGroups') is not None:
             self.node_groups_shrink = m.get('NodeGroups')
         if m.get('ResourceGroupId') is not None:
@@ -1315,6 +1351,7 @@ class DescribeClusterResponseBody(TeaModel):
         cluster_type: str = None,
         components: List[DescribeClusterResponseBodyComponents] = None,
         create_time: str = None,
+        hpn_zone: str = None,
         networks: List[DescribeClusterResponseBodyNetworks] = None,
         node_count: int = None,
         node_group_count: int = None,
@@ -1331,6 +1368,7 @@ class DescribeClusterResponseBody(TeaModel):
         self.cluster_type = cluster_type
         self.components = components
         self.create_time = create_time
+        self.hpn_zone = hpn_zone
         self.networks = networks
         self.node_count = node_count
         self.node_group_count = node_group_count
@@ -1371,6 +1409,8 @@ class DescribeClusterResponseBody(TeaModel):
                 result['Components'].append(k.to_map() if k else None)
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         result['Networks'] = []
         if self.networks is not None:
             for k in self.networks:
@@ -1410,6 +1450,8 @@ class DescribeClusterResponseBody(TeaModel):
                 self.components.append(temp_model.from_map(k))
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         self.networks = []
         if m.get('Networks') is not None:
             for k in m.get('Networks'):
@@ -1558,6 +1600,7 @@ class DescribeNodeResponseBody(TeaModel):
         create_time: str = None,
         expired_time: str = None,
         hostname: str = None,
+        hpn_zone: str = None,
         image_id: str = None,
         image_name: str = None,
         machine_type: str = None,
@@ -1575,6 +1618,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.create_time = create_time
         self.expired_time = expired_time
         self.hostname = hostname
+        self.hpn_zone = hpn_zone
         self.image_id = image_id
         # 镜像名称
         self.image_name = image_name
@@ -1610,6 +1654,8 @@ class DescribeNodeResponseBody(TeaModel):
             result['ExpiredTime'] = self.expired_time
         if self.hostname is not None:
             result['Hostname'] = self.hostname
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.image_name is not None:
@@ -1648,6 +1694,8 @@ class DescribeNodeResponseBody(TeaModel):
             self.expired_time = m.get('ExpiredTime')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('ImageName') is not None:
@@ -2591,10 +2639,14 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
         hostname: str = None,
         login_password: str = None,
         node_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
     ):
         self.hostname = hostname
         self.login_password = login_password
         self.node_id = node_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
 
     def validate(self):
         pass
@@ -2611,6 +2663,10 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
             result['LoginPassword'] = self.login_password
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2621,6 +2677,10 @@ class ExtendClusterRequestNodeGroupsNodes(TeaModel):
             self.login_password = m.get('LoginPassword')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         return self
 
 
@@ -2630,10 +2690,12 @@ class ExtendClusterRequestNodeGroups(TeaModel):
         node_group_id: str = None,
         nodes: List[ExtendClusterRequestNodeGroupsNodes] = None,
         user_data: str = None,
+        zone_id: str = None,
     ):
         self.node_group_id = node_group_id
         self.nodes = nodes
         self.user_data = user_data
+        self.zone_id = zone_id
 
     def validate(self):
         if self.nodes:
@@ -2655,6 +2717,8 @@ class ExtendClusterRequestNodeGroups(TeaModel):
                 result['Nodes'].append(k.to_map() if k else None)
         if self.user_data is not None:
             result['UserData'] = self.user_data
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2668,6 +2732,8 @@ class ExtendClusterRequestNodeGroups(TeaModel):
                 self.nodes.append(temp_model.from_map(k))
         if m.get('UserData') is not None:
             self.user_data = m.get('UserData')
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
         return self
 
 
@@ -2678,12 +2744,14 @@ class ExtendClusterRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         ip_allocation_policy: List[ExtendClusterRequestIpAllocationPolicy] = None,
         node_groups: List[ExtendClusterRequestNodeGroups] = None,
+        v_switch_zone_id: str = None,
         vpd_subnets: List[str] = None,
     ):
         self.cluster_id = cluster_id
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         self.ip_allocation_policy = ip_allocation_policy
         self.node_groups = node_groups
+        self.v_switch_zone_id = v_switch_zone_id
         self.vpd_subnets = vpd_subnets
 
     def validate(self):
@@ -2714,6 +2782,8 @@ class ExtendClusterRequest(TeaModel):
         if self.node_groups is not None:
             for k in self.node_groups:
                 result['NodeGroups'].append(k.to_map() if k else None)
+        if self.v_switch_zone_id is not None:
+            result['VSwitchZoneId'] = self.v_switch_zone_id
         if self.vpd_subnets is not None:
             result['VpdSubnets'] = self.vpd_subnets
         return result
@@ -2734,6 +2804,8 @@ class ExtendClusterRequest(TeaModel):
             for k in m.get('NodeGroups'):
                 temp_model = ExtendClusterRequestNodeGroups()
                 self.node_groups.append(temp_model.from_map(k))
+        if m.get('VSwitchZoneId') is not None:
+            self.v_switch_zone_id = m.get('VSwitchZoneId')
         if m.get('VpdSubnets') is not None:
             self.vpd_subnets = m.get('VpdSubnets')
         return self
@@ -2746,12 +2818,14 @@ class ExtendClusterShrinkRequest(TeaModel):
         ignore_failed_node_tasks: bool = None,
         ip_allocation_policy_shrink: str = None,
         node_groups_shrink: str = None,
+        v_switch_zone_id: str = None,
         vpd_subnets_shrink: str = None,
     ):
         self.cluster_id = cluster_id
         self.ignore_failed_node_tasks = ignore_failed_node_tasks
         self.ip_allocation_policy_shrink = ip_allocation_policy_shrink
         self.node_groups_shrink = node_groups_shrink
+        self.v_switch_zone_id = v_switch_zone_id
         self.vpd_subnets_shrink = vpd_subnets_shrink
 
     def validate(self):
@@ -2771,6 +2845,8 @@ class ExtendClusterShrinkRequest(TeaModel):
             result['IpAllocationPolicy'] = self.ip_allocation_policy_shrink
         if self.node_groups_shrink is not None:
             result['NodeGroups'] = self.node_groups_shrink
+        if self.v_switch_zone_id is not None:
+            result['VSwitchZoneId'] = self.v_switch_zone_id
         if self.vpd_subnets_shrink is not None:
             result['VpdSubnets'] = self.vpd_subnets_shrink
         return result
@@ -2785,6 +2861,8 @@ class ExtendClusterShrinkRequest(TeaModel):
             self.ip_allocation_policy_shrink = m.get('IpAllocationPolicy')
         if m.get('NodeGroups') is not None:
             self.node_groups_shrink = m.get('NodeGroups')
+        if m.get('VSwitchZoneId') is not None:
+            self.v_switch_zone_id = m.get('VSwitchZoneId')
         if m.get('VpdSubnets') is not None:
             self.vpd_subnets_shrink = m.get('VpdSubnets')
         return self
@@ -2963,6 +3041,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         create_time: str = None,
         expired_time: str = None,
         hostname: str = None,
+        hpn_zone: str = None,
         image_id: str = None,
         machine_type: str = None,
         networks: List[ListClusterNodesResponseBodyNodesNetworks] = None,
@@ -2976,6 +3055,7 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
         self.create_time = create_time
         self.expired_time = expired_time
         self.hostname = hostname
+        self.hpn_zone = hpn_zone
         self.image_id = image_id
         self.machine_type = machine_type
         self.networks = networks
@@ -3004,6 +3084,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             result['ExpiredTime'] = self.expired_time
         if self.hostname is not None:
             result['Hostname'] = self.hostname
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.image_id is not None:
             result['ImageId'] = self.image_id
         if self.machine_type is not None:
@@ -3034,6 +3116,8 @@ class ListClusterNodesResponseBodyNodes(TeaModel):
             self.expired_time = m.get('ExpiredTime')
         if m.get('Hostname') is not None:
             self.hostname = m.get('Hostname')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
         if m.get('MachineType') is not None:
@@ -3197,6 +3281,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         cluster_type: str = None,
         components: Any = None,
         create_time: str = None,
+        hpn_zone: str = None,
         node_count: int = None,
         node_group_count: int = None,
         operating_state: str = None,
@@ -3211,6 +3296,7 @@ class ListClustersResponseBodyClusters(TeaModel):
         self.cluster_type = cluster_type
         self.components = components
         self.create_time = create_time
+        self.hpn_zone = hpn_zone
         self.node_count = node_count
         self.node_group_count = node_group_count
         self.operating_state = operating_state
@@ -3240,6 +3326,8 @@ class ListClustersResponseBodyClusters(TeaModel):
             result['Components'] = self.components
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.node_count is not None:
             result['NodeCount'] = self.node_count
         if self.node_group_count is not None:
@@ -3270,6 +3358,8 @@ class ListClustersResponseBodyClusters(TeaModel):
             self.components = m.get('Components')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('NodeCount') is not None:
             self.node_count = m.get('NodeCount')
         if m.get('NodeGroupCount') is not None:
@@ -3381,10 +3471,12 @@ class ListClustersResponse(TeaModel):
 class ListFreeNodesRequest(TeaModel):
     def __init__(
         self,
+        hpn_zone: str = None,
         machine_type: str = None,
         max_results: int = None,
         next_token: str = None,
     ):
+        self.hpn_zone = hpn_zone
         self.machine_type = machine_type
         self.max_results = max_results
         self.next_token = next_token
@@ -3398,6 +3490,8 @@ class ListFreeNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         if self.max_results is not None:
@@ -3408,6 +3502,8 @@ class ListFreeNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         if m.get('MaxResults') is not None:
@@ -3422,6 +3518,7 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
         self,
         create_time: str = None,
         expired_time: str = None,
+        hpn_zone: str = None,
         machine_type: str = None,
         node_id: str = None,
         sn: str = None,
@@ -3429,6 +3526,7 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
     ):
         self.create_time = create_time
         self.expired_time = expired_time
+        self.hpn_zone = hpn_zone
         self.machine_type = machine_type
         self.node_id = node_id
         self.sn = sn
@@ -3447,6 +3545,8 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             result['CreateTime'] = self.create_time
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
+        if self.hpn_zone is not None:
+            result['HpnZone'] = self.hpn_zone
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
         if self.node_id is not None:
@@ -3463,6 +3563,8 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
+        if m.get('HpnZone') is not None:
+            self.hpn_zone = m.get('HpnZone')
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')
         if m.get('NodeId') is not None:
