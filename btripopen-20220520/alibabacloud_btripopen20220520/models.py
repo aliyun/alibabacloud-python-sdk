@@ -4931,6 +4931,39 @@ class ApplyAddHeaders(TeaModel):
         return self
 
 
+class ApplyAddRequestCarRule(TeaModel):
+    def __init__(
+        self,
+        scenario_template_id: str = None,
+        scenario_template_name: str = None,
+    ):
+        self.scenario_template_id = scenario_template_id
+        self.scenario_template_name = scenario_template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scenario_template_id is not None:
+            result['scenario_template_id'] = self.scenario_template_id
+        if self.scenario_template_name is not None:
+            result['scenario_template_name'] = self.scenario_template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scenario_template_id') is not None:
+            self.scenario_template_id = m.get('scenario_template_id')
+        if m.get('scenario_template_name') is not None:
+            self.scenario_template_name = m.get('scenario_template_name')
+        return self
+
+
 class ApplyAddRequestExternalTravelerList(TeaModel):
     def __init__(
         self,
@@ -5432,6 +5465,39 @@ class ApplyAddRequestTravelerList(TeaModel):
         return self
 
 
+class ApplyAddRequestTravelerStandardCarCitySet(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        return self
+
+
 class ApplyAddRequestTravelerStandardHotelCitys(TeaModel):
     def __init__(
         self,
@@ -5475,6 +5541,7 @@ class ApplyAddRequestTravelerStandard(TeaModel):
     def __init__(
         self,
         business_discount: int = None,
+        car_city_set: List[ApplyAddRequestTravelerStandardCarCitySet] = None,
         economy_discount: int = None,
         first_discount: int = None,
         flight_cabins: str = None,
@@ -5486,6 +5553,7 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         user_id: str = None,
     ):
         self.business_discount = business_discount
+        self.car_city_set = car_city_set
         self.economy_discount = economy_discount
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
@@ -5497,6 +5565,10 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         self.user_id = user_id
 
     def validate(self):
+        if self.car_city_set:
+            for k in self.car_city_set:
+                if k:
+                    k.validate()
         if self.hotel_citys:
             for k in self.hotel_citys:
                 if k:
@@ -5510,6 +5582,10 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         result = dict()
         if self.business_discount is not None:
             result['business_discount'] = self.business_discount
+        result['car_city_set'] = []
+        if self.car_city_set is not None:
+            for k in self.car_city_set:
+                result['car_city_set'].append(k.to_map() if k else None)
         if self.economy_discount is not None:
             result['economy_discount'] = self.economy_discount
         if self.first_discount is not None:
@@ -5536,6 +5612,11 @@ class ApplyAddRequestTravelerStandard(TeaModel):
         m = m or dict()
         if m.get('business_discount') is not None:
             self.business_discount = m.get('business_discount')
+        self.car_city_set = []
+        if m.get('car_city_set') is not None:
+            for k in m.get('car_city_set'):
+                temp_model = ApplyAddRequestTravelerStandardCarCitySet()
+                self.car_city_set.append(temp_model.from_map(k))
         if m.get('economy_discount') is not None:
             self.economy_discount = m.get('economy_discount')
         if m.get('first_discount') is not None:
@@ -5565,6 +5646,7 @@ class ApplyAddRequest(TeaModel):
         self,
         budget: int = None,
         budget_merge: int = None,
+        car_rule: ApplyAddRequestCarRule = None,
         corp_name: str = None,
         depart_id: str = None,
         depart_name: str = None,
@@ -5599,6 +5681,7 @@ class ApplyAddRequest(TeaModel):
     ):
         self.budget = budget
         self.budget_merge = budget_merge
+        self.car_rule = car_rule
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
@@ -5633,6 +5716,8 @@ class ApplyAddRequest(TeaModel):
         self.vehicle_budget = vehicle_budget
 
     def validate(self):
+        if self.car_rule:
+            self.car_rule.validate()
         if self.external_traveler_list:
             for k in self.external_traveler_list:
                 if k:
@@ -5668,6 +5753,8 @@ class ApplyAddRequest(TeaModel):
             result['budget'] = self.budget
         if self.budget_merge is not None:
             result['budget_merge'] = self.budget_merge
+        if self.car_rule is not None:
+            result['car_rule'] = self.car_rule.to_map()
         if self.corp_name is not None:
             result['corp_name'] = self.corp_name
         if self.depart_id is not None:
@@ -5748,6 +5835,9 @@ class ApplyAddRequest(TeaModel):
             self.budget = m.get('budget')
         if m.get('budget_merge') is not None:
             self.budget_merge = m.get('budget_merge')
+        if m.get('car_rule') is not None:
+            temp_model = ApplyAddRequestCarRule()
+            self.car_rule = temp_model.from_map(m['car_rule'])
         if m.get('corp_name') is not None:
             self.corp_name = m.get('corp_name')
         if m.get('depart_id') is not None:
@@ -5835,6 +5925,7 @@ class ApplyAddShrinkRequest(TeaModel):
         self,
         budget: int = None,
         budget_merge: int = None,
+        car_rule_shrink: str = None,
         corp_name: str = None,
         depart_id: str = None,
         depart_name: str = None,
@@ -5869,6 +5960,7 @@ class ApplyAddShrinkRequest(TeaModel):
     ):
         self.budget = budget
         self.budget_merge = budget_merge
+        self.car_rule_shrink = car_rule_shrink
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
@@ -5915,6 +6007,8 @@ class ApplyAddShrinkRequest(TeaModel):
             result['budget'] = self.budget
         if self.budget_merge is not None:
             result['budget_merge'] = self.budget_merge
+        if self.car_rule_shrink is not None:
+            result['car_rule'] = self.car_rule_shrink
         if self.corp_name is not None:
             result['corp_name'] = self.corp_name
         if self.depart_id is not None:
@@ -5985,6 +6079,8 @@ class ApplyAddShrinkRequest(TeaModel):
             self.budget = m.get('budget')
         if m.get('budget_merge') is not None:
             self.budget_merge = m.get('budget_merge')
+        if m.get('car_rule') is not None:
+            self.car_rule_shrink = m.get('car_rule')
         if m.get('corp_name') is not None:
             self.corp_name = m.get('corp_name')
         if m.get('depart_id') is not None:
@@ -6913,6 +7009,39 @@ class ApplyListQueryResponseBodyModuleListApproverList(TeaModel):
         return self
 
 
+class ApplyListQueryResponseBodyModuleListCarRule(TeaModel):
+    def __init__(
+        self,
+        scenario_template_id: str = None,
+        scenario_template_name: str = None,
+    ):
+        self.scenario_template_id = scenario_template_id
+        self.scenario_template_name = scenario_template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scenario_template_id is not None:
+            result['scenario_template_id'] = self.scenario_template_id
+        if self.scenario_template_name is not None:
+            result['scenario_template_name'] = self.scenario_template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scenario_template_id') is not None:
+            self.scenario_template_id = m.get('scenario_template_id')
+        if m.get('scenario_template_name') is not None:
+            self.scenario_template_name = m.get('scenario_template_name')
+        return self
+
+
 class ApplyListQueryResponseBodyModuleListExternalTravelerList(TeaModel):
     def __init__(
         self,
@@ -7120,16 +7249,14 @@ class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
         return self
 
 
-class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
+class ApplyListQueryResponseBodyModuleListTravelerListCarCitySet(TeaModel):
     def __init__(
         self,
-        job_no: str = None,
-        user_id: str = None,
-        user_name: str = None,
+        city_code: str = None,
+        city_name: str = None,
     ):
-        self.job_no = job_no
-        self.user_id = user_id
-        self.user_name = user_name
+        self.city_code = city_code
+        self.city_name = city_name
 
     def validate(self):
         pass
@@ -7140,6 +7267,50 @@ class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
             return _map
 
         result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        return self
+
+
+class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
+    def __init__(
+        self,
+        car_city_set: List[ApplyListQueryResponseBodyModuleListTravelerListCarCitySet] = None,
+        job_no: str = None,
+        user_id: str = None,
+        user_name: str = None,
+    ):
+        self.car_city_set = car_city_set
+        self.job_no = job_no
+        self.user_id = user_id
+        self.user_name = user_name
+
+    def validate(self):
+        if self.car_city_set:
+            for k in self.car_city_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['car_city_set'] = []
+        if self.car_city_set is not None:
+            for k in self.car_city_set:
+                result['car_city_set'].append(k.to_map() if k else None)
         if self.job_no is not None:
             result['job_no'] = self.job_no
         if self.user_id is not None:
@@ -7150,6 +7321,11 @@ class ApplyListQueryResponseBodyModuleListTravelerList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.car_city_set = []
+        if m.get('car_city_set') is not None:
+            for k in m.get('car_city_set'):
+                temp_model = ApplyListQueryResponseBodyModuleListTravelerListCarCitySet()
+                self.car_city_set.append(temp_model.from_map(k))
         if m.get('job_no') is not None:
             self.job_no = m.get('job_no')
         if m.get('user_id') is not None:
@@ -7164,6 +7340,7 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
         self,
         apply_show_id: str = None,
         approver_list: List[ApplyListQueryResponseBodyModuleListApproverList] = None,
+        car_rule: ApplyListQueryResponseBodyModuleListCarRule = None,
         corp_id: str = None,
         corp_name: str = None,
         depart_id: str = None,
@@ -7192,6 +7369,7 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
     ):
         self.apply_show_id = apply_show_id
         self.approver_list = approver_list
+        self.car_rule = car_rule
         self.corp_id = corp_id
         self.corp_name = corp_name
         self.depart_id = depart_id
@@ -7223,6 +7401,8 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
             for k in self.approver_list:
                 if k:
                     k.validate()
+        if self.car_rule:
+            self.car_rule.validate()
         if self.external_traveler_list:
             for k in self.external_traveler_list:
                 if k:
@@ -7252,6 +7432,8 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
         if self.approver_list is not None:
             for k in self.approver_list:
                 result['approver_list'].append(k.to_map() if k else None)
+        if self.car_rule is not None:
+            result['car_rule'] = self.car_rule.to_map()
         if self.corp_id is not None:
             result['corp_id'] = self.corp_id
         if self.corp_name is not None:
@@ -7321,6 +7503,9 @@ class ApplyListQueryResponseBodyModuleList(TeaModel):
             for k in m.get('approver_list'):
                 temp_model = ApplyListQueryResponseBodyModuleListApproverList()
                 self.approver_list.append(temp_model.from_map(k))
+        if m.get('car_rule') is not None:
+            temp_model = ApplyListQueryResponseBodyModuleListCarRule()
+            self.car_rule = temp_model.from_map(m['car_rule'])
         if m.get('corp_id') is not None:
             self.corp_id = m.get('corp_id')
         if m.get('corp_name') is not None:
@@ -7525,6 +7710,39 @@ class ApplyModifyHeaders(TeaModel):
             self.common_headers = m.get('commonHeaders')
         if m.get('x-acs-btrip-so-corp-token') is not None:
             self.x_acs_btrip_so_corp_token = m.get('x-acs-btrip-so-corp-token')
+        return self
+
+
+class ApplyModifyRequestCarRule(TeaModel):
+    def __init__(
+        self,
+        scenario_template_id: str = None,
+        scenario_template_name: str = None,
+    ):
+        self.scenario_template_id = scenario_template_id
+        self.scenario_template_name = scenario_template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scenario_template_id is not None:
+            result['scenario_template_id'] = self.scenario_template_id
+        if self.scenario_template_name is not None:
+            result['scenario_template_name'] = self.scenario_template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scenario_template_id') is not None:
+            self.scenario_template_id = m.get('scenario_template_id')
+        if m.get('scenario_template_name') is not None:
+            self.scenario_template_name = m.get('scenario_template_name')
         return self
 
 
@@ -8024,6 +8242,39 @@ class ApplyModifyRequestTravelerList(TeaModel):
         return self
 
 
+class ApplyModifyRequestTravelerStandardCarCitySet(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        return self
+
+
 class ApplyModifyRequestTravelerStandardHotelCitys(TeaModel):
     def __init__(
         self,
@@ -8067,6 +8318,7 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
     def __init__(
         self,
         business_discount: int = None,
+        car_city_set: List[ApplyModifyRequestTravelerStandardCarCitySet] = None,
         economy_discount: int = None,
         first_discount: int = None,
         flight_cabins: str = None,
@@ -8077,6 +8329,7 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         user_id: str = None,
     ):
         self.business_discount = business_discount
+        self.car_city_set = car_city_set
         self.economy_discount = economy_discount
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
@@ -8088,6 +8341,10 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         self.user_id = user_id
 
     def validate(self):
+        if self.car_city_set:
+            for k in self.car_city_set:
+                if k:
+                    k.validate()
         if self.hotel_citys:
             for k in self.hotel_citys:
                 if k:
@@ -8101,6 +8358,10 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         result = dict()
         if self.business_discount is not None:
             result['business_discount'] = self.business_discount
+        result['car_city_set'] = []
+        if self.car_city_set is not None:
+            for k in self.car_city_set:
+                result['car_city_set'].append(k.to_map() if k else None)
         if self.economy_discount is not None:
             result['economy_discount'] = self.economy_discount
         if self.first_discount is not None:
@@ -8125,6 +8386,11 @@ class ApplyModifyRequestTravelerStandard(TeaModel):
         m = m or dict()
         if m.get('business_discount') is not None:
             self.business_discount = m.get('business_discount')
+        self.car_city_set = []
+        if m.get('car_city_set') is not None:
+            for k in m.get('car_city_set'):
+                temp_model = ApplyModifyRequestTravelerStandardCarCitySet()
+                self.car_city_set.append(temp_model.from_map(k))
         if m.get('economy_discount') is not None:
             self.economy_discount = m.get('economy_discount')
         if m.get('first_discount') is not None:
@@ -8152,6 +8418,7 @@ class ApplyModifyRequest(TeaModel):
         self,
         budget: int = None,
         budget_merge: int = None,
+        car_rule: ApplyModifyRequestCarRule = None,
         corp_name: str = None,
         depart_id: str = None,
         depart_name: str = None,
@@ -8184,6 +8451,7 @@ class ApplyModifyRequest(TeaModel):
     ):
         self.budget = budget
         self.budget_merge = budget_merge
+        self.car_rule = car_rule
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
@@ -8217,6 +8485,8 @@ class ApplyModifyRequest(TeaModel):
         self.vehicle_budget = vehicle_budget
 
     def validate(self):
+        if self.car_rule:
+            self.car_rule.validate()
         if self.external_traveler_list:
             for k in self.external_traveler_list:
                 if k:
@@ -8252,6 +8522,8 @@ class ApplyModifyRequest(TeaModel):
             result['budget'] = self.budget
         if self.budget_merge is not None:
             result['budget_merge'] = self.budget_merge
+        if self.car_rule is not None:
+            result['car_rule'] = self.car_rule.to_map()
         if self.corp_name is not None:
             result['corp_name'] = self.corp_name
         if self.depart_id is not None:
@@ -8328,6 +8600,9 @@ class ApplyModifyRequest(TeaModel):
             self.budget = m.get('budget')
         if m.get('budget_merge') is not None:
             self.budget_merge = m.get('budget_merge')
+        if m.get('car_rule') is not None:
+            temp_model = ApplyModifyRequestCarRule()
+            self.car_rule = temp_model.from_map(m['car_rule'])
         if m.get('corp_name') is not None:
             self.corp_name = m.get('corp_name')
         if m.get('depart_id') is not None:
@@ -8411,6 +8686,7 @@ class ApplyModifyShrinkRequest(TeaModel):
         self,
         budget: int = None,
         budget_merge: int = None,
+        car_rule_shrink: str = None,
         corp_name: str = None,
         depart_id: str = None,
         depart_name: str = None,
@@ -8443,6 +8719,7 @@ class ApplyModifyShrinkRequest(TeaModel):
     ):
         self.budget = budget
         self.budget_merge = budget_merge
+        self.car_rule_shrink = car_rule_shrink
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
@@ -8488,6 +8765,8 @@ class ApplyModifyShrinkRequest(TeaModel):
             result['budget'] = self.budget
         if self.budget_merge is not None:
             result['budget_merge'] = self.budget_merge
+        if self.car_rule_shrink is not None:
+            result['car_rule'] = self.car_rule_shrink
         if self.corp_name is not None:
             result['corp_name'] = self.corp_name
         if self.depart_id is not None:
@@ -8554,6 +8833,8 @@ class ApplyModifyShrinkRequest(TeaModel):
             self.budget = m.get('budget')
         if m.get('budget_merge') is not None:
             self.budget_merge = m.get('budget_merge')
+        if m.get('car_rule') is not None:
+            self.car_rule_shrink = m.get('car_rule')
         if m.get('corp_name') is not None:
             self.corp_name = m.get('corp_name')
         if m.get('depart_id') is not None:
@@ -8902,6 +9183,39 @@ class ApplyQueryResponseBodyModuleApproverList(TeaModel):
             self.user_id = m.get('user_id')
         if m.get('user_name') is not None:
             self.user_name = m.get('user_name')
+        return self
+
+
+class ApplyQueryResponseBodyModuleCarRule(TeaModel):
+    def __init__(
+        self,
+        scenario_template_id: str = None,
+        scenario_template_name: str = None,
+    ):
+        self.scenario_template_id = scenario_template_id
+        self.scenario_template_name = scenario_template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scenario_template_id is not None:
+            result['scenario_template_id'] = self.scenario_template_id
+        if self.scenario_template_name is not None:
+            result['scenario_template_name'] = self.scenario_template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('scenario_template_id') is not None:
+            self.scenario_template_id = m.get('scenario_template_id')
+        if m.get('scenario_template_name') is not None:
+            self.scenario_template_name = m.get('scenario_template_name')
         return self
 
 
@@ -9322,6 +9636,39 @@ class ApplyQueryResponseBodyModuleItinerarySetList(TeaModel):
         return self
 
 
+class ApplyQueryResponseBodyModuleTravelerListCarCitySet(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        return self
+
+
 class ApplyQueryResponseBodyModuleTravelerListHotelCitys(TeaModel):
     def __init__(
         self,
@@ -9365,6 +9712,7 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
     def __init__(
         self,
         business_discount: int = None,
+        car_city_set: List[ApplyQueryResponseBodyModuleTravelerListCarCitySet] = None,
         economy_discount: int = None,
         first_discount: int = None,
         flight_cabins: str = None,
@@ -9376,6 +9724,7 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         user_name: str = None,
     ):
         self.business_discount = business_discount
+        self.car_city_set = car_city_set
         self.economy_discount = economy_discount
         self.first_discount = first_discount
         self.flight_cabins = flight_cabins
@@ -9387,6 +9736,10 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         self.user_name = user_name
 
     def validate(self):
+        if self.car_city_set:
+            for k in self.car_city_set:
+                if k:
+                    k.validate()
         if self.hotel_citys:
             for k in self.hotel_citys:
                 if k:
@@ -9400,6 +9753,10 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         result = dict()
         if self.business_discount is not None:
             result['business_discount'] = self.business_discount
+        result['car_city_set'] = []
+        if self.car_city_set is not None:
+            for k in self.car_city_set:
+                result['car_city_set'].append(k.to_map() if k else None)
         if self.economy_discount is not None:
             result['economy_discount'] = self.economy_discount
         if self.first_discount is not None:
@@ -9426,6 +9783,11 @@ class ApplyQueryResponseBodyModuleTravelerList(TeaModel):
         m = m or dict()
         if m.get('business_discount') is not None:
             self.business_discount = m.get('business_discount')
+        self.car_city_set = []
+        if m.get('car_city_set') is not None:
+            for k in m.get('car_city_set'):
+                temp_model = ApplyQueryResponseBodyModuleTravelerListCarCitySet()
+                self.car_city_set.append(temp_model.from_map(k))
         if m.get('economy_discount') is not None:
             self.economy_discount = m.get('economy_discount')
         if m.get('first_discount') is not None:
@@ -9457,6 +9819,7 @@ class ApplyQueryResponseBodyModule(TeaModel):
         approver_list: List[ApplyQueryResponseBodyModuleApproverList] = None,
         budget: int = None,
         budget_merge: int = None,
+        car_rule: ApplyQueryResponseBodyModuleCarRule = None,
         corp_id: str = None,
         corp_name: str = None,
         depart_id: str = None,
@@ -9493,6 +9856,7 @@ class ApplyQueryResponseBodyModule(TeaModel):
         self.approver_list = approver_list
         self.budget = budget
         self.budget_merge = budget_merge
+        self.car_rule = car_rule
         self.corp_id = corp_id
         self.corp_name = corp_name
         self.depart_id = depart_id
@@ -9531,6 +9895,8 @@ class ApplyQueryResponseBodyModule(TeaModel):
             for k in self.approver_list:
                 if k:
                     k.validate()
+        if self.car_rule:
+            self.car_rule.validate()
         if self.external_traveler_list:
             for k in self.external_traveler_list:
                 if k:
@@ -9566,6 +9932,8 @@ class ApplyQueryResponseBodyModule(TeaModel):
             result['budget'] = self.budget
         if self.budget_merge is not None:
             result['budget_merge'] = self.budget_merge
+        if self.car_rule is not None:
+            result['car_rule'] = self.car_rule.to_map()
         if self.corp_id is not None:
             result['corp_id'] = self.corp_id
         if self.corp_name is not None:
@@ -9651,6 +10019,9 @@ class ApplyQueryResponseBodyModule(TeaModel):
             self.budget = m.get('budget')
         if m.get('budget_merge') is not None:
             self.budget_merge = m.get('budget_merge')
+        if m.get('car_rule') is not None:
+            temp_model = ApplyQueryResponseBodyModuleCarRule()
+            self.car_rule = temp_model.from_map(m['car_rule'])
         if m.get('corp_id') is not None:
             self.corp_id = m.get('corp_id')
         if m.get('corp_name') is not None:
@@ -10050,11 +10421,86 @@ class CarApplyAddHeaders(TeaModel):
         return self
 
 
+class CarApplyAddRequestTravelerStandardCarCitySet(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        return self
+
+
+class CarApplyAddRequestTravelerStandard(TeaModel):
+    def __init__(
+        self,
+        car_city_set: List[CarApplyAddRequestTravelerStandardCarCitySet] = None,
+        user_id: str = None,
+    ):
+        self.car_city_set = car_city_set
+        self.user_id = user_id
+
+    def validate(self):
+        if self.car_city_set:
+            for k in self.car_city_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['car_city_set'] = []
+        if self.car_city_set is not None:
+            for k in self.car_city_set:
+                result['car_city_set'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.car_city_set = []
+        if m.get('car_city_set') is not None:
+            for k in m.get('car_city_set'):
+                temp_model = CarApplyAddRequestTravelerStandardCarCitySet()
+                self.car_city_set.append(temp_model.from_map(k))
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class CarApplyAddRequest(TeaModel):
     def __init__(
         self,
         cause: str = None,
         city: str = None,
+        city_code_set: str = None,
         date: str = None,
         finished_date: str = None,
         project_code: str = None,
@@ -10067,10 +10513,12 @@ class CarApplyAddRequest(TeaModel):
         times_type: int = None,
         times_used: int = None,
         title: str = None,
+        traveler_standard: List[CarApplyAddRequestTravelerStandard] = None,
         user_id: str = None,
     ):
         self.cause = cause
         self.city = city
+        self.city_code_set = city_code_set
         self.date = date
         self.finished_date = finished_date
         self.project_code = project_code
@@ -10083,10 +10531,14 @@ class CarApplyAddRequest(TeaModel):
         self.times_type = times_type
         self.times_used = times_used
         self.title = title
+        self.traveler_standard = traveler_standard
         self.user_id = user_id
 
     def validate(self):
-        pass
+        if self.traveler_standard:
+            for k in self.traveler_standard:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -10098,6 +10550,8 @@ class CarApplyAddRequest(TeaModel):
             result['cause'] = self.cause
         if self.city is not None:
             result['city'] = self.city
+        if self.city_code_set is not None:
+            result['city_code_set'] = self.city_code_set
         if self.date is not None:
             result['date'] = self.date
         if self.finished_date is not None:
@@ -10122,6 +10576,10 @@ class CarApplyAddRequest(TeaModel):
             result['times_used'] = self.times_used
         if self.title is not None:
             result['title'] = self.title
+        result['traveler_standard'] = []
+        if self.traveler_standard is not None:
+            for k in self.traveler_standard:
+                result['traveler_standard'].append(k.to_map() if k else None)
         if self.user_id is not None:
             result['user_id'] = self.user_id
         return result
@@ -10132,6 +10590,8 @@ class CarApplyAddRequest(TeaModel):
             self.cause = m.get('cause')
         if m.get('city') is not None:
             self.city = m.get('city')
+        if m.get('city_code_set') is not None:
+            self.city_code_set = m.get('city_code_set')
         if m.get('date') is not None:
             self.date = m.get('date')
         if m.get('finished_date') is not None:
@@ -10156,6 +10616,134 @@ class CarApplyAddRequest(TeaModel):
             self.times_used = m.get('times_used')
         if m.get('title') is not None:
             self.title = m.get('title')
+        self.traveler_standard = []
+        if m.get('traveler_standard') is not None:
+            for k in m.get('traveler_standard'):
+                temp_model = CarApplyAddRequestTravelerStandard()
+                self.traveler_standard.append(temp_model.from_map(k))
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class CarApplyAddShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        cause: str = None,
+        city: str = None,
+        city_code_set: str = None,
+        date: str = None,
+        finished_date: str = None,
+        project_code: str = None,
+        project_name: str = None,
+        status: int = None,
+        third_part_apply_id: str = None,
+        third_part_cost_center_id: str = None,
+        third_part_invoice_id: str = None,
+        times_total: int = None,
+        times_type: int = None,
+        times_used: int = None,
+        title: str = None,
+        traveler_standard_shrink: str = None,
+        user_id: str = None,
+    ):
+        self.cause = cause
+        self.city = city
+        self.city_code_set = city_code_set
+        self.date = date
+        self.finished_date = finished_date
+        self.project_code = project_code
+        self.project_name = project_name
+        self.status = status
+        self.third_part_apply_id = third_part_apply_id
+        self.third_part_cost_center_id = third_part_cost_center_id
+        self.third_part_invoice_id = third_part_invoice_id
+        self.times_total = times_total
+        self.times_type = times_type
+        self.times_used = times_used
+        self.title = title
+        self.traveler_standard_shrink = traveler_standard_shrink
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cause is not None:
+            result['cause'] = self.cause
+        if self.city is not None:
+            result['city'] = self.city
+        if self.city_code_set is not None:
+            result['city_code_set'] = self.city_code_set
+        if self.date is not None:
+            result['date'] = self.date
+        if self.finished_date is not None:
+            result['finished_date'] = self.finished_date
+        if self.project_code is not None:
+            result['project_code'] = self.project_code
+        if self.project_name is not None:
+            result['project_name'] = self.project_name
+        if self.status is not None:
+            result['status'] = self.status
+        if self.third_part_apply_id is not None:
+            result['third_part_apply_id'] = self.third_part_apply_id
+        if self.third_part_cost_center_id is not None:
+            result['third_part_cost_center_id'] = self.third_part_cost_center_id
+        if self.third_part_invoice_id is not None:
+            result['third_part_invoice_id'] = self.third_part_invoice_id
+        if self.times_total is not None:
+            result['times_total'] = self.times_total
+        if self.times_type is not None:
+            result['times_type'] = self.times_type
+        if self.times_used is not None:
+            result['times_used'] = self.times_used
+        if self.title is not None:
+            result['title'] = self.title
+        if self.traveler_standard_shrink is not None:
+            result['traveler_standard'] = self.traveler_standard_shrink
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cause') is not None:
+            self.cause = m.get('cause')
+        if m.get('city') is not None:
+            self.city = m.get('city')
+        if m.get('city_code_set') is not None:
+            self.city_code_set = m.get('city_code_set')
+        if m.get('date') is not None:
+            self.date = m.get('date')
+        if m.get('finished_date') is not None:
+            self.finished_date = m.get('finished_date')
+        if m.get('project_code') is not None:
+            self.project_code = m.get('project_code')
+        if m.get('project_name') is not None:
+            self.project_name = m.get('project_name')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('third_part_apply_id') is not None:
+            self.third_part_apply_id = m.get('third_part_apply_id')
+        if m.get('third_part_cost_center_id') is not None:
+            self.third_part_cost_center_id = m.get('third_part_cost_center_id')
+        if m.get('third_part_invoice_id') is not None:
+            self.third_part_invoice_id = m.get('third_part_invoice_id')
+        if m.get('times_total') is not None:
+            self.times_total = m.get('times_total')
+        if m.get('times_type') is not None:
+            self.times_type = m.get('times_type')
+        if m.get('times_used') is not None:
+            self.times_used = m.get('times_used')
+        if m.get('title') is not None:
+            self.title = m.get('title')
+        if m.get('traveler_standard') is not None:
+            self.traveler_standard_shrink = m.get('traveler_standard')
         if m.get('user_id') is not None:
             self.user_id = m.get('user_id')
         return self
@@ -10706,6 +11294,80 @@ class CarApplyQueryResponseBodyApplyListItineraryList(TeaModel):
         return self
 
 
+class CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['city_code'] = self.city_code
+        if self.city_name is not None:
+            result['city_name'] = self.city_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('city_code') is not None:
+            self.city_code = m.get('city_code')
+        if m.get('city_name') is not None:
+            self.city_name = m.get('city_name')
+        return self
+
+
+class CarApplyQueryResponseBodyApplyListTravelerStandard(TeaModel):
+    def __init__(
+        self,
+        car_city_set: List[CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet] = None,
+        user_id: str = None,
+    ):
+        self.car_city_set = car_city_set
+        self.user_id = user_id
+
+    def validate(self):
+        if self.car_city_set:
+            for k in self.car_city_set:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['car_city_set'] = []
+        if self.car_city_set is not None:
+            for k in self.car_city_set:
+                result['car_city_set'].append(k.to_map() if k else None)
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.car_city_set = []
+        if m.get('car_city_set') is not None:
+            for k in m.get('car_city_set'):
+                temp_model = CarApplyQueryResponseBodyApplyListTravelerStandardCarCitySet()
+                self.car_city_set.append(temp_model.from_map(k))
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
 class CarApplyQueryResponseBodyApplyList(TeaModel):
     def __init__(
         self,
@@ -10718,6 +11380,7 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
         status: int = None,
         status_desc: str = None,
         thirdpart_id: str = None,
+        traveler_standard: List[CarApplyQueryResponseBodyApplyListTravelerStandard] = None,
         trip_cause: str = None,
         trip_title: str = None,
         user_id: str = None,
@@ -10732,6 +11395,7 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
         self.status = status
         self.status_desc = status_desc
         self.thirdpart_id = thirdpart_id
+        self.traveler_standard = traveler_standard
         self.trip_cause = trip_cause
         self.trip_title = trip_title
         self.user_id = user_id
@@ -10744,6 +11408,10 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
                     k.validate()
         if self.itinerary_list:
             for k in self.itinerary_list:
+                if k:
+                    k.validate()
+        if self.traveler_standard:
+            for k in self.traveler_standard:
                 if k:
                     k.validate()
 
@@ -10775,6 +11443,10 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
             result['status_desc'] = self.status_desc
         if self.thirdpart_id is not None:
             result['thirdpart_id'] = self.thirdpart_id
+        result['traveler_standard'] = []
+        if self.traveler_standard is not None:
+            for k in self.traveler_standard:
+                result['traveler_standard'].append(k.to_map() if k else None)
         if self.trip_cause is not None:
             result['trip_cause'] = self.trip_cause
         if self.trip_title is not None:
@@ -10811,6 +11483,11 @@ class CarApplyQueryResponseBodyApplyList(TeaModel):
             self.status_desc = m.get('status_desc')
         if m.get('thirdpart_id') is not None:
             self.thirdpart_id = m.get('thirdpart_id')
+        self.traveler_standard = []
+        if m.get('traveler_standard') is not None:
+            for k in m.get('traveler_standard'):
+                temp_model = CarApplyQueryResponseBodyApplyListTravelerStandard()
+                self.traveler_standard.append(temp_model.from_map(k))
         if m.get('trip_cause') is not None:
             self.trip_cause = m.get('trip_cause')
         if m.get('trip_title') is not None:

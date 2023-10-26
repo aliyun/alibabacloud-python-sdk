@@ -520,6 +520,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.car_rule):
+            request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -539,6 +541,8 @@ class Client(OpenApiClient):
             body['budget'] = request.budget
         if not UtilClient.is_unset(request.budget_merge):
             body['budget_merge'] = request.budget_merge
+        if not UtilClient.is_unset(request.car_rule_shrink):
+            body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
         if not UtilClient.is_unset(request.depart_id):
@@ -635,6 +639,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyAddShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.car_rule):
+            request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -654,6 +660,8 @@ class Client(OpenApiClient):
             body['budget'] = request.budget
         if not UtilClient.is_unset(request.budget_merge):
             body['budget_merge'] = request.budget_merge
+        if not UtilClient.is_unset(request.car_rule_shrink):
+            body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
         if not UtilClient.is_unset(request.depart_id):
@@ -1104,6 +1112,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyModifyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.car_rule):
+            request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -1123,6 +1133,8 @@ class Client(OpenApiClient):
             body['budget'] = request.budget
         if not UtilClient.is_unset(request.budget_merge):
             body['budget_merge'] = request.budget_merge
+        if not UtilClient.is_unset(request.car_rule_shrink):
+            body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
         if not UtilClient.is_unset(request.depart_id):
@@ -1215,6 +1227,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.ApplyModifyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.car_rule):
+            request.car_rule_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.car_rule, 'car_rule', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_list):
             request.external_traveler_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.external_traveler_list, 'external_traveler_list', 'json')
         if not UtilClient.is_unset(tmp_req.external_traveler_standard):
@@ -1234,6 +1248,8 @@ class Client(OpenApiClient):
             body['budget'] = request.budget
         if not UtilClient.is_unset(request.budget_merge):
             body['budget_merge'] = request.budget_merge
+        if not UtilClient.is_unset(request.car_rule_shrink):
+            body['car_rule'] = request.car_rule_shrink
         if not UtilClient.is_unset(request.corp_name):
             body['corp_name'] = request.corp_name
         if not UtilClient.is_unset(request.depart_id):
@@ -1543,16 +1559,22 @@ class Client(OpenApiClient):
 
     def car_apply_add_with_options(
         self,
-        request: btrip_open_20220520_models.CarApplyAddRequest,
+        tmp_req: btrip_open_20220520_models.CarApplyAddRequest,
         headers: btrip_open_20220520_models.CarApplyAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyAddResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.CarApplyAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.traveler_standard):
+            request.traveler_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
         body = {}
         if not UtilClient.is_unset(request.cause):
             body['cause'] = request.cause
         if not UtilClient.is_unset(request.city):
             body['city'] = request.city
+        if not UtilClient.is_unset(request.city_code_set):
+            body['city_code_set'] = request.city_code_set
         if not UtilClient.is_unset(request.date):
             body['date'] = request.date
         if not UtilClient.is_unset(request.finished_date):
@@ -1577,6 +1599,8 @@ class Client(OpenApiClient):
             body['times_used'] = request.times_used
         if not UtilClient.is_unset(request.title):
             body['title'] = request.title
+        if not UtilClient.is_unset(request.traveler_standard_shrink):
+            body['traveler_standard'] = request.traveler_standard_shrink
         if not UtilClient.is_unset(request.user_id):
             body['user_id'] = request.user_id
         real_headers = {}
@@ -1606,16 +1630,22 @@ class Client(OpenApiClient):
 
     async def car_apply_add_with_options_async(
         self,
-        request: btrip_open_20220520_models.CarApplyAddRequest,
+        tmp_req: btrip_open_20220520_models.CarApplyAddRequest,
         headers: btrip_open_20220520_models.CarApplyAddHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> btrip_open_20220520_models.CarApplyAddResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.CarApplyAddShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.traveler_standard):
+            request.traveler_standard_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.traveler_standard, 'traveler_standard', 'json')
         body = {}
         if not UtilClient.is_unset(request.cause):
             body['cause'] = request.cause
         if not UtilClient.is_unset(request.city):
             body['city'] = request.city
+        if not UtilClient.is_unset(request.city_code_set):
+            body['city_code_set'] = request.city_code_set
         if not UtilClient.is_unset(request.date):
             body['date'] = request.date
         if not UtilClient.is_unset(request.finished_date):
@@ -1640,6 +1670,8 @@ class Client(OpenApiClient):
             body['times_used'] = request.times_used
         if not UtilClient.is_unset(request.title):
             body['title'] = request.title
+        if not UtilClient.is_unset(request.traveler_standard_shrink):
+            body['traveler_standard'] = request.traveler_standard_shrink
         if not UtilClient.is_unset(request.user_id):
             body['user_id'] = request.user_id
         real_headers = {}
