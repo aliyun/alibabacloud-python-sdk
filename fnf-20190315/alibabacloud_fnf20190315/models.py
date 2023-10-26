@@ -16,13 +16,26 @@ class CreateFlowRequest(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
+        # The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
         self.definition = definition
+        # The description of the flow.
         self.description = description
+        # The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
         self.execution_mode = execution_mode
+        # The path of the external storage.
         self.external_storage_location = external_storage_location
+        # The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.name = name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The Alibaba Cloud resource name (ARN) of the specified Resource Access Management (RAM) role that Serverless Workflow assumes to invoke resources when the task is executed.
         self.role_arn = role_arn
+        # The type of the flow. Valid value: **FDL**.
         self.type = type
 
     def validate(self):
@@ -87,15 +100,25 @@ class CreateFlowResponseBody(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
+        # The time when the flow was created.
         self.created_time = created_time
+        # The definition of the flow.
         self.definition = definition
+        # The description of the flow.
         self.description = description
+        # The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
         self.execution_mode = execution_mode
+        # The unique ID of the flow.
         self.id = id
+        # The time when the flow was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the flow.
         self.name = name
+        # The request ID. Each time an `HTTP status code` is returned, Serverless Workflow returns a value for the parameter.
         self.request_id = request_id
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The type of the flow.
         self.type = type
 
     def validate(self):
@@ -209,12 +232,27 @@ class CreateScheduleRequest(TeaModel):
         request_id: str = None,
         schedule_name: str = None,
     ):
+        # The CRON expression.
         self.cron_expression = cron_expression
+        # The description of the time-based schedule.
         self.description = description
+        # Specifies whether to enable the time-based schedule. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The name of the flow that is bound to the time-based schedule.
         self.flow_name = flow_name
+        # The trigger message of the time-based schedule. Specify the value in the JSON format.
         self.payload = payload
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The name of the time-based schedule. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -274,14 +312,23 @@ class CreateScheduleResponseBody(TeaModel):
         schedule_id: str = None,
         schedule_name: str = None,
     ):
+        # The time when the time-based schedule was created.
         self.created_time = created_time
+        # The CRON expression.
         self.cron_expression = cron_expression
+        # The description of the time-based schedule.
         self.description = description
+        # Indicates whether the time-based schedule is enabled.
         self.enable = enable
+        # The time when the time-based schedule was last modified.
         self.last_modified_time = last_modified_time
+        # The trigger message of the time-based schedule.
         self.payload = payload
+        # The request ID.
         self.request_id = request_id
+        # The ID of the time-based schedule.
         self.schedule_id = schedule_id
+        # The name of the time-based schedule.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -386,7 +433,9 @@ class DeleteFlowRequest(TeaModel):
         name: str = None,
         request_id: str = None,
     ):
+        # The name of the flow. The name can contain letters, digits, underscores (\_), and hyphens (-) only. It cannot start with a digit or a hyphen (-). It must be 1 to 128 characters in length.
         self.name = name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -418,6 +467,7 @@ class DeleteFlowResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -491,8 +541,21 @@ class DeleteScheduleRequest(TeaModel):
         request_id: str = None,
         schedule_name: str = None,
     ):
+        # The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The name of the time-based schedule. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -528,6 +591,7 @@ class DeleteScheduleResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -602,9 +666,26 @@ class DescribeExecutionRequest(TeaModel):
         request_id: str = None,
         wait_time_seconds: int = None,
     ):
+        # The name of the execution, which is unique within a flow. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.execution_name = execution_name
+        # The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The maximum period of time for long polling waits. Valid values: 0 to 60. Unit: seconds. Configure this parameter based on the following rules:
+        # 
+        # *   If the value is 0, the system immediately returns the current execution status.
+        # *   If the value is greater than 0, the long polling request waits until the execution ends or the specified period elapses.
         self.wait_time_seconds = wait_time_seconds
 
     def validate(self):
@@ -652,14 +733,29 @@ class DescribeExecutionResponseBody(TeaModel):
         status: str = None,
         stopped_time: str = None,
     ):
+        # The definition of the flow.
         self.flow_definition = flow_definition
+        # The name of the flow.
         self.flow_name = flow_name
+        # The input of the execution, which is in the JSON format.
         self.input = input
+        # The name of the execution.
         self.name = name
+        # The execution result, which is in the JSON format.
         self.output = output
+        # The request ID.
         self.request_id = request_id
+        # The time when the execution started.
         self.started_time = started_time
+        # The execution state. Valid values:
+        # 
+        # *   **Running**\
+        # *   **Stopped**\
+        # *   **Succeeded**\
+        # *   **Failed**\
+        # *   **TimedOut**\
         self.status = status
+        # The time when the execution stopped.
         self.stopped_time = stopped_time
 
     def validate(self):
@@ -764,7 +860,9 @@ class DescribeFlowRequest(TeaModel):
         name: str = None,
         request_id: str = None,
     ):
+        # The name of the flow.
         self.name = name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -805,15 +903,25 @@ class DescribeFlowResponseBody(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
+        # The time when the flow was created.
         self.created_time = created_time
+        # The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
         self.definition = definition
+        # The description of the flow.
         self.description = description
+        # The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
         self.execution_mode = execution_mode
+        # The unique ID of the flow.
         self.id = id
+        # The time when the flow was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the flow.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role.
         self.role_arn = role_arn
+        # The type of the flow. Valid value: **FDL**.
         self.type = type
 
     def validate(self):
@@ -923,8 +1031,21 @@ class DescribeScheduleRequest(TeaModel):
         request_id: str = None,
         schedule_name: str = None,
     ):
+        # The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The name of the time-based schedule. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -968,14 +1089,26 @@ class DescribeScheduleResponseBody(TeaModel):
         schedule_id: str = None,
         schedule_name: str = None,
     ):
+        # The time when the time-based schedule was created.
         self.created_time = created_time
+        # The CRON expression.
         self.cron_expression = cron_expression
+        # The description of the time-based schedule.
         self.description = description
+        # Indicates whether the time-based schedule is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The time when the time-based schedule was last modified.
         self.last_modified_time = last_modified_time
+        # The trigger message of the time-based schedule.
         self.payload = payload
+        # The request ID.
         self.request_id = request_id
+        # The ID of the time-based schedule.
         self.schedule_id = schedule_id
+        # The name of the time-based schedule.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -1083,10 +1216,25 @@ class GetExecutionHistoryRequest(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The name of the execution, which is unique within a flow. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.execution_name = execution_name
+        # The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The maximum number of steps to be queried. Valid values: 1 to 1000.
         self.limit = limit
+        # The name of the event to start the query. You can obtain the value from the response data.
         self.next_token = next_token
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -1135,11 +1283,39 @@ class GetExecutionHistoryResponseBodyEvents(TeaModel):
         time: str = None,
         type: str = None,
     ):
+        # The details about the execution step.
         self.event_detail = event_detail
+        # The ID of the execution step.
         self.event_id = event_id
+        # The ID of the scheduling step.
         self.schedule_event_id = schedule_event_id
+        # The name of the execution step.
         self.step_name = step_name
+        # The time when the event was updated.
         self.time = time
+        # The type of the execution step. Valid values:
+        # 
+        # *   **StepEntered**\
+        # *   **StepStarted**\
+        # *   **StepSucceeded**\
+        # *   **StepFailed**\
+        # *   **StepExited**\
+        # *   **BranchEntered**\
+        # *   **BranchExited**\
+        # *   **IterationEntered**\
+        # *   **IterationExited**\
+        # *   **TaskScheduled**\
+        # *   **TaskStarted**\
+        # *   **TaskSubmitted**\
+        # *   **TaskSubmitFailed**\
+        # *   **TaskSucceeded**\
+        # *   **TaskFailed**\
+        # *   **TaskTimedOut**\
+        # *   **ExecutionStarted**\
+        # *   **ExecutionStopped**\
+        # *   **ExecutionSucceeded**\
+        # *   **ExecutionFailed**\
+        # *   **ExecutionTimedOut**\
         self.type = type
 
     def validate(self):
@@ -1189,8 +1365,11 @@ class GetExecutionHistoryResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The events.
         self.events = events
+        # You do not need to specify this parameter for the first request. The returned value of **ScheduleEventId** is used as the token for the next query. No value is returned for the last query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1285,13 +1464,32 @@ class ListExecutionsRequest(TeaModel):
         started_time_end: str = None,
         status: str = None,
     ):
+        # The name prefix of the execution.
         self.execution_name_prefix = execution_name_prefix
+        # The name of the flow. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The maximum number of executions to be queried. Valid values: 1 to 100.
         self.limit = limit
+        # The name of the execution to start the query. You can obtain the value from the response data. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The beginning of the time range to query executions. Specify the value in the UTC RFC3339 format.
         self.started_time_begin = started_time_begin
+        # The end of the time range to query executions. Specify the value in the UTC RFC3339 format.
         self.started_time_end = started_time_end
+        # The state of the execution that you want to filter. Valid values:
+        # 
+        # *   **Running**\
+        # *   **Stopped**\
+        # *   **Succeeded**\
+        # *   **Failed**\
+        # *   **TimedOut**\
         self.status = status
 
     def validate(self):
@@ -1354,13 +1552,21 @@ class ListExecutionsResponseBodyExecutions(TeaModel):
         status: str = None,
         stopped_time: str = None,
     ):
+        # The definition of the flow.
         self.flow_definition = flow_definition
+        # The name of the flow.
         self.flow_name = flow_name
+        # The input of the execution, which is in the JSON format.
         self.input = input
+        # The name of the execution.
         self.name = name
+        # The execution result, which is in the JSON format.
         self.output = output
+        # The time when the execution started.
         self.started_time = started_time
+        # The state of the execution.
         self.status = status
+        # The time when the execution stopped.
         self.stopped_time = stopped_time
 
     def validate(self):
@@ -1418,8 +1624,11 @@ class ListExecutionsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The queried executions.
         self.executions = executions
+        # The start key for the next query. This parameter is not returned if all results have been returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1509,8 +1718,11 @@ class ListFlowsRequest(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The number of flows to be queried. Valid values: 1 to 1000.
         self.limit = limit
+        # The token to start the query.
         self.next_token = next_token
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -1554,14 +1766,23 @@ class ListFlowsResponseBodyFlows(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
+        # The time when the flow was created.
         self.created_time = created_time
+        # The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
         self.definition = definition
+        # The description of the flow.
         self.description = description
+        # The execution mode or the enumeration type. Valid values: Express and Standard. The value Standard indicates an empty string.
         self.execution_mode = execution_mode
+        # The unique ID of the flow.
         self.id = id
+        # The time when the flow was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the flow.
         self.name = name
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role.
         self.role_arn = role_arn
+        # The type of the flow.
         self.type = type
 
     def validate(self):
@@ -1623,8 +1844,11 @@ class ListFlowsResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The details of flows.
         self.flows = flows
+        # The start key for the next query. This parameter is not returned if all results have been returned.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1715,9 +1939,18 @@ class ListSchedulesRequest(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The number of schedules to be queried. Valid values: 1 to 1000.
         self.limit = limit
+        # For the first query, you do not need to specify this parameter. The system uses the value of the **FlowName** parameter as the value of the **NextToken** parameter. When the query ends, no value is returned for this parameter.
         self.next_token = next_token
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -1764,13 +1997,24 @@ class ListSchedulesResponseBodySchedules(TeaModel):
         schedule_id: str = None,
         schedule_name: str = None,
     ):
+        # The time when the time-based schedule was created.
         self.created_time = created_time
+        # The CRON expression of the scheduled task.
         self.cron_expression = cron_expression
+        # The description of the time-based schedule.
         self.description = description
+        # Indicates whether the time-based schedule is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The time when the time-based schedule was last modified.
         self.last_modified_time = last_modified_time
+        # The trigger message of the time-based schedule.
         self.payload = payload
+        # The ID of the time-based schedule.
         self.schedule_id = schedule_id
+        # The name of the time-based schedule.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -1828,8 +2072,11 @@ class ListSchedulesResponseBody(TeaModel):
         request_id: str = None,
         schedules: List[ListSchedulesResponseBodySchedules] = None,
     ):
+        # The token for the next query.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The time-based schedules that are queried.
         self.schedules = schedules
 
     def validate(self):
@@ -1920,9 +2167,13 @@ class ReportTaskFailedRequest(TeaModel):
         request_id: str = None,
         task_token: str = None,
     ):
+        # The cause of the failure. The value must be 1 to 4,096 characters in length.
         self.cause = cause
+        # The error code for the failed task. The value must be 1 to 128 characters in length.
         self.error = error
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The token of the specified task that you want to report. If this parameter appears in **waitforCallback** mode, the parameter is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from a message. For Function Compute, the value of this parameter can be obtained from an event.
         self.task_token = task_token
 
     def validate(self):
@@ -1963,7 +2214,9 @@ class ReportTaskFailedResponseBody(TeaModel):
         event_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the event.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2041,8 +2294,11 @@ class ReportTaskSucceededRequest(TeaModel):
         request_id: str = None,
         task_token: str = None,
     ):
+        # The output information of the task whose execution success you want to report.
         self.output = output
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The token of the task whose execution success you want to report. If this parameter appears in **waitforCallback** mode, the parameter is passed to the called service, such as Message Service (MNS) or Function Compute. For MNS, the value of this parameter can be obtained from the message. For Function Compute, the value of this parameter can be obtained from the event.
         self.task_token = task_token
 
     def validate(self):
@@ -2079,7 +2335,9 @@ class ReportTaskSucceededResponseBody(TeaModel):
         event_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the event.
         self.event_id = event_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2159,10 +2417,25 @@ class StartExecutionRequest(TeaModel):
         input: str = None,
         request_id: str = None,
     ):
+        # Specifies that the **TaskToken**-related tasks are called back after the execution in the flow ends.
         self.callback_fn_ftask_token = callback_fn_ftask_token
+        # The name of the execution, which is unique within a flow. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.execution_name = execution_name
+        # The name of the flow you want to start to execute. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The input of the execution, which is in the JSON format.
         self.input = input
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -2214,14 +2487,29 @@ class StartExecutionResponseBody(TeaModel):
         status: str = None,
         stopped_time: str = None,
     ):
+        # The definition of the flow.
         self.flow_definition = flow_definition
+        # The name of the flow.
         self.flow_name = flow_name
+        # The input of the execution, which is in the JSON format.
         self.input = input
+        # The name of the execution.
         self.name = name
+        # The execution result, which is in the JSON format.
         self.output = output
+        # The request ID.
         self.request_id = request_id
+        # The time when the execution started.
         self.started_time = started_time
+        # The execution state. Valid values:
+        # 
+        # *   **Running**\
+        # *   **Stopped**\
+        # *   **Succeeded**\
+        # *   **Failed**\
+        # *   **TimedOut**\
         self.status = status
+        # The time when the execution stopped.
         self.stopped_time = stopped_time
 
     def validate(self):
@@ -2320,6 +2608,170 @@ class StartExecutionResponse(TeaModel):
         return self
 
 
+class StartSyncExecutionRequest(TeaModel):
+    def __init__(
+        self,
+        execution_name: str = None,
+        flow_name: str = None,
+        input: str = None,
+        request_id: str = None,
+    ):
+        self.execution_name = execution_name
+        self.flow_name = flow_name
+        self.input = input
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execution_name is not None:
+            result['ExecutionName'] = self.execution_name
+        if self.flow_name is not None:
+            result['FlowName'] = self.flow_name
+        if self.input is not None:
+            result['Input'] = self.input
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExecutionName') is not None:
+            self.execution_name = m.get('ExecutionName')
+        if m.get('FlowName') is not None:
+            self.flow_name = m.get('FlowName')
+        if m.get('Input') is not None:
+            self.input = m.get('Input')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class StartSyncExecutionResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        flow_name: str = None,
+        name: str = None,
+        output: str = None,
+        request_id: str = None,
+        started_time: str = None,
+        status: str = None,
+        stopped_time: str = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.flow_name = flow_name
+        self.name = name
+        self.output = output
+        self.request_id = request_id
+        self.started_time = started_time
+        self.status = status
+        self.stopped_time = stopped_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.flow_name is not None:
+            result['FlowName'] = self.flow_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.output is not None:
+            result['Output'] = self.output
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.started_time is not None:
+            result['StartedTime'] = self.started_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.stopped_time is not None:
+            result['StoppedTime'] = self.stopped_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('FlowName') is not None:
+            self.flow_name = m.get('FlowName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Output') is not None:
+            self.output = m.get('Output')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StartedTime') is not None:
+            self.started_time = m.get('StartedTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StoppedTime') is not None:
+            self.stopped_time = m.get('StoppedTime')
+        return self
+
+
+class StartSyncExecutionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartSyncExecutionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartSyncExecutionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopExecutionRequest(TeaModel):
     def __init__(
         self,
@@ -2329,10 +2781,25 @@ class StopExecutionRequest(TeaModel):
         flow_name: str = None,
         request_id: str = None,
     ):
+        # The reason for stopping the execution. The value must be 1 to 4,096 characters in length.
         self.cause = cause
+        # The error for stopping the execution. The value must be 1 to 128 characters in length.
         self.error = error
+        # The name of the execution that you want to stop. You can call the **ListExecutions** operation to obtain the value of this parameter. The name is unique in a flow. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.execution_name = execution_name
+        # The name of the flow that you want to stop. You can call the **ListFlows** operation to obtain the value of this parameter. The name is unique within the region and cannot be modified after the flow is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
 
     def validate(self):
@@ -2384,14 +2851,29 @@ class StopExecutionResponseBody(TeaModel):
         status: str = None,
         stopped_time: str = None,
     ):
+        # The definition of the flow.
         self.flow_definition = flow_definition
+        # The name of the flow.
         self.flow_name = flow_name
+        # The input of the execution, which is in the JSON format.
         self.input = input
+        # The name of the execution.
         self.name = name
+        # The execution result, which is in the JSON format.
         self.output = output
+        # The request ID.
         self.request_id = request_id
+        # The time when the execution started.
         self.started_time = started_time
+        # The execution state. Valid values:
+        # 
+        # *   **Running**\
+        # *   **Stopped**\
+        # *   **Succeeded**\
+        # *   **Failed**\
+        # *   **TimedOut**\
         self.status = status
+        # The time when the execution stopped.
         self.stopped_time = stopped_time
 
     def validate(self):
@@ -2500,11 +2982,22 @@ class UpdateFlowRequest(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
+        # The definition of the flow. The definition must comply with the Flow Definition Language (FDL) syntax.
         self.definition = definition
+        # The description of the flow.
         self.description = description
+        # The name of the flow. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.name = name
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The Alibaba Cloud resource name (ARN) of the specified Resource Access Management (RAM) role that Serverless Workflow assumes to invoke resources when the task is executed.
         self.role_arn = role_arn
+        # The type of the flow. Valid value: **FDL**.
         self.type = type
 
     def validate(self):
@@ -2561,15 +3054,25 @@ class UpdateFlowResponseBody(TeaModel):
         role_arn: str = None,
         type: str = None,
     ):
+        # The time when the flow was created.
         self.created_time = created_time
+        # The definition of the flow.
         self.definition = definition
+        # The description of the flow.
         self.description = description
+        # The path of the external storage.
         self.external_storage_location = external_storage_location
+        # The unique ID of the flow.
         self.id = id
+        # The time when the flow was last modified.
         self.last_modified_time = last_modified_time
+        # The name of the flow.
         self.name = name
+        # The request ID.
         self.request_id = request_id
+        # The ARN of the RAM role.
         self.role_arn = role_arn
+        # The type of the flow.
         self.type = type
 
     def validate(self):
@@ -2683,12 +3186,32 @@ class UpdateScheduleRequest(TeaModel):
         request_id: str = None,
         schedule_name: str = None,
     ):
+        # The CRON expression.
         self.cron_expression = cron_expression
+        # The description of the time-based schedule.
         self.description = description
+        # Specifies whether to enable the time-based schedule. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The name of the flow that is associated with the time-based schedule. The name is unique within the region and cannot be modified after the time-based schedule is created. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.flow_name = flow_name
+        # The trigger message of the time-based schedule. It must be in the JSON format.
         self.payload = payload
+        # The request ID. If you specify this parameter, the system uses this value as the ID of the request. If you do not specify this parameter, the system generates a value at random.
         self.request_id = request_id
+        # The name of the time-based schedule. Configure this parameter based on the following rules:
+        # 
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must start with a letter or an underscore (\_).
+        # *   The name is case-sensitive.
+        # *   The name must be 1 to 128 characters in length.
         self.schedule_name = schedule_name
 
     def validate(self):
@@ -2748,14 +3271,26 @@ class UpdateScheduleResponseBody(TeaModel):
         schedule_id: str = None,
         schedule_name: str = None,
     ):
+        # The time when the time-based schedule was created.
         self.created_time = created_time
+        # The CRON expression.
         self.cron_expression = cron_expression
+        # The description of the time-based schedule.
         self.description = description
+        # Indicates whether the time-based schedule is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.enable = enable
+        # The time when the time-based schedule was last updated.
         self.last_modified_time = last_modified_time
+        # The trigger message of the time-based schedule.
         self.payload = payload
+        # The request ID.
         self.request_id = request_id
+        # The ID of the time-based schedule.
         self.schedule_id = schedule_id
+        # The name of the time-based schedule.
         self.schedule_name = schedule_name
 
     def validate(self):

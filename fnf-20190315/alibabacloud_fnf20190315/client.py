@@ -53,6 +53,15 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.CreateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateFlowResponse:
+        """
+        ## [](#)Usage notes
+        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
+        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        
+        @param request: CreateFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -97,6 +106,15 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.CreateFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.CreateFlowResponse:
+        """
+        ## [](#)Usage notes
+        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
+        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        
+        @param request: CreateFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -140,6 +158,14 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.CreateFlowRequest,
     ) -> fnf_20190315_models.CreateFlowResponse:
+        """
+        ## [](#)Usage notes
+        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
+        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        
+        @param request: CreateFlowRequest
+        @return: CreateFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_flow_with_options(request, runtime)
 
@@ -147,6 +173,14 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.CreateFlowRequest,
     ) -> fnf_20190315_models.CreateFlowResponse:
+        """
+        ## [](#)Usage notes
+        *   The number of flows that each user can create is restricted by resources. For more information, see [Limits](~~122093~~). If you want to create more flows, submit a ticket.
+        *   At the user level, flows are distinguished by name. The name of a flow within one account must be unique.
+        
+        @param request: CreateFlowRequest
+        @return: CreateFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_with_options_async(request, runtime)
 
@@ -253,6 +287,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DeleteFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DeleteFlowResponse:
+        """
+        ## [](#)Usage notes
+        A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
+        
+        @param request: DeleteFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -279,6 +321,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.DeleteFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.DeleteFlowResponse:
+        """
+        ## [](#)Usage notes
+        A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
+        
+        @param request: DeleteFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -304,6 +354,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DeleteFlowRequest,
     ) -> fnf_20190315_models.DeleteFlowResponse:
+        """
+        ## [](#)Usage notes
+        A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
+        
+        @param request: DeleteFlowRequest
+        @return: DeleteFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_flow_with_options(request, runtime)
 
@@ -311,6 +368,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.DeleteFlowRequest,
     ) -> fnf_20190315_models.DeleteFlowResponse:
+        """
+        ## [](#)Usage notes
+        A delete operation is asynchronous. If this operation is successful, the system returns a successful response. If an existing flow is pending to be deleted, a new flow of the same name will not be affected by the existing one. After you delete a flow, you cannot query its historical executions. All executions in progress will stop after their most recent steps are complete.
+        
+        @param request: DeleteFlowRequest
+        @return: DeleteFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_with_options_async(request, runtime)
 
@@ -649,6 +713,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListExecutionsResponse:
+        """
+        ## [](#)Usage notes
+        After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
+        
+        @param request: ListExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -675,6 +747,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ListExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ListExecutionsResponse:
+        """
+        ## [](#)Usage notes
+        After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
+        
+        @param request: ListExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -700,6 +780,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ListExecutionsRequest,
     ) -> fnf_20190315_models.ListExecutionsResponse:
+        """
+        ## [](#)Usage notes
+        After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
+        
+        @param request: ListExecutionsRequest
+        @return: ListExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_executions_with_options(request, runtime)
 
@@ -707,6 +794,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ListExecutionsRequest,
     ) -> fnf_20190315_models.ListExecutionsResponse:
+        """
+        ## [](#)Usage notes
+        After you delete a flow, you cannot query its historical executions, even if you create a flow of the same name.
+        
+        @param request: ListExecutionsRequest
+        @return: ListExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_executions_with_options_async(request, runtime)
 
@@ -847,6 +941,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskFailedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task fails to be executed.
+        
+        @param request: ReportTaskFailedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportTaskFailedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -883,6 +985,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskFailedRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task fails to be executed.
+        
+        @param request: ReportTaskFailedRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportTaskFailedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -918,6 +1028,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ReportTaskFailedRequest,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task fails to be executed.
+        
+        @param request: ReportTaskFailedRequest
+        @return: ReportTaskFailedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.report_task_failed_with_options(request, runtime)
 
@@ -925,6 +1042,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ReportTaskFailedRequest,
     ) -> fnf_20190315_models.ReportTaskFailedResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task fails to be executed.
+        
+        @param request: ReportTaskFailedRequest
+        @return: ReportTaskFailedResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.report_task_failed_with_options_async(request, runtime)
 
@@ -933,6 +1057,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskSucceededRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task is successfully executed.
+        
+        @param request: ReportTaskSucceededRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportTaskSucceededResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -967,6 +1099,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.ReportTaskSucceededRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task is successfully executed.
+        
+        @param request: ReportTaskSucceededRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportTaskSucceededResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -1000,6 +1140,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ReportTaskSucceededRequest,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task is successfully executed.
+        
+        @param request: ReportTaskSucceededRequest
+        @return: ReportTaskSucceededResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.report_task_succeeded_with_options(request, runtime)
 
@@ -1007,6 +1154,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.ReportTaskSucceededRequest,
     ) -> fnf_20190315_models.ReportTaskSucceededResponse:
+        """
+        ## [](#)Usage notes
+        You can use this operation to call back the task step of `pattern: waitForCallback`, which indicates that the current task is successfully executed.
+        
+        @param request: ReportTaskSucceededRequest
+        @return: ReportTaskSucceededResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.report_task_succeeded_with_options_async(request, runtime)
 
@@ -1015,6 +1169,18 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StartExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StartExecutionResponse:
+        """
+        ## [](#)Usage notes
+        *   The flow is created.
+        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        *   If the ongoing execution with the same name has ended (succeeded or failed), the `ExecutionAlreadyExists` error is returned.
+        *   If no execution with the same name exists, the system starts a new execution.
+        
+        @param request: StartExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -1053,6 +1219,18 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StartExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StartExecutionResponse:
+        """
+        ## [](#)Usage notes
+        *   The flow is created.
+        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        *   If the ongoing execution with the same name has ended (succeeded or failed), the `ExecutionAlreadyExists` error is returned.
+        *   If no execution with the same name exists, the system starts a new execution.
+        
+        @param request: StartExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -1090,6 +1268,17 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.StartExecutionRequest,
     ) -> fnf_20190315_models.StartExecutionResponse:
+        """
+        ## [](#)Usage notes
+        *   The flow is created.
+        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        *   If the ongoing execution with the same name has ended (succeeded or failed), the `ExecutionAlreadyExists` error is returned.
+        *   If no execution with the same name exists, the system starts a new execution.
+        
+        @param request: StartExecutionRequest
+        @return: StartExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_execution_with_options(request, runtime)
 
@@ -1097,14 +1286,119 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.StartExecutionRequest,
     ) -> fnf_20190315_models.StartExecutionResponse:
+        """
+        ## [](#)Usage notes
+        *   The flow is created.
+        *   If you do not specify an execution, the system automatically generates an execution and starts the execution.
+        *   If an ongoing execution has the same name as that of the execution to be started, the system directly returns the ongoing execution.
+        *   If the ongoing execution with the same name has ended (succeeded or failed), the `ExecutionAlreadyExists` error is returned.
+        *   If no execution with the same name exists, the system starts a new execution.
+        
+        @param request: StartExecutionRequest
+        @return: StartExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_execution_with_options_async(request, runtime)
+
+    def start_sync_execution_with_options(
+        self,
+        request: fnf_20190315_models.StartSyncExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.StartSyncExecutionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.execution_name):
+            body['ExecutionName'] = request.execution_name
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.input):
+            body['Input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartSyncExecution',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.StartSyncExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_sync_execution_with_options_async(
+        self,
+        request: fnf_20190315_models.StartSyncExecutionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> fnf_20190315_models.StartSyncExecutionResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.request_id):
+            query['RequestId'] = request.request_id
+        body = {}
+        if not UtilClient.is_unset(request.execution_name):
+            body['ExecutionName'] = request.execution_name
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.input):
+            body['Input'] = request.input
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartSyncExecution',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            fnf_20190315_models.StartSyncExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_sync_execution(
+        self,
+        request: fnf_20190315_models.StartSyncExecutionRequest,
+    ) -> fnf_20190315_models.StartSyncExecutionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_sync_execution_with_options(request, runtime)
+
+    async def start_sync_execution_async(
+        self,
+        request: fnf_20190315_models.StartSyncExecutionRequest,
+    ) -> fnf_20190315_models.StartSyncExecutionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_sync_execution_with_options_async(request, runtime)
 
     def stop_execution_with_options(
         self,
         request: fnf_20190315_models.StopExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StopExecutionResponse:
+        """
+        ## [](#)Usage notes
+        The flow must be in progress.
+        
+        @param request: StopExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -1143,6 +1437,14 @@ class Client(OpenApiClient):
         request: fnf_20190315_models.StopExecutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> fnf_20190315_models.StopExecutionResponse:
+        """
+        ## [](#)Usage notes
+        The flow must be in progress.
+        
+        @param request: StopExecutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopExecutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.request_id):
@@ -1180,6 +1482,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.StopExecutionRequest,
     ) -> fnf_20190315_models.StopExecutionResponse:
+        """
+        ## [](#)Usage notes
+        The flow must be in progress.
+        
+        @param request: StopExecutionRequest
+        @return: StopExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_execution_with_options(request, runtime)
 
@@ -1187,6 +1496,13 @@ class Client(OpenApiClient):
         self,
         request: fnf_20190315_models.StopExecutionRequest,
     ) -> fnf_20190315_models.StopExecutionResponse:
+        """
+        ## [](#)Usage notes
+        The flow must be in progress.
+        
+        @param request: StopExecutionRequest
+        @return: StopExecutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_execution_with_options_async(request, runtime)
 
