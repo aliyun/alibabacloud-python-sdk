@@ -36533,6 +36533,173 @@ class ListWorkItemWorkFlowStatusResponse(TeaModel):
         return self
 
 
+class ListWorkitemAttachmentsResponseBodyAttachments(TeaModel):
+    def __init__(
+        self,
+        creator: str = None,
+        file_identifier: str = None,
+        file_name: str = None,
+        file_suffix: str = None,
+        gmt_create: int = None,
+        size: str = None,
+        url: str = None,
+    ):
+        self.creator = creator
+        self.file_identifier = file_identifier
+        self.file_name = file_name
+        self.file_suffix = file_suffix
+        self.gmt_create = gmt_create
+        self.size = size
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
+        if self.file_identifier is not None:
+            result['fileIdentifier'] = self.file_identifier
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+        if self.file_suffix is not None:
+            result['fileSuffix'] = self.file_suffix
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.size is not None:
+            result['size'] = self.size
+        if self.url is not None:
+            result['url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
+        if m.get('fileIdentifier') is not None:
+            self.file_identifier = m.get('fileIdentifier')
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+        if m.get('fileSuffix') is not None:
+            self.file_suffix = m.get('fileSuffix')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('size') is not None:
+            self.size = m.get('size')
+        if m.get('url') is not None:
+            self.url = m.get('url')
+        return self
+
+
+class ListWorkitemAttachmentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        attachments: List[ListWorkitemAttachmentsResponseBodyAttachments] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.attachments = attachments
+        self.error_code = error_code
+        self.error_msg = error_msg
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.attachments:
+            for k in self.attachments:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['attachments'] = []
+        if self.attachments is not None:
+            for k in self.attachments:
+                result['attachments'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['errorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.attachments = []
+        if m.get('attachments') is not None:
+            for k in m.get('attachments'):
+                temp_model = ListWorkitemAttachmentsResponseBodyAttachments()
+                self.attachments.append(temp_model.from_map(k))
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMsg') is not None:
+            self.error_msg = m.get('errorMsg')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListWorkitemAttachmentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWorkitemAttachmentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWorkitemAttachmentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListWorkitemEstimateResponseBodyWorkitemTimeEstimateRecordUser(TeaModel):
     def __init__(
         self,
