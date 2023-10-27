@@ -1585,10 +1585,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xr_engine_20230313_models.PopBuildTextToAvatarProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
         body = {}
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -1613,10 +1617,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xr_engine_20230313_models.PopBuildTextToAvatarProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
         body = {}
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2183,6 +2191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xr_engine_20230313_models.PopCreateTextToAvatarProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
         body = {}
         if not UtilClient.is_unset(request.ext_info):
             body['ExtInfo'] = request.ext_info
@@ -2191,6 +2202,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -2215,6 +2227,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> xr_engine_20230313_models.PopCreateTextToAvatarProjectResponse:
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
         body = {}
         if not UtilClient.is_unset(request.ext_info):
             body['ExtInfo'] = request.ext_info
@@ -2223,6 +2238,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -3422,6 +3438,76 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopQueryAvatarProjectDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_query_avatar_project_detail_with_options_async(request, runtime)
+
+    def pop_query_latest_avatar_project_detail_by_user_with_options(
+        self,
+        request: xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopQueryLatestAvatarProjectDetailByUser',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_query_latest_avatar_project_detail_by_user_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopQueryLatestAvatarProjectDetailByUser',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_query_latest_avatar_project_detail_by_user(
+        self,
+        request: xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserRequest,
+    ) -> xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_query_latest_avatar_project_detail_by_user_with_options(request, runtime)
+
+    async def pop_query_latest_avatar_project_detail_by_user_async(
+        self,
+        request: xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserRequest,
+    ) -> xr_engine_20230313_models.PopQueryLatestAvatarProjectDetailByUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_query_latest_avatar_project_detail_by_user_with_options_async(request, runtime)
 
     def pop_query_live_portrait_model_scope_project_detail_with_options(
         self,

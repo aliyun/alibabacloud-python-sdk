@@ -3069,8 +3069,10 @@ class PopBuildPakRenderProjectResponse(TeaModel):
 class PopBuildTextToAvatarProjectRequest(TeaModel):
     def __init__(
         self,
+        jwt_token: str = None,
         project_id: str = None,
     ):
+        self.jwt_token = jwt_token
         self.project_id = project_id
 
     def validate(self):
@@ -3082,12 +3084,16 @@ class PopBuildTextToAvatarProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
         return self
@@ -5522,10 +5528,12 @@ class PopCreateTextToAvatarProjectRequest(TeaModel):
         self,
         ext_info: str = None,
         intro: str = None,
+        jwt_token: str = None,
         title: str = None,
     ):
         self.ext_info = ext_info
         self.intro = intro
+        self.jwt_token = jwt_token
         self.title = title
 
     def validate(self):
@@ -5541,6 +5549,8 @@ class PopCreateTextToAvatarProjectRequest(TeaModel):
             result['ExtInfo'] = self.ext_info
         if self.intro is not None:
             result['Intro'] = self.intro
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
         if self.title is not None:
             result['Title'] = self.title
         return result
@@ -5551,6 +5561,8 @@ class PopCreateTextToAvatarProjectRequest(TeaModel):
             self.ext_info = m.get('ExtInfo')
         if m.get('Intro') is not None:
             self.intro = m.get('Intro')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         return self
@@ -16298,6 +16310,282 @@ class PopQueryAvatarProjectDetailResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = PopQueryAvatarProjectDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopQueryLatestAvatarProjectDetailByUserRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+    ):
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class PopQueryLatestAvatarProjectDetailByUserResponseBodyDataBuildDetail(TeaModel):
+    def __init__(
+        self,
+        running_time: str = None,
+        status: str = None,
+    ):
+        self.running_time = running_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.running_time is not None:
+            result['RunningTime'] = self.running_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RunningTime') is not None:
+            self.running_time = m.get('RunningTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class PopQueryLatestAvatarProjectDetailByUserResponseBodyDataDataset(TeaModel):
+    def __init__(
+        self,
+        build_result_url: Dict[str, Any] = None,
+        error_code: str = None,
+        error_message: str = None,
+    ):
+        self.build_result_url = build_result_url
+        self.error_code = error_code
+        self.error_message = error_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.build_result_url is not None:
+            result['BuildResultUrl'] = self.build_result_url
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildResultUrl') is not None:
+            self.build_result_url = m.get('BuildResultUrl')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        return self
+
+
+class PopQueryLatestAvatarProjectDetailByUserResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        biz_usage: str = None,
+        build_detail: PopQueryLatestAvatarProjectDetailByUserResponseBodyDataBuildDetail = None,
+        create_time: str = None,
+        dataset: PopQueryLatestAvatarProjectDetailByUserResponseBodyDataDataset = None,
+        ext: str = None,
+        id: str = None,
+        intro: str = None,
+        status: str = None,
+        title: str = None,
+    ):
+        self.biz_usage = biz_usage
+        self.build_detail = build_detail
+        self.create_time = create_time
+        self.dataset = dataset
+        self.ext = ext
+        self.id = id
+        self.intro = intro
+        self.status = status
+        self.title = title
+
+    def validate(self):
+        if self.build_detail:
+            self.build_detail.validate()
+        if self.dataset:
+            self.dataset.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
+        if self.build_detail is not None:
+            result['BuildDetail'] = self.build_detail.to_map()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.dataset is not None:
+            result['Dataset'] = self.dataset.to_map()
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.intro is not None:
+            result['Intro'] = self.intro
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
+        if m.get('BuildDetail') is not None:
+            temp_model = PopQueryLatestAvatarProjectDetailByUserResponseBodyDataBuildDetail()
+            self.build_detail = temp_model.from_map(m['BuildDetail'])
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Dataset') is not None:
+            temp_model = PopQueryLatestAvatarProjectDetailByUserResponseBodyDataDataset()
+            self.dataset = temp_model.from_map(m['Dataset'])
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Intro') is not None:
+            self.intro = m.get('Intro')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PopQueryLatestAvatarProjectDetailByUserResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopQueryLatestAvatarProjectDetailByUserResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopQueryLatestAvatarProjectDetailByUserResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopQueryLatestAvatarProjectDetailByUserResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopQueryLatestAvatarProjectDetailByUserResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopQueryLatestAvatarProjectDetailByUserResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
