@@ -739,6 +739,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.attach_common_bandwidth_package_to_load_balancer_with_options_async(request, runtime)
 
+    def cancel_shift_load_balancer_zones_with_options(
+        self,
+        request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelShiftLoadBalancerZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.CancelShiftLoadBalancerZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_shift_load_balancer_zones_with_options_async(
+        self,
+        request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CancelShiftLoadBalancerZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.CancelShiftLoadBalancerZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_shift_load_balancer_zones(
+        self,
+        request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
+    ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.cancel_shift_load_balancer_zones_with_options(request, runtime)
+
+    async def cancel_shift_load_balancer_zones_async(
+        self,
+        request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
+    ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.cancel_shift_load_balancer_zones_with_options_async(request, runtime)
+
     def create_ascripts_with_options(
         self,
         request: alb_20200616_models.CreateAScriptsRequest,
@@ -6420,6 +6502,88 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_listener_with_options_async(request, runtime)
+
+    def start_shift_load_balancer_zones_with_options(
+        self,
+        request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartShiftLoadBalancerZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.StartShiftLoadBalancerZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_shift_load_balancer_zones_with_options_async(
+        self,
+        request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.load_balancer_id):
+            query['LoadBalancerId'] = request.load_balancer_id
+        if not UtilClient.is_unset(request.zone_mappings):
+            query['ZoneMappings'] = request.zone_mappings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartShiftLoadBalancerZones',
+            version='2020-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alb_20200616_models.StartShiftLoadBalancerZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_shift_load_balancer_zones(
+        self,
+        request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
+    ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_shift_load_balancer_zones_with_options(request, runtime)
+
+    async def start_shift_load_balancer_zones_async(
+        self,
+        request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
+    ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_shift_load_balancer_zones_with_options_async(request, runtime)
 
     def stop_listener_with_options(
         self,
