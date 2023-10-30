@@ -61,6 +61,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def describe_image_moderation_result_with_options(
+        self,
+        request: green_20220302_models.DescribeImageModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageModerationResult',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeImageModerationResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_image_moderation_result_with_options_async(
+        self,
+        request: green_20220302_models.DescribeImageModerationResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.req_id):
+            query['ReqId'] = request.req_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeImageModerationResult',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.DescribeImageModerationResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_image_moderation_result(
+        self,
+        request: green_20220302_models.DescribeImageModerationResultRequest,
+    ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_image_moderation_result_with_options(request, runtime)
+
+    async def describe_image_moderation_result_async(
+        self,
+        request: green_20220302_models.DescribeImageModerationResultRequest,
+    ) -> green_20220302_models.DescribeImageModerationResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_image_moderation_result_with_options_async(request, runtime)
+
     def describe_image_result_ext_with_options(
         self,
         request: green_20220302_models.DescribeImageResultExtRequest,
@@ -184,6 +254,80 @@ class Client(OpenApiClient):
     async def describe_upload_token_async(self) -> green_20220302_models.DescribeUploadTokenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_upload_token_with_options_async(runtime)
+
+    def image_async_moderation_with_options(
+        self,
+        request: green_20220302_models.ImageAsyncModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.ImageAsyncModerationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImageAsyncModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.ImageAsyncModerationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def image_async_moderation_with_options_async(
+        self,
+        request: green_20220302_models.ImageAsyncModerationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> green_20220302_models.ImageAsyncModerationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        if not UtilClient.is_unset(request.service_parameters):
+            query['ServiceParameters'] = request.service_parameters
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImageAsyncModeration',
+            version='2022-03-02',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            green_20220302_models.ImageAsyncModerationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def image_async_moderation(
+        self,
+        request: green_20220302_models.ImageAsyncModerationRequest,
+    ) -> green_20220302_models.ImageAsyncModerationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.image_async_moderation_with_options(request, runtime)
+
+    async def image_async_moderation_async(
+        self,
+        request: green_20220302_models.ImageAsyncModerationRequest,
+    ) -> green_20220302_models.ImageAsyncModerationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.image_async_moderation_with_options_async(request, runtime)
 
     def image_moderation_with_options(
         self,
