@@ -1102,11 +1102,13 @@ class CreateModelFeatureRequest(TeaModel):
         label_table_id: str = None,
         name: str = None,
         project_id: str = None,
+        sequence_feature_view_ids: List[str] = None,
     ):
         self.features = features
         self.label_table_id = label_table_id
         self.name = name
         self.project_id = project_id
+        self.sequence_feature_view_ids = sequence_feature_view_ids
 
     def validate(self):
         if self.features:
@@ -1130,6 +1132,8 @@ class CreateModelFeatureRequest(TeaModel):
             result['Name'] = self.name
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.sequence_feature_view_ids is not None:
+            result['SequenceFeatureViewIds'] = self.sequence_feature_view_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -1145,6 +1149,8 @@ class CreateModelFeatureRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('SequenceFeatureViewIds') is not None:
+            self.sequence_feature_view_ids = m.get('SequenceFeatureViewIds')
         return self
 
 
@@ -7989,9 +7995,11 @@ class UpdateModelFeatureRequest(TeaModel):
         self,
         features: List[UpdateModelFeatureRequestFeatures] = None,
         label_table_id: str = None,
+        sequence_feature_view_ids: List[str] = None,
     ):
         self.features = features
         self.label_table_id = label_table_id
+        self.sequence_feature_view_ids = sequence_feature_view_ids
 
     def validate(self):
         if self.features:
@@ -8011,6 +8019,8 @@ class UpdateModelFeatureRequest(TeaModel):
                 result['Features'].append(k.to_map() if k else None)
         if self.label_table_id is not None:
             result['LabelTableId'] = self.label_table_id
+        if self.sequence_feature_view_ids is not None:
+            result['SequenceFeatureViewIds'] = self.sequence_feature_view_ids
         return result
 
     def from_map(self, m: dict = None):
@@ -8022,6 +8032,8 @@ class UpdateModelFeatureRequest(TeaModel):
                 self.features.append(temp_model.from_map(k))
         if m.get('LabelTableId') is not None:
             self.label_table_id = m.get('LabelTableId')
+        if m.get('SequenceFeatureViewIds') is not None:
+            self.sequence_feature_view_ids = m.get('SequenceFeatureViewIds')
         return self
 
 

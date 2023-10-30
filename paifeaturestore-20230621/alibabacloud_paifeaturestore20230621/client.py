@@ -710,6 +710,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sequence_feature_view_ids):
+            body['SequenceFeatureViewIds'] = request.sequence_feature_view_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -747,6 +749,8 @@ class Client(OpenApiClient):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.sequence_feature_view_ids):
+            body['SequenceFeatureViewIds'] = request.sequence_feature_view_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4197,6 +4201,8 @@ class Client(OpenApiClient):
             body['Features'] = request.features
         if not UtilClient.is_unset(request.label_table_id):
             body['LabelTableId'] = request.label_table_id
+        if not UtilClient.is_unset(request.sequence_feature_view_ids):
+            body['SequenceFeatureViewIds'] = request.sequence_feature_view_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -4231,6 +4237,8 @@ class Client(OpenApiClient):
             body['Features'] = request.features
         if not UtilClient.is_unset(request.label_table_id):
             body['LabelTableId'] = request.label_table_id
+        if not UtilClient.is_unset(request.sequence_feature_view_ids):
+            body['SequenceFeatureViewIds'] = request.sequence_feature_view_ids
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
