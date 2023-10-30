@@ -8867,6 +8867,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
     def __init__(
         self,
         added_cpu_cores: str = None,
+        cpu_cores: str = None,
         creation_time: str = None,
         dbnode_class: str = None,
         dbnode_id: str = None,
@@ -8878,6 +8879,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         master_id: str = None,
         max_connections: int = None,
         max_iops: int = None,
+        memory_size: str = None,
         scc_mode: str = None,
         server_weight: str = None,
         serverless_type: str = None,
@@ -8885,6 +8887,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
     ):
         # The number of CPU cores for compute node scale-out within seconds.
         self.added_cpu_cores = added_cpu_cores
+        self.cpu_cores = cpu_cores
         # The time when the node was created.
         self.creation_time = creation_time
         # The type of the node.
@@ -8930,6 +8933,7 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         self.max_connections = max_connections
         # The maximum input/output operations per second (IOPS).
         self.max_iops = max_iops
+        self.memory_size = memory_size
         # Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
         # 
         # *   **ON**\
@@ -8955,6 +8959,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         result = dict()
         if self.added_cpu_cores is not None:
             result['AddedCpuCores'] = self.added_cpu_cores
+        if self.cpu_cores is not None:
+            result['CpuCores'] = self.cpu_cores
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
         if self.dbnode_class is not None:
@@ -8977,6 +8983,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             result['MaxConnections'] = self.max_connections
         if self.max_iops is not None:
             result['MaxIOPS'] = self.max_iops
+        if self.memory_size is not None:
+            result['MemorySize'] = self.memory_size
         if self.scc_mode is not None:
             result['SccMode'] = self.scc_mode
         if self.server_weight is not None:
@@ -8991,6 +8999,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         m = m or dict()
         if m.get('AddedCpuCores') is not None:
             self.added_cpu_cores = m.get('AddedCpuCores')
+        if m.get('CpuCores') is not None:
+            self.cpu_cores = m.get('CpuCores')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
         if m.get('DBNodeClass') is not None:
@@ -9013,6 +9023,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
             self.max_connections = m.get('MaxConnections')
         if m.get('MaxIOPS') is not None:
             self.max_iops = m.get('MaxIOPS')
+        if m.get('MemorySize') is not None:
+            self.memory_size = m.get('MemorySize')
         if m.get('SccMode') is not None:
             self.scc_mode = m.get('SccMode')
         if m.get('ServerWeight') is not None:
