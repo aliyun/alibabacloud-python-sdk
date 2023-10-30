@@ -41,16 +41,213 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def accept_approve_command_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptApproveCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AcceptApproveCommandResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.command_id):
+            query['CommandId'] = request.command_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptApproveCommand',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accept_approve_command_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptApproveCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AcceptApproveCommandResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.command_id):
+            query['CommandId'] = request.command_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptApproveCommand',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptApproveCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accept_approve_command(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptApproveCommandRequest,
+    ) -> yundun_bastionhost_20191209_models.AcceptApproveCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.accept_approve_command_with_options(request, runtime)
+
+    async def accept_approve_command_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptApproveCommandRequest,
+    ) -> yundun_bastionhost_20191209_models.AcceptApproveCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.accept_approve_command_with_options_async(request, runtime)
+
+    def accept_operation_ticket_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptOperationTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AcceptOperationTicketResponse:
+        """
+        You can call this operation as a Bastionhost administrator to approve an O\\&M application of an O\\&M engineer.
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AcceptOperationTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptOperationTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.effect_count):
+            query['EffectCount'] = request.effect_count
+        if not UtilClient.is_unset(request.effect_end_time):
+            query['EffectEndTime'] = request.effect_end_time
+        if not UtilClient.is_unset(request.effect_start_time):
+            query['EffectStartTime'] = request.effect_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptOperationTicket',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def accept_operation_ticket_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptOperationTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.AcceptOperationTicketResponse:
+        """
+        You can call this operation as a Bastionhost administrator to approve an O\\&M application of an O\\&M engineer.
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AcceptOperationTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AcceptOperationTicketResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.effect_count):
+            query['EffectCount'] = request.effect_count
+        if not UtilClient.is_unset(request.effect_end_time):
+            query['EffectEndTime'] = request.effect_end_time
+        if not UtilClient.is_unset(request.effect_start_time):
+            query['EffectStartTime'] = request.effect_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AcceptOperationTicket',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.AcceptOperationTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def accept_operation_ticket(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptOperationTicketRequest,
+    ) -> yundun_bastionhost_20191209_models.AcceptOperationTicketResponse:
+        """
+        You can call this operation as a Bastionhost administrator to approve an O\\&M application of an O\\&M engineer.
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AcceptOperationTicketRequest
+        @return: AcceptOperationTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.accept_operation_ticket_with_options(request, runtime)
+
+    async def accept_operation_ticket_async(
+        self,
+        request: yundun_bastionhost_20191209_models.AcceptOperationTicketRequest,
+    ) -> yundun_bastionhost_20191209_models.AcceptOperationTicketResponse:
+        """
+        You can call this operation as a Bastionhost administrator to approve an O\\&M application of an O\\&M engineer.
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: AcceptOperationTicketRequest
+        @return: AcceptOperationTicketResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.accept_operation_ticket_with_options_async(request, runtime)
+
     def add_hosts_to_group_with_options(
         self,
         request: yundun_bastionhost_20191209_models.AddHostsToGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.AddHostsToGroupResponse:
         """
-        ## Usage notes
         You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AddHostsToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -91,10 +288,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.AddHostsToGroupResponse:
         """
-        ## Usage notes
         You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AddHostsToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -134,10 +330,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.AddHostsToGroupRequest,
     ) -> yundun_bastionhost_20191209_models.AddHostsToGroupResponse:
         """
-        ## Usage notes
         You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AddHostsToGroupRequest
         @return: AddHostsToGroupResponse
@@ -150,10 +345,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.AddHostsToGroupRequest,
     ) -> yundun_bastionhost_20191209_models.AddHostsToGroupResponse:
         """
-        ## Usage notes
         You can call this operation to add one or more hosts to a host group. You can add multiple hosts to a host group to manage and grant permissions on the hosts in a centralized manner.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # Limits
+        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds a limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limits when you call this operation.
         
         @param request: AddHostsToGroupRequest
         @return: AddHostsToGroupResponse
@@ -167,10 +361,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.AddUsersToGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/createusergroup) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: AddUsersToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -211,10 +402,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.AddUsersToGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/createusergroup) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: AddUsersToGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -254,10 +442,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.AddUsersToGroupRequest,
     ) -> yundun_bastionhost_20191209_models.AddUsersToGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/createusergroup) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: AddUsersToGroupRequest
         @return: AddUsersToGroupResponse
@@ -270,10 +455,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.AddUsersToGroupRequest,
     ) -> yundun_bastionhost_20191209_models.AddUsersToGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to add one or more users to a user group. After you call the [CreateUserGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/createusergroup) operation to create a user group, you can call the AddUsersToGroup operation to add multiple users to the user group. Then, you can manage and grant permissions to the users at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: AddUsersToGroupRequest
         @return: AddUsersToGroupResponse
@@ -805,10 +987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        ## Usage notes
-        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
-        ## Limits
-        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The ID of the request, which is used to locate and troubleshoot issues.
         
         @param request: ConfigInstanceWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -847,10 +1026,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        ## Usage notes
-        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
-        ## Limits
-        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The ID of the request, which is used to locate and troubleshoot issues.
         
         @param request: ConfigInstanceWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -888,10 +1064,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ConfigInstanceWhiteListRequest,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        ## Usage notes
-        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
-        ## Limits
-        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The ID of the request, which is used to locate and troubleshoot issues.
         
         @param request: ConfigInstanceWhiteListRequest
         @return: ConfigInstanceWhiteListResponse
@@ -904,10 +1077,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ConfigInstanceWhiteListRequest,
     ) -> yundun_bastionhost_20191209_models.ConfigInstanceWhiteListResponse:
         """
-        ## Usage notes
-        You can call this operation to configure a whitelist of public IP addresses for a bastion host. By default, a bastion host is accessible from all public IP addresses. If you want to allow the requests from specific public IP addresses, you can call this operation to add trusted IP addresses to the whitelist of the bastion host.
-        ## Limits
-        You can call this operation up to 30 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The ID of the request, which is used to locate and troubleshoot issues.
         
         @param request: ConfigInstanceWhiteListRequest
         @return: ConfigInstanceWhiteListResponse
@@ -1469,9 +1639,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.CreateUserGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/adduserstogroup) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
-        ## Limits
+        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](~~204600~~) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateUserGroupRequest
@@ -1513,9 +1681,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.CreateUserGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/adduserstogroup) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
-        ## Limits
+        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](~~204600~~) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateUserGroupRequest
@@ -1556,9 +1722,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.CreateUserGroupRequest,
     ) -> yundun_bastionhost_20191209_models.CreateUserGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/adduserstogroup) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
-        ## Limits
+        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](~~204600~~) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateUserGroupRequest
@@ -1572,9 +1736,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.CreateUserGroupRequest,
     ) -> yundun_bastionhost_20191209_models.CreateUserGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](https://www.alibabacloud.com/help/en/bastion-host/latest/adduserstogroup) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
-        ## Limits
+        You can call this operation to create a user group for a bastion host as an administrator. Then, you can call the [AddUsersToGroup](~~204600~~) operation to add users to the user group at a time. After you add the users to the user group, you can authorize and manage the users in a centralized manner.
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: CreateUserGroupRequest
@@ -1783,11 +1945,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
-        ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
-        >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        For more information about sample requests, see the "Examples" section of this topic.
         
         @param request: DeleteHostAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1826,11 +1985,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
-        ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
-        >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        For more information about sample requests, see the "Examples" section of this topic.
         
         @param request: DeleteHostAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1868,11 +2024,8 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.DeleteHostAccountRequest,
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
-        ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
-        >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        For more information about sample requests, see the "Examples" section of this topic.
         
         @param request: DeleteHostAccountRequest
         @return: DeleteHostAccountResponse
@@ -1885,11 +2038,8 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.DeleteHostAccountRequest,
     ) -> yundun_bastionhost_20191209_models.DeleteHostAccountResponse:
         """
-        ## Usage notes
-        You can call this operation to remove a single host account. If you no longer use a host account that is added to a host in Bastionhost, you can call this operation to remove the host account from the host.
-        >  After you remove the host account, you must enter the username and password of the host when you log on to the host in Bastionhost.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        For more information about sample requests, see the "Examples" section of this topic.
         
         @param request: DeleteHostAccountRequest
         @return: DeleteHostAccountResponse
@@ -1903,9 +2053,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.DeleteHostGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to delete a single host group. If you no longer need to perform O&M operations on all hosts in a host group, you can call this operation to delete the host group.
-        ## Limits
+        You can call this operation to delete a single host group. If you no longer need to perform O\\&M operations on all hosts in a host group, you can call this operation to delete the host group.
+        ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteHostGroupRequest
@@ -1945,9 +2094,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.DeleteHostGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to delete a single host group. If you no longer need to perform O&M operations on all hosts in a host group, you can call this operation to delete the host group.
-        ## Limits
+        You can call this operation to delete a single host group. If you no longer need to perform O\\&M operations on all hosts in a host group, you can call this operation to delete the host group.
+        ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteHostGroupRequest
@@ -1986,9 +2134,8 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.DeleteHostGroupRequest,
     ) -> yundun_bastionhost_20191209_models.DeleteHostGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to delete a single host group. If you no longer need to perform O&M operations on all hosts in a host group, you can call this operation to delete the host group.
-        ## Limits
+        You can call this operation to delete a single host group. If you no longer need to perform O\\&M operations on all hosts in a host group, you can call this operation to delete the host group.
+        ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteHostGroupRequest
@@ -2002,9 +2149,8 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.DeleteHostGroupRequest,
     ) -> yundun_bastionhost_20191209_models.DeleteHostGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to delete a single host group. If you no longer need to perform O&M operations on all hosts in a host group, you can call this operation to delete the host group.
-        ## Limits
+        You can call this operation to delete a single host group. If you no longer need to perform O\\&M operations on all hosts in a host group, you can call this operation to delete the host group.
+        ### Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: DeleteHostGroupRequest
@@ -3499,10 +3645,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O&M operations on servers.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The condition that is used to filter users.
         
         @param request: GetInstanceADAuthServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3539,10 +3682,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O&M operations on servers.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The condition that is used to filter users.
         
         @param request: GetInstanceADAuthServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3578,10 +3718,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceADAuthServerRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O&M operations on servers.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The condition that is used to filter users.
         
         @param request: GetInstanceADAuthServerRequest
         @return: GetInstanceADAuthServerResponse
@@ -3594,10 +3731,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceADAuthServerRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceADAuthServerResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of AD authentication on a bastion host. After you configure AD authentication on a bastion host, you can import AD-authenticated users into the bastion host. After the AD-authenticated users are imported into the bastion host, the AD-authenticated users can log on to the bastion host to perform O&M operations on servers.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        The condition that is used to filter users.
         
         @param request: GetInstanceADAuthServerRequest
         @return: GetInstanceADAuthServerResponse
@@ -3685,10 +3819,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        Indicates whether two-factor authentication is enabled. Valid values:
+        *   **true**: enabled
+        *   **false**: disabled
         
         @param request: GetInstanceTwoFactorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3725,10 +3858,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        Indicates whether two-factor authentication is enabled. Valid values:
+        *   **true**: enabled
+        *   **false**: disabled
         
         @param request: GetInstanceTwoFactorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3764,10 +3896,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceTwoFactorRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        Indicates whether two-factor authentication is enabled. Valid values:
+        *   **true**: enabled
+        *   **false**: disabled
         
         @param request: GetInstanceTwoFactorRequest
         @return: GetInstanceTwoFactorResponse
@@ -3780,10 +3911,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.GetInstanceTwoFactorRequest,
     ) -> yundun_bastionhost_20191209_models.GetInstanceTwoFactorResponse:
         """
-        ## Usage notes
-        You can call this operation to query the settings of two-factor authentication on a bastion host. After you enable two-factor authentication, Bastionhost sends a verification code to a local user when the local user logs on to a bastion host. A local user can log on to the bastion host only when the local user enters the valid username and password and the verification code. This reduces the security risks caused by account information leaks.
-        ## Limits
-        You can call this operation up to 10 times per second for each account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        Indicates whether two-factor authentication is enabled. Valid values:
+        *   **true**: enabled
+        *   **false**: disabled
         
         @param request: GetInstanceTwoFactorRequest
         @return: GetInstanceTwoFactorResponse
@@ -3946,6 +4076,88 @@ class Client(OpenApiClient):
     ) -> yundun_bastionhost_20191209_models.GetUserGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_user_group_with_options_async(request, runtime)
+
+    def list_approve_commands_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListApproveCommandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListApproveCommandsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApproveCommands',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_approve_commands_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListApproveCommandsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListApproveCommandsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListApproveCommands',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListApproveCommandsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_approve_commands(
+        self,
+        request: yundun_bastionhost_20191209_models.ListApproveCommandsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListApproveCommandsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_approve_commands_with_options(request, runtime)
+
+    async def list_approve_commands_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListApproveCommandsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListApproveCommandsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_approve_commands_with_options_async(request, runtime)
 
     def list_host_accounts_with_options(
         self,
@@ -5149,19 +5361,97 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_hosts_for_user_group_with_options_async(request, runtime)
 
+    def list_operation_tickets_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationTicketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationTicketsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_address):
+            query['AssetAddress'] = request.asset_address
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationTickets',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_operation_tickets_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationTicketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.ListOperationTicketsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asset_address):
+            query['AssetAddress'] = request.asset_address
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOperationTickets',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.ListOperationTicketsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_operation_tickets(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationTicketsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationTicketsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_operation_tickets_with_options(request, runtime)
+
+    async def list_operation_tickets_async(
+        self,
+        request: yundun_bastionhost_20191209_models.ListOperationTicketsRequest,
+    ) -> yundun_bastionhost_20191209_models.ListOperationTicketsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_operation_tickets_with_options_async(request, runtime)
+
     def list_tag_keys_with_options(
         self,
         request: yundun_bastionhost_20191209_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ListTagKeysResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Yundun-bastionhost\\&api=ListTagKeys\\&type=RPC\\&version=2019-12-09)
-        
-        @param request: ListTagKeysRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagKeysResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5196,14 +5486,6 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ListTagKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ListTagKeysResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Yundun-bastionhost\\&api=ListTagKeys\\&type=RPC\\&version=2019-12-09)
-        
-        @param request: ListTagKeysRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagKeysResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -5237,13 +5519,6 @@ class Client(OpenApiClient):
         self,
         request: yundun_bastionhost_20191209_models.ListTagKeysRequest,
     ) -> yundun_bastionhost_20191209_models.ListTagKeysResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Yundun-bastionhost\\&api=ListTagKeys\\&type=RPC\\&version=2019-12-09)
-        
-        @param request: ListTagKeysRequest
-        @return: ListTagKeysResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
@@ -5251,13 +5526,6 @@ class Client(OpenApiClient):
         self,
         request: yundun_bastionhost_20191209_models.ListTagKeysRequest,
     ) -> yundun_bastionhost_20191209_models.ListTagKeysResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Yundun-bastionhost\\&api=ListTagKeys\\&type=RPC\\&version=2019-12-09)
-        
-        @param request: ListTagKeysRequest
-        @return: ListTagKeysResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
@@ -5635,9 +5903,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.LockUsersResponse:
         """
-        ## Usage notes
-        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/unlockusers) operation.
-        ## QPS limit
+        # Description
+        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O\\&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O\\&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](~~204590~~) operation.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: LockUsersRequest
@@ -5677,9 +5945,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.LockUsersResponse:
         """
-        ## Usage notes
-        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/unlockusers) operation.
-        ## QPS limit
+        # Description
+        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O\\&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O\\&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](~~204590~~) operation.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: LockUsersRequest
@@ -5718,9 +5986,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.LockUsersRequest,
     ) -> yundun_bastionhost_20191209_models.LockUsersResponse:
         """
-        ## Usage notes
-        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/unlockusers) operation.
-        ## QPS limit
+        # Description
+        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O\\&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O\\&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](~~204590~~) operation.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: LockUsersRequest
@@ -5734,9 +6002,9 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.LockUsersRequest,
     ) -> yundun_bastionhost_20191209_models.LockUsersResponse:
         """
-        ## Usage notes
-        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/unlockusers) operation.
-        ## QPS limit
+        # Description
+        You can call this operation to lock one or more users of a bastion host. If a user does not need to use a bastion host to perform O\\&M operations within a specific period of time, you can lock the user. The locked user can no longer log on to or perform O\\&M operations on the hosts on which the user is granted permissions. If you want to unlock the user later, you can call the [UnlockUsers](~~204590~~) operation.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: LockUsersRequest
@@ -5751,8 +6019,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ModifyHostResponse:
         """
-        You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
-        >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
+        The ID of the request.
         
         @param request: ModifyHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5801,8 +6068,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.ModifyHostResponse:
         """
-        You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
-        >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
+        The ID of the request.
         
         @param request: ModifyHostRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5850,8 +6116,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ModifyHostRequest,
     ) -> yundun_bastionhost_20191209_models.ModifyHostResponse:
         """
-        You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
-        >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
+        The ID of the request.
         
         @param request: ModifyHostRequest
         @return: ModifyHostResponse
@@ -5864,8 +6129,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.ModifyHostRequest,
     ) -> yundun_bastionhost_20191209_models.ModifyHostResponse:
         """
-        You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
-        >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
+        The ID of the request.
         
         @param request: ModifyHostRequest
         @return: ModifyHostResponse
@@ -7055,6 +7319,162 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
+    def reject_approve_command_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectApproveCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RejectApproveCommandResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.command_id):
+            query['CommandId'] = request.command_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectApproveCommand',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_approve_command_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectApproveCommandRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RejectApproveCommandResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.command_id):
+            query['CommandId'] = request.command_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectApproveCommand',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectApproveCommandResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_approve_command(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectApproveCommandRequest,
+    ) -> yundun_bastionhost_20191209_models.RejectApproveCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reject_approve_command_with_options(request, runtime)
+
+    async def reject_approve_command_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectApproveCommandRequest,
+    ) -> yundun_bastionhost_20191209_models.RejectApproveCommandResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_approve_command_with_options_async(request, runtime)
+
+    def reject_operation_ticket_with_options(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectOperationTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RejectOperationTicketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectOperationTicket',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reject_operation_ticket_with_options_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectOperationTicketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> yundun_bastionhost_20191209_models.RejectOperationTicketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation_ticket_id):
+            query['OperationTicketId'] = request.operation_ticket_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RejectOperationTicket',
+            version='2019-12-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            yundun_bastionhost_20191209_models.RejectOperationTicketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reject_operation_ticket(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectOperationTicketRequest,
+    ) -> yundun_bastionhost_20191209_models.RejectOperationTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reject_operation_ticket_with_options(request, runtime)
+
+    async def reject_operation_ticket_async(
+        self,
+        request: yundun_bastionhost_20191209_models.RejectOperationTicketRequest,
+    ) -> yundun_bastionhost_20191209_models.RejectOperationTicketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reject_operation_ticket_with_options_async(request, runtime)
+
     def remove_hosts_from_group_with_options(
         self,
         request: yundun_bastionhost_20191209_models.RemoveHostsFromGroupRequest,
@@ -7143,10 +7563,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: RemoveUsersFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7187,10 +7604,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: RemoveUsersFromGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7230,10 +7644,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.RemoveUsersFromGroupRequest,
     ) -> yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: RemoveUsersFromGroupRequest
         @return: RemoveUsersFromGroupResponse
@@ -7246,10 +7657,7 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.RemoveUsersFromGroupRequest,
     ) -> yundun_bastionhost_20191209_models.RemoveUsersFromGroupResponse:
         """
-        ## Usage notes
-        You can call this operation to remove one or more users from a user group. When users in a user group are transferred to a new position, resign, or are switched to another user group, you can call this operation to remove the users from the current user group at a time.
-        ## QPS limit
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        This parameter is deprecated.
         
         @param request: RemoveUsersFromGroupRequest
         @return: RemoveUsersFromGroupResponse
@@ -7509,9 +7917,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.UnlockUsersResponse:
         """
-        ## Usage notes
-        After you call the [LockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/lockusers) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O&M operations by using the bastion host.
-        ## QPS limit
+        After you call the [LockUsers](~~204591~~) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O\\&M operations by using the bastion host.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: UnlockUsersRequest
@@ -7551,9 +7958,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> yundun_bastionhost_20191209_models.UnlockUsersResponse:
         """
-        ## Usage notes
-        After you call the [LockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/lockusers) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O&M operations by using the bastion host.
-        ## QPS limit
+        After you call the [LockUsers](~~204591~~) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O\\&M operations by using the bastion host.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: UnlockUsersRequest
@@ -7592,9 +7998,8 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.UnlockUsersRequest,
     ) -> yundun_bastionhost_20191209_models.UnlockUsersResponse:
         """
-        ## Usage notes
-        After you call the [LockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/lockusers) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O&M operations by using the bastion host.
-        ## QPS limit
+        After you call the [LockUsers](~~204591~~) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O\\&M operations by using the bastion host.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: UnlockUsersRequest
@@ -7608,9 +8013,8 @@ class Client(OpenApiClient):
         request: yundun_bastionhost_20191209_models.UnlockUsersRequest,
     ) -> yundun_bastionhost_20191209_models.UnlockUsersResponse:
         """
-        ## Usage notes
-        After you call the [LockUsers](https://www.alibabacloud.com/help/en/bastion-host/latest/lockusers) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O&M operations by using the bastion host.
-        ## QPS limit
+        After you call the [LockUsers](~~204591~~) operation to lock one or more users of a bastion host, you can call this operation to unlock the users. After the users are unlocked, the users can perform O\\&M operations by using the bastion host.
+        # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
         @param request: UnlockUsersRequest

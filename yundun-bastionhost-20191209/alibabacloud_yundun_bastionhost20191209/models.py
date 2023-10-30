@@ -1,7 +1,261 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import Dict, List
+
+
+class AcceptApproveCommandRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.command_id = command_id
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AcceptApproveCommandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AcceptApproveCommandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AcceptApproveCommandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AcceptApproveCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class AcceptOperationTicketRequest(TeaModel):
+    def __init__(
+        self,
+        effect_count: str = None,
+        effect_end_time: str = None,
+        effect_start_time: str = None,
+        instance_id: str = None,
+        operation_ticket_id: str = None,
+        region_id: str = None,
+    ):
+        # The maximum number of logons allowed. Valid values:
+        # 
+        # *   0: The number of logons is unlimited. The O\&M engineer can log on to the specified asset for an unlimited number of times during the validity period.
+        # *   1: The O\&M engineer can log on to the specified asset only once during the validity period.
+        # 
+        # >  You can set this parameter only to 0 if you review an O\&M application on a database.
+        self.effect_count = effect_count
+        # The end time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+        self.effect_end_time = effect_end_time
+        # The start time of the validity period. The value is a UNIX timestamp. Unit: seconds.
+        self.effect_start_time = effect_start_time
+        # The ID of the bastion host.
+        # 
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        self.instance_id = instance_id
+        # The ID of the O\&M application that you want to approve. You can call the ListOperationTickets operation to query the IDs of all O\&M applications that require review.
+        self.operation_ticket_id = operation_ticket_id
+        # The region ID of the bastion host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effect_count is not None:
+            result['EffectCount'] = self.effect_count
+        if self.effect_end_time is not None:
+            result['EffectEndTime'] = self.effect_end_time
+        if self.effect_start_time is not None:
+            result['EffectStartTime'] = self.effect_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.operation_ticket_id is not None:
+            result['OperationTicketId'] = self.operation_ticket_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectCount') is not None:
+            self.effect_count = m.get('EffectCount')
+        if m.get('EffectEndTime') is not None:
+            self.effect_end_time = m.get('EffectEndTime')
+        if m.get('EffectStartTime') is not None:
+            self.effect_start_time = m.get('EffectStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OperationTicketId') is not None:
+            self.operation_ticket_id = m.get('OperationTicketId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class AcceptOperationTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class AcceptOperationTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AcceptOperationTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AcceptOperationTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class AddHostsToGroupRequest(TeaModel):
@@ -14,19 +268,19 @@ class AddHostsToGroupRequest(TeaModel):
     ):
         # The ID of the host group to which you want to add hosts.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
         self.host_group_id = host_group_id
         # The ID of the host that you want to add to the host group. The value is a JSON string. You can add up to 100 host IDs.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
+        # > You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
         self.host_ids = host_ids
         # The ID of the bastion host for which you want to add hosts to the host group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to add hosts to the host group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -77,11 +331,15 @@ class AddHostsToGroupResponseBodyResults(TeaModel):
         # 
         # *   **INVALID_ARGUMENT**: A request parameter is invalid.
         # 
-        #  > Make sure that the request parameters are valid and call the operation again.
+        #     **\
+        # 
+        #     **Note**Make sure that the request parameters are valid and call the operation again.
         # 
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
         # 
-        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        #     **\
+        # 
+        #     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
         # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
@@ -219,21 +477,29 @@ class AddUsersToGroupRequest(TeaModel):
         user_group_id: str = None,
         user_ids: str = None,
     ):
-        # The ID of the bastion host for which you want to add users to the user group.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-        self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to add users to the user group.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-        self.region_id = region_id
-        # The ID of the user group to which you want to add users.
-        # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
-        self.user_group_id = user_group_id
         # The ID of the user that you want to add to the user group. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
         # >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+        self.instance_id = instance_id
+        # The ID of the user.
+        self.region_id = region_id
+        # The return code that indicates whether the call was successful. Valid values:
+        # 
+        # *   **OK**: The call was successful.
+        # 
+        # *   **UNEXPECTED**: An unknown error occurred.
+        # 
+        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
+        # 
+        # > Make sure that the request parameters are valid and call the operation again.
+        # 
+        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        # 
+        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        # 
+        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        self.user_group_id = user_group_id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.user_ids = user_ids
 
     def validate(self):
@@ -276,27 +542,12 @@ class AddUsersToGroupResponseBodyResults(TeaModel):
         user_group_id: str = None,
         user_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # *   **OK**: The call was successful.
-        # 
-        # *   **UNEXPECTED**: An unknown error occurred.
-        # 
-        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # > Make sure that the request parameters are valid and call the operation again.
-        # 
-        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-        # 
-        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # AddUsersToGroup
         self.code = code
-        # This parameter is deprecated.
+        # WB01014029
         self.message = message
-        # The ID of the group.
+        # AddUsersToGroup
         self.user_group_id = user_group_id
-        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -337,9 +588,11 @@ class AddUsersToGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[AddUsersToGroupResponseBodyResults] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        # 
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.request_id = request_id
-        # The result of the call.
+        # Adds one or more users to a user group.
         self.results = results
 
     def validate(self):
@@ -428,11 +681,11 @@ class AttachHostAccountsToHostShareKeyRequest(TeaModel):
     ):
         # The IDs of the host accounts.
         # 
-        # >  You must specify this parameter.
+        # > You must specify this parameter.
         self.host_account_ids = host_account_ids
         # The ID of the shared key.
         # 
-        # >  You must specify this parameter.
+        # > You must specify this parameter.
         self.host_share_key_id = host_share_key_id
         # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
@@ -887,19 +1140,19 @@ class AttachHostAccountsToUserGroupRequest(TeaModel):
     ):
         # The IDs of the host and host account that you want to authorize the user group to manage. You can specify up to 10 host IDs and up to 10 host account IDs for each host. You can specify only host IDs. In this case, the user group is authorized to manage only the specified hosts. For more information about this parameter, see the "Description of the Hosts parameter" section of this topic.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host and the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
         self.hosts = hosts
         # The ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host in which you want to authorize the user group to manage the specified hosts and host accounts.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -1005,7 +1258,7 @@ class AttachHostAccountsToUserGroupResponseBodyResults(TeaModel):
         self.host_id = host_id
         # This parameter is deprecated.
         self.message = message
-        # The ID of the group.
+        # The ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -1671,11 +1924,11 @@ class ConfigInstanceSecurityGroupsRequest(TeaModel):
         lang: str = None,
         region_id: str = None,
     ):
-        # The IDs of authorized security group.
+        # An array that consists of the IDs of authorized security groups.
         self.authorized_security_groups = authorized_security_groups
         # The ID of the bastion host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
@@ -1803,11 +2056,11 @@ class ConfigInstanceWhiteListRequest(TeaModel):
         region_id: str = None,
         white_list: List[str] = None,
     ):
-        # The ID of the bastion host for which you want to configure a whitelist of public IP addresses.
+        # The ID of the bastion host for which a whitelist of public IP addresses is configured.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
+        # Configures a whitelist of public IP addresses for a bastion host.
         self.region_id = region_id
-        # The public IP addresses that you want to add to the whitelist. You can add up to 30 IP addresses.
+        # ConfigInstanceWhiteList
         self.white_list = white_list
 
     def validate(self):
@@ -1844,9 +2097,7 @@ class ConfigInstanceWhiteListResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the bastion host for which a whitelist of public IP addresses is configured.
         self.instance_id = instance_id
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -1934,47 +2185,47 @@ class CreateHostRequest(TeaModel):
     ):
         # The endpoint type of the host that you want to create. Valid values:
         # 
-        # *   **Public**: a public endpoint
-        # *   **Private**: an internal endpoint
+        # *   **Public**: public endpoint
+        # *   **Private**: internal endpoint
         self.active_address_type = active_address_type
-        # The description of the host that you want to create. The value can be up to 500 characters.
+        # The description of the host that you want to create. The value can be up to 500 characters in length.
         self.comment = comment
         # The name of the host that you want to create. The name can be up to 128 characters in length.
         self.host_name = host_name
         # The internal endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
         # 
-        # >  This parameter is required if the **ActiveAddressType** parameter is set to **Private**.
+        # > This parameter is required if the **ActiveAddressType** parameter is set to **Private**.
         self.host_private_address = host_private_address
         # The public endpoint of the host that you want to create. You can set this parameter to a domain name or an IP address.
         # 
-        # >  This parameter is required if the **ActiveAddressType** parameter is set to **Public**.
+        # > This parameter is required if the **ActiveAddressType** parameter is set to **Public**.
         self.host_public_address = host_public_address
-        # The ID of the Bastionhost instance where you want to create the host.
+        # The ID of the bastion host in which you want to create the host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The ID of the region where the ECS instance or dedicated cluster host that you want to create resides.
+        # The ID of the region to which the ECS instance or the host in an ApsaraDB MyBase dedicated cluster belongs.
         # 
-        # >  This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
+        # > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
         self.instance_region_id = instance_region_id
         # The operating system of the host that you want to create. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
         self.ostype = ostype
-        # The region ID of the Bastionhost instance where you want to create the host.
+        # The region ID of the bastion host in which you want to create the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The source of the host that you want to create. Valid values:
         # 
-        # *   **Local**: an on-premises host
+        # *   **Local**: a host in a data center
         # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in a dedicated cluster
+        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
         self.source = source
-        # The ID of the ECS instance or dedicated cluster host that you want to create.
+        # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
         # 
-        # >  This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
+        # > This parameter is required if the **Source** parameter is set to **Ecs** or **Rds**.
         self.source_instance_id = source_instance_id
 
     def validate(self):
@@ -2043,7 +2294,7 @@ class CreateHostResponseBody(TeaModel):
         host_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the host that was created.
+        # The ID of the host.
         self.host_id = host_id
         # The ID of the request.
         self.request_id = request_id
@@ -2129,38 +2380,38 @@ class CreateHostAccountRequest(TeaModel):
         protocol_name: str = None,
         region_id: str = None,
     ):
-        # The name of the host account that you want to add. The name can be up to 128 characters in length.
-        self.host_account_name = host_account_name
-        # The ID of the host to which you want to add a host account.
-        # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-        self.host_id = host_id
-        # The ID of the shared key.
-        self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host in which you want to add a host account to the host.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-        self.instance_id = instance_id
         # The passphrase of the private key for the host account.
         # 
         # >  You can specify this parameter when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter.
-        self.pass_phrase = pass_phrase
-        # The password of the host account.
-        self.password = password
-        # The private key of the host account. The value is a Base64-encoded string.
-        # 
-        # >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
-        self.private_key = private_key
+        self.host_account_name = host_account_name
+        # The ID of the shared key.
+        self.host_id = host_id
         # The protocol of the host to which you want to add a host account.
         # 
         # Valid values:
         # 
         # *   SSH
         # *   RDP
-        self.protocol_name = protocol_name
+        self.host_share_key_id = host_share_key_id
+        # master
+        self.instance_id = instance_id
+        # The private key of the host account. The value is a Base64-encoded string.
+        # 
+        # >  This parameter takes effect only when the ProtocolName parameter is set to SSH. If the ProtocolName parameter is set to RDP, you do not need to specify this parameter. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key to log on to the host.
+        self.pass_phrase = pass_phrase
         # The region ID of the bastion host in which you want to add a host account to the host.
         # 
         # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        self.password = password
+        # The ID of the host to which you want to add a host account.
+        # 
+        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        self.private_key = private_key
+        # The ID of the bastion host in which you want to add a host account to the host.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        self.protocol_name = protocol_name
+        # The password of the host account.
         self.region_id = region_id
 
     def validate(self):
@@ -2221,9 +2472,9 @@ class CreateHostAccountResponseBody(TeaModel):
         host_account_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the host account.
-        self.host_account_id = host_account_id
         # The ID of the request.
+        self.host_account_id = host_account_id
+        # The operation that you want to perform. Set the value to **CreateHostAccount**.
         self.request_id = request_id
 
     def validate(self):
@@ -2302,17 +2553,19 @@ class CreateHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The description of the host group. The value can be up to 500 characters in length.
+        # The description of the host group. The description can be up to 500 characters in length.
         self.comment = comment
         # The name of the host group. The name can be up to 128 characters in length.
         self.host_group_name = host_group_name
-        # The ID of the Bastionhost instance where you want to create the host group.
+        # The ID of the bastion host on which you want to create a host group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to create the host group.
+        # The region ID of the bastion host on which you want to create a host group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # **\
+        # 
+        # **For more information about the mapping between region IDs and region names, see **Regions and zones[.](~~40654~~)
         self.region_id = region_id
 
     def validate(self):
@@ -2585,7 +2838,9 @@ class CreateUserRequest(TeaModel):
         self.comment = comment
         # The display name of the user that you want to add. This display name can be up to 128 characters in length.
         self.display_name = display_name
+        # The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
+        # The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
         # The email address of the user that you want to add.
         self.email = email
@@ -2617,6 +2872,11 @@ class CreateUserRequest(TeaModel):
         # *   **CH**: Switzerland, whose country calling code is +41
         # *   **SE**: Sweden, whose country calling code is +46
         self.mobile_country_code = mobile_country_code
+        # Specifies whether password reset is required upon the next logon. Valid values:
+        # 
+        # - true: yes
+        # 
+        # - false: no
         self.need_reset_password = need_reset_password
         # The logon password of the user that you want to add. The logon password can be up to 128 characters in length.
         # 
@@ -2637,7 +2897,20 @@ class CreateUserRequest(TeaModel):
         # 
         # >  This parameter uniquely identifies a RAM user of the bastion host. This parameter is required if the **Source** parameter is set to **Ram**. You can call the [ListUsers](~~28684~~) operation to obtain the unique identifier of the user from the **UserId** response parameter.
         self.source_user_id = source_user_id
+        # The two-factor authentication method. You can select only one method. Valid values:
+        # 
+        # *   **sms:** text message
+        # *   **email:** email
+        # *   **dingtalk:** DingTalk
+        # *   **totp OTP:** time-based one-time password (TOTP) app
+        # 
+        # > *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
         self.two_factor_methods = two_factor_methods
+        # The two-factor authentication status of the user. Valid values:
+        # 
+        # - Global: follows the global settings
+        # - Disable: disables two-factor authentication
+        # - Enable: enable two-factor authentication and follows settings of the single user
         self.two_factor_status = two_factor_status
         # The logon name of the user that you want to add. The logon name can contain only letters, digits, and underscores (\_) and can be up to 128 characters in length.
         self.user_name = user_name
@@ -2809,15 +3082,15 @@ class CreateUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_name: str = None,
     ):
-        # The remarks of the user group. The remarks can be up to 500 characters in length.
+        # The description of the user group. The description can be up to 500 characters in length.
         self.comment = comment
         # The ID of the bastion host for which you want to create a user group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to create a user group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The name of the user group that you want to create. This name can be a up to 128 characters in length.
         self.user_group_name = user_group_name
@@ -3088,15 +3361,15 @@ class DeleteHostRequest(TeaModel):
     ):
         # The ID of the host that you want to delete.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
         self.host_id = host_id
-        # The ID of the Bastionhost instance where you want to delete the host.
+        # The ID of the bastion host on which you want to delete the host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to delete the host.
+        # The region ID of the bastion host on which you want to delete the host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -3206,17 +3479,11 @@ class DeleteHostAccountRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host account that you want to remove.
-        # 
-        # >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # DeleteHostAccount
         self.host_account_id = host_account_id
-        # The ID of the bastion host from which you want to remove the host account.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # DeleteHostAccount
         self.instance_id = instance_id
-        # The region ID of the bastion host from which you want to remove the host account.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # WB01014029
         self.region_id = region_id
 
     def validate(self):
@@ -3252,7 +3519,6 @@ class DeleteHostAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3328,15 +3594,15 @@ class DeleteHostGroupRequest(TeaModel):
     ):
         # The ID of the host group that you want to delete.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
         self.host_group_id = host_group_id
         # The ID of the bastion host from which you want to delete the host group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host from which you want to delete the host group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -3448,7 +3714,7 @@ class DeleteHostShareKeyRequest(TeaModel):
     ):
         # The ID of the shared key.
         # 
-        # >  You must specify this parameter.
+        # > You must specify this parameter.
         self.host_share_key_id = host_share_key_id
         # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
@@ -3562,17 +3828,15 @@ class DeleteUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the Bastionhost instance to which the user to be deleted belongs.
+        # The ID of the bastion host to which the user to be deleted belongs.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance to which the user to be deleted belongs.
+        # The region ID of the bastion host to which the user to be deleted belongs.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user to be deleted.
-        # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -3608,7 +3872,7 @@ class DeleteUserResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -3682,17 +3946,17 @@ class DeleteUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The ID of the Bastionhost instance where you want to delete the user group.
+        # The ID of the bastion host on which you want to delete the user group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to delete the user group.
+        # The region ID of the bastion host on which you want to delete the user group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user group that you want to delete.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -3802,7 +4066,7 @@ class DeleteUserPublicKeyRequest(TeaModel):
         public_key_id: str = None,
         region_id: str = None,
     ):
-        # Specifies the region ID of the bastion host on which you want to delete the public key from the user.
+        # The region ID of the bastion host on which you want to delete the public key from the user.
         # 
         # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
@@ -3917,9 +4181,7 @@ class DescribeInstanceAttributeRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host to query.
         self.instance_id = instance_id
-        # The region ID of the bastion host to query.
         self.region_id = region_id
 
     def validate(self):
@@ -3952,15 +4214,7 @@ class DescribeInstanceAttributeResponseBodyInstanceAttributePorts(TeaModel):
         custom_port: int = None,
         standard_port: int = None,
     ):
-        # The custom port.
-        # 
-        # > : You can change only the SSH and RDP ports. If O\&M ports are not specified, the value of the StandardPort parameter is returned.
         self.custom_port = custom_port
-        # The standard port of the bastion host. Valid values:
-        # 
-        # *   **SSH**: 60022
-        # *   **RDP**: 63389
-        # *   **HTTPS**: 443
         self.standard_port = standard_port
 
     def validate(self):
@@ -3991,6 +4245,8 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
     def __init__(
         self,
         authorized_security_groups: List[str] = None,
+        bandwidth: str = None,
+        bandwidth_package: str = None,
         db_operation_module: str = None,
         description: str = None,
         eni_instance_id: str = None,
@@ -4018,76 +4274,34 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
         vswitch_id: str = None,
         web_terminal_module: str = None,
     ):
-        # An array that consists of the IDs of authorized security groups.
         self.authorized_security_groups = authorized_security_groups
-        # The status of the database O\&M feature.
+        self.bandwidth = bandwidth
+        self.bandwidth_package = bandwidth_package
         self.db_operation_module = db_operation_module
-        # The remarks of the bastion host.
         self.description = description
-        # The ID of the elastic network interface (ENI).
         self.eni_instance_id = eni_instance_id
-        # The time when the bastion host expires.
         self.expire_time = expire_time
-        # The ID of the bastion host.
         self.instance_id = instance_id
-        # The status of the bastion host. Valid values:
-        # 
-        # *   **PENDING**: The bastion host is not initialized.
-        # *   **CREATING**: The bastion host is being created.
-        # *   **RUNNING**: The bastion host is running.
-        # *   **EXPIRED**: The bastion host expired.
-        # *   **CREATE_FAILED**: The bastion host fails to be created.
-        # *   **UPGRADING**: The configurations of the bastion host are being changed.
-        # *   **UPGRADE_FAILED**: The configurations of the bastion host fail to be changed.
         self.instance_status = instance_status
-        # The public endpoint of the bastion host.
         self.internet_endpoint = internet_endpoint
-        # The internal endpoint of the bastion host.
         self.intranet_endpoint = intranet_endpoint
-        # The license code.
         self.license_code = license_code
-        # The status of the automatic password change feature.
-        # 
-        # *   **Enable**\
-        # *   **Disable**\
         self.modify_password_module = modify_password_module
-        # The status of the network domain feature.
-        # 
-        # *   **Enable**\
-        # *   **Disable**\
         self.network_proxy_module = network_proxy_module
-        # An array that consists of the O\&M ports of the bastion host.
         self.ports = ports
-        # An array that consists of the egress private IP addresses of the bastion host.
         self.private_export_ips = private_export_ips
-        # An array that consists of private IP addresses in a whitelist for the bastion host.
         self.private_white_list = private_white_list
-        # An array that consists of the egress public IP addresses of the bastion host.
         self.public_export_ips = public_export_ips
-        # An array that consists of the public IP addresses of the bastion host.
         self.public_ips = public_ips
-        # Indicates whether the bastion host can be accessed over the Internet.
         self.public_network_access = public_network_access
-        # An array that consists of public IP addresses in a whitelist for the bastion host.
         self.public_white_list = public_white_list
-        # The ID of the region in which the bastion host resides.
         self.region_id = region_id
-        # The ID of the resource group to which the bastion host belongs.
         self.resource_group_id = resource_group_id
-        # An array that consists of the IDs of the security groups to which the bastion host belongs.
         self.security_group_ids = security_group_ids
-        # The time when the bastion host was purchased.
         self.start_time = start_time
-        # The storage capacity of the bastion host.
         self.storage = storage
-        # The ID of the virtual private cloud (VPC) to which the bastion host belongs.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch to which the bastion host belongs.
         self.vswitch_id = vswitch_id
-        # The status of the web terminal.
-        # 
-        # *   **Enable**\
-        # *   **Disable**\
         self.web_terminal_module = web_terminal_module
 
     def validate(self):
@@ -4104,6 +4318,10 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
         result = dict()
         if self.authorized_security_groups is not None:
             result['AuthorizedSecurityGroups'] = self.authorized_security_groups
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
+        if self.bandwidth_package is not None:
+            result['BandwidthPackage'] = self.bandwidth_package
         if self.db_operation_module is not None:
             result['DbOperationModule'] = self.db_operation_module
         if self.description is not None:
@@ -4164,6 +4382,10 @@ class DescribeInstanceAttributeResponseBodyInstanceAttribute(TeaModel):
         m = m or dict()
         if m.get('AuthorizedSecurityGroups') is not None:
             self.authorized_security_groups = m.get('AuthorizedSecurityGroups')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
+        if m.get('BandwidthPackage') is not None:
+            self.bandwidth_package = m.get('BandwidthPackage')
         if m.get('DbOperationModule') is not None:
             self.db_operation_module = m.get('DbOperationModule')
         if m.get('Description') is not None:
@@ -4228,9 +4450,7 @@ class DescribeInstanceAttributeResponseBody(TeaModel):
         instance_attribute: DescribeInstanceAttributeResponseBodyInstanceAttribute = None,
         request_id: str = None,
     ):
-        # The attribute information about the bastion host.
         self.instance_attribute = instance_attribute
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -4309,9 +4529,9 @@ class DescribeInstancesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the bastion host.
+        # The key of the tag.
         self.key = key
-        # The tag value of the bastion host.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -4349,9 +4569,9 @@ class DescribeInstancesRequest(TeaModel):
         resource_group_id: str = None,
         tag: List[DescribeInstancesRequestTag] = None,
     ):
-        # The IDs of the bastion hosts.
+        # An array that consists of the IDs of the bastion hosts.
         self.instance_id = instance_id
-        # The state of the bastion host. Valid values:
+        # The status of the bastion host. Valid values:
         # 
         # *   **PENDING**: The bastion host is not initialized.
         # *   **CREATING**: The bastion host is being created.
@@ -4369,7 +4589,7 @@ class DescribeInstancesRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the bastion host belongs.
         self.resource_group_id = resource_group_id
-        # The tags.
+        # An array consisting of the tags that are added to the bastion hosts.
         self.tag = tag
 
     def validate(self):
@@ -4452,7 +4672,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.image_version = image_version
         # The ID of the bastion host.
         self.instance_id = instance_id
-        # The state of the bastion host. Valid values:
+        # The status of the bastion host. Valid values:
         # 
         # *   **PENDING**: The bastion host is not initialized.
         # *   **CREATING**: The bastion host is being created.
@@ -4674,13 +4894,9 @@ class DescribeRegionsRequest(TeaModel):
         accept_language: str = None,
         region_id: str = None,
     ):
-        # The natural language in which responses are returned. Valid values:
-        # 
-        # *   **zh-CN**: Chinese. This is the default value.
-        # *   **en-US**: English.
-        # *   **ja**: Japanese.
-        self.accept_language = accept_language
         # The ID of the region.
+        self.accept_language = accept_language
+        # The ID of request.
         self.region_id = region_id
 
     def validate(self):
@@ -4714,11 +4930,8 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The name of the region.
         self.local_name = local_name
-        # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -4755,9 +4968,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # The information about regions where you can create bastion hosts.
+        # DescribeRegions
         self.regions = regions
-        # The ID of request.
+        # Queries available regions where you can create bastion hosts.
         self.request_id = request_id
 
     def validate(self):
@@ -4893,13 +5106,13 @@ class DetachHostAccountsFromHostShareKeyResponseBodyResults(TeaModel):
         host_share_key_id: str = None,
         message: str = None,
     ):
-        # The error code. If **OK** is returned, the disassociation was successful. If a different error code is returned, the disassociation failed.
+        # The error code returned. If **OK** is returned, the disassociation was successful. If a different error code is returned, the disassociation failed.
         self.code = code
         # The ID of the host account.
         self.host_account_id = host_account_id
         # The ID of the shared key.
         self.host_share_key_id = host_share_key_id
-        # The error message.
+        # The error message returned.
         self.message = message
 
     def validate(self):
@@ -5557,19 +5770,19 @@ class DetachHostGroupAccountsFromUserRequest(TeaModel):
     ):
         # The ID of the host group and the name of the host account on which you want to revoke permissions from the user. You can specify up to 10 host group IDs and up to 10 host account names for each host group. You can specify only host group IDs. In this case, the permissions on the specified host groups and all host accounts in the host groups are revoked from the user. For more information about this parameter, see the "Description of the HostGroups parameter" section of this topic.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
+        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group and the [ListHostAccounts](~~204372~~) operation to query the name of the host account.
         self.host_groups = host_groups
         # The ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host for which you want to revoke permissions on the specified host groups and host accounts from the user.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user from which you want to revoke permissions on the specified host groups and host accounts.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -6079,7 +6292,7 @@ class DisableInstancePublicAccessRequest(TeaModel):
     ):
         # The ID of the bastion host whose Internet access you want to disable.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to obtain the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
@@ -6193,11 +6406,9 @@ class EnableInstancePublicAccessRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The operation that you want to perform. Set the value to **EnableInstancePublicAccess**.
         self.instance_id = instance_id
-        # The region ID of the bastion host.
+        # The ID of the bastion host whose Internet access is enabled.
         self.region_id = region_id
 
     def validate(self):
@@ -6230,9 +6441,7 @@ class EnableInstancePublicAccessResponseBody(TeaModel):
         instance_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the bastion host whose Internet access is enabled.
         self.instance_id = instance_id
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -6310,17 +6519,16 @@ class GetHostRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
+        # The protocol that is used to connect to the host. Valid values:
+        # 
+        # *   **SSH**\
+        # *   **RDP**\
+        self.host_id = host_id
         # The ID of the host that you want to query. You can specify only one host ID.
         # 
         # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-        self.host_id = host_id
-        # The ID of the Bastionhost instance where you want to query the host.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to query the host.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The name of the host.
         self.region_id = region_id
 
     def validate(self):
@@ -6358,14 +6566,10 @@ class GetHostResponseBodyHostProtocols(TeaModel):
         port: int = None,
         protocol_name: str = None,
     ):
-        # The fingerprint of the host. This parameter uniquely identifies a host.
+        # WB662865
         self.host_finger_print = host_finger_print
-        # The service port of the host.
+        # GetHost
         self.port = port
-        # The protocol that is used to connect to the host. Valid values:
-        # 
-        # *   **SSH**\
-        # *   **RDP**\
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -6411,43 +6615,40 @@ class GetHostResponseBodyHost(TeaModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The endpoint type of the host. Valid values:
-        # 
-        # *   **Public**: a public endpoint
-        # *   **Private**: an internal endpoint
-        self.active_address_type = active_address_type
-        # The description of the host.
-        self.comment = comment
-        # The ID of the host.
-        self.host_id = host_id
-        # The name of the host.
-        self.host_name = host_name
-        # The internal endpoint of the host. You can set this parameter to a domain name or an IP address.
-        self.host_private_address = host_private_address
         # The public endpoint of the host. You can set this parameter to a domain name or an IP address.
+        self.active_address_type = active_address_type
+        # The ID of the ECS instance or dedicated cluster host that was queried.
+        # 
+        # >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
+        self.comment = comment
+        # The ID of the request.
+        self.host_id = host_id
+        # The ID of the Bastionhost instance where you want to query the host.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        self.host_name = host_name
+        # The description of the host.
+        self.host_private_address = host_private_address
+        # The status of the host. Valid values:
+        # 
+        # - **Normal**: The host is normal.
+        # 
+        # - **Release**: The host is released.
         self.host_public_address = host_public_address
         # The operating system of the host. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
         self.ostype = ostype
-        # The protocol information of the host.
+        # GetHost
         self.protocols = protocols
-        # The source of the host. Valid values:
-        # 
-        # *   **Local**: an on-premises host
-        # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in a dedicated cluster
+        # The protocol information of the host.
         self.source = source
-        # The ID of the ECS instance or dedicated cluster host that was queried.
-        # 
-        # >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
+        # Queries the details of a specified host, such as the name, source, endpoint, protocol, and service port of the host.
         self.source_instance_id = source_instance_id
-        # The status of the host. Valid values:
+        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
         # 
-        # - **Normal**: The host is normal.
-        # 
-        # - **Release**: The host is released.
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -6524,9 +6725,12 @@ class GetHostResponseBody(TeaModel):
         host: GetHostResponseBodyHost = None,
         request_id: str = None,
     ):
-        # The information of the host that was queried.
+        # The fingerprint of the host. This parameter uniquely identifies a host.
         self.host = host
-        # The ID of the request.
+        # The endpoint type of the host. Valid values:
+        # 
+        # *   **Public**: a public endpoint
+        # *   **Private**: an internal endpoint
         self.request_id = request_id
 
     def validate(self):
@@ -6608,15 +6812,15 @@ class GetHostAccountRequest(TeaModel):
     ):
         # The ID of the host account that you want to query.
         # 
-        # >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
         self.host_account_id = host_account_id
-        # The ID of the Bastionhost instance where you want to query the details of the host account.
+        # The ID of the bastion host in which you want to query the details of the host account.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to query the details of the host account.
+        # The region ID of the bastion host in which you want to query the details of the host account.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -6659,10 +6863,10 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
         private_key_fingerprint: str = None,
         protocol_name: str = None,
     ):
-        # Indicates whether a password is set for the host account. Valid values:
+        # Indicates whether a password is configured for the host account. Valid values:
         # 
-        # *   **true**: indicates that a password is set for the host account.
-        # *   **false**: indicates that no password is set for the host account.
+        # *   **true**: yes
+        # *   **false**: no
         self.has_password = has_password
         # The ID of the host account.
         self.host_account_id = host_account_id
@@ -6676,7 +6880,7 @@ class GetHostAccountResponseBodyHostAccount(TeaModel):
         self.host_share_key_name = host_share_key_name
         # The fingerprint of the private key.
         self.private_key_fingerprint = private_key_fingerprint
-        # The protocol used by the host account. Valid values:
+        # The protocol that is used by the host. Valid values:
         # 
         # *   **SSH**\
         # *   **RDP**\
@@ -6736,7 +6940,7 @@ class GetHostAccountResponseBody(TeaModel):
         host_account: GetHostAccountResponseBodyHostAccount = None,
         request_id: str = None,
     ):
-        # The details of the host account that were queried.
+        # The details of the host account that was queried.
         self.host_account = host_account
         # The ID of the request.
         self.request_id = request_id
@@ -6818,17 +7022,15 @@ class GetHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host group that you want to query.
-        # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
-        self.host_group_id = host_group_id
-        # The ID of the Bastionhost instance where you want to query the host group.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-        self.instance_id = instance_id
         # The region ID of the Bastionhost instance where you want to query the host group.
         # 
         # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        self.host_group_id = host_group_id
+        # MyHostGroup
+        self.instance_id = instance_id
+        # The ID of the Bastionhost instance where you want to query the host group.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
         self.region_id = region_id
 
     def validate(self):
@@ -6866,11 +7068,11 @@ class GetHostGroupResponseBodyHostGroup(TeaModel):
         host_group_id: str = None,
         host_group_name: str = None,
     ):
-        # The description of the host group.
+        # The details of the host group returned.
         self.comment = comment
-        # The ID of the host group.
+        # The description of the host group.
         self.host_group_id = host_group_id
-        # The name of the host group.
+        # The ID of the host group.
         self.host_group_name = host_group_name
 
     def validate(self):
@@ -6907,9 +7109,11 @@ class GetHostGroupResponseBody(TeaModel):
         host_group: GetHostGroupResponseBodyHostGroup = None,
         request_id: str = None,
     ):
-        # The details of the host group returned.
+        # The ID of the host group that you want to query.
+        # 
+        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
         self.host_group = host_group
-        # The ID of the request.
+        # my host group.
         self.request_id = request_id
 
     def validate(self):
@@ -6989,11 +7193,11 @@ class GetHostShareKeyRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the shared key whose details you want to query.
+        # The time when the information about the shared key was last modified.
         self.host_share_key_id = host_share_key_id
-        # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The ID of the shared key whose details you want to query.
         self.instance_id = instance_id
-        # The region ID of the bastion host. For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The name of the shared key.
         self.region_id = region_id
 
     def validate(self):
@@ -7032,13 +7236,10 @@ class GetHostShareKeyResponseBodyHostShareKey(TeaModel):
         last_modify_key_at: int = None,
         private_key_finger_print: str = None,
     ):
-        # The ID of the shared key.
-        self.host_share_key_id = host_share_key_id
-        # The name of the shared key.
-        self.host_share_key_name = host_share_key_name
-        # The time when the information about the shared key was last modified.
-        self.last_modify_key_at = last_modify_key_at
         # The fingerprint of the private key.
+        self.host_share_key_id = host_share_key_id
+        self.host_share_key_name = host_share_key_name
+        self.last_modify_key_at = last_modify_key_at
         self.private_key_finger_print = private_key_finger_print
 
     def validate(self):
@@ -7079,7 +7280,7 @@ class GetHostShareKeyResponseBody(TeaModel):
         host_share_key: GetHostShareKeyResponseBodyHostShareKey = None,
         request_id: str = None,
     ):
-        # The details of the shared key.
+        # The operation that you want to perform. Set the value to **GetHostShareKey**.
         self.host_share_key = host_share_key
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
@@ -7160,13 +7361,12 @@ class GetInstanceADAuthServerRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host to query.
-        # 
-        # You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The field that is used to indicate the email address of a user on the AD server.
         self.instance_id = instance_id
-        # The region ID of the bastion host to query.
+        # Indicates whether passwords are required. Valid values:
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # *   **true**: required
+        # *   **false**: not required
         self.region_id = region_id
 
     def validate(self):
@@ -7209,35 +7409,29 @@ class GetInstanceADAuthServerResponseBodyAD(TeaModel):
         server: str = None,
         standby_server: str = None,
     ):
-        # The distinguished name (DN) of the AD server account.
-        self.account = account
-        # The Base DN of the AD server.
-        self.base_dn = base_dn
-        # The domain on the AD server.
-        self.domain = domain
-        # The field that is used to indicate the email address of a user on the AD server.
-        self.email_mapping = email_mapping
-        # The condition that is used to filter users.
-        self.filter = filter
-        # Indicates whether passwords are required. Valid values:
-        # 
-        # *   **true**: required
-        # *   **false**: not required
-        self.has_password = has_password
-        # Indicates whether SSL is supported. Valid values:
-        # 
-        # *   **true**: supported
-        # *   **false**: not supported
-        self.is_ssl = is_ssl
-        # The field that is used to indicate the mobile phone number of a user on the AD server.
-        self.mobile_mapping = mobile_mapping
-        # The field that is used to indicate the name of a user on the AD server.
-        self.name_mapping = name_mapping
         # The port that is used to access the AD server.
-        self.port = port
-        # The address of the AD server.
-        self.server = server
+        self.account = account
+        # The ID of the bastion host to query.
+        # 
+        # You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        self.base_dn = base_dn
+        # The settings of AD authentication.
+        self.domain = domain
         # The address of the secondary AD server.
+        self.email_mapping = email_mapping
+        # The field that is used to indicate the mobile phone number of a user on the AD server.
+        self.filter = filter
+        # The address of the AD server.
+        self.has_password = has_password
+        # The Base DN of the AD server.
+        self.is_ssl = is_ssl
+        # The field that is used to indicate the name of a user on the AD server.
+        self.mobile_mapping = mobile_mapping
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.name_mapping = name_mapping
+        # Queries the settings of Active Directory (AD) authentication on a bastion host.
+        self.port = port
+        self.server = server
         self.standby_server = standby_server
 
     def validate(self):
@@ -7310,9 +7504,12 @@ class GetInstanceADAuthServerResponseBody(TeaModel):
         ad: GetInstanceADAuthServerResponseBodyAD = None,
         request_id: str = None,
     ):
-        # The settings of AD authentication.
+        # The operation that you want to perform. Set the value to **GetInstanceADAuthServer**.
         self.ad = ad
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # Indicates whether SSL is supported. Valid values:
+        # 
+        # *   **true**: supported
+        # *   **false**: not supported
         self.request_id = request_id
 
     def validate(self):
@@ -7391,13 +7588,12 @@ class GetInstanceLDAPAuthServerRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host.
+        # Indicates whether passwords are required. Valid values:
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # *   **true**: required
+        # *   **false**: not required
         self.instance_id = instance_id
-        # The region ID of the bastion host.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The operation that you want to perform. Set the value to **GetInstanceLDAPAuthServer**.
         self.region_id = region_id
 
     def validate(self):
@@ -7440,35 +7636,28 @@ class GetInstanceLDAPAuthServerResponseBodyLDAP(TeaModel):
         server: str = None,
         standby_server: str = None,
     ):
-        # The account of the LDAP server.
+        # The ID of the bastion host.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.account = account
-        # The Base distinguished name (DN).
-        self.base_dn = base_dn
-        # The field that is used to indicate the email address of a user on the LDAP server.
-        self.email_mapping = email_mapping
-        # The condition that is used to filter users.
-        self.filter = filter
-        # Indicates whether passwords are required. Valid values:
-        # 
-        # *   **true**: required
-        # *   **false**: not required
-        self.has_password = has_password
-        # Indicates whether SSL is supported. Valid values:
-        # 
-        # *   **true**: supported
-        # *   **false**: not supported
-        self.is_ssl = is_ssl
         # The field that is used to indicate the logon name of a user on the LDAP server.
-        self.login_name_mapping = login_name_mapping
-        # The field that is used to indicate the mobile phone number of a user on the LDAP server.
-        self.mobile_mapping = mobile_mapping
-        # The field that is used to indicate the name of a user on the LDAP server.
-        self.name_mapping = name_mapping
-        # The port that is used to access the LDAP server.
-        self.port = port
-        # The address of the LDAP server.
-        self.server = server
+        self.base_dn = base_dn
         # The address of the secondary LDAP server.
+        self.email_mapping = email_mapping
+        # The Base distinguished name (DN).
+        self.filter = filter
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.has_password = has_password
+        # The condition that is used to filter users.
+        self.is_ssl = is_ssl
+        # The port that is used to access the LDAP server.
+        self.login_name_mapping = login_name_mapping
+        # The field that is used to indicate the email address of a user on the LDAP server.
+        self.mobile_mapping = mobile_mapping
+        # The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        self.name_mapping = name_mapping
+        self.port = port
+        self.server = server
         self.standby_server = standby_server
 
     def validate(self):
@@ -7541,9 +7730,12 @@ class GetInstanceLDAPAuthServerResponseBody(TeaModel):
         ldap: GetInstanceLDAPAuthServerResponseBodyLDAP = None,
         request_id: str = None,
     ):
-        # The settings of LDAP authentication.
+        # Indicates whether SSL is supported. Valid values:
+        # 
+        # *   **true**: supported
+        # *   **false**: not supported
         self.ldap = ldap
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The settings of LDAP authentication.
         self.request_id = request_id
 
     def validate(self):
@@ -7622,13 +7814,9 @@ class GetInstanceTwoFactorRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the bastion host to query.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.instance_id = instance_id
-        # The region ID of the bastion host to query.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The operation that you want to perform. Set the value to **GetInstanceTwoFactor**.
         self.region_id = region_id
 
     def validate(self):
@@ -7662,16 +7850,9 @@ class GetInstanceTwoFactorResponseBodyConfig(TeaModel):
         skip_two_factor_time: int = None,
         two_factor_methods: List[str] = None,
     ):
-        # Indicates whether two-factor authentication is enabled. Valid values:
-        # 
-        # *   **true**: enabled
-        # *   **false**: disabled
+        # Queries the settings of two-factor authentication on a bastion host.
         self.enable_two_factor = enable_two_factor
-        # The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: `0 to 168`. Unit: hours.
-        # 
-        # >  If 0 is returned, a local user must pass two-factor authentication every time the local user logs on to the bastion host.
         self.skip_two_factor_time = skip_two_factor_time
-        # Indicates one or more methods that are used to send verification codes if two-factor authentication is enabled.
         self.two_factor_methods = two_factor_methods
 
     def validate(self):
@@ -7710,7 +7891,9 @@ class GetInstanceTwoFactorResponseBody(TeaModel):
     ):
         # The settings of two-factor authentication.
         self.config = config
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: `0 to 168`. Unit: hours.
+        # 
+        # >  If 0 is returned, a local user must pass two-factor authentication every time the local user logs on to the bastion host.
         self.request_id = request_id
 
     def validate(self):
@@ -7790,17 +7973,17 @@ class GetUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the Bastionhost instance to which the user to be queried belongs.
+        # The ID of the bastion host on which you want to query the user.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance to which the user to be queried belongs.
+        # The region ID of the bastion host on which you want to query the user.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
-        # The ID of the user to be queried.
+        # The ID of the user.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -7854,17 +8037,19 @@ class GetUserResponseBodyUser(TeaModel):
         self.comment = comment
         # The display name of the user.
         self.display_name = display_name
+        # The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
+        # The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
         # The email address of the user.
         self.email = email
-        # The mobile number of the user.
+        # The mobile phone number of the user.
         self.mobile = mobile
-        # The country where the mobile number of the user is registered. Valid values:
+        # The location in which the mobile number of the user is registered. Valid values:
         # 
         # *   **CN**: the Chinese mainland, whose country calling code is +86
         # *   **HK**: Hong Kong (China), whose country calling code is +852
-        # *   **MO**: Macau (China), whose country calling code is +853
+        # *   **MO**: Macao (China), whose country calling code is +853
         # *   **TW**: Taiwan (China), whose country calling code is +886
         # *   **RU**: Russia, whose country calling code is +7
         # *   **SG**: Singapore, whose country calling code is +65
@@ -7872,16 +8057,20 @@ class GetUserResponseBodyUser(TeaModel):
         # *   **ID**: Indonesia, whose country calling code is +62
         # *   **DE**: Germany, whose country calling code is +49
         # *   **AU**: Australia, whose country calling code is +61
-        # *   **US**: United States, whose country calling code is +1
+        # *   **US**: US, whose country calling code is +1
         # *   **AE**: United Arab Emirates, whose country calling code is +971
-        # *   **JP**: Japan, whose country calling code is +81
-        # *   **GB**: United Kingdom, whose country calling code is +44
+        # *   **JP:** Japan, whose country calling code is +81
+        # *   **GB**: UK, whose country calling code is +44
         # *   **IN**: India, whose country calling code is +91
-        # *   **KR**: South Korea, whose country calling code is +82
+        # *   **KR**: Republic of Korea, whose country calling code is +82
         # *   **PH**: Philippines, whose country calling code is +63
         # *   **CH**: Switzerland, whose country calling code is +41
         # *   **SE**: Sweden, whose country calling code is +46
         self.mobile_country_code = mobile_country_code
+        # Specifies whether password reset is required upon the next logon. Valid values:
+        # 
+        # *   **true**: yes
+        # *   **false**: no
         self.need_reset_password = need_reset_password
         # The source of the user. Valid values:
         # 
@@ -7890,15 +8079,21 @@ class GetUserResponseBodyUser(TeaModel):
         self.source = source
         # The unique ID of the user.
         # 
-        # >  This parameter uniquely identifies a RAM user of the Bastionhost instance. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
+        # > This parameter uniquely identifies a RAM user of the bastion host. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
         self.source_user_id = source_user_id
+        # An array that consists of the details of the two-factor authentication method.
         self.two_factor_methods = two_factor_methods
+        # The two-factor authentication status of the user. Valid values:
+        # 
+        # *   **Global**: The global settings are used.
+        # *   **Disable**: The two-factor authentication is disabled.
+        # *   **Enable**: The two-factor authentication is enabled and the user-specific setting is used.
         self.two_factor_status = two_factor_status
         # The ID of the user.
         self.user_id = user_id
         # The logon name of the user.
         self.user_name = user_name
-        # The statuses of the user.
+        # An array that consists of the details of the user status.
         self.user_state = user_state
 
     def validate(self):
@@ -7985,7 +8180,7 @@ class GetUserResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The information of the user that was queried.
+        # The details of the user that was queried.
         self.user = user
 
     def validate(self):
@@ -8065,17 +8260,13 @@ class GetUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The ID of the Bastionhost instance where you want to query the details of the user group.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # The ID of the request.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to query the details of the user group.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The name of the user group.
         self.region_id = region_id
-        # The ID of the user group to be queried.
+        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -8113,11 +8304,10 @@ class GetUserGroupResponseBodyUserGroup(TeaModel):
         user_group_id: str = None,
         user_group_name: str = None,
     ):
-        # The description of the user group.
+        # GetUserGroup
         self.comment = comment
-        # The ID of the user group.
         self.user_group_id = user_group_id
-        # The name of the user group.
+        # WB662865
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -8154,9 +8344,9 @@ class GetUserGroupResponseBody(TeaModel):
         request_id: str = None,
         user_group: GetUserGroupResponseBodyUserGroup = None,
     ):
-        # The ID of the request.
+        # Queries the details of a specified user group in a specified Bastionhost instance.
         self.request_id = request_id
-        # The details of the user group returned.
+        # GetUserGroup
         self.user_group = user_group
 
     def validate(self):
@@ -8229,6 +8419,229 @@ class GetUserGroupResponse(TeaModel):
         return self
 
 
+class ListApproveCommandsRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListApproveCommandsResponseBodyApproveCommands(TeaModel):
+    def __init__(
+        self,
+        approve_command_id: str = None,
+        asset_account_name: str = None,
+        asset_ip: str = None,
+        asset_name: str = None,
+        client_ip: str = None,
+        client_user: str = None,
+        command: str = None,
+        create_time: str = None,
+        protocol_name: str = None,
+        session_id: str = None,
+        state: str = None,
+    ):
+        self.approve_command_id = approve_command_id
+        self.asset_account_name = asset_account_name
+        self.asset_ip = asset_ip
+        self.asset_name = asset_name
+        self.client_ip = client_ip
+        self.client_user = client_user
+        self.command = command
+        self.create_time = create_time
+        self.protocol_name = protocol_name
+        self.session_id = session_id
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.approve_command_id is not None:
+            result['ApproveCommandId'] = self.approve_command_id
+        if self.asset_account_name is not None:
+            result['AssetAccountName'] = self.asset_account_name
+        if self.asset_ip is not None:
+            result['AssetIp'] = self.asset_ip
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.client_user is not None:
+            result['ClientUser'] = self.client_user
+        if self.command is not None:
+            result['Command'] = self.command
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.protocol_name is not None:
+            result['ProtocolName'] = self.protocol_name
+        if self.session_id is not None:
+            result['SessionId'] = self.session_id
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApproveCommandId') is not None:
+            self.approve_command_id = m.get('ApproveCommandId')
+        if m.get('AssetAccountName') is not None:
+            self.asset_account_name = m.get('AssetAccountName')
+        if m.get('AssetIp') is not None:
+            self.asset_ip = m.get('AssetIp')
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('ClientUser') is not None:
+            self.client_user = m.get('ClientUser')
+        if m.get('Command') is not None:
+            self.command = m.get('Command')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('ProtocolName') is not None:
+            self.protocol_name = m.get('ProtocolName')
+        if m.get('SessionId') is not None:
+            self.session_id = m.get('SessionId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ListApproveCommandsResponseBody(TeaModel):
+    def __init__(
+        self,
+        approve_commands: List[ListApproveCommandsResponseBodyApproveCommands] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.approve_commands = approve_commands
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.approve_commands:
+            for k in self.approve_commands:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ApproveCommands'] = []
+        if self.approve_commands is not None:
+            for k in self.approve_commands:
+                result['ApproveCommands'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.approve_commands = []
+        if m.get('ApproveCommands') is not None:
+            for k in m.get('ApproveCommands'):
+                temp_model = ListApproveCommandsResponseBodyApproveCommands()
+                self.approve_commands.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListApproveCommandsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListApproveCommandsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListApproveCommandsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListHostAccountsRequest(TeaModel):
     def __init__(
         self,
@@ -8240,17 +8653,25 @@ class ListHostAccountsRequest(TeaModel):
         protocol_name: str = None,
         region_id: str = None,
     ):
-        # The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
+        # Indicates whether a password is configured for the host account.
+        # 
+        # Valid values:
+        # 
+        # *   true: A password is configured for the host account.
+        # *   false: No passwords are configured for the host account.
         self.host_account_name = host_account_name
-        # The ID of the specified host whose accounts you want to query.
+        # The protocol used by the host whose accounts you want to query.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # Valid values:
+        # 
+        # *   SSH
+        # *   RDP
         self.host_id = host_id
-        # The ID of the bastion host in which you want to query accounts of the specified host.
-        # 
-        # >  You can call the DescribeInstances operation to query the ID of the bastion host.
+        # The ID of the shared key.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
+        # The operation that you want to perform.
+        # 
+        # Set the value to **ListHostAccounts**.
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
@@ -8258,16 +8679,11 @@ class ListHostAccountsRequest(TeaModel):
         # 
         # >  We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The protocol used by the host whose accounts you want to query.
-        # 
-        # Valid values:
-        # 
-        # *   SSH
-        # *   RDP
+        # The name of the host account that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
         self.protocol_name = protocol_name
-        # The region ID of the bastion host in which you want to query accounts of the specified host.
+        # The ID of the specified host whose accounts you want to query.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
         self.region_id = region_id
 
     def validate(self):
@@ -8326,31 +8742,23 @@ class ListHostAccountsResponseBodyHostAccounts(TeaModel):
         private_key_fingerprint: str = None,
         protocol_name: str = None,
     ):
-        # Indicates whether a password is configured for the host account.
-        # 
-        # Valid values:
-        # 
-        # *   true: A password is configured for the host account.
-        # *   false: No passwords are configured for the host account.
-        self.has_password = has_password
-        # The ID of the host account.
-        self.host_account_id = host_account_id
-        # The name of the host account.
-        self.host_account_name = host_account_name
-        # The ID of the host.
-        self.host_id = host_id
-        # The ID of the shared key.
-        self.host_share_key_id = host_share_key_id
-        # The name of the shared key.
-        self.host_share_key_name = host_share_key_name
         # The fingerprint of the private key for the host account.
-        self.private_key_fingerprint = private_key_fingerprint
+        self.has_password = has_password
+        # The ID of the request.
+        self.host_account_id = host_account_id
+        # The name of the shared key.
+        self.host_account_name = host_account_name
+        self.host_id = host_id
+        self.host_share_key_id = host_share_key_id
+        self.host_share_key_name = host_share_key_name
         # The protocol that is used by the host.
         # 
         # Valid values:
         # 
         # *   SSH
         # *   RDP
+        self.private_key_fingerprint = private_key_fingerprint
+        # The number of the page to return. Default value: **1**.
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -8408,11 +8816,13 @@ class ListHostAccountsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # An array that consists of the queried host accounts.
+        # The ID of the host account.
         self.host_accounts = host_accounts
-        # The ID of the request.
+        # An array that consists of the queried host accounts.
         self.request_id = request_id
-        # The total number of host accounts that are queried.
+        # The ID of the bastion host in which you want to query accounts of the specified host.
+        # 
+        # >  You can call the DescribeInstances operation to query the ID of the bastion host.
         self.total_count = total_count
 
     def validate(self):
@@ -8565,7 +8975,7 @@ class ListHostAccountsForHostShareKeyResponseBodyHostAccounts(TeaModel):
         self.host_id = host_id
         # The ID of the host account.
         self.hosts_account_id = hosts_account_id
-        # The O&M protocol.
+        # The O\&M protocol.
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -8705,31 +9115,23 @@ class ListHostAccountsForUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The name of the host account that you want to query. Exact match is supported.
-        self.host_account_name = host_account_name
-        # The ID of the host for which you want to query the host accounts that the user is authorized to manage.
-        # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-        self.host_id = host_id
-        # The ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-        self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
-        self.page_number = page_number
-        # The number of entries to return on each page.
-        # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
-        self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-        self.region_id = region_id
+        self.host_account_name = host_account_name
+        # The ID of the host for which the host accounts were queried.
+        self.host_id = host_id
+        # The total number of host accounts returned.
+        self.instance_id = instance_id
         # The ID of the user for which you want to query authorized host accounts.
         # 
         # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
+        self.page_number = page_number
+        # The name of the host account that you want to query. Exact match is supported.
+        self.page_size = page_size
+        # The name of the host account.
+        self.region_id = region_id
+        # The region ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.user_id = user_id
 
     def validate(self):
@@ -8785,21 +9187,23 @@ class ListHostAccountsForUserResponseBodyHostAccounts(TeaModel):
         is_authorized: bool = None,
         protocol_name: str = None,
     ):
-        # The ID of the host account.
-        self.host_account_id = host_account_id
-        # The name of the host account.
-        self.host_account_name = host_account_name
-        # The ID of the host for which the host accounts were queried.
-        self.host_id = host_id
-        # Indicates whether the user is authorized to manage the host account. Valid values:
-        # 
-        # *   **true**: The user is authorized to manage the host account.
-        # *   **false**: The user is not authorized to manage the host account.
-        self.is_authorized = is_authorized
         # The protocol that is used by the host account. Valid values:
         # 
         # *   **SSH**\
         # *   **RDP**\
+        self.host_account_id = host_account_id
+        # The ID of the host account.
+        self.host_account_name = host_account_name
+        # The ID of the request.
+        self.host_id = host_id
+        # The ID of the host for which you want to query the host accounts that the user is authorized to manage.
+        # 
+        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        self.is_authorized = is_authorized
+        # Indicates whether the user is authorized to manage the host account. Valid values:
+        # 
+        # *   **true**: The user is authorized to manage the host account.
+        # *   **false**: The user is not authorized to manage the host account.
         self.protocol_name = protocol_name
 
     def validate(self):
@@ -8847,9 +9251,15 @@ class ListHostAccountsForUserResponseBody(TeaModel):
     ):
         # The host accounts returned.
         self.host_accounts = host_accounts
-        # The ID of the request.
+        # The ID of the Bastionhost instance where you want to query the host accounts that the user is authorized to manage on the host.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
         self.request_id = request_id
-        # The total number of host accounts returned.
+        # The number of entries to return on each page.
+        # 
+        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
+        # 
+        # >  We recommend that you do not leave the PageSize parameter empty.
         self.total_count = total_count
 
     def validate(self):
@@ -8945,29 +9355,28 @@ class ListHostAccountsForUserGroupRequest(TeaModel):
     ):
         # The name of the host account that you want to query. Exact match is supported.
         self.host_account_name = host_account_name
-        # The ID of the host for which you want to query the host accounts that the user group is authorized to manage.
+        # The ID of the host to query.
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # > You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
         self.host_id = host_id
-        # The ID of the Bastionhost instance where you want to query the host accounts that the user group is authorized to manage on the host.
+        # The ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries to return on each page.\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query the host accounts that the user group is authorized to manage on the host.
+        # The region ID of the bastion host on which you want to query the host accounts to be managed by the specified user group on the specified host.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user group for which you want to query authorized host accounts.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -9031,10 +9440,10 @@ class ListHostAccountsForUserGroupResponseBodyHostAccounts(TeaModel):
         self.host_id = host_id
         # Indicates whether the user group is authorized to manage the host account. Valid values:
         # 
-        # *   **true**: The user group is authorized to manage the host account.
-        # *   **false**: The user group is not authorized to manage the host account.
+        # *   **true**: yes
+        # *   **false**: no
         self.is_authorized = is_authorized
-        # The protocol that is used by the host account. Valid values:
+        # The protocol that is used by the host. Valid values:
         # 
         # *   **SSH**\
         # *   **RDP**\
@@ -9083,11 +9492,11 @@ class ListHostAccountsForUserGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The host accounts returned.
+        # An array that consists of the queried host accounts.
         self.host_accounts = host_accounts
         # The ID of the request.
         self.request_id = request_id
-        # The total number of host accounts returned.
+        # The total number of host accounts that were queried.
         self.total_count = total_count
 
     def validate(self):
@@ -9180,19 +9589,19 @@ class ListHostGroupAccountNamesForUserRequest(TeaModel):
     ):
         # The ID of the host group.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
         self.host_group_id = host_group_id
-        # The ID of the Bastionhost instance where you want to query the host account names that the user is authorized to manage in a specified host group.
+        # The ID of the bastion host to which the user belongs.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to query the host account names that the user is authorized to manage in a specified host group.
+        # The region ID of the bastion host to which the user belongs.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user.
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -9233,7 +9642,7 @@ class ListHostGroupAccountNamesForUserResponseBody(TeaModel):
         host_account_names: List[str] = None,
         request_id: str = None,
     ):
-        # The names of host accounts returned.
+        # An array that consists of the names of host accounts.
         self.host_account_names = host_account_names
         # The ID of the request.
         self.request_id = request_id
@@ -9314,21 +9723,15 @@ class ListHostGroupAccountNamesForUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The ID of the host group.
-        # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # WB662865
         self.host_group_id = host_group_id
-        # The ID of the Bastionhost instance where you want to query the host account names that the user group is authorized to manage in a specified host group.
+        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to query the host account names that the user group is authorized to manage in a specified host group.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # Queries the names of the host accounts that a specified user group is authorized to manage in a specified host group.
         self.region_id = region_id
-        # The ID of the user group.
-        # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # ListHostGroupAccountNamesForUserGroup
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -9369,9 +9772,8 @@ class ListHostGroupAccountNamesForUserGroupResponseBody(TeaModel):
         host_account_names: List[str] = None,
         request_id: str = None,
     ):
-        # The names of host accounts returned.
         self.host_account_names = host_account_names
-        # The ID of the request.
+        # ListHostGroupAccountNamesForUserGroup
         self.request_id = request_id
 
     def validate(self):
@@ -9453,21 +9855,20 @@ class ListHostGroupsRequest(TeaModel):
     ):
         # The name of the host group that you want to query. Only exact match is supported.
         self.host_group_name = host_group_name
-        # The ID of the Bastionhost instance where you want to query host groups.
+        # The ID of the bastion host in which you want to query the host group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries to return on each page.\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page by default.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query host groups.
+        # The region ID of the bastion host in which you want to query the host group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -9562,7 +9963,7 @@ class ListHostGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The host groups returned.
+        # An array that consists of the host groups.
         self.host_groups = host_groups
         # The ID of the request.
         self.request_id = request_id
@@ -9660,32 +10061,27 @@ class ListHostGroupsForUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The name of the host group that you want to query. The name can be up to 128 characters in length. Only exact match is supported.
+        # The ID of the request.
         self.host_group_name = host_group_name
-        # The ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # The host groups returned.
         self.instance_id = instance_id
-        # The category of the host group that you want to query. Valid values:
-        # 
-        # *   **Authorized**: Query the host groups that the user is authorized to manage. This is the default value.
-        # *   **Unauthorized**: Query the host groups that the user is not authorized to manage.
-        self.mode = mode
-        # The number of the page to return. Default value: **1**.
-        self.page_number = page_number
         # The number of entries to return on each page.
         # 
         # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
         # 
         # >  We recommend that you do not leave the PageSize parameter empty.
-        self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-        self.region_id = region_id
+        self.mode = mode
+        # The ID of the host group.
+        self.page_number = page_number
         # The ID of the user.
         # 
         # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
+        self.page_size = page_size
+        # The number of the page to return. Default value: **1**.
+        self.region_id = region_id
+        # The ID of the Bastionhost instance where you want to query the host groups that the user is authorized or not authorized to manage.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
         self.user_id = user_id
 
     def validate(self):
@@ -9739,11 +10135,10 @@ class ListHostGroupsForUserResponseBodyHostGroups(TeaModel):
         host_group_id: str = None,
         host_group_name: str = None,
     ):
-        # The description of the host group.
+        # ListHostGroupsForUser
         self.comment = comment
-        # The ID of the host group.
+        # WB662865
         self.host_group_id = host_group_id
-        # The name of the host group.
         self.host_group_name = host_group_name
 
     def validate(self):
@@ -9781,11 +10176,13 @@ class ListHostGroupsForUserResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The host groups returned.
+        # ListHostGroupsForUser
         self.host_groups = host_groups
-        # The ID of the request.
+        # Queries the host groups that a specified user is authorized or not authorized to manage.
         self.request_id = request_id
-        # The total number of host groups returned.
+        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
+        # 
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.total_count = total_count
 
     def validate(self):
@@ -9881,30 +10278,29 @@ class ListHostGroupsForUserGroupRequest(TeaModel):
     ):
         # The name of the host group that you want to query. Only exact match is supported.
         self.host_group_name = host_group_name
-        # The ID of the Bastionhost instance where you want to query the host groups that the user group is authorized or not authorized to manage.
+        # The ID of the bastion host to which the user group belongs.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The category of the host group that you want to query. Valid values:
+        # Specifies the category of the host group that you want to query. Valid values:
         # 
-        # *   **Authorized**: Query the host groups that the user group is authorized to manage. This is the default value.
-        # *   **Unauthorized**: Query the host groups that the user group is not authorized to manage.
+        # *   **Authorized**: queries the host groups that the user group is authorized to manage. This is the default value.
+        # *   **Unauthorized**: queries the host groups that the user group is not authorized to manage.
         self.mode = mode
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries to return on each page.\
+        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
         # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query the host groups that the user group is authorized or not authorized to manage.
+        # The region ID of the bastion host to which the user group belongs.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user group.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -10301,17 +10697,17 @@ class ListHostsRequest(TeaModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
+        # The address of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
         self.host_address = host_address
-        # The ID of the host group to which the host that you want to query belongs.
+        # The ID of the host group to which the host to be queried belongs.
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # > You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
         self.host_group_id = host_group_id
         # The name of the host that you want to query. Only exact match is supported.
         self.host_name = host_name
-        # The ID of the Bastionhost instance where you want to query hosts.
+        # The ID of the bastion host on which you want to query hosts.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The operating system of the host that you want to query. Valid values:
         # 
@@ -10320,29 +10716,26 @@ class ListHostsRequest(TeaModel):
         self.ostype = ostype
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries to return on each page. Default value: **10**.
         # 
-        # The value of the PageSize parameter must not exceed 100. Default value: 20. If you leave the PageSize parameter empty, 20 entries are returned on each page by default.
-        # 
-        # >  We recommend that you do not leave the PageSize parameter empty.
+        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query hosts.
+        # The region ID of the bastion host on which you want to query hosts.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The source of the host that you want to query. Valid values:
         # 
-        # *   **Local**: an on-premises host
+        # *   **Local**: a host in a data center
         # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in a dedicated cluster
+        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
         self.source = source
-        # The ID of the ECS instance or dedicated cluster host that you want to query. Only exact match is supported.
+        # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster that you want to query. Only exact match is supported.
         self.source_instance_id = source_instance_id
         # The status of the host that you want to query. Valid values:
         # 
-        # - **Normal**: The host is normal.
-        # 
-        # - **Release**: The host is released.
+        # *   **Normal**: normal
+        # *   **Release**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -10420,22 +10813,22 @@ class ListHostsResponseBodyHosts(TeaModel):
         source_instance_id: str = None,
         source_instance_state: str = None,
     ):
-        # The endpoint type of the host. Valid values:
+        # The address type of the host. Valid values:
         # 
-        # *   **Public**: a public endpoint
-        # *   **Private**: an internal endpoint
+        # *   **Public**: a public address
+        # *   **Private**: a private address
         self.active_address_type = active_address_type
         # The description of the host.
         self.comment = comment
-        # The number of host accounts of the host.
+        # The number of host accounts.
         self.host_account_count = host_account_count
         # The ID of the host.
         self.host_id = host_id
         # The name of the host.
         self.host_name = host_name
-        # The internal endpoint of the host. You can set this parameter to a domain name or an IP address.
+        # The private address of the host. The value is a domain name or an IP address.
         self.host_private_address = host_private_address
-        # The public endpoint of the host. You can set this parameter to a domain name or an IP address.
+        # The public address of the host. The value is a domain name or an IP address.
         self.host_public_address = host_public_address
         # The operating system of the host. Valid values:
         # 
@@ -10444,19 +10837,18 @@ class ListHostsResponseBodyHosts(TeaModel):
         self.ostype = ostype
         # The source of the host. Valid values:
         # 
-        # *   **Local**: an on-premises host
-        # *   **Ecs**: an Elastic Compute Service (ECS) instance
-        # *   **Rds**: a host in a dedicated cluster
+        # *   **Local**: a host in a data center
+        # *   **Ecs**: an ECS instance
+        # *   **Rds**: a host in an ApsaraDB MyBase dedicated cluster
         self.source = source
-        # The ID of the ECS instance or dedicated cluster host that was queried.
+        # The ID of the ECS instance or the host in an ApsaraDB MyBase dedicated cluster.
         # 
-        # >  No value is returned for this parameter if the **Source** parameter is set to **Local**.
+        # > No value is returned for this parameter if the **Source** parameter is set to **Local**.
         self.source_instance_id = source_instance_id
         # The status of the host. Valid values:
         # 
-        # - **Normal**: The host is normal.
-        # 
-        # - **Release**: The host is released.
+        # *   **Normal**: normal
+        # *   **Release**: released
         self.source_instance_state = source_instance_state
 
     def validate(self):
@@ -10526,11 +10918,11 @@ class ListHostsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The hosts that were queried.
+        # An array that consists of the hosts returned.
         self.hosts = hosts
-        # The ID of the request.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The total number of hosts that were queried.
+        # The total number of hosts returned.
         self.total_count = total_count
 
     def validate(self):
@@ -10626,25 +11018,31 @@ class ListHostsForUserRequest(TeaModel):
         region_id: str = None,
         user_id: str = None,
     ):
-        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
-        self.host_address = host_address
-        # The name of the host that you want to query. Only exact match is supported.
-        self.host_name = host_name
-        # The ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-        self.instance_id = instance_id
-        # The category of the host that you want to query. Valid values:
-        # 
-        # *   **Authorized**: Query the hosts that the user is authorized to manage. This is the default value.
-        # *   **Unauthorized**: Query the hosts that the user is not authorized to manage.
-        self.mode = mode
         # The operating system of the host that you want to query. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
+        self.host_address = host_address
+        # The ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        self.host_name = host_name
+        # The category of the host that you want to query. Valid values:
+        # 
+        # *   **Authorized**: Query the hosts that the user is authorized to manage. This is the default value.
+        # *   **Unauthorized**: Query the hosts that the user is not authorized to manage.
+        self.instance_id = instance_id
+        # The operating system of the host. Valid values:
+        # 
+        # *   **Linux**\
+        # *   **Windows**\
+        self.mode = mode
+        # The internal endpoint of the host. The value is a domain name or an IP address.
         self.ostype = ostype
-        # The number of the page to return. Default value: 1.
+        # The endpoint type of the host. Valid values:
+        # 
+        # *   **Public**: a public endpoint
+        # *   **Private**: an internal endpoint
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
@@ -10652,13 +11050,9 @@ class ListHostsForUserRequest(TeaModel):
         # 
         # >  We recommend that you do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query the hosts that the user is authorized or not authorized to manage.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
         self.region_id = region_id
-        # The ID of the user.
-        # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
+        # The number of the page to return. Default value: 1.
         self.user_id = user_id
 
     def validate(self):
@@ -10724,25 +11118,20 @@ class ListHostsForUserResponseBodyHosts(TeaModel):
         host_public_address: str = None,
         ostype: str = None,
     ):
-        # The endpoint type of the host. Valid values:
+        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
         # 
-        # *   **Public**: a public endpoint
-        # *   **Private**: an internal endpoint
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.active_address_type = active_address_type
-        # The description of the host.
+        # The ID of the request.
         self.comment = comment
-        # The ID of the host.
         self.host_id = host_id
-        # The name of the host.
+        # ListHostsForUser
         self.host_name = host_name
-        # The internal endpoint of the host. The value is a domain name or an IP address.
+        # WB662865
         self.host_private_address = host_private_address
-        # The public endpoint of the host. The value is a domain name or an IP address.
+        # Queries the hosts that a specified user is authorized or not authorized to manage.
         self.host_public_address = host_public_address
-        # The operating system of the host. Valid values:
-        # 
-        # *   **Linux**\
-        # *   **Windows**\
+        # ListHostsForUser
         self.ostype = ostype
 
     def validate(self):
@@ -10796,11 +11185,13 @@ class ListHostsForUserResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The hosts returned.
+        # The ID of the user.
+        # 
+        # >  You can call the [ListUsers](~~204522~~) operation to query the ID of the user ID.
         self.hosts = hosts
-        # The ID of the request.
+        # The hosts returned.
         self.request_id = request_id
-        # The total number of hosts returned.
+        # The public endpoint of the host. The value is a domain name or an IP address.
         self.total_count = total_count
 
     def validate(self):
@@ -10896,25 +11287,31 @@ class ListHostsForUserGroupRequest(TeaModel):
         region_id: str = None,
         user_group_id: str = None,
     ):
-        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
-        self.host_address = host_address
-        # The name of the host that you want to query. Only exact match is supported.
-        self.host_name = host_name
-        # The ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-        self.instance_id = instance_id
-        # The category of the host that you want to query. Valid values:
-        # 
-        # *   **Authorized**: Query the hosts that the user group is authorized to manage. This is the default value.
-        # *   **Unauthorized**: Query the hosts that the user group is not authorized to manage.
-        self.mode = mode
         # The operating system of the host that you want to query. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
+        self.host_address = host_address
+        # The ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        self.host_name = host_name
+        # The category of the host that you want to query. Valid values:
+        # 
+        # *   **Authorized**: Query the hosts that the user group is authorized to manage. This is the default value.
+        # *   **Unauthorized**: Query the hosts that the user group is not authorized to manage.
+        self.instance_id = instance_id
+        # The operating system of the host. Valid values:
+        # 
+        # *   **Linux**\
+        # *   **Windows**\
+        self.mode = mode
+        # The internal endpoint of the host. The value is a domain name or an IP address.
         self.ostype = ostype
-        # The number of the page to return. Default value: 1.
+        # The endpoint type of the host. Valid values:
+        # 
+        # *   **Public**: a public endpoint
+        # *   **Private**: an internal endpoint
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
@@ -10922,13 +11319,9 @@ class ListHostsForUserGroupRequest(TeaModel):
         # 
         # >  We recommend that you do not leave the PageSize parameter empty.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance where you want to query the hosts that the user group is authorized or not authorized to manage.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The endpoint of the host that you want to query. You can set this parameter to a domain name or an IP address. Only exact match is supported.
         self.region_id = region_id
-        # The ID of the user group for which you want to query hosts.
-        # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # The number of the page to return. Default value: 1.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -10994,25 +11387,20 @@ class ListHostsForUserGroupResponseBodyHosts(TeaModel):
         host_public_address: str = None,
         ostype: str = None,
     ):
-        # The endpoint type of the host. Valid values:
+        # All Bastionhost API requests must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
         # 
-        # *   **Public**: a public endpoint
-        # *   **Private**: an internal endpoint
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.active_address_type = active_address_type
-        # The description of the host.
+        # The ID of the request.
         self.comment = comment
-        # The ID of the host.
         self.host_id = host_id
-        # The name of the host.
+        # ListHostsForUserGroup
         self.host_name = host_name
-        # The internal endpoint of the host. The value is a domain name or an IP address.
+        # WB662865
         self.host_private_address = host_private_address
-        # The public endpoint of the host. The value is a domain name or an IP address.
+        # Queries the hosts that a specified user group is authorized or not authorized to manage.
         self.host_public_address = host_public_address
-        # The operating system of the host. Valid values:
-        # 
-        # *   **Linux**\
-        # *   **Windows**\
+        # ListHostsForUserGroup
         self.ostype = ostype
 
     def validate(self):
@@ -11066,11 +11454,13 @@ class ListHostsForUserGroupResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The hosts returned.
+        # The ID of the user group for which you want to query hosts.
+        # 
+        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
         self.hosts = hosts
-        # The ID of the request.
+        # The hosts returned.
         self.request_id = request_id
-        # The total number of hosts returned.
+        # The public endpoint of the host. The value is a domain name or an IP address.
         self.total_count = total_count
 
     def validate(self):
@@ -11153,6 +11543,259 @@ class ListHostsForUserGroupResponse(TeaModel):
         return self
 
 
+class ListOperationTicketsRequest(TeaModel):
+    def __init__(
+        self,
+        asset_address: str = None,
+        instance_id: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        region_id: str = None,
+    ):
+        self.asset_address = asset_address
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_address is not None:
+            result['AssetAddress'] = self.asset_address
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetAddress') is not None:
+            self.asset_address = m.get('AssetAddress')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListOperationTicketsResponseBodyOperationTickets(TeaModel):
+    def __init__(
+        self,
+        apply_user_id: str = None,
+        apply_username: str = None,
+        asset_account_id: str = None,
+        asset_account_name: str = None,
+        asset_address: str = None,
+        asset_id: str = None,
+        asset_name: str = None,
+        asset_network_domain_id: str = None,
+        asset_os: str = None,
+        asset_source: str = None,
+        asset_source_instance_id: str = None,
+        created_time: int = None,
+        operation_ticket_id: str = None,
+        protocol_name: str = None,
+        state: str = None,
+    ):
+        self.apply_user_id = apply_user_id
+        self.apply_username = apply_username
+        self.asset_account_id = asset_account_id
+        self.asset_account_name = asset_account_name
+        self.asset_address = asset_address
+        self.asset_id = asset_id
+        self.asset_name = asset_name
+        self.asset_network_domain_id = asset_network_domain_id
+        self.asset_os = asset_os
+        self.asset_source = asset_source
+        self.asset_source_instance_id = asset_source_instance_id
+        self.created_time = created_time
+        self.operation_ticket_id = operation_ticket_id
+        self.protocol_name = protocol_name
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.apply_user_id is not None:
+            result['ApplyUserId'] = self.apply_user_id
+        if self.apply_username is not None:
+            result['ApplyUsername'] = self.apply_username
+        if self.asset_account_id is not None:
+            result['AssetAccountId'] = self.asset_account_id
+        if self.asset_account_name is not None:
+            result['AssetAccountName'] = self.asset_account_name
+        if self.asset_address is not None:
+            result['AssetAddress'] = self.asset_address
+        if self.asset_id is not None:
+            result['AssetId'] = self.asset_id
+        if self.asset_name is not None:
+            result['AssetName'] = self.asset_name
+        if self.asset_network_domain_id is not None:
+            result['AssetNetworkDomainId'] = self.asset_network_domain_id
+        if self.asset_os is not None:
+            result['AssetOs'] = self.asset_os
+        if self.asset_source is not None:
+            result['AssetSource'] = self.asset_source
+        if self.asset_source_instance_id is not None:
+            result['AssetSourceInstanceId'] = self.asset_source_instance_id
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.operation_ticket_id is not None:
+            result['OperationTicketId'] = self.operation_ticket_id
+        if self.protocol_name is not None:
+            result['ProtocolName'] = self.protocol_name
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplyUserId') is not None:
+            self.apply_user_id = m.get('ApplyUserId')
+        if m.get('ApplyUsername') is not None:
+            self.apply_username = m.get('ApplyUsername')
+        if m.get('AssetAccountId') is not None:
+            self.asset_account_id = m.get('AssetAccountId')
+        if m.get('AssetAccountName') is not None:
+            self.asset_account_name = m.get('AssetAccountName')
+        if m.get('AssetAddress') is not None:
+            self.asset_address = m.get('AssetAddress')
+        if m.get('AssetId') is not None:
+            self.asset_id = m.get('AssetId')
+        if m.get('AssetName') is not None:
+            self.asset_name = m.get('AssetName')
+        if m.get('AssetNetworkDomainId') is not None:
+            self.asset_network_domain_id = m.get('AssetNetworkDomainId')
+        if m.get('AssetOs') is not None:
+            self.asset_os = m.get('AssetOs')
+        if m.get('AssetSource') is not None:
+            self.asset_source = m.get('AssetSource')
+        if m.get('AssetSourceInstanceId') is not None:
+            self.asset_source_instance_id = m.get('AssetSourceInstanceId')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('OperationTicketId') is not None:
+            self.operation_ticket_id = m.get('OperationTicketId')
+        if m.get('ProtocolName') is not None:
+            self.protocol_name = m.get('ProtocolName')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class ListOperationTicketsResponseBody(TeaModel):
+    def __init__(
+        self,
+        operation_tickets: List[ListOperationTicketsResponseBodyOperationTickets] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.operation_tickets = operation_tickets
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.operation_tickets:
+            for k in self.operation_tickets:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OperationTickets'] = []
+        if self.operation_tickets is not None:
+            for k in self.operation_tickets:
+                result['OperationTickets'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.operation_tickets = []
+        if m.get('OperationTickets') is not None:
+            for k in m.get('OperationTickets'):
+                temp_model = ListOperationTicketsResponseBodyOperationTickets()
+                self.operation_tickets.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListOperationTicketsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOperationTicketsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOperationTicketsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagKeysRequest(TeaModel):
     def __init__(
         self,
@@ -11165,11 +11808,11 @@ class ListTagKeysRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The region ID of the Bastionhost instance.
+        # The region ID of the bastion host.
         self.region_id = region_id
         # The type of the resource.
         # 
-        # Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+        # Set the value to INSTANCE, which indicates that the resource is a bastion host.
         self.resource_type = resource_type
 
     def validate(self):
@@ -11210,7 +11853,7 @@ class ListTagKeysResponseBodyTagKeys(TeaModel):
         tag_count: int = None,
         tag_key: str = None,
     ):
-        # The number of times the tag key was used.
+        # The total number of tag keys.
         self.tag_count = tag_count
         # The name of the tag key.
         self.tag_key = tag_key
@@ -11248,13 +11891,13 @@ class ListTagKeysResponseBody(TeaModel):
         tag_keys: List[ListTagKeysResponseBodyTagKeys] = None,
         total_count: int = None,
     ):
-        # The number of the returned page.
+        # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned per page.
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The information of tags.
+        # An array that consists of tags.
         self.tag_keys = tag_keys
         # The total number of tags returned.
         self.total_count = total_count
@@ -11353,13 +11996,11 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
-        # 
-        # Valid values of N: 1 to 20.
+        # The ID of the request.
         self.key = key
-        # The value of tag N.
+        # The type of the resource.
         # 
-        # Valid values of N: 1 to 20.
+        # The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
         self.value = value
 
     def validate(self):
@@ -11395,17 +12036,19 @@ class ListTagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[ListTagResourcesRequestTag] = None,
     ):
-        # The token for starting the next query.
-        self.next_token = next_token
         # The region ID of the Bastionhost instance.
+        self.next_token = next_token
+        # The ID of the instance.
         self.region_id = region_id
-        # The IDs of instances. The ID is up to 20.
+        # The value of the tag.
         self.resource_id = resource_id
-        # The type of the resource.
+        # The operation that you want to perform.
         # 
-        # Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+        # Set the value to **ListTagResources**.
         self.resource_type = resource_type
-        # The tags.
+        # The key of tag N.
+        # 
+        # Valid values of N: 1 to 20.
         self.tag = tag
 
     def validate(self):
@@ -11460,15 +12103,9 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The ID of the instance.
         self.resource_id = resource_id
-        # The type of the resource.
-        # 
-        # The returned value is INSTANCE, which indicates that the resource is a Bastionhost instance.
         self.resource_type = resource_type
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -11510,13 +12147,11 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
-        # The token for starting the next query.
+        # Queries the tags bound to one or more Bastionhost instances.
         self.next_token = next_token
-        # The ID of the request.
+        # ListTagResources
         self.request_id = request_id
-        # The information about Bastionhost instances and the tags bound to Bastionhost instances.
-        # 
-        # The following information is included: instance ID, resource type, tag key, and tag value.
+        # 58928
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -11608,22 +12243,10 @@ class ListUserGroupsRequest(TeaModel):
         region_id: str = None,
         user_group_name: str = None,
     ):
-        # The ID of the bastion host on which you want to query user groups.
-        # 
-        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page.\
-        # Maximum value: 100. Default value: 20. If you leave this parameter empty, 20 entries are returned on each page.
-        # 
-        # > We recommend that you do not leave this parameter empty.
         self.page_size = page_size
-        # The region ID of the bastion host on which you want to query user groups.
-        # 
-        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
-        # The name of the user group that you want to query. Only exact match is supported.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -11670,13 +12293,9 @@ class ListUserGroupsResponseBodyUserGroups(TeaModel):
         user_group_id: str = None,
         user_group_name: str = None,
     ):
-        # The description of the user group.
         self.comment = comment
-        # The number of users in the user group.
         self.member_count = member_count
-        # The ID of the user group.
         self.user_group_id = user_group_id
-        # The name of the user group.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -11718,11 +12337,8 @@ class ListUserGroupsResponseBody(TeaModel):
         total_count: int = None,
         user_groups: List[ListUserGroupsResponseBodyUserGroups] = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The total number of user groups returned.
         self.total_count = total_count
-        # The user groups returned.
         self.user_groups = user_groups
 
     def validate(self):
@@ -12158,7 +12774,9 @@ class ListUsersResponseBodyUsers(TeaModel):
         self.comment = comment
         # The display name of the user.
         self.display_name = display_name
+        # The end of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_end_time = effective_end_time
+        # The beginning of the validity period of the user. The value is a UNIX timestamp. Unit: seconds.
         self.effective_start_time = effective_start_time
         # The email address of the user.
         self.email = email
@@ -12186,6 +12804,10 @@ class ListUsersResponseBodyUsers(TeaModel):
         # *   **CH**: Switzerland, whose country calling code is +41
         # *   **SE**: Sweden, whose country calling code is +46
         self.mobile_country_code = mobile_country_code
+        # Specifies whether password reset is required upon the next logon. Valid values:
+        # 
+        # - true: yes
+        # - false: no
         self.need_reset_password = need_reset_password
         # The source of the user. Valid values:
         # 
@@ -12196,7 +12818,13 @@ class ListUsersResponseBodyUsers(TeaModel):
         # 
         # >  This parameter uniquely identifies a RAM user of the Bastionhost instance. A value is returned for this parameter if the **Source** parameter is set to **Ram**. No value is returned for this parameter if the **Source** parameter is set to **Local**.
         self.source_user_id = source_user_id
+        # The two-factor authentication method.
         self.two_factor_methods = two_factor_methods
+        # The two-factor authentication status of the user. Valid values:
+        # 
+        # *   **Global:** follows the global settings
+        # *   **Disable:** disables two-factor authentication
+        # *   **Enable:** enable two-factor authentication and follows settings of the single user
         self.two_factor_status = two_factor_status
         # The ID of the user.
         self.user_id = user_id
@@ -12384,15 +13012,15 @@ class LockUsersRequest(TeaModel):
     ):
         # The ID of the bastion host to which the users to be locked belong.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host to which the users to be locked belong.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user to be locked. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
         self.user_ids = user_ids
 
     def validate(self):
@@ -12438,11 +13066,15 @@ class LockUsersResponseBodyResults(TeaModel):
         # 
         # *   **INVALID_ARGUMENT**: A request parameter is invalid.
         # 
-        # > Make sure that the request parameters are valid and call the operation again.
+        #     **\
+        # 
+        #     **Note**Make sure that the request parameters are valid and call the operation again.
         # 
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
         # 
-        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        #     **\
+        # 
+        #     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
         # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
@@ -12578,30 +13210,32 @@ class ModifyHostRequest(TeaModel):
         ostype: str = None,
         region_id: str = None,
     ):
-        # The new description of the host. The value can be up to 500 characters in length.
-        self.comment = comment
-        # The ID of the host.
-        # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
-        self.host_id = host_id
-        # The new name of the host. The name can be up to 128 characters.
-        self.host_name = host_name
         # The new internal endpoint of the host. You can set this parameter to a domain name or an IP address.
-        self.host_private_address = host_private_address
-        # The new public endpoint of the host. You can set this parameter to a domain name or an IP address.
-        self.host_public_address = host_public_address
+        self.comment = comment
         # The ID of the Bastionhost instance where you want to modify the information of the host.
         # 
         # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        self.host_id = host_id
+        # The new name of the host. The name can be up to 128 characters.
+        self.host_name = host_name
+        # The new description of the host. The value can be up to 500 characters in length.
+        self.host_private_address = host_private_address
+        # The region ID of the Bastionhost instance where you want to modify the information of the host.
+        # 
+        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        self.host_public_address = host_public_address
+        # You can call this operation to modify the basic information of an on-premises host, an Elastic Compute Service (ECS) instance, or a host in a dedicated cluster.
+        # 
+        # >  The basic information of ECS instances and hosts in dedicated clusters within your Alibaba Cloud account is synchronized to Bastionhost on a regular basis. After you modify the basic information of an ECS instance or a host in a dedicated cluster, the modification result may be overwritten by the synchronized information.
         self.instance_id = instance_id
+        # The ID of the host.
+        # 
+        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        self.ostype = ostype
         # The new operating system of the host. Valid values:
         # 
         # *   **Linux**\
         # *   **Windows**\
-        self.ostype = ostype
-        # The region ID of the Bastionhost instance where you want to modify the information of the host.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -12738,7 +13372,7 @@ class ModifyHostAccountRequest(TeaModel):
     ):
         # The ID of the host account whose information you want to modify.
         # 
-        # > : You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # > You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
         self.host_account_id = host_account_id
         # The new name of the host account. The name can be up to 128 characters in length.
         self.host_account_name = host_account_name
@@ -12746,21 +13380,21 @@ class ModifyHostAccountRequest(TeaModel):
         self.host_share_key_id = host_share_key_id
         # The ID of the bastion host in which you want to modify the information about the host account.
         # 
-        # > : You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The passphrase of the new private key for the host account.
         # 
-        # > : This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required.
+        # > This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required.
         self.pass_phrase = pass_phrase
         # The new password of the host account.
         self.password = password
         # The new private key of the host account. The value is a Base64-encoded string.
         # 
-        # > : This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required. You can call the [GetHostAccount](~~204391~~) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
+        # > This parameter takes effect only when the protocol of the host is set to SSH. If the protocol of the host is set to RDP, this parameter is not required. You can call the [GetHostAccount](~~204391~~) operation to query the protocol used by the host. You can configure a password and a private key for the host account at the same time. If both a password and a private key are configured for the host account, Bastionhost preferentially uses the private key for logon.
         self.private_key = private_key
-        # The region ID of the bastion host in which you want to modify the information about the host account.
+        # The region ID of the bastion host in which you want to query the details of the host account.
         # 
-        # > : For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
 
     def validate(self):
@@ -12892,21 +13526,21 @@ class ModifyHostGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The new description of the host group. The value can be up to 500 characters in length.
-        self.comment = comment
-        # The ID of the host group that you want to modify.
-        # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
-        self.host_group_id = host_group_id
         # The new name of the host group. The name can be up to 128 characters in length.
-        self.host_group_name = host_group_name
-        # The ID of the Bastionhost instance where you want to modify the information of the host group.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
-        self.instance_id = instance_id
+        self.comment = comment
         # The region ID of the Bastionhost instance where you want to modify the information of the host group.
         # 
         # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        self.host_group_id = host_group_id
+        # The ID of the host group that you want to modify.
+        # 
+        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        self.host_group_name = host_group_name
+        # The ID of the request.
+        self.instance_id = instance_id
+        # The ID of the Bastionhost instance where you want to modify the information of the host group.
+        # 
+        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
         self.region_id = region_id
 
     def validate(self):
@@ -13033,7 +13667,7 @@ class ModifyHostShareKeyRequest(TeaModel):
         self.host_share_key_name = host_share_key_name
         # The ID of the bastion host. You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The password of the private key. The value is a Base64-encoded string.
+        # The passphrase of the private key. The value is a Base64-encoded string.
         self.pass_phrase = pass_phrase
         # The private key. The value is a Base64-encoded string.
         self.private_key = private_key
@@ -13160,22 +13794,16 @@ class ModifyHostsActiveAddressTypeRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The new portal type of the host. Valid values:
-        # 
-        # *   **Public**: public portal
-        # *   **Private**: internal portal
         self.active_address_type = active_address_type
-        # The ID of the host for which you want to change the portal type. The value is a JSON string. You can add up to 100 host IDs.
+        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~148139~~).
         # 
-        # >  You can call the [ListHosts](~~200665~~) operation to query the ID of the host.
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.host_ids = host_ids
-        # The ID of the bastion host for which you want to change the portal type of the host.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to change the portal type of the host.
+        # The operation that you want to perform.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # Set the value to **ModifyHostsActiveAddressType**.
         self.region_id = region_id
 
     def validate(self):
@@ -13217,17 +13845,8 @@ class ModifyHostsActiveAddressTypeResponseBodyResults(TeaModel):
         host_id: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # *   **OK**: The call was successful.
-        # *   **UNEXPECTED**: An unknown error occurred.
-        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
-        # The ID of the host.
         self.host_id = host_id
-        # This parameter is deprecated.
         self.message = message
 
     def validate(self):
@@ -13264,9 +13883,7 @@ class ModifyHostsActiveAddressTypeResponseBody(TeaModel):
         request_id: str = None,
         results: List[ModifyHostsActiveAddressTypeResponseBodyResults] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The result of the call.
         self.results = results
 
     def validate(self):
@@ -13582,8 +14199,8 @@ class ModifyInstanceADAuthServerRequest(TeaModel):
         self.instance_id = instance_id
         # Specifies whether to support SSL. Valid values:
         # 
-        # *   **true**: supports SSL.
-        # *   **false**: does not support SSL.
+        # *   **true**: yes
+        # *   **false**: no
         self.is_ssl = is_ssl
         # The field that is used to indicate the mobile phone number of a user on the AD server.
         self.mobile_mapping = mobile_mapping
@@ -13894,8 +14511,8 @@ class ModifyInstanceLDAPAuthServerRequest(TeaModel):
         self.instance_id = instance_id
         # Specifies whether to support SSL. Valid values:
         # 
-        # *   **true**: supports SSL.
-        # *   **false**: does not support SSL.
+        # *   **true**\
+        # *   **false**\
         self.is_ssl = is_ssl
         # The field that is used to indicate the logon name of a user on the LDAP server.
         self.login_name_mapping = login_name_mapping
@@ -13903,7 +14520,7 @@ class ModifyInstanceLDAPAuthServerRequest(TeaModel):
         self.mobile_mapping = mobile_mapping
         # The field that is used to indicate the name of a user on the LDAP server.
         self.name_mapping = name_mapping
-        # The password of the account that is used for the LDAP server.
+        # The password of the account that is used for the LDAP server. You must configure a password when you configure LDAP authentication. If you leave this parameter empty when you modify the settings of LDAP authentication, the current password is used.
         self.password = password
         # The port that is used to access the LDAP server.
         self.port = port
@@ -14080,7 +14697,7 @@ class ModifyInstanceTwoFactorRequest(TeaModel):
         # 
         # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
-        # The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: 0 to 168. Unit: hours. If you set this parameter to 0, the local user must pass two-factor authentication every time the local user logs on to the bastion host.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.skip_two_factor_time = skip_two_factor_time
         # One or more methods that are used to send a verification code if two-factor authentication is enabled. If you set the EnableTwoFactor parameter to true, you must specify at least one method. Valid values:
         # 
@@ -14130,7 +14747,7 @@ class ModifyInstanceTwoFactorResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # The duration within which two-factor authentication is not required after a local user passes two-factor authentication. Valid values: 0 to 168. Unit: hours. If you set this parameter to 0, the local user must pass two-factor authentication every time the local user logs on to the bastion host.
         self.request_id = request_id
 
     def validate(self):
@@ -14258,7 +14875,10 @@ class ModifyUserRequest(TeaModel):
         # *   **SE:** Sweden, whose country calling code is +46
         # *   **SA:** Saudi Arabia, whose country calling code is +966
         self.mobile_country_code = mobile_country_code
-        # The original password of the user. The password must be 8 to 128 characters in length and must contain lowercase letters, uppercase letters, digits, and special characters.
+        # Specifies whether password reset is required upon the next logon. Valid values:
+        # 
+        # - true: yes
+        # - false: no
         self.need_reset_password = need_reset_password
         # The new password of the user. The password must be 8 to 128 characters in length and must contain lowercase letters, uppercase letters, digits, and special characters.
         self.password = password
@@ -14273,9 +14893,7 @@ class ModifyUserRequest(TeaModel):
         # *   **dingtalk:** DingTalk
         # *   **totp OTP:** time-based one-time password (TOTP) app
         # 
-        # > 
-        # 
-        # *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
+        # > *   When the TwoFactorStatus parameter is set to Enable, you must specify one of the preceding values.
         self.two_factor_methods = two_factor_methods
         # The two-factor authentication status of the user. Valid values:
         # 
@@ -14439,21 +15057,21 @@ class ModifyUserGroupRequest(TeaModel):
         user_group_id: str = None,
         user_group_name: str = None,
     ):
-        # The new description of the user group. The value can be up to 500 characters in length.
+        # The new description of the user group. The description can be up to 500 characters in length.
         self.comment = comment
-        # The ID of the Bastionhost instance where you want to modify the information of the user group.
+        # The ID of the bastion host in which you want to modify the information about the user group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to modify the information of the user group.
+        # The region ID of the bastion host in which you want to modify the information about the user group.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user group that you want to modify.
         # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
+        # > You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
         self.user_group_id = user_group_id
-        # The new name of the user group. The value can be up to 128 characters in length.
+        # The new name of the user group. This name can be up to 128 characters in length.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -14576,11 +15194,11 @@ class MoveResourceGroupRequest(TeaModel):
         self.region_id = region_id
         # The ID of the resource group to which the bastion host is moved.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the resource group ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the resource group ID of the bastion host.
         self.resource_group_id = resource_group_id
         # The ID of the bastion host for which you want to change the resource group.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.resource_id = resource_id
         # The type of the resource. Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
         self.resource_type = resource_type
@@ -14689,6 +15307,226 @@ class MoveResourceGroupResponse(TeaModel):
         return self
 
 
+class RejectApproveCommandRequest(TeaModel):
+    def __init__(
+        self,
+        command_id: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+    ):
+        self.command_id = command_id
+        self.instance_id = instance_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.command_id is not None:
+            result['CommandId'] = self.command_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommandId') is not None:
+            self.command_id = m.get('CommandId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class RejectApproveCommandResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RejectApproveCommandResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RejectApproveCommandResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RejectApproveCommandResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class RejectOperationTicketRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        operation_ticket_id: str = None,
+        region_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.operation_ticket_id = operation_ticket_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.operation_ticket_id is not None:
+            result['OperationTicketId'] = self.operation_ticket_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OperationTicketId') is not None:
+            self.operation_ticket_id = m.get('OperationTicketId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class RejectOperationTicketResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class RejectOperationTicketResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: RejectOperationTicketResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = RejectOperationTicketResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class RemoveHostsFromGroupRequest(TeaModel):
     def __init__(
         self,
@@ -14697,21 +15535,21 @@ class RemoveHostsFromGroupRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The ID of the host group from which you want to remove hosts.
+        # The return code that indicates whether the call was successful. Valid values:
         # 
-        # >  You can call the [ListHostGroups](~~201307~~) operation to query the ID of the host group.
+        # *   **OK**: The call was successful.
+        # *   **UNEXPECTED**: An unknown error occurred.
+        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
+        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.host_group_id = host_group_id
+        # The ID of the request.
+        self.host_ids = host_ids
         # The ID of the host that you want to remove from the host group. The value is a JSON string. You can add up to 100 host IDs.
         # 
         # >  You can call the [ListHosts](~~200665~~) operation to query the IDs of hosts.
-        self.host_ids = host_ids
-        # The ID of the bastion host for which you want to remove hosts from the host group.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to remove hosts from the host group.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # The ID of the host group.
         self.region_id = region_id
 
     def validate(self):
@@ -14754,19 +15592,12 @@ class RemoveHostsFromGroupResponseBodyResults(TeaModel):
         host_id: str = None,
         message: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # *   **OK**: The call was successful.
-        # *   **UNEXPECTED**: An unknown error occurred.
-        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # RemoveHostsFromGroup
         self.code = code
-        # The ID of the host group.
+        # RemoveHostsFromGroup
         self.host_group_id = host_group_id
-        # The ID of the host.
         self.host_id = host_id
-        # This parameter is deprecated.
+        # WB662865
         self.message = message
 
     def validate(self):
@@ -14807,9 +15638,11 @@ class RemoveHostsFromGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[RemoveHostsFromGroupResponseBodyResults] = None,
     ):
-        # The ID of the request.
+        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        # 
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.request_id = request_id
-        # The result of the call.
+        # Removes one or more hosts from a host group.
         self.results = results
 
     def validate(self):
@@ -14896,21 +15729,29 @@ class RemoveUsersFromGroupRequest(TeaModel):
         user_group_id: str = None,
         user_ids: str = None,
     ):
-        # The ID of the bastion host for which you want to remove users from the user group.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
-        self.instance_id = instance_id
-        # The region ID of the bastion host for which you want to remove users from the user group.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
-        self.region_id = region_id
-        # The ID of the user group from which you want to remove users.
-        # 
-        # >  You can call the [ListUserGroups](~~204509~~) operation to query the ID of the user group.
-        self.user_group_id = user_group_id
         # The ID of the user who you want to remove. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
         # >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+        self.instance_id = instance_id
+        # The ID of the user.
+        self.region_id = region_id
+        # The return code that indicates whether the call was successful. Valid values:
+        # 
+        # *   **OK**: The call was successful.
+        # 
+        # *   **UNEXPECTED**: An unknown error occurred.
+        # 
+        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
+        # 
+        # > Make sure that the request parameters are valid and call the operation again.
+        # 
+        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
+        # 
+        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        # 
+        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        self.user_group_id = user_group_id
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.user_ids = user_ids
 
     def validate(self):
@@ -14953,27 +15794,12 @@ class RemoveUsersFromGroupResponseBodyResults(TeaModel):
         user_group_id: str = None,
         user_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
-        # 
-        # *   **OK**: The call was successful.
-        # 
-        # *   **UNEXPECTED**: An unknown error occurred.
-        # 
-        # *   **INVALID_ARGUMENT**: A request parameter is invalid.
-        # 
-        # > Make sure that the request parameters are valid and call the operation again.
-        # 
-        # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
-        # 
-        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
-        # 
-        # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
+        # RemoveUsersFromGroup
         self.code = code
-        # This parameter is deprecated.
+        # WB01014029
         self.message = message
-        # The ID of the group.
+        # RemoveUsersFromGroup
         self.user_group_id = user_group_id
-        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):
@@ -15014,9 +15840,11 @@ class RemoveUsersFromGroupResponseBody(TeaModel):
         request_id: str = None,
         results: List[RemoveUsersFromGroupResponseBodyResults] = None,
     ):
-        # The ID of the request, which is used to locate and troubleshoot issues.
+        # All Alibaba Cloud API operations must include common request parameters. For more information about common request parameters, see [Common parameters](~~315526~~).
+        # 
+        # For more information about sample requests, see the "Examples" section of this topic.
         self.request_id = request_id
-        # The result of the call.
+        # Removes one or more users from a user group.
         self.results = results
 
     def validate(self):
@@ -15103,22 +15931,13 @@ class ResetHostAccountCredentialRequest(TeaModel):
         instance_id: str = None,
         region_id: str = None,
     ):
-        # The type of the logon credential that you want to delete. Valid values:
-        # 
-        # *   **Password**: You want to delete the password.
-        # *   **PrivateKey**: You want to delete the SSH private key.
+        # ResetHostAccountCredential
         self.credential_type = credential_type
-        # The ID of the host account for which the logon credential is to be deleted.
-        # 
-        # >  You can call the [ListHostAccounts](~~204372~~) operation to query the ID of the host account.
+        # WB662865
         self.host_account_id = host_account_id
-        # The ID of the Bastionhost instance where you want to delete the logon credential for the host account.
-        # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the Bastionhost instance.
+        # Deletes the logon credential of a specified host account of a specified Bastionhost instance. The logon credential can be the password or SSH private key.
         self.instance_id = instance_id
-        # The region ID of the Bastionhost instance where you want to delete the logon credential for the host account.
-        # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # ResetHostAccountCredential
         self.region_id = region_id
 
     def validate(self):
@@ -15158,7 +15977,6 @@ class ResetHostAccountCredentialResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -15235,11 +16053,11 @@ class StartInstanceRequest(TeaModel):
     ):
         # The ID of the bastion host that you want to enable.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to obtain the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host.
         self.region_id = region_id
-        # The IDs of the security groups.
+        # An array consisting of the IDs of security groups to which the bastion host is added.
         self.security_group_ids = security_group_ids
         # The ID of the vSwitch to which the bastion host belongs.
         self.vswitch_id = vswitch_id
@@ -15361,21 +16179,22 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N of the instance.
-        # 
-        # Valid values of N: 1 to 20.
+        # The key of tag N. Valid values of N: 1 to 20.
         # 
         # > 
-        # *   The key can be up to 128 characters in length but cannot be an empty string.
-        # *   The key cannot start with **aliyun** or **acs:**. It cannot contain **http://** or **https://**.
+        # 
+        # *   The value can be up to 128 characters in length but cannot be an empty string.
+        # 
+        # *   The value cannot start with **aliyun** or **acs:**. The value cannot contain **http://** or **https://**.
         self.key = key
-        # The value of tag N of the instance.
-        # 
+        # The value of tag N.\
         # Valid values of N: 1 to 20.
         # 
         # > 
+        # 
         # *   The value can be up to 128 characters in length or an empty string.
-        # *   The value cannot start with **aliyun** or **acs:**. It cannot contain **http://** or **https://**.
+        # 
+        # *   The value cannot start with **aliyun** or **acs:**. The value cannot contain **http://** or **https://**.
         self.value = value
 
     def validate(self):
@@ -15410,15 +16229,21 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The region ID of the Bastionhost instances to which tags need to be created and bound.
+        # The region ID of the bastion hosts to which you want to create and add tags.
+        # 
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
-        # The resource IDs.
+        # An array that consists of IDs of bastion hosts.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # > You can call the [DescribeInstances](~~153281~~) operation to query IDs of bastion hosts.
         self.resource_id = resource_id
         # The type of the resource.
         # 
-        # Set the value to INSTANCE, which indicates that the resource is a Bastionhost instance.
+        # Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
         self.resource_type = resource_type
-        # The tags.
+        # An array that consists of tags.
         self.tag = tag
 
     def validate(self):
@@ -15466,7 +16291,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
     def validate(self):
@@ -15542,15 +16367,15 @@ class UnlockUsersRequest(TeaModel):
     ):
         # The ID of the bastion host to which the users to be unlocked belong.
         # 
-        # >  You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.instance_id = instance_id
         # The region ID of the bastion host to which the users to be unlocked belong.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
         # The ID of the user that you want to unlock. The value is a JSON string. You can add up to 100 user IDs. If you specify multiple IDs, separate the IDs with commas (,).
         # 
-        # >  You can call the [ListUsers](~~204522~~) operation to query the IDs of users.
+        # > You can call the [ListUsers](~~204522~~) operation to query the ID of the user.
         self.user_ids = user_ids
 
     def validate(self):
@@ -15588,7 +16413,7 @@ class UnlockUsersResponseBodyResults(TeaModel):
         message: str = None,
         user_id: str = None,
     ):
-        # The return code that indicates whether the call was successful. Valid values:
+        # The result of the call. Valid values:
         # 
         # *   **OK**: The call was successful.
         # 
@@ -15596,11 +16421,15 @@ class UnlockUsersResponseBodyResults(TeaModel):
         # 
         # *   **INVALID_ARGUMENT**: A request parameter is invalid.
         # 
-        # > Make sure that the request parameters are valid and call the operation again.
+        #     **\
+        # 
+        #     **Note**Make sure that the request parameters are valid and call the operation again.
         # 
         # *   **OBJECT_NOT_FOUND**: The specified object on which you want to perform the operation does not exist.
         # 
-        # > Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
+        #     **\
+        # 
+        #     **Note**Check whether the specified ID of the bastion host exists, whether the specified hosts exist, and whether the specified host IDs are valid. Then, call the operation again.
         # 
         # *   **OBJECT_AlREADY_EXISTS**: The specified object on which you want to perform the operation already exists.
         self.code = code
@@ -15645,7 +16474,7 @@ class UnlockUsersResponseBody(TeaModel):
     ):
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
-        # The result of the call.
+        # An array that consists of information about the result of the call.
         self.results = results
 
     def validate(self):
@@ -15740,15 +16569,21 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         # The region ID of the bastion host to query.
         # 
-        # >  For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
+        # > For more information about the mapping between region IDs and region names, see [Regions and zones](~~40654~~).
         self.region_id = region_id
-        # The resource IDs. You can specify a maximum of 20 resource IDs.
+        # An array that consists of IDs of bastion hosts.
+        # 
+        # Valid values: 1 to 20.
+        # 
+        # > You can call the [DescribeInstances](~~153281~~) operation to query the ID of the bastion host.
         self.resource_id = resource_id
         # The type of the resource.
         # 
         # Set the value to **INSTANCE**, which indicates that the resource is a bastion host.
         self.resource_type = resource_type
-        # The tag keys of the resource.
+        # The key of tag N.
+        # 
+        # Valid values of N: 1 to 20.
         self.tag_key = tag_key
 
     def validate(self):
