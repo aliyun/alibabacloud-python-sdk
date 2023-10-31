@@ -1545,6 +1545,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.fraud_result_call_back_with_options_async(request, runtime)
 
+    def id_2meta_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def id_2meta_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Id2MetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def id_2meta_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.id_2meta_verify_intl_with_options(request, runtime)
+
+    async def id_2meta_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.Id2MetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Id2MetaVerifyIntlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.id_2meta_verify_intl_with_options_async(request, runtime)
+
     def initialize_with_options(
         self,
         request: cloudauth_intl_20220809_models.InitializeRequest,
@@ -1702,3 +1784,89 @@ class Client(OpenApiClient):
     ) -> cloudauth_intl_20220809_models.InitializeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.initialize_with_options_async(request, runtime)
+
+    def mobile_3meta_verify_intl_with_options(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_3meta_verify_intl_with_options_async(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identify_num):
+            query['IdentifyNum'] = request.identify_num
+        if not UtilClient.is_unset(request.mobile):
+            query['Mobile'] = request.mobile
+        if not UtilClient.is_unset(request.param_type):
+            query['ParamType'] = request.param_type
+        if not UtilClient.is_unset(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not UtilClient.is_unset(request.user_name):
+            query['UserName'] = request.user_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='Mobile3MetaVerifyIntl',
+            version='2022-08-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_3meta_verify_intl(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.mobile_3meta_verify_intl_with_options(request, runtime)
+
+    async def mobile_3meta_verify_intl_async(
+        self,
+        request: cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlRequest,
+    ) -> cloudauth_intl_20220809_models.Mobile3MetaVerifyIntlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.mobile_3meta_verify_intl_with_options_async(request, runtime)
