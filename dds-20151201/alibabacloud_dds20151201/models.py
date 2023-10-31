@@ -17436,8 +17436,9 @@ class EvaluateResourceRequest(TeaModel):
         # *   NodeId: the ID of the node.
         # *   NodeClass: the instance type of the node. For more information, see [Sharded cluster instance types](~~311414~~).
         self.shards_info = shards_info
-        # 副本集的存储空间，单位为GB。
-        # > 实例规格为云盘型时，该参数必填。</props>
+        # The storage capacity of the replica set instance. Unit: GB.
+        # 
+        # > This parameter is required for the instances that use cloud disks.
         self.storage = storage
         # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the zone ID.
         self.zone_id = zone_id
@@ -19522,7 +19523,6 @@ class ModifyDBInstanceMonitorResponse(TeaModel):
 class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
     def __init__(
         self,
-        category: str = None,
         classic_expend_expired_days: int = None,
         connection_string: str = None,
         dbinstance_id: str = None,
@@ -19532,7 +19532,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        self.category = category
         # The retention period of the original classic network address. Valid values: **14**, **30**, **60**, and** 120**. Unit: day.
         self.classic_expend_expired_days = classic_expend_expired_days
         # The connection string of the instance
@@ -19554,8 +19553,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.category is not None:
-            result['Category'] = self.category
         if self.classic_expend_expired_days is not None:
             result['ClassicExpendExpiredDays'] = self.classic_expend_expired_days
         if self.connection_string is not None:
@@ -19576,8 +19573,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Category') is not None:
-            self.category = m.get('Category')
         if m.get('ClassicExpendExpiredDays') is not None:
             self.classic_expend_expired_days = m.get('ClassicExpendExpiredDays')
         if m.get('ConnectionString') is not None:

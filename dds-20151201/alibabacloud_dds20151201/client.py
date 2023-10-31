@@ -8623,8 +8623,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.category):
-            query['Category'] = request.category
         if not UtilClient.is_unset(request.classic_expend_expired_days):
             query['ClassicExpendExpiredDays'] = request.classic_expend_expired_days
         if not UtilClient.is_unset(request.connection_string):
@@ -8677,8 +8675,6 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.category):
-            query['Category'] = request.category
         if not UtilClient.is_unset(request.classic_expend_expired_days):
             query['ClassicExpendExpiredDays'] = request.classic_expend_expired_days
         if not UtilClient.is_unset(request.connection_string):
