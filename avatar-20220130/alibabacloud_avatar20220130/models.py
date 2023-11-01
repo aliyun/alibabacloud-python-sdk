@@ -1520,6 +1520,7 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
     def __init__(
         self,
         alpha_url: str = None,
+        attachment_url: str = None,
         fail_code: str = None,
         fail_reason: str = None,
         preview_pic: str = None,
@@ -1529,6 +1530,7 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
         word_subtitles_url: str = None,
     ):
         self.alpha_url = alpha_url
+        self.attachment_url = attachment_url
         self.fail_code = fail_code
         self.fail_reason = fail_reason
         self.preview_pic = preview_pic
@@ -1549,6 +1551,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
         result = dict()
         if self.alpha_url is not None:
             result['AlphaUrl'] = self.alpha_url
+        if self.attachment_url is not None:
+            result['AttachmentUrl'] = self.attachment_url
         if self.fail_code is not None:
             result['FailCode'] = self.fail_code
         if self.fail_reason is not None:
@@ -1569,6 +1573,8 @@ class GetVideoTaskInfoResponseBodyDataTaskResult(TeaModel):
         m = m or dict()
         if m.get('AlphaUrl') is not None:
             self.alpha_url = m.get('AlphaUrl')
+        if m.get('AttachmentUrl') is not None:
+            self.attachment_url = m.get('AttachmentUrl')
         if m.get('FailCode') is not None:
             self.fail_code = m.get('FailCode')
         if m.get('FailReason') is not None:
@@ -2884,10 +2890,12 @@ class QueryRunningInstanceResponseBodyData(TeaModel):
         self,
         channel: QueryRunningInstanceResponseBodyDataChannel = None,
         session_id: str = None,
+        token: str = None,
         user: QueryRunningInstanceResponseBodyDataUser = None,
     ):
         self.channel = channel
         self.session_id = session_id
+        self.token = token
         self.user = user
 
     def validate(self):
@@ -2906,6 +2914,8 @@ class QueryRunningInstanceResponseBodyData(TeaModel):
             result['Channel'] = self.channel.to_map()
         if self.session_id is not None:
             result['SessionId'] = self.session_id
+        if self.token is not None:
+            result['Token'] = self.token
         if self.user is not None:
             result['User'] = self.user.to_map()
         return result
@@ -2917,6 +2927,8 @@ class QueryRunningInstanceResponseBodyData(TeaModel):
             self.channel = temp_model.from_map(m['Channel'])
         if m.get('SessionId') is not None:
             self.session_id = m.get('SessionId')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
         if m.get('User') is not None:
             temp_model = QueryRunningInstanceResponseBodyDataUser()
             self.user = temp_model.from_map(m['User'])
@@ -3385,6 +3397,7 @@ class QueryVideoTaskInfoResponseBodyDataListTaskResult(TeaModel):
     def __init__(
         self,
         alpha_url: str = None,
+        attachment_url: str = None,
         fail_code: str = None,
         fail_reason: str = None,
         preview_pic: str = None,
@@ -3394,6 +3407,7 @@ class QueryVideoTaskInfoResponseBodyDataListTaskResult(TeaModel):
         word_subtitles_url: str = None,
     ):
         self.alpha_url = alpha_url
+        self.attachment_url = attachment_url
         self.fail_code = fail_code
         self.fail_reason = fail_reason
         self.preview_pic = preview_pic
@@ -3413,6 +3427,8 @@ class QueryVideoTaskInfoResponseBodyDataListTaskResult(TeaModel):
         result = dict()
         if self.alpha_url is not None:
             result['AlphaUrl'] = self.alpha_url
+        if self.attachment_url is not None:
+            result['AttachmentUrl'] = self.attachment_url
         if self.fail_code is not None:
             result['FailCode'] = self.fail_code
         if self.fail_reason is not None:
@@ -3433,6 +3449,8 @@ class QueryVideoTaskInfoResponseBodyDataListTaskResult(TeaModel):
         m = m or dict()
         if m.get('AlphaUrl') is not None:
             self.alpha_url = m.get('AlphaUrl')
+        if m.get('AttachmentUrl') is not None:
+            self.attachment_url = m.get('AttachmentUrl')
         if m.get('FailCode') is not None:
             self.fail_code = m.get('FailCode')
         if m.get('FailReason') is not None:
@@ -6436,6 +6454,286 @@ class SubmitAudioTo3DAvatarVideoTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitAudioTo3DAvatarVideoTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitAvatarVideoTaskRequestApp(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+    ):
+        self.app_id = app_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        return self
+
+
+class SubmitAvatarVideoTaskRequest(TeaModel):
+    def __init__(
+        self,
+        app: SubmitAvatarVideoTaskRequestApp = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
+        tenant_id: int = None,
+        title: str = None,
+        video_params: str = None,
+    ):
+        self.app = app
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
+        self.tenant_id = tenant_id
+        self.title = title
+        self.video_params = video_params
+
+    def validate(self):
+        if self.app:
+            self.app.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app is not None:
+            result['App'] = self.app.to_map()
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.video_params is not None:
+            result['VideoParams'] = self.video_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('App') is not None:
+            temp_model = SubmitAvatarVideoTaskRequestApp()
+            self.app = temp_model.from_map(m['App'])
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('VideoParams') is not None:
+            self.video_params = m.get('VideoParams')
+        return self
+
+
+class SubmitAvatarVideoTaskShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_shrink: str = None,
+        callback: bool = None,
+        callback_params: str = None,
+        ext_params: str = None,
+        tenant_id: int = None,
+        title: str = None,
+        video_params: str = None,
+    ):
+        self.app_shrink = app_shrink
+        self.callback = callback
+        self.callback_params = callback_params
+        self.ext_params = ext_params
+        self.tenant_id = tenant_id
+        self.title = title
+        self.video_params = video_params
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_shrink is not None:
+            result['App'] = self.app_shrink
+        if self.callback is not None:
+            result['Callback'] = self.callback
+        if self.callback_params is not None:
+            result['CallbackParams'] = self.callback_params
+        if self.ext_params is not None:
+            result['ExtParams'] = self.ext_params
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.video_params is not None:
+            result['VideoParams'] = self.video_params
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('App') is not None:
+            self.app_shrink = m.get('App')
+        if m.get('Callback') is not None:
+            self.callback = m.get('Callback')
+        if m.get('CallbackParams') is not None:
+            self.callback_params = m.get('CallbackParams')
+        if m.get('ExtParams') is not None:
+            self.ext_params = m.get('ExtParams')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('VideoParams') is not None:
+            self.video_params = m.get('VideoParams')
+        return self
+
+
+class SubmitAvatarVideoTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_uuid: str = None,
+    ):
+        self.task_uuid = task_uuid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_uuid is not None:
+            result['TaskUuid'] = self.task_uuid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskUuid') is not None:
+            self.task_uuid = m.get('TaskUuid')
+        return self
+
+
+class SubmitAvatarVideoTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitAvatarVideoTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitAvatarVideoTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitAvatarVideoTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitAvatarVideoTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitAvatarVideoTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
