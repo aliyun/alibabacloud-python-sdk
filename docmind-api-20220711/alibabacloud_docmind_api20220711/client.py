@@ -479,6 +479,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_document_extract_result_with_options_async(request, runtime)
 
+    def get_page_num_with_options(
+        self,
+        request: docmind_api_20220711_models.GetPageNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.GetPageNumResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPageNum',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.GetPageNumResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_page_num_with_options_async(
+        self,
+        request: docmind_api_20220711_models.GetPageNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> docmind_api_20220711_models.GetPageNumResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPageNum',
+            version='2022-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            docmind_api_20220711_models.GetPageNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_page_num(
+        self,
+        request: docmind_api_20220711_models.GetPageNumRequest,
+    ) -> docmind_api_20220711_models.GetPageNumResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_page_num_with_options(request, runtime)
+
+    async def get_page_num_async(
+        self,
+        request: docmind_api_20220711_models.GetPageNumRequest,
+    ) -> docmind_api_20220711_models.GetPageNumResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_page_num_with_options_async(request, runtime)
+
     def get_table_understanding_result_with_options(
         self,
         request: docmind_api_20220711_models.GetTableUnderstandingResultRequest,
