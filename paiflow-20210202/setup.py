@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_paiflow20210202.
 
-Created on 26/10/2023
+Created on 02/11/2023
 
 @author: Alibaba Cloud SDK
 """
