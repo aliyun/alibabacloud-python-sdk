@@ -273,22 +273,28 @@ class Client(OpenApiClient):
 
     def create_artifact_build_rule_with_options(
         self,
-        request: cr_20181201_models.CreateArtifactBuildRuleRequest,
+        tmp_req: cr_20181201_models.CreateArtifactBuildRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateArtifactBuildRuleResponse:
         """
         The ID of the rule.
         
-        @param request: CreateArtifactBuildRuleRequest
+        @param tmp_req: CreateArtifactBuildRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateArtifactBuildRuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateArtifactBuildRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.artifact_type):
             query['ArtifactType'] = request.artifact_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.scope_id):
             query['ScopeId'] = request.scope_id
         if not UtilClient.is_unset(request.scope_type):
@@ -314,22 +320,28 @@ class Client(OpenApiClient):
 
     async def create_artifact_build_rule_with_options_async(
         self,
-        request: cr_20181201_models.CreateArtifactBuildRuleRequest,
+        tmp_req: cr_20181201_models.CreateArtifactBuildRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cr_20181201_models.CreateArtifactBuildRuleResponse:
         """
         The ID of the rule.
         
-        @param request: CreateArtifactBuildRuleRequest
+        @param tmp_req: CreateArtifactBuildRuleRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateArtifactBuildRuleResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = cr_20181201_models.CreateArtifactBuildRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.parameters):
+            request.parameters_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
         if not UtilClient.is_unset(request.artifact_type):
             query['ArtifactType'] = request.artifact_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.parameters_shrink):
+            query['Parameters'] = request.parameters_shrink
         if not UtilClient.is_unset(request.scope_id):
             query['ScopeId'] = request.scope_id
         if not UtilClient.is_unset(request.scope_type):

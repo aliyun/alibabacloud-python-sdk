@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Dict, Any, List
 
 
 class CancelArtifactBuildTaskRequest(TeaModel):
@@ -372,11 +372,13 @@ class CreateArtifactBuildRuleRequest(TeaModel):
         self,
         artifact_type: str = None,
         instance_id: str = None,
+        parameters: Dict[str, Any] = None,
         scope_id: str = None,
         scope_type: str = None,
     ):
         self.artifact_type = artifact_type
         self.instance_id = instance_id
+        self.parameters = parameters
         self.scope_id = scope_id
         self.scope_type = scope_type
 
@@ -393,6 +395,8 @@ class CreateArtifactBuildRuleRequest(TeaModel):
             result['ArtifactType'] = self.artifact_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.parameters is not None:
+            result['Parameters'] = self.parameters
         if self.scope_id is not None:
             result['ScopeId'] = self.scope_id
         if self.scope_type is not None:
@@ -405,6 +409,59 @@ class CreateArtifactBuildRuleRequest(TeaModel):
             self.artifact_type = m.get('ArtifactType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('Parameters') is not None:
+            self.parameters = m.get('Parameters')
+        if m.get('ScopeId') is not None:
+            self.scope_id = m.get('ScopeId')
+        if m.get('ScopeType') is not None:
+            self.scope_type = m.get('ScopeType')
+        return self
+
+
+class CreateArtifactBuildRuleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        artifact_type: str = None,
+        instance_id: str = None,
+        parameters_shrink: str = None,
+        scope_id: str = None,
+        scope_type: str = None,
+    ):
+        self.artifact_type = artifact_type
+        self.instance_id = instance_id
+        self.parameters_shrink = parameters_shrink
+        self.scope_id = scope_id
+        self.scope_type = scope_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.artifact_type is not None:
+            result['ArtifactType'] = self.artifact_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.parameters_shrink is not None:
+            result['Parameters'] = self.parameters_shrink
+        if self.scope_id is not None:
+            result['ScopeId'] = self.scope_id
+        if self.scope_type is not None:
+            result['ScopeType'] = self.scope_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ArtifactType') is not None:
+            self.artifact_type = m.get('ArtifactType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Parameters') is not None:
+            self.parameters_shrink = m.get('Parameters')
         if m.get('ScopeId') is not None:
             self.scope_id = m.get('ScopeId')
         if m.get('ScopeType') is not None:
