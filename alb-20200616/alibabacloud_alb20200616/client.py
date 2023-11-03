@@ -1965,6 +1965,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.uch_config):
             query['UchConfig'] = request.uch_config
+        if not UtilClient.is_unset(request.upstream_keepalive_enabled):
+            query['UpstreamKeepaliveEnabled'] = request.upstream_keepalive_enabled
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -2026,6 +2028,8 @@ class Client(OpenApiClient):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.uch_config):
             query['UchConfig'] = request.uch_config
+        if not UtilClient.is_unset(request.upstream_keepalive_enabled):
+            query['UpstreamKeepaliveEnabled'] = request.upstream_keepalive_enabled
         if not UtilClient.is_unset(request.vpc_id):
             query['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -8400,6 +8404,8 @@ class Client(OpenApiClient):
             query['StickySessionConfig'] = request.sticky_session_config
         if not UtilClient.is_unset(request.uch_config):
             query['UchConfig'] = request.uch_config
+        if not UtilClient.is_unset(request.upstream_keepalive_enabled):
+            query['UpstreamKeepaliveEnabled'] = request.upstream_keepalive_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8454,6 +8460,8 @@ class Client(OpenApiClient):
             query['StickySessionConfig'] = request.sticky_session_config
         if not UtilClient.is_unset(request.uch_config):
             query['UchConfig'] = request.uch_config
+        if not UtilClient.is_unset(request.upstream_keepalive_enabled):
+            query['UpstreamKeepaliveEnabled'] = request.upstream_keepalive_enabled
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
