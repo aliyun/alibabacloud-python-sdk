@@ -15183,8 +15183,14 @@ class GetDigitalWatermarkExtractResultRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
+        # The type of the digital watermark. Valid values:
+        # 
+        # *   TraceMark: tracing watermark
+        # *   CopyrightMark: copyright watermark
         self.extract_type = extract_type
+        # The ID of the job.
         self.job_id = job_id
+        # The ID of the video file. You can query the video ID by using the ApsaraVideo VOD console or calling the SearchMedia operation.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -15245,11 +15251,21 @@ class GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList(TeaModel):
         status: str = None,
         water_mark_text: str = None,
     ):
+        # The time when the job was created.
         self.create_time = create_time
+        # The error message.
         self.error_message = error_message
+        # The ID of the job.
         self.job_id = job_id
+        # The time when the job was modified.
         self.modify_time = modify_time
+        # The status of the job. Valid values:
+        # 
+        # *   **Success**\
+        # *   **Failed**\
+        # *   **Processing**\
         self.status = status
+        # The extracted watermark text.
         self.water_mark_text = water_mark_text
 
     def validate(self):
@@ -15298,7 +15314,9 @@ class GetDigitalWatermarkExtractResultResponseBody(TeaModel):
         ai_extract_result_list: List[GetDigitalWatermarkExtractResultResponseBodyAiExtractResultList] = None,
         request_id: str = None,
     ):
+        # The information about the job.
         self.ai_extract_result_list = ai_extract_result_list
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -20627,6 +20645,10 @@ class GetPlayInfoRequest(TeaModel):
         # 
         # > By default, ApsaraVideo VOD returns video streams in all preceding qualities. However, video streams for adaptive bitrate streaming are returned only if the PackageSetting parameter is specified in the transcoding template. For more information, see the [PackageSetting parameter in the TranscodeTemplate](~~52839~~) table.
         self.definition = definition
+        # The type of the digital watermark. Valid values:
+        # 
+        # *   TraceMark: tracing watermark
+        # *   CopyrightMark: copyright watermark
         self.digital_watermark_type = digital_watermark_type
         # The format of the media stream. Separate multiple formats with commas (,). Valid values:
         # 
@@ -20661,6 +20683,10 @@ class GetPlayInfoRequest(TeaModel):
         # 
         # By default, video and audio streams are returned.
         self.stream_type = stream_type
+        # The custom digital watermark.
+        # 
+        # *   If you set `DigitalWatermarkType` to `TraceMark`, specify this parameter to configure the video tracing watermark and return the video stream that contains the watermark. The value can be up to 1,024 characters in length and can contain letters and digits.
+        # *   If you set `DigitalWatermarkType` to `CopyrightMark`, specify the **watermark text** that you created for the watermark template for this parameter.`` You can specify this parameter to query and return the video stream that contains the specified watermark text.
         self.trace = trace
         # The ID of the media file. You can specify only one ID. You can use one of the following methods to obtain the media ID:
         # 
@@ -20764,7 +20790,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.bit_depth = bit_depth
         # The bitrate of the media stream. Unit: Kbit/s.
         self.bitrate = bitrate
-        # The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The quality of the media stream. Valid values:
         # 
@@ -20781,10 +20807,10 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.definition = definition
         # The duration of the media stream. Unit: seconds.
         self.duration = duration
-        # Indicates whether the media stream was encrypted. Valid values:
+        # Indicates whether the media stream is encrypted. Valid values:
         # 
-        # *   **0**: no
-        # *   **1**: yes.
+        # *   **0**: The media stream is not encrypted.
+        # *   **1**: The media stream is encrypted.
         self.encrypt = encrypt
         # The encryption type of the media stream. Valid values:
         # 
@@ -20809,11 +20835,16 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         # *   HDRVivid
         # *   SDR+\
         self.hdrtype = hdrtype
-        # The height of the media stream. Unit: pixel.
+        # The height of the media stream. Unit: pixels.
         self.height = height
+        # The custom watermark information of the copyright watermark. This parameter is returned if you set `JobType` to `2`.
         self.job_ext = job_ext
         # The job ID for transcoding the media stream. This ID uniquely identifies a media stream.
         self.job_id = job_id
+        # The type of the digital watermark. Valid values:
+        # 
+        # *   **1**: tracing watermark
+        # *   **2**: copyright watermark
         self.job_type = job_type
         # The update time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
@@ -20831,7 +20862,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.size = size
         # The specifications of transcoded audio and video streams. For more information about the valid values, see [Output specifications](~~124671~~).
         self.specification = specification
-        # The status of the media stream. Valid values:
+        # The status of the audio or video stream. Valid values:
         # 
         # *   **Normal**: The latest transcoded stream in each quality and format is in the Normal status.
         # *   **Invisible**: If multiple streams are transcoded in the same quality and format, the latest transcoded stream is in the Normal status and other streams are in the Invisible status.
@@ -20840,7 +20871,7 @@ class GetPlayInfoResponseBodyPlayInfoListPlayInfo(TeaModel):
         self.stream_type = stream_type
         # The ID of the watermark that is associated with the media stream.
         self.watermark_id = watermark_id
-        # The width of the media stream. Unit: pixel.
+        # The width of the media stream. Unit: pixels.
         self.width = width
 
     def validate(self):
@@ -21983,14 +22014,16 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTempla
         video: str = None,
         watermark_ids: List[str] = None,
     ):
-        # The transcoding configurations of the audio stream. The value is a JSON-formatted string.
+        # The transcoding configurations of the audio stream. The value is a JSON string.
         self.audio = audio
-        # The clipping configurations of the video. The value is a JSON-formatted string. For example, you can set this parameter if you want to extract 5 seconds of content from a video to generate a new video.
+        # The video cropping configurations. The value is a JSON string. For example, you can set this parameter to extract 5 seconds of content from a video to generate a new video.
         self.clip = clip
-        # The format of the container used to encapsulate audio and video streams. The value is a JSON-formatted string.
+        # The format of the container that is used to encapsulate audio and video streams. The value is a JSON string.
         self.container = container
+        # CopyrightMark.
         self.copyright_mark = copyright_mark
         # Valid values for the definition of a common transcoding template:
+        # 
         # *   **LD**: low definition.
         # *   **SD**: standard definition.
         # *   **HD**: high definition.
@@ -22002,43 +22035,47 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroupTranscodeTempla
         # *   **HQ**: high sound quality.
         # 
         # Valid values for the definition of a Narrowband HD™ 1.0 transcoding template:
+        # 
         # *   **LD-NBV1**: low definition.
         # *   **SD-NBV1**: standard definition.
         # *   **HD-NBV1**: high definition.
         # *   **FHD-NBV1**: ultra high definition.
         # *   **2K-NBV1**\
         # *   **4K-NBV1**\
-        # >*   You cannot modify the definition of transcoding templates.
-        # >*   You cannot modify the system parameters, such as the video resolution, audio resolution, and bitrate, of Narrowband HD™ 1.0 transcoding templates.
+        # 
+        # > *   You cannot change the definition of a transcoding template.
+        # >*   You cannot modify the system parameters of Narrowband HD™ 1.0 transcoding templates such as the video resolution, audio resolution, and bitrate.
         # >*   You can create only Narrowband HD™ 1.0 transcoding templates that support the FLV, M3U8 (HLS), and MP4 output formats.
         self.definition = definition
-        # The encryption configuration used for transcoding.
+        # The encryption configuration for transcoding.
         self.encrypt_setting = encrypt_setting
-        # The transcoding segment configurations. This parameter must be returned if HTTP-Live-Streaming (HLS) encryption is used. The value is a JSON-formatted string.
+        # The transcoding segment configurations. This parameter is used when you transcode a media stream into an HLS file. The value is a JSON string.
         self.mux_config = mux_config
-        # The packaging configurations. Only HLS packaging and DASH packaging are supported. The value is a JSON-formatted string.
+        # The packaging configuration. Only HTTP-Live-Streaming (HLS) packaging and DASH packaging are supported. The value is a JSON string.
         self.package_setting = package_setting
-        # The video rotation identifier. It is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `0 to 360`.
+        # The video rotation identifier. This parameter is used to control the image rotation angle. For example, if you set this parameter to 180, the video image is turned upside down. Valid values: `[0,360]`.
         self.rotate = rotate
-        # The subtitle configurations. The value is a JSON-formatted string.
+        # The subtitle configurations. The value is a JSON string.
         self.subtitle_list = subtitle_list
         # The name of the transcoding template.
         self.template_name = template_name
+        # TraceMark.
         self.trace_mark = trace_mark
-        # The conditional transcoding configurations. This parameter can be used if you want to determine the basic logic based on the bitrate and resolution of the mezzanine file before the video is transcoded. The value is a JSON-formatted string.
+        # The conditional transcoding configurations. This parameter is used if you want to determine the basic logic based on the bitrate and resolution of the source file before the transcoded video is generated. The value is a JSON string.
         self.trans_config = trans_config
-        # The custom output path of transcoded files.
+        # The custom path used to store the output files.
         self.transcode_file_regular = transcode_file_regular
         # The ID of the transcoding template.
         self.transcode_template_id = transcode_template_id
-        # The type of the template. Valid values:
-        # *   **Normal**: a common transcoding template. This is the default value. The PackageSetting parameter cannot be set for this type of template.
-        # *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and packages these video streams with a file. The PackageSetting parameter must be set for this type of template.
-        # *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file generated by packaging the multi-bitrate video streams of the corresponding video. You must set the PackageSetting parameter for a subtitle package template and associate the subtitle package template with a video stream package template. A template group can contain only one subtitle package template.
+        # The type of the transcoding template. Valid values:
+        # 
+        # *   **Normal** (default): a common transcoding template. You cannot set the PackageSetting parameter for this type of template.
+        # *   **VideoPackage**: a video stream package template. If this type of template is used, ApsaraVideo VOD transcodes a video into video streams in different bitrates and creates a multi-bitrate video package. You must set the PackageSetting parameter for this type of template.
+        # *   **SubtitlePackage**: a subtitle package template. If this type of template is used, ApsaraVideo VOD adds the subtitle information to the output file that is generated by packaging the multi-bitrate video streams of the corresponding video. You must set the PackageSetting parameter for a subtitle packaging template and associate the subtitle packaging template with a video stream packaging template. You can configure only one subtitle packaging template in a template group.
         self.type = type
-        # The transcoding configurations of the video stream. The value is a JSON-formatted string.
+        # The transcoding configurations of the video stream. The value is a JSON string.
         self.video = video
-        # The ID of the associated watermark.
+        # The IDs of associated watermarks.
         self.watermark_ids = watermark_ids
 
     def validate(self):
@@ -22143,23 +22180,25 @@ class GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup(TeaModel):
     ):
         # The ID of the application.
         self.app_id = app_id
-        # The time when the template group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding template group was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # Indicates whether the template group is the default one. Valid values:
-        # *   **Default**: The template group is the default one.
-        # *   **NotDefault**: The template group is not the default one.
+        # 
+        # *   **Default**\
+        # *   **NotDefault**\
         self.is_default = is_default
         # Indicates whether the template group is locked. Valid values:
+        # 
         # *   **Disabled**: The template group is not locked.
         # *   **Enabled**: The template group is locked.
         self.locked = locked
-        # The time when the template group was modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the transcoding template group was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The name of the template group.
+        # The name of the transcoding template group.
         self.name = name
         # The ID of the transcoding template group.
         self.transcode_template_group_id = transcode_template_group_id
-        # The configurations of the transcoding templates.
+        # The information about the transcoding templates.
         self.transcode_template_list = transcode_template_list
 
     def validate(self):
@@ -22224,7 +22263,7 @@ class GetTranscodeTemplateGroupResponseBody(TeaModel):
         request_id: str = None,
         transcode_template_group: GetTranscodeTemplateGroupResponseBodyTranscodeTemplateGroup = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the transcoding template group.
         self.transcode_template_group = transcode_template_group
@@ -27665,6 +27704,7 @@ class PreloadVodObjectCachesResponse(TeaModel):
 class ProduceEditingProjectVideoRequest(TeaModel):
     def __init__(
         self,
+        app_id: str = None,
         cover_url: str = None,
         description: str = None,
         media_metadata: str = None,
@@ -27677,6 +27717,7 @@ class ProduceEditingProjectVideoRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        self.app_id = app_id
         # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
         # The description of the online editing project.
@@ -27713,6 +27754,8 @@ class ProduceEditingProjectVideoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
         if self.cover_url is not None:
             result['CoverURL'] = self.cover_url
         if self.description is not None:
@@ -27739,6 +27782,8 @@ class ProduceEditingProjectVideoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
         if m.get('CoverURL') is not None:
             self.cover_url = m.get('CoverURL')
         if m.get('Description') is not None:
@@ -29125,9 +29170,7 @@ class SearchMediaRequest(TeaModel):
         self.page_no = page_no
         # The number of entries to return on each page. Default value: **10**. Maximum value: **100**.
         self.page_size = page_size
-        # The pagination identifier. The identifier can be up to 32 characters in length.
-        # 
-        # The first time you call this operation for each new search, you do not need to specify this parameter. The value of this parameter is returned each time data records that meet the specified filter criteria are found. The value is used to record the current position of queried data. Record the returned parameter value and set this parameter according to the following requirements during the next search:
+        # The pagination identifier. The password must be 32 characters in length The first time you call this operation for each new search, you do not need to specify this parameter. The value of this parameter is returned each time data records that meet the specified filter condition are found. The value is used to record the current position of queried data. Record the returned parameter value and set this parameter according to the following requirements during the next search:
         # 
         # *   If SearchType is set to **video** or **audio** and you need to traverse all data that meets the filter criteria, you must set the ScrollToken parameter.
         # *   If the value of the PageNo parameter exceeds **200**, we recommend that you set this parameter to optimize search performance.
@@ -32101,7 +32144,12 @@ class SubmitDigitalWatermarkExtractJobRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: str = None,
     ):
+        # The type of the digital watermark that you want to extract. Valid values:
+        # 
+        # *   TraceMark: tracing watermark
+        # *   CopyrightMark: copyright watermark
         self.extract_type = extract_type
+        # The ID of the video file. You can query the video ID by using the ApsaraVideo VOD console or calling the SearchMedia operation.
         self.media_id = media_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -32154,7 +32202,9 @@ class SubmitDigitalWatermarkExtractJobResponseBody(TeaModel):
         job_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the job.
         self.job_id = job_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
