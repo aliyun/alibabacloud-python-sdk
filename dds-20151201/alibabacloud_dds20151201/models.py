@@ -4358,7 +4358,9 @@ class DescribeAvailabilityZonesRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        dbinstance_class: str = None,
         db_type: str = None,
+        engine_version: str = None,
         exclude_secondary_zone_id: str = None,
         exclude_zone_id: str = None,
         instance_charge_type: str = None,
@@ -4379,11 +4381,13 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         # *   **zh**: Chinese.
         # *   **en**: English
         self.accept_language = accept_language
+        self.dbinstance_class = dbinstance_class
         # The database engine type of the instance. Valid values:
         # 
         # *   **normal**: replica set instance
         # *   **sharding**: sharded cluster instance
         self.db_type = db_type
+        self.engine_version = engine_version
         self.exclude_secondary_zone_id = exclude_secondary_zone_id
         self.exclude_zone_id = exclude_zone_id
         # The billing method of the instance. Default value: PrePaid. Valid values:
@@ -4431,8 +4435,12 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.dbinstance_class is not None:
+            result['DBInstanceClass'] = self.dbinstance_class
         if self.db_type is not None:
             result['DbType'] = self.db_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.exclude_secondary_zone_id is not None:
             result['ExcludeSecondaryZoneId'] = self.exclude_secondary_zone_id
         if self.exclude_zone_id is not None:
@@ -4467,8 +4475,12 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('DBInstanceClass') is not None:
+            self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('ExcludeSecondaryZoneId') is not None:
             self.exclude_secondary_zone_id = m.get('ExcludeSecondaryZoneId')
         if m.get('ExcludeZoneId') is not None:
@@ -4805,7 +4817,9 @@ class DescribeAvailableEngineVersionResponse(TeaModel):
 class DescribeAvailableResourceRequest(TeaModel):
     def __init__(
         self,
+        dbinstance_class: str = None,
         db_type: str = None,
+        engine_version: str = None,
         instance_charge_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -4817,11 +4831,13 @@ class DescribeAvailableResourceRequest(TeaModel):
         storage_type: str = None,
         zone_id: str = None,
     ):
+        self.dbinstance_class = dbinstance_class
         # The architecture of the instance. Valid values:
         # 
         # *   **normal**: replica set instance
         # *   **sharding**: sharded cluster instance
         self.db_type = db_type
+        self.engine_version = engine_version
         # The billing method of the instance. Default value: PrePaid. Valid values:
         # 
         # *   **PrePaid**: subscription
@@ -4849,8 +4865,12 @@ class DescribeAvailableResourceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dbinstance_class is not None:
+            result['DBInstanceClass'] = self.dbinstance_class
         if self.db_type is not None:
             result['DbType'] = self.db_type
+        if self.engine_version is not None:
+            result['EngineVersion'] = self.engine_version
         if self.instance_charge_type is not None:
             result['InstanceChargeType'] = self.instance_charge_type
         if self.owner_account is not None:
@@ -4875,8 +4895,12 @@ class DescribeAvailableResourceRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DBInstanceClass') is not None:
+            self.dbinstance_class = m.get('DBInstanceClass')
         if m.get('DbType') is not None:
             self.db_type = m.get('DbType')
+        if m.get('EngineVersion') is not None:
+            self.engine_version = m.get('EngineVersion')
         if m.get('InstanceChargeType') is not None:
             self.instance_charge_type = m.get('InstanceChargeType')
         if m.get('OwnerAccount') is not None:
