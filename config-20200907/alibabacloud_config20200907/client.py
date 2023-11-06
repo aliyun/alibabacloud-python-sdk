@@ -650,6 +650,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        """
+        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        
+        @param request: CreateAggregateAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAggregateAdvancedSearchFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -680,6 +687,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        """
+        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        
+        @param request: CreateAggregateAdvancedSearchFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAggregateAdvancedSearchFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -709,6 +723,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        """
+        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        
+        @param request: CreateAggregateAdvancedSearchFileRequest
+        @return: CreateAggregateAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_aggregate_advanced_search_file_with_options(request, runtime)
 
@@ -716,6 +736,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.CreateAggregateAdvancedSearchFileRequest,
     ) -> config_20200907_models.CreateAggregateAdvancedSearchFileResponse:
+        """
+        This topic provides an example on how to create a downloadable resource file for an account group whose ID is `ca-edd3626622af00b3***`. The resource file includes all the ECS instances in the account group.
+        
+        @param request: CreateAggregateAdvancedSearchFileRequest
+        @return: CreateAggregateAdvancedSearchFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_aggregate_advanced_search_file_with_options_async(request, runtime)
 
@@ -6142,6 +6168,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceInventoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        
+        @param request: GetAggregateResourceInventoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateResourceInventoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -6170,6 +6203,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetAggregateResourceInventoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        
+        @param request: GetAggregateResourceInventoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAggregateResourceInventoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -6197,6 +6237,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateResourceInventoryRequest,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        
+        @param request: GetAggregateResourceInventoryRequest
+        @return: GetAggregateResourceInventoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_aggregate_resource_inventory_with_options(request, runtime)
 
@@ -6204,6 +6250,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.GetAggregateResourceInventoryRequest,
     ) -> config_20200907_models.GetAggregateResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of an account group whose ID is ca-a91d626622af0035\\\\*\\*\\*.
+        
+        @param request: GetAggregateResourceInventoryRequest
+        @return: GetAggregateResourceInventoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_aggregate_resource_inventory_with_options_async(request, runtime)
 
@@ -7165,7 +7217,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example of how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7200,7 +7252,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example of how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7234,7 +7286,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example of how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @return: GetDiscoveredResourceCountsGroupByRegionResponse
@@ -7247,7 +7299,7 @@ class Client(OpenApiClient):
         request: config_20200907_models.GetDiscoveredResourceCountsGroupByRegionRequest,
     ) -> config_20200907_models.GetDiscoveredResourceCountsGroupByRegionResponse:
         """
-        This topic provides an example of how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
+        This topic provides an example to demonstrate how to query the statistics on resources by region. The returned result shows that a total of 10 resources exist in the `cn-hangzhou` region.
         
         @param request: GetDiscoveredResourceCountsGroupByRegionRequest
         @return: GetDiscoveredResourceCountsGroupByRegionResponse
@@ -8125,6 +8177,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        
+        @param request: GetResourceInventoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceInventoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetResourceInventory',
@@ -8146,6 +8205,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.GetResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        
+        @param request: GetResourceInventoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceInventoryResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetResourceInventory',
@@ -8164,10 +8230,20 @@ class Client(OpenApiClient):
         )
 
     def get_resource_inventory(self) -> config_20200907_models.GetResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        
+        @return: GetResourceInventoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_resource_inventory_with_options(runtime)
 
     async def get_resource_inventory_async(self) -> config_20200907_models.GetResourceInventoryResponse:
+        """
+        This topic provides an example on how to query the most recently generated resource inventory of the current Alibaba Cloud account.
+        
+        @return: GetResourceInventoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_resource_inventory_with_options_async(runtime)
 
@@ -8834,6 +8910,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        """
+        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        
+        @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateConfigRuleEvaluationStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -8862,6 +8945,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        """
+        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        
+        @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateConfigRuleEvaluationStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -8889,6 +8979,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        """
+        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        
+        @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
+        @return: ListAggregateConfigRuleEvaluationStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_aggregate_config_rule_evaluation_statistics_with_options(request, runtime)
 
@@ -8896,6 +8992,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsRequest,
     ) -> config_20200907_models.ListAggregateConfigRuleEvaluationStatisticsResponse:
+        """
+        This topic provides an example on how to query the statistics of compliance evaluation results of an account group whose ID is ca-edd3626622af00b3\\\\*\\*\\*.
+        
+        @param request: ListAggregateConfigRuleEvaluationStatisticsRequest
+        @return: ListAggregateConfigRuleEvaluationStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_config_rule_evaluation_statistics_with_options_async(request, runtime)
 
@@ -9160,6 +9262,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        """
+        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        
+        @param request: ListAggregateRemediationExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateRemediationExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -9198,6 +9307,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        """
+        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        
+        @param request: ListAggregateRemediationExecutionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAggregateRemediationExecutionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aggregator_id):
@@ -9235,6 +9351,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        """
+        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        
+        @param request: ListAggregateRemediationExecutionsRequest
+        @return: ListAggregateRemediationExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_aggregate_remediation_executions_with_options(request, runtime)
 
@@ -9242,6 +9364,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListAggregateRemediationExecutionsRequest,
     ) -> config_20200907_models.ListAggregateRemediationExecutionsResponse:
+        """
+        This topic provides an example on how to query the remediation records of the `cr-d04a626622af00af***` rule in the `ca-edd3626622af00b3****` account group.
+        
+        @param request: ListAggregateRemediationExecutionsRequest
+        @return: ListAggregateRemediationExecutionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_aggregate_remediation_executions_with_options_async(request, runtime)
 
@@ -10439,6 +10567,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListIntegratedServiceResponse:
+        """
+        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @param request: ListIntegratedServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegratedServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListIntegratedService',
@@ -10460,6 +10595,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListIntegratedServiceResponse:
+        """
+        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @param request: ListIntegratedServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntegratedServiceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListIntegratedService',
@@ -10478,10 +10620,20 @@ class Client(OpenApiClient):
         )
 
     def list_integrated_service(self) -> config_20200907_models.ListIntegratedServiceResponse:
+        """
+        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @return: ListIntegratedServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_integrated_service_with_options(runtime)
 
     async def list_integrated_service_async(self) -> config_20200907_models.ListIntegratedServiceResponse:
+        """
+        This topic provides an example on how to query the cloud services that can be integrated by the current Alibaba Cloud account.
+        
+        @return: ListIntegratedServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_integrated_service_with_options_async(runtime)
 
@@ -11248,6 +11400,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        """
+        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        
+        @param request: ListResourcesByAdvancedSearchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesByAdvancedSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sql):
@@ -11276,6 +11435,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        """
+        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        
+        @param request: ListResourcesByAdvancedSearchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourcesByAdvancedSearchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sql):
@@ -11303,6 +11469,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        """
+        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        
+        @param request: ListResourcesByAdvancedSearchRequest
+        @return: ListResourcesByAdvancedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_resources_by_advanced_search_with_options(request, runtime)
 
@@ -11310,6 +11482,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListResourcesByAdvancedSearchRequest,
     ) -> config_20200907_models.ListResourcesByAdvancedSearchResponse:
+        """
+        This topic provides an example on how to query all resources with the business tag key and the online tag value in the current Alibaba Cloud account.
+        
+        @param request: ListResourcesByAdvancedSearchRequest
+        @return: ListResourcesByAdvancedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_resources_by_advanced_search_with_options_async(request, runtime)
 
@@ -11318,6 +11496,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListSupportedProductsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListSupportedProductsResponse:
+        """
+        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        
+        @param request: ListSupportedProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSupportedProductsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -11348,6 +11533,13 @@ class Client(OpenApiClient):
         request: config_20200907_models.ListSupportedProductsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> config_20200907_models.ListSupportedProductsResponse:
+        """
+        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        
+        @param request: ListSupportedProductsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSupportedProductsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -11377,6 +11569,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListSupportedProductsRequest,
     ) -> config_20200907_models.ListSupportedProductsResponse:
+        """
+        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        
+        @param request: ListSupportedProductsRequest
+        @return: ListSupportedProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_supported_products_with_options(request, runtime)
 
@@ -11384,6 +11582,12 @@ class Client(OpenApiClient):
         self,
         request: config_20200907_models.ListSupportedProductsRequest,
     ) -> config_20200907_models.ListSupportedProductsResponse:
+        """
+        This topic provides an example on how to query the cloud services and resource types that are supported by Cloud Config.
+        
+        @param request: ListSupportedProductsRequest
+        @return: ListSupportedProductsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_supported_products_with_options_async(request, runtime)
 
@@ -13930,6 +14134,8 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.integrated_types):
+            body['IntegratedTypes'] = request.integrated_types
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
         if not UtilClient.is_unset(request.status):
@@ -13960,6 +14166,8 @@ class Client(OpenApiClient):
     ) -> config_20200907_models.UpdateIntegratedServiceStatusResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.integrated_types):
+            body['IntegratedTypes'] = request.integrated_types
         if not UtilClient.is_unset(request.service_code):
             body['ServiceCode'] = request.service_code
         if not UtilClient.is_unset(request.status):

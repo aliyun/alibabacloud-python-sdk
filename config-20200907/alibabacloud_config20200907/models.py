@@ -1146,6 +1146,7 @@ class CreateAdvancedSearchFileRequest(TeaModel):
         self,
         sql: str = None,
     ):
+        # The SQL statement used to query resources.
         self.sql = sql
 
     def validate(self):
@@ -1173,6 +1174,7 @@ class CreateAdvancedSearchFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1245,7 +1247,11 @@ class CreateAggregateAdvancedSearchFileRequest(TeaModel):
         aggregator_id: str = None,
         sql: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
+        # The SQL statement used to query resources.
         self.sql = sql
 
     def validate(self):
@@ -1277,6 +1283,7 @@ class CreateAggregateAdvancedSearchFileResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1507,9 +1514,9 @@ class CreateAggregateCompliancePackRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -1640,9 +1647,9 @@ class CreateAggregateCompliancePackShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -2135,8 +2142,8 @@ class CreateAggregateConfigRuleRequest(TeaModel):
         self.source_identifier = source_identifier
         # The type of the rule. Valid values:
         # 
-        # *   ALIYUN: a managed rule.
-        # *   CUSTOM_FC: a custom rule.
+        # *   ALIYUN: managed rule
+        # *   CUSTOM_FC: custom rule
         self.source_owner = source_owner
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
@@ -2348,8 +2355,8 @@ class CreateAggregateConfigRuleShrinkRequest(TeaModel):
         self.source_identifier = source_identifier
         # The type of the rule. Valid values:
         # 
-        # *   ALIYUN: a managed rule.
-        # *   CUSTOM_FC: a custom rule.
+        # *   ALIYUN: managed rule
+        # *   CUSTOM_FC: custom rule
         self.source_owner = source_owner
         # The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
         # 
@@ -6082,7 +6089,7 @@ class DeleteConfigRulesRequest(TeaModel):
     ):
         # The rule IDs. Separate multiple rule IDs with commas (,).
         # 
-        # For more information about how to obtain the ID of a rule, see ListConfigRules.
+        # For more information about how to obtain the ID of a rule, see [ListConfigRules](~~609222~~).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):
@@ -6114,10 +6121,10 @@ class DeleteConfigRulesResponseBodyOperateRuleResultOperateRuleItemList(TeaModel
     ):
         # The rule ID.
         self.config_rule_id = config_rule_id
-        # The error code returned if the request failed.
+        # The error code.
         # 
-        # *   If the rule is deleted, no error code is returned.
-        # *   If the rule fails to be deleted, an error code is returned. For more information about error codes, see [Error codes](https://api.aliyun.com/document/Config/2020-09-07/errorCode).
+        # *   If the rule is disabled, no error code is returned.
+        # *   If the rule fails to be disabled, an error code is returned. For more information about error codes, see [Error codes](https://api.alibabacloud.com/document/Config/2020-09-07/errorCode).
         self.error_code = error_code
         # Indicates whether the request was successful. Valid values:
         # 
@@ -6441,7 +6448,9 @@ class DescribeRemediationRequest(TeaModel):
         config_rule_id: str = None,
         remediation_id: str = None,
     ):
+        # The rule ID.
         self.config_rule_id = config_rule_id
+        # The ID of the remediation configuration.
         self.remediation_id = remediation_id
 
     def validate(self):
@@ -6483,16 +6492,44 @@ class DescribeRemediationResponseBodyRemediation(TeaModel):
         remediation_template_id: str = None,
         remediation_type: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
+        # The rule ID.
         self.config_rule_id = config_rule_id
+        # The execution mode of the remediation template. Valid values:
+        # 
+        # *   NON_EXECUTION: The remediation template was not executed.
+        # *   AUTO_EXECUTION: The remediation template was automatically executed.
+        # *   MANUAL_EXECUTION: The remediation template was manually executed.
+        # *   NOT_CONFIG: The execution mode was not specified.
         self.invoke_type = invoke_type
+        # The record ID of the last successful execution of the remediation template.
         self.last_successful_invocation_id = last_successful_invocation_id
+        # The timestamp of the last successful execution of the remediation template. Unit: milliseconds.
         self.last_successful_invocation_time = last_successful_invocation_time
+        # The mode of the last successful execution of the remediation template. Valid values:
+        # 
+        # *   NON_EXECUTION: The remediation template was not executed.
+        # *   AUTO_EXECUTION: The remediation template was automatically executed.
+        # *   MANUAL_EXECUTION: The remediation template was manually executed.
+        # *   NOT_CONFIG: The execution mode was not specified.
         self.last_successful_invocation_type = last_successful_invocation_type
+        # The ID of the remediation configuration.
         self.remediation_id = remediation_id
+        # The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
         self.remediation_origin_params = remediation_origin_params
+        # The source of the remediation template. Valid values:
+        # 
+        # *   ALIYUN: official template
+        # *   CUSTOM: custom template
+        # *   NONE: none
         self.remediation_source_type = remediation_source_type
+        # The ID of the remediation template.
         self.remediation_template_id = remediation_template_id
+        # The type of the remediation template. Valid values:
+        # 
+        # *   OOS: Operation Orchestration Service (official remediation)
+        # *   FC: Function Compute (custom remediation)
         self.remediation_type = remediation_type
 
     def validate(self):
@@ -6561,7 +6598,9 @@ class DescribeRemediationResponseBody(TeaModel):
         remediation: DescribeRemediationResponseBodyRemediation = None,
         request_id: str = None,
     ):
+        # The details of the remediation configuration.
         self.remediation = remediation
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8149,8 +8188,14 @@ class GetAdvancedSearchFileResponseBodyResourceSearch(TeaModel):
         resource_inventory_generate_time: int = None,
         status: str = None,
     ):
+        # The download URL of the resource file.
         self.download_url = download_url
+        # The time when the resource file was generated. The value is a timestamp. Unit: milliseconds.
         self.resource_inventory_generate_time = resource_inventory_generate_time
+        # The generation status of the resource file. Valid values:
+        # 
+        # *   CREATING: The resource file is being generated.
+        # *   COMPLETE: The resource file is generated.
         self.status = status
 
     def validate(self):
@@ -8187,7 +8232,9 @@ class GetAdvancedSearchFileResponseBody(TeaModel):
         request_id: str = None,
         resource_search: GetAdvancedSearchFileResponseBodyResourceSearch = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the resource file.
         self.resource_search = resource_search
 
     def validate(self):
@@ -8489,6 +8536,9 @@ class GetAggregateAdvancedSearchFileRequest(TeaModel):
         self,
         aggregator_id: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
 
     def validate(self):
@@ -8518,8 +8568,16 @@ class GetAggregateAdvancedSearchFileResponseBodyResourceSearch(TeaModel):
         resource_inventory_generate_time: int = None,
         status: str = None,
     ):
+        # The download URL of the resource file.
         self.download_url = download_url
+        # The time when the resource file was generated. The value is a timestamp.
+        # 
+        # Unit: milliseconds.
         self.resource_inventory_generate_time = resource_inventory_generate_time
+        # The generation status of the resource file. Valid values:
+        # 
+        # *   CREATING: The resource file is being generated.
+        # *   COMPLETE: The resource file is generated.
         self.status = status
 
     def validate(self):
@@ -8556,7 +8614,9 @@ class GetAggregateAdvancedSearchFileResponseBody(TeaModel):
         request_id: str = None,
         resource_search: GetAggregateAdvancedSearchFileResponseBodyResourceSearch = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the resource file.
         self.resource_search = resource_search
 
     def validate(self):
@@ -13324,6 +13384,9 @@ class GetAggregateResourceInventoryRequest(TeaModel):
         self,
         aggregator_id: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
 
     def validate(self):
@@ -13353,8 +13416,16 @@ class GetAggregateResourceInventoryResponseBodyResourceInventory(TeaModel):
         resource_inventory_generate_time: int = None,
         status: str = None,
     ):
+        # The download URL of the resource inventory.
         self.download_url = download_url
+        # The time when the resource inventory was generated. The value is a timestamp.
+        # 
+        # Unit: milliseconds.
         self.resource_inventory_generate_time = resource_inventory_generate_time
+        # The generation status of the resource inventory. Valid values:
+        # 
+        # *   CREATING: The resource inventory is being generated.
+        # *   COMPLETE: The resource inventory is generated.
         self.status = status
 
     def validate(self):
@@ -13391,7 +13462,9 @@ class GetAggregateResourceInventoryResponseBody(TeaModel):
         request_id: str = None,
         resource_inventory: GetAggregateResourceInventoryResponseBodyResourceInventory = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the resource inventory.
         self.resource_inventory = resource_inventory
 
     def validate(self):
@@ -14996,22 +15069,22 @@ class GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails(TeaModel):
     ):
         # The event source.
         # 
-        # > Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+        # >  Only events related to Cloud Config are supported. Valid value: aliyun.config.
         self.event_source = event_source
-        # The interval at which the rule was triggered. Valid values:
+        # The interval at which the rule is triggered. Valid values:
         # 
-        # *   One_Hour: 1 hour.
-        # *   Three_Hours: 3 hours.
+        # *   One_Hour: 1 hour
+        # *   Three_Hours: 3 hours
         # *   Six_Hours: 6 hours.
-        # *   Twelve_Hours: 12 hours.
-        # *   TwentyFour_Hours: 24 hours.
+        # *   Twelve_Hours: 12 hours
+        # *   TwentyFour_Hours: 24 hours
         # 
-        # > This parameter is returned if the managed rule is periodically triggered.
+        # >  This parameter is returned if the managed rule is periodically triggered.
         self.maximum_execution_frequency = maximum_execution_frequency
         # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The rule was triggered by configuration changes.
-        # *   ScheduledNotification: The rule was periodically triggered.
+        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # *   ScheduledNotification: The rule is periodically triggered.
         self.message_type = message_type
 
     def validate(self):
@@ -15065,15 +15138,7 @@ class GetConfigRuleResponseBodyConfigRuleManagedRule(TeaModel):
         self.managed_rule_name = managed_rule_name
         # The optional input parameters of the managed rule.
         self.optional_input_parameter_details = optional_input_parameter_details
-        # The interval at which the rule is triggered. Valid values:
-        # 
-        # *   One_Hour: 1 hour
-        # *   Three_Hours: 3 hours
-        # *   Six_Hours: 6 hours
-        # *   Twelve_Hours: 12 hours
-        # *   TwentyFour_Hours: 24 hours
-        # 
-        # > This parameter is returned if the rule is periodically triggered.
+        # The details of the source of the managed rule.
         self.source_details = source_details
 
     def validate(self):
@@ -15165,22 +15230,22 @@ class GetConfigRuleResponseBodyConfigRuleSourceSourceDetails(TeaModel):
     ):
         # The event source.
         # 
-        # > Only events related to Cloud Config are supported. The value is fixed to aliyun.config.
+        # >  Only events related to Cloud Config are supported. Valid value: aliyun.config.
         self.event_source = event_source
-        # The interval at which the rule was triggered. Valid values:
+        # The interval at which the rule is triggered. Valid values:
         # 
-        # *   One_Hour: 1 hour.
-        # *   Three_Hours: 3 hours.
-        # *   Six_Hours: 6 hours.
-        # *   Twelve_Hours: 12 hours.
-        # *   TwentyFour_Hours: 24 hours.
+        # *   One_Hour: 1 hour
+        # *   Three_Hours: 3 hours
+        # *   Six_Hours: 6 hours
+        # *   Twelve_Hours: 12 hours
+        # *   TwentyFour_Hours: 24 hours
         # 
-        # > This parameter is returned if the managed rule is periodically triggered.
+        # >  This parameter is returned if the rule is periodically triggered.
         self.maximum_execution_frequency = maximum_execution_frequency
         # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The rule was triggered by configuration changes.
-        # *   ScheduledNotification: The rule was periodically triggered.
+        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # *   ScheduledNotification: The rule is periodically triggered.
         self.message_type = message_type
 
     def validate(self):
@@ -15228,15 +15293,7 @@ class GetConfigRuleResponseBodyConfigRuleSource(TeaModel):
         # *   CUSTOM_FC: a custom rule.
         # *   ALIYUN: a managed rule.
         self.owner = owner
-        # The interval at which the rule is triggered. Valid values:
-        # 
-        # *   One_Hour: 1 hour
-        # *   Three_Hours: 3 hours
-        # *   Six_Hours: 6 hours
-        # *   Twelve_Hours: 12 hours
-        # *   TwentyFour_Hours: 24 hours
-        # 
-        # > This parameter is returned if the rule is periodically triggered.
+        # The details of the source of the rule.
         self.source_details = source_details
 
     def validate(self):
@@ -16471,9 +16528,9 @@ class GetDiscoveredResourceCountsGroupByRegionRequest(TeaModel):
         self,
         resource_type: str = None,
     ):
-        # The type of the resource.
+        # The resource type.
         # 
-        # For more information about how to query the type of a resource, see [ListDiscoveredResources](~~169620~~).
+        # For more information about how to obtain the type of a resource, see [ListDiscoveredResources](~~169620~~).
         self.resource_type = resource_type
 
     def validate(self):
@@ -16505,11 +16562,11 @@ class GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCoun
     ):
         # The dimension by which statistics are collected.
         # 
-        # >  In most cases, the `Region` parameter is returned instead of the GroupName parameter.
+        # >  In most cases, the `Region` parameter instead of the GroupName parameter is returned.
         self.group_name = group_name
         # The ID of the region by which statistics are collected.
         self.region = region
-        # The total number of resources in the region.
+        # The total number of resources.
         self.resource_count = resource_count
 
     def validate(self):
@@ -16546,9 +16603,9 @@ class GetDiscoveredResourceCountsGroupByRegionResponseBody(TeaModel):
         discovered_resource_counts_summary: List[GetDiscoveredResourceCountsGroupByRegionResponseBodyDiscoveredResourceCountsSummary] = None,
         request_id: str = None,
     ):
-        # The statistics on resources.
+        # The statistics on the resources.
         self.discovered_resource_counts_summary = discovered_resource_counts_summary
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16820,6 +16877,7 @@ class GetIntegratedServiceStatusResponseBody(TeaModel):
     def __init__(
         self,
         data: bool = None,
+        integrated_types: str = None,
         request_id: str = None,
     ):
         # Indicates whether the product has been integrated. Valid values:
@@ -16827,6 +16885,7 @@ class GetIntegratedServiceStatusResponseBody(TeaModel):
         # *   true
         # *   false
         self.data = data
+        self.integrated_types = integrated_types
         # The request ID.
         self.request_id = request_id
 
@@ -16841,6 +16900,8 @@ class GetIntegratedServiceStatusResponseBody(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data
+        if self.integrated_types is not None:
+            result['IntegratedTypes'] = self.integrated_types
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -16849,6 +16910,8 @@ class GetIntegratedServiceStatusResponseBody(TeaModel):
         m = m or dict()
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('IntegratedTypes') is not None:
+            self.integrated_types = m.get('IntegratedTypes')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -17373,11 +17436,11 @@ class GetResourceComplianceByConfigRuleRequest(TeaModel):
         compliance_type: str = None,
         config_rule_id: str = None,
     ):
-        # The compliance evaluation results to be returned. Valid values:
+        # The compliance evaluation result of the resource. Valid values:
         # 
-        # *   COMPLIANT: The relevant resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
         # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
         # The ID of the rule.
@@ -18831,8 +18894,14 @@ class GetResourceInventoryResponseBodyResourceInventory(TeaModel):
         resource_inventory_generate_time: int = None,
         status: str = None,
     ):
+        # The download URL of the resource inventory.
         self.download_url = download_url
+        # The time when the resource inventory was generated. The value is a timestamp.
         self.resource_inventory_generate_time = resource_inventory_generate_time
+        # The generation status of the resource inventory. Valid values:
+        # 
+        # *   CREATING: The resource inventory is being generated.
+        # *   COMPLETE: The resource inventory is generated.
         self.status = status
 
     def validate(self):
@@ -18869,7 +18938,9 @@ class GetResourceInventoryResponseBody(TeaModel):
         request_id: str = None,
         resource_inventory: GetResourceInventoryResponseBodyResourceInventory = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the resource inventory.
         self.resource_inventory = resource_inventory
 
     def validate(self):
@@ -19606,13 +19677,13 @@ class ListAggregateCompliancePacksRequest(TeaModel):
         # 
         # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Default value: 10.
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
         # The status of the one or more compliance packages to be queried. Valid values:
         # 
@@ -20194,19 +20265,19 @@ class ListAggregateConfigRuleEvaluationResultsRequest(TeaModel):
         # 
         # For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](~~262059~~).
         self.compliance_pack_id = compliance_pack_id
-        # The compliance evaluation results of the resources. Valid values:
+        # The compliance evaluation result of the resource. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resources.
-        # *   INSUFFICIENT_DATA: No data is available.
-        # *   IGNORED: The resources are ignored during compliance evaluation.
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No resource data is available.
+        # *   IGNORED: The resource is ignored during compliance evaluation.
         self.compliance_type = compliance_type
         # The ID of the rule.
         # 
         # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         self.config_rule_id = config_rule_id
-        # The maximum number of entries to return in a request. Valid values: 1 to 100.
+        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         self.max_results = max_results
         # The token that is used to initiate the next request. If the response to the current request is truncated, this token is used to initiate another request and obtain the remaining entries.``
         self.next_token = next_token
@@ -20649,6 +20720,9 @@ class ListAggregateConfigRuleEvaluationStatisticsRequest(TeaModel):
         self,
         aggregator_id: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
 
     def validate(self):
@@ -20681,11 +20755,17 @@ class ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults(T
         total_resource_cnt: int = None,
         total_rule_cnt: int = None,
     ):
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
+        # The number of resources that are evaluated as non-compliant.
         self.non_compliant_resource_cnt = non_compliant_resource_cnt
+        # The number of rules based on which resources are evaluated as non-compliant.
         self.non_compliant_rule_cnt = non_compliant_rule_cnt
+        # The date on which the statistics are obtained.
         self.statistic_date = statistic_date
+        # The total number of resources.
         self.total_resource_cnt = total_resource_cnt
+        # The total number of rules.
         self.total_rule_cnt = total_rule_cnt
 
     def validate(self):
@@ -20734,7 +20814,9 @@ class ListAggregateConfigRuleEvaluationStatisticsResponseBody(TeaModel):
         evaluation_results: List[ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults] = None,
         request_id: str = None,
     ):
+        # The statistics of compliance evaluation results.
         self.evaluation_results = evaluation_results
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20832,29 +20914,29 @@ class ListAggregateConfigRulesRequest(TeaModel):
         self.aggregator_id = aggregator_id
         # The compliance evaluation result. Valid values:
         # 
-        # *   COMPLIANT: The resource was evaluated as compliant.
-        # *   NON_COMPLIANT: The resource was evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule did not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data was available.
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
         # The name of the rule.
         self.config_rule_name = config_rule_name
         # The status of the rule. Valid values:
         # 
-        # *   ACTIVE: The rule is being used to monitor resource configurations.
+        # *   ACTIVE: The rule is enabled.
         # *   DELETING: The rule is being deleted.
-        # *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
+        # *   EVALUATING: The rule is being used to evaluate resource configurations.
         # *   INACTIVE: The rule is disabled.
         self.config_rule_state = config_rule_state
         # The keyword that you want to use to query the rules.
         # 
         # You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
         self.keyword = keyword
-        # The number of the page to return.
+        # The page number.
         # 
-        # Minimum value: 1. Default value: 1.
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
@@ -21373,8 +21455,6 @@ class ListAggregateDiscoveredResourcesRequest(TeaModel):
         self.next_token = next_token
         # The ID of the region in which the resource resides. Separate multiple region IDs with commas (,).
         self.regions = regions
-        # 账号组内待查询资源所属的阿里云账号ID。 
-        # > 参数ResourceAccountId和ResourceOwnerId二选一，推荐使用本参数。
         self.resource_account_id = resource_account_id
         # The status of the resource. Valid values:
         # 
@@ -21455,31 +21535,31 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         tags: str = None,
         version: int = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The ID of the Alibaba Cloud account to which the resource belongs. We recommend that you use the ResourceOwnerId parameter.
         self.account_id = account_id
-        # The ID of the zone where the resource resides.
+        # The ID of the zone in which the resource resides.
         self.availability_zone = availability_zone
         # The region ID.
         self.region = region
-        # The timestamp when the resource was created. Unit: milliseconds.
+        # The time when the resource was created. Unit: milliseconds.
         self.resource_creation_time = resource_creation_time
         # The status of the resource. Valid values:
         # 
-        # *   0: The resource was deleted.
-        # *   1: The resource was retained.
+        # *   0: The resource is deleted.
+        # *   1: The resource is retained.
         self.resource_deleted = resource_deleted
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The status of the resource. The value of this parameter varies based on the resource type and may be empty. Examples:
+        # The status of the resource. The value of this parameter varies with the resource type and may be empty. Examples:
         # 
         # *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
         # *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
         self.resource_status = resource_status
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
@@ -21558,7 +21638,7 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Tea
         next_token: str = None,
         total_count: int = None,
     ):
-        # The details of the resources.
+        # The queried resource.
         self.discovered_resource_profile_list = discovered_resource_profile_list
         # The maximum number of entries returned on each page.
         self.max_results = max_results
@@ -21613,7 +21693,7 @@ class ListAggregateDiscoveredResourcesResponseBody(TeaModel):
         discovered_resource_profiles: ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles = None,
         request_id: str = None,
     ):
-        # The list of the resources.
+        # The queried resources.
         self.discovered_resource_profiles = discovered_resource_profiles
         # The request ID.
         self.request_id = request_id
@@ -21698,11 +21778,24 @@ class ListAggregateRemediationExecutionsRequest(TeaModel):
         next_token: str = None,
         resource_account_id: int = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
+        # The rule ID.
+        # 
+        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](~~264148~~).
         self.config_rule_id = config_rule_id
+        # The status of the remediation. Valid values:
+        # 
+        # *   Success
+        # *   Failed
         self.execution_status = execution_status
+        # The maximum number of entries to return for a single request. Valid values: 10 to 100.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
+        # The ID of the member account in the account group.
         self.resource_account_id = resource_account_id
 
     def validate(self):
@@ -21755,11 +21848,20 @@ class ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataReme
         execution_status: str = None,
         execution_status_message: str = None,
     ):
+        # The time when the remediation record was created.
         self.execution_create_date = execution_create_date
+        # The invocation ID of the remediation record.
         self.execution_invocation_id = execution_invocation_id
+        # The IDs of the remediated resources. Multiple resource IDs are separated with commas (,).
         self.execution_resource_ids = execution_resource_ids
+        # The resource type.
         self.execution_resource_type = execution_resource_type
+        # The status of the remediation. Valid values:
+        # 
+        # *   Success
+        # *   Failed
         self.execution_status = execution_status
+        # The error message returned when the remediation fails.
         self.execution_status_message = execution_status_message
 
     def validate(self):
@@ -21809,8 +21911,11 @@ class ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData(Tea
         next_token: str = None,
         remediation_executions: List[ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions] = None,
     ):
+        # The maximum number of entries returned for a single request.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The queried remediation records.
         self.remediation_executions = remediation_executions
 
     def validate(self):
@@ -21855,7 +21960,9 @@ class ListAggregateRemediationExecutionsResponseBody(TeaModel):
         remediation_execution_data: ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData = None,
         request_id: str = None,
     ):
+        # The queried remediation records.
         self.remediation_execution_data = remediation_execution_data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22191,12 +22298,12 @@ class ListAggregateResourceEvaluationResultsRequest(TeaModel):
         # 
         # For more information about how to obtain the ID of an account group, see [ListAggregators](~~255797~~).
         self.aggregator_id = aggregator_id
-        # The compliance evaluation result of the resources. Valid values:
+        # The compliance evaluation result of the resource. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         # *   IGNORED: The resource is ignored during compliance evaluation.
         self.compliance_type = compliance_type
         # The maximum number of entries to return for a single request. Valid values: 1 to 100.
@@ -23002,7 +23109,9 @@ class ListAggregateResourcesByAdvancedSearchRequest(TeaModel):
         aggregator_id: str = None,
         sql: str = None,
     ):
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
+        # The SQL statement used to query resources.
         self.sql = sql
 
     def validate(self):
@@ -23035,7 +23144,9 @@ class ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultL
         columns: List[str] = None,
         values: List[Any] = None,
     ):
+        # The field names.
         self.columns = columns
+        # The resource data.
         self.values = values
 
     def validate(self):
@@ -23067,6 +23178,7 @@ class ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults(TeaModel):
         self,
         query_result_list: ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList = None,
     ):
+        # The queried resources. A maximum of 1,000 data records can be returned. To view more data, use the download URL of the resource file.
         self.query_result_list = query_result_list
 
     def validate(self):
@@ -23097,7 +23209,9 @@ class ListAggregateResourcesByAdvancedSearchResponseBody(TeaModel):
         query_results: ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults = None,
         request_id: str = None,
     ):
+        # The result of the request.
         self.query_results = query_results
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23432,6 +23546,7 @@ class ListCompliancePackTemplatesRequest(TeaModel):
         # 
         # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
+        # The type of the resource evaluated by the rule.
         self.resource_types = resource_types
 
     def validate(self):
@@ -23839,13 +23954,13 @@ class ListCompliancePacksRequest(TeaModel):
         page_size: int = None,
         status: str = None,
     ):
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Pages start from page 1. Default value: 10.
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
         # The status of the compliance package to be queried. Valid values:
         # 
@@ -24393,19 +24508,19 @@ class ListConfigRuleEvaluationResultsRequest(TeaModel):
         # 
         # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~263332~~).
         self.compliance_pack_id = compliance_pack_id
-        # The compliance evaluation result of resources. Valid values:
+        # The compliance evaluation result of the resource. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         # *   IGNORED: The resource is ignored during compliance evaluation.
         self.compliance_type = compliance_type
         # The ID of the rule.
         # 
         # For more information about how to obtain the ID of a rule, see [ListConfigRules](~~169607~~).
         self.config_rule_id = config_rule_id
-        # The maximum number of entries to return in a request. Valid values: 1 to 100.
+        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         self.max_results = max_results
         # The token that is used to initiate the next request. If the response to the current request is truncated, this token is used to initiate another request and obtain the remaining entries.``
         self.next_token = next_token
@@ -24835,10 +24950,15 @@ class ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults(TeaModel):
         total_resource_cnt: int = None,
         total_rule_cnt: int = None,
     ):
+        # The number of resources that are evaluated as non-compliant.
         self.non_compliant_resource_cnt = non_compliant_resource_cnt
+        # The number of rules based on which resources are evaluated as non-compliant.
         self.non_compliant_rule_cnt = non_compliant_rule_cnt
+        # The date on which the statistics are obtained.
         self.statistic_date = statistic_date
+        # The total number of resources.
         self.total_resource_cnt = total_resource_cnt
+        # The total number of rules.
         self.total_rule_cnt = total_rule_cnt
 
     def validate(self):
@@ -24883,7 +25003,9 @@ class ListConfigRuleEvaluationStatisticsResponseBody(TeaModel):
         evaluation_results: List[ListConfigRuleEvaluationStatisticsResponseBodyEvaluationResults] = None,
         request_id: str = None,
     ):
+        # The statistics of compliance evaluation results.
         self.evaluation_results = evaluation_results
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25776,12 +25898,24 @@ class ListDiscoveredResourcesResponse(TeaModel):
 class ListIntegratedServiceResponseBodyData(TeaModel):
     def __init__(
         self,
+        integrated_types: str = None,
         service_code: str = None,
         service_name: str = None,
         status: bool = None,
     ):
+        self.integrated_types = integrated_types
+        # The identifier of the cloud service. Valid values:
+        # 
+        # *   eventbridge: event bus
+        # *   cms: CloudMonitor
+        # *   bpstudio: Cloud Architect Design Tools (CADT)
         self.service_code = service_code
+        # The name of the cloud service.
         self.service_name = service_name
+        # The integration status of the cloud service. Valid values:
+        # 
+        # *   1: The cloud service is integrated.
+        # *   0: The cloud service is not integrated.
         self.status = status
 
     def validate(self):
@@ -25793,6 +25927,8 @@ class ListIntegratedServiceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.integrated_types is not None:
+            result['IntegratedTypes'] = self.integrated_types
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.service_name is not None:
@@ -25803,6 +25939,8 @@ class ListIntegratedServiceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IntegratedTypes') is not None:
+            self.integrated_types = m.get('IntegratedTypes')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('ServiceName') is not None:
@@ -25818,7 +25956,9 @@ class ListIntegratedServiceResponseBody(TeaModel):
         data: List[ListIntegratedServiceResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The information about the cloud service that can be integrated.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25908,13 +26048,13 @@ class ListManagedRulesRequest(TeaModel):
     ):
         # The keyword that you want to use to filter managed rules.
         self.keyword = keyword
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10
+        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
         self.page_size = page_size
         # The type of the resources to be evaluated based on the rule.
         self.resource_types = resource_types
@@ -26752,7 +26892,7 @@ class ListRemediationTemplatesRequest(TeaModel):
         # 
         # You can call the [ListCompliancePackTemplates](~~261176~~) operation to obtain the managed rule identifier.
         self.managed_rule_identifier = managed_rule_identifier
-        # The page number. Pages start from page 1.
+        # The page number. Pages start from 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100.
         self.page_size = page_size
@@ -27232,12 +27372,12 @@ class ListResourceEvaluationResultsRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
-        # The compliance evaluation result of the resources. Valid values:
+        # The compliance evaluation result of the resource. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
+        # *   COMPLIANT: The resource is evaluated as compliant.
+        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # *   NOT_APPLICABLE: The rule does not apply to the resource.
+        # *   INSUFFICIENT_DATA: No data is available.
         # *   IGNORED: The resource is ignored during compliance evaluation.
         self.compliance_type = compliance_type
         # The maximum number of entries to return for a single request. Valid values: 1 to 100.
@@ -28030,6 +28170,7 @@ class ListResourcesByAdvancedSearchRequest(TeaModel):
         self,
         sql: str = None,
     ):
+        # The SQL statement.
         self.sql = sql
 
     def validate(self):
@@ -28058,7 +28199,9 @@ class ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList(TeaMo
         columns: List[str] = None,
         values: List[Any] = None,
     ):
+        # The field names.
         self.columns = columns
+        # The resource data.
         self.values = values
 
     def validate(self):
@@ -28090,6 +28233,7 @@ class ListResourcesByAdvancedSearchResponseBodyQueryResults(TeaModel):
         self,
         query_result_list: ListResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList = None,
     ):
+        # The queried resources. A maximum of 1,000 data records can be returned. To view more data, use the download URL of the resource file.
         self.query_result_list = query_result_list
 
     def validate(self):
@@ -28120,7 +28264,9 @@ class ListResourcesByAdvancedSearchResponseBody(TeaModel):
         query_results: ListResourcesByAdvancedSearchResponseBodyQueryResults = None,
         request_id: str = None,
     ):
+        # The result of the request.
         self.query_results = query_results
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28199,7 +28345,9 @@ class ListSupportedProductsRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The maximum number of entries to return for a single request. Valid values: 1 to 500.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):
@@ -28234,9 +28382,13 @@ class ListSupportedProductsResponseBodyProductsResourceTypeList(TeaModel):
         type_name_zh: str = None,
         type_page_link: str = None,
     ):
+        # The identifier of the resource type.
         self.resource_type = resource_type
+        # The English name of the resource type.
         self.type_name_en = type_name_en
+        # The Chinese name of the resource type.
         self.type_name_zh = type_name_zh
+        # The URL of the resource type in the console.
         self.type_page_link = type_page_link
 
     def validate(self):
@@ -28278,8 +28430,11 @@ class ListSupportedProductsResponseBodyProducts(TeaModel):
         product_name_zh: str = None,
         resource_type_list: List[ListSupportedProductsResponseBodyProductsResourceTypeList] = None,
     ):
+        # The English name of the cloud service.
         self.product_name_en = product_name_en
+        # The Chinese name of the cloud service.
         self.product_name_zh = product_name_zh
+        # The resource types that are supported by Cloud Config.
         self.resource_type_list = resource_type_list
 
     def validate(self):
@@ -28326,9 +28481,13 @@ class ListSupportedProductsResponseBody(TeaModel):
         products: List[ListSupportedProductsResponseBodyProducts] = None,
         request_id: str = None,
     ):
+        # The maximum number of entries returned for a single request. Valid values: 1 to 500.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The cloud services that are supported by Cloud Config.
         self.products = products
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -28606,9 +28765,9 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
-        # A tag key.
+        # The tag key.
         self.tag_key = tag_key
-        # A tag value.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -28685,9 +28844,9 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
-        # The pagination token that is used in the next request to retrieve a new page of results.
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         # 
-        # > If this parameter is left empty, no subsequent query exists.
+        # > If NextToken is empty, no next page exists.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -29614,7 +29773,7 @@ class StartConfigRuleEvaluationRequest(TeaModel):
         # 
         # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](~~606968~~).
         # 
-        # > You must set one of the CompliancePackId and ConfigRuleId parameters.
+        # >  You must set either the CompliancePackId or ConfigRuleId parameter.
         self.compliance_pack_id = compliance_pack_id
         # The rule ID.
         # 
@@ -30587,9 +30746,9 @@ class UpdateAggregateCompliancePackRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -30716,9 +30875,9 @@ class UpdateAggregateCompliancePackShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -32185,9 +32344,9 @@ class UpdateCompliancePackRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -32305,9 +32464,9 @@ class UpdateCompliancePackShrinkRequest(TeaModel):
         self.resource_group_ids_scope = resource_group_ids_scope
         # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # *   1: high
+        # *   2: medium
+        # *   3: low
         self.risk_level = risk_level
         # The tag key of the resource that you want to evaluate by using the compliance package.
         self.tag_key_scope = tag_key_scope
@@ -33468,9 +33627,11 @@ class UpdateDeliveryChannelResponse(TeaModel):
 class UpdateIntegratedServiceStatusRequest(TeaModel):
     def __init__(
         self,
+        integrated_types: str = None,
         service_code: str = None,
         status: bool = None,
     ):
+        self.integrated_types = integrated_types
         # The product code of the cloud product. Valid values:
         # 
         # *   cadt: Cloud Architecture Design Tool
@@ -33490,6 +33651,8 @@ class UpdateIntegratedServiceStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.integrated_types is not None:
+            result['IntegratedTypes'] = self.integrated_types
         if self.service_code is not None:
             result['ServiceCode'] = self.service_code
         if self.status is not None:
@@ -33498,6 +33661,8 @@ class UpdateIntegratedServiceStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IntegratedTypes') is not None:
+            self.integrated_types = m.get('IntegratedTypes')
         if m.get('ServiceCode') is not None:
             self.service_code = m.get('ServiceCode')
         if m.get('Status') is not None:
