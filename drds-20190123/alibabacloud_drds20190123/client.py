@@ -169,10 +169,14 @@ class Client(OpenApiClient):
     ) -> drds_20190123_models.ChangeInstanceAzoneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.change_vswitch):
+            query['ChangeVSwitch'] = request.change_vswitch
         if not UtilClient.is_unset(request.drds_instance_id):
             query['DrdsInstanceId'] = request.drds_instance_id
         if not UtilClient.is_unset(request.drds_region_id):
             query['DrdsRegionId'] = request.drds_region_id
+        if not UtilClient.is_unset(request.new_vswitch):
+            query['NewVSwitch'] = request.new_vswitch
         if not UtilClient.is_unset(request.origin_azone_id):
             query['OriginAzoneId'] = request.origin_azone_id
         if not UtilClient.is_unset(request.target_azone_id):
@@ -203,10 +207,14 @@ class Client(OpenApiClient):
     ) -> drds_20190123_models.ChangeInstanceAzoneResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.change_vswitch):
+            query['ChangeVSwitch'] = request.change_vswitch
         if not UtilClient.is_unset(request.drds_instance_id):
             query['DrdsInstanceId'] = request.drds_instance_id
         if not UtilClient.is_unset(request.drds_region_id):
             query['DrdsRegionId'] = request.drds_region_id
+        if not UtilClient.is_unset(request.new_vswitch):
+            query['NewVSwitch'] = request.new_vswitch
         if not UtilClient.is_unset(request.origin_azone_id):
             query['OriginAzoneId'] = request.origin_azone_id
         if not UtilClient.is_unset(request.target_azone_id):
@@ -875,6 +883,13 @@ class Client(OpenApiClient):
         request: drds_20190123_models.CreateOrderForRdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateOrderForRdsResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+        
+        @param request: CreateOrderForRdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderForRdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.params):
@@ -905,6 +920,13 @@ class Client(OpenApiClient):
         request: drds_20190123_models.CreateOrderForRdsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.CreateOrderForRdsResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+        
+        @param request: CreateOrderForRdsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrderForRdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.params):
@@ -934,6 +956,12 @@ class Client(OpenApiClient):
         self,
         request: drds_20190123_models.CreateOrderForRdsRequest,
     ) -> drds_20190123_models.CreateOrderForRdsResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+        
+        @param request: CreateOrderForRdsRequest
+        @return: CreateOrderForRdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_order_for_rds_with_options(request, runtime)
 
@@ -941,6 +969,12 @@ class Client(OpenApiClient):
         self,
         request: drds_20190123_models.CreateOrderForRdsRequest,
     ) -> drds_20190123_models.CreateOrderForRdsResponse:
+        """
+        Before you call this operation, make sure that you understand the billing methods and pricing of PolarDB-X 1.0. For more information, visit the [pricing page](https://www.aliyun.com/price/product#/rds/detail).
+        
+        @param request: CreateOrderForRdsRequest
+        @return: CreateOrderForRdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_order_for_rds_with_options_async(request, runtime)
 
@@ -1661,6 +1695,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.search):
             query['Search'] = request.search
         req = open_api_models.OpenApiRequest(
@@ -1697,6 +1733,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.search):
             query['Search'] = request.search
         req = open_api_models.OpenApiRequest(
@@ -1897,6 +1935,8 @@ class Client(OpenApiClient):
             query['DrdsInstanceId'] = request.drds_instance_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1929,6 +1969,8 @@ class Client(OpenApiClient):
             query['DrdsInstanceId'] = request.drds_instance_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2277,84 +2319,6 @@ class Client(OpenApiClient):
     ) -> drds_20190123_models.DescribeDrdsDbRdsNameListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_drds_db_rds_name_list_with_options_async(request, runtime)
-
-    def describe_drds_db_tasks_with_options(
-        self,
-        request: drds_20190123_models.DescribeDrdsDbTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> drds_20190123_models.DescribeDrdsDbTasksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.db_name):
-            query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.drds_instance_id):
-            query['DrdsInstanceId'] = request.drds_instance_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDrdsDbTasks',
-            version='2019-01-23',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            drds_20190123_models.DescribeDrdsDbTasksResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_drds_db_tasks_with_options_async(
-        self,
-        request: drds_20190123_models.DescribeDrdsDbTasksRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> drds_20190123_models.DescribeDrdsDbTasksResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.db_name):
-            query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.drds_instance_id):
-            query['DrdsInstanceId'] = request.drds_instance_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDrdsDbTasks',
-            version='2019-01-23',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            drds_20190123_models.DescribeDrdsDbTasksResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_drds_db_tasks(
-        self,
-        request: drds_20190123_models.DescribeDrdsDbTasksRequest,
-    ) -> drds_20190123_models.DescribeDrdsDbTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_drds_db_tasks_with_options(request, runtime)
-
-    async def describe_drds_db_tasks_async(
-        self,
-        request: drds_20190123_models.DescribeDrdsDbTasksRequest,
-    ) -> drds_20190123_models.DescribeDrdsDbTasksResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_drds_db_tasks_with_options_async(request, runtime)
 
     def describe_drds_instance_with_options(
         self,
@@ -3781,6 +3745,13 @@ class Client(OpenApiClient):
         request: drds_20190123_models.DescribeInstanceSwitchNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceSwitchNetworkResponse:
+        """
+        ***\
+        
+        @param request: DescribeInstanceSwitchNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSwitchNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.drds_instance_id):
@@ -3809,6 +3780,13 @@ class Client(OpenApiClient):
         request: drds_20190123_models.DescribeInstanceSwitchNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.DescribeInstanceSwitchNetworkResponse:
+        """
+        ***\
+        
+        @param request: DescribeInstanceSwitchNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSwitchNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.drds_instance_id):
@@ -3836,6 +3814,12 @@ class Client(OpenApiClient):
         self,
         request: drds_20190123_models.DescribeInstanceSwitchNetworkRequest,
     ) -> drds_20190123_models.DescribeInstanceSwitchNetworkResponse:
+        """
+        ***\
+        
+        @param request: DescribeInstanceSwitchNetworkRequest
+        @return: DescribeInstanceSwitchNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_switch_network_with_options(request, runtime)
 
@@ -3843,6 +3827,12 @@ class Client(OpenApiClient):
         self,
         request: drds_20190123_models.DescribeInstanceSwitchNetworkRequest,
     ) -> drds_20190123_models.DescribeInstanceSwitchNetworkResponse:
+        """
+        ***\
+        
+        @param request: DescribeInstanceSwitchNetworkRequest
+        @return: DescribeInstanceSwitchNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_switch_network_with_options_async(request, runtime)
 
@@ -4579,100 +4569,6 @@ class Client(OpenApiClient):
     ) -> drds_20190123_models.DescribeShardTaskInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_shard_task_info_with_options_async(request, runtime)
-
-    def describe_shard_task_list_with_options(
-        self,
-        request: drds_20190123_models.DescribeShardTaskListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> drds_20190123_models.DescribeShardTaskListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.db_name):
-            query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.drds_instance_id):
-            query['DrdsInstanceId'] = request.drds_instance_id
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query):
-            query['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeShardTaskList',
-            version='2019-01-23',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            drds_20190123_models.DescribeShardTaskListResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_shard_task_list_with_options_async(
-        self,
-        request: drds_20190123_models.DescribeShardTaskListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> drds_20190123_models.DescribeShardTaskListResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.current_page):
-            query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.db_name):
-            query['DbName'] = request.db_name
-        if not UtilClient.is_unset(request.drds_instance_id):
-            query['DrdsInstanceId'] = request.drds_instance_id
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query):
-            query['Query'] = request.query
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.task_type):
-            query['TaskType'] = request.task_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeShardTaskList',
-            version='2019-01-23',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            drds_20190123_models.DescribeShardTaskListResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_shard_task_list(
-        self,
-        request: drds_20190123_models.DescribeShardTaskListRequest,
-    ) -> drds_20190123_models.DescribeShardTaskListResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_shard_task_list_with_options(request, runtime)
-
-    async def describe_shard_task_list_async(
-        self,
-        request: drds_20190123_models.DescribeShardTaskListRequest,
-    ) -> drds_20190123_models.DescribeShardTaskListResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_shard_task_list_with_options_async(request, runtime)
 
     def describe_sql_flashbak_task_with_options(
         self,
@@ -6595,6 +6491,14 @@ class Client(OpenApiClient):
         request: drds_20190123_models.RemoveDrdsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsInstanceResponse:
+        """
+        >    You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+        >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+        
+        @param request: RemoveDrdsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDrdsInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.drds_instance_id):
@@ -6623,6 +6527,14 @@ class Client(OpenApiClient):
         request: drds_20190123_models.RemoveDrdsInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> drds_20190123_models.RemoveDrdsInstanceResponse:
+        """
+        >    You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+        >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+        
+        @param request: RemoveDrdsInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveDrdsInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.drds_instance_id):
@@ -6650,6 +6562,13 @@ class Client(OpenApiClient):
         self,
         request: drds_20190123_models.RemoveDrdsInstanceRequest,
     ) -> drds_20190123_models.RemoveDrdsInstanceResponse:
+        """
+        >    You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+        >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+        
+        @param request: RemoveDrdsInstanceRequest
+        @return: RemoveDrdsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_drds_instance_with_options(request, runtime)
 
@@ -6657,6 +6576,13 @@ class Client(OpenApiClient):
         self,
         request: drds_20190123_models.RemoveDrdsInstanceRequest,
     ) -> drds_20190123_models.RemoveDrdsInstanceResponse:
+        """
+        >    You can call this operation to release an instance that is charged based on only the pay-as-you-go billing method.
+        >*   If the specifications of the instance are being changed, or one or more databases exist in the instance, you cannot call this operation to release the instance.
+        
+        @param request: RemoveDrdsInstanceRequest
+        @return: RemoveDrdsInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_drds_instance_with_options_async(request, runtime)
 
