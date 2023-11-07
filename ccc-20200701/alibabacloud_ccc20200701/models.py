@@ -355,10 +355,12 @@ class AddCasesResponse(TeaModel):
 class AddNumbersToSkillGroupRequest(TeaModel):
     def __init__(
         self,
+        inst_number_group_id_list: str = None,
         instance_id: str = None,
         number_list: str = None,
         skill_group_id: str = None,
     ):
+        self.inst_number_group_id_list = inst_number_group_id_list
         self.instance_id = instance_id
         self.number_list = number_list
         self.skill_group_id = skill_group_id
@@ -372,6 +374,8 @@ class AddNumbersToSkillGroupRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.inst_number_group_id_list is not None:
+            result['InstNumberGroupIdList'] = self.inst_number_group_id_list
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.number_list is not None:
@@ -382,6 +386,8 @@ class AddNumbersToSkillGroupRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstNumberGroupIdList') is not None:
+            self.inst_number_group_id_list = m.get('InstNumberGroupIdList')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('NumberList') is not None:
@@ -2430,6 +2436,7 @@ class BlindTransferRequest(TeaModel):
     def __init__(
         self,
         call_priority: int = None,
+        contact_flow_variables: str = None,
         device_id: str = None,
         instance_id: str = None,
         job_id: str = None,
@@ -2437,10 +2444,12 @@ class BlindTransferRequest(TeaModel):
         strategy_params: str = None,
         timeout_seconds: int = None,
         transferee: str = None,
+        transferee_type: str = None,
         transferor: str = None,
         user_id: str = None,
     ):
         self.call_priority = call_priority
+        self.contact_flow_variables = contact_flow_variables
         self.device_id = device_id
         self.instance_id = instance_id
         self.job_id = job_id
@@ -2448,6 +2457,7 @@ class BlindTransferRequest(TeaModel):
         self.strategy_params = strategy_params
         self.timeout_seconds = timeout_seconds
         self.transferee = transferee
+        self.transferee_type = transferee_type
         self.transferor = transferor
         self.user_id = user_id
 
@@ -2462,6 +2472,8 @@ class BlindTransferRequest(TeaModel):
         result = dict()
         if self.call_priority is not None:
             result['CallPriority'] = self.call_priority
+        if self.contact_flow_variables is not None:
+            result['ContactFlowVariables'] = self.contact_flow_variables
         if self.device_id is not None:
             result['DeviceId'] = self.device_id
         if self.instance_id is not None:
@@ -2476,6 +2488,8 @@ class BlindTransferRequest(TeaModel):
             result['TimeoutSeconds'] = self.timeout_seconds
         if self.transferee is not None:
             result['Transferee'] = self.transferee
+        if self.transferee_type is not None:
+            result['TransfereeType'] = self.transferee_type
         if self.transferor is not None:
             result['Transferor'] = self.transferor
         if self.user_id is not None:
@@ -2486,6 +2500,8 @@ class BlindTransferRequest(TeaModel):
         m = m or dict()
         if m.get('CallPriority') is not None:
             self.call_priority = m.get('CallPriority')
+        if m.get('ContactFlowVariables') is not None:
+            self.contact_flow_variables = m.get('ContactFlowVariables')
         if m.get('DeviceId') is not None:
             self.device_id = m.get('DeviceId')
         if m.get('InstanceId') is not None:
@@ -2500,6 +2516,8 @@ class BlindTransferRequest(TeaModel):
             self.timeout_seconds = m.get('TimeoutSeconds')
         if m.get('Transferee') is not None:
             self.transferee = m.get('Transferee')
+        if m.get('TransfereeType') is not None:
+            self.transferee_type = m.get('TransfereeType')
         if m.get('Transferor') is not None:
             self.transferor = m.get('Transferor')
         if m.get('UserId') is not None:
@@ -6204,23 +6222,27 @@ class CreateSkillGroupResponse(TeaModel):
 class CreateUserRequest(TeaModel):
     def __init__(
         self,
+        avatar_url: str = None,
         display_id: str = None,
         display_name: str = None,
         email: str = None,
         instance_id: str = None,
         login_name: str = None,
         mobile: str = None,
+        nickname: str = None,
         reset_password: bool = None,
         role_id: str = None,
         skill_level_list: str = None,
         work_mode: str = None,
     ):
+        self.avatar_url = avatar_url
         self.display_id = display_id
         self.display_name = display_name
         self.email = email
         self.instance_id = instance_id
         self.login_name = login_name
         self.mobile = mobile
+        self.nickname = nickname
         self.reset_password = reset_password
         self.role_id = role_id
         self.skill_level_list = skill_level_list
@@ -6235,6 +6257,8 @@ class CreateUserRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
         if self.display_id is not None:
             result['DisplayId'] = self.display_id
         if self.display_name is not None:
@@ -6247,6 +6271,8 @@ class CreateUserRequest(TeaModel):
             result['LoginName'] = self.login_name
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
         if self.reset_password is not None:
             result['ResetPassword'] = self.reset_password
         if self.role_id is not None:
@@ -6259,6 +6285,8 @@ class CreateUserRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
         if m.get('DisplayId') is not None:
             self.display_id = m.get('DisplayId')
         if m.get('DisplayName') is not None:
@@ -6271,6 +6299,8 @@ class CreateUserRequest(TeaModel):
             self.login_name = m.get('LoginName')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
         if m.get('ResetPassword') is not None:
             self.reset_password = m.get('ResetPassword')
         if m.get('RoleId') is not None:
@@ -6285,19 +6315,23 @@ class CreateUserRequest(TeaModel):
 class CreateUserResponseBodyData(TeaModel):
     def __init__(
         self,
+        avatar_url: str = None,
         display_name: str = None,
         email: str = None,
         extension: str = None,
         login_name: str = None,
         mobile: str = None,
+        nickname: str = None,
         user_id: str = None,
         work_mode: str = None,
     ):
+        self.avatar_url = avatar_url
         self.display_name = display_name
         self.email = email
         self.extension = extension
         self.login_name = login_name
         self.mobile = mobile
+        self.nickname = nickname
         self.user_id = user_id
         self.work_mode = work_mode
 
@@ -6310,6 +6344,8 @@ class CreateUserResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
         if self.display_name is not None:
             result['DisplayName'] = self.display_name
         if self.email is not None:
@@ -6320,6 +6356,8 @@ class CreateUserResponseBodyData(TeaModel):
             result['LoginName'] = self.login_name
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
         if self.user_id is not None:
             result['UserId'] = self.user_id
         if self.work_mode is not None:
@@ -6328,6 +6366,8 @@ class CreateUserResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
         if m.get('DisplayName') is not None:
             self.display_name = m.get('DisplayName')
         if m.get('Email') is not None:
@@ -6338,6 +6378,8 @@ class CreateUserResponseBodyData(TeaModel):
             self.login_name = m.get('LoginName')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         if m.get('WorkMode') is not None:
@@ -6352,12 +6394,14 @@ class CreateUserResponseBody(TeaModel):
         data: CreateUserResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
+        params: List[str] = None,
         request_id: str = None,
     ):
         self.code = code
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
+        self.params = params
         self.request_id = request_id
 
     def validate(self):
@@ -6378,6 +6422,8 @@ class CreateUserResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -6393,6 +6439,8 @@ class CreateUserResponseBody(TeaModel):
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -12255,10 +12303,12 @@ class GetInstanceTrendingReportRequest(TeaModel):
         self,
         end_time: int = None,
         instance_id: str = None,
+        media_type: str = None,
         start_time: int = None,
     ):
         self.end_time = end_time
         self.instance_id = instance_id
+        self.media_type = media_type
         self.start_time = start_time
 
     def validate(self):
@@ -12274,6 +12324,8 @@ class GetInstanceTrendingReportRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -12284,6 +12336,8 @@ class GetInstanceTrendingReportRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -12391,14 +12445,49 @@ class GetInstanceTrendingReportResponseBodyDataOutbound(TeaModel):
         return self
 
 
+class GetInstanceTrendingReportResponseBodyDataOverall(TeaModel):
+    def __init__(
+        self,
+        max_logged_in_agents: int = None,
+        stats_time: int = None,
+    ):
+        self.max_logged_in_agents = max_logged_in_agents
+        self.stats_time = stats_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_logged_in_agents is not None:
+            result['MaxLoggedInAgents'] = self.max_logged_in_agents
+        if self.stats_time is not None:
+            result['StatsTime'] = self.stats_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxLoggedInAgents') is not None:
+            self.max_logged_in_agents = m.get('MaxLoggedInAgents')
+        if m.get('StatsTime') is not None:
+            self.stats_time = m.get('StatsTime')
+        return self
+
+
 class GetInstanceTrendingReportResponseBodyData(TeaModel):
     def __init__(
         self,
         inbound: List[GetInstanceTrendingReportResponseBodyDataInbound] = None,
         outbound: List[GetInstanceTrendingReportResponseBodyDataOutbound] = None,
+        overall: List[GetInstanceTrendingReportResponseBodyDataOverall] = None,
     ):
         self.inbound = inbound
         self.outbound = outbound
+        self.overall = overall
 
     def validate(self):
         if self.inbound:
@@ -12407,6 +12496,10 @@ class GetInstanceTrendingReportResponseBodyData(TeaModel):
                     k.validate()
         if self.outbound:
             for k in self.outbound:
+                if k:
+                    k.validate()
+        if self.overall:
+            for k in self.overall:
                 if k:
                     k.validate()
 
@@ -12424,6 +12517,10 @@ class GetInstanceTrendingReportResponseBodyData(TeaModel):
         if self.outbound is not None:
             for k in self.outbound:
                 result['Outbound'].append(k.to_map() if k else None)
+        result['Overall'] = []
+        if self.overall is not None:
+            for k in self.overall:
+                result['Overall'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -12438,6 +12535,11 @@ class GetInstanceTrendingReportResponseBodyData(TeaModel):
             for k in m.get('Outbound'):
                 temp_model = GetInstanceTrendingReportResponseBodyDataOutbound()
                 self.outbound.append(temp_model.from_map(k))
+        self.overall = []
+        if m.get('Overall') is not None:
+            for k in m.get('Overall'):
+                temp_model = GetInstanceTrendingReportResponseBodyDataOverall()
+                self.overall.append(temp_model.from_map(k))
         return self
 
 
@@ -12541,9 +12643,11 @@ class GetInstanceTrendingReportResponse(TeaModel):
 class GetLoginDetailsRequest(TeaModel):
     def __init__(
         self,
+        chat_device_id: str = None,
         instance_id: str = None,
         user_id: str = None,
     ):
+        self.chat_device_id = chat_device_id
         self.instance_id = instance_id
         self.user_id = user_id
 
@@ -12556,6 +12660,8 @@ class GetLoginDetailsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.chat_device_id is not None:
+            result['ChatDeviceId'] = self.chat_device_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.user_id is not None:
@@ -12564,6 +12670,8 @@ class GetLoginDetailsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ChatDeviceId') is not None:
+            self.chat_device_id = m.get('ChatDeviceId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('UserId') is not None:
@@ -12575,11 +12683,19 @@ class GetLoginDetailsResponseBodyData(TeaModel):
     def __init__(
         self,
         agent_server_url: str = None,
+        avatar_url: str = None,
+        chat_app_id: str = None,
+        chat_app_key: str = None,
+        chat_device_id: str = None,
+        chat_login_token: str = None,
+        chat_server_url: str = None,
+        chat_user_id: str = None,
         device_ext: str = None,
         device_id: str = None,
         device_state: str = None,
         display_name: str = None,
         extension: str = None,
+        nickname: str = None,
         signature: str = None,
         signature_2: str = None,
         sip_server_url: str = None,
@@ -12589,11 +12705,19 @@ class GetLoginDetailsResponseBodyData(TeaModel):
         work_mode: str = None,
     ):
         self.agent_server_url = agent_server_url
+        self.avatar_url = avatar_url
+        self.chat_app_id = chat_app_id
+        self.chat_app_key = chat_app_key
+        self.chat_device_id = chat_device_id
+        self.chat_login_token = chat_login_token
+        self.chat_server_url = chat_server_url
+        self.chat_user_id = chat_user_id
         self.device_ext = device_ext
         self.device_id = device_id
         self.device_state = device_state
         self.display_name = display_name
         self.extension = extension
+        self.nickname = nickname
         self.signature = signature
         self.signature_2 = signature_2
         self.sip_server_url = sip_server_url
@@ -12613,6 +12737,20 @@ class GetLoginDetailsResponseBodyData(TeaModel):
         result = dict()
         if self.agent_server_url is not None:
             result['AgentServerUrl'] = self.agent_server_url
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
+        if self.chat_app_id is not None:
+            result['ChatAppId'] = self.chat_app_id
+        if self.chat_app_key is not None:
+            result['ChatAppKey'] = self.chat_app_key
+        if self.chat_device_id is not None:
+            result['ChatDeviceId'] = self.chat_device_id
+        if self.chat_login_token is not None:
+            result['ChatLoginToken'] = self.chat_login_token
+        if self.chat_server_url is not None:
+            result['ChatServerUrl'] = self.chat_server_url
+        if self.chat_user_id is not None:
+            result['ChatUserId'] = self.chat_user_id
         if self.device_ext is not None:
             result['DeviceExt'] = self.device_ext
         if self.device_id is not None:
@@ -12623,6 +12761,8 @@ class GetLoginDetailsResponseBodyData(TeaModel):
             result['DisplayName'] = self.display_name
         if self.extension is not None:
             result['Extension'] = self.extension
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
         if self.signature is not None:
             result['Signature'] = self.signature
         if self.signature_2 is not None:
@@ -12643,6 +12783,20 @@ class GetLoginDetailsResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AgentServerUrl') is not None:
             self.agent_server_url = m.get('AgentServerUrl')
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
+        if m.get('ChatAppId') is not None:
+            self.chat_app_id = m.get('ChatAppId')
+        if m.get('ChatAppKey') is not None:
+            self.chat_app_key = m.get('ChatAppKey')
+        if m.get('ChatDeviceId') is not None:
+            self.chat_device_id = m.get('ChatDeviceId')
+        if m.get('ChatLoginToken') is not None:
+            self.chat_login_token = m.get('ChatLoginToken')
+        if m.get('ChatServerUrl') is not None:
+            self.chat_server_url = m.get('ChatServerUrl')
+        if m.get('ChatUserId') is not None:
+            self.chat_user_id = m.get('ChatUserId')
         if m.get('DeviceExt') is not None:
             self.device_ext = m.get('DeviceExt')
         if m.get('DeviceId') is not None:
@@ -12653,6 +12807,8 @@ class GetLoginDetailsResponseBodyData(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('Extension') is not None:
             self.extension = m.get('Extension')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
         if m.get('Signature') is not None:
             self.signature = m.get('Signature')
         if m.get('Signature2') is not None:
@@ -13319,6 +13475,10 @@ class GetRealtimeCampaignStatsResponseBodyData(TeaModel):
         breaking_agents: int = None,
         caps: int = None,
         logged_in_agents: int = None,
+        outbound_scenario_breaking_agents: int = None,
+        outbound_scenario_ready_agents: int = None,
+        outbound_scenario_talking_agents: int = None,
+        outbound_scenario_working_agents: int = None,
         ready_agents: int = None,
         talking_agents: int = None,
         total_agents: int = None,
@@ -13327,6 +13487,10 @@ class GetRealtimeCampaignStatsResponseBodyData(TeaModel):
         self.breaking_agents = breaking_agents
         self.caps = caps
         self.logged_in_agents = logged_in_agents
+        self.outbound_scenario_breaking_agents = outbound_scenario_breaking_agents
+        self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        self.outbound_scenario_talking_agents = outbound_scenario_talking_agents
+        self.outbound_scenario_working_agents = outbound_scenario_working_agents
         self.ready_agents = ready_agents
         self.talking_agents = talking_agents
         self.total_agents = total_agents
@@ -13347,6 +13511,14 @@ class GetRealtimeCampaignStatsResponseBodyData(TeaModel):
             result['Caps'] = self.caps
         if self.logged_in_agents is not None:
             result['LoggedInAgents'] = self.logged_in_agents
+        if self.outbound_scenario_breaking_agents is not None:
+            result['OutboundScenarioBreakingAgents'] = self.outbound_scenario_breaking_agents
+        if self.outbound_scenario_ready_agents is not None:
+            result['OutboundScenarioReadyAgents'] = self.outbound_scenario_ready_agents
+        if self.outbound_scenario_talking_agents is not None:
+            result['OutboundScenarioTalkingAgents'] = self.outbound_scenario_talking_agents
+        if self.outbound_scenario_working_agents is not None:
+            result['OutboundScenarioWorkingAgents'] = self.outbound_scenario_working_agents
         if self.ready_agents is not None:
             result['ReadyAgents'] = self.ready_agents
         if self.talking_agents is not None:
@@ -13365,6 +13537,14 @@ class GetRealtimeCampaignStatsResponseBodyData(TeaModel):
             self.caps = m.get('Caps')
         if m.get('LoggedInAgents') is not None:
             self.logged_in_agents = m.get('LoggedInAgents')
+        if m.get('OutboundScenarioBreakingAgents') is not None:
+            self.outbound_scenario_breaking_agents = m.get('OutboundScenarioBreakingAgents')
+        if m.get('OutboundScenarioReadyAgents') is not None:
+            self.outbound_scenario_ready_agents = m.get('OutboundScenarioReadyAgents')
+        if m.get('OutboundScenarioTalkingAgents') is not None:
+            self.outbound_scenario_talking_agents = m.get('OutboundScenarioTalkingAgents')
+        if m.get('OutboundScenarioWorkingAgents') is not None:
+            self.outbound_scenario_working_agents = m.get('OutboundScenarioWorkingAgents')
         if m.get('ReadyAgents') is not None:
             self.ready_agents = m.get('ReadyAgents')
         if m.get('TalkingAgents') is not None:
@@ -13477,8 +13657,10 @@ class GetRealtimeInstanceStatesRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
+        media_type: str = None,
     ):
         self.instance_id = instance_id
+        self.media_type = media_type
 
     def validate(self):
         pass
@@ -13491,18 +13673,56 @@ class GetRealtimeInstanceStatesRequest(TeaModel):
         result = dict()
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        return self
+
+
+class GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList(TeaModel):
+    def __init__(
+        self,
+        break_code: str = None,
+        count: int = None,
+    ):
+        self.break_code = break_code
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.break_code is not None:
+            result['BreakCode'] = self.break_code
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BreakCode') is not None:
+            self.break_code = m.get('BreakCode')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
         return self
 
 
 class GetRealtimeInstanceStatesResponseBodyData(TeaModel):
     def __init__(
         self,
+        break_code_detail_list: List[GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList] = None,
         breaking_agents: int = None,
         instance_id: str = None,
         interactive_calls: int = None,
@@ -13514,6 +13734,7 @@ class GetRealtimeInstanceStatesResponseBodyData(TeaModel):
         waiting_calls: int = None,
         working_agents: int = None,
     ):
+        self.break_code_detail_list = break_code_detail_list
         self.breaking_agents = breaking_agents
         self.instance_id = instance_id
         self.interactive_calls = interactive_calls
@@ -13526,7 +13747,10 @@ class GetRealtimeInstanceStatesResponseBodyData(TeaModel):
         self.working_agents = working_agents
 
     def validate(self):
-        pass
+        if self.break_code_detail_list:
+            for k in self.break_code_detail_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -13534,6 +13758,10 @@ class GetRealtimeInstanceStatesResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        result['BreakCodeDetailList'] = []
+        if self.break_code_detail_list is not None:
+            for k in self.break_code_detail_list:
+                result['BreakCodeDetailList'].append(k.to_map() if k else None)
         if self.breaking_agents is not None:
             result['BreakingAgents'] = self.breaking_agents
         if self.instance_id is not None:
@@ -13558,6 +13786,11 @@ class GetRealtimeInstanceStatesResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.break_code_detail_list = []
+        if m.get('BreakCodeDetailList') is not None:
+            for k in m.get('BreakCodeDetailList'):
+                temp_model = GetRealtimeInstanceStatesResponseBodyDataBreakCodeDetailList()
+                self.break_code_detail_list.append(temp_model.from_map(k))
         if m.get('BreakingAgents') is not None:
             self.breaking_agents = m.get('BreakingAgents')
         if m.get('InstanceId') is not None:
@@ -14361,6 +14594,7 @@ class GetUserRequest(TeaModel):
 class GetUserResponseBodyData(TeaModel):
     def __init__(
         self,
+        avatar_url: str = None,
         device_ext: str = None,
         device_id: str = None,
         device_state: str = None,
@@ -14371,11 +14605,13 @@ class GetUserResponseBodyData(TeaModel):
         instance_id: str = None,
         login_name: str = None,
         mobile: str = None,
+        nickname: str = None,
         role_id: str = None,
         role_name: str = None,
         user_id: str = None,
         work_mode: str = None,
     ):
+        self.avatar_url = avatar_url
         self.device_ext = device_ext
         self.device_id = device_id
         self.device_state = device_state
@@ -14386,6 +14622,7 @@ class GetUserResponseBodyData(TeaModel):
         self.instance_id = instance_id
         self.login_name = login_name
         self.mobile = mobile
+        self.nickname = nickname
         self.role_id = role_id
         self.role_name = role_name
         self.user_id = user_id
@@ -14400,6 +14637,8 @@ class GetUserResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.avatar_url is not None:
+            result['AvatarUrl'] = self.avatar_url
         if self.device_ext is not None:
             result['DeviceExt'] = self.device_ext
         if self.device_id is not None:
@@ -14420,6 +14659,8 @@ class GetUserResponseBodyData(TeaModel):
             result['LoginName'] = self.login_name
         if self.mobile is not None:
             result['Mobile'] = self.mobile
+        if self.nickname is not None:
+            result['Nickname'] = self.nickname
         if self.role_id is not None:
             result['RoleId'] = self.role_id
         if self.role_name is not None:
@@ -14432,6 +14673,8 @@ class GetUserResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AvatarUrl') is not None:
+            self.avatar_url = m.get('AvatarUrl')
         if m.get('DeviceExt') is not None:
             self.device_ext = m.get('DeviceExt')
         if m.get('DeviceId') is not None:
@@ -14452,6 +14695,8 @@ class GetUserResponseBodyData(TeaModel):
             self.login_name = m.get('LoginName')
         if m.get('Mobile') is not None:
             self.mobile = m.get('Mobile')
+        if m.get('Nickname') is not None:
+            self.nickname = m.get('Nickname')
         if m.get('RoleId') is not None:
             self.role_id = m.get('RoleId')
         if m.get('RoleName') is not None:
@@ -14470,12 +14715,14 @@ class GetUserResponseBody(TeaModel):
         data: GetUserResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
+        params: List[str] = None,
         request_id: str = None,
     ):
         self.code = code
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
+        self.params = params
         self.request_id = request_id
 
     def validate(self):
@@ -14496,6 +14743,8 @@ class GetUserResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -14511,6 +14760,8 @@ class GetUserResponseBody(TeaModel):
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
