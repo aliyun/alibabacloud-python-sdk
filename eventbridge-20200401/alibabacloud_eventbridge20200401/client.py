@@ -3299,6 +3299,8 @@ class Client(OpenApiClient):
             query['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_id):
             query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3336,6 +3338,8 @@ class Client(OpenApiClient):
             query['EventBusName'] = request.event_bus_name
         if not UtilClient.is_unset(request.event_id):
             query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_source):
+            query['EventSource'] = request.event_source
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
