@@ -11857,10 +11857,12 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
         if not UtilClient.is_unset(request.rows_shrink):
-            query['Rows'] = request.rows_shrink
+            body['Rows'] = request.rows_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpsertCollectionData',
@@ -11901,10 +11903,12 @@ class Client(OpenApiClient):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        body = {}
         if not UtilClient.is_unset(request.rows_shrink):
-            query['Rows'] = request.rows_shrink
+            body['Rows'] = request.rows_shrink
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpsertCollectionData',
