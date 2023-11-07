@@ -1241,6 +1241,8 @@ class Client(OpenApiClient):
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.is_shared):
+            query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.pod_uid):
             query['PodUid'] = request.pod_uid
         req = open_api_models.OpenApiRequest(
@@ -1273,6 +1275,8 @@ class Client(OpenApiClient):
     ) -> pai_dlc_20201203_models.GetWebTerminalResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.is_shared):
+            query['IsShared'] = request.is_shared
         if not UtilClient.is_unset(request.pod_uid):
             query['PodUid'] = request.pod_uid
         req = open_api_models.OpenApiRequest(
