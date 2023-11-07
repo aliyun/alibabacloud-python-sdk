@@ -7690,9 +7690,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.GroupUserSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cert_list):
+            request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
         if not UtilClient.is_unset(tmp_req.sub_corp_id_list):
             request.sub_corp_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_corp_id_list, 'sub_corp_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.base_city_code):
+            body['base_city_code'] = request.base_city_code
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_list_shrink):
+            body['cert_list'] = request.cert_list_shrink
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
         if not UtilClient.is_unset(request.job_no):
             body['job_no'] = request.job_no
         if not UtilClient.is_unset(request.phone):
@@ -7739,9 +7749,19 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = btrip_open_20220520_models.GroupUserSaveShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.cert_list):
+            request.cert_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.cert_list, 'cert_list', 'json')
         if not UtilClient.is_unset(tmp_req.sub_corp_id_list):
             request.sub_corp_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sub_corp_id_list, 'sub_corp_id_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.base_city_code):
+            body['base_city_code'] = request.base_city_code
+        if not UtilClient.is_unset(request.birthday):
+            body['birthday'] = request.birthday
+        if not UtilClient.is_unset(request.cert_list_shrink):
+            body['cert_list'] = request.cert_list_shrink
+        if not UtilClient.is_unset(request.gender):
+            body['gender'] = request.gender
         if not UtilClient.is_unset(request.job_no):
             body['job_no'] = request.job_no
         if not UtilClient.is_unset(request.phone):

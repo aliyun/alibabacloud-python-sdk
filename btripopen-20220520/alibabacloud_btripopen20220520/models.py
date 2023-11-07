@@ -48262,6 +48262,57 @@ class GroupUserSaveHeaders(TeaModel):
         return self
 
 
+class GroupUserSaveRequestCertList(TeaModel):
+    def __init__(
+        self,
+        cert_expired_time: str = None,
+        cert_nation: str = None,
+        cert_no: str = None,
+        cert_type: int = None,
+        nationality: str = None,
+    ):
+        self.cert_expired_time = cert_expired_time
+        self.cert_nation = cert_nation
+        self.cert_no = cert_no
+        self.cert_type = cert_type
+        self.nationality = nationality
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cert_expired_time is not None:
+            result['cert_expired_time'] = self.cert_expired_time
+        if self.cert_nation is not None:
+            result['cert_nation'] = self.cert_nation
+        if self.cert_no is not None:
+            result['cert_no'] = self.cert_no
+        if self.cert_type is not None:
+            result['cert_type'] = self.cert_type
+        if self.nationality is not None:
+            result['nationality'] = self.nationality
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cert_expired_time') is not None:
+            self.cert_expired_time = m.get('cert_expired_time')
+        if m.get('cert_nation') is not None:
+            self.cert_nation = m.get('cert_nation')
+        if m.get('cert_no') is not None:
+            self.cert_no = m.get('cert_no')
+        if m.get('cert_type') is not None:
+            self.cert_type = m.get('cert_type')
+        if m.get('nationality') is not None:
+            self.nationality = m.get('nationality')
+        return self
+
+
 class GroupUserSaveRequestSubCorpIdList(TeaModel):
     def __init__(
         self,
@@ -48322,6 +48373,10 @@ class GroupUserSaveRequestSubCorpIdList(TeaModel):
 class GroupUserSaveRequest(TeaModel):
     def __init__(
         self,
+        base_city_code: str = None,
+        birthday: str = None,
+        cert_list: List[GroupUserSaveRequestCertList] = None,
+        gender: str = None,
         job_no: str = None,
         phone: str = None,
         real_name_en: str = None,
@@ -48329,6 +48384,10 @@ class GroupUserSaveRequest(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        self.base_city_code = base_city_code
+        self.birthday = birthday
+        self.cert_list = cert_list
+        self.gender = gender
         self.job_no = job_no
         self.phone = phone
         self.real_name_en = real_name_en
@@ -48337,6 +48396,10 @@ class GroupUserSaveRequest(TeaModel):
         self.user_name = user_name
 
     def validate(self):
+        if self.cert_list:
+            for k in self.cert_list:
+                if k:
+                    k.validate()
         if self.sub_corp_id_list:
             for k in self.sub_corp_id_list:
                 if k:
@@ -48348,6 +48411,16 @@ class GroupUserSaveRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_city_code is not None:
+            result['base_city_code'] = self.base_city_code
+        if self.birthday is not None:
+            result['birthday'] = self.birthday
+        result['cert_list'] = []
+        if self.cert_list is not None:
+            for k in self.cert_list:
+                result['cert_list'].append(k.to_map() if k else None)
+        if self.gender is not None:
+            result['gender'] = self.gender
         if self.job_no is not None:
             result['job_no'] = self.job_no
         if self.phone is not None:
@@ -48366,6 +48439,17 @@ class GroupUserSaveRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('base_city_code') is not None:
+            self.base_city_code = m.get('base_city_code')
+        if m.get('birthday') is not None:
+            self.birthday = m.get('birthday')
+        self.cert_list = []
+        if m.get('cert_list') is not None:
+            for k in m.get('cert_list'):
+                temp_model = GroupUserSaveRequestCertList()
+                self.cert_list.append(temp_model.from_map(k))
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
         if m.get('job_no') is not None:
             self.job_no = m.get('job_no')
         if m.get('phone') is not None:
@@ -48387,6 +48471,10 @@ class GroupUserSaveRequest(TeaModel):
 class GroupUserSaveShrinkRequest(TeaModel):
     def __init__(
         self,
+        base_city_code: str = None,
+        birthday: str = None,
+        cert_list_shrink: str = None,
+        gender: str = None,
         job_no: str = None,
         phone: str = None,
         real_name_en: str = None,
@@ -48394,6 +48482,10 @@ class GroupUserSaveShrinkRequest(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        self.base_city_code = base_city_code
+        self.birthday = birthday
+        self.cert_list_shrink = cert_list_shrink
+        self.gender = gender
         self.job_no = job_no
         self.phone = phone
         self.real_name_en = real_name_en
@@ -48410,6 +48502,14 @@ class GroupUserSaveShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.base_city_code is not None:
+            result['base_city_code'] = self.base_city_code
+        if self.birthday is not None:
+            result['birthday'] = self.birthday
+        if self.cert_list_shrink is not None:
+            result['cert_list'] = self.cert_list_shrink
+        if self.gender is not None:
+            result['gender'] = self.gender
         if self.job_no is not None:
             result['job_no'] = self.job_no
         if self.phone is not None:
@@ -48426,6 +48526,14 @@ class GroupUserSaveShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('base_city_code') is not None:
+            self.base_city_code = m.get('base_city_code')
+        if m.get('birthday') is not None:
+            self.birthday = m.get('birthday')
+        if m.get('cert_list') is not None:
+            self.cert_list_shrink = m.get('cert_list')
+        if m.get('gender') is not None:
+            self.gender = m.get('gender')
         if m.get('job_no') is not None:
             self.job_no = m.get('job_no')
         if m.get('phone') is not None:
