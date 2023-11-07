@@ -1,3 +1,6 @@
+2023-11-07 Version: 2.2.0
+- Generated python 2020-07-06 for Actiontrail.
+
 2022-07-20 Version: 2.1.0
 - Support AK Audit API.
 
