@@ -6244,7 +6244,6 @@ class DescribeAccountsResponseBodyAccounts(TeaModel):
         account_description: str = None,
         account_lock_state: str = None,
         account_name: str = None,
-        account_password: str = None,
         account_password_valid_time: str = None,
         account_status: str = None,
         account_type: str = None,
@@ -6259,8 +6258,6 @@ class DescribeAccountsResponseBodyAccounts(TeaModel):
         self.account_lock_state = account_lock_state
         # The name of the account.
         self.account_name = account_name
-        # The password of the account that is used to log on to the database.
-        self.account_password = account_password
         # The validity period of the password.
         self.account_password_valid_time = account_password_valid_time
         # The state of the account. Valid values:
@@ -6295,8 +6292,6 @@ class DescribeAccountsResponseBodyAccounts(TeaModel):
             result['AccountLockState'] = self.account_lock_state
         if self.account_name is not None:
             result['AccountName'] = self.account_name
-        if self.account_password is not None:
-            result['AccountPassword'] = self.account_password
         if self.account_password_valid_time is not None:
             result['AccountPasswordValidTime'] = self.account_password_valid_time
         if self.account_status is not None:
@@ -6317,8 +6312,6 @@ class DescribeAccountsResponseBodyAccounts(TeaModel):
             self.account_lock_state = m.get('AccountLockState')
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
-        if m.get('AccountPassword') is not None:
-            self.account_password = m.get('AccountPassword')
         if m.get('AccountPasswordValidTime') is not None:
             self.account_password_valid_time = m.get('AccountPasswordValidTime')
         if m.get('AccountStatus') is not None:
@@ -9092,7 +9085,6 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         data_level_1backup_chain_size: int = None,
         data_sync_mode: str = None,
         deletion_lock: int = None,
-        deploy_unit: str = None,
         engine: str = None,
         expire_time: str = None,
         expired: str = None,
@@ -9185,8 +9177,6 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # *   **0**: The cluster is not locked and can be deleted.
         # *   **1**: The cluster is locked and cannot be deleted.
         self.deletion_lock = deletion_lock
-        # The unit to which the cluster belongs.
-        self.deploy_unit = deploy_unit
         # The database type.
         self.engine = engine
         # The time when the cluster expires.
@@ -9353,8 +9343,6 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             result['DataSyncMode'] = self.data_sync_mode
         if self.deletion_lock is not None:
             result['DeletionLock'] = self.deletion_lock
-        if self.deploy_unit is not None:
-            result['DeployUnit'] = self.deploy_unit
         if self.engine is not None:
             result['Engine'] = self.engine
         if self.expire_time is not None:
@@ -9470,8 +9458,6 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
             self.data_sync_mode = m.get('DataSyncMode')
         if m.get('DeletionLock') is not None:
             self.deletion_lock = m.get('DeletionLock')
-        if m.get('DeployUnit') is not None:
-            self.deploy_unit = m.get('DeployUnit')
         if m.get('Engine') is not None:
             self.engine = m.get('Engine')
         if m.get('ExpireTime') is not None:
@@ -12615,6 +12601,7 @@ class DescribeDBClusterVersionRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
+        describe_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -12624,6 +12611,7 @@ class DescribeDBClusterVersionRequest(TeaModel):
         # 
         # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
+        self.describe_type = describe_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -12640,6 +12628,8 @@ class DescribeDBClusterVersionRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
+        if self.describe_type is not None:
+            result['DescribeType'] = self.describe_type
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -12654,6 +12644,8 @@ class DescribeDBClusterVersionRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
+        if m.get('DescribeType') is not None:
+            self.describe_type = m.get('DescribeType')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -29681,7 +29673,6 @@ class OpenAITaskRequest(TeaModel):
     def __init__(
         self,
         dbcluster_id: str = None,
-        describe_type: str = None,
         node_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -29694,7 +29685,6 @@ class OpenAITaskRequest(TeaModel):
     ):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        self.describe_type = describe_type
         self.node_type = node_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -29720,8 +29710,6 @@ class OpenAITaskRequest(TeaModel):
         result = dict()
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
-        if self.describe_type is not None:
-            result['DescribeType'] = self.describe_type
         if self.node_type is not None:
             result['NodeType'] = self.node_type
         if self.owner_account is not None:
@@ -29746,8 +29734,6 @@ class OpenAITaskRequest(TeaModel):
         m = m or dict()
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
-        if m.get('DescribeType') is not None:
-            self.describe_type = m.get('DescribeType')
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
         if m.get('OwnerAccount') is not None:

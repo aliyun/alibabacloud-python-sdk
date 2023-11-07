@@ -6033,6 +6033,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6076,6 +6078,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -13892,8 +13896,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.describe_type):
-            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.node_type):
             query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
@@ -13940,8 +13942,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.describe_type):
-            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.node_type):
             query['NodeType'] = request.node_type
         if not UtilClient.is_unset(request.owner_account):
