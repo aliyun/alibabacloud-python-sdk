@@ -513,6 +513,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_task_with_options_async(request, runtime)
 
+    def change_resource_group_with_options(
+        self,
+        request: domain_20180129_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: domain_20180129_models.ChangeResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.ChangeResourceGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.new_resource_group_id):
+            query['NewResourceGroupId'] = request.new_resource_group_id
+        if not UtilClient.is_unset(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ChangeResourceGroup',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: domain_20180129_models.ChangeResourceGroupRequest,
+    ) -> domain_20180129_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: domain_20180129_models.ChangeResourceGroupRequest,
+    ) -> domain_20180129_models.ChangeResourceGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def check_domain_with_options(
         self,
         request: domain_20180129_models.CheckDomainRequest,
@@ -1313,6 +1399,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_registrant_profile_with_options_async(request, runtime)
 
+    def domain_special_biz_cancel_with_options(
+        self,
+        request: domain_20180129_models.DomainSpecialBizCancelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.DomainSpecialBizCancelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DomainSpecialBizCancel',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.DomainSpecialBizCancelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def domain_special_biz_cancel_with_options_async(
+        self,
+        request: domain_20180129_models.DomainSpecialBizCancelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.DomainSpecialBizCancelResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DomainSpecialBizCancel',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.DomainSpecialBizCancelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def domain_special_biz_cancel(
+        self,
+        request: domain_20180129_models.DomainSpecialBizCancelRequest,
+    ) -> domain_20180129_models.DomainSpecialBizCancelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.domain_special_biz_cancel_with_options(request, runtime)
+
+    async def domain_special_biz_cancel_async(
+        self,
+        request: domain_20180129_models.DomainSpecialBizCancelRequest,
+    ) -> domain_20180129_models.DomainSpecialBizCancelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.domain_special_biz_cancel_with_options_async(request, runtime)
+
     def email_verified_with_options(
         self,
         request: domain_20180129_models.EmailVerifiedRequest,
@@ -1734,6 +1898,10 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lock_product_id):
             query['LockProductId'] = request.lock_product_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_by_type):
+            query['OrderByType'] = request.order_by_type
         if not UtilClient.is_unset(request.page_num):
             query['PageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -1782,6 +1950,10 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lock_product_id):
             query['LockProductId'] = request.lock_product_id
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.order_by_type):
+            query['OrderByType'] = request.order_by_type
         if not UtilClient.is_unset(request.page_num):
             query['PageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -2048,6 +2220,8 @@ class Client(OpenApiClient):
             query['ProductDomainTypeSort'] = request.product_domain_type_sort
         if not UtilClient.is_unset(request.registration_date_sort):
             query['RegistrationDateSort'] = request.registration_date_sort
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_expiration_date):
             query['StartExpirationDate'] = request.start_expiration_date
         if not UtilClient.is_unset(request.start_length):
@@ -2056,6 +2230,8 @@ class Client(OpenApiClient):
             query['StartRegistrationDate'] = request.start_registration_date
         if not UtilClient.is_unset(request.suffixs):
             query['Suffixs'] = request.suffixs
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.trade_type):
             query['TradeType'] = request.trade_type
         if not UtilClient.is_unset(request.user_client_ip):
@@ -2126,6 +2302,8 @@ class Client(OpenApiClient):
             query['ProductDomainTypeSort'] = request.product_domain_type_sort
         if not UtilClient.is_unset(request.registration_date_sort):
             query['RegistrationDateSort'] = request.registration_date_sort
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_expiration_date):
             query['StartExpirationDate'] = request.start_expiration_date
         if not UtilClient.is_unset(request.start_length):
@@ -2134,6 +2312,8 @@ class Client(OpenApiClient):
             query['StartRegistrationDate'] = request.start_registration_date
         if not UtilClient.is_unset(request.suffixs):
             query['Suffixs'] = request.suffixs
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.trade_type):
             query['TradeType'] = request.trade_type
         if not UtilClient.is_unset(request.user_client_ip):
@@ -2922,10 +3102,14 @@ class Client(OpenApiClient):
             query['ProductDomainType'] = request.product_domain_type
         if not UtilClient.is_unset(request.query_type):
             query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_expiration_date):
             query['StartExpirationDate'] = request.start_expiration_date
         if not UtilClient.is_unset(request.start_registration_date):
             query['StartRegistrationDate'] = request.start_registration_date
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
@@ -2976,10 +3160,14 @@ class Client(OpenApiClient):
             query['ProductDomainType'] = request.product_domain_type
         if not UtilClient.is_unset(request.query_type):
             query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.start_expiration_date):
             query['StartExpirationDate'] = request.start_expiration_date
         if not UtilClient.is_unset(request.start_registration_date):
             query['StartRegistrationDate'] = request.start_registration_date
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
         req = open_api_models.OpenApiRequest(
@@ -3096,6 +3284,166 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.QueryDomainRealNameVerificationInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_domain_real_name_verification_info_with_options_async(request, runtime)
+
+    def query_domain_special_biz_detail_with_options(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryDomainSpecialBizDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDomainSpecialBizDetail',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryDomainSpecialBizDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_domain_special_biz_detail_with_options_async(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryDomainSpecialBizDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDomainSpecialBizDetail',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryDomainSpecialBizDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_domain_special_biz_detail(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizDetailRequest,
+    ) -> domain_20180129_models.QueryDomainSpecialBizDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_domain_special_biz_detail_with_options(request, runtime)
+
+    async def query_domain_special_biz_detail_async(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizDetailRequest,
+    ) -> domain_20180129_models.QueryDomainSpecialBizDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_domain_special_biz_detail_with_options_async(request, runtime)
+
+    def query_domain_special_biz_info_by_domain_with_options(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizInfoByDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryDomainSpecialBizInfoByDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDomainSpecialBizInfoByDomain',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryDomainSpecialBizInfoByDomainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_domain_special_biz_info_by_domain_with_options_async(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizInfoByDomainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.QueryDomainSpecialBizInfoByDomainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_type):
+            body['BizType'] = request.biz_type
+        if not UtilClient.is_unset(request.domain_name):
+            body['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryDomainSpecialBizInfoByDomain',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.QueryDomainSpecialBizInfoByDomainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_domain_special_biz_info_by_domain(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizInfoByDomainRequest,
+    ) -> domain_20180129_models.QueryDomainSpecialBizInfoByDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_domain_special_biz_info_by_domain_with_options(request, runtime)
+
+    async def query_domain_special_biz_info_by_domain_async(
+        self,
+        request: domain_20180129_models.QueryDomainSpecialBizInfoByDomainRequest,
+    ) -> domain_20180129_models.QueryDomainSpecialBizInfoByDomainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_domain_special_biz_info_by_domain_with_options_async(request, runtime)
 
     def query_domain_suffix_with_options(
         self,
@@ -5137,6 +5485,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_batch_domain_remark_with_options_async(request, runtime)
 
+    def save_batch_task_for_apply_quick_transfer_out_openly_with_options(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveBatchTaskForApplyQuickTransferOutOpenly',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_batch_task_for_apply_quick_transfer_out_openly_with_options_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_names):
+            query['DomainNames'] = request.domain_names
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveBatchTaskForApplyQuickTransferOutOpenly',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_batch_task_for_apply_quick_transfer_out_openly(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_batch_task_for_apply_quick_transfer_out_openly_with_options(request, runtime)
+
+    async def save_batch_task_for_apply_quick_transfer_out_openly_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForApplyQuickTransferOutOpenlyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_batch_task_for_apply_quick_transfer_out_openly_with_options_async(request, runtime)
+
     def save_batch_task_for_creating_order_activate_with_options(
         self,
         request: domain_20180129_models.SaveBatchTaskForCreatingOrderActivateRequest,
@@ -5594,6 +6020,92 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.SaveBatchTaskForDomainNameProxyServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_batch_task_for_domain_name_proxy_service_with_options_async(request, runtime)
+
+    def save_batch_task_for_generate_domain_certificate_with_options(
+        self,
+        tmp_req: domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_names):
+            request.domain_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domain_names_shrink):
+            query['DomainNames'] = request.domain_names_shrink
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveBatchTaskForGenerateDomainCertificate',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_batch_task_for_generate_domain_certificate_with_options_async(
+        self,
+        tmp_req: domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateResponse:
+        UtilClient.validate_model(tmp_req)
+        request = domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.domain_names):
+            request.domain_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.domain_names_shrink):
+            query['DomainNames'] = request.domain_names_shrink
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveBatchTaskForGenerateDomainCertificate',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_batch_task_for_generate_domain_certificate(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_batch_task_for_generate_domain_certificate_with_options(request, runtime)
+
+    async def save_batch_task_for_generate_domain_certificate_async(
+        self,
+        request: domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateRequest,
+    ) -> domain_20180129_models.SaveBatchTaskForGenerateDomainCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_batch_task_for_generate_domain_certificate_with_options_async(request, runtime)
 
     def save_batch_task_for_modifying_domain_dns_with_options(
         self,
@@ -6655,6 +7167,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.save_single_task_for_adding_dsrecord_with_options_async(request, runtime)
 
+    def save_single_task_for_apply_quick_transfer_out_openly_with_options(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSingleTaskForApplyQuickTransferOutOpenly',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_single_task_for_apply_quick_transfer_out_openly_with_options_async(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSingleTaskForApplyQuickTransferOutOpenly',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_single_task_for_apply_quick_transfer_out_openly(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyRequest,
+    ) -> domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_single_task_for_apply_quick_transfer_out_openly_with_options(request, runtime)
+
+    async def save_single_task_for_apply_quick_transfer_out_openly_async(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyRequest,
+    ) -> domain_20180129_models.SaveSingleTaskForApplyQuickTransferOutOpenlyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_single_task_for_apply_quick_transfer_out_openly_with_options_async(request, runtime)
+
     def save_single_task_for_approving_transfer_out_with_options(
         self,
         request: domain_20180129_models.SaveSingleTaskForApprovingTransferOutRequest,
@@ -7102,6 +7692,8 @@ class Client(OpenApiClient):
             query['RegistrantProfileId'] = request.registrant_profile_id
         if not UtilClient.is_unset(request.registrant_type):
             query['RegistrantType'] = request.registrant_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.subscription_duration):
             query['SubscriptionDuration'] = request.subscription_duration
         if not UtilClient.is_unset(request.tel_area):
@@ -7192,6 +7784,8 @@ class Client(OpenApiClient):
             query['RegistrantProfileId'] = request.registrant_profile_id
         if not UtilClient.is_unset(request.registrant_type):
             query['RegistrantType'] = request.registrant_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.subscription_duration):
             query['SubscriptionDuration'] = request.subscription_duration
         if not UtilClient.is_unset(request.tel_area):
@@ -7880,6 +8474,84 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.SaveSingleTaskForDomainNameProxyServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.save_single_task_for_domain_name_proxy_service_with_options_async(request, runtime)
+
+    def save_single_task_for_generate_domain_certificate_with_options(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSingleTaskForGenerateDomainCertificate',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_single_task_for_generate_domain_certificate_with_options_async(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSingleTaskForGenerateDomainCertificate',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_single_task_for_generate_domain_certificate(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateRequest,
+    ) -> domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.save_single_task_for_generate_domain_certificate_with_options(request, runtime)
+
+    async def save_single_task_for_generate_domain_certificate_async(
+        self,
+        request: domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateRequest,
+    ) -> domain_20180129_models.SaveSingleTaskForGenerateDomainCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.save_single_task_for_generate_domain_certificate_with_options_async(request, runtime)
 
     def save_single_task_for_modifying_dsrecord_with_options(
         self,
@@ -9214,6 +9886,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_domain_type):
             query['ProductDomainType'] = request.product_domain_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.scroll_id):
             query['ScrollId'] = request.scroll_id
         if not UtilClient.is_unset(request.start_expiration_date):
@@ -9284,6 +9958,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product_domain_type):
             query['ProductDomainType'] = request.product_domain_type
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.scroll_id):
             query['ScrollId'] = request.scroll_id
         if not UtilClient.is_unset(request.start_expiration_date):
@@ -9404,6 +10080,166 @@ class Client(OpenApiClient):
     ) -> domain_20180129_models.SetDefaultRegistrantProfileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.set_default_registrant_profile_with_options_async(request, runtime)
+
+    def setup_domain_auto_renew_with_options(
+        self,
+        request: domain_20180129_models.SetupDomainAutoRenewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SetupDomainAutoRenewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetupDomainAutoRenew',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SetupDomainAutoRenewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def setup_domain_auto_renew_with_options_async(
+        self,
+        request: domain_20180129_models.SetupDomainAutoRenewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SetupDomainAutoRenewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.operation):
+            query['Operation'] = request.operation
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetupDomainAutoRenew',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SetupDomainAutoRenewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def setup_domain_auto_renew(
+        self,
+        request: domain_20180129_models.SetupDomainAutoRenewRequest,
+    ) -> domain_20180129_models.SetupDomainAutoRenewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.setup_domain_auto_renew_with_options(request, runtime)
+
+    async def setup_domain_auto_renew_async(
+        self,
+        request: domain_20180129_models.SetupDomainAutoRenewRequest,
+    ) -> domain_20180129_models.SetupDomainAutoRenewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.setup_domain_auto_renew_with_options_async(request, runtime)
+
+    def submit_domain_special_biz_credentials_with_options(
+        self,
+        request: domain_20180129_models.SubmitDomainSpecialBizCredentialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SubmitDomainSpecialBizCredentialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.credentials):
+            body['Credentials'] = request.credentials
+        if not UtilClient.is_unset(request.extend):
+            body['Extend'] = request.extend
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDomainSpecialBizCredentials',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SubmitDomainSpecialBizCredentialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_domain_special_biz_credentials_with_options_async(
+        self,
+        request: domain_20180129_models.SubmitDomainSpecialBizCredentialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> domain_20180129_models.SubmitDomainSpecialBizCredentialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.user_client_ip):
+            query['UserClientIp'] = request.user_client_ip
+        body = {}
+        if not UtilClient.is_unset(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.credentials):
+            body['Credentials'] = request.credentials
+        if not UtilClient.is_unset(request.extend):
+            body['Extend'] = request.extend
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitDomainSpecialBizCredentials',
+            version='2018-01-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            domain_20180129_models.SubmitDomainSpecialBizCredentialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_domain_special_biz_credentials(
+        self,
+        request: domain_20180129_models.SubmitDomainSpecialBizCredentialsRequest,
+    ) -> domain_20180129_models.SubmitDomainSpecialBizCredentialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_domain_special_biz_credentials_with_options(request, runtime)
+
+    async def submit_domain_special_biz_credentials_async(
+        self,
+        request: domain_20180129_models.SubmitDomainSpecialBizCredentialsRequest,
+    ) -> domain_20180129_models.SubmitDomainSpecialBizCredentialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_domain_special_biz_credentials_with_options_async(request, runtime)
 
     def submit_email_verification_with_options(
         self,

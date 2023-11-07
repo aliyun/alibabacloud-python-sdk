@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class AcknowledgeTaskResultRequest(TeaModel):
@@ -818,6 +818,134 @@ class CancelTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CancelTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ChangeResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        lang: str = None,
+        new_resource_group_id: str = None,
+        resource_id: str = None,
+        resource_type: str = None,
+        user_client_ip: str = None,
+    ):
+        self.lang = lang
+        self.new_resource_group_id = new_resource_group_id
+        self.resource_id = resource_id
+        self.resource_type = resource_type
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.new_resource_group_id is not None:
+            result['NewResourceGroupId'] = self.new_resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('NewResourceGroupId') is not None:
+            self.new_resource_group_id = m.get('NewResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class ChangeResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class ChangeResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ChangeResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ChangeResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2214,6 +2342,176 @@ class DeleteRegistrantProfileResponse(TeaModel):
         return self
 
 
+class DomainSpecialBizCancelRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        user_client_ip: str = None,
+    ):
+        self.biz_id = biz_id
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class DomainSpecialBizCancelResponseBody(TeaModel):
+    def __init__(
+        self,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_status_code: int = None,
+        module: Any = None,
+        request_id: str = None,
+        success: bool = None,
+        synchro: bool = None,
+    ):
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_status_code = http_status_code
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.module is not None:
+            result['Module'] = self.module
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class DomainSpecialBizCancelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DomainSpecialBizCancelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DomainSpecialBizCancelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class EmailVerifiedRequest(TeaModel):
     def __init__(
         self,
@@ -2564,6 +2862,7 @@ class GetOperationOssUploadPolicyResponseBody(TeaModel):
         self.encoded_policy = encoded_policy
         self.expire_time = expire_time
         self.file_dir = file_dir
+        # OSS Endpoint。
         self.host = host
         self.request_id = request_id
         self.signature = signature
@@ -3082,6 +3381,8 @@ class ListServerLockRequest(TeaModel):
         end_start_date: int = None,
         lang: str = None,
         lock_product_id: str = None,
+        order_by: str = None,
+        order_by_type: str = None,
         page_num: int = None,
         page_size: int = None,
         server_lock_status: int = None,
@@ -3094,6 +3395,8 @@ class ListServerLockRequest(TeaModel):
         self.end_start_date = end_start_date
         self.lang = lang
         self.lock_product_id = lock_product_id
+        self.order_by = order_by
+        self.order_by_type = order_by_type
         self.page_num = page_num
         self.page_size = page_size
         self.server_lock_status = server_lock_status
@@ -3121,6 +3424,10 @@ class ListServerLockRequest(TeaModel):
             result['Lang'] = self.lang
         if self.lock_product_id is not None:
             result['LockProductId'] = self.lock_product_id
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.order_by_type is not None:
+            result['OrderByType'] = self.order_by_type
         if self.page_num is not None:
             result['PageNum'] = self.page_num
         if self.page_size is not None:
@@ -3147,6 +3454,10 @@ class ListServerLockRequest(TeaModel):
             self.lang = m.get('Lang')
         if m.get('LockProductId') is not None:
             self.lock_product_id = m.get('LockProductId')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('OrderByType') is not None:
+            self.order_by_type = m.get('OrderByType')
         if m.get('PageNum') is not None:
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:
@@ -4362,6 +4673,39 @@ class PollTaskResultResponse(TeaModel):
         return self
 
 
+class QueryAdvancedDomainListRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class QueryAdvancedDomainListRequest(TeaModel):
     def __init__(
         self,
@@ -4385,10 +4729,12 @@ class QueryAdvancedDomainListRequest(TeaModel):
         product_domain_type: str = None,
         product_domain_type_sort: bool = None,
         registration_date_sort: bool = None,
+        resource_group_id: str = None,
         start_expiration_date: int = None,
         start_length: int = None,
         start_registration_date: int = None,
         suffixs: str = None,
+        tag: List[QueryAdvancedDomainListRequestTag] = None,
         trade_type: int = None,
         user_client_ip: str = None,
     ):
@@ -4412,15 +4758,20 @@ class QueryAdvancedDomainListRequest(TeaModel):
         self.product_domain_type = product_domain_type
         self.product_domain_type_sort = product_domain_type_sort
         self.registration_date_sort = registration_date_sort
+        self.resource_group_id = resource_group_id
         self.start_expiration_date = start_expiration_date
         self.start_length = start_length
         self.start_registration_date = start_registration_date
         self.suffixs = suffixs
+        self.tag = tag
         self.trade_type = trade_type
         self.user_client_ip = user_client_ip
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4468,6 +4819,8 @@ class QueryAdvancedDomainListRequest(TeaModel):
             result['ProductDomainTypeSort'] = self.product_domain_type_sort
         if self.registration_date_sort is not None:
             result['RegistrationDateSort'] = self.registration_date_sort
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.start_expiration_date is not None:
             result['StartExpirationDate'] = self.start_expiration_date
         if self.start_length is not None:
@@ -4476,6 +4829,10 @@ class QueryAdvancedDomainListRequest(TeaModel):
             result['StartRegistrationDate'] = self.start_registration_date
         if self.suffixs is not None:
             result['Suffixs'] = self.suffixs
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.trade_type is not None:
             result['TradeType'] = self.trade_type
         if self.user_client_ip is not None:
@@ -4524,6 +4881,8 @@ class QueryAdvancedDomainListRequest(TeaModel):
             self.product_domain_type_sort = m.get('ProductDomainTypeSort')
         if m.get('RegistrationDateSort') is not None:
             self.registration_date_sort = m.get('RegistrationDateSort')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartExpirationDate') is not None:
             self.start_expiration_date = m.get('StartExpirationDate')
         if m.get('StartLength') is not None:
@@ -4532,6 +4891,11 @@ class QueryAdvancedDomainListRequest(TeaModel):
             self.start_registration_date = m.get('StartRegistrationDate')
         if m.get('Suffixs') is not None:
             self.suffixs = m.get('Suffixs')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = QueryAdvancedDomainListRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TradeType') is not None:
             self.trade_type = m.get('TradeType')
         if m.get('UserClientIp') is not None:
@@ -4566,6 +4930,74 @@ class QueryAdvancedDomainListResponseBodyDataDomainDnsList(TeaModel):
         return self
 
 
+class QueryAdvancedDomainListResponseBodyDataDomainTagTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryAdvancedDomainListResponseBodyDataDomainTag(TeaModel):
+    def __init__(
+        self,
+        tag: List[QueryAdvancedDomainListResponseBodyDataDomainTagTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = QueryAdvancedDomainListResponseBodyDataDomainTagTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class QueryAdvancedDomainListResponseBodyDataDomain(TeaModel):
     def __init__(
         self,
@@ -4589,6 +5021,8 @@ class QueryAdvancedDomainListResponseBodyDataDomain(TeaModel):
         registration_date: str = None,
         registration_date_long: int = None,
         remark: str = None,
+        resource_group_id: str = None,
+        tag: QueryAdvancedDomainListResponseBodyDataDomainTag = None,
         zh_registrant_organization: str = None,
     ):
         self.dns_list = dns_list
@@ -4611,11 +5045,15 @@ class QueryAdvancedDomainListResponseBodyDataDomain(TeaModel):
         self.registration_date = registration_date
         self.registration_date_long = registration_date_long
         self.remark = remark
+        self.resource_group_id = resource_group_id
+        self.tag = tag
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
         if self.dns_list:
             self.dns_list.validate()
+        if self.tag:
+            self.tag.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4663,6 +5101,10 @@ class QueryAdvancedDomainListResponseBodyDataDomain(TeaModel):
             result['RegistrationDateLong'] = self.registration_date_long
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tag is not None:
+            result['Tag'] = self.tag.to_map()
         if self.zh_registrant_organization is not None:
             result['ZhRegistrantOrganization'] = self.zh_registrant_organization
         return result
@@ -4710,6 +5152,11 @@ class QueryAdvancedDomainListResponseBodyDataDomain(TeaModel):
             self.registration_date_long = m.get('RegistrationDateLong')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            temp_model = QueryAdvancedDomainListResponseBodyDataDomainTag()
+            self.tag = temp_model.from_map(m['Tag'])
         if m.get('ZhRegistrantOrganization') is not None:
             self.zh_registrant_organization = m.get('ZhRegistrantOrganization')
         return self
@@ -6165,6 +6612,74 @@ class QueryDomainByDomainNameResponseBodyDnsList(TeaModel):
         return self
 
 
+class QueryDomainByDomainNameResponseBodyTagTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        vaue: str = None,
+    ):
+        self.key = key
+        self.vaue = vaue
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.vaue is not None:
+            result['Vaue'] = self.vaue
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Vaue') is not None:
+            self.vaue = m.get('Vaue')
+        return self
+
+
+class QueryDomainByDomainNameResponseBodyTag(TeaModel):
+    def __init__(
+        self,
+        tag: List[QueryDomainByDomainNameResponseBodyTagTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = QueryDomainByDomainNameResponseBodyTagTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class QueryDomainByDomainNameResponseBody(TeaModel):
     def __init__(
         self,
@@ -6174,6 +6689,7 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
         domain_name: str = None,
         domain_name_proxy_service: bool = None,
         domain_name_verification_status: str = None,
+        domain_status: str = None,
         domain_type: str = None,
         email: str = None,
         email_verification_client_hold: bool = None,
@@ -6193,13 +6709,14 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
         registration_date_long: int = None,
         remark: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
+        tag: QueryDomainByDomainNameResponseBodyTag = None,
         transfer_out_status: str = None,
         transfer_prohibition_lock: str = None,
         update_prohibition_lock: str = None,
         user_id: str = None,
         zh_registrant_name: str = None,
         zh_registrant_organization: str = None,
-        domain_status: str = None,
     ):
         self.dns_list = dns_list
         self.domain_group_id = domain_group_id
@@ -6207,6 +6724,7 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
         self.domain_name = domain_name
         self.domain_name_proxy_service = domain_name_proxy_service
         self.domain_name_verification_status = domain_name_verification_status
+        self.domain_status = domain_status
         self.domain_type = domain_type
         self.email = email
         self.email_verification_client_hold = email_verification_client_hold
@@ -6226,17 +6744,20 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
         self.registration_date_long = registration_date_long
         self.remark = remark
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.tag = tag
         self.transfer_out_status = transfer_out_status
         self.transfer_prohibition_lock = transfer_prohibition_lock
         self.update_prohibition_lock = update_prohibition_lock
         self.user_id = user_id
         self.zh_registrant_name = zh_registrant_name
         self.zh_registrant_organization = zh_registrant_organization
-        self.domain_status = domain_status
 
     def validate(self):
         if self.dns_list:
             self.dns_list.validate()
+        if self.tag:
+            self.tag.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6256,6 +6777,8 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
             result['DomainNameProxyService'] = self.domain_name_proxy_service
         if self.domain_name_verification_status is not None:
             result['DomainNameVerificationStatus'] = self.domain_name_verification_status
+        if self.domain_status is not None:
+            result['DomainStatus'] = self.domain_status
         if self.domain_type is not None:
             result['DomainType'] = self.domain_type
         if self.email is not None:
@@ -6294,6 +6817,10 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
             result['Remark'] = self.remark
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tag is not None:
+            result['Tag'] = self.tag.to_map()
         if self.transfer_out_status is not None:
             result['TransferOutStatus'] = self.transfer_out_status
         if self.transfer_prohibition_lock is not None:
@@ -6306,8 +6833,6 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
             result['ZhRegistrantName'] = self.zh_registrant_name
         if self.zh_registrant_organization is not None:
             result['ZhRegistrantOrganization'] = self.zh_registrant_organization
-        if self.domain_status is not None:
-            result['domainStatus'] = self.domain_status
         return result
 
     def from_map(self, m: dict = None):
@@ -6325,6 +6850,8 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
             self.domain_name_proxy_service = m.get('DomainNameProxyService')
         if m.get('DomainNameVerificationStatus') is not None:
             self.domain_name_verification_status = m.get('DomainNameVerificationStatus')
+        if m.get('DomainStatus') is not None:
+            self.domain_status = m.get('DomainStatus')
         if m.get('DomainType') is not None:
             self.domain_type = m.get('DomainType')
         if m.get('Email') is not None:
@@ -6363,6 +6890,11 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
             self.remark = m.get('Remark')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            temp_model = QueryDomainByDomainNameResponseBodyTag()
+            self.tag = temp_model.from_map(m['Tag'])
         if m.get('TransferOutStatus') is not None:
             self.transfer_out_status = m.get('TransferOutStatus')
         if m.get('TransferProhibitionLock') is not None:
@@ -6375,8 +6907,6 @@ class QueryDomainByDomainNameResponseBody(TeaModel):
             self.zh_registrant_name = m.get('ZhRegistrantName')
         if m.get('ZhRegistrantOrganization') is not None:
             self.zh_registrant_organization = m.get('ZhRegistrantOrganization')
-        if m.get('domainStatus') is not None:
-            self.domain_status = m.get('domainStatus')
         return self
 
 
@@ -6490,6 +7020,74 @@ class QueryDomainByInstanceIdResponseBodyDnsList(TeaModel):
         return self
 
 
+class QueryDomainByInstanceIdResponseBodyTagTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryDomainByInstanceIdResponseBodyTag(TeaModel):
+    def __init__(
+        self,
+        tag: List[QueryDomainByInstanceIdResponseBodyTagTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = QueryDomainByInstanceIdResponseBodyTagTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class QueryDomainByInstanceIdResponseBody(TeaModel):
     def __init__(
         self,
@@ -6519,6 +7117,8 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         registration_date_long: int = None,
         remark: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
+        tag: QueryDomainByInstanceIdResponseBodyTag = None,
         transfer_out_status: str = None,
         transfer_prohibition_lock: str = None,
         update_prohibition_lock: str = None,
@@ -6527,9 +7127,7 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         zh_registrant_organization: str = None,
     ):
         self.dns_list = dns_list
-        # 域名分组ID
         self.domain_group_id = domain_group_id
-        # 域名分组名称
         self.domain_group_name = domain_group_name
         self.domain_name = domain_name
         self.domain_name_proxy_service = domain_name_proxy_service
@@ -6552,9 +7150,10 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
         self.registrant_updating_status = registrant_updating_status
         self.registration_date = registration_date
         self.registration_date_long = registration_date_long
-        # 备注
         self.remark = remark
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
+        self.tag = tag
         self.transfer_out_status = transfer_out_status
         self.transfer_prohibition_lock = transfer_prohibition_lock
         self.update_prohibition_lock = update_prohibition_lock
@@ -6565,6 +7164,8 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
     def validate(self):
         if self.dns_list:
             self.dns_list.validate()
+        if self.tag:
+            self.tag.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6624,6 +7225,10 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
             result['Remark'] = self.remark
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tag is not None:
+            result['Tag'] = self.tag.to_map()
         if self.transfer_out_status is not None:
             result['TransferOutStatus'] = self.transfer_out_status
         if self.transfer_prohibition_lock is not None:
@@ -6693,6 +7298,11 @@ class QueryDomainByInstanceIdResponseBody(TeaModel):
             self.remark = m.get('Remark')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            temp_model = QueryDomainByInstanceIdResponseBodyTag()
+            self.tag = temp_model.from_map(m['Tag'])
         if m.get('TransferOutStatus') is not None:
             self.transfer_out_status = m.get('TransferOutStatus')
         if m.get('TransferProhibitionLock') is not None:
@@ -6974,6 +7584,39 @@ class QueryDomainGroupListResponse(TeaModel):
         return self
 
 
+class QueryDomainListRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class QueryDomainListRequest(TeaModel):
     def __init__(
         self,
@@ -6988,8 +7631,10 @@ class QueryDomainListRequest(TeaModel):
         page_size: int = None,
         product_domain_type: str = None,
         query_type: str = None,
+        resource_group_id: str = None,
         start_expiration_date: int = None,
         start_registration_date: int = None,
+        tag: List[QueryDomainListRequestTag] = None,
         user_client_ip: str = None,
     ):
         self.domain_group_id = domain_group_id
@@ -7003,12 +7648,17 @@ class QueryDomainListRequest(TeaModel):
         self.page_size = page_size
         self.product_domain_type = product_domain_type
         self.query_type = query_type
+        self.resource_group_id = resource_group_id
         self.start_expiration_date = start_expiration_date
         self.start_registration_date = start_registration_date
+        self.tag = tag
         self.user_client_ip = user_client_ip
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7038,10 +7688,16 @@ class QueryDomainListRequest(TeaModel):
             result['ProductDomainType'] = self.product_domain_type
         if self.query_type is not None:
             result['QueryType'] = self.query_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.start_expiration_date is not None:
             result['StartExpirationDate'] = self.start_expiration_date
         if self.start_registration_date is not None:
             result['StartRegistrationDate'] = self.start_registration_date
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.user_client_ip is not None:
             result['UserClientIp'] = self.user_client_ip
         return result
@@ -7070,12 +7726,87 @@ class QueryDomainListRequest(TeaModel):
             self.product_domain_type = m.get('ProductDomainType')
         if m.get('QueryType') is not None:
             self.query_type = m.get('QueryType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('StartExpirationDate') is not None:
             self.start_expiration_date = m.get('StartExpirationDate')
         if m.get('StartRegistrationDate') is not None:
             self.start_registration_date = m.get('StartRegistrationDate')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = QueryDomainListRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('UserClientIp') is not None:
             self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class QueryDomainListResponseBodyDataDomainTagTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryDomainListResponseBodyDataDomainTag(TeaModel):
+    def __init__(
+        self,
+        tag: List[QueryDomainListResponseBodyDataDomainTagTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = QueryDomainListResponseBodyDataDomainTagTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -7099,6 +7830,8 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
         registration_date: str = None,
         registration_date_long: int = None,
         remark: str = None,
+        resource_group_id: str = None,
+        tag: QueryDomainListResponseBodyDataDomainTag = None,
     ):
         self.domain_audit_status = domain_audit_status
         self.domain_group_id = domain_group_id
@@ -7117,9 +7850,12 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
         self.registration_date = registration_date
         self.registration_date_long = registration_date_long
         self.remark = remark
+        self.resource_group_id = resource_group_id
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            self.tag.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7161,6 +7897,10 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
             result['RegistrationDateLong'] = self.registration_date_long
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tag is not None:
+            result['Tag'] = self.tag.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -7199,6 +7939,11 @@ class QueryDomainListResponseBodyDataDomain(TeaModel):
             self.registration_date_long = m.get('RegistrationDateLong')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            temp_model = QueryDomainListResponseBodyDataDomainTag()
+            self.tag = temp_model.from_map(m['Tag'])
         return self
 
 
@@ -7506,6 +8251,1200 @@ class QueryDomainRealNameVerificationInfoResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryDomainRealNameVerificationInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDomainSpecialBizDetailRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        user_client_ip: str = None,
+    ):
+        self.biz_id = biz_id
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        ccity: str = None,
+        ccompany: str = None,
+        ccountry: str = None,
+        cname: str = None,
+        cprovince: str = None,
+        cvenu: str = None,
+        ecity: str = None,
+        ecompany: str = None,
+        ename: str = None,
+        eprovince: str = None,
+        evenu: str = None,
+        email: str = None,
+        extend: str = None,
+        fax_area: str = None,
+        fax_ext: str = None,
+        fax_main: str = None,
+        mobile: str = None,
+        postalcode: str = None,
+        reg_type: int = None,
+        registrant_id: str = None,
+        tel_area: str = None,
+        tel_ext: str = None,
+        tel_main: str = None,
+        vsp_contact_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.ccity = ccity
+        self.ccompany = ccompany
+        self.ccountry = ccountry
+        self.cname = cname
+        self.cprovince = cprovince
+        self.cvenu = cvenu
+        self.ecity = ecity
+        self.ecompany = ecompany
+        self.ename = ename
+        self.eprovince = eprovince
+        self.evenu = evenu
+        self.email = email
+        self.extend = extend
+        self.fax_area = fax_area
+        self.fax_ext = fax_ext
+        self.fax_main = fax_main
+        self.mobile = mobile
+        self.postalcode = postalcode
+        self.reg_type = reg_type
+        self.registrant_id = registrant_id
+        self.tel_area = tel_area
+        self.tel_ext = tel_ext
+        self.tel_main = tel_main
+        self.vsp_contact_id = vsp_contact_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.ccity is not None:
+            result['CCity'] = self.ccity
+        if self.ccompany is not None:
+            result['CCompany'] = self.ccompany
+        if self.ccountry is not None:
+            result['CCountry'] = self.ccountry
+        if self.cname is not None:
+            result['CName'] = self.cname
+        if self.cprovince is not None:
+            result['CProvince'] = self.cprovince
+        if self.cvenu is not None:
+            result['CVenu'] = self.cvenu
+        if self.ecity is not None:
+            result['ECity'] = self.ecity
+        if self.ecompany is not None:
+            result['ECompany'] = self.ecompany
+        if self.ename is not None:
+            result['EName'] = self.ename
+        if self.eprovince is not None:
+            result['EProvince'] = self.eprovince
+        if self.evenu is not None:
+            result['EVenu'] = self.evenu
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.fax_area is not None:
+            result['FaxArea'] = self.fax_area
+        if self.fax_ext is not None:
+            result['FaxExt'] = self.fax_ext
+        if self.fax_main is not None:
+            result['FaxMain'] = self.fax_main
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.postalcode is not None:
+            result['Postalcode'] = self.postalcode
+        if self.reg_type is not None:
+            result['RegType'] = self.reg_type
+        if self.registrant_id is not None:
+            result['RegistrantId'] = self.registrant_id
+        if self.tel_area is not None:
+            result['TelArea'] = self.tel_area
+        if self.tel_ext is not None:
+            result['TelExt'] = self.tel_ext
+        if self.tel_main is not None:
+            result['TelMain'] = self.tel_main
+        if self.vsp_contact_id is not None:
+            result['VspContactId'] = self.vsp_contact_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CCity') is not None:
+            self.ccity = m.get('CCity')
+        if m.get('CCompany') is not None:
+            self.ccompany = m.get('CCompany')
+        if m.get('CCountry') is not None:
+            self.ccountry = m.get('CCountry')
+        if m.get('CName') is not None:
+            self.cname = m.get('CName')
+        if m.get('CProvince') is not None:
+            self.cprovince = m.get('CProvince')
+        if m.get('CVenu') is not None:
+            self.cvenu = m.get('CVenu')
+        if m.get('ECity') is not None:
+            self.ecity = m.get('ECity')
+        if m.get('ECompany') is not None:
+            self.ecompany = m.get('ECompany')
+        if m.get('EName') is not None:
+            self.ename = m.get('EName')
+        if m.get('EProvince') is not None:
+            self.eprovince = m.get('EProvince')
+        if m.get('EVenu') is not None:
+            self.evenu = m.get('EVenu')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('FaxArea') is not None:
+            self.fax_area = m.get('FaxArea')
+        if m.get('FaxExt') is not None:
+            self.fax_ext = m.get('FaxExt')
+        if m.get('FaxMain') is not None:
+            self.fax_main = m.get('FaxMain')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Postalcode') is not None:
+            self.postalcode = m.get('Postalcode')
+        if m.get('RegType') is not None:
+            self.reg_type = m.get('RegType')
+        if m.get('RegistrantId') is not None:
+            self.registrant_id = m.get('RegistrantId')
+        if m.get('TelArea') is not None:
+            self.tel_area = m.get('TelArea')
+        if m.get('TelExt') is not None:
+            self.tel_ext = m.get('TelExt')
+        if m.get('TelMain') is not None:
+            self.tel_main = m.get('TelMain')
+        if m.get('VspContactId') is not None:
+            self.vsp_contact_id = m.get('VspContactId')
+        return self
+
+
+class QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        credential_no: str = None,
+        credential_type: str = None,
+        credential_url: str = None,
+        domain_name: str = None,
+        holder_cert: int = None,
+        sale_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.credential_no = credential_no
+        self.credential_type = credential_type
+        self.credential_url = credential_url
+        self.domain_name = domain_name
+        self.holder_cert = holder_cert
+        self.sale_id = sale_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.credential_no is not None:
+            result['CredentialNo'] = self.credential_no
+        if self.credential_type is not None:
+            result['CredentialType'] = self.credential_type
+        if self.credential_url is not None:
+            result['CredentialUrl'] = self.credential_url
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.holder_cert is not None:
+            result['HolderCert'] = self.holder_cert
+        if self.sale_id is not None:
+            result['SaleId'] = self.sale_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CredentialNo') is not None:
+            self.credential_no = m.get('CredentialNo')
+        if m.get('CredentialType') is not None:
+            self.credential_type = m.get('CredentialType')
+        if m.get('CredentialUrl') is not None:
+            self.credential_url = m.get('CredentialUrl')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('HolderCert') is not None:
+            self.holder_cert = m.get('HolderCert')
+        if m.get('SaleId') is not None:
+            self.sale_id = m.get('SaleId')
+        return self
+
+
+class QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        order_amount: float = None,
+        order_currency: str = None,
+        order_id: str = None,
+        order_status: str = None,
+        order_time: str = None,
+        order_year: int = None,
+        sale_id: str = None,
+        sub_order_id: str = None,
+    ):
+        self.action_type = action_type
+        self.order_amount = order_amount
+        self.order_currency = order_currency
+        self.order_id = order_id
+        self.order_status = order_status
+        self.order_time = order_time
+        self.order_year = order_year
+        self.sale_id = sale_id
+        self.sub_order_id = sub_order_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.order_amount is not None:
+            result['OrderAmount'] = self.order_amount
+        if self.order_currency is not None:
+            result['OrderCurrency'] = self.order_currency
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.order_time is not None:
+            result['OrderTime'] = self.order_time
+        if self.order_year is not None:
+            result['OrderYear'] = self.order_year
+        if self.sale_id is not None:
+            result['SaleId'] = self.sale_id
+        if self.sub_order_id is not None:
+            result['SubOrderId'] = self.sub_order_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('OrderAmount') is not None:
+            self.order_amount = m.get('OrderAmount')
+        if m.get('OrderCurrency') is not None:
+            self.order_currency = m.get('OrderCurrency')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('OrderTime') is not None:
+            self.order_time = m.get('OrderTime')
+        if m.get('OrderYear') is not None:
+            self.order_year = m.get('OrderYear')
+        if m.get('SaleId') is not None:
+            self.sale_id = m.get('SaleId')
+        if m.get('SubOrderId') is not None:
+            self.sub_order_id = m.get('SubOrderId')
+        return self
+
+
+class QueryDomainSpecialBizDetailResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        audit_msg: str = None,
+        biz_name: str = None,
+        biz_no: str = None,
+        biz_status: str = None,
+        biz_type: str = None,
+        create_time: int = None,
+        domain_name: str = None,
+        domain_special_biz_contact: QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact = None,
+        domain_special_biz_credentials: List[QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials] = None,
+        domain_special_order_result: QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        order_id: str = None,
+        product_id: str = None,
+        sale_id: str = None,
+        status: int = None,
+        status_desc: str = None,
+        update_time: int = None,
+        user_id: str = None,
+    ):
+        self.audit_msg = audit_msg
+        self.biz_name = biz_name
+        self.biz_no = biz_no
+        self.biz_status = biz_status
+        self.biz_type = biz_type
+        self.create_time = create_time
+        self.domain_name = domain_name
+        self.domain_special_biz_contact = domain_special_biz_contact
+        self.domain_special_biz_credentials = domain_special_biz_credentials
+        self.domain_special_order_result = domain_special_order_result
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.order_id = order_id
+        self.product_id = product_id
+        self.sale_id = sale_id
+        self.status = status
+        self.status_desc = status_desc
+        self.update_time = update_time
+        self.user_id = user_id
+
+    def validate(self):
+        if self.domain_special_biz_contact:
+            self.domain_special_biz_contact.validate()
+        if self.domain_special_biz_credentials:
+            for k in self.domain_special_biz_credentials:
+                if k:
+                    k.validate()
+        if self.domain_special_order_result:
+            self.domain_special_order_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_msg is not None:
+            result['AuditMsg'] = self.audit_msg
+        if self.biz_name is not None:
+            result['BizName'] = self.biz_name
+        if self.biz_no is not None:
+            result['BizNo'] = self.biz_no
+        if self.biz_status is not None:
+            result['BizStatus'] = self.biz_status
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.domain_special_biz_contact is not None:
+            result['DomainSpecialBizContact'] = self.domain_special_biz_contact.to_map()
+        result['DomainSpecialBizCredentials'] = []
+        if self.domain_special_biz_credentials is not None:
+            for k in self.domain_special_biz_credentials:
+                result['DomainSpecialBizCredentials'].append(k.to_map() if k else None)
+        if self.domain_special_order_result is not None:
+            result['DomainSpecialOrderResult'] = self.domain_special_order_result.to_map()
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.sale_id is not None:
+            result['SaleId'] = self.sale_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditMsg') is not None:
+            self.audit_msg = m.get('AuditMsg')
+        if m.get('BizName') is not None:
+            self.biz_name = m.get('BizName')
+        if m.get('BizNo') is not None:
+            self.biz_no = m.get('BizNo')
+        if m.get('BizStatus') is not None:
+            self.biz_status = m.get('BizStatus')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('DomainSpecialBizContact') is not None:
+            temp_model = QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizContact()
+            self.domain_special_biz_contact = temp_model.from_map(m['DomainSpecialBizContact'])
+        self.domain_special_biz_credentials = []
+        if m.get('DomainSpecialBizCredentials') is not None:
+            for k in m.get('DomainSpecialBizCredentials'):
+                temp_model = QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialBizCredentials()
+                self.domain_special_biz_credentials.append(temp_model.from_map(k))
+        if m.get('DomainSpecialOrderResult') is not None:
+            temp_model = QueryDomainSpecialBizDetailResponseBodyModuleDomainSpecialOrderResult()
+            self.domain_special_order_result = temp_model.from_map(m['DomainSpecialOrderResult'])
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('SaleId') is not None:
+            self.sale_id = m.get('SaleId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryDomainSpecialBizDetailResponseBody(TeaModel):
+    def __init__(
+        self,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_status_code: int = None,
+        module: QueryDomainSpecialBizDetailResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        synchro: bool = None,
+    ):
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_status_code = http_status_code
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Module') is not None:
+            temp_model = QueryDomainSpecialBizDetailResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class QueryDomainSpecialBizDetailResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDomainSpecialBizDetailResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDomainSpecialBizDetailResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryDomainSpecialBizInfoByDomainRequest(TeaModel):
+    def __init__(
+        self,
+        biz_type: str = None,
+        domain_name: str = None,
+        user_client_ip: str = None,
+    ):
+        self.biz_type = biz_type
+        self.domain_name = domain_name
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        ccity: str = None,
+        ccompany: str = None,
+        ccountry: str = None,
+        cname: str = None,
+        cprovince: str = None,
+        cvenu: str = None,
+        ecity: str = None,
+        ecompany: str = None,
+        ename: str = None,
+        eprovince: str = None,
+        evenu: str = None,
+        email: str = None,
+        extend: str = None,
+        fax_area: str = None,
+        fax_ext: str = None,
+        fax_main: str = None,
+        mobile: str = None,
+        postalcode: str = None,
+        reg_type: int = None,
+        registrant_id: str = None,
+        tel_area: str = None,
+        tel_ext: str = None,
+        tel_main: str = None,
+        vsp_contact_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.ccity = ccity
+        self.ccompany = ccompany
+        self.ccountry = ccountry
+        self.cname = cname
+        self.cprovince = cprovince
+        self.cvenu = cvenu
+        self.ecity = ecity
+        self.ecompany = ecompany
+        self.ename = ename
+        self.eprovince = eprovince
+        self.evenu = evenu
+        self.email = email
+        self.extend = extend
+        self.fax_area = fax_area
+        self.fax_ext = fax_ext
+        self.fax_main = fax_main
+        self.mobile = mobile
+        self.postalcode = postalcode
+        self.reg_type = reg_type
+        self.registrant_id = registrant_id
+        self.tel_area = tel_area
+        self.tel_ext = tel_ext
+        self.tel_main = tel_main
+        self.vsp_contact_id = vsp_contact_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.ccity is not None:
+            result['CCity'] = self.ccity
+        if self.ccompany is not None:
+            result['CCompany'] = self.ccompany
+        if self.ccountry is not None:
+            result['CCountry'] = self.ccountry
+        if self.cname is not None:
+            result['CName'] = self.cname
+        if self.cprovince is not None:
+            result['CProvince'] = self.cprovince
+        if self.cvenu is not None:
+            result['CVenu'] = self.cvenu
+        if self.ecity is not None:
+            result['ECity'] = self.ecity
+        if self.ecompany is not None:
+            result['ECompany'] = self.ecompany
+        if self.ename is not None:
+            result['EName'] = self.ename
+        if self.eprovince is not None:
+            result['EProvince'] = self.eprovince
+        if self.evenu is not None:
+            result['EVenu'] = self.evenu
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.fax_area is not None:
+            result['FaxArea'] = self.fax_area
+        if self.fax_ext is not None:
+            result['FaxExt'] = self.fax_ext
+        if self.fax_main is not None:
+            result['FaxMain'] = self.fax_main
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
+        if self.postalcode is not None:
+            result['Postalcode'] = self.postalcode
+        if self.reg_type is not None:
+            result['RegType'] = self.reg_type
+        if self.registrant_id is not None:
+            result['RegistrantId'] = self.registrant_id
+        if self.tel_area is not None:
+            result['TelArea'] = self.tel_area
+        if self.tel_ext is not None:
+            result['TelExt'] = self.tel_ext
+        if self.tel_main is not None:
+            result['TelMain'] = self.tel_main
+        if self.vsp_contact_id is not None:
+            result['VspContactId'] = self.vsp_contact_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CCity') is not None:
+            self.ccity = m.get('CCity')
+        if m.get('CCompany') is not None:
+            self.ccompany = m.get('CCompany')
+        if m.get('CCountry') is not None:
+            self.ccountry = m.get('CCountry')
+        if m.get('CName') is not None:
+            self.cname = m.get('CName')
+        if m.get('CProvince') is not None:
+            self.cprovince = m.get('CProvince')
+        if m.get('CVenu') is not None:
+            self.cvenu = m.get('CVenu')
+        if m.get('ECity') is not None:
+            self.ecity = m.get('ECity')
+        if m.get('ECompany') is not None:
+            self.ecompany = m.get('ECompany')
+        if m.get('EName') is not None:
+            self.ename = m.get('EName')
+        if m.get('EProvince') is not None:
+            self.eprovince = m.get('EProvince')
+        if m.get('EVenu') is not None:
+            self.evenu = m.get('EVenu')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('FaxArea') is not None:
+            self.fax_area = m.get('FaxArea')
+        if m.get('FaxExt') is not None:
+            self.fax_ext = m.get('FaxExt')
+        if m.get('FaxMain') is not None:
+            self.fax_main = m.get('FaxMain')
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
+        if m.get('Postalcode') is not None:
+            self.postalcode = m.get('Postalcode')
+        if m.get('RegType') is not None:
+            self.reg_type = m.get('RegType')
+        if m.get('RegistrantId') is not None:
+            self.registrant_id = m.get('RegistrantId')
+        if m.get('TelArea') is not None:
+            self.tel_area = m.get('TelArea')
+        if m.get('TelExt') is not None:
+            self.tel_ext = m.get('TelExt')
+        if m.get('TelMain') is not None:
+            self.tel_main = m.get('TelMain')
+        if m.get('VspContactId') is not None:
+            self.vsp_contact_id = m.get('VspContactId')
+        return self
+
+
+class QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        credential_no: str = None,
+        credential_type: str = None,
+        credential_url: str = None,
+        domain_name: str = None,
+        holder_cert: int = None,
+        sale_id: str = None,
+    ):
+        self.biz_id = biz_id
+        self.credential_no = credential_no
+        self.credential_type = credential_type
+        self.credential_url = credential_url
+        self.domain_name = domain_name
+        self.holder_cert = holder_cert
+        self.sale_id = sale_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.credential_no is not None:
+            result['CredentialNo'] = self.credential_no
+        if self.credential_type is not None:
+            result['CredentialType'] = self.credential_type
+        if self.credential_url is not None:
+            result['CredentialUrl'] = self.credential_url
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.holder_cert is not None:
+            result['HolderCert'] = self.holder_cert
+        if self.sale_id is not None:
+            result['SaleId'] = self.sale_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('CredentialNo') is not None:
+            self.credential_no = m.get('CredentialNo')
+        if m.get('CredentialType') is not None:
+            self.credential_type = m.get('CredentialType')
+        if m.get('CredentialUrl') is not None:
+            self.credential_url = m.get('CredentialUrl')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('HolderCert') is not None:
+            self.holder_cert = m.get('HolderCert')
+        if m.get('SaleId') is not None:
+            self.sale_id = m.get('SaleId')
+        return self
+
+
+class QueryDomainSpecialBizInfoByDomainResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        audit_msg: str = None,
+        biz_name: str = None,
+        biz_no: str = None,
+        biz_status: str = None,
+        biz_type: str = None,
+        create_time: int = None,
+        domain_name: str = None,
+        domain_special_biz_contact: QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact = None,
+        domain_special_biz_credentials: List[QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials] = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        order_id: str = None,
+        product_id: str = None,
+        sale_id: str = None,
+        status: int = None,
+        status_desc: str = None,
+        update_time: int = None,
+        user_id: str = None,
+    ):
+        self.audit_msg = audit_msg
+        self.biz_name = biz_name
+        self.biz_no = biz_no
+        self.biz_status = biz_status
+        self.biz_type = biz_type
+        self.create_time = create_time
+        self.domain_name = domain_name
+        self.domain_special_biz_contact = domain_special_biz_contact
+        self.domain_special_biz_credentials = domain_special_biz_credentials
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.order_id = order_id
+        self.product_id = product_id
+        self.sale_id = sale_id
+        self.status = status
+        self.status_desc = status_desc
+        self.update_time = update_time
+        self.user_id = user_id
+
+    def validate(self):
+        if self.domain_special_biz_contact:
+            self.domain_special_biz_contact.validate()
+        if self.domain_special_biz_credentials:
+            for k in self.domain_special_biz_credentials:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.audit_msg is not None:
+            result['AuditMsg'] = self.audit_msg
+        if self.biz_name is not None:
+            result['BizName'] = self.biz_name
+        if self.biz_no is not None:
+            result['BizNo'] = self.biz_no
+        if self.biz_status is not None:
+            result['BizStatus'] = self.biz_status
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.domain_special_biz_contact is not None:
+            result['DomainSpecialBizContact'] = self.domain_special_biz_contact.to_map()
+        result['DomainSpecialBizCredentials'] = []
+        if self.domain_special_biz_credentials is not None:
+            for k in self.domain_special_biz_credentials:
+                result['DomainSpecialBizCredentials'].append(k.to_map() if k else None)
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.sale_id is not None:
+            result['SaleId'] = self.sale_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_desc is not None:
+            result['StatusDesc'] = self.status_desc
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuditMsg') is not None:
+            self.audit_msg = m.get('AuditMsg')
+        if m.get('BizName') is not None:
+            self.biz_name = m.get('BizName')
+        if m.get('BizNo') is not None:
+            self.biz_no = m.get('BizNo')
+        if m.get('BizStatus') is not None:
+            self.biz_status = m.get('BizStatus')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('DomainSpecialBizContact') is not None:
+            temp_model = QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizContact()
+            self.domain_special_biz_contact = temp_model.from_map(m['DomainSpecialBizContact'])
+        self.domain_special_biz_credentials = []
+        if m.get('DomainSpecialBizCredentials') is not None:
+            for k in m.get('DomainSpecialBizCredentials'):
+                temp_model = QueryDomainSpecialBizInfoByDomainResponseBodyModuleDomainSpecialBizCredentials()
+                self.domain_special_biz_credentials.append(temp_model.from_map(k))
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('SaleId') is not None:
+            self.sale_id = m.get('SaleId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusDesc') is not None:
+            self.status_desc = m.get('StatusDesc')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryDomainSpecialBizInfoByDomainResponseBody(TeaModel):
+    def __init__(
+        self,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_status_code: int = None,
+        module: QueryDomainSpecialBizInfoByDomainResponseBodyModule = None,
+        request_id: str = None,
+        success: bool = None,
+        synchro: bool = None,
+    ):
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_status_code = http_status_code
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        if self.module:
+            self.module.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.module is not None:
+            result['Module'] = self.module.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Module') is not None:
+            temp_model = QueryDomainSpecialBizInfoByDomainResponseBodyModule()
+            self.module = temp_model.from_map(m['Module'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class QueryDomainSpecialBizInfoByDomainResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryDomainSpecialBizInfoByDomainResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryDomainSpecialBizInfoByDomainResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -9425,6 +11364,8 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
         city: str = None,
         country: str = None,
         create_time: str = None,
+        credential_no: str = None,
+        credential_type: str = None,
         default_registrant_profile: bool = None,
         email: str = None,
         email_verification_status: int = None,
@@ -9450,6 +11391,8 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
         self.city = city
         self.country = country
         self.create_time = create_time
+        self.credential_no = credential_no
+        self.credential_type = credential_type
         self.default_registrant_profile = default_registrant_profile
         self.email = email
         self.email_verification_status = email_verification_status
@@ -9488,6 +11431,10 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
             result['Country'] = self.country
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.credential_no is not None:
+            result['CredentialNo'] = self.credential_no
+        if self.credential_type is not None:
+            result['CredentialType'] = self.credential_type
         if self.default_registrant_profile is not None:
             result['DefaultRegistrantProfile'] = self.default_registrant_profile
         if self.email is not None:
@@ -9540,6 +11487,10 @@ class QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile(Tea
             self.country = m.get('Country')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('CredentialNo') is not None:
+            self.credential_no = m.get('CredentialNo')
+        if m.get('CredentialType') is not None:
+            self.credential_type = m.get('CredentialType')
         if m.get('DefaultRegistrantProfile') is not None:
             self.default_registrant_profile = m.get('DefaultRegistrantProfile')
         if m.get('Email') is not None:
@@ -12874,6 +14825,122 @@ class SaveBatchDomainRemarkResponse(TeaModel):
         return self
 
 
+class SaveBatchTaskForApplyQuickTransferOutOpenlyRequest(TeaModel):
+    def __init__(
+        self,
+        domain_names: List[str] = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        self.domain_names = domain_names
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveBatchTaskForApplyQuickTransferOutOpenlyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveBatchTaskForApplyQuickTransferOutOpenlyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam(TeaModel):
     def __init__(
         self,
@@ -12893,6 +14960,7 @@ class SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam(TeaModel):
         registrant_organization: str = None,
         registrant_profile_id: int = None,
         registrant_type: str = None,
+        resource_group_id: str = None,
         subscription_duration: int = None,
         tel_area: str = None,
         tel_ext: str = None,
@@ -12920,6 +14988,7 @@ class SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam(TeaModel):
         self.registrant_organization = registrant_organization
         self.registrant_profile_id = registrant_profile_id
         self.registrant_type = registrant_type
+        self.resource_group_id = resource_group_id
         self.subscription_duration = subscription_duration
         self.tel_area = tel_area
         self.tel_ext = tel_ext
@@ -12972,6 +15041,8 @@ class SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam(TeaModel):
             result['RegistrantProfileId'] = self.registrant_profile_id
         if self.registrant_type is not None:
             result['RegistrantType'] = self.registrant_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_duration is not None:
             result['SubscriptionDuration'] = self.subscription_duration
         if self.tel_area is not None:
@@ -13028,6 +15099,8 @@ class SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam(TeaModel):
             self.registrant_profile_id = m.get('RegistrantProfileId')
         if m.get('RegistrantType') is not None:
             self.registrant_type = m.get('RegistrantType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionDuration') is not None:
             self.subscription_duration = m.get('SubscriptionDuration')
         if m.get('TelArea') is not None:
@@ -13878,6 +15951,161 @@ class SaveBatchTaskForDomainNameProxyServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SaveBatchTaskForDomainNameProxyServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveBatchTaskForGenerateDomainCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        domain_names: List[str] = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        self.domain_names = domain_names
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_names is not None:
+            result['DomainNames'] = self.domain_names
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainNames') is not None:
+            self.domain_names = m.get('DomainNames')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveBatchTaskForGenerateDomainCertificateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        domain_names_shrink: str = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        self.domain_names_shrink = domain_names_shrink
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_names_shrink is not None:
+            result['DomainNames'] = self.domain_names_shrink
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainNames') is not None:
+            self.domain_names_shrink = m.get('DomainNames')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveBatchTaskForGenerateDomainCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveBatchTaskForGenerateDomainCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveBatchTaskForGenerateDomainCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveBatchTaskForGenerateDomainCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15533,6 +17761,122 @@ class SaveSingleTaskForAddingDSRecordResponse(TeaModel):
         return self
 
 
+class SaveSingleTaskForApplyQuickTransferOutOpenlyRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        self.domain_name = domain_name
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveSingleTaskForApplyQuickTransferOutOpenlyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveSingleTaskForApplyQuickTransferOutOpenlyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SaveSingleTaskForApprovingTransferOutRequest(TeaModel):
     def __init__(
         self,
@@ -16153,6 +18497,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest(TeaModel):
         registrant_organization: str = None,
         registrant_profile_id: int = None,
         registrant_type: str = None,
+        resource_group_id: str = None,
         subscription_duration: int = None,
         tel_area: str = None,
         tel_ext: str = None,
@@ -16186,6 +18531,7 @@ class SaveSingleTaskForCreatingOrderActivateRequest(TeaModel):
         self.registrant_organization = registrant_organization
         self.registrant_profile_id = registrant_profile_id
         self.registrant_type = registrant_type
+        self.resource_group_id = resource_group_id
         self.subscription_duration = subscription_duration
         self.tel_area = tel_area
         self.tel_ext = tel_ext
@@ -16247,6 +18593,8 @@ class SaveSingleTaskForCreatingOrderActivateRequest(TeaModel):
             result['RegistrantProfileId'] = self.registrant_profile_id
         if self.registrant_type is not None:
             result['RegistrantType'] = self.registrant_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.subscription_duration is not None:
             result['SubscriptionDuration'] = self.subscription_duration
         if self.tel_area is not None:
@@ -16315,6 +18663,8 @@ class SaveSingleTaskForCreatingOrderActivateRequest(TeaModel):
             self.registrant_profile_id = m.get('RegistrantProfileId')
         if m.get('RegistrantType') is not None:
             self.registrant_type = m.get('RegistrantType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SubscriptionDuration') is not None:
             self.subscription_duration = m.get('SubscriptionDuration')
         if m.get('TelArea') is not None:
@@ -17355,6 +19705,122 @@ class SaveSingleTaskForDomainNameProxyServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SaveSingleTaskForDomainNameProxyServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SaveSingleTaskForGenerateDomainCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        self.domain_name = domain_name
+        self.lang = lang
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SaveSingleTaskForGenerateDomainCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_no: str = None,
+    ):
+        self.request_id = request_id
+        self.task_no = task_no
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_no is not None:
+            result['TaskNo'] = self.task_no
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskNo') is not None:
+            self.task_no = m.get('TaskNo')
+        return self
+
+
+class SaveSingleTaskForGenerateDomainCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SaveSingleTaskForGenerateDomainCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SaveSingleTaskForGenerateDomainCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -19295,6 +21761,7 @@ class ScrollDomainListRequest(TeaModel):
         lang: str = None,
         page_size: int = None,
         product_domain_type: str = None,
+        resource_group_id: str = None,
         scroll_id: str = None,
         start_expiration_date: int = None,
         start_length: int = None,
@@ -19318,6 +21785,7 @@ class ScrollDomainListRequest(TeaModel):
         self.lang = lang
         self.page_size = page_size
         self.product_domain_type = product_domain_type
+        self.resource_group_id = resource_group_id
         self.scroll_id = scroll_id
         self.start_expiration_date = start_expiration_date
         self.start_length = start_length
@@ -19365,6 +21833,8 @@ class ScrollDomainListRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.product_domain_type is not None:
             result['ProductDomainType'] = self.product_domain_type
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.scroll_id is not None:
             result['ScrollId'] = self.scroll_id
         if self.start_expiration_date is not None:
@@ -19413,6 +21883,8 @@ class ScrollDomainListRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('ProductDomainType') is not None:
             self.product_domain_type = m.get('ProductDomainType')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ScrollId') is not None:
             self.scroll_id = m.get('ScrollId')
         if m.get('StartExpirationDate') is not None:
@@ -19457,6 +21929,74 @@ class ScrollDomainListResponseBodyDataDomainDnsList(TeaModel):
         return self
 
 
+class ScrollDomainListResponseBodyDataDomainTagTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ScrollDomainListResponseBodyDataDomainTag(TeaModel):
+    def __init__(
+        self,
+        tag: List[ScrollDomainListResponseBodyDataDomainTagTag] = None,
+    ):
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ScrollDomainListResponseBodyDataDomainTagTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
 class ScrollDomainListResponseBodyDataDomain(TeaModel):
     def __init__(
         self,
@@ -19480,6 +22020,8 @@ class ScrollDomainListResponseBodyDataDomain(TeaModel):
         registration_date: str = None,
         registration_date_long: int = None,
         remark: str = None,
+        resource_group_id: str = None,
+        tag: ScrollDomainListResponseBodyDataDomainTag = None,
         zh_registrant_organization: str = None,
     ):
         self.dns_list = dns_list
@@ -19502,11 +22044,15 @@ class ScrollDomainListResponseBodyDataDomain(TeaModel):
         self.registration_date = registration_date
         self.registration_date_long = registration_date_long
         self.remark = remark
+        self.resource_group_id = resource_group_id
+        self.tag = tag
         self.zh_registrant_organization = zh_registrant_organization
 
     def validate(self):
         if self.dns_list:
             self.dns_list.validate()
+        if self.tag:
+            self.tag.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -19554,6 +22100,10 @@ class ScrollDomainListResponseBodyDataDomain(TeaModel):
             result['RegistrationDateLong'] = self.registration_date_long
         if self.remark is not None:
             result['Remark'] = self.remark
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.tag is not None:
+            result['Tag'] = self.tag.to_map()
         if self.zh_registrant_organization is not None:
             result['ZhRegistrantOrganization'] = self.zh_registrant_organization
         return result
@@ -19601,6 +22151,11 @@ class ScrollDomainListResponseBodyDataDomain(TeaModel):
             self.registration_date_long = m.get('RegistrationDateLong')
         if m.get('Remark') is not None:
             self.remark = m.get('Remark')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('Tag') is not None:
+            temp_model = ScrollDomainListResponseBodyDataDomainTag()
+            self.tag = temp_model.from_map(m['Tag'])
         if m.get('ZhRegistrantOrganization') is not None:
             self.zh_registrant_organization = m.get('ZhRegistrantOrganization')
         return self
@@ -19838,6 +22393,298 @@ class SetDefaultRegistrantProfileResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SetDefaultRegistrantProfileResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetupDomainAutoRenewRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        operation: str = None,
+    ):
+        self.instance_id = instance_id
+        self.operation = operation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.operation is not None:
+            result['Operation'] = self.operation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Operation') is not None:
+            self.operation = m.get('Operation')
+        return self
+
+
+class SetupDomainAutoRenewResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class SetupDomainAutoRenewResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetupDomainAutoRenewResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetupDomainAutoRenewResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitDomainSpecialBizCredentialsRequest(TeaModel):
+    def __init__(
+        self,
+        biz_id: int = None,
+        credentials: str = None,
+        extend: str = None,
+        user_client_ip: str = None,
+    ):
+        self.biz_id = biz_id
+        self.credentials = credentials
+        self.extend = extend
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.credentials is not None:
+            result['Credentials'] = self.credentials
+        if self.extend is not None:
+            result['Extend'] = self.extend
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('Credentials') is not None:
+            self.credentials = m.get('Credentials')
+        if m.get('Extend') is not None:
+            self.extend = m.get('Extend')
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+        return self
+
+
+class SubmitDomainSpecialBizCredentialsResponseBody(TeaModel):
+    def __init__(
+        self,
+        allow_retry: bool = None,
+        app_name: str = None,
+        dynamic_code: str = None,
+        dynamic_message: str = None,
+        error_args: List[Any] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        http_status_code: int = None,
+        module: Any = None,
+        request_id: str = None,
+        success: bool = None,
+        synchro: bool = None,
+    ):
+        self.allow_retry = allow_retry
+        self.app_name = app_name
+        self.dynamic_code = dynamic_code
+        self.dynamic_message = dynamic_message
+        self.error_args = error_args
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.http_status_code = http_status_code
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        self.synchro = synchro
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_retry is not None:
+            result['AllowRetry'] = self.allow_retry
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.dynamic_code is not None:
+            result['DynamicCode'] = self.dynamic_code
+        if self.dynamic_message is not None:
+            result['DynamicMessage'] = self.dynamic_message
+        if self.error_args is not None:
+            result['ErrorArgs'] = self.error_args
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.module is not None:
+            result['Module'] = self.module
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.synchro is not None:
+            result['Synchro'] = self.synchro
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowRetry') is not None:
+            self.allow_retry = m.get('AllowRetry')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('DynamicCode') is not None:
+            self.dynamic_code = m.get('DynamicCode')
+        if m.get('DynamicMessage') is not None:
+            self.dynamic_message = m.get('DynamicMessage')
+        if m.get('ErrorArgs') is not None:
+            self.error_args = m.get('ErrorArgs')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Module') is not None:
+            self.module = m.get('Module')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Synchro') is not None:
+            self.synchro = m.get('Synchro')
+        return self
+
+
+class SubmitDomainSpecialBizCredentialsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitDomainSpecialBizCredentialsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitDomainSpecialBizCredentialsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
