@@ -930,6 +930,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_private_registry_with_options_async(request, runtime)
 
+    def add_sas_module_trial_with_options(
+        self,
+        request: sas_20181203_models.AddSasModuleTrialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddSasModuleTrialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSasModuleTrial',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddSasModuleTrialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_sas_module_trial_with_options_async(
+        self,
+        request: sas_20181203_models.AddSasModuleTrialRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.AddSasModuleTrialResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddSasModuleTrial',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.AddSasModuleTrialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_sas_module_trial(
+        self,
+        request: sas_20181203_models.AddSasModuleTrialRequest,
+    ) -> sas_20181203_models.AddSasModuleTrialResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_sas_module_trial_with_options(request, runtime)
+
+    async def add_sas_module_trial_async(
+        self,
+        request: sas_20181203_models.AddSasModuleTrialRequest,
+    ) -> sas_20181203_models.AddSasModuleTrialResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_sas_module_trial_with_options_async(request, runtime)
+
     def add_tag_with_uuid_with_options(
         self,
         request: sas_20181203_models.AddTagWithUuidRequest,
@@ -29611,6 +29685,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -29639,6 +29715,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.uuid):
+            query['Uuid'] = request.uuid
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -31659,6 +31737,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetModuleConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_module_config_with_options_async(request, runtime)
+
+    def get_module_trial_auth_info_with_options(
+        self,
+        request: sas_20181203_models.GetModuleTrialAuthInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModuleTrialAuthInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetModuleTrialAuthInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_module_trial_auth_info_with_options_async(
+        self,
+        request: sas_20181203_models.GetModuleTrialAuthInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.module_code):
+            query['ModuleCode'] = request.module_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetModuleTrialAuthInfo',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetModuleTrialAuthInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_module_trial_auth_info(
+        self,
+        request: sas_20181203_models.GetModuleTrialAuthInfoRequest,
+    ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_module_trial_auth_info_with_options(request, runtime)
+
+    async def get_module_trial_auth_info_async(
+        self,
+        request: sas_20181203_models.GetModuleTrialAuthInfoRequest,
+    ) -> sas_20181203_models.GetModuleTrialAuthInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_module_trial_auth_info_with_options_async(request, runtime)
 
     def get_object_scan_event_with_options(
         self,
@@ -35209,6 +35361,8 @@ class Client(OpenApiClient):
             query['RiskType'] = request.risk_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -35259,6 +35413,8 @@ class Client(OpenApiClient):
             query['RiskType'] = request.risk_type
         if not UtilClient.is_unset(request.source):
             query['Source'] = request.source
+        if not UtilClient.is_unset(request.uuid_list):
+            query['UuidList'] = request.uuid_list
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
