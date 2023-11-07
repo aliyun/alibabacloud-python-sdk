@@ -22488,7 +22488,11 @@ class Client(OpenApiClient):
         @return: UpdateDcdnUserRealTimeDeliveryFieldResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -22497,7 +22501,7 @@ class Client(OpenApiClient):
             version='2018-01-15',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
@@ -22521,7 +22525,11 @@ class Client(OpenApiClient):
         @return: UpdateDcdnUserRealTimeDeliveryFieldResponse
         """
         UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        query = {}
+        if not UtilClient.is_unset(request.business_type):
+            query['BusinessType'] = request.business_type
+        if not UtilClient.is_unset(request.fields):
+            query['Fields'] = request.fields
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -22530,7 +22538,7 @@ class Client(OpenApiClient):
             version='2018-01-15',
             protocol='HTTPS',
             pathname='/',
-            method='GET',
+            method='POST',
             auth_type='AK',
             style='RPC',
             req_body_type='formData',
