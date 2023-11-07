@@ -604,19 +604,87 @@ class AddDesensitizationRuleRequest(TeaModel):
         rule_type: str = None,
         tid: int = None,
     ):
-        # Algorithm parameters.
+        # The parameters of the algorithm.
         self.function_params = function_params
         # The type of the masking algorithm.
+        # 
+        # Valid values:
+        # 
+        # *   FIX_POS : masks characters in the specified position.
+        # *   DATE_ROUNDING: rounds the date.
+        # *   PLAINTEXT: does not mask data.
+        # *   SHA1: masks characters by using the secure hash algorithm 1 (SHA-1)
+        # *   HMAC: masks characters by using the hash-based message authentication code (HMAC).
+        # *   STRING_TRANSFORM: shift characters.
+        # *   NUMBER_ROUNDING: rounds numbers.
+        # *   AES: masks characters by using the advanced encryption standard (AES) algorithm.
+        # *   SHA256: masks characters by using SHA-256 algorithm.
+        # *   DES: masks characters by using the data encryption standard (DES) algorithm.
+        # *   MAP_REPLACE: masks the mapped data.
+        # *   FIX_CHAR: masks fixed characters.
+        # *   DEFAULT: masks all characters.
+        # *   RANDOM_REPLACE: randomly replaces characters.
+        # *   MD5: masks characters by using the MD5 algorithm.
         self.function_type = function_type
         # The description of the rule.
         self.rule_description = rule_description
         # The name of the rule.
         self.rule_name = rule_name
         # The masking algorithm.
-        self.rule_type = rule_type
-        # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # Valid values:
+        # 
+        # *   PLAINTEXT
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   TRANSFORM
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   ENCRYPT
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   REPLACE
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   HASH
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   MASK
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        self.rule_type = rule_type
+        # The tenant ID.
+        # 
+        # >  To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see the [View information about the current tenant](~~181330~~) section of the "Manage DMS tenants" topic.
         self.tid = tid
 
     def validate(self):
@@ -668,18 +736,18 @@ class AddDesensitizationRuleResponseBody(TeaModel):
         rule_id: int = None,
         success: bool = None,
     ):
-        # The error code returned if the request failed.
+        # The error code that is returned.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message that is returned.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The ID generated for the masking rule.
+        # The ID generated for the data masking rule.
         self.rule_id = rule_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -1433,8 +1501,15 @@ class AnalyzeSQLLineageRequest(TeaModel):
         sql_content: str = None,
         tid: int = None,
     ):
+        # The database ID.
+        # 
+        # >  You can call one of the [SearchDatabase](~~141876~~), [ListDatabases](~~141873~~), and [GetDatabase](~~141869~~) operations to obtain the database ID provided in the DatabaseId response parameter.
         self.db_id = db_id
+        # The SQL statement.
         self.sql_content = sql_content
+        # The tenant ID.
+        # 
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -1471,7 +1546,12 @@ class AnalyzeSQLLineageResponseBodyLineageResultLineagesProcessDetail(TeaModel):
         cal_way: str = None,
         code: str = None,
     ):
+        # The calculating method. Valid values:
+        # 
+        # *   **DIRECT**: No function or expression is used.
+        # *   **EXPR**: A function or expression is used.
         self.cal_way = cal_way
+        # The SQL code snippet for field processing.
         self.code = code
 
     def validate(self):
@@ -1507,10 +1587,24 @@ class AnalyzeSQLLineageResponseBodyLineageResultLineages(TeaModel):
         process_detail: AnalyzeSQLLineageResponseBodyLineageResultLineagesProcessDetail = None,
         src: str = None,
     ):
+        # The target.
         self.dst = dst
+        # The type of the lineage. Valid values:
+        # 
+        # *   **FIELD_DEPEND_FIELD**: Fields depend on fields.
+        # *   **TABLE_DEPEND_TABLE**: Tables depend on tables.
+        # *   **FIELD_INFLU_TABLE**: Fields influence tables.
+        # *   **FIELD_INFLU_FIELD**: Fields influence fields.
+        # *   **FIELD_INFLU_TABLE**: Tables influence fields.
+        # *   **FIELD_JOIN_FIELD**: Fields are associated with fields.
         self.lineage_type = lineage_type
+        # The operation type of the SQL statement in which the data lineage is generated. For example, if the operation type is SELECT, the data lineage is generated from a SELECT statement.
+        # 
+        # >  This field is an extended field which has no practical use.
         self.oper_type = oper_type
+        # The handling details. This parameter is returned only when LineageType is FIELD_DEPEND_FIELD.
         self.process_detail = process_detail
+        # The source.
         self.src = src
 
     def validate(self):
@@ -1556,6 +1650,7 @@ class AnalyzeSQLLineageResponseBodyLineageResultObjectMetadataFields(TeaModel):
         self,
         name: str = None,
     ):
+        # The name of the field.
         self.name = name
 
     def validate(self):
@@ -1586,9 +1681,20 @@ class AnalyzeSQLLineageResponseBodyLineageResultObjectMetadata(TeaModel):
         source: str = None,
         type: str = None,
     ):
+        # The fields in the metatable.
         self.fields = fields
+        # The object name.
         self.name = name
+        # The source of metadata. Valid values:
+        # 
+        # *   **DDL**: The metadata comes from parsed SQL statements or definition of databases and tables collected by DMS.
+        # *   **LINEAGE**: The metadata comes from lineage analysis results.
         self.source = source
+        # The object type. Valid values:
+        # 
+        # *   **TABLE**\
+        # *   **VIEW**\
+        # *   **TMP_TABLE**\
         self.type = type
 
     def validate(self):
@@ -1637,7 +1743,9 @@ class AnalyzeSQLLineageResponseBodyLineageResult(TeaModel):
         lineages: List[AnalyzeSQLLineageResponseBodyLineageResultLineages] = None,
         object_metadata: List[AnalyzeSQLLineageResponseBodyLineageResultObjectMetadata] = None,
     ):
+        # The details about the lineage.
         self.lineages = lineages
+        # The table and field metadata information.
         self.object_metadata = object_metadata
 
     def validate(self):
@@ -1690,10 +1798,18 @@ class AnalyzeSQLLineageResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # Returned data set of SQL lineage.
         self.lineage_result = lineage_result
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -1790,17 +1906,26 @@ class ApproveOrderRequest(TeaModel):
         tid: int = None,
         workflow_instance_id: int = None,
     ):
+        # If ApprovalType is set to ADD_APPROVAL_NODE, you need to specify this parameter. The ID of the user that is added as the new approval node. This node must be a user-defined approval node. You can call the ListUserDefineWorkFlowNodes operation to obtain the value of this parameter.
         self.approval_node_id = approval_node_id
+        # If ApprovalType is set to ADD_APPROVAL_NODE, you need to specify this parameter. The position of the new approval node. Valid values:
+        # 
+        # *   **PRE_ADD_APPROVAL_NODE**: before the current approval node.
+        # *   **POST_ADD_APPROVAL_NODE**: after the current approval node.
         self.approval_node_pos = approval_node_pos
         # The action that you want to perform on the ticket. Valid values:
         # 
-        # *   AGREE: approve
-        # *   CANCEL: cancel
-        # *   REJECT: reject
+        # *   **AGREE**\
+        # *   **CANCEL**\
+        # *   **REJECT**\
+        # *   **TRANSFER**\
+        # *   **ADD_APPROVAL_NODE**\
         self.approval_type = approval_type
         # The description of the ticket.
         self.comment = comment
+        # The ID of the user to which the ticket is transferred. If ApprovalType is set to TRANSFER, you need to specify this parameter.
         self.new_approver = new_approver
+        # The ID of the user that transfers the ticket to another user. The default value is the ID of the current user. If the current user is an administrator or a database administrator (DBA), the user can change the value of this parameter to the ID of another user.
         self.old_approver = old_approver
         # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) operation to obtain the tenant ID.
         self.tid = tid
@@ -1867,12 +1992,12 @@ class ApproveOrderResponseBody(TeaModel):
         self.error_code = error_code
         # The error message returned.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the request is successful. Valid values:
         # 
-        # *   **true**: The request was successful.
-        # *   **false**: The request failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -2167,6 +2292,7 @@ class BackFillResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The ID of the execution record of the task flow.
         self.dag_instance_id = dag_instance_id
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -3254,7 +3380,9 @@ class CreateDataArchiveOrderRequestParamTableIncludes(TeaModel):
         table_name: str = None,
         table_where: str = None,
     ):
+        # The name of the table.
         self.table_name = table_name
+        # The filter condition specified by the WHERE clause of the archiving configuration.
         self.table_where = table_where
 
     def validate(self):
@@ -3330,17 +3458,43 @@ class CreateDataArchiveOrderRequestParam(TeaModel):
         target_instance_host: str = None,
         variables: List[CreateDataArchiveOrderRequestParamVariables] = None,
     ):
+        # The database for archiving data. Valid values:
+        # 
+        # *   inner_oss: Built-in Object Storage Service (OSS) of Database Backup (DBS).
+        # *   oss_userself: OSS of user.
+        # *   mysql: ApsaraDB RDS for MySQL.
+        # *   polardb: PolarDB for MySQL.
+        # *   lindorm: Lindorm.
         self.archive_method = archive_method
+        # 填写Crontab表达式，以便定期执行任务，更多信息，请参见[Crontab表达式](~~206581~~)。
+        # 当运行方式为周期归档时需要填写该参数。
         self.cron_str = cron_str
+        # Specifies whether the database is a logical database.
         self.logic = logic
+        # The post behaviors.
         self.order_after = order_after
+        # The running mode. Only now is supported, which indicates that data archiving is immediately executed.
         self.run_method = run_method
+        # 源库目录（catalog）。
+        # - **def**：对于两层逻辑结构的数据库，如MySQL，PolarDB MySQL，AnalyticDB MySQL，固定为def。
+        # - **空字符串**： 对于lindorm与MongoDB，填入空字符串。
+        # - **catalog名**：对于三层逻辑结构的数据库，如PostgreSQL，填入catalog名。
         self.source_catalog_name = source_catalog_name
+        # 源实例名称。
         self.source_instance_name = source_instance_name
+        # 源库Schema，源库与目标库同名。
+        # 如MySQL为库名，PostgreSQL为Schema名。
         self.source_schema_name = source_schema_name
+        # The collection of tables to be archived.
         self.table_includes = table_includes
+        # The table names mapped in the destination database.
         self.table_mapping = table_mapping
+        # 目标库Host，若目标实例同时开放了内网与公网，优先写入内网Host。
+        # 
+        # - 若归档目标为OSS，则为Bucket名。
+        # - 若归档目标为专属存储，则为inner_oss。
         self.target_instance_host = target_instance_host
+        # The configuration of archiving variables.
         self.variables = variables
 
     def validate(self):
@@ -3434,11 +3588,17 @@ class CreateDataArchiveOrderRequest(TeaModel):
         related_user_list: List[str] = None,
         tid: int = None,
     ):
+        # The description of the task.
         self.comment = comment
+        # The parameters for archiving data.
         self.param = param
+        # The ID of the parent ticket. A parent ticket is generated only when a sub ticket is created.
         self.parent_id = parent_id
+        # The plugin type. Default value: DATA_ARCHIVE.
         self.plugin_type = plugin_type
+        # The list of the related users.
         self.related_user_list = related_user_list
+        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3493,11 +3653,17 @@ class CreateDataArchiveOrderShrinkRequest(TeaModel):
         related_user_list_shrink: str = None,
         tid: int = None,
     ):
+        # The description of the task.
         self.comment = comment
+        # The parameters for archiving data.
         self.param_shrink = param_shrink
+        # The ID of the parent ticket. A parent ticket is generated only when a sub ticket is created.
         self.parent_id = parent_id
+        # The plugin type. Default value: DATA_ARCHIVE.
         self.plugin_type = plugin_type
+        # The list of the related users.
         self.related_user_list_shrink = related_user_list_shrink
+        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -3549,10 +3715,18 @@ class CreateDataArchiveOrderResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data archiving ticket IDs.
         self.create_order_result = create_order_result
+        # Error code
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The ID of the request, which is used to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9475,6 +9649,134 @@ class CreateUploadOSSFileJobResponse(TeaModel):
         return self
 
 
+class DeleteAuthorityTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        template_id: int = None,
+        tid: int = None,
+    ):
+        self.template_id = template_id
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteAuthorityTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        tid: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class DeleteAuthorityTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteAuthorityTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteAuthorityTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -13462,6 +13764,7 @@ class GetAuthorityTemplateResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        # The ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -13726,6 +14029,7 @@ class GetAuthorityTemplateItemResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        # The ID of the tenant.
         self.tid = tid
 
     def validate(self):
@@ -14483,9 +14787,15 @@ class GetDataArchiveCountRequest(TeaModel):
         search_date_type: str = None,
         tid: int = None,
     ):
+        # The type of the identity. Default value: AS_ADMIN.
         self.order_result_type = order_result_type
+        # The plugin type. Default value: DATA_ARCHIVE.
         self.plugin_type = plugin_type
+        # The time when the ticket is modified or created. The statistics of data archiving tickets are calculated based on the creation time.
         self.search_date_type = search_date_type
+        # The tenant ID.
+        # 
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -14528,9 +14838,13 @@ class GetDataArchiveCountResponseBodyData(TeaModel):
         success_count: int = None,
         total_count: int = None,
     ):
+        # The number of failed archiving tickets.
         self.fail_count = fail_count
+        # The number of in-progress archiving tickets.
         self.processing_count = processing_count
+        # The number of successful archiving tickets.
         self.success_count = success_count
+        # The total number of archiving tickets.
         self.total_count = total_count
 
     def validate(self):
@@ -14572,8 +14886,14 @@ class GetDataArchiveCountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -14656,7 +14976,11 @@ class GetDataArchiveOrderDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The IDs of data archiving tickets.
         self.order_id = order_id
+        # The tenant ID.
+        # 
+        # >  To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](~~181330~~).
         self.tid = tid
 
     def validate(self):
@@ -14705,23 +15029,58 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         tenant_id: str = None,
         trigger_once: bool = None,
     ):
+        # The ID of the user who created the task flow.
         self.creator_id = creator_id
+        # The start time for scheduling. The task flow is not scheduled before this point in time.
         self.cron_begin_date = cron_begin_date
+        # The end time for scheduling. The task flow is not scheduled after this point in time.
         self.cron_end_date = cron_end_date
+        # Indicates whether the archiving task is a scheduled task. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.cron_trigger = cron_trigger
+        # Indicates whether the task is used to develop warehouses.
+        # 
+        # >  This field is a retained field that is not in use.
         self.dwdevelop = dwdevelop
+        # The name of the workflow.
         self.dag_name = dag_name
+        # The ID of the owner of the workflow.
         self.dag_owner_id = dag_owner_id
+        # The ID of the deployment record.
         self.deploy_id = deploy_id
+        # The description of the workflow.
         self.description = description
+        # The ID of the editable workflow version.
         self.edit_dag_id = edit_dag_id
+        # The time when the workflow was created.
         self.gmt_create = gmt_create
+        # The time when the workflow was last modified.
         self.gmt_modified = gmt_modified
+        # The ID of the task flow.
         self.id = id
+        # Indicates whether the workflow is public. Valid values:
+        # 
+        # *   **0**: not public.
+        # *   **1**: public.
         self.is_public = is_public
+        # Indicates whether the task is a historical task. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.legacy = legacy
+        # Indicates whether the task was created by the system. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.system = system
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # Indicates whether the workflow is triggered to run once. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.trigger_once = trigger_once
 
     def validate(self):
@@ -14825,14 +15184,30 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         id: int = None,
         last_mender_id: int = None,
     ):
+        # The type of the instance engine. For information about the valid values of this parameter, see [DbType parameter](~~198106~~).
         self.db_type = db_type
+        # The description of the security rule set.
         self.description = description
+        # Indicates whether the instance is managed in Flexible Management or Stable Change mode. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.free_or_stable = free_or_stable
+        # The time when the security rule was created.
         self.gmt_create = gmt_create
+        # The time when the security rule was last modified.
         self.gmt_modified = gmt_modified
+        # The type of the control mode of the instance. Valid values:
+        # 
+        # *   **COMMON**: The instance is managed in Security Collaboration mode.
+        # *   **NONE_CONTROL**: The instance is managed in Flexible Management mode.
+        # *   **STABLE**: The instance is managed in Stable Change mode.
         self.group_mode = group_mode
+        # The name of the security rule that corresponds to the control mode.
         self.group_name = group_name
+        # The ID of the security rule.
         self.id = id
+        # The user ID of the last modified security rule.
         self.last_mender_id = last_mender_id
 
     def validate(self):
@@ -14922,36 +15297,100 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         tns_name: str = None,
         unit_type: str = None,
     ):
+        # The alias of the database instance.
         self.alias = alias
+        # The timeout period of queries on the database.
         self.alter_timeout = alter_timeout
+        # Indicates whether access control is enabled for data assets. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.asset_control = asset_control
+        # The name of the instance in the instance list.
         self.catalog_name = catalog_name
+        # Indicates whether the instance is added to the DMS whitelist.
         self.cluster_node = cluster_node
+        # The ID of the database. You can call the [SearchDatabase](~~141876~~) operation to query the ID of the database.
+        # 
+        # >  You can call the [ListDatabases](~~141873~~) operation to query the ID of a physical database or the [ListLogicDatabases](~~141874~~) operation to query the ID of a logical database.
         self.db_id = db_id
+        # The type of the database. For information about the valid values of this parameter, see [DbType parameter](~~198106~~).
         self.db_type = db_type
+        # The ID of the database administrator (DBA) of the instance.
         self.dba_id = dba_id
+        # The nickname of the DBA of the instance.
         self.dba_name = dba_name
+        # The complete endpoint of the database.
         self.description = description
+        # The encoding format of the database.
         self.encoding = encoding
+        # The type of the environment to which the database belongs. Valid values:
+        # 
+        # *   **product**: production environment
+        # *   **dev**: development environment
+        # *   **pre**: staging environment
+        # *   **test**: test environment
+        # *   **sit**: system integration testing (SIT) environment
+        # *   **uat**: user acceptance testing (UAT) environment
+        # *   **pet**: stress testing environment
+        # *   **stag**: STAG environment
         self.env_type = env_type
+        # Indicates whether the instance needs special attention. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.follow = follow
+        # The endpoint that is used to connect to the database.
         self.host = host
+        # The region in which the database instance resides.
         self.idc = idc
+        # The name of the region in which the database instance resides.
         self.idc_title = idc_title
+        # The ID of the instance to which the database belongs.
         self.instance_id = instance_id
+        # The source of the database instance.Valid values:
+        # 
+        # *   **RDS**: an ApsaraDB RDS instance.
+        # *   **ECS_OWN**: a self-managed database deployed on an Elastic Compute Service (ECS) instance.
+        # *   **PUBLIC_OWN**: a self-managed database instance that is connected over the Internet.
+        # *   **VPC_ID**: a self-managed database instance in a virtual private cloud (VPC) that is connected over Express Connect circuits.
+        # *   **GATEWAY**: a database instance connected by using a database gateway.
         self.instance_source = instance_source
+        # The time when the database information was last obtained.
         self.last_sync_time = last_sync_time
+        # The instance level.
         self.level = level
+        # Indicates whether the database is logical. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.logic = logic
+        # The IDs of the owners of the databases, which are stored as an array. You can call the [GetUser](~~147098~~) or [ListUsers](~~141938~~) operation to query the IDs of the owners.
+        # 
+        # >  The value of OwnerIds is the same as the value of UserId
         self.owner_ids = owner_ids
+        # The usernames of the database owners.
         self.owner_names = owner_names
+        # The port that is used to connect to the database.
         self.port = port
+        # The name of the database.
         self.schema_name = schema_name
+        # The name that is used to search for the database.
         self.search_name = search_name
+        # The details of the control mode of the instance.
         self.standard_group = standard_group
+        # The status of the database. Valid values:
+        # 
+        # *   **NORMAL**: The database is running as expected.
+        # *   **DISABLE**: The database is disabled.
+        # *   **OFFLINE**: The database is unpublished.
+        # *   **NOT_EXIST**: The database does not exist.
         self.state = state
+        # The number of tables.
         self.table_count = table_count
+        # The name of TNS.
         self.tns_name = tns_name
+        # The unit type.
         self.unit_type = unit_type
 
     def validate(self):
@@ -15113,18 +15552,41 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         trigger_type: int = None,
         version: str = None,
     ):
+        # The business time of the task flow. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.business_time = business_time
+        # The ID of the task. You can call the [ListTaskFlow](~~424565~~) or [ListLhTaskFlowAndScenario](~~426672~~) operation to query the task flow ID.
         self.dag_id = dag_id
+        # The end time of the task flow. The time is in the yyyy-MM-DD HH:mm:ss format.
         self.end_time = end_time
+        # The time when the task flow was created.
         self.gmt_create = gmt_create
+        # The time when the task flow was last modified.
         self.gmt_modified = gmt_modified
+        # The ID of the historical task flow.
         self.history_dag_id = history_dag_id
+        # The instance ID of the running task flow.
         self.id = id
+        # The running scenario of the last task flow.
         self.last_running_context = last_running_context
+        # The running details of the task.
         self.msg = msg
+        # The status of the task. Valid values:
+        # 
+        # *   **0**: waiting for execution.
+        # *   **1**: running.
+        # *   **2**: suspended.
+        # *   **3**: failed.
+        # *   **4**: successful.
+        # *   **5**: complete.
         self.status = status
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The mode in which the task flow was triggered. Valid values:
+        # 
+        # *   **0**: The task flow was triggered based on a schedule.
+        # *   **1**: The task flow was manually triggered.
         self.trigger_type = trigger_type
+        # The version number.
         self.version = version
 
     def validate(self):
@@ -15200,6 +15662,7 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         self,
         cron_fire_type: str = None,
     ):
+        # The type of scheduled triggering.
         self.cron_fire_type = cron_fire_type
 
     def validate(self):
@@ -15234,13 +15697,21 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraData
         page_size: int = None,
         temp_table_name_map: Dict[str, Any] = None,
     ):
+        # The information about the workflow.
         self.dag_info = dag_info
+        # The database information related to data archiving tickets.
         self.db_base_info = db_base_info
+        # The total number of archiving tasks.
         self.instance_total = instance_total
+        # The list of archiving tasks.
         self.instances = instances
+        # The time when the next task is triggered.
         self.next_fire_time_result = next_fire_time_result
+        # The page number.
         self.page_index = page_index
+        # The number of entries per page.
         self.page_size = page_size
+        # The name of the temporary table that is generated by the archiving task (indicated by the archiving task ID).
         self.temp_table_name_map = temp_table_name_map
 
     def validate(self):
@@ -15314,7 +15785,9 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParamTabl
         table_name: str = None,
         table_where: str = None,
     ):
+        # The name of the table.
         self.table_name = table_name
+        # The filter conditions.
         self.table_where = table_where
 
     def validate(self):
@@ -15355,15 +15828,28 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParam(Tea
         target_instance_id: str = None,
         variables: List[str] = None,
     ):
+        # The type of the archiving destination.
         self.archive_method = archive_method
+        # The schema of the database and table to be archived.
         self.db_schema = db_schema
+        # Indicates whether the database is logical.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.logic = logic
+        # The post behavior of archiving.
         self.order_after = order_after
+        # The running method, which indicates whether to run the task immediately or at a specific point in time.
         self.run_method = run_method
+        # The ID of the source database.
         self.source_database_id = source_database_id
+        # The list of the archived tables and the filter conditions.
         self.table_includes = table_includes
+        # The mapping of schemas.
         self.table_mapping = table_mapping
+        # The ID of the destination instance.
         self.target_instance_id = target_instance_id
+        # The time variable defined for scheduled archiving.
         self.variables = variables
 
     def validate(self):
@@ -15449,20 +15935,43 @@ class GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetail(TeaModel):
         workflow_instance_id: int = None,
         workflow_status_desc: str = None,
     ):
+        # The description of the data archiving tickets.
         self.comment = comment
+        # The user who submitted the ticket.
         self.committer = committer
+        # The ID of the user who submitted the ticket. The ID is a user ID and not the ID of an Alibaba Cloud account.
         self.committer_id = committer_id
+        # The time when the ticket was created.
         self.gmt_create = gmt_create
+        # The time when the ticket was last modified.
         self.gmt_modified = gmt_modified
+        # The ID of data archiving tickets.
         self.id = id
+        # The additional information about the ticket.
         self.plugin_extra_data = plugin_extra_data
+        # The ticket creation parameter. The value is a JSON string. For more information, see [PluginType parameter](~~429109~~).
         self.plugin_param = plugin_param
+        # The plug-in type that corresponds to the type of the ticket. The plug-in type for data archiving is DATA_ARCHIVE. For more information, see [PluginType parameter](~~429109~~).
         self.plugin_type = plugin_type
+        # The user IDs related to the ticket.
         self.related_user_list = related_user_list
+        # The nicknames of the users that are related to the ticket.
         self.related_user_nick_list = related_user_nick_list
+        # The status code of the ticket. Valid values:
+        # 
+        # *   **new**: newly created.
+        # *   **toaudit**: being reviewed.
+        # *   **Approved**: approved.
+        # *   **reject**: rejected.
+        # *   **processing**: being executed.
+        # *   **Success**: successful.
+        # *   **closed**: disabled.
         self.status_code = status_code
+        # The status description of the ticket.
         self.status_desc = status_desc
+        # The ID of the approval process. You can call the [GetOrderBaseInfo](~~144642~~) operation to obtain the ID of the approval process.
         self.workflow_instance_id = workflow_instance_id
+        # The description of the approval process.
         self.workflow_status_desc = workflow_status_desc
 
     def validate(self):
@@ -15556,11 +16065,20 @@ class GetDataArchiveOrderDetailResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
+        # The details of data archiving tickets.
         self.data_archive_order_detail = data_archive_order_detail
+        # The error code returned if the call failed.
         self.error_code = error_code
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # The ID of the request, which is used to query logs and troubleshoot issues.
         self.request_id = request_id
+        # Indicates whether the request is successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
+        # Tracks service requests.
         self.trace_id = trace_id
 
     def validate(self):
@@ -17806,7 +18324,9 @@ class GetDataExportPreCheckDetailRequest(TeaModel):
         order_id: int = None,
         tid: int = None,
     ):
+        # The ID of the ticket. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
         self.order_id = order_id
+        # The ID of the tenant. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -17839,7 +18359,9 @@ class GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailListPre
         affect_rows: int = None,
         sql: str = None,
     ):
+        # The estimated number of data rows to be affected.
         self.affect_rows = affect_rows
+        # The SQL statement.
         self.sql = sql
 
     def validate(self):
@@ -17907,7 +18429,12 @@ class GetDataExportPreCheckDetailResponseBodyPreCheckResult(TeaModel):
         ignore_affect_rows: bool = None,
         pre_check_detail_list: GetDataExportPreCheckDetailResponseBodyPreCheckResultPreCheckDetailList = None,
     ):
+        # Specifies whether to skip verification. Valid values:
+        # 
+        # - true
+        # - false
         self.ignore_affect_rows = ignore_affect_rows
+        # The list of pre-check details.
         self.pre_check_detail_list = pre_check_detail_list
 
     def validate(self):
@@ -17945,10 +18472,18 @@ class GetDataExportPreCheckDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned.
         self.error_code = error_code
+        # The error message returned.
         self.error_message = error_message
+        # Indicates the result of the precheck task.
         self.pre_check_result = pre_check_result
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -22586,6 +23121,7 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
         workflow_instance_id: int = None,
         workflow_status_desc: str = None,
     ):
+        # The Key of the ticket attachment. This information is returned only when an attachment is uploaded when a ticket is created.
         self.attachment_key = attachment_key
         # The remarks of the ticket.
         self.comment = comment
@@ -22599,6 +23135,7 @@ class GetOrderBaseInfoResponseBodyOrderBaseInfo(TeaModel):
         self.last_modify_time = last_modify_time
         # The ID of the ticket.
         self.order_id = order_id
+        # The original file name of the ticket attachment. This information is returned only when an attachment is uploaded when a ticket is created.
         self.origin_attachment_name = origin_attachment_name
         # The type of the ticket. For more information about the value of this parameter, see the request parameters of the [CreateOrder](~~465865~~) operation.
         self.plugin_type = plugin_type
@@ -24039,6 +24576,7 @@ class GetPhysicalDatabaseResponseBodyDatabase(TeaModel):
         self.env_type = env_type
         # The endpoint that is used to connect to the database.
         self.host = host
+        # The alias of the database instance.
         self.instance_alias = instance_alias
         # The instance ID of the destination database.
         self.instance_id = instance_id
@@ -29887,6 +30425,246 @@ class InspectProxyAccessSecretResponse(TeaModel):
         return self
 
 
+class ListAuthorityTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        search_key: str = None,
+        tid: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key = search_key
+        self.tid = tid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        return self
+
+
+class ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplateView(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        creator_id: int = None,
+        description: str = None,
+        name: str = None,
+        template_id: int = None,
+    ):
+        self.create_time = create_time
+        self.creator_id = creator_id
+        self.description = description
+        self.name = name
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class ListAuthorityTemplateResponseBodyAuthorityTemplateViewList(TeaModel):
+    def __init__(
+        self,
+        authority_template_view: List[ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplateView] = None,
+    ):
+        self.authority_template_view = authority_template_view
+
+    def validate(self):
+        if self.authority_template_view:
+            for k in self.authority_template_view:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AuthorityTemplateView'] = []
+        if self.authority_template_view is not None:
+            for k in self.authority_template_view:
+                result['AuthorityTemplateView'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.authority_template_view = []
+        if m.get('AuthorityTemplateView') is not None:
+            for k in m.get('AuthorityTemplateView'):
+                temp_model = ListAuthorityTemplateResponseBodyAuthorityTemplateViewListAuthorityTemplateView()
+                self.authority_template_view.append(temp_model.from_map(k))
+        return self
+
+
+class ListAuthorityTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        authority_template_view_list: ListAuthorityTemplateResponseBodyAuthorityTemplateViewList = None,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        tid: int = None,
+        total_count: int = None,
+    ):
+        self.authority_template_view_list = authority_template_view_list
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.success = success
+        self.tid = tid
+        self.total_count = total_count
+
+    def validate(self):
+        if self.authority_template_view_list:
+            self.authority_template_view_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.authority_template_view_list is not None:
+            result['AuthorityTemplateViewList'] = self.authority_template_view_list.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.tid is not None:
+            result['Tid'] = self.tid
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AuthorityTemplateViewList') is not None:
+            temp_model = ListAuthorityTemplateResponseBodyAuthorityTemplateViewList()
+            self.authority_template_view_list = temp_model.from_map(m['AuthorityTemplateViewList'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Tid') is not None:
+            self.tid = m.get('Tid')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAuthorityTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAuthorityTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAuthorityTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListClassificationTemplatesRequest(TeaModel):
     def __init__(
         self,
@@ -35048,14 +35826,14 @@ class ListInstancesRequest(TeaModel):
         self.db_type = db_type
         # The type of the environment to which the database instance belongs. Valid values:
         # 
-        # *   **product**: production environment
+        # *   **product:** production environment
         # *   **dev**: development environment
-        # *   **pre**: staging environment
+        # *   **pre**: pre-release environment
         # *   **test**: test environment
         # *   **sit**: system integration testing (SIT) environment
         # *   **uat**: user acceptance testing (UAT) environment
         # *   **pet**: stress testing environment
-        # *   **stag**: STAG environment
+        # *   **stag:** staging environment
         self.env_type = env_type
         # The source of the database instance. Valid values:
         # 
@@ -35066,13 +35844,13 @@ class ListInstancesRequest(TeaModel):
         self.instance_source = instance_source
         # The status of the database instance. Valid values:
         # 
-        # *   **NORMAL**: normal
-        # *   **DISABLE**: disabled
+        # *   **NORMAL**\
+        # *   **DISABLE**\
         self.instance_state = instance_state
         # The network type of the database instance. Valid values:
         # 
-        # *   **CLASSIC**: classic network
-        # *   **VPC**: VPC
+        # *   **CLASSIC:** classic network
+        # *   **VPC:** VPC
         self.net_type = net_type
         # The number of the page to return.
         self.page_number = page_number
@@ -35201,7 +35979,7 @@ class ListInstancesResponseBodyInstanceListInstanceStandardGroup(TeaModel):
         # *   **NONE_CONTROL**: Flexible Management
         # *   **STABLE**: Stable Change
         self.group_mode = group_mode
-        # The name of the security rule set corresponding to the control mode.
+        # The name of the security rule corresponding to the control mode.
         self.group_name = group_name
 
     def validate(self):
@@ -35260,13 +36038,13 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
     ):
         # The name of the database link for the database instance.
         self.data_link_name = data_link_name
-        # The password that is used to log on to the database.
+        # The password that is used to log on to the database instance.
         self.database_password = database_password
         # The account that is used to log on to the database.
         self.database_user = database_user
-        # The ID of the database administrator (DBA) for the database instance.
+        # The ID of the database administrator (DBA) of the database instance.
         self.dba_id = dba_id
-        # The nickname of the DBA for the database instance.
+        # The nickname of the DBA of the instance.
         self.dba_nick_name = dba_nick_name
         # Indicates whether the lock-free schema change feature is enabled for the database instance.
         self.ddl_online = ddl_online
@@ -35276,14 +36054,14 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
         self.ecs_region = ecs_region
         # The type of the environment to which the database instance belongs. Valid values:
         # 
-        # *   **product**: production environment
+        # *   **product:** production environment
         # *   **dev**: development environment
-        # *   **pre**: staging environment
+        # *   **pre**: pre-release environment
         # *   **test**: test environment
         # *   **sit**: SIT environment
         # *   **uat**: UAT environment
         # *   **pet**: stress testing environment
-        # *   **stag**: STAG environment
+        # *   **stag:** staging environment
         self.env_type = env_type
         # The timeout period for exporting data from the database instance.
         self.export_timeout = export_timeout
@@ -35291,22 +36069,26 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
         self.host = host
         # The alias of the database instance.
         self.instance_alias = instance_alias
-        # The ID of the database instance.
+        # The ID of the instance.
         self.instance_id = instance_id
         # The source of the database instance.
         self.instance_source = instance_source
         # The type of the database instance.
         self.instance_type = instance_type
-        # The ID of the owner for the database instance.
+        # The IDs of the owners of the database instance.
         self.owner_id_list = owner_id_list
-        # The nickname of the owner for the database instance.
+        # The nicknames of the owners of the database instance.
         self.owner_name_list = owner_name_list
         # The port number that is used to connect to the database instance.
         self.port = port
         # The timeout period for querying data in the database instance.
         self.query_timeout = query_timeout
-        # The ID of the security rule set for the database instance.
+        # The ID of the security rule set of the database instance.
         self.safe_rule_id = safe_rule_id
+        # Indicates whether the sensitive data protection feature is enabled. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.sell_sitd = sell_sitd
         # The system ID (SID) of the database instance.
         self.sid = sid
@@ -35317,7 +36099,7 @@ class ListInstancesResponseBodyInstanceListInstance(TeaModel):
         # Indicates whether the cross-database query feature is enabled for the database instance. Valid values:
         # 
         # *   **0**: disabled
-        # *   **1**: enabled
+        # *   **1:**: enabled
         self.use_dsql = use_dsql
         # The ID of the VPC to which the database instance belongs.
         self.vpc_id = vpc_id
@@ -35501,12 +36283,12 @@ class ListInstancesResponseBody(TeaModel):
         self.error_message = error_message
         # The information about the database instances that are returned.
         self.instance_list = instance_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful. Valid values:
         # 
-        # - **true**: The request was successful.
-        # - **false**: The request failed.
+        # *   **true**\
+        # *   **false**\
         self.success = success
         # The total number of database instances that are returned.
         self.total_count = total_count
@@ -45749,37 +46531,45 @@ class ModifyDesensitizationStrategyRequest(TeaModel):
         table_name: str = None,
         tid: int = None,
     ):
-        # The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to query the field name.
+        # The name of the field. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the field name.
         # 
-        # >  You can also call the [ListColumns](~~141870~~) operation to query the field name.
+        # >  You can also call the [ListColumns](~~141870~~) operation to obtain the field name.
         self.column_name = column_name
-        # The ID of the database. You can call the [ListDatabases](~~141873~~) operation to query the ID.
+        # The ID of the database. You can call the [ListDatabases](~~141873~~) operation to obtain the ID.
         self.db_id = db_id
+        # The desensitization algorithm of the field setting. The default value is false. The values are as follows:
+        # 
+        # - **true**: default desensitization algorithm.
+        # 
+        # - **false** :semi-desensitization algorithm.
         self.is_default = is_default
         # Specifies whether the database is a logical database. Valid values:
         # 
-        # *   **true:** The database is a physical database.
-        # *   **false:** The database is a logical database.
+        # *   **true**: The database is a physical database.
+        # *   **false**: The database is a logical database.
         self.is_logic = is_logic
-        # Specifies whether to reset the masking rule. Valid values:
+        # Specifies whether to reset the masking rule. Valid value:
         # 
-        # *   **true**: resets the masking rule.
-        # *   **false**: does not reset the masking rule. This is the default value.
+        # *   **true**: Reset the masking rule.
+        # *   **false**: Do not reset the masking rule. This is the default value.
         self.is_reset = is_reset
         # The ID of the masking rule.
         self.rule_id = rule_id
-        # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to query the database name.
+        # The name of the database. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the database name.
         # 
-        # > * If the database is a physical database, you can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to query the database name.
-        # > * If the database is a logical database, you can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to query the database name.
+        # > 
+        # 
+        # *   If the database is a physical database, you can call the [ListDatabases](~~141873~~) or [SearchDatabase](~~141876~~) operation to obtain the database name.
+        # 
+        # *   If the database is a logical database, you can call the [ListLogicDatabases](~~141874~~) or [SearchDatabase](~~141876~~) operation to obtain the name of the database.
         self.schema_name = schema_name
-        # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to query the table name.
+        # The name of the table. You can call the [ListSensitiveColumns](~~188103~~) operation to obtain the table name.
         # 
-        # >  You can also call the [ListTables](~~141878~~) operation to query the table name.
+        # >  You can also call the [ListTables](~~141878~~) operation to obtain the table name.
         self.table_name = table_name
         # The ID of the tenant.
         # 
-        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~).
+        # >  To view the ID of the tenant, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](~~181330~~) in the topic "Manage DMS tenants."
         self.tid = tid
 
     def validate(self):
@@ -45843,11 +46633,11 @@ class ModifyDesensitizationStrategyResponseBody(TeaModel):
         result: bool = None,
         success: bool = None,
     ):
-        # The error code returned if the request failed.
+        # The status code.
         self.error_code = error_code
-        # The error message returned if the request failed.
+        # The error message returned.
         self.error_message = error_message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The returned result.
         self.result = result
@@ -47473,6 +48263,7 @@ class RegisterInstanceRequest(TeaModel):
         database_password: str = None,
         database_user: str = None,
         dba_uid: int = None,
+        dba_uid_by_string: str = None,
         ddl_online: int = None,
         ecs_instance_id: str = None,
         ecs_region: str = None,
@@ -47511,6 +48302,7 @@ class RegisterInstanceRequest(TeaModel):
         self.database_user = database_user
         # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
         self.dba_uid = dba_uid
+        self.dba_uid_by_string = dba_uid_by_string
         # Specifies whether to enable the lock-free schema change feature for the database instance. Valid values:
         # 
         # *   **0**: disables the lock-free schema change feature.
@@ -47611,6 +48403,8 @@ class RegisterInstanceRequest(TeaModel):
             result['DatabaseUser'] = self.database_user
         if self.dba_uid is not None:
             result['DbaUid'] = self.dba_uid
+        if self.dba_uid_by_string is not None:
+            result['DbaUidByString'] = self.dba_uid_by_string
         if self.ddl_online is not None:
             result['DdlOnline'] = self.ddl_online
         if self.ecs_instance_id is not None:
@@ -47665,6 +48459,8 @@ class RegisterInstanceRequest(TeaModel):
             self.database_user = m.get('DatabaseUser')
         if m.get('DbaUid') is not None:
             self.dba_uid = m.get('DbaUid')
+        if m.get('DbaUidByString') is not None:
+            self.dba_uid_by_string = m.get('DbaUidByString')
         if m.get('DdlOnline') is not None:
             self.ddl_online = m.get('DdlOnline')
         if m.get('EcsInstanceId') is not None:
@@ -50348,8 +51144,11 @@ class SkipDataCorrectRowCheckRequest(TeaModel):
         reason: str = None,
         tid: int = None,
     ):
+        # The ticket ID. You can call the [ListOrders](~~144643~~) operation to obtain the ticket ID.
         self.order_id = order_id
+        # The reason for skipping the verification on the number of rows in the precheck for data change.
         self.reason = reason
+        # The tenant ID. You can call the [GetUserActiveTenant](~~198073~~) or [ListUserTenants](~~198074~~) operation to obtain the tenant ID.
         self.tid = tid
 
     def validate(self):
@@ -50388,9 +51187,16 @@ class SkipDataCorrectRowCheckResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The error code returned if the request failed.
         self.error_code = error_code
+        # The error message returned if the request failed.
         self.error_message = error_message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -51421,6 +52227,7 @@ class UpdateAuthorityTemplateResponseBody(TeaModel):
         # *   **true**: The request was successful.
         # *   **false**: The request failed.
         self.success = success
+        # The ID of the tenant.
         self.tid = tid
 
     def validate(self):

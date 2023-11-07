@@ -480,6 +480,15 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AnalyzeSQLLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
+        """
+        The following conditions must be met before you call this API operation.
+        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        
+        @param request: AnalyzeSQLLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeSQLLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -512,6 +521,15 @@ class Client(OpenApiClient):
         request: dms_enterprise_20181101_models.AnalyzeSQLLineageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
+        """
+        The following conditions must be met before you call this API operation.
+        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        
+        @param request: AnalyzeSQLLineageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AnalyzeSQLLineageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_id):
@@ -543,6 +561,14 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AnalyzeSQLLineageRequest,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
+        """
+        The following conditions must be met before you call this API operation.
+        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        
+        @param request: AnalyzeSQLLineageRequest
+        @return: AnalyzeSQLLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.analyze_sqllineage_with_options(request, runtime)
 
@@ -550,6 +576,14 @@ class Client(OpenApiClient):
         self,
         request: dms_enterprise_20181101_models.AnalyzeSQLLineageRequest,
     ) -> dms_enterprise_20181101_models.AnalyzeSQLLineageResponse:
+        """
+        The following conditions must be met before you call this API operation.
+        *   The database instance is of one of the following types: ApsaraDB RDS for MySQL, PolarDB for MySQL, AnalyticDB for MySQL, ApsaraDB RDS for PostgreSQL, PolarDB for PostgreSQL, AnalyticDB for PostgreSQL, Oracle, and openGauss.
+        *   A database instance is managed in Security Collaboration mode. For more information about control modes, see [Control modes](~~151629~~).
+        
+        @param request: AnalyzeSQLLineageRequest
+        @return: AnalyzeSQLLineageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.analyze_sqllineage_with_options_async(request, runtime)
 
@@ -3800,6 +3834,80 @@ class Client(OpenApiClient):
     ) -> dms_enterprise_20181101_models.CreateUploadOSSFileJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_ossfile_job_with_options_async(request, runtime)
+
+    def delete_authority_template_with_options(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_authority_template_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_authority_template(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_authority_template_with_options(request, runtime)
+
+    async def delete_authority_template_async(
+        self,
+        request: dms_enterprise_20181101_models.DeleteAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.DeleteAuthorityTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_authority_template_with_options_async(request, runtime)
 
     def delete_instance_with_options(
         self,
@@ -10619,6 +10727,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.inspect_proxy_access_secret_with_options_async(request, runtime)
 
+    def list_authority_template_with_options(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorityTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authority_template_with_options_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.tid):
+            query['Tid'] = request.tid
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListAuthorityTemplate',
+            version='2018-11-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dms_enterprise_20181101_models.ListAuthorityTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authority_template(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_authority_template_with_options(request, runtime)
+
+    async def list_authority_template_async(
+        self,
+        request: dms_enterprise_20181101_models.ListAuthorityTemplateRequest,
+    ) -> dms_enterprise_20181101_models.ListAuthorityTemplateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_authority_template_with_options_async(request, runtime)
+
     def list_classification_templates_with_options(
         self,
         request: dms_enterprise_20181101_models.ListClassificationTemplatesRequest,
@@ -16007,6 +16197,8 @@ class Client(OpenApiClient):
             query['DatabaseUser'] = request.database_user
         if not UtilClient.is_unset(request.dba_uid):
             query['DbaUid'] = request.dba_uid
+        if not UtilClient.is_unset(request.dba_uid_by_string):
+            query['DbaUidByString'] = request.dba_uid_by_string
         if not UtilClient.is_unset(request.ddl_online):
             query['DdlOnline'] = request.ddl_online
         if not UtilClient.is_unset(request.ecs_instance_id):
@@ -16090,6 +16282,8 @@ class Client(OpenApiClient):
             query['DatabaseUser'] = request.database_user
         if not UtilClient.is_unset(request.dba_uid):
             query['DbaUid'] = request.dba_uid
+        if not UtilClient.is_unset(request.dba_uid_by_string):
+            query['DbaUidByString'] = request.dba_uid_by_string
         if not UtilClient.is_unset(request.ddl_online):
             query['DdlOnline'] = request.ddl_online
         if not UtilClient.is_unset(request.ecs_instance_id):
