@@ -1384,6 +1384,8 @@ class Client(OpenApiClient):
             query['EncryptType'] = request.encrypt_type
         if not UtilClient.is_unset(request.face_contrast_picture_url):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
+        if not UtilClient.is_unset(request.face_guard_output):
+            query['FaceGuardOutput'] = request.face_guard_output
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
         if not UtilClient.is_unset(request.meta_info):
@@ -1474,6 +1476,8 @@ class Client(OpenApiClient):
             query['EncryptType'] = request.encrypt_type
         if not UtilClient.is_unset(request.face_contrast_picture_url):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
+        if not UtilClient.is_unset(request.face_guard_output):
+            query['FaceGuardOutput'] = request.face_guard_output
         if not UtilClient.is_unset(request.ip):
             query['Ip'] = request.ip
         if not UtilClient.is_unset(request.meta_info):

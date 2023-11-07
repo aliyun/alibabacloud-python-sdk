@@ -2947,6 +2947,7 @@ class InitFaceVerifyRequest(TeaModel):
         encrypt_type: str = None,
         face_contrast_picture: str = None,
         face_contrast_picture_url: str = None,
+        face_guard_output: str = None,
         ip: str = None,
         meta_info: str = None,
         mobile: str = None,
@@ -2979,6 +2980,7 @@ class InitFaceVerifyRequest(TeaModel):
         self.encrypt_type = encrypt_type
         self.face_contrast_picture = face_contrast_picture
         self.face_contrast_picture_url = face_contrast_picture_url
+        self.face_guard_output = face_guard_output
         self.ip = ip
         self.meta_info = meta_info
         self.mobile = mobile
@@ -3034,6 +3036,8 @@ class InitFaceVerifyRequest(TeaModel):
             result['FaceContrastPicture'] = self.face_contrast_picture
         if self.face_contrast_picture_url is not None:
             result['FaceContrastPictureUrl'] = self.face_contrast_picture_url
+        if self.face_guard_output is not None:
+            result['FaceGuardOutput'] = self.face_guard_output
         if self.ip is not None:
             result['Ip'] = self.ip
         if self.meta_info is not None:
@@ -3100,6 +3104,8 @@ class InitFaceVerifyRequest(TeaModel):
             self.face_contrast_picture = m.get('FaceContrastPicture')
         if m.get('FaceContrastPictureUrl') is not None:
             self.face_contrast_picture_url = m.get('FaceContrastPictureUrl')
+        if m.get('FaceGuardOutput') is not None:
+            self.face_guard_output = m.get('FaceGuardOutput')
         if m.get('Ip') is not None:
             self.ip = m.get('Ip')
         if m.get('MetaInfo') is not None:
