@@ -1,3 +1,6 @@
+2023-11-07 Version: 3.1.5
+- Generated python 2019-11-11 for clickhouse.
+
 2022-04-06 Version: 3.1.4
 - Clickhouse add restore.
 
