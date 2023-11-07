@@ -1,3 +1,6 @@
+2023-11-07 Version: 1.1.0
+- Generated python 2022-12-15 for eflo-controller.
+
 2023-10-26 Version: 1.0.7
 - Generated python 2022-12-15 for eflo-controller.
 

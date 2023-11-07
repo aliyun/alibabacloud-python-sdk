@@ -41,6 +41,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def approve_operation_with_options(
+        self,
+        request: eflo_controller_20221215_models.ApproveOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApproveOperation',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ApproveOperationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def approve_operation_with_options_async(
+        self,
+        request: eflo_controller_20221215_models.ApproveOperationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.node_id):
+            body['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.operation_type):
+            body['OperationType'] = request.operation_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ApproveOperation',
+            version='2022-12-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            eflo_controller_20221215_models.ApproveOperationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def approve_operation(
+        self,
+        request: eflo_controller_20221215_models.ApproveOperationRequest,
+    ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.approve_operation_with_options(request, runtime)
+
+    async def approve_operation_async(
+        self,
+        request: eflo_controller_20221215_models.ApproveOperationRequest,
+    ) -> eflo_controller_20221215_models.ApproveOperationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.approve_operation_with_options_async(request, runtime)
+
     def change_resource_group_with_options(
         self,
         request: eflo_controller_20221215_models.ChangeResourceGroupRequest,
