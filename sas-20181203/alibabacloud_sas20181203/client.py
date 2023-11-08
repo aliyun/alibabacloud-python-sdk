@@ -37666,6 +37666,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_catalog_with_options_async(request, runtime)
 
+    def list_instance_risk_levels_with_options(
+        self,
+        request: sas_20181203_models.ListInstanceRiskLevelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListInstanceRiskLevelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_list):
+            query['InstanceList'] = request.instance_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRiskLevels',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListInstanceRiskLevelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_risk_levels_with_options_async(
+        self,
+        request: sas_20181203_models.ListInstanceRiskLevelsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListInstanceRiskLevelsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_list):
+            query['InstanceList'] = request.instance_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRiskLevels',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListInstanceRiskLevelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_risk_levels(
+        self,
+        request: sas_20181203_models.ListInstanceRiskLevelsRequest,
+    ) -> sas_20181203_models.ListInstanceRiskLevelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_risk_levels_with_options(request, runtime)
+
+    async def list_instance_risk_levels_async(
+        self,
+        request: sas_20181203_models.ListInstanceRiskLevelsRequest,
+    ) -> sas_20181203_models.ListInstanceRiskLevelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_risk_levels_with_options_async(request, runtime)
+
+    def list_instance_risk_num_with_options(
+        self,
+        request: sas_20181203_models.ListInstanceRiskNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListInstanceRiskNumResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_list):
+            query['InstanceList'] = request.instance_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRiskNum',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListInstanceRiskNumResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_risk_num_with_options_async(
+        self,
+        request: sas_20181203_models.ListInstanceRiskNumRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListInstanceRiskNumResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_list):
+            query['InstanceList'] = request.instance_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceRiskNum',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListInstanceRiskNumResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_risk_num(
+        self,
+        request: sas_20181203_models.ListInstanceRiskNumRequest,
+    ) -> sas_20181203_models.ListInstanceRiskNumResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_risk_num_with_options(request, runtime)
+
+    async def list_instance_risk_num_async(
+        self,
+        request: sas_20181203_models.ListInstanceRiskNumRequest,
+    ) -> sas_20181203_models.ListInstanceRiskNumResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_risk_num_with_options_async(request, runtime)
+
     def list_interception_history_with_options(
         self,
         request: sas_20181203_models.ListInterceptionHistoryRequest,
