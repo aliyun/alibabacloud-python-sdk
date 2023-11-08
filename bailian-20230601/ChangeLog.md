@@ -1,3 +1,6 @@
+2023-11-08 Version: 1.2.0
+- Generated python 2023-06-01 for bailian.
+
 2023-08-03 Version: 1.1.2
 - Add text embeddings.
 
