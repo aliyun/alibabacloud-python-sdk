@@ -1718,6 +1718,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_shrink):
             query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
         if not UtilClient.is_unset(request.channel_shrink):
             query['Channel'] = request.channel_shrink
         if not UtilClient.is_unset(request.command_request_shrink):
@@ -1764,6 +1766,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.app_shrink):
             query['App'] = request.app_shrink
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
         if not UtilClient.is_unset(request.channel_shrink):
             query['Channel'] = request.channel_shrink
         if not UtilClient.is_unset(request.command_request_shrink):

@@ -5036,12 +5036,14 @@ class StartInstanceRequest(TeaModel):
     def __init__(
         self,
         app: StartInstanceRequestApp = None,
+        biz_id: str = None,
         channel: StartInstanceRequestChannel = None,
         command_request: StartInstanceRequestCommandRequest = None,
         tenant_id: int = None,
         user: StartInstanceRequestUser = None,
     ):
         self.app = app
+        self.biz_id = biz_id
         self.channel = channel
         self.command_request = command_request
         self.tenant_id = tenant_id
@@ -5065,6 +5067,8 @@ class StartInstanceRequest(TeaModel):
         result = dict()
         if self.app is not None:
             result['App'] = self.app.to_map()
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
         if self.channel is not None:
             result['Channel'] = self.channel.to_map()
         if self.command_request is not None:
@@ -5080,6 +5084,8 @@ class StartInstanceRequest(TeaModel):
         if m.get('App') is not None:
             temp_model = StartInstanceRequestApp()
             self.app = temp_model.from_map(m['App'])
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
         if m.get('Channel') is not None:
             temp_model = StartInstanceRequestChannel()
             self.channel = temp_model.from_map(m['Channel'])
@@ -5098,12 +5104,14 @@ class StartInstanceShrinkRequest(TeaModel):
     def __init__(
         self,
         app_shrink: str = None,
+        biz_id: str = None,
         channel_shrink: str = None,
         command_request_shrink: str = None,
         tenant_id: int = None,
         user_shrink: str = None,
     ):
         self.app_shrink = app_shrink
+        self.biz_id = biz_id
         self.channel_shrink = channel_shrink
         self.command_request_shrink = command_request_shrink
         self.tenant_id = tenant_id
@@ -5120,6 +5128,8 @@ class StartInstanceShrinkRequest(TeaModel):
         result = dict()
         if self.app_shrink is not None:
             result['App'] = self.app_shrink
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
         if self.channel_shrink is not None:
             result['Channel'] = self.channel_shrink
         if self.command_request_shrink is not None:
@@ -5134,6 +5144,8 @@ class StartInstanceShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('App') is not None:
             self.app_shrink = m.get('App')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
         if m.get('Channel') is not None:
             self.channel_shrink = m.get('Channel')
         if m.get('CommandRequest') is not None:
