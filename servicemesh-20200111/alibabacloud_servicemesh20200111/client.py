@@ -1146,6 +1146,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_swim_lane_group_with_options_async(request, runtime)
 
+    def create_waypoint_with_options(
+        self,
+        request: servicemesh_20200111_models.CreateWaypointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.hpaenabled):
+            body['HPAEnabled'] = request.hpaenabled
+        if not UtilClient.is_unset(request.hpamax_replicas):
+            body['HPAMaxReplicas'] = request.hpamax_replicas
+        if not UtilClient.is_unset(request.hpamin_replicas):
+            body['HPAMinReplicas'] = request.hpamin_replicas
+        if not UtilClient.is_unset(request.hpatarget_cpu):
+            body['HPATargetCPU'] = request.hpatarget_cpu
+        if not UtilClient.is_unset(request.hpatarget_memory):
+            body['HPATargetMemory'] = request.hpatarget_memory
+        if not UtilClient.is_unset(request.limit_cpu):
+            body['LimitCPU'] = request.limit_cpu
+        if not UtilClient.is_unset(request.limit_memory):
+            body['LimitMemory'] = request.limit_memory
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.prefer_eci):
+            body['PreferECI'] = request.prefer_eci
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.request_cpu):
+            body['RequestCPU'] = request.request_cpu
+        if not UtilClient.is_unset(request.request_memory):
+            body['RequestMemory'] = request.request_memory
+        if not UtilClient.is_unset(request.service_account):
+            body['ServiceAccount'] = request.service_account
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWaypoint',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateWaypointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_waypoint_with_options_async(
+        self,
+        request: servicemesh_20200111_models.CreateWaypointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.hpaenabled):
+            body['HPAEnabled'] = request.hpaenabled
+        if not UtilClient.is_unset(request.hpamax_replicas):
+            body['HPAMaxReplicas'] = request.hpamax_replicas
+        if not UtilClient.is_unset(request.hpamin_replicas):
+            body['HPAMinReplicas'] = request.hpamin_replicas
+        if not UtilClient.is_unset(request.hpatarget_cpu):
+            body['HPATargetCPU'] = request.hpatarget_cpu
+        if not UtilClient.is_unset(request.hpatarget_memory):
+            body['HPATargetMemory'] = request.hpatarget_memory
+        if not UtilClient.is_unset(request.limit_cpu):
+            body['LimitCPU'] = request.limit_cpu
+        if not UtilClient.is_unset(request.limit_memory):
+            body['LimitMemory'] = request.limit_memory
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.prefer_eci):
+            body['PreferECI'] = request.prefer_eci
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.request_cpu):
+            body['RequestCPU'] = request.request_cpu
+        if not UtilClient.is_unset(request.request_memory):
+            body['RequestMemory'] = request.request_memory
+        if not UtilClient.is_unset(request.service_account):
+            body['ServiceAccount'] = request.service_account
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateWaypoint',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.CreateWaypointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_waypoint(
+        self,
+        request: servicemesh_20200111_models.CreateWaypointRequest,
+    ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_waypoint_with_options(request, runtime)
+
+    async def create_waypoint_async(
+        self,
+        request: servicemesh_20200111_models.CreateWaypointRequest,
+    ) -> servicemesh_20200111_models.CreateWaypointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_waypoint_with_options_async(request, runtime)
+
     def delete_gateway_route_with_options(
         self,
         request: servicemesh_20200111_models.DeleteGatewayRouteRequest,
@@ -1621,6 +1747,88 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.DeleteSwimLaneGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_swim_lane_group_with_options_async(request, runtime)
+
+    def delete_waypoint_with_options(
+        self,
+        request: servicemesh_20200111_models.DeleteWaypointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWaypoint',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DeleteWaypointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_waypoint_with_options_async(
+        self,
+        request: servicemesh_20200111_models.DeleteWaypointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteWaypoint',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.DeleteWaypointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_waypoint(
+        self,
+        request: servicemesh_20200111_models.DeleteWaypointRequest,
+    ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_waypoint_with_options(request, runtime)
+
+    async def delete_waypoint_async(
+        self,
+        request: servicemesh_20200111_models.DeleteWaypointRequest,
+    ) -> servicemesh_20200111_models.DeleteWaypointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_waypoint_with_options_async(request, runtime)
 
     def describe_asmgateway_imported_services_with_options(
         self,
@@ -5188,6 +5396,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.grant_user_permissions_with_options_async(request, runtime)
 
+    def list_service_accounts_with_options(
+        self,
+        request: servicemesh_20200111_models.ListServiceAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListServiceAccounts',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ListServiceAccountsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_service_accounts_with_options_async(
+        self,
+        request: servicemesh_20200111_models.ListServiceAccountsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListServiceAccounts',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ListServiceAccountsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_service_accounts(
+        self,
+        request: servicemesh_20200111_models.ListServiceAccountsRequest,
+    ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_service_accounts_with_options(request, runtime)
+
+    async def list_service_accounts_async(
+        self,
+        request: servicemesh_20200111_models.ListServiceAccountsRequest,
+    ) -> servicemesh_20200111_models.ListServiceAccountsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_service_accounts_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: servicemesh_20200111_models.ListTagResourcesRequest,
@@ -5273,6 +5559,96 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.ListTagResourcesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def list_waypoints_with_options(
+        self,
+        request: servicemesh_20200111_models.ListWaypointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.continue_):
+            body['Continue'] = request.continue_
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWaypoints',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ListWaypointsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_waypoints_with_options_async(
+        self,
+        request: servicemesh_20200111_models.ListWaypointsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.continue_):
+            body['Continue'] = request.continue_
+        if not UtilClient.is_unset(request.limit):
+            body['Limit'] = request.limit
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWaypoints',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.ListWaypointsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_waypoints(
+        self,
+        request: servicemesh_20200111_models.ListWaypointsRequest,
+    ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_waypoints_with_options(request, runtime)
+
+    async def list_waypoints_async(
+        self,
+        request: servicemesh_20200111_models.ListWaypointsRequest,
+    ) -> servicemesh_20200111_models.ListWaypointsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_waypoints_with_options_async(request, runtime)
 
     def modify_api_server_eip_resource_with_options(
         self,
@@ -5432,7 +5808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
         
         @param request: ReActivateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5469,7 +5845,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
         
         @param request: ReActivateAuditRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5505,7 +5881,7 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ReActivateAuditRequest,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
         
         @param request: ReActivateAuditRequest
         @return: ReActivateAuditResponse
@@ -5518,7 +5894,7 @@ class Client(OpenApiClient):
         request: servicemesh_20200111_models.ReActivateAuditRequest,
     ) -> servicemesh_20200111_models.ReActivateAuditResponse:
         """
-        Before you call this operation, make sure that you understand the billing methods of Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
+        Before you call this operation, make sure that you understand the billing methods of Simple Log Service. For more information, visit the [pricing page](https://www.aliyun.com/price/product?spm=5176.10695662.1119587.4.194c6a67rcPWQH#/sls/detail).
         
         @param request: ReActivateAuditRequest
         @return: ReActivateAuditResponse
@@ -7509,6 +7885,132 @@ class Client(OpenApiClient):
     ) -> servicemesh_20200111_models.UpdateSwimLaneGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_swim_lane_group_with_options_async(request, runtime)
+
+    def update_waypoint_with_options(
+        self,
+        request: servicemesh_20200111_models.UpdateWaypointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.hpaenabled):
+            body['HPAEnabled'] = request.hpaenabled
+        if not UtilClient.is_unset(request.hpamax_replicas):
+            body['HPAMaxReplicas'] = request.hpamax_replicas
+        if not UtilClient.is_unset(request.hpamin_replicas):
+            body['HPAMinReplicas'] = request.hpamin_replicas
+        if not UtilClient.is_unset(request.hpatarget_cpu):
+            body['HPATargetCPU'] = request.hpatarget_cpu
+        if not UtilClient.is_unset(request.hpatarget_memory):
+            body['HPATargetMemory'] = request.hpatarget_memory
+        if not UtilClient.is_unset(request.limit_cpu):
+            body['LimitCPU'] = request.limit_cpu
+        if not UtilClient.is_unset(request.limit_memory):
+            body['LimitMemory'] = request.limit_memory
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.prefer_eci):
+            body['PreferECI'] = request.prefer_eci
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.request_cpu):
+            body['RequestCPU'] = request.request_cpu
+        if not UtilClient.is_unset(request.request_memory):
+            body['RequestMemory'] = request.request_memory
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWaypoint',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateWaypointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_waypoint_with_options_async(
+        self,
+        request: servicemesh_20200111_models.UpdateWaypointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.hpaenabled):
+            body['HPAEnabled'] = request.hpaenabled
+        if not UtilClient.is_unset(request.hpamax_replicas):
+            body['HPAMaxReplicas'] = request.hpamax_replicas
+        if not UtilClient.is_unset(request.hpamin_replicas):
+            body['HPAMinReplicas'] = request.hpamin_replicas
+        if not UtilClient.is_unset(request.hpatarget_cpu):
+            body['HPATargetCPU'] = request.hpatarget_cpu
+        if not UtilClient.is_unset(request.hpatarget_memory):
+            body['HPATargetMemory'] = request.hpatarget_memory
+        if not UtilClient.is_unset(request.limit_cpu):
+            body['LimitCPU'] = request.limit_cpu
+        if not UtilClient.is_unset(request.limit_memory):
+            body['LimitMemory'] = request.limit_memory
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.namespace):
+            body['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.prefer_eci):
+            body['PreferECI'] = request.prefer_eci
+        if not UtilClient.is_unset(request.replicas):
+            body['Replicas'] = request.replicas
+        if not UtilClient.is_unset(request.request_cpu):
+            body['RequestCPU'] = request.request_cpu
+        if not UtilClient.is_unset(request.request_memory):
+            body['RequestMemory'] = request.request_memory
+        if not UtilClient.is_unset(request.service_mesh_id):
+            body['ServiceMeshId'] = request.service_mesh_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateWaypoint',
+            version='2020-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            servicemesh_20200111_models.UpdateWaypointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_waypoint(
+        self,
+        request: servicemesh_20200111_models.UpdateWaypointRequest,
+    ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_waypoint_with_options(request, runtime)
+
+    async def update_waypoint_async(
+        self,
+        request: servicemesh_20200111_models.UpdateWaypointRequest,
+    ) -> servicemesh_20200111_models.UpdateWaypointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_waypoint_with_options_async(request, runtime)
 
     def upgrade_mesh_edition_partially_with_options(
         self,
