@@ -2784,7 +2784,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        mse-200-105
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2843,7 +2843,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        mse-200-105
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2901,7 +2901,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosInstanceRequest,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        mse-200-105
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @return: CreateNacosInstanceResponse
@@ -2914,7 +2914,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosInstanceRequest,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        mse-200-105
+        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @return: CreateNacosInstanceResponse
@@ -15426,7 +15426,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15471,7 +15471,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15515,7 +15515,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @return: UpdateClusterSpecResponse
@@ -15528,7 +15528,7 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go or subscription MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see "Pricing" (`~~1806469~~`).
+        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @return: UpdateClusterSpecResponse
