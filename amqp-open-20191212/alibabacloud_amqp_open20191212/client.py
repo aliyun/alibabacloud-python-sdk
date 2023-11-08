@@ -319,6 +319,132 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_exchange_with_options_async(request, runtime)
 
+    def create_instance_with_options(
+        self,
+        request: amqp_open_20191212_models.CreateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.max_connections):
+            query['MaxConnections'] = request.max_connections
+        if not UtilClient.is_unset(request.max_eip_tps):
+            query['MaxEipTps'] = request.max_eip_tps
+        if not UtilClient.is_unset(request.max_private_tps):
+            query['MaxPrivateTps'] = request.max_private_tps
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_cycle):
+            query['PeriodCycle'] = request.period_cycle
+        if not UtilClient.is_unset(request.queue_capacity):
+            query['QueueCapacity'] = request.queue_capacity
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.support_eip):
+            query['SupportEip'] = request.support_eip
+        if not UtilClient.is_unset(request.support_tracing):
+            query['SupportTracing'] = request.support_tracing
+        if not UtilClient.is_unset(request.tracing_storage_time):
+            query['TracingStorageTime'] = request.tracing_storage_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateInstance',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_with_options_async(
+        self,
+        request: amqp_open_20191212_models.CreateInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.max_connections):
+            query['MaxConnections'] = request.max_connections
+        if not UtilClient.is_unset(request.max_eip_tps):
+            query['MaxEipTps'] = request.max_eip_tps
+        if not UtilClient.is_unset(request.max_private_tps):
+            query['MaxPrivateTps'] = request.max_private_tps
+        if not UtilClient.is_unset(request.payment_type):
+            query['PaymentType'] = request.payment_type
+        if not UtilClient.is_unset(request.period):
+            query['Period'] = request.period
+        if not UtilClient.is_unset(request.period_cycle):
+            query['PeriodCycle'] = request.period_cycle
+        if not UtilClient.is_unset(request.queue_capacity):
+            query['QueueCapacity'] = request.queue_capacity
+        if not UtilClient.is_unset(request.storage_size):
+            query['StorageSize'] = request.storage_size
+        if not UtilClient.is_unset(request.support_eip):
+            query['SupportEip'] = request.support_eip
+        if not UtilClient.is_unset(request.support_tracing):
+            query['SupportTracing'] = request.support_tracing
+        if not UtilClient.is_unset(request.tracing_storage_time):
+            query['TracingStorageTime'] = request.tracing_storage_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateInstance',
+            version='2019-12-12',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            amqp_open_20191212_models.CreateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance(
+        self,
+        request: amqp_open_20191212_models.CreateInstanceRequest,
+    ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_instance_with_options(request, runtime)
+
+    async def create_instance_async(
+        self,
+        request: amqp_open_20191212_models.CreateInstanceRequest,
+    ) -> amqp_open_20191212_models.CreateInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_instance_with_options_async(request, runtime)
+
     def create_queue_with_options(
         self,
         request: amqp_open_20191212_models.CreateQueueRequest,

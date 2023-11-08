@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import Dict, Any, List
 
 
 class DataValue(TeaModel):
@@ -543,6 +543,212 @@ class CreateExchangeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateExchangeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateInstanceRequest(TeaModel):
+    def __init__(
+        self,
+        auto_renew: bool = None,
+        auto_renew_period: int = None,
+        client_token: str = None,
+        instance_type: str = None,
+        max_connections: int = None,
+        max_eip_tps: int = None,
+        max_private_tps: int = None,
+        payment_type: str = None,
+        period: int = None,
+        period_cycle: str = None,
+        queue_capacity: int = None,
+        storage_size: int = None,
+        support_eip: bool = None,
+        support_tracing: bool = None,
+        tracing_storage_time: int = None,
+    ):
+        self.auto_renew = auto_renew
+        self.auto_renew_period = auto_renew_period
+        self.client_token = client_token
+        self.instance_type = instance_type
+        self.max_connections = max_connections
+        self.max_eip_tps = max_eip_tps
+        self.max_private_tps = max_private_tps
+        self.payment_type = payment_type
+        self.period = period
+        self.period_cycle = period_cycle
+        self.queue_capacity = queue_capacity
+        self.storage_size = storage_size
+        self.support_eip = support_eip
+        self.support_tracing = support_tracing
+        self.tracing_storage_time = tracing_storage_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+        if self.auto_renew_period is not None:
+            result['AutoRenewPeriod'] = self.auto_renew_period
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.max_connections is not None:
+            result['MaxConnections'] = self.max_connections
+        if self.max_eip_tps is not None:
+            result['MaxEipTps'] = self.max_eip_tps
+        if self.max_private_tps is not None:
+            result['MaxPrivateTps'] = self.max_private_tps
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.period is not None:
+            result['Period'] = self.period
+        if self.period_cycle is not None:
+            result['PeriodCycle'] = self.period_cycle
+        if self.queue_capacity is not None:
+            result['QueueCapacity'] = self.queue_capacity
+        if self.storage_size is not None:
+            result['StorageSize'] = self.storage_size
+        if self.support_eip is not None:
+            result['SupportEip'] = self.support_eip
+        if self.support_tracing is not None:
+            result['SupportTracing'] = self.support_tracing
+        if self.tracing_storage_time is not None:
+            result['TracingStorageTime'] = self.tracing_storage_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+        if m.get('AutoRenewPeriod') is not None:
+            self.auto_renew_period = m.get('AutoRenewPeriod')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('MaxConnections') is not None:
+            self.max_connections = m.get('MaxConnections')
+        if m.get('MaxEipTps') is not None:
+            self.max_eip_tps = m.get('MaxEipTps')
+        if m.get('MaxPrivateTps') is not None:
+            self.max_private_tps = m.get('MaxPrivateTps')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+        if m.get('PeriodCycle') is not None:
+            self.period_cycle = m.get('PeriodCycle')
+        if m.get('QueueCapacity') is not None:
+            self.queue_capacity = m.get('QueueCapacity')
+        if m.get('StorageSize') is not None:
+            self.storage_size = m.get('StorageSize')
+        if m.get('SupportEip') is not None:
+            self.support_eip = m.get('SupportEip')
+        if m.get('SupportTracing') is not None:
+            self.support_tracing = m.get('SupportTracing')
+        if m.get('TracingStorageTime') is not None:
+            self.tracing_storage_time = m.get('TracingStorageTime')
+        return self
+
+
+class CreateInstanceResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateInstanceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateInstanceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateInstanceResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2665,6 +2871,39 @@ class ListInstancesRequest(TeaModel):
         return self
 
 
+class ListInstancesResponseBodyDataInstancesTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListInstancesResponseBodyDataInstances(TeaModel):
     def __init__(
         self,
@@ -2685,6 +2924,7 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         status: str = None,
         storage_size: int = None,
         support_eip: bool = None,
+        tags: List[ListInstancesResponseBodyDataInstancesTags] = None,
     ):
         self.auto_renew_instance = auto_renew_instance
         self.classic_endpoint = classic_endpoint
@@ -2703,9 +2943,13 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
         self.status = status
         self.storage_size = storage_size
         self.support_eip = support_eip
+        self.tags = tags
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2747,6 +2991,10 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             result['StorageSize'] = self.storage_size
         if self.support_eip is not None:
             result['SupportEIP'] = self.support_eip
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2785,6 +3033,11 @@ class ListInstancesResponseBodyDataInstances(TeaModel):
             self.storage_size = m.get('StorageSize')
         if m.get('SupportEIP') is not None:
             self.support_eip = m.get('SupportEIP')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListInstancesResponseBodyDataInstancesTags()
+                self.tags.append(temp_model.from_map(k))
         return self
 
 
