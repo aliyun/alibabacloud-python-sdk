@@ -2556,6 +2556,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
         if not UtilClient.is_unset(request.solution):
             query['Solution'] = request.solution
         if not UtilClient.is_unset(request.user_id):
@@ -2590,6 +2592,8 @@ class Client(OpenApiClient):
             query['BizType'] = request.biz_type
         if not UtilClient.is_unset(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
+        if not UtilClient.is_unset(request.operate_type):
+            query['OperateType'] = request.operate_type
         if not UtilClient.is_unset(request.solution):
             query['Solution'] = request.solution
         if not UtilClient.is_unset(request.user_id):

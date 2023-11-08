@@ -5094,11 +5094,13 @@ class SubmitSolutionRequest(TeaModel):
         self,
         biz_type: str = None,
         intention_biz_id: str = None,
+        operate_type: str = None,
         solution: str = None,
         user_id: str = None,
     ):
         self.biz_type = biz_type
         self.intention_biz_id = intention_biz_id
+        self.operate_type = operate_type
         self.solution = solution
         self.user_id = user_id
 
@@ -5115,6 +5117,8 @@ class SubmitSolutionRequest(TeaModel):
             result['BizType'] = self.biz_type
         if self.intention_biz_id is not None:
             result['IntentionBizId'] = self.intention_biz_id
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
         if self.solution is not None:
             result['Solution'] = self.solution
         if self.user_id is not None:
@@ -5127,6 +5131,8 @@ class SubmitSolutionRequest(TeaModel):
             self.biz_type = m.get('BizType')
         if m.get('IntentionBizId') is not None:
             self.intention_biz_id = m.get('IntentionBizId')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
         if m.get('Solution') is not None:
             self.solution = m.get('Solution')
         if m.get('UserId') is not None:
