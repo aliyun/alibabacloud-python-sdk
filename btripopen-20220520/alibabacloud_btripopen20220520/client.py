@@ -8459,6 +8459,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.HotelOrderCancelResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_order_id):
+            query['btrip_order_id'] = request.btrip_order_id
         if not UtilClient.is_unset(request.dis_order_id):
             query['dis_order_id'] = request.dis_order_id
         real_headers = {}
@@ -8494,6 +8496,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.HotelOrderCancelResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_order_id):
+            query['btrip_order_id'] = request.btrip_order_id
         if not UtilClient.is_unset(request.dis_order_id):
             query['dis_order_id'] = request.dis_order_id
         real_headers = {}
@@ -8731,6 +8735,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.HotelOrderDetailInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_order_id):
+            query['btrip_order_id'] = request.btrip_order_id
         if not UtilClient.is_unset(request.dis_order_id):
             query['dis_order_id'] = request.dis_order_id
         real_headers = {}
@@ -8766,6 +8772,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.HotelOrderDetailInfoResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.btrip_order_id):
+            query['btrip_order_id'] = request.btrip_order_id
         if not UtilClient.is_unset(request.dis_order_id):
             query['dis_order_id'] = request.dis_order_id
         real_headers = {}
@@ -11557,10 +11565,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.bookuser_list):
             request.bookuser_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bookuser_list, 'bookuser_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.apply_need):
+            body['apply_need'] = request.apply_need
         if not UtilClient.is_unset(request.book_type):
             body['book_type'] = request.book_type
         if not UtilClient.is_unset(request.bookuser_list_shrink):
             body['bookuser_list'] = request.bookuser_list_shrink
+        if not UtilClient.is_unset(request.rule_need):
+            body['rule_need'] = request.rule_need
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.user_id):
@@ -11602,10 +11614,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.bookuser_list):
             request.bookuser_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.bookuser_list, 'bookuser_list', 'json')
         body = {}
+        if not UtilClient.is_unset(request.apply_need):
+            body['apply_need'] = request.apply_need
         if not UtilClient.is_unset(request.book_type):
             body['book_type'] = request.book_type
         if not UtilClient.is_unset(request.bookuser_list_shrink):
             body['bookuser_list'] = request.bookuser_list_shrink
+        if not UtilClient.is_unset(request.rule_need):
+            body['rule_need'] = request.rule_need
         if not UtilClient.is_unset(request.status):
             body['status'] = request.status
         if not UtilClient.is_unset(request.user_id):
