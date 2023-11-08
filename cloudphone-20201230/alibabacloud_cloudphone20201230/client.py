@@ -46,6 +46,14 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.CancelTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.CancelTaskResponse:
+        """
+        When you call this operation, take note of the following item:
+        *   If the task is executed, you fail to call the operation and an error is returned.
+        
+        @param request: CancelTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -86,6 +94,14 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.CancelTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.CancelTaskResponse:
+        """
+        When you call this operation, take note of the following item:
+        *   If the task is executed, you fail to call the operation and an error is returned.
+        
+        @param request: CancelTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -125,6 +141,13 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.CancelTaskRequest,
     ) -> cloudphone_20201230_models.CancelTaskResponse:
+        """
+        When you call this operation, take note of the following item:
+        *   If the task is executed, you fail to call the operation and an error is returned.
+        
+        @param request: CancelTaskRequest
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_task_with_options(request, runtime)
 
@@ -132,6 +155,13 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.CancelTaskRequest,
     ) -> cloudphone_20201230_models.CancelTaskResponse:
+        """
+        When you call this operation, take note of the following item:
+        *   If the task is executed, you fail to call the operation and an error is returned.
+        
+        @param request: CancelTaskRequest
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_task_with_options_async(request, runtime)
 
@@ -140,6 +170,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.CopyImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.CopyImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The custom image that you want to copy must be in the Available state.
+        *   You can only copy images within your own Alibaba Cloud account. Images cannot be copied from one account to another.
+        *   A single region can have only one image copy task running at a time. Other image copy tasks queue up for the current task to complete before they run in sequence.
+        
+        @param request: CopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -188,6 +228,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.CopyImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.CopyImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The custom image that you want to copy must be in the Available state.
+        *   You can only copy images within your own Alibaba Cloud account. Images cannot be copied from one account to another.
+        *   A single region can have only one image copy task running at a time. Other image copy tasks queue up for the current task to complete before they run in sequence.
+        
+        @param request: CopyImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -235,6 +285,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.CopyImageRequest,
     ) -> cloudphone_20201230_models.CopyImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The custom image that you want to copy must be in the Available state.
+        *   You can only copy images within your own Alibaba Cloud account. Images cannot be copied from one account to another.
+        *   A single region can have only one image copy task running at a time. Other image copy tasks queue up for the current task to complete before they run in sequence.
+        
+        @param request: CopyImageRequest
+        @return: CopyImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_image_with_options(request, runtime)
 
@@ -242,6 +301,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.CopyImageRequest,
     ) -> cloudphone_20201230_models.CopyImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The custom image that you want to copy must be in the Available state.
+        *   You can only copy images within your own Alibaba Cloud account. Images cannot be copied from one account to another.
+        *   A single region can have only one image copy task running at a time. Other image copy tasks queue up for the current task to complete before they run in sequence.
+        
+        @param request: CopyImageRequest
+        @return: CopyImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_image_with_options_async(request, runtime)
 
@@ -250,6 +318,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.CreateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.CreateImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You need to only specify the ID (InstanceId) of an ECP instance. The instance is used as a template. The instance must be in the Running or Stopped state.
+        *   You can use the created custom image only if the image is in the Available state.
+        
+        @param request: CreateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -296,6 +373,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.CreateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.CreateImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You need to only specify the ID (InstanceId) of an ECP instance. The instance is used as a template. The instance must be in the Running or Stopped state.
+        *   You can use the created custom image only if the image is in the Available state.
+        
+        @param request: CreateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -341,6 +427,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.CreateImageRequest,
     ) -> cloudphone_20201230_models.CreateImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You need to only specify the ID (InstanceId) of an ECP instance. The instance is used as a template. The instance must be in the Running or Stopped state.
+        *   You can use the created custom image only if the image is in the Available state.
+        
+        @param request: CreateImageRequest
+        @return: CreateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_with_options(request, runtime)
 
@@ -348,6 +442,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.CreateImageRequest,
     ) -> cloudphone_20201230_models.CreateImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You need to only specify the ID (InstanceId) of an ECP instance. The instance is used as a template. The instance must be in the Running or Stopped state.
+        *   You can use the created custom image only if the image is in the Available state.
+        
+        @param request: CreateImageRequest
+        @return: CreateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_with_options_async(request, runtime)
 
@@ -356,6 +458,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.DeleteImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.DeleteImagesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   Images that are shared with recipient users can be deleted only after you unshare the images.
+        *   Images that are used by other Elastic Cloud Phone (ECP) instances can only be forcefully deleted.
+        
+        @param request: DeleteImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -398,6 +510,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.DeleteImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.DeleteImagesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   Images that are shared with recipient users can be deleted only after you unshare the images.
+        *   Images that are used by other Elastic Cloud Phone (ECP) instances can only be forcefully deleted.
+        
+        @param request: DeleteImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -439,6 +561,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.DeleteImagesRequest,
     ) -> cloudphone_20201230_models.DeleteImagesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   Images that are shared with recipient users can be deleted only after you unshare the images.
+        *   Images that are used by other Elastic Cloud Phone (ECP) instances can only be forcefully deleted.
+        
+        @param request: DeleteImagesRequest
+        @return: DeleteImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_images_with_options(request, runtime)
 
@@ -446,6 +577,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.DeleteImagesRequest,
     ) -> cloudphone_20201230_models.DeleteImagesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   Images that are shared with recipient users can be deleted only after you unshare the images.
+        *   Images that are used by other Elastic Cloud Phone (ECP) instances can only be forcefully deleted.
+        
+        @param request: DeleteImagesRequest
+        @return: DeleteImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_images_with_options_async(request, runtime)
 
@@ -552,6 +692,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.DeleteKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.DeleteKeyPairsResponse:
+        """
+        Before you call the operation, take note of the following items:
+        *   If you delete a key pair of a cloud phone, you cannot query the key pair of the cloud phone by calling the ListKeyPairs operation.
+        *   If you delete a key pair that is bound to an existing Elastic Cloud Phone (ECP) instance, Alibaba Cloud no longer saves the key pair for you, but the ECP instance can use the key pair as expected.
+        
+        @param request: DeleteKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -592,6 +741,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.DeleteKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.DeleteKeyPairsResponse:
+        """
+        Before you call the operation, take note of the following items:
+        *   If you delete a key pair of a cloud phone, you cannot query the key pair of the cloud phone by calling the ListKeyPairs operation.
+        *   If you delete a key pair that is bound to an existing Elastic Cloud Phone (ECP) instance, Alibaba Cloud no longer saves the key pair for you, but the ECP instance can use the key pair as expected.
+        
+        @param request: DeleteKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -631,6 +789,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.DeleteKeyPairsRequest,
     ) -> cloudphone_20201230_models.DeleteKeyPairsResponse:
+        """
+        Before you call the operation, take note of the following items:
+        *   If you delete a key pair of a cloud phone, you cannot query the key pair of the cloud phone by calling the ListKeyPairs operation.
+        *   If you delete a key pair that is bound to an existing Elastic Cloud Phone (ECP) instance, Alibaba Cloud no longer saves the key pair for you, but the ECP instance can use the key pair as expected.
+        
+        @param request: DeleteKeyPairsRequest
+        @return: DeleteKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_key_pairs_with_options(request, runtime)
 
@@ -638,6 +804,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.DeleteKeyPairsRequest,
     ) -> cloudphone_20201230_models.DeleteKeyPairsResponse:
+        """
+        Before you call the operation, take note of the following items:
+        *   If you delete a key pair of a cloud phone, you cannot query the key pair of the cloud phone by calling the ListKeyPairs operation.
+        *   If you delete a key pair that is bound to an existing Elastic Cloud Phone (ECP) instance, Alibaba Cloud no longer saves the key pair for you, but the ECP instance can use the key pair as expected.
+        
+        @param request: DeleteKeyPairsRequest
+        @return: DeleteKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_key_pairs_with_options_async(request, runtime)
 
@@ -752,6 +926,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ImportImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ImportImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   Before you import the image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   When you import an image for the first time, you must use Resource Access Management (RAM) to grant permissions on the access to OSS buckets in advance to obtain [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CloudPhone%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCloudPhoneDefaultRole%22%2C%22TemplateId%22%3A%22AliyunCloudPhoneDefaultRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcloudphone.console.aliyun.com%2F%23%2Finstances%22%7D) with one click.
+        *   You can import an image only to a region that is the same as that of the OSS bucket to which the image file was imported.
+        
+        @param request: ImportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -804,6 +988,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ImportImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ImportImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   Before you import the image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   When you import an image for the first time, you must use Resource Access Management (RAM) to grant permissions on the access to OSS buckets in advance to obtain [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CloudPhone%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCloudPhoneDefaultRole%22%2C%22TemplateId%22%3A%22AliyunCloudPhoneDefaultRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcloudphone.console.aliyun.com%2F%23%2Finstances%22%7D) with one click.
+        *   You can import an image only to a region that is the same as that of the OSS bucket to which the image file was imported.
+        
+        @param request: ImportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -855,6 +1049,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ImportImageRequest,
     ) -> cloudphone_20201230_models.ImportImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   Before you import the image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   When you import an image for the first time, you must use Resource Access Management (RAM) to grant permissions on the access to OSS buckets in advance to obtain [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CloudPhone%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCloudPhoneDefaultRole%22%2C%22TemplateId%22%3A%22AliyunCloudPhoneDefaultRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcloudphone.console.aliyun.com%2F%23%2Finstances%22%7D) with one click.
+        *   You can import an image only to a region that is the same as that of the OSS bucket to which the image file was imported.
+        
+        @param request: ImportImageRequest
+        @return: ImportImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_image_with_options(request, runtime)
 
@@ -862,6 +1065,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ImportImageRequest,
     ) -> cloudphone_20201230_models.ImportImageResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   Before you import the image, you must upload the image to an Object Storage Service (OSS) bucket. For more information, see [Upload objects](~~31886~~).
+        *   When you import an image for the first time, you must use Resource Access Management (RAM) to grant permissions on the access to OSS buckets in advance to obtain [Cloud Resource Access Authorization](https://ram.console.aliyun.com/role/authorization?request=%7B%22Services%22%3A%5B%7B%22Service%22%3A%22CloudPhone%22%2C%22Roles%22%3A%5B%7B%22RoleName%22%3A%22AliyunCloudPhoneDefaultRole%22%2C%22TemplateId%22%3A%22AliyunCloudPhoneDefaultRole%22%7D%5D%7D%5D%2C%22ReturnUrl%22%3A%22https%3A%2F%2Fcloudphone.console.aliyun.com%2F%23%2Finstances%22%7D) with one click.
+        *   You can import an image only to a region that is the same as that of the OSS bucket to which the image file was imported.
+        
+        @param request: ImportImageRequest
+        @return: ImportImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_image_with_options_async(request, runtime)
 
@@ -870,6 +1082,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ImportKeyPairResponse:
+        """
+        Usage notes Before you call this operation, take note of the following items:
+        *   You can create up to 500 key pairs in each region.
+        *   The imported public key pair must generate the public key of a key pair for Android Debug Bridge (ADB).
+        
+        @param request: ImportKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportKeyPairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -912,6 +1133,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ImportKeyPairResponse:
+        """
+        Usage notes Before you call this operation, take note of the following items:
+        *   You can create up to 500 key pairs in each region.
+        *   The imported public key pair must generate the public key of a key pair for Android Debug Bridge (ADB).
+        
+        @param request: ImportKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportKeyPairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -953,6 +1183,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ImportKeyPairRequest,
     ) -> cloudphone_20201230_models.ImportKeyPairResponse:
+        """
+        Usage notes Before you call this operation, take note of the following items:
+        *   You can create up to 500 key pairs in each region.
+        *   The imported public key pair must generate the public key of a key pair for Android Debug Bridge (ADB).
+        
+        @param request: ImportKeyPairRequest
+        @return: ImportKeyPairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_key_pair_with_options(request, runtime)
 
@@ -960,6 +1198,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ImportKeyPairRequest,
     ) -> cloudphone_20201230_models.ImportKeyPairResponse:
+        """
+        Usage notes Before you call this operation, take note of the following items:
+        *   You can create up to 500 key pairs in each region.
+        *   The imported public key pair must generate the public key of a key pair for Android Debug Bridge (ADB).
+        
+        @param request: ImportKeyPairRequest
+        @return: ImportKeyPairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_key_pair_with_options_async(request, runtime)
 
@@ -1376,6 +1622,25 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListInstanceVncUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListInstanceVncUrlResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   The URL returned is valid only for 15 seconds. If no connection is established within 15 seconds after a successful query, the URL expires. You must query the URL again if you still want to use the URL.
+        *   The keep-alive duration of a single URL of a management terminal is 60 seconds. If no interaction is detected within the 60 seconds, the management terminal is automatically disconnected.
+        *   After the management terminal is disconnected, you can only reconnect to the terminal up to 30 times per minute.
+        *   You need to add vncUrl=\\*\\*\\*\\*, instanceId= ****and password=**** to the end of the link https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html? and use ampersands (&) between the parameters. Parameter description:
+        *   vncUrl: the value that is returned after the operation is called.
+        *   instanceId: the instance ID.
+        *   (Optional) password: the password for remote connection of the instance, which can contain six characters in length. The password can be digits or letters. If you specify this parameter, you do not need to enter your password again when the management terminal is being connected.
+        Example:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\
+        Or:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\\&password=\\*\\*\\*\\*\
+        
+        @param request: ListInstanceVncUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceVncUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1416,6 +1681,25 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListInstanceVncUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListInstanceVncUrlResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   The URL returned is valid only for 15 seconds. If no connection is established within 15 seconds after a successful query, the URL expires. You must query the URL again if you still want to use the URL.
+        *   The keep-alive duration of a single URL of a management terminal is 60 seconds. If no interaction is detected within the 60 seconds, the management terminal is automatically disconnected.
+        *   After the management terminal is disconnected, you can only reconnect to the terminal up to 30 times per minute.
+        *   You need to add vncUrl=\\*\\*\\*\\*, instanceId= ****and password=**** to the end of the link https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html? and use ampersands (&) between the parameters. Parameter description:
+        *   vncUrl: the value that is returned after the operation is called.
+        *   instanceId: the instance ID.
+        *   (Optional) password: the password for remote connection of the instance, which can contain six characters in length. The password can be digits or letters. If you specify this parameter, you do not need to enter your password again when the management terminal is being connected.
+        Example:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\
+        Or:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\\&password=\\*\\*\\*\\*\
+        
+        @param request: ListInstanceVncUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceVncUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1455,6 +1739,24 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListInstanceVncUrlRequest,
     ) -> cloudphone_20201230_models.ListInstanceVncUrlResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   The URL returned is valid only for 15 seconds. If no connection is established within 15 seconds after a successful query, the URL expires. You must query the URL again if you still want to use the URL.
+        *   The keep-alive duration of a single URL of a management terminal is 60 seconds. If no interaction is detected within the 60 seconds, the management terminal is automatically disconnected.
+        *   After the management terminal is disconnected, you can only reconnect to the terminal up to 30 times per minute.
+        *   You need to add vncUrl=\\*\\*\\*\\*, instanceId= ****and password=**** to the end of the link https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html? and use ampersands (&) between the parameters. Parameter description:
+        *   vncUrl: the value that is returned after the operation is called.
+        *   instanceId: the instance ID.
+        *   (Optional) password: the password for remote connection of the instance, which can contain six characters in length. The password can be digits or letters. If you specify this parameter, you do not need to enter your password again when the management terminal is being connected.
+        Example:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\
+        Or:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\\&password=\\*\\*\\*\\*\
+        
+        @param request: ListInstanceVncUrlRequest
+        @return: ListInstanceVncUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_vnc_url_with_options(request, runtime)
 
@@ -1462,6 +1764,24 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListInstanceVncUrlRequest,
     ) -> cloudphone_20201230_models.ListInstanceVncUrlResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   The URL returned is valid only for 15 seconds. If no connection is established within 15 seconds after a successful query, the URL expires. You must query the URL again if you still want to use the URL.
+        *   The keep-alive duration of a single URL of a management terminal is 60 seconds. If no interaction is detected within the 60 seconds, the management terminal is automatically disconnected.
+        *   After the management terminal is disconnected, you can only reconnect to the terminal up to 30 times per minute.
+        *   You need to add vncUrl=\\*\\*\\*\\*, instanceId= ****and password=**** to the end of the link https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html? and use ampersands (&) between the parameters. Parameter description:
+        *   vncUrl: the value that is returned after the operation is called.
+        *   instanceId: the instance ID.
+        *   (Optional) password: the password for remote connection of the instance, which can contain six characters in length. The password can be digits or letters. If you specify this parameter, you do not need to enter your password again when the management terminal is being connected.
+        Example:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\
+        Or:
+        https://g.alicdn.com/aliyun/ecs-console-vnc2/0.0.8/index.html?vncUrl=ws%3A%2F%****\\&instanceId=cp-wz9hhwq5a6tm****\\&password=\\*\\*\\*\\*\
+        
+        @param request: ListInstanceVncUrlRequest
+        @return: ListInstanceVncUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_vnc_url_with_options_async(request, runtime)
 
@@ -1470,10 +1790,21 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListInstancesResponse:
+        """
+        This operation only supports the NextToken query method.
+        *   Results are returned in descending order based on the time when ECP instances were created.
+        *   When you use NextToken to specify a query token, set the value to the NextToken value that is returned in the last call to the ListInstances operation. Then, use MaxResults to specify the maximum number of entries to return on each page.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_id):
@@ -1534,10 +1865,21 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListInstancesResponse:
+        """
+        This operation only supports the NextToken query method.
+        *   Results are returned in descending order based on the time when ECP instances were created.
+        *   When you use NextToken to specify a query token, set the value to the NextToken value that is returned in the last call to the ListInstances operation. Then, use MaxResults to specify the maximum number of entries to return on each page.
+        
+        @param request: ListInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
         if not UtilClient.is_unset(request.instance_id):
@@ -1597,6 +1939,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListInstancesRequest,
     ) -> cloudphone_20201230_models.ListInstancesResponse:
+        """
+        This operation only supports the NextToken query method.
+        *   Results are returned in descending order based on the time when ECP instances were created.
+        *   When you use NextToken to specify a query token, set the value to the NextToken value that is returned in the last call to the ListInstances operation. Then, use MaxResults to specify the maximum number of entries to return on each page.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instances_with_options(request, runtime)
 
@@ -1604,6 +1954,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListInstancesRequest,
     ) -> cloudphone_20201230_models.ListInstancesResponse:
+        """
+        This operation only supports the NextToken query method.
+        *   Results are returned in descending order based on the time when ECP instances were created.
+        *   When you use NextToken to specify a query token, set the value to the NextToken value that is returned in the last call to the ListInstances operation. Then, use MaxResults to specify the maximum number of entries to return on each page.
+        
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instances_with_options_async(request, runtime)
 
@@ -1612,6 +1970,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListKeyPairsResponse:
+        """
+        You can call this operation to query one or more key pairs of cloud phones.
+        
+        @param request: ListKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_finger_print):
@@ -1658,6 +2023,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListKeyPairsResponse:
+        """
+        You can call this operation to query one or more key pairs of cloud phones.
+        
+        @param request: ListKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_finger_print):
@@ -1703,6 +2075,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListKeyPairsRequest,
     ) -> cloudphone_20201230_models.ListKeyPairsResponse:
+        """
+        You can call this operation to query one or more key pairs of cloud phones.
+        
+        @param request: ListKeyPairsRequest
+        @return: ListKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_key_pairs_with_options(request, runtime)
 
@@ -1710,6 +2088,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListKeyPairsRequest,
     ) -> cloudphone_20201230_models.ListKeyPairsResponse:
+        """
+        You can call this operation to query one or more key pairs of cloud phones.
+        
+        @param request: ListKeyPairsRequest
+        @return: ListKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_key_pairs_with_options_async(request, runtime)
 
@@ -1718,6 +2102,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListRegionsResponse:
+        """
+        You can call this operation to query regions where ECP is available.
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1756,6 +2147,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListRegionsResponse:
+        """
+        You can call this operation to query regions where ECP is available.
+        
+        @param request: ListRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1793,6 +2191,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListRegionsRequest,
     ) -> cloudphone_20201230_models.ListRegionsResponse:
+        """
+        You can call this operation to query regions where ECP is available.
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_regions_with_options(request, runtime)
 
@@ -1800,6 +2204,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListRegionsRequest,
     ) -> cloudphone_20201230_models.ListRegionsResponse:
+        """
+        You can call this operation to query regions where ECP is available.
+        
+        @param request: ListRegionsRequest
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_regions_with_options_async(request, runtime)
 
@@ -2204,6 +2614,14 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListZonesResponse:
+        """
+        ## [](#)Usage notes
+        *   You can call the operation to query zones available in a specified region.
+        
+        @param request: ListZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2242,6 +2660,14 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ListZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ListZonesResponse:
+        """
+        ## [](#)Usage notes
+        *   You can call the operation to query zones available in a specified region.
+        
+        @param request: ListZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2279,6 +2705,13 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListZonesRequest,
     ) -> cloudphone_20201230_models.ListZonesResponse:
+        """
+        ## [](#)Usage notes
+        *   You can call the operation to query zones available in a specified region.
+        
+        @param request: ListZonesRequest
+        @return: ListZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_zones_with_options(request, runtime)
 
@@ -2286,6 +2719,13 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ListZonesRequest,
     ) -> cloudphone_20201230_models.ListZonesResponse:
+        """
+        ## [](#)Usage notes
+        *   You can call the operation to query zones available in a specified region.
+        
+        @param request: ListZonesRequest
+        @return: ListZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_zones_with_options_async(request, runtime)
 
@@ -2392,6 +2832,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.RenewInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.RenewInstancesResponse:
+        """
+        You can call the operation to renew multiple ECP instances at a time.
+        
+        @param request: RenewInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -2440,6 +2887,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.RenewInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.RenewInstancesResponse:
+        """
+        You can call the operation to renew multiple ECP instances at a time.
+        
+        @param request: RenewInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -2487,6 +2941,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.RenewInstancesRequest,
     ) -> cloudphone_20201230_models.RenewInstancesResponse:
+        """
+        You can call the operation to renew multiple ECP instances at a time.
+        
+        @param request: RenewInstancesRequest
+        @return: RenewInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_instances_with_options(request, runtime)
 
@@ -2494,6 +2954,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.RenewInstancesRequest,
     ) -> cloudphone_20201230_models.RenewInstancesResponse:
+        """
+        You can call the operation to renew multiple ECP instances at a time.
+        
+        @param request: RenewInstancesRequest
+        @return: RenewInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_instances_with_options_async(request, runtime)
 
@@ -2502,6 +2968,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ResetInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ResetInstancesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   This operation is valid only for ECP instances that are in the Stopped state.
+        *   If the images based on which the instances are created are deleted, the instances cannot be reset.
+        
+        @param request: ResetInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -2544,6 +3020,16 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.ResetInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.ResetInstancesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   This operation is valid only for ECP instances that are in the Stopped state.
+        *   If the images based on which the instances are created are deleted, the instances cannot be reset.
+        
+        @param request: ResetInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -2585,6 +3071,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ResetInstancesRequest,
     ) -> cloudphone_20201230_models.ResetInstancesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   This operation is valid only for ECP instances that are in the Stopped state.
+        *   If the images based on which the instances are created are deleted, the instances cannot be reset.
+        
+        @param request: ResetInstancesRequest
+        @return: ResetInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_instances_with_options(request, runtime)
 
@@ -2592,6 +3087,15 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.ResetInstancesRequest,
     ) -> cloudphone_20201230_models.ResetInstancesResponse:
+        """
+        ## [](#)Usage notes
+        When you call this operation, take note of the following items:
+        *   This operation is valid only for ECP instances that are in the Stopped state.
+        *   If the images based on which the instances are created are deleted, the instances cannot be reset.
+        
+        @param request: ResetInstancesRequest
+        @return: ResetInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_instances_with_options_async(request, runtime)
 
@@ -2698,6 +3202,18 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.RunInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.RunInstancesResponse:
+        """
+        Preparations:
+        *   The real-name verification is complete. For more information, see [Real-name verification](~~428525~~).
+        Precautions:
+        *   You can create up to 100 ECP instances at a time.
+        *   You can call this operation to create and start ECP instances.
+        *   If an ECP instance fails to be created due to force majeure factors, such as insufficient inventory, the ECP instance is automatically rolled back and released.
+        
+        @param request: RunInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -2770,6 +3286,18 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.RunInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.RunInstancesResponse:
+        """
+        Preparations:
+        *   The real-name verification is complete. For more information, see [Real-name verification](~~428525~~).
+        Precautions:
+        *   You can create up to 100 ECP instances at a time.
+        *   You can call this operation to create and start ECP instances.
+        *   If an ECP instance fails to be created due to force majeure factors, such as insufficient inventory, the ECP instance is automatically rolled back and released.
+        
+        @param request: RunInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -2841,6 +3369,17 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.RunInstancesRequest,
     ) -> cloudphone_20201230_models.RunInstancesResponse:
+        """
+        Preparations:
+        *   The real-name verification is complete. For more information, see [Real-name verification](~~428525~~).
+        Precautions:
+        *   You can create up to 100 ECP instances at a time.
+        *   You can call this operation to create and start ECP instances.
+        *   If an ECP instance fails to be created due to force majeure factors, such as insufficient inventory, the ECP instance is automatically rolled back and released.
+        
+        @param request: RunInstancesRequest
+        @return: RunInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_instances_with_options(request, runtime)
 
@@ -2848,6 +3387,17 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.RunInstancesRequest,
     ) -> cloudphone_20201230_models.RunInstancesResponse:
+        """
+        Preparations:
+        *   The real-name verification is complete. For more information, see [Real-name verification](~~428525~~).
+        Precautions:
+        *   You can create up to 100 ECP instances at a time.
+        *   You can call this operation to create and start ECP instances.
+        *   If an ECP instance fails to be created due to force majeure factors, such as insufficient inventory, the ECP instance is automatically rolled back and released.
+        
+        @param request: RunInstancesRequest
+        @return: RunInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_instances_with_options_async(request, runtime)
 
@@ -3444,6 +3994,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.UpdateImageAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.UpdateImageAttributeResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can share only your own custom images with other Alibaba Cloud accounts.
+        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time.
+        
+        @param request: UpdateImageAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateImageAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_account):
@@ -3492,6 +4051,15 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.UpdateImageAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.UpdateImageAttributeResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can share only your own custom images with other Alibaba Cloud accounts.
+        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time.
+        
+        @param request: UpdateImageAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateImageAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_account):
@@ -3539,6 +4107,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.UpdateImageAttributeRequest,
     ) -> cloudphone_20201230_models.UpdateImageAttributeResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can share only your own custom images with other Alibaba Cloud accounts.
+        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time.
+        
+        @param request: UpdateImageAttributeRequest
+        @return: UpdateImageAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_image_attribute_with_options(request, runtime)
 
@@ -3546,6 +4122,14 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.UpdateImageAttributeRequest,
     ) -> cloudphone_20201230_models.UpdateImageAttributeResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   You can share only your own custom images with other Alibaba Cloud accounts.
+        *   You can share a custom image with up to 10 Alibaba Cloud accounts at a time.
+        
+        @param request: UpdateImageAttributeRequest
+        @return: UpdateImageAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_image_attribute_with_options_async(request, runtime)
 
@@ -3554,6 +4138,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.UpdateInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.UpdateInstanceAttributeResponse:
+        """
+        You can call this operation to modify the name, key pair, Virtual Network Computing (VNC) password, and resolution of an ECP instance. Take note that the modified key pair and resolution takes effect the next time you restart the instance.
+        
+        @param request: UpdateInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3604,6 +4195,13 @@ class Client(OpenApiClient):
         request: cloudphone_20201230_models.UpdateInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cloudphone_20201230_models.UpdateInstanceAttributeResponse:
+        """
+        You can call this operation to modify the name, key pair, Virtual Network Computing (VNC) password, and resolution of an ECP instance. Take note that the modified key pair and resolution takes effect the next time you restart the instance.
+        
+        @param request: UpdateInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3653,6 +4251,12 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.UpdateInstanceAttributeRequest,
     ) -> cloudphone_20201230_models.UpdateInstanceAttributeResponse:
+        """
+        You can call this operation to modify the name, key pair, Virtual Network Computing (VNC) password, and resolution of an ECP instance. Take note that the modified key pair and resolution takes effect the next time you restart the instance.
+        
+        @param request: UpdateInstanceAttributeRequest
+        @return: UpdateInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_attribute_with_options(request, runtime)
 
@@ -3660,5 +4264,11 @@ class Client(OpenApiClient):
         self,
         request: cloudphone_20201230_models.UpdateInstanceAttributeRequest,
     ) -> cloudphone_20201230_models.UpdateInstanceAttributeResponse:
+        """
+        You can call this operation to modify the name, key pair, Virtual Network Computing (VNC) password, and resolution of an ECP instance. Take note that the modified key pair and resolution takes effect the next time you restart the instance.
+        
+        @param request: UpdateInstanceAttributeRequest
+        @return: UpdateInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_attribute_with_options_async(request, runtime)
