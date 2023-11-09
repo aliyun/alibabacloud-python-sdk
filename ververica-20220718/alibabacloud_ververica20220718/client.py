@@ -125,6 +125,90 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.CreateDeploymentHeaders()
         return await self.create_deployment_with_options_async(namespace, request, headers, runtime)
 
+    def create_member_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateMemberRequest,
+        headers: ververica_20220718_models.CreateMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateMemberResponse:
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_member_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateMemberRequest,
+        headers: ververica_20220718_models.CreateMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.CreateMemberResponse:
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='CreateMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.CreateMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_member(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateMemberRequest,
+    ) -> ververica_20220718_models.CreateMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateMemberHeaders()
+        return self.create_member_with_options(namespace, request, headers, runtime)
+
+    async def create_member_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.CreateMemberRequest,
+    ) -> ververica_20220718_models.CreateMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.CreateMemberHeaders()
+        return await self.create_member_with_options_async(namespace, request, headers, runtime)
+
     def create_savepoint_with_options(
         self,
         namespace: str,
@@ -466,6 +550,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.DeleteJobHeaders()
         return await self.delete_job_with_options_async(namespace, job_id, headers, runtime)
+
+    def delete_member_with_options(
+        self,
+        namespace: str,
+        member: str,
+        headers: ververica_20220718_models.DeleteMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteMemberResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members/{OpenApiUtilClient.get_encode_param(member)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_member_with_options_async(
+        self,
+        namespace: str,
+        member: str,
+        headers: ververica_20220718_models.DeleteMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.DeleteMemberResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='DeleteMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members/{OpenApiUtilClient.get_encode_param(member)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.DeleteMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_member(
+        self,
+        namespace: str,
+        member: str,
+    ) -> ververica_20220718_models.DeleteMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteMemberHeaders()
+        return self.delete_member_with_options(namespace, member, headers, runtime)
+
+    async def delete_member_async(
+        self,
+        namespace: str,
+        member: str,
+    ) -> ververica_20220718_models.DeleteMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.DeleteMemberHeaders()
+        return await self.delete_member_with_options_async(namespace, member, headers, runtime)
 
     def delete_savepoint_with_options(
         self,
@@ -1053,6 +1217,86 @@ class Client(OpenApiClient):
         headers = ververica_20220718_models.GetJobHeaders()
         return await self.get_job_with_options_async(namespace, job_id, headers, runtime)
 
+    def get_member_with_options(
+        self,
+        namespace: str,
+        member: str,
+        headers: ververica_20220718_models.GetMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetMemberResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members/{OpenApiUtilClient.get_encode_param(member)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_member_with_options_async(
+        self,
+        namespace: str,
+        member: str,
+        headers: ververica_20220718_models.GetMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.GetMemberResponse:
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers
+        )
+        params = open_api_models.Params(
+            action='GetMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members/{OpenApiUtilClient.get_encode_param(member)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.GetMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_member(
+        self,
+        namespace: str,
+        member: str,
+    ) -> ververica_20220718_models.GetMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetMemberHeaders()
+        return self.get_member_with_options(namespace, member, headers, runtime)
+
+    async def get_member_async(
+        self,
+        namespace: str,
+        member: str,
+    ) -> ververica_20220718_models.GetMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.GetMemberHeaders()
+        return await self.get_member_with_options_async(namespace, member, headers, runtime)
+
     def get_savepoint_with_options(
         self,
         namespace: str,
@@ -1494,6 +1738,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.ListJobsHeaders()
         return await self.list_jobs_with_options_async(namespace, request, headers, runtime)
+
+    def list_members_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListMembersRequest,
+        headers: ververica_20220718_models.ListMembersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListMembersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMembers',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_members_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListMembersRequest,
+        headers: ververica_20220718_models.ListMembersHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.ListMembersResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_index):
+            query['pageIndex'] = request.page_index
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListMembers',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.ListMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_members(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListMembersRequest,
+    ) -> ververica_20220718_models.ListMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListMembersHeaders()
+        return self.list_members_with_options(namespace, request, headers, runtime)
+
+    async def list_members_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.ListMembersRequest,
+    ) -> ververica_20220718_models.ListMembersResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.ListMembersHeaders()
+        return await self.list_members_with_options_async(namespace, request, headers, runtime)
 
     def list_savepoints_with_options(
         self,
@@ -2066,3 +2404,87 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = ververica_20220718_models.UpdateDeploymentHeaders()
         return await self.update_deployment_with_options_async(namespace, deployment_id, request, headers, runtime)
+
+    def update_member_with_options(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.UpdateMemberRequest,
+        headers: ververica_20220718_models.UpdateMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateMemberResponse:
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_member_with_options_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.UpdateMemberRequest,
+        headers: ververica_20220718_models.UpdateMemberHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> ververica_20220718_models.UpdateMemberResponse:
+        UtilClient.validate_model(request)
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.workspace):
+            real_headers['workspace'] = UtilClient.to_jsonstring(headers.workspace)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='UpdateMember',
+            version='2022-07-18',
+            protocol='HTTPS',
+            pathname=f'/gateway/v2/namespaces/{OpenApiUtilClient.get_encode_param(namespace)}/members',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ververica_20220718_models.UpdateMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_member(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.UpdateMemberRequest,
+    ) -> ververica_20220718_models.UpdateMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateMemberHeaders()
+        return self.update_member_with_options(namespace, request, headers, runtime)
+
+    async def update_member_async(
+        self,
+        namespace: str,
+        request: ververica_20220718_models.UpdateMemberRequest,
+    ) -> ververica_20220718_models.UpdateMemberResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = ververica_20220718_models.UpdateMemberHeaders()
+        return await self.update_member_with_options_async(namespace, request, headers, runtime)
