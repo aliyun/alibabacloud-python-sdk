@@ -933,6 +933,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_oss_upload_token_with_options_async(runtime)
 
+    def describe_smart_statistics_page_list_with_options(
+        self,
+        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSmartStatisticsPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_smart_statistics_page_list_with_options_async(
+        self,
+        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSmartStatisticsPageList',
+            version='2019-03-07',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_smart_statistics_page_list(
+        self,
+        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_smart_statistics_page_list_with_options(request, runtime)
+
+    async def describe_smart_statistics_page_list_async(
+        self,
+        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
+    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_smart_statistics_page_list_with_options_async(request, runtime)
+
     def describe_verify_result_with_options(
         self,
         request: cloudauth_20190307_models.DescribeVerifyResultRequest,

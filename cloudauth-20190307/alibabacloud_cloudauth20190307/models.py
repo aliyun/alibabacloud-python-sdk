@@ -1681,6 +1681,235 @@ class DescribeOssUploadTokenResponse(TeaModel):
         return self
 
 
+class DescribeSmartStatisticsPageListRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: str = None,
+        end_date: str = None,
+        page_size: str = None,
+        scene_id: str = None,
+        service_code: str = None,
+        start_date: str = None,
+    ):
+        self.current_page = current_page
+        self.end_date = end_date
+        self.page_size = page_size
+        self.scene_id = scene_id
+        self.service_code = service_code
+        self.start_date = start_date
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_date is not None:
+            result['EndDate'] = self.end_date
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+        if self.start_date is not None:
+            result['StartDate'] = self.start_date
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndDate') is not None:
+            self.end_date = m.get('EndDate')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+        if m.get('StartDate') is not None:
+            self.start_date = m.get('StartDate')
+        return self
+
+
+class DescribeSmartStatisticsPageListResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        date: str = None,
+        pass_rate: str = None,
+        product_code: str = None,
+        scene_id: int = None,
+        scene_name: str = None,
+        success_count: int = None,
+        total_count: int = None,
+    ):
+        self.date = date
+        self.pass_rate = pass_rate
+        self.product_code = product_code
+        self.scene_id = scene_id
+        self.scene_name = scene_name
+        self.success_count = success_count
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.date is not None:
+            result['Date'] = self.date
+        if self.pass_rate is not None:
+            result['PassRate'] = self.pass_rate
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Date') is not None:
+            self.date = m.get('Date')
+        if m.get('PassRate') is not None:
+            self.pass_rate = m.get('PassRate')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeSmartStatisticsPageListResponseBody(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        items: List[DescribeSmartStatisticsPageListResponseBodyItems] = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+        total_page: int = None,
+    ):
+        self.current_page = current_page
+        self.items = items
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+        self.total_page = total_page
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        if self.total_page is not None:
+            result['TotalPage'] = self.total_page
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeSmartStatisticsPageListResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        if m.get('TotalPage') is not None:
+            self.total_page = m.get('TotalPage')
+        return self
+
+
+class DescribeSmartStatisticsPageListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSmartStatisticsPageListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSmartStatisticsPageListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeVerifyResultRequest(TeaModel):
     def __init__(
         self,
