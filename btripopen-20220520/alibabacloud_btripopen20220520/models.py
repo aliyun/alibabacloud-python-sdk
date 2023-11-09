@@ -65311,6 +65311,7 @@ class IsvUserSaveRequestUserListCertList(TeaModel):
 class IsvUserSaveRequestUserList(TeaModel):
     def __init__(
         self,
+        base_city_code: str = None,
         birthday: str = None,
         cert_list: List[IsvUserSaveRequestUserListCertList] = None,
         depart_id: int = None,
@@ -65329,6 +65330,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
+        self.base_city_code = base_city_code
         self.birthday = birthday
         self.cert_list = cert_list
         self.depart_id = depart_id
@@ -65359,6 +65361,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             return _map
 
         result = dict()
+        if self.base_city_code is not None:
+            result['base_city_code'] = self.base_city_code
         if self.birthday is not None:
             result['birthday'] = self.birthday
         result['cert_list'] = []
@@ -65399,6 +65403,8 @@ class IsvUserSaveRequestUserList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('base_city_code') is not None:
+            self.base_city_code = m.get('base_city_code')
         if m.get('birthday') is not None:
             self.birthday = m.get('birthday')
         self.cert_list = []
@@ -65834,6 +65840,7 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
         fu_point: float = None,
         hotel_amount: float = None,
         ie_flight_amount: float = None,
+        ie_hotel_amount: float = None,
         mail_bill_date: int = None,
         service_amount: float = None,
         train_amount: float = None,
@@ -65851,6 +65858,7 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
         self.hotel_amount = hotel_amount
         # 国际机票金额（单位：元）
         self.ie_flight_amount = ie_flight_amount
+        self.ie_hotel_amount = ie_hotel_amount
         # 账期日：YYYYMMDD
         self.mail_bill_date = mail_bill_date
         # 服务费金额（单位：元）
@@ -65881,6 +65889,8 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
             result['hotelAmount'] = self.hotel_amount
         if self.ie_flight_amount is not None:
             result['ieFlightAmount'] = self.ie_flight_amount
+        if self.ie_hotel_amount is not None:
+            result['ieHotelAmount'] = self.ie_hotel_amount
         if self.mail_bill_date is not None:
             result['mailBillDate'] = self.mail_bill_date
         if self.service_amount is not None:
@@ -65905,6 +65915,8 @@ class MonthBillGetResponseBodyModuleMonthAccountBillDetail(TeaModel):
             self.hotel_amount = m.get('hotelAmount')
         if m.get('ieFlightAmount') is not None:
             self.ie_flight_amount = m.get('ieFlightAmount')
+        if m.get('ieHotelAmount') is not None:
+            self.ie_hotel_amount = m.get('ieHotelAmount')
         if m.get('mailBillDate') is not None:
             self.mail_bill_date = m.get('mailBillDate')
         if m.get('serviceAmount') is not None:
