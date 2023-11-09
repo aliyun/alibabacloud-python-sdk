@@ -11762,6 +11762,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_concern_necessity_with_options_async(request, runtime)
 
+    def describe_container_apps_with_options(
+        self,
+        request: sas_20181203_models.DescribeContainerAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.field_value):
+            query['FieldValue'] = request.field_value
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerApps',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_container_apps_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeContainerAppsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeContainerAppsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.field_value):
+            query['FieldValue'] = request.field_value
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeContainerApps',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeContainerAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_container_apps(
+        self,
+        request: sas_20181203_models.DescribeContainerAppsRequest,
+    ) -> sas_20181203_models.DescribeContainerAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_container_apps_with_options(request, runtime)
+
+    async def describe_container_apps_async(
+        self,
+        request: sas_20181203_models.DescribeContainerAppsRequest,
+    ) -> sas_20181203_models.DescribeContainerAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_container_apps_with_options_async(request, runtime)
+
     def describe_container_criteria_with_options(
         self,
         request: sas_20181203_models.DescribeContainerCriteriaRequest,
@@ -28168,6 +28250,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_once_task_with_options_async(request, runtime)
 
+    def get_aegis_container_plugin_rule_criteria_with_options(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleCriteriaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleCriteriaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAegisContainerPluginRuleCriteria',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAegisContainerPluginRuleCriteriaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_aegis_container_plugin_rule_criteria_with_options_async(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleCriteriaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleCriteriaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAegisContainerPluginRuleCriteria',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetAegisContainerPluginRuleCriteriaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_aegis_container_plugin_rule_criteria(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleCriteriaRequest,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleCriteriaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_aegis_container_plugin_rule_criteria_with_options(request, runtime)
+
+    async def get_aegis_container_plugin_rule_criteria_async(
+        self,
+        request: sas_20181203_models.GetAegisContainerPluginRuleCriteriaRequest,
+    ) -> sas_20181203_models.GetAegisContainerPluginRuleCriteriaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_aegis_container_plugin_rule_criteria_with_options_async(request, runtime)
+
     def get_agentless_task_count_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -32623,6 +32779,76 @@ class Client(OpenApiClient):
     async def get_rules_count_async(self) -> sas_20181203_models.GetRulesCountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_rules_count_with_options_async(runtime)
+
+    def get_sas_container_web_defense_rule_criteria_with_options(
+        self,
+        request: sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSasContainerWebDefenseRuleCriteria',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sas_container_web_defense_rule_criteria_with_options_async(
+        self,
+        request: sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.value):
+            query['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSasContainerWebDefenseRuleCriteria',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sas_container_web_defense_rule_criteria(
+        self,
+        request: sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaRequest,
+    ) -> sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sas_container_web_defense_rule_criteria_with_options(request, runtime)
+
+    async def get_sas_container_web_defense_rule_criteria_async(
+        self,
+        request: sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaRequest,
+    ) -> sas_20181203_models.GetSasContainerWebDefenseRuleCriteriaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sas_container_web_defense_rule_criteria_with_options_async(request, runtime)
 
     def get_security_score_rule_with_options(
         self,
@@ -44951,6 +45177,80 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.OperateAgentClientInstallResponse:
         runtime = util_models.RuntimeOptions()
         return await self.operate_agent_client_install_with_options_async(request, runtime)
+
+    def operate_application_with_options(
+        self,
+        request: sas_20181203_models.OperateApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateApplicationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.container_web_defense_application_dtos):
+            query['ContainerWebDefenseApplicationDTOS'] = request.container_web_defense_application_dtos
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateApplication',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_application_with_options_async(
+        self,
+        request: sas_20181203_models.OperateApplicationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OperateApplicationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.container_web_defense_application_dtos):
+            query['ContainerWebDefenseApplicationDTOS'] = request.container_web_defense_application_dtos
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OperateApplication',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OperateApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_application(
+        self,
+        request: sas_20181203_models.OperateApplicationRequest,
+    ) -> sas_20181203_models.OperateApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.operate_application_with_options(request, runtime)
+
+    async def operate_application_async(
+        self,
+        request: sas_20181203_models.OperateApplicationRequest,
+    ) -> sas_20181203_models.OperateApplicationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.operate_application_with_options_async(request, runtime)
 
     def operate_bucket_scan_task_with_options(
         self,
