@@ -10053,6 +10053,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeAvailableClassesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeAvailableClassesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeAvailableClassesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableClassesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -10101,6 +10112,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeAvailableClassesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeAvailableClassesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeAvailableClassesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableClassesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -10148,6 +10170,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeAvailableClassesRequest,
     ) -> rds_20140815_models.DescribeAvailableClassesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeAvailableClassesRequest
+        @return: DescribeAvailableClassesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_classes_with_options(request, runtime)
 
@@ -10155,6 +10187,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeAvailableClassesRequest,
     ) -> rds_20140815_models.DescribeAvailableClassesResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeAvailableClassesRequest
+        @return: DescribeAvailableClassesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_classes_with_options_async(request, runtime)
 
@@ -21285,6 +21327,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRegionInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeRegionInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -21321,6 +21374,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeRegionInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeRegionInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -21356,6 +21420,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeRegionInfosRequest,
     ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeRegionInfosRequest
+        @return: DescribeRegionInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_region_infos_with_options(request, runtime)
 
@@ -21363,6 +21437,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeRegionInfosRequest,
     ) -> rds_20140815_models.DescribeRegionInfosResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeRegionInfosRequest
+        @return: DescribeRegionInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_region_infos_with_options_async(request, runtime)
 
@@ -25240,9 +25324,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Description
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        Before you call this operation, make sure that the following requirements are met:
+        ### [](#)Precautions
+        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
+        *   Before you call this operation, make sure that the following requirements are met:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
         *   The source and destination instances must be created by using the same user credentials.
         *   The instance is in the Running state.
@@ -25297,9 +25385,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Description
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        Before you call this operation, make sure that the following requirements are met:
+        ### [](#)Precautions
+        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
+        *   Before you call this operation, make sure that the following requirements are met:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
         *   The source and destination instances must be created by using the same user credentials.
         *   The instance is in the Running state.
@@ -25353,9 +25445,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ImportDatabaseBetweenInstancesRequest,
     ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Description
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        Before you call this operation, make sure that the following requirements are met:
+        ### [](#)Precautions
+        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
+        *   Before you call this operation, make sure that the following requirements are met:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
         *   The source and destination instances must be created by using the same user credentials.
         *   The instance is in the Running state.
@@ -25376,9 +25472,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ImportDatabaseBetweenInstancesRequest,
     ) -> rds_20140815_models.ImportDatabaseBetweenInstancesResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Description
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
-        During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        Before you call this operation, make sure that the following requirements are met:
+        ### [](#)Precautions
+        *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
+        *   Before you call this operation, make sure that the following requirements are met:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
         *   The source and destination instances must be created by using the same user credentials.
         *   The instance is in the Running state.
@@ -30615,6 +30715,17 @@ class Client(OpenApiClient):
         tmp_req: rds_20140815_models.ModifyDBNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        ### [](#)References
+        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
+        *   [Change the specifications of an ApsaraDB RDS for MySQL instance](~~96061~~)
+        
+        @param tmp_req: ModifyDBNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBNodeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rds_20140815_models.ModifyDBNodeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -30669,6 +30780,17 @@ class Client(OpenApiClient):
         tmp_req: rds_20140815_models.ModifyDBNodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        ### [](#)References
+        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
+        *   [Change the specifications of an ApsaraDB RDS for MySQL instance](~~96061~~)
+        
+        @param tmp_req: ModifyDBNodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBNodeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rds_20140815_models.ModifyDBNodeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -30722,6 +30844,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.ModifyDBNodeRequest,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        ### [](#)References
+        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
+        *   [Change the specifications of an ApsaraDB RDS for MySQL instance](~~96061~~)
+        
+        @param request: ModifyDBNodeRequest
+        @return: ModifyDBNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbnode_with_options(request, runtime)
 
@@ -30729,6 +30861,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.ModifyDBNodeRequest,
     ) -> rds_20140815_models.ModifyDBNodeResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        ### [](#)References
+        > Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:
+        *   [Change the specifications of an ApsaraDB RDS for MySQL instance](~~96061~~)
+        
+        @param request: ModifyDBNodeRequest
+        @return: ModifyDBNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbnode_with_options_async(request, runtime)
 
@@ -34868,8 +35010,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ReceiveDBInstanceResponse:
         """
-        ## Prerequisites
-        A disaster recovery instance is created.
+        The operation is phased out.
         
         @param request: ReceiveDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34914,8 +35055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ReceiveDBInstanceResponse:
         """
-        ## Prerequisites
-        A disaster recovery instance is created.
+        The operation is phased out.
         
         @param request: ReceiveDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34959,8 +35099,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ReceiveDBInstanceRequest,
     ) -> rds_20140815_models.ReceiveDBInstanceResponse:
         """
-        ## Prerequisites
-        A disaster recovery instance is created.
+        The operation is phased out.
         
         @param request: ReceiveDBInstanceRequest
         @return: ReceiveDBInstanceResponse
@@ -34973,8 +35112,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ReceiveDBInstanceRequest,
     ) -> rds_20140815_models.ReceiveDBInstanceResponse:
         """
-        ## Prerequisites
-        A disaster recovery instance is created.
+        The operation is phased out.
         
         @param request: ReceiveDBInstanceRequest
         @return: ReceiveDBInstanceResponse
@@ -37753,6 +37891,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        """
+        This operation is phased out.
+        
+        @param request: SwitchGuardToMasterInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchGuardToMasterInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -37791,6 +37936,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        """
+        This operation is phased out.
+        
+        @param request: SwitchGuardToMasterInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchGuardToMasterInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -37828,6 +37980,12 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
     ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        """
+        This operation is phased out.
+        
+        @param request: SwitchGuardToMasterInstanceRequest
+        @return: SwitchGuardToMasterInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_guard_to_master_instance_with_options(request, runtime)
 
@@ -37835,6 +37993,12 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.SwitchGuardToMasterInstanceRequest,
     ) -> rds_20140815_models.SwitchGuardToMasterInstanceResponse:
+        """
+        This operation is phased out.
+        
+        @param request: SwitchGuardToMasterInstanceRequest
+        @return: SwitchGuardToMasterInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_guard_to_master_instance_with_options_async(request, runtime)
 
