@@ -5146,6 +5146,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.DeleteEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_prom_instance):
+            query['DeletePromInstance'] = request.delete_prom_instance
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.region_id):
@@ -5176,6 +5178,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.DeleteEnvironmentResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.delete_prom_instance):
+            query['DeletePromInstance'] = request.delete_prom_instance
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.region_id):
@@ -8340,6 +8344,80 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.GetClusterAllUrlResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_all_url_with_options_async(request, runtime)
+
+    def get_commercial_status_with_options(
+        self,
+        request: arms20190808_models.GetCommercialStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetCommercialStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCommercialStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetCommercialStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_commercial_status_with_options_async(
+        self,
+        request: arms20190808_models.GetCommercialStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.GetCommercialStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.commodity_code):
+            query['CommodityCode'] = request.commodity_code
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCommercialStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.GetCommercialStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_commercial_status(
+        self,
+        request: arms20190808_models.GetCommercialStatusRequest,
+    ) -> arms20190808_models.GetCommercialStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_commercial_status_with_options(request, runtime)
+
+    async def get_commercial_status_async(
+        self,
+        request: arms20190808_models.GetCommercialStatusRequest,
+    ) -> arms20190808_models.GetCommercialStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_commercial_status_with_options_async(request, runtime)
 
     def get_explore_url_with_options(
         self,
