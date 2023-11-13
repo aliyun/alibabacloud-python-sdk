@@ -1,3 +1,6 @@
+2023-11-13 Version: 1.2.1
+- Generated python 2022-07-18 for ververica.
+
 2023-11-09 Version: 1.2.0
 - Generated python 2022-07-18 for ververica.
 
