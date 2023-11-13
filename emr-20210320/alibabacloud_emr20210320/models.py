@@ -1594,6 +1594,7 @@ class NodeAttributes(TeaModel):
     def __init__(
         self,
         key_pair_name: str = None,
+        master_root_password: str = None,
         ram_role: str = None,
         security_group_id: str = None,
         vpc_id: str = None,
@@ -1601,6 +1602,8 @@ class NodeAttributes(TeaModel):
     ):
         # ECS ssh登录秘钥。
         self.key_pair_name = key_pair_name
+        # MASTER节点root密码。
+        self.master_root_password = master_root_password
         # ECS访问资源绑定的角色。
         self.ram_role = ram_role
         # 安全组ID。EMR只支持普通安全组，不支持企业安全组。
@@ -1621,6 +1624,8 @@ class NodeAttributes(TeaModel):
         result = dict()
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
+        if self.master_root_password is not None:
+            result['MasterRootPassword'] = self.master_root_password
         if self.ram_role is not None:
             result['RamRole'] = self.ram_role
         if self.security_group_id is not None:
@@ -1635,6 +1640,8 @@ class NodeAttributes(TeaModel):
         m = m or dict()
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
+        if m.get('MasterRootPassword') is not None:
+            self.master_root_password = m.get('MasterRootPassword')
         if m.get('RamRole') is not None:
             self.ram_role = m.get('RamRole')
         if m.get('SecurityGroupId') is not None:
@@ -7186,11 +7193,11 @@ class CreateNodeGroupRequest(TeaModel):
         node_group: NodeGroupConfig = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 节点组信息。
+        # The information about a machine group.
         self.node_group = node_group
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -7229,8 +7236,9 @@ class CreateNodeGroupResponseBody(TeaModel):
         node_group_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the machine group.
         self.node_group_id = node_group_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7557,11 +7565,11 @@ class GetAutoScalingActivityRequest(TeaModel):
         region_id: str = None,
         scaling_activity_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
-        # 伸缩活动ID。
+        # The ID of the scaling activity.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -7610,39 +7618,41 @@ class GetAutoScalingActivityResponseBodyScalingActivity(TeaModel):
         rule_name: str = None,
         start_time: int = None,
     ):
-        # 伸缩活动ID。
+        # The ID of the scaling activity.
         self.activity_id = activity_id
-        # 本次伸缩活动对应的实例列表。
+        # The instances corresponding to this scaling activity.
         self.activity_results = activity_results
-        # 伸缩活动状态。取值范围：
-        # - REJECTED：拒绝
-        # - SUCCESSFUL：成功
-        # - FAILED：失败
-        # - IN_PROGRESS：进行中
+        # The status of the scaling activity. Valid values:
+        # 
+        # *   REJECTED
+        # *   SUCCESSFUL
+        # *   FAILED
+        # *   IN_PROGRESS
         self.activity_state = activity_state
-        # 伸缩活动类型。取值范围：
-        # - SCALE_IN：缩容
-        # - SCALE_OUT：扩容
+        # The type of the scaling activity. Valid value:
+        # 
+        # *   SCALE_OUT
+        # *   SCALE_IN
         self.activity_type = activity_type
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 伸缩活动描述。
+        # The description of the scaling activity.
         self.description = description
-        # 伸缩结束时间。
+        # The time when scaling ended.
         self.end_time = end_time
-        # 本次扩缩数量。
+        # The number of added or removed instances.
         self.expect_num = expect_num
-        # 节点组ID。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 节点组名称。
+        # The name of the node group.
         self.node_group_name = node_group_name
-        # 操作ID。
+        # The operation ID.
         self.operation_id = operation_id
-        # 伸缩规则详述。
+        # The description of the scaling rule.
         self.rule_detail = rule_detail
-        # 伸缩规则名称。
+        # The name of the scaling rule.
         self.rule_name = rule_name
-        # 伸缩启动时间。
+        # The time when scaling started.
         self.start_time = start_time
 
     def validate(self):
@@ -7734,7 +7744,7 @@ class GetAutoScalingActivityResponseBody(TeaModel):
         request_id: str = None,
         scaling_activity: GetAutoScalingActivityResponseBodyScalingActivity = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
         self.scaling_activity = scaling_activity
 
@@ -7815,11 +7825,11 @@ class GetAutoScalingPolicyRequest(TeaModel):
         node_group_id: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -7856,9 +7866,9 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyConstraints(TeaModel):
         max_capacity: int = None,
         min_capacity: int = None,
     ):
-        # 最大值
+        # The maximum number of nodes in the node group. Default value: 2000.
         self.max_capacity = max_capacity
-        # 最小值
+        # The minimum number of nodes in the node group. Default value: 0.
         self.min_capacity = min_capacity
 
     def validate(self):
@@ -7896,23 +7906,25 @@ class GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules(TeaModel):
         time_trigger: TimeTrigger = None,
         trigger_type: str = None,
     ):
-        # 伸缩类型。取值范围：
-        # - SCALE_OUT：扩容
-        # - SCALE_IN：缩容
+        # The type of the scaling activity. Valid values:
+        # 
+        # *   SCALE_OUT: scale-out rules
+        # *   SCALE_IN: scale-in rules
         self.activity_type = activity_type
-        # 调整类型。CHANGE_IN_CAPACITY/EXACT_CAPACITY。
+        # The adjustment type.
         self.adjustment_type = adjustment_type
-        # 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+        # The adjustment value. The value must be a positive number, which indicates the number of instances to be scaled out or in.
         self.adjustment_value = adjustment_value
-        # 按照负载伸缩描述。
+        # The description of scaling by load.
         self.metrics_trigger = metrics_trigger
-        # 弹性伸缩规则名称。
+        # The name of the auto scaling rule.
         self.rule_name = rule_name
-        # 按照时间伸缩描述。
+        # The description of scaling by time.
         self.time_trigger = time_trigger
-        # 伸缩规则类型。取值范围：
-        # - TIME_TRIGGER: 按时间伸缩。
-        # - METRICS_TRIGGER: 按负载伸缩。
+        # The type of the scaling rule. Valid values:
+        # 
+        # *   TIME_TRIGGER: scaling by time.
+        # *   METRICS_TRIGGER: scaling by load.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -7973,15 +7985,15 @@ class GetAutoScalingPolicyResponseBodyScalingPolicy(TeaModel):
         scaling_policy_id: str = None,
         scaling_rules: List[GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules] = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 最大最小值约束
+        # The maximum and minimum numbers of node groups.
         self.constraints = constraints
-        # 节点组ID。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 伸缩策略ID。
+        # The ID of the scaling policy.
         self.scaling_policy_id = scaling_policy_id
-        # 伸缩规则列表
+        # The scaling rules.
         self.scaling_rules = scaling_rules
 
     def validate(self):
@@ -8037,8 +8049,9 @@ class GetAutoScalingPolicyResponseBody(TeaModel):
         request_id: str = None,
         scaling_policy: GetAutoScalingPolicyResponseBodyScalingPolicy = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
+        # The information about the auto scaling policy.
         self.scaling_policy = scaling_policy
 
     def validate(self):
@@ -8234,12 +8247,13 @@ class GetDoctorApplicationRequest(TeaModel):
         date_time: str = None,
         region_id: str = None,
     ):
-        # app id
+        # The ID of the job that is submitted to YARN.
         self.app_id = app_id
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -8280,7 +8294,9 @@ class GetDoctorApplicationResponseBodyDataAnalysis(TeaModel):
         score: int = None,
         suggestion: str = None,
     ):
+        # The score of the job.
         self.score = score
+        # The suggestion for running the job.
         self.suggestion = suggestion
 
     def validate(self):
@@ -8315,9 +8331,13 @@ class GetDoctorApplicationResponseBodyDataMetricsMemSeconds(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -8360,9 +8380,13 @@ class GetDoctorApplicationResponseBodyDataMetricsMemUtilization(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -8405,9 +8429,13 @@ class GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -8450,9 +8478,13 @@ class GetDoctorApplicationResponseBodyDataMetricsVcoreUtilization(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -8495,9 +8527,13 @@ class GetDoctorApplicationResponseBodyDataMetrics(TeaModel):
         vcore_seconds: GetDoctorApplicationResponseBodyDataMetricsVcoreSeconds = None,
         vcore_utilization: GetDoctorApplicationResponseBodyDataMetricsVcoreUtilization = None,
     ):
+        # The aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running.
         self.mem_seconds = mem_seconds
+        # The memory usage.
         self.mem_utilization = mem_utilization
+        # The aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running.
         self.vcore_seconds = vcore_seconds
+        # The CPU utilization. The meaning is the same as that of the %CPU command in the output of the Linux top command.
         self.vcore_utilization = vcore_utilization
 
     def validate(self):
@@ -8557,15 +8593,25 @@ class GetDoctorApplicationResponseBodyData(TeaModel):
         type: str = None,
         user: str = None,
     ):
+        # The job analysis result.
         self.analysis = analysis
+        # The name of the job.
         self.app_name = app_name
+        # The end time of the job. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.end_time = end_time
+        # The job IDs. Multiple job IDs are separated with commas (,).
         self.ids = ids
+        # The metric information.
         self.metrics = metrics
+        # The SQL statement of the job. This parameter is left empty for non-SQL jobs.
         self.query_sql = query_sql
+        # The YARN queue to which the job was submitted.
         self.queue = queue
+        # The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.start_time = start_time
+        # The type of the compute engine.
         self.type = type
+        # The username that is used to submit the job.
         self.user = user
 
     def validate(self):
@@ -8635,8 +8681,9 @@ class GetDoctorApplicationResponseBody(TeaModel):
         data: GetDoctorApplicationResponseBodyData = None,
         request_id: str = None,
     ):
+        # The details of the job.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -13106,10 +13153,11 @@ class GetDoctorHDFSClusterRequest(TeaModel):
         date_time: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -13145,6 +13193,7 @@ class GetDoctorHDFSClusterResponseBodyDataAnalysis(TeaModel):
         self,
         hdfs_score: int = None,
     ):
+        # The overall score of HDFS storage resources.
         self.hdfs_score = hdfs_score
 
     def validate(self):
@@ -13175,9 +13224,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsColdDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13220,9 +13273,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsColdDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13265,9 +13322,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13310,9 +13371,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13355,9 +13420,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13400,9 +13469,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13445,9 +13518,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13490,9 +13567,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsEmptyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13535,9 +13616,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13580,9 +13665,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13625,9 +13714,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13670,9 +13763,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13715,9 +13812,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsHotDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13760,9 +13861,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsHotDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13805,9 +13910,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13850,9 +13959,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio(TeaMo
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13895,9 +14008,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13940,9 +14057,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -13985,9 +14106,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14030,9 +14155,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsLargeFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14075,9 +14204,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14120,9 +14253,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14165,9 +14302,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14210,9 +14351,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsMediumFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14255,9 +14400,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14300,9 +14449,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14345,9 +14498,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14390,9 +14547,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsSmallFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14435,9 +14596,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14480,9 +14645,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14525,9 +14694,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileDayGrowthCount(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14570,9 +14743,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTinyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14615,9 +14792,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataDayGrowthSize(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14660,9 +14841,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14705,9 +14890,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14750,9 +14939,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14795,9 +14988,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14840,9 +15037,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsTotalFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14885,9 +15086,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14930,9 +15135,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -14975,9 +15184,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15020,9 +15233,13 @@ class GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15103,47 +15320,89 @@ class GetDoctorHDFSClusterResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHDFSClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_ratio = cold_data_ratio
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The proportion of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_ratio = empty_file_ratio
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_ratio = freeze_data_ratio
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_ratio = hot_data_ratio
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The proportion of large files. Large files are those with a size greater than 1 GB.
         self.large_file_ratio = large_file_ratio
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_ratio = medium_file_ratio
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_ratio = small_file_ratio
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_ratio = warm_data_ratio
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -15461,7 +15720,9 @@ class GetDoctorHDFSClusterResponseBodyData(TeaModel):
         analysis: GetDoctorHDFSClusterResponseBodyDataAnalysis = None,
         metrics: GetDoctorHDFSClusterResponseBodyDataMetrics = None,
     ):
+        # The analysis results.
         self.analysis = analysis
+        # The metric information.
         self.metrics = metrics
 
     def validate(self):
@@ -15499,8 +15760,9 @@ class GetDoctorHDFSClusterResponseBody(TeaModel):
         data: GetDoctorHDFSClusterResponseBodyData = None,
         request_id: str = None,
     ):
+        # The HDFS analysis results.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15581,11 +15843,13 @@ class GetDoctorHDFSDirectoryRequest(TeaModel):
         dir_path: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
+        # The directory name. The depth of the directory is not greater than five.
         self.dir_path = dir_path
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -15628,9 +15892,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15673,9 +15941,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15718,9 +15990,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsColdDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15763,9 +16039,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15808,9 +16088,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileCountDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15853,9 +16137,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15898,9 +16186,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15943,9 +16235,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -15988,9 +16284,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16033,9 +16333,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataDayGrowthSize(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16078,9 +16382,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16123,9 +16431,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsHotDataSizeDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16168,9 +16480,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16213,9 +16529,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileCountDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16258,9 +16578,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsLargeFileDayGrowthCount(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16303,9 +16627,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16348,9 +16676,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileCountDayGrowthRatio
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16393,9 +16725,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsMediumFileDayGrowthCount(TeaM
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16438,9 +16774,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16483,9 +16823,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileCountDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16528,9 +16872,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsSmallFileDayGrowthCount(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16573,9 +16921,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16618,9 +16970,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16663,9 +17019,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTinyFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16708,9 +17068,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataDayGrowthSize(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16753,9 +17117,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16798,9 +17166,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16843,9 +17215,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16888,9 +17264,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileCountDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16933,9 +17313,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsTotalFileDayGrowthCount(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -16978,9 +17362,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17023,9 +17411,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17068,9 +17460,13 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17142,38 +17538,71 @@ class GetDoctorHDFSDirectoryResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHDFSDirectoryResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -17430,9 +17859,13 @@ class GetDoctorHDFSDirectoryResponseBodyData(TeaModel):
         metrics: GetDoctorHDFSDirectoryResponseBodyDataMetrics = None,
         user: str = None,
     ):
+        # The directory level.
         self.depth = depth
+        # The group to which the directory belongs.
         self.group = group
+        # The metric information.
         self.metrics = metrics
+        # The directory owner.
         self.user = user
 
     def validate(self):
@@ -17475,8 +17908,9 @@ class GetDoctorHDFSDirectoryResponseBody(TeaModel):
         data: GetDoctorHDFSDirectoryResponseBodyData = None,
         request_id: str = None,
     ):
+        # The analysis results of the HDFS directory.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17558,12 +17992,18 @@ class GetDoctorHDFSUGIRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
+        # Set this parameter based on the value of Type.
         self.name = name
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
+        # The filter condition. Valid values:
+        # 
+        # *   user
+        # *   group
         self.type = type
 
     def validate(self):
@@ -17610,9 +18050,13 @@ class GetDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17655,9 +18099,13 @@ class GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17700,9 +18148,13 @@ class GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -17744,8 +18196,11 @@ class GetDoctorHDFSUGIResponseBodyDataMetrics(TeaModel):
         total_dir_count: GetDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount = None,
         total_file_count: GetDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount = None,
     ):
+        # The total data size.
         self.total_data_size = total_data_size
+        # The total number of directories.
         self.total_dir_count = total_dir_count
+        # The total number of files.
         self.total_file_count = total_file_count
 
     def validate(self):
@@ -17789,6 +18244,7 @@ class GetDoctorHDFSUGIResponseBodyData(TeaModel):
         self,
         metrics: GetDoctorHDFSUGIResponseBodyDataMetrics = None,
     ):
+        # The metric information.
         self.metrics = metrics
 
     def validate(self):
@@ -17819,8 +18275,9 @@ class GetDoctorHDFSUGIResponseBody(TeaModel):
         data: GetDoctorHDFSUGIResponseBodyData = None,
         request_id: str = None,
     ):
+        # The results of HDFS analysis.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17900,10 +18357,11 @@ class GetDoctorHiveClusterRequest(TeaModel):
         date_time: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -17942,9 +18400,13 @@ class GetDoctorHiveClusterResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
+        # The score for the distribution of files of different sizes stored in the Hive cluster.
         self.hive_distribution_score = hive_distribution_score
+        # The score for the distribution of files stored in different formats in the Hive cluster.
         self.hive_format_score = hive_format_score
+        # The score for the access frequency of the Hive cluster.
         self.hive_frequency_score = hive_frequency_score
+        # The overall score of the Hive cluster.
         self.hive_score = hive_score
 
     def validate(self):
@@ -17987,9 +18449,13 @@ class GetDoctorHiveClusterResponseBodyDataFormats(TeaModel):
         format_size: int = None,
         format_size_unit: str = None,
     ):
+        # The name of the storage format.
         self.format_name = format_name
+        # The proportion of data in a specific storage format.
         self.format_ratio = format_ratio
+        # The size of storage format-specific data.
         self.format_size = format_size
+        # The unit of the data size.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -18032,9 +18498,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsColdDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18077,9 +18547,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsColdDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18122,9 +18596,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18167,9 +18645,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsColdDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18212,9 +18694,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsDatabaseCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18257,9 +18743,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18302,9 +18792,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18347,9 +18841,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18392,9 +18890,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsEmptyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18437,9 +18939,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18482,9 +18988,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18527,9 +19037,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18572,9 +19086,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18617,9 +19135,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsHotDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18662,9 +19184,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsHotDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18707,9 +19233,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18752,9 +19282,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsHotDataSizeDayGrowthRatio(TeaMo
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18797,9 +19331,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18842,9 +19380,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsLargeFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18887,9 +19429,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsLargeFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18932,9 +19478,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsLargeFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -18977,9 +19527,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19022,9 +19576,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsMediumFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19067,9 +19625,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsMediumFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19112,9 +19674,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsMediumFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19157,9 +19723,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsPartitionNum(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19202,9 +19772,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19247,9 +19821,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsSmallFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19292,9 +19870,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsSmallFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19337,9 +19919,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsSmallFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19382,9 +19968,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTableCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19427,9 +20017,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19472,9 +20066,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTinyFileCountDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19517,9 +20115,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTinyFileDayGrowthCount(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19562,9 +20164,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTinyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19607,9 +20213,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTotalDataDayGrowthSize(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19652,9 +20262,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19697,9 +20311,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19742,9 +20360,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19787,9 +20409,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTotalFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19832,9 +20458,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsTotalFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19877,9 +20507,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsWarmDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19922,9 +20556,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsWarmDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -19967,9 +20605,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20012,9 +20654,13 @@ class GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20098,50 +20744,95 @@ class GetDoctorHiveClusterResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHiveClusterResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_ratio = cold_data_ratio
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of databases.
         self.database_count = database_count
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The proportion of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_ratio = empty_file_ratio
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_ratio = freeze_data_ratio
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_ratio = hot_data_ratio
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The proportion of large files. Large files are those with a size greater than 1 GB.
         self.large_file_ratio = large_file_ratio
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_ratio = medium_file_ratio
+        # The number of partitions.
         self.partition_num = partition_num
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_ratio = small_file_ratio
+        # The number of tables.
         self.table_count = table_count
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_ratio = warm_data_ratio
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -20481,8 +21172,11 @@ class GetDoctorHiveClusterResponseBodyData(TeaModel):
         formats: List[GetDoctorHiveClusterResponseBodyDataFormats] = None,
         metrics: GetDoctorHiveClusterResponseBodyDataMetrics = None,
     ):
+        # The analysis results.
         self.analysis = analysis
+        # The information from the perspective of storage formats.
         self.formats = formats
+        # The metric information.
         self.metrics = metrics
 
     def validate(self):
@@ -20533,8 +21227,9 @@ class GetDoctorHiveClusterResponseBody(TeaModel):
         data: GetDoctorHiveClusterResponseBodyData = None,
         request_id: str = None,
     ):
+        # The analysis results of the Hive cluster.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20615,11 +21310,13 @@ class GetDoctorHiveDatabaseRequest(TeaModel):
         date_time: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The database name.
         self.database_name = database_name
+        # The query date.
         self.date_time = date_time
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -20662,9 +21359,13 @@ class GetDoctorHiveDatabaseResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
+        # The score for the distribution of files of different sizes stored in the Hive database.
         self.hive_distribution_score = hive_distribution_score
+        # The score for the distribution of files stored in different formats in the Hive database.
         self.hive_format_score = hive_format_score
+        # The score for the access frequency of the Hive database.
         self.hive_frequency_score = hive_frequency_score
+        # The overall score of the Hive database.
         self.hive_score = hive_score
 
     def validate(self):
@@ -20709,11 +21410,17 @@ class GetDoctorHiveDatabaseResponseBodyDataFormats(TeaModel):
         format_size_day_growth_ratio: float = None,
         format_size_unit: str = None,
     ):
+        # The daily increment of storage format-specific data.
         self.format_day_growth_size = format_day_growth_size
+        # The name of the storage format.
         self.format_name = format_name
+        # The proportion of data in a specific storage format.
         self.format_ratio = format_ratio
+        # The amount of storage format-specific data.
         self.format_size = format_size
+        # The day-to-day growth rate of storage format-specific data.
         self.format_size_day_growth_ratio = format_size_day_growth_ratio
+        # The unit of the amount of storage format-specific data.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -20764,9 +21471,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataDayGrowthSize(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20809,9 +21520,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20854,9 +21569,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20899,9 +21618,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsColdDataSizeDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20944,9 +21667,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -20989,9 +21716,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21034,9 +21765,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21079,9 +21814,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsEmptyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21124,9 +21863,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21169,9 +21912,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21214,9 +21961,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21259,9 +22010,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21304,9 +22059,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21349,9 +22108,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21394,9 +22157,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21439,9 +22206,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsHotDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21484,9 +22255,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21529,9 +22304,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21574,9 +22353,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21619,9 +22402,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsLargeFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21664,9 +22451,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21709,9 +22500,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileCountDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21754,9 +22549,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileDayGrowthCount(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21799,9 +22598,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsMediumFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21844,9 +22647,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsPartitionNum(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21889,9 +22696,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21934,9 +22745,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -21979,9 +22794,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22024,9 +22843,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsSmallFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22069,9 +22892,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTableCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22114,9 +22941,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22159,9 +22990,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22204,9 +23039,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22249,9 +23088,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTinyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22294,9 +23137,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22339,9 +23186,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22384,9 +23235,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22429,9 +23284,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22474,9 +23333,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22519,9 +23382,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsTotalFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22564,9 +23431,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataDayGrowthSize(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22609,9 +23480,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22654,9 +23529,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22699,9 +23578,13 @@ class GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -22784,49 +23667,93 @@ class GetDoctorHiveDatabaseResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHiveDatabaseResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_ratio = cold_data_ratio
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The proportion of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_ratio = empty_file_ratio
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_ratio = freeze_data_ratio
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_ratio = hot_data_ratio
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The proportion of large files. Large files are those with a size greater than 1 GB.
         self.large_file_ratio = large_file_ratio
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_ratio = medium_file_ratio
+        # The number of partitions.
         self.partition_num = partition_num
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_ratio = small_file_ratio
+        # The number of tables.
         self.table_count = table_count
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_ratio = warm_data_ratio
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -23159,8 +24086,11 @@ class GetDoctorHiveDatabaseResponseBodyData(TeaModel):
         formats: List[GetDoctorHiveDatabaseResponseBodyDataFormats] = None,
         metrics: GetDoctorHiveDatabaseResponseBodyDataMetrics = None,
     ):
+        # The analysis results.
         self.analysis = analysis
+        # The information from the perspective of storage formats.
         self.formats = formats
+        # The metric information.
         self.metrics = metrics
 
     def validate(self):
@@ -23211,8 +24141,9 @@ class GetDoctorHiveDatabaseResponseBody(TeaModel):
         data: GetDoctorHiveDatabaseResponseBodyData = None,
         request_id: str = None,
     ):
+        # The analysis results of the Hive database.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23293,11 +24224,13 @@ class GetDoctorHiveTableRequest(TeaModel):
         region_id: str = None,
         table_name: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
+        # The table name. The table name must follow the rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
         self.table_name = table_name
 
     def validate(self):
@@ -23340,9 +24273,13 @@ class GetDoctorHiveTableResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
+        # The score for the distribution of files of different sizes stored in the Hive table.
         self.hive_distribution_score = hive_distribution_score
+        # The score for the distribution of files stored in different formats in the Hive table.
         self.hive_format_score = hive_format_score
+        # The score for the access frequency of the Hive table.
         self.hive_frequency_score = hive_frequency_score
+        # The overall score of the Hive table.
         self.hive_score = hive_score
 
     def validate(self):
@@ -23387,11 +24324,17 @@ class GetDoctorHiveTableResponseBodyDataFormats(TeaModel):
         format_size_day_growth_ratio: float = None,
         format_size_unit: str = None,
     ):
+        # The daily amount increment of the data in a specific storage format.
         self.format_day_growth_size = format_day_growth_size
+        # The name of the storage format.
         self.format_name = format_name
+        # The ratio of the data in a specific storage format.
         self.format_ratio = format_ratio
+        # The size of storage format-specific data.
         self.format_size = format_size
+        # The day-to-day growth rate of the amount of the data in a specific storage format.
         self.format_size_day_growth_ratio = format_size_day_growth_ratio
+        # The unit of the data size.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -23442,9 +24385,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsColdDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23487,9 +24434,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsColdDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23532,9 +24483,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23577,9 +24532,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsColdDataSizeDayGrowthRatio(TeaMod
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23622,9 +24581,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23667,9 +24630,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsEmptyFileCountDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23712,9 +24679,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23757,9 +24728,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsEmptyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23802,9 +24777,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23847,9 +24826,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsFreezeDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23892,9 +24875,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23937,9 +24924,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -23982,9 +24973,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsHotDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24027,9 +25022,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsHotDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24072,9 +25071,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24117,9 +25120,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsHotDataSizeDayGrowthRatio(TeaMode
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24162,9 +25169,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24207,9 +25218,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsLargeFileCountDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24252,9 +25267,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsLargeFileDayGrowthCount(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24297,9 +25316,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsLargeFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24342,9 +25365,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24387,9 +25414,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsMediumFileCountDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24432,9 +25463,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsMediumFileDayGrowthCount(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24477,9 +25512,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsMediumFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24522,9 +25561,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsPartitionNum(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24567,9 +25610,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24612,9 +25659,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsSmallFileCountDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24657,9 +25708,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsSmallFileDayGrowthCount(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24702,9 +25757,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsSmallFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24747,9 +25806,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24792,9 +25855,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTinyFileCountDayGrowthRatio(TeaMo
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24837,9 +25904,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTinyFileDayGrowthCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24882,9 +25953,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTinyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24927,9 +26002,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTotalDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -24972,9 +26051,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25017,9 +26100,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(TeaMo
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25062,9 +26149,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25107,9 +26198,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTotalFileCountDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25152,9 +26247,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsTotalFileDayGrowthCount(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25197,9 +26296,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsWarmDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25242,9 +26345,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsWarmDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25287,9 +26394,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25332,9 +26443,13 @@ class GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(TeaMod
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -25416,48 +26531,91 @@ class GetDoctorHiveTableResponseBodyDataMetrics(TeaModel):
         warm_data_size: GetDoctorHiveTableResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: GetDoctorHiveTableResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_ratio = cold_data_ratio
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The proportion of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_ratio = empty_file_ratio
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_ratio = freeze_data_ratio
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_ratio = hot_data_ratio
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The proportion of large files. Large files are those with a size greater than 1 GB.
         self.large_file_ratio = large_file_ratio
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_ratio = medium_file_ratio
+        # The number of partitions.
         self.partition_num = partition_num
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_ratio = small_file_ratio
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_ratio = warm_data_ratio
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -25784,9 +26942,13 @@ class GetDoctorHiveTableResponseBodyData(TeaModel):
         metrics: GetDoctorHiveTableResponseBodyDataMetrics = None,
         owner: str = None,
     ):
+        # The analysis results.
         self.analysis = analysis
+        # The information from the perspective of formats.
         self.formats = formats
+        # The metric information.
         self.metrics = metrics
+        # The owner.
         self.owner = owner
 
     def validate(self):
@@ -25841,8 +27003,9 @@ class GetDoctorHiveTableResponseBody(TeaModel):
         data: GetDoctorHiveTableResponseBodyData = None,
         request_id: str = None,
     ):
+        # The analysis results of the Hive table.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25922,11 +27085,11 @@ class GetDoctorJobRequest(TeaModel):
         cluster_id: str = None,
         region_id: str = None,
     ):
-        # app id
+        # The ID of the job that is submitted to YARN.
         self.app_id = app_id
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -25965,9 +27128,13 @@ class GetDoctorJobResponseBodyDataMetricsMemSeconds(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -26010,9 +27177,13 @@ class GetDoctorJobResponseBodyDataMetricsVcoreSeconds(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -26053,7 +27224,9 @@ class GetDoctorJobResponseBodyDataMetrics(TeaModel):
         mem_seconds: GetDoctorJobResponseBodyDataMetricsMemSeconds = None,
         vcore_seconds: GetDoctorJobResponseBodyDataMetricsVcoreSeconds = None,
     ):
+        # The amount of memory consumed.
         self.mem_seconds = mem_seconds
+        # The CPU usage.
         self.vcore_seconds = vcore_seconds
 
     def validate(self):
@@ -26101,17 +27274,39 @@ class GetDoctorJobResponseBodyData(TeaModel):
         type: str = None,
         user: str = None,
     ):
+        # The ID of the job that was submitted to YARN.
         self.app_id = app_id
+        # The name of the job.
         self.app_name = app_name
+        # The total running time of the job. Unit: milliseconds.
         self.elapsed_time = elapsed_time
+        # The final state of the job. Valid values:
+        # 
+        # *   SUCCEEDED
+        # *   FAILED
+        # *   KILLED
+        # *   ENDED
+        # *   UNDEFINED
         self.final_status = final_status
+        # The time when the job ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.finish_time = finish_time
+        # The time when the job was started. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.launch_time = launch_time
+        # The data about metrics.
         self.metrics = metrics
+        # The YARN queue to which the job was submitted.
         self.queue = queue
+        # The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.start_time = start_time
+        # The running state of the job. Valid values:
+        # 
+        # *   FINISHED
+        # *   FAILED
+        # *   KILLED
         self.state = state
+        # The type of the compute engine.
         self.type = type
+        # The username that was used to submit the job.
         self.user = user
 
     def validate(self):
@@ -26186,8 +27381,9 @@ class GetDoctorJobResponseBody(TeaModel):
         data: GetDoctorJobResponseBodyData = None,
         request_id: str = None,
     ):
+        # The information about the job.
         self.data = data
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -26982,25 +28178,25 @@ class ListApplicationConfigsRequest(TeaModel):
         node_id: str = None,
         region_id: str = None,
     ):
-        # 应用名称。
+        # The name of the application.
         self.application_name = application_name
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 配置文件名称。
+        # The name of the configuration file.
         self.config_file_name = config_file_name
-        # 配置键值，支持模糊查询。
+        # The name of the configuration item.
         self.config_item_key = config_item_key
-        # 配置项值。
+        # The value of the configuration item.
         self.config_item_value = config_item_value
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The number of entries per page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The page number of the next page returned.
         self.next_token = next_token
-        # 节点组ID。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 节点ID。
+        # The node ID.
         self.node_id = node_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -27076,31 +28272,31 @@ class ListApplicationConfigsResponseBodyApplicationConfigs(TeaModel):
         node_id: str = None,
         update_time: int = None,
     ):
-        # 应用名称。
+        # The name of the application.
         self.application_name = application_name
-        # 配置值生效状态。
+        # The status of the configuration value.
         self.config_effect_state = config_effect_state
-        # 配置文件名称。
+        # The name of the configuration file.
         self.config_file_name = config_file_name
-        # 配置项键。
+        # The name of the configuration item.
         self.config_item_key = config_item_key
-        # 配置项值。
+        # The value of the configuration item.
         self.config_item_value = config_item_value
-        # 创建时间。
+        # The time when the application was created.
         self.create_time = create_time
-        # 是否是自定义配置。
+        # Indicates whether the configurations are custom.
         self.custom = custom
-        # 描述。
+        # The description.
         self.description = description
-        # 初始值。
+        # The initial value.
         self.init_value = init_value
-        # 修改人。
+        # The person who modified the configurations.
         self.modifier = modifier
-        # 节点组ID。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 节点ID。
+        # The node ID.
         self.node_id = node_id
-        # 更新时间。
+        # The time when the application was updated.
         self.update_time = update_time
 
     def validate(self):
@@ -27180,14 +28376,15 @@ class ListApplicationConfigsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The application configurations.
         self.application_configs = application_configs
-        # 本次请求所返回的最大记录条数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # The page number of the next page returned.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of pages.
         self.total_count = total_count
 
     def validate(self):
@@ -27287,15 +28484,15 @@ class ListApplicationsRequest(TeaModel):
         next_token: str = None,
         region_id: str = None,
     ):
-        # 应用名称列表。
+        # The application names.
         self.application_names = application_names
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The total number of pages.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The page number of the next page returned.
         self.next_token = next_token
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -27342,13 +28539,13 @@ class ListApplicationsResponseBodyApplications(TeaModel):
         application_version: str = None,
         community_version: str = None,
     ):
-        # 应用名称。
+        # The application name.
         self.application_name = application_name
-        # 应用操作状态
+        # The status of the application operation.
         self.application_state = application_state
-        # 应用版本。
+        # The version of the application.
         self.application_version = application_version
-        # 社区版本。
+        # The community edition.
         self.community_version = community_version
 
     def validate(self):
@@ -27392,14 +28589,15 @@ class ListApplicationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The information about applications.
         self.applications = applications
-        # 本次请求所返回的最大记录条数。
+        # The number of entries per page.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # The page number of the next page returned.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of pages.
         self.total_count = total_count
 
     def validate(self):
@@ -27504,31 +28702,28 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         scaling_rule_name: str = None,
         start_time: int = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 查询伸缩活动创建时间的结束时间戳。单位为毫秒。
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
-        # 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
-        # 伸缩活动状态。数组元数个数N的取值范围：1~20。默认取值：
-        # - REJECTED：拒绝。
-        # - SUCCESSFUL：成功。
-        # - FAILED：失败。
-        # - IN_PROGRESS：进行中。
+        # The status of the scaling activity. Number of elements in the array: 1-20.
         self.scaling_activity_states = scaling_activity_states
-        # 伸缩活动类型。数组元数个数N的取值范围：1~20。取值范围：
-        # - SCALE_OUT：扩容。
-        # - SCALE_IN：缩容。
+        # The type of the scaling activity. Valid values:
+        # 
+        # *   SCALE_OUT
+        # *   SCALE_IN
         self.scaling_activity_type = scaling_activity_type
-        # 伸缩规则名称。
+        # The name of the scaling rule.
         self.scaling_rule_name = scaling_rule_name
-        # 查询伸缩活动创建时间的时间戳。单位为毫秒。
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -27603,35 +28798,37 @@ class ListAutoScalingActivitiesResponseBodyScalingActivities(TeaModel):
         rule_name: str = None,
         start_time: int = None,
     ):
-        # 伸缩活动ID。
+        # The ID of the scaling activity.
         self.activity_id = activity_id
-        # 伸缩活动状态。取值范围：
-        # - REJECTED：拒绝
-        # - SUCCESSFUL：成功
-        # - FAILED：失败
-        # - IN_PROGRESS：进行中
+        # The status of the scaling activity. Valid values:
+        # 
+        # *   REJECTED
+        # *   SUCCESSFUL
+        # *   FAILED
+        # *   IN_PROGRESS
         self.activity_state = activity_state
-        # 伸缩活动类型。取值范围：
-        # - SCALE_IN：缩容
-        # - SCALE_OUT：扩容
+        # The type of the scaling activity. Valid values:
+        # 
+        # *   SCALE_OUT
+        # *   SCALE_IN
         self.activity_type = activity_type
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 伸缩活动描述。
+        # The description of the scaling activity.
         self.description = description
-        # 伸缩结束时间。
+        # The end time of the scaling. Unit: milliseconds.
         self.end_time = end_time
-        # 本次扩缩数量。
+        # The number of added or removed instances.
         self.expect_num = expect_num
-        # 节点组ID。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 节点组名称。
+        # The name of the node group.
         self.node_group_name = node_group_name
-        # 操作ID。
+        # The operation ID.
         self.operation_id = operation_id
-        # 伸缩规则名称。
+        # The name of the scaling rule.
         self.rule_name = rule_name
-        # 伸缩启动时间。
+        # The start time of the scaling. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -27707,14 +28904,15 @@ class ListAutoScalingActivitiesResponseBody(TeaModel):
         scaling_activities: List[ListAutoScalingActivitiesResponseBodyScalingActivities] = None,
         total_count: int = None,
     ):
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
+        # The scaling activities.
         self.scaling_activities = scaling_activities
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -28053,20 +29251,38 @@ class ListDoctorApplicationsRequest(TeaModel):
         types: List[str] = None,
         users: List[str] = None,
     ):
+        # The IDs of jobs that are submitted to YARN.
         self.app_ids = app_ids
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The field that you use to sort the query results. Valid values:
+        # 
+        # 1.  startTime: the time when the job starts
+        # 2.  endTime: the time when the job ends
+        # 3.  vcoreUtilization: the vCPU utilization of the job
+        # 4.  memUtilization: the memory usage of the job
+        # 5.  vcoreSeconds: the aggregated number of vCPUs that are allocated to the job multiplied by the number of seconds the job has been running
+        # 6.  memSeconds: the aggregated amount of memory that is allocated to the job multiplied by the number of seconds the job has been running
+        # 7.  score: the score of the job
         self.order_by = order_by
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   ASC: the ascending order
+        # *   DESC: the descending order
         self.order_type = order_type
+        # The YARN queues to which the jobs are submitted.
         self.queues = queues
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
+        # The YARN engines to which the jobs are submitted.
         self.types = types
+        # The users who submit the jobs.
         self.users = users
 
     def validate(self):
@@ -28135,7 +29351,9 @@ class ListDoctorApplicationsResponseBodyDataAnalysis(TeaModel):
         score: int = None,
         suggestion: str = None,
     ):
+        # The score of the job.
         self.score = score
+        # The suggestion on executing the job.
         self.suggestion = suggestion
 
     def validate(self):
@@ -28170,9 +29388,13 @@ class ListDoctorApplicationsResponseBodyDataMetricsMemSeconds(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -28215,9 +29437,13 @@ class ListDoctorApplicationsResponseBodyDataMetricsMemUtilization(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -28260,9 +29486,13 @@ class ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -28305,9 +29535,13 @@ class ListDoctorApplicationsResponseBodyDataMetricsVcoreUtilization(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -28350,9 +29584,13 @@ class ListDoctorApplicationsResponseBodyDataMetrics(TeaModel):
         vcore_seconds: ListDoctorApplicationsResponseBodyDataMetricsVcoreSeconds = None,
         vcore_utilization: ListDoctorApplicationsResponseBodyDataMetricsVcoreUtilization = None,
     ):
+        # The amount of memory consumed.
         self.mem_seconds = mem_seconds
+        # The memory usage
         self.mem_utilization = mem_utilization
+        # The CPU usage.
         self.vcore_seconds = vcore_seconds
+        # The CPU utilization. This parameter has the same meaning as %CPU in the Linux top command.
         self.vcore_utilization = vcore_utilization
 
     def validate(self):
@@ -28413,16 +29651,27 @@ class ListDoctorApplicationsResponseBodyData(TeaModel):
         type: str = None,
         user: str = None,
     ):
+        # The analysis results of the jobs.
         self.analysis = analysis
+        # The job ID in YARN. The value of QueryID or SessionID is returned for a Hive job.
         self.app_id = app_id
+        # The name of the job.
         self.app_name = app_name
+        # The time when the job ended. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.end_time = end_time
+        # The job IDs. Multiple job IDs are separated with commas (,).
         self.ids = ids
+        # The data about metrics.
         self.metrics = metrics
+        # The query statement. This parameter is left empty for non-SQL jobs.
         self.query_sql = query_sql
+        # The YARN queue to which the job was submitted.
         self.queue = queue
+        # The time when the job was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. Unit: milliseconds.
         self.start_time = start_time
+        # The type of the compute engine.
         self.type = type
+        # The username that was used to submit the job.
         self.user = user
 
     def validate(self):
@@ -28499,14 +29748,15 @@ class ListDoctorApplicationsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The details of jobs.
         self.data = data
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -33755,17 +35005,31 @@ class ListDoctorHDFSUGIRequest(TeaModel):
         region_id: str = None,
         type: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The basis on which you want to sort the query results. Valid values:
+        # 
+        # *   totalFileCount: the total number of files
+        # *   totalDataSize: the total data size
+        # *   totalDirCount: the total number of directories
         self.order_by = order_by
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   ASC: in ascending order
+        # *   DESC: in descending order
         self.order_type = order_type
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
+        # The filter condition. Valid values:
+        # 
+        # *   user
+        # *   group
         self.type = type
 
     def validate(self):
@@ -33824,9 +35088,13 @@ class ListDoctorHDFSUGIResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -33869,9 +35137,13 @@ class ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -33914,9 +35186,13 @@ class ListDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -33958,8 +35234,11 @@ class ListDoctorHDFSUGIResponseBodyDataMetrics(TeaModel):
         total_dir_count: ListDoctorHDFSUGIResponseBodyDataMetricsTotalDirCount = None,
         total_file_count: ListDoctorHDFSUGIResponseBodyDataMetricsTotalFileCount = None,
     ):
+        # The total data size.
         self.total_data_size = total_data_size
+        # The total number of directories.
         self.total_dir_count = total_dir_count
+        # The total number of files.
         self.total_file_count = total_file_count
 
     def validate(self):
@@ -34004,7 +35283,9 @@ class ListDoctorHDFSUGIResponseBodyData(TeaModel):
         metrics: ListDoctorHDFSUGIResponseBodyDataMetrics = None,
         name: str = None,
     ):
+        # The metric information.
         self.metrics = metrics
+        # The actual name of the owner or group returned based on the value of Type.
         self.name = name
 
     def validate(self):
@@ -34042,14 +35323,15 @@ class ListDoctorHDFSUGIResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The results of batch HDFS analysis.
         self.data = data
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries that are returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -34152,17 +35434,26 @@ class ListDoctorHiveDatabasesRequest(TeaModel):
         order_type: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The database names.
         self.database_names = database_names
+        # The query date.
         self.date_time = date_time
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The basis on which you want to sort the query results. Valid values:
+        # 
+        # *   tableCount: the number of tables
         self.order_by = order_by
+        # The order in which you want to sort the query results. Valid values:
+        # 
+        # *   ASC: in ascending order
+        # *   DESC: in descending order
         self.order_type = order_type
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -34221,9 +35512,13 @@ class ListDoctorHiveDatabasesResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
+        # The score for the distribution of files of different sizes stored in the Hive database.
         self.hive_distribution_score = hive_distribution_score
+        # The score for the distribution of files stored in different formats in the Hive database.
         self.hive_format_score = hive_format_score
+        # The score for the access frequency of the Hive database.
         self.hive_frequency_score = hive_frequency_score
+        # The overall score of the Hive database.
         self.hive_score = hive_score
 
     def validate(self):
@@ -34268,11 +35563,17 @@ class ListDoctorHiveDatabasesResponseBodyDataFormats(TeaModel):
         format_size_day_growth_ratio: float = None,
         format_size_unit: str = None,
     ):
+        # The daily increment of storage format-specific data.
         self.format_day_growth_size = format_day_growth_size
+        # The name of the storage format.
         self.format_name = format_name
+        # The proportion of data in a specific storage format.
         self.format_ratio = format_ratio
+        # The amount of storage format-specific data.
         self.format_size = format_size
+        # The day-to-day growth rate of storage format-specific data.
         self.format_size_day_growth_ratio = format_size_day_growth_ratio
+        # The unit of the amount of storage format-specific data.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -34323,9 +35624,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataDayGrowthSize(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34368,9 +35673,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34413,9 +35722,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34458,9 +35771,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsColdDataSizeDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34503,9 +35820,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34548,9 +35869,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34593,9 +35918,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaM
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34638,9 +35967,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsEmptyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34683,9 +36016,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaM
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34728,9 +36065,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34773,9 +36114,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34818,9 +36163,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34863,9 +36212,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34908,9 +36261,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34953,9 +36310,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -34998,9 +36359,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsHotDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35043,9 +36408,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35088,9 +36457,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileCountDayGrowthRatio
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35133,9 +36506,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileDayGrowthCount(TeaM
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35178,9 +36555,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsLargeFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35223,9 +36604,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35268,9 +36653,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileCountDayGrowthRati
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35313,9 +36702,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileDayGrowthCount(Tea
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35358,9 +36751,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsMediumFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35403,9 +36800,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsPartitionNum(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35448,9 +36849,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35493,9 +36898,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileCountDayGrowthRatio
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35538,9 +36947,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileDayGrowthCount(TeaM
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35583,9 +36996,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsSmallFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35628,9 +37045,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTableCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35673,9 +37094,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35718,9 +37143,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileCountDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35763,9 +37192,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileDayGrowthCount(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35808,9 +37241,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTinyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35853,9 +37290,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataDayGrowthSize(TeaMo
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35898,9 +37339,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35943,9 +37388,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -35988,9 +37437,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36033,9 +37486,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileCountDayGrowthRatio
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36078,9 +37535,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsTotalFileDayGrowthCount(TeaM
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36123,9 +37584,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataDayGrowthSize(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36168,9 +37633,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36213,9 +37682,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36258,9 +37731,13 @@ class ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -36343,49 +37820,93 @@ class ListDoctorHiveDatabasesResponseBodyDataMetrics(TeaModel):
         warm_data_size: ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: ListDoctorHiveDatabasesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_ratio = cold_data_ratio
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The proportion of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_ratio = empty_file_ratio
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_ratio = freeze_data_ratio
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_ratio = hot_data_ratio
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The proportion of large files. Large files are those with a size greater than 1 GB.
         self.large_file_ratio = large_file_ratio
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_ratio = medium_file_ratio
+        # The number of partitions.
         self.partition_num = partition_num
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_ratio = small_file_ratio
+        # The number of tables.
         self.table_count = table_count
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_ratio = warm_data_ratio
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -36719,9 +38240,13 @@ class ListDoctorHiveDatabasesResponseBodyData(TeaModel):
         formats: List[ListDoctorHiveDatabasesResponseBodyDataFormats] = None,
         metrics: ListDoctorHiveDatabasesResponseBodyDataMetrics = None,
     ):
+        # The analysis results.
         self.analysis = analysis
+        # The database name.
         self.database_name = database_name
+        # The information from the perspective of storage formats.
         self.formats = formats
+        # The metric information.
         self.metrics = metrics
 
     def validate(self):
@@ -36779,14 +38304,15 @@ class ListDoctorHiveDatabasesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The analysis results of Hive databases.
         self.data = data
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries that are returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -36889,17 +38415,68 @@ class ListDoctorHiveTablesRequest(TeaModel):
         region_id: str = None,
         table_names: List[str] = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
         self.date_time = date_time
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The maximum number of entries to return on each page.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
+        # The basis on which you want to sort the query results. Valid value:
+        # 
+        # *   partitionNum: the number of partitions.
+        # *   totalFileCount: the total number of files.
+        # *   largeFileCount: the number of large files. Large files are those with a size greater than 1 GB.
+        # *   mediumFileCount: the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+        # *   smallFileCount: the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+        # *   tinyFileCount: the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+        # *   emptyFileCount: the number of empty files. Empty files are those with a size of 0 MB.
+        # *   largeFileRatio: the proportion of large files. Large files are those with a size greater than 1 GB.
+        # *   mediumFileRatio: the proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+        # *   smallFileRatio: the proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+        # *   tinyFileRatio: the proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+        # *   emptyFileRatio: the proportion of empty files. Empty files are those with a size of 0 MB.
+        # *   hotDataSize: the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # *   warmDataSize: the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # *   coldDataSize: the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   freezeDataSize: the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+        # *   totalDataSize: the total amount of data.
+        # *   hotDataRatio: the proportion of hot data. Hot data refers to data that is accessed in recent seven days.
+        # *   awmDataRatio: the proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # *   coldDataRatio: the proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   freezeDataRatio: the proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+        # *   totalFileDayGrowthCount: the daily increment of the total number of files.
+        # *   largeFileDayGrowthCount: the daily increment of the number of large files. Large files are those with a size greater than 1 GB.
+        # *   mediumFileDayGrowthCount: the daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+        # *   smallFileDayGrowthCount: the daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+        # *   tinyFileDayGrowthCount: the daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+        # *   emptyFileDayGrowthCount: the daily increment of the number of empty files. Empty files are those with a size of 0 MB.
+        # *   hotDataDayGrowthSize: The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # *   warmDataDayGrowthSize: the daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # *   coldDataDayGrowthSize: The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   freezeDataDayGrowthSize: The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+        # *   totalDataDayGrowthSize: the daily incremental of the total data volume.
+        # *   totalFileCountDayGrowthRatio: the day-to-day growth rate of the total number of files.
+        # *   largeFileCountDayGrowthRatio: the day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
+        # *   mediumFileCountDayGrowthRatio: the day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
+        # *   smallFileCountDayGrowthRatio: the day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
+        # *   tinyFileCountDayGrowthRatio: the day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
+        # *   emptyFileCountDayGrowthRatio: the day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
+        # *   hotDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
+        # *   warmDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
+        # *   coldDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
+        # *   freezeDataSizeDayGrowthRatio: the day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
+        # *   totalDataSizeDayGrowthRatio: the day-to-day growth rate of the total data volume.
         self.order_by = order_by
+        # The order in which you want to sort the query results. Valid value:
+        # 
+        # *   ASC: in ascending order
+        # *   DESC: in descending order
         self.order_type = order_type
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
+        # The table names, which are used to filter the query results.
         self.table_names = table_names
 
     def validate(self):
@@ -36958,9 +38535,13 @@ class ListDoctorHiveTablesResponseBodyDataAnalysis(TeaModel):
         hive_frequency_score: int = None,
         hive_score: int = None,
     ):
+        # The score for the distribution of files of different sizes stored in the Hive table.
         self.hive_distribution_score = hive_distribution_score
+        # The score for the distribution of files stored in different formats in the Hive table.
         self.hive_format_score = hive_format_score
+        # The score for the access frequency of the Hive table.
         self.hive_frequency_score = hive_frequency_score
+        # The overall score of the Hive table.
         self.hive_score = hive_score
 
     def validate(self):
@@ -37005,11 +38586,17 @@ class ListDoctorHiveTablesResponseBodyDataFormats(TeaModel):
         format_size_day_growth_ratio: float = None,
         format_size_unit: str = None,
     ):
+        # The daily amount increment of the data in a specific storage format.
         self.format_day_growth_size = format_day_growth_size
+        # The name of the storage format.
         self.format_name = format_name
+        # The proportion of the data in a specific storage format.
         self.format_ratio = format_ratio
+        # The size of storage format-specific data.
         self.format_size = format_size
+        # The day-to-day growth rate of the amount of the data in a specific storage format.
         self.format_size_day_growth_ratio = format_size_day_growth_ratio
+        # The unit of the data size.
         self.format_size_unit = format_size_unit
 
     def validate(self):
@@ -37060,9 +38647,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsColdDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37105,9 +38696,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsColdDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37150,9 +38745,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsColdDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37195,9 +38794,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsColdDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37240,9 +38843,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37285,9 +38892,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37330,9 +38941,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37375,9 +38990,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsEmptyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37420,9 +39039,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataDayGrowthSize(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37465,9 +39088,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37510,9 +39137,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37555,9 +39186,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsFreezeDataSizeDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37600,9 +39235,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsHotDataDayGrowthSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37645,9 +39284,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsHotDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37690,9 +39333,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsHotDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37735,9 +39382,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsHotDataSizeDayGrowthRatio(TeaMo
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37780,9 +39431,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37825,9 +39480,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsLargeFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37870,9 +39529,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsLargeFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37915,9 +39578,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsLargeFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -37960,9 +39627,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38005,9 +39676,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsMediumFileCountDayGrowthRatio(T
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38050,9 +39725,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsMediumFileDayGrowthCount(TeaMod
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38095,9 +39774,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsMediumFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38140,9 +39823,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsPartitionNum(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38185,9 +39872,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38230,9 +39921,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsSmallFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38275,9 +39970,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsSmallFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38320,9 +40019,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsSmallFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38365,9 +40068,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38410,9 +40117,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTinyFileCountDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38455,9 +40166,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTinyFileDayGrowthCount(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38500,9 +40215,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTinyFileRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38545,9 +40264,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTotalDataDayGrowthSize(TeaModel
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38590,9 +40313,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38635,9 +40362,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTotalDataSizeDayGrowthRatio(Tea
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38680,9 +40411,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCount(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38725,9 +40460,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTotalFileCountDayGrowthRatio(Te
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38770,9 +40509,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsTotalFileDayGrowthCount(TeaMode
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38815,9 +40558,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsWarmDataDayGrowthSize(TeaModel)
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38860,9 +40607,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsWarmDataRatio(TeaModel):
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38905,9 +40656,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -38950,9 +40705,13 @@ class ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio(TeaM
         unit: str = None,
         value: float = None,
     ):
+        # The description of the metric.
         self.description = description
+        # The name of the metric.
         self.name = name
+        # The unit of the metric.
         self.unit = unit
+        # The value of the metric.
         self.value = value
 
     def validate(self):
@@ -39034,48 +40793,91 @@ class ListDoctorHiveTablesResponseBodyDataMetrics(TeaModel):
         warm_data_size: ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSize = None,
         warm_data_size_day_growth_ratio: ListDoctorHiveTablesResponseBodyDataMetricsWarmDataSizeDayGrowthRatio = None,
     ):
+        # The daily increment of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_day_growth_size = cold_data_day_growth_size
+        # The proportion of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_ratio = cold_data_ratio
+        # The amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size = cold_data_size
+        # The day-to-day growth rate of the amount of cold data. Cold data refers to data that is not accessed for more than 30 days but is accessed in 90 days.
         self.cold_data_size_day_growth_ratio = cold_data_size_day_growth_ratio
+        # The number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count = empty_file_count
+        # The day-to-day growth rate of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_count_day_growth_ratio = empty_file_count_day_growth_ratio
+        # The daily increment of the number of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_day_growth_count = empty_file_day_growth_count
+        # The proportion of empty files. Empty files are those with a size of 0 MB.
         self.empty_file_ratio = empty_file_ratio
+        # The daily increment of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_day_growth_size = freeze_data_day_growth_size
+        # The proportion of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_ratio = freeze_data_ratio
+        # The amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size = freeze_data_size
+        # The day-to-day growth rate of the amount of very cold data. Very cold data refers to data that is not accessed for more than 90 days.
         self.freeze_data_size_day_growth_ratio = freeze_data_size_day_growth_ratio
+        # The daily increment of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_day_growth_size = hot_data_day_growth_size
+        # The proportion of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_ratio = hot_data_ratio
+        # The amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size = hot_data_size
+        # The day-to-day growth rate of the amount of hot data. Hot data refers to data that is accessed in recent seven days.
         self.hot_data_size_day_growth_ratio = hot_data_size_day_growth_ratio
+        # The number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count = large_file_count
+        # The day-to-day growth rate of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_count_day_growth_ratio = large_file_count_day_growth_ratio
+        # The daily increment of the number of large files. Large files are those with a size greater than 1 GB.
         self.large_file_day_growth_count = large_file_day_growth_count
+        # The proportion of large files. Large files are those with a size greater than 1 GB.
         self.large_file_ratio = large_file_ratio
+        # The number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count = medium_file_count
+        # The day-to-day growth rate of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_count_day_growth_ratio = medium_file_count_day_growth_ratio
+        # The daily increment of the number of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_day_growth_count = medium_file_day_growth_count
+        # The proportion of medium files. Medium files are those with a size greater than or equal to 128 MB and less than or equal to 1 GB.
         self.medium_file_ratio = medium_file_ratio
+        # The number of partitions.
         self.partition_num = partition_num
+        # The number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count = small_file_count
+        # The day-to-day growth rate of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_count_day_growth_ratio = small_file_count_day_growth_ratio
+        # The daily increment of the number of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_day_growth_count = small_file_day_growth_count
+        # The proportion of small files. Small files are those with a size greater than or equal to 10 MB and less than 128 MB.
         self.small_file_ratio = small_file_ratio
+        # The number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count = tiny_file_count
+        # The day-to-day growth rate of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_count_day_growth_ratio = tiny_file_count_day_growth_ratio
+        # The daily increment of the number of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_day_growth_count = tiny_file_day_growth_count
+        # The proportion of very small files. Very small files are those with a size greater than 0 MB and less than 10 MB.
         self.tiny_file_ratio = tiny_file_ratio
+        # The daily incremental of the total data volume.
         self.total_data_day_growth_size = total_data_day_growth_size
+        # The total amount of data.
         self.total_data_size = total_data_size
+        # The day-to-day growth rate of the total data volume.
         self.total_data_size_day_growth_ratio = total_data_size_day_growth_ratio
+        # The total number of files.
         self.total_file_count = total_file_count
+        # The day-to-day growth rate of the total number of files.
         self.total_file_count_day_growth_ratio = total_file_count_day_growth_ratio
+        # The daily increment of the total number of files.
         self.total_file_day_growth_count = total_file_day_growth_count
+        # The daily increment of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_day_growth_size = warm_data_day_growth_size
+        # The proportion of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_ratio = warm_data_ratio
+        # The amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size = warm_data_size
+        # The day-to-day growth rate of the amount of warm data. Warm data refers to data that is not accessed for more than 7 days but is accessed in 30 days.
         self.warm_data_size_day_growth_ratio = warm_data_size_day_growth_ratio
 
     def validate(self):
@@ -39403,10 +41205,15 @@ class ListDoctorHiveTablesResponseBodyData(TeaModel):
         owner: str = None,
         table_name: str = None,
     ):
+        # The analysis results.
         self.analysis = analysis
+        # The information from the perspective of formats.
         self.formats = formats
+        # The metric information.
         self.metrics = metrics
+        # The owner.
         self.owner = owner
+        # The table name. The table name must follow the naming rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
         self.table_name = table_name
 
     def validate(self):
@@ -39468,14 +41275,15 @@ class ListDoctorHiveTablesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The analysis results of Hive tables.
         self.data = data
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries that are returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # A pagination token.
         self.next_token = next_token
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -40996,21 +42804,21 @@ class ListNodeGroupsRequest(TeaModel):
         node_group_types: List[str] = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 一次获取的最大记录数。取值范围：1~100。
+        # The number of maximum number of records to obtain at a time. Valid values: 1 to 100.
         self.max_results = max_results
-        # 标记当前开始读取的位置，置空表示从头开始。
+        # Marks the current position where reading starts. If you set this value to null, you can start from the beginning.
         self.next_token = next_token
-        # 节点组ID列表。
+        # The IDs of node groups. Valid values of the number of array elements N: 1 to 100.
         self.node_group_ids = node_group_ids
-        # 节点组名称列表。
+        # The list of node group names. Valid values of the number of array elements N: 1 to 100.
         self.node_group_names = node_group_names
-        # 节点组状态。
+        # The status of the node group. Valid values of the number of array elements N: 1 to 100.
         self.node_group_states = node_group_states
-        # 节点组类型列表。
+        # The list of node group types. Valid values of the number of array elements N: 1 to 100.
         self.node_group_types = node_group_types
-        # 区域ID。
+        # The ID of the region in which you want to create the instance.
         self.region_id = region_id
 
     def validate(self):
@@ -41070,14 +42878,15 @@ class ListNodeGroupsResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # 本次请求所返回的最大记录条数。
+        # The maximum number of entries returned.
         self.max_results = max_results
-        # 返回读取到的数据位置，空代表数据已经读取完毕。
+        # Returns the location of the data that was read. Empty indicates that the data has been read.
         self.next_token = next_token
+        # The array of node groups.
         self.node_groups = node_groups
-        # 请求ID。
+        # The ID of the request.
         self.request_id = request_id
-        # 本次请求条件下的数据总量。
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -41950,11 +43759,11 @@ class RemoveAutoScalingPolicyRequest(TeaModel):
         node_group_id: str = None,
         region_id: str = None,
     ):
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -41990,7 +43799,7 @@ class RemoveAutoScalingPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -42070,28 +43879,32 @@ class RunApplicationActionRequest(TeaModel):
         region_id: str = None,
         rolling_execute: bool = None,
     ):
-        # 操作名称。取值范围：
-        # - start：启动。
-        # - stop：停止。
-        # - config: 下发配置。
-        # - refresh_queues: 刷新yarn队列。
-        # 等
+        # The name of the action. Valid values:
+        # 
+        # *   start
+        # *   stop
+        # *   config
+        # *   restart
+        # *   refresh_queues
         self.action_name = action_name
-        # 每批数量。
+        # The number of applications in each batch.
         self.batch_size = batch_size
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 组件实例选择器。
+        # The name of the operation.
         self.component_instance_selector = component_instance_selector
-        # 描述。
+        # The description of the execution.
         self.description = description
-        # 运行策略。
+        # The execution policy. Valid values:
+        # 
+        # *   FAILED_BLOCK: The system stops the execution if the execution fails.
+        # *   FAILED_CONTINUE: The system continues the execution if the execution fails.
         self.execute_strategy = execute_strategy
-        # 间隔时间。
+        # The interval for rolling execution. Unit: seconds.
         self.interval = interval
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
-        # 是否滚动执行。
+        # Specifies whether to enable rolling execution.
         self.rolling_execute = rolling_execute
 
     def validate(self):
@@ -42154,9 +43967,9 @@ class RunApplicationActionResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # 操作ID。
+        # The operation ID.
         self.operation_id = operation_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -42504,28 +44317,30 @@ class UpdateApplicationConfigsRequest(TeaModel):
         node_id: str = None,
         region_id: str = None,
     ):
-        # 应用配置列表。
+        # The list of application configurations.
         self.application_configs = application_configs
-        # 应用名称。
+        # The application name.
         self.application_name = application_name
-        # 集群ID。
+        # The cluster ID.
         self.cluster_id = cluster_id
-        # 配置项操作。取值范围：
-        # - ADD：添加。
-        # - DELETE：删除。
-        # - UPDATE：更新。
+        # The operation performed on configuration items. Valid values:
+        # 
+        # *   ADD
+        # *   UPDATE
+        # *   DELETE
         self.config_action = config_action
-        # 配置操作范围。取值范围：
-        # - CLUSTER：集群范围。
-        # - NODE_GROUP：节点组范围。
+        # The operation scope. Valid values:
+        # 
+        # *   CLUSTER
+        # *   NODE_GROUP
         self.config_scope = config_scope
-        # 本次更新操作描述。
+        # The description.
         self.description = description
-        # 节点组ID。
+        # The ID of the node group.
         self.node_group_id = node_group_id
-        # 节点ID。
+        # The node ID.
         self.node_id = node_id
-        # 区域ID。
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -42594,9 +44409,9 @@ class UpdateApplicationConfigsResponseBody(TeaModel):
         operation_id: str = None,
         request_id: str = None,
     ):
-        # 操作ID。
+        # The operation ID.
         self.operation_id = operation_id
-        # 请求ID。
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
