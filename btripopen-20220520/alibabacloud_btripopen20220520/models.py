@@ -33203,6 +33203,7 @@ class FlightOrderQueryRequest(TeaModel):
 class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
     def __init__(
         self,
+        apply_id: str = None,
         arr_time: str = None,
         change_cabin: str = None,
         change_cabin_level: str = None,
@@ -33215,9 +33216,13 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         gmt_create: str = None,
         gmt_modify: str = None,
         origin_ticket_no: str = None,
+        out_apply_id: str = None,
         ticket_no: str = None,
+        ticket_status: str = None,
+        ticket_status_code: int = None,
         upgrade_fee: float = None,
     ):
+        self.apply_id = apply_id
         self.arr_time = arr_time
         self.change_cabin = change_cabin
         self.change_cabin_level = change_cabin_level
@@ -33230,7 +33235,10 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.origin_ticket_no = origin_ticket_no
+        self.out_apply_id = out_apply_id
         self.ticket_no = ticket_no
+        self.ticket_status = ticket_status
+        self.ticket_status_code = ticket_status_code
         self.upgrade_fee = upgrade_fee
 
     def validate(self):
@@ -33242,6 +33250,8 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             return _map
 
         result = dict()
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
         if self.arr_time is not None:
             result['arr_time'] = self.arr_time
         if self.change_cabin is not None:
@@ -33266,14 +33276,22 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             result['gmt_modify'] = self.gmt_modify
         if self.origin_ticket_no is not None:
             result['origin_ticket_no'] = self.origin_ticket_no
+        if self.out_apply_id is not None:
+            result['out_apply_id'] = self.out_apply_id
         if self.ticket_no is not None:
             result['ticket_no'] = self.ticket_no
+        if self.ticket_status is not None:
+            result['ticket_status'] = self.ticket_status
+        if self.ticket_status_code is not None:
+            result['ticket_status_code'] = self.ticket_status_code
         if self.upgrade_fee is not None:
             result['upgrade_fee'] = self.upgrade_fee
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
         if m.get('arr_time') is not None:
             self.arr_time = m.get('arr_time')
         if m.get('change_cabin') is not None:
@@ -33298,8 +33316,14 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             self.gmt_modify = m.get('gmt_modify')
         if m.get('origin_ticket_no') is not None:
             self.origin_ticket_no = m.get('origin_ticket_no')
+        if m.get('out_apply_id') is not None:
+            self.out_apply_id = m.get('out_apply_id')
         if m.get('ticket_no') is not None:
             self.ticket_no = m.get('ticket_no')
+        if m.get('ticket_status') is not None:
+            self.ticket_status = m.get('ticket_status')
+        if m.get('ticket_status_code') is not None:
+            self.ticket_status_code = m.get('ticket_status_code')
         if m.get('upgrade_fee') is not None:
             self.upgrade_fee = m.get('upgrade_fee')
         return self
@@ -33437,16 +33461,20 @@ class FlightOrderQueryResponseBodyModuleFlightInfoList(TeaModel):
 class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
     def __init__(
         self,
+        apply_id: str = None,
         gmt_create: str = None,
         gmt_modify: str = None,
+        out_apply_id: str = None,
         refund_order_id: int = None,
         refund_reason: str = None,
         refund_ticket_fee: float = None,
         refund_type: int = None,
         ticket_no: str = None,
     ):
+        self.apply_id = apply_id
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
+        self.out_apply_id = out_apply_id
         self.refund_order_id = refund_order_id
         self.refund_reason = refund_reason
         self.refund_ticket_fee = refund_ticket_fee
@@ -33462,10 +33490,14 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             return _map
 
         result = dict()
+        if self.apply_id is not None:
+            result['apply_id'] = self.apply_id
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modify is not None:
             result['gmt_modify'] = self.gmt_modify
+        if self.out_apply_id is not None:
+            result['out_apply_id'] = self.out_apply_id
         if self.refund_order_id is not None:
             result['refund_order_id'] = self.refund_order_id
         if self.refund_reason is not None:
@@ -33480,10 +33512,14 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('apply_id') is not None:
+            self.apply_id = m.get('apply_id')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modify') is not None:
             self.gmt_modify = m.get('gmt_modify')
+        if m.get('out_apply_id') is not None:
+            self.out_apply_id = m.get('out_apply_id')
         if m.get('refund_order_id') is not None:
             self.refund_order_id = m.get('refund_order_id')
         if m.get('refund_reason') is not None:
@@ -33503,6 +33539,7 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
         build_price: float = None,
         changed: bool = None,
         discount: int = None,
+        flight_no: str = None,
         gmt_create: str = None,
         gmt_modify: str = None,
         oil_price: float = None,
@@ -33517,6 +33554,7 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
         self.build_price = build_price
         self.changed = changed
         self.discount = discount
+        self.flight_no = flight_no
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.oil_price = oil_price
@@ -33543,6 +33581,8 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
             result['changed'] = self.changed
         if self.discount is not None:
             result['discount'] = self.discount
+        if self.flight_no is not None:
+            result['flight_no'] = self.flight_no
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modify is not None:
@@ -33573,6 +33613,8 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
             self.changed = m.get('changed')
         if m.get('discount') is not None:
             self.discount = m.get('discount')
+        if m.get('flight_no') is not None:
+            self.flight_no = m.get('flight_no')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modify') is not None:
@@ -33684,6 +33726,8 @@ class FlightOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
         corp_name: str = None,
         depart_id: str = None,
         depart_name: str = None,
+        exceed_apply_id: str = None,
+        exceed_third_part_apply_id: str = None,
         gmt_create: str = None,
         gmt_modify: str = None,
         itinerary_id: str = None,
@@ -33702,6 +33746,8 @@ class FlightOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
         self.corp_name = corp_name
         self.depart_id = depart_id
         self.depart_name = depart_name
+        self.exceed_apply_id = exceed_apply_id
+        self.exceed_third_part_apply_id = exceed_third_part_apply_id
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
         self.itinerary_id = itinerary_id
@@ -33736,6 +33782,10 @@ class FlightOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
             result['depart_id'] = self.depart_id
         if self.depart_name is not None:
             result['depart_name'] = self.depart_name
+        if self.exceed_apply_id is not None:
+            result['exceed_apply_id'] = self.exceed_apply_id
+        if self.exceed_third_part_apply_id is not None:
+            result['exceed_third_part_apply_id'] = self.exceed_third_part_apply_id
         if self.gmt_create is not None:
             result['gmt_create'] = self.gmt_create
         if self.gmt_modify is not None:
@@ -33774,6 +33824,10 @@ class FlightOrderQueryResponseBodyModuleOrderBaseInfo(TeaModel):
             self.depart_id = m.get('depart_id')
         if m.get('depart_name') is not None:
             self.depart_name = m.get('depart_name')
+        if m.get('exceed_apply_id') is not None:
+            self.exceed_apply_id = m.get('exceed_apply_id')
+        if m.get('exceed_third_part_apply_id') is not None:
+            self.exceed_third_part_apply_id = m.get('exceed_third_part_apply_id')
         if m.get('gmt_create') is not None:
             self.gmt_create = m.get('gmt_create')
         if m.get('gmt_modify') is not None:
