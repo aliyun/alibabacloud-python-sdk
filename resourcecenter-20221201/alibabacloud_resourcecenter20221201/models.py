@@ -1,7 +1,221 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import Dict, List, Any
+
+
+class CreateSavedQueryRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        expression: str = None,
+        name: str = None,
+    ):
+        self.description = description
+        self.expression = expression
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateSavedQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+        request_id: str = None,
+    ):
+        self.query_id = query_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateSavedQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSavedQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSavedQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteSavedQueryRequest(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+    ):
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class DeleteSavedQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteSavedQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteSavedQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteSavedQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
 
 
 class DisableMultiAccountResourceCenterResponseBody(TeaModel):
@@ -308,6 +522,471 @@ class EnableResourceCenterResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableResourceCenterResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteMultiAccountSQLQueryRequest(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        scope: str = None,
+    ):
+        self.expression = expression
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class ExecuteMultiAccountSQLQueryResponseBodyColumns(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ExecuteMultiAccountSQLQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        columns: List[ExecuteMultiAccountSQLQueryResponseBodyColumns] = None,
+        request_id: str = None,
+        rows: List[Any] = None,
+    ):
+        self.columns = columns
+        self.request_id = request_id
+        self.rows = rows
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rows is not None:
+            result['Rows'] = self.rows
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = ExecuteMultiAccountSQLQueryResponseBodyColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rows') is not None:
+            self.rows = m.get('Rows')
+        return self
+
+
+class ExecuteMultiAccountSQLQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteMultiAccountSQLQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteMultiAccountSQLQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExecuteSQLQueryRequest(TeaModel):
+    def __init__(
+        self,
+        expression: str = None,
+        scope: str = None,
+    ):
+        self.expression = expression
+        self.scope = scope
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.scope is not None:
+            result['Scope'] = self.scope
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Scope') is not None:
+            self.scope = m.get('Scope')
+        return self
+
+
+class ExecuteSQLQueryResponseBodyColumns(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        type: str = None,
+    ):
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ExecuteSQLQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        columns: List[ExecuteSQLQueryResponseBodyColumns] = None,
+        request_id: str = None,
+        rows: List[Any] = None,
+    ):
+        self.columns = columns
+        self.request_id = request_id
+        self.rows = rows
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.rows is not None:
+            result['Rows'] = self.rows
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = ExecuteSQLQueryResponseBodyColumns()
+                self.columns.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Rows') is not None:
+            self.rows = m.get('Rows')
+        return self
+
+
+class ExecuteSQLQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExecuteSQLQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExecuteSQLQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetExampleQueryRequest(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+    ):
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class GetExampleQueryResponseBodyExampleQuery(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        expression: str = None,
+        name: str = None,
+        query_id: str = None,
+    ):
+        self.description = description
+        self.expression = expression
+        self.name = name
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class GetExampleQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        example_query: GetExampleQueryResponseBodyExampleQuery = None,
+        request_id: str = None,
+    ):
+        self.example_query = example_query
+        self.request_id = request_id
+
+    def validate(self):
+        if self.example_query:
+            self.example_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.example_query is not None:
+            result['ExampleQuery'] = self.example_query.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExampleQuery') is not None:
+            temp_model = GetExampleQueryResponseBodyExampleQuery()
+            self.example_query = temp_model.from_map(m['ExampleQuery'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetExampleQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetExampleQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetExampleQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1250,6 +1929,338 @@ class GetResourceCountsResponse(TeaModel):
         return self
 
 
+class GetSavedQueryRequest(TeaModel):
+    def __init__(
+        self,
+        query_id: str = None,
+    ):
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class GetSavedQueryResponseBodySavedQuery(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        expression: str = None,
+        name: str = None,
+        query_id: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.expression = expression
+        self.name = name
+        self.query_id = query_id
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class GetSavedQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        saved_query: GetSavedQueryResponseBodySavedQuery = None,
+    ):
+        self.request_id = request_id
+        self.saved_query = saved_query
+
+    def validate(self):
+        if self.saved_query:
+            self.saved_query.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.saved_query is not None:
+            result['SavedQuery'] = self.saved_query.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SavedQuery') is not None:
+            temp_model = GetSavedQueryResponseBodySavedQuery()
+            self.saved_query = temp_model.from_map(m['SavedQuery'])
+        return self
+
+
+class GetSavedQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSavedQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSavedQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListExampleQueriesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: str = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListExampleQueriesResponseBodyExampleQueries(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        name: str = None,
+        query_id: str = None,
+    ):
+        self.description = description
+        self.name = name
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class ListExampleQueriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        example_queries: List[ListExampleQueriesResponseBodyExampleQueries] = None,
+        max_results: str = None,
+        next_token: str = None,
+        request_id: str = None,
+    ):
+        self.example_queries = example_queries
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+
+    def validate(self):
+        if self.example_queries:
+            for k in self.example_queries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ExampleQueries'] = []
+        if self.example_queries is not None:
+            for k in self.example_queries:
+                result['ExampleQueries'].append(k.to_map() if k else None)
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.example_queries = []
+        if m.get('ExampleQueries') is not None:
+            for k in m.get('ExampleQueries'):
+                temp_model = ListExampleQueriesResponseBodyExampleQueries()
+                self.example_queries.append(temp_model.from_map(k))
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListExampleQueriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListExampleQueriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListExampleQueriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListMultiAccountResourceGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -1964,6 +2975,187 @@ class ListResourceTypesResponse(TeaModel):
         return self
 
 
+class ListSavedQueriesRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: str = None,
+        next_token: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        return self
+
+
+class ListSavedQueriesResponseBodySavedQueries(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        description: str = None,
+        name: str = None,
+        query_id: str = None,
+        update_time: str = None,
+    ):
+        self.create_time = create_time
+        self.description = description
+        self.name = name
+        self.query_id = query_id
+        self.update_time = update_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        return self
+
+
+class ListSavedQueriesResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: str = None,
+        next_token: str = None,
+        request_id: str = None,
+        saved_queries: List[ListSavedQueriesResponseBodySavedQueries] = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.request_id = request_id
+        self.saved_queries = saved_queries
+
+    def validate(self):
+        if self.saved_queries:
+            for k in self.saved_queries:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['SavedQueries'] = []
+        if self.saved_queries is not None:
+            for k in self.saved_queries:
+                result['SavedQueries'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.saved_queries = []
+        if m.get('SavedQueries') is not None:
+            for k in m.get('SavedQueries'):
+                temp_model = ListSavedQueriesResponseBodySavedQueries()
+                self.saved_queries.append(temp_model.from_map(k))
+        return self
+
+
+class ListSavedQueriesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListSavedQueriesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListSavedQueriesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagKeysRequest(TeaModel):
     def __init__(
         self,
@@ -2463,6 +3655,45 @@ class SearchMultiAccountResourcesResponseBodyFilters(TeaModel):
         return self
 
 
+class SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes(TeaModel):
+    def __init__(
+        self,
+        ip_address: List[str] = None,
+        network_type: str = None,
+        version: str = None,
+    ):
+        self.ip_address = ip_address
+        self.network_type = network_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class SearchMultiAccountResourcesResponseBodyResourcesTags(TeaModel):
     def __init__(
         self,
@@ -2503,6 +3734,8 @@ class SearchMultiAccountResourcesResponseBodyResources(TeaModel):
         self,
         account_id: str = None,
         create_time: str = None,
+        expire_time: str = None,
+        ip_address_attributes: List[SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes] = None,
         ip_addresses: List[str] = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -2518,6 +3751,8 @@ class SearchMultiAccountResourcesResponseBodyResources(TeaModel):
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
+        self.expire_time = expire_time
+        self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -2540,6 +3775,10 @@ class SearchMultiAccountResourcesResponseBodyResources(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ip_address_attributes:
+            for k in self.ip_address_attributes:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -2555,6 +3794,12 @@ class SearchMultiAccountResourcesResponseBodyResources(TeaModel):
             result['AccountId'] = self.account_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        result['IpAddressAttributes'] = []
+        if self.ip_address_attributes is not None:
+            for k in self.ip_address_attributes:
+                result['IpAddressAttributes'].append(k.to_map() if k else None)
         if self.ip_addresses is not None:
             result['IpAddresses'] = self.ip_addresses
         if self.region_id is not None:
@@ -2581,6 +3826,13 @@ class SearchMultiAccountResourcesResponseBodyResources(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        self.ip_address_attributes = []
+        if m.get('IpAddressAttributes') is not None:
+            for k in m.get('IpAddressAttributes'):
+                temp_model = SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes()
+                self.ip_address_attributes.append(temp_model.from_map(k))
         if m.get('IpAddresses') is not None:
             self.ip_addresses = m.get('IpAddresses')
         if m.get('RegionId') is not None:
@@ -2827,7 +4079,7 @@ class SearchResourcesRequest(TeaModel):
     ):
         # The filter conditions.
         self.filter = filter
-        # The maximum number of entries to return on each page.
+        # The maximum number of entries per page.
         # 
         # Valid values: 1 to 100.
         # 
@@ -2931,6 +4183,45 @@ class SearchResourcesResponseBodyFilters(TeaModel):
         return self
 
 
+class SearchResourcesResponseBodyResourcesIpAddressAttributes(TeaModel):
+    def __init__(
+        self,
+        ip_address: List[str] = None,
+        network_type: str = None,
+        version: str = None,
+    ):
+        self.ip_address = ip_address
+        self.network_type = network_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class SearchResourcesResponseBodyResourcesTags(TeaModel):
     def __init__(
         self,
@@ -2971,6 +4262,8 @@ class SearchResourcesResponseBodyResources(TeaModel):
         self,
         account_id: str = None,
         create_time: str = None,
+        expire_time: str = None,
+        ip_address_attributes: List[SearchResourcesResponseBodyResourcesIpAddressAttributes] = None,
         ip_addresses: List[str] = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -2986,6 +4279,8 @@ class SearchResourcesResponseBodyResources(TeaModel):
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
+        self.expire_time = expire_time
+        self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -3008,6 +4303,10 @@ class SearchResourcesResponseBodyResources(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ip_address_attributes:
+            for k in self.ip_address_attributes:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -3023,6 +4322,12 @@ class SearchResourcesResponseBodyResources(TeaModel):
             result['AccountId'] = self.account_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        result['IpAddressAttributes'] = []
+        if self.ip_address_attributes is not None:
+            for k in self.ip_address_attributes:
+                result['IpAddressAttributes'].append(k.to_map() if k else None)
         if self.ip_addresses is not None:
             result['IpAddresses'] = self.ip_addresses
         if self.region_id is not None:
@@ -3049,6 +4354,13 @@ class SearchResourcesResponseBodyResources(TeaModel):
             self.account_id = m.get('AccountId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        self.ip_address_attributes = []
+        if m.get('IpAddressAttributes') is not None:
+            for k in m.get('IpAddressAttributes'):
+                temp_model = SearchResourcesResponseBodyResourcesIpAddressAttributes()
+                self.ip_address_attributes.append(temp_model.from_map(k))
         if m.get('IpAddresses') is not None:
             self.ip_addresses = m.get('IpAddresses')
         if m.get('RegionId') is not None:
@@ -3184,6 +4496,122 @@ class SearchResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateSavedQueryRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        expression: str = None,
+        name: str = None,
+        query_id: str = None,
+    ):
+        self.description = description
+        self.expression = expression
+        self.name = name
+        self.query_id = query_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.expression is not None:
+            result['Expression'] = self.expression
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.query_id is not None:
+            result['QueryId'] = self.query_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Expression') is not None:
+            self.expression = m.get('Expression')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('QueryId') is not None:
+            self.query_id = m.get('QueryId')
+        return self
+
+
+class UpdateSavedQueryResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateSavedQueryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateSavedQueryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateSavedQueryResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
