@@ -630,6 +630,8 @@ class Client(OpenApiClient):
             body['CRAggregationEnabled'] = request.craggregation_enabled
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_domain):
+            body['ClusterDomain'] = request.cluster_domain
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.config_source_enabled):
@@ -806,6 +808,8 @@ class Client(OpenApiClient):
             body['CRAggregationEnabled'] = request.craggregation_enabled
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cluster_domain):
+            body['ClusterDomain'] = request.cluster_domain
         if not UtilClient.is_unset(request.cluster_spec):
             body['ClusterSpec'] = request.cluster_spec
         if not UtilClient.is_unset(request.config_source_enabled):

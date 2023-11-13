@@ -2021,6 +2021,7 @@ class CreateServiceMeshRequest(TeaModel):
         auto_renew_period: int = None,
         craggregation_enabled: bool = None,
         charge_type: str = None,
+        cluster_domain: str = None,
         cluster_spec: str = None,
         config_source_enabled: bool = None,
         config_source_nacos_id: str = None,
@@ -2144,6 +2145,7 @@ class CreateServiceMeshRequest(TeaModel):
         # *   `PayOnDemand`: pay-as-you-go.
         # *   `PrePay`: subscription.
         self.charge_type = charge_type
+        self.cluster_domain = cluster_domain
         # The edition of the ASM instance. Valid values:
         # 
         # - `standard`: Standard Edition
@@ -2434,6 +2436,8 @@ class CreateServiceMeshRequest(TeaModel):
             result['CRAggregationEnabled'] = self.craggregation_enabled
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+        if self.cluster_domain is not None:
+            result['ClusterDomain'] = self.cluster_domain
         if self.cluster_spec is not None:
             result['ClusterSpec'] = self.cluster_spec
         if self.config_source_enabled is not None:
@@ -2588,6 +2592,8 @@ class CreateServiceMeshRequest(TeaModel):
             self.craggregation_enabled = m.get('CRAggregationEnabled')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+        if m.get('ClusterDomain') is not None:
+            self.cluster_domain = m.get('ClusterDomain')
         if m.get('ClusterSpec') is not None:
             self.cluster_spec = m.get('ClusterSpec')
         if m.get('ConfigSourceEnabled') is not None:
