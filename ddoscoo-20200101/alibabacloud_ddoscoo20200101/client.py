@@ -6517,6 +6517,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_details_with_options_async(request, runtime)
 
+    def describe_instance_ext_with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstanceExtRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeInstanceExtResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceExt',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeInstanceExtResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_ext_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstanceExtRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeInstanceExtResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceExt',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeInstanceExtResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_ext(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstanceExtRequest,
+    ) -> ddoscoo_20200101_models.DescribeInstanceExtResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_ext_with_options(request, runtime)
+
+    async def describe_instance_ext_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeInstanceExtRequest,
+    ) -> ddoscoo_20200101_models.DescribeInstanceExtResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_ext_with_options_async(request, runtime)
+
     def describe_instance_ids_with_options(
         self,
         request: ddoscoo_20200101_models.DescribeInstanceIdsRequest,
