@@ -1,3 +1,6 @@
+2023-11-14 Version: 2.0.2
+- Generated python 2022-01-04 for MaxCompute.
+
 2023-10-24 Version: 2.0.1
 - Generated python 2022-01-04 for MaxCompute.
 
