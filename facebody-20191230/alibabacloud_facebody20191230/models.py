@@ -3137,6 +3137,401 @@ class CreateFaceDbResponse(TeaModel):
         return self
 
 
+class DeepfakeFaceRequestTasks(TeaModel):
+    def __init__(
+        self,
+        image_data: str = None,
+        image_url: str = None,
+    ):
+        self.image_data = image_data
+        self.image_url = image_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        return self
+
+
+class DeepfakeFaceRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[DeepfakeFaceRequestTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = DeepfakeFaceRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class DeepfakeFaceAdvanceRequestTasks(TeaModel):
+    def __init__(
+        self,
+        image_data: str = None,
+        image_urlobject: BinaryIO = None,
+    ):
+        self.image_data = image_data
+        self.image_urlobject = image_urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_data is not None:
+            result['ImageData'] = self.image_data
+        if self.image_urlobject is not None:
+            result['ImageURL'] = self.image_urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageData') is not None:
+            self.image_data = m.get('ImageData')
+        if m.get('ImageURL') is not None:
+            self.image_urlobject = m.get('ImageURL')
+        return self
+
+
+class DeepfakeFaceAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        tasks: List[DeepfakeFaceAdvanceRequestTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = DeepfakeFaceAdvanceRequestTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class DeepfakeFaceResponseBodyDataElementsResultsRect(TeaModel):
+    def __init__(
+        self,
+        height: int = None,
+        left: int = None,
+        top: int = None,
+        width: int = None,
+    ):
+        self.height = height
+        self.left = left
+        self.top = top
+        self.width = width
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.height is not None:
+            result['Height'] = self.height
+        if self.left is not None:
+            result['Left'] = self.left
+        if self.top is not None:
+            result['Top'] = self.top
+        if self.width is not None:
+            result['Width'] = self.width
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+        if m.get('Left') is not None:
+            self.left = m.get('Left')
+        if m.get('Top') is not None:
+            self.top = m.get('Top')
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+        return self
+
+
+class DeepfakeFaceResponseBodyDataElementsResults(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        label: str = None,
+        message_tips: str = None,
+        rect: DeepfakeFaceResponseBodyDataElementsResultsRect = None,
+    ):
+        self.confidence = confidence
+        self.label = label
+        self.message_tips = message_tips
+        self.rect = rect
+
+    def validate(self):
+        if self.rect:
+            self.rect.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.message_tips is not None:
+            result['MessageTips'] = self.message_tips
+        if self.rect is not None:
+            result['Rect'] = self.rect.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('MessageTips') is not None:
+            self.message_tips = m.get('MessageTips')
+        if m.get('Rect') is not None:
+            temp_model = DeepfakeFaceResponseBodyDataElementsResultsRect()
+            self.rect = temp_model.from_map(m['Rect'])
+        return self
+
+
+class DeepfakeFaceResponseBodyDataElements(TeaModel):
+    def __init__(
+        self,
+        face_number: int = None,
+        image_url: str = None,
+        results: List[DeepfakeFaceResponseBodyDataElementsResults] = None,
+        task_id: str = None,
+    ):
+        self.face_number = face_number
+        self.image_url = image_url
+        self.results = results
+        self.task_id = task_id
+
+    def validate(self):
+        if self.results:
+            for k in self.results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.face_number is not None:
+            result['FaceNumber'] = self.face_number
+        if self.image_url is not None:
+            result['ImageURL'] = self.image_url
+        result['Results'] = []
+        if self.results is not None:
+            for k in self.results:
+                result['Results'].append(k.to_map() if k else None)
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FaceNumber') is not None:
+            self.face_number = m.get('FaceNumber')
+        if m.get('ImageURL') is not None:
+            self.image_url = m.get('ImageURL')
+        self.results = []
+        if m.get('Results') is not None:
+            for k in m.get('Results'):
+                temp_model = DeepfakeFaceResponseBodyDataElementsResults()
+                self.results.append(temp_model.from_map(k))
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DeepfakeFaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        elements: List[DeepfakeFaceResponseBodyDataElements] = None,
+    ):
+        self.elements = elements
+
+    def validate(self):
+        if self.elements:
+            for k in self.elements:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Elements'] = []
+        if self.elements is not None:
+            for k in self.elements:
+                result['Elements'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.elements = []
+        if m.get('Elements') is not None:
+            for k in m.get('Elements'):
+                temp_model = DeepfakeFaceResponseBodyDataElements()
+                self.elements.append(temp_model.from_map(k))
+        return self
+
+
+class DeepfakeFaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeepfakeFaceResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeepfakeFaceResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeepfakeFaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeepfakeFaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeepfakeFaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteFaceRequest(TeaModel):
     def __init__(
         self,

@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_facebody20191230.
 
-Created on 10/10/2023
+Created on 14/11/2023
 
 @author: Alibaba Cloud SDK
 """
