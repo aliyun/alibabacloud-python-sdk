@@ -22774,6 +22774,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         dbinstance_class: str = None,
         dbinstance_class_type: str = None,
         dbinstance_description: str = None,
+        dbinstance_disk_used: str = None,
         dbinstance_id: str = None,
         dbinstance_memory: int = None,
         dbinstance_net_type: str = None,
@@ -22892,6 +22893,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbinstance_class_type = dbinstance_class_type
         # The description of the instance.
         self.dbinstance_description = dbinstance_description
+        self.dbinstance_disk_used = dbinstance_disk_used
         # The instance ID.
         self.dbinstance_id = dbinstance_id
         # The memory capacity of the instance. Unit: MB.
@@ -23108,6 +23110,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['DBInstanceClassType'] = self.dbinstance_class_type
         if self.dbinstance_description is not None:
             result['DBInstanceDescription'] = self.dbinstance_description
+        if self.dbinstance_disk_used is not None:
+            result['DBInstanceDiskUsed'] = self.dbinstance_disk_used
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.dbinstance_memory is not None:
@@ -23254,6 +23258,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.dbinstance_class_type = m.get('DBInstanceClassType')
         if m.get('DBInstanceDescription') is not None:
             self.dbinstance_description = m.get('DBInstanceDescription')
+        if m.get('DBInstanceDiskUsed') is not None:
+            self.dbinstance_disk_used = m.get('DBInstanceDiskUsed')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('DBInstanceMemory') is not None:
