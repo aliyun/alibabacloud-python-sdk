@@ -933,6 +933,116 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_alert_type_with_options_async(request, runtime)
 
+    def describe_alerts_with_options(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_title):
+            body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_defend):
+            body['IsDefend'] = request.is_defend
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_user_id):
+            body['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlerts',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_alerts_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_title):
+            body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.alert_uuid):
+            body['AlertUuid'] = request.alert_uuid
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.end_time):
+            body['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.is_defend):
+            body['IsDefend'] = request.is_defend
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.start_time):
+            body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.sub_user_id):
+            body['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlerts',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_alerts(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alerts_with_options(request, runtime)
+
+    async def describe_alerts_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alerts_with_options_async(request, runtime)
+
     def describe_alerts_count_with_options(
         self,
         request: cloud_siem_20220616_models.DescribeAlertsCountRequest,
@@ -1010,6 +1120,198 @@ class Client(OpenApiClient):
     ) -> cloud_siem_20220616_models.DescribeAlertsCountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_alerts_count_with_options_async(request, runtime)
+
+    def describe_alerts_with_entity_with_options(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sophon_task_id):
+            body['SophonTaskId'] = request.sophon_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertsWithEntity',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertsWithEntityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_alerts_with_entity_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.entity_id):
+            body['EntityId'] = request.entity_id
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.sophon_task_id):
+            body['SophonTaskId'] = request.sophon_task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertsWithEntity',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertsWithEntityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_alerts_with_entity(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alerts_with_entity_with_options(request, runtime)
+
+    async def describe_alerts_with_entity_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEntityRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEntityResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alerts_with_entity_with_options_async(request, runtime)
+
+    def describe_alerts_with_event_with_options(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_title):
+            body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.is_defend):
+            body['IsDefend'] = request.is_defend
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.sub_user_id):
+            body['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertsWithEvent',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertsWithEventResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_alerts_with_event_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_title):
+            body['AlertTitle'] = request.alert_title
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.is_defend):
+            body['IsDefend'] = request.is_defend
+        if not UtilClient.is_unset(request.level):
+            body['Level'] = request.level
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.source):
+            body['Source'] = request.source
+        if not UtilClient.is_unset(request.sub_user_id):
+            body['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertsWithEvent',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertsWithEventResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_alerts_with_event(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alerts_with_event_with_options(request, runtime)
+
+    async def describe_alerts_with_event_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertsWithEventRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertsWithEventResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alerts_with_event_with_options_async(request, runtime)
 
     def describe_attack_time_line_with_options(
         self,

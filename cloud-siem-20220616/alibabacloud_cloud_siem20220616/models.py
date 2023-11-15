@@ -2398,6 +2398,533 @@ class DescribeAlertTypeResponse(TeaModel):
         return self
 
 
+class DescribeAlertsRequest(TeaModel):
+    def __init__(
+        self,
+        alert_title: str = None,
+        alert_uuid: str = None,
+        current_page: int = None,
+        end_time: int = None,
+        is_defend: str = None,
+        level: List[str] = None,
+        page_size: int = None,
+        region_id: str = None,
+        source: str = None,
+        start_time: int = None,
+        sub_user_id: str = None,
+    ):
+        self.alert_title = alert_title
+        self.alert_uuid = alert_uuid
+        self.current_page = current_page
+        self.end_time = end_time
+        self.is_defend = is_defend
+        self.level = level
+        self.page_size = page_size
+        self.region_id = region_id
+        self.source = source
+        self.start_time = start_time
+        self.sub_user_id = sub_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_title is not None:
+            result['AlertTitle'] = self.alert_title
+        if self.alert_uuid is not None:
+            result['AlertUuid'] = self.alert_uuid
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.is_defend is not None:
+            result['IsDefend'] = self.is_defend
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.sub_user_id is not None:
+            result['SubUserId'] = self.sub_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertTitle') is not None:
+            self.alert_title = m.get('AlertTitle')
+        if m.get('AlertUuid') is not None:
+            self.alert_uuid = m.get('AlertUuid')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IsDefend') is not None:
+            self.is_defend = m.get('IsDefend')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('SubUserId') is not None:
+            self.sub_user_id = m.get('SubUserId')
+        return self
+
+
+class DescribeAlertsResponseBodyDataPageInfo(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAlertsResponseBodyDataResponseDataAlertInfoList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        key_name: str = None,
+        values: str = None,
+    ):
+        self.key = key
+        self.key_name = key_name
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeAlertsResponseBodyDataResponseData(TeaModel):
+    def __init__(
+        self,
+        alert_desc: str = None,
+        alert_desc_code: str = None,
+        alert_desc_en: str = None,
+        alert_detail: str = None,
+        alert_info_list: List[DescribeAlertsResponseBodyDataResponseDataAlertInfoList] = None,
+        alert_level: str = None,
+        alert_name: str = None,
+        alert_name_code: str = None,
+        alert_name_en: str = None,
+        alert_src_prod: str = None,
+        alert_src_prod_module: str = None,
+        alert_title: str = None,
+        alert_title_en: str = None,
+        alert_type: str = None,
+        alert_type_code: str = None,
+        alert_type_en: str = None,
+        alert_uuid: str = None,
+        asset_list: str = None,
+        att_ck: str = None,
+        cloud_code: str = None,
+        end_time: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        incident_uuid: str = None,
+        is_defend: str = None,
+        log_time: str = None,
+        log_uuid: str = None,
+        main_user_id: int = None,
+        occur_time: str = None,
+        start_time: str = None,
+        sub_user_id: int = None,
+    ):
+        self.alert_desc = alert_desc
+        self.alert_desc_code = alert_desc_code
+        self.alert_desc_en = alert_desc_en
+        self.alert_detail = alert_detail
+        self.alert_info_list = alert_info_list
+        self.alert_level = alert_level
+        self.alert_name = alert_name
+        self.alert_name_code = alert_name_code
+        self.alert_name_en = alert_name_en
+        self.alert_src_prod = alert_src_prod
+        self.alert_src_prod_module = alert_src_prod_module
+        self.alert_title = alert_title
+        self.alert_title_en = alert_title_en
+        self.alert_type = alert_type
+        self.alert_type_code = alert_type_code
+        self.alert_type_en = alert_type_en
+        self.alert_uuid = alert_uuid
+        self.asset_list = asset_list
+        self.att_ck = att_ck
+        self.cloud_code = cloud_code
+        self.end_time = end_time
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.incident_uuid = incident_uuid
+        self.is_defend = is_defend
+        self.log_time = log_time
+        self.log_uuid = log_uuid
+        self.main_user_id = main_user_id
+        self.occur_time = occur_time
+        self.start_time = start_time
+        self.sub_user_id = sub_user_id
+
+    def validate(self):
+        if self.alert_info_list:
+            for k in self.alert_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_desc is not None:
+            result['AlertDesc'] = self.alert_desc
+        if self.alert_desc_code is not None:
+            result['AlertDescCode'] = self.alert_desc_code
+        if self.alert_desc_en is not None:
+            result['AlertDescEn'] = self.alert_desc_en
+        if self.alert_detail is not None:
+            result['AlertDetail'] = self.alert_detail
+        result['AlertInfoList'] = []
+        if self.alert_info_list is not None:
+            for k in self.alert_info_list:
+                result['AlertInfoList'].append(k.to_map() if k else None)
+        if self.alert_level is not None:
+            result['AlertLevel'] = self.alert_level
+        if self.alert_name is not None:
+            result['AlertName'] = self.alert_name
+        if self.alert_name_code is not None:
+            result['AlertNameCode'] = self.alert_name_code
+        if self.alert_name_en is not None:
+            result['AlertNameEn'] = self.alert_name_en
+        if self.alert_src_prod is not None:
+            result['AlertSrcProd'] = self.alert_src_prod
+        if self.alert_src_prod_module is not None:
+            result['AlertSrcProdModule'] = self.alert_src_prod_module
+        if self.alert_title is not None:
+            result['AlertTitle'] = self.alert_title
+        if self.alert_title_en is not None:
+            result['AlertTitleEn'] = self.alert_title_en
+        if self.alert_type is not None:
+            result['AlertType'] = self.alert_type
+        if self.alert_type_code is not None:
+            result['AlertTypeCode'] = self.alert_type_code
+        if self.alert_type_en is not None:
+            result['AlertTypeEn'] = self.alert_type_en
+        if self.alert_uuid is not None:
+            result['AlertUuid'] = self.alert_uuid
+        if self.asset_list is not None:
+            result['AssetList'] = self.asset_list
+        if self.att_ck is not None:
+            result['AttCk'] = self.att_ck
+        if self.cloud_code is not None:
+            result['CloudCode'] = self.cloud_code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.incident_uuid is not None:
+            result['IncidentUuid'] = self.incident_uuid
+        if self.is_defend is not None:
+            result['IsDefend'] = self.is_defend
+        if self.log_time is not None:
+            result['LogTime'] = self.log_time
+        if self.log_uuid is not None:
+            result['LogUuid'] = self.log_uuid
+        if self.main_user_id is not None:
+            result['MainUserId'] = self.main_user_id
+        if self.occur_time is not None:
+            result['OccurTime'] = self.occur_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.sub_user_id is not None:
+            result['SubUserId'] = self.sub_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertDesc') is not None:
+            self.alert_desc = m.get('AlertDesc')
+        if m.get('AlertDescCode') is not None:
+            self.alert_desc_code = m.get('AlertDescCode')
+        if m.get('AlertDescEn') is not None:
+            self.alert_desc_en = m.get('AlertDescEn')
+        if m.get('AlertDetail') is not None:
+            self.alert_detail = m.get('AlertDetail')
+        self.alert_info_list = []
+        if m.get('AlertInfoList') is not None:
+            for k in m.get('AlertInfoList'):
+                temp_model = DescribeAlertsResponseBodyDataResponseDataAlertInfoList()
+                self.alert_info_list.append(temp_model.from_map(k))
+        if m.get('AlertLevel') is not None:
+            self.alert_level = m.get('AlertLevel')
+        if m.get('AlertName') is not None:
+            self.alert_name = m.get('AlertName')
+        if m.get('AlertNameCode') is not None:
+            self.alert_name_code = m.get('AlertNameCode')
+        if m.get('AlertNameEn') is not None:
+            self.alert_name_en = m.get('AlertNameEn')
+        if m.get('AlertSrcProd') is not None:
+            self.alert_src_prod = m.get('AlertSrcProd')
+        if m.get('AlertSrcProdModule') is not None:
+            self.alert_src_prod_module = m.get('AlertSrcProdModule')
+        if m.get('AlertTitle') is not None:
+            self.alert_title = m.get('AlertTitle')
+        if m.get('AlertTitleEn') is not None:
+            self.alert_title_en = m.get('AlertTitleEn')
+        if m.get('AlertType') is not None:
+            self.alert_type = m.get('AlertType')
+        if m.get('AlertTypeCode') is not None:
+            self.alert_type_code = m.get('AlertTypeCode')
+        if m.get('AlertTypeEn') is not None:
+            self.alert_type_en = m.get('AlertTypeEn')
+        if m.get('AlertUuid') is not None:
+            self.alert_uuid = m.get('AlertUuid')
+        if m.get('AssetList') is not None:
+            self.asset_list = m.get('AssetList')
+        if m.get('AttCk') is not None:
+            self.att_ck = m.get('AttCk')
+        if m.get('CloudCode') is not None:
+            self.cloud_code = m.get('CloudCode')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IncidentUuid') is not None:
+            self.incident_uuid = m.get('IncidentUuid')
+        if m.get('IsDefend') is not None:
+            self.is_defend = m.get('IsDefend')
+        if m.get('LogTime') is not None:
+            self.log_time = m.get('LogTime')
+        if m.get('LogUuid') is not None:
+            self.log_uuid = m.get('LogUuid')
+        if m.get('MainUserId') is not None:
+            self.main_user_id = m.get('MainUserId')
+        if m.get('OccurTime') is not None:
+            self.occur_time = m.get('OccurTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('SubUserId') is not None:
+            self.sub_user_id = m.get('SubUserId')
+        return self
+
+
+class DescribeAlertsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_info: DescribeAlertsResponseBodyDataPageInfo = None,
+        response_data: List[DescribeAlertsResponseBodyDataResponseData] = None,
+    ):
+        self.page_info = page_info
+        self.response_data = response_data
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+        if self.response_data:
+            for k in self.response_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        result['ResponseData'] = []
+        if self.response_data is not None:
+            for k in self.response_data:
+                result['ResponseData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeAlertsResponseBodyDataPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        self.response_data = []
+        if m.get('ResponseData') is not None:
+            for k in m.get('ResponseData'):
+                temp_model = DescribeAlertsResponseBodyDataResponseData()
+                self.response_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAlertsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeAlertsResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeAlertsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeAlertsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAlertsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAlertsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAlertsCountRequest(TeaModel):
     def __init__(
         self,
@@ -2581,6 +3108,1018 @@ class DescribeAlertsCountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeAlertsCountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAlertsWithEntityRequest(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        entity_id: int = None,
+        incident_uuid: str = None,
+        page_size: int = None,
+        region_id: str = None,
+        sophon_task_id: str = None,
+    ):
+        self.current_page = current_page
+        self.entity_id = entity_id
+        self.incident_uuid = incident_uuid
+        self.page_size = page_size
+        self.region_id = region_id
+        self.sophon_task_id = sophon_task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.incident_uuid is not None:
+            result['IncidentUuid'] = self.incident_uuid
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.sophon_task_id is not None:
+            result['SophonTaskId'] = self.sophon_task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('IncidentUuid') is not None:
+            self.incident_uuid = m.get('IncidentUuid')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('SophonTaskId') is not None:
+            self.sophon_task_id = m.get('SophonTaskId')
+        return self
+
+
+class DescribeAlertsWithEntityResponseBodyDataPageInfo(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        key_name: str = None,
+        values: str = None,
+    ):
+        self.key = key
+        self.key_name = key_name
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
+    def __init__(
+        self,
+        alert_desc: str = None,
+        alert_desc_code: str = None,
+        alert_desc_en: str = None,
+        alert_detail: str = None,
+        alert_info_list: List[DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList] = None,
+        alert_level: str = None,
+        alert_name: str = None,
+        alert_name_code: str = None,
+        alert_name_en: str = None,
+        alert_src_prod: str = None,
+        alert_src_prod_module: str = None,
+        alert_title: str = None,
+        alert_title_en: str = None,
+        alert_type: str = None,
+        alert_type_code: str = None,
+        alert_type_en: str = None,
+        alert_uuid: str = None,
+        asset_list: str = None,
+        att_ck: str = None,
+        cloud_code: str = None,
+        end_time: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        incident_uuid: str = None,
+        is_defend: str = None,
+        log_time: str = None,
+        log_uuid: str = None,
+        main_user_id: int = None,
+        occur_time: str = None,
+        start_time: str = None,
+        sub_user_id: int = None,
+    ):
+        self.alert_desc = alert_desc
+        self.alert_desc_code = alert_desc_code
+        self.alert_desc_en = alert_desc_en
+        self.alert_detail = alert_detail
+        self.alert_info_list = alert_info_list
+        self.alert_level = alert_level
+        self.alert_name = alert_name
+        self.alert_name_code = alert_name_code
+        self.alert_name_en = alert_name_en
+        self.alert_src_prod = alert_src_prod
+        self.alert_src_prod_module = alert_src_prod_module
+        self.alert_title = alert_title
+        self.alert_title_en = alert_title_en
+        self.alert_type = alert_type
+        self.alert_type_code = alert_type_code
+        self.alert_type_en = alert_type_en
+        self.alert_uuid = alert_uuid
+        self.asset_list = asset_list
+        self.att_ck = att_ck
+        self.cloud_code = cloud_code
+        self.end_time = end_time
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.incident_uuid = incident_uuid
+        self.is_defend = is_defend
+        self.log_time = log_time
+        self.log_uuid = log_uuid
+        self.main_user_id = main_user_id
+        self.occur_time = occur_time
+        self.start_time = start_time
+        self.sub_user_id = sub_user_id
+
+    def validate(self):
+        if self.alert_info_list:
+            for k in self.alert_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_desc is not None:
+            result['AlertDesc'] = self.alert_desc
+        if self.alert_desc_code is not None:
+            result['AlertDescCode'] = self.alert_desc_code
+        if self.alert_desc_en is not None:
+            result['AlertDescEn'] = self.alert_desc_en
+        if self.alert_detail is not None:
+            result['AlertDetail'] = self.alert_detail
+        result['AlertInfoList'] = []
+        if self.alert_info_list is not None:
+            for k in self.alert_info_list:
+                result['AlertInfoList'].append(k.to_map() if k else None)
+        if self.alert_level is not None:
+            result['AlertLevel'] = self.alert_level
+        if self.alert_name is not None:
+            result['AlertName'] = self.alert_name
+        if self.alert_name_code is not None:
+            result['AlertNameCode'] = self.alert_name_code
+        if self.alert_name_en is not None:
+            result['AlertNameEn'] = self.alert_name_en
+        if self.alert_src_prod is not None:
+            result['AlertSrcProd'] = self.alert_src_prod
+        if self.alert_src_prod_module is not None:
+            result['AlertSrcProdModule'] = self.alert_src_prod_module
+        if self.alert_title is not None:
+            result['AlertTitle'] = self.alert_title
+        if self.alert_title_en is not None:
+            result['AlertTitleEn'] = self.alert_title_en
+        if self.alert_type is not None:
+            result['AlertType'] = self.alert_type
+        if self.alert_type_code is not None:
+            result['AlertTypeCode'] = self.alert_type_code
+        if self.alert_type_en is not None:
+            result['AlertTypeEn'] = self.alert_type_en
+        if self.alert_uuid is not None:
+            result['AlertUuid'] = self.alert_uuid
+        if self.asset_list is not None:
+            result['AssetList'] = self.asset_list
+        if self.att_ck is not None:
+            result['AttCk'] = self.att_ck
+        if self.cloud_code is not None:
+            result['CloudCode'] = self.cloud_code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.incident_uuid is not None:
+            result['IncidentUuid'] = self.incident_uuid
+        if self.is_defend is not None:
+            result['IsDefend'] = self.is_defend
+        if self.log_time is not None:
+            result['LogTime'] = self.log_time
+        if self.log_uuid is not None:
+            result['LogUuid'] = self.log_uuid
+        if self.main_user_id is not None:
+            result['MainUserId'] = self.main_user_id
+        if self.occur_time is not None:
+            result['OccurTime'] = self.occur_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.sub_user_id is not None:
+            result['SubUserId'] = self.sub_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertDesc') is not None:
+            self.alert_desc = m.get('AlertDesc')
+        if m.get('AlertDescCode') is not None:
+            self.alert_desc_code = m.get('AlertDescCode')
+        if m.get('AlertDescEn') is not None:
+            self.alert_desc_en = m.get('AlertDescEn')
+        if m.get('AlertDetail') is not None:
+            self.alert_detail = m.get('AlertDetail')
+        self.alert_info_list = []
+        if m.get('AlertInfoList') is not None:
+            for k in m.get('AlertInfoList'):
+                temp_model = DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList()
+                self.alert_info_list.append(temp_model.from_map(k))
+        if m.get('AlertLevel') is not None:
+            self.alert_level = m.get('AlertLevel')
+        if m.get('AlertName') is not None:
+            self.alert_name = m.get('AlertName')
+        if m.get('AlertNameCode') is not None:
+            self.alert_name_code = m.get('AlertNameCode')
+        if m.get('AlertNameEn') is not None:
+            self.alert_name_en = m.get('AlertNameEn')
+        if m.get('AlertSrcProd') is not None:
+            self.alert_src_prod = m.get('AlertSrcProd')
+        if m.get('AlertSrcProdModule') is not None:
+            self.alert_src_prod_module = m.get('AlertSrcProdModule')
+        if m.get('AlertTitle') is not None:
+            self.alert_title = m.get('AlertTitle')
+        if m.get('AlertTitleEn') is not None:
+            self.alert_title_en = m.get('AlertTitleEn')
+        if m.get('AlertType') is not None:
+            self.alert_type = m.get('AlertType')
+        if m.get('AlertTypeCode') is not None:
+            self.alert_type_code = m.get('AlertTypeCode')
+        if m.get('AlertTypeEn') is not None:
+            self.alert_type_en = m.get('AlertTypeEn')
+        if m.get('AlertUuid') is not None:
+            self.alert_uuid = m.get('AlertUuid')
+        if m.get('AssetList') is not None:
+            self.asset_list = m.get('AssetList')
+        if m.get('AttCk') is not None:
+            self.att_ck = m.get('AttCk')
+        if m.get('CloudCode') is not None:
+            self.cloud_code = m.get('CloudCode')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IncidentUuid') is not None:
+            self.incident_uuid = m.get('IncidentUuid')
+        if m.get('IsDefend') is not None:
+            self.is_defend = m.get('IsDefend')
+        if m.get('LogTime') is not None:
+            self.log_time = m.get('LogTime')
+        if m.get('LogUuid') is not None:
+            self.log_uuid = m.get('LogUuid')
+        if m.get('MainUserId') is not None:
+            self.main_user_id = m.get('MainUserId')
+        if m.get('OccurTime') is not None:
+            self.occur_time = m.get('OccurTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('SubUserId') is not None:
+            self.sub_user_id = m.get('SubUserId')
+        return self
+
+
+class DescribeAlertsWithEntityResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_info: DescribeAlertsWithEntityResponseBodyDataPageInfo = None,
+        response_data: List[DescribeAlertsWithEntityResponseBodyDataResponseData] = None,
+    ):
+        self.page_info = page_info
+        self.response_data = response_data
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+        if self.response_data:
+            for k in self.response_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        result['ResponseData'] = []
+        if self.response_data is not None:
+            for k in self.response_data:
+                result['ResponseData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeAlertsWithEntityResponseBodyDataPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        self.response_data = []
+        if m.get('ResponseData') is not None:
+            for k in m.get('ResponseData'):
+                temp_model = DescribeAlertsWithEntityResponseBodyDataResponseData()
+                self.response_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAlertsWithEntityResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeAlertsWithEntityResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeAlertsWithEntityResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeAlertsWithEntityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAlertsWithEntityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAlertsWithEntityResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAlertsWithEventRequest(TeaModel):
+    def __init__(
+        self,
+        alert_title: str = None,
+        current_page: int = None,
+        incident_uuid: str = None,
+        is_defend: str = None,
+        level: List[str] = None,
+        page_size: int = None,
+        region_id: str = None,
+        source: str = None,
+        sub_user_id: int = None,
+    ):
+        self.alert_title = alert_title
+        self.current_page = current_page
+        self.incident_uuid = incident_uuid
+        self.is_defend = is_defend
+        self.level = level
+        self.page_size = page_size
+        self.region_id = region_id
+        self.source = source
+        self.sub_user_id = sub_user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_title is not None:
+            result['AlertTitle'] = self.alert_title
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.incident_uuid is not None:
+            result['IncidentUuid'] = self.incident_uuid
+        if self.is_defend is not None:
+            result['IsDefend'] = self.is_defend
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.source is not None:
+            result['Source'] = self.source
+        if self.sub_user_id is not None:
+            result['SubUserId'] = self.sub_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertTitle') is not None:
+            self.alert_title = m.get('AlertTitle')
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('IncidentUuid') is not None:
+            self.incident_uuid = m.get('IncidentUuid')
+        if m.get('IsDefend') is not None:
+            self.is_defend = m.get('IsDefend')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
+        if m.get('SubUserId') is not None:
+            self.sub_user_id = m.get('SubUserId')
+        return self
+
+
+class DescribeAlertsWithEventResponseBodyDataPageInfo(TeaModel):
+    def __init__(
+        self,
+        current_page: int = None,
+        page_size: int = None,
+        total_count: int = None,
+    ):
+        self.current_page = current_page
+        self.page_size = page_size
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_page is not None:
+            result['CurrentPage'] = self.current_page
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CurrentPage') is not None:
+            self.current_page = m.get('CurrentPage')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        key_name: str = None,
+        values: str = None,
+    ):
+        self.key = key
+        self.key_name = key_name
+        self.values = values
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.key_name is not None:
+            result['KeyName'] = self.key_name
+        if self.values is not None:
+            result['Values'] = self.values
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('KeyName') is not None:
+            self.key_name = m.get('KeyName')
+        if m.get('Values') is not None:
+            self.values = m.get('Values')
+        return self
+
+
+class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
+    def __init__(
+        self,
+        alert_desc: str = None,
+        alert_desc_code: str = None,
+        alert_desc_en: str = None,
+        alert_detail: str = None,
+        alert_info_list: List[DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList] = None,
+        alert_level: str = None,
+        alert_name: str = None,
+        alert_name_code: str = None,
+        alert_name_en: str = None,
+        alert_src_prod: str = None,
+        alert_src_prod_module: str = None,
+        alert_title: str = None,
+        alert_title_en: str = None,
+        alert_type: str = None,
+        alert_type_code: str = None,
+        alert_type_en: str = None,
+        alert_uuid: str = None,
+        asset_list: str = None,
+        att_ck: str = None,
+        cloud_code: str = None,
+        end_time: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: int = None,
+        incident_uuid: str = None,
+        is_defend: str = None,
+        log_time: str = None,
+        log_uuid: str = None,
+        main_user_id: int = None,
+        occur_time: str = None,
+        start_time: str = None,
+        sub_user_id: int = None,
+    ):
+        self.alert_desc = alert_desc
+        self.alert_desc_code = alert_desc_code
+        self.alert_desc_en = alert_desc_en
+        self.alert_detail = alert_detail
+        self.alert_info_list = alert_info_list
+        self.alert_level = alert_level
+        self.alert_name = alert_name
+        self.alert_name_code = alert_name_code
+        self.alert_name_en = alert_name_en
+        self.alert_src_prod = alert_src_prod
+        self.alert_src_prod_module = alert_src_prod_module
+        self.alert_title = alert_title
+        self.alert_title_en = alert_title_en
+        self.alert_type = alert_type
+        self.alert_type_code = alert_type_code
+        self.alert_type_en = alert_type_en
+        self.alert_uuid = alert_uuid
+        self.asset_list = asset_list
+        self.att_ck = att_ck
+        self.cloud_code = cloud_code
+        self.end_time = end_time
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.incident_uuid = incident_uuid
+        self.is_defend = is_defend
+        self.log_time = log_time
+        self.log_uuid = log_uuid
+        self.main_user_id = main_user_id
+        self.occur_time = occur_time
+        self.start_time = start_time
+        self.sub_user_id = sub_user_id
+
+    def validate(self):
+        if self.alert_info_list:
+            for k in self.alert_info_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_desc is not None:
+            result['AlertDesc'] = self.alert_desc
+        if self.alert_desc_code is not None:
+            result['AlertDescCode'] = self.alert_desc_code
+        if self.alert_desc_en is not None:
+            result['AlertDescEn'] = self.alert_desc_en
+        if self.alert_detail is not None:
+            result['AlertDetail'] = self.alert_detail
+        result['AlertInfoList'] = []
+        if self.alert_info_list is not None:
+            for k in self.alert_info_list:
+                result['AlertInfoList'].append(k.to_map() if k else None)
+        if self.alert_level is not None:
+            result['AlertLevel'] = self.alert_level
+        if self.alert_name is not None:
+            result['AlertName'] = self.alert_name
+        if self.alert_name_code is not None:
+            result['AlertNameCode'] = self.alert_name_code
+        if self.alert_name_en is not None:
+            result['AlertNameEn'] = self.alert_name_en
+        if self.alert_src_prod is not None:
+            result['AlertSrcProd'] = self.alert_src_prod
+        if self.alert_src_prod_module is not None:
+            result['AlertSrcProdModule'] = self.alert_src_prod_module
+        if self.alert_title is not None:
+            result['AlertTitle'] = self.alert_title
+        if self.alert_title_en is not None:
+            result['AlertTitleEn'] = self.alert_title_en
+        if self.alert_type is not None:
+            result['AlertType'] = self.alert_type
+        if self.alert_type_code is not None:
+            result['AlertTypeCode'] = self.alert_type_code
+        if self.alert_type_en is not None:
+            result['AlertTypeEn'] = self.alert_type_en
+        if self.alert_uuid is not None:
+            result['AlertUuid'] = self.alert_uuid
+        if self.asset_list is not None:
+            result['AssetList'] = self.asset_list
+        if self.att_ck is not None:
+            result['AttCk'] = self.att_ck
+        if self.cloud_code is not None:
+            result['CloudCode'] = self.cloud_code
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.incident_uuid is not None:
+            result['IncidentUuid'] = self.incident_uuid
+        if self.is_defend is not None:
+            result['IsDefend'] = self.is_defend
+        if self.log_time is not None:
+            result['LogTime'] = self.log_time
+        if self.log_uuid is not None:
+            result['LogUuid'] = self.log_uuid
+        if self.main_user_id is not None:
+            result['MainUserId'] = self.main_user_id
+        if self.occur_time is not None:
+            result['OccurTime'] = self.occur_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.sub_user_id is not None:
+            result['SubUserId'] = self.sub_user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertDesc') is not None:
+            self.alert_desc = m.get('AlertDesc')
+        if m.get('AlertDescCode') is not None:
+            self.alert_desc_code = m.get('AlertDescCode')
+        if m.get('AlertDescEn') is not None:
+            self.alert_desc_en = m.get('AlertDescEn')
+        if m.get('AlertDetail') is not None:
+            self.alert_detail = m.get('AlertDetail')
+        self.alert_info_list = []
+        if m.get('AlertInfoList') is not None:
+            for k in m.get('AlertInfoList'):
+                temp_model = DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList()
+                self.alert_info_list.append(temp_model.from_map(k))
+        if m.get('AlertLevel') is not None:
+            self.alert_level = m.get('AlertLevel')
+        if m.get('AlertName') is not None:
+            self.alert_name = m.get('AlertName')
+        if m.get('AlertNameCode') is not None:
+            self.alert_name_code = m.get('AlertNameCode')
+        if m.get('AlertNameEn') is not None:
+            self.alert_name_en = m.get('AlertNameEn')
+        if m.get('AlertSrcProd') is not None:
+            self.alert_src_prod = m.get('AlertSrcProd')
+        if m.get('AlertSrcProdModule') is not None:
+            self.alert_src_prod_module = m.get('AlertSrcProdModule')
+        if m.get('AlertTitle') is not None:
+            self.alert_title = m.get('AlertTitle')
+        if m.get('AlertTitleEn') is not None:
+            self.alert_title_en = m.get('AlertTitleEn')
+        if m.get('AlertType') is not None:
+            self.alert_type = m.get('AlertType')
+        if m.get('AlertTypeCode') is not None:
+            self.alert_type_code = m.get('AlertTypeCode')
+        if m.get('AlertTypeEn') is not None:
+            self.alert_type_en = m.get('AlertTypeEn')
+        if m.get('AlertUuid') is not None:
+            self.alert_uuid = m.get('AlertUuid')
+        if m.get('AssetList') is not None:
+            self.asset_list = m.get('AssetList')
+        if m.get('AttCk') is not None:
+            self.att_ck = m.get('AttCk')
+        if m.get('CloudCode') is not None:
+            self.cloud_code = m.get('CloudCode')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('IncidentUuid') is not None:
+            self.incident_uuid = m.get('IncidentUuid')
+        if m.get('IsDefend') is not None:
+            self.is_defend = m.get('IsDefend')
+        if m.get('LogTime') is not None:
+            self.log_time = m.get('LogTime')
+        if m.get('LogUuid') is not None:
+            self.log_uuid = m.get('LogUuid')
+        if m.get('MainUserId') is not None:
+            self.main_user_id = m.get('MainUserId')
+        if m.get('OccurTime') is not None:
+            self.occur_time = m.get('OccurTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('SubUserId') is not None:
+            self.sub_user_id = m.get('SubUserId')
+        return self
+
+
+class DescribeAlertsWithEventResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        page_info: DescribeAlertsWithEventResponseBodyDataPageInfo = None,
+        response_data: List[DescribeAlertsWithEventResponseBodyDataResponseData] = None,
+    ):
+        self.page_info = page_info
+        self.response_data = response_data
+
+    def validate(self):
+        if self.page_info:
+            self.page_info.validate()
+        if self.response_data:
+            for k in self.response_data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_info is not None:
+            result['PageInfo'] = self.page_info.to_map()
+        result['ResponseData'] = []
+        if self.response_data is not None:
+            for k in self.response_data:
+                result['ResponseData'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageInfo') is not None:
+            temp_model = DescribeAlertsWithEventResponseBodyDataPageInfo()
+            self.page_info = temp_model.from_map(m['PageInfo'])
+        self.response_data = []
+        if m.get('ResponseData') is not None:
+            for k in m.get('ResponseData'):
+                temp_model = DescribeAlertsWithEventResponseBodyDataResponseData()
+                self.response_data.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAlertsWithEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeAlertsWithEventResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeAlertsWithEventResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DescribeAlertsWithEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAlertsWithEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAlertsWithEventResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
