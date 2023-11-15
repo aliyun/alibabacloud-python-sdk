@@ -6842,6 +6842,7 @@ class ListPrivateAccessTagsRequest(TeaModel):
         name: str = None,
         page_size: int = None,
         policy_id: str = None,
+        simple_mode: bool = None,
         tag_ids: List[str] = None,
     ):
         self.application_id = application_id
@@ -6849,6 +6850,7 @@ class ListPrivateAccessTagsRequest(TeaModel):
         self.name = name
         self.page_size = page_size
         self.policy_id = policy_id
+        self.simple_mode = simple_mode
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -6870,6 +6872,8 @@ class ListPrivateAccessTagsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.simple_mode is not None:
+            result['SimpleMode'] = self.simple_mode
         if self.tag_ids is not None:
             result['TagIds'] = self.tag_ids
         return result
@@ -6886,6 +6890,8 @@ class ListPrivateAccessTagsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('SimpleMode') is not None:
+            self.simple_mode = m.get('SimpleMode')
         if m.get('TagIds') is not None:
             self.tag_ids = m.get('TagIds')
         return self
@@ -8503,6 +8509,7 @@ class ListUserDevicesRequest(TeaModel):
         page_size: int = None,
         sase_user_id: str = None,
         sharing_status: bool = None,
+        sort_by: str = None,
         username: str = None,
     ):
         self.app_statuses = app_statuses
@@ -8521,6 +8528,7 @@ class ListUserDevicesRequest(TeaModel):
         self.page_size = page_size
         self.sase_user_id = sase_user_id
         self.sharing_status = sharing_status
+        self.sort_by = sort_by
         self.username = username
 
     def validate(self):
@@ -8564,6 +8572,8 @@ class ListUserDevicesRequest(TeaModel):
             result['SaseUserId'] = self.sase_user_id
         if self.sharing_status is not None:
             result['SharingStatus'] = self.sharing_status
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
         if self.username is not None:
             result['Username'] = self.username
         return result
@@ -8602,6 +8612,8 @@ class ListUserDevicesRequest(TeaModel):
             self.sase_user_id = m.get('SaseUserId')
         if m.get('SharingStatus') is not None:
             self.sharing_status = m.get('SharingStatus')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
         if m.get('Username') is not None:
             self.username = m.get('Username')
         return self
