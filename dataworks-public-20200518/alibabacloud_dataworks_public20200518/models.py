@@ -7372,6 +7372,7 @@ class CreateQualityRuleRequest(TeaModel):
         property_type: str = None,
         rule_name: str = None,
         rule_type: int = None,
+        task_setting: str = None,
         template_id: int = None,
         trend: str = None,
         warning_threshold: str = None,
@@ -7406,6 +7407,7 @@ class CreateQualityRuleRequest(TeaModel):
         self.rule_name = rule_name
         # The type of the monitoring rule. Valid values: 0, 1, and 2. 0 indicates that the monitoring rule is created by the system. 1 indicates that the monitoring rule is created by a user. 2 indicates that the monitoring rule is a workspace-level rule.
         self.rule_type = rule_type
+        self.task_setting = task_setting
         # The ID of the template that is used to create the monitoring rule.
         self.template_id = template_id
         # The trend of the monitoring result. Valid values:
@@ -7458,6 +7460,8 @@ class CreateQualityRuleRequest(TeaModel):
             result['RuleName'] = self.rule_name
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
+        if self.task_setting is not None:
+            result['TaskSetting'] = self.task_setting
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.trend is not None:
@@ -7500,6 +7504,8 @@ class CreateQualityRuleRequest(TeaModel):
             self.rule_name = m.get('RuleName')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
+        if m.get('TaskSetting') is not None:
+            self.task_setting = m.get('TaskSetting')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Trend') is not None:
@@ -69210,6 +69216,7 @@ class UpdateQualityRuleRequest(TeaModel):
         property_type: str = None,
         rule_name: str = None,
         rule_type: int = None,
+        task_setting: str = None,
         template_id: int = None,
         trend: str = None,
         warning_threshold: str = None,
@@ -69264,6 +69271,7 @@ class UpdateQualityRuleRequest(TeaModel):
         # *   1: The monitoring rule is created by a user.
         # *   2: The monitoring rule is a workspace-level rule.
         self.rule_type = rule_type
+        self.task_setting = task_setting
         # The ID of the monitoring template. You can call the [ListQualityRules](~~173995~~) operation to obtain the ID of the monitoring template that is used to create the monitoring rule.
         self.template_id = template_id
         # The trend of the monitoring result. Valid values:
@@ -69320,6 +69328,8 @@ class UpdateQualityRuleRequest(TeaModel):
             result['RuleName'] = self.rule_name
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
+        if self.task_setting is not None:
+            result['TaskSetting'] = self.task_setting
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         if self.trend is not None:
@@ -69366,6 +69376,8 @@ class UpdateQualityRuleRequest(TeaModel):
             self.rule_name = m.get('RuleName')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
+        if m.get('TaskSetting') is not None:
+            self.task_setting = m.get('TaskSetting')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         if m.get('Trend') is not None:

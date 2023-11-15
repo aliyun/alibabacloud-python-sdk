@@ -3826,6 +3826,8 @@ class Client(OpenApiClient):
             body['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_type):
             body['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.task_setting):
+            body['TaskSetting'] = request.task_setting
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.trend):
@@ -3890,6 +3892,8 @@ class Client(OpenApiClient):
             body['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_type):
             body['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.task_setting):
+            body['TaskSetting'] = request.task_setting
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.trend):
@@ -24022,6 +24026,8 @@ class Client(OpenApiClient):
             body['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_type):
             body['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.task_setting):
+            body['TaskSetting'] = request.task_setting
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.trend):
@@ -24090,6 +24096,8 @@ class Client(OpenApiClient):
             body['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.rule_type):
             body['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.task_setting):
+            body['TaskSetting'] = request.task_setting
         if not UtilClient.is_unset(request.template_id):
             body['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.trend):
