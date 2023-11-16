@@ -1720,6 +1720,7 @@ class DescribeNodeResponseBody(TeaModel):
         node_id: str = None,
         operating_state: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         sn: str = None,
         zone_id: str = None,
     ):
@@ -1739,6 +1740,7 @@ class DescribeNodeResponseBody(TeaModel):
         self.node_id = node_id
         self.operating_state = operating_state
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.sn = sn
         self.zone_id = zone_id
 
@@ -1786,6 +1788,8 @@ class DescribeNodeResponseBody(TeaModel):
             result['OperatingState'] = self.operating_state
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sn is not None:
             result['Sn'] = self.sn
         if self.zone_id is not None:
@@ -1827,6 +1831,8 @@ class DescribeNodeResponseBody(TeaModel):
             self.operating_state = m.get('OperatingState')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
         if m.get('ZoneId') is not None:
@@ -3585,11 +3591,13 @@ class ListFreeNodesRequest(TeaModel):
         machine_type: str = None,
         max_results: int = None,
         next_token: str = None,
+        resource_group_id: str = None,
     ):
         self.hpn_zone = hpn_zone
         self.machine_type = machine_type
         self.max_results = max_results
         self.next_token = next_token
+        self.resource_group_id = resource_group_id
 
     def validate(self):
         pass
@@ -3608,6 +3616,8 @@ class ListFreeNodesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3620,6 +3630,8 @@ class ListFreeNodesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         return self
 
 
@@ -3631,6 +3643,7 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
         hpn_zone: str = None,
         machine_type: str = None,
         node_id: str = None,
+        resource_group_id: str = None,
         sn: str = None,
         zone_id: str = None,
     ):
@@ -3639,6 +3652,7 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
         self.hpn_zone = hpn_zone
         self.machine_type = machine_type
         self.node_id = node_id
+        self.resource_group_id = resource_group_id
         self.sn = sn
         self.zone_id = zone_id
 
@@ -3661,6 +3675,8 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             result['MachineType'] = self.machine_type
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.sn is not None:
             result['Sn'] = self.sn
         if self.zone_id is not None:
@@ -3679,6 +3695,8 @@ class ListFreeNodesResponseBodyNodes(TeaModel):
             self.machine_type = m.get('MachineType')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Sn') is not None:
             self.sn = m.get('Sn')
         if m.get('ZoneId') is not None:

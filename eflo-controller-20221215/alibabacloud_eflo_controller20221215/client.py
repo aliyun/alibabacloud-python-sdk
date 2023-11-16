@@ -1028,6 +1028,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1062,6 +1064,8 @@ class Client(OpenApiClient):
             body['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             body['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
