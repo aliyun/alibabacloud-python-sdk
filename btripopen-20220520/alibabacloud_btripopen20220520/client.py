@@ -2839,6 +2839,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
             body['alipay_no'] = request.alipay_no
+        if not UtilClient.is_unset(request.disable):
+            body['disable'] = request.disable
         if not UtilClient.is_unset(request.number):
             body['number'] = request.number
         if not UtilClient.is_unset(request.scope):
@@ -2882,6 +2884,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
             body['alipay_no'] = request.alipay_no
+        if not UtilClient.is_unset(request.disable):
+            body['disable'] = request.disable
         if not UtilClient.is_unset(request.number):
             body['number'] = request.number
         if not UtilClient.is_unset(request.scope):
@@ -2939,6 +2943,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.disable):
+            query['disable'] = request.disable
         if not UtilClient.is_unset(request.need_org_entity):
             query['need_org_entity'] = request.need_org_entity
         if not UtilClient.is_unset(request.thirdpart_id):
@@ -2980,6 +2986,8 @@ class Client(OpenApiClient):
     ) -> btrip_open_20220520_models.CostCenterQueryResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.disable):
+            query['disable'] = request.disable
         if not UtilClient.is_unset(request.need_org_entity):
             query['need_org_entity'] = request.need_org_entity
         if not UtilClient.is_unset(request.thirdpart_id):
@@ -3039,6 +3047,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
             body['alipay_no'] = request.alipay_no
+        if not UtilClient.is_unset(request.disable):
+            body['disable'] = request.disable
         if not UtilClient.is_unset(request.number):
             body['number'] = request.number
         if not UtilClient.is_unset(request.scope):
@@ -3082,6 +3092,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.alipay_no):
             body['alipay_no'] = request.alipay_no
+        if not UtilClient.is_unset(request.disable):
+            body['disable'] = request.disable
         if not UtilClient.is_unset(request.number):
             body['number'] = request.number
         if not UtilClient.is_unset(request.scope):

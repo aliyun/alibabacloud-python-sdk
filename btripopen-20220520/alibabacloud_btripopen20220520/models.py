@@ -15368,12 +15368,14 @@ class CostCenterModifyRequest(TeaModel):
     def __init__(
         self,
         alipay_no: str = None,
+        disable: int = None,
         number: str = None,
         scope: int = None,
         thirdpart_id: str = None,
         title: str = None,
     ):
         self.alipay_no = alipay_no
+        self.disable = disable
         self.number = number
         self.scope = scope
         self.thirdpart_id = thirdpart_id
@@ -15390,6 +15392,8 @@ class CostCenterModifyRequest(TeaModel):
         result = dict()
         if self.alipay_no is not None:
             result['alipay_no'] = self.alipay_no
+        if self.disable is not None:
+            result['disable'] = self.disable
         if self.number is not None:
             result['number'] = self.number
         if self.scope is not None:
@@ -15404,6 +15408,8 @@ class CostCenterModifyRequest(TeaModel):
         m = m or dict()
         if m.get('alipay_no') is not None:
             self.alipay_no = m.get('alipay_no')
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
         if m.get('number') is not None:
             self.number = m.get('number')
         if m.get('scope') is not None:
@@ -15546,11 +15552,13 @@ class CostCenterQueryHeaders(TeaModel):
 class CostCenterQueryRequest(TeaModel):
     def __init__(
         self,
+        disable: int = None,
         need_org_entity: bool = None,
         thirdpart_id: str = None,
         title: str = None,
         user_id: str = None,
     ):
+        self.disable = disable
         self.need_org_entity = need_org_entity
         self.thirdpart_id = thirdpart_id
         self.title = title
@@ -15565,6 +15573,8 @@ class CostCenterQueryRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.disable is not None:
+            result['disable'] = self.disable
         if self.need_org_entity is not None:
             result['need_org_entity'] = self.need_org_entity
         if self.thirdpart_id is not None:
@@ -15577,6 +15587,8 @@ class CostCenterQueryRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
         if m.get('need_org_entity') is not None:
             self.need_org_entity = m.get('need_org_entity')
         if m.get('thirdpart_id') is not None:
@@ -15644,6 +15656,7 @@ class CostCenterQueryResponseBodyModule(TeaModel):
         self,
         alipay_no: str = None,
         corp_id: str = None,
+        disable: int = None,
         entity_dos: List[CostCenterQueryResponseBodyModuleEntityDOS] = None,
         id: int = None,
         number: str = None,
@@ -15654,6 +15667,7 @@ class CostCenterQueryResponseBodyModule(TeaModel):
     ):
         self.alipay_no = alipay_no
         self.corp_id = corp_id
+        self.disable = disable
         self.entity_dos = entity_dos
         self.id = id
         self.number = number
@@ -15679,6 +15693,8 @@ class CostCenterQueryResponseBodyModule(TeaModel):
             result['alipay_no'] = self.alipay_no
         if self.corp_id is not None:
             result['corp_id'] = self.corp_id
+        if self.disable is not None:
+            result['disable'] = self.disable
         result['entity_d_o_s'] = []
         if self.entity_dos is not None:
             for k in self.entity_dos:
@@ -15703,6 +15719,8 @@ class CostCenterQueryResponseBodyModule(TeaModel):
             self.alipay_no = m.get('alipay_no')
         if m.get('corp_id') is not None:
             self.corp_id = m.get('corp_id')
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
         self.entity_dos = []
         if m.get('entity_d_o_s') is not None:
             for k in m.get('entity_d_o_s'):
@@ -15876,12 +15894,14 @@ class CostCenterSaveRequest(TeaModel):
     def __init__(
         self,
         alipay_no: str = None,
+        disable: int = None,
         number: str = None,
         scope: int = None,
         thirdpart_id: str = None,
         title: str = None,
     ):
         self.alipay_no = alipay_no
+        self.disable = disable
         self.number = number
         self.scope = scope
         self.thirdpart_id = thirdpart_id
@@ -15898,6 +15918,8 @@ class CostCenterSaveRequest(TeaModel):
         result = dict()
         if self.alipay_no is not None:
             result['alipay_no'] = self.alipay_no
+        if self.disable is not None:
+            result['disable'] = self.disable
         if self.number is not None:
             result['number'] = self.number
         if self.scope is not None:
@@ -15912,6 +15934,8 @@ class CostCenterSaveRequest(TeaModel):
         m = m or dict()
         if m.get('alipay_no') is not None:
             self.alipay_no = m.get('alipay_no')
+        if m.get('disable') is not None:
+            self.disable = m.get('disable')
         if m.get('number') is not None:
             self.number = m.get('number')
         if m.get('scope') is not None:
