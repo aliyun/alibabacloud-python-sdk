@@ -1562,6 +1562,7 @@ class CreateDBClusterRequest(TeaModel):
         parameter_group_id: str = None,
         pay_type: str = None,
         period: str = None,
+        provisioned_iops: int = None,
         proxy_class: str = None,
         proxy_type: str = None,
         region_id: str = None,
@@ -1767,6 +1768,7 @@ class CreateDBClusterRequest(TeaModel):
         # *   **Year**: annual subscription. Unit: years.
         # *   **Month**: monthly subscription. Unit: months.
         self.period = period
+        self.provisioned_iops = provisioned_iops
         # 标准版数据库代理规格。
         self.proxy_class = proxy_class
         # 数据库代理类型，取值范围如下：
@@ -1933,6 +1935,8 @@ class CreateDBClusterRequest(TeaModel):
             result['PayType'] = self.pay_type
         if self.period is not None:
             result['Period'] = self.period
+        if self.provisioned_iops is not None:
+            result['ProvisionedIops'] = self.provisioned_iops
         if self.proxy_class is not None:
             result['ProxyClass'] = self.proxy_class
         if self.proxy_type is not None:
@@ -2045,6 +2049,8 @@ class CreateDBClusterRequest(TeaModel):
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
             self.period = m.get('Period')
+        if m.get('ProvisionedIops') is not None:
+            self.provisioned_iops = m.get('ProvisionedIops')
         if m.get('ProxyClass') is not None:
             self.proxy_class = m.get('ProxyClass')
         if m.get('ProxyType') is not None:
