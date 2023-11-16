@@ -20320,9 +20320,9 @@ class DescribeEnvironmentResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag的键。
+        # The tag key.
         self.key = key
-        # Tag的值
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -20424,7 +20424,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.tags = tags
         # The user ID.
         self.user_id = user_id
-        # VPC ID。
+        # VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -20706,7 +20706,7 @@ class DescribeEnvironmentFeatureResponseBodyDataFeature(TeaModel):
         self.latest_version = latest_version
         # Name of Feature.
         self.name = name
-        # Status of Feature.
+        # Installation status of Feature.
         self.status = status
         # Version of Feature.
         self.version = version
@@ -20824,8 +20824,8 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
         # Namespace.
         self.namespace = namespace
         # Running status.
-        # - Success: Normal operation
-        # - Failed: running exception
+        # - Success: Running normal
+        # - Failed: Running exception
         # - Not Found: Not installed
         self.status = status
 
@@ -24504,7 +24504,7 @@ class GetManagedPrometheusStatusRequest(TeaModel):
     ):
         # The ID of the ASK cluster. This parameter is required if the ClusterType parameter is set to ask.
         self.cluster_id = cluster_id
-        # The type of the monitoring object. Valid values: ask and ecs.
+        # The type of the monitoring object. Valid values: ask , acs , one and ecs.
         self.cluster_type = cluster_type
         # The region ID.
         self.region_id = region_id
@@ -51789,9 +51789,11 @@ class UninstallManagedPrometheusResponse(TeaModel):
 class UninstallPromClusterRequest(TeaModel):
     def __init__(
         self,
+        aliyun_lang: str = None,
         cluster_id: str = None,
         region_id: str = None,
     ):
+        self.aliyun_lang = aliyun_lang
         # The cluster ID.
         self.cluster_id = cluster_id
         # The region ID. Default value: cn-hangzhou.
@@ -51806,6 +51808,8 @@ class UninstallPromClusterRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.region_id is not None:
@@ -51814,6 +51818,8 @@ class UninstallPromClusterRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('RegionId') is not None:

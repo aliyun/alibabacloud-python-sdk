@@ -16994,6 +16994,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.UninstallPromClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.region_id):
@@ -17024,6 +17026,8 @@ class Client(OpenApiClient):
     ) -> arms20190808_models.UninstallPromClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
         if not UtilClient.is_unset(request.cluster_id):
             query['ClusterId'] = request.cluster_id
         if not UtilClient.is_unset(request.region_id):
