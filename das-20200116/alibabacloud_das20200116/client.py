@@ -1631,6 +1631,15 @@ class Client(OpenApiClient):
         request: das20200116_models.DescribeAutoScalingHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        """
+        You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: DescribeAutoScalingHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoScalingHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1657,6 +1666,15 @@ class Client(OpenApiClient):
         request: das20200116_models.DescribeAutoScalingHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        """
+        You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: DescribeAutoScalingHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoScalingHistoryResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1682,6 +1700,14 @@ class Client(OpenApiClient):
         self,
         request: das20200116_models.DescribeAutoScalingHistoryRequest,
     ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        """
+        You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: DescribeAutoScalingHistoryRequest
+        @return: DescribeAutoScalingHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_auto_scaling_history_with_options(request, runtime)
 
@@ -1689,6 +1715,14 @@ class Client(OpenApiClient):
         self,
         request: das20200116_models.DescribeAutoScalingHistoryRequest,
     ) -> das20200116_models.DescribeAutoScalingHistoryResponse:
+        """
+        You can query only the history of automatic performance scaling of ApsaraDB RDS for MySQL instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: DescribeAutoScalingHistoryRequest
+        @return: DescribeAutoScalingHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_scaling_history_with_options_async(request, runtime)
 
@@ -4749,6 +4783,16 @@ class Client(OpenApiClient):
         request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        """
+        Before you call this operation, take note of the following items:
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+        *   The database instance that you want to manage is connected to DAS.
+        
+        @param request: GetDBInstanceConnectivityDiagnosisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBInstanceConnectivityDiagnosisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4779,6 +4823,16 @@ class Client(OpenApiClient):
         request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        """
+        Before you call this operation, take note of the following items:
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+        *   The database instance that you want to manage is connected to DAS.
+        
+        @param request: GetDBInstanceConnectivityDiagnosisRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDBInstanceConnectivityDiagnosisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4808,6 +4862,15 @@ class Client(OpenApiClient):
         self,
         request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
     ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        """
+        Before you call this operation, take note of the following items:
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+        *   The database instance that you want to manage is connected to DAS.
+        
+        @param request: GetDBInstanceConnectivityDiagnosisRequest
+        @return: GetDBInstanceConnectivityDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dbinstance_connectivity_diagnosis_with_options(request, runtime)
 
@@ -4815,6 +4878,15 @@ class Client(OpenApiClient):
         self,
         request: das20200116_models.GetDBInstanceConnectivityDiagnosisRequest,
     ) -> das20200116_models.GetDBInstanceConnectivityDiagnosisResponse:
+        """
+        Before you call this operation, take note of the following items:
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+        *   The database instance that you want to manage is connected to DAS.
+        
+        @param request: GetDBInstanceConnectivityDiagnosisRequest
+        @return: GetDBInstanceConnectivityDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dbinstance_connectivity_diagnosis_with_options_async(request, runtime)
 
@@ -6501,6 +6573,15 @@ class Client(OpenApiClient):
         request: das20200116_models.GetMongoDBCurrentOpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetMongoDBCurrentOpResponse:
+        """
+        This operation is applicable only to MongoDB instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: GetMongoDBCurrentOpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMongoDBCurrentOpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_doc):
@@ -6535,6 +6616,15 @@ class Client(OpenApiClient):
         request: das20200116_models.GetMongoDBCurrentOpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetMongoDBCurrentOpResponse:
+        """
+        This operation is applicable only to MongoDB instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: GetMongoDBCurrentOpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMongoDBCurrentOpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.filter_doc):
@@ -6568,6 +6658,14 @@ class Client(OpenApiClient):
         self,
         request: das20200116_models.GetMongoDBCurrentOpRequest,
     ) -> das20200116_models.GetMongoDBCurrentOpResponse:
+        """
+        This operation is applicable only to MongoDB instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: GetMongoDBCurrentOpRequest
+        @return: GetMongoDBCurrentOpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mongo_dbcurrent_op_with_options(request, runtime)
 
@@ -6575,6 +6673,14 @@ class Client(OpenApiClient):
         self,
         request: das20200116_models.GetMongoDBCurrentOpRequest,
     ) -> das20200116_models.GetMongoDBCurrentOpResponse:
+        """
+        This operation is applicable only to MongoDB instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region to cn-shanghai.
+        
+        @param request: GetMongoDBCurrentOpRequest
+        @return: GetMongoDBCurrentOpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mongo_dbcurrent_op_with_options_async(request, runtime)
 
@@ -6584,9 +6690,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
         """
-        This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        >  Asynchronous calls do not immediately return the complete results. You must use the value of *ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
+        *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: GetMySQLAllSessionAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6625,9 +6732,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
         """
-        This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        >  Asynchronous calls do not immediately return the complete results. You must use the value of *ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
+        *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: GetMySQLAllSessionAsyncRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6665,9 +6773,10 @@ class Client(OpenApiClient):
         request: das20200116_models.GetMySQLAllSessionAsyncRequest,
     ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
         """
-        This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        >  Asynchronous calls do not immediately return the complete results. You must use the value of *ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
+        *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: GetMySQLAllSessionAsyncRequest
         @return: GetMySQLAllSessionAsyncResponse
@@ -6680,9 +6789,10 @@ class Client(OpenApiClient):
         request: das20200116_models.GetMySQLAllSessionAsyncRequest,
     ) -> das20200116_models.GetMySQLAllSessionAsyncResponse:
         """
-        This operation is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        >  Asynchronous calls do not immediately return the complete results. You must use the value of *ResultId** returned in the response to re-initiate the call. The complete results are returned only if the value of **IsFinish** is **true**.
+        *   This operation is applicable only to ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances.
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: GetMySQLAllSessionAsyncRequest
         @return: GetMySQLAllSessionAsyncResponse
@@ -9238,16 +9348,16 @@ class Client(OpenApiClient):
         """
         You can call this operation to modify the following auto scaling configurations of an instance: *auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
         *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
-        *   PolarDB for MySQL Cluster Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
         *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: For more information about the feature and the billing rules, see [Automatic storage expansion](~~173345~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
         *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
-        *   ApsaraDB for Redis instances that use local disks: For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
+        *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
         *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
-        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: ModifyAutoScalingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9294,16 +9404,16 @@ class Client(OpenApiClient):
         """
         You can call this operation to modify the following auto scaling configurations of an instance: *auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
         *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
-        *   PolarDB for MySQL Cluster Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
         *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: For more information about the feature and the billing rules, see [Automatic storage expansion](~~173345~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
         *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
-        *   ApsaraDB for Redis instances that use local disks: For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
+        *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
         *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
-        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: ModifyAutoScalingConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9349,16 +9459,16 @@ class Client(OpenApiClient):
         """
         You can call this operation to modify the following auto scaling configurations of an instance: *auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
         *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
-        *   PolarDB for MySQL Cluster Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
         *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: For more information about the feature and the billing rules, see [Automatic storage expansion](~~173345~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
         *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
-        *   ApsaraDB for Redis instances that use local disks: For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
+        *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
         *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
-        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: ModifyAutoScalingConfigRequest
         @return: ModifyAutoScalingConfigResponse
@@ -9373,16 +9483,16 @@ class Client(OpenApiClient):
         """
         You can call this operation to modify the following auto scaling configurations of an instance: *auto scaling for specifications**, **automatic storage expansion**, **automatic bandwidth adjustment**, and **auto scaling for resources**.
         *   You can modify the configurations of the **auto scaling feature for specifications** for the following types of database instances:
-        *   PolarDB for MySQL Cluster Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs): For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   PolarDB for MySQL Cluster Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or enhanced SSDs (ESSDs). For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
         *   You can modify the configurations of the **automatic storage expansion** feature for the following types of database instances:
-        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs: For more information about the feature and the billing rules, see [Automatic storage expansion](~~173345~~).
+        *   ApsaraDB RDS for MySQL High-availability Edition instances that use standard SSDs or ESSDs. For more information about the feature and the billing rules, see [Automatic space expansion](~~173345~~).
         *   You can modify the configurations of the **automatic bandwidth adjustment** feature for the following types of database instances:
-        *   ApsaraDB for Redis instances that use local disks: For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
+        *   ApsaraDB for Redis Classic (Local Disk-based) Edition instances. For more information about the feature and the billing rules, see [Automatic bandwidth adjustment](~~216312~~).
         *   You can modify the configurations of the **auto scaling feature for resources** for the following types of database instances:
-        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances: For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
-        *   If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
-        *   If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
+        *   General-purpose ApsaraDB RDS for MySQL Enterprise Edition instances. For more information about the feature and the billing rules, see [Automatic performance scaling](~~169686~~).
+        *   If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+        *   If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
         
         @param request: ModifyAutoScalingConfigRequest
         @return: ModifyAutoScalingConfigResponse

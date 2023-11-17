@@ -52,7 +52,9 @@ class DataSessionStatClientStatsValue(TeaModel):
         active_count: int = None,
         total_count: int = None,
     ):
+        # The number of clients whose IP addresses are active.
         self.active_count = active_count
+        # The total number of IP addresses of clients.
         self.total_count = total_count
 
     def validate(self):
@@ -85,7 +87,9 @@ class DataSessionStatDbStatsValue(TeaModel):
         active_count: int = None,
         total_count: int = None,
     ):
+        # The number of active namespaces.
         self.active_count = active_count
+        # The total number of namespaces.
         self.total_count = total_count
 
     def validate(self):
@@ -3126,9 +3130,19 @@ class DescribeAutoScalingHistoryRequest(TeaModel):
         instance_id: str = None,
         start_time: int = None,
     ):
+        # The type of the auto scaling task that you want to query. Set the value to **SPEC**, which indicates that you can query the history of only automatic performance scaling tasks.
         self.auto_scaling_task_type = auto_scaling_task_type
+        # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # > The end time must be later than the start time.
         self.end_time = end_time
+        # The instance ID.
+        # 
+        # > Only ApsaraDB RDS for MySQL instances are supported.
         self.instance_id = instance_id
+        # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # > The maximum time range that can be specified is 45 days.
         self.start_time = start_time
 
     def validate(self):
@@ -3177,15 +3191,36 @@ class DescribeAutoScalingHistoryResponseBodyDataSpecHistory(TeaModel):
         task_excute_status: bool = None,
         task_time: int = None,
     ):
+        # The error code returned by the scaling task. Valid values:
+        # 
+        # *   **Insufficient_Balance**: The account has insufficient balance or an unpaid order.
+        # *   **REACH_SPEC_UPPERBOUND**: The instance type reaches the upper limit.
+        # *   **Control_Error_Timeout_Msg**: The management task timed out.
+        # *   **Invoke_Rds_Api_Error_Msg**: Failed to call the ApsaraDB RDS API.
         self.error_code = error_code
+        # The original number of CPU cores of the instance.
         self.origin_core = origin_core
+        # The original instance type.
         self.origin_instance_class = origin_instance_class
+        # The original memory size of the instance. Unit: GB.
         self.origin_memory = origin_memory
+        # The type of the automatic performance scaling task. Valid values:
+        # 
+        # *   **SCALE_UP**: automatic instance type scale-up task.
+        # *   **SCALE_DOWN**: automatic instance type scale-down task.
         self.scale_type = scale_type
+        # The destination number of CPU cores of the instance.
         self.target_core = target_core
+        # The destination instance type.
         self.target_instance_class = target_instance_class
+        # The destination memory size of the instance. Unit: GB.
         self.target_memory = target_memory
+        # The status of the task. Valid values:
+        # 
+        # *   **true**: The task was successful.
+        # *   **false**: The task failed.
         self.task_excute_status = task_excute_status
+        # The time when the task was run. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.task_time = task_time
 
     def validate(self):
@@ -3254,11 +3289,17 @@ class DescribeAutoScalingHistoryResponseBodyData(TeaModel):
         spec_history: List[DescribeAutoScalingHistoryResponseBodyDataSpecHistory] = None,
         storage: List[Dict[str, Any]] = None,
     ):
+        # The history of automatic bandwidth scaling of ApsaraDB for Redis instances. This feature is not supported.
         self.bandwidth = bandwidth
+        # The instance ID.
         self.instance_id = instance_id
+        # The history of resource scale-out of ApsaraDB for Redis instances. This feature is not supported.
         self.resource = resource
+        # The history of automatic shard scale-out of ApsaraDB for Redis instances. This feature is not supported.
         self.shard = shard
+        # The history of automatic performance scaling.
         self.spec_history = spec_history
+        # The history of storage expansion. This feature is not supported.
         self.storage = storage
 
     def validate(self):
@@ -3318,11 +3359,20 @@ class DescribeAutoScalingHistoryResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned. The status code 200 indicates that the request was successful.
         self.code = code
-        # AutoScalingInstanceHistory
+        # The history of auto scaling.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -11380,7 +11430,9 @@ class GetDBInstanceConnectivityDiagnosisRequest(TeaModel):
         instance_id: str = None,
         src_ip: str = None,
     ):
+        # The instance ID.
         self.instance_id = instance_id
+        # The source IP address.
         self.src_ip = src_ip
 
     def validate(self):
@@ -11416,10 +11468,33 @@ class GetDBInstanceConnectivityDiagnosisResponseBodyData(TeaModel):
         instance_id: str = None,
         success: bool = None,
     ):
+        # The exception detection items:
+        # 
+        # *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+        # *   **VIP_NOT_EXISTS**: The Application Load Balancer (ALB) instance corresponding to the virtual IP address (VIP) does not exist.
+        # *   **RS_NOT_EXISTS**: The resource sharing (RS) is not properly mounted.
+        # *   **VIP_TUNNEL_ID_NOT_CONSISTENT**: The tunnel ID used by the VIP of the virtual private cloud (VPC) type is different from the tunnel ID of the VPC.
+        # *   **VIP_VPC_CLOUD_INSTANCE_NOT_EXISTS**: The VIP of the VPC type does not exist.
+        # *   **VIP_IS_NOT_NGLB**: The NGLB mode is disabled for the VIP.
+        # *   **CUSTINS_NOT_ASSOCIATE_ECS_SECURITY_GROUP**: No security group is associated with the instance.
+        # *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist of the user.
+        # *   **SRC_IP_NOT_IN_ADMIN_WHITELIST**: The source IP address is not added to the whitelist of the instance.
+        # *   **SRC_IP_NOT_IN_ECS_SECURITY_GROUP**: The source IP address is not added to the security group that is associated with the instance.
+        # *   **VPC_INSTANCE_IP_NOT_WORKING_STATUS**: The IP address in the VPC is in an abnormal state.
         self.conn_check_error_code = conn_check_error_code
+        # The details of the exception detection.
         self.conn_check_error_message = conn_check_error_message
+        # The type of the exception:
+        # 
+        # *   **0**: an exception that can be handled by the user.
+        # *   **1**: an exception that can be handled by a technical engineer.
         self.fail_type = fail_type
+        # The instance ID.
         self.instance_id = instance_id
+        # Indicates whether the connectivity test was passed:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -11467,10 +11542,20 @@ class GetDBInstanceConnectivityDiagnosisResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
+        # The HTTP status code returned.
         self.code = code
+        # The detailed information.
         self.data = data
+        # The returned message.
+        # 
+        # > If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -16622,9 +16707,15 @@ class GetMongoDBCurrentOpRequest(TeaModel):
         node_id: str = None,
         role: str = None,
     ):
+        # The condition used to filter sessions during the query. For more information, see the currentOp command of MongoDB.
         self.filter_doc = filter_doc
+        # The instance ID.
         self.instance_id = instance_id
+        # The node ID.
+        # 
+        # >  If you do not specify a node ID, the sessions of the primary node are queried by default.
         self.node_id = node_id
+        # A reserved parameter. You do not need to specify the parameter.
         self.role = role
 
     def validate(self):
@@ -16681,23 +16772,41 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(TeaModel):
         secs_running: int = None,
         shard: str = None,
     ):
+        # Indicates whether the operation is active.
         self.active = active
+        # The IP address of the client.
         self.client = client
+        # The document that contains the complete command object associated with the operation.
         self.command = command
+        # The connection ID.
         self.connection_id = connection_id
+        # The description of the connection.
         self.desc = desc
+        # The driver.
         self.driver = driver
+        # The host.
         self.host = host
+        # Indicates whether the operation is marked as terminated. If the operation is marked as terminated, true is returned.
         self.kill_pending = kill_pending
+        # The namespace.
         self.ns = ns
+        # The type of the operation.
         self.op = op
+        # The operation ID.
         self.op_id = op_id
+        # The architecture of the operating system.
         self.os_arch = os_arch
+        # The name of the operating system.
         self.os_name = os_name
+        # The type of the operating system.
         self.os_type = os_type
+        # The description of the execution plan.
         self.plan_summary = plan_summary
+        # The platform.
         self.platform = platform
+        # The duration of the operation. Unit: seconds.
         self.secs_running = secs_running
+        # The shard.
         self.shard = shard
 
     def validate(self):
@@ -16797,10 +16906,15 @@ class GetMongoDBCurrentOpResponseBodyDataSessionStat(TeaModel):
         longest_secs_running: int = None,
         total_count: int = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The statistics on the IP addresses of the clients.
         self.client_stats = client_stats
+        # The statistics on the namespaces.
         self.db_stats = db_stats
+        # The longest duration of a session. Unit: seconds.
         self.longest_secs_running = longest_secs_running
+        # The total number of sessions.
         self.total_count = total_count
 
     def validate(self):
@@ -16863,8 +16977,11 @@ class GetMongoDBCurrentOpResponseBodyData(TeaModel):
         session_stat: GetMongoDBCurrentOpResponseBodyDataSessionStat = None,
         timestamp: int = None,
     ):
+        # The sessions.
         self.session_list = session_list
+        # The statistics on the sessions.
         self.session_stat = session_stat
+        # The time when the database sessions were returned. The value is in the UNIX timestamp format. Unit: milliseconds.
         self.timestamp = timestamp
 
     def validate(self):
@@ -16915,10 +17032,20 @@ class GetMongoDBCurrentOpResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The response code.
         self.code = code
+        # The details of the sessions.
         self.data = data
+        # The returned message.
+        # 
+        # >  If the request was successful, **Successful** is returned. Otherwise, an error message such as an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -17012,7 +17139,7 @@ class GetMySQLAllSessionAsyncRequest(TeaModel):
     ):
         # The instance ID.
         # 
-        # >  Only ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters are supported.
+        # >  Only ApsaraDB RDS for MySQL, PolarDB for MySQL, and PolarDB-X 2.0 instances are supported.
         self.instance_id = instance_id
         # The node ID.
         # 
@@ -17062,7 +17189,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataClientStats(TeaModel):
     ):
         # The number of active sessions that belong to the client IP address.
         # 
-        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+        # >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
         # The IP address of the client.
         self.key = key
@@ -17120,9 +17247,9 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataDbStats(TeaModel):
     ):
         # The number of active sessions of the database.
         # 
-        # > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+        # >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
-        # The name of the database.
+        # The database name.
         self.key = key
         # The IDs of the sessions of the database.
         self.thread_id_list = thread_id_list
@@ -17187,10 +17314,13 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
         self.client = client
         # The type of the command executed in the session.
         self.command = command
-        # The name of the database.
+        # The database name.
         self.db_name = db_name
         # The session ID.
         self.session_id = session_id
+        # The SQL template ID.
+        # 
+        # >  This parameter is returned only when you use a PolarDB-X 2.0 instance.
         self.sql_template_id = sql_template_id
         # The SQL statement executed in the session.
         self.sql_text = sql_text
@@ -17202,7 +17332,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataSessionList(TeaModel):
         self.trx_duration = trx_duration
         # The ID of the transaction to which the session belongs.
         self.trx_id = trx_id
-        # The username of the database.
+        # The username of the database account.
         self.user = user
         # The alias of the IP address of the client.
         self.user_client_alias = user_client_alias
@@ -17282,9 +17412,9 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionDataUserStats(TeaModel):
     ):
         # The number of active sessions within the account.
         # 
-        #  > If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
+        # >  If the type of the command executed in the session is Query or Execute and the session in the transaction is not terminated, the session is active.
         self.active_count = active_count
-        # The account of the database.
+        # The database account.
         self.key = key
         # The IDs of the sessions within the account.
         self.thread_id_list = thread_id_list
@@ -17349,7 +17479,7 @@ class GetMySQLAllSessionAsyncResponseBodyDataSessionData(TeaModel):
         self.db_stats = db_stats
         # The maximum execution duration of an active session. Unit: seconds.
         self.max_active_time = max_active_time
-        # The list of sessions.
+        # The sessions.
         self.session_list = session_list
         # The time when the session was queried. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.time_stamp = time_stamp
@@ -22030,38 +22160,38 @@ class GetRedisAllSessionResponseBodyDataSessions(TeaModel):
         self.client = client
         # The alias of the client.
         self.client_desc = client_desc
-        # The command that is last executed.
+        # The command that was last run.
         self.cmd = cmd
         # The ID of the database that the client is using.
         self.db = db
         # The file descriptor event. Valid values:
         # 
-        # * **r**: Client sockets are readable in the event loop.
-        # * **w**: Client sockets are writable in the event loop.
+        # *   **r**: Client sockets are readable in the event loop.
+        # *   **w**: Client sockets are writable in the event loop.
         self.events = events
         # The file descriptor that is used by sockets.
         self.fd = fd
         # The client flag. Valid values:
         # 
-        # * **A**: The connection needs to be closed at the earliest opportunity.
-        # * **b**: The client is waiting for blocked events.
-        # * **c**: The connection is closed after all replies are written.
-        # * **d**: The monitored keys have been modified, and the *`EXEC`* command is about to fail.
-        # * **i**: The client is waiting for VM I/O operations. This value is deprecated.
-        # * **M**: The client is the primary node.
-        # * **N**: Special flags are not configured.
-        # * **O**: The client is in monitor mode.
-        # * **r**: The client is a cluster node in read-only mode.
-        # * **S**: The client is a replica node in normal mode.
-        # * **u**: The client is not blocked.
-        # * **U**: The client is connected by using UNIX domain sockets.
-        # * **x**: The client is executing a transaction.
+        # *   **A**: The connection needs to be closed at the earliest opportunity.
+        # *   **b**: The client is waiting for blocked events.
+        # *   **c**: The connection is closed after all replies are written.
+        # *   **d**: The monitored keys have been modified, and the `EXEC` command is about to fail.
+        # *   **i**: The client is waiting for VM I/O operations. This value is no longer used.
+        # *   **M**: The client is the primary node.
+        # *   **N**: No special flags are configured.
+        # *   **O**: The client is in monitor mode.
+        # *   **r**: The client is a cluster node in read-only mode.
+        # *   **S**: The client is a replica node in normal mode.
+        # *   **u**: The client is not blocked.
+        # *   **U**: The client is connected by using UNIX domain sockets.
+        # *   **x**: The client is executing a transaction.
         self.flags = flags
         # The client ID.
         self.id = id
         # The duration during which the session is in the idle state. Unit: seconds.
         self.idle = idle
-        # The number of commands in *`MULTI`* or *`EXEC`*.
+        # The number of commands in `MULTI` or `EXEC`.
         self.multi = multi
         # The name of the client.
         self.name = name
@@ -22191,7 +22321,7 @@ class GetRedisAllSessionResponseBodyDataSourceStats(TeaModel):
     ):
         # The total number of sessions from the access source.
         self.count = count
-        # The client ID data.
+        # The client IDs.
         self.ids = ids
         # The access source.
         self.key = key
