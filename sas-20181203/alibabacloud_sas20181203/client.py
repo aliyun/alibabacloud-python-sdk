@@ -4518,6 +4518,136 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_opa_cluster_plugin_with_options_async(request, runtime)
 
+    def create_opa_strategy_new_with_options(
+        self,
+        tmp_req: sas_20181203_models.CreateOpaStrategyNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateOpaStrategyNewResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.CreateOpaStrategyNewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alarm_detail):
+            request.alarm_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alarm_detail, 'AlarmDetail', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alarm_detail_shrink):
+            query['AlarmDetail'] = request.alarm_detail_shrink
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.malicious_image):
+            query['MaliciousImage'] = request.malicious_image
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.scopes):
+            query['Scopes'] = request.scopes
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_template_id):
+            query['StrategyTemplateId'] = request.strategy_template_id
+        if not UtilClient.is_unset(request.un_scaned_image):
+            query['UnScanedImage'] = request.un_scaned_image
+        if not UtilClient.is_unset(request.white_list):
+            query['WhiteList'] = request.white_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOpaStrategyNew',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOpaStrategyNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_opa_strategy_new_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.CreateOpaStrategyNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.CreateOpaStrategyNewResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.CreateOpaStrategyNewShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alarm_detail):
+            request.alarm_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alarm_detail, 'AlarmDetail', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.alarm_detail_shrink):
+            query['AlarmDetail'] = request.alarm_detail_shrink
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.cluster_name):
+            query['ClusterName'] = request.cluster_name
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.image_name):
+            query['ImageName'] = request.image_name
+        if not UtilClient.is_unset(request.label):
+            query['Label'] = request.label
+        if not UtilClient.is_unset(request.malicious_image):
+            query['MaliciousImage'] = request.malicious_image
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.scopes):
+            query['Scopes'] = request.scopes
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        if not UtilClient.is_unset(request.strategy_name):
+            query['StrategyName'] = request.strategy_name
+        if not UtilClient.is_unset(request.strategy_template_id):
+            query['StrategyTemplateId'] = request.strategy_template_id
+        if not UtilClient.is_unset(request.un_scaned_image):
+            query['UnScanedImage'] = request.un_scaned_image
+        if not UtilClient.is_unset(request.white_list):
+            query['WhiteList'] = request.white_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateOpaStrategyNew',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.CreateOpaStrategyNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_opa_strategy_new(
+        self,
+        request: sas_20181203_models.CreateOpaStrategyNewRequest,
+    ) -> sas_20181203_models.CreateOpaStrategyNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_opa_strategy_new_with_options(request, runtime)
+
+    async def create_opa_strategy_new_async(
+        self,
+        request: sas_20181203_models.CreateOpaStrategyNewRequest,
+    ) -> sas_20181203_models.CreateOpaStrategyNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_opa_strategy_new_with_options_async(request, runtime)
+
     def create_or_update_asset_group_with_options(
         self,
         request: sas_20181203_models.CreateOrUpdateAssetGroupRequest,
@@ -7477,6 +7607,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.DeleteMaliciousNoteResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_malicious_note_with_options_async(request, runtime)
+
+    def delete_opa_strategy_new_with_options(
+        self,
+        request: sas_20181203_models.DeleteOpaStrategyNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteOpaStrategyNewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOpaStrategyNew',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteOpaStrategyNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_opa_strategy_new_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteOpaStrategyNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteOpaStrategyNewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_ids):
+            query['StrategyIds'] = request.strategy_ids
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOpaStrategyNew',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteOpaStrategyNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_opa_strategy_new(
+        self,
+        request: sas_20181203_models.DeleteOpaStrategyNewRequest,
+    ) -> sas_20181203_models.DeleteOpaStrategyNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_opa_strategy_new_with_options(request, runtime)
+
+    async def delete_opa_strategy_new_async(
+        self,
+        request: sas_20181203_models.DeleteOpaStrategyNewRequest,
+    ) -> sas_20181203_models.DeleteOpaStrategyNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_opa_strategy_new_with_options_async(request, runtime)
 
     def delete_private_registry_with_options(
         self,
@@ -30722,6 +30922,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_rule_summary_with_options_async(request, runtime)
 
+    def get_cluster_strategy_count_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetClusterStrategyCountResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetClusterStrategyCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetClusterStrategyCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_strategy_count_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetClusterStrategyCountResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetClusterStrategyCount',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetClusterStrategyCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_strategy_count(self) -> sas_20181203_models.GetClusterStrategyCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_cluster_strategy_count_with_options(runtime)
+
+    async def get_cluster_strategy_count_async(self) -> sas_20181203_models.GetClusterStrategyCountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_cluster_strategy_count_with_options_async(runtime)
+
     def get_cluster_susp_event_statistics_with_options(
         self,
         request: sas_20181203_models.GetClusterSuspEventStatisticsRequest,
@@ -33301,6 +33551,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.GetOpaPluginStatusResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_opa_plugin_status_with_options_async(request, runtime)
+
+    def get_opa_strategy_detail_new_with_options(
+        self,
+        request: sas_20181203_models.GetOpaStrategyDetailNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetOpaStrategyDetailNewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOpaStrategyDetailNew',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetOpaStrategyDetailNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_opa_strategy_detail_new_with_options_async(
+        self,
+        request: sas_20181203_models.GetOpaStrategyDetailNewRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.GetOpaStrategyDetailNewResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.strategy_id):
+            query['StrategyId'] = request.strategy_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetOpaStrategyDetailNew',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.GetOpaStrategyDetailNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_opa_strategy_detail_new(
+        self,
+        request: sas_20181203_models.GetOpaStrategyDetailNewRequest,
+    ) -> sas_20181203_models.GetOpaStrategyDetailNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_opa_strategy_detail_new_with_options(request, runtime)
+
+    async def get_opa_strategy_detail_new_async(
+        self,
+        request: sas_20181203_models.GetOpaStrategyDetailNewRequest,
+    ) -> sas_20181203_models.GetOpaStrategyDetailNewResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_opa_strategy_detail_new_with_options_async(request, runtime)
 
     def get_opa_strategy_template_summary_with_options(
         self,
@@ -42914,6 +43234,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_concern_necessity_with_options_async(request, runtime)
 
+    def modify_container_defense_rule_with_options(
+        self,
+        tmp_req: sas_20181203_models.ModifyContainerDefenseRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyContainerDefenseRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ModifyContainerDefenseRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.whitelist):
+            request.whitelist_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.whitelist, 'Whitelist', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_switch):
+            query['RuleSwitch'] = request.rule_switch
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.whitelist_shrink):
+            query['Whitelist'] = request.whitelist_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyContainerDefenseRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyContainerDefenseRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_container_defense_rule_with_options_async(
+        self,
+        tmp_req: sas_20181203_models.ModifyContainerDefenseRuleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ModifyContainerDefenseRuleResponse:
+        UtilClient.validate_model(tmp_req)
+        request = sas_20181203_models.ModifyContainerDefenseRuleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.whitelist):
+            request.whitelist_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.whitelist, 'Whitelist', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.rule_action):
+            query['RuleAction'] = request.rule_action
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not UtilClient.is_unset(request.rule_switch):
+            query['RuleSwitch'] = request.rule_switch
+        if not UtilClient.is_unset(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.scope):
+            query['Scope'] = request.scope
+        if not UtilClient.is_unset(request.whitelist_shrink):
+            query['Whitelist'] = request.whitelist_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyContainerDefenseRule',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ModifyContainerDefenseRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_container_defense_rule(
+        self,
+        request: sas_20181203_models.ModifyContainerDefenseRuleRequest,
+    ) -> sas_20181203_models.ModifyContainerDefenseRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_container_defense_rule_with_options(request, runtime)
+
+    async def modify_container_defense_rule_async(
+        self,
+        request: sas_20181203_models.ModifyContainerDefenseRuleRequest,
+    ) -> sas_20181203_models.ModifyContainerDefenseRuleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_container_defense_rule_with_options_async(request, runtime)
+
     def modify_container_defense_rule_switch_with_options(
         self,
         request: sas_20181203_models.ModifyContainerDefenseRuleSwitchRequest,
@@ -46988,6 +47414,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_path_with_options_async(request, runtime)
 
+    def open_partial_buy_with_options(
+        self,
+        request: sas_20181203_models.OpenPartialBuyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OpenPartialBuyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenPartialBuy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OpenPartialBuyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def open_partial_buy_with_options_async(
+        self,
+        request: sas_20181203_models.OpenPartialBuyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.OpenPartialBuyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='OpenPartialBuy',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.OpenPartialBuyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def open_partial_buy(
+        self,
+        request: sas_20181203_models.OpenPartialBuyRequest,
+    ) -> sas_20181203_models.OpenPartialBuyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.open_partial_buy_with_options(request, runtime)
+
+    async def open_partial_buy_async(
+        self,
+        request: sas_20181203_models.OpenPartialBuyRequest,
+    ) -> sas_20181203_models.OpenPartialBuyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.open_partial_buy_with_options_async(request, runtime)
+
     def open_sensitive_file_scan_with_options(
         self,
         request: sas_20181203_models.OpenSensitiveFileScanRequest,
@@ -49969,6 +50465,80 @@ class Client(OpenApiClient):
     async def refresh_oss_bucket_scan_info_async(self) -> sas_20181203_models.RefreshOssBucketScanInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.refresh_oss_bucket_scan_info_with_options_async(runtime)
+
+    def release_sas_instance_with_options(
+        self,
+        request: sas_20181203_models.ReleaseSasInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ReleaseSasInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseSasInstance',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ReleaseSasInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_sas_instance_with_options_async(
+        self,
+        request: sas_20181203_models.ReleaseSasInstanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ReleaseSasInstanceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.charge_type):
+            body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseSasInstance',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ReleaseSasInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_sas_instance(
+        self,
+        request: sas_20181203_models.ReleaseSasInstanceRequest,
+    ) -> sas_20181203_models.ReleaseSasInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_sas_instance_with_options(request, runtime)
+
+    async def release_sas_instance_async(
+        self,
+        request: sas_20181203_models.ReleaseSasInstanceRequest,
+    ) -> sas_20181203_models.ReleaseSasInstanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_sas_instance_with_options_async(request, runtime)
 
     def remove_check_instance_result_white_list_with_options(
         self,
