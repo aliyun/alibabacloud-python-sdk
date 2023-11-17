@@ -95,6 +95,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_bind_device_with_options(
+        self,
+        request: linkvisual_20230630_models.BatchBindDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.BatchBindDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchBindDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.BatchBindDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_bind_device_with_options_async(
+        self,
+        request: linkvisual_20230630_models.BatchBindDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.BatchBindDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_list):
+            query['DeviceList'] = request.device_list
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchBindDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.BatchBindDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_bind_device(
+        self,
+        request: linkvisual_20230630_models.BatchBindDeviceRequest,
+    ) -> linkvisual_20230630_models.BatchBindDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_bind_device_with_options(request, runtime)
+
+    async def batch_bind_device_async(
+        self,
+        request: linkvisual_20230630_models.BatchBindDeviceRequest,
+    ) -> linkvisual_20230630_models.BatchBindDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_bind_device_with_options_async(request, runtime)
+
     def bind_storage_order_with_options(
         self,
         request: linkvisual_20230630_models.BindStorageOrderRequest,
@@ -991,6 +1073,674 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.generate_device_by_batch_id_with_options_async(request, runtime)
 
+    def get_account_by_id_with_options(
+        self,
+        request: linkvisual_20230630_models.GetAccountByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetAccountByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountById',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetAccountByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_account_by_id_with_options_async(
+        self,
+        request: linkvisual_20230630_models.GetAccountByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetAccountByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAccountById',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetAccountByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_account_by_id(
+        self,
+        request: linkvisual_20230630_models.GetAccountByIdRequest,
+    ) -> linkvisual_20230630_models.GetAccountByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_account_by_id_with_options(request, runtime)
+
+    async def get_account_by_id_async(
+        self,
+        request: linkvisual_20230630_models.GetAccountByIdRequest,
+    ) -> linkvisual_20230630_models.GetAccountByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_account_by_id_with_options_async(request, runtime)
+
+    def get_device_status_with_options(
+        self,
+        request: linkvisual_20230630_models.GetDeviceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetDeviceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceStatus',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetDeviceStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_device_status_with_options_async(
+        self,
+        request: linkvisual_20230630_models.GetDeviceStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetDeviceStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDeviceStatus',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetDeviceStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_device_status(
+        self,
+        request: linkvisual_20230630_models.GetDeviceStatusRequest,
+    ) -> linkvisual_20230630_models.GetDeviceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_device_status_with_options(request, runtime)
+
+    async def get_device_status_async(
+        self,
+        request: linkvisual_20230630_models.GetDeviceStatusRequest,
+    ) -> linkvisual_20230630_models.GetDeviceStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_device_status_with_options_async(request, runtime)
+
+    def get_sub_device_list_with_options(
+        self,
+        request: linkvisual_20230630_models.GetSubDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetSubDeviceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSubDeviceList',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetSubDeviceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sub_device_list_with_options_async(
+        self,
+        request: linkvisual_20230630_models.GetSubDeviceListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetSubDeviceListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSubDeviceList',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetSubDeviceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sub_device_list(
+        self,
+        request: linkvisual_20230630_models.GetSubDeviceListRequest,
+    ) -> linkvisual_20230630_models.GetSubDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_sub_device_list_with_options(request, runtime)
+
+    async def get_sub_device_list_async(
+        self,
+        request: linkvisual_20230630_models.GetSubDeviceListRequest,
+    ) -> linkvisual_20230630_models.GetSubDeviceListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_sub_device_list_with_options_async(request, runtime)
+
+    def get_thing_event_snapshot_with_options(
+        self,
+        request: linkvisual_20230630_models.GetThingEventSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetThingEventSnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingEventSnapshot',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetThingEventSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_thing_event_snapshot_with_options_async(
+        self,
+        request: linkvisual_20230630_models.GetThingEventSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetThingEventSnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingEventSnapshot',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetThingEventSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_thing_event_snapshot(
+        self,
+        request: linkvisual_20230630_models.GetThingEventSnapshotRequest,
+    ) -> linkvisual_20230630_models.GetThingEventSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_thing_event_snapshot_with_options(request, runtime)
+
+    async def get_thing_event_snapshot_async(
+        self,
+        request: linkvisual_20230630_models.GetThingEventSnapshotRequest,
+    ) -> linkvisual_20230630_models.GetThingEventSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_thing_event_snapshot_with_options_async(request, runtime)
+
+    def get_thing_property_snapshot_with_options(
+        self,
+        request: linkvisual_20230630_models.GetThingPropertySnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetThingPropertySnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingPropertySnapshot',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetThingPropertySnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_thing_property_snapshot_with_options_async(
+        self,
+        request: linkvisual_20230630_models.GetThingPropertySnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.GetThingPropertySnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetThingPropertySnapshot',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.GetThingPropertySnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_thing_property_snapshot(
+        self,
+        request: linkvisual_20230630_models.GetThingPropertySnapshotRequest,
+    ) -> linkvisual_20230630_models.GetThingPropertySnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_thing_property_snapshot_with_options(request, runtime)
+
+    async def get_thing_property_snapshot_async(
+        self,
+        request: linkvisual_20230630_models.GetThingPropertySnapshotRequest,
+    ) -> linkvisual_20230630_models.GetThingPropertySnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_thing_property_snapshot_with_options_async(request, runtime)
+
+    def invoke_thing_service_with_options(
+        self,
+        request: linkvisual_20230630_models.InvokeThingServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.InvokeThingServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvokeThingService',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.InvokeThingServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def invoke_thing_service_with_options_async(
+        self,
+        request: linkvisual_20230630_models.InvokeThingServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.InvokeThingServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identifier):
+            query['Identifier'] = request.identifier
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='InvokeThingService',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.InvokeThingServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def invoke_thing_service(
+        self,
+        request: linkvisual_20230630_models.InvokeThingServiceRequest,
+    ) -> linkvisual_20230630_models.InvokeThingServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.invoke_thing_service_with_options(request, runtime)
+
+    async def invoke_thing_service_async(
+        self,
+        request: linkvisual_20230630_models.InvokeThingServiceRequest,
+    ) -> linkvisual_20230630_models.InvokeThingServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.invoke_thing_service_with_options_async(request, runtime)
+
+    def list_binding_account_by_device_with_options(
+        self,
+        request: linkvisual_20230630_models.ListBindingAccountByDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.ListBindingAccountByDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.owned):
+            query['Owned'] = request.owned
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBindingAccountByDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.ListBindingAccountByDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_binding_account_by_device_with_options_async(
+        self,
+        request: linkvisual_20230630_models.ListBindingAccountByDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.ListBindingAccountByDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.owned):
+            query['Owned'] = request.owned
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBindingAccountByDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.ListBindingAccountByDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_binding_account_by_device(
+        self,
+        request: linkvisual_20230630_models.ListBindingAccountByDeviceRequest,
+    ) -> linkvisual_20230630_models.ListBindingAccountByDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_binding_account_by_device_with_options(request, runtime)
+
+    async def list_binding_account_by_device_async(
+        self,
+        request: linkvisual_20230630_models.ListBindingAccountByDeviceRequest,
+    ) -> linkvisual_20230630_models.ListBindingAccountByDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_binding_account_by_device_with_options_async(request, runtime)
+
+    def list_binding_device_by_account_with_options(
+        self,
+        request: linkvisual_20230630_models.ListBindingDeviceByAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.ListBindingDeviceByAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sub_device):
+            query['SubDevice'] = request.sub_device
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBindingDeviceByAccount',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.ListBindingDeviceByAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_binding_device_by_account_with_options_async(
+        self,
+        request: linkvisual_20230630_models.ListBindingDeviceByAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.ListBindingDeviceByAccountResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.sub_device):
+            query['SubDevice'] = request.sub_device
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBindingDeviceByAccount',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.ListBindingDeviceByAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_binding_device_by_account(
+        self,
+        request: linkvisual_20230630_models.ListBindingDeviceByAccountRequest,
+    ) -> linkvisual_20230630_models.ListBindingDeviceByAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_binding_device_by_account_with_options(request, runtime)
+
+    async def list_binding_device_by_account_async(
+        self,
+        request: linkvisual_20230630_models.ListBindingDeviceByAccountRequest,
+    ) -> linkvisual_20230630_models.ListBindingDeviceByAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_binding_device_by_account_with_options_async(request, runtime)
+
     def query_batch_status_with_options(
         self,
         request: linkvisual_20230630_models.QueryBatchStatusRequest,
@@ -1611,6 +2361,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_storage_order_list_with_options_async(request, runtime)
 
+    def set_thing_property_with_options(
+        self,
+        request: linkvisual_20230630_models.SetThingPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.SetThingPropertyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetThingProperty',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.SetThingPropertyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_thing_property_with_options_async(
+        self,
+        request: linkvisual_20230630_models.SetThingPropertyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.SetThingPropertyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.args):
+            query['Args'] = request.args
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetThingProperty',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.SetThingPropertyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_thing_property(
+        self,
+        request: linkvisual_20230630_models.SetThingPropertyRequest,
+    ) -> linkvisual_20230630_models.SetThingPropertyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_thing_property_with_options(request, runtime)
+
+    async def set_thing_property_async(
+        self,
+        request: linkvisual_20230630_models.SetThingPropertyRequest,
+    ) -> linkvisual_20230630_models.SetThingPropertyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_thing_property_with_options_async(request, runtime)
+
     def transfer_storage_order_with_options(
         self,
         request: linkvisual_20230630_models.TransferStorageOrderRequest,
@@ -1720,6 +2552,182 @@ class Client(OpenApiClient):
     ) -> linkvisual_20230630_models.TransferStorageOrderResponse:
         runtime = util_models.RuntimeOptions()
         return await self.transfer_storage_order_with_options_async(request, runtime)
+
+    def unbind_all_user_by_device_with_options(
+        self,
+        request: linkvisual_20230630_models.UnbindAllUserByDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.UnbindAllUserByDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.unbind_sub_device):
+            query['UnbindSubDevice'] = request.unbind_sub_device
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindAllUserByDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.UnbindAllUserByDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_all_user_by_device_with_options_async(
+        self,
+        request: linkvisual_20230630_models.UnbindAllUserByDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.UnbindAllUserByDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.unbind_sub_device):
+            query['UnbindSubDevice'] = request.unbind_sub_device
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindAllUserByDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.UnbindAllUserByDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_all_user_by_device(
+        self,
+        request: linkvisual_20230630_models.UnbindAllUserByDeviceRequest,
+    ) -> linkvisual_20230630_models.UnbindAllUserByDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_all_user_by_device_with_options(request, runtime)
+
+    async def unbind_all_user_by_device_async(
+        self,
+        request: linkvisual_20230630_models.UnbindAllUserByDeviceRequest,
+    ) -> linkvisual_20230630_models.UnbindAllUserByDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_all_user_by_device_with_options_async(request, runtime)
+
+    def unbind_device_with_options(
+        self,
+        request: linkvisual_20230630_models.UnbindDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.UnbindDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.unbind_sub_device):
+            query['UnbindSubDevice'] = request.unbind_sub_device
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.UnbindDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_device_with_options_async(
+        self,
+        request: linkvisual_20230630_models.UnbindDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20230630_models.UnbindDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.identity_id):
+            query['IdentityId'] = request.identity_id
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.open_id):
+            query['OpenId'] = request.open_id
+        if not UtilClient.is_unset(request.open_id_app_key):
+            query['OpenIdAppKey'] = request.open_id_app_key
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.unbind_sub_device):
+            query['UnbindSubDevice'] = request.unbind_sub_device
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDevice',
+            version='2023-06-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20230630_models.UnbindDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_device(
+        self,
+        request: linkvisual_20230630_models.UnbindDeviceRequest,
+    ) -> linkvisual_20230630_models.UnbindDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_device_with_options(request, runtime)
+
+    async def unbind_device_async(
+        self,
+        request: linkvisual_20230630_models.UnbindDeviceRequest,
+    ) -> linkvisual_20230630_models.UnbindDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_device_with_options_async(request, runtime)
 
     def upload_device_name_list_with_options(
         self,
