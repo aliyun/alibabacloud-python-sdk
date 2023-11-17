@@ -282,6 +282,8 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.AttachInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.entrusted):
             query['Entrusted'] = request.entrusted
         if not UtilClient.is_unset(request.instance_ids):
@@ -328,6 +330,8 @@ class Client(OpenApiClient):
     ) -> ess_20220222_models.AttachInstancesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.entrusted):
             query['Entrusted'] = request.entrusted
         if not UtilClient.is_unset(request.instance_ids):
@@ -1058,6 +1062,14 @@ class Client(OpenApiClient):
             query['CpuOptionsCore'] = request.cpu_options_core
         if not UtilClient.is_unset(request.cpu_options_threads_per_core):
             query['CpuOptionsThreadsPerCore'] = request.cpu_options_threads_per_core
+        if not UtilClient.is_unset(request.data_cache_bucket):
+            query['DataCacheBucket'] = request.data_cache_bucket
+        if not UtilClient.is_unset(request.data_cache_bursting_enabled):
+            query['DataCacheBurstingEnabled'] = request.data_cache_bursting_enabled
+        if not UtilClient.is_unset(request.data_cache_pl):
+            query['DataCachePL'] = request.data_cache_pl
+        if not UtilClient.is_unset(request.data_cache_provisioned_iops):
+            query['DataCacheProvisionedIops'] = request.data_cache_provisioned_iops
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dns_config_name_servers):
@@ -1182,6 +1194,14 @@ class Client(OpenApiClient):
             query['CpuOptionsCore'] = request.cpu_options_core
         if not UtilClient.is_unset(request.cpu_options_threads_per_core):
             query['CpuOptionsThreadsPerCore'] = request.cpu_options_threads_per_core
+        if not UtilClient.is_unset(request.data_cache_bucket):
+            query['DataCacheBucket'] = request.data_cache_bucket
+        if not UtilClient.is_unset(request.data_cache_bursting_enabled):
+            query['DataCacheBurstingEnabled'] = request.data_cache_bursting_enabled
+        if not UtilClient.is_unset(request.data_cache_pl):
+            query['DataCachePL'] = request.data_cache_pl
+        if not UtilClient.is_unset(request.data_cache_provisioned_iops):
+            query['DataCacheProvisionedIops'] = request.data_cache_provisioned_iops
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dns_config_name_servers):
@@ -4540,6 +4560,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lifecycle_state):
             query['LifecycleState'] = request.lifecycle_state
+        if not UtilClient.is_unset(request.lifecycle_states):
+            query['LifecycleStates'] = request.lifecycle_states
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -4596,6 +4618,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lifecycle_state):
             query['LifecycleState'] = request.lifecycle_state
+        if not UtilClient.is_unset(request.lifecycle_states):
+            query['LifecycleStates'] = request.lifecycle_states
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6673,6 +6697,14 @@ class Client(OpenApiClient):
             query['CpuOptionsCore'] = request.cpu_options_core
         if not UtilClient.is_unset(request.cpu_options_threads_per_core):
             query['CpuOptionsThreadsPerCore'] = request.cpu_options_threads_per_core
+        if not UtilClient.is_unset(request.data_cache_bucket):
+            query['DataCacheBucket'] = request.data_cache_bucket
+        if not UtilClient.is_unset(request.data_cache_bursting_enabled):
+            query['DataCacheBurstingEnabled'] = request.data_cache_bursting_enabled
+        if not UtilClient.is_unset(request.data_cache_pl):
+            query['DataCachePL'] = request.data_cache_pl
+        if not UtilClient.is_unset(request.data_cache_provisioned_iops):
+            query['DataCacheProvisionedIops'] = request.data_cache_provisioned_iops
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dns_config_name_servers):
@@ -6798,6 +6830,14 @@ class Client(OpenApiClient):
             query['CpuOptionsCore'] = request.cpu_options_core
         if not UtilClient.is_unset(request.cpu_options_threads_per_core):
             query['CpuOptionsThreadsPerCore'] = request.cpu_options_threads_per_core
+        if not UtilClient.is_unset(request.data_cache_bucket):
+            query['DataCacheBucket'] = request.data_cache_bucket
+        if not UtilClient.is_unset(request.data_cache_bursting_enabled):
+            query['DataCacheBurstingEnabled'] = request.data_cache_bursting_enabled
+        if not UtilClient.is_unset(request.data_cache_pl):
+            query['DataCachePL'] = request.data_cache_pl
+        if not UtilClient.is_unset(request.data_cache_provisioned_iops):
+            query['DataCacheProvisionedIops'] = request.data_cache_provisioned_iops
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.dns_config_name_servers):

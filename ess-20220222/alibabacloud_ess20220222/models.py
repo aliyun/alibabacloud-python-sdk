@@ -328,6 +328,7 @@ class AttachDBInstancesResponse(TeaModel):
 class AttachInstancesRequest(TeaModel):
     def __init__(
         self,
+        client_token: str = None,
         entrusted: bool = None,
         instance_ids: List[str] = None,
         lifecycle_hook: bool = None,
@@ -339,6 +340,7 @@ class AttachInstancesRequest(TeaModel):
         resource_owner_id: int = None,
         scaling_group_id: str = None,
     ):
+        self.client_token = client_token
         self.entrusted = entrusted
         self.instance_ids = instance_ids
         self.lifecycle_hook = lifecycle_hook
@@ -359,6 +361,8 @@ class AttachInstancesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
         if self.entrusted is not None:
             result['Entrusted'] = self.entrusted
         if self.instance_ids is not None:
@@ -383,6 +387,8 @@ class AttachInstancesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
         if m.get('Entrusted') is not None:
             self.entrusted = m.get('Entrusted')
         if m.get('InstanceIds') is not None:
@@ -3386,6 +3392,10 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         cpu: float = None,
         cpu_options_core: int = None,
         cpu_options_threads_per_core: int = None,
+        data_cache_bucket: str = None,
+        data_cache_bursting_enabled: bool = None,
+        data_cache_pl: str = None,
+        data_cache_provisioned_iops: int = None,
         description: str = None,
         dns_config_name_servers: List[str] = None,
         dns_config_options: List[CreateEciScalingConfigurationRequestDnsConfigOptions] = None,
@@ -3450,6 +3460,10 @@ class CreateEciScalingConfigurationRequest(TeaModel):
         self.cpu_options_core = cpu_options_core
         # The number of threads per core. This parameter is not available for all instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify custom CPU options](~~197781~~).
         self.cpu_options_threads_per_core = cpu_options_threads_per_core
+        self.data_cache_bucket = data_cache_bucket
+        self.data_cache_bursting_enabled = data_cache_bursting_enabled
+        self.data_cache_pl = data_cache_pl
+        self.data_cache_provisioned_iops = data_cache_provisioned_iops
         # > This parameter is unavailable.
         self.description = description
         # The IP addresses of the DNS servers.
@@ -3616,6 +3630,14 @@ class CreateEciScalingConfigurationRequest(TeaModel):
             result['CpuOptionsCore'] = self.cpu_options_core
         if self.cpu_options_threads_per_core is not None:
             result['CpuOptionsThreadsPerCore'] = self.cpu_options_threads_per_core
+        if self.data_cache_bucket is not None:
+            result['DataCacheBucket'] = self.data_cache_bucket
+        if self.data_cache_bursting_enabled is not None:
+            result['DataCacheBurstingEnabled'] = self.data_cache_bursting_enabled
+        if self.data_cache_pl is not None:
+            result['DataCachePL'] = self.data_cache_pl
+        if self.data_cache_provisioned_iops is not None:
+            result['DataCacheProvisionedIops'] = self.data_cache_provisioned_iops
         if self.description is not None:
             result['Description'] = self.description
         if self.dns_config_name_servers is not None:
@@ -3730,6 +3752,14 @@ class CreateEciScalingConfigurationRequest(TeaModel):
             self.cpu_options_core = m.get('CpuOptionsCore')
         if m.get('CpuOptionsThreadsPerCore') is not None:
             self.cpu_options_threads_per_core = m.get('CpuOptionsThreadsPerCore')
+        if m.get('DataCacheBucket') is not None:
+            self.data_cache_bucket = m.get('DataCacheBucket')
+        if m.get('DataCacheBurstingEnabled') is not None:
+            self.data_cache_bursting_enabled = m.get('DataCacheBurstingEnabled')
+        if m.get('DataCachePL') is not None:
+            self.data_cache_pl = m.get('DataCachePL')
+        if m.get('DataCacheProvisionedIops') is not None:
+            self.data_cache_provisioned_iops = m.get('DataCacheProvisionedIops')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DnsConfigNameServers') is not None:
@@ -6779,10 +6809,12 @@ class CreateScalingGroupRequestTags(TeaModel):
     def __init__(
         self,
         key: str = None,
+        propagate: bool = None,
         value: str = None,
     ):
         # The tag key that you want to add to the scaling group.
         self.key = key
+        self.propagate = propagate
         # The tag value that you want to add to the scaling group.
         self.value = value
 
@@ -6797,6 +6829,8 @@ class CreateScalingGroupRequestTags(TeaModel):
         result = dict()
         if self.key is not None:
             result['Key'] = self.key
+        if self.propagate is not None:
+            result['Propagate'] = self.propagate
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -6805,6 +6839,8 @@ class CreateScalingGroupRequestTags(TeaModel):
         m = m or dict()
         if m.get('Key') is not None:
             self.key = m.get('Key')
+        if m.get('Propagate') is not None:
+            self.propagate = m.get('Propagate')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -10761,6 +10797,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes(T
         flex_volume_driver: str = None,
         flex_volume_fs_type: str = None,
         flex_volume_options: str = None,
+        host_path_volume_path: str = None,
+        host_path_volume_type: str = None,
         nfsvolume_path: str = None,
         nfsvolume_read_only: bool = None,
         nfsvolume_server: str = None,
@@ -10788,6 +10826,8 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes(T
         self.flex_volume_fs_type = flex_volume_fs_type
         # The name of the volume.
         self.flex_volume_options = flex_volume_options
+        self.host_path_volume_path = host_path_volume_path
+        self.host_path_volume_type = host_path_volume_type
         # Indicates whether the NFS volume is read-only.
         # 
         # Default value: false.
@@ -10835,6 +10875,10 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes(T
             result['FlexVolumeFsType'] = self.flex_volume_fs_type
         if self.flex_volume_options is not None:
             result['FlexVolumeOptions'] = self.flex_volume_options
+        if self.host_path_volume_path is not None:
+            result['HostPathVolumePath'] = self.host_path_volume_path
+        if self.host_path_volume_type is not None:
+            result['HostPathVolumeType'] = self.host_path_volume_type
         if self.nfsvolume_path is not None:
             result['NFSVolumePath'] = self.nfsvolume_path
         if self.nfsvolume_read_only is not None:
@@ -10872,6 +10916,10 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes(T
             self.flex_volume_fs_type = m.get('FlexVolumeFsType')
         if m.get('FlexVolumeOptions') is not None:
             self.flex_volume_options = m.get('FlexVolumeOptions')
+        if m.get('HostPathVolumePath') is not None:
+            self.host_path_volume_path = m.get('HostPathVolumePath')
+        if m.get('HostPathVolumeType') is not None:
+            self.host_path_volume_type = m.get('HostPathVolumeType')
         if m.get('NFSVolumePath') is not None:
             self.nfsvolume_path = m.get('NFSVolumePath')
         if m.get('NFSVolumeReadOnly') is not None:
@@ -10899,6 +10947,10 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         cpu_options_core: int = None,
         cpu_options_threads_per_core: int = None,
         creation_time: str = None,
+        data_cache_bucket: str = None,
+        data_cache_bursting_enabled: bool = None,
+        data_cache_pl: str = None,
+        data_cache_provisioned_iops: int = None,
         description: str = None,
         dns_config_name_servers: List[str] = None,
         dns_config_options: List[DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsConfigOptions] = None,
@@ -10958,6 +11010,10 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
         self.cpu_options_threads_per_core = cpu_options_threads_per_core
         # The ID of the security group with which the elastic container instance is associated. Elastic container instances that are associated with the same security group can access each other.
         self.creation_time = creation_time
+        self.data_cache_bucket = data_cache_bucket
+        self.data_cache_bursting_enabled = data_cache_bursting_enabled
+        self.data_cache_pl = data_cache_pl
+        self.data_cache_provisioned_iops = data_cache_provisioned_iops
         # The ID of the image cache snapshot.
         self.description = description
         # The DNS lookup domains.
@@ -11126,6 +11182,14 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
             result['CpuOptionsThreadsPerCore'] = self.cpu_options_threads_per_core
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+        if self.data_cache_bucket is not None:
+            result['DataCacheBucket'] = self.data_cache_bucket
+        if self.data_cache_bursting_enabled is not None:
+            result['DataCacheBurstingEnabled'] = self.data_cache_bursting_enabled
+        if self.data_cache_pl is not None:
+            result['DataCachePL'] = self.data_cache_pl
+        if self.data_cache_provisioned_iops is not None:
+            result['DataCacheProvisionedIops'] = self.data_cache_provisioned_iops
         if self.description is not None:
             result['Description'] = self.description
         if self.dns_config_name_servers is not None:
@@ -11244,6 +11308,14 @@ class DescribeEciScalingConfigurationsResponseBodyScalingConfigurations(TeaModel
             self.cpu_options_threads_per_core = m.get('CpuOptionsThreadsPerCore')
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+        if m.get('DataCacheBucket') is not None:
+            self.data_cache_bucket = m.get('DataCacheBucket')
+        if m.get('DataCacheBurstingEnabled') is not None:
+            self.data_cache_bursting_enabled = m.get('DataCacheBurstingEnabled')
+        if m.get('DataCachePL') is not None:
+            self.data_cache_pl = m.get('DataCachePL')
+        if m.get('DataCacheProvisionedIops') is not None:
+            self.data_cache_provisioned_iops = m.get('DataCacheProvisionedIops')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DnsConfigNameServers') is not None:
@@ -14561,9 +14633,11 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(TeaModel):
 class DescribeScalingGroupsResponseBodyScalingGroupsTags(TeaModel):
     def __init__(
         self,
+        propagate: bool = None,
         tag_key: str = None,
         tag_value: str = None,
     ):
+        self.propagate = propagate
         self.tag_key = tag_key
         self.tag_value = tag_value
 
@@ -14576,6 +14650,8 @@ class DescribeScalingGroupsResponseBodyScalingGroupsTags(TeaModel):
             return _map
 
         result = dict()
+        if self.propagate is not None:
+            result['Propagate'] = self.propagate
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
         if self.tag_value is not None:
@@ -14584,6 +14660,8 @@ class DescribeScalingGroupsResponseBodyScalingGroupsTags(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Propagate') is not None:
+            self.propagate = m.get('Propagate')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
         if m.get('TagValue') is not None:
@@ -15204,6 +15282,7 @@ class DescribeScalingInstancesRequest(TeaModel):
         health_status: str = None,
         instance_ids: List[str] = None,
         lifecycle_state: str = None,
+        lifecycle_states: List[str] = None,
         owner_account: str = None,
         owner_id: int = None,
         page_number: int = None,
@@ -15220,6 +15299,7 @@ class DescribeScalingInstancesRequest(TeaModel):
         self.health_status = health_status
         self.instance_ids = instance_ids
         self.lifecycle_state = lifecycle_state
+        self.lifecycle_states = lifecycle_states
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.page_number = page_number
@@ -15250,6 +15330,8 @@ class DescribeScalingInstancesRequest(TeaModel):
             result['InstanceIds'] = self.instance_ids
         if self.lifecycle_state is not None:
             result['LifecycleState'] = self.lifecycle_state
+        if self.lifecycle_states is not None:
+            result['LifecycleStates'] = self.lifecycle_states
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -15284,6 +15366,8 @@ class DescribeScalingInstancesRequest(TeaModel):
             self.instance_ids = m.get('InstanceIds')
         if m.get('LifecycleState') is not None:
             self.lifecycle_state = m.get('LifecycleState')
+        if m.get('LifecycleStates') is not None:
+            self.lifecycle_states = m.get('LifecycleStates')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -15320,9 +15404,11 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
         launch_template_version: str = None,
         lifecycle_state: str = None,
         load_balancer_weight: int = None,
+        private_ip_address: str = None,
         scaling_activity_id: str = None,
         scaling_configuration_id: str = None,
         scaling_group_id: str = None,
+        scaling_instance_id: str = None,
         spot_strategy: str = None,
         warmup_state: str = None,
         weighted_capacity: int = None,
@@ -15338,9 +15424,11 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
         self.launch_template_version = launch_template_version
         self.lifecycle_state = lifecycle_state
         self.load_balancer_weight = load_balancer_weight
+        self.private_ip_address = private_ip_address
         self.scaling_activity_id = scaling_activity_id
         self.scaling_configuration_id = scaling_configuration_id
         self.scaling_group_id = scaling_group_id
+        self.scaling_instance_id = scaling_instance_id
         self.spot_strategy = spot_strategy
         self.warmup_state = warmup_state
         self.weighted_capacity = weighted_capacity
@@ -15375,12 +15463,16 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
             result['LifecycleState'] = self.lifecycle_state
         if self.load_balancer_weight is not None:
             result['LoadBalancerWeight'] = self.load_balancer_weight
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
         if self.scaling_activity_id is not None:
             result['ScalingActivityId'] = self.scaling_activity_id
         if self.scaling_configuration_id is not None:
             result['ScalingConfigurationId'] = self.scaling_configuration_id
         if self.scaling_group_id is not None:
             result['ScalingGroupId'] = self.scaling_group_id
+        if self.scaling_instance_id is not None:
+            result['ScalingInstanceId'] = self.scaling_instance_id
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
         if self.warmup_state is not None:
@@ -15413,12 +15505,16 @@ class DescribeScalingInstancesResponseBodyScalingInstances(TeaModel):
             self.lifecycle_state = m.get('LifecycleState')
         if m.get('LoadBalancerWeight') is not None:
             self.load_balancer_weight = m.get('LoadBalancerWeight')
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
         if m.get('ScalingActivityId') is not None:
             self.scaling_activity_id = m.get('ScalingActivityId')
         if m.get('ScalingConfigurationId') is not None:
             self.scaling_configuration_id = m.get('ScalingConfigurationId')
         if m.get('ScalingGroupId') is not None:
             self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('ScalingInstanceId') is not None:
+            self.scaling_instance_id = m.get('ScalingInstanceId')
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
         if m.get('WarmupState') is not None:
@@ -21379,6 +21475,10 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         cpu: float = None,
         cpu_options_core: int = None,
         cpu_options_threads_per_core: int = None,
+        data_cache_bucket: str = None,
+        data_cache_bursting_enabled: bool = None,
+        data_cache_pl: str = None,
+        data_cache_provisioned_iops: int = None,
         description: str = None,
         dns_config_name_servers: List[str] = None,
         dns_config_options: List[ModifyEciScalingConfigurationRequestDnsConfigOptions] = None,
@@ -21446,6 +21546,10 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
         self.cpu_options_core = cpu_options_core
         # The number of threads per core. This parameter is not available for all instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify custom CPU options](~~197781~~).
         self.cpu_options_threads_per_core = cpu_options_threads_per_core
+        self.data_cache_bucket = data_cache_bucket
+        self.data_cache_bursting_enabled = data_cache_bursting_enabled
+        self.data_cache_pl = data_cache_pl
+        self.data_cache_provisioned_iops = data_cache_provisioned_iops
         # > This parameter is unavailable.
         self.description = description
         # The IP addresses of the DNS servers.
@@ -21611,6 +21715,14 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
             result['CpuOptionsCore'] = self.cpu_options_core
         if self.cpu_options_threads_per_core is not None:
             result['CpuOptionsThreadsPerCore'] = self.cpu_options_threads_per_core
+        if self.data_cache_bucket is not None:
+            result['DataCacheBucket'] = self.data_cache_bucket
+        if self.data_cache_bursting_enabled is not None:
+            result['DataCacheBurstingEnabled'] = self.data_cache_bursting_enabled
+        if self.data_cache_pl is not None:
+            result['DataCachePL'] = self.data_cache_pl
+        if self.data_cache_provisioned_iops is not None:
+            result['DataCacheProvisionedIops'] = self.data_cache_provisioned_iops
         if self.description is not None:
             result['Description'] = self.description
         if self.dns_config_name_servers is not None:
@@ -21727,6 +21839,14 @@ class ModifyEciScalingConfigurationRequest(TeaModel):
             self.cpu_options_core = m.get('CpuOptionsCore')
         if m.get('CpuOptionsThreadsPerCore') is not None:
             self.cpu_options_threads_per_core = m.get('CpuOptionsThreadsPerCore')
+        if m.get('DataCacheBucket') is not None:
+            self.data_cache_bucket = m.get('DataCacheBucket')
+        if m.get('DataCacheBurstingEnabled') is not None:
+            self.data_cache_bursting_enabled = m.get('DataCacheBurstingEnabled')
+        if m.get('DataCachePL') is not None:
+            self.data_cache_pl = m.get('DataCachePL')
+        if m.get('DataCacheProvisionedIops') is not None:
+            self.data_cache_provisioned_iops = m.get('DataCacheProvisionedIops')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('DnsConfigNameServers') is not None:
