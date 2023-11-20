@@ -11491,6 +11491,8 @@ class Client(OpenApiClient):
             body['all_employe'] = request.all_employe
         if not UtilClient.is_unset(request.entities_shrink):
             body['entities'] = request.entities_shrink
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
         if not UtilClient.is_unset(request.third_part_id):
             body['third_part_id'] = request.third_part_id
         real_headers = {}
@@ -11534,6 +11536,8 @@ class Client(OpenApiClient):
             body['all_employe'] = request.all_employe
         if not UtilClient.is_unset(request.entities_shrink):
             body['entities'] = request.entities_shrink
+        if not UtilClient.is_unset(request.scope):
+            body['scope'] = request.scope
         if not UtilClient.is_unset(request.third_part_id):
             body['third_part_id'] = request.third_part_id
         real_headers = {}
