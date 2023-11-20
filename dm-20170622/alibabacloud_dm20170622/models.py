@@ -6662,3 +6662,355 @@ class SingleSendMailResponse(TeaModel):
         return self
 
 
+class SingleSendMailV2RequestHtmlBodyPlaceHolders(TeaModel):
+    def __init__(
+        self,
+        place_holders: Dict[str, str] = None,
+        to_address: str = None,
+    ):
+        self.place_holders = place_holders
+        self.to_address = to_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.place_holders is not None:
+            result['PlaceHolders'] = self.place_holders
+        if self.to_address is not None:
+            result['ToAddress'] = self.to_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PlaceHolders') is not None:
+            self.place_holders = m.get('PlaceHolders')
+        if m.get('ToAddress') is not None:
+            self.to_address = m.get('ToAddress')
+        return self
+
+
+class SingleSendMailV2Request(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        address_type: int = None,
+        click_trace: str = None,
+        from_alias: str = None,
+        html_body: str = None,
+        html_body_place_holders: List[SingleSendMailV2RequestHtmlBodyPlaceHolders] = None,
+        owner_id: int = None,
+        reply_address: str = None,
+        reply_address_alias: str = None,
+        reply_to_address: bool = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subject: str = None,
+        tag_name: str = None,
+        text_body: str = None,
+        to_address: str = None,
+    ):
+        self.account_name = account_name
+        self.address_type = address_type
+        self.click_trace = click_trace
+        self.from_alias = from_alias
+        self.html_body = html_body
+        self.html_body_place_holders = html_body_place_holders
+        self.owner_id = owner_id
+        self.reply_address = reply_address
+        self.reply_address_alias = reply_address_alias
+        self.reply_to_address = reply_to_address
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.subject = subject
+        self.tag_name = tag_name
+        self.text_body = text_body
+        self.to_address = to_address
+
+    def validate(self):
+        if self.html_body_place_holders:
+            for k in self.html_body_place_holders:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.click_trace is not None:
+            result['ClickTrace'] = self.click_trace
+        if self.from_alias is not None:
+            result['FromAlias'] = self.from_alias
+        if self.html_body is not None:
+            result['HtmlBody'] = self.html_body
+        result['HtmlBodyPlaceHolders'] = []
+        if self.html_body_place_holders is not None:
+            for k in self.html_body_place_holders:
+                result['HtmlBodyPlaceHolders'].append(k.to_map() if k else None)
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.reply_address is not None:
+            result['ReplyAddress'] = self.reply_address
+        if self.reply_address_alias is not None:
+            result['ReplyAddressAlias'] = self.reply_address_alias
+        if self.reply_to_address is not None:
+            result['ReplyToAddress'] = self.reply_to_address
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        if self.text_body is not None:
+            result['TextBody'] = self.text_body
+        if self.to_address is not None:
+            result['ToAddress'] = self.to_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('ClickTrace') is not None:
+            self.click_trace = m.get('ClickTrace')
+        if m.get('FromAlias') is not None:
+            self.from_alias = m.get('FromAlias')
+        if m.get('HtmlBody') is not None:
+            self.html_body = m.get('HtmlBody')
+        self.html_body_place_holders = []
+        if m.get('HtmlBodyPlaceHolders') is not None:
+            for k in m.get('HtmlBodyPlaceHolders'):
+                temp_model = SingleSendMailV2RequestHtmlBodyPlaceHolders()
+                self.html_body_place_holders.append(temp_model.from_map(k))
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReplyAddress') is not None:
+            self.reply_address = m.get('ReplyAddress')
+        if m.get('ReplyAddressAlias') is not None:
+            self.reply_address_alias = m.get('ReplyAddressAlias')
+        if m.get('ReplyToAddress') is not None:
+            self.reply_to_address = m.get('ReplyToAddress')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        if m.get('TextBody') is not None:
+            self.text_body = m.get('TextBody')
+        if m.get('ToAddress') is not None:
+            self.to_address = m.get('ToAddress')
+        return self
+
+
+class SingleSendMailV2ShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        address_type: int = None,
+        click_trace: str = None,
+        from_alias: str = None,
+        html_body: str = None,
+        html_body_place_holders_shrink: str = None,
+        owner_id: int = None,
+        reply_address: str = None,
+        reply_address_alias: str = None,
+        reply_to_address: bool = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        subject: str = None,
+        tag_name: str = None,
+        text_body: str = None,
+        to_address: str = None,
+    ):
+        self.account_name = account_name
+        self.address_type = address_type
+        self.click_trace = click_trace
+        self.from_alias = from_alias
+        self.html_body = html_body
+        self.html_body_place_holders_shrink = html_body_place_holders_shrink
+        self.owner_id = owner_id
+        self.reply_address = reply_address
+        self.reply_address_alias = reply_address_alias
+        self.reply_to_address = reply_to_address
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.subject = subject
+        self.tag_name = tag_name
+        self.text_body = text_body
+        self.to_address = to_address
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.address_type is not None:
+            result['AddressType'] = self.address_type
+        if self.click_trace is not None:
+            result['ClickTrace'] = self.click_trace
+        if self.from_alias is not None:
+            result['FromAlias'] = self.from_alias
+        if self.html_body is not None:
+            result['HtmlBody'] = self.html_body
+        if self.html_body_place_holders_shrink is not None:
+            result['HtmlBodyPlaceHolders'] = self.html_body_place_holders_shrink
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.reply_address is not None:
+            result['ReplyAddress'] = self.reply_address
+        if self.reply_address_alias is not None:
+            result['ReplyAddressAlias'] = self.reply_address_alias
+        if self.reply_to_address is not None:
+            result['ReplyToAddress'] = self.reply_to_address
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.subject is not None:
+            result['Subject'] = self.subject
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        if self.text_body is not None:
+            result['TextBody'] = self.text_body
+        if self.to_address is not None:
+            result['ToAddress'] = self.to_address
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AddressType') is not None:
+            self.address_type = m.get('AddressType')
+        if m.get('ClickTrace') is not None:
+            self.click_trace = m.get('ClickTrace')
+        if m.get('FromAlias') is not None:
+            self.from_alias = m.get('FromAlias')
+        if m.get('HtmlBody') is not None:
+            self.html_body = m.get('HtmlBody')
+        if m.get('HtmlBodyPlaceHolders') is not None:
+            self.html_body_place_holders_shrink = m.get('HtmlBodyPlaceHolders')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ReplyAddress') is not None:
+            self.reply_address = m.get('ReplyAddress')
+        if m.get('ReplyAddressAlias') is not None:
+            self.reply_address_alias = m.get('ReplyAddressAlias')
+        if m.get('ReplyToAddress') is not None:
+            self.reply_to_address = m.get('ReplyToAddress')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Subject') is not None:
+            self.subject = m.get('Subject')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        if m.get('TextBody') is not None:
+            self.text_body = m.get('TextBody')
+        if m.get('ToAddress') is not None:
+            self.to_address = m.get('ToAddress')
+        return self
+
+
+class SingleSendMailV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        env_id: str = None,
+        request_id: str = None,
+    ):
+        self.env_id = env_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.env_id is not None:
+            result['EnvId'] = self.env_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnvId') is not None:
+            self.env_id = m.get('EnvId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SingleSendMailV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SingleSendMailV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SingleSendMailV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
