@@ -1,3 +1,6 @@
+2023-11-20 Version: 1.2.0
+- Generated python 2023-06-30 for Linkvisual.
+
 2023-11-17 Version: 1.1.0
 - Generated python 2023-06-30 for Linkvisual.
 
