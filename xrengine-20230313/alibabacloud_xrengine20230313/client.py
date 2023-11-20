@@ -329,8 +329,12 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.intro):
             body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.light_model):
+            body['LightModel'] = request.light_model
         if not UtilClient.is_unset(request.mode):
             body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.output_config):
+            body['OutputConfig'] = request.output_config
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         if not UtilClient.is_unset(request.tts_voice_id):
@@ -381,8 +385,12 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.intro):
             body['Intro'] = request.intro
+        if not UtilClient.is_unset(request.light_model):
+            body['LightModel'] = request.light_model
         if not UtilClient.is_unset(request.mode):
             body['Mode'] = request.mode
+        if not UtilClient.is_unset(request.output_config):
+            body['OutputConfig'] = request.output_config
         if not UtilClient.is_unset(request.title):
             body['Title'] = request.title
         if not UtilClient.is_unset(request.tts_voice_id):
@@ -3368,6 +3376,162 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.PopObjectProjectDetailResponse:
         runtime = util_models.RuntimeOptions()
         return await self.pop_object_project_detail_with_options_async(request, runtime)
+
+    def pop_object_retrieval_with_options(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopObjectRetrieval',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopObjectRetrievalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_object_retrieval_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.content):
+            body['Content'] = request.content
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.top_k):
+            body['TopK'] = request.top_k
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PopObjectRetrieval',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopObjectRetrievalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_object_retrieval(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalRequest,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_object_retrieval_with_options(request, runtime)
+
+    async def pop_object_retrieval_async(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalRequest,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_object_retrieval_with_options_async(request, runtime)
+
+    def pop_object_retrieval_upload_data_with_options(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalUploadDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalUploadDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopObjectRetrievalUploadData',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopObjectRetrievalUploadDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pop_object_retrieval_upload_data_with_options_async(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalUploadDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalUploadDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PopObjectRetrievalUploadData',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.PopObjectRetrievalUploadDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pop_object_retrieval_upload_data(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalUploadDataRequest,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalUploadDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.pop_object_retrieval_upload_data_with_options(request, runtime)
+
+    async def pop_object_retrieval_upload_data_async(
+        self,
+        request: xr_engine_20230313_models.PopObjectRetrievalUploadDataRequest,
+    ) -> xr_engine_20230313_models.PopObjectRetrievalUploadDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.pop_object_retrieval_upload_data_with_options_async(request, runtime)
 
     def pop_query_avatar_project_detail_with_options(
         self,

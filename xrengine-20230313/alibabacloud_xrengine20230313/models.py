@@ -430,7 +430,9 @@ class CreateLivePortraitProjectRequest(TeaModel):
         image_url: str = None,
         intro: str = None,
         jwt_token: str = None,
+        light_model: bool = None,
         mode: str = None,
+        output_config: str = None,
         title: str = None,
         tts_voice_id: str = None,
         watermark_image_url: str = None,
@@ -443,7 +445,9 @@ class CreateLivePortraitProjectRequest(TeaModel):
         self.image_url = image_url
         self.intro = intro
         self.jwt_token = jwt_token
+        self.light_model = light_model
         self.mode = mode
+        self.output_config = output_config
         self.title = title
         self.tts_voice_id = tts_voice_id
         self.watermark_image_url = watermark_image_url
@@ -472,8 +476,12 @@ class CreateLivePortraitProjectRequest(TeaModel):
             result['Intro'] = self.intro
         if self.jwt_token is not None:
             result['JwtToken'] = self.jwt_token
+        if self.light_model is not None:
+            result['LightModel'] = self.light_model
         if self.mode is not None:
             result['Mode'] = self.mode
+        if self.output_config is not None:
+            result['OutputConfig'] = self.output_config
         if self.title is not None:
             result['Title'] = self.title
         if self.tts_voice_id is not None:
@@ -500,8 +508,12 @@ class CreateLivePortraitProjectRequest(TeaModel):
             self.intro = m.get('Intro')
         if m.get('JwtToken') is not None:
             self.jwt_token = m.get('JwtToken')
+        if m.get('LightModel') is not None:
+            self.light_model = m.get('LightModel')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+        if m.get('OutputConfig') is not None:
+            self.output_config = m.get('OutputConfig')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('TtsVoiceId') is not None:
@@ -15888,6 +15900,392 @@ class PopObjectProjectDetailResponse(TeaModel):
         return self
 
 
+class PopObjectRetrievalRequest(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        jwt_token: str = None,
+        source_type: str = None,
+        top_k: int = None,
+    ):
+        self.content = content
+        self.jwt_token = jwt_token
+        self.source_type = source_type
+        self.top_k = top_k
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.top_k is not None:
+            result['TopK'] = self.top_k
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('TopK') is not None:
+            self.top_k = m.get('TopK')
+        return self
+
+
+class PopObjectRetrievalResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        glb_url: str = None,
+        id: str = None,
+        model_url: str = None,
+        preview_url: str = None,
+        title: str = None,
+    ):
+        self.cover_url = cover_url
+        self.glb_url = glb_url
+        self.id = id
+        self.model_url = model_url
+        self.preview_url = preview_url
+        self.title = title
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.glb_url is not None:
+            result['GlbUrl'] = self.glb_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.model_url is not None:
+            result['ModelUrl'] = self.model_url
+        if self.preview_url is not None:
+            result['PreviewUrl'] = self.preview_url
+        if self.title is not None:
+            result['Title'] = self.title
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('GlbUrl') is not None:
+            self.glb_url = m.get('GlbUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ModelUrl') is not None:
+            self.model_url = m.get('ModelUrl')
+        if m.get('PreviewUrl') is not None:
+            self.preview_url = m.get('PreviewUrl')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        return self
+
+
+class PopObjectRetrievalResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[PopObjectRetrievalResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = PopObjectRetrievalResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopObjectRetrievalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopObjectRetrievalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopObjectRetrievalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PopObjectRetrievalUploadDataRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+    ):
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class PopObjectRetrievalUploadDataResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        policy: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.policy = policy
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class PopObjectRetrievalUploadDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: PopObjectRetrievalUploadDataResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = PopObjectRetrievalUploadDataResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class PopObjectRetrievalUploadDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PopObjectRetrievalUploadDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PopObjectRetrievalUploadDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class PopQueryAvatarProjectDetailRequest(TeaModel):
     def __init__(
         self,
@@ -17807,6 +18205,7 @@ class QueryDigitalHumanProjectRequest(TeaModel):
 class QueryDigitalHumanProjectResponseBodyData(TeaModel):
     def __init__(
         self,
+        error_code: str = None,
         error_message: str = None,
         estimated_duration: int = None,
         file_url: str = None,
@@ -17819,6 +18218,7 @@ class QueryDigitalHumanProjectResponseBodyData(TeaModel):
         video_length: int = None,
         waiting_time: int = None,
     ):
+        self.error_code = error_code
         self.error_message = error_message
         self.estimated_duration = estimated_duration
         self.file_url = file_url
@@ -17840,6 +18240,8 @@ class QueryDigitalHumanProjectResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
         if self.error_message is not None:
             result['ErrorMessage'] = self.error_message
         if self.estimated_duration is not None:
@@ -17866,6 +18268,8 @@ class QueryDigitalHumanProjectResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
         if m.get('ErrorMessage') is not None:
             self.error_message = m.get('ErrorMessage')
         if m.get('EstimatedDuration') is not None:
