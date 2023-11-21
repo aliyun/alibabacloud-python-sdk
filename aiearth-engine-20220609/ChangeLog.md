@@ -1,3 +1,6 @@
+2023-11-21 Version: 1.1.0
+- Generated python 2022-06-09 for AIEarth-Engine.
+
 2023-07-11 Version: 1.0.6
 - Added delete API for raster.
 - Added delete API for vector.

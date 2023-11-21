@@ -233,6 +233,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_jobs_with_options_async(request, runtime)
 
+    def delete_user_mapservice_datas_with_options(
+        self,
+        tmp_req: aiearth__engine_20220609_models.DeleteUserMapserviceDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.DeleteUserMapserviceDatasResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aiearth__engine_20220609_models.DeleteUserMapserviceDatasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserMapserviceDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.DeleteUserMapserviceDatasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_user_mapservice_datas_with_options_async(
+        self,
+        tmp_req: aiearth__engine_20220609_models.DeleteUserMapserviceDatasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> aiearth__engine_20220609_models.DeleteUserMapserviceDatasResponse:
+        UtilClient.validate_model(tmp_req)
+        request = aiearth__engine_20220609_models.DeleteUserMapserviceDatasShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.data_ids):
+            request.data_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.data_ids, 'DataIds', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.data_ids_shrink):
+            body['DataIds'] = request.data_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteUserMapserviceDatas',
+            version='2022-06-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            aiearth__engine_20220609_models.DeleteUserMapserviceDatasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_user_mapservice_datas(
+        self,
+        request: aiearth__engine_20220609_models.DeleteUserMapserviceDatasRequest,
+    ) -> aiearth__engine_20220609_models.DeleteUserMapserviceDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_user_mapservice_datas_with_options(request, runtime)
+
+    async def delete_user_mapservice_datas_async(
+        self,
+        request: aiearth__engine_20220609_models.DeleteUserMapserviceDatasRequest,
+    ) -> aiearth__engine_20220609_models.DeleteUserMapserviceDatasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_user_mapservice_datas_with_options_async(request, runtime)
+
     def delete_user_raster_datas_with_options(
         self,
         tmp_req: aiearth__engine_20220609_models.DeleteUserRasterDatasRequest,
