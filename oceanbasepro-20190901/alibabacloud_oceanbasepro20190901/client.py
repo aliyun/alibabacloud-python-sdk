@@ -152,16 +152,22 @@ class Client(OpenApiClient):
             body['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.disk_type):
             body['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_class):
             body['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.isolation_optimization):
+            body['IsolationOptimization'] = request.isolation_optimization
         if not UtilClient.is_unset(request.ob_version):
             body['ObVersion'] = request.ob_version
         if not UtilClient.is_unset(request.period):
             body['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             body['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.replica_mode):
+            body['ReplicaMode'] = request.replica_mode
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.series):
@@ -204,16 +210,22 @@ class Client(OpenApiClient):
             body['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.disk_type):
             body['DiskType'] = request.disk_type
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_class):
             body['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.isolation_optimization):
+            body['IsolationOptimization'] = request.isolation_optimization
         if not UtilClient.is_unset(request.ob_version):
             body['ObVersion'] = request.ob_version
         if not UtilClient.is_unset(request.period):
             body['Period'] = request.period
         if not UtilClient.is_unset(request.period_unit):
             body['PeriodUnit'] = request.period_unit
+        if not UtilClient.is_unset(request.replica_mode):
+            body['ReplicaMode'] = request.replica_mode
         if not UtilClient.is_unset(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.series):
@@ -253,14 +265,323 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
+    def create_label_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.CreateLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLabel',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_label_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLabel',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_label(
+        self,
+        request: ocean_base_pro_20190901_models.CreateLabelRequest,
+    ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_label_with_options(request, runtime)
+
+    async def create_label_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateLabelRequest,
+    ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_label_with_options_async(request, runtime)
+
+    def create_my_sql_data_source_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dg_instance_id):
+            body['DgInstanceId'] = request.dg_instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            body['Ip'] = request.ip
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            body['Port'] = request.port
+        if not UtilClient.is_unset(request.schema):
+            body['Schema'] = request.schema
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMySqlDataSource',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_my_sql_data_source_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.dg_instance_id):
+            body['DgInstanceId'] = request.dg_instance_id
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ip):
+            body['Ip'] = request.ip
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            body['Port'] = request.port
+        if not UtilClient.is_unset(request.schema):
+            body['Schema'] = request.schema
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateMySqlDataSource',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_my_sql_data_source(
+        self,
+        request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
+    ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_my_sql_data_source_with_options(request, runtime)
+
+    async def create_my_sql_data_source_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
+    ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_my_sql_data_source_with_options_async(request, runtime)
+
+    def create_ocean_base_data_source_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster):
+            body['Cluster'] = request.cluster
+        if not UtilClient.is_unset(request.config_url):
+            body['ConfigUrl'] = request.config_url
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.drc_password):
+            body['DrcPassword'] = request.drc_password
+        if not UtilClient.is_unset(request.drc_user_name):
+            body['DrcUserName'] = request.drc_user_name
+        if not UtilClient.is_unset(request.inner_drc_password):
+            body['InnerDrcPassword'] = request.inner_drc_password
+        if not UtilClient.is_unset(request.ip):
+            body['Ip'] = request.ip
+        if not UtilClient.is_unset(request.log_proxy_ip):
+            body['LogProxyIp'] = request.log_proxy_ip
+        if not UtilClient.is_unset(request.log_proxy_port):
+            body['LogProxyPort'] = request.log_proxy_port
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            body['Port'] = request.port
+        if not UtilClient.is_unset(request.tenant):
+            body['Tenant'] = request.tenant
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOceanBaseDataSource',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ocean_base_data_source_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cluster):
+            body['Cluster'] = request.cluster
+        if not UtilClient.is_unset(request.config_url):
+            body['ConfigUrl'] = request.config_url
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.drc_password):
+            body['DrcPassword'] = request.drc_password
+        if not UtilClient.is_unset(request.drc_user_name):
+            body['DrcUserName'] = request.drc_user_name
+        if not UtilClient.is_unset(request.inner_drc_password):
+            body['InnerDrcPassword'] = request.inner_drc_password
+        if not UtilClient.is_unset(request.ip):
+            body['Ip'] = request.ip
+        if not UtilClient.is_unset(request.log_proxy_ip):
+            body['LogProxyIp'] = request.log_proxy_ip
+        if not UtilClient.is_unset(request.log_proxy_port):
+            body['LogProxyPort'] = request.log_proxy_port
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.password):
+            body['Password'] = request.password
+        if not UtilClient.is_unset(request.port):
+            body['Port'] = request.port
+        if not UtilClient.is_unset(request.tenant):
+            body['Tenant'] = request.tenant
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.user_name):
+            body['UserName'] = request.user_name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateOceanBaseDataSource',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ocean_base_data_source(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
+    ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ocean_base_data_source_with_options(request, runtime)
+
+    async def create_ocean_base_data_source_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
+    ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ocean_base_data_source_with_options_async(request, runtime)
+
     def create_oms_mysql_data_source_with_options(
         self,
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        The description of the data source.
-        It must be 2 to 256 characters in length. The default value is null.
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -315,8 +636,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        The description of the data source.
-        It must be 2 to 256 characters in length. The default value is null.
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -370,8 +690,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        The description of the data source.
-        It must be 2 to 256 characters in length. The default value is null.
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @return: CreateOmsMysqlDataSourceResponse
@@ -384,8 +703,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        The description of the data source.
-        It must be 2 to 256 characters in length. The default value is null.
+        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @return: CreateOmsMysqlDataSourceResponse
@@ -523,6 +841,172 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_oms_open_apiproject_with_options_async(request, runtime)
 
+    def create_project_with_options(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.CreateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.common_transfer_config):
+            request.common_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.common_transfer_config, 'CommonTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.full_transfer_config):
+            request.full_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.full_transfer_config, 'FullTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.incr_transfer_config):
+            request.incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.incr_transfer_config, 'IncrTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.label_ids):
+            request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
+        if not UtilClient.is_unset(tmp_req.struct_transfer_config):
+            request.struct_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.struct_transfer_config, 'StructTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.transfer_mapping):
+            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_mapping, 'TransferMapping', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.common_transfer_config_shrink):
+            body['CommonTransferConfig'] = request.common_transfer_config_shrink
+        if not UtilClient.is_unset(request.enable_full_transfer):
+            body['EnableFullTransfer'] = request.enable_full_transfer
+        if not UtilClient.is_unset(request.enable_full_verify):
+            body['EnableFullVerify'] = request.enable_full_verify
+        if not UtilClient.is_unset(request.enable_incr_transfer):
+            body['EnableIncrTransfer'] = request.enable_incr_transfer
+        if not UtilClient.is_unset(request.enable_reverse_incr_transfer):
+            body['EnableReverseIncrTransfer'] = request.enable_reverse_incr_transfer
+        if not UtilClient.is_unset(request.enable_struct_transfer):
+            body['EnableStructTransfer'] = request.enable_struct_transfer
+        if not UtilClient.is_unset(request.full_transfer_config_shrink):
+            body['FullTransferConfig'] = request.full_transfer_config_shrink
+        if not UtilClient.is_unset(request.incr_transfer_config_shrink):
+            body['IncrTransferConfig'] = request.incr_transfer_config_shrink
+        if not UtilClient.is_unset(request.label_ids_shrink):
+            body['LabelIds'] = request.label_ids_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_key):
+            body['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.sink_endpoint_id):
+            body['SinkEndpointId'] = request.sink_endpoint_id
+        if not UtilClient.is_unset(request.source_endpoint_id):
+            body['SourceEndpointId'] = request.source_endpoint_id
+        if not UtilClient.is_unset(request.struct_transfer_config_shrink):
+            body['StructTransferConfig'] = request.struct_transfer_config_shrink
+        if not UtilClient.is_unset(request.transfer_mapping_shrink):
+            body['TransferMapping'] = request.transfer_mapping_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.use_oss):
+            body['UseOss'] = request.use_oss
+        if not UtilClient.is_unset(request.worker_grade_id):
+            body['WorkerGradeId'] = request.worker_grade_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_project_with_options_async(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.CreateProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.common_transfer_config):
+            request.common_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.common_transfer_config, 'CommonTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.full_transfer_config):
+            request.full_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.full_transfer_config, 'FullTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.incr_transfer_config):
+            request.incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.incr_transfer_config, 'IncrTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.label_ids):
+            request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
+        if not UtilClient.is_unset(tmp_req.struct_transfer_config):
+            request.struct_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.struct_transfer_config, 'StructTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.transfer_mapping):
+            request.transfer_mapping_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.transfer_mapping, 'TransferMapping', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.common_transfer_config_shrink):
+            body['CommonTransferConfig'] = request.common_transfer_config_shrink
+        if not UtilClient.is_unset(request.enable_full_transfer):
+            body['EnableFullTransfer'] = request.enable_full_transfer
+        if not UtilClient.is_unset(request.enable_full_verify):
+            body['EnableFullVerify'] = request.enable_full_verify
+        if not UtilClient.is_unset(request.enable_incr_transfer):
+            body['EnableIncrTransfer'] = request.enable_incr_transfer
+        if not UtilClient.is_unset(request.enable_reverse_incr_transfer):
+            body['EnableReverseIncrTransfer'] = request.enable_reverse_incr_transfer
+        if not UtilClient.is_unset(request.enable_struct_transfer):
+            body['EnableStructTransfer'] = request.enable_struct_transfer
+        if not UtilClient.is_unset(request.full_transfer_config_shrink):
+            body['FullTransferConfig'] = request.full_transfer_config_shrink
+        if not UtilClient.is_unset(request.incr_transfer_config_shrink):
+            body['IncrTransferConfig'] = request.incr_transfer_config_shrink
+        if not UtilClient.is_unset(request.label_ids_shrink):
+            body['LabelIds'] = request.label_ids_shrink
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.oss_key):
+            body['OssKey'] = request.oss_key
+        if not UtilClient.is_unset(request.sink_endpoint_id):
+            body['SinkEndpointId'] = request.sink_endpoint_id
+        if not UtilClient.is_unset(request.source_endpoint_id):
+            body['SourceEndpointId'] = request.source_endpoint_id
+        if not UtilClient.is_unset(request.struct_transfer_config_shrink):
+            body['StructTransferConfig'] = request.struct_transfer_config_shrink
+        if not UtilClient.is_unset(request.transfer_mapping_shrink):
+            body['TransferMapping'] = request.transfer_mapping_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.use_oss):
+            body['UseOss'] = request.use_oss
+        if not UtilClient.is_unset(request.worker_grade_id):
+            body['WorkerGradeId'] = request.worker_grade_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_project(
+        self,
+        request: ocean_base_pro_20190901_models.CreateProjectRequest,
+    ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_project_with_options(request, runtime)
+
+    async def create_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateProjectRequest,
+    ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_project_with_options_async(request, runtime)
+
     def create_security_ip_group_with_options(
         self,
         request: ocean_base_pro_20190901_models.CreateSecurityIpGroupRequest,
@@ -616,10 +1100,14 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_disk):
+            body['LogDisk'] = request.log_disk
         if not UtilClient.is_unset(request.memory):
             body['Memory'] = request.memory
         if not UtilClient.is_unset(request.primary_zone):
             body['PrimaryZone'] = request.primary_zone
+        if not UtilClient.is_unset(request.read_only_zone_list):
+            body['ReadOnlyZoneList'] = request.read_only_zone_list
         if not UtilClient.is_unset(request.tenant_mode):
             body['TenantMode'] = request.tenant_mode
         if not UtilClient.is_unset(request.tenant_name):
@@ -666,10 +1154,14 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_disk):
+            body['LogDisk'] = request.log_disk
         if not UtilClient.is_unset(request.memory):
             body['Memory'] = request.memory
         if not UtilClient.is_unset(request.primary_zone):
             body['PrimaryZone'] = request.primary_zone
+        if not UtilClient.is_unset(request.read_only_zone_list):
+            body['ReadOnlyZoneList'] = request.read_only_zone_list
         if not UtilClient.is_unset(request.tenant_mode):
             body['TenantMode'] = request.tenant_mode
         if not UtilClient.is_unset(request.tenant_name):
@@ -726,6 +1218,10 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            body['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
             body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -758,6 +1254,10 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.v_switch_id):
+            body['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.vpc_id):
+            body['VpcId'] = request.vpc_id
         if not UtilClient.is_unset(request.zone_id):
             body['ZoneId'] = request.zone_id
         req = open_api_models.OpenApiRequest(
@@ -1067,6 +1567,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.backup_retain_mode):
             body['BackupRetainMode'] = request.backup_retain_mode
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_ids):
             body['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
@@ -1104,6 +1606,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.backup_retain_mode):
             body['BackupRetainMode'] = request.backup_retain_mode
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_ids):
             body['InstanceIds'] = request.instance_ids
         req = open_api_models.OpenApiRequest(
@@ -1232,6 +1736,76 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DeleteOmsOpenAPIProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_oms_open_apiproject_with_options_async(request, runtime)
+
+    def delete_project_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_project_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_project(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteProjectRequest,
+    ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_project_with_options(request, runtime)
+
+    async def delete_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteProjectRequest,
+    ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_project_with_options_async(request, runtime)
 
     def delete_security_ip_group_with_options(
         self,
@@ -1556,6 +2130,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition_shrink):
             body['FilterCondition'] = request.filter_condition_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.page_number):
@@ -1618,6 +2194,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition_shrink):
             body['FilterCondition'] = request.filter_condition_shrink
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.page_number):
@@ -1835,6 +2413,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_mem_resource_with_options_async(request, runtime)
 
+    def describe_available_spec_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.upgrade_type):
+            body['UpgradeType'] = request.upgrade_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableSpec',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_available_spec_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        if not UtilClient.is_unset(request.upgrade_type):
+            body['UpgradeType'] = request.upgrade_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableSpec',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_available_spec(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_available_spec_with_options(request, runtime)
+
+    async def describe_available_spec_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_available_spec_with_options_async(request, runtime)
+
+    def describe_available_zone_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deploy_type):
+            body['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.ob_version):
+            body['ObVersion'] = request.ob_version
+        if not UtilClient.is_unset(request.series):
+            body['Series'] = request.series
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableZone',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_available_zone_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.deploy_type):
+            body['DeployType'] = request.deploy_type
+        if not UtilClient.is_unset(request.instance_type):
+            body['InstanceType'] = request.instance_type
+        if not UtilClient.is_unset(request.ob_version):
+            body['ObVersion'] = request.ob_version
+        if not UtilClient.is_unset(request.series):
+            body['Series'] = request.series
+        if not UtilClient.is_unset(request.spec):
+            body['Spec'] = request.spec
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAvailableZone',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeAvailableZoneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_available_zone(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_available_zone_with_options(request, runtime)
+
+    async def describe_available_zone_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_available_zone_with_options_async(request, runtime)
+
     def describe_charset_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeCharsetRequest,
@@ -1842,6 +2584,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.series):
             body['Series'] = request.series
         if not UtilClient.is_unset(request.tenant_mode):
@@ -1872,6 +2616,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.series):
             body['Series'] = request.series
         if not UtilClient.is_unset(request.tenant_mode):
@@ -1918,6 +2664,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.database_name):
             body['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1956,6 +2704,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.database_name):
             body['DatabaseName'] = request.database_name
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2010,8 +2760,6 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2042,8 +2790,6 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             body['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            body['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -2147,6 +2893,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_creatable_zone_with_options_async(request, runtime)
 
+    def describe_instance_sslwith_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSSL',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_sslwith_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceSSL',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeInstanceSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_ssl(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_sslwith_options(request, runtime)
+
+    async def describe_instance_ssl_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_sslwith_options_async(request, runtime)
+
     def describe_instance_security_configs_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
@@ -2154,6 +2970,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.check_id):
+            body['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -2182,6 +3000,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.check_id):
+            body['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         req = open_api_models.OpenApiRequest(
@@ -2521,6 +3341,108 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
+    def describe_metrics_data_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by_labels):
+            query['GroupByLabels'] = request.group_by_labels
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.sort_metric_key):
+            query['SortMetricKey'] = request.sort_metric_key
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricsData',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_metrics_data_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.group_by_labels):
+            query['GroupByLabels'] = request.group_by_labels
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.sort_metric_key):
+            query['SortMetricKey'] = request.sort_metric_key
+        if not UtilClient.is_unset(request.sort_order):
+            query['SortOrder'] = request.sort_order
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMetricsData',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeMetricsDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_metrics_data(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_metrics_data_with_options(request, runtime)
+
+    async def describe_metrics_data_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_metrics_data_with_options_async(request, runtime)
+
     def describe_node_metrics_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeNodeMetricsRequest,
@@ -2636,12 +3558,16 @@ class Client(OpenApiClient):
             body['Current'] = request.current
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition):
             body['FilterCondition'] = request.filter_condition
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.page_size):
@@ -2694,12 +3620,16 @@ class Client(OpenApiClient):
             body['Current'] = request.current
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition):
             body['FilterCondition'] = request.filter_condition
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.page_size):
@@ -2762,6 +3692,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -2800,6 +3732,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -2854,6 +3788,8 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -2896,6 +3832,8 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -2952,6 +3890,8 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -2992,6 +3932,8 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
@@ -3046,12 +3988,16 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition):
             body['FilterCondition'] = request.filter_condition
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.search_key_word):
@@ -3100,12 +4046,16 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition):
             body['FilterCondition'] = request.filter_condition
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.search_key_word):
@@ -3168,12 +4118,16 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition):
             body['FilterCondition'] = request.filter_condition
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.search_key_word):
@@ -3222,12 +4176,16 @@ class Client(OpenApiClient):
             body['AcceptLanguage'] = request.accept_language
         if not UtilClient.is_unset(request.db_name):
             body['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.dynamic_sql):
+            body['DynamicSql'] = request.dynamic_sql
         if not UtilClient.is_unset(request.end_time):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.filter_condition):
             body['FilterCondition'] = request.filter_condition
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.merge_dynamic_sql):
+            body['MergeDynamicSql'] = request.merge_dynamic_sql
         if not UtilClient.is_unset(request.node_ip):
             body['NodeIp'] = request.node_ip
         if not UtilClient.is_unset(request.search_key_word):
@@ -3704,6 +4662,380 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeParametersHistoryResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_history_with_options_async(request, runtime)
+
+    def describe_project_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_project_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_project(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_project_with_options(request, runtime)
+
+    async def describe_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_project_with_options_async(request, runtime)
+
+    def describe_project_components_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectComponents',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_project_components_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectComponents',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectComponentsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_project_components(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_project_components_with_options(request, runtime)
+
+    async def describe_project_components_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_project_components_with_options_async(request, runtime)
+
+    def describe_project_progress_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectProgress',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_project_progress_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectProgress',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectProgressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_project_progress(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_project_progress_with_options(request, runtime)
+
+    async def describe_project_progress_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_project_progress_with_options_async(request, runtime)
+
+    def describe_project_step_metric_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator):
+            body['Aggregator'] = request.aggregator
+        if not UtilClient.is_unset(request.begin_timestamp):
+            body['BeginTimestamp'] = request.begin_timestamp
+        if not UtilClient.is_unset(request.end_timestamp):
+            body['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.max_point_num):
+            body['MaxPointNum'] = request.max_point_num
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.step_name):
+            body['StepName'] = request.step_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectStepMetric',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_project_step_metric_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.aggregator):
+            body['Aggregator'] = request.aggregator
+        if not UtilClient.is_unset(request.begin_timestamp):
+            body['BeginTimestamp'] = request.begin_timestamp
+        if not UtilClient.is_unset(request.end_timestamp):
+            body['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.max_point_num):
+            body['MaxPointNum'] = request.max_point_num
+        if not UtilClient.is_unset(request.metric_type):
+            body['MetricType'] = request.metric_type
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.step_name):
+            body['StepName'] = request.step_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectStepMetric',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_project_step_metric(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_project_step_metric_with_options(request, runtime)
+
+    async def describe_project_step_metric_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_project_step_metric_with_options_async(request, runtime)
+
+    def describe_project_steps_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectSteps',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_project_steps_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProjectSteps',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProjectStepsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_project_steps(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_project_steps_with_options(request, runtime)
+
+    async def describe_project_steps_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_project_steps_with_options_async(request, runtime)
 
     def describe_recommend_index_with_options(
         self,
@@ -4479,6 +5811,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_with_options_async(request, runtime)
 
+    def describe_tenant_encryption_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.tenant_name):
+            body['TenantName'] = request.tenant_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantEncryption',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tenant_encryption_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.tenant_name):
+            body['TenantName'] = request.tenant_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTenantEncryption',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tenant_encryption(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tenant_encryption_with_options(request, runtime)
+
+    async def describe_tenant_encryption_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tenant_encryption_with_options_async(request, runtime)
+
     def describe_tenant_metrics_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantMetricsRequest,
@@ -4588,6 +6006,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.check_id):
+            body['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.tenant_id):
@@ -4618,6 +6038,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.check_id):
+            body['CheckId'] = request.check_id
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.tenant_id):
@@ -4809,9 +6231,16 @@ class Client(OpenApiClient):
 
     def describe_tenant_user_roles_with_options(
         self,
+        request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
         params = open_api_models.Params(
             action='DescribeTenantUserRoles',
             version='2019-09-01',
@@ -4830,9 +6259,16 @@ class Client(OpenApiClient):
 
     async def describe_tenant_user_roles_with_options_async(
         self,
+        request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
         params = open_api_models.Params(
             action='DescribeTenantUserRoles',
             version='2019-09-01',
@@ -4849,13 +6285,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_tenant_user_roles(self) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
+    def describe_tenant_user_roles(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_tenant_user_roles_with_options(runtime)
+        return self.describe_tenant_user_roles_with_options(request, runtime)
 
-    async def describe_tenant_user_roles_async(self) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
+    async def describe_tenant_user_roles_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_tenant_user_roles_with_options_async(runtime)
+        return await self.describe_tenant_user_roles_with_options_async(request, runtime)
 
     def describe_tenant_users_with_options(
         self,
@@ -5365,6 +6807,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
+    def get_upload_oss_url_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.effective_time_minutes):
+            body['EffectiveTimeMinutes'] = request.effective_time_minutes
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUploadOssUrl',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_upload_oss_url_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.effective_time_minutes):
+            body['EffectiveTimeMinutes'] = request.effective_time_minutes
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetUploadOssUrl',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.GetUploadOssUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_upload_oss_url(
+        self,
+        request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
+    ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_upload_oss_url_with_options(request, runtime)
+
+    async def get_upload_oss_url_async(
+        self,
+        request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
+    ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_upload_oss_url_with_options_async(request, runtime)
+
     def kill_process_list_with_options(
         self,
         request: ocean_base_pro_20190901_models.KillProcessListRequest,
@@ -5442,6 +6958,488 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.kill_process_list_with_options_async(request, runtime)
+
+    def list_all_labels_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAllLabels',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListAllLabelsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_all_labels_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAllLabels',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListAllLabelsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_all_labels(self) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_all_labels_with_options(runtime)
+
+    async def list_all_labels_async(self) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_all_labels_with_options_async(runtime)
+
+    def list_data_source_with_options(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListDataSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            body['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not UtilClient.is_unset(request.types_shrink):
+            body['Types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_source_with_options_async(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListDataSourceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.types):
+            request.types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.types, 'Types', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            body['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not UtilClient.is_unset(request.types_shrink):
+            body['Types'] = request.types_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListDataSource',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_source(
+        self,
+        request: ocean_base_pro_20190901_models.ListDataSourceRequest,
+    ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_data_source_with_options(request, runtime)
+
+    async def list_data_source_async(
+        self,
+        request: ocean_base_pro_20190901_models.ListDataSourceRequest,
+    ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_data_source_with_options_async(request, runtime)
+
+    def list_project_full_verify_result_with_options(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListProjectFullVerifyResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_schemas):
+            request.dest_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_schemas, 'DestSchemas', 'json')
+        if not UtilClient.is_unset(tmp_req.source_schemas):
+            request.source_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_schemas, 'SourceSchemas', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dest_schemas_shrink):
+            body['DestSchemas'] = request.dest_schemas_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.source_schemas_shrink):
+            body['SourceSchemas'] = request.source_schemas_shrink
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjectFullVerifyResult',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_project_full_verify_result_with_options_async(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListProjectFullVerifyResultShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_schemas):
+            request.dest_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_schemas, 'DestSchemas', 'json')
+        if not UtilClient.is_unset(tmp_req.source_schemas):
+            request.source_schemas_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_schemas, 'SourceSchemas', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dest_schemas_shrink):
+            body['DestSchemas'] = request.dest_schemas_shrink
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.project_id):
+            body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.source_schemas_shrink):
+            body['SourceSchemas'] = request.source_schemas_shrink
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjectFullVerifyResult',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_project_full_verify_result(
+        self,
+        request: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
+    ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_project_full_verify_result_with_options(request, runtime)
+
+    async def list_project_full_verify_result_async(
+        self,
+        request: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
+    ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_project_full_verify_result_with_options_async(request, runtime)
+
+    def list_projects_with_options(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_ids):
+            request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
+        if not UtilClient.is_unset(tmp_req.sink_endpoint_types):
+            request.sink_endpoint_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sink_endpoint_types, 'SinkEndpointTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.source_endpoint_types):
+            request.source_endpoint_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_endpoint_types, 'SourceEndpointTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.status):
+            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'Status', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.label_ids_shrink):
+            body['LabelIds'] = request.label_ids_shrink
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            body['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.sink_endpoint_types_shrink):
+            body['SinkEndpointTypes'] = request.sink_endpoint_types_shrink
+        if not UtilClient.is_unset(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not UtilClient.is_unset(request.source_endpoint_types_shrink):
+            body['SourceEndpointTypes'] = request.source_endpoint_types_shrink
+        if not UtilClient.is_unset(request.status_shrink):
+            body['Status'] = request.status_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.visible_sub_project):
+            body['VisibleSubProject'] = request.visible_sub_project
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_projects_with_options_async(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListProjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.label_ids):
+            request.label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.label_ids, 'LabelIds', 'json')
+        if not UtilClient.is_unset(tmp_req.sink_endpoint_types):
+            request.sink_endpoint_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sink_endpoint_types, 'SinkEndpointTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.source_endpoint_types):
+            request.source_endpoint_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.source_endpoint_types, 'SourceEndpointTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.status):
+            request.status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status, 'Status', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.label_ids_shrink):
+            body['LabelIds'] = request.label_ids_shrink
+        if not UtilClient.is_unset(request.order):
+            body['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_key):
+            body['SearchKey'] = request.search_key
+        if not UtilClient.is_unset(request.sink_endpoint_types_shrink):
+            body['SinkEndpointTypes'] = request.sink_endpoint_types_shrink
+        if not UtilClient.is_unset(request.sort_field):
+            body['SortField'] = request.sort_field
+        if not UtilClient.is_unset(request.source_endpoint_types_shrink):
+            body['SourceEndpointTypes'] = request.source_endpoint_types_shrink
+        if not UtilClient.is_unset(request.status_shrink):
+            body['Status'] = request.status_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.visible_sub_project):
+            body['VisibleSubProject'] = request.visible_sub_project
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListProjects',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListProjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_projects(
+        self,
+        request: ocean_base_pro_20190901_models.ListProjectsRequest,
+    ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_projects_with_options(request, runtime)
+
+    async def list_projects_async(
+        self,
+        request: ocean_base_pro_20190901_models.ListProjectsRequest,
+    ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_projects_with_options_async(request, runtime)
+
+    def list_worker_instances_with_options(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListWorkerInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.specs):
+            request.specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.specs, 'Specs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dest_type):
+            body['DestType'] = request.dest_type
+        if not UtilClient.is_unset(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.only_bindable):
+            body['OnlyBindable'] = request.only_bindable
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.specs_shrink):
+            body['Specs'] = request.specs_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWorkerInstances',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_worker_instances_with_options_async(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.ListWorkerInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.specs):
+            request.specs_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.specs, 'Specs', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.dest_type):
+            body['DestType'] = request.dest_type
+        if not UtilClient.is_unset(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.only_bindable):
+            body['OnlyBindable'] = request.only_bindable
+        if not UtilClient.is_unset(request.page_number):
+            body['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.source_type):
+            body['SourceType'] = request.source_type
+        if not UtilClient.is_unset(request.specs_shrink):
+            body['Specs'] = request.specs_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListWorkerInstances',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ListWorkerInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_worker_instances(
+        self,
+        request: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
+    ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_worker_instances_with_options(request, runtime)
+
+    async def list_worker_instances_async(
+        self,
+        request: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
+    ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_worker_instances_with_options_async(request, runtime)
 
     def modify_database_description_with_options(
         self,
@@ -5688,6 +7686,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_num):
@@ -5718,6 +7718,8 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.node_num):
@@ -5764,6 +7766,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.disk_size):
             body['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_class):
             body['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_id):
@@ -5796,6 +7800,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.disk_size):
             body['DiskSize'] = request.disk_size
+        if not UtilClient.is_unset(request.dry_run):
+            body['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.instance_class):
             body['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.instance_id):
@@ -6067,6 +8073,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
 
+    def modify_tenant_encryption_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encryption_key_id):
+            body['EncryptionKeyId'] = request.encryption_key_id
+        if not UtilClient.is_unset(request.encryption_type):
+            body['EncryptionType'] = request.encryption_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTenantEncryption',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tenant_encryption_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.encryption_key_id):
+            body['EncryptionKeyId'] = request.encryption_key_id
+        if not UtilClient.is_unset(request.encryption_type):
+            body['EncryptionType'] = request.encryption_type
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTenantEncryption',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tenant_encryption(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tenant_encryption_with_options(request, runtime)
+
+    async def modify_tenant_encryption_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tenant_encryption_with_options_async(request, runtime)
+
     def modify_tenant_primary_zone_with_options(
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneRequest,
@@ -6078,12 +8166,10 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.master_intranet_address_zone):
             body['MasterIntranetAddressZone'] = request.master_intranet_address_zone
-        if not UtilClient.is_unset(request.modify_type):
-            body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.primary_zone):
             body['PrimaryZone'] = request.primary_zone
-        if not UtilClient.is_unset(request.primary_zone_deploy_type):
-            body['PrimaryZoneDeployType'] = request.primary_zone_deploy_type
+        if not UtilClient.is_unset(request.tenant_endpoint_id):
+            body['TenantEndpointId'] = request.tenant_endpoint_id
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_vswitch_id):
@@ -6118,12 +8204,10 @@ class Client(OpenApiClient):
             body['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.master_intranet_address_zone):
             body['MasterIntranetAddressZone'] = request.master_intranet_address_zone
-        if not UtilClient.is_unset(request.modify_type):
-            body['ModifyType'] = request.modify_type
         if not UtilClient.is_unset(request.primary_zone):
             body['PrimaryZone'] = request.primary_zone
-        if not UtilClient.is_unset(request.primary_zone_deploy_type):
-            body['PrimaryZoneDeployType'] = request.primary_zone_deploy_type
+        if not UtilClient.is_unset(request.tenant_endpoint_id):
+            body['TenantEndpointId'] = request.tenant_endpoint_id
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         if not UtilClient.is_unset(request.user_vswitch_id):
@@ -6172,8 +8256,12 @@ class Client(OpenApiClient):
             body['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_disk):
+            body['LogDisk'] = request.log_disk
         if not UtilClient.is_unset(request.memory):
             body['Memory'] = request.memory
+        if not UtilClient.is_unset(request.read_only_zone_list):
+            body['ReadOnlyZoneList'] = request.read_only_zone_list
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
@@ -6206,8 +8294,12 @@ class Client(OpenApiClient):
             body['Cpu'] = request.cpu
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.log_disk):
+            body['LogDisk'] = request.log_disk
         if not UtilClient.is_unset(request.memory):
             body['Memory'] = request.memory
+        if not UtilClient.is_unset(request.read_only_zone_list):
+            body['ReadOnlyZoneList'] = request.read_only_zone_list
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
         req = open_api_models.OpenApiRequest(
@@ -6821,6 +8913,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.release_oms_open_apiproject_with_options_async(request, runtime)
 
+    def release_project_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ReleaseProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def release_project_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReleaseProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ReleaseProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def release_project(
+        self,
+        request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
+    ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.release_project_with_options(request, runtime)
+
+    async def release_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
+    ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.release_project_with_options_async(request, runtime)
+
     def reset_oms_open_apiproject_with_options(
         self,
         request: ocean_base_pro_20190901_models.ResetOmsOpenAPIProjectRequest,
@@ -6984,6 +9146,76 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.ResumeOmsOpenAPIProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.resume_oms_open_apiproject_with_options_async(request, runtime)
+
+    def resume_project_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ResumeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResumeProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ResumeProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_project_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ResumeProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ResumeProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ResumeProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_project(
+        self,
+        request: ocean_base_pro_20190901_models.ResumeProjectRequest,
+    ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.resume_project_with_options(request, runtime)
+
+    async def resume_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.ResumeProjectRequest,
+    ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_project_with_options_async(request, runtime)
 
     def search_oms_open_apimonitor_metric_with_options(
         self,
@@ -7283,6 +9515,146 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.start_oms_open_apiproject_with_options_async(request, runtime)
 
+    def start_project_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_project_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_project(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectRequest,
+    ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_project_with_options(request, runtime)
+
+    async def start_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectRequest,
+    ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_project_with_options_async(request, runtime)
+
+    def start_projects_by_label_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartProjectsByLabel',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_projects_by_label_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StartProjectsByLabel',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StartProjectsByLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_projects_by_label(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
+    ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_projects_by_label_with_options(request, runtime)
+
+    async def start_projects_by_label_async(
+        self,
+        request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
+    ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_projects_by_label_with_options_async(request, runtime)
+
     def stop_oms_open_apiproject_with_options(
         self,
         request: ocean_base_pro_20190901_models.StopOmsOpenAPIProjectRequest,
@@ -7364,6 +9736,146 @@ class Client(OpenApiClient):
     ) -> ocean_base_pro_20190901_models.StopOmsOpenAPIProjectResponse:
         runtime = util_models.RuntimeOptions()
         return await self.stop_oms_open_apiproject_with_options_async(request, runtime)
+
+    def stop_project_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_project_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopProject',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_project(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectRequest,
+    ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_project_with_options(request, runtime)
+
+    async def stop_project_async(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectRequest,
+    ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_project_with_options_async(request, runtime)
+
+    def stop_projects_by_label_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopProjectsByLabel',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_projects_by_label_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='StopProjectsByLabel',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.StopProjectsByLabelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_projects_by_label(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
+    ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.stop_projects_by_label_with_options(request, runtime)
+
+    async def stop_projects_by_label_async(
+        self,
+        request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
+    ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.stop_projects_by_label_with_options_async(request, runtime)
 
     def switchover_instance_with_options(
         self,

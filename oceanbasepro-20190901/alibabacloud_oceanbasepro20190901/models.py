@@ -1,7 +1,335 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List, Any
+from typing import List, Dict, Any
+
+
+class DataExtraInfoSubCondsValue(TeaModel):
+    def __init__(
+        self,
+        tenant_name: str = None,
+        database: str = None,
+        dest_database: str = None,
+        table_name: str = None,
+        dest_name: str = None,
+        where_clause: str = None,
+        filter_columns: List[str] = None,
+        shard_columns: List[str] = None,
+        logic_table_id: str = None,
+        source_endpoint_id: str = None,
+        source_client_id: str = None,
+    ):
+        self.tenant_name = tenant_name
+        self.database = database
+        self.dest_database = dest_database
+        self.table_name = table_name
+        self.dest_name = dest_name
+        self.where_clause = where_clause
+        self.filter_columns = filter_columns
+        self.shard_columns = shard_columns
+        self.logic_table_id = logic_table_id
+        self.source_endpoint_id = source_endpoint_id
+        self.source_client_id = source_client_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.dest_database is not None:
+            result['DestDatabase'] = self.dest_database
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.dest_name is not None:
+            result['DestName'] = self.dest_name
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.logic_table_id is not None:
+            result['LogicTableId'] = self.logic_table_id
+        if self.source_endpoint_id is not None:
+            result['SourceEndpointId'] = self.source_endpoint_id
+        if self.source_client_id is not None:
+            result['SourceClientId'] = self.source_client_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('DestDatabase') is not None:
+            self.dest_database = m.get('DestDatabase')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('DestName') is not None:
+            self.dest_name = m.get('DestName')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('LogicTableId') is not None:
+            self.logic_table_id = m.get('LogicTableId')
+        if m.get('SourceEndpointId') is not None:
+            self.source_endpoint_id = m.get('SourceEndpointId')
+        if m.get('SourceClientId') is not None:
+            self.source_client_id = m.get('SourceClientId')
+        return self
+
+
+class DataExtraInfoSubDbsValueTablesColumns(TeaModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        position: int = None,
+        column_type: str = None,
+        record_field_type: str = None,
+        raw_column_type: str = None,
+        column_key: str = None,
+        nullable: bool = None,
+        default_value: str = None,
+        data_length: int = None,
+        data_precision: int = None,
+        data_scale: int = None,
+        encoding: str = None,
+        column_comment: str = None,
+        is_generate_field: bool = None,
+    ):
+        self.column_name = column_name
+        self.position = position
+        self.column_type = column_type
+        self.record_field_type = record_field_type
+        self.raw_column_type = raw_column_type
+        self.column_key = column_key
+        self.nullable = nullable
+        self.default_value = default_value
+        self.data_length = data_length
+        self.data_precision = data_precision
+        self.data_scale = data_scale
+        self.encoding = encoding
+        self.column_comment = column_comment
+        self.is_generate_field = is_generate_field
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+        if self.record_field_type is not None:
+            result['RecordFieldType'] = self.record_field_type
+        if self.raw_column_type is not None:
+            result['RawColumnType'] = self.raw_column_type
+        if self.column_key is not None:
+            result['ColumnKey'] = self.column_key
+        if self.nullable is not None:
+            result['Nullable'] = self.nullable
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+        if self.data_length is not None:
+            result['DataLength'] = self.data_length
+        if self.data_precision is not None:
+            result['DataPrecision'] = self.data_precision
+        if self.data_scale is not None:
+            result['DataScale'] = self.data_scale
+        if self.encoding is not None:
+            result['Encoding'] = self.encoding
+        if self.column_comment is not None:
+            result['ColumnComment'] = self.column_comment
+        if self.is_generate_field is not None:
+            result['IsGenerateField'] = self.is_generate_field
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+        if m.get('RecordFieldType') is not None:
+            self.record_field_type = m.get('RecordFieldType')
+        if m.get('RawColumnType') is not None:
+            self.raw_column_type = m.get('RawColumnType')
+        if m.get('ColumnKey') is not None:
+            self.column_key = m.get('ColumnKey')
+        if m.get('Nullable') is not None:
+            self.nullable = m.get('Nullable')
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+        if m.get('DataLength') is not None:
+            self.data_length = m.get('DataLength')
+        if m.get('DataPrecision') is not None:
+            self.data_precision = m.get('DataPrecision')
+        if m.get('DataScale') is not None:
+            self.data_scale = m.get('DataScale')
+        if m.get('Encoding') is not None:
+            self.encoding = m.get('Encoding')
+        if m.get('ColumnComment') is not None:
+            self.column_comment = m.get('ColumnComment')
+        if m.get('IsGenerateField') is not None:
+            self.is_generate_field = m.get('IsGenerateField')
+        return self
+
+
+class DataExtraInfoSubDbsValueTables(TeaModel):
+    def __init__(
+        self,
+        table_id: str = None,
+        database: str = None,
+        table_name: str = None,
+        mapping_table_name: str = None,
+        instance: str = None,
+        columns: List[DataExtraInfoSubDbsValueTablesColumns] = None,
+    ):
+        self.table_id = table_id
+        self.database = database
+        self.table_name = table_name
+        self.mapping_table_name = mapping_table_name
+        self.instance = instance
+        self.columns = columns
+
+    def validate(self):
+        if self.columns:
+            for k in self.columns:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.table_id is not None:
+            result['TableId'] = self.table_id
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.mapping_table_name is not None:
+            result['MappingTableName'] = self.mapping_table_name
+        if self.instance is not None:
+            result['Instance'] = self.instance
+        result['Columns'] = []
+        if self.columns is not None:
+            for k in self.columns:
+                result['Columns'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TableId') is not None:
+            self.table_id = m.get('TableId')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('MappingTableName') is not None:
+            self.mapping_table_name = m.get('MappingTableName')
+        if m.get('Instance') is not None:
+            self.instance = m.get('Instance')
+        self.columns = []
+        if m.get('Columns') is not None:
+            for k in m.get('Columns'):
+                temp_model = DataExtraInfoSubDbsValueTablesColumns()
+                self.columns.append(temp_model.from_map(k))
+        return self
+
+
+class DataExtraInfoSubDbsValue(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        tenant_name: str = None,
+        database_id: str = None,
+        database_name: str = None,
+        mapping_database_name: str = None,
+        source_client_id: str = None,
+        tables: List[DataExtraInfoSubDbsValueTables] = None,
+    ):
+        self.cluster_name = cluster_name
+        self.tenant_name = tenant_name
+        self.database_id = database_id
+        self.database_name = database_name
+        self.mapping_database_name = mapping_database_name
+        self.source_client_id = source_client_id
+        self.tables = tables
+
+    def validate(self):
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.database_id is not None:
+            result['DatabaseId'] = self.database_id
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.mapping_database_name is not None:
+            result['MappingDatabaseName'] = self.mapping_database_name
+        if self.source_client_id is not None:
+            result['SourceClientId'] = self.source_client_id
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('DatabaseId') is not None:
+            self.database_id = m.get('DatabaseId')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('MappingDatabaseName') is not None:
+            self.mapping_database_name = m.get('MappingDatabaseName')
+        if m.get('SourceClientId') is not None:
+            self.source_client_id = m.get('SourceClientId')
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = DataExtraInfoSubDbsValueTables()
+                self.tables.append(temp_model.from_map(k))
+        return self
 
 
 class CreateDatabaseRequest(TeaModel):
@@ -163,11 +491,14 @@ class CreateInstanceRequest(TeaModel):
         charge_type: str = None,
         disk_size: int = None,
         disk_type: str = None,
+        dry_run: bool = None,
         instance_class: str = None,
         instance_name: str = None,
+        isolation_optimization: str = None,
         ob_version: str = None,
         period: int = None,
         period_unit: str = None,
+        replica_mode: str = None,
         resource_group_id: str = None,
         series: str = None,
         zones: str = None,
@@ -195,6 +526,7 @@ class CreateInstanceRequest(TeaModel):
         self.disk_size = disk_size
         # The return result of the request.
         self.disk_type = disk_type
+        self.dry_run = dry_run
         # The specifications of the cluster.     
         # You can specify one of the following four plans:   
         #  - 8C32GB: indicates 8 CPU cores and 32 GB of memory.    
@@ -206,6 +538,7 @@ class CreateInstanceRequest(TeaModel):
         # It must be 1 to 20 characters in length.   
         # If this parameter is not specified, the value is the instance ID of the cluster by default.
         self.instance_name = instance_name
+        self.isolation_optimization = isolation_optimization
         # OceanBase Server version number.
         self.ob_version = ob_version
         # The valid duration of the purchased resources. The unit is specified by the PeriodUnit parameter.   
@@ -218,6 +551,7 @@ class CreateInstanceRequest(TeaModel):
         # Valid value for subscription: Month or Year.
         # Default value: Month for subscription, and Hour for pay-as-you-go.
         self.period_unit = period_unit
+        self.replica_mode = replica_mode
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The series of the OceanBase cluster. Valid values:    
@@ -248,16 +582,22 @@ class CreateInstanceRequest(TeaModel):
             result['DiskSize'] = self.disk_size
         if self.disk_type is not None:
             result['DiskType'] = self.disk_type
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.isolation_optimization is not None:
+            result['IsolationOptimization'] = self.isolation_optimization
         if self.ob_version is not None:
             result['ObVersion'] = self.ob_version
         if self.period is not None:
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.replica_mode is not None:
+            result['ReplicaMode'] = self.replica_mode
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.series is not None:
@@ -278,16 +618,22 @@ class CreateInstanceRequest(TeaModel):
             self.disk_size = m.get('DiskSize')
         if m.get('DiskType') is not None:
             self.disk_type = m.get('DiskType')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('IsolationOptimization') is not None:
+            self.isolation_optimization = m.get('IsolationOptimization')
         if m.get('ObVersion') is not None:
             self.ob_version = m.get('ObVersion')
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('ReplicaMode') is not None:
+            self.replica_mode = m.get('ReplicaMode')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('Series') is not None:
@@ -300,10 +646,12 @@ class CreateInstanceRequest(TeaModel):
 class CreateInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
+        dry_run_result: bool = None,
         instance_id: str = None,
         order_id: str = None,
         resource_group_id: str = None,
     ):
+        self.dry_run_result = dry_run_result
         # 订单ID。该参数只有创建包年包月ECS实例（请求参数InstanceChargeType=PrePaid）时有返回值。
         self.instance_id = instance_id
         # 资源组ID
@@ -319,6 +667,8 @@ class CreateInstanceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.order_id is not None:
@@ -329,6 +679,8 @@ class CreateInstanceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRunResult') is not None:
+            self.dry_run_result = m.get('DryRunResult')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OrderId') is not None:
@@ -419,6 +771,934 @@ class CreateInstanceResponse(TeaModel):
         return self
 
 
+class CreateLabelRequest(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class CreateLabelResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class CreateLabelResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: str = None,
+        error_detail: CreateLabelResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = CreateLabelResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class CreateLabelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLabelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLabelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateMySqlDataSourceRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        dg_instance_id: str = None,
+        instance_id: str = None,
+        ip: str = None,
+        name: str = None,
+        password: str = None,
+        port: int = None,
+        schema: str = None,
+        type: str = None,
+        user_name: str = None,
+        vpc_id: str = None,
+    ):
+        self.description = description
+        self.dg_instance_id = dg_instance_id
+        self.instance_id = instance_id
+        self.ip = ip
+        self.name = name
+        self.password = password
+        self.port = port
+        self.schema = schema
+        self.type = type
+        self.user_name = user_name
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.dg_instance_id is not None:
+            result['DgInstanceId'] = self.dg_instance_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DgInstanceId') is not None:
+            self.dg_instance_id = m.get('DgInstanceId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateMySqlDataSourceResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class CreateMySqlDataSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: str = None,
+        error_detail: CreateMySqlDataSourceResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = CreateMySqlDataSourceResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class CreateMySqlDataSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateMySqlDataSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateMySqlDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateOceanBaseDataSourceRequest(TeaModel):
+    def __init__(
+        self,
+        cluster: str = None,
+        config_url: str = None,
+        description: str = None,
+        drc_password: str = None,
+        drc_user_name: str = None,
+        inner_drc_password: str = None,
+        ip: str = None,
+        log_proxy_ip: str = None,
+        log_proxy_port: str = None,
+        name: str = None,
+        password: str = None,
+        port: int = None,
+        tenant: str = None,
+        type: str = None,
+        user_name: str = None,
+        vpc_id: str = None,
+    ):
+        self.cluster = cluster
+        self.config_url = config_url
+        self.description = description
+        self.drc_password = drc_password
+        self.drc_user_name = drc_user_name
+        self.inner_drc_password = inner_drc_password
+        self.ip = ip
+        # LogProxy IP。
+        self.log_proxy_ip = log_proxy_ip
+        self.log_proxy_port = log_proxy_port
+        self.name = name
+        self.password = password
+        self.port = port
+        self.tenant = tenant
+        self.type = type
+        self.user_name = user_name
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster is not None:
+            result['Cluster'] = self.cluster
+        if self.config_url is not None:
+            result['ConfigUrl'] = self.config_url
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.drc_password is not None:
+            result['DrcPassword'] = self.drc_password
+        if self.drc_user_name is not None:
+            result['DrcUserName'] = self.drc_user_name
+        if self.inner_drc_password is not None:
+            result['InnerDrcPassword'] = self.inner_drc_password
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.log_proxy_ip is not None:
+            result['LogProxyIp'] = self.log_proxy_ip
+        if self.log_proxy_port is not None:
+            result['LogProxyPort'] = self.log_proxy_port
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.tenant is not None:
+            result['Tenant'] = self.tenant
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Cluster') is not None:
+            self.cluster = m.get('Cluster')
+        if m.get('ConfigUrl') is not None:
+            self.config_url = m.get('ConfigUrl')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DrcPassword') is not None:
+            self.drc_password = m.get('DrcPassword')
+        if m.get('DrcUserName') is not None:
+            self.drc_user_name = m.get('DrcUserName')
+        if m.get('InnerDrcPassword') is not None:
+            self.inner_drc_password = m.get('InnerDrcPassword')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('LogProxyIp') is not None:
+            self.log_proxy_ip = m.get('LogProxyIp')
+        if m.get('LogProxyPort') is not None:
+            self.log_proxy_port = m.get('LogProxyPort')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Tenant') is not None:
+            self.tenant = m.get('Tenant')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class CreateOceanBaseDataSourceResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class CreateOceanBaseDataSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: str = None,
+        error_detail: CreateOceanBaseDataSourceResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = CreateOceanBaseDataSourceResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class CreateOceanBaseDataSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateOceanBaseDataSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateOceanBaseDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateOmsMysqlDataSourceRequest(TeaModel):
     def __init__(
         self,
@@ -434,31 +1714,46 @@ class CreateOmsMysqlDataSourceRequest(TeaModel):
         username: str = None,
         vpc_id: str = None,
     ):
+        # The description of the data source.   
+        # 
+        # It must be 2 to 256 characters in length. The default value is null.
         self.description = description
+        # The ID of the database gateway instance.   
+        # 
+        # > <br>If Type is set to DG, this parameter is required.
         self.dg_database_id = dg_database_id
+        # The ID of the ECS instance of the data source.   
+        # 
+        # > <br>If Type is set to RDS, PolarDB, or DG, this parameter is required.
         self.instance_id = instance_id
+        # The IP address of the data source.   
+        # 
+        # > <br>If Type is set to INTERNET or VPC, this parameter is required.
         self.ip = ip
-        # ```
-        # http(s)://[Endpoint]/?Action=CreateOmsMysqlDataSource
-        # &Name=oms-mysql
-        # &Type=INTERNET
-        # &VpcId=vpc-12345abcde*******\
-        # &InstanceId=pc-12ab34cd56******\
-        # &DgDatabaseId=dg-yhss6sdlaff****\
-        # &Ip=10.0.****\
-        # &Port=3306
-        # &Schema=test
-        # &Username=omsTestUser
-        # &Password=YWJjZDEyM0Ah
-        # &Description=MySQL data source for OMS testing
-        # &Common request parameters
-        # ```
+        # The name of the data source.   
+        # It must be 2 to 128 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).   
+        # 
+        # > <br>Invalid characters, such as slashes (/), are not allowed.
         self.name = name
+        # The password of the username that is used to access the database. It must be Base64 encoded.   
+        # For example, for the password abcd123@!, the Base64-encoded value is YWJjZDEyM0Ah.
         self.password = password
+        # The port number of the data source.   
+        # 
+        # > <br>If Type is set to INTERNET or VPC, this parameter is required.
         self.port = port
+        # The name of the database.   
+        # 
+        # > <br>If you specify this parameter, subsequent migration or synchronization operations will take effect on this database only.
         self.schema = schema
+        # The type of the MySQL data source.   
+        # Valid values: INTERNET, VPC, RDS, PolarDB, and DG.
         self.type = type
+        # The username that is used to access the database.
         self.username = username
+        # The ID of the VPC to which the data source belongs.   
+        # 
+        # > <br>If Type is set to VPC, this parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -526,6 +1821,7 @@ class CreateOmsMysqlDataSourceResponseBodyData(TeaModel):
         self,
         endpoint_id: str = None,
     ):
+        # The ID of the data source record.
         self.endpoint_id = endpoint_id
 
     def validate(self):
@@ -554,7 +1850,9 @@ class CreateOmsMysqlDataSourceResponseBody(TeaModel):
         data: CreateOmsMysqlDataSourceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The return result of the request.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1490,6 +2788,1900 @@ class CreateOmsOpenAPIProjectResponse(TeaModel):
         return self
 
 
+class CreateProjectRequestCommonTransferConfig(TeaModel):
+    def __init__(
+        self,
+        active_active: bool = None,
+        data_works_business_name: str = None,
+        datahub_topic_type: str = None,
+        mq_partition: int = None,
+        mq_partition_mode: str = None,
+        mq_serializer_type: str = None,
+        rocket_mq_enable_msg_trace: bool = None,
+        rocket_mq_msg_tags: str = None,
+        rocket_mq_producer_group: str = None,
+        rocket_mq_send_msg_timeout: int = None,
+        table_category: str = None,
+    ):
+        self.active_active = active_active
+        self.data_works_business_name = data_works_business_name
+        self.datahub_topic_type = datahub_topic_type
+        self.mq_partition = mq_partition
+        self.mq_partition_mode = mq_partition_mode
+        self.mq_serializer_type = mq_serializer_type
+        self.rocket_mq_enable_msg_trace = rocket_mq_enable_msg_trace
+        self.rocket_mq_msg_tags = rocket_mq_msg_tags
+        self.rocket_mq_producer_group = rocket_mq_producer_group
+        self.rocket_mq_send_msg_timeout = rocket_mq_send_msg_timeout
+        self.table_category = table_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_active is not None:
+            result['ActiveActive'] = self.active_active
+        if self.data_works_business_name is not None:
+            result['DataWorksBusinessName'] = self.data_works_business_name
+        if self.datahub_topic_type is not None:
+            result['DatahubTopicType'] = self.datahub_topic_type
+        if self.mq_partition is not None:
+            result['MqPartition'] = self.mq_partition
+        if self.mq_partition_mode is not None:
+            result['MqPartitionMode'] = self.mq_partition_mode
+        if self.mq_serializer_type is not None:
+            result['MqSerializerType'] = self.mq_serializer_type
+        if self.rocket_mq_enable_msg_trace is not None:
+            result['RocketMqEnableMsgTrace'] = self.rocket_mq_enable_msg_trace
+        if self.rocket_mq_msg_tags is not None:
+            result['RocketMqMsgTags'] = self.rocket_mq_msg_tags
+        if self.rocket_mq_producer_group is not None:
+            result['RocketMqProducerGroup'] = self.rocket_mq_producer_group
+        if self.rocket_mq_send_msg_timeout is not None:
+            result['RocketMqSendMsgTimeout'] = self.rocket_mq_send_msg_timeout
+        if self.table_category is not None:
+            result['TableCategory'] = self.table_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveActive') is not None:
+            self.active_active = m.get('ActiveActive')
+        if m.get('DataWorksBusinessName') is not None:
+            self.data_works_business_name = m.get('DataWorksBusinessName')
+        if m.get('DatahubTopicType') is not None:
+            self.datahub_topic_type = m.get('DatahubTopicType')
+        if m.get('MqPartition') is not None:
+            self.mq_partition = m.get('MqPartition')
+        if m.get('MqPartitionMode') is not None:
+            self.mq_partition_mode = m.get('MqPartitionMode')
+        if m.get('MqSerializerType') is not None:
+            self.mq_serializer_type = m.get('MqSerializerType')
+        if m.get('RocketMqEnableMsgTrace') is not None:
+            self.rocket_mq_enable_msg_trace = m.get('RocketMqEnableMsgTrace')
+        if m.get('RocketMqMsgTags') is not None:
+            self.rocket_mq_msg_tags = m.get('RocketMqMsgTags')
+        if m.get('RocketMqProducerGroup') is not None:
+            self.rocket_mq_producer_group = m.get('RocketMqProducerGroup')
+        if m.get('RocketMqSendMsgTimeout') is not None:
+            self.rocket_mq_send_msg_timeout = m.get('RocketMqSendMsgTimeout')
+        if m.get('TableCategory') is not None:
+            self.table_category = m.get('TableCategory')
+        return self
+
+
+class CreateProjectRequestFullTransferConfig(TeaModel):
+    def __init__(
+        self,
+        allow_dest_table_not_empty: bool = None,
+        full_transfer_speed_mode: str = None,
+        full_verify_speed_mode: str = None,
+        none_pk_uk_truncate_dst_table: bool = None,
+    ):
+        self.allow_dest_table_not_empty = allow_dest_table_not_empty
+        self.full_transfer_speed_mode = full_transfer_speed_mode
+        self.full_verify_speed_mode = full_verify_speed_mode
+        self.none_pk_uk_truncate_dst_table = none_pk_uk_truncate_dst_table
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_dest_table_not_empty is not None:
+            result['AllowDestTableNotEmpty'] = self.allow_dest_table_not_empty
+        if self.full_transfer_speed_mode is not None:
+            result['FullTransferSpeedMode'] = self.full_transfer_speed_mode
+        if self.full_verify_speed_mode is not None:
+            result['FullVerifySpeedMode'] = self.full_verify_speed_mode
+        if self.none_pk_uk_truncate_dst_table is not None:
+            result['NonePkUkTruncateDstTable'] = self.none_pk_uk_truncate_dst_table
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowDestTableNotEmpty') is not None:
+            self.allow_dest_table_not_empty = m.get('AllowDestTableNotEmpty')
+        if m.get('FullTransferSpeedMode') is not None:
+            self.full_transfer_speed_mode = m.get('FullTransferSpeedMode')
+        if m.get('FullVerifySpeedMode') is not None:
+            self.full_verify_speed_mode = m.get('FullVerifySpeedMode')
+        if m.get('NonePkUkTruncateDstTable') is not None:
+            self.none_pk_uk_truncate_dst_table = m.get('NonePkUkTruncateDstTable')
+        return self
+
+
+class CreateProjectRequestIncrTransferConfig(TeaModel):
+    def __init__(
+        self,
+        enable_incr_sync_statistics: bool = None,
+        enable_sequencing_within_txn: bool = None,
+        incr_sync_concurrency: int = None,
+        record_type_white_list: List[str] = None,
+        start_timestamp: str = None,
+        store_log_kept_hour: int = None,
+    ):
+        self.enable_incr_sync_statistics = enable_incr_sync_statistics
+        self.enable_sequencing_within_txn = enable_sequencing_within_txn
+        self.incr_sync_concurrency = incr_sync_concurrency
+        self.record_type_white_list = record_type_white_list
+        self.start_timestamp = start_timestamp
+        self.store_log_kept_hour = store_log_kept_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_incr_sync_statistics is not None:
+            result['EnableIncrSyncStatistics'] = self.enable_incr_sync_statistics
+        if self.enable_sequencing_within_txn is not None:
+            result['EnableSequencingWithinTxn'] = self.enable_sequencing_within_txn
+        if self.incr_sync_concurrency is not None:
+            result['IncrSyncConcurrency'] = self.incr_sync_concurrency
+        if self.record_type_white_list is not None:
+            result['RecordTypeWhiteList'] = self.record_type_white_list
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+        if self.store_log_kept_hour is not None:
+            result['StoreLogKeptHour'] = self.store_log_kept_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableIncrSyncStatistics') is not None:
+            self.enable_incr_sync_statistics = m.get('EnableIncrSyncStatistics')
+        if m.get('EnableSequencingWithinTxn') is not None:
+            self.enable_sequencing_within_txn = m.get('EnableSequencingWithinTxn')
+        if m.get('IncrSyncConcurrency') is not None:
+            self.incr_sync_concurrency = m.get('IncrSyncConcurrency')
+        if m.get('RecordTypeWhiteList') is not None:
+            self.record_type_white_list = m.get('RecordTypeWhiteList')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
+        if m.get('StoreLogKeptHour') is not None:
+            self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        return self
+
+
+class CreateProjectRequestStructTransferConfig(TeaModel):
+    def __init__(
+        self,
+        byte_char_convert_strategy: str = None,
+        defer_index_creation: bool = None,
+    ):
+        self.byte_char_convert_strategy = byte_char_convert_strategy
+        self.defer_index_creation = defer_index_creation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.byte_char_convert_strategy is not None:
+            result['ByteCharConvertStrategy'] = self.byte_char_convert_strategy
+        if self.defer_index_creation is not None:
+            result['DeferIndexCreation'] = self.defer_index_creation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ByteCharConvertStrategy') is not None:
+            self.byte_char_convert_strategy = m.get('ByteCharConvertStrategy')
+        if m.get('DeferIndexCreation') is not None:
+            self.defer_index_creation = m.get('DeferIndexCreation')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabases(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[CreateProjectRequestTransferMappingDatabasesSpecificTables] = None,
+        specific_views: List[CreateProjectRequestTransferMappingDatabasesSpecificViews] = None,
+        tables: List[CreateProjectRequestTransferMappingDatabasesTables] = None,
+        tenant_name: str = None,
+        views: List[CreateProjectRequestTransferMappingDatabasesViews] = None,
+    ):
+        self.cluster_name = cluster_name
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesBlackSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesBlackSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesBlackTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlackViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = CreateProjectRequestTransferMappingDatabasesBlackViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class CreateProjectRequestTransferMappingDatabasesBlack(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[CreateProjectRequestTransferMappingDatabasesBlackSpecificTables] = None,
+        specific_views: List[CreateProjectRequestTransferMappingDatabasesBlackSpecificViews] = None,
+        tables: List[CreateProjectRequestTransferMappingDatabasesBlackTables] = None,
+        tenant_name: str = None,
+        views: List[CreateProjectRequestTransferMappingDatabasesBlackViews] = None,
+    ):
+        self.cluster_name = cluster_name
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesBlackSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesBlackSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesBlackTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesBlackViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class CreateProjectRequestTransferMapping(TeaModel):
+    def __init__(
+        self,
+        databases: List[CreateProjectRequestTransferMappingDatabases] = None,
+        databases_black: List[CreateProjectRequestTransferMappingDatabasesBlack] = None,
+        mode: str = None,
+        table_and_view_black_list: List[str] = None,
+        table_and_view_white_list: List[str] = None,
+    ):
+        self.databases = databases
+        self.databases_black = databases_black
+        self.mode = mode
+        self.table_and_view_black_list = table_and_view_black_list
+        self.table_and_view_white_list = table_and_view_white_list
+
+    def validate(self):
+        if self.databases:
+            for k in self.databases:
+                if k:
+                    k.validate()
+        if self.databases_black:
+            for k in self.databases_black:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Databases'] = []
+        if self.databases is not None:
+            for k in self.databases:
+                result['Databases'].append(k.to_map() if k else None)
+        result['DatabasesBlack'] = []
+        if self.databases_black is not None:
+            for k in self.databases_black:
+                result['DatabasesBlack'].append(k.to_map() if k else None)
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.table_and_view_black_list is not None:
+            result['TableAndViewBlackList'] = self.table_and_view_black_list
+        if self.table_and_view_white_list is not None:
+            result['TableAndViewWhiteList'] = self.table_and_view_white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.databases = []
+        if m.get('Databases') is not None:
+            for k in m.get('Databases'):
+                temp_model = CreateProjectRequestTransferMappingDatabases()
+                self.databases.append(temp_model.from_map(k))
+        self.databases_black = []
+        if m.get('DatabasesBlack') is not None:
+            for k in m.get('DatabasesBlack'):
+                temp_model = CreateProjectRequestTransferMappingDatabasesBlack()
+                self.databases_black.append(temp_model.from_map(k))
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('TableAndViewBlackList') is not None:
+            self.table_and_view_black_list = m.get('TableAndViewBlackList')
+        if m.get('TableAndViewWhiteList') is not None:
+            self.table_and_view_white_list = m.get('TableAndViewWhiteList')
+        return self
+
+
+class CreateProjectRequest(TeaModel):
+    def __init__(
+        self,
+        common_transfer_config: CreateProjectRequestCommonTransferConfig = None,
+        enable_full_transfer: bool = None,
+        enable_full_verify: bool = None,
+        enable_incr_transfer: bool = None,
+        enable_reverse_incr_transfer: bool = None,
+        enable_struct_transfer: bool = None,
+        full_transfer_config: CreateProjectRequestFullTransferConfig = None,
+        incr_transfer_config: CreateProjectRequestIncrTransferConfig = None,
+        label_ids: List[str] = None,
+        name: str = None,
+        oss_key: str = None,
+        sink_endpoint_id: str = None,
+        source_endpoint_id: str = None,
+        struct_transfer_config: CreateProjectRequestStructTransferConfig = None,
+        transfer_mapping: CreateProjectRequestTransferMapping = None,
+        type: str = None,
+        use_oss: bool = None,
+        worker_grade_id: str = None,
+    ):
+        self.common_transfer_config = common_transfer_config
+        self.enable_full_transfer = enable_full_transfer
+        self.enable_full_verify = enable_full_verify
+        self.enable_incr_transfer = enable_incr_transfer
+        self.enable_reverse_incr_transfer = enable_reverse_incr_transfer
+        self.enable_struct_transfer = enable_struct_transfer
+        self.full_transfer_config = full_transfer_config
+        self.incr_transfer_config = incr_transfer_config
+        self.label_ids = label_ids
+        self.name = name
+        self.oss_key = oss_key
+        self.sink_endpoint_id = sink_endpoint_id
+        self.source_endpoint_id = source_endpoint_id
+        self.struct_transfer_config = struct_transfer_config
+        self.transfer_mapping = transfer_mapping
+        self.type = type
+        self.use_oss = use_oss
+        self.worker_grade_id = worker_grade_id
+
+    def validate(self):
+        if self.common_transfer_config:
+            self.common_transfer_config.validate()
+        if self.full_transfer_config:
+            self.full_transfer_config.validate()
+        if self.incr_transfer_config:
+            self.incr_transfer_config.validate()
+        if self.struct_transfer_config:
+            self.struct_transfer_config.validate()
+        if self.transfer_mapping:
+            self.transfer_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_transfer_config is not None:
+            result['CommonTransferConfig'] = self.common_transfer_config.to_map()
+        if self.enable_full_transfer is not None:
+            result['EnableFullTransfer'] = self.enable_full_transfer
+        if self.enable_full_verify is not None:
+            result['EnableFullVerify'] = self.enable_full_verify
+        if self.enable_incr_transfer is not None:
+            result['EnableIncrTransfer'] = self.enable_incr_transfer
+        if self.enable_reverse_incr_transfer is not None:
+            result['EnableReverseIncrTransfer'] = self.enable_reverse_incr_transfer
+        if self.enable_struct_transfer is not None:
+            result['EnableStructTransfer'] = self.enable_struct_transfer
+        if self.full_transfer_config is not None:
+            result['FullTransferConfig'] = self.full_transfer_config.to_map()
+        if self.incr_transfer_config is not None:
+            result['IncrTransferConfig'] = self.incr_transfer_config.to_map()
+        if self.label_ids is not None:
+            result['LabelIds'] = self.label_ids
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.sink_endpoint_id is not None:
+            result['SinkEndpointId'] = self.sink_endpoint_id
+        if self.source_endpoint_id is not None:
+            result['SourceEndpointId'] = self.source_endpoint_id
+        if self.struct_transfer_config is not None:
+            result['StructTransferConfig'] = self.struct_transfer_config.to_map()
+        if self.transfer_mapping is not None:
+            result['TransferMapping'] = self.transfer_mapping.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.use_oss is not None:
+            result['UseOss'] = self.use_oss
+        if self.worker_grade_id is not None:
+            result['WorkerGradeId'] = self.worker_grade_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonTransferConfig') is not None:
+            temp_model = CreateProjectRequestCommonTransferConfig()
+            self.common_transfer_config = temp_model.from_map(m['CommonTransferConfig'])
+        if m.get('EnableFullTransfer') is not None:
+            self.enable_full_transfer = m.get('EnableFullTransfer')
+        if m.get('EnableFullVerify') is not None:
+            self.enable_full_verify = m.get('EnableFullVerify')
+        if m.get('EnableIncrTransfer') is not None:
+            self.enable_incr_transfer = m.get('EnableIncrTransfer')
+        if m.get('EnableReverseIncrTransfer') is not None:
+            self.enable_reverse_incr_transfer = m.get('EnableReverseIncrTransfer')
+        if m.get('EnableStructTransfer') is not None:
+            self.enable_struct_transfer = m.get('EnableStructTransfer')
+        if m.get('FullTransferConfig') is not None:
+            temp_model = CreateProjectRequestFullTransferConfig()
+            self.full_transfer_config = temp_model.from_map(m['FullTransferConfig'])
+        if m.get('IncrTransferConfig') is not None:
+            temp_model = CreateProjectRequestIncrTransferConfig()
+            self.incr_transfer_config = temp_model.from_map(m['IncrTransferConfig'])
+        if m.get('LabelIds') is not None:
+            self.label_ids = m.get('LabelIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('SinkEndpointId') is not None:
+            self.sink_endpoint_id = m.get('SinkEndpointId')
+        if m.get('SourceEndpointId') is not None:
+            self.source_endpoint_id = m.get('SourceEndpointId')
+        if m.get('StructTransferConfig') is not None:
+            temp_model = CreateProjectRequestStructTransferConfig()
+            self.struct_transfer_config = temp_model.from_map(m['StructTransferConfig'])
+        if m.get('TransferMapping') is not None:
+            temp_model = CreateProjectRequestTransferMapping()
+            self.transfer_mapping = temp_model.from_map(m['TransferMapping'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UseOss') is not None:
+            self.use_oss = m.get('UseOss')
+        if m.get('WorkerGradeId') is not None:
+            self.worker_grade_id = m.get('WorkerGradeId')
+        return self
+
+
+class CreateProjectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        common_transfer_config_shrink: str = None,
+        enable_full_transfer: bool = None,
+        enable_full_verify: bool = None,
+        enable_incr_transfer: bool = None,
+        enable_reverse_incr_transfer: bool = None,
+        enable_struct_transfer: bool = None,
+        full_transfer_config_shrink: str = None,
+        incr_transfer_config_shrink: str = None,
+        label_ids_shrink: str = None,
+        name: str = None,
+        oss_key: str = None,
+        sink_endpoint_id: str = None,
+        source_endpoint_id: str = None,
+        struct_transfer_config_shrink: str = None,
+        transfer_mapping_shrink: str = None,
+        type: str = None,
+        use_oss: bool = None,
+        worker_grade_id: str = None,
+    ):
+        self.common_transfer_config_shrink = common_transfer_config_shrink
+        self.enable_full_transfer = enable_full_transfer
+        self.enable_full_verify = enable_full_verify
+        self.enable_incr_transfer = enable_incr_transfer
+        self.enable_reverse_incr_transfer = enable_reverse_incr_transfer
+        self.enable_struct_transfer = enable_struct_transfer
+        self.full_transfer_config_shrink = full_transfer_config_shrink
+        self.incr_transfer_config_shrink = incr_transfer_config_shrink
+        self.label_ids_shrink = label_ids_shrink
+        self.name = name
+        self.oss_key = oss_key
+        self.sink_endpoint_id = sink_endpoint_id
+        self.source_endpoint_id = source_endpoint_id
+        self.struct_transfer_config_shrink = struct_transfer_config_shrink
+        self.transfer_mapping_shrink = transfer_mapping_shrink
+        self.type = type
+        self.use_oss = use_oss
+        self.worker_grade_id = worker_grade_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_transfer_config_shrink is not None:
+            result['CommonTransferConfig'] = self.common_transfer_config_shrink
+        if self.enable_full_transfer is not None:
+            result['EnableFullTransfer'] = self.enable_full_transfer
+        if self.enable_full_verify is not None:
+            result['EnableFullVerify'] = self.enable_full_verify
+        if self.enable_incr_transfer is not None:
+            result['EnableIncrTransfer'] = self.enable_incr_transfer
+        if self.enable_reverse_incr_transfer is not None:
+            result['EnableReverseIncrTransfer'] = self.enable_reverse_incr_transfer
+        if self.enable_struct_transfer is not None:
+            result['EnableStructTransfer'] = self.enable_struct_transfer
+        if self.full_transfer_config_shrink is not None:
+            result['FullTransferConfig'] = self.full_transfer_config_shrink
+        if self.incr_transfer_config_shrink is not None:
+            result['IncrTransferConfig'] = self.incr_transfer_config_shrink
+        if self.label_ids_shrink is not None:
+            result['LabelIds'] = self.label_ids_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.sink_endpoint_id is not None:
+            result['SinkEndpointId'] = self.sink_endpoint_id
+        if self.source_endpoint_id is not None:
+            result['SourceEndpointId'] = self.source_endpoint_id
+        if self.struct_transfer_config_shrink is not None:
+            result['StructTransferConfig'] = self.struct_transfer_config_shrink
+        if self.transfer_mapping_shrink is not None:
+            result['TransferMapping'] = self.transfer_mapping_shrink
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.use_oss is not None:
+            result['UseOss'] = self.use_oss
+        if self.worker_grade_id is not None:
+            result['WorkerGradeId'] = self.worker_grade_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonTransferConfig') is not None:
+            self.common_transfer_config_shrink = m.get('CommonTransferConfig')
+        if m.get('EnableFullTransfer') is not None:
+            self.enable_full_transfer = m.get('EnableFullTransfer')
+        if m.get('EnableFullVerify') is not None:
+            self.enable_full_verify = m.get('EnableFullVerify')
+        if m.get('EnableIncrTransfer') is not None:
+            self.enable_incr_transfer = m.get('EnableIncrTransfer')
+        if m.get('EnableReverseIncrTransfer') is not None:
+            self.enable_reverse_incr_transfer = m.get('EnableReverseIncrTransfer')
+        if m.get('EnableStructTransfer') is not None:
+            self.enable_struct_transfer = m.get('EnableStructTransfer')
+        if m.get('FullTransferConfig') is not None:
+            self.full_transfer_config_shrink = m.get('FullTransferConfig')
+        if m.get('IncrTransferConfig') is not None:
+            self.incr_transfer_config_shrink = m.get('IncrTransferConfig')
+        if m.get('LabelIds') is not None:
+            self.label_ids_shrink = m.get('LabelIds')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('SinkEndpointId') is not None:
+            self.sink_endpoint_id = m.get('SinkEndpointId')
+        if m.get('SourceEndpointId') is not None:
+            self.source_endpoint_id = m.get('SourceEndpointId')
+        if m.get('StructTransferConfig') is not None:
+            self.struct_transfer_config_shrink = m.get('StructTransferConfig')
+        if m.get('TransferMapping') is not None:
+            self.transfer_mapping_shrink = m.get('TransferMapping')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UseOss') is not None:
+            self.use_oss = m.get('UseOss')
+        if m.get('WorkerGradeId') is not None:
+            self.worker_grade_id = m.get('WorkerGradeId')
+        return self
+
+
+class CreateProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class CreateProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: str = None,
+        error_detail: CreateProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = CreateProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class CreateProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSecurityIpGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1669,8 +4861,10 @@ class CreateTenantRequest(TeaModel):
         cpu: int = None,
         description: str = None,
         instance_id: str = None,
+        log_disk: int = None,
         memory: int = None,
         primary_zone: str = None,
+        read_only_zone_list: str = None,
         tenant_mode: str = None,
         tenant_name: str = None,
         time_zone: str = None,
@@ -1678,34 +4872,45 @@ class CreateTenantRequest(TeaModel):
         user_vswitch_id: str = None,
         user_vpc_id: str = None,
     ):
-        # The description of the database.
+        # The character set.    
+        # For more information, see DescribeCharset.
         self.charset = charset
-        # The number of resource distribution nodes in the tenant.    
-        # The number is determined by the deployment mode of the cluster. If the cluster is deployed in 2-2-2 mode, the maximum number of resource distribution nodes is 2.
+        # The number of CPU cores of the tenant.   
+        # 
+        # > <br>The CPU specification of a single tenant cannot exceed that of the corresponding cluster. <br>For example, if the specification of the cluster is 14 CPU cores and 70 GB of memory, the CPU specification of the tenant cannot exceed 14 cores.
         self.cpu = cpu
-        # $.parameters[13].schema.example
+        # The description of the database.
         self.description = description
-        # The ID of the vSwitch.    
-        # If no suitable vSwitch is available, create a vSwitch as prompted.   
-        # For more information, see Use a vSwitch.
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
-        # The return result of the request.
-        self.memory = memory
-        # $.parameters[12].schema.enumValueTitles
-        self.primary_zone = primary_zone
-        # The ID of the tenant.
-        self.tenant_mode = tenant_mode
-        # Alibaba Cloud CLI
-        self.tenant_name = tenant_name
+        self.log_disk = log_disk
         # The memory size of the tenant, in GB.   
         # 
         # > <br>The memory size of a single tenant cannot exceed that of the corresponding cluster. <br>For example, if the specification of the cluster is 14 CPU cores and 70 GB of memory, the memory size of the tenant cannot exceed 70 GB.
+        self.memory = memory
+        # The primary zone of the tenant.    
+        # It is one of the zones in which the cluster is deployed.
+        self.primary_zone = primary_zone
+        self.read_only_zone_list = read_only_zone_list
+        # The tenant mode.    
+        # Valid values: Oracle and MySQL.   
+        # For more information, see [DescribeInstanceTenantModes](~~410354~~).
+        self.tenant_mode = tenant_mode
+        # The name of the tenant.    
+        # It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_).  It cannot be set to sys.
+        self.tenant_name = tenant_name
+        # The time zone of the tenant. For more information, see [DescribeTimeZones](https://www.alibabacloud.com/help/en/apsaradb-for-oceanbase/latest/api-oceanbasepro-2019-09-01-describetimezones).
         self.time_zone = time_zone
-        # $.parameters[11].schema.description
+        # The number of resource distribution nodes in the tenant.    
+        # The number is determined by the deployment mode of the cluster. If the cluster is deployed in 2-2-2 mode, the maximum number of resource distribution nodes is 2.
         self.unit_num = unit_num
-        # $.parameters[12].schema.description
+        # The ID of the vSwitch.    
+        # If no suitable vSwitch is available, create a vSwitch as prompted.   
+        # For more information, see Use a vSwitch.
         self.user_vswitch_id = user_vswitch_id
-        # The time zone of the tenant.  For more information, see [DescribeTimeZones](https://help.aliyun.com/document_detail/410361.html).
+        # The ID of the VPC.   
+        #  If no suitable VPC is available, create a VPC as prompted.   
+        # For more information, see "What is a VPC".
         self.user_vpc_id = user_vpc_id
 
     def validate(self):
@@ -1725,10 +4930,14 @@ class CreateTenantRequest(TeaModel):
             result['Description'] = self.description
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.log_disk is not None:
+            result['LogDisk'] = self.log_disk
         if self.memory is not None:
             result['Memory'] = self.memory
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
+        if self.read_only_zone_list is not None:
+            result['ReadOnlyZoneList'] = self.read_only_zone_list
         if self.tenant_mode is not None:
             result['TenantMode'] = self.tenant_mode
         if self.tenant_name is not None:
@@ -1753,10 +4962,14 @@ class CreateTenantRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LogDisk') is not None:
+            self.log_disk = m.get('LogDisk')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
+        if m.get('ReadOnlyZoneList') is not None:
+            self.read_only_zone_list = m.get('ReadOnlyZoneList')
         if m.get('TenantMode') is not None:
             self.tenant_mode = m.get('TenantMode')
         if m.get('TenantName') is not None:
@@ -1778,9 +4991,9 @@ class CreateTenantResponseBody(TeaModel):
         request_id: str = None,
         tenant_id: str = None,
     ):
-        # WB01144930
+        # The request ID.
         self.request_id = request_id
-        # You can call this operation to create a tenant.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -1856,10 +5069,14 @@ class CreateTenantReadOnlyConnectionRequest(TeaModel):
         self,
         instance_id: str = None,
         tenant_id: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
         zone_id: str = None,
     ):
         self.instance_id = instance_id
         self.tenant_id = tenant_id
+        self.v_switch_id = v_switch_id
+        self.vpc_id = vpc_id
         self.zone_id = zone_id
 
     def validate(self):
@@ -1875,6 +5092,10 @@ class CreateTenantReadOnlyConnectionRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -1885,6 +5106,10 @@ class CreateTenantReadOnlyConnectionRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -1969,9 +5194,17 @@ class CreateTenantSecurityIpGroupRequest(TeaModel):
         security_ips: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The group name of the whitelist group of IP addresses.
+        # 
+        # It starts with lowercase letters and ends with lowercase letters or numbers. It can only contain lowercase letters, numbers, and underscores, and should be 2~32 characters in length.
         self.security_ip_group_name = security_ip_group_name
+        # The list of IP addresses in the whitelist group.
+        # 
+        # It is a JSON array. Each object in the array is an IP address or a CIDR block. You can have up to 40 whitelists.
         self.security_ips = security_ips
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -2014,9 +5247,15 @@ class CreateTenantSecurityIpGroupResponseBodySecurityIpGroup(TeaModel):
         security_ips: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The name of the whitelist group.
         self.security_ip_group_name = security_ip_group_name
+        # The list of IP addresses in the IP address whitelist group.   
+        # 
+        # It is a string separated by commas, and each object is an IP address or CIDR block.
         self.security_ips = security_ips
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -2057,7 +5296,9 @@ class CreateTenantSecurityIpGroupResponseBody(TeaModel):
         request_id: str = None,
         security_ip_group: CreateTenantSecurityIpGroupResponseBodySecurityIpGroup = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information of the whitelist group.
         self.security_ip_group = security_ip_group
 
     def validate(self):
@@ -2502,9 +5743,11 @@ class DeleteInstancesRequest(TeaModel):
     def __init__(
         self,
         backup_retain_mode: str = None,
+        dry_run: bool = None,
         instance_ids: str = None,
     ):
         self.backup_retain_mode = backup_retain_mode
+        self.dry_run = dry_run
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -2518,6 +5761,8 @@ class DeleteInstancesRequest(TeaModel):
         result = dict()
         if self.backup_retain_mode is not None:
             result['BackupRetainMode'] = self.backup_retain_mode
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         return result
@@ -2526,17 +5771,19 @@ class DeleteInstancesRequest(TeaModel):
         m = m or dict()
         if m.get('BackupRetainMode') is not None:
             self.backup_retain_mode = m.get('BackupRetainMode')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         return self
 
 
-class DeleteInstancesResponseBody(TeaModel):
+class DeleteInstancesResponseBodyData(TeaModel):
     def __init__(
         self,
-        request_id: str = None,
+        dry_run_result: bool = None,
     ):
-        self.request_id = request_id
+        self.dry_run_result = dry_run_result
 
     def validate(self):
         pass
@@ -2547,12 +5794,47 @@ class DeleteInstancesResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DryRunResult') is not None:
+            self.dry_run_result = m.get('DryRunResult')
+        return self
+
+
+class DeleteInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DeleteInstancesResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DeleteInstancesResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -2838,6 +6120,265 @@ class DeleteOmsOpenAPIProjectResponse(TeaModel):
         return self
 
 
+class DeleteProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DeleteProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DeleteProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: Any = None,
+        error_detail: DeleteProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = DeleteProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DeleteProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteSecurityIpGroupRequest(TeaModel):
     def __init__(
         self,
@@ -2994,8 +6535,13 @@ class DeleteTenantSecurityIpGroupRequest(TeaModel):
         security_ip_group_name: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The group name of the whitelist group of IP addresses.
+        # 
+        # It starts with lowercase letters and ends with lowercase letters or numbers. It can only contain lowercase letters, numbers, and underscores, and should be 2~32 characters in length.
         self.security_ip_group_name = security_ip_group_name
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -3033,8 +6579,11 @@ class DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup(TeaModel):
         security_ip_group_name: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The name of the whitelist group.
         self.security_ip_group_name = security_ip_group_name
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -3071,7 +6620,9 @@ class DeleteTenantSecurityIpGroupResponseBody(TeaModel):
         request_id: str = None,
         security_ip_group: DeleteTenantSecurityIpGroupResponseBodySecurityIpGroup = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information of the whitelist group.
         self.security_ip_group = security_ip_group
 
     def validate(self):
@@ -3151,11 +6702,11 @@ class DeleteTenantUsersRequest(TeaModel):
         tenant_id: str = None,
         users: str = None,
     ):
-        # Example 1
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
-        # $.parameters[4].schema.enumValueTitles
+        # The ID of the tenant.
         self.tenant_id = tenant_id
-        # $.parameters[2].schema.example
+        # A list of usernames.
         self.users = users
 
     def validate(self):
@@ -3191,7 +6742,7 @@ class DeleteTenantUsersResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # DeleteTenantUsers
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3382,6 +6933,7 @@ class DescribeAnomalySQLListRequest(TeaModel):
         db_name: str = None,
         end_time: str = None,
         filter_condition: Dict[str, Any] = None,
+        instance_id: str = None,
         node_ip: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -3395,45 +6947,47 @@ class DescribeAnomalySQLListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # The search value.
+        # The language of the returned data.   
+        # Default value: CN for a China site and EN for an International site.
         self.accept_language = accept_language
-        # {
-        #   "UserName":testUser
-        # }
+        # The name of the database.
         self.db_name = db_name
-        # zh-CN
+        # The end time of the time range for querying suspicious SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The filter condition.   
+        # > <br> - All fields in OceanBase Database support filtering. <br> - You can write the key-value pair of a parameter in a JSON string in the JSON format to filter the parameter.
+        self.filter_condition = filter_condition
+        self.instance_id = instance_id
+        # The IP address of the node.
+        self.node_ip = node_ip
         # The number of the page to return.    
         # - Start value: 1   
         # - Default value: 1
-        self.filter_condition = filter_condition
+        self.page_number = page_number
         # The number of rows to return on each page.    
         # - Maximum value: 100   
         # - Default value: 10
-        self.node_ip = node_ip
-        # desc
-        self.page_number = page_number
-        # The start time of the time range for querying suspicious SQL statements.   
-        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.page_size = page_size
-        # 1
+        # SQLID.
         self.sqlid = sqlid
         # The search keyword.
         self.search_key_word = search_key_word
-        # The ID of the tenant.
+        # The search parameter.
         self.search_parameter = search_parameter
-        # Utilization above threshold
+        # The search rule.   
+        # Valid values: "=", ">", ">=", "<", and "<="
         self.search_rule = search_rule
-        # 10
+        # The search value.
         self.search_value = search_value
-        # The end time of the time range for querying suspicious SQL statements.   
-        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+        # The sorted column.
         self.sort_column = sort_column
-        # The request time, in ms.
+        # The sorting rule.
         self.sort_order = sort_order
-        # The total count.
+        # The start time of the time range for querying suspicious SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
-        # Alibaba Cloud CLI
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -3453,6 +7007,8 @@ class DescribeAnomalySQLListRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.filter_condition is not None:
             result['FilterCondition'] = self.filter_condition
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.node_ip is not None:
             result['NodeIp'] = self.node_ip
         if self.page_number is not None:
@@ -3489,6 +7045,8 @@ class DescribeAnomalySQLListRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('FilterCondition') is not None:
             self.filter_condition = m.get('FilterCondition')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('NodeIp') is not None:
             self.node_ip = m.get('NodeIp')
         if m.get('PageNumber') is not None:
@@ -3523,6 +7081,7 @@ class DescribeAnomalySQLListShrinkRequest(TeaModel):
         db_name: str = None,
         end_time: str = None,
         filter_condition_shrink: str = None,
+        instance_id: str = None,
         node_ip: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -3536,45 +7095,47 @@ class DescribeAnomalySQLListShrinkRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # The search value.
+        # The language of the returned data.   
+        # Default value: CN for a China site and EN for an International site.
         self.accept_language = accept_language
-        # {
-        #   "UserName":testUser
-        # }
+        # The name of the database.
         self.db_name = db_name
-        # zh-CN
+        # The end time of the time range for querying suspicious SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The filter condition.   
+        # > <br> - All fields in OceanBase Database support filtering. <br> - You can write the key-value pair of a parameter in a JSON string in the JSON format to filter the parameter.
+        self.filter_condition_shrink = filter_condition_shrink
+        self.instance_id = instance_id
+        # The IP address of the node.
+        self.node_ip = node_ip
         # The number of the page to return.    
         # - Start value: 1   
         # - Default value: 1
-        self.filter_condition_shrink = filter_condition_shrink
+        self.page_number = page_number
         # The number of rows to return on each page.    
         # - Maximum value: 100   
         # - Default value: 10
-        self.node_ip = node_ip
-        # desc
-        self.page_number = page_number
-        # The start time of the time range for querying suspicious SQL statements.   
-        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.page_size = page_size
-        # 1
+        # SQLID.
         self.sqlid = sqlid
         # The search keyword.
         self.search_key_word = search_key_word
-        # The ID of the tenant.
+        # The search parameter.
         self.search_parameter = search_parameter
-        # Utilization above threshold
+        # The search rule.   
+        # Valid values: "=", ">", ">=", "<", and "<="
         self.search_rule = search_rule
-        # 10
+        # The search value.
         self.search_value = search_value
-        # The end time of the time range for querying suspicious SQL statements.   
-        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+        # The sorted column.
         self.sort_column = sort_column
-        # The request time, in ms.
+        # The sorting rule.
         self.sort_order = sort_order
-        # The total count.
+        # The start time of the time range for querying suspicious SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
-        # Alibaba Cloud CLI
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -3594,6 +7155,8 @@ class DescribeAnomalySQLListShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.filter_condition_shrink is not None:
             result['FilterCondition'] = self.filter_condition_shrink
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.node_ip is not None:
             result['NodeIp'] = self.node_ip
         if self.page_number is not None:
@@ -3630,6 +7193,8 @@ class DescribeAnomalySQLListShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('FilterCondition') is not None:
             self.filter_condition_shrink = m.get('FilterCondition')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('NodeIp') is not None:
             self.node_ip = m.get('NodeIp')
         if m.get('PageNumber') is not None:
@@ -3673,58 +7238,29 @@ class DescribeAnomalySQLListResponseBodyAnomalySQLList(TeaModel):
         suggestion: str = None,
         user_name: str = None,
     ):
-        self.cpu_time = cpu_time
-        # {"name":"DescribeAnomalySQLList","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"POST|GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":60000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeAnomalySQLList\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"StartTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-06-13T15:40:43Z\"},{\"name\":\"EndTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-09-13T15:40:43Z\"},{\"name\":\"DbName\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"SearchKeyWord\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"update\"},{\"name\":\"SearchParameter\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SearchRule\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\">\"},{\"name\":\"SearchValue\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"0.01\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"NodeIp\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"i-bp19y05uq6xpacyqnlrc\"},{\"name\":\"AcceptLanguage\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"zh-CN\"},{\"name\":\"PageSize\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"10\"},{\"name\":\"PageNumber\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"FilterCondition\",\"position\":\"Body\",\"style\":\"json\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"enumValueTitles\":{\"UserName\":\"UserName\",\"Event\":\"Event\",\"SQLType\":\"SQLType\",\"ClientIp\":\"ClientIp\"},\"title\":\"\",\"description\":\"\",\"example\":\"{\\n  \\\"UserName\\\":testUser\\n}\"},{\"name\":\"SortColumn\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SortOrder\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"enumValueTitles\":{\"{     \\\"dbname\\\":test,     \\\"SQLType\\\":null\\t\\t }\":\"{     \\\"dbname\\\":test,     \\\"SQLType\\\":null\\t\\t }\"},\"title\":\"\",\"description\":\"\",\"example\":\"desc\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"TotalCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"2\"},{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E\"},{\"name\":\"AnomalySQLList\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"description\":\" \",\"children\":[{\"name\":\"Key\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"DiagnosisRule\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"\"},{\"name\":\"SQLText\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"SELECT  ****   FROM ****   WHERE **** = ? AND **** = ?   ORDER BY **** ASC\"},{\"name\":\"Suggestion\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"\"},{\"name\":\"DbName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"database1\"},{\"name\":\"RequestTimeUTCString\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2022-01-11T07:08:00Z\"},{\"name\":\"CpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"50.13\"},{\"name\":\"SQLId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"99E9D3BF****B486239E6C7BC79B****\"},{\"name\":\"Diagnosis\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"\"},{\"name\":\"RequestTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"50.00\"},{\"name\":\"Executions\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"89043\"},{\"name\":\"UserName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"tester\"}],\"title\":\"\"}],\"title\":\"\",\"description\":\"\"}","errors":"{\"2014\":[{\"code\":\"2014\",\"defaultError\":false,\"errorCode\":\"InternalError\",\"errorMessage\":\"The request processing has failed due to some unknown error.\",\"errorMessageCn\":\"\",\"type\":\"user\"}]}"}
-        self.db_name = db_name
-        self.diagnosis = diagnosis
-        # The list of suspicious SQL statements.
-        self.diagnosis_rule = diagnosis_rule
-        self.executions = executions
         # The average CPU time, in ms.
+        self.cpu_time = cpu_time
+        # The name of the database.
+        self.db_name = db_name
+        # The diagnosis information.
+        self.diagnosis = diagnosis
+        # The diagnostic rule.
+        self.diagnosis_rule = diagnosis_rule
+        # The number of executions.
+        self.executions = executions
+        # The sequence number of the returned SQL statement.
         self.key = key
+        # The request time, in ms.
         self.request_time = request_time
+        # The request time in UTC +0.
         self.request_time_utcstring = request_time_utcstring
+        # SQLID.
         self.sqlid = sqlid
-        # ```
-        # http(s)://[Endpoint]/?Action=DescribeAnomalySQLList
-        # &TenantId=t2mr3oae0****\
-        # &StartTime=2021-06-13 15:40:43
-        # &EndTime=2021-06-13 15:40:43
-        # &DbName=testdb
-        # &SearchKeyWord=update
-        # &SearchParameter=cputime
-        # &SearchRule=>
-        # &SearchValue=0.01
-        # &SQLId=8D6E84****0B8FB1823D199E2CA1****\
-        # &NodeIp=i-bp19y05uq6xpacyqnlrc
-        # &AcceptLanguage=zh-CN
-        # &PageSize=10
-        # &PageNumber=1
-        # &SortColumn=cputime
-        # &SortOrder=desc
-        # &Common request parameters
-        # ```
+        # The SQL text.
         self.sqltext = sqltext
-        # {
-        #     "TotalCount": 2,
-        #     "RequestId": "473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E",
-        #     "AnomalySQLList": [
-        #         {
-        #             "Key": 1,
-        #             "DiagnosisRule": "Utilization above threshold",
-        #             "SQLText": "SELECT  ****   FROM ****   WHERE **** = ? AND **** = ?   ORDER BY **** ASC",
-        #             "Suggestion": "Check your business scenarios, data distribution changes, request surges, and execution plan changes.",
-        #             "DbName": "database1",
-        #             "RequestTimeUTCString": "2022-01-11T07:08:00Z",
-        #             "SQLId": "99E9D3BF****B486239E6C7BC79B****",
-        #             "Diagnosis": "Total number of executions = 80199, Average CPU time = 6.8 ms, Overall CPU utilization = 87%",
-        #             "RequestTime": 1641884880000,
-        #             "Executions": 89043,
-        #             "UserName": "tester"
-        #         }
-        #     ]
-        # }
+        # The suggestions.
         self.suggestion = suggestion
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -3798,11 +7334,11 @@ class DescribeAnomalySQLListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The diagnostic rule.
+        # The list of suspicious SQL statements.
         self.anomaly_sqllist = anomaly_sqllist
-        # The sorting rule.
+        # The request ID.
         self.request_id = request_id
-        # The SQL text.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -4112,11 +7648,13 @@ class DescribeAvailableMemResourceResponseBodyData(TeaModel):
         self,
         max_mem: int = None,
         min_mem: int = None,
+        safe_mem: str = None,
         used_mem: int = None,
     ):
         self.max_mem = max_mem
         # You can call this operation to query the available memory resource of an OceanBase Database tenant.
         self.min_mem = min_mem
+        self.safe_mem = safe_mem
         self.used_mem = used_mem
 
     def validate(self):
@@ -4132,6 +7670,8 @@ class DescribeAvailableMemResourceResponseBodyData(TeaModel):
             result['MaxMem'] = self.max_mem
         if self.min_mem is not None:
             result['MinMem'] = self.min_mem
+        if self.safe_mem is not None:
+            result['SafeMem'] = self.safe_mem
         if self.used_mem is not None:
             result['UsedMem'] = self.used_mem
         return result
@@ -4142,6 +7682,8 @@ class DescribeAvailableMemResourceResponseBodyData(TeaModel):
             self.max_mem = m.get('MaxMem')
         if m.get('MinMem') is not None:
             self.min_mem = m.get('MinMem')
+        if m.get('SafeMem') is not None:
+            self.safe_mem = m.get('SafeMem')
         if m.get('UsedMem') is not None:
             self.used_mem = m.get('UsedMem')
         return self
@@ -4235,12 +7777,677 @@ class DescribeAvailableMemResourceResponse(TeaModel):
         return self
 
 
+class DescribeAvailableSpecRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        spec: str = None,
+        upgrade_type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.spec = spec
+        self.upgrade_type = upgrade_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.upgrade_type is not None:
+            result['UpgradeType'] = self.upgrade_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('UpgradeType') is not None:
+            self.upgrade_type = m.get('UpgradeType')
+        return self
+
+
+class DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange(TeaModel):
+    def __init__(
+        self,
+        max: int = None,
+        min: int = None,
+        step: int = None,
+    ):
+        self.max = max
+        self.min = min
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max is not None:
+            result['Max'] = self.max
+        if self.min is not None:
+            result['Min'] = self.min
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+        if m.get('Min') is not None:
+            self.min = m.get('Min')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange(TeaModel):
+    def __init__(
+        self,
+        max: int = None,
+        min: int = None,
+        step: int = None,
+    ):
+        self.max = max
+        self.min = min
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max is not None:
+            result['Max'] = self.max
+        if self.min is not None:
+            result['Min'] = self.min
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+        if m.get('Min') is not None:
+            self.min = m.get('Min')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeAvailableSpecResponseBodyDataAvailableSpecifications(TeaModel):
+    def __init__(
+        self,
+        disk_size_range: DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange = None,
+        instance_class: str = None,
+        log_disk_size_range: DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange = None,
+        node_num: List[int] = None,
+        spec: str = None,
+    ):
+        self.disk_size_range = disk_size_range
+        self.instance_class = instance_class
+        self.log_disk_size_range = log_disk_size_range
+        self.node_num = node_num
+        self.spec = spec
+
+    def validate(self):
+        if self.disk_size_range:
+            self.disk_size_range.validate()
+        if self.log_disk_size_range:
+            self.log_disk_size_range.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_size_range is not None:
+            result['DiskSizeRange'] = self.disk_size_range.to_map()
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.log_disk_size_range is not None:
+            result['LogDiskSizeRange'] = self.log_disk_size_range.to_map()
+        if self.node_num is not None:
+            result['NodeNum'] = self.node_num
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskSizeRange') is not None:
+            temp_model = DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange()
+            self.disk_size_range = temp_model.from_map(m['DiskSizeRange'])
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('LogDiskSizeRange') is not None:
+            temp_model = DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange()
+            self.log_disk_size_range = temp_model.from_map(m['LogDiskSizeRange'])
+        if m.get('NodeNum') is not None:
+            self.node_num = m.get('NodeNum')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class DescribeAvailableSpecResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        available_specifications: List[DescribeAvailableSpecResponseBodyDataAvailableSpecifications] = None,
+    ):
+        self.available_specifications = available_specifications
+
+    def validate(self):
+        if self.available_specifications:
+            for k in self.available_specifications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableSpecifications'] = []
+        if self.available_specifications is not None:
+            for k in self.available_specifications:
+                result['AvailableSpecifications'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_specifications = []
+        if m.get('AvailableSpecifications') is not None:
+            for k in m.get('AvailableSpecifications'):
+                temp_model = DescribeAvailableSpecResponseBodyDataAvailableSpecifications()
+                self.available_specifications.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAvailableSpecResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeAvailableSpecResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeAvailableSpecResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAvailableSpecResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAvailableSpecResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAvailableSpecResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAvailableZoneRequest(TeaModel):
+    def __init__(
+        self,
+        deploy_type: str = None,
+        instance_type: str = None,
+        ob_version: str = None,
+        series: str = None,
+        spec: str = None,
+    ):
+        self.deploy_type = deploy_type
+        self.instance_type = instance_type
+        self.ob_version = ob_version
+        self.series = series
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.ob_version is not None:
+            result['ObVersion'] = self.ob_version
+        if self.series is not None:
+            result['Series'] = self.series
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('ObVersion') is not None:
+            self.ob_version = m.get('ObVersion')
+        if m.get('Series') is not None:
+            self.series = m.get('Series')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange(TeaModel):
+    def __init__(
+        self,
+        max: int = None,
+        min: int = None,
+        step: int = None,
+    ):
+        self.max = max
+        self.min = min
+        self.step = step
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max is not None:
+            result['Max'] = self.max
+        if self.min is not None:
+            result['Min'] = self.min
+        if self.step is not None:
+            result['Step'] = self.step
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Max') is not None:
+            self.max = m.get('Max')
+        if m.get('Min') is not None:
+            self.min = m.get('Min')
+        if m.get('Step') is not None:
+            self.step = m.get('Step')
+        return self
+
+
+class DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions(TeaModel):
+    def __init__(
+        self,
+        ob_version: str = None,
+        support_isolation_optimization: bool = None,
+        support_replica_modes: List[str] = None,
+    ):
+        self.ob_version = ob_version
+        self.support_isolation_optimization = support_isolation_optimization
+        self.support_replica_modes = support_replica_modes
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ob_version is not None:
+            result['ObVersion'] = self.ob_version
+        if self.support_isolation_optimization is not None:
+            result['SupportIsolationOptimization'] = self.support_isolation_optimization
+        if self.support_replica_modes is not None:
+            result['SupportReplicaModes'] = self.support_replica_modes
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ObVersion') is not None:
+            self.ob_version = m.get('ObVersion')
+        if m.get('SupportIsolationOptimization') is not None:
+            self.support_isolation_optimization = m.get('SupportIsolationOptimization')
+        if m.get('SupportReplicaModes') is not None:
+            self.support_replica_modes = m.get('SupportReplicaModes')
+        return self
+
+
+class DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications(TeaModel):
+    def __init__(
+        self,
+        disk_size_range: DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange = None,
+        disk_types: List[str] = None,
+        instance_class: str = None,
+        spec: str = None,
+        support_engine_versions: List[DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions] = None,
+    ):
+        self.disk_size_range = disk_size_range
+        self.disk_types = disk_types
+        self.instance_class = instance_class
+        self.spec = spec
+        self.support_engine_versions = support_engine_versions
+
+    def validate(self):
+        if self.disk_size_range:
+            self.disk_size_range.validate()
+        if self.support_engine_versions:
+            for k in self.support_engine_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_size_range is not None:
+            result['DiskSizeRange'] = self.disk_size_range.to_map()
+        if self.disk_types is not None:
+            result['DiskTypes'] = self.disk_types
+        if self.instance_class is not None:
+            result['InstanceClass'] = self.instance_class
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        result['SupportEngineVersions'] = []
+        if self.support_engine_versions is not None:
+            for k in self.support_engine_versions:
+                result['SupportEngineVersions'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskSizeRange') is not None:
+            temp_model = DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsDiskSizeRange()
+            self.disk_size_range = temp_model.from_map(m['DiskSizeRange'])
+        if m.get('DiskTypes') is not None:
+            self.disk_types = m.get('DiskTypes')
+        if m.get('InstanceClass') is not None:
+            self.instance_class = m.get('InstanceClass')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        self.support_engine_versions = []
+        if m.get('SupportEngineVersions') is not None:
+            for k in m.get('SupportEngineVersions'):
+                temp_model = DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecificationsSupportEngineVersions()
+                self.support_engine_versions.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAvailableZoneResponseBodyDataAvailableZones(TeaModel):
+    def __init__(
+        self,
+        channel: str = None,
+        deploy_type: str = None,
+        instance_type: str = None,
+        region: str = None,
+        series: str = None,
+        support_specifications: List[DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications] = None,
+        zones: str = None,
+    ):
+        self.channel = channel
+        self.deploy_type = deploy_type
+        self.instance_type = instance_type
+        self.region = region
+        self.series = series
+        self.support_specifications = support_specifications
+        self.zones = zones
+
+    def validate(self):
+        if self.support_specifications:
+            for k in self.support_specifications:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.channel is not None:
+            result['Channel'] = self.channel
+        if self.deploy_type is not None:
+            result['DeployType'] = self.deploy_type
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.series is not None:
+            result['Series'] = self.series
+        result['SupportSpecifications'] = []
+        if self.support_specifications is not None:
+            for k in self.support_specifications:
+                result['SupportSpecifications'].append(k.to_map() if k else None)
+        if self.zones is not None:
+            result['Zones'] = self.zones
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Channel') is not None:
+            self.channel = m.get('Channel')
+        if m.get('DeployType') is not None:
+            self.deploy_type = m.get('DeployType')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Series') is not None:
+            self.series = m.get('Series')
+        self.support_specifications = []
+        if m.get('SupportSpecifications') is not None:
+            for k in m.get('SupportSpecifications'):
+                temp_model = DescribeAvailableZoneResponseBodyDataAvailableZonesSupportSpecifications()
+                self.support_specifications.append(temp_model.from_map(k))
+        if m.get('Zones') is not None:
+            self.zones = m.get('Zones')
+        return self
+
+
+class DescribeAvailableZoneResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        available_zones: List[DescribeAvailableZoneResponseBodyDataAvailableZones] = None,
+    ):
+        self.available_zones = available_zones
+
+    def validate(self):
+        if self.available_zones:
+            for k in self.available_zones:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AvailableZones'] = []
+        if self.available_zones is not None:
+            for k in self.available_zones:
+                result['AvailableZones'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.available_zones = []
+        if m.get('AvailableZones') is not None:
+            for k in m.get('AvailableZones'):
+                temp_model = DescribeAvailableZoneResponseBodyDataAvailableZones()
+                self.available_zones.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAvailableZoneResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: DescribeAvailableZoneResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = DescribeAvailableZoneResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAvailableZoneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAvailableZoneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAvailableZoneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCharsetRequest(TeaModel):
     def __init__(
         self,
+        instance_id: str = None,
         series: str = None,
         tenant_mode: str = None,
     ):
+        self.instance_id = instance_id
         # 实例的系列  - normal（默认）：标准集群版（云盘）  - normal_ssd：标准集群版（本地盘） - history：历史库集群版。
         self.series = series
         # The return result of the request.
@@ -4255,6 +8462,8 @@ class DescribeCharsetRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.series is not None:
             result['Series'] = self.series
         if self.tenant_mode is not None:
@@ -4263,6 +8472,8 @@ class DescribeCharsetRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('Series') is not None:
             self.series = m.get('Series')
         if m.get('TenantMode') is not None:
@@ -4400,6 +8611,7 @@ class DescribeDatabasesRequest(TeaModel):
     def __init__(
         self,
         database_name: str = None,
+        instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         search_key: str = None,
@@ -4408,6 +8620,7 @@ class DescribeDatabasesRequest(TeaModel):
     ):
         # It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
         self.database_name = database_name
+        self.instance_id = instance_id
         # The return result of the request.
         self.page_number = page_number
         # Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
@@ -4435,6 +8648,8 @@ class DescribeDatabasesRequest(TeaModel):
         result = dict()
         if self.database_name is not None:
             result['DatabaseName'] = self.database_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -4451,6 +8666,8 @@ class DescribeDatabasesRequest(TeaModel):
         m = m or dict()
         if m.get('DatabaseName') is not None:
             self.database_name = m.get('DatabaseName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -4494,10 +8711,12 @@ class DescribeDatabasesResponseBodyDatabasesTables(TeaModel):
 class DescribeDatabasesResponseBodyDatabasesUsers(TeaModel):
     def __init__(
         self,
+        privileges: str = None,
         role: str = None,
         user_name: str = None,
         user_type: str = None,
     ):
+        self.privileges = privileges
         # The request ID.
         self.role = role
         # Example 1
@@ -4514,6 +8733,8 @@ class DescribeDatabasesResponseBodyDatabasesUsers(TeaModel):
             return _map
 
         result = dict()
+        if self.privileges is not None:
+            result['Privileges'] = self.privileges
         if self.role is not None:
             result['Role'] = self.role
         if self.user_name is not None:
@@ -4524,6 +8745,8 @@ class DescribeDatabasesResponseBodyDatabasesUsers(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Privileges') is not None:
+            self.privileges = m.get('Privileges')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('UserName') is not None:
@@ -4548,6 +8771,7 @@ class DescribeDatabasesResponseBodyDatabases(TeaModel):
         status: str = None,
         tables: List[DescribeDatabasesResponseBodyDatabasesTables] = None,
         tenant_id: str = None,
+        tenant_name: str = None,
         users: List[DescribeDatabasesResponseBodyDatabasesUsers] = None,
     ):
         self.collation = collation
@@ -4573,6 +8797,7 @@ class DescribeDatabasesResponseBodyDatabases(TeaModel):
         self.status = status
         self.tables = tables
         self.tenant_id = tenant_id
+        self.tenant_name = tenant_name
         # The name of the database table.
         self.users = users
 
@@ -4618,6 +8843,8 @@ class DescribeDatabasesResponseBodyDatabases(TeaModel):
                 result['Tables'].append(k.to_map() if k else None)
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
         result['Users'] = []
         if self.users is not None:
             for k in self.users:
@@ -4653,6 +8880,8 @@ class DescribeDatabasesResponseBodyDatabases(TeaModel):
                 self.tables.append(temp_model.from_map(k))
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
         self.users = []
         if m.get('Users') is not None:
             for k in m.get('Users'):
@@ -4759,14 +8988,11 @@ class DescribeInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
         page_number: int = None,
-        page_size: int = None,
     ):
         # The size of the data disk, in GB.
         self.instance_id = instance_id
         # The information about the storage resources of the cluster.
         self.page_number = page_number
-        # The server with the highest disk usage.
-        self.page_size = page_size
 
     def validate(self):
         pass
@@ -4781,8 +9007,6 @@ class DescribeInstanceRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
-        if self.page_size is not None:
-            result['PageSize'] = self.page_size
         return result
 
     def from_map(self, m: dict = None):
@@ -4791,18 +9015,120 @@ class DescribeInstanceRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
-        if m.get('PageSize') is not None:
-            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig(TeaModel):
+    def __init__(
+        self,
+        auto_scale: bool = None,
+        max_disk_size: int = None,
+        scale_step_in_merge: int = None,
+        scale_step_in_normal: int = None,
+        upper_merge_threshold: int = None,
+        upper_threshold: int = None,
+        upperbound: int = None,
+    ):
+        self.auto_scale = auto_scale
+        self.max_disk_size = max_disk_size
+        self.scale_step_in_merge = scale_step_in_merge
+        self.scale_step_in_normal = scale_step_in_normal
+        self.upper_merge_threshold = upper_merge_threshold
+        self.upper_threshold = upper_threshold
+        self.upperbound = upperbound
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_scale is not None:
+            result['AutoScale'] = self.auto_scale
+        if self.max_disk_size is not None:
+            result['MaxDiskSize'] = self.max_disk_size
+        if self.scale_step_in_merge is not None:
+            result['ScaleStepInMerge'] = self.scale_step_in_merge
+        if self.scale_step_in_normal is not None:
+            result['ScaleStepInNormal'] = self.scale_step_in_normal
+        if self.upper_merge_threshold is not None:
+            result['UpperMergeThreshold'] = self.upper_merge_threshold
+        if self.upper_threshold is not None:
+            result['UpperThreshold'] = self.upper_threshold
+        if self.upperbound is not None:
+            result['Upperbound'] = self.upperbound
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoScale') is not None:
+            self.auto_scale = m.get('AutoScale')
+        if m.get('MaxDiskSize') is not None:
+            self.max_disk_size = m.get('MaxDiskSize')
+        if m.get('ScaleStepInMerge') is not None:
+            self.scale_step_in_merge = m.get('ScaleStepInMerge')
+        if m.get('ScaleStepInNormal') is not None:
+            self.scale_step_in_normal = m.get('ScaleStepInNormal')
+        if m.get('UpperMergeThreshold') is not None:
+            self.upper_merge_threshold = m.get('UpperMergeThreshold')
+        if m.get('UpperThreshold') is not None:
+            self.upper_threshold = m.get('UpperThreshold')
+        if m.get('Upperbound') is not None:
+            self.upperbound = m.get('Upperbound')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceResourceCapacityUnit(TeaModel):
+    def __init__(
+        self,
+        max_capacity_unit: int = None,
+        min_capacity_unit: int = None,
+        used_capacity_unit: str = None,
+    ):
+        self.max_capacity_unit = max_capacity_unit
+        self.min_capacity_unit = min_capacity_unit
+        self.used_capacity_unit = used_capacity_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity_unit is not None:
+            result['MaxCapacityUnit'] = self.max_capacity_unit
+        if self.min_capacity_unit is not None:
+            result['MinCapacityUnit'] = self.min_capacity_unit
+        if self.used_capacity_unit is not None:
+            result['UsedCapacityUnit'] = self.used_capacity_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacityUnit') is not None:
+            self.max_capacity_unit = m.get('MaxCapacityUnit')
+        if m.get('MinCapacityUnit') is not None:
+            self.min_capacity_unit = m.get('MinCapacityUnit')
+        if m.get('UsedCapacityUnit') is not None:
+            self.used_capacity_unit = m.get('UsedCapacityUnit')
         return self
 
 
 class DescribeInstanceResponseBodyInstanceResourceCpu(TeaModel):
     def __init__(
         self,
+        original_total_cpu: int = None,
         total_cpu: int = None,
         unit_cpu: int = None,
         used_cpu: int = None,
     ):
+        self.original_total_cpu = original_total_cpu
         # The series of the OceanBase cluster. Valid values:   
         # - NORMAL: the high availability edition.   
         # - BASIC: the basic edition.
@@ -4823,6 +9149,8 @@ class DescribeInstanceResponseBodyInstanceResourceCpu(TeaModel):
             return _map
 
         result = dict()
+        if self.original_total_cpu is not None:
+            result['OriginalTotalCpu'] = self.original_total_cpu
         if self.total_cpu is not None:
             result['TotalCpu'] = self.total_cpu
         if self.unit_cpu is not None:
@@ -4833,6 +9161,8 @@ class DescribeInstanceResponseBodyInstanceResourceCpu(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OriginalTotalCpu') is not None:
+            self.original_total_cpu = m.get('OriginalTotalCpu')
         if m.get('TotalCpu') is not None:
             self.total_cpu = m.get('TotalCpu')
         if m.get('UnitCpu') is not None:
@@ -4846,18 +9176,22 @@ class DescribeInstanceResponseBodyInstanceResourceDiskSize(TeaModel):
     def __init__(
         self,
         data_used_size: float = None,
+        max_disk_size: float = None,
         max_disk_used_ob_server: List[str] = None,
         max_disk_used_percent: float = None,
+        original_total_disk_size: int = None,
         total_disk_size: int = None,
         unit_disk_size: int = None,
         used_disk_size: int = None,
     ):
         # The ID of the OceanBase cluster.
         self.data_used_size = data_used_size
+        self.max_disk_size = max_disk_size
         # The time in UTC when the cluster expires.
         self.max_disk_used_ob_server = max_disk_used_ob_server
         # The maximum disk usage, in percentage.
         self.max_disk_used_percent = max_disk_used_percent
+        self.original_total_disk_size = original_total_disk_size
         # The data replica distribution mode of the cluster. Valid values: 
         # - n: indicates the single-IDC mode. 
         # - n-n: indicates the dual-IDC mode. 
@@ -4885,10 +9219,14 @@ class DescribeInstanceResponseBodyInstanceResourceDiskSize(TeaModel):
         result = dict()
         if self.data_used_size is not None:
             result['DataUsedSize'] = self.data_used_size
+        if self.max_disk_size is not None:
+            result['MaxDiskSize'] = self.max_disk_size
         if self.max_disk_used_ob_server is not None:
             result['MaxDiskUsedObServer'] = self.max_disk_used_ob_server
         if self.max_disk_used_percent is not None:
             result['MaxDiskUsedPercent'] = self.max_disk_used_percent
+        if self.original_total_disk_size is not None:
+            result['OriginalTotalDiskSize'] = self.original_total_disk_size
         if self.total_disk_size is not None:
             result['TotalDiskSize'] = self.total_disk_size
         if self.unit_disk_size is not None:
@@ -4901,10 +9239,14 @@ class DescribeInstanceResponseBodyInstanceResourceDiskSize(TeaModel):
         m = m or dict()
         if m.get('DataUsedSize') is not None:
             self.data_used_size = m.get('DataUsedSize')
+        if m.get('MaxDiskSize') is not None:
+            self.max_disk_size = m.get('MaxDiskSize')
         if m.get('MaxDiskUsedObServer') is not None:
             self.max_disk_used_ob_server = m.get('MaxDiskUsedObServer')
         if m.get('MaxDiskUsedPercent') is not None:
             self.max_disk_used_percent = m.get('MaxDiskUsedPercent')
+        if m.get('OriginalTotalDiskSize') is not None:
+            self.original_total_disk_size = m.get('OriginalTotalDiskSize')
         if m.get('TotalDiskSize') is not None:
             self.total_disk_size = m.get('TotalDiskSize')
         if m.get('UnitDiskSize') is not None:
@@ -4917,9 +9259,15 @@ class DescribeInstanceResponseBodyInstanceResourceDiskSize(TeaModel):
 class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
     def __init__(
         self,
+        log_assigned_size: str = None,
+        max_log_assigned_ob_server: List[str] = None,
+        max_log_assigned_percent: str = None,
         total_disk_size: int = None,
         unit_disk_size: int = None,
     ):
+        self.log_assigned_size = log_assigned_size
+        self.max_log_assigned_ob_server = max_log_assigned_ob_server
+        self.max_log_assigned_percent = max_log_assigned_percent
         # The ID of the region.
         self.total_disk_size = total_disk_size
         # The request ID.
@@ -4934,6 +9282,12 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
             return _map
 
         result = dict()
+        if self.log_assigned_size is not None:
+            result['LogAssignedSize'] = self.log_assigned_size
+        if self.max_log_assigned_ob_server is not None:
+            result['MaxLogAssignedObServer'] = self.max_log_assigned_ob_server
+        if self.max_log_assigned_percent is not None:
+            result['MaxLogAssignedPercent'] = self.max_log_assigned_percent
         if self.total_disk_size is not None:
             result['TotalDiskSize'] = self.total_disk_size
         if self.unit_disk_size is not None:
@@ -4942,6 +9296,12 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LogAssignedSize') is not None:
+            self.log_assigned_size = m.get('LogAssignedSize')
+        if m.get('MaxLogAssignedObServer') is not None:
+            self.max_log_assigned_ob_server = m.get('MaxLogAssignedObServer')
+        if m.get('MaxLogAssignedPercent') is not None:
+            self.max_log_assigned_percent = m.get('MaxLogAssignedPercent')
         if m.get('TotalDiskSize') is not None:
             self.total_disk_size = m.get('TotalDiskSize')
         if m.get('UnitDiskSize') is not None:
@@ -4952,10 +9312,12 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
 class DescribeInstanceResponseBodyInstanceResourceMemory(TeaModel):
     def __init__(
         self,
+        original_total_memory: int = None,
         total_memory: int = None,
         unit_memory: int = None,
         used_memory: int = None,
     ):
+        self.original_total_memory = original_total_memory
         # Indicates whether trusted ECS instances are used.
         self.total_memory = total_memory
         # The log disk space of each replica node in the cluster. Unit: GB.
@@ -4972,6 +9334,8 @@ class DescribeInstanceResponseBodyInstanceResourceMemory(TeaModel):
             return _map
 
         result = dict()
+        if self.original_total_memory is not None:
+            result['OriginalTotalMemory'] = self.original_total_memory
         if self.total_memory is not None:
             result['TotalMemory'] = self.total_memory
         if self.unit_memory is not None:
@@ -4982,6 +9346,8 @@ class DescribeInstanceResponseBodyInstanceResourceMemory(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OriginalTotalMemory') is not None:
+            self.original_total_memory = m.get('OriginalTotalMemory')
         if m.get('TotalMemory') is not None:
             self.total_memory = m.get('TotalMemory')
         if m.get('UnitMemory') is not None:
@@ -4994,12 +9360,14 @@ class DescribeInstanceResponseBodyInstanceResourceMemory(TeaModel):
 class DescribeInstanceResponseBodyInstanceResource(TeaModel):
     def __init__(
         self,
+        capacity_unit: DescribeInstanceResponseBodyInstanceResourceCapacityUnit = None,
         cpu: DescribeInstanceResponseBodyInstanceResourceCpu = None,
         disk_size: DescribeInstanceResponseBodyInstanceResourceDiskSize = None,
         log_disk_size: DescribeInstanceResponseBodyInstanceResourceLogDiskSize = None,
         memory: DescribeInstanceResponseBodyInstanceResourceMemory = None,
         unit_count: int = None,
     ):
+        self.capacity_unit = capacity_unit
         # The information of the OceanBase cluster.
         self.cpu = cpu
         # The number of the page to return. 
@@ -5014,6 +9382,8 @@ class DescribeInstanceResponseBodyInstanceResource(TeaModel):
         self.unit_count = unit_count
 
     def validate(self):
+        if self.capacity_unit:
+            self.capacity_unit.validate()
         if self.cpu:
             self.cpu.validate()
         if self.disk_size:
@@ -5029,6 +9399,8 @@ class DescribeInstanceResponseBodyInstanceResource(TeaModel):
             return _map
 
         result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit.to_map()
         if self.cpu is not None:
             result['Cpu'] = self.cpu.to_map()
         if self.disk_size is not None:
@@ -5043,6 +9415,9 @@ class DescribeInstanceResponseBodyInstanceResource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceResourceCapacityUnit()
+            self.capacity_unit = temp_model.from_map(m['CapacityUnit'])
         if m.get('Cpu') is not None:
             temp_model = DescribeInstanceResponseBodyInstanceResourceCpu()
             self.cpu = temp_model.from_map(m['Cpu'])
@@ -5060,20 +9435,58 @@ class DescribeInstanceResponseBodyInstanceResource(TeaModel):
         return self
 
 
+class DescribeInstanceResponseBodyInstanceTenantCreatable(TeaModel):
+    def __init__(
+        self,
+        disable_create_tenant_reason: str = None,
+        enable_create_tenant: bool = None,
+    ):
+        self.disable_create_tenant_reason = disable_create_tenant_reason
+        self.enable_create_tenant = enable_create_tenant
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disable_create_tenant_reason is not None:
+            result['DisableCreateTenantReason'] = self.disable_create_tenant_reason
+        if self.enable_create_tenant is not None:
+            result['EnableCreateTenant'] = self.enable_create_tenant
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DisableCreateTenantReason') is not None:
+            self.disable_create_tenant_reason = m.get('DisableCreateTenantReason')
+        if m.get('EnableCreateTenant') is not None:
+            self.enable_create_tenant = m.get('EnableCreateTenant')
+        return self
+
+
 class DescribeInstanceResponseBodyInstance(TeaModel):
     def __init__(
         self,
         auto_renewal: bool = None,
         auto_upgrade_ob_version: bool = None,
         available_zones: List[str] = None,
+        cpu_architecture: str = None,
         create_time: str = None,
+        data_disk_auto_scale: bool = None,
+        data_disk_auto_scale_config: DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig = None,
         data_merge_time: str = None,
         deploy_mode: str = None,
         deploy_type: str = None,
         disk_type: str = None,
         enable_isolation_optimization: bool = None,
+        enable_proxy_service: bool = None,
         enable_upgrade_log_disk: bool = None,
         expire_time: str = None,
+        in_temp_capacity_status: bool = None,
         instance_class: str = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -5085,9 +9498,13 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         node_num: str = None,
         ob_rpm_version: str = None,
         pay_type: str = None,
+        proxy_cluster_id: str = None,
+        proxy_service_status: str = None,
+        replica_mode: str = None,
         resource: DescribeInstanceResponseBodyInstanceResource = None,
         series: str = None,
         status: str = None,
+        tenant_creatable: DescribeInstanceResponseBodyInstanceTenantCreatable = None,
         version: str = None,
         zones: List[str] = None,
     ):
@@ -5096,8 +9513,11 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         # Example 1
         self.auto_upgrade_ob_version = auto_upgrade_ob_version
         self.available_zones = available_zones
+        self.cpu_architecture = cpu_architecture
         # Indicates whether the log disk specifications can be upgraded.
         self.create_time = create_time
+        self.data_disk_auto_scale = data_disk_auto_scale
+        self.data_disk_auto_scale_config = data_disk_auto_scale_config
         # The total number of CPU cores of the cluster.
         self.data_merge_time = data_merge_time
         # Alibaba Cloud CLI
@@ -5107,9 +9527,11 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         # The total storage space of the cluster, in GB.
         self.disk_type = disk_type
         self.enable_isolation_optimization = enable_isolation_optimization
+        self.enable_proxy_service = enable_proxy_service
         self.enable_upgrade_log_disk = enable_upgrade_log_disk
         # The information of the OceanBase cluster.
         self.expire_time = expire_time
+        self.in_temp_capacity_status = in_temp_capacity_status
         # The detailed information of the OBServer version.
         self.instance_class = instance_class
         # The information about the log disk space of the cluster.
@@ -5127,19 +9549,27 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         self.ob_rpm_version = ob_rpm_version
         # The list of zones.
         self.pay_type = pay_type
+        self.proxy_cluster_id = proxy_cluster_id
+        self.proxy_service_status = proxy_service_status
+        self.replica_mode = replica_mode
         # The size of used memory in the cluster, in GB.
         self.resource = resource
         # Indicates whether the OBServer version is the latest.
         self.series = series
         # The information about cluster resources.
         self.status = status
+        self.tenant_creatable = tenant_creatable
         # You can call this operation to query the detailed information of an OceanBase cluster.
         self.version = version
         self.zones = zones
 
     def validate(self):
+        if self.data_disk_auto_scale_config:
+            self.data_disk_auto_scale_config.validate()
         if self.resource:
             self.resource.validate()
+        if self.tenant_creatable:
+            self.tenant_creatable.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5153,8 +9583,14 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             result['AutoUpgradeObVersion'] = self.auto_upgrade_ob_version
         if self.available_zones is not None:
             result['AvailableZones'] = self.available_zones
+        if self.cpu_architecture is not None:
+            result['CpuArchitecture'] = self.cpu_architecture
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_disk_auto_scale is not None:
+            result['DataDiskAutoScale'] = self.data_disk_auto_scale
+        if self.data_disk_auto_scale_config is not None:
+            result['DataDiskAutoScaleConfig'] = self.data_disk_auto_scale_config.to_map()
         if self.data_merge_time is not None:
             result['DataMergeTime'] = self.data_merge_time
         if self.deploy_mode is not None:
@@ -5165,10 +9601,14 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             result['DiskType'] = self.disk_type
         if self.enable_isolation_optimization is not None:
             result['EnableIsolationOptimization'] = self.enable_isolation_optimization
+        if self.enable_proxy_service is not None:
+            result['EnableProxyService'] = self.enable_proxy_service
         if self.enable_upgrade_log_disk is not None:
             result['EnableUpgradeLogDisk'] = self.enable_upgrade_log_disk
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.in_temp_capacity_status is not None:
+            result['InTempCapacityStatus'] = self.in_temp_capacity_status
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.instance_id is not None:
@@ -5191,12 +9631,20 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             result['ObRpmVersion'] = self.ob_rpm_version
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
+        if self.proxy_cluster_id is not None:
+            result['ProxyClusterId'] = self.proxy_cluster_id
+        if self.proxy_service_status is not None:
+            result['ProxyServiceStatus'] = self.proxy_service_status
+        if self.replica_mode is not None:
+            result['ReplicaMode'] = self.replica_mode
         if self.resource is not None:
             result['Resource'] = self.resource.to_map()
         if self.series is not None:
             result['Series'] = self.series
         if self.status is not None:
             result['Status'] = self.status
+        if self.tenant_creatable is not None:
+            result['TenantCreatable'] = self.tenant_creatable.to_map()
         if self.version is not None:
             result['Version'] = self.version
         if self.zones is not None:
@@ -5211,8 +9659,15 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.auto_upgrade_ob_version = m.get('AutoUpgradeObVersion')
         if m.get('AvailableZones') is not None:
             self.available_zones = m.get('AvailableZones')
+        if m.get('CpuArchitecture') is not None:
+            self.cpu_architecture = m.get('CpuArchitecture')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataDiskAutoScale') is not None:
+            self.data_disk_auto_scale = m.get('DataDiskAutoScale')
+        if m.get('DataDiskAutoScaleConfig') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig()
+            self.data_disk_auto_scale_config = temp_model.from_map(m['DataDiskAutoScaleConfig'])
         if m.get('DataMergeTime') is not None:
             self.data_merge_time = m.get('DataMergeTime')
         if m.get('DeployMode') is not None:
@@ -5223,10 +9678,14 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.disk_type = m.get('DiskType')
         if m.get('EnableIsolationOptimization') is not None:
             self.enable_isolation_optimization = m.get('EnableIsolationOptimization')
+        if m.get('EnableProxyService') is not None:
+            self.enable_proxy_service = m.get('EnableProxyService')
         if m.get('EnableUpgradeLogDisk') is not None:
             self.enable_upgrade_log_disk = m.get('EnableUpgradeLogDisk')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('InTempCapacityStatus') is not None:
+            self.in_temp_capacity_status = m.get('InTempCapacityStatus')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceId') is not None:
@@ -5249,6 +9708,12 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.ob_rpm_version = m.get('ObRpmVersion')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
+        if m.get('ProxyClusterId') is not None:
+            self.proxy_cluster_id = m.get('ProxyClusterId')
+        if m.get('ProxyServiceStatus') is not None:
+            self.proxy_service_status = m.get('ProxyServiceStatus')
+        if m.get('ReplicaMode') is not None:
+            self.replica_mode = m.get('ReplicaMode')
         if m.get('Resource') is not None:
             temp_model = DescribeInstanceResponseBodyInstanceResource()
             self.resource = temp_model.from_map(m['Resource'])
@@ -5256,6 +9721,9 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.series = m.get('Series')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('TenantCreatable') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceTenantCreatable()
+            self.tenant_creatable = temp_model.from_map(m['TenantCreatable'])
         if m.get('Version') is not None:
             self.version = m.get('Version')
         if m.get('Zones') is not None:
@@ -5494,7 +9962,7 @@ class DescribeInstanceCreatableZoneResponse(TeaModel):
         return self
 
 
-class DescribeInstanceSecurityConfigsRequest(TeaModel):
+class DescribeInstanceSSLRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
@@ -5516,6 +9984,181 @@ class DescribeInstanceSecurityConfigsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeInstanceSSLResponseBodyInstanceSSL(TeaModel):
+    def __init__(
+        self,
+        ca_url: str = None,
+        enable_ssl: str = None,
+        force_ssl: str = None,
+        force_sslsupport: bool = None,
+        instance_id: str = None,
+        status: str = None,
+        valid_period: str = None,
+    ):
+        self.ca_url = ca_url
+        self.enable_ssl = enable_ssl
+        self.force_ssl = force_ssl
+        self.force_sslsupport = force_sslsupport
+        self.instance_id = instance_id
+        self.status = status
+        self.valid_period = valid_period
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ca_url is not None:
+            result['CaUrl'] = self.ca_url
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
+        if self.force_ssl is not None:
+            result['ForceSSL'] = self.force_ssl
+        if self.force_sslsupport is not None:
+            result['ForceSSLSupport'] = self.force_sslsupport
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.valid_period is not None:
+            result['ValidPeriod'] = self.valid_period
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CaUrl') is not None:
+            self.ca_url = m.get('CaUrl')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
+        if m.get('ForceSSL') is not None:
+            self.force_ssl = m.get('ForceSSL')
+        if m.get('ForceSSLSupport') is not None:
+            self.force_sslsupport = m.get('ForceSSLSupport')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('ValidPeriod') is not None:
+            self.valid_period = m.get('ValidPeriod')
+        return self
+
+
+class DescribeInstanceSSLResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_ssl: DescribeInstanceSSLResponseBodyInstanceSSL = None,
+        request_id: str = None,
+    ):
+        self.instance_ssl = instance_ssl
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_ssl:
+            self.instance_ssl.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ssl is not None:
+            result['InstanceSSL'] = self.instance_ssl.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceSSL') is not None:
+            temp_model = DescribeInstanceSSLResponseBodyInstanceSSL()
+            self.instance_ssl = temp_model.from_map(m['InstanceSSL'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeInstanceSSLResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeInstanceSSLResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeInstanceSSLResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeInstanceSecurityConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        check_id: str = None,
+        instance_id: str = None,
+    ):
+        self.check_id = check_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         return self
@@ -5575,10 +10218,16 @@ class DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurity
 class DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs(TeaModel):
     def __init__(
         self,
+        check_id: str = None,
+        check_time: str = None,
+        instance_id: str = None,
         security_configs: List[DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigsSecurityConfigs] = None,
         total_check_count: int = None,
         total_risk_count: int = None,
     ):
+        self.check_id = check_id
+        self.check_time = check_time
+        self.instance_id = instance_id
         self.security_configs = security_configs
         self.total_check_count = total_check_count
         self.total_risk_count = total_risk_count
@@ -5595,6 +10244,12 @@ class DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs(TeaMode
             return _map
 
         result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_time is not None:
+            result['CheckTime'] = self.check_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         result['SecurityConfigs'] = []
         if self.security_configs is not None:
             for k in self.security_configs:
@@ -5607,6 +10262,12 @@ class DescribeInstanceSecurityConfigsResponseBodyInstanceSecurityConfigs(TeaMode
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckTime') is not None:
+            self.check_time = m.get('CheckTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         self.security_configs = []
         if m.get('SecurityConfigs') is not None:
             for k in m.get('SecurityConfigs'):
@@ -6785,13 +11446,117 @@ class DescribeInstancesRequest(TeaModel):
         return self
 
 
+class DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig(TeaModel):
+    def __init__(
+        self,
+        auto_scale: bool = None,
+        max_disk_size: int = None,
+        scale_step_in_merge: int = None,
+        scale_step_in_normal: int = None,
+        upper_merge_threshold: int = None,
+        upper_threshold: int = None,
+        upperbound: int = None,
+    ):
+        self.auto_scale = auto_scale
+        self.max_disk_size = max_disk_size
+        self.scale_step_in_merge = scale_step_in_merge
+        self.scale_step_in_normal = scale_step_in_normal
+        self.upper_merge_threshold = upper_merge_threshold
+        self.upper_threshold = upper_threshold
+        self.upperbound = upperbound
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_scale is not None:
+            result['AutoScale'] = self.auto_scale
+        if self.max_disk_size is not None:
+            result['MaxDiskSize'] = self.max_disk_size
+        if self.scale_step_in_merge is not None:
+            result['ScaleStepInMerge'] = self.scale_step_in_merge
+        if self.scale_step_in_normal is not None:
+            result['ScaleStepInNormal'] = self.scale_step_in_normal
+        if self.upper_merge_threshold is not None:
+            result['UpperMergeThreshold'] = self.upper_merge_threshold
+        if self.upper_threshold is not None:
+            result['UpperThreshold'] = self.upper_threshold
+        if self.upperbound is not None:
+            result['Upperbound'] = self.upperbound
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoScale') is not None:
+            self.auto_scale = m.get('AutoScale')
+        if m.get('MaxDiskSize') is not None:
+            self.max_disk_size = m.get('MaxDiskSize')
+        if m.get('ScaleStepInMerge') is not None:
+            self.scale_step_in_merge = m.get('ScaleStepInMerge')
+        if m.get('ScaleStepInNormal') is not None:
+            self.scale_step_in_normal = m.get('ScaleStepInNormal')
+        if m.get('UpperMergeThreshold') is not None:
+            self.upper_merge_threshold = m.get('UpperMergeThreshold')
+        if m.get('UpperThreshold') is not None:
+            self.upper_threshold = m.get('UpperThreshold')
+        if m.get('Upperbound') is not None:
+            self.upperbound = m.get('Upperbound')
+        return self
+
+
+class DescribeInstancesResponseBodyInstancesResourceCapacityUnit(TeaModel):
+    def __init__(
+        self,
+        max_capacity_unit: int = None,
+        min_capacity_unit: int = None,
+        used_capacity_unit: int = None,
+    ):
+        self.max_capacity_unit = max_capacity_unit
+        self.min_capacity_unit = min_capacity_unit
+        self.used_capacity_unit = used_capacity_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity_unit is not None:
+            result['MaxCapacityUnit'] = self.max_capacity_unit
+        if self.min_capacity_unit is not None:
+            result['MinCapacityUnit'] = self.min_capacity_unit
+        if self.used_capacity_unit is not None:
+            result['UsedCapacityUnit'] = self.used_capacity_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacityUnit') is not None:
+            self.max_capacity_unit = m.get('MaxCapacityUnit')
+        if m.get('MinCapacityUnit') is not None:
+            self.min_capacity_unit = m.get('MinCapacityUnit')
+        if m.get('UsedCapacityUnit') is not None:
+            self.used_capacity_unit = m.get('UsedCapacityUnit')
+        return self
+
+
 class DescribeInstancesResponseBodyInstancesResourceCpu(TeaModel):
     def __init__(
         self,
+        original_total_cpu: int = None,
         total_cpu: int = None,
         unit_cpu: int = None,
         used_cpu: int = None,
     ):
+        self.original_total_cpu = original_total_cpu
         # The name of the OceanBase cluster.    
         # It must be 1 to 20 characters in length.   
         # If this parameter is not specified, the value is the instance ID of the cluster by default.
@@ -6814,6 +11579,8 @@ class DescribeInstancesResponseBodyInstancesResourceCpu(TeaModel):
             return _map
 
         result = dict()
+        if self.original_total_cpu is not None:
+            result['OriginalTotalCpu'] = self.original_total_cpu
         if self.total_cpu is not None:
             result['TotalCpu'] = self.total_cpu
         if self.unit_cpu is not None:
@@ -6824,6 +11591,8 @@ class DescribeInstancesResponseBodyInstancesResourceCpu(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OriginalTotalCpu') is not None:
+            self.original_total_cpu = m.get('OriginalTotalCpu')
         if m.get('TotalCpu') is not None:
             self.total_cpu = m.get('TotalCpu')
         if m.get('UnitCpu') is not None:
@@ -6836,10 +11605,12 @@ class DescribeInstancesResponseBodyInstancesResourceCpu(TeaModel):
 class DescribeInstancesResponseBodyInstancesResourceDiskSize(TeaModel):
     def __init__(
         self,
+        original_total_disk_size: int = None,
         total_disk_size: int = None,
         unit_disk_size: int = None,
         used_disk_size: int = None,
     ):
+        self.original_total_disk_size = original_total_disk_size
         # The request ID.
         self.total_disk_size = total_disk_size
         # Example 1
@@ -6856,6 +11627,8 @@ class DescribeInstancesResponseBodyInstancesResourceDiskSize(TeaModel):
             return _map
 
         result = dict()
+        if self.original_total_disk_size is not None:
+            result['OriginalTotalDiskSize'] = self.original_total_disk_size
         if self.total_disk_size is not None:
             result['TotalDiskSize'] = self.total_disk_size
         if self.unit_disk_size is not None:
@@ -6866,6 +11639,8 @@ class DescribeInstancesResponseBodyInstancesResourceDiskSize(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OriginalTotalDiskSize') is not None:
+            self.original_total_disk_size = m.get('OriginalTotalDiskSize')
         if m.get('TotalDiskSize') is not None:
             self.total_disk_size = m.get('TotalDiskSize')
         if m.get('UnitDiskSize') is not None:
@@ -6878,10 +11653,12 @@ class DescribeInstancesResponseBodyInstancesResourceDiskSize(TeaModel):
 class DescribeInstancesResponseBodyInstancesResourceMemory(TeaModel):
     def __init__(
         self,
+        original_total_memory: int = None,
         total_memory: int = None,
         unit_memory: int = None,
         used_memory: int = None,
     ):
+        self.original_total_memory = original_total_memory
         # The number of CPU cores of the cluster.
         self.total_memory = total_memory
         # The size of used storage space of the cluster, in GB.
@@ -6898,6 +11675,8 @@ class DescribeInstancesResponseBodyInstancesResourceMemory(TeaModel):
             return _map
 
         result = dict()
+        if self.original_total_memory is not None:
+            result['OriginalTotalMemory'] = self.original_total_memory
         if self.total_memory is not None:
             result['TotalMemory'] = self.total_memory
         if self.unit_memory is not None:
@@ -6908,6 +11687,8 @@ class DescribeInstancesResponseBodyInstancesResourceMemory(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OriginalTotalMemory') is not None:
+            self.original_total_memory = m.get('OriginalTotalMemory')
         if m.get('TotalMemory') is not None:
             self.total_memory = m.get('TotalMemory')
         if m.get('UnitMemory') is not None:
@@ -6920,11 +11701,13 @@ class DescribeInstancesResponseBodyInstancesResourceMemory(TeaModel):
 class DescribeInstancesResponseBodyInstancesResource(TeaModel):
     def __init__(
         self,
+        capacity_unit: DescribeInstancesResponseBodyInstancesResourceCapacityUnit = None,
         cpu: DescribeInstancesResponseBodyInstancesResourceCpu = None,
         disk_size: DescribeInstancesResponseBodyInstancesResourceDiskSize = None,
         memory: DescribeInstancesResponseBodyInstancesResourceMemory = None,
         unit_count: int = None,
     ):
+        self.capacity_unit = capacity_unit
         # Indicates whether new nodes can be added.
         self.cpu = cpu
         # The time elapsed since the expiration of the cluster, in seconds.
@@ -6949,6 +11732,8 @@ class DescribeInstancesResponseBodyInstancesResource(TeaModel):
         self.unit_count = unit_count
 
     def validate(self):
+        if self.capacity_unit:
+            self.capacity_unit.validate()
         if self.cpu:
             self.cpu.validate()
         if self.disk_size:
@@ -6962,6 +11747,8 @@ class DescribeInstancesResponseBodyInstancesResource(TeaModel):
             return _map
 
         result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit.to_map()
         if self.cpu is not None:
             result['Cpu'] = self.cpu.to_map()
         if self.disk_size is not None:
@@ -6974,6 +11761,9 @@ class DescribeInstancesResponseBodyInstancesResource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesResourceCapacityUnit()
+            self.capacity_unit = temp_model.from_map(m['CapacityUnit'])
         if m.get('Cpu') is not None:
             temp_model = DescribeInstancesResponseBodyInstancesResourceCpu()
             self.cpu = temp_model.from_map(m['Cpu'])
@@ -6994,7 +11784,9 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         available_zones: List[str] = None,
         commodity_code: str = None,
         cpu: int = None,
+        cpu_architecture: str = None,
         create_time: str = None,
+        data_disk_auto_scale_config: DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig = None,
         deploy_mode: str = None,
         deploy_type: str = None,
         disk_size: str = None,
@@ -7002,6 +11794,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         enable_upgrade_nodes: bool = None,
         expire_seconds: int = None,
         expire_time: str = None,
+        in_temp_capacity_status: bool = None,
         instance_class: str = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -7012,7 +11805,6 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         pay_type: str = None,
         resource: DescribeInstancesResponseBodyInstancesResource = None,
         resource_group_id: str = None,
-        security_ips: List[str] = None,
         series: str = None,
         state: str = None,
         used_disk_size: int = None,
@@ -7028,8 +11820,10 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         # - oceanbase_oceanbasepost_public_cn: indicates an OceanBase cluster that is billed based on the pay-as-you-go plan and that is deployed in a China site.  
         # - oceanbase_obpre_public_intl: indicates an OceanBase cluster that is billed based on the subscription plan and that is deployed in an international site.
         self.cpu = cpu
+        self.cpu_architecture = cpu_architecture
         # The number of OceanBase clusters queried.
         self.create_time = create_time
+        self.data_disk_auto_scale_config = data_disk_auto_scale_config
         # The request ID.
         self.deploy_mode = deploy_mode
         # Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
@@ -7044,6 +11838,7 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.expire_seconds = expire_seconds
         # The information about the storage resources of the cluster.
         self.expire_time = expire_time
+        self.in_temp_capacity_status = in_temp_capacity_status
         # The instance type.
         self.instance_class = instance_class
         # The total storage space of the cluster, in GB.
@@ -7064,11 +11859,6 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.resource = resource
         # The number of OceanBase clusters queried.
         self.resource_group_id = resource_group_id
-        # The number of the page to return.    
-        # 
-        # - Start value: 1 
-        # - Default value: 1
-        self.security_ips = security_ips
         # The billing method for the OceanBase cluster. Valid values:  
         # - PREPAY: the subscription billing method.  
         # - POSTPAY: the pay-as-you-go billing method.
@@ -7083,6 +11873,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.data_disk_auto_scale_config:
+            self.data_disk_auto_scale_config.validate()
         if self.resource:
             self.resource.validate()
 
@@ -7098,8 +11890,12 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['CommodityCode'] = self.commodity_code
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+        if self.cpu_architecture is not None:
+            result['CpuArchitecture'] = self.cpu_architecture
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_disk_auto_scale_config is not None:
+            result['DataDiskAutoScaleConfig'] = self.data_disk_auto_scale_config.to_map()
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.deploy_type is not None:
@@ -7114,6 +11910,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['ExpireSeconds'] = self.expire_seconds
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.in_temp_capacity_status is not None:
+            result['InTempCapacityStatus'] = self.in_temp_capacity_status
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.instance_id is not None:
@@ -7134,8 +11932,6 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             result['Resource'] = self.resource.to_map()
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
-        if self.security_ips is not None:
-            result['SecurityIps'] = self.security_ips
         if self.series is not None:
             result['Series'] = self.series
         if self.state is not None:
@@ -7156,8 +11952,13 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.commodity_code = m.get('CommodityCode')
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+        if m.get('CpuArchitecture') is not None:
+            self.cpu_architecture = m.get('CpuArchitecture')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataDiskAutoScaleConfig') is not None:
+            temp_model = DescribeInstancesResponseBodyInstancesDataDiskAutoScaleConfig()
+            self.data_disk_auto_scale_config = temp_model.from_map(m['DataDiskAutoScaleConfig'])
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('DeployType') is not None:
@@ -7172,6 +11973,8 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.expire_seconds = m.get('ExpireSeconds')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('InTempCapacityStatus') is not None:
+            self.in_temp_capacity_status = m.get('InTempCapacityStatus')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceId') is not None:
@@ -7193,8 +11996,6 @@ class DescribeInstancesResponseBodyInstances(TeaModel):
             self.resource = temp_model.from_map(m['Resource'])
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
-        if m.get('SecurityIps') is not None:
-            self.security_ips = m.get('SecurityIps')
         if m.get('Series') is not None:
             self.series = m.get('Series')
         if m.get('State') is not None:
@@ -7296,6 +12097,158 @@ class DescribeInstancesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeMetricsDataRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        group_by_labels: str = None,
+        instance_id: str = None,
+        labels: str = None,
+        limit: str = None,
+        metrics: str = None,
+        sort_metric_key: str = None,
+        sort_order: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.group_by_labels = group_by_labels
+        self.instance_id = instance_id
+        self.labels = labels
+        self.limit = limit
+        self.metrics = metrics
+        self.sort_metric_key = sort_metric_key
+        self.sort_order = sort_order
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.group_by_labels is not None:
+            result['GroupByLabels'] = self.group_by_labels
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.limit is not None:
+            result['Limit'] = self.limit
+        if self.metrics is not None:
+            result['Metrics'] = self.metrics
+        if self.sort_metric_key is not None:
+            result['SortMetricKey'] = self.sort_metric_key
+        if self.sort_order is not None:
+            result['SortOrder'] = self.sort_order
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('GroupByLabels') is not None:
+            self.group_by_labels = m.get('GroupByLabels')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Limit') is not None:
+            self.limit = m.get('Limit')
+        if m.get('Metrics') is not None:
+            self.metrics = m.get('Metrics')
+        if m.get('SortMetricKey') is not None:
+            self.sort_metric_key = m.get('SortMetricKey')
+        if m.get('SortOrder') is not None:
+            self.sort_order = m.get('SortOrder')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeMetricsDataResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeMetricsDataResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeMetricsDataResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeMetricsDataResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -7487,9 +12440,11 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
         accept_language: str = None,
         current: int = None,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         filter_condition: str = None,
         instance_id: str = None,
+        merge_dynamic_sql: bool = None,
         node_ip: str = None,
         page_size: int = None,
         search_key_word: str = None,
@@ -7501,22 +12456,46 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The current page.
         self.current = current
+        # The name of the database.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
+        # The end time of the monitoring data.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # All parameters are referenced by the symbol @. For a list of available parameters, refer to the returned parameters in [Query performance indicators of an SQL statement](https://en.oceanbase.com/docs/community-ocp-en-10000000000840290).
         self.filter_condition = filter_condition
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        self.merge_dynamic_sql = merge_dynamic_sql
+        # The node IP.
         self.node_ip = node_ip
+        # Page size.
+        # - Start value: 1
+        # - Default value: 1
         self.page_size = page_size
+        # The search keyword.
         self.search_key_word = search_key_word
+        # The search parameter.
         self.search_param = search_param
+        # The search rule.   
+        # Valid values: "=", ">", ">=", "<", and "<="
         self.search_rule = search_rule
+        # The search value.
         self.search_value = search_value
-        # SQL ID。
+        # SQL ID.
         self.sql_id = sql_id
+        # Max length of the returned SQL text.
         self.sql_text_length = sql_text_length
+        # The start time of the monitoring data.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -7534,12 +12513,16 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
             result['Current'] = self.current
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.filter_condition is not None:
             result['FilterCondition'] = self.filter_condition
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.merge_dynamic_sql is not None:
+            result['MergeDynamicSql'] = self.merge_dynamic_sql
         if self.node_ip is not None:
             result['NodeIp'] = self.node_ip
         if self.page_size is not None:
@@ -7570,12 +12553,16 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
             self.current = m.get('Current')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('FilterCondition') is not None:
             self.filter_condition = m.get('FilterCondition')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MergeDynamicSql') is not None:
+            self.merge_dynamic_sql = m.get('MergeDynamicSql')
         if m.get('NodeIp') is not None:
             self.node_ip = m.get('NodeIp')
         if m.get('PageSize') is not None:
@@ -7599,10 +12586,11 @@ class DescribeOasAnomalySQLListRequest(TeaModel):
         return self
 
 
-class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
+class DescribeOasAnomalySQLListResponseBodyDataSqlList(TeaModel):
     def __init__(
         self,
         avg_cpu_time: float = None,
+        avg_db_time: float = None,
         avg_elapsed_time: float = None,
         avg_get_plan_time: float = None,
         cpu_time: float = None,
@@ -7615,10 +12603,12 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
         sql_id: str = None,
         sql_text_short: str = None,
         suggestion: str = None,
+        sum_db_time: float = None,
         sum_elapsed_time: str = None,
         user_name: str = None,
     ):
         self.avg_cpu_time = avg_cpu_time
+        self.avg_db_time = avg_db_time
         self.avg_elapsed_time = avg_elapsed_time
         self.avg_get_plan_time = avg_get_plan_time
         self.cpu_time = cpu_time
@@ -7628,10 +12618,10 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
         self.executions = executions
         self.last_executed_time = last_executed_time
         self.risk_level = risk_level
-        # SQL ID。
         self.sql_id = sql_id
         self.sql_text_short = sql_text_short
         self.suggestion = suggestion
+        self.sum_db_time = sum_db_time
         self.sum_elapsed_time = sum_elapsed_time
         self.user_name = user_name
 
@@ -7646,6 +12636,8 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
         result = dict()
         if self.avg_cpu_time is not None:
             result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_db_time is not None:
+            result['AvgDbTime'] = self.avg_db_time
         if self.avg_elapsed_time is not None:
             result['AvgElapsedTime'] = self.avg_elapsed_time
         if self.avg_get_plan_time is not None:
@@ -7670,6 +12662,8 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
             result['SqlTextShort'] = self.sql_text_short
         if self.suggestion is not None:
             result['Suggestion'] = self.suggestion
+        if self.sum_db_time is not None:
+            result['SumDbTime'] = self.sum_db_time
         if self.sum_elapsed_time is not None:
             result['SumElapsedTime'] = self.sum_elapsed_time
         if self.user_name is not None:
@@ -7680,6 +12674,8 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
         m = m or dict()
         if m.get('AvgCpuTime') is not None:
             self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDbTime') is not None:
+            self.avg_db_time = m.get('AvgDbTime')
         if m.get('AvgElapsedTime') is not None:
             self.avg_elapsed_time = m.get('AvgElapsedTime')
         if m.get('AvgGetPlanTime') is not None:
@@ -7704,6 +12700,166 @@ class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
             self.sql_text_short = m.get('SqlTextShort')
         if m.get('Suggestion') is not None:
             self.suggestion = m.get('Suggestion')
+        if m.get('SumDbTime') is not None:
+            self.sum_db_time = m.get('SumDbTime')
+        if m.get('SumElapsedTime') is not None:
+            self.sum_elapsed_time = m.get('SumElapsedTime')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        return self
+
+
+class DescribeOasAnomalySQLListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        avg_cpu_time: float = None,
+        avg_db_time: float = None,
+        avg_elapsed_time: float = None,
+        avg_get_plan_time: float = None,
+        cpu_time: float = None,
+        db_name: str = None,
+        diag_types: List[str] = None,
+        diagnosis: str = None,
+        dynamic_sql: bool = None,
+        executions: float = None,
+        last_executed_time: float = None,
+        risk_level: str = None,
+        sql_id: str = None,
+        sql_list: List[DescribeOasAnomalySQLListResponseBodyDataSqlList] = None,
+        sql_text_short: str = None,
+        suggestion: str = None,
+        sum_db_time: float = None,
+        sum_elapsed_time: str = None,
+        user_name: str = None,
+    ):
+        # Average CPU time of the suspicious SQL.
+        self.avg_cpu_time = avg_cpu_time
+        self.avg_db_time = avg_db_time
+        # Average response time of the suspicious SQL.
+        self.avg_elapsed_time = avg_elapsed_time
+        # Average time to obtain the execution plan of the suspicious SQL.
+        self.avg_get_plan_time = avg_get_plan_time
+        # CPU time of the suspicious SQL.
+        self.cpu_time = cpu_time
+        # The name of the database.
+        self.db_name = db_name
+        # The type of the diagnosis.
+        self.diag_types = diag_types
+        # The details of diagnosis.
+        self.diagnosis = diagnosis
+        self.dynamic_sql = dynamic_sql
+        # Total execution count of the suspicious SQL.
+        self.executions = executions
+        # Last execution time of the suspicious SQL.
+        self.last_executed_time = last_executed_time
+        # Risk level.
+        self.risk_level = risk_level
+        # SQL ID.
+        self.sql_id = sql_id
+        self.sql_list = sql_list
+        # Prefix of the SQL text.
+        self.sql_text_short = sql_text_short
+        # Suggestion for the suspicious SQL.
+        self.suggestion = suggestion
+        self.sum_db_time = sum_db_time
+        # Total response time of the suspicious SQL.
+        self.sum_elapsed_time = sum_elapsed_time
+        # Username.
+        self.user_name = user_name
+
+    def validate(self):
+        if self.sql_list:
+            for k in self.sql_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_cpu_time is not None:
+            result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_db_time is not None:
+            result['AvgDbTime'] = self.avg_db_time
+        if self.avg_elapsed_time is not None:
+            result['AvgElapsedTime'] = self.avg_elapsed_time
+        if self.avg_get_plan_time is not None:
+            result['AvgGetPlanTime'] = self.avg_get_plan_time
+        if self.cpu_time is not None:
+            result['CpuTime'] = self.cpu_time
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.diag_types is not None:
+            result['DiagTypes'] = self.diag_types
+        if self.diagnosis is not None:
+            result['Diagnosis'] = self.diagnosis
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
+        if self.executions is not None:
+            result['Executions'] = self.executions
+        if self.last_executed_time is not None:
+            result['LastExecutedTime'] = self.last_executed_time
+        if self.risk_level is not None:
+            result['RiskLevel'] = self.risk_level
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        result['SqlList'] = []
+        if self.sql_list is not None:
+            for k in self.sql_list:
+                result['SqlList'].append(k.to_map() if k else None)
+        if self.sql_text_short is not None:
+            result['SqlTextShort'] = self.sql_text_short
+        if self.suggestion is not None:
+            result['Suggestion'] = self.suggestion
+        if self.sum_db_time is not None:
+            result['SumDbTime'] = self.sum_db_time
+        if self.sum_elapsed_time is not None:
+            result['SumElapsedTime'] = self.sum_elapsed_time
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgCpuTime') is not None:
+            self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDbTime') is not None:
+            self.avg_db_time = m.get('AvgDbTime')
+        if m.get('AvgElapsedTime') is not None:
+            self.avg_elapsed_time = m.get('AvgElapsedTime')
+        if m.get('AvgGetPlanTime') is not None:
+            self.avg_get_plan_time = m.get('AvgGetPlanTime')
+        if m.get('CpuTime') is not None:
+            self.cpu_time = m.get('CpuTime')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DiagTypes') is not None:
+            self.diag_types = m.get('DiagTypes')
+        if m.get('Diagnosis') is not None:
+            self.diagnosis = m.get('Diagnosis')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
+        if m.get('Executions') is not None:
+            self.executions = m.get('Executions')
+        if m.get('LastExecutedTime') is not None:
+            self.last_executed_time = m.get('LastExecutedTime')
+        if m.get('RiskLevel') is not None:
+            self.risk_level = m.get('RiskLevel')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        self.sql_list = []
+        if m.get('SqlList') is not None:
+            for k in m.get('SqlList'):
+                temp_model = DescribeOasAnomalySQLListResponseBodyDataSqlList()
+                self.sql_list.append(temp_model.from_map(k))
+        if m.get('SqlTextShort') is not None:
+            self.sql_text_short = m.get('SqlTextShort')
+        if m.get('Suggestion') is not None:
+            self.suggestion = m.get('Suggestion')
+        if m.get('SumDbTime') is not None:
+            self.sum_db_time = m.get('SumDbTime')
         if m.get('SumElapsedTime') is not None:
             self.sum_elapsed_time = m.get('SumElapsedTime')
         if m.get('UserName') is not None:
@@ -7718,8 +12874,11 @@ class DescribeOasAnomalySQLListResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The list of suspicious SQLs.
         self.data = data
+        # The request ID.
         self.request_id = request_id
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -7806,18 +12965,27 @@ class DescribeOasSQLDetailsRequest(TeaModel):
     def __init__(
         self,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         instance_id: str = None,
         sql_id: str = None,
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # The name of the database.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
+        # The end time of querying the SQL execution plan.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
-        # SQL ID。
+        # SQL ID.
         self.sql_id = sql_id
+        # The start time of querying the SQL execution plan.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -7831,6 +12999,8 @@ class DescribeOasSQLDetailsRequest(TeaModel):
         result = dict()
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
@@ -7847,6 +13017,8 @@ class DescribeOasSQLDetailsRequest(TeaModel):
         m = m or dict()
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
@@ -7869,10 +13041,15 @@ class DescribeOasSQLDetailsResponseBodyData(TeaModel):
         tables: List[str] = None,
         user_name: str = None,
     ):
+        # The name of the database.
         self.db_name = db_name
+        # SQL text.
         self.fulltext = fulltext
+        # Parameterized text.
         self.statement = statement
+        # The table name related to the SQL.
         self.tables = tables
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -7917,7 +13094,9 @@ class DescribeOasSQLDetailsResponseBody(TeaModel):
         data: DescribeOasSQLDetailsResponseBodyData = None,
         request_id: str = None,
     ):
+        # The list of the SQL execution plan.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7995,6 +13174,7 @@ class DescribeOasSQLHistoryListRequest(TeaModel):
         self,
         accept_language: str = None,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         instance_id: str = None,
         node_ip: str = None,
@@ -8002,14 +13182,26 @@ class DescribeOasSQLHistoryListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The name of the database.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
+        # The end time of querying the execution history of the SQL statement.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The IP address of the node.
         self.node_ip = node_ip
-        # SQL ID。
+        # SQL ID.
         self.sql_id = sql_id
+        # The start time of querying the execution history of the SQL statement.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -8025,6 +13217,8 @@ class DescribeOasSQLHistoryListRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
@@ -8045,6 +13239,8 @@ class DescribeOasSQLHistoryListRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
@@ -8131,73 +13327,139 @@ class DescribeOasSQLHistoryListResponseBodyData(TeaModel):
         user_name: str = None,
         weak_consistency_percentage: float = None,
     ):
+        # Average updated rows during the execution period.
         self.avg_affected_rows = avg_affected_rows
+        # Average Application event wait time (in milliseconds) during the client waiting period.
         self.avg_application_wait_time = avg_application_wait_time
+        # Average BlockCache hit count during the execution period.
         self.avg_block_cache_hit = avg_block_cache_hit
+        # Average BlockIndexCache hit count during the execution period.
         self.avg_block_index_cache_hit = avg_block_index_cache_hit
+        # Average BloomFilterCache hit count during the execution period.
         self.avg_bloom_filter_cache_hit = avg_bloom_filter_cache_hit
+        # Average Concurrency event wait time (in milliseconds) during the execution period.
         self.avg_concurrency_wait_time = avg_concurrency_wait_time
+        # Average CPU time (in milliseconds) during the execution period.
         self.avg_cpu_time = avg_cpu_time
+        # Average syntax parsing time (in milliseconds) during the execution period.
         self.avg_decode_time = avg_decode_time
+        # Average physical read count during the execution period.
         self.avg_disk_reads = avg_disk_reads
+        # Average response time (in milliseconds) during the execution period.
         self.avg_elapsed_time = avg_elapsed_time
+        # Average plan execution time (in milliseconds) during the execution period.
         self.avg_execute_time = avg_execute_time
+        # Average number of RPC requests executed during the execution period.
         self.avg_executor_rpc_count = avg_executor_rpc_count
+        # Average degree of parallelism during the execution period.
         self.avg_expected_worker_count = avg_expected_worker_count
+        # Average plan generation time (in milliseconds) during the execution period.
         self.avg_get_plan_time = avg_get_plan_time
+        # Average logical reads during the execution period.
         self.avg_logical_reads = avg_logical_reads
+        # Average Memstore read rows during the execution period.
         self.avg_memstore_read_rows = avg_memstore_read_rows
+        # Average network transmission time (in milliseconds) during the execution period.
         self.avg_net_time = avg_net_time
+        # Average network enqueue time (in milliseconds) during the network waiting period.
         self.avg_net_wait_time = avg_net_wait_time
+        # Average number of partition accessed during the execution period.
         self.avg_partition_count = avg_partition_count
+        # Average queueing time (in milliseconds) during the execution period.
         self.avg_queue_time = avg_queue_time
+        # Average number of rows returned during the execution period.
         self.avg_return_rows = avg_return_rows
+        # Average RowCache hit count during the execution period.
         self.avg_row_cache_hit = avg_row_cache_hit
+        # Average number of RPC sent during the execution.
         self.avg_rpc_count = avg_rpc_count
+        # Average Schedule event wait time (in milliseconds) during the scheduling period.
         self.avg_schedule_time = avg_schedule_time
+        # Average Ssstore read rows during the execution period.
         self.avg_ssstore_read_rows = avg_ssstore_read_rows
+        # Average number of threads used of the SQL during the execution period.
         self.avg_used_worker_count = avg_used_worker_count
+        # Average UserIO event wait time (in milliseconds) during the execution period.
         self.avg_user_io_wait_time = avg_user_io_wait_time
+        # Average number of waits during the execution period.
         self.avg_wait_count = avg_wait_count
+        # Average wait time (in milliseconds) during the execution period.
         self.avg_wait_time = avg_wait_time
+        # The name of the database.
         self.db_name = db_name
+        # Distributed plan percentage during the execution period.
         self.dist_plan_percentage = dist_plan_percentage
+        # Average execution count per second during the execution period.
         self.exec_ps = exec_ps
+        # Total number of executions during the execution period.
         self.executions = executions
+        # The total number of errors during the execution period.
         self.fail_count = fail_count
+        # Error percentage during the execution period.
         self.fail_percentage = fail_percentage
+        # Local plan percentage during the execution period.
         self.local_plan_percentage = local_plan_percentage
+        # Max updated rows during the execution period.
         self.max_affected_rows = max_affected_rows
+        # Max Application event wait time (in milliseconds) during the execution period
         self.max_application_wait_time = max_application_wait_time
+        # Max Concurrency event wait time (in milliseconds) during the execution period
         self.max_concurrency_wait_time = max_concurrency_wait_time
+        # Max CPU time.
         self.max_cpu_time = max_cpu_time
+        # Max physical read count during the execution period.
         self.max_disk_reads = max_disk_reads
+        # Max response time.
         self.max_elapsed_time = max_elapsed_time
+        # Max returned rows during the execution period.
         self.max_return_rows = max_return_rows
+        # Max UserIO event wait time (in milliseconds) during the execution period
         self.max_user_io_wait_time = max_user_io_wait_time
+        # Max wait time (in milliseconds) during the execution period.
         self.max_wait_time = max_wait_time
+        # Plan hit rage during the execution period.
         self.miss_plan_percentage = miss_plan_percentage
+        # Missed plan count.
         self.miss_plans = miss_plans
+        # Remote plan percentage during the execution period.
         self.remote_plan_percentage = remote_plan_percentage
+        # Remote plan count.
         self.remote_plans = remote_plans
+        # Number of occurrences of code 4012 during the execution period.
         self.ret_code_4012count = ret_code_4012count
+        # Number of occurrences of code 4013 during the execution period.
         self.ret_code_4013count = ret_code_4013count
+        # Number of occurrences of code 5001 during the execution period.
         self.ret_code_5001count = ret_code_5001count
+        # Number of occurrences of code 5024 during the execution period.
         self.ret_code_5024count = ret_code_5024count
+        # Number of occurrences of code 5167 during the execution period.
         self.ret_code_5167count = ret_code_5167count
+        # Number of occurrences of code 5217 during the execution period.
         self.ret_code_5217count = ret_code_5217count
+        # Number of occurrences of code 6002 during the execution period.
         self.ret_code_6002count = ret_code_6002count
+        # Total number of retries during the execution period.
         self.retry_count = retry_count
-        # SQL ID
+        # SQL ID.
         self.sqlid = sqlid
+        # The server where the SQL is executed.
         self.server = server
+        # Strong consistent transaction percentage during the execution period.
         self.strong_consistency_percentage = strong_consistency_percentage
+        # Total response time (in milliseconds) during the execution period.
         self.sum_elapsed_time = sum_elapsed_time
+        # Total logical reads.
         self.sum_logical_reads = sum_logical_reads
+        # The total wait time (in milliseconds) during the internal waiting period.
         self.sum_wait_time = sum_wait_time
+        # Table scan percentage during the execution period.
         self.table_scan_percentage = table_scan_percentage
+        # Timestamp for the sample.
         self.timestamp = timestamp
+        # Username.
         self.user_name = user_name
+        # Eventually consistent transaction percentage during the execution period.
         self.weak_consistency_percentage = weak_consistency_percentage
 
     def validate(self):
@@ -8490,7 +13752,9 @@ class DescribeOasSQLHistoryListResponseBody(TeaModel):
         data: List[DescribeOasSQLHistoryListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The list of SQL execution history.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -8574,19 +13838,31 @@ class DescribeOasSQLPlansRequest(TeaModel):
         self,
         accept_language: str = None,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         instance_id: str = None,
         sql_id: str = None,
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # Supported language. Valid values:
+        # - zh-CN: Chinese
+        # - en-US: English
         self.accept_language = accept_language
+        # The name of the database.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
+        # The end time of querying the SQL execution plan.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
-        # SQL ID。
+        # SQL ID.
         self.sql_id = sql_id
+        # The start time of querying the SQL execution plan.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -8602,6 +13878,8 @@ class DescribeOasSQLPlansRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
@@ -8620,6 +13898,8 @@ class DescribeOasSQLPlansRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
@@ -8638,6 +13918,7 @@ class DescribeOasSQLPlansResponseBodyDataPlanExplain(TeaModel):
         self,
         plan_json_string: str = None,
     ):
+        # JSON string of the SQL execution plan.
         self.plan_json_string = plan_json_string
 
     def validate(self):
@@ -8694,45 +13975,79 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
         schema_version: int = None,
         server: str = None,
         server_id: int = None,
+        sql_id: str = None,
         table_scan: bool = None,
         timeout_percentage: float = None,
         uid: str = None,
     ):
+        # Average Application event waiting time (in milliseconds) during the execution period.
         self.avg_application_wait_time = avg_application_wait_time
+        # Average cache read count during the execution period.
         self.avg_buffer_gets = avg_buffer_gets
+        # Average Concurrency event waiting time (in milliseconds) during the execution period.
         self.avg_concurrency_wait_time = avg_concurrency_wait_time
+        # Average CPU time (in milliseconds) during the execution period.
         self.avg_cpu_time = avg_cpu_time
+        # The average physical read count during the execution period.
         self.avg_disk_reads = avg_disk_reads
+        # The average physical write count during the execution period.
         self.avg_disk_writes = avg_disk_writes
+        # Average interval waiting time (in milliseconds) during the execution period.
         self.avg_elapsed_time = avg_elapsed_time
+        # Average row processing waiting time (in milliseconds) during the execution period.
         self.avg_row_processed = avg_row_processed
+        # Average UserIo event waiting time (in milliseconds) during the execution period.
         self.avg_user_io_wait_time = avg_user_io_wait_time
+        # Collection time.
         self.collect_time_us = collect_time_us
+        # Percentage of delayed long-running queries.
         self.delayed_large_query_percentage = delayed_large_query_percentage
+        # The average execution count per second during the execution period.
         self.exec_ps = exec_ps
+        # The total number of executions during the execution period.
         self.executions = executions
+        # First time to load the plan.
         self.first_load_time = first_load_time
+        # First loading time.
         self.first_load_time_us = first_load_time_us
+        # Whether to hit the diagnosis.
         self.hit_diagnosis = hit_diagnosis
+        # Hit rate.
         self.hit_percentage = hit_percentage
+        # Percentage of completed long-running queries.
         self.large_query_percentage = large_query_percentage
+        # Merge version.
         self.merged_version = merged_version
+        # Database ID.
         self.ob_db_id = ob_db_id
-        # server  ID。
+        # Server ID.
         self.ob_server_id = ob_server_id
+        # The outline_data parameter of the SQL execution plan.
         self.outline_data = outline_data
-        # Outline ID。
+        # Outline ID.
         self.outline_id = outline_id
+        # The internal identifier of the SQL execution plan in the diagnostic system.
         self.plan_hash = plan_hash
+        # The ID of the plan.
         self.plan_id = plan_id
+        # Plan size.
         self.plan_size = plan_size
+        # Plan type, including LOCAL, REMOTE, DIST.
         self.plan_type = plan_type
+        # The internal unique identifier of the SQL execution plan in the diagnostic system.
         self.plan_union_hash = plan_union_hash
+        # Schema version.
         self.schema_version = schema_version
+        # The server where the SQL is executed.
         self.server = server
+        # The ID of the backend server instance.
         self.server_id = server_id
+        self.sql_id = sql_id
+        # Whether a full table scan is performed.
         self.table_scan = table_scan
+        # Percentage of timeouts.
         self.timeout_percentage = timeout_percentage
+        # The unique identifier of the plan.
         self.uid = uid
 
     def validate(self):
@@ -8806,6 +14121,8 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
             result['Server'] = self.server
         if self.server_id is not None:
             result['ServerId'] = self.server_id
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
         if self.table_scan is not None:
             result['TableScan'] = self.table_scan
         if self.timeout_percentage is not None:
@@ -8878,6 +14195,8 @@ class DescribeOasSQLPlansResponseBodyDataPlans(TeaModel):
             self.server = m.get('Server')
         if m.get('ServerId') is not None:
             self.server_id = m.get('ServerId')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
         if m.get('TableScan') is not None:
             self.table_scan = m.get('TableScan')
         if m.get('TimeoutPercentage') is not None:
@@ -8904,18 +14223,31 @@ class DescribeOasSQLPlansResponseBodyData(TeaModel):
         plans: List[DescribeOasSQLPlansResponseBodyDataPlans] = None,
         query_sql: str = None,
     ):
+        # Average CPU time (in milliseconds) during the execution period.
         self.avg_cpu_time = avg_cpu_time
+        # Whether to bind the execution plan.
         self.bounded = bounded
+        # Execution count.
         self.executions = executions
+        # First loading time.
         self.first_load_time = first_load_time
+        # Whether to hit the diagnosis.
         self.hit_diagnosis = hit_diagnosis
+        # Hit rate.
         self.hit_percentage = hit_percentage
+        # Merge version.
         self.merged_version = merged_version
+        # Execution plan.
         self.plan_explain = plan_explain
+        # The internal identifier of the SQL execution plan in the diagnostic system.
         self.plan_hash = plan_hash
+        # Execution plan type.
         self.plan_type = plan_type
+        # The internal unique identifier of the SQL execution plan in the diagnostic system.
         self.plan_union_hash = plan_union_hash
+        # The list of the execution plan.
         self.plans = plans
+        # The SQL for the query.
         self.query_sql = query_sql
 
     def validate(self):
@@ -9003,7 +14335,9 @@ class DescribeOasSQLPlansResponseBody(TeaModel):
         data: List[DescribeOasSQLPlansResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The list of SQL execution plan.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9087,9 +14421,11 @@ class DescribeOasSlowSQLListRequest(TeaModel):
         self,
         accept_language: str = None,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         filter_condition: str = None,
         instance_id: str = None,
+        merge_dynamic_sql: bool = None,
         node_ip: str = None,
         search_key_word: str = None,
         search_param: str = None,
@@ -9100,19 +14436,37 @@ class DescribeOasSlowSQLListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # The language of the response.
         self.accept_language = accept_language
+        # The name of the database.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
+        # The end time of querying slow SQL historical parameters.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # All parameters are referenced by the symbol @. For a list of available parameters, refer to the returned parameters in [Query performance indicators of an SQL statement](https://en.oceanbase.com/docs/community-ocp-en-10000000000840290).
         self.filter_condition = filter_condition
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        self.merge_dynamic_sql = merge_dynamic_sql
+        # The IP of the database node.
         self.node_ip = node_ip
+        # The search keyword.
         self.search_key_word = search_key_word
+        # The search parameter.
         self.search_param = search_param
+        # The search rule.
         self.search_rule = search_rule
+        # The search value.
         self.search_value = search_value
+        # SQL ID, the unique identifier of the SQL.
         self.sql_id = sql_id
+        # Max length of the returned SQL text.
         self.sql_text_length = sql_text_length
+        # The start time of querying slow SQL historical parameters.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -9128,12 +14482,16 @@ class DescribeOasSlowSQLListRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.filter_condition is not None:
             result['FilterCondition'] = self.filter_condition
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.merge_dynamic_sql is not None:
+            result['MergeDynamicSql'] = self.merge_dynamic_sql
         if self.node_ip is not None:
             result['NodeIp'] = self.node_ip
         if self.search_key_word is not None:
@@ -9160,12 +14518,16 @@ class DescribeOasSlowSQLListRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('FilterCondition') is not None:
             self.filter_condition = m.get('FilterCondition')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MergeDynamicSql') is not None:
+            self.merge_dynamic_sql = m.get('MergeDynamicSql')
         if m.get('NodeIp') is not None:
             self.node_ip = m.get('NodeIp')
         if m.get('SearchKeyWord') is not None:
@@ -9187,7 +14549,7 @@ class DescribeOasSlowSQLListRequest(TeaModel):
         return self
 
 
-class DescribeOasSlowSQLListResponseBodyData(TeaModel):
+class DescribeOasSlowSQLListResponseBodyDataSqlList(TeaModel):
     def __init__(
         self,
         avg_affected_rows: float = None,
@@ -9197,6 +14559,7 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
         avg_bloom_filter_cache_hit: float = None,
         avg_concurrency_wait_time: float = None,
         avg_cpu_time: float = None,
+        avg_db_time: float = None,
         avg_decode_time: float = None,
         avg_disk_reads: float = None,
         avg_elapsed_time: float = None,
@@ -9257,6 +14620,7 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
         sql_text_short: str = None,
         sql_type: str = None,
         strong_consistency_percentage: float = None,
+        sum_db_time: float = None,
         sum_elapsed_time: float = None,
         sum_logical_reads: float = None,
         sum_wait_time: float = None,
@@ -9273,6 +14637,7 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
         self.avg_bloom_filter_cache_hit = avg_bloom_filter_cache_hit
         self.avg_concurrency_wait_time = avg_concurrency_wait_time
         self.avg_cpu_time = avg_cpu_time
+        self.avg_db_time = avg_db_time
         self.avg_decode_time = avg_decode_time
         self.avg_disk_reads = avg_disk_reads
         self.avg_elapsed_time = avg_elapsed_time
@@ -9329,11 +14694,11 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
         self.server = server
         self.server_ip = server_ip
         self.server_port = server_port
-        # SQL ID。
         self.sql_id = sql_id
         self.sql_text_short = sql_text_short
         self.sql_type = sql_type
         self.strong_consistency_percentage = strong_consistency_percentage
+        self.sum_db_time = sum_db_time
         self.sum_elapsed_time = sum_elapsed_time
         self.sum_logical_reads = sum_logical_reads
         self.sum_wait_time = sum_wait_time
@@ -9366,6 +14731,8 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
             result['AvgConcurrencyWaitTime'] = self.avg_concurrency_wait_time
         if self.avg_cpu_time is not None:
             result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_db_time is not None:
+            result['AvgDbTime'] = self.avg_db_time
         if self.avg_decode_time is not None:
             result['AvgDecodeTime'] = self.avg_decode_time
         if self.avg_disk_reads is not None:
@@ -9486,6 +14853,8 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
             result['SqlType'] = self.sql_type
         if self.strong_consistency_percentage is not None:
             result['StrongConsistencyPercentage'] = self.strong_consistency_percentage
+        if self.sum_db_time is not None:
+            result['SumDbTime'] = self.sum_db_time
         if self.sum_elapsed_time is not None:
             result['SumElapsedTime'] = self.sum_elapsed_time
         if self.sum_logical_reads is not None:
@@ -9520,6 +14889,8 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
             self.avg_concurrency_wait_time = m.get('AvgConcurrencyWaitTime')
         if m.get('AvgCpuTime') is not None:
             self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDbTime') is not None:
+            self.avg_db_time = m.get('AvgDbTime')
         if m.get('AvgDecodeTime') is not None:
             self.avg_decode_time = m.get('AvgDecodeTime')
         if m.get('AvgDiskReads') is not None:
@@ -9640,6 +15011,586 @@ class DescribeOasSlowSQLListResponseBodyData(TeaModel):
             self.sql_type = m.get('SqlType')
         if m.get('StrongConsistencyPercentage') is not None:
             self.strong_consistency_percentage = m.get('StrongConsistencyPercentage')
+        if m.get('SumDbTime') is not None:
+            self.sum_db_time = m.get('SumDbTime')
+        if m.get('SumElapsedTime') is not None:
+            self.sum_elapsed_time = m.get('SumElapsedTime')
+        if m.get('SumLogicalReads') is not None:
+            self.sum_logical_reads = m.get('SumLogicalReads')
+        if m.get('SumWaitTime') is not None:
+            self.sum_wait_time = m.get('SumWaitTime')
+        if m.get('TableScanPercentage') is not None:
+            self.table_scan_percentage = m.get('TableScanPercentage')
+        if m.get('TotalWaitTime') is not None:
+            self.total_wait_time = m.get('TotalWaitTime')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WaitEvent') is not None:
+            self.wait_event = m.get('WaitEvent')
+        if m.get('WeakConsistencyPercentage') is not None:
+            self.weak_consistency_percentage = m.get('WeakConsistencyPercentage')
+        return self
+
+
+class DescribeOasSlowSQLListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        avg_affected_rows: float = None,
+        avg_application_wait_time: float = None,
+        avg_block_cache_hit: float = None,
+        avg_block_index_cache_hit: float = None,
+        avg_bloom_filter_cache_hit: float = None,
+        avg_concurrency_wait_time: float = None,
+        avg_cpu_time: float = None,
+        avg_db_time: float = None,
+        avg_decode_time: float = None,
+        avg_disk_reads: float = None,
+        avg_elapsed_time: float = None,
+        avg_execute_time: float = None,
+        avg_executor_rpc_count: float = None,
+        avg_expected_worker_count: float = None,
+        avg_get_plan_time: float = None,
+        avg_logical_reads: float = None,
+        avg_memstore_read_rows: float = None,
+        avg_net_time: float = None,
+        avg_net_wait_time: float = None,
+        avg_partition_count: float = None,
+        avg_queue_time: float = None,
+        avg_return_rows: float = None,
+        avg_row_cache_hit: float = None,
+        avg_rpc_count: float = None,
+        avg_schedule_time: float = None,
+        avg_ssstore_read_rows: float = None,
+        avg_used_worker_count: float = None,
+        avg_user_io_wait_time: float = None,
+        avg_wait_count: float = None,
+        avg_wait_time: float = None,
+        client_ip: str = None,
+        db_name: str = None,
+        dist_plan_percentage: float = None,
+        dynamic_sql: bool = None,
+        exec_ps: float = None,
+        executions: float = None,
+        fail_count: float = None,
+        fail_percentage: float = None,
+        inner: bool = None,
+        local_plan_percentage: float = None,
+        max_affected_rows: float = None,
+        max_application_wait_time: float = None,
+        max_concurrency_wait_time: float = None,
+        max_cpu_time: float = None,
+        max_disk_reads: float = None,
+        max_elapsed_time: float = None,
+        max_return_rows: float = None,
+        max_user_io_wait_time: float = None,
+        max_wait_time: float = None,
+        miss_plan_percentage: float = None,
+        miss_plans: float = None,
+        remote_plan_percentage: float = None,
+        remote_plans: float = None,
+        ret_code_4012count: int = None,
+        ret_code_4013count: int = None,
+        ret_code_5001count: int = None,
+        ret_code_5024count: int = None,
+        ret_code_5167count: int = None,
+        ret_code_5217count: int = None,
+        ret_code_6002count: int = None,
+        retry_count: float = None,
+        rpc_count: float = None,
+        server: str = None,
+        server_ip: str = None,
+        server_port: int = None,
+        sql_id: str = None,
+        sql_list: List[DescribeOasSlowSQLListResponseBodyDataSqlList] = None,
+        sql_text_short: str = None,
+        sql_type: str = None,
+        strong_consistency_percentage: float = None,
+        sum_db_time: float = None,
+        sum_elapsed_time: float = None,
+        sum_logical_reads: float = None,
+        sum_wait_time: float = None,
+        table_scan_percentage: float = None,
+        total_wait_time: float = None,
+        user_name: str = None,
+        wait_event: str = None,
+        weak_consistency_percentage: float = None,
+    ):
+        # Average updated rows during the execution period.
+        self.avg_affected_rows = avg_affected_rows
+        # Average Application event wait time (in milliseconds) during the client waiting period.
+        self.avg_application_wait_time = avg_application_wait_time
+        # Average BlockCache hit count during the execution period.
+        self.avg_block_cache_hit = avg_block_cache_hit
+        # Average BlockIndexCache hit count during the execution period.
+        self.avg_block_index_cache_hit = avg_block_index_cache_hit
+        # Average BloomFilterCache hit count during the execution period.
+        self.avg_bloom_filter_cache_hit = avg_bloom_filter_cache_hit
+        # Average Concurrency event wait time (in milliseconds) during the execution period.
+        self.avg_concurrency_wait_time = avg_concurrency_wait_time
+        # Average CPU time (in milliseconds) during the execution period.
+        self.avg_cpu_time = avg_cpu_time
+        self.avg_db_time = avg_db_time
+        # Average syntax parsing time (in milliseconds) during the execution period.
+        self.avg_decode_time = avg_decode_time
+        # Average physical read count during the execution period.
+        self.avg_disk_reads = avg_disk_reads
+        # Average response time (in milliseconds) during the execution period.
+        self.avg_elapsed_time = avg_elapsed_time
+        # Average plan execution time (in milliseconds) during the execution period.
+        self.avg_execute_time = avg_execute_time
+        # Average number of RPC requests executed during the execution period.
+        self.avg_executor_rpc_count = avg_executor_rpc_count
+        # Average degree of parallelism during the execution period.
+        self.avg_expected_worker_count = avg_expected_worker_count
+        # Average plan generation time (in milliseconds) during the execution period.
+        self.avg_get_plan_time = avg_get_plan_time
+        # Average logical reads of the SQL during the execution period.
+        self.avg_logical_reads = avg_logical_reads
+        # Strong consistent transaction percentage during the execution period.
+        self.avg_memstore_read_rows = avg_memstore_read_rows
+        # Average network transmission time (in milliseconds) during the execution period.
+        self.avg_net_time = avg_net_time
+        # Average network enqueue time (in milliseconds) during the network waiting period.
+        self.avg_net_wait_time = avg_net_wait_time
+        # Average number of partition accessed during the execution period.
+        self.avg_partition_count = avg_partition_count
+        # Average queueing time (in milliseconds) during the execution period.
+        self.avg_queue_time = avg_queue_time
+        # Average number of rows returned during the execution period.
+        self.avg_return_rows = avg_return_rows
+        # Average RowCache hit count during the execution period.
+        self.avg_row_cache_hit = avg_row_cache_hit
+        # Average number of RPC sent during the execution.
+        self.avg_rpc_count = avg_rpc_count
+        # Average Schedule event wait time (in milliseconds) during the scheduling period.
+        self.avg_schedule_time = avg_schedule_time
+        # Eventually consistent transaction percentage during the execution period.
+        self.avg_ssstore_read_rows = avg_ssstore_read_rows
+        # Average number of threads used of the SQL during the execution period.
+        self.avg_used_worker_count = avg_used_worker_count
+        # Average UserIO event wait time (in milliseconds) during the execution period.
+        self.avg_user_io_wait_time = avg_user_io_wait_time
+        # Average number of waits during the execution period.
+        self.avg_wait_count = avg_wait_count
+        # Average wait time (in milliseconds) during the execution period.
+        self.avg_wait_time = avg_wait_time
+        # Client IP.
+        self.client_ip = client_ip
+        # The name of the database.
+        self.db_name = db_name
+        # Distributed plan percentage during the execution period.
+        self.dist_plan_percentage = dist_plan_percentage
+        self.dynamic_sql = dynamic_sql
+        # Average execution count per second during the execution period.
+        self.exec_ps = exec_ps
+        # Total number of executions during the execution period.
+        self.executions = executions
+        # Average number of partition accessed during the execution period.
+        self.fail_count = fail_count
+        # Error percentage during the execution period.
+        self.fail_percentage = fail_percentage
+        # Whether an internal SQL.
+        self.inner = inner
+        # Local plan percentage during the execution period.
+        self.local_plan_percentage = local_plan_percentage
+        # Max affected rows during the execution period.
+        self.max_affected_rows = max_affected_rows
+        # Max Application event wait time (in milliseconds) during the execution period
+        self.max_application_wait_time = max_application_wait_time
+        # Max Concurrency event wait time (in milliseconds) during the execution period
+        self.max_concurrency_wait_time = max_concurrency_wait_time
+        # Max CPU time.
+        self.max_cpu_time = max_cpu_time
+        # Max physical read count during the execution period.
+        self.max_disk_reads = max_disk_reads
+        # Max response time during the execution period.
+        self.max_elapsed_time = max_elapsed_time
+        # Max returned rows during the execution period.
+        self.max_return_rows = max_return_rows
+        # Max UserIO event wait time (in milliseconds) during the execution period.
+        self.max_user_io_wait_time = max_user_io_wait_time
+        # Max wait time (in milliseconds) during the execution period.
+        self.max_wait_time = max_wait_time
+        # Plan hit rage during the execution period.
+        self.miss_plan_percentage = miss_plan_percentage
+        # Missed hit count of the execution plan during the execution period.
+        self.miss_plans = miss_plans
+        # Remote plan percentage during the execution period.
+        self.remote_plan_percentage = remote_plan_percentage
+        # Remote execution count during the execution period.
+        self.remote_plans = remote_plans
+        # Number of occurrences of code 4012 during the execution period.
+        self.ret_code_4012count = ret_code_4012count
+        # Number of occurrences of code 4013 during the execution period.
+        self.ret_code_4013count = ret_code_4013count
+        # Number of occurrences of code 5001 during the execution period.
+        self.ret_code_5001count = ret_code_5001count
+        # Number of occurrences of code 5024 during the execution period.
+        self.ret_code_5024count = ret_code_5024count
+        # Number of occurrences of code 5167 during the execution period.
+        self.ret_code_5167count = ret_code_5167count
+        # Number of occurrences of code 5217 during the execution period.
+        self.ret_code_5217count = ret_code_5217count
+        # Number of occurrences of code 6002 during the execution period.
+        self.ret_code_6002count = ret_code_6002count
+        # Total number of retries during the execution period.
+        self.retry_count = retry_count
+        # RPC count during the execution period.
+        self.rpc_count = rpc_count
+        # The server where the SQL is executed.
+        self.server = server
+        # The IP address of the server.
+        self.server_ip = server_ip
+        # The server port where the SQL is executed.
+        self.server_port = server_port
+        # SQL ID.
+        self.sql_id = sql_id
+        self.sql_list = sql_list
+        # SQL text (the first 100 characters).
+        self.sql_text_short = sql_text_short
+        # SQL type.
+        self.sql_type = sql_type
+        # Strong consistent transaction percentage during the execution period.
+        self.strong_consistency_percentage = strong_consistency_percentage
+        self.sum_db_time = sum_db_time
+        # Total response time (in milliseconds) during the execution period.
+        self.sum_elapsed_time = sum_elapsed_time
+        # Total logical reads of the SQL during the execution period.
+        self.sum_logical_reads = sum_logical_reads
+        # The total wait time (in milliseconds) during the internal waiting period.
+        self.sum_wait_time = sum_wait_time
+        # Table scan percentage during the execution period.
+        self.table_scan_percentage = table_scan_percentage
+        # Total wait time during the execution period.
+        self.total_wait_time = total_wait_time
+        # Username.
+        self.user_name = user_name
+        # Longest wait event during the execution period.
+        self.wait_event = wait_event
+        # Eventually consistent transaction percentage during the execution period.
+        self.weak_consistency_percentage = weak_consistency_percentage
+
+    def validate(self):
+        if self.sql_list:
+            for k in self.sql_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_affected_rows is not None:
+            result['AvgAffectedRows'] = self.avg_affected_rows
+        if self.avg_application_wait_time is not None:
+            result['AvgApplicationWaitTime'] = self.avg_application_wait_time
+        if self.avg_block_cache_hit is not None:
+            result['AvgBlockCacheHit'] = self.avg_block_cache_hit
+        if self.avg_block_index_cache_hit is not None:
+            result['AvgBlockIndexCacheHit'] = self.avg_block_index_cache_hit
+        if self.avg_bloom_filter_cache_hit is not None:
+            result['AvgBloomFilterCacheHit'] = self.avg_bloom_filter_cache_hit
+        if self.avg_concurrency_wait_time is not None:
+            result['AvgConcurrencyWaitTime'] = self.avg_concurrency_wait_time
+        if self.avg_cpu_time is not None:
+            result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_db_time is not None:
+            result['AvgDbTime'] = self.avg_db_time
+        if self.avg_decode_time is not None:
+            result['AvgDecodeTime'] = self.avg_decode_time
+        if self.avg_disk_reads is not None:
+            result['AvgDiskReads'] = self.avg_disk_reads
+        if self.avg_elapsed_time is not None:
+            result['AvgElapsedTime'] = self.avg_elapsed_time
+        if self.avg_execute_time is not None:
+            result['AvgExecuteTime'] = self.avg_execute_time
+        if self.avg_executor_rpc_count is not None:
+            result['AvgExecutorRpcCount'] = self.avg_executor_rpc_count
+        if self.avg_expected_worker_count is not None:
+            result['AvgExpectedWorkerCount'] = self.avg_expected_worker_count
+        if self.avg_get_plan_time is not None:
+            result['AvgGetPlanTime'] = self.avg_get_plan_time
+        if self.avg_logical_reads is not None:
+            result['AvgLogicalReads'] = self.avg_logical_reads
+        if self.avg_memstore_read_rows is not None:
+            result['AvgMemstoreReadRows'] = self.avg_memstore_read_rows
+        if self.avg_net_time is not None:
+            result['AvgNetTime'] = self.avg_net_time
+        if self.avg_net_wait_time is not None:
+            result['AvgNetWaitTime'] = self.avg_net_wait_time
+        if self.avg_partition_count is not None:
+            result['AvgPartitionCount'] = self.avg_partition_count
+        if self.avg_queue_time is not None:
+            result['AvgQueueTime'] = self.avg_queue_time
+        if self.avg_return_rows is not None:
+            result['AvgReturnRows'] = self.avg_return_rows
+        if self.avg_row_cache_hit is not None:
+            result['AvgRowCacheHit'] = self.avg_row_cache_hit
+        if self.avg_rpc_count is not None:
+            result['AvgRpcCount'] = self.avg_rpc_count
+        if self.avg_schedule_time is not None:
+            result['AvgScheduleTime'] = self.avg_schedule_time
+        if self.avg_ssstore_read_rows is not None:
+            result['AvgSsstoreReadRows'] = self.avg_ssstore_read_rows
+        if self.avg_used_worker_count is not None:
+            result['AvgUsedWorkerCount'] = self.avg_used_worker_count
+        if self.avg_user_io_wait_time is not None:
+            result['AvgUserIoWaitTime'] = self.avg_user_io_wait_time
+        if self.avg_wait_count is not None:
+            result['AvgWaitCount'] = self.avg_wait_count
+        if self.avg_wait_time is not None:
+            result['AvgWaitTime'] = self.avg_wait_time
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.dist_plan_percentage is not None:
+            result['DistPlanPercentage'] = self.dist_plan_percentage
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
+        if self.exec_ps is not None:
+            result['ExecPs'] = self.exec_ps
+        if self.executions is not None:
+            result['Executions'] = self.executions
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.fail_percentage is not None:
+            result['FailPercentage'] = self.fail_percentage
+        if self.inner is not None:
+            result['Inner'] = self.inner
+        if self.local_plan_percentage is not None:
+            result['LocalPlanPercentage'] = self.local_plan_percentage
+        if self.max_affected_rows is not None:
+            result['MaxAffectedRows'] = self.max_affected_rows
+        if self.max_application_wait_time is not None:
+            result['MaxApplicationWaitTime'] = self.max_application_wait_time
+        if self.max_concurrency_wait_time is not None:
+            result['MaxConcurrencyWaitTime'] = self.max_concurrency_wait_time
+        if self.max_cpu_time is not None:
+            result['MaxCpuTime'] = self.max_cpu_time
+        if self.max_disk_reads is not None:
+            result['MaxDiskReads'] = self.max_disk_reads
+        if self.max_elapsed_time is not None:
+            result['MaxElapsedTime'] = self.max_elapsed_time
+        if self.max_return_rows is not None:
+            result['MaxReturnRows'] = self.max_return_rows
+        if self.max_user_io_wait_time is not None:
+            result['MaxUserIoWaitTime'] = self.max_user_io_wait_time
+        if self.max_wait_time is not None:
+            result['MaxWaitTime'] = self.max_wait_time
+        if self.miss_plan_percentage is not None:
+            result['MissPlanPercentage'] = self.miss_plan_percentage
+        if self.miss_plans is not None:
+            result['MissPlans'] = self.miss_plans
+        if self.remote_plan_percentage is not None:
+            result['RemotePlanPercentage'] = self.remote_plan_percentage
+        if self.remote_plans is not None:
+            result['RemotePlans'] = self.remote_plans
+        if self.ret_code_4012count is not None:
+            result['RetCode4012Count'] = self.ret_code_4012count
+        if self.ret_code_4013count is not None:
+            result['RetCode4013Count'] = self.ret_code_4013count
+        if self.ret_code_5001count is not None:
+            result['RetCode5001Count'] = self.ret_code_5001count
+        if self.ret_code_5024count is not None:
+            result['RetCode5024Count'] = self.ret_code_5024count
+        if self.ret_code_5167count is not None:
+            result['RetCode5167Count'] = self.ret_code_5167count
+        if self.ret_code_5217count is not None:
+            result['RetCode5217Count'] = self.ret_code_5217count
+        if self.ret_code_6002count is not None:
+            result['RetCode6002Count'] = self.ret_code_6002count
+        if self.retry_count is not None:
+            result['RetryCount'] = self.retry_count
+        if self.rpc_count is not None:
+            result['RpcCount'] = self.rpc_count
+        if self.server is not None:
+            result['Server'] = self.server
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_port is not None:
+            result['ServerPort'] = self.server_port
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        result['SqlList'] = []
+        if self.sql_list is not None:
+            for k in self.sql_list:
+                result['SqlList'].append(k.to_map() if k else None)
+        if self.sql_text_short is not None:
+            result['SqlTextShort'] = self.sql_text_short
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.strong_consistency_percentage is not None:
+            result['StrongConsistencyPercentage'] = self.strong_consistency_percentage
+        if self.sum_db_time is not None:
+            result['SumDbTime'] = self.sum_db_time
+        if self.sum_elapsed_time is not None:
+            result['SumElapsedTime'] = self.sum_elapsed_time
+        if self.sum_logical_reads is not None:
+            result['SumLogicalReads'] = self.sum_logical_reads
+        if self.sum_wait_time is not None:
+            result['SumWaitTime'] = self.sum_wait_time
+        if self.table_scan_percentage is not None:
+            result['TableScanPercentage'] = self.table_scan_percentage
+        if self.total_wait_time is not None:
+            result['TotalWaitTime'] = self.total_wait_time
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.wait_event is not None:
+            result['WaitEvent'] = self.wait_event
+        if self.weak_consistency_percentage is not None:
+            result['WeakConsistencyPercentage'] = self.weak_consistency_percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgAffectedRows') is not None:
+            self.avg_affected_rows = m.get('AvgAffectedRows')
+        if m.get('AvgApplicationWaitTime') is not None:
+            self.avg_application_wait_time = m.get('AvgApplicationWaitTime')
+        if m.get('AvgBlockCacheHit') is not None:
+            self.avg_block_cache_hit = m.get('AvgBlockCacheHit')
+        if m.get('AvgBlockIndexCacheHit') is not None:
+            self.avg_block_index_cache_hit = m.get('AvgBlockIndexCacheHit')
+        if m.get('AvgBloomFilterCacheHit') is not None:
+            self.avg_bloom_filter_cache_hit = m.get('AvgBloomFilterCacheHit')
+        if m.get('AvgConcurrencyWaitTime') is not None:
+            self.avg_concurrency_wait_time = m.get('AvgConcurrencyWaitTime')
+        if m.get('AvgCpuTime') is not None:
+            self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDbTime') is not None:
+            self.avg_db_time = m.get('AvgDbTime')
+        if m.get('AvgDecodeTime') is not None:
+            self.avg_decode_time = m.get('AvgDecodeTime')
+        if m.get('AvgDiskReads') is not None:
+            self.avg_disk_reads = m.get('AvgDiskReads')
+        if m.get('AvgElapsedTime') is not None:
+            self.avg_elapsed_time = m.get('AvgElapsedTime')
+        if m.get('AvgExecuteTime') is not None:
+            self.avg_execute_time = m.get('AvgExecuteTime')
+        if m.get('AvgExecutorRpcCount') is not None:
+            self.avg_executor_rpc_count = m.get('AvgExecutorRpcCount')
+        if m.get('AvgExpectedWorkerCount') is not None:
+            self.avg_expected_worker_count = m.get('AvgExpectedWorkerCount')
+        if m.get('AvgGetPlanTime') is not None:
+            self.avg_get_plan_time = m.get('AvgGetPlanTime')
+        if m.get('AvgLogicalReads') is not None:
+            self.avg_logical_reads = m.get('AvgLogicalReads')
+        if m.get('AvgMemstoreReadRows') is not None:
+            self.avg_memstore_read_rows = m.get('AvgMemstoreReadRows')
+        if m.get('AvgNetTime') is not None:
+            self.avg_net_time = m.get('AvgNetTime')
+        if m.get('AvgNetWaitTime') is not None:
+            self.avg_net_wait_time = m.get('AvgNetWaitTime')
+        if m.get('AvgPartitionCount') is not None:
+            self.avg_partition_count = m.get('AvgPartitionCount')
+        if m.get('AvgQueueTime') is not None:
+            self.avg_queue_time = m.get('AvgQueueTime')
+        if m.get('AvgReturnRows') is not None:
+            self.avg_return_rows = m.get('AvgReturnRows')
+        if m.get('AvgRowCacheHit') is not None:
+            self.avg_row_cache_hit = m.get('AvgRowCacheHit')
+        if m.get('AvgRpcCount') is not None:
+            self.avg_rpc_count = m.get('AvgRpcCount')
+        if m.get('AvgScheduleTime') is not None:
+            self.avg_schedule_time = m.get('AvgScheduleTime')
+        if m.get('AvgSsstoreReadRows') is not None:
+            self.avg_ssstore_read_rows = m.get('AvgSsstoreReadRows')
+        if m.get('AvgUsedWorkerCount') is not None:
+            self.avg_used_worker_count = m.get('AvgUsedWorkerCount')
+        if m.get('AvgUserIoWaitTime') is not None:
+            self.avg_user_io_wait_time = m.get('AvgUserIoWaitTime')
+        if m.get('AvgWaitCount') is not None:
+            self.avg_wait_count = m.get('AvgWaitCount')
+        if m.get('AvgWaitTime') is not None:
+            self.avg_wait_time = m.get('AvgWaitTime')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DistPlanPercentage') is not None:
+            self.dist_plan_percentage = m.get('DistPlanPercentage')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
+        if m.get('ExecPs') is not None:
+            self.exec_ps = m.get('ExecPs')
+        if m.get('Executions') is not None:
+            self.executions = m.get('Executions')
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('FailPercentage') is not None:
+            self.fail_percentage = m.get('FailPercentage')
+        if m.get('Inner') is not None:
+            self.inner = m.get('Inner')
+        if m.get('LocalPlanPercentage') is not None:
+            self.local_plan_percentage = m.get('LocalPlanPercentage')
+        if m.get('MaxAffectedRows') is not None:
+            self.max_affected_rows = m.get('MaxAffectedRows')
+        if m.get('MaxApplicationWaitTime') is not None:
+            self.max_application_wait_time = m.get('MaxApplicationWaitTime')
+        if m.get('MaxConcurrencyWaitTime') is not None:
+            self.max_concurrency_wait_time = m.get('MaxConcurrencyWaitTime')
+        if m.get('MaxCpuTime') is not None:
+            self.max_cpu_time = m.get('MaxCpuTime')
+        if m.get('MaxDiskReads') is not None:
+            self.max_disk_reads = m.get('MaxDiskReads')
+        if m.get('MaxElapsedTime') is not None:
+            self.max_elapsed_time = m.get('MaxElapsedTime')
+        if m.get('MaxReturnRows') is not None:
+            self.max_return_rows = m.get('MaxReturnRows')
+        if m.get('MaxUserIoWaitTime') is not None:
+            self.max_user_io_wait_time = m.get('MaxUserIoWaitTime')
+        if m.get('MaxWaitTime') is not None:
+            self.max_wait_time = m.get('MaxWaitTime')
+        if m.get('MissPlanPercentage') is not None:
+            self.miss_plan_percentage = m.get('MissPlanPercentage')
+        if m.get('MissPlans') is not None:
+            self.miss_plans = m.get('MissPlans')
+        if m.get('RemotePlanPercentage') is not None:
+            self.remote_plan_percentage = m.get('RemotePlanPercentage')
+        if m.get('RemotePlans') is not None:
+            self.remote_plans = m.get('RemotePlans')
+        if m.get('RetCode4012Count') is not None:
+            self.ret_code_4012count = m.get('RetCode4012Count')
+        if m.get('RetCode4013Count') is not None:
+            self.ret_code_4013count = m.get('RetCode4013Count')
+        if m.get('RetCode5001Count') is not None:
+            self.ret_code_5001count = m.get('RetCode5001Count')
+        if m.get('RetCode5024Count') is not None:
+            self.ret_code_5024count = m.get('RetCode5024Count')
+        if m.get('RetCode5167Count') is not None:
+            self.ret_code_5167count = m.get('RetCode5167Count')
+        if m.get('RetCode5217Count') is not None:
+            self.ret_code_5217count = m.get('RetCode5217Count')
+        if m.get('RetCode6002Count') is not None:
+            self.ret_code_6002count = m.get('RetCode6002Count')
+        if m.get('RetryCount') is not None:
+            self.retry_count = m.get('RetryCount')
+        if m.get('RpcCount') is not None:
+            self.rpc_count = m.get('RpcCount')
+        if m.get('Server') is not None:
+            self.server = m.get('Server')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerPort') is not None:
+            self.server_port = m.get('ServerPort')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        self.sql_list = []
+        if m.get('SqlList') is not None:
+            for k in m.get('SqlList'):
+                temp_model = DescribeOasSlowSQLListResponseBodyDataSqlList()
+                self.sql_list.append(temp_model.from_map(k))
+        if m.get('SqlTextShort') is not None:
+            self.sql_text_short = m.get('SqlTextShort')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('StrongConsistencyPercentage') is not None:
+            self.strong_consistency_percentage = m.get('StrongConsistencyPercentage')
+        if m.get('SumDbTime') is not None:
+            self.sum_db_time = m.get('SumDbTime')
         if m.get('SumElapsedTime') is not None:
             self.sum_elapsed_time = m.get('SumElapsedTime')
         if m.get('SumLogicalReads') is not None:
@@ -9665,7 +15616,9 @@ class DescribeOasSlowSQLListResponseBody(TeaModel):
         data: List[DescribeOasSlowSQLListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The list of slow queries.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -9749,9 +15702,11 @@ class DescribeOasTopSQLListRequest(TeaModel):
         self,
         accept_language: str = None,
         db_name: str = None,
+        dynamic_sql: bool = None,
         end_time: str = None,
         filter_condition: str = None,
         instance_id: str = None,
+        merge_dynamic_sql: bool = None,
         node_ip: str = None,
         search_key_word: str = None,
         search_param: str = None,
@@ -9762,19 +15717,41 @@ class DescribeOasTopSQLListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # - zh: Chinese
+        # - en: English
         self.accept_language = accept_language
+        # The name of the database.
         self.db_name = db_name
+        self.dynamic_sql = dynamic_sql
+        # The end time of querying the TOPSQL parameter.
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # All parameters are referenced by the symbol @. For a list of available parameters, refer to the returned parameters in [Query performance indicators of an SQL statement](https://en.oceanbase.com/docs/community-ocp-en-10000000000840290).
         self.filter_condition = filter_condition
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        self.merge_dynamic_sql = merge_dynamic_sql
+        # The node IP.
         self.node_ip = node_ip
+        # The search keyword.
         self.search_key_word = search_key_word
+        # The search parameter.
         self.search_param = search_param
+        # The search rule.
         self.search_rule = search_rule
+        # The search value.
         self.search_value = search_value
+        # SQL ID.
+        # > When the SQL ID is provided, the system collects all the request data for the target SQL ID. When the SQL ID is empty, the system collects all the request data for the entire database instance.
         self.sql_id = sql_id
+        # Max length of the returned SQL text.
         self.sql_text_length = sql_text_length
+        # The start time of querying the TOPSQL parameter.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -9790,12 +15767,16 @@ class DescribeOasTopSQLListRequest(TeaModel):
             result['AcceptLanguage'] = self.accept_language
         if self.db_name is not None:
             result['DbName'] = self.db_name
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
         if self.end_time is not None:
             result['EndTime'] = self.end_time
         if self.filter_condition is not None:
             result['FilterCondition'] = self.filter_condition
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.merge_dynamic_sql is not None:
+            result['MergeDynamicSql'] = self.merge_dynamic_sql
         if self.node_ip is not None:
             result['NodeIp'] = self.node_ip
         if self.search_key_word is not None:
@@ -9822,12 +15803,16 @@ class DescribeOasTopSQLListRequest(TeaModel):
             self.accept_language = m.get('AcceptLanguage')
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
         if m.get('FilterCondition') is not None:
             self.filter_condition = m.get('FilterCondition')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MergeDynamicSql') is not None:
+            self.merge_dynamic_sql = m.get('MergeDynamicSql')
         if m.get('NodeIp') is not None:
             self.node_ip = m.get('NodeIp')
         if m.get('SearchKeyWord') is not None:
@@ -9849,7 +15834,7 @@ class DescribeOasTopSQLListRequest(TeaModel):
         return self
 
 
-class DescribeOasTopSQLListResponseBodyData(TeaModel):
+class DescribeOasTopSQLListResponseBodyDataSqlList(TeaModel):
     def __init__(
         self,
         avg_affected_rows: float = None,
@@ -9859,6 +15844,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         avg_bloom_filter_cache_hit: float = None,
         avg_concurrency_wait_time: float = None,
         avg_cpu_time: float = None,
+        avg_db_time: float = None,
         avg_decode_time: float = None,
         avg_disk_reads: float = None,
         avg_elapsed_time: float = None,
@@ -9920,6 +15906,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         sql_text_short: str = None,
         sql_type: str = None,
         strong_consistency_percentage: float = None,
+        sum_db_time: float = None,
         sum_elapsed_time: float = None,
         sum_logical_reads: float = None,
         sum_wait_time: float = None,
@@ -9936,6 +15923,7 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         self.avg_bloom_filter_cache_hit = avg_bloom_filter_cache_hit
         self.avg_concurrency_wait_time = avg_concurrency_wait_time
         self.avg_cpu_time = avg_cpu_time
+        self.avg_db_time = avg_db_time
         self.avg_decode_time = avg_decode_time
         self.avg_disk_reads = avg_disk_reads
         self.avg_elapsed_time = avg_elapsed_time
@@ -9993,11 +15981,11 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
         self.server = server
         self.server_ip = server_ip
         self.server_port = server_port
-        # SQL ID。
         self.sql_id = sql_id
         self.sql_text_short = sql_text_short
         self.sql_type = sql_type
         self.strong_consistency_percentage = strong_consistency_percentage
+        self.sum_db_time = sum_db_time
         self.sum_elapsed_time = sum_elapsed_time
         self.sum_logical_reads = sum_logical_reads
         self.sum_wait_time = sum_wait_time
@@ -10030,6 +16018,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             result['AvgConcurrencyWaitTime'] = self.avg_concurrency_wait_time
         if self.avg_cpu_time is not None:
             result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_db_time is not None:
+            result['AvgDbTime'] = self.avg_db_time
         if self.avg_decode_time is not None:
             result['AvgDecodeTime'] = self.avg_decode_time
         if self.avg_disk_reads is not None:
@@ -10152,6 +16142,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             result['SqlType'] = self.sql_type
         if self.strong_consistency_percentage is not None:
             result['StrongConsistencyPercentage'] = self.strong_consistency_percentage
+        if self.sum_db_time is not None:
+            result['SumDbTime'] = self.sum_db_time
         if self.sum_elapsed_time is not None:
             result['SumElapsedTime'] = self.sum_elapsed_time
         if self.sum_logical_reads is not None:
@@ -10186,6 +16178,8 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             self.avg_concurrency_wait_time = m.get('AvgConcurrencyWaitTime')
         if m.get('AvgCpuTime') is not None:
             self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDbTime') is not None:
+            self.avg_db_time = m.get('AvgDbTime')
         if m.get('AvgDecodeTime') is not None:
             self.avg_decode_time = m.get('AvgDecodeTime')
         if m.get('AvgDiskReads') is not None:
@@ -10308,6 +16302,599 @@ class DescribeOasTopSQLListResponseBodyData(TeaModel):
             self.sql_type = m.get('SqlType')
         if m.get('StrongConsistencyPercentage') is not None:
             self.strong_consistency_percentage = m.get('StrongConsistencyPercentage')
+        if m.get('SumDbTime') is not None:
+            self.sum_db_time = m.get('SumDbTime')
+        if m.get('SumElapsedTime') is not None:
+            self.sum_elapsed_time = m.get('SumElapsedTime')
+        if m.get('SumLogicalReads') is not None:
+            self.sum_logical_reads = m.get('SumLogicalReads')
+        if m.get('SumWaitTime') is not None:
+            self.sum_wait_time = m.get('SumWaitTime')
+        if m.get('TableScanPercentage') is not None:
+            self.table_scan_percentage = m.get('TableScanPercentage')
+        if m.get('TotalWaitTime') is not None:
+            self.total_wait_time = m.get('TotalWaitTime')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('WaitEvent') is not None:
+            self.wait_event = m.get('WaitEvent')
+        if m.get('WeakConsistencyPercentage') is not None:
+            self.weak_consistency_percentage = m.get('WeakConsistencyPercentage')
+        return self
+
+
+class DescribeOasTopSQLListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        avg_affected_rows: float = None,
+        avg_application_wait_time: float = None,
+        avg_block_cache_hit: float = None,
+        avg_block_index_cache_hit: float = None,
+        avg_bloom_filter_cache_hit: float = None,
+        avg_concurrency_wait_time: float = None,
+        avg_cpu_time: float = None,
+        avg_db_time: float = None,
+        avg_decode_time: float = None,
+        avg_disk_reads: float = None,
+        avg_elapsed_time: float = None,
+        avg_execute_time: float = None,
+        avg_executor_rpc_count: float = None,
+        avg_expected_worker_count: float = None,
+        avg_get_plan_time: float = None,
+        avg_logical_reads: float = None,
+        avg_memstore_read_rows: float = None,
+        avg_net_time: float = None,
+        avg_net_wait_time: float = None,
+        avg_partition_count: float = None,
+        avg_queue_time: float = None,
+        avg_return_rows: float = None,
+        avg_row_cache_hit: float = None,
+        avg_rpc_count: float = None,
+        avg_schedule_time: float = None,
+        avg_ssstore_read_rows: float = None,
+        avg_used_worker_count: float = None,
+        avg_user_io_wait_time: float = None,
+        avg_wait_count: float = None,
+        avg_wait_time: float = None,
+        client_ip: str = None,
+        cpu_percentage: float = None,
+        db_name: str = None,
+        dist_plan_percentage: float = None,
+        dynamic_sql: bool = None,
+        exec_ps: float = None,
+        executions: float = None,
+        fail_count: float = None,
+        fail_percentage: float = None,
+        inner: bool = None,
+        last_fail_code: int = None,
+        local_plan_percentage: float = None,
+        max_affected_rows: float = None,
+        max_application_wait_time: float = None,
+        max_concurrency_wait_time: float = None,
+        max_cpu_time: float = None,
+        max_disk_reads: float = None,
+        max_elapsed_time: float = None,
+        max_return_rows: float = None,
+        max_user_io_wait_time: float = None,
+        max_wait_time: float = None,
+        miss_plan_percentage: float = None,
+        miss_plans: float = None,
+        remote_plan_percentage: float = None,
+        remote_plans: float = None,
+        ret_code_4012count: int = None,
+        ret_code_4013count: int = None,
+        ret_code_5001count: int = None,
+        ret_code_5024count: int = None,
+        ret_code_5167count: int = None,
+        ret_code_5217count: int = None,
+        ret_code_6002count: int = None,
+        retry_count: float = None,
+        rpc_count: float = None,
+        server: str = None,
+        server_ip: str = None,
+        server_port: int = None,
+        sql_id: str = None,
+        sql_list: List[DescribeOasTopSQLListResponseBodyDataSqlList] = None,
+        sql_text_short: str = None,
+        sql_type: str = None,
+        strong_consistency_percentage: float = None,
+        sum_db_time: float = None,
+        sum_elapsed_time: float = None,
+        sum_logical_reads: float = None,
+        sum_wait_time: float = None,
+        table_scan_percentage: float = None,
+        total_wait_time: float = None,
+        user_name: str = None,
+        wait_event: str = None,
+        weak_consistency_percentage: float = None,
+    ):
+        # Average updated rows during the execution period.
+        self.avg_affected_rows = avg_affected_rows
+        # Average Application event wait time (in milliseconds) during the execution period.
+        self.avg_application_wait_time = avg_application_wait_time
+        # Average BlockCache hit count during the execution period.
+        self.avg_block_cache_hit = avg_block_cache_hit
+        # Average BlockIndexCache hit count during the execution period.
+        self.avg_block_index_cache_hit = avg_block_index_cache_hit
+        # Average BloomFilterCache hit count during the execution period.
+        self.avg_bloom_filter_cache_hit = avg_bloom_filter_cache_hit
+        # Average Concurrency event wait time (in milliseconds) during the execution period.
+        self.avg_concurrency_wait_time = avg_concurrency_wait_time
+        # Average CPU time (in milliseconds) during the execution period.
+        self.avg_cpu_time = avg_cpu_time
+        self.avg_db_time = avg_db_time
+        # Average syntax parsing time (in milliseconds) during the execution period.
+        self.avg_decode_time = avg_decode_time
+        # Average physical read count during the execution period.
+        self.avg_disk_reads = avg_disk_reads
+        # Average response time (in milliseconds) during the execution period.
+        self.avg_elapsed_time = avg_elapsed_time
+        # Average plan execution time (in milliseconds) during the execution period.
+        self.avg_execute_time = avg_execute_time
+        # Average number of RPC requests executed during the execution period.
+        self.avg_executor_rpc_count = avg_executor_rpc_count
+        # Average degree of parallelism during the execution period.
+        self.avg_expected_worker_count = avg_expected_worker_count
+        # Average plan generation time (in milliseconds) during the execution period.
+        self.avg_get_plan_time = avg_get_plan_time
+        # Average logical reads of the SQL during the execution period.
+        self.avg_logical_reads = avg_logical_reads
+        # Strong consistent transaction percentage during the execution period.
+        self.avg_memstore_read_rows = avg_memstore_read_rows
+        # Average network transmission time (in milliseconds) during the execution period.
+        self.avg_net_time = avg_net_time
+        # Average network enqueue time (in milliseconds) during the execution period.
+        self.avg_net_wait_time = avg_net_wait_time
+        # Average number of partition accessed during the execution period.
+        self.avg_partition_count = avg_partition_count
+        # Average queueing time (in milliseconds) during the execution period.
+        self.avg_queue_time = avg_queue_time
+        # Average returned rows during the execution period.
+        self.avg_return_rows = avg_return_rows
+        # Average RowCache hit count during the execution period.
+        self.avg_row_cache_hit = avg_row_cache_hit
+        # Average count of RPC sent during the execution period.
+        self.avg_rpc_count = avg_rpc_count
+        # Average Schedule event wait time (in milliseconds) during the execution period.
+        self.avg_schedule_time = avg_schedule_time
+        # Eventually consistent transaction percentage during the execution period.
+        self.avg_ssstore_read_rows = avg_ssstore_read_rows
+        # Average number of threads used of the SQL during the execution period.
+        self.avg_used_worker_count = avg_used_worker_count
+        # Average UserIO event wait time (in milliseconds) during the execution period.
+        self.avg_user_io_wait_time = avg_user_io_wait_time
+        # Average wait count during the execution period.
+        self.avg_wait_count = avg_wait_count
+        # Average wait time (in milliseconds) during the execution period.
+        self.avg_wait_time = avg_wait_time
+        # Client IP.
+        self.client_ip = client_ip
+        # CPU percentage.
+        self.cpu_percentage = cpu_percentage
+        # The name of the database.
+        self.db_name = db_name
+        # Distributed plan percentage during the execution period.
+        self.dist_plan_percentage = dist_plan_percentage
+        self.dynamic_sql = dynamic_sql
+        # Average execution count per second during the execution period.
+        self.exec_ps = exec_ps
+        # Total number of executions during the execution period.
+        self.executions = executions
+        # Average number of partition accessed during the execution period.
+        self.fail_count = fail_count
+        # Error percentage during the execution period.
+        self.fail_percentage = fail_percentage
+        # Whether a internal SQL.
+        self.inner = inner
+        self.last_fail_code = last_fail_code
+        # Local plan percentage during the execution period.
+        self.local_plan_percentage = local_plan_percentage
+        # Max affected rows during the execution period.
+        self.max_affected_rows = max_affected_rows
+        # Max Application event wait time (in milliseconds) during the execution period.
+        self.max_application_wait_time = max_application_wait_time
+        # Max Concurrency event wait time (in milliseconds) during the execution period.
+        self.max_concurrency_wait_time = max_concurrency_wait_time
+        # Max CPU time (in milliseconds).
+        self.max_cpu_time = max_cpu_time
+        # Max physical read count during the execution period.
+        self.max_disk_reads = max_disk_reads
+        # Max response time during the execution period.
+        self.max_elapsed_time = max_elapsed_time
+        # Max returned rows during the execution period.
+        self.max_return_rows = max_return_rows
+        # Max UserIO event wait time (in milliseconds) during the execution period.
+        self.max_user_io_wait_time = max_user_io_wait_time
+        # Max wait time (in milliseconds) during the execution period.
+        self.max_wait_time = max_wait_time
+        # Plan hit rage during the execution period.
+        self.miss_plan_percentage = miss_plan_percentage
+        # Missed hit count of the execution plan during the execution period.
+        self.miss_plans = miss_plans
+        # Remote plan percentage during the execution period.
+        self.remote_plan_percentage = remote_plan_percentage
+        # Remote execution count during the execution period.
+        self.remote_plans = remote_plans
+        # Number of occurrences of the code 4012 during the execution period.
+        self.ret_code_4012count = ret_code_4012count
+        # Number of occurrences of the code 4013 during the execution period.
+        self.ret_code_4013count = ret_code_4013count
+        # Number of occurrences of the code 5001 during the execution period.
+        self.ret_code_5001count = ret_code_5001count
+        # Number of occurrences of the code 5024 during the execution period.
+        self.ret_code_5024count = ret_code_5024count
+        # Number of occurrences of the code 5167 during the execution period.
+        self.ret_code_5167count = ret_code_5167count
+        # Number of occurrences of the code 5217 during the execution period.
+        self.ret_code_5217count = ret_code_5217count
+        # Number of occurrences of the code 6002 during the execution period.
+        self.ret_code_6002count = ret_code_6002count
+        # Total retry count during the execution period.
+        self.retry_count = retry_count
+        # RPC count during the execution period.
+        self.rpc_count = rpc_count
+        # The server where the SQL is executed.
+        self.server = server
+        # The server IP where the SQL is executed.
+        self.server_ip = server_ip
+        # The server port where the SQL is executed.
+        self.server_port = server_port
+        # SQL ID.
+        self.sql_id = sql_id
+        self.sql_list = sql_list
+        # SQL text (the first 100 characters).
+        self.sql_text_short = sql_text_short
+        # SQL type.
+        self.sql_type = sql_type
+        # Strong consistent transaction percentage during the execution period.
+        self.strong_consistency_percentage = strong_consistency_percentage
+        self.sum_db_time = sum_db_time
+        # Total response time (in milliseconds) during the execution period.
+        self.sum_elapsed_time = sum_elapsed_time
+        # Total logical reads.
+        self.sum_logical_reads = sum_logical_reads
+        # Total wait time (in milliseconds) during the execution period.
+        self.sum_wait_time = sum_wait_time
+        # Table scan percentage during the execution period.
+        self.table_scan_percentage = table_scan_percentage
+        # Total wait time (in milliseconds) during the execution period.
+        self.total_wait_time = total_wait_time
+        # Username.
+        self.user_name = user_name
+        # Longest wait event during the execution period.
+        self.wait_event = wait_event
+        # Eventually consistent transaction percentage during the execution period.
+        self.weak_consistency_percentage = weak_consistency_percentage
+
+    def validate(self):
+        if self.sql_list:
+            for k in self.sql_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_affected_rows is not None:
+            result['AvgAffectedRows'] = self.avg_affected_rows
+        if self.avg_application_wait_time is not None:
+            result['AvgApplicationWaitTime'] = self.avg_application_wait_time
+        if self.avg_block_cache_hit is not None:
+            result['AvgBlockCacheHit'] = self.avg_block_cache_hit
+        if self.avg_block_index_cache_hit is not None:
+            result['AvgBlockIndexCacheHit'] = self.avg_block_index_cache_hit
+        if self.avg_bloom_filter_cache_hit is not None:
+            result['AvgBloomFilterCacheHit'] = self.avg_bloom_filter_cache_hit
+        if self.avg_concurrency_wait_time is not None:
+            result['AvgConcurrencyWaitTime'] = self.avg_concurrency_wait_time
+        if self.avg_cpu_time is not None:
+            result['AvgCpuTime'] = self.avg_cpu_time
+        if self.avg_db_time is not None:
+            result['AvgDbTime'] = self.avg_db_time
+        if self.avg_decode_time is not None:
+            result['AvgDecodeTime'] = self.avg_decode_time
+        if self.avg_disk_reads is not None:
+            result['AvgDiskReads'] = self.avg_disk_reads
+        if self.avg_elapsed_time is not None:
+            result['AvgElapsedTime'] = self.avg_elapsed_time
+        if self.avg_execute_time is not None:
+            result['AvgExecuteTime'] = self.avg_execute_time
+        if self.avg_executor_rpc_count is not None:
+            result['AvgExecutorRpcCount'] = self.avg_executor_rpc_count
+        if self.avg_expected_worker_count is not None:
+            result['AvgExpectedWorkerCount'] = self.avg_expected_worker_count
+        if self.avg_get_plan_time is not None:
+            result['AvgGetPlanTime'] = self.avg_get_plan_time
+        if self.avg_logical_reads is not None:
+            result['AvgLogicalReads'] = self.avg_logical_reads
+        if self.avg_memstore_read_rows is not None:
+            result['AvgMemstoreReadRows'] = self.avg_memstore_read_rows
+        if self.avg_net_time is not None:
+            result['AvgNetTime'] = self.avg_net_time
+        if self.avg_net_wait_time is not None:
+            result['AvgNetWaitTime'] = self.avg_net_wait_time
+        if self.avg_partition_count is not None:
+            result['AvgPartitionCount'] = self.avg_partition_count
+        if self.avg_queue_time is not None:
+            result['AvgQueueTime'] = self.avg_queue_time
+        if self.avg_return_rows is not None:
+            result['AvgReturnRows'] = self.avg_return_rows
+        if self.avg_row_cache_hit is not None:
+            result['AvgRowCacheHit'] = self.avg_row_cache_hit
+        if self.avg_rpc_count is not None:
+            result['AvgRpcCount'] = self.avg_rpc_count
+        if self.avg_schedule_time is not None:
+            result['AvgScheduleTime'] = self.avg_schedule_time
+        if self.avg_ssstore_read_rows is not None:
+            result['AvgSsstoreReadRows'] = self.avg_ssstore_read_rows
+        if self.avg_used_worker_count is not None:
+            result['AvgUsedWorkerCount'] = self.avg_used_worker_count
+        if self.avg_user_io_wait_time is not None:
+            result['AvgUserIoWaitTime'] = self.avg_user_io_wait_time
+        if self.avg_wait_count is not None:
+            result['AvgWaitCount'] = self.avg_wait_count
+        if self.avg_wait_time is not None:
+            result['AvgWaitTime'] = self.avg_wait_time
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+        if self.cpu_percentage is not None:
+            result['CpuPercentage'] = self.cpu_percentage
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.dist_plan_percentage is not None:
+            result['DistPlanPercentage'] = self.dist_plan_percentage
+        if self.dynamic_sql is not None:
+            result['DynamicSql'] = self.dynamic_sql
+        if self.exec_ps is not None:
+            result['ExecPs'] = self.exec_ps
+        if self.executions is not None:
+            result['Executions'] = self.executions
+        if self.fail_count is not None:
+            result['FailCount'] = self.fail_count
+        if self.fail_percentage is not None:
+            result['FailPercentage'] = self.fail_percentage
+        if self.inner is not None:
+            result['Inner'] = self.inner
+        if self.last_fail_code is not None:
+            result['LastFailCode'] = self.last_fail_code
+        if self.local_plan_percentage is not None:
+            result['LocalPlanPercentage'] = self.local_plan_percentage
+        if self.max_affected_rows is not None:
+            result['MaxAffectedRows'] = self.max_affected_rows
+        if self.max_application_wait_time is not None:
+            result['MaxApplicationWaitTime'] = self.max_application_wait_time
+        if self.max_concurrency_wait_time is not None:
+            result['MaxConcurrencyWaitTime'] = self.max_concurrency_wait_time
+        if self.max_cpu_time is not None:
+            result['MaxCpuTime'] = self.max_cpu_time
+        if self.max_disk_reads is not None:
+            result['MaxDiskReads'] = self.max_disk_reads
+        if self.max_elapsed_time is not None:
+            result['MaxElapsedTime'] = self.max_elapsed_time
+        if self.max_return_rows is not None:
+            result['MaxReturnRows'] = self.max_return_rows
+        if self.max_user_io_wait_time is not None:
+            result['MaxUserIoWaitTime'] = self.max_user_io_wait_time
+        if self.max_wait_time is not None:
+            result['MaxWaitTime'] = self.max_wait_time
+        if self.miss_plan_percentage is not None:
+            result['MissPlanPercentage'] = self.miss_plan_percentage
+        if self.miss_plans is not None:
+            result['MissPlans'] = self.miss_plans
+        if self.remote_plan_percentage is not None:
+            result['RemotePlanPercentage'] = self.remote_plan_percentage
+        if self.remote_plans is not None:
+            result['RemotePlans'] = self.remote_plans
+        if self.ret_code_4012count is not None:
+            result['RetCode4012Count'] = self.ret_code_4012count
+        if self.ret_code_4013count is not None:
+            result['RetCode4013Count'] = self.ret_code_4013count
+        if self.ret_code_5001count is not None:
+            result['RetCode5001Count'] = self.ret_code_5001count
+        if self.ret_code_5024count is not None:
+            result['RetCode5024Count'] = self.ret_code_5024count
+        if self.ret_code_5167count is not None:
+            result['RetCode5167Count'] = self.ret_code_5167count
+        if self.ret_code_5217count is not None:
+            result['RetCode5217Count'] = self.ret_code_5217count
+        if self.ret_code_6002count is not None:
+            result['RetCode6002Count'] = self.ret_code_6002count
+        if self.retry_count is not None:
+            result['RetryCount'] = self.retry_count
+        if self.rpc_count is not None:
+            result['RpcCount'] = self.rpc_count
+        if self.server is not None:
+            result['Server'] = self.server
+        if self.server_ip is not None:
+            result['ServerIp'] = self.server_ip
+        if self.server_port is not None:
+            result['ServerPort'] = self.server_port
+        if self.sql_id is not None:
+            result['SqlId'] = self.sql_id
+        result['SqlList'] = []
+        if self.sql_list is not None:
+            for k in self.sql_list:
+                result['SqlList'].append(k.to_map() if k else None)
+        if self.sql_text_short is not None:
+            result['SqlTextShort'] = self.sql_text_short
+        if self.sql_type is not None:
+            result['SqlType'] = self.sql_type
+        if self.strong_consistency_percentage is not None:
+            result['StrongConsistencyPercentage'] = self.strong_consistency_percentage
+        if self.sum_db_time is not None:
+            result['SumDbTime'] = self.sum_db_time
+        if self.sum_elapsed_time is not None:
+            result['SumElapsedTime'] = self.sum_elapsed_time
+        if self.sum_logical_reads is not None:
+            result['SumLogicalReads'] = self.sum_logical_reads
+        if self.sum_wait_time is not None:
+            result['SumWaitTime'] = self.sum_wait_time
+        if self.table_scan_percentage is not None:
+            result['TableScanPercentage'] = self.table_scan_percentage
+        if self.total_wait_time is not None:
+            result['TotalWaitTime'] = self.total_wait_time
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.wait_event is not None:
+            result['WaitEvent'] = self.wait_event
+        if self.weak_consistency_percentage is not None:
+            result['WeakConsistencyPercentage'] = self.weak_consistency_percentage
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgAffectedRows') is not None:
+            self.avg_affected_rows = m.get('AvgAffectedRows')
+        if m.get('AvgApplicationWaitTime') is not None:
+            self.avg_application_wait_time = m.get('AvgApplicationWaitTime')
+        if m.get('AvgBlockCacheHit') is not None:
+            self.avg_block_cache_hit = m.get('AvgBlockCacheHit')
+        if m.get('AvgBlockIndexCacheHit') is not None:
+            self.avg_block_index_cache_hit = m.get('AvgBlockIndexCacheHit')
+        if m.get('AvgBloomFilterCacheHit') is not None:
+            self.avg_bloom_filter_cache_hit = m.get('AvgBloomFilterCacheHit')
+        if m.get('AvgConcurrencyWaitTime') is not None:
+            self.avg_concurrency_wait_time = m.get('AvgConcurrencyWaitTime')
+        if m.get('AvgCpuTime') is not None:
+            self.avg_cpu_time = m.get('AvgCpuTime')
+        if m.get('AvgDbTime') is not None:
+            self.avg_db_time = m.get('AvgDbTime')
+        if m.get('AvgDecodeTime') is not None:
+            self.avg_decode_time = m.get('AvgDecodeTime')
+        if m.get('AvgDiskReads') is not None:
+            self.avg_disk_reads = m.get('AvgDiskReads')
+        if m.get('AvgElapsedTime') is not None:
+            self.avg_elapsed_time = m.get('AvgElapsedTime')
+        if m.get('AvgExecuteTime') is not None:
+            self.avg_execute_time = m.get('AvgExecuteTime')
+        if m.get('AvgExecutorRpcCount') is not None:
+            self.avg_executor_rpc_count = m.get('AvgExecutorRpcCount')
+        if m.get('AvgExpectedWorkerCount') is not None:
+            self.avg_expected_worker_count = m.get('AvgExpectedWorkerCount')
+        if m.get('AvgGetPlanTime') is not None:
+            self.avg_get_plan_time = m.get('AvgGetPlanTime')
+        if m.get('AvgLogicalReads') is not None:
+            self.avg_logical_reads = m.get('AvgLogicalReads')
+        if m.get('AvgMemstoreReadRows') is not None:
+            self.avg_memstore_read_rows = m.get('AvgMemstoreReadRows')
+        if m.get('AvgNetTime') is not None:
+            self.avg_net_time = m.get('AvgNetTime')
+        if m.get('AvgNetWaitTime') is not None:
+            self.avg_net_wait_time = m.get('AvgNetWaitTime')
+        if m.get('AvgPartitionCount') is not None:
+            self.avg_partition_count = m.get('AvgPartitionCount')
+        if m.get('AvgQueueTime') is not None:
+            self.avg_queue_time = m.get('AvgQueueTime')
+        if m.get('AvgReturnRows') is not None:
+            self.avg_return_rows = m.get('AvgReturnRows')
+        if m.get('AvgRowCacheHit') is not None:
+            self.avg_row_cache_hit = m.get('AvgRowCacheHit')
+        if m.get('AvgRpcCount') is not None:
+            self.avg_rpc_count = m.get('AvgRpcCount')
+        if m.get('AvgScheduleTime') is not None:
+            self.avg_schedule_time = m.get('AvgScheduleTime')
+        if m.get('AvgSsstoreReadRows') is not None:
+            self.avg_ssstore_read_rows = m.get('AvgSsstoreReadRows')
+        if m.get('AvgUsedWorkerCount') is not None:
+            self.avg_used_worker_count = m.get('AvgUsedWorkerCount')
+        if m.get('AvgUserIoWaitTime') is not None:
+            self.avg_user_io_wait_time = m.get('AvgUserIoWaitTime')
+        if m.get('AvgWaitCount') is not None:
+            self.avg_wait_count = m.get('AvgWaitCount')
+        if m.get('AvgWaitTime') is not None:
+            self.avg_wait_time = m.get('AvgWaitTime')
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+        if m.get('CpuPercentage') is not None:
+            self.cpu_percentage = m.get('CpuPercentage')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('DistPlanPercentage') is not None:
+            self.dist_plan_percentage = m.get('DistPlanPercentage')
+        if m.get('DynamicSql') is not None:
+            self.dynamic_sql = m.get('DynamicSql')
+        if m.get('ExecPs') is not None:
+            self.exec_ps = m.get('ExecPs')
+        if m.get('Executions') is not None:
+            self.executions = m.get('Executions')
+        if m.get('FailCount') is not None:
+            self.fail_count = m.get('FailCount')
+        if m.get('FailPercentage') is not None:
+            self.fail_percentage = m.get('FailPercentage')
+        if m.get('Inner') is not None:
+            self.inner = m.get('Inner')
+        if m.get('LastFailCode') is not None:
+            self.last_fail_code = m.get('LastFailCode')
+        if m.get('LocalPlanPercentage') is not None:
+            self.local_plan_percentage = m.get('LocalPlanPercentage')
+        if m.get('MaxAffectedRows') is not None:
+            self.max_affected_rows = m.get('MaxAffectedRows')
+        if m.get('MaxApplicationWaitTime') is not None:
+            self.max_application_wait_time = m.get('MaxApplicationWaitTime')
+        if m.get('MaxConcurrencyWaitTime') is not None:
+            self.max_concurrency_wait_time = m.get('MaxConcurrencyWaitTime')
+        if m.get('MaxCpuTime') is not None:
+            self.max_cpu_time = m.get('MaxCpuTime')
+        if m.get('MaxDiskReads') is not None:
+            self.max_disk_reads = m.get('MaxDiskReads')
+        if m.get('MaxElapsedTime') is not None:
+            self.max_elapsed_time = m.get('MaxElapsedTime')
+        if m.get('MaxReturnRows') is not None:
+            self.max_return_rows = m.get('MaxReturnRows')
+        if m.get('MaxUserIoWaitTime') is not None:
+            self.max_user_io_wait_time = m.get('MaxUserIoWaitTime')
+        if m.get('MaxWaitTime') is not None:
+            self.max_wait_time = m.get('MaxWaitTime')
+        if m.get('MissPlanPercentage') is not None:
+            self.miss_plan_percentage = m.get('MissPlanPercentage')
+        if m.get('MissPlans') is not None:
+            self.miss_plans = m.get('MissPlans')
+        if m.get('RemotePlanPercentage') is not None:
+            self.remote_plan_percentage = m.get('RemotePlanPercentage')
+        if m.get('RemotePlans') is not None:
+            self.remote_plans = m.get('RemotePlans')
+        if m.get('RetCode4012Count') is not None:
+            self.ret_code_4012count = m.get('RetCode4012Count')
+        if m.get('RetCode4013Count') is not None:
+            self.ret_code_4013count = m.get('RetCode4013Count')
+        if m.get('RetCode5001Count') is not None:
+            self.ret_code_5001count = m.get('RetCode5001Count')
+        if m.get('RetCode5024Count') is not None:
+            self.ret_code_5024count = m.get('RetCode5024Count')
+        if m.get('RetCode5167Count') is not None:
+            self.ret_code_5167count = m.get('RetCode5167Count')
+        if m.get('RetCode5217Count') is not None:
+            self.ret_code_5217count = m.get('RetCode5217Count')
+        if m.get('RetCode6002Count') is not None:
+            self.ret_code_6002count = m.get('RetCode6002Count')
+        if m.get('RetryCount') is not None:
+            self.retry_count = m.get('RetryCount')
+        if m.get('RpcCount') is not None:
+            self.rpc_count = m.get('RpcCount')
+        if m.get('Server') is not None:
+            self.server = m.get('Server')
+        if m.get('ServerIp') is not None:
+            self.server_ip = m.get('ServerIp')
+        if m.get('ServerPort') is not None:
+            self.server_port = m.get('ServerPort')
+        if m.get('SqlId') is not None:
+            self.sql_id = m.get('SqlId')
+        self.sql_list = []
+        if m.get('SqlList') is not None:
+            for k in m.get('SqlList'):
+                temp_model = DescribeOasTopSQLListResponseBodyDataSqlList()
+                self.sql_list.append(temp_model.from_map(k))
+        if m.get('SqlTextShort') is not None:
+            self.sql_text_short = m.get('SqlTextShort')
+        if m.get('SqlType') is not None:
+            self.sql_type = m.get('SqlType')
+        if m.get('StrongConsistencyPercentage') is not None:
+            self.strong_consistency_percentage = m.get('StrongConsistencyPercentage')
+        if m.get('SumDbTime') is not None:
+            self.sum_db_time = m.get('SumDbTime')
         if m.get('SumElapsedTime') is not None:
             self.sum_elapsed_time = m.get('SumElapsedTime')
         if m.get('SumLogicalReads') is not None:
@@ -10333,7 +16920,9 @@ class DescribeOasTopSQLListResponseBody(TeaModel):
         data: List[DescribeOasTopSQLListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The list of Top SQL.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12530,19 +19119,19 @@ class DescribeOutlineBindingRequest(TeaModel):
         table_name: str = None,
         tenant_id: str = None,
     ):
+        # The name of the database.
+        self.database_name = database_name
+        # The ID of the OceanBase cluster.
+        self.instance_id = instance_id
         # - When the value is set to True, the throttling information in the database is queried based on the SQL ID.   
         # - When the value is set to False, the bound index or execution plan in the database is queried based on the SQL ID.
-        self.database_name = database_name
-        # SQLID.
-        self.instance_id = instance_id
-        # The ID of the tenant.
         self.is_concurrent_limit = is_concurrent_limit
-        # false
+        # SQLID.
         self.sqlid = sqlid
-        # The name of the database.
-        self.table_name = table_name
         # The name of the tenant.    
         # It must start with a letter or an underscore (_), and contain 2 to 20 characters, which can be uppercase letters, lowercase letters, digits, and underscores (_). It cannot be set to SYS.
+        self.table_name = table_name
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -12594,11 +19183,13 @@ class DescribeOutlineBindingResponseBodyOutlineBinding(TeaModel):
         outline_id: int = None,
         table_name: str = None,
     ):
+        # The bound index.
         self.bind_index = bind_index
-        # You can call this operation to query the outline binding information or throttling information of an SQL statement in the database based on an SQLID.
+        # The bound plan.
         self.bind_plan = bind_plan
+        # The maximum number of concurrent tasks.
         self.max_concurrent = max_concurrent
-        # {"name":"DescribeOutlineBinding","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"POST|GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeOutlineBinding\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"TableName\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"pay_online\"},{\"name\":\"DatabaseName\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"IsConcurrentLimit\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Boolean\",\"title\":\"\",\"description\":\"\",\"example\":\"false\"},{\"name\":\"InstanceId\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"ob317v4uif****\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"OutlineBinding\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Object\",\"children\":[{\"name\":\"BindPlan\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"PHY_TABLE_SCAN | bmsql_order_line | 40 ******\"},{\"name\":\"OutlineId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"OutlineID\",\"description\":\"OutlineID。\",\"example\":\"-1\"},{\"name\":\"BindIndex\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"PRIMARY\"},{\"name\":\"MaxConcurrent\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"2\"}],\"title\":\"\",\"description\":\"\"},{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C\"}],\"title\":\"\",\"description\":\"\"}","errors":"{\"2014\":[{\"code\":\"2014\",\"defaultError\":false,\"errorCode\":\"InternalError\",\"errorMessage\":\"The request processing has failed due to some unknown error.\",\"errorMessageCn\":\"\",\"type\":\"user\"}]}"}
+        # OutlineID.
         self.outline_id = outline_id
         # 表名称
         self.table_name = table_name
@@ -12645,17 +19236,9 @@ class DescribeOutlineBindingResponseBody(TeaModel):
         outline_binding: DescribeOutlineBindingResponseBodyOutlineBinding = None,
         request_id: str = None,
     ):
-        # ```
-        # http(s)://[Endpoint]/?Action=DescribeOutlineBinding
-        # &TenantId=t2mr3oae0****\
-        # &TableName=pay_online
-        # &DatabaseName=testdb
-        # &SQLId=8D6E84****0B8FB1823D199E2CA1****\
-        # &IsConcurrentLimit=false
-        # &InstanceId=ob317v4uif****\
-        # &Common request parameters
-        # ```
+        # The binding information.
         self.outline_binding = outline_binding
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -12781,6 +19364,7 @@ class DescribeParametersResponseBodyParameters(TeaModel):
         need_reboot: bool = None,
         readonly: bool = None,
         rejected_value: List[str] = None,
+        unit: str = None,
         value_type: str = None,
     ):
         # DescribeParameters
@@ -12823,6 +19407,7 @@ class DescribeParametersResponseBodyParameters(TeaModel):
         #     ]
         # }
         self.rejected_value = rejected_value
+        self.unit = unit
         # The invalid value range of the parameter.    
         # It is an array with two string elements, which represents a range. The first element represents the minimum value and the second element represents the maximum value.
         self.value_type = value_type
@@ -12852,6 +19437,8 @@ class DescribeParametersResponseBodyParameters(TeaModel):
             result['Readonly'] = self.readonly
         if self.rejected_value is not None:
             result['RejectedValue'] = self.rejected_value
+        if self.unit is not None:
+            result['Unit'] = self.unit
         if self.value_type is not None:
             result['ValueType'] = self.value_type
         return result
@@ -12874,6 +19461,8 @@ class DescribeParametersResponseBodyParameters(TeaModel):
             self.readonly = m.get('Readonly')
         if m.get('RejectedValue') is not None:
             self.rejected_value = m.get('RejectedValue')
+        if m.get('Unit') is not None:
+            self.unit = m.get('Unit')
         if m.get('ValueType') is not None:
             self.value_type = m.get('ValueType')
         return self
@@ -12979,19 +19568,25 @@ class DescribeParametersHistoryRequest(TeaModel):
         page_size: int = None,
         start_time: str = None,
     ):
-        # The value of the parameter after the modification.
+        # The type of the parameter.   
+        # Valid values: CLUSTER and TENANT.
         self.dimension = dimension
-        # The list of parameter modification records.
+        # The resource ID of the parameter type.   
+        # You can leave this parameter unspecified when you call this operation to query the modification history of cluster parameters. In the case of tenant parameters, pass the tenant ID.
         self.dimension_value = dimension_value
-        # Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
+        # The end time for the query of parameter modification history.
         self.end_time = end_time
-        # The name of the parameter.
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
-        # Default value: 10.
+        # The number of the page to return.    
+        # - Start value: 1   
+        # - Default value: 1
         self.page_number = page_number
-        # It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
+        # The number of rows to return on each page.   
+        # - Maximum value: 100   
+        # - Default value: 10
         self.page_size = page_size
-        # You can call this operation to query the modification history of cluster or tenant parameters.
+        # The start time of the time range for querying the parameter modification history.
         self.start_time = start_time
 
     def validate(self):
@@ -13049,28 +19644,23 @@ class DescribeParametersHistoryResponseBodyRespondParameters(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The request ID.
+        # The time when the parameter modification was initiated.
         self.create_time = create_time
-        # ```
-        # http(s)://[Endpoint]/?Action=DescribeParametersHistory
-        # &InstanceId=ob317v4uif****\
-        # &Dimension=TENANT
-        # &DimensionValue=ob2mr3oae0****\
-        # &StartTime=2021-06-13 15:40:43
-        # &EndTime=2021-09-13 15:40:43
-        # &PageSize=10
-        # &PageNumber=1
-        # &Common request parameters
-        # ```
+        # The resource ID of the parameter type.    
+        # - When you called this operation to query the modification history of cluster parameters, the value is DEFAULT_DIMENSION_VALUE.   
+        # - When you called this operation to query the modification history of tenant parameters, the value is the tenant ID.
         self.dimension_value = dimension_value
-        # You can call this operation to query the modification history of cluster or tenant parameters.
-        self.name = name
-        self.new_value = new_value
-        # The start time of the time range for querying the parameter modification history.
-        self.old_value = old_value
-        # -\
-        self.status = status
         # The name of the parameter.
+        self.name = name
+        # The value of the parameter after the modification.
+        self.new_value = new_value
+        # The parameter value before modification.
+        self.old_value = old_value
+        # The modification status. Valid values:    
+        # - APPLIED: The modification was successful.   
+        # - SCHEDULING: The modification was to be made.
+        self.status = status
+        # The time when the parameter modification took effect.
         self.update_time = update_time
 
     def validate(self):
@@ -13124,13 +19714,11 @@ class DescribeParametersHistoryResponseBodyRespond(TeaModel):
         parameters: List[DescribeParametersHistoryResponseBodyRespondParameters] = None,
         total_count: int = None,
     ):
-        # The end time for the query of parameter modification history.
+        # The number of returned entries on each page.
         self.page_number = page_number
-        # The number of rows to return on each page.   
-        # - Maximum value: 100   
-        # - Default value: 10
+        # The parameter modification history.
         self.parameters = parameters
-        # The list of parameter modification records.
+        # The number of parameter modification records.
         self.total_count = total_count
 
     def validate(self):
@@ -13175,11 +19763,9 @@ class DescribeParametersHistoryResponseBody(TeaModel):
         request_id: str = None,
         respond: List[DescribeParametersHistoryResponseBodyRespond] = None,
     ):
-        # The number of the page to return.    
-        # - Start value: 1   
-        # - Default value: 1
+        # The request ID.
         self.request_id = request_id
-        # The time when the parameter modification took effect.
+        # The list of parameter modification records.
         self.respond = respond
 
     def validate(self):
@@ -13254,6 +19840,5622 @@ class DescribeParametersHistoryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeParametersHistoryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeProjectResponseBodyDataAlarmStats(TeaModel):
+    def __init__(
+        self,
+        alarm_content: str = None,
+        alarming: bool = None,
+        open_monitor: bool = None,
+        recently_trigger_count: int = None,
+        rule_to_recently_trigger_count: Dict[str, int] = None,
+        target: str = None,
+    ):
+        self.alarm_content = alarm_content
+        self.alarming = alarming
+        self.open_monitor = open_monitor
+        self.recently_trigger_count = recently_trigger_count
+        self.rule_to_recently_trigger_count = rule_to_recently_trigger_count
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_content is not None:
+            result['AlarmContent'] = self.alarm_content
+        if self.alarming is not None:
+            result['Alarming'] = self.alarming
+        if self.open_monitor is not None:
+            result['OpenMonitor'] = self.open_monitor
+        if self.recently_trigger_count is not None:
+            result['RecentlyTriggerCount'] = self.recently_trigger_count
+        if self.rule_to_recently_trigger_count is not None:
+            result['RuleToRecentlyTriggerCount'] = self.rule_to_recently_trigger_count
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmContent') is not None:
+            self.alarm_content = m.get('AlarmContent')
+        if m.get('Alarming') is not None:
+            self.alarming = m.get('Alarming')
+        if m.get('OpenMonitor') is not None:
+            self.open_monitor = m.get('OpenMonitor')
+        if m.get('RecentlyTriggerCount') is not None:
+            self.recently_trigger_count = m.get('RecentlyTriggerCount')
+        if m.get('RuleToRecentlyTriggerCount') is not None:
+            self.rule_to_recently_trigger_count = m.get('RuleToRecentlyTriggerCount')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class DescribeProjectResponseBodyDataCommonTransferConfig(TeaModel):
+    def __init__(
+        self,
+        active_active: bool = None,
+        data_works_business_name: str = None,
+        datahub_topic_type: str = None,
+        mq_partition: int = None,
+        mq_partition_mode: str = None,
+        mq_serializer_type: str = None,
+        rocket_mq_enable_msg_trace: bool = None,
+        rocket_mq_msg_tags: str = None,
+        rocket_mq_producer_group: str = None,
+        rocket_mq_send_msg_timeout: int = None,
+        table_category: str = None,
+    ):
+        self.active_active = active_active
+        self.data_works_business_name = data_works_business_name
+        self.datahub_topic_type = datahub_topic_type
+        self.mq_partition = mq_partition
+        self.mq_partition_mode = mq_partition_mode
+        self.mq_serializer_type = mq_serializer_type
+        self.rocket_mq_enable_msg_trace = rocket_mq_enable_msg_trace
+        self.rocket_mq_msg_tags = rocket_mq_msg_tags
+        self.rocket_mq_producer_group = rocket_mq_producer_group
+        self.rocket_mq_send_msg_timeout = rocket_mq_send_msg_timeout
+        self.table_category = table_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_active is not None:
+            result['ActiveActive'] = self.active_active
+        if self.data_works_business_name is not None:
+            result['DataWorksBusinessName'] = self.data_works_business_name
+        if self.datahub_topic_type is not None:
+            result['DatahubTopicType'] = self.datahub_topic_type
+        if self.mq_partition is not None:
+            result['MqPartition'] = self.mq_partition
+        if self.mq_partition_mode is not None:
+            result['MqPartitionMode'] = self.mq_partition_mode
+        if self.mq_serializer_type is not None:
+            result['MqSerializerType'] = self.mq_serializer_type
+        if self.rocket_mq_enable_msg_trace is not None:
+            result['RocketMqEnableMsgTrace'] = self.rocket_mq_enable_msg_trace
+        if self.rocket_mq_msg_tags is not None:
+            result['RocketMqMsgTags'] = self.rocket_mq_msg_tags
+        if self.rocket_mq_producer_group is not None:
+            result['RocketMqProducerGroup'] = self.rocket_mq_producer_group
+        if self.rocket_mq_send_msg_timeout is not None:
+            result['RocketMqSendMsgTimeout'] = self.rocket_mq_send_msg_timeout
+        if self.table_category is not None:
+            result['TableCategory'] = self.table_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveActive') is not None:
+            self.active_active = m.get('ActiveActive')
+        if m.get('DataWorksBusinessName') is not None:
+            self.data_works_business_name = m.get('DataWorksBusinessName')
+        if m.get('DatahubTopicType') is not None:
+            self.datahub_topic_type = m.get('DatahubTopicType')
+        if m.get('MqPartition') is not None:
+            self.mq_partition = m.get('MqPartition')
+        if m.get('MqPartitionMode') is not None:
+            self.mq_partition_mode = m.get('MqPartitionMode')
+        if m.get('MqSerializerType') is not None:
+            self.mq_serializer_type = m.get('MqSerializerType')
+        if m.get('RocketMqEnableMsgTrace') is not None:
+            self.rocket_mq_enable_msg_trace = m.get('RocketMqEnableMsgTrace')
+        if m.get('RocketMqMsgTags') is not None:
+            self.rocket_mq_msg_tags = m.get('RocketMqMsgTags')
+        if m.get('RocketMqProducerGroup') is not None:
+            self.rocket_mq_producer_group = m.get('RocketMqProducerGroup')
+        if m.get('RocketMqSendMsgTimeout') is not None:
+            self.rocket_mq_send_msg_timeout = m.get('RocketMqSendMsgTimeout')
+        if m.get('TableCategory') is not None:
+            self.table_category = m.get('TableCategory')
+        return self
+
+
+class DescribeProjectResponseBodyDataExtraInfo(TeaModel):
+    def __init__(
+        self,
+        access_ob_source: bool = None,
+        ignore_unsupport_ddl: bool = None,
+        incr_sync_timestamp: int = None,
+        log_service_start_checkpoint: int = None,
+        max_connector_count: int = None,
+        monitoring_incr: bool = None,
+        overwrite_config: bool = None,
+        reverse_subtopics: List[str] = None,
+        running_progress: int = None,
+        running_step: str = None,
+        source_store_kept_hour: int = None,
+        store_incr: bool = None,
+        sub_conds: Dict[str, List[DataExtraInfoSubCondsValue]] = None,
+        sub_dbs: Dict[str, List[DataExtraInfoSubDbsValue]] = None,
+        sub_ids: Dict[str, str] = None,
+        subtopics: List[str] = None,
+        sync_delay: int = None,
+        sync_delay_sample_timestamp: int = None,
+    ):
+        self.access_ob_source = access_ob_source
+        self.ignore_unsupport_ddl = ignore_unsupport_ddl
+        self.incr_sync_timestamp = incr_sync_timestamp
+        self.log_service_start_checkpoint = log_service_start_checkpoint
+        self.max_connector_count = max_connector_count
+        self.monitoring_incr = monitoring_incr
+        self.overwrite_config = overwrite_config
+        self.reverse_subtopics = reverse_subtopics
+        self.running_progress = running_progress
+        self.running_step = running_step
+        self.source_store_kept_hour = source_store_kept_hour
+        self.store_incr = store_incr
+        self.sub_conds = sub_conds
+        self.sub_dbs = sub_dbs
+        self.sub_ids = sub_ids
+        self.subtopics = subtopics
+        self.sync_delay = sync_delay
+        self.sync_delay_sample_timestamp = sync_delay_sample_timestamp
+
+    def validate(self):
+        if self.sub_conds:
+            for v in self.sub_conds.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+        if self.sub_dbs:
+            for v in self.sub_dbs.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_ob_source is not None:
+            result['AccessObSource'] = self.access_ob_source
+        if self.ignore_unsupport_ddl is not None:
+            result['IgnoreUnsupportDdl'] = self.ignore_unsupport_ddl
+        if self.incr_sync_timestamp is not None:
+            result['IncrSyncTimestamp'] = self.incr_sync_timestamp
+        if self.log_service_start_checkpoint is not None:
+            result['LogServiceStartCheckpoint'] = self.log_service_start_checkpoint
+        if self.max_connector_count is not None:
+            result['MaxConnectorCount'] = self.max_connector_count
+        if self.monitoring_incr is not None:
+            result['MonitoringIncr'] = self.monitoring_incr
+        if self.overwrite_config is not None:
+            result['OverwriteConfig'] = self.overwrite_config
+        if self.reverse_subtopics is not None:
+            result['ReverseSubtopics'] = self.reverse_subtopics
+        if self.running_progress is not None:
+            result['RunningProgress'] = self.running_progress
+        if self.running_step is not None:
+            result['RunningStep'] = self.running_step
+        if self.source_store_kept_hour is not None:
+            result['SourceStoreKeptHour'] = self.source_store_kept_hour
+        if self.store_incr is not None:
+            result['StoreIncr'] = self.store_incr
+        result['SubConds'] = {}
+        if self.sub_conds is not None:
+            for k, v in self.sub_conds.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['subConds'][k] = l1
+        result['SubDbs'] = {}
+        if self.sub_dbs is not None:
+            for k, v in self.sub_dbs.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['subDbs'][k] = l1
+        if self.sub_ids is not None:
+            result['SubIds'] = self.sub_ids
+        if self.subtopics is not None:
+            result['Subtopics'] = self.subtopics
+        if self.sync_delay is not None:
+            result['SyncDelay'] = self.sync_delay
+        if self.sync_delay_sample_timestamp is not None:
+            result['SyncDelaySampleTimestamp'] = self.sync_delay_sample_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessObSource') is not None:
+            self.access_ob_source = m.get('AccessObSource')
+        if m.get('IgnoreUnsupportDdl') is not None:
+            self.ignore_unsupport_ddl = m.get('IgnoreUnsupportDdl')
+        if m.get('IncrSyncTimestamp') is not None:
+            self.incr_sync_timestamp = m.get('IncrSyncTimestamp')
+        if m.get('LogServiceStartCheckpoint') is not None:
+            self.log_service_start_checkpoint = m.get('LogServiceStartCheckpoint')
+        if m.get('MaxConnectorCount') is not None:
+            self.max_connector_count = m.get('MaxConnectorCount')
+        if m.get('MonitoringIncr') is not None:
+            self.monitoring_incr = m.get('MonitoringIncr')
+        if m.get('OverwriteConfig') is not None:
+            self.overwrite_config = m.get('OverwriteConfig')
+        if m.get('ReverseSubtopics') is not None:
+            self.reverse_subtopics = m.get('ReverseSubtopics')
+        if m.get('RunningProgress') is not None:
+            self.running_progress = m.get('RunningProgress')
+        if m.get('RunningStep') is not None:
+            self.running_step = m.get('RunningStep')
+        if m.get('SourceStoreKeptHour') is not None:
+            self.source_store_kept_hour = m.get('SourceStoreKeptHour')
+        if m.get('StoreIncr') is not None:
+            self.store_incr = m.get('StoreIncr')
+        self.sub_conds = {}
+        if m.get('SubConds') is not None:
+            for k, v in m.get('SubConds').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DataExtraInfoSubCondsValue()
+                    l1.append(temp_model.from_map(k1))
+                self.sub_conds['k'] = l1
+        self.sub_dbs = {}
+        if m.get('SubDbs') is not None:
+            for k, v in m.get('SubDbs').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DataExtraInfoSubDbsValue()
+                    l1.append(temp_model.from_map(k1))
+                self.sub_dbs['k'] = l1
+        if m.get('SubIds') is not None:
+            self.sub_ids = m.get('SubIds')
+        if m.get('Subtopics') is not None:
+            self.subtopics = m.get('Subtopics')
+        if m.get('SyncDelay') is not None:
+            self.sync_delay = m.get('SyncDelay')
+        if m.get('SyncDelaySampleTimestamp') is not None:
+            self.sync_delay_sample_timestamp = m.get('SyncDelaySampleTimestamp')
+        return self
+
+
+class DescribeProjectResponseBodyDataFullTransferConfig(TeaModel):
+    def __init__(
+        self,
+        allow_dest_table_not_empty: bool = None,
+        full_transfer_speed_mode: str = None,
+        full_verify_speed_mode: str = None,
+        none_pk_uk_truncate_dst_table: bool = None,
+    ):
+        self.allow_dest_table_not_empty = allow_dest_table_not_empty
+        self.full_transfer_speed_mode = full_transfer_speed_mode
+        self.full_verify_speed_mode = full_verify_speed_mode
+        self.none_pk_uk_truncate_dst_table = none_pk_uk_truncate_dst_table
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_dest_table_not_empty is not None:
+            result['AllowDestTableNotEmpty'] = self.allow_dest_table_not_empty
+        if self.full_transfer_speed_mode is not None:
+            result['FullTransferSpeedMode'] = self.full_transfer_speed_mode
+        if self.full_verify_speed_mode is not None:
+            result['FullVerifySpeedMode'] = self.full_verify_speed_mode
+        if self.none_pk_uk_truncate_dst_table is not None:
+            result['NonePkUkTruncateDstTable'] = self.none_pk_uk_truncate_dst_table
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowDestTableNotEmpty') is not None:
+            self.allow_dest_table_not_empty = m.get('AllowDestTableNotEmpty')
+        if m.get('FullTransferSpeedMode') is not None:
+            self.full_transfer_speed_mode = m.get('FullTransferSpeedMode')
+        if m.get('FullVerifySpeedMode') is not None:
+            self.full_verify_speed_mode = m.get('FullVerifySpeedMode')
+        if m.get('NonePkUkTruncateDstTable') is not None:
+            self.none_pk_uk_truncate_dst_table = m.get('NonePkUkTruncateDstTable')
+        return self
+
+
+class DescribeProjectResponseBodyDataIncrTransferConfig(TeaModel):
+    def __init__(
+        self,
+        enable_incr_sync_statistics: bool = None,
+        enable_sequencing_within_txn: bool = None,
+        incr_sync_concurrency: int = None,
+        record_type_white_list: List[str] = None,
+        start_timestamp: int = None,
+        store_log_kept_hour: int = None,
+    ):
+        self.enable_incr_sync_statistics = enable_incr_sync_statistics
+        self.enable_sequencing_within_txn = enable_sequencing_within_txn
+        self.incr_sync_concurrency = incr_sync_concurrency
+        self.record_type_white_list = record_type_white_list
+        self.start_timestamp = start_timestamp
+        self.store_log_kept_hour = store_log_kept_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_incr_sync_statistics is not None:
+            result['EnableIncrSyncStatistics'] = self.enable_incr_sync_statistics
+        if self.enable_sequencing_within_txn is not None:
+            result['EnableSequencingWithinTxn'] = self.enable_sequencing_within_txn
+        if self.incr_sync_concurrency is not None:
+            result['IncrSyncConcurrency'] = self.incr_sync_concurrency
+        if self.record_type_white_list is not None:
+            result['RecordTypeWhiteList'] = self.record_type_white_list
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+        if self.store_log_kept_hour is not None:
+            result['StoreLogKeptHour'] = self.store_log_kept_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableIncrSyncStatistics') is not None:
+            self.enable_incr_sync_statistics = m.get('EnableIncrSyncStatistics')
+        if m.get('EnableSequencingWithinTxn') is not None:
+            self.enable_sequencing_within_txn = m.get('EnableSequencingWithinTxn')
+        if m.get('IncrSyncConcurrency') is not None:
+            self.incr_sync_concurrency = m.get('IncrSyncConcurrency')
+        if m.get('RecordTypeWhiteList') is not None:
+            self.record_type_white_list = m.get('RecordTypeWhiteList')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
+        if m.get('StoreLogKeptHour') is not None:
+            self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        return self
+
+
+class DescribeProjectResponseBodyDataLabels(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class DescribeProjectResponseBodyDataSinkConnectInfo(TeaModel):
+    def __init__(
+        self,
+        charset: str = None,
+        conn_extra_attributes: Any = None,
+        connection_info: str = None,
+        db_engine: str = None,
+        endpoint_id: str = None,
+        endpoint_name: str = None,
+        endpoint_side: str = None,
+        host: str = None,
+        id: str = None,
+        nls_length_semantics: str = None,
+        ocp_name: str = None,
+        operating_system: str = None,
+        owner: str = None,
+        port: int = None,
+        region: str = None,
+        resource_owner: str = None,
+        timezone: str = None,
+        username: str = None,
+        version: str = None,
+    ):
+        self.charset = charset
+        self.conn_extra_attributes = conn_extra_attributes
+        self.connection_info = connection_info
+        self.db_engine = db_engine
+        self.endpoint_id = endpoint_id
+        self.endpoint_name = endpoint_name
+        self.endpoint_side = endpoint_side
+        self.host = host
+        self.id = id
+        self.nls_length_semantics = nls_length_semantics
+        self.ocp_name = ocp_name
+        self.operating_system = operating_system
+        # Owner。
+        self.owner = owner
+        self.port = port
+        self.region = region
+        self.resource_owner = resource_owner
+        self.timezone = timezone
+        self.username = username
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charset is not None:
+            result['Charset'] = self.charset
+        if self.conn_extra_attributes is not None:
+            result['ConnExtraAttributes'] = self.conn_extra_attributes
+        if self.connection_info is not None:
+            result['ConnectionInfo'] = self.connection_info
+        if self.db_engine is not None:
+            result['DbEngine'] = self.db_engine
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_side is not None:
+            result['EndpointSide'] = self.endpoint_side
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.nls_length_semantics is not None:
+            result['NlsLengthSemantics'] = self.nls_length_semantics
+        if self.ocp_name is not None:
+            result['OcpName'] = self.ocp_name
+        if self.operating_system is not None:
+            result['OperatingSystem'] = self.operating_system
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Charset') is not None:
+            self.charset = m.get('Charset')
+        if m.get('ConnExtraAttributes') is not None:
+            self.conn_extra_attributes = m.get('ConnExtraAttributes')
+        if m.get('ConnectionInfo') is not None:
+            self.connection_info = m.get('ConnectionInfo')
+        if m.get('DbEngine') is not None:
+            self.db_engine = m.get('DbEngine')
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointSide') is not None:
+            self.endpoint_side = m.get('EndpointSide')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NlsLengthSemantics') is not None:
+            self.nls_length_semantics = m.get('NlsLengthSemantics')
+        if m.get('OcpName') is not None:
+            self.ocp_name = m.get('OcpName')
+        if m.get('OperatingSystem') is not None:
+            self.operating_system = m.get('OperatingSystem')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class DescribeProjectResponseBodyDataSourceConnectInfo(TeaModel):
+    def __init__(
+        self,
+        charset: str = None,
+        conn_extra_attributes: Any = None,
+        connection_info: str = None,
+        db_engine: str = None,
+        endpoint_id: str = None,
+        endpoint_name: str = None,
+        endpoint_side: str = None,
+        host: str = None,
+        id: str = None,
+        nls_length_semantics: str = None,
+        ocp_name: str = None,
+        operating_system: str = None,
+        owner: str = None,
+        port: int = None,
+        region: str = None,
+        resource_owner: str = None,
+        timezone: str = None,
+        username: str = None,
+        version: str = None,
+    ):
+        self.charset = charset
+        self.conn_extra_attributes = conn_extra_attributes
+        self.connection_info = connection_info
+        self.db_engine = db_engine
+        self.endpoint_id = endpoint_id
+        self.endpoint_name = endpoint_name
+        self.endpoint_side = endpoint_side
+        self.host = host
+        self.id = id
+        self.nls_length_semantics = nls_length_semantics
+        self.ocp_name = ocp_name
+        self.operating_system = operating_system
+        # Owner。
+        self.owner = owner
+        self.port = port
+        self.region = region
+        self.resource_owner = resource_owner
+        self.timezone = timezone
+        self.username = username
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charset is not None:
+            result['Charset'] = self.charset
+        if self.conn_extra_attributes is not None:
+            result['ConnExtraAttributes'] = self.conn_extra_attributes
+        if self.connection_info is not None:
+            result['ConnectionInfo'] = self.connection_info
+        if self.db_engine is not None:
+            result['DbEngine'] = self.db_engine
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_side is not None:
+            result['EndpointSide'] = self.endpoint_side
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.nls_length_semantics is not None:
+            result['NlsLengthSemantics'] = self.nls_length_semantics
+        if self.ocp_name is not None:
+            result['OcpName'] = self.ocp_name
+        if self.operating_system is not None:
+            result['OperatingSystem'] = self.operating_system
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Charset') is not None:
+            self.charset = m.get('Charset')
+        if m.get('ConnExtraAttributes') is not None:
+            self.conn_extra_attributes = m.get('ConnExtraAttributes')
+        if m.get('ConnectionInfo') is not None:
+            self.connection_info = m.get('ConnectionInfo')
+        if m.get('DbEngine') is not None:
+            self.db_engine = m.get('DbEngine')
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointSide') is not None:
+            self.endpoint_side = m.get('EndpointSide')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NlsLengthSemantics') is not None:
+            self.nls_length_semantics = m.get('NlsLengthSemantics')
+        if m.get('OcpName') is not None:
+            self.ocp_name = m.get('OcpName')
+        if m.get('OperatingSystem') is not None:
+            self.operating_system = m.get('OperatingSystem')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        # FATAL, ERROR, WARNING, CRITICAL
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectResponseBodyDataStepsExtraInfo(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_details: List[DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails] = None,
+        error_msg: str = None,
+        error_param: Dict[str, str] = None,
+        failed_time: str = None,
+    ):
+        self.error_code = error_code
+        self.error_details = error_details
+        self.error_msg = error_msg
+        self.error_param = error_param
+        self.failed_time = failed_time
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.error_param is not None:
+            result['ErrorParam'] = self.error_param
+        if self.failed_time is not None:
+            result['FailedTime'] = self.failed_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectResponseBodyDataStepsExtraInfoErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('ErrorParam') is not None:
+            self.error_param = m.get('ErrorParam')
+        if m.get('FailedTime') is not None:
+            self.failed_time = m.get('FailedTime')
+        return self
+
+
+class DescribeProjectResponseBodyDataSteps(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        extra_info: DescribeProjectResponseBodyDataStepsExtraInfo = None,
+        finish_time: str = None,
+        name: str = None,
+        order: int = None,
+        progress: int = None,
+        start_time: str = None,
+        status: str = None,
+        step_info: Dict[str, Any] = None,
+    ):
+        self.description = description
+        self.extra_info = extra_info
+        self.finish_time = finish_time
+        self.name = name
+        self.order = order
+        self.progress = progress
+        self.start_time = start_time
+        self.status = status
+        self.step_info = step_info
+
+    def validate(self):
+        if self.extra_info:
+            self.extra_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info.to_map()
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_info is not None:
+            result['StepInfo'] = self.step_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExtraInfo') is not None:
+            temp_model = DescribeProjectResponseBodyDataStepsExtraInfo()
+            self.extra_info = temp_model.from_map(m['ExtraInfo'])
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepInfo') is not None:
+            self.step_info = m.get('StepInfo')
+        return self
+
+
+class DescribeProjectResponseBodyDataStructTransferConfig(TeaModel):
+    def __init__(
+        self,
+        byte_char_convert_strategy: str = None,
+        defer_index_creation: bool = None,
+    ):
+        self.byte_char_convert_strategy = byte_char_convert_strategy
+        self.defer_index_creation = defer_index_creation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.byte_char_convert_strategy is not None:
+            result['ByteCharConvertStrategy'] = self.byte_char_convert_strategy
+        if self.defer_index_creation is not None:
+            result['DeferIndexCreation'] = self.defer_index_creation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ByteCharConvertStrategy') is not None:
+            self.byte_char_convert_strategy = m.get('ByteCharConvertStrategy')
+        if m.get('DeferIndexCreation') is not None:
+            self.defer_index_creation = m.get('DeferIndexCreation')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabases(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables] = None,
+        specific_views: List[DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews] = None,
+        tables: List[DescribeProjectResponseBodyDataTransferMappingDatabasesTables] = None,
+        tenant_name: str = None,
+        type: str = None,
+        views: List[DescribeProjectResponseBodyDataTransferMappingDatabasesViews] = None,
+    ):
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.type = type
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.type is not None:
+            result['Type'] = self.type
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTablesAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema(TeaModel):
+    def __init__(
+        self,
+        distributed_keys: List[str] = None,
+        partition_life_cycle: str = None,
+        partition_statement: str = None,
+        primary_keys: List[str] = None,
+    ):
+        self.distributed_keys = distributed_keys
+        self.partition_life_cycle = partition_life_cycle
+        self.partition_statement = partition_statement
+        self.primary_keys = primary_keys
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.distributed_keys is not None:
+            result['DistributedKeys'] = self.distributed_keys
+        if self.partition_life_cycle is not None:
+            result['PartitionLifeCycle'] = self.partition_life_cycle
+        if self.partition_statement is not None:
+            result['PartitionStatement'] = self.partition_statement
+        if self.primary_keys is not None:
+            result['PrimaryKeys'] = self.primary_keys
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DistributedKeys') is not None:
+            self.distributed_keys = m.get('DistributedKeys')
+        if m.get('PartitionLifeCycle') is not None:
+            self.partition_life_cycle = m.get('PartitionLifeCycle')
+        if m.get('PartitionStatement') is not None:
+            self.partition_statement = m.get('PartitionStatement')
+        if m.get('PrimaryKeys') is not None:
+            self.primary_keys = m.get('PrimaryKeys')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews(TeaModel):
+    def __init__(
+        self,
+        adb_table_schema: DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema = None,
+        filter_columns: List[str] = None,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        shard_columns: List[str] = None,
+        where_clause: str = None,
+    ):
+        self.adb_table_schema = adb_table_schema
+        self.filter_columns = filter_columns
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.shard_columns = shard_columns
+        self.where_clause = where_clause
+
+    def validate(self):
+        if self.adb_table_schema:
+            self.adb_table_schema.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adb_table_schema is not None:
+            result['AdbTableSchema'] = self.adb_table_schema.to_map()
+        if self.filter_columns is not None:
+            result['FilterColumns'] = self.filter_columns
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.shard_columns is not None:
+            result['ShardColumns'] = self.shard_columns
+        if self.where_clause is not None:
+            result['WhereClause'] = self.where_clause
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdbTableSchema') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViewsAdbTableSchema()
+            self.adb_table_schema = temp_model.from_map(m['AdbTableSchema'])
+        if m.get('FilterColumns') is not None:
+            self.filter_columns = m.get('FilterColumns')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ShardColumns') is not None:
+            self.shard_columns = m.get('ShardColumns')
+        if m.get('WhereClause') is not None:
+            self.where_clause = m.get('WhereClause')
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMappingDatabasesBlack(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        mapped_name: str = None,
+        name: str = None,
+        specific_tables: List[DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables] = None,
+        specific_views: List[DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews] = None,
+        tables: List[DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables] = None,
+        tenant_name: str = None,
+        type: str = None,
+        views: List[DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews] = None,
+    ):
+        self.id = id
+        self.mapped_name = mapped_name
+        self.name = name
+        self.specific_tables = specific_tables
+        self.specific_views = specific_views
+        self.tables = tables
+        self.tenant_name = tenant_name
+        self.type = type
+        self.views = views
+
+    def validate(self):
+        if self.specific_tables:
+            for k in self.specific_tables:
+                if k:
+                    k.validate()
+        if self.specific_views:
+            for k in self.specific_views:
+                if k:
+                    k.validate()
+        if self.tables:
+            for k in self.tables:
+                if k:
+                    k.validate()
+        if self.views:
+            for k in self.views:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.mapped_name is not None:
+            result['MappedName'] = self.mapped_name
+        if self.name is not None:
+            result['Name'] = self.name
+        result['SpecificTables'] = []
+        if self.specific_tables is not None:
+            for k in self.specific_tables:
+                result['SpecificTables'].append(k.to_map() if k else None)
+        result['SpecificViews'] = []
+        if self.specific_views is not None:
+            for k in self.specific_views:
+                result['SpecificViews'].append(k.to_map() if k else None)
+        result['Tables'] = []
+        if self.tables is not None:
+            for k in self.tables:
+                result['Tables'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.type is not None:
+            result['Type'] = self.type
+        result['Views'] = []
+        if self.views is not None:
+            for k in self.views:
+                result['Views'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('MappedName') is not None:
+            self.mapped_name = m.get('MappedName')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        self.specific_tables = []
+        if m.get('SpecificTables') is not None:
+            for k in m.get('SpecificTables'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificTables()
+                self.specific_tables.append(temp_model.from_map(k))
+        self.specific_views = []
+        if m.get('SpecificViews') is not None:
+            for k in m.get('SpecificViews'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackSpecificViews()
+                self.specific_views.append(temp_model.from_map(k))
+        self.tables = []
+        if m.get('Tables') is not None:
+            for k in m.get('Tables'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackTables()
+                self.tables.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        self.views = []
+        if m.get('Views') is not None:
+            for k in m.get('Views'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlackViews()
+                self.views.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeProjectResponseBodyDataTransferMapping(TeaModel):
+    def __init__(
+        self,
+        databases: List[DescribeProjectResponseBodyDataTransferMappingDatabases] = None,
+        databases_black: List[DescribeProjectResponseBodyDataTransferMappingDatabasesBlack] = None,
+        mode: str = None,
+        table_and_view_black_list: List[str] = None,
+        table_and_view_white_list: List[str] = None,
+    ):
+        self.databases = databases
+        self.databases_black = databases_black
+        self.mode = mode
+        self.table_and_view_black_list = table_and_view_black_list
+        self.table_and_view_white_list = table_and_view_white_list
+
+    def validate(self):
+        if self.databases:
+            for k in self.databases:
+                if k:
+                    k.validate()
+        if self.databases_black:
+            for k in self.databases_black:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Databases'] = []
+        if self.databases is not None:
+            for k in self.databases:
+                result['Databases'].append(k.to_map() if k else None)
+        result['DatabasesBlack'] = []
+        if self.databases_black is not None:
+            for k in self.databases_black:
+                result['DatabasesBlack'].append(k.to_map() if k else None)
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.table_and_view_black_list is not None:
+            result['TableAndViewBlackList'] = self.table_and_view_black_list
+        if self.table_and_view_white_list is not None:
+            result['TableAndViewWhiteList'] = self.table_and_view_white_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.databases = []
+        if m.get('Databases') is not None:
+            for k in m.get('Databases'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabases()
+                self.databases.append(temp_model.from_map(k))
+        self.databases_black = []
+        if m.get('DatabasesBlack') is not None:
+            for k in m.get('DatabasesBlack'):
+                temp_model = DescribeProjectResponseBodyDataTransferMappingDatabasesBlack()
+                self.databases_black.append(temp_model.from_map(k))
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('TableAndViewBlackList') is not None:
+            self.table_and_view_black_list = m.get('TableAndViewBlackList')
+        if m.get('TableAndViewWhiteList') is not None:
+            self.table_and_view_white_list = m.get('TableAndViewWhiteList')
+        return self
+
+
+class DescribeProjectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alarm_stats: DescribeProjectResponseBodyDataAlarmStats = None,
+        common_transfer_config: DescribeProjectResponseBodyDataCommonTransferConfig = None,
+        dest_conn_id: str = None,
+        enable_full_transfer: bool = None,
+        enable_full_verify: bool = None,
+        enable_incr_transfer: bool = None,
+        enable_incr_verify: bool = None,
+        enable_reverse_incr_transfer: bool = None,
+        enable_struct_transfer: bool = None,
+        extra_info: DescribeProjectResponseBodyDataExtraInfo = None,
+        full_transfer_config: DescribeProjectResponseBodyDataFullTransferConfig = None,
+        gmt_create: str = None,
+        gmt_finish: str = None,
+        gmt_modified: str = None,
+        gmt_start: str = None,
+        id: str = None,
+        importance: str = None,
+        incr_transfer_config: DescribeProjectResponseBodyDataIncrTransferConfig = None,
+        is_merging: bool = None,
+        is_modifying: bool = None,
+        is_sub_project: bool = None,
+        labels: List[DescribeProjectResponseBodyDataLabels] = None,
+        name: str = None,
+        owner: str = None,
+        sink_connect_info: DescribeProjectResponseBodyDataSinkConnectInfo = None,
+        sink_endpoint_type: str = None,
+        source_connect_info: DescribeProjectResponseBodyDataSourceConnectInfo = None,
+        source_endpoint_type: str = None,
+        status: str = None,
+        steps: List[DescribeProjectResponseBodyDataSteps] = None,
+        struct_transfer_config: DescribeProjectResponseBodyDataStructTransferConfig = None,
+        transfer_mapping: DescribeProjectResponseBodyDataTransferMapping = None,
+        type: str = None,
+        worker_grade_id: str = None,
+    ):
+        self.alarm_stats = alarm_stats
+        self.common_transfer_config = common_transfer_config
+        self.dest_conn_id = dest_conn_id
+        self.enable_full_transfer = enable_full_transfer
+        self.enable_full_verify = enable_full_verify
+        self.enable_incr_transfer = enable_incr_transfer
+        self.enable_incr_verify = enable_incr_verify
+        self.enable_reverse_incr_transfer = enable_reverse_incr_transfer
+        self.enable_struct_transfer = enable_struct_transfer
+        self.extra_info = extra_info
+        self.full_transfer_config = full_transfer_config
+        self.gmt_create = gmt_create
+        self.gmt_finish = gmt_finish
+        self.gmt_modified = gmt_modified
+        self.gmt_start = gmt_start
+        self.id = id
+        self.importance = importance
+        self.incr_transfer_config = incr_transfer_config
+        self.is_merging = is_merging
+        self.is_modifying = is_modifying
+        self.is_sub_project = is_sub_project
+        self.labels = labels
+        self.name = name
+        self.owner = owner
+        self.sink_connect_info = sink_connect_info
+        self.sink_endpoint_type = sink_endpoint_type
+        self.source_connect_info = source_connect_info
+        self.source_endpoint_type = source_endpoint_type
+        self.status = status
+        self.steps = steps
+        self.struct_transfer_config = struct_transfer_config
+        self.transfer_mapping = transfer_mapping
+        self.type = type
+        self.worker_grade_id = worker_grade_id
+
+    def validate(self):
+        if self.alarm_stats:
+            self.alarm_stats.validate()
+        if self.common_transfer_config:
+            self.common_transfer_config.validate()
+        if self.extra_info:
+            self.extra_info.validate()
+        if self.full_transfer_config:
+            self.full_transfer_config.validate()
+        if self.incr_transfer_config:
+            self.incr_transfer_config.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.sink_connect_info:
+            self.sink_connect_info.validate()
+        if self.source_connect_info:
+            self.source_connect_info.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+        if self.struct_transfer_config:
+            self.struct_transfer_config.validate()
+        if self.transfer_mapping:
+            self.transfer_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_stats is not None:
+            result['AlarmStats'] = self.alarm_stats.to_map()
+        if self.common_transfer_config is not None:
+            result['CommonTransferConfig'] = self.common_transfer_config.to_map()
+        if self.dest_conn_id is not None:
+            result['DestConnId'] = self.dest_conn_id
+        if self.enable_full_transfer is not None:
+            result['EnableFullTransfer'] = self.enable_full_transfer
+        if self.enable_full_verify is not None:
+            result['EnableFullVerify'] = self.enable_full_verify
+        if self.enable_incr_transfer is not None:
+            result['EnableIncrTransfer'] = self.enable_incr_transfer
+        if self.enable_incr_verify is not None:
+            result['EnableIncrVerify'] = self.enable_incr_verify
+        if self.enable_reverse_incr_transfer is not None:
+            result['EnableReverseIncrTransfer'] = self.enable_reverse_incr_transfer
+        if self.enable_struct_transfer is not None:
+            result['EnableStructTransfer'] = self.enable_struct_transfer
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info.to_map()
+        if self.full_transfer_config is not None:
+            result['FullTransferConfig'] = self.full_transfer_config.to_map()
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_finish is not None:
+            result['GmtFinish'] = self.gmt_finish
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['GmtStart'] = self.gmt_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.importance is not None:
+            result['Importance'] = self.importance
+        if self.incr_transfer_config is not None:
+            result['IncrTransferConfig'] = self.incr_transfer_config.to_map()
+        if self.is_merging is not None:
+            result['IsMerging'] = self.is_merging
+        if self.is_modifying is not None:
+            result['IsModifying'] = self.is_modifying
+        if self.is_sub_project is not None:
+            result['IsSubProject'] = self.is_sub_project
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.sink_connect_info is not None:
+            result['SinkConnectInfo'] = self.sink_connect_info.to_map()
+        if self.sink_endpoint_type is not None:
+            result['SinkEndpointType'] = self.sink_endpoint_type
+        if self.source_connect_info is not None:
+            result['SourceConnectInfo'] = self.source_connect_info.to_map()
+        if self.source_endpoint_type is not None:
+            result['SourceEndpointType'] = self.source_endpoint_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        if self.struct_transfer_config is not None:
+            result['StructTransferConfig'] = self.struct_transfer_config.to_map()
+        if self.transfer_mapping is not None:
+            result['TransferMapping'] = self.transfer_mapping.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.worker_grade_id is not None:
+            result['WorkerGradeId'] = self.worker_grade_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmStats') is not None:
+            temp_model = DescribeProjectResponseBodyDataAlarmStats()
+            self.alarm_stats = temp_model.from_map(m['AlarmStats'])
+        if m.get('CommonTransferConfig') is not None:
+            temp_model = DescribeProjectResponseBodyDataCommonTransferConfig()
+            self.common_transfer_config = temp_model.from_map(m['CommonTransferConfig'])
+        if m.get('DestConnId') is not None:
+            self.dest_conn_id = m.get('DestConnId')
+        if m.get('EnableFullTransfer') is not None:
+            self.enable_full_transfer = m.get('EnableFullTransfer')
+        if m.get('EnableFullVerify') is not None:
+            self.enable_full_verify = m.get('EnableFullVerify')
+        if m.get('EnableIncrTransfer') is not None:
+            self.enable_incr_transfer = m.get('EnableIncrTransfer')
+        if m.get('EnableIncrVerify') is not None:
+            self.enable_incr_verify = m.get('EnableIncrVerify')
+        if m.get('EnableReverseIncrTransfer') is not None:
+            self.enable_reverse_incr_transfer = m.get('EnableReverseIncrTransfer')
+        if m.get('EnableStructTransfer') is not None:
+            self.enable_struct_transfer = m.get('EnableStructTransfer')
+        if m.get('ExtraInfo') is not None:
+            temp_model = DescribeProjectResponseBodyDataExtraInfo()
+            self.extra_info = temp_model.from_map(m['ExtraInfo'])
+        if m.get('FullTransferConfig') is not None:
+            temp_model = DescribeProjectResponseBodyDataFullTransferConfig()
+            self.full_transfer_config = temp_model.from_map(m['FullTransferConfig'])
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtFinish') is not None:
+            self.gmt_finish = m.get('GmtFinish')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GmtStart') is not None:
+            self.gmt_start = m.get('GmtStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Importance') is not None:
+            self.importance = m.get('Importance')
+        if m.get('IncrTransferConfig') is not None:
+            temp_model = DescribeProjectResponseBodyDataIncrTransferConfig()
+            self.incr_transfer_config = temp_model.from_map(m['IncrTransferConfig'])
+        if m.get('IsMerging') is not None:
+            self.is_merging = m.get('IsMerging')
+        if m.get('IsModifying') is not None:
+            self.is_modifying = m.get('IsModifying')
+        if m.get('IsSubProject') is not None:
+            self.is_sub_project = m.get('IsSubProject')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = DescribeProjectResponseBodyDataLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('SinkConnectInfo') is not None:
+            temp_model = DescribeProjectResponseBodyDataSinkConnectInfo()
+            self.sink_connect_info = temp_model.from_map(m['SinkConnectInfo'])
+        if m.get('SinkEndpointType') is not None:
+            self.sink_endpoint_type = m.get('SinkEndpointType')
+        if m.get('SourceConnectInfo') is not None:
+            temp_model = DescribeProjectResponseBodyDataSourceConnectInfo()
+            self.source_connect_info = temp_model.from_map(m['SourceConnectInfo'])
+        if m.get('SourceEndpointType') is not None:
+            self.source_endpoint_type = m.get('SourceEndpointType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = DescribeProjectResponseBodyDataSteps()
+                self.steps.append(temp_model.from_map(k))
+        if m.get('StructTransferConfig') is not None:
+            temp_model = DescribeProjectResponseBodyDataStructTransferConfig()
+            self.struct_transfer_config = temp_model.from_map(m['StructTransferConfig'])
+        if m.get('TransferMapping') is not None:
+            temp_model = DescribeProjectResponseBodyDataTransferMapping()
+            self.transfer_mapping = temp_model.from_map(m['TransferMapping'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkerGradeId') is not None:
+            self.worker_grade_id = m.get('WorkerGradeId')
+        return self
+
+
+class DescribeProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: DescribeProjectResponseBodyData = None,
+        error_detail: DescribeProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = DescribeProjectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = DescribeProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProjectComponentsRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataFullImportComponents(TeaModel):
+    def __init__(
+        self,
+        error_details: List[DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails] = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        identity: str = None,
+        ip: str = None,
+        name: str = None,
+        progress: int = None,
+        region: str = None,
+        status: str = None,
+    ):
+        self.error_details = error_details
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.identity = identity
+        self.ip = ip
+        self.name = name
+        self.progress = progress
+        self.region = region
+        self.status = status
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectComponentsResponseBodyDataFullImportComponentsErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataFullVerifyComponents(TeaModel):
+    def __init__(
+        self,
+        consistent_quantity: int = None,
+        error_details: List[DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails] = None,
+        inconsistent_quantity: int = None,
+        ip: str = None,
+        name: str = None,
+        progress: str = None,
+        record_progress: int = None,
+        region: str = None,
+        status: str = None,
+        task_id: int = None,
+    ):
+        self.consistent_quantity = consistent_quantity
+        self.error_details = error_details
+        self.inconsistent_quantity = inconsistent_quantity
+        self.ip = ip
+        self.name = name
+        self.progress = progress
+        self.record_progress = record_progress
+        self.region = region
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consistent_quantity is not None:
+            result['ConsistentQuantity'] = self.consistent_quantity
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.inconsistent_quantity is not None:
+            result['InconsistentQuantity'] = self.inconsistent_quantity
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.record_progress is not None:
+            result['RecordProgress'] = self.record_progress
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsistentQuantity') is not None:
+            self.consistent_quantity = m.get('ConsistentQuantity')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectComponentsResponseBodyDataFullVerifyComponentsErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('InconsistentQuantity') is not None:
+            self.inconsistent_quantity = m.get('InconsistentQuantity')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('RecordProgress') is not None:
+            self.record_progress = m.get('RecordProgress')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataIncrSyncComponents(TeaModel):
+    def __init__(
+        self,
+        checkpoint: str = None,
+        checkpoint_sample_timestamp: int = None,
+        delay: int = None,
+        error_details: List[DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails] = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        identity: str = None,
+        ip: str = None,
+        name: str = None,
+        region: str = None,
+        status: str = None,
+        subtopics: List[str] = None,
+        tps: int = None,
+    ):
+        self.checkpoint = checkpoint
+        self.checkpoint_sample_timestamp = checkpoint_sample_timestamp
+        self.delay = delay
+        self.error_details = error_details
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.identity = identity
+        self.ip = ip
+        self.name = name
+        self.region = region
+        self.status = status
+        self.subtopics = subtopics
+        self.tps = tps
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.checkpoint_sample_timestamp is not None:
+            result['CheckpointSampleTimestamp'] = self.checkpoint_sample_timestamp
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.subtopics is not None:
+            result['Subtopics'] = self.subtopics
+        if self.tps is not None:
+            result['Tps'] = self.tps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('CheckpointSampleTimestamp') is not None:
+            self.checkpoint_sample_timestamp = m.get('CheckpointSampleTimestamp')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectComponentsResponseBodyDataIncrSyncComponentsErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Subtopics') is not None:
+            self.subtopics = m.get('Subtopics')
+        if m.get('Tps') is not None:
+            self.tps = m.get('Tps')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents(TeaModel):
+    def __init__(
+        self,
+        checkpoint: str = None,
+        checkpoint_sample_timestamp: int = None,
+        delay: int = None,
+        error_details: List[DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails] = None,
+        gmt_create: str = None,
+        gmt_modify: str = None,
+        identity: str = None,
+        ip: str = None,
+        name: str = None,
+        region: str = None,
+        status: str = None,
+        subtopics: List[str] = None,
+        tps: int = None,
+    ):
+        self.checkpoint = checkpoint
+        self.checkpoint_sample_timestamp = checkpoint_sample_timestamp
+        self.delay = delay
+        self.error_details = error_details
+        self.gmt_create = gmt_create
+        self.gmt_modify = gmt_modify
+        self.identity = identity
+        self.ip = ip
+        self.name = name
+        self.region = region
+        self.status = status
+        self.subtopics = subtopics
+        self.tps = tps
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.checkpoint_sample_timestamp is not None:
+            result['CheckpointSampleTimestamp'] = self.checkpoint_sample_timestamp
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modify is not None:
+            result['GmtModify'] = self.gmt_modify
+        if self.identity is not None:
+            result['Identity'] = self.identity
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.subtopics is not None:
+            result['Subtopics'] = self.subtopics
+        if self.tps is not None:
+            result['Tps'] = self.tps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('CheckpointSampleTimestamp') is not None:
+            self.checkpoint_sample_timestamp = m.get('CheckpointSampleTimestamp')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponentsErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModify') is not None:
+            self.gmt_modify = m.get('GmtModify')
+        if m.get('Identity') is not None:
+            self.identity = m.get('Identity')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Subtopics') is not None:
+            self.subtopics = m.get('Subtopics')
+        if m.get('Tps') is not None:
+            self.tps = m.get('Tps')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataReverseStoreList(TeaModel):
+    def __init__(
+        self,
+        begin_checkpoint: str = None,
+        conn: int = None,
+        delay: int = None,
+        end_checkpoint: str = None,
+        err_msg: str = None,
+        error_details: List[DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails] = None,
+        gmt: int = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        ip: str = None,
+        lately_heartbeat_time_sec: int = None,
+        name: str = None,
+        port: int = None,
+        region: str = None,
+        status: str = None,
+        store_port: int = None,
+        subtopic: str = None,
+        to_switch: bool = None,
+        topic: str = None,
+        tps: int = None,
+    ):
+        self.begin_checkpoint = begin_checkpoint
+        self.conn = conn
+        self.delay = delay
+        self.end_checkpoint = end_checkpoint
+        self.err_msg = err_msg
+        self.error_details = error_details
+        self.gmt = gmt
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.ip = ip
+        self.lately_heartbeat_time_sec = lately_heartbeat_time_sec
+        self.name = name
+        self.port = port
+        self.region = region
+        self.status = status
+        self.store_port = store_port
+        # SubTopic。
+        self.subtopic = subtopic
+        self.to_switch = to_switch
+        # Topic。
+        self.topic = topic
+        self.tps = tps
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_checkpoint is not None:
+            result['BeginCheckpoint'] = self.begin_checkpoint
+        if self.conn is not None:
+            result['Conn'] = self.conn
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.end_checkpoint is not None:
+            result['EndCheckpoint'] = self.end_checkpoint
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.gmt is not None:
+            result['Gmt'] = self.gmt
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.lately_heartbeat_time_sec is not None:
+            result['LatelyHeartbeatTimeSec'] = self.lately_heartbeat_time_sec
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.store_port is not None:
+            result['StorePort'] = self.store_port
+        if self.subtopic is not None:
+            result['Subtopic'] = self.subtopic
+        if self.to_switch is not None:
+            result['ToSwitch'] = self.to_switch
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.tps is not None:
+            result['Tps'] = self.tps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginCheckpoint') is not None:
+            self.begin_checkpoint = m.get('BeginCheckpoint')
+        if m.get('Conn') is not None:
+            self.conn = m.get('Conn')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('EndCheckpoint') is not None:
+            self.end_checkpoint = m.get('EndCheckpoint')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectComponentsResponseBodyDataReverseStoreListErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('Gmt') is not None:
+            self.gmt = m.get('Gmt')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('LatelyHeartbeatTimeSec') is not None:
+            self.lately_heartbeat_time_sec = m.get('LatelyHeartbeatTimeSec')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorePort') is not None:
+            self.store_port = m.get('StorePort')
+        if m.get('Subtopic') is not None:
+            self.subtopic = m.get('Subtopic')
+        if m.get('ToSwitch') is not None:
+            self.to_switch = m.get('ToSwitch')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Tps') is not None:
+            self.tps = m.get('Tps')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataStoreListErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyDataStoreList(TeaModel):
+    def __init__(
+        self,
+        begin_checkpoint: str = None,
+        conn: int = None,
+        delay: int = None,
+        end_checkpoint: str = None,
+        err_msg: str = None,
+        error_details: List[DescribeProjectComponentsResponseBodyDataStoreListErrorDetails] = None,
+        gmt: int = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        ip: str = None,
+        lately_heartbeat_time_sec: int = None,
+        name: str = None,
+        port: int = None,
+        region: str = None,
+        status: str = None,
+        store_port: int = None,
+        subtopic: str = None,
+        to_switch: bool = None,
+        topic: str = None,
+        tps: int = None,
+    ):
+        self.begin_checkpoint = begin_checkpoint
+        self.conn = conn
+        self.delay = delay
+        self.end_checkpoint = end_checkpoint
+        self.err_msg = err_msg
+        self.error_details = error_details
+        self.gmt = gmt
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.ip = ip
+        self.lately_heartbeat_time_sec = lately_heartbeat_time_sec
+        self.name = name
+        self.port = port
+        self.region = region
+        self.status = status
+        self.store_port = store_port
+        # SubTopic。
+        self.subtopic = subtopic
+        self.to_switch = to_switch
+        # Topic。
+        self.topic = topic
+        self.tps = tps
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.begin_checkpoint is not None:
+            result['BeginCheckpoint'] = self.begin_checkpoint
+        if self.conn is not None:
+            result['Conn'] = self.conn
+        if self.delay is not None:
+            result['Delay'] = self.delay
+        if self.end_checkpoint is not None:
+            result['EndCheckpoint'] = self.end_checkpoint
+        if self.err_msg is not None:
+            result['ErrMsg'] = self.err_msg
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.gmt is not None:
+            result['Gmt'] = self.gmt
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.lately_heartbeat_time_sec is not None:
+            result['LatelyHeartbeatTimeSec'] = self.lately_heartbeat_time_sec
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.store_port is not None:
+            result['StorePort'] = self.store_port
+        if self.subtopic is not None:
+            result['Subtopic'] = self.subtopic
+        if self.to_switch is not None:
+            result['ToSwitch'] = self.to_switch
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.tps is not None:
+            result['Tps'] = self.tps
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BeginCheckpoint') is not None:
+            self.begin_checkpoint = m.get('BeginCheckpoint')
+        if m.get('Conn') is not None:
+            self.conn = m.get('Conn')
+        if m.get('Delay') is not None:
+            self.delay = m.get('Delay')
+        if m.get('EndCheckpoint') is not None:
+            self.end_checkpoint = m.get('EndCheckpoint')
+        if m.get('ErrMsg') is not None:
+            self.err_msg = m.get('ErrMsg')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectComponentsResponseBodyDataStoreListErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('Gmt') is not None:
+            self.gmt = m.get('Gmt')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('LatelyHeartbeatTimeSec') is not None:
+            self.lately_heartbeat_time_sec = m.get('LatelyHeartbeatTimeSec')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorePort') is not None:
+            self.store_port = m.get('StorePort')
+        if m.get('Subtopic') is not None:
+            self.subtopic = m.get('Subtopic')
+        if m.get('ToSwitch') is not None:
+            self.to_switch = m.get('ToSwitch')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('Tps') is not None:
+            self.tps = m.get('Tps')
+        return self
+
+
+class DescribeProjectComponentsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        full_import_components: List[DescribeProjectComponentsResponseBodyDataFullImportComponents] = None,
+        full_verify_components: List[DescribeProjectComponentsResponseBodyDataFullVerifyComponents] = None,
+        incr_sync_components: List[DescribeProjectComponentsResponseBodyDataIncrSyncComponents] = None,
+        reverse_incr_sync_components: List[DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents] = None,
+        reverse_store_list: List[DescribeProjectComponentsResponseBodyDataReverseStoreList] = None,
+        store_list: List[DescribeProjectComponentsResponseBodyDataStoreList] = None,
+    ):
+        self.full_import_components = full_import_components
+        self.full_verify_components = full_verify_components
+        self.incr_sync_components = incr_sync_components
+        self.reverse_incr_sync_components = reverse_incr_sync_components
+        self.reverse_store_list = reverse_store_list
+        self.store_list = store_list
+
+    def validate(self):
+        if self.full_import_components:
+            for k in self.full_import_components:
+                if k:
+                    k.validate()
+        if self.full_verify_components:
+            for k in self.full_verify_components:
+                if k:
+                    k.validate()
+        if self.incr_sync_components:
+            for k in self.incr_sync_components:
+                if k:
+                    k.validate()
+        if self.reverse_incr_sync_components:
+            for k in self.reverse_incr_sync_components:
+                if k:
+                    k.validate()
+        if self.reverse_store_list:
+            for k in self.reverse_store_list:
+                if k:
+                    k.validate()
+        if self.store_list:
+            for k in self.store_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['FullImportComponents'] = []
+        if self.full_import_components is not None:
+            for k in self.full_import_components:
+                result['FullImportComponents'].append(k.to_map() if k else None)
+        result['FullVerifyComponents'] = []
+        if self.full_verify_components is not None:
+            for k in self.full_verify_components:
+                result['FullVerifyComponents'].append(k.to_map() if k else None)
+        result['IncrSyncComponents'] = []
+        if self.incr_sync_components is not None:
+            for k in self.incr_sync_components:
+                result['IncrSyncComponents'].append(k.to_map() if k else None)
+        result['ReverseIncrSyncComponents'] = []
+        if self.reverse_incr_sync_components is not None:
+            for k in self.reverse_incr_sync_components:
+                result['ReverseIncrSyncComponents'].append(k.to_map() if k else None)
+        result['ReverseStoreList'] = []
+        if self.reverse_store_list is not None:
+            for k in self.reverse_store_list:
+                result['ReverseStoreList'].append(k.to_map() if k else None)
+        result['StoreList'] = []
+        if self.store_list is not None:
+            for k in self.store_list:
+                result['StoreList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.full_import_components = []
+        if m.get('FullImportComponents') is not None:
+            for k in m.get('FullImportComponents'):
+                temp_model = DescribeProjectComponentsResponseBodyDataFullImportComponents()
+                self.full_import_components.append(temp_model.from_map(k))
+        self.full_verify_components = []
+        if m.get('FullVerifyComponents') is not None:
+            for k in m.get('FullVerifyComponents'):
+                temp_model = DescribeProjectComponentsResponseBodyDataFullVerifyComponents()
+                self.full_verify_components.append(temp_model.from_map(k))
+        self.incr_sync_components = []
+        if m.get('IncrSyncComponents') is not None:
+            for k in m.get('IncrSyncComponents'):
+                temp_model = DescribeProjectComponentsResponseBodyDataIncrSyncComponents()
+                self.incr_sync_components.append(temp_model.from_map(k))
+        self.reverse_incr_sync_components = []
+        if m.get('ReverseIncrSyncComponents') is not None:
+            for k in m.get('ReverseIncrSyncComponents'):
+                temp_model = DescribeProjectComponentsResponseBodyDataReverseIncrSyncComponents()
+                self.reverse_incr_sync_components.append(temp_model.from_map(k))
+        self.reverse_store_list = []
+        if m.get('ReverseStoreList') is not None:
+            for k in m.get('ReverseStoreList'):
+                temp_model = DescribeProjectComponentsResponseBodyDataReverseStoreList()
+                self.reverse_store_list.append(temp_model.from_map(k))
+        self.store_list = []
+        if m.get('StoreList') is not None:
+            for k in m.get('StoreList'):
+                temp_model = DescribeProjectComponentsResponseBodyDataStoreList()
+                self.store_list.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeProjectComponentsResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectComponentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: DescribeProjectComponentsResponseBodyData = None,
+        error_detail: DescribeProjectComponentsResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = DescribeProjectComponentsResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = DescribeProjectComponentsResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeProjectComponentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProjectComponentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProjectComponentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProjectProgressRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeProjectProgressResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alarm_level: str = None,
+        current_step: str = None,
+        enable_full_transfer: bool = None,
+        enable_incr_sync: bool = None,
+        enable_reverse_incr_transfer: bool = None,
+        enable_struct_transfer: bool = None,
+        full_transfer_progress: int = None,
+        incr_sync_checkpoint: int = None,
+        project_id: str = None,
+        reverse_incr_transfer_checkpoint: int = None,
+        status: str = None,
+        struct_transfer_progress: int = None,
+    ):
+        self.alarm_level = alarm_level
+        self.current_step = current_step
+        self.enable_full_transfer = enable_full_transfer
+        self.enable_incr_sync = enable_incr_sync
+        self.enable_reverse_incr_transfer = enable_reverse_incr_transfer
+        self.enable_struct_transfer = enable_struct_transfer
+        self.full_transfer_progress = full_transfer_progress
+        self.incr_sync_checkpoint = incr_sync_checkpoint
+        self.project_id = project_id
+        self.reverse_incr_transfer_checkpoint = reverse_incr_transfer_checkpoint
+        self.status = status
+        self.struct_transfer_progress = struct_transfer_progress
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_level is not None:
+            result['AlarmLevel'] = self.alarm_level
+        if self.current_step is not None:
+            result['CurrentStep'] = self.current_step
+        if self.enable_full_transfer is not None:
+            result['EnableFullTransfer'] = self.enable_full_transfer
+        if self.enable_incr_sync is not None:
+            result['EnableIncrSync'] = self.enable_incr_sync
+        if self.enable_reverse_incr_transfer is not None:
+            result['EnableReverseIncrTransfer'] = self.enable_reverse_incr_transfer
+        if self.enable_struct_transfer is not None:
+            result['EnableStructTransfer'] = self.enable_struct_transfer
+        if self.full_transfer_progress is not None:
+            result['FullTransferProgress'] = self.full_transfer_progress
+        if self.incr_sync_checkpoint is not None:
+            result['IncrSyncCheckpoint'] = self.incr_sync_checkpoint
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.reverse_incr_transfer_checkpoint is not None:
+            result['ReverseIncrTransferCheckpoint'] = self.reverse_incr_transfer_checkpoint
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.struct_transfer_progress is not None:
+            result['StructTransferProgress'] = self.struct_transfer_progress
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmLevel') is not None:
+            self.alarm_level = m.get('AlarmLevel')
+        if m.get('CurrentStep') is not None:
+            self.current_step = m.get('CurrentStep')
+        if m.get('EnableFullTransfer') is not None:
+            self.enable_full_transfer = m.get('EnableFullTransfer')
+        if m.get('EnableIncrSync') is not None:
+            self.enable_incr_sync = m.get('EnableIncrSync')
+        if m.get('EnableReverseIncrTransfer') is not None:
+            self.enable_reverse_incr_transfer = m.get('EnableReverseIncrTransfer')
+        if m.get('EnableStructTransfer') is not None:
+            self.enable_struct_transfer = m.get('EnableStructTransfer')
+        if m.get('FullTransferProgress') is not None:
+            self.full_transfer_progress = m.get('FullTransferProgress')
+        if m.get('IncrSyncCheckpoint') is not None:
+            self.incr_sync_checkpoint = m.get('IncrSyncCheckpoint')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ReverseIncrTransferCheckpoint') is not None:
+            self.reverse_incr_transfer_checkpoint = m.get('ReverseIncrTransferCheckpoint')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StructTransferProgress') is not None:
+            self.struct_transfer_progress = m.get('StructTransferProgress')
+        return self
+
+
+class DescribeProjectProgressResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectProgressResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: DescribeProjectProgressResponseBodyData = None,
+        error_detail: DescribeProjectProgressResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = DescribeProjectProgressResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = DescribeProjectProgressResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeProjectProgressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProjectProgressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProjectProgressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProjectStepMetricRequest(TeaModel):
+    def __init__(
+        self,
+        aggregator: str = None,
+        begin_timestamp: int = None,
+        end_timestamp: int = None,
+        max_point_num: int = None,
+        metric_type: str = None,
+        project_id: str = None,
+        step_name: str = None,
+    ):
+        self.aggregator = aggregator
+        self.begin_timestamp = begin_timestamp
+        self.end_timestamp = end_timestamp
+        self.max_point_num = max_point_num
+        self.metric_type = metric_type
+        self.project_id = project_id
+        self.step_name = step_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator is not None:
+            result['Aggregator'] = self.aggregator
+        if self.begin_timestamp is not None:
+            result['BeginTimestamp'] = self.begin_timestamp
+        if self.end_timestamp is not None:
+            result['EndTimestamp'] = self.end_timestamp
+        if self.max_point_num is not None:
+            result['MaxPointNum'] = self.max_point_num
+        if self.metric_type is not None:
+            result['MetricType'] = self.metric_type
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aggregator') is not None:
+            self.aggregator = m.get('Aggregator')
+        if m.get('BeginTimestamp') is not None:
+            self.begin_timestamp = m.get('BeginTimestamp')
+        if m.get('EndTimestamp') is not None:
+            self.end_timestamp = m.get('EndTimestamp')
+        if m.get('MaxPointNum') is not None:
+            self.max_point_num = m.get('MaxPointNum')
+        if m.get('MetricType') is not None:
+            self.metric_type = m.get('MetricType')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        return self
+
+
+class DescribeProjectStepMetricResponseBodyDataMetricsDataPoints(TeaModel):
+    def __init__(
+        self,
+        timestamp: int = None,
+        value: float = None,
+    ):
+        self.timestamp = timestamp
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DescribeProjectStepMetricResponseBodyDataMetrics(TeaModel):
+    def __init__(
+        self,
+        data_points: List[DescribeProjectStepMetricResponseBodyDataMetricsDataPoints] = None,
+        name: str = None,
+        tags: Dict[str, str] = None,
+    ):
+        self.data_points = data_points
+        self.name = name
+        self.tags = tags
+
+    def validate(self):
+        if self.data_points:
+            for k in self.data_points:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DataPoints'] = []
+        if self.data_points is not None:
+            for k in self.data_points:
+                result['DataPoints'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data_points = []
+        if m.get('DataPoints') is not None:
+            for k in m.get('DataPoints'):
+                temp_model = DescribeProjectStepMetricResponseBodyDataMetricsDataPoints()
+                self.data_points.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class DescribeProjectStepMetricResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        aggregator: str = None,
+        metrics: List[DescribeProjectStepMetricResponseBodyDataMetrics] = None,
+        reference_value: int = None,
+    ):
+        self.aggregator = aggregator
+        self.metrics = metrics
+        self.reference_value = reference_value
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aggregator is not None:
+            result['Aggregator'] = self.aggregator
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        if self.reference_value is not None:
+            result['ReferenceValue'] = self.reference_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Aggregator') is not None:
+            self.aggregator = m.get('Aggregator')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = DescribeProjectStepMetricResponseBodyDataMetrics()
+                self.metrics.append(temp_model.from_map(k))
+        if m.get('ReferenceValue') is not None:
+            self.reference_value = m.get('ReferenceValue')
+        return self
+
+
+class DescribeProjectStepMetricResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectStepMetricResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: DescribeProjectStepMetricResponseBodyData = None,
+        error_detail: DescribeProjectStepMetricResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = DescribeProjectStepMetricResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = DescribeProjectStepMetricResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeProjectStepMetricResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProjectStepMetricResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProjectStepMetricResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeProjectStepsRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectStepsResponseBodyDataExtraInfo(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_details: List[DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails] = None,
+        error_msg: str = None,
+        error_param: Dict[str, str] = None,
+        failed_time: str = None,
+    ):
+        self.error_code = error_code
+        self.error_details = error_details
+        self.error_msg = error_msg
+        self.error_param = error_param
+        self.failed_time = failed_time
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.error_param is not None:
+            result['ErrorParam'] = self.error_param
+        if self.failed_time is not None:
+            result['FailedTime'] = self.failed_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = DescribeProjectStepsResponseBodyDataExtraInfoErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('ErrorParam') is not None:
+            self.error_param = m.get('ErrorParam')
+        if m.get('FailedTime') is not None:
+            self.failed_time = m.get('FailedTime')
+        return self
+
+
+class DescribeProjectStepsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        extra_info: DescribeProjectStepsResponseBodyDataExtraInfo = None,
+        finish_time: str = None,
+        name: str = None,
+        order: int = None,
+        progress: int = None,
+        start_time: str = None,
+        status: str = None,
+        step_info: Dict[str, Any] = None,
+    ):
+        self.description = description
+        self.extra_info = extra_info
+        self.finish_time = finish_time
+        self.name = name
+        self.order = order
+        self.progress = progress
+        self.start_time = start_time
+        self.status = status
+        self.step_info = step_info
+
+    def validate(self):
+        if self.extra_info:
+            self.extra_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info.to_map()
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_info is not None:
+            result['StepInfo'] = self.step_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExtraInfo') is not None:
+            temp_model = DescribeProjectStepsResponseBodyDataExtraInfo()
+            self.extra_info = temp_model.from_map(m['ExtraInfo'])
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepInfo') is not None:
+            self.step_info = m.get('StepInfo')
+        return self
+
+
+class DescribeProjectStepsResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class DescribeProjectStepsResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: List[DescribeProjectStepsResponseBodyData] = None,
+        error_detail: DescribeProjectStepsResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeProjectStepsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorDetail') is not None:
+            temp_model = DescribeProjectStepsResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeProjectStepsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeProjectStepsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeProjectStepsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -13604,17 +25806,20 @@ class DescribeSQLHistoryListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # The number of block index cache hits.
+        # The end time of the time range for querying the SQL execution history.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The end time in UTC +0.
+        # The page number.
         self.page_number = page_number
-        # The end time.
+        # The number of entries returned on each page.   
+        # Default value: 10.
         self.page_size = page_size
-        # The number of block index cache hits.
+        # SQLID.
         self.sqlid = sqlid
-        # The maximum response time.
+        # The start time of the time range for querying the SQL execution history.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
-        # The average CPU time.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -13699,80 +25904,81 @@ class DescribeSQLHistoryListResponseBodySQLHistoryListList(TeaModel):
         total_wait_time: float = None,
         user_name: str = None,
     ):
-        # The wait time of the client.
+        # The number of rows affected.
         self.affected_rows = affected_rows
-        # The IP address of the client.
+        # The wait time of the client.
         self.app_wait_time = app_wait_time
-        # The number of logical reads.
+        # The number of block cache hits.
         self.block_cache_hit = block_cache_hit
         # The number of block index cache hits.
         self.block_index_cache_hit = block_index_cache_hit
-        # The username.
-        self.bloom_filter_cache_hit = bloom_filter_cache_hit
-        # The number of remote plans.
-        self.client_ip = client_ip
-        # The number of block cache hits.
-        self.concurrency_wait_time = concurrency_wait_time
-        # The page number.
-        self.cpu_time = cpu_time
-        # The number of retries.
-        self.db_name = db_name
-        # The number of rows read from the disk.
-        self.decode_time = decode_time
-        # Alibaba Cloud provides SDKs in different languages to help you quickly integrate Alibaba Cloud products and services by using APIs. We recommend that you use an SDK to call APIs. In this way, you do not need to sign for verification.
-        self.disk_read = disk_read
-        # The number of row cache hits.
-        self.elapsed_time = elapsed_time
-        # The maximum CPU time.
-        self.end_time = end_time
-        # The number of rows read from the memory.
-        self.end_time_utcstring = end_time_utcstring
-        # The number of rows returned.
-        self.event = event
-        # The queuing time.
-        self.exec_per_second = exec_per_second
-        # The execution history of the SQL statement.
-        self.execute_time = execute_time
-        # The wait time in concurrent execution.
-        self.executions = executions
-        # Example 1
-        self.fail_times = fail_times
-        # The number of RPCs.
-        self.get_plan_time = get_plan_time
-        # The number of rows affected.
-        self.iowait_time = iowait_time
-        self.logical_read = logical_read
-        # The number of row cache hits.
-        self.max_cpu_time = max_cpu_time
-        # The scheduling duration.
-        self.max_elapsed_time = max_elapsed_time
-        # The operation that you want to perform.   
-        # Set the value to **DescribeSQLHistoryList**.
-        self.memstore_read_row_count = memstore_read_row_count
         # The number of Bloom filter cache hits.
-        self.miss_plans = miss_plans
-        # The return result of the request.
-        self.net_wait_time = net_wait_time
-        # It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
-        self.node_ip = node_ip
-        self.queue_time = queue_time
-        # The quantity.
-        self.rpccount = rpccount
-        # The list.
-        self.remote_plans = remote_plans
-        # The number of executions.
-        self.retry_count = retry_count
-        # The I/O wait time.
-        self.return_rows = return_rows
-        # {"name":"DescribeSQLHistoryList","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"POST|GET","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeSQLHistoryList\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"StartTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-06-13T15:40:43Z\"},{\"name\":\"EndTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-09-13T15:40:43Z\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"SQLID\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"PageNumber\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"PageSize\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"10\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E\"},{\"name\":\"SQLHistoryList\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Object\",\"children\":[{\"name\":\"List\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"description\":\"  \",\"children\":[{\"name\":\"ExecPerSecond\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"163.0\"},{\"name\":\"MaxCpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"257.967\"},{\"name\":\"BlockCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"14\"},{\"name\":\"DecodeTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"RemotePlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"RPCCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NetWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"DiskRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NodeIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"i-bp18qljorblo8es*****\"},{\"name\":\"ConcurrencyWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"DbName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"MemstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"527\"},{\"name\":\"AppWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"ElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"76.382\"},{\"name\":\"MissPlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"AffectedRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"ScheduleTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"Event\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"mysql response wait client\"},{\"name\":\"TotalWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"10.966\"},{\"name\":\"ReturnRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"ExecuteTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"61.044\"},{\"name\":\"UserName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"tester\"},{\"name\":\"Executions\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"89403\"},{\"name\":\"GetPlanTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.052\"},{\"name\":\"CpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"50.13\"},{\"name\":\"MaxElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"260.44\"},{\"name\":\"BlockIndexCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"4\"},{\"name\":\"EndTimeUTCString\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-12-28T02:08:18Z\"},{\"name\":\"EndTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-12-28T02:08:18Z\"},{\"name\":\"RetryCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"ClientIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"1*2.***.1*3.***\"},{\"name\":\"BloomFilterCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"IOWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"FailTimes\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"QueueTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"title\":\"\",\"description\":\"\",\"example\":\"15.275\"},{\"name\":\"RowCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"LogicalRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"19\"},{\"name\":\"SsstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"43086\"}],\"title\":\"\"},{\"name\":\"Count\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"}],\"title\":\"\",\"description\":\"\"}],\"title\":\"\",\"description\":\"\"}","errors":"{\"2014\":[{\"code\":\"2014\",\"defaultError\":false,\"errorCode\":\"InternalError\",\"errorMessage\":\"The request processing has failed due to some unknown error.\",\"errorMessageCn\":\"\",\"type\":\"user\"}]}"}
-        self.row_cache_hit = row_cache_hit
-        # The end time of the time range for querying the SQL execution history.   
-        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
-        self.schedule_time = schedule_time
-        self.ssstore_read_row_count = ssstore_read_row_count
+        self.bloom_filter_cache_hit = bloom_filter_cache_hit
+        # The IP address of the client.
+        self.client_ip = client_ip
+        # The wait time in concurrent execution.
+        self.concurrency_wait_time = concurrency_wait_time
+        # The average CPU time.
+        self.cpu_time = cpu_time
+        # The name of the database.
+        self.db_name = db_name
+        # The time to wait for decoding.
+        self.decode_time = decode_time
+        # The number of physical reads.
+        self.disk_read = disk_read
         # The average response time.
-        self.total_wait_time = total_wait_time
+        self.elapsed_time = elapsed_time
+        # The end time.
+        self.end_time = end_time
+        # The end time in UTC +0.
+        self.end_time_utcstring = end_time_utcstring
+        # The wait event.
+        self.event = event
+        # The number of executions per second.
+        self.exec_per_second = exec_per_second
+        # The internal execution time.
+        self.execute_time = execute_time
+        # The number of executions.
+        self.executions = executions
+        # The number of failures.
+        self.fail_times = fail_times
+        # The time spent in hard parsing.
+        self.get_plan_time = get_plan_time
+        # The I/O wait time.
+        self.iowait_time = iowait_time
+        # The number of logical reads.
+        self.logical_read = logical_read
+        # The maximum CPU time.
+        self.max_cpu_time = max_cpu_time
+        # The maximum response time.
+        self.max_elapsed_time = max_elapsed_time
+        # The number of rows read from the memory.
+        self.memstore_read_row_count = memstore_read_row_count
+        # The number of plan misses.
+        self.miss_plans = miss_plans
         # The network latency.
+        self.net_wait_time = net_wait_time
+        # The IP address of the node.
+        self.node_ip = node_ip
+        # The queuing time.
+        self.queue_time = queue_time
+        # The number of RPCs.
+        self.rpccount = rpccount
+        # The number of remote plans.
+        self.remote_plans = remote_plans
+        # The number of retries.
+        self.retry_count = retry_count
+        # The number of rows returned.
+        self.return_rows = return_rows
+        # The number of row cache hits.
+        self.row_cache_hit = row_cache_hit
+        # The scheduling duration.
+        self.schedule_time = schedule_time
+        # The number of rows read from the disk.
+        self.ssstore_read_row_count = ssstore_read_row_count
+        # The internal wait time.
+        self.total_wait_time = total_wait_time
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -13949,8 +26155,8 @@ class DescribeSQLHistoryListResponseBodySQLHistoryList(TeaModel):
         count: int = None,
         list: List[DescribeSQLHistoryListResponseBodySQLHistoryListList] = None,
     ):
+        # The quantity.
         self.count = count
-        # The I/O wait time.
         self.list = list
 
     def validate(self):
@@ -13991,9 +26197,9 @@ class DescribeSQLHistoryListResponseBody(TeaModel):
         request_id: str = None,
         sqlhistory_list: DescribeSQLHistoryListResponseBodySQLHistoryList = None,
     ):
-        # The IP address of the client.
+        # The request ID.
         self.request_id = request_id
-        # The number of Bloom filter cache hits.
+        # The execution history of the SQL statement.
         self.sqlhistory_list = sqlhistory_list
 
     def validate(self):
@@ -14072,9 +26278,9 @@ class DescribeSQLPlansRequest(TeaModel):
         sqlid: str = None,
         tenant_id: str = None,
     ):
-        # The time when the plan was loaded for the first time, .
+        # SQLID.
         self.sqlid = sqlid
-        # The time when the plan was loaded for the first time, .
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -14121,35 +26327,37 @@ class DescribeSQLPlansResponseBodySQLPlans(TeaModel):
         plan_union_hash: str = None,
         query_sql: str = None,
     ):
-        # The time when the plan was bound.
+        # The average execution duration, in ms.
         self.avg_execution_ms = avg_execution_ms
-        # The time when the plan was loaded for the first time, in UTC +0.
+        # The average execution duration when the database uses this execution plan, in ms.
         self.avg_execution_time_ms = avg_execution_time_ms
+        # The time when the plan was loaded for the first time, .
         self.first_load_time = first_load_time
-        # Example 1
+        # The time when the plan was loaded for the first time, in UTC +0.
         self.first_load_time_utcstring = first_load_time_utcstring
-        # It is an Alibaba Cloud asset management and configuration tool, with which you can manage multiple Alibaba Cloud products and services by using commands. It is easy to use and a good helper in migration to cloud.
+        # The number of hits.
         self.hit_count = hit_count
-        # The unique identifier of the SQL execution plan in the diagnostic system.
-        self.merged_version = merged_version
-        # The complete execution plan of the SQL statement.
-        self.node_ip = node_ip
-        # The information about the plan.
-        self.outline_data = outline_data
-        # SQLID.
-        self.outline_id = outline_id
-        # The ID of the SQL execution plan in the database.
-        self.outline_time = outline_time
         # The major compaction version.
-        self.outline_time_utcstring = outline_time_utcstring
-        # The information about the execution plan.
-        self.plan_full = plan_full
+        self.merged_version = merged_version
+        # The IP address of the node.
+        self.node_ip = node_ip
+        # The outline data.
+        self.outline_data = outline_data
         # OutlineID.
+        self.outline_id = outline_id
+        # The time when the plan was bound.
+        self.outline_time = outline_time
+        # The time when the plan was bound, in UTC +0.
+        self.outline_time_utcstring = outline_time_utcstring
+        # The complete execution plan of the SQL statement.
+        self.plan_full = plan_full
+        # The ID of the SQL execution plan in the database.
         self.plan_id = plan_id
+        # The information about the plan.
         self.plan_info = plan_info
-        # The return result of the request.
+        # The unique identifier of the SQL execution plan in the diagnostic system.
         self.plan_union_hash = plan_union_hash
-        # The request ID.
+        # The query SQL statement.
         self.query_sql = query_sql
 
     def validate(self):
@@ -14238,9 +26446,9 @@ class DescribeSQLPlansResponseBody(TeaModel):
         request_id: str = None,
         sqlplans: List[DescribeSQLPlansResponseBodySQLPlans] = None,
     ):
-        # The return result of the request.
+        # The request ID.
         self.request_id = request_id
-        # master
+        # The information about the execution plan.
         self.sqlplans = sqlplans
 
     def validate(self):
@@ -14329,12 +26537,19 @@ class DescribeSQLSamplesRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
+        # The database name.
         self.db_name = db_name
+        # The end time of querying the slow query execution.
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
+        # The instance ID.
         self.instance_id = instance_id
-        # SQL ID。
+        # SQL ID.
         self.sql_id = sql_id
+        # The start time of querying the slow query execution.
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
+        # The tenant ID.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -14397,6 +26612,7 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         execute_time: float = None,
         executor_rpc: float = None,
         expected_worker_count: float = None,
+        full_sql_text: str = None,
         get_plan_time: float = None,
         hit_plan: float = None,
         inner: bool = None,
@@ -14432,58 +26648,108 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         wait_event: str = None,
         wait_time: float = None,
     ):
+        # Average updated rows during the execution period.
         self.affected_rows = affected_rows
+        # Application event waiting time (in milliseconds).
         self.application_wait_time = application_wait_time
+        # BlockCache hit count
         self.block_cache_hit = block_cache_hit
+        # BlockIndexCache hit count
         self.block_index_cache_hit = block_index_cache_hit
+        # BloomFilterCache hit count.
         self.bloom_filter_cache_hit = bloom_filter_cache_hit
+        # Client IP.
         self.client_ip = client_ip
+        # Client port.
         self.client_port = client_port
+        # Concurrency event waiting time (in milliseconds).
         self.concurrency_wait_time = concurrency_wait_time
+        # Consistency level.
         self.consistency_level = consistency_level
+        # CPU time (in milliseconds).
         self.cpu_time = cpu_time
+        # Database name.
         self.db_name = db_name
+        # Syntax parsing time (in milliseconds).
         self.decode_time = decode_time
+        # Disk read count.
         self.disk_reads = disk_reads
+        # Response time (in milliseconds).
         self.elapsed_time = elapsed_time
+        # Plan execution time (in milliseconds).
         self.execute_time = execute_time
+        # Whether to initiate RPC.
         self.executor_rpc = executor_rpc
+        # Degree of parallelism.
         self.expected_worker_count = expected_worker_count
+        self.full_sql_text = full_sql_text
+        # Plan generation time (in milliseconds).
         self.get_plan_time = get_plan_time
+        # Whether to hit the execution plan.
         self.hit_plan = hit_plan
+        # Whether an internal SQL.
         self.inner = inner
+        # Memstore read row count.
         self.memstore_read_rows = memstore_read_rows
+        # Network transmission time (in milliseconds).
         self.net_time = net_time
+        # Network enqueue time (in milliseconds).
         self.net_wait_time = net_wait_time
+        # Database ID.
         self.ob_db_id = ob_db_id
-        # server  ID。
+        # Server  ID.
         self.ob_server_id = ob_server_id
+        # User ID.
         self.ob_user_id = ob_user_id
+        # Average number of partition accessed during the execution period.
         self.partition_count = partition_count
+        # The execution plan ID.
         self.plan_id = plan_id
+        # Plan type.
         self.plan_type = plan_type
+        # Queueing time (in milliseconds).
         self.queue_time = queue_time
+        # Request ID.
         self.request_id = request_id
+        # SQL request time.
         self.request_time = request_time
+        # Result code.
         self.ret_code = ret_code
+        # Retry count.
         self.retry_count = retry_count
+        # Average returned rows during the execution period.
         self.return_rows = return_rows
+        # RowCache hit count.
         self.row_cache_hit = row_cache_hit
+        # Number of RPC sent.
         self.rpc_count = rpc_count
+        # Schedule event waiting time (in milliseconds).
         self.schedule_time = schedule_time
+        # The server where the SQL is executed.
         self.server = server
+        # SQL type.
         self.sql_type = sql_type
+        # Ssstore read row count.
         self.ssstore_read_rows = ssstore_read_rows
+        # Parameterized SQL text.
         self.statement = statement
+        # Whether to perform full table scan.
         self.table_scan = table_scan
+        # Trace ID.
         self.trace_id = trace_id
-        # transaction hash。
+        # Transaction hash.
         self.trans_hash = trans_hash
+        # Actual number of SQL execution threads.
         self.used_worker_count = used_worker_count
+        # UserIO event waiting time (in milliseconds).
         self.user_io_wait_time = user_io_wait_time
+        # Username.
         self.user_name = user_name
+        # Wait count.
         self.wait_count = wait_count
+        # Longest wait event during the execution period.
         self.wait_event = wait_event
+        # Wait time (in milliseconds).
         self.wait_time = wait_time
 
     def validate(self):
@@ -14529,6 +26795,8 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
             result['ExecutorRpc'] = self.executor_rpc
         if self.expected_worker_count is not None:
             result['ExpectedWorkerCount'] = self.expected_worker_count
+        if self.full_sql_text is not None:
+            result['FullSqlText'] = self.full_sql_text
         if self.get_plan_time is not None:
             result['GetPlanTime'] = self.get_plan_time
         if self.hit_plan is not None:
@@ -14635,6 +26903,8 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
             self.executor_rpc = m.get('ExecutorRpc')
         if m.get('ExpectedWorkerCount') is not None:
             self.expected_worker_count = m.get('ExpectedWorkerCount')
+        if m.get('FullSqlText') is not None:
+            self.full_sql_text = m.get('FullSqlText')
         if m.get('GetPlanTime') is not None:
             self.get_plan_time = m.get('GetPlanTime')
         if m.get('HitPlan') is not None:
@@ -14712,7 +26982,9 @@ class DescribeSQLSamplesResponseBody(TeaModel):
         data: List[DescribeSQLSamplesResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The list of sample data of slow query execution details.
         self.data = data
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14955,15 +27227,21 @@ class DescribeSlowSQLHistoryListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # The number of RPCs.
+        # The end time of the time range for querying the execution history of the slow SQL statement.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
-        # The maximum response time.
+        # The number of the page to return.    
+        # - Start value: 1   
+        # - Default value: 1
         self.page_number = page_number
-        # The number of plan misses.
+        # The number of rows to return on each page.  
+        # - Maximum value: 100   
+        # - Default value: 10
         self.page_size = page_size
-        # The wait time for network.
+        # The SQL ID, which uniquely identifies an SQL statement.
         self.sqlid = sqlid
-        # The I/O wait time.
+        # The start time of the time range for querying the execution history of the slow SQL statement.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
         # The ID of the tenant.
         self.tenant_id = tenant_id
@@ -15052,96 +27330,85 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList(TeaModel):
         total_wait_time: float = None,
         user_name: str = None,
     ):
-        # The wait event.
+        # The number of rows affected.
         self.affected_rows = affected_rows
-        # The number of row cache hits.
-        self.app_wait_time = app_wait_time
-        # The average CPU time.
-        self.block_cache_hit = block_cache_hit
-        # The number of rows to return on each page.  
-        # - Maximum value: 100   
-        # - Default value: 10
-        self.block_index_cache_hit = block_index_cache_hit
-        # The number of executions.
-        self.bloom_filter_cache_hit = bloom_filter_cache_hit
-        # The number of retries.
-        self.client_ip = client_ip
-        # $.parameters[6].schema.example
-        self.concurrency_wait_time = concurrency_wait_time
-        # $.parameters[6].schema.enumValueTitles
-        self.cpu_time = cpu_time
-        # The IP address of the node.
-        self.db_name = db_name
-        # $.parameters[7].schema.description
-        self.decode_time = decode_time
-        # SQLID.
-        self.disk_read = disk_read
-        # The queuing time.
-        self.elapsed_time = elapsed_time
-        self.end_time_utcstring = end_time_utcstring
-        # The internal wait time.
-        self.event = event
-        # The number of failures.
-        self.exec_per_second = exec_per_second
-        # The request ID.
-        self.execute_time = execute_time
-        # The maximum CPU time.
-        self.executions = executions
-        # The number of rows returned.
-        self.fail_times = fail_times
-        # Example 1
-        self.get_plan_time = get_plan_time
-        # $.parameters[7].schema.enumValueTitles
-        self.iowait_time = iowait_time
-        # The quantity.
-        self.logical_read = logical_read
-        # DescribeSlowSQLHistoryList
-        self.max_cpu_time = max_cpu_time
-        # ```
-        # http(s)://[Endpoint]/?Action=DescribeSlowSQLHistoryList
-        # &TenantId=t384tolsj****\
-        # &StartTime=2021-12-14T02:34:49Z
-        # &EndTime=2021-12-14T08:34:49Z
-        # &SQLId=8D6E84735C0****1823D199E2CA1****\
-        # &PageNumber=1
-        # &PageSize=10
-        # &Common request parameters
-        # ```
-        self.max_elapsed_time = max_elapsed_time
         # The wait time of the client.
-        self.memstore_read_row_count = memstore_read_row_count
-        # The number of rows read from the disk.
-        self.miss_plans = miss_plans
-        # $.parameters[7].schema.example
-        self.net_wait_time = net_wait_time
-        # The number of the page to return.    
-        # - Start value: 1   
-        # - Default value: 1
-        self.node_ip = node_ip
-        # $.parameters[6].schema.description
-        self.queue_time = queue_time
-        # The end time.
-        self.rpccount = rpccount
-        # The time to wait for decoding.
-        self.remote_plans = remote_plans
+        self.app_wait_time = app_wait_time
+        # The number of block cache hits.
+        self.block_cache_hit = block_cache_hit
         # The number of block index cache hits.
-        self.retry_count = retry_count
-        # The number of executions per second.
-        self.return_rows = return_rows
-        # The execution history of the slow SQL statement.
-        self.row_cache_hit = row_cache_hit
-        # You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
-        self.schedule_time = schedule_time
-        # The return result of the request.
-        self.sql_id = sql_id
+        self.block_index_cache_hit = block_index_cache_hit
+        # The number of Bloom filter cache hits.
+        self.bloom_filter_cache_hit = bloom_filter_cache_hit
         # The IP address of the client.
-        self.sql_type = sql_type
-        # The scheduling duration.
-        self.ssstore_read_row_count = ssstore_read_row_count
-        # The return result of the request.
-        self.tenant_name = tenant_name
-        self.total_wait_time = total_wait_time
+        self.client_ip = client_ip
+        # The wait time in concurrent execution.
+        self.concurrency_wait_time = concurrency_wait_time
+        # The average CPU time.
+        self.cpu_time = cpu_time
+        # The name of the database.
+        self.db_name = db_name
+        # The time to wait for decoding.
+        self.decode_time = decode_time
         # The number of physical reads.
+        self.disk_read = disk_read
+        # The average response time.
+        self.elapsed_time = elapsed_time
+        # The end time.
+        self.end_time_utcstring = end_time_utcstring
+        # The wait event.
+        self.event = event
+        # The number of executions per second.
+        self.exec_per_second = exec_per_second
+        # The internal execution time.
+        self.execute_time = execute_time
+        # The number of executions.
+        self.executions = executions
+        # The number of failures.
+        self.fail_times = fail_times
+        # Hard parsing time.
+        self.get_plan_time = get_plan_time
+        # The I/O wait time.
+        self.iowait_time = iowait_time
+        # The number of logical reads.
+        self.logical_read = logical_read
+        # The maximum CPU time.
+        self.max_cpu_time = max_cpu_time
+        # The maximum response time.
+        self.max_elapsed_time = max_elapsed_time
+        # The number of rows read from the memory.
+        self.memstore_read_row_count = memstore_read_row_count
+        # The number of plan misses.
+        self.miss_plans = miss_plans
+        # The wait time for network.
+        self.net_wait_time = net_wait_time
+        # The IP address of the node.
+        self.node_ip = node_ip
+        # The queuing time.
+        self.queue_time = queue_time
+        # The number of RPCs.
+        self.rpccount = rpccount
+        # The number of remote plans.
+        self.remote_plans = remote_plans
+        # The number of retries.
+        self.retry_count = retry_count
+        # The number of rows returned.
+        self.return_rows = return_rows
+        # The number of row cache hits.
+        self.row_cache_hit = row_cache_hit
+        # The scheduling duration.
+        self.schedule_time = schedule_time
+        # SQLID.
+        self.sql_id = sql_id
+        # The SQL type.
+        self.sql_type = sql_type
+        # The number of rows read from the disk.
+        self.ssstore_read_row_count = ssstore_read_row_count
+        # The name of the tenant.
+        self.tenant_name = tenant_name
+        # The internal wait time.
+        self.total_wait_time = total_wait_time
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -15326,8 +27593,9 @@ class DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryList(TeaModel):
         count: int = None,
         list: List[DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryListList] = None,
     ):
+        # The quantity.
         self.count = count
-        # The SQL ID, which uniquely identifies an SQL statement.
+        # The return result of the request.
         self.list = list
 
     def validate(self):
@@ -15368,10 +27636,9 @@ class DescribeSlowSQLHistoryListResponseBody(TeaModel):
         request_id: str = None,
         slow_sqlhistory_list: DescribeSlowSQLHistoryListResponseBodySlowSQLHistoryList = None,
     ):
-        # The end time of the time range for querying the execution history of the slow SQL statement.   
-        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
+        # The request ID.
         self.request_id = request_id
-        # Hard parsing time。
+        # The execution history of the slow SQL statement.
         self.slow_sqlhistory_list = slow_sqlhistory_list
 
     def validate(self):
@@ -15463,38 +27730,41 @@ class DescribeSlowSQLListRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+        # The name of the database.
         self.db_name = db_name
+        # The end time of the time range for querying slow SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
         # The filter condition.
         self.filter_condition = filter_condition
-        # The number of plan misses.
-        self.node_ip = node_ip
-        # The number of the page to return.    
-        # - Start value: 1   
-        # - Default value: 1
-        self.page_number = page_number
-        # The return result of the request.
-        self.page_size = page_size
-        # The internal wait time.
-        self.sqlid = sqlid
-        # Alibaba Cloud CLI
-        self.search_key_word = search_key_word
         # The IP address of the database node.
-        self.search_parameter = search_parameter
-        # The queuing time.
-        self.search_rule = search_rule
-        # The list of slow SQL statements.
-        self.search_value = search_value
+        self.node_ip = node_ip
         # The number of rows to return on each page.  
         # - Maximum value: 100  
         # - Default value: 10
+        self.page_number = page_number
+        # The number of the page to return.    
+        # - Start value: 1   
+        # - Default value: 1
+        self.page_size = page_size
+        # The SQL ID, which uniquely identifies an SQL statement.
+        self.sqlid = sqlid
+        # The search keyword.
+        self.search_key_word = search_key_word
+        # The search parameter.
+        self.search_parameter = search_parameter
+        # The search rule.
+        self.search_rule = search_rule
+        # The search value.
+        self.search_value = search_value
+        # The sorted column.
         self.sort_column = sort_column
-        # The average CPU time.
+        # The sorting rule.
         self.sort_order = sort_order
-        # The list of slow SQL statements.
+        # The start time of the time range for querying slow SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
-        # The number of logical reads.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -15592,38 +27862,41 @@ class DescribeSlowSQLListShrinkRequest(TeaModel):
         start_time: str = None,
         tenant_id: str = None,
     ):
-        # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
+        # The name of the database.
         self.db_name = db_name
+        # The end time of the time range for querying slow SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.end_time = end_time
         # The filter condition.
         self.filter_condition_shrink = filter_condition_shrink
-        # The number of plan misses.
-        self.node_ip = node_ip
-        # The number of the page to return.    
-        # - Start value: 1   
-        # - Default value: 1
-        self.page_number = page_number
-        # The return result of the request.
-        self.page_size = page_size
-        # The internal wait time.
-        self.sqlid = sqlid
-        # Alibaba Cloud CLI
-        self.search_key_word = search_key_word
         # The IP address of the database node.
-        self.search_parameter = search_parameter
-        # The queuing time.
-        self.search_rule = search_rule
-        # The list of slow SQL statements.
-        self.search_value = search_value
+        self.node_ip = node_ip
         # The number of rows to return on each page.  
         # - Maximum value: 100  
         # - Default value: 10
+        self.page_number = page_number
+        # The number of the page to return.    
+        # - Start value: 1   
+        # - Default value: 1
+        self.page_size = page_size
+        # The SQL ID, which uniquely identifies an SQL statement.
+        self.sqlid = sqlid
+        # The search keyword.
+        self.search_key_word = search_key_word
+        # The search parameter.
+        self.search_parameter = search_parameter
+        # The search rule.
+        self.search_rule = search_rule
+        # The search value.
+        self.search_value = search_value
+        # The sorted column.
         self.sort_column = sort_column
-        # The average CPU time.
+        # The sorting rule.
         self.sort_order = sort_order
-        # The list of slow SQL statements.
+        # The start time of the time range for querying slow SQL statements.   
+        # The value must be UTC time in the format of YYYY-MM-DDThh:mm:ssZ.
         self.start_time = start_time
-        # The number of logical reads.
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -15746,97 +28019,85 @@ class DescribeSlowSQLListResponseBodySlowSQLList(TeaModel):
         total_wait_time: float = None,
         user_name: str = None,
     ):
-        # The username.
+        # The number of rows affected.
         self.affected_rows = affected_rows
-        # The average response time.
-        self.app_wait_time = app_wait_time
-        # The wait time in concurrent execution.
-        self.block_cache_hit = block_cache_hit
-        # The request ID.
-        self.block_index_cache_hit = block_index_cache_hit
-        self.bloom_filter_cache_hit = bloom_filter_cache_hit
-        # ```
-        # http(s)://[Endpoint]/?Action=DescribeSlowSQLList
-        # &TenantId=t2mr3oae0****\
-        # &StartTime=2021-06-13 15:40:43
-        # &EndTime=2021-09-13 15:40:43
-        # &DbName=testdb
-        # &SearchKeyWord=update
-        # &SearchParameter=cputime
-        # &SearchRule=>
-        # &SearchValue=0.01
-        # &SQLId=8D6E84****0B8FB1823D199E2CA1****\
-        # &NodeIp=i-bp18qljorblo8es*****\
-        # &PageNumber=10
-        # &PageSize=1
-        # &SortColumn=cputime
-        # &SortOrder=desc
-        # &Common request parameters
-        # ```
-        self.client_ip = client_ip
-        # The sorted column.
-        self.concurrency_wait_time = concurrency_wait_time
-        # The wait event.
-        self.cpu_time = cpu_time
-        # The search value.
-        self.db_name = db_name
-        # The time spent in hard parsing.
-        self.decode_time = decode_time
-        # The IP address of the client.
-        self.disk_read = disk_read
-        # The search rule.
-        self.elapsed_time = elapsed_time
-        # The number of row cache hits.
-        self.event = event
-        # The total count.
-        self.exec_per_second = exec_per_second
-        # The number of block cache hits.
-        self.execute_time = execute_time
-        # The IP address of the node.
-        self.executions = executions
-        # {"name":"DescribeSlowSQLList","product":"OceanBasePro","version":"2019-09-01","path":"/","deprecated":0,"method":"GET|POST","protocol":"HTTP|HTTPS","hidden":0,"timeout":10000,"parameter_type":"Single","params":"[{\"name\":\"Action\",\"position\":\"Query\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"DescribeSlowSQLList\"},{\"name\":\"TenantId\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"t2mr3oae0****\"},{\"name\":\"StartTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-06-13T15:40:43Z\"},{\"name\":\"EndTime\",\"position\":\"Body\",\"required\":true,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"2021-09-13T15:40:43Z\"},{\"name\":\"DbName\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"SearchKeyWord\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"update\"},{\"name\":\"SearchParameter\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SearchRule\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\">\"},{\"name\":\"SearchValue\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"0.01\"},{\"name\":\"SQLId\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"NodeIp\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"i-bp18qljorblo8es*****\"},{\"name\":\"PageNumber\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"10\"},{\"name\":\"PageSize\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Integer\",\"title\":\"\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"FilterCondition\",\"position\":\"Body\",\"style\":\"json\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"[dbName:sys]\"},{\"name\":\"SortColumn\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"cputime\"},{\"name\":\"SortOrder\",\"position\":\"Body\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"desc\"}]","response_headers":"[]","response":"{\"type\":\"Object\",\"children\":[{\"name\":\"TotalCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"title\":\"\",\"description\":\"\",\"example\":\"2\"},{\"name\":\"RequestId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"title\":\"\",\"description\":\"\",\"example\":\"473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E\"},{\"name\":\"SlowSQLList\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Array\",\"subType\":\"Object\",\"description\":\"  \",\"children\":[{\"name\":\"Key\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"ExecPerSecond\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"163.0\"},{\"name\":\"SQLText\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"SELECT  ****   FROM ****   WHERE **** = ? AND **** = ?   ORDER BY **** ASC\"},{\"name\":\"MaxCpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"257.967\"},{\"name\":\"BlockCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"14\"},{\"name\":\"DecodeTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"RemotePlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"RPCCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NetWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"DiskRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"NodeIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"i-bp18qljorblo8es*****\"},{\"name\":\"ConcurrencyWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"MemstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"527\"},{\"name\":\"DbName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"testdb\"},{\"name\":\"AppWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"ElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"76.382\"},{\"name\":\"MissPlans\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"AffectedRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"ScheduleTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"Event\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"mysql response wait client\"},{\"name\":\"TotalWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"10.966\"},{\"name\":\"ReturnRows\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"ExecuteTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"61.044\"},{\"name\":\"UserName\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"tester\"},{\"name\":\"Executions\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"89403\"},{\"name\":\"GetPlanTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.052\"},{\"name\":\"CpuTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"50.13\"},{\"name\":\"MaxElapsedTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"260.044\"},{\"name\":\"SQLType\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"1\"},{\"name\":\"BlockIndexCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"4\"},{\"name\":\"RetryCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"SQLId\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"SQLID。\",\"example\":\"8D6E84****0B8FB1823D199E2CA1****\"},{\"name\":\"ClientIp\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"String\",\"description\":\"\",\"example\":\"1*2.***.1*3.***\"},{\"name\":\"BloomFilterCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"IOWaitTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"0.0\"},{\"name\":\"FailTimes\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"QueueTime\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Float\",\"description\":\"\",\"example\":\"15.275\"},{\"name\":\"RowCacheHit\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"0\"},{\"name\":\"LogicalRead\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"19\"},{\"name\":\"SsstoreReadRowCount\",\"required\":false,\"checkBlank\":false,\"visibility\":\"Public\",\"deprecated\":false,\"type\":\"Long\",\"description\":\"\",\"example\":\"43086\"}],\"title\":\"\"}],\"title\":\"\",\"description\":\"\"}","errors":"{}"}
-        self.fail_times = fail_times
-        # The number of Bloom filter cache hits.
-        self.get_plan_time = get_plan_time
-        # You can call this operation to query the list of slow SQL statements
-        self.iowait_time = iowait_time
-        # The scheduling duration.
-        self.key = key
-        self.logical_read = logical_read
-        # The name of the database.
-        self.max_cpu_time = max_cpu_time
-        # The sequence number of the returned SQL statement.
-        self.max_elapsed_time = max_elapsed_time
-        # The number of logical reads.
-        self.memstore_read_row_count = memstore_read_row_count
-        # The number of RPCs.
-        self.miss_plans = miss_plans
-        # The search parameter.
-        self.net_wait_time = net_wait_time
-        # The number of failures.
-        self.node_ip = node_ip
-        self.queue_time = queue_time
-        # The maximum response time.
-        self.rpccount = rpccount
-        # The search keyword.
-        self.remote_plans = remote_plans
-        # The number of physical reads.
-        self.retry_count = retry_count
         # The wait time of the client.
-        self.return_rows = return_rows
-        self.row_cache_hit = row_cache_hit
-        # Example 1
-        self.sqlid = sqlid
-        # The network latency.
-        self.sqltext = sqltext
-        # SQLID.
-        self.sqltype = sqltype
+        self.app_wait_time = app_wait_time
+        # The number of block cache hits.
+        self.block_cache_hit = block_cache_hit
+        # The number of block index cache hits.
+        self.block_index_cache_hit = block_index_cache_hit
+        # The number of Bloom filter cache hits.
+        self.bloom_filter_cache_hit = bloom_filter_cache_hit
+        # The IP address of the client.
+        self.client_ip = client_ip
+        # The wait time in concurrent execution.
+        self.concurrency_wait_time = concurrency_wait_time
+        # The average CPU time.
+        self.cpu_time = cpu_time
+        # The name of the database.
+        self.db_name = db_name
+        # The time to wait for decoding.
+        self.decode_time = decode_time
+        # The number of physical reads.
+        self.disk_read = disk_read
+        # The average response time.
+        self.elapsed_time = elapsed_time
+        # The wait event.
+        self.event = event
+        # The number of executions per second.
+        self.exec_per_second = exec_per_second
         # The internal execution time.
-        self.schedule_time = schedule_time
-        self.ssstore_read_row_count = ssstore_read_row_count
-        # The SQL ID, which uniquely identifies an SQL statement.
-        self.total_wait_time = total_wait_time
+        self.execute_time = execute_time
         # The number of executions.
+        self.executions = executions
+        # The number of failures.
+        self.fail_times = fail_times
+        # The time spent in hard parsing.
+        self.get_plan_time = get_plan_time
+        # The I/O wait time.
+        self.iowait_time = iowait_time
+        # The sequence number of the returned SQL statement.
+        self.key = key
+        # The number of logical reads.
+        self.logical_read = logical_read
+        # The maximum CPU time.
+        self.max_cpu_time = max_cpu_time
+        # The maximum response time.
+        self.max_elapsed_time = max_elapsed_time
+        # The number of rows read from the memory.
+        self.memstore_read_row_count = memstore_read_row_count
+        # The number of plan misses.
+        self.miss_plans = miss_plans
+        # The network latency.
+        self.net_wait_time = net_wait_time
+        # The IP address of the node.
+        self.node_ip = node_ip
+        # The queuing time.
+        self.queue_time = queue_time
+        # The number of RPCs.
+        self.rpccount = rpccount
+        # The number of remote plans.
+        self.remote_plans = remote_plans
+        # The number of retries.
+        self.retry_count = retry_count
+        # The number of rows returned.
+        self.return_rows = return_rows
+        # The number of row cache hits.
+        self.row_cache_hit = row_cache_hit
+        # SQLID.
+        self.sqlid = sqlid
+        # The SQL text.
+        self.sqltext = sqltext
+        # The SQL type.
+        self.sqltype = sqltype
+        # The scheduling duration.
+        self.schedule_time = schedule_time
+        # The number of rows read from the disk.
+        self.ssstore_read_row_count = ssstore_read_row_count
+        # The internal wait time.
+        self.total_wait_time = total_wait_time
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -16022,11 +28283,11 @@ class DescribeSlowSQLListResponseBody(TeaModel):
         slow_sqllist: List[DescribeSlowSQLListResponseBodySlowSQLList] = None,
         total_count: int = None,
     ):
-        # The SQL text.
+        # The request ID.
         self.request_id = request_id
-        # The sorting rule.
+        # The list of slow SQL statements.
         self.slow_sqllist = slow_sqllist
-        # The name of the database.
+        # The total count.
         self.total_count = total_count
 
     def validate(self):
@@ -16152,8 +28413,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
     def __init__(
         self,
         address_type: str = None,
-        connection_role: str = None,
         connection_zones: List[str] = None,
+        enable_transaction_split: bool = None,
         internet_address: str = None,
         internet_address_status: str = None,
         internet_port: int = None,
@@ -16162,16 +28423,18 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         intranet_address_slave_zone_id: str = None,
         intranet_address_status: str = None,
         intranet_port: int = None,
+        max_connection_num: int = None,
+        parallel_query_degree: int = None,
+        tenant_endpoint_id: str = None,
         transaction_split: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         # The primary zone of the tenant.
         self.address_type = address_type
-        # 是否开启事务拆分
-        self.connection_role = connection_role
         # The Internet address for accessing the tenant.
         self.connection_zones = connection_zones
+        self.enable_transaction_split = enable_transaction_split
         # The ID of the VPC.
         self.internet_address = internet_address
         # 实例系列
@@ -16191,6 +28454,9 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         self.intranet_address_status = intranet_address_status
         # The ID of the tenant.
         self.intranet_port = intranet_port
+        self.max_connection_num = max_connection_num
+        self.parallel_query_degree = parallel_query_degree
+        self.tenant_endpoint_id = tenant_endpoint_id
         # The primary zone corresponding to the address for accessing the tenant.
         self.transaction_split = transaction_split
         # The connection access information of the tenant.
@@ -16212,10 +28478,10 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         result = dict()
         if self.address_type is not None:
             result['AddressType'] = self.address_type
-        if self.connection_role is not None:
-            result['ConnectionRole'] = self.connection_role
         if self.connection_zones is not None:
             result['ConnectionZones'] = self.connection_zones
+        if self.enable_transaction_split is not None:
+            result['EnableTransactionSplit'] = self.enable_transaction_split
         if self.internet_address is not None:
             result['InternetAddress'] = self.internet_address
         if self.internet_address_status is not None:
@@ -16232,6 +28498,12 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             result['IntranetAddressStatus'] = self.intranet_address_status
         if self.intranet_port is not None:
             result['IntranetPort'] = self.intranet_port
+        if self.max_connection_num is not None:
+            result['MaxConnectionNum'] = self.max_connection_num
+        if self.parallel_query_degree is not None:
+            result['ParallelQueryDegree'] = self.parallel_query_degree
+        if self.tenant_endpoint_id is not None:
+            result['TenantEndpointId'] = self.tenant_endpoint_id
         if self.transaction_split is not None:
             result['TransactionSplit'] = self.transaction_split
         if self.v_switch_id is not None:
@@ -16244,10 +28516,10 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         m = m or dict()
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
-        if m.get('ConnectionRole') is not None:
-            self.connection_role = m.get('ConnectionRole')
         if m.get('ConnectionZones') is not None:
             self.connection_zones = m.get('ConnectionZones')
+        if m.get('EnableTransactionSplit') is not None:
+            self.enable_transaction_split = m.get('EnableTransactionSplit')
         if m.get('InternetAddress') is not None:
             self.internet_address = m.get('InternetAddress')
         if m.get('InternetAddressStatus') is not None:
@@ -16264,12 +28536,57 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
             self.intranet_address_status = m.get('IntranetAddressStatus')
         if m.get('IntranetPort') is not None:
             self.intranet_port = m.get('IntranetPort')
+        if m.get('MaxConnectionNum') is not None:
+            self.max_connection_num = m.get('MaxConnectionNum')
+        if m.get('ParallelQueryDegree') is not None:
+            self.parallel_query_degree = m.get('ParallelQueryDegree')
+        if m.get('TenantEndpointId') is not None:
+            self.tenant_endpoint_id = m.get('TenantEndpointId')
         if m.get('TransactionSplit') is not None:
             self.transaction_split = m.get('TransactionSplit')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class DescribeTenantResponseBodyTenantTenantResourceCapacityUnit(TeaModel):
+    def __init__(
+        self,
+        max_capacity_unit: int = None,
+        min_capacity_unit: int = None,
+        used_capacit: int = None,
+    ):
+        self.max_capacity_unit = max_capacity_unit
+        self.min_capacity_unit = min_capacity_unit
+        self.used_capacit = used_capacit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity_unit is not None:
+            result['MaxCapacityUnit'] = self.max_capacity_unit
+        if self.min_capacity_unit is not None:
+            result['MinCapacityUnit'] = self.min_capacity_unit
+        if self.used_capacit is not None:
+            result['UsedCapacit'] = self.used_capacit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacityUnit') is not None:
+            self.max_capacity_unit = m.get('MaxCapacityUnit')
+        if m.get('MinCapacityUnit') is not None:
+            self.min_capacity_unit = m.get('MinCapacityUnit')
+        if m.get('UsedCapacit') is not None:
+            self.used_capacit = m.get('UsedCapacit')
         return self
 
 
@@ -16351,6 +28668,39 @@ class DescribeTenantResponseBodyTenantTenantResourceDiskSize(TeaModel):
         return self
 
 
+class DescribeTenantResponseBodyTenantTenantResourceLogDiskSize(TeaModel):
+    def __init__(
+        self,
+        total_log_disk: int = None,
+        unit_log_disk: int = None,
+    ):
+        self.total_log_disk = total_log_disk
+        self.unit_log_disk = unit_log_disk
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_log_disk is not None:
+            result['TotalLogDisk'] = self.total_log_disk
+        if self.unit_log_disk is not None:
+            result['UnitLogDisk'] = self.unit_log_disk
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalLogDisk') is not None:
+            self.total_log_disk = m.get('TotalLogDisk')
+        if m.get('UnitLogDisk') is not None:
+            self.unit_log_disk = m.get('UnitLogDisk')
+        return self
+
+
 class DescribeTenantResponseBodyTenantTenantResourceMemory(TeaModel):
     def __init__(
         self,
@@ -16400,11 +28750,14 @@ class DescribeTenantResponseBodyTenantTenantResourceMemory(TeaModel):
 class DescribeTenantResponseBodyTenantTenantResource(TeaModel):
     def __init__(
         self,
+        capacity_unit: DescribeTenantResponseBodyTenantTenantResourceCapacityUnit = None,
         cpu: DescribeTenantResponseBodyTenantTenantResourceCpu = None,
         disk_size: DescribeTenantResponseBodyTenantTenantResourceDiskSize = None,
+        log_disk_size: DescribeTenantResponseBodyTenantTenantResourceLogDiskSize = None,
         memory: DescribeTenantResponseBodyTenantTenantResourceMemory = None,
         unit_num: int = None,
     ):
+        self.capacity_unit = capacity_unit
         # The enabling status of the Clog service.  
         # CLOSED: The Clog service is disabled.  
         # - ONLINE: The Clog service is running.
@@ -16412,16 +28765,21 @@ class DescribeTenantResponseBodyTenantTenantResource(TeaModel):
         # The status of the intranet address for accessing the tenant.  
         # The value ONLINE indicates that the address is in service.
         self.disk_size = disk_size
+        self.log_disk_size = log_disk_size
         # The description of the tenant.
         self.memory = memory
         # Alibaba Cloud CLI
         self.unit_num = unit_num
 
     def validate(self):
+        if self.capacity_unit:
+            self.capacity_unit.validate()
         if self.cpu:
             self.cpu.validate()
         if self.disk_size:
             self.disk_size.validate()
+        if self.log_disk_size:
+            self.log_disk_size.validate()
         if self.memory:
             self.memory.validate()
 
@@ -16431,10 +28789,14 @@ class DescribeTenantResponseBodyTenantTenantResource(TeaModel):
             return _map
 
         result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit.to_map()
         if self.cpu is not None:
             result['Cpu'] = self.cpu.to_map()
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size.to_map()
+        if self.log_disk_size is not None:
+            result['LogDiskSize'] = self.log_disk_size.to_map()
         if self.memory is not None:
             result['Memory'] = self.memory.to_map()
         if self.unit_num is not None:
@@ -16443,12 +28805,18 @@ class DescribeTenantResponseBodyTenantTenantResource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            temp_model = DescribeTenantResponseBodyTenantTenantResourceCapacityUnit()
+            self.capacity_unit = temp_model.from_map(m['CapacityUnit'])
         if m.get('Cpu') is not None:
             temp_model = DescribeTenantResponseBodyTenantTenantResourceCpu()
             self.cpu = temp_model.from_map(m['Cpu'])
         if m.get('DiskSize') is not None:
             temp_model = DescribeTenantResponseBodyTenantTenantResourceDiskSize()
             self.disk_size = temp_model.from_map(m['DiskSize'])
+        if m.get('LogDiskSize') is not None:
+            temp_model = DescribeTenantResponseBodyTenantTenantResourceLogDiskSize()
+            self.log_disk_size = temp_model.from_map(m['LogDiskSize'])
         if m.get('Memory') is not None:
             temp_model = DescribeTenantResponseBodyTenantTenantResourceMemory()
             self.memory = temp_model.from_map(m['Memory'])
@@ -16514,9 +28882,11 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         enable_binlog_service: bool = None,
         enable_clog_service: bool = None,
         enable_internet_address_service: bool = None,
+        enable_parallel_query: bool = None,
         enable_read_write_split: bool = None,
         instance_type: str = None,
         master_intranet_address_zone: str = None,
+        max_parallel_query_degree: int = None,
         pay_type: str = None,
         primary_zone: str = None,
         primary_zone_deploy_type: str = None,
@@ -16528,6 +28898,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         tenant_name: str = None,
         tenant_resource: DescribeTenantResponseBodyTenantTenantResource = None,
         tenant_zones: List[DescribeTenantResponseBodyTenantTenantZones] = None,
+        time_zone: str = None,
         vpc_id: str = None,
     ):
         # DescribeTenant
@@ -16554,6 +28925,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.enable_clog_service = enable_clog_service
         # The deployment type of the primary zone.
         self.enable_internet_address_service = enable_internet_address_service
+        self.enable_parallel_query = enable_parallel_query
         self.enable_read_write_split = enable_read_write_split
         # {
         #     "RequestId": "EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C",
@@ -16620,6 +28992,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         # &Common request parameters
         # ```
         self.master_intranet_address_zone = master_intranet_address_zone
+        self.max_parallel_query_degree = max_parallel_query_degree
         self.pay_type = pay_type
         # The type of the payment.
         self.primary_zone = primary_zone
@@ -16702,6 +29075,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.tenant_resource = tenant_resource
         # The standby zone corresponding to the address for accessing the tenant.
         self.tenant_zones = tenant_zones
+        self.time_zone = time_zone
         # Indicates whether the clog service is available. To enable the clog service, submit a ticket.
         self.vpc_id = vpc_id
 
@@ -16747,12 +29121,16 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['EnableClogService'] = self.enable_clog_service
         if self.enable_internet_address_service is not None:
             result['EnableInternetAddressService'] = self.enable_internet_address_service
+        if self.enable_parallel_query is not None:
+            result['EnableParallelQuery'] = self.enable_parallel_query
         if self.enable_read_write_split is not None:
             result['EnableReadWriteSplit'] = self.enable_read_write_split
         if self.instance_type is not None:
             result['InstanceType'] = self.instance_type
         if self.master_intranet_address_zone is not None:
             result['MasterIntranetAddressZone'] = self.master_intranet_address_zone
+        if self.max_parallel_query_degree is not None:
+            result['MaxParallelQueryDegree'] = self.max_parallel_query_degree
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.primary_zone is not None:
@@ -16779,6 +29157,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         if self.tenant_zones is not None:
             for k in self.tenant_zones:
                 result['TenantZones'].append(k.to_map() if k else None)
+        if self.time_zone is not None:
+            result['TimeZone'] = self.time_zone
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -16809,12 +29189,16 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.enable_clog_service = m.get('EnableClogService')
         if m.get('EnableInternetAddressService') is not None:
             self.enable_internet_address_service = m.get('EnableInternetAddressService')
+        if m.get('EnableParallelQuery') is not None:
+            self.enable_parallel_query = m.get('EnableParallelQuery')
         if m.get('EnableReadWriteSplit') is not None:
             self.enable_read_write_split = m.get('EnableReadWriteSplit')
         if m.get('InstanceType') is not None:
             self.instance_type = m.get('InstanceType')
         if m.get('MasterIntranetAddressZone') is not None:
             self.master_intranet_address_zone = m.get('MasterIntranetAddressZone')
+        if m.get('MaxParallelQueryDegree') is not None:
+            self.max_parallel_query_degree = m.get('MaxParallelQueryDegree')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('PrimaryZone') is not None:
@@ -16844,6 +29228,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             for k in m.get('TenantZones'):
                 temp_model = DescribeTenantResponseBodyTenantTenantZones()
                 self.tenant_zones.append(temp_model.from_map(k))
+        if m.get('TimeZone') is not None:
+            self.time_zone = m.get('TimeZone')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
@@ -16926,6 +29312,217 @@ class DescribeTenantResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeTenantResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTenantEncryptionRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        tenant_id: str = None,
+        tenant_name: str = None,
+    ):
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.tenant_id = tenant_id
+        self.tenant_name = tenant_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        return self
+
+
+class DescribeTenantEncryptionResponseBodyTenantEncryptions(TeaModel):
+    def __init__(
+        self,
+        enable_encryption: bool = None,
+        encryption_key_id: str = None,
+        encryption_type: str = None,
+        status: str = None,
+        tenant_id: str = None,
+        tenant_mode: str = None,
+        tenant_name: str = None,
+        tenant_status: str = None,
+    ):
+        self.enable_encryption = enable_encryption
+        self.encryption_key_id = encryption_key_id
+        self.encryption_type = encryption_type
+        self.status = status
+        self.tenant_id = tenant_id
+        self.tenant_mode = tenant_mode
+        self.tenant_name = tenant_name
+        self.tenant_status = tenant_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_encryption is not None:
+            result['EnableEncryption'] = self.enable_encryption
+        if self.encryption_key_id is not None:
+            result['EncryptionKeyId'] = self.encryption_key_id
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        if self.tenant_mode is not None:
+            result['TenantMode'] = self.tenant_mode
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        if self.tenant_status is not None:
+            result['TenantStatus'] = self.tenant_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableEncryption') is not None:
+            self.enable_encryption = m.get('EnableEncryption')
+        if m.get('EncryptionKeyId') is not None:
+            self.encryption_key_id = m.get('EncryptionKeyId')
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        if m.get('TenantMode') is not None:
+            self.tenant_mode = m.get('TenantMode')
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        if m.get('TenantStatus') is not None:
+            self.tenant_status = m.get('TenantStatus')
+        return self
+
+
+class DescribeTenantEncryptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tenant_encryptions: List[DescribeTenantEncryptionResponseBodyTenantEncryptions] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.tenant_encryptions = tenant_encryptions
+        self.total_count = total_count
+
+    def validate(self):
+        if self.tenant_encryptions:
+            for k in self.tenant_encryptions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['TenantEncryptions'] = []
+        if self.tenant_encryptions is not None:
+            for k in self.tenant_encryptions:
+                result['TenantEncryptions'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.tenant_encryptions = []
+        if m.get('TenantEncryptions') is not None:
+            for k in m.get('TenantEncryptions'):
+                temp_model = DescribeTenantEncryptionResponseBodyTenantEncryptions()
+                self.tenant_encryptions.append(temp_model.from_map(k))
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeTenantEncryptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTenantEncryptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTenantEncryptionResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -17097,9 +29694,11 @@ class DescribeTenantMetricsResponse(TeaModel):
 class DescribeTenantSecurityConfigsRequest(TeaModel):
     def __init__(
         self,
+        check_id: str = None,
         instance_id: str = None,
         tenant_id: str = None,
     ):
+        self.check_id = check_id
         self.instance_id = instance_id
         self.tenant_id = tenant_id
 
@@ -17112,6 +29711,8 @@ class DescribeTenantSecurityConfigsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.tenant_id is not None:
@@ -17120,6 +29721,8 @@ class DescribeTenantSecurityConfigsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('TenantId') is not None:
@@ -17234,10 +29837,16 @@ class DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs(TeaM
 class DescribeTenantSecurityConfigsResponseBodyConfigs(TeaModel):
     def __init__(
         self,
+        check_id: str = None,
+        check_time: str = None,
+        instance_id: str = None,
         tenant_security_configs: List[DescribeTenantSecurityConfigsResponseBodyConfigsTenantSecurityConfigs] = None,
         total_check_count: int = None,
         total_risk_count: int = None,
     ):
+        self.check_id = check_id
+        self.check_time = check_time
+        self.instance_id = instance_id
         self.tenant_security_configs = tenant_security_configs
         self.total_check_count = total_check_count
         self.total_risk_count = total_risk_count
@@ -17254,6 +29863,12 @@ class DescribeTenantSecurityConfigsResponseBodyConfigs(TeaModel):
             return _map
 
         result = dict()
+        if self.check_id is not None:
+            result['CheckId'] = self.check_id
+        if self.check_time is not None:
+            result['CheckTime'] = self.check_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         result['TenantSecurityConfigs'] = []
         if self.tenant_security_configs is not None:
             for k in self.tenant_security_configs:
@@ -17266,6 +29881,12 @@ class DescribeTenantSecurityConfigsResponseBodyConfigs(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckId') is not None:
+            self.check_id = m.get('CheckId')
+        if m.get('CheckTime') is not None:
+            self.check_time = m.get('CheckTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         self.tenant_security_configs = []
         if m.get('TenantSecurityConfigs') is not None:
             for k in m.get('TenantSecurityConfigs'):
@@ -17363,7 +29984,9 @@ class DescribeTenantSecurityIpGroupsRequest(TeaModel):
         instance_id: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -17398,9 +30021,15 @@ class DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups(TeaModel):
         security_ips: str = None,
         tenant_id: str = None,
     ):
+        # The group name.
         self.security_ip_group_name = security_ip_group_name
+        # The whitelist group type.
+        # - instance: the whitelist group from the cluster.
+        # - tenant: the whitelist group of the current tenant.
         self.security_ip_group_type = security_ip_group_type
+        # The whitelist of IP addresses. It is a string separated by commas, and each object is an IP string or a CIDR block.
         self.security_ips = security_ips
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -17442,8 +30071,11 @@ class DescribeTenantSecurityIpGroupsResponseBody(TeaModel):
         security_ip_groups: List[DescribeTenantSecurityIpGroupsResponseBodySecurityIpGroups] = None,
         total_count: int = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of the whitelist groups.
         self.security_ip_groups = security_ip_groups
+        # The total number of the whitelist groups.
         self.total_count = total_count
 
     def validate(self):
@@ -17533,8 +30165,11 @@ class DescribeTenantTagsRequest(TeaModel):
         tags: str = None,
         tenant_ids: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The tags.
         self.tags = tags
+        # The JSON string of the tenant ID.
         self.tenant_ids = tenant_ids
 
     def validate(self):
@@ -17572,8 +30207,11 @@ class DescribeTenantTagsResponseBodyTagResources(TeaModel):
         resource_type: str = None,
         tag: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tag of the resource.
         self.tag = tag
 
     def validate(self):
@@ -17610,7 +30248,9 @@ class DescribeTenantTagsResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[DescribeTenantTagsResponseBodyTagResources] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The list of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -17686,6 +30326,33 @@ class DescribeTenantTagsResponse(TeaModel):
         if m.get('body') is not None:
             temp_model = DescribeTenantTagsResponseBody()
             self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTenantUserRolesRequest(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         return self
 
 
@@ -17827,10 +30494,12 @@ class DescribeTenantUsersResponseBodyTenantUsersDatabases(TeaModel):
     def __init__(
         self,
         database: str = None,
+        privileges: str = None,
         role: str = None,
         table: str = None,
     ):
         self.database = database
+        self.privileges = privileges
         self.role = role
         self.table = table
 
@@ -17845,6 +30514,8 @@ class DescribeTenantUsersResponseBodyTenantUsersDatabases(TeaModel):
         result = dict()
         if self.database is not None:
             result['Database'] = self.database
+        if self.privileges is not None:
+            result['Privileges'] = self.privileges
         if self.role is not None:
             result['Role'] = self.role
         if self.table is not None:
@@ -17855,6 +30526,8 @@ class DescribeTenantUsersResponseBodyTenantUsersDatabases(TeaModel):
         m = m or dict()
         if m.get('Database') is not None:
             self.database = m.get('Database')
+        if m.get('Privileges') is not None:
+            self.privileges = m.get('Privileges')
         if m.get('Role') is not None:
             self.role = m.get('Role')
         if m.get('Table') is not None:
@@ -18081,14 +30754,12 @@ class DescribeTenantZonesReadResponseBodyTenantZones(TeaModel):
         self,
         is_electable: bool = None,
         is_primary: bool = None,
-        is_read_only_address_master: bool = None,
         is_readable: str = None,
         zone: str = None,
     ):
         # Example 1
         self.is_electable = is_electable
         self.is_primary = is_primary
-        self.is_read_only_address_master = is_read_only_address_master
         self.is_readable = is_readable
         self.zone = zone
 
@@ -18105,8 +30776,6 @@ class DescribeTenantZonesReadResponseBodyTenantZones(TeaModel):
             result['IsElectable'] = self.is_electable
         if self.is_primary is not None:
             result['IsPrimary'] = self.is_primary
-        if self.is_read_only_address_master is not None:
-            result['IsReadOnlyAddressMaster'] = self.is_read_only_address_master
         if self.is_readable is not None:
             result['IsReadable'] = self.is_readable
         if self.zone is not None:
@@ -18119,8 +30788,6 @@ class DescribeTenantZonesReadResponseBodyTenantZones(TeaModel):
             self.is_electable = m.get('IsElectable')
         if m.get('IsPrimary') is not None:
             self.is_primary = m.get('IsPrimary')
-        if m.get('IsReadOnlyAddressMaster') is not None:
-            self.is_read_only_address_master = m.get('IsReadOnlyAddressMaster')
         if m.get('IsReadable') is not None:
             self.is_readable = m.get('IsReadable')
         if m.get('Zone') is not None:
@@ -19554,6 +32221,313 @@ class DescribeZonesResponse(TeaModel):
         return self
 
 
+class GetUploadOssUrlRequest(TeaModel):
+    def __init__(
+        self,
+        effective_time_minutes: int = None,
+        type: str = None,
+    ):
+        self.effective_time_minutes = effective_time_minutes
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.effective_time_minutes is not None:
+            result['EffectiveTimeMinutes'] = self.effective_time_minutes
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EffectiveTimeMinutes') is not None:
+            self.effective_time_minutes = m.get('EffectiveTimeMinutes')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class GetUploadOssUrlResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        expected_expiration_time: str = None,
+        oss_key: str = None,
+        oss_url: str = None,
+    ):
+        self.expected_expiration_time = expected_expiration_time
+        self.oss_key = oss_key
+        self.oss_url = oss_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expected_expiration_time is not None:
+            result['ExpectedExpirationTime'] = self.expected_expiration_time
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.oss_url is not None:
+            result['OssUrl'] = self.oss_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExpectedExpirationTime') is not None:
+            self.expected_expiration_time = m.get('ExpectedExpirationTime')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('OssUrl') is not None:
+            self.oss_url = m.get('OssUrl')
+        return self
+
+
+class GetUploadOssUrlResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class GetUploadOssUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: GetUploadOssUrlResponseBodyData = None,
+        error_detail: GetUploadOssUrlResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = GetUploadOssUrlResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = GetUploadOssUrlResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class GetUploadOssUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetUploadOssUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetUploadOssUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class KillProcessListRequest(TeaModel):
     def __init__(
         self,
@@ -19777,6 +32751,3552 @@ class KillProcessListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = KillProcessListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListAllLabelsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+        name: str = None,
+    ):
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ListAllLabelsResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListAllLabelsResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: List[ListAllLabelsResponseBodyData] = None,
+        error_detail: ListAllLabelsResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListAllLabelsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorDetail') is not None:
+            temp_model = ListAllLabelsResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListAllLabelsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAllLabelsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAllLabelsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListDataSourceRequest(TeaModel):
+    def __init__(
+        self,
+        order: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        search_key: str = None,
+        sort_field: str = None,
+        types: List[str] = None,
+    ):
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key = search_key
+        self.sort_field = sort_field
+        self.types = types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
+        if self.types is not None:
+            result['Types'] = self.types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
+        if m.get('Types') is not None:
+            self.types = m.get('Types')
+        return self
+
+
+class ListDataSourceShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        order: str = None,
+        page_number: str = None,
+        page_size: str = None,
+        search_key: str = None,
+        sort_field: str = None,
+        types_shrink: str = None,
+    ):
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key = search_key
+        self.sort_field = sort_field
+        self.types_shrink = types_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
+        if self.types_shrink is not None:
+            result['Types'] = self.types_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
+        if m.get('Types') is not None:
+            self.types_shrink = m.get('Types')
+        return self
+
+
+class ListDataSourceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        charset: str = None,
+        cluster: str = None,
+        conn_extra_attributes: Any = None,
+        description: str = None,
+        gmt_create: str = None,
+        gmt_modified: str = None,
+        id: str = None,
+        ip: str = None,
+        name: str = None,
+        operating_system: str = None,
+        oracle_nls_length_semantics: str = None,
+        oracle_sid: str = None,
+        owner: str = None,
+        partner_id: str = None,
+        port: int = None,
+        region: str = None,
+        resource_owner: str = None,
+        role: str = None,
+        schema: str = None,
+        tenant: str = None,
+        timezone: str = None,
+        type: str = None,
+        user_name: str = None,
+        version: str = None,
+        vpc_id: str = None,
+    ):
+        self.charset = charset
+        self.cluster = cluster
+        self.conn_extra_attributes = conn_extra_attributes
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.ip = ip
+        self.name = name
+        self.operating_system = operating_system
+        self.oracle_nls_length_semantics = oracle_nls_length_semantics
+        self.oracle_sid = oracle_sid
+        self.owner = owner
+        self.partner_id = partner_id
+        self.port = port
+        self.region = region
+        self.resource_owner = resource_owner
+        self.role = role
+        self.schema = schema
+        self.tenant = tenant
+        self.timezone = timezone
+        self.type = type
+        self.user_name = user_name
+        self.version = version
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charset is not None:
+            result['Charset'] = self.charset
+        if self.cluster is not None:
+            result['Cluster'] = self.cluster
+        if self.conn_extra_attributes is not None:
+            result['ConnExtraAttributes'] = self.conn_extra_attributes
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.operating_system is not None:
+            result['OperatingSystem'] = self.operating_system
+        if self.oracle_nls_length_semantics is not None:
+            result['OracleNlsLengthSemantics'] = self.oracle_nls_length_semantics
+        if self.oracle_sid is not None:
+            result['OracleSid'] = self.oracle_sid
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.partner_id is not None:
+            result['PartnerId'] = self.partner_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.schema is not None:
+            result['Schema'] = self.schema
+        if self.tenant is not None:
+            result['Tenant'] = self.tenant
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+        if self.version is not None:
+            result['Version'] = self.version
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Charset') is not None:
+            self.charset = m.get('Charset')
+        if m.get('Cluster') is not None:
+            self.cluster = m.get('Cluster')
+        if m.get('ConnExtraAttributes') is not None:
+            self.conn_extra_attributes = m.get('ConnExtraAttributes')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OperatingSystem') is not None:
+            self.operating_system = m.get('OperatingSystem')
+        if m.get('OracleNlsLengthSemantics') is not None:
+            self.oracle_nls_length_semantics = m.get('OracleNlsLengthSemantics')
+        if m.get('OracleSid') is not None:
+            self.oracle_sid = m.get('OracleSid')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PartnerId') is not None:
+            self.partner_id = m.get('PartnerId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('Schema') is not None:
+            self.schema = m.get('Schema')
+        if m.get('Tenant') is not None:
+            self.tenant = m.get('Tenant')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
+class ListDataSourceResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListDataSourceResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: List[ListDataSourceResponseBodyData] = None,
+        error_detail: ListDataSourceResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListDataSourceResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorDetail') is not None:
+            temp_model = ListDataSourceResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListDataSourceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListDataSourceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListDataSourceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProjectFullVerifyResultRequest(TeaModel):
+    def __init__(
+        self,
+        dest_schemas: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        source_schemas: List[str] = None,
+        status: str = None,
+    ):
+        self.dest_schemas = dest_schemas
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.source_schemas = source_schemas
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_schemas is not None:
+            result['DestSchemas'] = self.dest_schemas
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.source_schemas is not None:
+            result['SourceSchemas'] = self.source_schemas
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestSchemas') is not None:
+            self.dest_schemas = m.get('DestSchemas')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SourceSchemas') is not None:
+            self.source_schemas = m.get('SourceSchemas')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListProjectFullVerifyResultShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dest_schemas_shrink: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        project_id: str = None,
+        source_schemas_shrink: str = None,
+        status: str = None,
+    ):
+        self.dest_schemas_shrink = dest_schemas_shrink
+        self.page_number = page_number
+        self.page_size = page_size
+        self.project_id = project_id
+        self.source_schemas_shrink = source_schemas_shrink
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_schemas_shrink is not None:
+            result['DestSchemas'] = self.dest_schemas_shrink
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.source_schemas_shrink is not None:
+            result['SourceSchemas'] = self.source_schemas_shrink
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestSchemas') is not None:
+            self.dest_schemas_shrink = m.get('DestSchemas')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('SourceSchemas') is not None:
+            self.source_schemas_shrink = m.get('SourceSchemas')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics(TeaModel):
+    def __init__(
+        self,
+        consistent_count: int = None,
+        dest_only_count: int = None,
+        dest_schema_name: str = None,
+        error_details: List[ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails] = None,
+        message: str = None,
+        mismatched_count: int = None,
+        progress: str = None,
+        result_desc: str = None,
+        result_type: str = None,
+        source_only_count: int = None,
+        source_schema_name: str = None,
+        source_table_name: str = None,
+        status: str = None,
+    ):
+        self.consistent_count = consistent_count
+        self.dest_only_count = dest_only_count
+        self.dest_schema_name = dest_schema_name
+        self.error_details = error_details
+        self.message = message
+        self.mismatched_count = mismatched_count
+        self.progress = progress
+        self.result_desc = result_desc
+        self.result_type = result_type
+        self.source_only_count = source_only_count
+        self.source_schema_name = source_schema_name
+        self.source_table_name = source_table_name
+        self.status = status
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.consistent_count is not None:
+            result['ConsistentCount'] = self.consistent_count
+        if self.dest_only_count is not None:
+            result['DestOnlyCount'] = self.dest_only_count
+        if self.dest_schema_name is not None:
+            result['DestSchemaName'] = self.dest_schema_name
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.mismatched_count is not None:
+            result['MismatchedCount'] = self.mismatched_count
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.result_desc is not None:
+            result['ResultDesc'] = self.result_desc
+        if self.result_type is not None:
+            result['ResultType'] = self.result_type
+        if self.source_only_count is not None:
+            result['SourceOnlyCount'] = self.source_only_count
+        if self.source_schema_name is not None:
+            result['SourceSchemaName'] = self.source_schema_name
+        if self.source_table_name is not None:
+            result['SourceTableName'] = self.source_table_name
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConsistentCount') is not None:
+            self.consistent_count = m.get('ConsistentCount')
+        if m.get('DestOnlyCount') is not None:
+            self.dest_only_count = m.get('DestOnlyCount')
+        if m.get('DestSchemaName') is not None:
+            self.dest_schema_name = m.get('DestSchemaName')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatisticsErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MismatchedCount') is not None:
+            self.mismatched_count = m.get('MismatchedCount')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ResultDesc') is not None:
+            self.result_desc = m.get('ResultDesc')
+        if m.get('ResultType') is not None:
+            self.result_type = m.get('ResultType')
+        if m.get('SourceOnlyCount') is not None:
+            self.source_only_count = m.get('SourceOnlyCount')
+        if m.get('SourceSchemaName') is not None:
+            self.source_schema_name = m.get('SourceSchemaName')
+        if m.get('SourceTableName') is not None:
+            self.source_table_name = m.get('SourceTableName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListProjectFullVerifyResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        different_number: int = None,
+        full_verify_table_statistics: List[ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics] = None,
+    ):
+        self.different_number = different_number
+        self.full_verify_table_statistics = full_verify_table_statistics
+
+    def validate(self):
+        if self.full_verify_table_statistics:
+            for k in self.full_verify_table_statistics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.different_number is not None:
+            result['DifferentNumber'] = self.different_number
+        result['FullVerifyTableStatistics'] = []
+        if self.full_verify_table_statistics is not None:
+            for k in self.full_verify_table_statistics:
+                result['FullVerifyTableStatistics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DifferentNumber') is not None:
+            self.different_number = m.get('DifferentNumber')
+        self.full_verify_table_statistics = []
+        if m.get('FullVerifyTableStatistics') is not None:
+            for k in m.get('FullVerifyTableStatistics'):
+                temp_model = ListProjectFullVerifyResultResponseBodyDataFullVerifyTableStatistics()
+                self.full_verify_table_statistics.append(temp_model.from_map(k))
+        return self
+
+
+class ListProjectFullVerifyResultResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListProjectFullVerifyResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: ListProjectFullVerifyResultResponseBodyData = None,
+        error_detail: ListProjectFullVerifyResultResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = ListProjectFullVerifyResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = ListProjectFullVerifyResultResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProjectFullVerifyResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProjectFullVerifyResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProjectFullVerifyResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListProjectsRequest(TeaModel):
+    def __init__(
+        self,
+        label_ids: List[str] = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_key: str = None,
+        sink_endpoint_types: List[str] = None,
+        sort_field: str = None,
+        source_endpoint_types: List[str] = None,
+        status: List[str] = None,
+        type: str = None,
+        visible_sub_project: bool = None,
+    ):
+        self.label_ids = label_ids
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key = search_key
+        self.sink_endpoint_types = sink_endpoint_types
+        self.sort_field = sort_field
+        self.source_endpoint_types = source_endpoint_types
+        self.status = status
+        self.type = type
+        self.visible_sub_project = visible_sub_project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_ids is not None:
+            result['LabelIds'] = self.label_ids
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.sink_endpoint_types is not None:
+            result['SinkEndpointTypes'] = self.sink_endpoint_types
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
+        if self.source_endpoint_types is not None:
+            result['SourceEndpointTypes'] = self.source_endpoint_types
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.visible_sub_project is not None:
+            result['VisibleSubProject'] = self.visible_sub_project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LabelIds') is not None:
+            self.label_ids = m.get('LabelIds')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SinkEndpointTypes') is not None:
+            self.sink_endpoint_types = m.get('SinkEndpointTypes')
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
+        if m.get('SourceEndpointTypes') is not None:
+            self.source_endpoint_types = m.get('SourceEndpointTypes')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('VisibleSubProject') is not None:
+            self.visible_sub_project = m.get('VisibleSubProject')
+        return self
+
+
+class ListProjectsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        label_ids_shrink: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        search_key: str = None,
+        sink_endpoint_types_shrink: str = None,
+        sort_field: str = None,
+        source_endpoint_types_shrink: str = None,
+        status_shrink: str = None,
+        type: str = None,
+        visible_sub_project: bool = None,
+    ):
+        self.label_ids_shrink = label_ids_shrink
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.search_key = search_key
+        self.sink_endpoint_types_shrink = sink_endpoint_types_shrink
+        self.sort_field = sort_field
+        self.source_endpoint_types_shrink = source_endpoint_types_shrink
+        self.status_shrink = status_shrink
+        self.type = type
+        self.visible_sub_project = visible_sub_project
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.label_ids_shrink is not None:
+            result['LabelIds'] = self.label_ids_shrink
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+        if self.sink_endpoint_types_shrink is not None:
+            result['SinkEndpointTypes'] = self.sink_endpoint_types_shrink
+        if self.sort_field is not None:
+            result['SortField'] = self.sort_field
+        if self.source_endpoint_types_shrink is not None:
+            result['SourceEndpointTypes'] = self.source_endpoint_types_shrink
+        if self.status_shrink is not None:
+            result['Status'] = self.status_shrink
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.visible_sub_project is not None:
+            result['VisibleSubProject'] = self.visible_sub_project
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LabelIds') is not None:
+            self.label_ids_shrink = m.get('LabelIds')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
+        if m.get('SinkEndpointTypes') is not None:
+            self.sink_endpoint_types_shrink = m.get('SinkEndpointTypes')
+        if m.get('SortField') is not None:
+            self.sort_field = m.get('SortField')
+        if m.get('SourceEndpointTypes') is not None:
+            self.source_endpoint_types_shrink = m.get('SourceEndpointTypes')
+        if m.get('Status') is not None:
+            self.status_shrink = m.get('Status')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('VisibleSubProject') is not None:
+            self.visible_sub_project = m.get('VisibleSubProject')
+        return self
+
+
+class ListProjectsResponseBodyDataAlarmStats(TeaModel):
+    def __init__(
+        self,
+        alarm_content: str = None,
+        alarming: bool = None,
+        open_monitor: bool = None,
+        recently_trigger_count: int = None,
+        rule_to_recently_trigger_count: Dict[str, int] = None,
+        target: str = None,
+    ):
+        self.alarm_content = alarm_content
+        self.alarming = alarming
+        self.open_monitor = open_monitor
+        self.recently_trigger_count = recently_trigger_count
+        self.rule_to_recently_trigger_count = rule_to_recently_trigger_count
+        self.target = target
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_content is not None:
+            result['AlarmContent'] = self.alarm_content
+        if self.alarming is not None:
+            result['Alarming'] = self.alarming
+        if self.open_monitor is not None:
+            result['OpenMonitor'] = self.open_monitor
+        if self.recently_trigger_count is not None:
+            result['RecentlyTriggerCount'] = self.recently_trigger_count
+        if self.rule_to_recently_trigger_count is not None:
+            result['RuleToRecentlyTriggerCount'] = self.rule_to_recently_trigger_count
+        if self.target is not None:
+            result['Target'] = self.target
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmContent') is not None:
+            self.alarm_content = m.get('AlarmContent')
+        if m.get('Alarming') is not None:
+            self.alarming = m.get('Alarming')
+        if m.get('OpenMonitor') is not None:
+            self.open_monitor = m.get('OpenMonitor')
+        if m.get('RecentlyTriggerCount') is not None:
+            self.recently_trigger_count = m.get('RecentlyTriggerCount')
+        if m.get('RuleToRecentlyTriggerCount') is not None:
+            self.rule_to_recently_trigger_count = m.get('RuleToRecentlyTriggerCount')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        return self
+
+
+class ListProjectsResponseBodyDataCommonTransferConfig(TeaModel):
+    def __init__(
+        self,
+        active_active: bool = None,
+        data_works_business_name: str = None,
+        datahub_topic_type: str = None,
+        mq_partition: int = None,
+        mq_partition_mode: str = None,
+        mq_serializer_type: str = None,
+        rocket_mq_enable_msg_trace: bool = None,
+        rocket_mq_msg_tags: str = None,
+        rocket_mq_producer_group: str = None,
+        rocket_mq_send_msg_timeout: int = None,
+        table_category: str = None,
+    ):
+        self.active_active = active_active
+        self.data_works_business_name = data_works_business_name
+        self.datahub_topic_type = datahub_topic_type
+        self.mq_partition = mq_partition
+        self.mq_partition_mode = mq_partition_mode
+        self.mq_serializer_type = mq_serializer_type
+        self.rocket_mq_enable_msg_trace = rocket_mq_enable_msg_trace
+        self.rocket_mq_msg_tags = rocket_mq_msg_tags
+        self.rocket_mq_producer_group = rocket_mq_producer_group
+        self.rocket_mq_send_msg_timeout = rocket_mq_send_msg_timeout
+        self.table_category = table_category
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.active_active is not None:
+            result['ActiveActive'] = self.active_active
+        if self.data_works_business_name is not None:
+            result['DataWorksBusinessName'] = self.data_works_business_name
+        if self.datahub_topic_type is not None:
+            result['DatahubTopicType'] = self.datahub_topic_type
+        if self.mq_partition is not None:
+            result['MqPartition'] = self.mq_partition
+        if self.mq_partition_mode is not None:
+            result['MqPartitionMode'] = self.mq_partition_mode
+        if self.mq_serializer_type is not None:
+            result['MqSerializerType'] = self.mq_serializer_type
+        if self.rocket_mq_enable_msg_trace is not None:
+            result['RocketMqEnableMsgTrace'] = self.rocket_mq_enable_msg_trace
+        if self.rocket_mq_msg_tags is not None:
+            result['RocketMqMsgTags'] = self.rocket_mq_msg_tags
+        if self.rocket_mq_producer_group is not None:
+            result['RocketMqProducerGroup'] = self.rocket_mq_producer_group
+        if self.rocket_mq_send_msg_timeout is not None:
+            result['RocketMqSendMsgTimeout'] = self.rocket_mq_send_msg_timeout
+        if self.table_category is not None:
+            result['TableCategory'] = self.table_category
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActiveActive') is not None:
+            self.active_active = m.get('ActiveActive')
+        if m.get('DataWorksBusinessName') is not None:
+            self.data_works_business_name = m.get('DataWorksBusinessName')
+        if m.get('DatahubTopicType') is not None:
+            self.datahub_topic_type = m.get('DatahubTopicType')
+        if m.get('MqPartition') is not None:
+            self.mq_partition = m.get('MqPartition')
+        if m.get('MqPartitionMode') is not None:
+            self.mq_partition_mode = m.get('MqPartitionMode')
+        if m.get('MqSerializerType') is not None:
+            self.mq_serializer_type = m.get('MqSerializerType')
+        if m.get('RocketMqEnableMsgTrace') is not None:
+            self.rocket_mq_enable_msg_trace = m.get('RocketMqEnableMsgTrace')
+        if m.get('RocketMqMsgTags') is not None:
+            self.rocket_mq_msg_tags = m.get('RocketMqMsgTags')
+        if m.get('RocketMqProducerGroup') is not None:
+            self.rocket_mq_producer_group = m.get('RocketMqProducerGroup')
+        if m.get('RocketMqSendMsgTimeout') is not None:
+            self.rocket_mq_send_msg_timeout = m.get('RocketMqSendMsgTimeout')
+        if m.get('TableCategory') is not None:
+            self.table_category = m.get('TableCategory')
+        return self
+
+
+class ListProjectsResponseBodyDataExtraInfo(TeaModel):
+    def __init__(
+        self,
+        access_ob_source: bool = None,
+        ignore_unsupport_ddl: bool = None,
+        incr_sync_timestamp: int = None,
+        log_service_start_checkpoint: int = None,
+        max_connector_count: int = None,
+        monitoring_incr: bool = None,
+        overwrite_config: bool = None,
+        reverse_subtopics: List[str] = None,
+        running_progress: int = None,
+        running_step: str = None,
+        source_store_kept_hour: int = None,
+        store_incr: bool = None,
+        sub_conds: Dict[str, List[DataExtraInfoSubCondsValue]] = None,
+        sub_dbs: Dict[str, List[DataExtraInfoSubDbsValue]] = None,
+        sub_ids: Dict[str, str] = None,
+        subtopics: List[str] = None,
+        sync_delay: int = None,
+        sync_delay_sample_timestamp: int = None,
+    ):
+        self.access_ob_source = access_ob_source
+        self.ignore_unsupport_ddl = ignore_unsupport_ddl
+        self.incr_sync_timestamp = incr_sync_timestamp
+        self.log_service_start_checkpoint = log_service_start_checkpoint
+        self.max_connector_count = max_connector_count
+        self.monitoring_incr = monitoring_incr
+        self.overwrite_config = overwrite_config
+        self.reverse_subtopics = reverse_subtopics
+        self.running_progress = running_progress
+        self.running_step = running_step
+        self.source_store_kept_hour = source_store_kept_hour
+        self.store_incr = store_incr
+        self.sub_conds = sub_conds
+        self.sub_dbs = sub_dbs
+        self.sub_ids = sub_ids
+        self.subtopics = subtopics
+        self.sync_delay = sync_delay
+        self.sync_delay_sample_timestamp = sync_delay_sample_timestamp
+
+    def validate(self):
+        if self.sub_conds:
+            for v in self.sub_conds.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+        if self.sub_dbs:
+            for v in self.sub_dbs.values():
+                for k1 in v:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_ob_source is not None:
+            result['AccessObSource'] = self.access_ob_source
+        if self.ignore_unsupport_ddl is not None:
+            result['IgnoreUnsupportDdl'] = self.ignore_unsupport_ddl
+        if self.incr_sync_timestamp is not None:
+            result['IncrSyncTimestamp'] = self.incr_sync_timestamp
+        if self.log_service_start_checkpoint is not None:
+            result['LogServiceStartCheckpoint'] = self.log_service_start_checkpoint
+        if self.max_connector_count is not None:
+            result['MaxConnectorCount'] = self.max_connector_count
+        if self.monitoring_incr is not None:
+            result['MonitoringIncr'] = self.monitoring_incr
+        if self.overwrite_config is not None:
+            result['OverwriteConfig'] = self.overwrite_config
+        if self.reverse_subtopics is not None:
+            result['ReverseSubtopics'] = self.reverse_subtopics
+        if self.running_progress is not None:
+            result['RunningProgress'] = self.running_progress
+        if self.running_step is not None:
+            result['RunningStep'] = self.running_step
+        if self.source_store_kept_hour is not None:
+            result['SourceStoreKeptHour'] = self.source_store_kept_hour
+        if self.store_incr is not None:
+            result['StoreIncr'] = self.store_incr
+        result['SubConds'] = {}
+        if self.sub_conds is not None:
+            for k, v in self.sub_conds.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['subConds'][k] = l1
+        result['SubDbs'] = {}
+        if self.sub_dbs is not None:
+            for k, v in self.sub_dbs.items():
+                l1 = []
+                for k1 in v:
+                    l1.append(k1.to_map() if k1 else None)
+                result['subDbs'][k] = l1
+        if self.sub_ids is not None:
+            result['SubIds'] = self.sub_ids
+        if self.subtopics is not None:
+            result['Subtopics'] = self.subtopics
+        if self.sync_delay is not None:
+            result['SyncDelay'] = self.sync_delay
+        if self.sync_delay_sample_timestamp is not None:
+            result['SyncDelaySampleTimestamp'] = self.sync_delay_sample_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessObSource') is not None:
+            self.access_ob_source = m.get('AccessObSource')
+        if m.get('IgnoreUnsupportDdl') is not None:
+            self.ignore_unsupport_ddl = m.get('IgnoreUnsupportDdl')
+        if m.get('IncrSyncTimestamp') is not None:
+            self.incr_sync_timestamp = m.get('IncrSyncTimestamp')
+        if m.get('LogServiceStartCheckpoint') is not None:
+            self.log_service_start_checkpoint = m.get('LogServiceStartCheckpoint')
+        if m.get('MaxConnectorCount') is not None:
+            self.max_connector_count = m.get('MaxConnectorCount')
+        if m.get('MonitoringIncr') is not None:
+            self.monitoring_incr = m.get('MonitoringIncr')
+        if m.get('OverwriteConfig') is not None:
+            self.overwrite_config = m.get('OverwriteConfig')
+        if m.get('ReverseSubtopics') is not None:
+            self.reverse_subtopics = m.get('ReverseSubtopics')
+        if m.get('RunningProgress') is not None:
+            self.running_progress = m.get('RunningProgress')
+        if m.get('RunningStep') is not None:
+            self.running_step = m.get('RunningStep')
+        if m.get('SourceStoreKeptHour') is not None:
+            self.source_store_kept_hour = m.get('SourceStoreKeptHour')
+        if m.get('StoreIncr') is not None:
+            self.store_incr = m.get('StoreIncr')
+        self.sub_conds = {}
+        if m.get('SubConds') is not None:
+            for k, v in m.get('SubConds').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DataExtraInfoSubCondsValue()
+                    l1.append(temp_model.from_map(k1))
+                self.sub_conds['k'] = l1
+        self.sub_dbs = {}
+        if m.get('SubDbs') is not None:
+            for k, v in m.get('SubDbs').items():
+                l1 = []
+                for k1 in v:
+                    temp_model = DataExtraInfoSubDbsValue()
+                    l1.append(temp_model.from_map(k1))
+                self.sub_dbs['k'] = l1
+        if m.get('SubIds') is not None:
+            self.sub_ids = m.get('SubIds')
+        if m.get('Subtopics') is not None:
+            self.subtopics = m.get('Subtopics')
+        if m.get('SyncDelay') is not None:
+            self.sync_delay = m.get('SyncDelay')
+        if m.get('SyncDelaySampleTimestamp') is not None:
+            self.sync_delay_sample_timestamp = m.get('SyncDelaySampleTimestamp')
+        return self
+
+
+class ListProjectsResponseBodyDataFullTransferConfig(TeaModel):
+    def __init__(
+        self,
+        allow_dest_table_not_empty: bool = None,
+        full_transfer_speed_mode: str = None,
+        full_verify_speed_mode: str = None,
+        none_pk_uk_truncate_dst_table: bool = None,
+    ):
+        self.allow_dest_table_not_empty = allow_dest_table_not_empty
+        self.full_transfer_speed_mode = full_transfer_speed_mode
+        self.full_verify_speed_mode = full_verify_speed_mode
+        self.none_pk_uk_truncate_dst_table = none_pk_uk_truncate_dst_table
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_dest_table_not_empty is not None:
+            result['AllowDestTableNotEmpty'] = self.allow_dest_table_not_empty
+        if self.full_transfer_speed_mode is not None:
+            result['FullTransferSpeedMode'] = self.full_transfer_speed_mode
+        if self.full_verify_speed_mode is not None:
+            result['FullVerifySpeedMode'] = self.full_verify_speed_mode
+        if self.none_pk_uk_truncate_dst_table is not None:
+            result['NonePkUkTruncateDstTable'] = self.none_pk_uk_truncate_dst_table
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowDestTableNotEmpty') is not None:
+            self.allow_dest_table_not_empty = m.get('AllowDestTableNotEmpty')
+        if m.get('FullTransferSpeedMode') is not None:
+            self.full_transfer_speed_mode = m.get('FullTransferSpeedMode')
+        if m.get('FullVerifySpeedMode') is not None:
+            self.full_verify_speed_mode = m.get('FullVerifySpeedMode')
+        if m.get('NonePkUkTruncateDstTable') is not None:
+            self.none_pk_uk_truncate_dst_table = m.get('NonePkUkTruncateDstTable')
+        return self
+
+
+class ListProjectsResponseBodyDataIncrTransferConfig(TeaModel):
+    def __init__(
+        self,
+        enable_incr_sync_statistics: bool = None,
+        enable_sequencing_within_txn: bool = None,
+        incr_sync_concurrency: int = None,
+        record_type_white_list: List[str] = None,
+        start_timestamp: int = None,
+        store_log_kept_hour: int = None,
+    ):
+        self.enable_incr_sync_statistics = enable_incr_sync_statistics
+        self.enable_sequencing_within_txn = enable_sequencing_within_txn
+        self.incr_sync_concurrency = incr_sync_concurrency
+        self.record_type_white_list = record_type_white_list
+        self.start_timestamp = start_timestamp
+        self.store_log_kept_hour = store_log_kept_hour
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enable_incr_sync_statistics is not None:
+            result['EnableIncrSyncStatistics'] = self.enable_incr_sync_statistics
+        if self.enable_sequencing_within_txn is not None:
+            result['EnableSequencingWithinTxn'] = self.enable_sequencing_within_txn
+        if self.incr_sync_concurrency is not None:
+            result['IncrSyncConcurrency'] = self.incr_sync_concurrency
+        if self.record_type_white_list is not None:
+            result['RecordTypeWhiteList'] = self.record_type_white_list
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+        if self.store_log_kept_hour is not None:
+            result['StoreLogKeptHour'] = self.store_log_kept_hour
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EnableIncrSyncStatistics') is not None:
+            self.enable_incr_sync_statistics = m.get('EnableIncrSyncStatistics')
+        if m.get('EnableSequencingWithinTxn') is not None:
+            self.enable_sequencing_within_txn = m.get('EnableSequencingWithinTxn')
+        if m.get('IncrSyncConcurrency') is not None:
+            self.incr_sync_concurrency = m.get('IncrSyncConcurrency')
+        if m.get('RecordTypeWhiteList') is not None:
+            self.record_type_white_list = m.get('RecordTypeWhiteList')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
+        if m.get('StoreLogKeptHour') is not None:
+            self.store_log_kept_hour = m.get('StoreLogKeptHour')
+        return self
+
+
+class ListProjectsResponseBodyDataLabels(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        creator: str = None,
+        id: str = None,
+        name: str = None,
+        type: int = None,
+    ):
+        self.count = count
+        self.creator = creator
+        self.id = id
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.creator is not None:
+            result['Creator'] = self.creator
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Creator') is not None:
+            self.creator = m.get('Creator')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListProjectsResponseBodyDataSinkConnectInfo(TeaModel):
+    def __init__(
+        self,
+        charset: str = None,
+        conn_extra_attributes: Any = None,
+        connection_info: str = None,
+        db_engine: str = None,
+        endpoint_id: str = None,
+        endpoint_name: str = None,
+        endpoint_side: str = None,
+        host: str = None,
+        id: str = None,
+        nls_length_semantics: str = None,
+        ocp_name: str = None,
+        operating_system: str = None,
+        owner: str = None,
+        port: int = None,
+        region: str = None,
+        resource_owner: str = None,
+        timezone: str = None,
+        username: str = None,
+        version: str = None,
+    ):
+        self.charset = charset
+        self.conn_extra_attributes = conn_extra_attributes
+        self.connection_info = connection_info
+        self.db_engine = db_engine
+        self.endpoint_id = endpoint_id
+        self.endpoint_name = endpoint_name
+        self.endpoint_side = endpoint_side
+        self.host = host
+        self.id = id
+        self.nls_length_semantics = nls_length_semantics
+        self.ocp_name = ocp_name
+        self.operating_system = operating_system
+        # Owner。
+        self.owner = owner
+        self.port = port
+        self.region = region
+        self.resource_owner = resource_owner
+        self.timezone = timezone
+        self.username = username
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charset is not None:
+            result['Charset'] = self.charset
+        if self.conn_extra_attributes is not None:
+            result['ConnExtraAttributes'] = self.conn_extra_attributes
+        if self.connection_info is not None:
+            result['ConnectionInfo'] = self.connection_info
+        if self.db_engine is not None:
+            result['DbEngine'] = self.db_engine
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_side is not None:
+            result['EndpointSide'] = self.endpoint_side
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.nls_length_semantics is not None:
+            result['NlsLengthSemantics'] = self.nls_length_semantics
+        if self.ocp_name is not None:
+            result['OcpName'] = self.ocp_name
+        if self.operating_system is not None:
+            result['OperatingSystem'] = self.operating_system
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Charset') is not None:
+            self.charset = m.get('Charset')
+        if m.get('ConnExtraAttributes') is not None:
+            self.conn_extra_attributes = m.get('ConnExtraAttributes')
+        if m.get('ConnectionInfo') is not None:
+            self.connection_info = m.get('ConnectionInfo')
+        if m.get('DbEngine') is not None:
+            self.db_engine = m.get('DbEngine')
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointSide') is not None:
+            self.endpoint_side = m.get('EndpointSide')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NlsLengthSemantics') is not None:
+            self.nls_length_semantics = m.get('NlsLengthSemantics')
+        if m.get('OcpName') is not None:
+            self.ocp_name = m.get('OcpName')
+        if m.get('OperatingSystem') is not None:
+            self.operating_system = m.get('OperatingSystem')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListProjectsResponseBodyDataSourceConnectInfo(TeaModel):
+    def __init__(
+        self,
+        charset: str = None,
+        conn_extra_attributes: Any = None,
+        connection_info: str = None,
+        db_engine: str = None,
+        endpoint_id: str = None,
+        endpoint_name: str = None,
+        endpoint_side: str = None,
+        host: str = None,
+        id: str = None,
+        nls_length_semantics: str = None,
+        ocp_name: str = None,
+        operating_system: str = None,
+        owner: str = None,
+        port: int = None,
+        region: str = None,
+        resource_owner: str = None,
+        timezone: str = None,
+        username: str = None,
+        version: str = None,
+    ):
+        self.charset = charset
+        self.conn_extra_attributes = conn_extra_attributes
+        self.connection_info = connection_info
+        self.db_engine = db_engine
+        self.endpoint_id = endpoint_id
+        self.endpoint_name = endpoint_name
+        self.endpoint_side = endpoint_side
+        self.host = host
+        self.id = id
+        self.nls_length_semantics = nls_length_semantics
+        self.ocp_name = ocp_name
+        self.operating_system = operating_system
+        # Owner。
+        self.owner = owner
+        self.port = port
+        self.region = region
+        self.resource_owner = resource_owner
+        self.timezone = timezone
+        self.username = username
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.charset is not None:
+            result['Charset'] = self.charset
+        if self.conn_extra_attributes is not None:
+            result['ConnExtraAttributes'] = self.conn_extra_attributes
+        if self.connection_info is not None:
+            result['ConnectionInfo'] = self.connection_info
+        if self.db_engine is not None:
+            result['DbEngine'] = self.db_engine
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+        if self.endpoint_side is not None:
+            result['EndpointSide'] = self.endpoint_side
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.nls_length_semantics is not None:
+            result['NlsLengthSemantics'] = self.nls_length_semantics
+        if self.ocp_name is not None:
+            result['OcpName'] = self.ocp_name
+        if self.operating_system is not None:
+            result['OperatingSystem'] = self.operating_system
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner is not None:
+            result['ResourceOwner'] = self.resource_owner
+        if self.timezone is not None:
+            result['Timezone'] = self.timezone
+        if self.username is not None:
+            result['Username'] = self.username
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Charset') is not None:
+            self.charset = m.get('Charset')
+        if m.get('ConnExtraAttributes') is not None:
+            self.conn_extra_attributes = m.get('ConnExtraAttributes')
+        if m.get('ConnectionInfo') is not None:
+            self.connection_info = m.get('ConnectionInfo')
+        if m.get('DbEngine') is not None:
+            self.db_engine = m.get('DbEngine')
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
+        if m.get('EndpointSide') is not None:
+            self.endpoint_side = m.get('EndpointSide')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('NlsLengthSemantics') is not None:
+            self.nls_length_semantics = m.get('NlsLengthSemantics')
+        if m.get('OcpName') is not None:
+            self.ocp_name = m.get('OcpName')
+        if m.get('OperatingSystem') is not None:
+            self.operating_system = m.get('OperatingSystem')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwner') is not None:
+            self.resource_owner = m.get('ResourceOwner')
+        if m.get('Timezone') is not None:
+            self.timezone = m.get('Timezone')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class ListProjectsResponseBodyDataStepsExtraInfoErrorDetails(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListProjectsResponseBodyDataStepsExtraInfo(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_details: List[ListProjectsResponseBodyDataStepsExtraInfoErrorDetails] = None,
+        error_msg: str = None,
+        error_param: Dict[str, str] = None,
+        failed_time: str = None,
+    ):
+        self.error_code = error_code
+        self.error_details = error_details
+        self.error_msg = error_msg
+        self.error_param = error_param
+        self.failed_time = failed_time
+
+    def validate(self):
+        if self.error_details:
+            for k in self.error_details:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        result['ErrorDetails'] = []
+        if self.error_details is not None:
+            for k in self.error_details:
+                result['ErrorDetails'].append(k.to_map() if k else None)
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.error_param is not None:
+            result['ErrorParam'] = self.error_param
+        if self.failed_time is not None:
+            result['FailedTime'] = self.failed_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        self.error_details = []
+        if m.get('ErrorDetails') is not None:
+            for k in m.get('ErrorDetails'):
+                temp_model = ListProjectsResponseBodyDataStepsExtraInfoErrorDetails()
+                self.error_details.append(temp_model.from_map(k))
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('ErrorParam') is not None:
+            self.error_param = m.get('ErrorParam')
+        if m.get('FailedTime') is not None:
+            self.failed_time = m.get('FailedTime')
+        return self
+
+
+class ListProjectsResponseBodyDataSteps(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        extra_info: ListProjectsResponseBodyDataStepsExtraInfo = None,
+        finish_time: str = None,
+        name: str = None,
+        order: int = None,
+        progress: int = None,
+        start_time: str = None,
+        status: str = None,
+        step_info: Dict[str, Any] = None,
+    ):
+        self.description = description
+        self.extra_info = extra_info
+        self.finish_time = finish_time
+        self.name = name
+        self.order = order
+        self.progress = progress
+        self.start_time = start_time
+        self.status = status
+        self.step_info = step_info
+
+    def validate(self):
+        if self.extra_info:
+            self.extra_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info.to_map()
+        if self.finish_time is not None:
+            result['FinishTime'] = self.finish_time
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.step_info is not None:
+            result['StepInfo'] = self.step_info
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ExtraInfo') is not None:
+            temp_model = ListProjectsResponseBodyDataStepsExtraInfo()
+            self.extra_info = temp_model.from_map(m['ExtraInfo'])
+        if m.get('FinishTime') is not None:
+            self.finish_time = m.get('FinishTime')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StepInfo') is not None:
+            self.step_info = m.get('StepInfo')
+        return self
+
+
+class ListProjectsResponseBodyDataStructTransferConfig(TeaModel):
+    def __init__(
+        self,
+        byte_char_convert_strategy: str = None,
+        defer_index_creation: bool = None,
+    ):
+        self.byte_char_convert_strategy = byte_char_convert_strategy
+        self.defer_index_creation = defer_index_creation
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.byte_char_convert_strategy is not None:
+            result['ByteCharConvertStrategy'] = self.byte_char_convert_strategy
+        if self.defer_index_creation is not None:
+            result['DeferIndexCreation'] = self.defer_index_creation
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ByteCharConvertStrategy') is not None:
+            self.byte_char_convert_strategy = m.get('ByteCharConvertStrategy')
+        if m.get('DeferIndexCreation') is not None:
+            self.defer_index_creation = m.get('DeferIndexCreation')
+        return self
+
+
+class ListProjectsResponseBodyDataTransferMapping(TeaModel):
+    def __init__(
+        self,
+        mode: str = None,
+    ):
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class ListProjectsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        alarm_stats: ListProjectsResponseBodyDataAlarmStats = None,
+        common_transfer_config: ListProjectsResponseBodyDataCommonTransferConfig = None,
+        dest_conn_id: str = None,
+        enable_full_transfer: bool = None,
+        enable_full_verify: bool = None,
+        enable_incr_transfer: bool = None,
+        enable_incr_verify: bool = None,
+        enable_reverse_incr_transfer: bool = None,
+        enable_struct_transfer: bool = None,
+        extra_info: ListProjectsResponseBodyDataExtraInfo = None,
+        full_transfer_config: ListProjectsResponseBodyDataFullTransferConfig = None,
+        gmt_create: str = None,
+        gmt_finish: str = None,
+        gmt_modified: str = None,
+        gmt_start: str = None,
+        id: str = None,
+        importance: str = None,
+        incr_transfer_config: ListProjectsResponseBodyDataIncrTransferConfig = None,
+        is_merging: bool = None,
+        is_modifying: bool = None,
+        is_sub_project: bool = None,
+        labels: List[ListProjectsResponseBodyDataLabels] = None,
+        name: str = None,
+        owner: str = None,
+        sink_connect_info: ListProjectsResponseBodyDataSinkConnectInfo = None,
+        sink_endpoint_type: str = None,
+        source_connect_info: ListProjectsResponseBodyDataSourceConnectInfo = None,
+        source_endpoint_type: str = None,
+        status: str = None,
+        steps: List[ListProjectsResponseBodyDataSteps] = None,
+        struct_transfer_config: ListProjectsResponseBodyDataStructTransferConfig = None,
+        transfer_mapping: ListProjectsResponseBodyDataTransferMapping = None,
+        type: str = None,
+        worker_grade_id: str = None,
+    ):
+        self.alarm_stats = alarm_stats
+        self.common_transfer_config = common_transfer_config
+        self.dest_conn_id = dest_conn_id
+        self.enable_full_transfer = enable_full_transfer
+        self.enable_full_verify = enable_full_verify
+        self.enable_incr_transfer = enable_incr_transfer
+        self.enable_incr_verify = enable_incr_verify
+        self.enable_reverse_incr_transfer = enable_reverse_incr_transfer
+        self.enable_struct_transfer = enable_struct_transfer
+        self.extra_info = extra_info
+        self.full_transfer_config = full_transfer_config
+        self.gmt_create = gmt_create
+        self.gmt_finish = gmt_finish
+        self.gmt_modified = gmt_modified
+        self.gmt_start = gmt_start
+        self.id = id
+        self.importance = importance
+        self.incr_transfer_config = incr_transfer_config
+        self.is_merging = is_merging
+        self.is_modifying = is_modifying
+        self.is_sub_project = is_sub_project
+        self.labels = labels
+        self.name = name
+        self.owner = owner
+        self.sink_connect_info = sink_connect_info
+        self.sink_endpoint_type = sink_endpoint_type
+        self.source_connect_info = source_connect_info
+        self.source_endpoint_type = source_endpoint_type
+        self.status = status
+        self.steps = steps
+        self.struct_transfer_config = struct_transfer_config
+        self.transfer_mapping = transfer_mapping
+        self.type = type
+        self.worker_grade_id = worker_grade_id
+
+    def validate(self):
+        if self.alarm_stats:
+            self.alarm_stats.validate()
+        if self.common_transfer_config:
+            self.common_transfer_config.validate()
+        if self.extra_info:
+            self.extra_info.validate()
+        if self.full_transfer_config:
+            self.full_transfer_config.validate()
+        if self.incr_transfer_config:
+            self.incr_transfer_config.validate()
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.sink_connect_info:
+            self.sink_connect_info.validate()
+        if self.source_connect_info:
+            self.source_connect_info.validate()
+        if self.steps:
+            for k in self.steps:
+                if k:
+                    k.validate()
+        if self.struct_transfer_config:
+            self.struct_transfer_config.validate()
+        if self.transfer_mapping:
+            self.transfer_mapping.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alarm_stats is not None:
+            result['AlarmStats'] = self.alarm_stats.to_map()
+        if self.common_transfer_config is not None:
+            result['CommonTransferConfig'] = self.common_transfer_config.to_map()
+        if self.dest_conn_id is not None:
+            result['DestConnId'] = self.dest_conn_id
+        if self.enable_full_transfer is not None:
+            result['EnableFullTransfer'] = self.enable_full_transfer
+        if self.enable_full_verify is not None:
+            result['EnableFullVerify'] = self.enable_full_verify
+        if self.enable_incr_transfer is not None:
+            result['EnableIncrTransfer'] = self.enable_incr_transfer
+        if self.enable_incr_verify is not None:
+            result['EnableIncrVerify'] = self.enable_incr_verify
+        if self.enable_reverse_incr_transfer is not None:
+            result['EnableReverseIncrTransfer'] = self.enable_reverse_incr_transfer
+        if self.enable_struct_transfer is not None:
+            result['EnableStructTransfer'] = self.enable_struct_transfer
+        if self.extra_info is not None:
+            result['ExtraInfo'] = self.extra_info.to_map()
+        if self.full_transfer_config is not None:
+            result['FullTransferConfig'] = self.full_transfer_config.to_map()
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.gmt_finish is not None:
+            result['GmtFinish'] = self.gmt_finish
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['GmtStart'] = self.gmt_start
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.importance is not None:
+            result['Importance'] = self.importance
+        if self.incr_transfer_config is not None:
+            result['IncrTransferConfig'] = self.incr_transfer_config.to_map()
+        if self.is_merging is not None:
+            result['IsMerging'] = self.is_merging
+        if self.is_modifying is not None:
+            result['IsModifying'] = self.is_modifying
+        if self.is_sub_project is not None:
+            result['IsSubProject'] = self.is_sub_project
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.sink_connect_info is not None:
+            result['SinkConnectInfo'] = self.sink_connect_info.to_map()
+        if self.sink_endpoint_type is not None:
+            result['SinkEndpointType'] = self.sink_endpoint_type
+        if self.source_connect_info is not None:
+            result['SourceConnectInfo'] = self.source_connect_info.to_map()
+        if self.source_endpoint_type is not None:
+            result['SourceEndpointType'] = self.source_endpoint_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['Steps'] = []
+        if self.steps is not None:
+            for k in self.steps:
+                result['Steps'].append(k.to_map() if k else None)
+        if self.struct_transfer_config is not None:
+            result['StructTransferConfig'] = self.struct_transfer_config.to_map()
+        if self.transfer_mapping is not None:
+            result['TransferMapping'] = self.transfer_mapping.to_map()
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.worker_grade_id is not None:
+            result['WorkerGradeId'] = self.worker_grade_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlarmStats') is not None:
+            temp_model = ListProjectsResponseBodyDataAlarmStats()
+            self.alarm_stats = temp_model.from_map(m['AlarmStats'])
+        if m.get('CommonTransferConfig') is not None:
+            temp_model = ListProjectsResponseBodyDataCommonTransferConfig()
+            self.common_transfer_config = temp_model.from_map(m['CommonTransferConfig'])
+        if m.get('DestConnId') is not None:
+            self.dest_conn_id = m.get('DestConnId')
+        if m.get('EnableFullTransfer') is not None:
+            self.enable_full_transfer = m.get('EnableFullTransfer')
+        if m.get('EnableFullVerify') is not None:
+            self.enable_full_verify = m.get('EnableFullVerify')
+        if m.get('EnableIncrTransfer') is not None:
+            self.enable_incr_transfer = m.get('EnableIncrTransfer')
+        if m.get('EnableIncrVerify') is not None:
+            self.enable_incr_verify = m.get('EnableIncrVerify')
+        if m.get('EnableReverseIncrTransfer') is not None:
+            self.enable_reverse_incr_transfer = m.get('EnableReverseIncrTransfer')
+        if m.get('EnableStructTransfer') is not None:
+            self.enable_struct_transfer = m.get('EnableStructTransfer')
+        if m.get('ExtraInfo') is not None:
+            temp_model = ListProjectsResponseBodyDataExtraInfo()
+            self.extra_info = temp_model.from_map(m['ExtraInfo'])
+        if m.get('FullTransferConfig') is not None:
+            temp_model = ListProjectsResponseBodyDataFullTransferConfig()
+            self.full_transfer_config = temp_model.from_map(m['FullTransferConfig'])
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('GmtFinish') is not None:
+            self.gmt_finish = m.get('GmtFinish')
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+        if m.get('GmtStart') is not None:
+            self.gmt_start = m.get('GmtStart')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Importance') is not None:
+            self.importance = m.get('Importance')
+        if m.get('IncrTransferConfig') is not None:
+            temp_model = ListProjectsResponseBodyDataIncrTransferConfig()
+            self.incr_transfer_config = temp_model.from_map(m['IncrTransferConfig'])
+        if m.get('IsMerging') is not None:
+            self.is_merging = m.get('IsMerging')
+        if m.get('IsModifying') is not None:
+            self.is_modifying = m.get('IsModifying')
+        if m.get('IsSubProject') is not None:
+            self.is_sub_project = m.get('IsSubProject')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = ListProjectsResponseBodyDataLabels()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('SinkConnectInfo') is not None:
+            temp_model = ListProjectsResponseBodyDataSinkConnectInfo()
+            self.sink_connect_info = temp_model.from_map(m['SinkConnectInfo'])
+        if m.get('SinkEndpointType') is not None:
+            self.sink_endpoint_type = m.get('SinkEndpointType')
+        if m.get('SourceConnectInfo') is not None:
+            temp_model = ListProjectsResponseBodyDataSourceConnectInfo()
+            self.source_connect_info = temp_model.from_map(m['SourceConnectInfo'])
+        if m.get('SourceEndpointType') is not None:
+            self.source_endpoint_type = m.get('SourceEndpointType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.steps = []
+        if m.get('Steps') is not None:
+            for k in m.get('Steps'):
+                temp_model = ListProjectsResponseBodyDataSteps()
+                self.steps.append(temp_model.from_map(k))
+        if m.get('StructTransferConfig') is not None:
+            temp_model = ListProjectsResponseBodyDataStructTransferConfig()
+            self.struct_transfer_config = temp_model.from_map(m['StructTransferConfig'])
+        if m.get('TransferMapping') is not None:
+            temp_model = ListProjectsResponseBodyDataTransferMapping()
+            self.transfer_mapping = temp_model.from_map(m['TransferMapping'])
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('WorkerGradeId') is not None:
+            self.worker_grade_id = m.get('WorkerGradeId')
+        return self
+
+
+class ListProjectsResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListProjectsResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: List[ListProjectsResponseBodyData] = None,
+        error_detail: ListProjectsResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListProjectsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorDetail') is not None:
+            temp_model = ListProjectsResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListProjectsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListProjectsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListProjectsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListWorkerInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        dest_type: str = None,
+        instance_name: str = None,
+        only_bindable: bool = None,
+        page_number: int = None,
+        page_size: int = None,
+        source_type: str = None,
+        specs: List[str] = None,
+    ):
+        self.dest_type = dest_type
+        self.instance_name = instance_name
+        self.only_bindable = only_bindable
+        self.page_number = page_number
+        self.page_size = page_size
+        self.source_type = source_type
+        self.specs = specs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.only_bindable is not None:
+            result['OnlyBindable'] = self.only_bindable
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.specs is not None:
+            result['Specs'] = self.specs
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OnlyBindable') is not None:
+            self.only_bindable = m.get('OnlyBindable')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Specs') is not None:
+            self.specs = m.get('Specs')
+        return self
+
+
+class ListWorkerInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dest_type: str = None,
+        instance_name: str = None,
+        only_bindable: bool = None,
+        page_number: int = None,
+        page_size: int = None,
+        source_type: str = None,
+        specs_shrink: str = None,
+    ):
+        self.dest_type = dest_type
+        self.instance_name = instance_name
+        self.only_bindable = only_bindable
+        self.page_number = page_number
+        self.page_size = page_size
+        self.source_type = source_type
+        self.specs_shrink = specs_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.only_bindable is not None:
+            result['OnlyBindable'] = self.only_bindable
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+        if self.specs_shrink is not None:
+            result['Specs'] = self.specs_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('OnlyBindable') is not None:
+            self.only_bindable = m.get('OnlyBindable')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+        if m.get('Specs') is not None:
+            self.specs_shrink = m.get('Specs')
+        return self
+
+
+class ListWorkerInstancesResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        gmt_create: str = None,
+        id: str = None,
+        name: str = None,
+        project_id: str = None,
+        project_name: str = None,
+        project_type: str = None,
+        region: str = None,
+        spec: str = None,
+        status: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.id = id
+        self.name = name
+        self.project_id = project_id
+        self.project_name = project_name
+        self.project_type = project_type
+        self.region = region
+        self.spec = spec
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.project_id is not None:
+            result['ProjectId'] = self.project_id
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.project_type is not None:
+            result['ProjectType'] = self.project_type
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ProjectId') is not None:
+            self.project_id = m.get('ProjectId')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('ProjectType') is not None:
+            self.project_type = m.get('ProjectType')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListWorkerInstancesResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ListWorkerInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: List[ListWorkerInstancesResponseBodyData] = None,
+        error_detail: ListWorkerInstancesResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListWorkerInstancesResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorDetail') is not None:
+            temp_model = ListWorkerInstancesResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListWorkerInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListWorkerInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListWorkerInstancesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20149,11 +36669,8 @@ class ModifyInstanceNameRequest(TeaModel):
 class ModifyInstanceNameResponseBody(TeaModel):
     def __init__(
         self,
-        instance_name: str = None,
         request_id: str = None,
     ):
-        # The name of the OceanBase cluster.
-        self.instance_name = instance_name
         # The operation that you want to perform.   
         # Set the value to **ModifyInstanceName**.
         self.request_id = request_id
@@ -20167,16 +36684,12 @@ class ModifyInstanceNameResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -20229,9 +36742,11 @@ class ModifyInstanceNameResponse(TeaModel):
 class ModifyInstanceNodeNumRequest(TeaModel):
     def __init__(
         self,
+        dry_run: bool = None,
         instance_id: str = None,
         node_num: str = None,
     ):
+        self.dry_run = dry_run
         self.instance_id = instance_id
         self.node_num = node_num
 
@@ -20244,6 +36759,8 @@ class ModifyInstanceNodeNumRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.node_num is not None:
@@ -20252,6 +36769,8 @@ class ModifyInstanceNodeNumRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('NodeNum') is not None:
@@ -20262,8 +36781,10 @@ class ModifyInstanceNodeNumRequest(TeaModel):
 class ModifyInstanceNodeNumResponseBodyData(TeaModel):
     def __init__(
         self,
+        dry_run_result: bool = None,
         order_id: str = None,
     ):
+        self.dry_run_result = dry_run_result
         self.order_id = order_id
 
     def validate(self):
@@ -20275,12 +36796,16 @@ class ModifyInstanceNodeNumResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRunResult') is not None:
+            self.dry_run_result = m.get('DryRunResult')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         return self
@@ -20369,10 +36894,12 @@ class ModifyInstanceSpecRequest(TeaModel):
     def __init__(
         self,
         disk_size: int = None,
+        dry_run: bool = None,
         instance_class: str = None,
         instance_id: str = None,
     ):
         self.disk_size = disk_size
+        self.dry_run = dry_run
         self.instance_class = instance_class
         self.instance_id = instance_id
 
@@ -20387,6 +36914,8 @@ class ModifyInstanceSpecRequest(TeaModel):
         result = dict()
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.instance_id is not None:
@@ -20397,6 +36926,8 @@ class ModifyInstanceSpecRequest(TeaModel):
         m = m or dict()
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('InstanceId') is not None:
@@ -20407,8 +36938,10 @@ class ModifyInstanceSpecRequest(TeaModel):
 class ModifyInstanceSpecResponseBodyData(TeaModel):
     def __init__(
         self,
+        dry_run_result: bool = None,
         order_id: str = None,
     ):
+        self.dry_run_result = dry_run_result
         self.order_id = order_id
 
     def validate(self):
@@ -20420,12 +36953,16 @@ class ModifyInstanceSpecResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.dry_run_result is not None:
+            result['DryRunResult'] = self.dry_run_result
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DryRunResult') is not None:
+            self.dry_run_result = m.get('DryRunResult')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         return self
@@ -20950,14 +37487,178 @@ class ModifySecurityIpsResponse(TeaModel):
         return self
 
 
+class ModifyTenantEncryptionRequest(TeaModel):
+    def __init__(
+        self,
+        encryption_key_id: str = None,
+        encryption_type: str = None,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        self.encryption_key_id = encryption_key_id
+        self.encryption_type = encryption_type
+        self.instance_id = instance_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encryption_key_id is not None:
+            result['EncryptionKeyId'] = self.encryption_key_id
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptionKeyId') is not None:
+            self.encryption_key_id = m.get('EncryptionKeyId')
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ModifyTenantEncryptionResponseBodyTenantEncryption(TeaModel):
+    def __init__(
+        self,
+        encryption_type: str = None,
+        instance_id: str = None,
+        tenant_id: str = None,
+    ):
+        self.encryption_type = encryption_type
+        self.instance_id = instance_id
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
+        return self
+
+
+class ModifyTenantEncryptionResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        tenant_encryption: ModifyTenantEncryptionResponseBodyTenantEncryption = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        # job
+        self.tenant_encryption = tenant_encryption
+
+    def validate(self):
+        if self.tenant_encryption:
+            self.tenant_encryption.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.tenant_encryption is not None:
+            result['TenantEncryption'] = self.tenant_encryption.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TenantEncryption') is not None:
+            temp_model = ModifyTenantEncryptionResponseBodyTenantEncryption()
+            self.tenant_encryption = temp_model.from_map(m['TenantEncryption'])
+        return self
+
+
+class ModifyTenantEncryptionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTenantEncryptionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTenantEncryptionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyTenantPrimaryZoneRequest(TeaModel):
     def __init__(
         self,
         instance_id: str = None,
         master_intranet_address_zone: str = None,
-        modify_type: str = None,
         primary_zone: str = None,
-        primary_zone_deploy_type: str = None,
+        tenant_endpoint_id: str = None,
         tenant_id: str = None,
         user_vswitch_id: str = None,
     ):
@@ -20972,12 +37673,9 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
         # &Common request parameters
         # ```
         self.master_intranet_address_zone = master_intranet_address_zone
-        # The switching mode.
-        self.modify_type = modify_type
         # The ID of the vSwitch.
         self.primary_zone = primary_zone
-        # Example 1
-        self.primary_zone_deploy_type = primary_zone_deploy_type
+        self.tenant_endpoint_id = tenant_endpoint_id
         # The return result of the request.
         self.tenant_id = tenant_id
         # The request ID.
@@ -20996,12 +37694,10 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.master_intranet_address_zone is not None:
             result['MasterIntranetAddressZone'] = self.master_intranet_address_zone
-        if self.modify_type is not None:
-            result['ModifyType'] = self.modify_type
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
-        if self.primary_zone_deploy_type is not None:
-            result['PrimaryZoneDeployType'] = self.primary_zone_deploy_type
+        if self.tenant_endpoint_id is not None:
+            result['TenantEndpointId'] = self.tenant_endpoint_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         if self.user_vswitch_id is not None:
@@ -21014,12 +37710,10 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('MasterIntranetAddressZone') is not None:
             self.master_intranet_address_zone = m.get('MasterIntranetAddressZone')
-        if m.get('ModifyType') is not None:
-            self.modify_type = m.get('ModifyType')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
-        if m.get('PrimaryZoneDeployType') is not None:
-            self.primary_zone_deploy_type = m.get('PrimaryZoneDeployType')
+        if m.get('TenantEndpointId') is not None:
+            self.tenant_endpoint_id = m.get('TenantEndpointId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         if m.get('UserVSwitchId') is not None:
@@ -21103,7 +37797,9 @@ class ModifyTenantResourceRequest(TeaModel):
         self,
         cpu: int = None,
         instance_id: str = None,
+        log_disk: int = None,
         memory: int = None,
+        read_only_zone_list: str = None,
         tenant_id: str = None,
     ):
         # The memory size of the tenant, in GB.
@@ -21111,8 +37807,10 @@ class ModifyTenantResourceRequest(TeaModel):
         # The operation that you want to perform.   
         # Set the value to **ModifyTenantResource**.
         self.instance_id = instance_id
+        self.log_disk = log_disk
         # The ID of the tenant.
         self.memory = memory
+        self.read_only_zone_list = read_only_zone_list
         # The information about the CPU resources of the tenant.
         self.tenant_id = tenant_id
 
@@ -21129,8 +37827,12 @@ class ModifyTenantResourceRequest(TeaModel):
             result['Cpu'] = self.cpu
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.log_disk is not None:
+            result['LogDisk'] = self.log_disk
         if self.memory is not None:
             result['Memory'] = self.memory
+        if self.read_only_zone_list is not None:
+            result['ReadOnlyZoneList'] = self.read_only_zone_list
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
         return result
@@ -21141,8 +37843,12 @@ class ModifyTenantResourceRequest(TeaModel):
             self.cpu = m.get('Cpu')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LogDisk') is not None:
+            self.log_disk = m.get('LogDisk')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
+        if m.get('ReadOnlyZoneList') is not None:
+            self.read_only_zone_list = m.get('ReadOnlyZoneList')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
         return self
@@ -21233,9 +37939,17 @@ class ModifyTenantSecurityIpGroupRequest(TeaModel):
         security_ips: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The group name of the whitelist group of IP addresses.
+        # 
+        # It starts with lowercase letters and ends with lowercase letters or numbers. It can only contain lowercase letters, numbers, and underscores, and should be 2~32 characters in length.
         self.security_ip_group_name = security_ip_group_name
+        # The list of IP addresses in the whitelist group.
+        # 
+        # It is a JSON array. Each object in the array is an IP address or a CIDR block. You can have up to 40 whitelists.
         self.security_ips = security_ips
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -21278,9 +37992,15 @@ class ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup(TeaModel):
         security_ips: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The name of the whitelist group.
         self.security_ip_group_name = security_ip_group_name
+        # The list of IP addresses in the IP address whitelist group.
+        # 
+        # It is a string separated by commas, and each object is an IP address or a CIDR block.
         self.security_ips = security_ips
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -21321,7 +38041,9 @@ class ModifyTenantSecurityIpGroupResponseBody(TeaModel):
         request_id: str = None,
         security_ip_group: ModifyTenantSecurityIpGroupResponseBodySecurityIpGroup = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information of the IP address whitelist group.
         self.security_ip_group = security_ip_group
 
     def validate(self):
@@ -21401,8 +38123,11 @@ class ModifyTenantTagsRequest(TeaModel):
         tags: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # The tags.
         self.tags = tags
+        # The ID of the tenant.
         self.tenant_id = tenant_id
 
     def validate(self):
@@ -21439,7 +38164,9 @@ class ModifyTenantTagsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The update status of the tags.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22424,6 +39151,265 @@ class ReleaseOmsOpenAPIProjectResponse(TeaModel):
         return self
 
 
+class ReleaseProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ReleaseProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ReleaseProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: Any = None,
+        error_detail: ReleaseProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = ReleaseProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ReleaseProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReleaseProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReleaseProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResetOmsOpenAPIProjectRequest(TeaModel):
     def __init__(
         self,
@@ -22893,6 +39879,265 @@ class ResumeOmsOpenAPIProjectResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ResumeOmsOpenAPIProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ResumeProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class ResumeProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class ResumeProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: Any = None,
+        error_detail: ResumeProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = ResumeProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ResumeProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResumeProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResumeProjectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -25017,6 +42262,566 @@ class StartOmsOpenAPIProjectResponse(TeaModel):
         return self
 
 
+class StartProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class StartProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class StartProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: str = None,
+        error_detail: StartProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = StartProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class StartProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartProjectsByLabelRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class StartProjectsByLabelResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        failed_project_ids: List[str] = None,
+        succeed_project_ids: List[str] = None,
+        total: int = None,
+    ):
+        self.failed_project_ids = failed_project_ids
+        self.succeed_project_ids = succeed_project_ids
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_project_ids is not None:
+            result['FailedProjectIds'] = self.failed_project_ids
+        if self.succeed_project_ids is not None:
+            result['SucceedProjectIds'] = self.succeed_project_ids
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedProjectIds') is not None:
+            self.failed_project_ids = m.get('FailedProjectIds')
+        if m.get('SucceedProjectIds') is not None:
+            self.succeed_project_ids = m.get('SucceedProjectIds')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class StartProjectsByLabelResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class StartProjectsByLabelResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: StartProjectsByLabelResponseBodyData = None,
+        error_detail: StartProjectsByLabelResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = StartProjectsByLabelResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = StartProjectsByLabelResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class StartProjectsByLabelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartProjectsByLabelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartProjectsByLabelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopOmsOpenAPIProjectRequest(TeaModel):
     def __init__(
         self,
@@ -25255,6 +43060,566 @@ class StopOmsOpenAPIProjectResponse(TeaModel):
         return self
 
 
+class StopProjectRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class StopProjectResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class StopProjectResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: str = None,
+        error_detail: StopProjectResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorDetail') is not None:
+            temp_model = StopProjectResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class StopProjectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopProjectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopProjectResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StopProjectsByLabelRequest(TeaModel):
+    def __init__(
+        self,
+        id: str = None,
+    ):
+        self.id = id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.id is not None:
+            result['Id'] = self.id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        return self
+
+
+class StopProjectsByLabelResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        failed_project_ids: List[str] = None,
+        succeed_project_ids: List[str] = None,
+        total: int = None,
+    ):
+        self.failed_project_ids = failed_project_ids
+        self.succeed_project_ids = succeed_project_ids
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed_project_ids is not None:
+            result['FailedProjectIds'] = self.failed_project_ids
+        if self.succeed_project_ids is not None:
+            result['SucceedProjectIds'] = self.succeed_project_ids
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedProjectIds') is not None:
+            self.failed_project_ids = m.get('FailedProjectIds')
+        if m.get('SucceedProjectIds') is not None:
+            self.succeed_project_ids = m.get('SucceedProjectIds')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class StopProjectsByLabelResponseBodyErrorDetail(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        extra_context: Dict[str, Any] = None,
+        level: str = None,
+        message: str = None,
+        message_mcms_context: Dict[str, str] = None,
+        message_mcms_key: str = None,
+        proposal: str = None,
+        proposal_mcms_context: Dict[str, str] = None,
+        proposal_mcms_key: str = None,
+        reason: str = None,
+        reason_mcms_context: Dict[str, str] = None,
+        reason_mcms_key: str = None,
+        upstream_error_detail: Any = None,
+    ):
+        self.code = code
+        self.extra_context = extra_context
+        self.level = level
+        self.message = message
+        self.message_mcms_context = message_mcms_context
+        self.message_mcms_key = message_mcms_key
+        self.proposal = proposal
+        self.proposal_mcms_context = proposal_mcms_context
+        self.proposal_mcms_key = proposal_mcms_key
+        self.reason = reason
+        self.reason_mcms_context = reason_mcms_context
+        self.reason_mcms_key = reason_mcms_key
+        self.upstream_error_detail = upstream_error_detail
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.extra_context is not None:
+            result['ExtraContext'] = self.extra_context
+        if self.level is not None:
+            result['Level'] = self.level
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.message_mcms_context is not None:
+            result['MessageMcmsContext'] = self.message_mcms_context
+        if self.message_mcms_key is not None:
+            result['MessageMcmsKey'] = self.message_mcms_key
+        if self.proposal is not None:
+            result['Proposal'] = self.proposal
+        if self.proposal_mcms_context is not None:
+            result['ProposalMcmsContext'] = self.proposal_mcms_context
+        if self.proposal_mcms_key is not None:
+            result['ProposalMcmsKey'] = self.proposal_mcms_key
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        if self.reason_mcms_context is not None:
+            result['ReasonMcmsContext'] = self.reason_mcms_context
+        if self.reason_mcms_key is not None:
+            result['ReasonMcmsKey'] = self.reason_mcms_key
+        if self.upstream_error_detail is not None:
+            result['UpstreamErrorDetail'] = self.upstream_error_detail
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('ExtraContext') is not None:
+            self.extra_context = m.get('ExtraContext')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('MessageMcmsContext') is not None:
+            self.message_mcms_context = m.get('MessageMcmsContext')
+        if m.get('MessageMcmsKey') is not None:
+            self.message_mcms_key = m.get('MessageMcmsKey')
+        if m.get('Proposal') is not None:
+            self.proposal = m.get('Proposal')
+        if m.get('ProposalMcmsContext') is not None:
+            self.proposal_mcms_context = m.get('ProposalMcmsContext')
+        if m.get('ProposalMcmsKey') is not None:
+            self.proposal_mcms_key = m.get('ProposalMcmsKey')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        if m.get('ReasonMcmsContext') is not None:
+            self.reason_mcms_context = m.get('ReasonMcmsContext')
+        if m.get('ReasonMcmsKey') is not None:
+            self.reason_mcms_key = m.get('ReasonMcmsKey')
+        if m.get('UpstreamErrorDetail') is not None:
+            self.upstream_error_detail = m.get('UpstreamErrorDetail')
+        return self
+
+
+class StopProjectsByLabelResponseBody(TeaModel):
+    def __init__(
+        self,
+        advice: str = None,
+        code: str = None,
+        cost: str = None,
+        data: StopProjectsByLabelResponseBodyData = None,
+        error_detail: StopProjectsByLabelResponseBodyErrorDetail = None,
+        message: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        success: bool = None,
+        total_count: int = None,
+    ):
+        self.advice = advice
+        self.code = code
+        self.cost = cost
+        self.data = data
+        self.error_detail = error_detail
+        self.message = message
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.success = success
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+        if self.error_detail:
+            self.error_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.advice is not None:
+            result['Advice'] = self.advice
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cost is not None:
+            result['Cost'] = self.cost
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_detail is not None:
+            result['ErrorDetail'] = self.error_detail.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Advice') is not None:
+            self.advice = m.get('Advice')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Cost') is not None:
+            self.cost = m.get('Cost')
+        if m.get('Data') is not None:
+            temp_model = StopProjectsByLabelResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorDetail') is not None:
+            temp_model = StopProjectsByLabelResponseBodyErrorDetail()
+            self.error_detail = temp_model.from_map(m['ErrorDetail'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class StopProjectsByLabelResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StopProjectsByLabelResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StopProjectsByLabelResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SwitchoverInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -25262,8 +43627,13 @@ class SwitchoverInstanceRequest(TeaModel):
         instance_id: str = None,
         target_instance_id: str = None,
     ):
+        # Whether to force the switchover.
+        # - true: Force the switchover.
+        # - false: Do not force the switchover.
         self.forced = forced
+        # The instance ID of the primary/standby instance. You can set the default value to the instance ID of the instance to be switched to the primary instance.
         self.instance_id = instance_id
+        # The instance ID of the instance to be switched to the primary instance.
         self.target_instance_id = target_instance_id
 
     def validate(self):
@@ -25300,7 +43670,11 @@ class SwitchoverInstanceResponseBodyData(TeaModel):
         message: str = None,
         success: bool = None,
     ):
+        # The message of the switchover.
         self.message = message
+        # Whether the switchover is successful.
+        # - true: the switchover succeeded.
+        # - false: the switchover failed.
         self.success = success
 
     def validate(self):
@@ -25333,7 +43707,9 @@ class SwitchoverInstanceResponseBody(TeaModel):
         data: SwitchoverInstanceResponseBodyData = None,
         request_id: str = None,
     ):
+        # The list of data for the switchover.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
