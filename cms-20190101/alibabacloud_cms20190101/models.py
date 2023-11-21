@@ -324,10 +324,12 @@ class EscalationRuleEscalationsContactGroupsByLevel(TeaModel):
 class EscalationRuleEscalations(TeaModel):
     def __init__(
         self,
+        backup_contact_groups: List[str] = None,
         contact_groups: List[str] = None,
         contact_groups_by_level: EscalationRuleEscalationsContactGroupsByLevel = None,
         escalate_min: int = None,
     ):
+        self.backup_contact_groups = backup_contact_groups
         self.contact_groups = contact_groups
         self.contact_groups_by_level = contact_groups_by_level
         self.escalate_min = escalate_min
@@ -342,6 +344,8 @@ class EscalationRuleEscalations(TeaModel):
             return _map
 
         result = dict()
+        if self.backup_contact_groups is not None:
+            result['BackupContactGroups'] = self.backup_contact_groups
         if self.contact_groups is not None:
             result['ContactGroups'] = self.contact_groups
         if self.contact_groups_by_level is not None:
@@ -352,6 +356,8 @@ class EscalationRuleEscalations(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BackupContactGroups') is not None:
+            self.backup_contact_groups = m.get('BackupContactGroups')
         if m.get('ContactGroups') is not None:
             self.contact_groups = m.get('ContactGroups')
         if m.get('ContactGroupsByLevel') is not None:
@@ -5367,9 +5373,9 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         self.effective_interval = effective_interval
         # The alert level. Valid values:
         # 
-        # *   critical (default)
-        # *   warn
-        # *   info
+        # *   critical (default): critical
+        # *   warn: warning
+        # *   info: information
         # 
         # Valid values of N: 1 to 3.
         self.escalations_level = escalations_level
@@ -5377,7 +5383,7 @@ class CreateGroupMonitoringAgentProcessRequestAlertConfig(TeaModel):
         # 
         # Valid values of N: 1 to 3.
         self.no_effective_interval = no_effective_interval
-        # The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to 1 hour. Default value: 86400, which is equivalent to one day.
+        # The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds. Minimum value: 3600, which is equivalent to one hour. Default value: 86400, which is equivalent to one day.
         # 
         # Valid values of N: 1 to 3.
         # 
@@ -6296,6 +6302,8 @@ class CreateHybridMonitorNamespaceRequest(TeaModel):
         self,
         description: str = None,
         namespace: str = None,
+        namespace_region: str = None,
+        namespace_type: str = None,
         region_id: str = None,
         spec: str = None,
     ):
@@ -6305,6 +6313,8 @@ class CreateHybridMonitorNamespaceRequest(TeaModel):
         # 
         # The name can contain lowercase letters, digits, and hyphens (-).
         self.namespace = namespace
+        self.namespace_region = namespace_region
+        self.namespace_type = namespace_type
         self.region_id = region_id
         # The data retention period of the namespace. Valid values:
         # 
@@ -6331,6 +6341,10 @@ class CreateHybridMonitorNamespaceRequest(TeaModel):
             result['Description'] = self.description
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.namespace_region is not None:
+            result['NamespaceRegion'] = self.namespace_region
+        if self.namespace_type is not None:
+            result['NamespaceType'] = self.namespace_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.spec is not None:
@@ -6343,6 +6357,10 @@ class CreateHybridMonitorNamespaceRequest(TeaModel):
             self.description = m.get('Description')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('NamespaceRegion') is not None:
+            self.namespace_region = m.get('NamespaceRegion')
+        if m.get('NamespaceType') is not None:
+            self.namespace_type = m.get('NamespaceType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Spec') is not None:
@@ -16788,6 +16806,7 @@ class DescribeAlertingMetricRuleResourcesRequest(TeaModel):
         region_id: str = None,
         rule_id: str = None,
     ):
+        # Queries the alerts that were triggered before the specified time. Timestamps in milliseconds are supported.
         self.alert_before_time = alert_before_time
         # The dimensions that specify the resources whose monitoring data you want to query.
         self.dimensions = dimensions
@@ -19977,9 +19996,9 @@ class DescribeEventRuleAttributeRequest(TeaModel):
         self.region_id = region_id
         # The name of the event-triggered alert rule.
         # 
-        # For more information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](~~114996~~).
+        # For information about how to obtain the name of an event-triggered alert rule, see [DescribeEventRuleList](~~114996~~).
         self.rule_name = rule_name
-        # The mute period during which new alerts are not sent even if the trigger conditions are met.
+        # The mute period during which new alert notifications are not sent even if the trigger conditions are met.
         # 
         # Unit: seconds. Default value: 86400, which indicates one day.
         # 
@@ -20074,7 +20093,12 @@ class DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObj(T
         keywords: DescribeEventRuleAttributeResponseBodyResultEventPatternKeywordFilterObjKeywords = None,
         relation: str = None,
     ):
+        # 事件匹配的关键字列表。
         self.keywords = keywords
+        # 多个关键字的条件。取值：
+        # 
+        # - OR： 多个关键字之间或的关系。
+        # - NOT：不包含关键字。表示匹配非关键字列表中的所有事件。
         self.relation = relation
 
     def validate(self):
@@ -20197,11 +20221,13 @@ class DescribeEventRuleAttributeResponseBodyResultEventPattern(TeaModel):
     ):
         # The types of the event-triggered alert rules.
         self.event_type_list = event_type_list
+        # 过滤关键词。
         self.keyword_filter_obj = keyword_filter_obj
         self.level_list = level_list
         self.name_list = name_list
         # The name of the cloud service.
         self.product = product
+        # 按照SQL过滤日志。如果符合条件，则触发报警。
         self.sqlfilter = sqlfilter
         self.status_list = status_list
 
@@ -20275,9 +20301,9 @@ class DescribeEventRuleAttributeResponseBodyResult(TeaModel):
     ):
         # The description of the event-triggered alert rule.
         self.description = description
-        # The event pattern. This parameter specifies the trigger conditions of an event.
+        # The event pattern. This parameter describes the trigger conditions of an event.
         self.event_pattern = event_pattern
-        # The type of the event. Valid values: Valid values:
+        # The event type. Valid values:
         # 
         # *   SYSTEM: system event
         # *   CUSTOM: custom event
@@ -20453,16 +20479,21 @@ class DescribeEventRuleListRequest(TeaModel):
     ):
         # The ID of the application group.
         self.group_id = group_id
+        # Specifies whether to enable the event-triggered alert rule. Valid values:
+        # 
+        # true (default)
+        # 
+        # false
         self.is_enable = is_enable
         # The prefix in the name of the event-triggered alert rule.
         self.name_prefix = name_prefix
-        # The number of the page to return.
+        # The page number.
         # 
         # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
-        # A minimum of one entry can be returned on each page. Default value: 10.
+        # Pages start from page 1. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
 
@@ -20665,23 +20696,17 @@ class DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPatte
         product: str = None,
         sqlfilter: str = None,
     ):
-        # The custom filter condition. If an event contains a specified keyword, the event triggers an alert.
+        # The custom filter conditions.
         self.custom_filters = custom_filters
-        # The type of the event-triggered alert rule.
-        # 
-        # `*` indicates all types of alert rules.
+        # The types of the event-triggered alert rules.
         self.event_type_list = event_type_list
-        # The filter keyword.
+        # The keyword for filtering.
         self.keyword_filter = keyword_filter
-        # The level of the event. Valid values:
-        # 
-        # *   CRITICAL: critical
-        # *   WARN: warning
-        # *   INFO: information
+        # The levels of the event-triggered alerts.
         self.level_list = level_list
-        # The list of event names.
+        # The event names.
         self.name_list = name_list
-        # The abbreviation of the service name.
+        # The abbreviation of the Alibaba Cloud service name.
         self.product = product
         # Indicates that logs are filtered based on the specified SQL statement. If the specified conditions are met, an alert is triggered.
         self.sqlfilter = sqlfilter
@@ -20791,21 +20816,21 @@ class DescribeEventRuleListResponseBodyEventRulesEventRule(TeaModel):
         self.description = description
         # The mode of the event-triggered alert rule.
         self.event_pattern = event_pattern
-        # The type of the event. Valid values:
+        # The type of the event-triggered alert rule. Valid values:
         # 
-        # - SYSTEM: system event
-        # - CUSTOM: custom event
+        # *   SYSTEM: system event-triggered alert rule
+        # *   CUSTOM: custom event-triggered alert rule
         self.event_type = event_type
         # The ID of the application group.
         self.group_id = group_id
         # The name of the event-triggered alert rule.
         self.name = name
-        # The mute period during which new alerts are not sent even if the trigger conditions are met.
+        # The mute period during which new alert notifications are not sent even if the trigger conditions are met.
         self.silence_time = silence_time
         # The status of the event-triggered alert rule. Valid values:
         # 
-        # *   ENABLED: enabled
-        # *   DISABLED: disabled
+        # *   ENABLED
+        # *   DISABLED
         self.state = state
 
     def validate(self):
@@ -20901,20 +20926,20 @@ class DescribeEventRuleListResponseBody(TeaModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The event-triggered alert rules.
+        # The event-triggered alert rule.
         self.event_rules = event_rules
-        # The error message.
+        # The error message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -24213,8 +24238,12 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
 class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail(TeaModel):
     def __init__(
         self,
+        namespace_region: str = None,
+        slsproject: str = None,
         spec: str = None,
     ):
+        self.namespace_region = namespace_region
+        self.slsproject = slsproject
         # The data retention period. Valid values:
         # 
         # *   cms.s1.large: Data is stored for 15 days.
@@ -24234,12 +24263,20 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
             return _map
 
         result = dict()
+        if self.namespace_region is not None:
+            result['NamespaceRegion'] = self.namespace_region
+        if self.slsproject is not None:
+            result['SLSProject'] = self.slsproject
         if self.spec is not None:
             result['Spec'] = self.spec
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NamespaceRegion') is not None:
+            self.namespace_region = m.get('NamespaceRegion')
+        if m.get('SLSProject') is not None:
+            self.slsproject = m.get('SLSProject')
         if m.get('Spec') is not None:
             self.spec = m.get('Spec')
         return self
@@ -24256,6 +24293,7 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         is_delete: int = None,
         modify_time: str = None,
         namespace: str = None,
+        namespace_type: str = None,
         not_aliyun_task_number: int = None,
     ):
         # The configuration details of metric import tasks for Alibaba Cloud services.
@@ -24279,6 +24317,7 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
         self.modify_time = modify_time
         # The name of the namespace.
         self.namespace = namespace
+        self.namespace_type = namespace_type
         # The number of metric import tasks for third-party services.
         self.not_aliyun_task_number = not_aliyun_task_number
 
@@ -24314,6 +24353,8 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
             result['ModifyTime'] = self.modify_time
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.namespace_type is not None:
+            result['NamespaceType'] = self.namespace_type
         if self.not_aliyun_task_number is not None:
             result['NotAliyunTaskNumber'] = self.not_aliyun_task_number
         return result
@@ -24340,6 +24381,8 @@ class DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespa
             self.modify_time = m.get('ModifyTime')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('NamespaceType') is not None:
+            self.namespace_type = m.get('NamespaceType')
         if m.get('NotAliyunTaskNumber') is not None:
             self.not_aliyun_task_number = m.get('NotAliyunTaskNumber')
         return self
@@ -29434,12 +29477,12 @@ class DescribeMetricRuleTemplateAttributeRequest(TeaModel):
     ):
         # The name of the alert template. You must specify at least one of the `Name` and `TemplateId` parameters.
         # 
-        # For more information about how to query the names of alert templates, see [DescribeMetricRuleTemplateList](~~114982~~).
+        # For information about how to obtain the name of an alert template, see [DescribeMetricRuleTemplateList](~~114982~~).
         self.name = name
         self.region_id = region_id
         # The ID of the alert template. You must specify at least one of the `Name` and `TemplateId` parameters.
         # 
-        # For more information about how to query the IDs of alert templates, see [DescribeMetricRuleTemplateList](~~114982~~).
+        # For information about how to obtain the ID of an alert template, see [DescribeMetricRuleTemplateList](~~114982~~).
         self.template_id = template_id
 
     def validate(self):
@@ -29478,7 +29521,7 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values:
+        # The comparison operator that is used to compare the metric value with the threshold for Critical-level alerts. Valid values:
         # 
         # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
         # *   GreaterThanThreshold: greater than the threshold
@@ -29541,7 +29584,7 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values:
+        # The comparison operator that is used to compare the metric value with the threshold for Info-level alerts. Valid values:
         # 
         # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
         # *   GreaterThanThreshold: greater than the threshold
@@ -29604,7 +29647,7 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         threshold: str = None,
         times: int = None,
     ):
-        # The comparison operator that is used to compare the metric value with the threshold. Valid values:
+        # The comparison operator that is used to compare the metric value with the threshold for Warn-level alerts. Valid values:
         # 
         # *   GreaterThanOrEqualToThreshold: greater than or equal to the threshold
         # *   GreaterThanThreshold: greater than the threshold
@@ -29715,9 +29758,9 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         key: str = None,
         value: str = None,
     ):
-        # 报警模板的标签键。
+        # The tag key of the alert template.
         self.key = key
-        # 报警模板的标签值。
+        # The tag value of the alert template.
         self.value = value
 
     def validate(self):
@@ -29792,20 +29835,21 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAlert
         selector: str = None,
         webhook: str = None,
     ):
-        # The abbreviation of the cloud service name.
+        # The abbreviation of the Alibaba Cloud service name.
         self.category = category
         # The threshold and the alert level.
         self.escalations = escalations
-        # 报警模板标签。
+        # The tags of the alert template.
         self.labels = labels
+        # The metric name.
         self.metric_name = metric_name
-        # The namespace of the cloud service.
+        # The namespace of the Alibaba Cloud service.
         self.namespace = namespace
-        # The processing method of alerts when no monitoring data is found. Valid values:
+        # The method that is used to handle alerts when no monitoring data is found. Valid values:
         # 
-        # *   KEEP_LAST_STATE (default value): No operation is performed.
+        # *   KEEP_LAST_STATE (default): No operation is performed.
         # *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
-        # *   OK: The alert rule has no active alerts.
+        # *   OK: The status is considered normal.
         self.no_data_policy = no_data_policy
         # The name of the alert rule.
         self.rule_name = rule_name
@@ -29915,8 +29959,9 @@ class DescribeMetricRuleTemplateAttributeResponseBodyResource(TeaModel):
         rest_version: str = None,
         template_id: str = None,
     ):
-        # The list of alert templates.
+        # The queried alert templates.
         self.alert_templates = alert_templates
+        # The description of the alert template.
         self.description = description
         # The name of the alert template.
         self.name = name
@@ -29974,18 +30019,18 @@ class DescribeMetricRuleTemplateAttributeResponseBody(TeaModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the call is successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The error message.
+        # The error message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The details of the alert template.
         self.resource = resource
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call is successful.
-        # *   false: The call fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -33360,8 +33405,11 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorB
         quota_package: int = None,
         quota_used: int = None,
     ):
+        # The total quota of browser detection tasks.
         self.quota_limit = quota_limit
+        # The quota of browser detection tasks in your resource plan.
         self.quota_package = quota_package
+        # The used quota of browser detection tasks in your resource plan.
         self.quota_used = quota_used
 
     def validate(self):
@@ -33445,8 +33493,11 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonitorM
         quota_package: int = None,
         quota_used: int = None,
     ):
+        # The total quota of mobile detection tasks.
         self.quota_limit = quota_limit
+        # The quota of mobile detection tasks in your resource plan.
         self.quota_package = quota_package
+        # The used quota of mobile detection tasks in your resource plan.
         self.quota_used = quota_used
 
     def validate(self):
@@ -33598,9 +33649,11 @@ class DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuota(TeaModel):
         self.phone = phone
         # The details about the quota of alert text messages.
         self.sms = sms
+        # The quota of browser detection tasks.
         self.site_monitor_browser = site_monitor_browser
         # The details about the quota of ECS detection points for site monitoring.
         self.site_monitor_ecs_probe = site_monitor_ecs_probe
+        # The quota of mobile detection tasks.
         self.site_monitor_mobile = site_monitor_mobile
         # The details about the quota of carrier detection points for site monitoring.
         self.site_monitor_operator_probe = site_monitor_operator_probe
@@ -34827,10 +34880,11 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         self.auto_install = auto_install
         # The instance ID.
         self.instance_id = instance_id
-        # Indicates whether the SysAK monitoring feature is enabled.`` Valid values:
+        # SysOM插件的配置信息`sysak`是否开启监控。取值：
         # 
-        # *   `true`: The SysAK monitoring feature is enabled.
-        # *   `false`: the SysAK monitoring feature is disabled.
+        # - true：`sysak`开启监控。
+        # 
+        # - false：`sysak`未开启监控。
         self.os_monitor_config = os_monitor_config
         # The error status of SysOM. Valid values:
         # 
@@ -34856,7 +34910,7 @@ class DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus(TeaMod
         # *   stopped: SysOM is stopped.
         # *   uninstalling: SysOM is being uninstalled.
         self.os_monitor_status = os_monitor_status
-        # The SysOM version.
+        # SysOM监控的插件版本。
         self.os_monitor_version = os_monitor_version
         # The status of the CloudMonitor agent. Valid values:
         # 
@@ -34962,11 +35016,11 @@ class DescribeMonitoringAgentStatusesResponseBody(TeaModel):
     ):
         # The HTTP status code.
         # 
-        # >  The status code 200 indicates that the request was successful.
+        # > The status code 200 indicates that the request was successful.
         self.code = code
         # The error message.
         self.message = message
-        # The host status information.
+        # The status information.
         self.node_status_list = node_status_list
         # The request ID.
         self.request_id = request_id
@@ -35407,15 +35461,19 @@ class DescribeProductsOfActiveMetricRuleRequest(TeaModel):
 class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleListAllProductInitMetricRuleAlertInitConfigListAlertInitConfig(TeaModel):
     def __init__(
         self,
+        comparison_operator: str = None,
         evaluation_count: str = None,
+        level: str = None,
         metric_name: str = None,
         namespace: str = None,
         period: str = None,
         statistics: str = None,
         threshold: str = None,
     ):
+        self.comparison_operator = comparison_operator
         # The consecutive number of times for which the metric value is measured before an alert is triggered.
         self.evaluation_count = evaluation_count
+        self.level = level
         # The name of the metric. For more information, see [Appendix 1: Metrics](~~163515~~).
         self.metric_name = metric_name
         # The namespace of the service. For more information, see [Appendix 1: Metrics](~~163515~~).
@@ -35436,8 +35494,12 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
             return _map
 
         result = dict()
+        if self.comparison_operator is not None:
+            result['ComparisonOperator'] = self.comparison_operator
         if self.evaluation_count is not None:
             result['EvaluationCount'] = self.evaluation_count
+        if self.level is not None:
+            result['Level'] = self.level
         if self.metric_name is not None:
             result['MetricName'] = self.metric_name
         if self.namespace is not None:
@@ -35452,8 +35514,12 @@ class DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleList
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComparisonOperator') is not None:
+            self.comparison_operator = m.get('ComparisonOperator')
         if m.get('EvaluationCount') is not None:
             self.evaluation_count = m.get('EvaluationCount')
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
         if m.get('MetricName') is not None:
             self.metric_name = m.get('MetricName')
         if m.get('Namespace') is not None:
@@ -37863,14 +37929,14 @@ class DescribeSiteMonitorListRequest(TeaModel):
         # 
         # >  You can search for tasks by name or address. Fuzzy search is supported.
         self.keyword = keyword
-        # The number of the page to return. Default value: 1.
+        # The page number. Default value: 1.
         self.page = page
-        # The number of entries to return on each page. Default value: 10.
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
         self.region_id = region_id
         # The ID of the site monitoring task.
         self.task_id = task_id
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   1: The task is enabled.
         # *   2: The task is disabled.
@@ -37948,7 +38014,7 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJsonAsser
         self.property = property
         # The numeric value or character used for matching.
         self.target = target
-        # The type of the assertion. Valid values:
+        # The assertion type. Valid values:
         # 
         # *   response_time: checks whether the response time meets expectations.
         # *   status_code: checks whether the HTTP status code meets expectations.
@@ -38074,19 +38140,19 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         self.authentication = authentication
         # Indicates whether the certificate is verified. Valid values:
         # 
-        # *   false (default value): The certificate is not verified.
+        # *   false (default): The certificate is not verified.
         # *   true: The certificate is verified.
         self.cert_verify = cert_verify
         # The cookie of the HTTP request.
         self.cookie = cookie
         # Indicates whether MTR is automatically used to diagnose network issues if a task fails. Valid values:
         # 
-        # *   false (default value): MTR is not automatically used to diagnose network issues if a task fails.
+        # *   false (default): MTR is not automatically used to diagnose network issues if a task fails.
         # *   true: MTR is automatically used to diagnose network issues if a task fails.
         self.diagnosis_mtr = diagnosis_mtr
         # Indicates whether ping requests are automatically sent to detect network latency if a detection task fails. Valid values:
         # 
-        # *   false (default value): Ping requests are not automatically sent to detect network latency if a detection task fails.
+        # *   false (default): Ping requests are not automatically sent to detect network latency if a detection task fails.
         # *   true: Ping requests are automatically sent to detect network latency if a detection task fails.
         self.diagnosis_ping = diagnosis_ping
         # The relationship between the list of expected aliases or IP addresses and the list of DNS results. Valid values:
@@ -38100,7 +38166,7 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         self.dns_server = dns_server
         # The type of the DNS record. This parameter is returned only if the TaskType parameter is set to DNS. Valid values:
         # 
-        # *   A (default value): a record that specifies an IP address related to the specified host name or domain name.
+        # *   A (default): a record that specifies an IP address related to the specified host name or domain name.
         # *   CNAME: a record that maps multiple domain names to a domain name.
         # *   NS: a record that specifies a DNS server used to parse domain names.
         # *   MX: a record that links domain names to the address of a mail server.
@@ -38109,7 +38175,7 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         self.dns_type = dns_type
         # Indicates whether the DNS server of the carrier is used.
         # 
-        # *   true (default value): The DNS server of the carrier is used.
+        # *   true (default): The DNS server of the carrier is used.
         # *   false: The DNS server of the carrier is not used. The default DNS server or the specified DNS server is used.
         self.enable_operator_dns = enable_operator_dns
         # The packet loss rate.
@@ -38127,7 +38193,7 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         # Indicates whether the password is decoded by using the Base64 algorithm. Valid values:
         # 
         # *   true: The password is decoded by using the Base64 algorithm.
-        # *   false (default value): The password is not decoded by using the Base64 algorithm.
+        # *   false (default): The password is not decoded by using the Base64 algorithm.
         self.is_base_64encode = is_base_64encode
         # Indicates whether the alert rule is included. Valid values:
         # 
@@ -38142,13 +38208,13 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         self.port = port
         # The protocol type of DNS detection. Valid values:
         # 
-        # *   udp (default value)
+        # *   udp (default)
         # *   tcp
         # *   tcp-tls
         self.protocol = protocol
         # Indicates whether the PROXY protocol is enabled. Valid values:
         # 
-        # *   false (default value): The PROXY protocol is disabled.
+        # *   false (default): The PROXY protocol is disabled.
         # *   true: The PROXY protocol is enabled.
         self.proxy_protocol = proxy_protocol
         # The content of the HTTP request.
@@ -38175,7 +38241,7 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson(TeaM
         # Indicates whether redirects are followed if the status code 301 or 302 is returned. Valid values:
         # 
         # *   true: Redirects are not followed.
-        # *   false (default value): Redirects are followed.
+        # *   false (default): Redirects are followed.
         self.unfollow_redirect = unfollow_redirect
         # The username of the FTP, SMTP, or POP3 protocol.
         self.username = username
@@ -38334,6 +38400,10 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor(TeaModel):
     ):
         # The URL or IP address that is monitored by the site monitoring task.
         self.address = address
+        # The detection point type. Valid values:
+        # 
+        # *   PC
+        # *   MOBILE
         self.agent_group = agent_group
         # The time when the site monitoring task was created.
         self.create_time = create_time
@@ -38345,7 +38415,7 @@ class DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor(TeaModel):
         self.task_id = task_id
         # The name of the site monitoring task.
         self.task_name = task_name
-        # The status of the task. Valid values:
+        # The task status. Valid values:
         # 
         # *   1: The task is enabled.
         # *   2: The task is disabled.
@@ -38460,26 +38530,26 @@ class DescribeSiteMonitorListResponseBody(TeaModel):
         success: str = None,
         total_count: int = None,
     ):
-        # The HTTP status code.
+        # The status code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The returned message.
         self.message = message
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The site monitoring tasks that are returned.
         self.site_monitors = site_monitors
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
-        # The total number of returned entries.
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):

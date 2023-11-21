@@ -1368,6 +1368,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_region):
+            query['NamespaceRegion'] = request.namespace_region
+        if not UtilClient.is_unset(request.namespace_type):
+            query['NamespaceType'] = request.namespace_type
         if not UtilClient.is_unset(request.spec):
             query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
@@ -1408,6 +1412,10 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.namespace_region):
+            query['NamespaceRegion'] = request.namespace_region
+        if not UtilClient.is_unset(request.namespace_type):
+            query['NamespaceType'] = request.namespace_type
         if not UtilClient.is_unset(request.spec):
             query['Spec'] = request.spec
         req = open_api_models.OpenApiRequest(
@@ -8635,7 +8643,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
         """
-        This topic provides an example to show how to query the details of an alert template whose ID is `70***`.
+        This topic provides an example on how to query the details of an alert template whose ID is `70***`.
         
         @param request: DescribeMetricRuleTemplateAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8672,7 +8680,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
         """
-        This topic provides an example to show how to query the details of an alert template whose ID is `70***`.
+        This topic provides an example on how to query the details of an alert template whose ID is `70***`.
         
         @param request: DescribeMetricRuleTemplateAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8708,7 +8716,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTemplateAttributeRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
         """
-        This topic provides an example to show how to query the details of an alert template whose ID is `70***`.
+        This topic provides an example on how to query the details of an alert template whose ID is `70***`.
         
         @param request: DescribeMetricRuleTemplateAttributeRequest
         @return: DescribeMetricRuleTemplateAttributeResponse
@@ -8721,7 +8729,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeMetricRuleTemplateAttributeRequest,
     ) -> cms_20190101_models.DescribeMetricRuleTemplateAttributeResponse:
         """
-        This topic provides an example to show how to query the details of an alert template whose ID is `70***`.
+        This topic provides an example on how to query the details of an alert template whose ID is `70***`.
         
         @param request: DescribeMetricRuleTemplateAttributeRequest
         @return: DescribeMetricRuleTemplateAttributeResponse
