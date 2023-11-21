@@ -633,6 +633,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_aggregate_function_with_options_async(request, runtime)
 
+    def describe_alert_scene_with_options(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertScene',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_alert_scene_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeAlertScene',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeAlertSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_alert_scene(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_alert_scene_with_options(request, runtime)
+
+    async def describe_alert_scene_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeAlertSceneRequest,
+    ) -> cloud_siem_20220616_models.DescribeAlertSceneResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_alert_scene_with_options_async(request, runtime)
+
     def describe_alert_scene_by_event_with_options(
         self,
         request: cloud_siem_20220616_models.DescribeAlertSceneByEventRequest,
@@ -3316,6 +3386,96 @@ class Client(OpenApiClient):
     ) -> cloud_siem_20220616_models.DescribeWafScopeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_waf_scope_with_options_async(request, runtime)
+
+    def describe_white_rule_list_with_options(
+        self,
+        request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_name):
+            body['AlertName'] = request.alert_name
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteRuleList',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeWhiteRuleListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_white_rule_list_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.alert_name):
+            body['AlertName'] = request.alert_name
+        if not UtilClient.is_unset(request.alert_type):
+            body['AlertType'] = request.alert_type
+        if not UtilClient.is_unset(request.current_page):
+            body['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.incident_uuid):
+            body['IncidentUuid'] = request.incident_uuid
+        if not UtilClient.is_unset(request.page_size):
+            body['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeWhiteRuleList',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.DescribeWhiteRuleListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_white_rule_list(
+        self,
+        request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
+    ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_white_rule_list_with_options(request, runtime)
+
+    async def describe_white_rule_list_async(
+        self,
+        request: cloud_siem_20220616_models.DescribeWhiteRuleListRequest,
+    ) -> cloud_siem_20220616_models.DescribeWhiteRuleListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_white_rule_list_with_options_async(request, runtime)
 
     def do_quick_field_with_options(
         self,
