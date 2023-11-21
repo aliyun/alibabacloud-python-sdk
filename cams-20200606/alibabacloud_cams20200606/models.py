@@ -2707,6 +2707,8 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         self,
         autofill_text: str = None,
         coupon_code: str = None,
+        flow_action: str = None,
+        flow_id: str = None,
         is_opt_out: bool = None,
         package_name: str = None,
         phone_number: str = None,
@@ -2715,10 +2717,13 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         type: str = None,
         url: str = None,
         url_type: str = None,
+        navigate_screen: str = None,
     ):
         # The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.autofill_text = autofill_text
         self.coupon_code = coupon_code
+        self.flow_action = flow_action
+        self.flow_id = flow_id
         # The unsubscribe button. This parameter is valid if Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
         self.is_opt_out = is_opt_out
         # The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
@@ -2754,6 +2759,7 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         # *   **static**\
         # *   **dynamic**\
         self.url_type = url_type
+        self.navigate_screen = navigate_screen
 
     def validate(self):
         pass
@@ -2768,6 +2774,10 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             result['AutofillText'] = self.autofill_text
         if self.coupon_code is not None:
             result['CouponCode'] = self.coupon_code
+        if self.flow_action is not None:
+            result['FlowAction'] = self.flow_action
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
         if self.is_opt_out is not None:
             result['IsOptOut'] = self.is_opt_out
         if self.package_name is not None:
@@ -2784,6 +2794,8 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             result['Url'] = self.url
         if self.url_type is not None:
             result['UrlType'] = self.url_type
+        if self.navigate_screen is not None:
+            result['navigateScreen'] = self.navigate_screen
         return result
 
     def from_map(self, m: dict = None):
@@ -2792,6 +2804,10 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             self.autofill_text = m.get('AutofillText')
         if m.get('CouponCode') is not None:
             self.coupon_code = m.get('CouponCode')
+        if m.get('FlowAction') is not None:
+            self.flow_action = m.get('FlowAction')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
         if m.get('IsOptOut') is not None:
             self.is_opt_out = m.get('IsOptOut')
         if m.get('PackageName') is not None:
@@ -2808,6 +2824,8 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
             self.url = m.get('Url')
         if m.get('UrlType') is not None:
             self.url_type = m.get('UrlType')
+        if m.get('navigateScreen') is not None:
+            self.navigate_screen = m.get('navigateScreen')
         return self
 
 
@@ -4154,7 +4172,10 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         autofill_text: str = None,
         coupon_code: str = None,
         extend_attrs: GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs = None,
+        flow_action: str = None,
+        flow_id: str = None,
         is_opt_out: bool = None,
+        navigate_screen: str = None,
         package_name: str = None,
         phone_number: str = None,
         signature_hash: str = None,
@@ -4168,8 +4189,11 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         self.coupon_code = coupon_code
         # 扩展字段
         self.extend_attrs = extend_attrs
+        self.flow_action = flow_action
+        self.flow_id = flow_id
         # Whatsapp模板，在Category为Marketing,并且Button type为QUICK_REPLY时有效，表示按钮为营销退订按钮，客户如果点击了此按钮，并且在chatapp平台上配置了发送控制操作，则后续Marketing消息则不会发送到客户
         self.is_opt_out = is_opt_out
+        self.navigate_screen = navigate_screen
         # Whatsapp模板，Category为Authentication，并且Button Type为ONE_TAP时必填，表示Whatsapp调起应用的包名
         self.package_name = package_name
         # The phone number. This parameter is valid only if the returned value of the Type parameter is **PHONE_NUMBER**.
@@ -4216,8 +4240,14 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
             result['CouponCode'] = self.coupon_code
         if self.extend_attrs is not None:
             result['ExtendAttrs'] = self.extend_attrs.to_map()
+        if self.flow_action is not None:
+            result['FlowAction'] = self.flow_action
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
         if self.is_opt_out is not None:
             result['IsOptOut'] = self.is_opt_out
+        if self.navigate_screen is not None:
+            result['NavigateScreen'] = self.navigate_screen
         if self.package_name is not None:
             result['PackageName'] = self.package_name
         if self.phone_number is not None:
@@ -4243,8 +4273,14 @@ class GetChatappTemplateDetailResponseBodyDataComponentsButtons(TeaModel):
         if m.get('ExtendAttrs') is not None:
             temp_model = GetChatappTemplateDetailResponseBodyDataComponentsButtonsExtendAttrs()
             self.extend_attrs = temp_model.from_map(m['ExtendAttrs'])
+        if m.get('FlowAction') is not None:
+            self.flow_action = m.get('FlowAction')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
         if m.get('IsOptOut') is not None:
             self.is_opt_out = m.get('IsOptOut')
+        if m.get('NavigateScreen') is not None:
+            self.navigate_screen = m.get('NavigateScreen')
         if m.get('PackageName') is not None:
             self.package_name = m.get('PackageName')
         if m.get('PhoneNumber') is not None:
@@ -6328,8 +6364,10 @@ class GetWhatsappConnectionCatalogResponse(TeaModel):
 class IsvGetAppIdRequest(TeaModel):
     def __init__(
         self,
+        permissions: str = None,
         type: str = None,
     ):
+        self.permissions = permissions
         # The type of the application. Set the value to WHATSAPP.
         self.type = type
 
@@ -6342,12 +6380,16 @@ class IsvGetAppIdRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.permissions is not None:
+            result['Permissions'] = self.permissions
         if self.type is not None:
             result['Type'] = self.type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Permissions') is not None:
+            self.permissions = m.get('Permissions')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -6359,6 +6401,7 @@ class IsvGetAppIdResponseBody(TeaModel):
         access_denied_detail: str = None,
         app_id: str = None,
         code: str = None,
+        config_id: str = None,
         message: str = None,
         request_id: str = None,
     ):
@@ -6370,6 +6413,7 @@ class IsvGetAppIdResponseBody(TeaModel):
         # *   A value of OK indicates that the call is successful.
         # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
         self.code = code
+        self.config_id = config_id
         # The error message returned.
         self.message = message
         # The ID of the request.
@@ -6390,6 +6434,8 @@ class IsvGetAppIdResponseBody(TeaModel):
             result['AppId'] = self.app_id
         if self.code is not None:
             result['Code'] = self.code
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -6404,6 +6450,8 @@ class IsvGetAppIdResponseBody(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
@@ -7472,6 +7520,8 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         self,
         autofill_text: str = None,
         coupon_code: str = None,
+        flow_action: str = None,
+        flow_id: str = None,
         is_opt_out: bool = None,
         package_name: str = None,
         phone_number: str = None,
@@ -7480,10 +7530,13 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         type: str = None,
         url: str = None,
         url_type: str = None,
+        navigate_screen: str = None,
     ):
         # The text of the one-tap autofill button. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
         self.autofill_text = autofill_text
         self.coupon_code = coupon_code
+        self.flow_action = flow_action
+        self.flow_id = flow_id
         # The unsubscribe button. This parameter is valid only when Category is set to MARKETING and the Type sub-parameter of the Buttons parameter is set to QUICK_REPLY in a WhatsApp message template. After you configure message sending in the ChatApp Message Service console, marketing messages will not be sent to customers if they click this button.
         self.is_opt_out = is_opt_out
         # The app package name that WhatsApp uses to load your app. This parameter is required if Category is set to AUTHENTICATION and the Type sub-parameter of the Buttons parameter is set to ONE_TAP in a WhatsApp message template.
@@ -7519,6 +7572,7 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         # *   **static**\
         # *   **dynamic**\
         self.url_type = url_type
+        self.navigate_screen = navigate_screen
 
     def validate(self):
         pass
@@ -7533,6 +7587,10 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             result['AutofillText'] = self.autofill_text
         if self.coupon_code is not None:
             result['CouponCode'] = self.coupon_code
+        if self.flow_action is not None:
+            result['FlowAction'] = self.flow_action
+        if self.flow_id is not None:
+            result['FlowId'] = self.flow_id
         if self.is_opt_out is not None:
             result['IsOptOut'] = self.is_opt_out
         if self.package_name is not None:
@@ -7549,6 +7607,8 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             result['Url'] = self.url
         if self.url_type is not None:
             result['UrlType'] = self.url_type
+        if self.navigate_screen is not None:
+            result['navigateScreen'] = self.navigate_screen
         return result
 
     def from_map(self, m: dict = None):
@@ -7557,6 +7617,10 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             self.autofill_text = m.get('AutofillText')
         if m.get('CouponCode') is not None:
             self.coupon_code = m.get('CouponCode')
+        if m.get('FlowAction') is not None:
+            self.flow_action = m.get('FlowAction')
+        if m.get('FlowId') is not None:
+            self.flow_id = m.get('FlowId')
         if m.get('IsOptOut') is not None:
             self.is_opt_out = m.get('IsOptOut')
         if m.get('PackageName') is not None:
@@ -7573,6 +7637,8 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
             self.url = m.get('Url')
         if m.get('UrlType') is not None:
             self.url_type = m.get('UrlType')
+        if m.get('navigateScreen') is not None:
+            self.navigate_screen = m.get('navigateScreen')
         return self
 
 
@@ -9355,6 +9421,39 @@ class QueryWabaBusinessInfoResponse(TeaModel):
         return self
 
 
+class SendChatappMassMessageRequestSenderListFlowAction(TeaModel):
+    def __init__(
+        self,
+        flow_action_data: Dict[str, str] = None,
+        flow_token: str = None,
+    ):
+        self.flow_action_data = flow_action_data
+        self.flow_token = flow_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_action_data is not None:
+            result['FlowActionData'] = self.flow_action_data
+        if self.flow_token is not None:
+            result['FlowToken'] = self.flow_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowActionData') is not None:
+            self.flow_action_data = m.get('FlowActionData')
+        if m.get('FlowToken') is not None:
+            self.flow_token = m.get('FlowToken')
+        return self
+
+
 class SendChatappMassMessageRequestSenderListProductActionSectionsProductItems(TeaModel):
     def __init__(
         self,
@@ -9467,11 +9566,13 @@ class SendChatappMassMessageRequestSenderListProductAction(TeaModel):
 class SendChatappMassMessageRequestSenderList(TeaModel):
     def __init__(
         self,
+        flow_action: SendChatappMassMessageRequestSenderListFlowAction = None,
         payload: List[str] = None,
         product_action: SendChatappMassMessageRequestSenderListProductAction = None,
         template_params: Dict[str, str] = None,
         to: str = None,
     ):
+        self.flow_action = flow_action
         # payload
         self.payload = payload
         self.product_action = product_action
@@ -9481,6 +9582,8 @@ class SendChatappMassMessageRequestSenderList(TeaModel):
         self.to = to
 
     def validate(self):
+        if self.flow_action:
+            self.flow_action.validate()
         if self.product_action:
             self.product_action.validate()
 
@@ -9490,6 +9593,8 @@ class SendChatappMassMessageRequestSenderList(TeaModel):
             return _map
 
         result = dict()
+        if self.flow_action is not None:
+            result['FlowAction'] = self.flow_action.to_map()
         if self.payload is not None:
             result['Payload'] = self.payload
         if self.product_action is not None:
@@ -9502,6 +9607,9 @@ class SendChatappMassMessageRequestSenderList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FlowAction') is not None:
+            temp_model = SendChatappMassMessageRequestSenderListFlowAction()
+            self.flow_action = temp_model.from_map(m['FlowAction'])
         if m.get('Payload') is not None:
             self.payload = m.get('Payload')
         if m.get('ProductAction') is not None:
@@ -9888,6 +9996,39 @@ class SendChatappMassMessageResponse(TeaModel):
         return self
 
 
+class SendChatappMessageRequestFlowAction(TeaModel):
+    def __init__(
+        self,
+        flow_action_data: Dict[str, str] = None,
+        flow_token: str = None,
+    ):
+        self.flow_action_data = flow_action_data
+        self.flow_token = flow_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.flow_action_data is not None:
+            result['FlowActionData'] = self.flow_action_data
+        if self.flow_token is not None:
+            result['FlowToken'] = self.flow_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FlowActionData') is not None:
+            self.flow_action_data = m.get('FlowActionData')
+        if m.get('FlowToken') is not None:
+            self.flow_token = m.get('FlowToken')
+        return self
+
+
 class SendChatappMessageRequestProductActionSectionsProductItems(TeaModel):
     def __init__(
         self,
@@ -10014,6 +10155,7 @@ class SendChatappMessageRequest(TeaModel):
         fall_back_duration: int = None,
         fall_back_id: str = None,
         fall_back_rule: str = None,
+        flow_action: SendChatappMessageRequestFlowAction = None,
         from_: str = None,
         isv_code: str = None,
         label: str = None,
@@ -10074,6 +10216,7 @@ class SendChatappMessageRequest(TeaModel):
         # The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
         self.fall_back_id = fall_back_id
         self.fall_back_rule = fall_back_rule
+        self.flow_action = flow_action
         # The phone number of the message sender.
         # 
         # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -10138,6 +10281,8 @@ class SendChatappMessageRequest(TeaModel):
         self.type = type
 
     def validate(self):
+        if self.flow_action:
+            self.flow_action.validate()
         if self.product_action:
             self.product_action.validate()
 
@@ -10165,6 +10310,8 @@ class SendChatappMessageRequest(TeaModel):
             result['FallBackId'] = self.fall_back_id
         if self.fall_back_rule is not None:
             result['FallBackRule'] = self.fall_back_rule
+        if self.flow_action is not None:
+            result['FlowAction'] = self.flow_action.to_map()
         if self.from_ is not None:
             result['From'] = self.from_
         if self.isv_code is not None:
@@ -10217,6 +10364,9 @@ class SendChatappMessageRequest(TeaModel):
             self.fall_back_id = m.get('FallBackId')
         if m.get('FallBackRule') is not None:
             self.fall_back_rule = m.get('FallBackRule')
+        if m.get('FlowAction') is not None:
+            temp_model = SendChatappMessageRequestFlowAction()
+            self.flow_action = temp_model.from_map(m['FlowAction'])
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('IsvCode') is not None:
@@ -10263,6 +10413,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         fall_back_duration: int = None,
         fall_back_id: str = None,
         fall_back_rule: str = None,
+        flow_action_shrink: str = None,
         from_: str = None,
         isv_code: str = None,
         label: str = None,
@@ -10323,6 +10474,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         # The ID of the fallback strategy. You can create a fallback strategy and view the information in the console.
         self.fall_back_id = fall_back_id
         self.fall_back_rule = fall_back_rule
+        self.flow_action_shrink = flow_action_shrink
         # The phone number of the message sender.
         # 
         # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
@@ -10413,6 +10565,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             result['FallBackId'] = self.fall_back_id
         if self.fall_back_rule is not None:
             result['FallBackRule'] = self.fall_back_rule
+        if self.flow_action_shrink is not None:
+            result['FlowAction'] = self.flow_action_shrink
         if self.from_ is not None:
             result['From'] = self.from_
         if self.isv_code is not None:
@@ -10465,6 +10619,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
             self.fall_back_id = m.get('FallBackId')
         if m.get('FallBackRule') is not None:
             self.fall_back_rule = m.get('FallBackRule')
+        if m.get('FlowAction') is not None:
+            self.flow_action_shrink = m.get('FlowAction')
         if m.get('From') is not None:
             self.from_ = m.get('From')
         if m.get('IsvCode') is not None:

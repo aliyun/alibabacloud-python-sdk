@@ -2605,6 +2605,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.permissions):
+            body['Permissions'] = request.permissions
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -2640,6 +2642,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.permissions):
+            body['Permissions'] = request.permissions
         if not UtilClient.is_unset(request.type):
             body['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -3942,6 +3946,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = cams_20200606_models.SendChatappMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flow_action):
+            request.flow_action_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flow_action, 'FlowAction', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
             request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.product_action):
@@ -3970,6 +3976,8 @@ class Client(OpenApiClient):
             body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.fall_back_rule):
             body['FallBackRule'] = request.fall_back_rule
+        if not UtilClient.is_unset(request.flow_action_shrink):
+            body['FlowAction'] = request.flow_action_shrink
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
@@ -4033,6 +4041,8 @@ class Client(OpenApiClient):
         UtilClient.validate_model(tmp_req)
         request = cams_20200606_models.SendChatappMessageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.flow_action):
+            request.flow_action_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.flow_action, 'FlowAction', 'json')
         if not UtilClient.is_unset(tmp_req.payload):
             request.payload_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.payload, 'Payload', 'json')
         if not UtilClient.is_unset(tmp_req.product_action):
@@ -4061,6 +4071,8 @@ class Client(OpenApiClient):
             body['FallBackId'] = request.fall_back_id
         if not UtilClient.is_unset(request.fall_back_rule):
             body['FallBackRule'] = request.fall_back_rule
+        if not UtilClient.is_unset(request.flow_action_shrink):
+            body['FlowAction'] = request.flow_action_shrink
         if not UtilClient.is_unset(request.from_):
             body['From'] = request.from_
         if not UtilClient.is_unset(request.isv_code):
