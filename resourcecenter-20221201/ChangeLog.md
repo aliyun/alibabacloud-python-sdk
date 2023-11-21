@@ -1,3 +1,6 @@
+2023-11-21 Version: 1.1.1
+- Generated python 2022-12-01 for ResourceCenter.
+
 2023-11-13 Version: 1.1.0
 - Generated python 2022-12-01 for ResourceCenter.
 

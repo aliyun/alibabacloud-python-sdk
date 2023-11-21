@@ -11,8 +11,17 @@ class CreateSavedQueryRequest(TeaModel):
         expression: str = None,
         name: str = None,
     ):
+        # The description of the template.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.description = description
+        # The query statement in the template.
         self.expression = expression
+        # The name of the template.
+        # 
+        # *   The name must be 1 to 64 characters in length.
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must be unique.
         self.name = name
 
     def validate(self):
@@ -49,7 +58,9 @@ class CreateSavedQueryResponseBody(TeaModel):
         query_id: str = None,
         request_id: str = None,
     ):
+        # The query ID.
         self.query_id = query_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -125,6 +136,9 @@ class DeleteSavedQueryRequest(TeaModel):
         self,
         query_id: str = None,
     ):
+        # The ID of the template.
+        # 
+        # You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
         self.query_id = query_id
 
     def validate(self):
@@ -152,6 +166,7 @@ class DeleteSavedQueryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -532,7 +547,21 @@ class ExecuteMultiAccountSQLQueryRequest(TeaModel):
         expression: str = None,
         scope: str = None,
     ):
+        # The SQL statement to be executed.
+        # 
+        # The number of characters in the SQL statement must be less than 2,000.
+        # 
+        # For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
         self.expression = expression
+        # The search scope. The value of this parameter can be one of the following items:
+        # 
+        # *   ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
+        # *   ID of the Root folder: Resources within all members in the Root folder and the subfolders of the Root folder are searched.
+        # *   ID of a folder: Resources within all members in the folder are searched.
+        # *   ID of a member: Resources within the member are searched.
+        # *   ID of a member/ID of a Resource group: Resources within the member in the resource group are searched.
+        # 
+        # For more information about how to obtain the ID of a resource directory, the Root folder, a folder, a member, or a resource group, see [GetResourceDirectory](~~159995~~), [ListFoldersForParent](~~159997~~), [ListFoldersForParent](~~159997~~), [ListAccounts](~~160016~~), or [ListResourceGroups](~~158855~~).
         self.scope = scope
 
     def validate(self):
@@ -565,7 +594,9 @@ class ExecuteMultiAccountSQLQueryResponseBodyColumns(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the column.
         self.name = name
+        # The type of the column.
         self.type = type
 
     def validate(self):
@@ -599,8 +630,11 @@ class ExecuteMultiAccountSQLQueryResponseBody(TeaModel):
         request_id: str = None,
         rows: List[Any] = None,
     ):
+        # The columns.
         self.columns = columns
+        # The request ID.
         self.request_id = request_id
+        # An array of search results.
         self.rows = rows
 
     def validate(self):
@@ -689,7 +723,17 @@ class ExecuteSQLQueryRequest(TeaModel):
         expression: str = None,
         scope: str = None,
     ):
+        # The SQL statement to be executed.
+        # 
+        # The number of characters in the SQL statement must be less than 2,000.
+        # 
+        # For more information about the SQL syntax, see [Basic SQL syntax](~~2539395~~).
         self.expression = expression
+        # The search scope.
+        # 
+        # Set this parameter to the ID of a resource group.
+        # 
+        # For information about how to obtain the ID of a resource group, see [ListResourceGroups](~~158855~~).
         self.scope = scope
 
     def validate(self):
@@ -722,7 +766,9 @@ class ExecuteSQLQueryResponseBodyColumns(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The name of the column.
         self.name = name
+        # The type of the column.
         self.type = type
 
     def validate(self):
@@ -756,8 +802,11 @@ class ExecuteSQLQueryResponseBody(TeaModel):
         request_id: str = None,
         rows: List[Any] = None,
     ):
+        # The columns.
         self.columns = columns
+        # The request ID.
         self.request_id = request_id
+        # An array of search results.
         self.rows = rows
 
     def validate(self):
@@ -845,6 +894,9 @@ class GetExampleQueryRequest(TeaModel):
         self,
         query_id: str = None,
     ):
+        # The ID of the template.
+        # 
+        # >  You can call the [ListExampleQueries](~~ListExampleQueries~~) operation to obtain the template ID.
         self.query_id = query_id
 
     def validate(self):
@@ -875,9 +927,13 @@ class GetExampleQueryResponseBodyExampleQuery(TeaModel):
         name: str = None,
         query_id: str = None,
     ):
+        # The description of the template.
         self.description = description
+        # The query statement in the template.
         self.expression = expression
+        # The name of the template.
         self.name = name
+        # The ID of the template.
         self.query_id = query_id
 
     def validate(self):
@@ -918,7 +974,9 @@ class GetExampleQueryResponseBody(TeaModel):
         example_query: GetExampleQueryResponseBodyExampleQuery = None,
         request_id: str = None,
     ):
+        # The information about the sample query template.
         self.example_query = example_query
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1132,6 +1190,45 @@ class GetMultiAccountResourceConfigurationRequest(TeaModel):
         return self
 
 
+class GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes(TeaModel):
+    def __init__(
+        self,
+        ip_address: str = None,
+        network_type: str = None,
+        version: str = None,
+    ):
+        self.ip_address = ip_address
+        self.network_type = network_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class GetMultiAccountResourceConfigurationResponseBodyTags(TeaModel):
     def __init__(
         self,
@@ -1173,6 +1270,8 @@ class GetMultiAccountResourceConfigurationResponseBody(TeaModel):
         account_id: str = None,
         configuration: Dict[str, Any] = None,
         create_time: str = None,
+        expire_time: str = None,
+        ip_address_attributes: List[GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes] = None,
         ip_addresses: List[str] = None,
         region_id: str = None,
         request_id: str = None,
@@ -1189,6 +1288,8 @@ class GetMultiAccountResourceConfigurationResponseBody(TeaModel):
         self.configuration = configuration
         # The time when the resource was created.
         self.create_time = create_time
+        self.expire_time = expire_time
+        self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -1211,6 +1312,10 @@ class GetMultiAccountResourceConfigurationResponseBody(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ip_address_attributes:
+            for k in self.ip_address_attributes:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -1228,6 +1333,12 @@ class GetMultiAccountResourceConfigurationResponseBody(TeaModel):
             result['Configuration'] = self.configuration
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        result['IpAddressAttributes'] = []
+        if self.ip_address_attributes is not None:
+            for k in self.ip_address_attributes:
+                result['IpAddressAttributes'].append(k.to_map() if k else None)
         if self.ip_addresses is not None:
             result['IpAddresses'] = self.ip_addresses
         if self.region_id is not None:
@@ -1258,6 +1369,13 @@ class GetMultiAccountResourceConfigurationResponseBody(TeaModel):
             self.configuration = m.get('Configuration')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        self.ip_address_attributes = []
+        if m.get('IpAddressAttributes') is not None:
+            for k in m.get('IpAddressAttributes'):
+                temp_model = GetMultiAccountResourceConfigurationResponseBodyIpAddressAttributes()
+                self.ip_address_attributes.append(temp_model.from_map(k))
         if m.get('IpAddresses') is not None:
             self.ip_addresses = m.get('IpAddresses')
         if m.get('RegionId') is not None:
@@ -1462,6 +1580,45 @@ class GetResourceConfigurationRequest(TeaModel):
         return self
 
 
+class GetResourceConfigurationResponseBodyIpAddressAttributes(TeaModel):
+    def __init__(
+        self,
+        ip_address: str = None,
+        network_type: str = None,
+        version: str = None,
+    ):
+        self.ip_address = ip_address
+        self.network_type = network_type
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip_address is not None:
+            result['IpAddress'] = self.ip_address
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IpAddress') is not None:
+            self.ip_address = m.get('IpAddress')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
 class GetResourceConfigurationResponseBodyTags(TeaModel):
     def __init__(
         self,
@@ -1503,6 +1660,8 @@ class GetResourceConfigurationResponseBody(TeaModel):
         account_id: str = None,
         configuration: Dict[str, Any] = None,
         create_time: str = None,
+        expire_time: str = None,
+        ip_address_attributes: List[GetResourceConfigurationResponseBodyIpAddressAttributes] = None,
         ip_addresses: List[str] = None,
         region_id: str = None,
         request_id: str = None,
@@ -1519,6 +1678,8 @@ class GetResourceConfigurationResponseBody(TeaModel):
         self.configuration = configuration
         # The time when the resource was created.
         self.create_time = create_time
+        self.expire_time = expire_time
+        self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
         # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
@@ -1541,6 +1702,10 @@ class GetResourceConfigurationResponseBody(TeaModel):
         self.zone_id = zone_id
 
     def validate(self):
+        if self.ip_address_attributes:
+            for k in self.ip_address_attributes:
+                if k:
+                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -1558,6 +1723,12 @@ class GetResourceConfigurationResponseBody(TeaModel):
             result['Configuration'] = self.configuration
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        result['IpAddressAttributes'] = []
+        if self.ip_address_attributes is not None:
+            for k in self.ip_address_attributes:
+                result['IpAddressAttributes'].append(k.to_map() if k else None)
         if self.ip_addresses is not None:
             result['IpAddresses'] = self.ip_addresses
         if self.region_id is not None:
@@ -1588,6 +1759,13 @@ class GetResourceConfigurationResponseBody(TeaModel):
             self.configuration = m.get('Configuration')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        self.ip_address_attributes = []
+        if m.get('IpAddressAttributes') is not None:
+            for k in m.get('IpAddressAttributes'):
+                temp_model = GetResourceConfigurationResponseBodyIpAddressAttributes()
+                self.ip_address_attributes.append(temp_model.from_map(k))
         if m.get('IpAddresses') is not None:
             self.ip_addresses = m.get('IpAddresses')
         if m.get('RegionId') is not None:
@@ -1934,6 +2112,9 @@ class GetSavedQueryRequest(TeaModel):
         self,
         query_id: str = None,
     ):
+        # The ID of the template.
+        # 
+        # >  You can call the [ListSavedQueries](~~ListSavedQueries~~) operation to obtain the template ID.
         self.query_id = query_id
 
     def validate(self):
@@ -1966,11 +2147,17 @@ class GetSavedQueryResponseBodySavedQuery(TeaModel):
         query_id: str = None,
         update_time: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The description of the template.
         self.description = description
+        # The query statement in the template.
         self.expression = expression
+        # The name of the template.
         self.name = name
+        # The ID of the template.
         self.query_id = query_id
+        # The time when the template was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -2019,7 +2206,9 @@ class GetSavedQueryResponseBody(TeaModel):
         request_id: str = None,
         saved_query: GetSavedQueryResponseBodySavedQuery = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The information about the custom query template.
         self.saved_query = saved_query
 
     def validate(self):
@@ -2098,7 +2287,13 @@ class ListExampleQueriesRequest(TeaModel):
         max_results: str = None,
         next_token: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 50.
+        # 
+        # Default value: 50.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
 
     def validate(self):
@@ -2132,8 +2327,11 @@ class ListExampleQueriesResponseBodyExampleQueries(TeaModel):
         name: str = None,
         query_id: str = None,
     ):
+        # The description of the template.
         self.description = description
+        # The name of the template.
         self.name = name
+        # The ID of the template.
         self.query_id = query_id
 
     def validate(self):
@@ -2172,9 +2370,13 @@ class ListExampleQueriesResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
+        # The information about the sample query templates.
         self.example_queries = example_queries
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2981,7 +3183,13 @@ class ListSavedQueriesRequest(TeaModel):
         max_results: str = None,
         next_token: str = None,
     ):
+        # The maximum number of entries per page.
+        # 
+        # Valid values: 1 to 50.
+        # 
+        # Default value: 50.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
 
     def validate(self):
@@ -3017,10 +3225,15 @@ class ListSavedQueriesResponseBodySavedQueries(TeaModel):
         query_id: str = None,
         update_time: str = None,
     ):
+        # The time when the template was created.
         self.create_time = create_time
+        # The description of the template.
         self.description = description
+        # The name of the template.
         self.name = name
+        # The ID of the template.
         self.query_id = query_id
+        # The time when the template was last updated.
         self.update_time = update_time
 
     def validate(self):
@@ -3067,9 +3280,13 @@ class ListSavedQueriesResponseBody(TeaModel):
         request_id: str = None,
         saved_queries: List[ListSavedQueriesResponseBodySavedQueries] = None,
     ):
+        # The maximum number of entries per page.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The request ID.
         self.request_id = request_id
+        # The information about the custom query templates.
         self.saved_queries = saved_queries
 
     def validate(self):
@@ -3658,12 +3875,18 @@ class SearchMultiAccountResourcesResponseBodyFilters(TeaModel):
 class SearchMultiAccountResourcesResponseBodyResourcesIpAddressAttributes(TeaModel):
     def __init__(
         self,
-        ip_address: List[str] = None,
+        ip_address: str = None,
         network_type: str = None,
         version: str = None,
     ):
+        # The IP address.
         self.ip_address = ip_address
+        # The network type. Valid values:
+        # 
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
+        # The version.
         self.version = version
 
     def validate(self):
@@ -3700,9 +3923,9 @@ class SearchMultiAccountResourcesResponseBodyResourcesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The key of tag N.
         self.key = key
-        # The value of the tag.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -3749,29 +3972,31 @@ class SearchMultiAccountResourcesResponseBodyResources(TeaModel):
         self.account_id = account_id
         # The time when the resource was created.
         # 
-        # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
+        # The time when the resource expires.
         self.expire_time = expire_time
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
-        # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
-        # The region ID of the resource.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the resource belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The tags.
         self.tags = tags
-        # The zone ID of the resource.
+        # The zone ID.
         # 
-        # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4186,12 +4411,18 @@ class SearchResourcesResponseBodyFilters(TeaModel):
 class SearchResourcesResponseBodyResourcesIpAddressAttributes(TeaModel):
     def __init__(
         self,
-        ip_address: List[str] = None,
+        ip_address: str = None,
         network_type: str = None,
         version: str = None,
     ):
+        # The IP address.
         self.ip_address = ip_address
+        # The network type. Valid values:
+        # 
+        # *   **Public**: the Internet
+        # *   **Private**: internal network
         self.network_type = network_type
+        # The version.
         self.version = version
 
     def validate(self):
@@ -4228,9 +4459,9 @@ class SearchResourcesResponseBodyResourcesTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of tag N.
         self.key = key
-        # The tag value.
+        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -4273,33 +4504,35 @@ class SearchResourcesResponseBodyResources(TeaModel):
         tags: List[SearchResourcesResponseBodyResourcesTags] = None,
         zone_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
         # The time when the resource was created.
         # 
-        # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.create_time = create_time
+        # The time when the resource expires.
         self.expire_time = expire_time
+        # The attributes of the IP address.
         self.ip_address_attributes = ip_address_attributes
         # The IP addresses.
         # 
-        # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.ip_addresses = ip_addresses
-        # The region ID of the resource.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the resource belongs.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The tags.
         self.tags = tags
-        # The zone ID of the resource.
+        # The zone ID.
         # 
-        # > Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
+        # >  Whether this parameter is returned is determined by the Alibaba Cloud service to which the resource belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -4508,9 +4741,19 @@ class UpdateSavedQueryRequest(TeaModel):
         name: str = None,
         query_id: str = None,
     ):
+        # The description of the template.
+        # 
+        # The description must be 1 to 256 characters in length.
         self.description = description
+        # The query statement in the template.
         self.expression = expression
+        # The name of the template.
+        # 
+        # *   The name must be 1 to 64 characters in length.
+        # *   The name can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   The name must be unique.
         self.name = name
+        # The ID of the template.
         self.query_id = query_id
 
     def validate(self):
@@ -4550,6 +4793,7 @@ class UpdateSavedQueryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
