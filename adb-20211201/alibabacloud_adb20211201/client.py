@@ -161,6 +161,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.allocate_cluster_public_connection_with_options_async(request, runtime)
 
+    def attach_user_eniwith_options(
+        self,
+        request: adb_20211201_models.AttachUserENIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.AttachUserENIResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachUserENI',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.AttachUserENIResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def attach_user_eniwith_options_async(
+        self,
+        request: adb_20211201_models.AttachUserENIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.AttachUserENIResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AttachUserENI',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.AttachUserENIResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def attach_user_eni(
+        self,
+        request: adb_20211201_models.AttachUserENIRequest,
+    ) -> adb_20211201_models.AttachUserENIResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.attach_user_eniwith_options(request, runtime)
+
+    async def attach_user_eni_async(
+        self,
+        request: adb_20211201_models.AttachUserENIRequest,
+    ) -> adb_20211201_models.AttachUserENIResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.attach_user_eniwith_options_async(request, runtime)
+
     def bind_account_with_options(
         self,
         request: adb_20211201_models.BindAccountRequest,
@@ -239,6 +309,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.bind_account_with_options_async(request, runtime)
 
+    def bind_dbresource_group_with_user_with_options(
+        self,
+        request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_user):
+            query['GroupUser'] = request.group_user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindDBResourceGroupWithUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.BindDBResourceGroupWithUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_dbresource_group_with_user_with_options_async(
+        self,
+        request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_user):
+            query['GroupUser'] = request.group_user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindDBResourceGroupWithUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.BindDBResourceGroupWithUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_dbresource_group_with_user(
+        self,
+        request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
+    ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_dbresource_group_with_user_with_options(request, runtime)
+
+    async def bind_dbresource_group_with_user_async(
+        self,
+        request: adb_20211201_models.BindDBResourceGroupWithUserRequest,
+    ) -> adb_20211201_models.BindDBResourceGroupWithUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_dbresource_group_with_user_with_options_async(request, runtime)
+
     def check_bind_ram_user_with_options(
         self,
         request: adb_20211201_models.CheckBindRamUserRequest,
@@ -312,6 +460,76 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.CheckBindRamUserResponse:
         runtime = util_models.RuntimeOptions()
         return await self.check_bind_ram_user_with_options_async(request, runtime)
+
+    def check_sample_data_set_with_options(
+        self,
+        request: adb_20211201_models.CheckSampleDataSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckSampleDataSet',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CheckSampleDataSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_sample_data_set_with_options_async(
+        self,
+        request: adb_20211201_models.CheckSampleDataSetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckSampleDataSet',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CheckSampleDataSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_sample_data_set(
+        self,
+        request: adb_20211201_models.CheckSampleDataSetRequest,
+    ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_sample_data_set_with_options(request, runtime)
+
+    async def check_sample_data_set_async(
+        self,
+        request: adb_20211201_models.CheckSampleDataSetRequest,
+    ) -> adb_20211201_models.CheckSampleDataSetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_sample_data_set_with_options_async(request, runtime)
 
     def create_account_with_options(
         self,
@@ -406,6 +624,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.CreateDBClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
         if not UtilClient.is_unset(request.compute_resource):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -422,8 +642,18 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.restore_to_time):
+            query['RestoreToTime'] = request.restore_to_time
+        if not UtilClient.is_unset(request.restore_type):
+            query['RestoreType'] = request.restore_type
+        if not UtilClient.is_unset(request.source_db_cluster_id):
+            query['SourceDbClusterId'] = request.source_db_cluster_id
         if not UtilClient.is_unset(request.storage_resource):
             query['StorageResource'] = request.storage_resource
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -458,6 +688,8 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.CreateDBClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.backup_set_id):
+            query['BackupSetId'] = request.backup_set_id
         if not UtilClient.is_unset(request.compute_resource):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_description):
@@ -474,8 +706,18 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.restore_to_time):
+            query['RestoreToTime'] = request.restore_to_time
+        if not UtilClient.is_unset(request.restore_type):
+            query['RestoreType'] = request.restore_type
+        if not UtilClient.is_unset(request.source_db_cluster_id):
+            query['SourceDbClusterId'] = request.source_db_cluster_id
         if not UtilClient.is_unset(request.storage_resource):
             query['StorageResource'] = request.storage_resource
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
@@ -524,14 +766,22 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
         req = open_api_models.OpenApiRequest(
@@ -560,14 +810,22 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
         req = open_api_models.OpenApiRequest(
@@ -602,6 +860,112 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.CreateDBResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_dbresource_group_with_options_async(request, runtime)
+
+    def create_elastic_plan_with_options(
+        self,
+        request: adb_20211201_models.CreateElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_scale):
+            query['AutoScale'] = request.auto_scale
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_size):
+            query['TargetSize'] = request.target_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_elastic_plan_with_options_async(
+        self,
+        request: adb_20211201_models.CreateElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.CreateElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.auto_scale):
+            query['AutoScale'] = request.auto_scale
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_size):
+            query['TargetSize'] = request.target_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.CreateElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_elastic_plan(
+        self,
+        request: adb_20211201_models.CreateElasticPlanRequest,
+    ) -> adb_20211201_models.CreateElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_elastic_plan_with_options(request, runtime)
+
+    async def create_elastic_plan_async(
+        self,
+        request: adb_20211201_models.CreateElasticPlanRequest,
+    ) -> adb_20211201_models.CreateElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_elastic_plan_with_options_async(request, runtime)
 
     def create_oss_sub_directory_with_options(
         self,
@@ -842,6 +1206,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
+        """
+        ###
+        You can call this operation to delete only subscription clusters.
+        
+        @param request: DeleteDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -870,6 +1242,14 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DeleteDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
+        """
+        ###
+        You can call this operation to delete only subscription clusters.
+        
+        @param request: DeleteDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -897,6 +1277,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteDBClusterRequest,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
+        """
+        ###
+        You can call this operation to delete only subscription clusters.
+        
+        @param request: DeleteDBClusterRequest
+        @return: DeleteDBClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dbcluster_with_options(request, runtime)
 
@@ -904,6 +1291,13 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DeleteDBClusterRequest,
     ) -> adb_20211201_models.DeleteDBClusterResponse:
+        """
+        ###
+        You can call this operation to delete only subscription clusters.
+        
+        @param request: DeleteDBClusterRequest
+        @return: DeleteDBClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbcluster_with_options_async(request, runtime)
 
@@ -980,6 +1374,80 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DeleteDBResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbresource_group_with_options_async(request, runtime)
+
+    def delete_elastic_plan_with_options(
+        self,
+        request: adb_20211201_models.DeleteElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeleteElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_elastic_plan_with_options_async(
+        self,
+        request: adb_20211201_models.DeleteElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DeleteElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_elastic_plan(
+        self,
+        request: adb_20211201_models.DeleteElasticPlanRequest,
+    ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_elastic_plan_with_options(request, runtime)
+
+    async def delete_elastic_plan_async(
+        self,
+        request: adb_20211201_models.DeleteElasticPlanRequest,
+    ) -> adb_20211201_models.DeleteElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_elastic_plan_with_options_async(request, runtime)
 
     def delete_process_instance_with_options(
         self,
@@ -1210,6 +1678,292 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DeleteSparkTemplateFileResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_spark_template_file_with_options_async(request, runtime)
+
+    def describe_account_all_privileges_with_options(
+        self,
+        request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountAllPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_account_all_privileges_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountAllPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAccountAllPrivilegesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_account_all_privileges(
+        self,
+        request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
+    ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_account_all_privileges_with_options(request, runtime)
+
+    async def describe_account_all_privileges_async(
+        self,
+        request: adb_20211201_models.DescribeAccountAllPrivilegesRequest,
+    ) -> adb_20211201_models.DescribeAccountAllPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_account_all_privileges_with_options_async(request, runtime)
+
+    def describe_account_privilege_objects_with_options(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.column_privilege_object):
+            query['ColumnPrivilegeObject'] = request.column_privilege_object
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.database_privilege_object):
+            query['DatabasePrivilegeObject'] = request.database_privilege_object
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_privilege_object):
+            query['TablePrivilegeObject'] = request.table_privilege_object
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountPrivilegeObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_account_privilege_objects_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.column_privilege_object):
+            query['ColumnPrivilegeObject'] = request.column_privilege_object
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.database_privilege_object):
+            query['DatabasePrivilegeObject'] = request.database_privilege_object
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_privilege_object):
+            query['TablePrivilegeObject'] = request.table_privilege_object
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountPrivilegeObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAccountPrivilegeObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_account_privilege_objects(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
+    ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_account_privilege_objects_with_options(request, runtime)
+
+    async def describe_account_privilege_objects_async(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegeObjectsRequest,
+    ) -> adb_20211201_models.DescribeAccountPrivilegeObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_account_privilege_objects_with_options_async(request, runtime)
+
+    def describe_account_privileges_with_options(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAccountPrivilegesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.column_privilege_object):
+            query['ColumnPrivilegeObject'] = request.column_privilege_object
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.database_privilege_object):
+            query['DatabasePrivilegeObject'] = request.database_privilege_object
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_privilege_object):
+            query['TablePrivilegeObject'] = request.table_privilege_object
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAccountPrivilegesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_account_privileges_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAccountPrivilegesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.column_privilege_object):
+            query['ColumnPrivilegeObject'] = request.column_privilege_object
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.database_privilege_object):
+            query['DatabasePrivilegeObject'] = request.database_privilege_object
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.privilege_type):
+            query['PrivilegeType'] = request.privilege_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_privilege_object):
+            query['TablePrivilegeObject'] = request.table_privilege_object
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAccountPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAccountPrivilegesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_account_privileges(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegesRequest,
+    ) -> adb_20211201_models.DescribeAccountPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_account_privileges_with_options(request, runtime)
+
+    async def describe_account_privileges_async(
+        self,
+        request: adb_20211201_models.DescribeAccountPrivilegesRequest,
+    ) -> adb_20211201_models.DescribeAccountPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_account_privileges_with_options_async(request, runtime)
 
     def describe_accounts_with_options(
         self,
@@ -1523,6 +2277,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_adb_my_sql_tables_with_options_async(request, runtime)
 
+    def describe_all_data_source_with_options(
+        self,
+        request: adb_20211201_models.DescribeAllDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAllDataSourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllDataSource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAllDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_all_data_source_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeAllDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeAllDataSourceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAllDataSource',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeAllDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_all_data_source(
+        self,
+        request: adb_20211201_models.DescribeAllDataSourceRequest,
+    ) -> adb_20211201_models.DescribeAllDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_all_data_source_with_options(request, runtime)
+
+    async def describe_all_data_source_async(
+        self,
+        request: adb_20211201_models.DescribeAllDataSourceRequest,
+    ) -> adb_20211201_models.DescribeAllDataSourceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_all_data_source_with_options_async(request, runtime)
+
     def describe_aps_action_logs_with_options(
         self,
         request: adb_20211201_models.DescribeApsActionLogsRequest,
@@ -1544,8 +2380,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.proxy_user):
-            query['ProxyUser'] = request.proxy_user
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1600,8 +2434,6 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.proxy_user):
-            query['ProxyUser'] = request.proxy_user
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1718,96 +2550,6 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeApsResourceGroupsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_aps_resource_groups_with_options_async(request, runtime)
-
-    def describe_audit_log_config_with_options(
-        self,
-        request: adb_20211201_models.DescribeAuditLogConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeAuditLogConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAuditLogConfig',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAuditLogConfigResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_audit_log_config_with_options_async(
-        self,
-        request: adb_20211201_models.DescribeAuditLogConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeAuditLogConfigResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeAuditLogConfig',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeAuditLogConfigResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_audit_log_config(
-        self,
-        request: adb_20211201_models.DescribeAuditLogConfigRequest,
-    ) -> adb_20211201_models.DescribeAuditLogConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_audit_log_config_with_options(request, runtime)
-
-    async def describe_audit_log_config_async(
-        self,
-        request: adb_20211201_models.DescribeAuditLogConfigRequest,
-    ) -> adb_20211201_models.DescribeAuditLogConfigResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_audit_log_config_with_options_async(request, runtime)
 
     def describe_audit_log_records_with_options(
         self,
@@ -1950,198 +2692,6 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_log_records_with_options_async(request, runtime)
-
-    def describe_backup_policy_with_options(
-        self,
-        request: adb_20211201_models.DescribeBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeBackupPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeBackupPolicy',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_backup_policy_with_options_async(
-        self,
-        request: adb_20211201_models.DescribeBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeBackupPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeBackupPolicy',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_backup_policy(
-        self,
-        request: adb_20211201_models.DescribeBackupPolicyRequest,
-    ) -> adb_20211201_models.DescribeBackupPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_backup_policy_with_options(request, runtime)
-
-    async def describe_backup_policy_async(
-        self,
-        request: adb_20211201_models.DescribeBackupPolicyRequest,
-    ) -> adb_20211201_models.DescribeBackupPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_backup_policy_with_options_async(request, runtime)
-
-    def describe_backups_with_options(
-        self,
-        request: adb_20211201_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeBackupsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backup_id):
-            query['BackupId'] = request.backup_id
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeBackups',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupsResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_backups_with_options_async(
-        self,
-        request: adb_20211201_models.DescribeBackupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeBackupsResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backup_id):
-            query['BackupId'] = request.backup_id
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.page_number):
-            query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeBackups',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeBackupsResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_backups(
-        self,
-        request: adb_20211201_models.DescribeBackupsRequest,
-    ) -> adb_20211201_models.DescribeBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_backups_with_options(request, runtime)
-
-    async def describe_backups_async(
-        self,
-        request: adb_20211201_models.DescribeBackupsRequest,
-    ) -> adb_20211201_models.DescribeBackupsResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_backups_with_options_async(request, runtime)
 
     def describe_cluster_access_white_list_with_options(
         self,
@@ -2287,6 +2837,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_cluster_net_info_with_options_async(request, runtime)
 
+    def describe_columns_with_options(
+        self,
+        request: adb_20211201_models.DescribeColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeColumnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeColumns',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeColumnsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_columns_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeColumnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeColumns',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeColumnsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_columns(
+        self,
+        request: adb_20211201_models.DescribeColumnsRequest,
+    ) -> adb_20211201_models.DescribeColumnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_columns_with_options(request, runtime)
+
+    async def describe_columns_async(
+        self,
+        request: adb_20211201_models.DescribeColumnsRequest,
+    ) -> adb_20211201_models.DescribeColumnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_columns_with_options_async(request, runtime)
+
     def describe_dbcluster_attribute_with_options(
         self,
         request: adb_20211201_models.DescribeDBClusterAttributeRequest,
@@ -2356,88 +2988,6 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeDBClusterAttributeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_attribute_with_options_async(request, runtime)
-
-    def describe_dbcluster_forecast_with_options(
-        self,
-        request: adb_20211201_models.DescribeDBClusterForecastRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeDBClusterForecastResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDBClusterForecast',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterForecastResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_dbcluster_forecast_with_options_async(
-        self,
-        request: adb_20211201_models.DescribeDBClusterForecastRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeDBClusterForecastResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.metric_type):
-            query['MetricType'] = request.metric_type
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeDBClusterForecast',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeDBClusterForecastResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_dbcluster_forecast(
-        self,
-        request: adb_20211201_models.DescribeDBClusterForecastRequest,
-    ) -> adb_20211201_models.DescribeDBClusterForecastResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_dbcluster_forecast_with_options(request, runtime)
-
-    async def describe_dbcluster_forecast_async(
-        self,
-        request: adb_20211201_models.DescribeDBClusterForecastRequest,
-    ) -> adb_20211201_models.DescribeDBClusterForecastResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_dbcluster_forecast_with_options_async(request, runtime)
 
     def describe_dbcluster_health_status_with_options(
         self,
@@ -2603,6 +3153,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbcluster_performance_with_options_async(request, runtime)
 
+    def describe_dbcluster_status_with_options(
+        self,
+        request: adb_20211201_models.DescribeDBClusterStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterStatus',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeDBClusterStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbcluster_status_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeDBClusterStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBClusterStatus',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeDBClusterStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbcluster_status(
+        self,
+        request: adb_20211201_models.DescribeDBClusterStatusRequest,
+    ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbcluster_status_with_options(request, runtime)
+
+    async def describe_dbcluster_status_async(
+        self,
+        request: adb_20211201_models.DescribeDBClusterStatusRequest,
+    ) -> adb_20211201_models.DescribeDBClusterStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbcluster_status_with_options_async(request, runtime)
+
     def describe_dbclusters_with_options(
         self,
         request: adb_20211201_models.DescribeDBClustersRequest,
@@ -2624,6 +3244,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -2664,6 +3286,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3155,6 +3779,412 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_download_records_with_options_async(request, runtime)
 
+    def describe_elastic_plan_attribute_with_options(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlanAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlanAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_plan_attribute_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlanAttribute',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlanAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_plan_attribute(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
+    ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elastic_plan_attribute_with_options(request, runtime)
+
+    async def describe_elastic_plan_attribute_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanAttributeRequest,
+    ) -> adb_20211201_models.DescribeElasticPlanAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elastic_plan_attribute_with_options_async(request, runtime)
+
+    def describe_elastic_plan_jobs_with_options(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlanJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlanJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_plan_jobs_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlanJobs',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlanJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_plan_jobs(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanJobsRequest,
+    ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elastic_plan_jobs_with_options(request, runtime)
+
+    async def describe_elastic_plan_jobs_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanJobsRequest,
+    ) -> adb_20211201_models.DescribeElasticPlanJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elastic_plan_jobs_with_options_async(request, runtime)
+
+    def describe_elastic_plan_specifications_with_options(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanSpecificationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlanSpecifications',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_plan_specifications_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanSpecificationsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlanSpecifications',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlanSpecificationsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_plan_specifications(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanSpecificationsRequest,
+    ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elastic_plan_specifications_with_options(request, runtime)
+
+    async def describe_elastic_plan_specifications_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlanSpecificationsRequest,
+    ) -> adb_20211201_models.DescribeElasticPlanSpecificationsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elastic_plan_specifications_with_options_async(request, runtime)
+
+    def describe_elastic_plans_with_options(
+        self,
+        request: adb_20211201_models.DescribeElasticPlansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlansResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlans',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlansResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_elastic_plans_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlansRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeElasticPlansResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.enabled):
+            query['Enabled'] = request.enabled
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeElasticPlans',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeElasticPlansResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_elastic_plans(
+        self,
+        request: adb_20211201_models.DescribeElasticPlansRequest,
+    ) -> adb_20211201_models.DescribeElasticPlansResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_elastic_plans_with_options(request, runtime)
+
+    async def describe_elastic_plans_async(
+        self,
+        request: adb_20211201_models.DescribeElasticPlansRequest,
+    ) -> adb_20211201_models.DescribeElasticPlansResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_elastic_plans_with_options_async(request, runtime)
+
+    def describe_enabled_privileges_with_options(
+        self,
+        request: adb_20211201_models.DescribeEnabledPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeEnabledPrivilegesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnabledPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeEnabledPrivilegesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_enabled_privileges_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeEnabledPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeEnabledPrivilegesResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEnabledPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeEnabledPrivilegesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_enabled_privileges(
+        self,
+        request: adb_20211201_models.DescribeEnabledPrivilegesRequest,
+    ) -> adb_20211201_models.DescribeEnabledPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_enabled_privileges_with_options(request, runtime)
+
+    async def describe_enabled_privileges_async(
+        self,
+        request: adb_20211201_models.DescribeEnabledPrivilegesRequest,
+    ) -> adb_20211201_models.DescribeEnabledPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_enabled_privileges_with_options_async(request, runtime)
+
     def describe_pattern_performance_with_options(
         self,
         request: adb_20211201_models.DescribePatternPerformanceRequest,
@@ -3166,8 +4196,6 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.key):
-            query['Key'] = request.key
         if not UtilClient.is_unset(request.pattern_id):
             query['PatternId'] = request.pattern_id
         if not UtilClient.is_unset(request.region_id):
@@ -3204,8 +4232,6 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.key):
-            query['Key'] = request.key
         if not UtilClient.is_unset(request.pattern_id):
             query['PatternId'] = request.pattern_id
         if not UtilClient.is_unset(request.region_id):
@@ -3331,96 +4357,6 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
-    def describe_sqlpattern_attribute_with_options(
-        self,
-        request: adb_20211201_models.DescribeSQLPatternAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeSQLPatternAttributeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.pattern_id):
-            query['PatternId'] = request.pattern_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSQLPatternAttribute',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSQLPatternAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_sqlpattern_attribute_with_options_async(
-        self,
-        request: adb_20211201_models.DescribeSQLPatternAttributeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.DescribeSQLPatternAttributeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.end_time):
-            query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.pattern_id):
-            query['PatternId'] = request.pattern_id
-        if not UtilClient.is_unset(request.region_id):
-            query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.start_time):
-            query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeSQLPatternAttribute',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.DescribeSQLPatternAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_sqlpattern_attribute(
-        self,
-        request: adb_20211201_models.DescribeSQLPatternAttributeRequest,
-    ) -> adb_20211201_models.DescribeSQLPatternAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_sqlpattern_attribute_with_options(request, runtime)
-
-    async def describe_sqlpattern_attribute_async(
-        self,
-        request: adb_20211201_models.DescribeSQLPatternAttributeRequest,
-    ) -> adb_20211201_models.DescribeSQLPatternAttributeResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_sqlpattern_attribute_with_options_async(request, runtime)
-
     def describe_sqlpatterns_with_options(
         self,
         request: adb_20211201_models.DescribeSQLPatternsRequest,
@@ -3522,6 +4458,80 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.DescribeSQLPatternsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlpatterns_with_options_async(request, runtime)
+
+    def describe_schemas_with_options(
+        self,
+        request: adb_20211201_models.DescribeSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSchemasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSchemas',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_schemas_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeSchemasRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeSchemasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSchemas',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_schemas(
+        self,
+        request: adb_20211201_models.DescribeSchemasRequest,
+    ) -> adb_20211201_models.DescribeSchemasResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_schemas_with_options(request, runtime)
+
+    async def describe_schemas_async(
+        self,
+        request: adb_20211201_models.DescribeSchemasRequest,
+    ) -> adb_20211201_models.DescribeSchemasResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_schemas_with_options_async(request, runtime)
 
     def describe_spark_code_log_with_options(
         self,
@@ -3949,6 +4959,294 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_table_access_count_with_options_async(request, runtime)
 
+    def describe_tables_with_options(
+        self,
+        request: adb_20211201_models.DescribeTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTables',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tables_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeTablesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeTablesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeTables',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tables(
+        self,
+        request: adb_20211201_models.DescribeTablesRequest,
+    ) -> adb_20211201_models.DescribeTablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tables_with_options(request, runtime)
+
+    async def describe_tables_async(
+        self,
+        request: adb_20211201_models.DescribeTablesRequest,
+    ) -> adb_20211201_models.DescribeTablesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tables_with_options_async(request, runtime)
+
+    def describe_user_quota_with_options(
+        self,
+        request: adb_20211201_models.DescribeUserQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserQuota',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeUserQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_user_quota_with_options_async(
+        self,
+        request: adb_20211201_models.DescribeUserQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUserQuota',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DescribeUserQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_user_quota(
+        self,
+        request: adb_20211201_models.DescribeUserQuotaRequest,
+    ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_user_quota_with_options(request, runtime)
+
+    async def describe_user_quota_async(
+        self,
+        request: adb_20211201_models.DescribeUserQuotaRequest,
+    ) -> adb_20211201_models.DescribeUserQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_user_quota_with_options_async(request, runtime)
+
+    def detach_user_eniwith_options(
+        self,
+        request: adb_20211201_models.DetachUserENIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DetachUserENIResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachUserENI',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DetachUserENIResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def detach_user_eniwith_options_async(
+        self,
+        request: adb_20211201_models.DetachUserENIRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DetachUserENIResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DetachUserENI',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DetachUserENIResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def detach_user_eni(
+        self,
+        request: adb_20211201_models.DetachUserENIRequest,
+    ) -> adb_20211201_models.DetachUserENIResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.detach_user_eniwith_options(request, runtime)
+
+    async def detach_user_eni_async(
+        self,
+        request: adb_20211201_models.DetachUserENIRequest,
+    ) -> adb_20211201_models.DetachUserENIResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.detach_user_eniwith_options_async(request, runtime)
+
+    def disable_elastic_plan_with_options(
+        self,
+        request: adb_20211201_models.DisableElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DisableElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DisableElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_elastic_plan_with_options_async(
+        self,
+        request: adb_20211201_models.DisableElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.DisableElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.DisableElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_elastic_plan(
+        self,
+        request: adb_20211201_models.DisableElasticPlanRequest,
+    ) -> adb_20211201_models.DisableElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.disable_elastic_plan_with_options(request, runtime)
+
+    async def disable_elastic_plan_async(
+        self,
+        request: adb_20211201_models.DisableElasticPlanRequest,
+    ) -> adb_20211201_models.DisableElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_elastic_plan_with_options_async(request, runtime)
+
     def download_diagnosis_records_with_options(
         self,
         request: adb_20211201_models.DownloadDiagnosisRecordsRequest,
@@ -4075,20 +5373,22 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.download_diagnosis_records_with_options_async(request, runtime)
 
-    def get_lakehouse_valid_resource_groups_with_options(
+    def enable_elastic_plan_with_options(
         self,
-        request: adb_20211201_models.GetLakehouseValidResourceGroupsRequest,
+        request: adb_20211201_models.EnableElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.GetLakehouseValidResourceGroupsResponse:
+    ) -> adb_20211201_models.EnableElasticPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.groups_info):
-            query['GroupsInfo'] = request.groups_info
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetLakehouseValidResourceGroups',
+            action='EnableElasticPlan',
             version='2021-12-01',
             protocol='HTTPS',
             pathname='/',
@@ -4099,24 +5399,26 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            adb_20211201_models.GetLakehouseValidResourceGroupsResponse(),
+            adb_20211201_models.EnableElasticPlanResponse(),
             self.call_api(params, req, runtime)
         )
 
-    async def get_lakehouse_valid_resource_groups_with_options_async(
+    async def enable_elastic_plan_with_options_async(
         self,
-        request: adb_20211201_models.GetLakehouseValidResourceGroupsRequest,
+        request: adb_20211201_models.EnableElasticPlanRequest,
         runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.GetLakehouseValidResourceGroupsResponse:
+    ) -> adb_20211201_models.EnableElasticPlanResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.groups_info):
-            query['GroupsInfo'] = request.groups_info
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
-            action='GetLakehouseValidResourceGroups',
+            action='EnableElasticPlan',
             version='2021-12-01',
             protocol='HTTPS',
             pathname='/',
@@ -4127,23 +5429,191 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            adb_20211201_models.GetLakehouseValidResourceGroupsResponse(),
+            adb_20211201_models.EnableElasticPlanResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_lakehouse_valid_resource_groups(
+    def enable_elastic_plan(
         self,
-        request: adb_20211201_models.GetLakehouseValidResourceGroupsRequest,
-    ) -> adb_20211201_models.GetLakehouseValidResourceGroupsResponse:
+        request: adb_20211201_models.EnableElasticPlanRequest,
+    ) -> adb_20211201_models.EnableElasticPlanResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_lakehouse_valid_resource_groups_with_options(request, runtime)
+        return self.enable_elastic_plan_with_options(request, runtime)
 
-    async def get_lakehouse_valid_resource_groups_async(
+    async def enable_elastic_plan_async(
         self,
-        request: adb_20211201_models.GetLakehouseValidResourceGroupsRequest,
-    ) -> adb_20211201_models.GetLakehouseValidResourceGroupsResponse:
+        request: adb_20211201_models.EnableElasticPlanRequest,
+    ) -> adb_20211201_models.EnableElasticPlanResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_lakehouse_valid_resource_groups_with_options_async(request, runtime)
+        return await self.enable_elastic_plan_with_options_async(request, runtime)
+
+    def exist_running_sqlengine_with_options(
+        self,
+        request: adb_20211201_models.ExistRunningSQLEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExistRunningSQLEngine',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ExistRunningSQLEngineResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def exist_running_sqlengine_with_options_async(
+        self,
+        request: adb_20211201_models.ExistRunningSQLEngineRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            body['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExistRunningSQLEngine',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ExistRunningSQLEngineResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def exist_running_sqlengine(
+        self,
+        request: adb_20211201_models.ExistRunningSQLEngineRequest,
+    ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.exist_running_sqlengine_with_options(request, runtime)
+
+    async def exist_running_sqlengine_async(
+        self,
+        request: adb_20211201_models.ExistRunningSQLEngineRequest,
+    ) -> adb_20211201_models.ExistRunningSQLEngineResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.exist_running_sqlengine_with_options_async(request, runtime)
+
+    def get_database_objects_with_options(
+        self,
+        request: adb_20211201_models.GetDatabaseObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_schema_name):
+            query['FilterSchemaName'] = request.filter_schema_name
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetDatabaseObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_database_objects_with_options_async(
+        self,
+        request: adb_20211201_models.GetDatabaseObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_schema_name):
+            query['FilterSchemaName'] = request.filter_schema_name
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetDatabaseObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetDatabaseObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_database_objects(
+        self,
+        request: adb_20211201_models.GetDatabaseObjectsRequest,
+    ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_database_objects_with_options(request, runtime)
+
+    async def get_database_objects_async(
+        self,
+        request: adb_20211201_models.GetDatabaseObjectsRequest,
+    ) -> adb_20211201_models.GetDatabaseObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_database_objects_with_options_async(request, runtime)
 
     def get_spark_app_attempt_log_with_options(
         self,
@@ -4643,6 +6113,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_config_log_path_with_options_async(request, runtime)
 
+    def get_spark_definitions_with_options(
+        self,
+        request: adb_20211201_models.GetSparkDefinitionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkDefinitions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetSparkDefinitionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_spark_definitions_with_options_async(
+        self,
+        request: adb_20211201_models.GetSparkDefinitionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            body['DBClusterId'] = request.dbcluster_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetSparkDefinitions',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetSparkDefinitionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_spark_definitions(
+        self,
+        request: adb_20211201_models.GetSparkDefinitionsRequest,
+    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_spark_definitions_with_options(request, runtime)
+
+    async def get_spark_definitions_async(
+        self,
+        request: adb_20211201_models.GetSparkDefinitionsRequest,
+    ) -> adb_20211201_models.GetSparkDefinitionsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_spark_definitions_with_options_async(request, runtime)
+
     def get_spark_log_analyze_task_with_options(
         self,
         request: adb_20211201_models.GetSparkLogAnalyzeTaskRequest,
@@ -4866,6 +6406,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
+        """
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        
+        @param request: GetSparkTemplateFolderTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkTemplateFolderTreeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4894,6 +6441,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
+        """
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        
+        @param request: GetSparkTemplateFolderTreeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSparkTemplateFolderTreeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -4921,6 +6475,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
+        """
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        
+        @param request: GetSparkTemplateFolderTreeRequest
+        @return: GetSparkTemplateFolderTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_spark_template_folder_tree_with_options(request, runtime)
 
@@ -4928,6 +6488,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
+        """
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        
+        @param request: GetSparkTemplateFolderTreeRequest
+        @return: GetSparkTemplateFolderTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_template_folder_tree_with_options_async(request, runtime)
 
@@ -5000,6 +6566,400 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetSparkTemplateFullTreeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_spark_template_full_tree_with_options_async(request, runtime)
+
+    def get_table_with_options(
+        self,
+        request: adb_20211201_models.GetTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableResponse:
+        """
+        @deprecated
+        
+        @param request: GetTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_with_options_async(
+        self,
+        request: adb_20211201_models.GetTableRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableResponse:
+        """
+        @deprecated
+        
+        @param request: GetTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTableResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTable',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table(
+        self,
+        request: adb_20211201_models.GetTableRequest,
+    ) -> adb_20211201_models.GetTableResponse:
+        """
+        @deprecated
+        
+        @param request: GetTableRequest
+        @return: GetTableResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_with_options(request, runtime)
+
+    async def get_table_async(
+        self,
+        request: adb_20211201_models.GetTableRequest,
+    ) -> adb_20211201_models.GetTableResponse:
+        """
+        @deprecated
+        
+        @param request: GetTableRequest
+        @return: GetTableResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_with_options_async(request, runtime)
+
+    def get_table_columns_with_options(
+        self,
+        request: adb_20211201_models.GetTableColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableColumnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableColumns',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableColumnsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_columns_with_options_async(
+        self,
+        request: adb_20211201_models.GetTableColumnsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableColumnsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.column_name):
+            query['ColumnName'] = request.column_name
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableColumns',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableColumnsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_columns(
+        self,
+        request: adb_20211201_models.GetTableColumnsRequest,
+    ) -> adb_20211201_models.GetTableColumnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_columns_with_options(request, runtime)
+
+    async def get_table_columns_async(
+        self,
+        request: adb_20211201_models.GetTableColumnsRequest,
+    ) -> adb_20211201_models.GetTableColumnsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_columns_with_options_async(request, runtime)
+
+    def get_table_ddlwith_options(
+        self,
+        request: adb_20211201_models.GetTableDDLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableDDLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableDDL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableDDLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_ddlwith_options_async(
+        self,
+        request: adb_20211201_models.GetTableDDLRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableDDLResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableDDL',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableDDLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_ddl(
+        self,
+        request: adb_20211201_models.GetTableDDLRequest,
+    ) -> adb_20211201_models.GetTableDDLResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_ddlwith_options(request, runtime)
+
+    async def get_table_ddl_async(
+        self,
+        request: adb_20211201_models.GetTableDDLRequest,
+    ) -> adb_20211201_models.GetTableDDLResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_ddlwith_options_async(request, runtime)
+
+    def get_table_objects_with_options(
+        self,
+        request: adb_20211201_models.GetTableObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_description):
+            query['FilterDescription'] = request.filter_description
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_tbl_name):
+            query['FilterTblName'] = request.filter_tbl_name
+        if not UtilClient.is_unset(request.filter_tbl_type):
+            query['FilterTblType'] = request.filter_tbl_type
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_objects_with_options_async(
+        self,
+        request: adb_20211201_models.GetTableObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetTableObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_description):
+            query['FilterDescription'] = request.filter_description
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_tbl_name):
+            query['FilterTblName'] = request.filter_tbl_name
+        if not UtilClient.is_unset(request.filter_tbl_type):
+            query['FilterTblType'] = request.filter_tbl_type
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetTableObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_objects(
+        self,
+        request: adb_20211201_models.GetTableObjectsRequest,
+    ) -> adb_20211201_models.GetTableObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_table_objects_with_options(request, runtime)
+
+    async def get_table_objects_async(
+        self,
+        request: adb_20211201_models.GetTableObjectsRequest,
+    ) -> adb_20211201_models.GetTableObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_table_objects_with_options_async(request, runtime)
 
     def get_view_ddlwith_options(
         self,
@@ -5082,6 +7042,108 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.GetViewDDLResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_view_ddlwith_options_async(request, runtime)
+
+    def get_view_objects_with_options(
+        self,
+        request: adb_20211201_models.GetViewObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetViewObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_view_name):
+            query['FilterViewName'] = request.filter_view_name
+        if not UtilClient.is_unset(request.filter_view_type):
+            query['FilterViewType'] = request.filter_view_type
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetViewObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetViewObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_view_objects_with_options_async(
+        self,
+        request: adb_20211201_models.GetViewObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.GetViewObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.filter_owner):
+            query['FilterOwner'] = request.filter_owner
+        if not UtilClient.is_unset(request.filter_view_name):
+            query['FilterViewName'] = request.filter_view_name
+        if not UtilClient.is_unset(request.filter_view_type):
+            query['FilterViewType'] = request.filter_view_type
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetViewObjects',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.GetViewObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_view_objects(
+        self,
+        request: adb_20211201_models.GetViewObjectsRequest,
+    ) -> adb_20211201_models.GetViewObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_view_objects_with_options(request, runtime)
+
+    async def get_view_objects_async(
+        self,
+        request: adb_20211201_models.GetViewObjectsRequest,
+    ) -> adb_20211201_models.GetViewObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_view_objects_with_options_async(request, runtime)
 
     def kill_spark_app_with_options(
         self,
@@ -5683,6 +7745,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_account_description_with_options_async(request, runtime)
 
+    def modify_account_privileges_with_options(
+        self,
+        tmp_req: adb_20211201_models.ModifyAccountPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyAccountPrivilegesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_privileges):
+            request.account_privileges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_privileges, 'AccountPrivileges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privileges_shrink):
+            query['AccountPrivileges'] = request.account_privileges_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyAccountPrivilegesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_account_privileges_with_options_async(
+        self,
+        tmp_req: adb_20211201_models.ModifyAccountPrivilegesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adb_20211201_models.ModifyAccountPrivilegesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.account_privileges):
+            request.account_privileges_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.account_privileges, 'AccountPrivileges', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_privileges_shrink):
+            query['AccountPrivileges'] = request.account_privileges_shrink
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyAccountPrivileges',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyAccountPrivilegesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_account_privileges(
+        self,
+        request: adb_20211201_models.ModifyAccountPrivilegesRequest,
+    ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_account_privileges_with_options(request, runtime)
+
+    async def modify_account_privileges_async(
+        self,
+        request: adb_20211201_models.ModifyAccountPrivilegesRequest,
+    ) -> adb_20211201_models.ModifyAccountPrivilegesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_account_privileges_with_options_async(request, runtime)
+
     def modify_audit_log_config_with_options(
         self,
         request: adb_20211201_models.ModifyAuditLogConfigRequest,
@@ -5776,112 +7928,6 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyAuditLogConfigResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_audit_log_config_with_options_async(request, runtime)
-
-    def modify_backup_policy_with_options(
-        self,
-        request: adb_20211201_models.ModifyBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.ModifyBackupPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backup_retention_period):
-            query['BackupRetentionPeriod'] = request.backup_retention_period
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.enable_backup_log):
-            query['EnableBackupLog'] = request.enable_backup_log
-        if not UtilClient.is_unset(request.log_backup_retention_period):
-            query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.preferred_backup_period):
-            query['PreferredBackupPeriod'] = request.preferred_backup_period
-        if not UtilClient.is_unset(request.preferred_backup_time):
-            query['PreferredBackupTime'] = request.preferred_backup_time
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyBackupPolicy',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyBackupPolicyResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_backup_policy_with_options_async(
-        self,
-        request: adb_20211201_models.ModifyBackupPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> adb_20211201_models.ModifyBackupPolicyResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.backup_retention_period):
-            query['BackupRetentionPeriod'] = request.backup_retention_period
-        if not UtilClient.is_unset(request.dbcluster_id):
-            query['DBClusterId'] = request.dbcluster_id
-        if not UtilClient.is_unset(request.enable_backup_log):
-            query['EnableBackupLog'] = request.enable_backup_log
-        if not UtilClient.is_unset(request.log_backup_retention_period):
-            query['LogBackupRetentionPeriod'] = request.log_backup_retention_period
-        if not UtilClient.is_unset(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not UtilClient.is_unset(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.preferred_backup_period):
-            query['PreferredBackupPeriod'] = request.preferred_backup_period
-        if not UtilClient.is_unset(request.preferred_backup_time):
-            query['PreferredBackupTime'] = request.preferred_backup_time
-        if not UtilClient.is_unset(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not UtilClient.is_unset(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='ModifyBackupPolicy',
-            version='2021-12-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            adb_20211201_models.ModifyBackupPolicyResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_backup_policy(
-        self,
-        request: adb_20211201_models.ModifyBackupPolicyRequest,
-    ) -> adb_20211201_models.ModifyBackupPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.modify_backup_policy_with_options(request, runtime)
-
-    async def modify_backup_policy_async(
-        self,
-        request: adb_20211201_models.ModifyBackupPolicyRequest,
-    ) -> adb_20211201_models.ModifyBackupPolicyResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.modify_backup_policy_with_options_async(request, runtime)
 
     def modify_cluster_access_white_list_with_options(
         self,
@@ -6056,12 +8102,26 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterResponse:
+        """
+        ### [](#)
+        *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+        *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        *   If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+        *   When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        *   You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        
+        @param request: ModifyDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compute_resource):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_default_resource_pool):
+            query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6096,12 +8156,26 @@ class Client(OpenApiClient):
         request: adb_20211201_models.ModifyDBClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.ModifyDBClusterResponse:
+        """
+        ### [](#)
+        *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+        *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        *   If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+        *   When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        *   You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        
+        @param request: ModifyDBClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.compute_resource):
             query['ComputeResource'] = request.compute_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.enable_default_resource_pool):
+            query['EnableDefaultResourcePool'] = request.enable_default_resource_pool
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6135,6 +8209,17 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBClusterRequest,
     ) -> adb_20211201_models.ModifyDBClusterResponse:
+        """
+        ### [](#)
+        *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+        *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        *   If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+        *   When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        *   You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        
+        @param request: ModifyDBClusterRequest
+        @return: ModifyDBClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dbcluster_with_options(request, runtime)
 
@@ -6142,6 +8227,17 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.ModifyDBClusterRequest,
     ) -> adb_20211201_models.ModifyDBClusterResponse:
+        """
+        ### [](#)
+        *   During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+        *   When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+        *   If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+        *   When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+        *   You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+        
+        @param request: ModifyDBClusterRequest
+        @return: ModifyDBClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbcluster_with_options_async(request, runtime)
 
@@ -6300,14 +8396,22 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
         req = open_api_models.OpenApiRequest(
@@ -6336,14 +8440,22 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_mode):
+            query['ClusterMode'] = request.cluster_mode
+        if not UtilClient.is_unset(request.cluster_size_resource):
+            query['ClusterSizeResource'] = request.cluster_size_resource
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.group_name):
             query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.group_type):
             query['GroupType'] = request.group_type
+        if not UtilClient.is_unset(request.max_cluster_count):
+            query['MaxClusterCount'] = request.max_cluster_count
         if not UtilClient.is_unset(request.max_compute_resource):
             query['MaxComputeResource'] = request.max_compute_resource
+        if not UtilClient.is_unset(request.min_cluster_count):
+            query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
         req = open_api_models.OpenApiRequest(
@@ -6378,6 +8490,96 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ModifyDBResourceGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbresource_group_with_options_async(request, runtime)
+
+    def modify_elastic_plan_with_options(
+        self,
+        request: adb_20211201_models.ModifyElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_size):
+            query['TargetSize'] = request.target_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyElasticPlanResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_elastic_plan_with_options_async(
+        self,
+        request: adb_20211201_models.ModifyElasticPlanRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cron_expression):
+            query['CronExpression'] = request.cron_expression
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.elastic_plan_name):
+            query['ElasticPlanName'] = request.elastic_plan_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.target_size):
+            query['TargetSize'] = request.target_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyElasticPlan',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.ModifyElasticPlanResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_elastic_plan(
+        self,
+        request: adb_20211201_models.ModifyElasticPlanRequest,
+    ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_elastic_plan_with_options(request, runtime)
+
+    async def modify_elastic_plan_async(
+        self,
+        request: adb_20211201_models.ModifyElasticPlanRequest,
+    ) -> adb_20211201_models.ModifyElasticPlanResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_elastic_plan_with_options_async(request, runtime)
 
     def preload_spark_app_metrics_with_options(
         self,
@@ -6518,6 +8720,84 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.ReleaseClusterPublicConnectionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.release_cluster_public_connection_with_options_async(request, runtime)
+
+    def rename_spark_template_file_with_options(
+        self,
+        request: adb_20211201_models.RenameSparkTemplateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenameSparkTemplateFile',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.RenameSparkTemplateFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def rename_spark_template_file_with_options_async(
+        self,
+        request: adb_20211201_models.RenameSparkTemplateFileRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RenameSparkTemplateFile',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.RenameSparkTemplateFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def rename_spark_template_file(
+        self,
+        request: adb_20211201_models.RenameSparkTemplateFileRequest,
+    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.rename_spark_template_file_with_options(request, runtime)
+
+    async def rename_spark_template_file_async(
+        self,
+        request: adb_20211201_models.RenameSparkTemplateFileRequest,
+    ) -> adb_20211201_models.RenameSparkTemplateFileResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.rename_spark_template_file_with_options_async(request, runtime)
 
     def reset_account_password_with_options(
         self,
@@ -7014,6 +9294,84 @@ class Client(OpenApiClient):
     ) -> adb_20211201_models.UnbindAccountResponse:
         runtime = util_models.RuntimeOptions()
         return await self.unbind_account_with_options_async(request, runtime)
+
+    def unbind_dbresource_group_with_user_with_options(
+        self,
+        request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_user):
+            query['GroupUser'] = request.group_user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDBResourceGroupWithUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_dbresource_group_with_user_with_options_async(
+        self,
+        request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.group_user):
+            query['GroupUser'] = request.group_user
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDBResourceGroupWithUser',
+            version='2021-12-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20211201_models.UnbindDBResourceGroupWithUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_dbresource_group_with_user(
+        self,
+        request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
+    ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_dbresource_group_with_user_with_options(request, runtime)
+
+    async def unbind_dbresource_group_with_user_async(
+        self,
+        request: adb_20211201_models.UnbindDBResourceGroupWithUserRequest,
+    ) -> adb_20211201_models.UnbindDBResourceGroupWithUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_dbresource_group_with_user_with_options_async(request, runtime)
 
     def update_spark_template_file_with_options(
         self,
