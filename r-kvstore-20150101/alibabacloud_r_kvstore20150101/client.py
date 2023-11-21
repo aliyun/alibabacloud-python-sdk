@@ -1276,9 +1276,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance that uses local or cloud disks or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance that uses local disks. To create a Tair instance that uses cloud disks, call the [CreateTairInstance](~~208271~~) operation.
-        > You can also create an instance in the ApsaraDB for Redis console. For more information, see [Create an instance](~~26351~~).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
+        **\
+        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1397,9 +1398,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance that uses local or cloud disks or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance that uses local disks. To create a Tair instance that uses cloud disks, call the [CreateTairInstance](~~208271~~) operation.
-        > You can also create an instance in the ApsaraDB for Redis console. For more information, see [Create an instance](~~26351~~).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
+        **\
+        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1517,9 +1519,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance that uses local or cloud disks or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance that uses local disks. To create a Tair instance that uses cloud disks, call the [CreateTairInstance](~~208271~~) operation.
-        > You can also create an instance in the ApsaraDB for Redis console. For more information, see [Create an instance](~~26351~~).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
+        **\
+        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -1532,9 +1535,10 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.CreateInstanceRequest,
     ) -> r_kvstore_20150101_models.CreateInstanceResponse:
         """
-        Before you call this operation, make sure that you are familiar with the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
-        You can call this operation to create an ApsaraDB for Redis instance that uses local or cloud disks or an ApsaraDB for Redis Enhanced Edition (Tair) DRAM-based instance that uses local disks. To create a Tair instance that uses cloud disks, call the [CreateTairInstance](~~208271~~) operation.
-        > You can also create an instance in the ApsaraDB for Redis console. For more information, see [Create an instance](~~26351~~).
+        Before you call this operation, make sure that you understand the billing methods and [pricing](~~54532~~) of ApsaraDB for Redis.
+        You can call this operation to create an ApsaraDB for Redis instance or a classic Tair DRAM-based instance. To create a cloud-native Tair instance, call the [CreateTairInstance](~~208271~~) operation.
+        **\
+        **Description** For more information about how to create an instance that meets your requirements in the ApsaraDB for Redis console, see [Step 1: Create an ApsaraDB for Redis instance](~~26351~~).
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -2081,6 +2085,108 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
+
+    def delete_global_security_ipgroup_with_options(
+        self,
+        request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalSecurityIPGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_global_security_ipgroup_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteGlobalSecurityIPGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_global_security_ipgroup(
+        self,
+        request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
+    ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_global_security_ipgroup_with_options(request, runtime)
+
+    async def delete_global_security_ipgroup_async(
+        self,
+        request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
+    ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
 
     def delete_instance_with_options(
         self,
@@ -4547,6 +4653,72 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_security_ipgroup_with_options_async(request, runtime)
+
+    def describe_global_security_ipgroup_relation_with_options(
+        self,
+        request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroupRelation',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_global_security_ipgroup_relation_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeGlobalSecurityIPGroupRelation',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_global_security_ipgroup_relation(
+        self,
+        request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
+    ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_global_security_ipgroup_relation_with_options(request, runtime)
+
+    async def describe_global_security_ipgroup_relation_async(
+        self,
+        request: r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationRequest,
+    ) -> r_kvstore_20150101_models.DescribeGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_global_security_ipgroup_relation_with_options_async(request, runtime)
 
     def describe_history_monitor_values_with_options(
         self,
@@ -7941,8 +8113,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7989,8 +8159,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.security_token):
-            query['SecurityToken'] = request.security_token
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9355,6 +9523,316 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_connection_string_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.gip_list):
+            query['GIpList'] = request.gip_list
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroup',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRequest,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_name_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupName',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_name_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.global_ig_name):
+            query['GlobalIgName'] = request.global_ig_name
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupName',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup_name(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_name_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_name_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameRequest,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupNameResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_name_with_options_async(request, runtime)
+
+    def modify_global_security_ipgroup_relation_with_options(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupRelation',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_global_security_ipgroup_relation_with_options_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.global_security_group_id):
+            query['GlobalSecurityGroupId'] = request.global_security_group_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyGlobalSecurityIPGroupRelation',
+            version='2015-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_global_security_ipgroup_relation(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_global_security_ipgroup_relation_with_options(request, runtime)
+
+    async def modify_global_security_ipgroup_relation_async(
+        self,
+        request: r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationRequest,
+    ) -> r_kvstore_20150101_models.ModifyGlobalSecurityIPGroupRelationResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_global_security_ipgroup_relation_with_options_async(request, runtime)
 
     def modify_instance_attribute_with_options(
         self,
@@ -13030,6 +13508,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_id):
@@ -13081,6 +13563,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
             query['AutoPay'] = request.auto_pay
+        if not UtilClient.is_unset(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_renew_period):
+            query['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.charge_type):
             query['ChargeType'] = request.charge_type
         if not UtilClient.is_unset(request.instance_id):
