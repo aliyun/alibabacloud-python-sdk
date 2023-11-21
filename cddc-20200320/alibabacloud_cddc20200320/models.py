@@ -25,22 +25,73 @@ class CreateDedicatedHostRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether to enable the auto-renewal feature. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If you do not specify this parameter, the default value **false** is used.
         self.auto_renew = auto_renew
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
+        # 
+        # >  The database engine of the host is the same as the database engine of the cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The instance type of the host. For information about the host instance types supported by different database engines, see [Instance types of hosts](~~206343~~).
         self.host_class = host_class
+        # The disk storage of the host. This parameter takes effect only for dedicated clusters that run Tair. Unit: GB. Valid values:
+        # 
+        # *   512
+        # *   1024
+        # *   1536
+        # *   2048
+        # *   2560
+        # *   3072
+        # *   3584
+        # *   4096
         self.host_storage = host_storage
+        # The disk type of the host. This parameter takes effect only for dedicated clusters that run Tair. Valid values:
+        # 
+        # *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+        # *   **cloud_essd0**: PL0 ESSD.
         self.host_storage_type = host_storage_type
+        # The image of the host. Valid values:
+        # 
+        # *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition.
+        # *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+        # *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+        # *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+        # *   **AliLinux**: other images.
+        # 
+        # >  When you create a host that runs SQL Server, you must specify a host image.
         self.image_category = image_category
+        # The password of the host. You can specify a password only when you create a host in a **Proprietary MyBase** dedicated cluster.
+        # 
+        # *   The password must be 8 to 30 characters in length.
+        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   The password can contain the following special characters: () \ \` ~ ! @ # $ % ^ & \* - \_ + = | { } \[ ] : ; \" < > , . ? /\
         self.os_password = os_password
         self.owner_id = owner_id
+        # The billing method of the host. Set the value to **prepaid**.
         self.pay_type = pay_type
+        # The unit of the subscription duration. Valid values:
+        # 
+        # *   **Year**\
+        # *   **Month**\
         self.period = period
+        # The [region ID](~~198326~~) of the dedicated cluster.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The subscription duration of the host.
+        # 
+        # *   Valid values when **Period** is set to **Year**: **1** to **5**.****\
+        # *   Valid values when **Period** is set to **Month**: **1** to **9**.
         self.used_time = used_time
+        # The vSwitch ID. You can log on to the Virtual Private Cloud (VPC) console to view the vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -132,6 +183,7 @@ class CreateDedicatedHostResponseBodyDedicateHostListDedicateHostList(TeaModel):
         self,
         dedicated_host_id: str = None,
     ):
+        # The host ID.
         self.dedicated_host_id = dedicated_host_id
 
     def validate(self):
@@ -196,8 +248,11 @@ class CreateDedicatedHostResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The created hosts.
         self.dedicate_host_list = dedicate_host_list
+        # The order ID.
         self.order_id = order_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -288,13 +343,35 @@ class CreateDedicatedHostAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the host account.
+        # 
+        # *   The name must be 2 to 16 characters in length.
+        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
         self.account_name = account_name
+        # The password of the host account.
+        # 
+        # *   The password must be 6 to 32 characters in length.
+        # *   The password must contain three of the following character types: upper letters, lower letters, digits, and special characters.
+        # *   The password can contain the following special characters: `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # >  If your host runs SQL Server, the password cannot contain the account name (case-insensitive).
         self.account_password = account_password
+        # The type of the host account. Valid values:
+        # 
+        # *   **Normal**: standard account.
+        # *   **Admin**: administrator account.
+        # 
+        # For more information, see [Host permissions](~~176240~~).
         self.account_type = account_type
+        # The ID of the bastion host with which the host is associated. You can log on to the ApsaraDB for MyBase console and go to the **Bastion Hosts** page to view the bastion host ID.
         self.bastion_instance_id = bastion_instance_id
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -360,6 +437,7 @@ class CreateDedicatedHostAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -444,19 +522,52 @@ class CreateDedicatedHostGroupRequest(TeaModel):
         resource_owner_id: int = None,
         vpcid: str = None,
     ):
+        # The policy that is used to allocate resources in the dedicated cluster. Valid values:
+        # 
+        # *   **Evenly** (default): The system preferentially deploys database instances on the hosts where no resources or fewer resources are allocated. This maximizes system stability.
+        # *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
         self.allocation_policy = allocation_policy
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The CPU overcommit ratio of the dedicated cluster.
+        # 
+        # >  Unit: %. Valid values: **100** to **300**. Default value: **200**, which specifies that the total amount of CPU resources allocated to all instances is twice the amount of actual CPU resources. This helps you maximize CPU utilization.
         self.cpu_allocation_ratio = cpu_allocation_ratio
+        # The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
         self.dedicated_host_group_desc = dedicated_host_group_desc
+        # The storage overcommit ratio of the dedicated cluster.
+        # 
+        # >  Unit: %. Valid values: **100** to **300**. Default value: **200**, which specifies that the total amount of storage resources allocated to all instances is twice the amount of actual storage resources. This helps you maximize storage usage. This parameter does not take effect for dedicated clusters that run SQL Server.
         self.disk_allocation_ratio = disk_allocation_ratio
+        # The database engine of the dedicated cluster. Valid values:
+        # 
+        # *   **MySQL**\
+        # *   **SQL Server**\
         self.engine = engine
+        # The policy that is used to handle host failures. Valid values:
+        # 
+        # *   **Auto** (default): The system automatically replaces faulty hosts.
+        # *   **Manual**: You must manually replace faulty hosts.
+        # 
+        # >  When you create a dedicated cluster that runs **MySQL**, you can select a policy based on your business requirements. For dedicated clusters that run other database engines, the default value **Auto** is used.
         self.host_replace_policy = host_replace_policy
+        # The maximum memory usage of each host in the dedicated cluster.
+        # 
+        # >  Unit: %. Valid values: **0** to **100**. Default value: **100**.
         self.mem_allocation_ratio = mem_allocation_ratio
+        # Specifies whether to grant the host OS permissions. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
+        # 
+        # >  When you create a dedicated cluster that runs **MySQL or SQL Server**, you can grant the host OS permissions based on your business requirements. For dedicated clusters that run other database engines, the default value **0** is used. When you create an ApsaraDB MyBase for SQL Server dedicated cluster, you must set this parameter to 1.
         self.open_permission = open_permission
         self.owner_id = owner_id
+        # The region ID. For more information, see [Region IDs](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the virtual private cloud (VPC) where you want to create the dedicated cluster. You can log on to the VPC console and click **VPCs** in the left-side navigation pane to view the VPC ID.
         self.vpcid = vpcid
 
     def validate(self):
@@ -537,7 +648,9 @@ class CreateDedicatedHostGroupResponseBody(TeaModel):
         dedicated_host_group_id: str = None,
         request_id: str = None,
     ):
+        # The dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -611,23 +724,35 @@ class CreateDedicatedHostGroupResponse(TeaModel):
 class CreateMyBaseRequestECSClassList(TeaModel):
     def __init__(
         self,
+        data_disk_auto_snapshot_policy_id: str = None,
+        data_disk_encrypted: bool = None,
+        data_disk_kmskey_id: str = None,
         data_disk_performance_level: str = None,
         disk_capacity: int = None,
         disk_count: int = None,
         disk_type: str = None,
         instance_type: str = None,
         node_count: int = None,
+        sys_disk_auto_snapshot_policy_id: str = None,
         sys_disk_capacity: int = None,
+        sys_disk_encrypted: bool = None,
+        sys_disk_kmskey_id: str = None,
         sys_disk_type: str = None,
         system_disk_performance_level: str = None,
     ):
+        self.data_disk_auto_snapshot_policy_id = data_disk_auto_snapshot_policy_id
+        self.data_disk_encrypted = data_disk_encrypted
+        self.data_disk_kmskey_id = data_disk_kmskey_id
         self.data_disk_performance_level = data_disk_performance_level
         self.disk_capacity = disk_capacity
         self.disk_count = disk_count
         self.disk_type = disk_type
         self.instance_type = instance_type
         self.node_count = node_count
+        self.sys_disk_auto_snapshot_policy_id = sys_disk_auto_snapshot_policy_id
         self.sys_disk_capacity = sys_disk_capacity
+        self.sys_disk_encrypted = sys_disk_encrypted
+        self.sys_disk_kmskey_id = sys_disk_kmskey_id
         self.sys_disk_type = sys_disk_type
         self.system_disk_performance_level = system_disk_performance_level
 
@@ -640,6 +765,12 @@ class CreateMyBaseRequestECSClassList(TeaModel):
             return _map
 
         result = dict()
+        if self.data_disk_auto_snapshot_policy_id is not None:
+            result['dataDiskAutoSnapshotPolicyId'] = self.data_disk_auto_snapshot_policy_id
+        if self.data_disk_encrypted is not None:
+            result['dataDiskEncrypted'] = self.data_disk_encrypted
+        if self.data_disk_kmskey_id is not None:
+            result['dataDiskKMSKeyId'] = self.data_disk_kmskey_id
         if self.data_disk_performance_level is not None:
             result['dataDiskPerformanceLevel'] = self.data_disk_performance_level
         if self.disk_capacity is not None:
@@ -652,8 +783,14 @@ class CreateMyBaseRequestECSClassList(TeaModel):
             result['instanceType'] = self.instance_type
         if self.node_count is not None:
             result['nodeCount'] = self.node_count
+        if self.sys_disk_auto_snapshot_policy_id is not None:
+            result['sysDiskAutoSnapshotPolicyId'] = self.sys_disk_auto_snapshot_policy_id
         if self.sys_disk_capacity is not None:
             result['sysDiskCapacity'] = self.sys_disk_capacity
+        if self.sys_disk_encrypted is not None:
+            result['sysDiskEncrypted'] = self.sys_disk_encrypted
+        if self.sys_disk_kmskey_id is not None:
+            result['sysDiskKMSKeyId'] = self.sys_disk_kmskey_id
         if self.sys_disk_type is not None:
             result['sysDiskType'] = self.sys_disk_type
         if self.system_disk_performance_level is not None:
@@ -662,6 +799,12 @@ class CreateMyBaseRequestECSClassList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('dataDiskAutoSnapshotPolicyId') is not None:
+            self.data_disk_auto_snapshot_policy_id = m.get('dataDiskAutoSnapshotPolicyId')
+        if m.get('dataDiskEncrypted') is not None:
+            self.data_disk_encrypted = m.get('dataDiskEncrypted')
+        if m.get('dataDiskKMSKeyId') is not None:
+            self.data_disk_kmskey_id = m.get('dataDiskKMSKeyId')
         if m.get('dataDiskPerformanceLevel') is not None:
             self.data_disk_performance_level = m.get('dataDiskPerformanceLevel')
         if m.get('diskCapacity') is not None:
@@ -674,8 +817,14 @@ class CreateMyBaseRequestECSClassList(TeaModel):
             self.instance_type = m.get('instanceType')
         if m.get('nodeCount') is not None:
             self.node_count = m.get('nodeCount')
+        if m.get('sysDiskAutoSnapshotPolicyId') is not None:
+            self.sys_disk_auto_snapshot_policy_id = m.get('sysDiskAutoSnapshotPolicyId')
         if m.get('sysDiskCapacity') is not None:
             self.sys_disk_capacity = m.get('sysDiskCapacity')
+        if m.get('sysDiskEncrypted') is not None:
+            self.sys_disk_encrypted = m.get('sysDiskEncrypted')
+        if m.get('sysDiskKMSKeyId') is not None:
+            self.sys_disk_kmskey_id = m.get('sysDiskKMSKeyId')
         if m.get('sysDiskType') is not None:
             self.sys_disk_type = m.get('sysDiskType')
         if m.get('systemDiskPerformanceLevel') is not None:
@@ -683,9 +832,43 @@ class CreateMyBaseRequestECSClassList(TeaModel):
         return self
 
 
+class CreateMyBaseRequestTags(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateMyBaseRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         auto_renew: str = None,
         client_token: str = None,
         dedicated_host_group_description: str = None,
@@ -697,6 +880,8 @@ class CreateMyBaseRequest(TeaModel):
         ecs_unique_suffix: str = None,
         engine: str = None,
         image_id: str = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
         key_pair_name: str = None,
         os_password: str = None,
         owner_id: int = None,
@@ -705,13 +890,18 @@ class CreateMyBaseRequest(TeaModel):
         period: str = None,
         period_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_group_id: str = None,
+        tags: List[CreateMyBaseRequestTags] = None,
+        user_data: str = None,
+        user_data_in_base_64: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.client_token = client_token
         self.dedicated_host_group_description = dedicated_host_group_description
@@ -723,6 +913,8 @@ class CreateMyBaseRequest(TeaModel):
         self.ecs_unique_suffix = ecs_unique_suffix
         self.engine = engine
         self.image_id = image_id
+        self.internet_charge_type = internet_charge_type
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.key_pair_name = key_pair_name
         self.os_password = os_password
         self.owner_id = owner_id
@@ -731,9 +923,13 @@ class CreateMyBaseRequest(TeaModel):
         self.period = period
         self.period_type = period_type
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_group_id = security_group_id
+        self.tags = tags
+        self.user_data = user_data
+        self.user_data_in_base_64 = user_data_in_base_64
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
         self.zone_id = zone_id
@@ -743,6 +939,10 @@ class CreateMyBaseRequest(TeaModel):
             for k in self.ecsclass_list:
                 if k:
                     k.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -750,6 +950,8 @@ class CreateMyBaseRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.client_token is not None:
@@ -774,6 +976,10 @@ class CreateMyBaseRequest(TeaModel):
             result['Engine'] = self.engine
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.os_password is not None:
@@ -790,12 +996,22 @@ class CreateMyBaseRequest(TeaModel):
             result['PeriodType'] = self.period_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.user_data_in_base_64 is not None:
+            result['UserDataInBase64'] = self.user_data_in_base_64
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -806,6 +1022,8 @@ class CreateMyBaseRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientToken') is not None:
@@ -831,6 +1049,10 @@ class CreateMyBaseRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('InternetMaxBandwidthOut') is not None:
+            self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('OsPassword') is not None:
@@ -847,12 +1069,23 @@ class CreateMyBaseRequest(TeaModel):
             self.period_type = m.get('PeriodType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = CreateMyBaseRequestTags()
+                self.tags.append(temp_model.from_map(k))
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('UserDataInBase64') is not None:
+            self.user_data_in_base_64 = m.get('UserDataInBase64')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -865,6 +1098,7 @@ class CreateMyBaseRequest(TeaModel):
 class CreateMyBaseShrinkRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         auto_renew: str = None,
         client_token: str = None,
         dedicated_host_group_description: str = None,
@@ -876,6 +1110,8 @@ class CreateMyBaseShrinkRequest(TeaModel):
         ecs_unique_suffix: str = None,
         engine: str = None,
         image_id: str = None,
+        internet_charge_type: str = None,
+        internet_max_bandwidth_out: int = None,
         key_pair_name: str = None,
         os_password: str = None,
         owner_id: int = None,
@@ -884,13 +1120,18 @@ class CreateMyBaseShrinkRequest(TeaModel):
         period: str = None,
         period_type: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_group_id: str = None,
+        tags_shrink: str = None,
+        user_data: str = None,
+        user_data_in_base_64: bool = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.client_token = client_token
         self.dedicated_host_group_description = dedicated_host_group_description
@@ -902,6 +1143,8 @@ class CreateMyBaseShrinkRequest(TeaModel):
         self.ecs_unique_suffix = ecs_unique_suffix
         self.engine = engine
         self.image_id = image_id
+        self.internet_charge_type = internet_charge_type
+        self.internet_max_bandwidth_out = internet_max_bandwidth_out
         self.key_pair_name = key_pair_name
         self.os_password = os_password
         self.owner_id = owner_id
@@ -910,9 +1153,13 @@ class CreateMyBaseShrinkRequest(TeaModel):
         self.period = period
         self.period_type = period_type
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_group_id = security_group_id
+        self.tags_shrink = tags_shrink
+        self.user_data = user_data
+        self.user_data_in_base_64 = user_data_in_base_64
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
         self.zone_id = zone_id
@@ -926,6 +1173,8 @@ class CreateMyBaseShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
         if self.client_token is not None:
@@ -948,6 +1197,10 @@ class CreateMyBaseShrinkRequest(TeaModel):
             result['Engine'] = self.engine
         if self.image_id is not None:
             result['ImageId'] = self.image_id
+        if self.internet_charge_type is not None:
+            result['InternetChargeType'] = self.internet_charge_type
+        if self.internet_max_bandwidth_out is not None:
+            result['InternetMaxBandwidthOut'] = self.internet_max_bandwidth_out
         if self.key_pair_name is not None:
             result['KeyPairName'] = self.key_pair_name
         if self.os_password is not None:
@@ -964,12 +1217,20 @@ class CreateMyBaseShrinkRequest(TeaModel):
             result['PeriodType'] = self.period_type
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        if self.user_data is not None:
+            result['UserData'] = self.user_data
+        if self.user_data_in_base_64 is not None:
+            result['UserDataInBase64'] = self.user_data_in_base_64
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -980,6 +1241,8 @@ class CreateMyBaseShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
         if m.get('ClientToken') is not None:
@@ -1002,6 +1265,10 @@ class CreateMyBaseShrinkRequest(TeaModel):
             self.engine = m.get('Engine')
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
+        if m.get('InternetChargeType') is not None:
+            self.internet_charge_type = m.get('InternetChargeType')
+        if m.get('InternetMaxBandwidthOut') is not None:
+            self.internet_max_bandwidth_out = m.get('InternetMaxBandwidthOut')
         if m.get('KeyPairName') is not None:
             self.key_pair_name = m.get('KeyPairName')
         if m.get('OsPassword') is not None:
@@ -1018,12 +1285,20 @@ class CreateMyBaseShrinkRequest(TeaModel):
             self.period_type = m.get('PeriodType')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        if m.get('UserData') is not None:
+            self.user_data = m.get('UserData')
+        if m.get('UserDataInBase64') is not None:
+            self.user_data_in_base_64 = m.get('UserDataInBase64')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -1202,11 +1477,21 @@ class DeleteDedicatedHostAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The name of the host account.
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # *   The name must be 2 to 16 characters in length.
         self.account_name = account_name
+        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The ID of the account to which the AccessKey pair belongs.
         self.owner_id = owner_id
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
         self.region_id = region_id
+        # ResourceOwnerAccount
         self.resource_owner_account = resource_owner_account
+        # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -1254,6 +1539,7 @@ class DeleteDedicatedHostAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1329,10 +1615,15 @@ class DeleteDedicatedHostGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # 账号ID。
         self.owner_id = owner_id
+        # The region ID of the dedicated cluster. For more information, see [Region IDs](~~198326~~).
         self.region_id = region_id
+        # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
+        # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -1376,6 +1667,7 @@ class DeleteDedicatedHostGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -1452,9 +1744,12 @@ class DescribeDedicatedHostAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the dedicated cluster in which the host is created. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
+        # [The region ID](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1539,42 +1834,112 @@ class DescribeDedicatedHostAttributeResponseBody(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The account name of the host.
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # *   The name must be 2 to 16 characters in length.
         self.account_name = account_name
+        # The account type of the host. Valid values:
+        # 
+        # *   **Normal**: standard account.
+        # *   **Admin**: administrator account.
         self.account_type = account_type
+        # Indicates whether instances can be deployed on the host. Valid values:
+        # 
+        # *   **Allocatable**: yes.
+        # *   **Suspended**: no.
         self.allocation_status = allocation_status
+        # Indicates whether auto-renewal is enabled on the host. Valid values:
+        # 
+        # *   **true**\
+        # *   **false** (default)
         self.auto_renew = auto_renew
+        # The CPU overcommit ratio of the dedicated cluster. Unit: %. The value is accurate to the tens digit.
         self.cpuallocation_ratio = cpuallocation_ratio
+        # The number of CPU cores used by the host.
         self.cpu_used = cpu_used
+        # The time when the host was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.created_time = created_time
+        # The ID of the dedicated cluster in which the host is created.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The storage overcommit ratio of the dedicated cluster.
         self.disk_allocation_ratio = disk_allocation_ratio
+        # The distribution tag of the host.
         self.distribution_tag = distribution_tag
+        # The instance type of the Elastic Compute Service (ECS) instance.
         self.ecs_class_code = ecs_class_code
+        # The expiration time of the host. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.expired_time = expired_time
+        # The number of CPU cores of the host.
         self.host_cpu = host_cpu
+        # The instance type of the host.
         self.host_class = host_class
+        # The memory size of the host. Unit: MB.
         self.host_mem = host_mem
+        # The name of the host.
         self.host_name = host_name
+        # The state of the host. Valid values:
+        # 
+        # *   **0**: The host is being created.
+        # *   **1**: The host is running.
+        # *   **2**: The host is faulty.
+        # *   **3**: The host is ready for disabling.
+        # *   **4**: The host is being maintained.
+        # *   **5**: The host is disabled.
+        # *   **6**: The host is restarting.
+        # *   **7**: The host is locked.
+        # 
+        # >  When a host fails, the host is disabled. Before the host is disabled, the data of the instances that run on the host is migrated to another host. This ensures data integrity.
         self.host_status = host_status
+        # The total storage of the host. Unit: GB.
         self.host_storage = host_storage
+        # The storage type of the host. Valid values:
+        # 
+        # *   **dhg_cloud_ssd** or **dhg_cloud_essd**: enhanced SSD (ESSD).
+        # *   **dhg_local_ssd**: local SSD.
         self.host_type = host_type
+        # The IP address of the host.
         self.ipaddress = ipaddress
+        # The image of the host. This parameter is returned only when the database engine is **SQL Server**. Valid values:
+        # 
+        # *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition (AlwaysOn).
+        # *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+        # *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+        # *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
         self.image_category = image_category
+        # The number of instances deployed on the host.
         self.instance_number = instance_number
+        # The number of primary instances deployed on the host.
         self.instance_number_master = instance_number_master
+        # The number of primary instances of the read-only instance deployed on the host.
         self.instance_number_romaster = instance_number_romaster
+        # The number of secondary instances of the read-only instance deployed on the host.
         self.instance_number_roslave = instance_number_roslave
+        # The number of secondary instances deployed on the host.
         self.instance_number_slave = instance_number_slave
+        # The memory usage of the host. Unit: %.
         self.mem_allocation_ratio = mem_allocation_ratio
+        # The amount of memory used by the host. Unit: GB.
         self.memory_used = memory_used
+        # Indicates whether the host OS permissions are grated. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
         self.open_permission = open_permission
+        # [The region ID](~~198326~~).
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The storage usage of the host. Unit: GB.
         self.storage_used = storage_used
+        # The virtual private cloud (VPC) ID.
         self.vpcid = vpcid
-        # VSwitch ID。
+        # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1790,8 +2155,10 @@ class DescribeDedicatedHostDisksRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
+        # The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1848,17 +2215,47 @@ class DescribeDedicatedHostDisksResponseBodyDisks(TeaModel):
         type: str = None,
         zone_id: str = None,
     ):
+        # The storage type of the host. Valid values:
+        # 
+        # *   **cloud_ssd**: local SSD.
+        # *   **cloud_essd**: ESSD.
         self.category = category
+        # The ID of the instance that uses the disk.
         self.dbinstance_id = dbinstance_id
+        # The device name of the instance to which the ESSD or local SSD is attached.
         self.device = device
+        # The ID of the ESSD or local SSD.
         self.disk_id = disk_id
+        # Indicates whether the disk is attached to instances. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.has_dbinstance = has_dbinstance
+        # The maximum IOPS of the disk, which is displayed after being divided by 10,000.
         self.max_iops = max_iops
+        # The maximum throughput of the disk. Unit: MB/s.
         self.max_throughput = max_throughput
+        # The performance level of the ESSD.
+        # 
+        # >  ApsaraDB for MyBase provides the following types of ESSDs: **ESSD**, **PL2 ESSD**, and **PL3 ESSD**. The higher performance level delivers better ESSD performance.
         self.performance_level = performance_level
+        # The size of the ESSD or local SSD. Unit: GB.
         self.size = size
+        # The state of the ESSD. Valid values:
+        # 
+        # *   **In_use**\
+        # *   **Available**\
+        # *   **Attaching**\
+        # *   **Detaching**\
+        # *   **Creating**\
+        # *   **ReIniting**\
         self.status = status
+        # The disk type of the enhanced SSD (ESSD) or local SSD. Valid values:
+        # 
+        # *   **system**: system disk.
+        # *   **data**: data disk.
         self.type = type
+        # The zone ID of the ESSD or local SSD.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1932,8 +2329,11 @@ class DescribeDedicatedHostDisksResponseBody(TeaModel):
         disks: List[DescribeDedicatedHostDisksResponseBodyDisks] = None,
         request_id: str = None,
     ):
+        # The host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The queried disks.
         self.disks = disks
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2027,10 +2427,41 @@ class DescribeDedicatedHostGroupsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
+        # 
+        # *   If you leave this parameter empty, the information about all hosts within the region is returned.
+        # *   If you specify a dedicated cluster ID, the information about all hosts in the dedicated cluster within the region is returned.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The database engine used to filter hosts. Valid values:
+        # 
+        # *   MySQL
+        # *   SQL Server
+        # *   PosgreSQL
+        # 
+        # *   Redis
         self.engine = engine
+        # The image of the host. Valid values:
+        # 
+        # *   **WindowsWithMssqlEntAlwaysonLicense**: SQL
+        # 
+        # Server Cluster Edition.
+        # 
+        # *   **WindowsWithMssqlStdLicense**: SQL
+        # 
+        # Server Standard Edition.
+        # 
+        # *   **WindowsWithMssqlEntLicense**: SQL
+        # 
+        # Server Enterprise Edition.
+        # 
+        # *   **WindowsWithMssqlWebLicense**: SQL
+        # 
+        # Server Web Edition.
+        # 
+        # *   **AliLinux**: other images.
         self.image_category = image_category
         self.owner_id = owner_id
+        # The region ID. For more information, see [Region IDs](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2139,33 +2570,71 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
         vpcid: str = None,
         zone_idlist: DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList = None,
     ):
+        # The policy that is used to allocate host resources. Valid values:
+        # 
+        # *   **Evenly**: The system preferentially deploys database instances on the hosts where no resources or fewer resources are allocated. This maximizes system stability.
+        # *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
         self.allocation_policy = allocation_policy
+        # The ID of the primary instance deployed on the host. If no primary instance is deployed on the host, an empty string is returned.
         self.bastion_instance_id = bastion_instance_id
         self.category = category
+        # The CPU allocation ratio of the host.
         self.cpu_allocate_ration = cpu_allocate_ration
+        # The number of CPU cores allocated to the host.
         self.cpu_allocated_amount = cpu_allocated_amount
+        # The CPU overcommit ratio of the host.
         self.cpu_allocation_ratio = cpu_allocation_ratio
+        # The time when the host was created.
         self.create_time = create_time
+        # The number of hosts by storage type.
         self.dedicated_host_count_group_by_host_type = dedicated_host_count_group_by_host_type
+        # The name of the dedicated cluster in which the host is created.
         self.dedicated_host_group_desc = dedicated_host_group_desc
+        # The ID of the dedicated cluster in which the host is created.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The instance deployment mode of the host.
         self.deploy_type = deploy_type
+        # The disk allocation rate of the host.
         self.disk_allocate_ration = disk_allocate_ration
+        # The disk storage allocated to the host.
         self.disk_allocated_amount = disk_allocated_amount
+        # The storage overcommit ratio of the host.
         self.disk_allocation_ratio = disk_allocation_ratio
+        # The disk storage used by the host.
         self.disk_used_amount = disk_used_amount
+        # The disk usage of the host.
         self.disk_utility = disk_utility
+        # The database engine of the host.
         self.engine = engine
+        # The number of hosts.
         self.host_number = host_number
+        # The policy that is used for host troubleshooting. Valid values:
+        # 
+        # *   Auto (default): The system automatically replaces faulty hosts.
+        # *   Manual: You must manually replace faulty hosts.
         self.host_replace_policy = host_replace_policy
+        # The number of instances deployed on the host.
         self.instance_number = instance_number
+        # The memory allocation ratio of the host.
         self.mem_allocate_ration = mem_allocate_ration
+        # The amount of memory allocated to the host.
         self.mem_allocated_amount = mem_allocated_amount
+        # The memory overcommit ratio of the host.
         self.mem_allocation_ratio = mem_allocation_ratio
+        # The amount of used memory.
         self.mem_used_amount = mem_used_amount
+        # The memory usage.
         self.mem_utility = mem_utility
+        # Indicates whether the host OS permissions are granted. Valid values:
+        # 
+        # *   **0 or 1**: no.
+        # *   **2 or 3** (default): yes.
+        # 
+        # >  When you create a dedicated cluster that runs **MySQL**, **SQL Server**, or **PostgreSQL**, you can grant the host OS permissions based on your business requirements.
         self.open_permission = open_permission
+        # The description of the host.
         self.text = text
+        # The virtual private cloud (VPC) ID of the dedicated cluster in which the host is created.
         self.vpcid = vpcid
         self.zone_idlist = zone_idlist
 
@@ -2344,7 +2813,9 @@ class DescribeDedicatedHostGroupsResponseBody(TeaModel):
         dedicated_host_groups: DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups = None,
         request_id: str = None,
     ):
+        # The queried hosts.
         self.dedicated_host_groups = dedicated_host_groups
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2435,19 +2906,49 @@ class DescribeDedicatedHostsRequest(TeaModel):
         tags: str = None,
         zone_id: str = None,
     ):
+        # Specifies whether instances can be deployed on the host. Valid values:
+        # 
+        # *   **Allocatable**: Instances can be deployed on the host.
+        # *   **Suspended**: Instances cannot be deployed on the host.
         self.allocation_status = allocation_status
+        # The dedicated cluster ID. You can log on to the ApsaraDB for MyBase console and go to the **Dedicated Clusters** page to view the dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The ID of the host in the dedicated cluster. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The state of the host. Valid values:
+        # 
+        # *   **0**: The host is being created.
+        # *   **1**: The host is running.
+        # *   **2**: The host is faulty.
+        # *   **3**: The host is ready for disabling.
+        # *   **4**: The host is being maintained.
+        # *   **5**: The host is disabled.
+        # *   **6**: The host is restarting.
+        # *   **7**: The host is locked.
+        # 
+        # >  When a host fails, the host is disabled. Before the host is disabled, the data of the instances that run on the host is migrated to another host.
         self.host_status = host_status
+        # The storage type of the host. Valid values:
+        # 
+        # *   **dhg_local_ssd**: local SSD.
+        # *   **dhg_cloud_ssd** or **dhg_cloud_essd**: enhanced SSD (ESSD).
         self.host_type = host_type
+        # The order ID. You can log on to the Billing Management console and go to the **Orders** page to view the order ID.
         self.order_id = order_id
         self.owner_id = owner_id
+        # The page number.
         self.page_numbers = page_numbers
+        # The number of entries per page.
         self.page_size = page_size
+        # [The region ID](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tags that are added to the host. Each tag is a key-value pair that consists of TagKey and TagValue. You can specify a maximum of five tags in the following format for each request: {"key1":"value1","key2":"value2"...}.
+        # 
+        # >  If you want to filter hosts based on tags, do not specify the **DedicatedHostId** parameter. Otherwise, the **DedicatedHostId** parameter is used to filter hosts.
         self.tags = tags
+        # The zone ID. You can call the [DescribeRegions](~~214103~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2563,42 +3064,115 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The custom account name of the host.
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
+        # *   The name must be 2 to 16 characters in length.
         self.account_name = account_name
+        # The account type of the host. Valid values:
+        # 
+        # **Normal**: standard account.
+        # 
+        # **Admin**: administrator account.
         self.account_type = account_type
+        # Specifies whether instances can be deployed on the host. Valid values:
+        # 
+        # *   **Allocatable**: Instances can be deployed on the host.
+        # *   **Suspended**: Instances cannot be deployed on the host.
         self.allocation_status = allocation_status
+        # The ID of the bastion host with which the host is associated.
         self.bastion_instance_id = bastion_instance_id
+        # The CPU utilization of the host.
         self.cpuallocation_ratio = cpuallocation_ratio
+        # The type of the dedicated cluster. Valid values:
+        # 
+        # *   **Pro**: Proprietary MyBase.
+        # *   **Standard**: Managed MyBase.
+        # 
+        # >  This parameter is returned only for the China site (aliyun.com).
         self.category = category
+        # The billing method.
         self.charge_type = charge_type
+        # The number of used CPU cores.
         self.cpu_used = cpu_used
+        # The time when the host was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.created_time = created_time
+        # The ID of the dedicated cluster in which the host is created.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The disk usage of the host. Unit: %.
         self.disk_allocation_ratio = disk_allocation_ratio
+        # The disk information of the ECS instance.
+        # 
+        # >  This parameter is returned only for the China site (aliyun.com) when the dedicated cluster is of the **Proprietary MyBase** type.
         self.disk_info = disk_info
+        # The distribution symbol of the host.
+        # 
+        # >  This parameter is returned only when the host runs **Tair**.
         self.distribution_symbol = distribution_symbol
+        # The distribution tag of the host.
         self.distribution_tag = distribution_tag
+        # The instance type of the Elastic Compute Service (ECS) instance. For more information, see [Overview of instance families](~~25378~~).
         self.ecs_class_code = ecs_class_code
+        # The ID of the ECS instance.
+        # 
+        # >  This parameter is returned only for the China site (aliyun.com) when the dedicated cluster is of the **Proprietary MyBase** type.
         self.ecs_id = ecs_id
+        # The expiration time of the host. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         self.end_time = end_time
+        # The database engine of the host.
         self.engine = engine
+        # The number of CPU cores of the host.
         self.host_cpu = host_cpu
+        # The instance type of the host.
         self.host_class = host_class
+        # The memory size of the host. Unit: GB.
         self.host_mem = host_mem
+        # The name of the host.
         self.host_name = host_name
+        # The state of the host. Valid values:
+        # 
+        # *   **0**: The host is being created.
+        # *   **1**: The host is running.
+        # *   **2**: The host is faulty.
+        # *   **3**: The host is ready for disabling.
+        # *   **4**: The host is being maintained.
+        # *   **5**: The host is disabled.
+        # *   **6**: The host is restarting.
+        # *   **7**: The host is locked.
+        # 
+        # >  When a host fails, the host is disabled. Before the host is disabled, the data of the instances that run on the host is migrated to another host.
         self.host_status = host_status
+        # The total storage of the host. Unit: GB.
         self.host_storage = host_storage
+        # The storage type of the host.
         self.host_type = host_type
+        # The IP address of the host.
         self.ipaddress = ipaddress
+        # The image type of the host.
         self.image_category = image_category
+        # The number of instances deployed on the host.
         self.instance_number = instance_number
+        # The memory usage of the host. Unit: %.
         self.mem_allocation_ratio = mem_allocation_ratio
+        # The amount of memory used by the host. Unit: GB.
         self.memory_used = memory_used
+        # The versions supported by hosts in ApsaraDB MyBase for SQL Server.
         self.mssql_support_version = mssql_support_version
+        # Indicates whether the host OS permissions are granted. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1** (default): yes.
         self.open_permission = open_permission
+        # The amount of storage used by the host. Unit: GB.
         self.storage_used = storage_used
+        # The virtual private cloud (VPC) ID of the dedicated cluster in which the host is created.
         self.vpcid = vpcid
+        # The ID of the vSwitch to which the host is connected.
         self.v_switch_id = v_switch_id
+        # The ID of the zone in which the host resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2811,12 +3385,19 @@ class DescribeDedicatedHostsResponseBody(TeaModel):
         request_id: str = None,
         total_records: int = None,
     ):
+        # The dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The queried hosts.
         self.dedicated_hosts = dedicated_hosts
+        # The maximum storage of local SSDs for auto scaling. Unit: GB.
         self.max_auto_scale_host_storage = max_auto_scale_host_storage
+        # The page number.
         self.page_numbers = page_numbers
+        # The number of entries per page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_records = total_records
 
     def validate(self):
@@ -2921,13 +3502,34 @@ class DescribeHostEcsLevelInfoRequest(TeaModel):
         storage_type: str = None,
         zone_id: str = None,
     ):
+        # The database engine. Valid values:
+        # 
+        # *   **mysql**\
+        # *   **mssql**\
+        # *   **pgsql**\
+        # *   **redis**\
         self.db_type = db_type
+        # The image of the host. Valid values:
+        # 
+        # *   **WindowsWithMssqlEntAlwaysonLicense**: SQL Server Cluster Edition.
+        # *   **WindowsWithMssqlStdLicense**: SQL Server Standard Edition.
+        # *   **WindowsWithMssqlEntLicense**: SQL Server Enterprise Edition.
+        # *   **WindowsWithMssqlWebLicense**: SQL Server Web Edition.
+        # *   **AliLinux**: other images.
         self.image_category = image_category
         self.owner_id = owner_id
+        # The region ID. For more information, see [Region IDs](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The storage type. Valid values:
+        # 
+        # *   **local_ssd**: standard SSD.
+        # *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+        # *   **cloud_essd2**: PL2 ESSD.
+        # *   **cloud_essd3**: PL3 ESSD.
         self.storage_type = storage_type
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2996,19 +3598,33 @@ class DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems(TeaModel):
         rds_class_code: str = None,
         storage_iops: int = None,
     ):
+        # The disk bandwidth. Unit: Gbit/s.
         self.cloud_storage_bandwidth = cloud_storage_bandwidth
+        # The number of CPU cores of the host.
         self.cpu = cpu
+        # The processor frequency. Unit: GHz.
         self.cpu_frequency = cpu_frequency
+        # The CPU model of the host.
         self.cpu_version = cpu_version
+        # The name of the host.
         self.description = description
+        # The instance family of the host.
         self.ecs_class = ecs_class
+        # The instance type of the host.
         self.ecs_class_code = ecs_class_code
+        # Indicates whether the host uses cloud disks.
         self.is_cloud_disk = is_cloud_disk
+        # The local storage.
         self.local_storage = local_storage
+        # The memory size of the host. Unit: GB.
         self.memory = memory
+        # The internal bandwidth of the host. Unit: Gbit/s.
         self.net_band_width = net_band_width
+        # The packet forwarding rate over the internal network, which is displayed after being divided by 10,000. Unit: packets per second (PPS).
         self.net_package = net_package
+        # The instance type of the instance.
         self.rds_class_code = rds_class_code
+        # The storage IOPS of the host, which is displayed after being divided by 10,000.
         self.storage_iops = storage_iops
 
     def validate(self):
@@ -3089,7 +3705,14 @@ class DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfos(TeaModel):
         cddc_host_type: str = None,
         items: List[DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfosItems] = None,
     ):
+        # The category of the host. Valid values:
+        # 
+        # *   **general**: general-purpose.
+        # *   **compute**: compute-optimized.
+        # *   **ram**: memory-optimized.
+        # *   **dragon**: ECS Bare Metal Instance.
         self.cddc_host_type = cddc_host_type
+        # The queried host specifications.
         self.items = items
 
     def validate(self):
@@ -3130,7 +3753,9 @@ class DescribeHostEcsLevelInfoResponseBody(TeaModel):
         host_ecs_level_infos: List[DescribeHostEcsLevelInfoResponseBodyHostEcsLevelInfos] = None,
         request_id: str = None,
     ):
+        # The queried host.
         self.host_ecs_level_infos = host_ecs_level_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3219,11 +3844,17 @@ class DescribeHostWebShellRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
         self.region_id = region_id
+        # ResourceOwnerAccount
         self.resource_owner_account = resource_owner_account
+        # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
+        # The zone ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3272,7 +3903,9 @@ class DescribeHostWebShellResponseBody(TeaModel):
         login_url: str = None,
         request_id: str = None,
     ):
+        # The URL of the webshell.
         self.login_url = login_url
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3348,6 +3981,7 @@ class DescribeRegionsRequest(TeaModel):
         self,
         resource_owner_id: int = None,
     ):
+        # The ID of the asset owner.
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -3376,7 +4010,9 @@ class DescribeRegionsResponseBodyRegionsRDSRegion(TeaModel):
         region_id: str = None,
         zone_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3444,7 +4080,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
+        # The queried regions.
         self.regions = regions
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3523,7 +4161,23 @@ class ListTagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N.
+        # 
+        # *   **N** specifies the serial number of the tag. Examples:
+        # 
+        #     *   **Tag.1.Key** specifies the key of the first tag.
+        #     *   **Tag.2.Key** specifies the key of the second tag.
+        # 
+        # *   You must specify one of this parameter and **ResourceId.N**.
         self.key = key
+        # The value of tag N.
+        # 
+        # *   **N** specifies the serial number of the tag. Examples:
+        # 
+        #     *   **Tag.1.Value** specifies the value of the first tag.
+        #     *   **Tag.2.Value** specifies the value of the second tag.
+        # 
+        # *   If no tag value exists, a value is automatically created.
         self.value = value
 
     def validate(self):
@@ -3562,11 +4216,15 @@ class ListTagResourcesRequest(TeaModel):
         tag: List[ListTagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
+        # The region ID of the host.
         self.region_id = region_id
+        # The ID of host N. You can specify multiple host IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to DEDICATEDHOST.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -3629,9 +4287,15 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The host ID.
         self.resource_id = resource_id
+        # The resource type.
+        # 
+        # ALIYUN::CDDC::DEDICATEDHOST is returned, which indicates an ApsaraDB for MyBase host.
         self.resource_type = resource_type
+        # The key of tag N.
         self.tag_key = tag_key
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -3672,7 +4336,9 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[ListTagResourcesResponseBodyTagResources] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The queried tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -3762,12 +4428,19 @@ class ModifyDedicatedHostAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The account name of the host.
         self.account_name = account_name
+        # The new account password of the host.
         self.account_password = account_password
+        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # 账号ID。
         self.owner_id = owner_id
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
         self.region_id = region_id
+        # 资源主账号的账号名称。
         self.resource_owner_account = resource_owner_account
+        # ResourceOwnerId
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
@@ -3819,6 +4492,7 @@ class ModifyDedicatedHostAccountResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -3896,10 +4570,17 @@ class ModifyDedicatedHostAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # Indicates whether instances can be deployed on the host. Valid values:
+        # 
+        # *   **1**: yes.
+        # *   **0**: no.
         self.allocation_status = allocation_status
+        # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The name of the host.
         self.host_name = host_name
         self.owner_id = owner_id
+        # The [region ID](~~198326~~) of the host.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3953,6 +4634,7 @@ class ModifyDedicatedHostAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4031,13 +4713,25 @@ class ModifyDedicatedHostClassRequest(TeaModel):
         switch_time_mode: str = None,
         target_class_code: str = None,
     ):
+        # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
+        # The [region ID](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The time when you want to upgrade the specifications of the host. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # >  This parameter must be specified only when SwitchTimeMode is set to 2.
         self.switch_time = switch_time
+        # The execution mode that is used to upgrade host specifications. Valid values:
+        # 
+        # *   **0** (default): immediately upgrades host specifications.
+        # *   **2**: upgrades host specifications at a specified point in time.
+        # 
+        # >  If you set this parameter to **2**, you must specify **SwitchTime**.
         self.switch_time_mode = switch_time_mode
+        # The instance type to which you want the host to be upgraded. For more information, see [Host specification details](~~206343~~).
         self.target_class_code = target_class_code
 
     def validate(self):
@@ -4095,8 +4789,11 @@ class ModifyDedicatedHostClassResponseBody(TeaModel):
         request_id: str = None,
         task_id: str = None,
     ):
+        # The host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -4187,15 +4884,41 @@ class ModifyDedicatedHostGroupAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The policy that is used to allocate resources in the dedicated cluster. Valid values:
+        # 
+        # *   **Evenly**: The system preferentially deploys database instances on the hosts where no resources or fewer resources are allocated. This maximizes system stability.
+        # *   **Intensively**: The system preferentially deploys database instances on the hosts that are created earlier and have more allocated resources. This maximizes resource utilization.
         self.allocation_policy = allocation_policy
+        # The CPU overcommit ratio of the dedicated cluster. Valid values: **100** to **300**.
+        # 
+        # >  If you change the CPU overcommit ratio to **300%**, the total CPU resources of all instances are three times the actual CPU resources. This maximizes the use of CPU resources.
         self.cpu_allocation_ratio = cpu_allocation_ratio
+        # The name of the dedicated cluster.
         self.dedicated_host_group_desc = dedicated_host_group_desc
+        # The dedicated cluster ID.
+        # 
+        # >  You can log on to the ApsaraDB for MyBase console and go to the Dedicated Clusters page to view the dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
+        # The storage overcommit ratio of the dedicated cluster. Valid values: **100** to **200**.
         self.disk_allocation_ratio = disk_allocation_ratio
+        # The policy that is used to handle host failures. Valid values:
+        # 
+        # *   **Auto**: The system automatically replaces faulty hosts.
+        # *   **Manual**: You must manually replace faulty hosts.
+        # 
+        # >  You can select a policy based on your business requirements only for dedicated clusters that run **MySQL**. For dedicated clusters that run other database engines, the default value Auto is used.
         self.host_replace_policy = host_replace_policy
+        # The maximum memory usage of each host in the dedicated cluster. Valid values: **0** to **100**.
         self.mem_allocation_ratio = mem_allocation_ratio
+        # Specifies whether to grant the host OS permissions. Valid values:
+        # 
+        # *   **0**: no.
+        # *   **1**: yes.
+        # 
+        # >  You can grant the host OS permissions based on your business requirements only when you create dedicated clusters that run **MySQL, SQL Server, or PostgreSQL**. For dedicated clusters that run other database engines, the default value 0 is used.
         self.open_permission = open_permission
         self.owner_id = owner_id
+        # The region ID of the dedicated cluster. For more information, see [Region IDs](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4269,6 +4992,7 @@ class ModifyDedicatedHostGroupAttributeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4345,9 +5069,18 @@ class ModifyDedicatedHostPasswordRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The new password.
+        # 
+        # *   The password must be 8 to 32 characters in length.
+        # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # *   The password can contain the following special characters: `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # >  If your dedicated cluster runs SQL Server, the password cannot contain the account name (case-insensitive).
         self.new_password = new_password
         self.owner_id = owner_id
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4398,7 +5131,9 @@ class ModifyDedicatedHostPasswordResponseBody(TeaModel):
         dedicated_host_name: str = None,
         request_id: str = None,
     ):
+        # The name of the host.
         self.dedicated_host_name = dedicated_host_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4478,8 +5213,10 @@ class QueryHostBaseInfoByInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
+        # The region ID of the instance. For more information, see [Region IDs](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4534,15 +5271,25 @@ class QueryHostBaseInfoByInstanceResponseBodyHostInstanceConsoleInfos(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # The instance type of the instance.
         self.cluster_name = cluster_name
+        # The database engine of the instance.
         self.engine = engine
+        # The version of the database engine.
         self.engine_version = engine_version
+        # The expiration time of the instance.
         self.expired_time = expired_time
+        # The name of the host on which the instance is deployed.
         self.host_name = host_name
+        # The IP address of the host on which the instance is deployed.
         self.ip = ip
+        # The port number of the host on which the instance is deployed.
         self.port = port
+        # The role of the instance.
         self.role = role
+        # The state of the instance.
         self.status = status
+        # The virtual private cloud (VPC) ID of the host on which the instance is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -4607,7 +5354,9 @@ class QueryHostBaseInfoByInstanceResponseBody(TeaModel):
         host_instance_console_infos: List[QueryHostBaseInfoByInstanceResponseBodyHostInstanceConsoleInfos] = None,
         request_id: str = None,
     ):
+        # The queried host and instance information.
         self.host_instance_console_infos = host_instance_console_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4695,8 +5444,10 @@ class QueryHostInstanceConsoleInfoRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
         self.owner_id = owner_id
+        # The region ID of the host. You can log on to the ApsaraDB for MyBase console to view the [region ID](~~198326~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4745,9 +5496,13 @@ class QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfosPerfInfo(T
         mem_ratio: float = None,
         perf_idb_pio: float = None,
     ):
+        # The number of CPU cores of the host.
         self.cpu_ratio = cpu_ratio
+        # The disk storage of the host. Unit: GB.
         self.disk_curr = disk_curr
+        # The memory size of the host. Unit: GB.
         self.mem_ratio = mem_ratio
+        # The number of physical I/O operations performed on the host.
         self.perf_idb_pio = perf_idb_pio
 
     def validate(self):
@@ -4802,21 +5557,37 @@ class QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfos(TeaModel)
         role: str = None,
         status: str = None,
     ):
+        # The number of CPU cores of the instance.
         self.cpu_cores = cpu_cores
+        # The maximum number of CPU cores of the instance.
         self.cpu_increase_ratio_value = cpu_increase_ratio_value
+        # The description of the instance.
         self.dbinstance_description = dbinstance_description
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The storage capacity of the instance. Unit: GB.
         self.disk_size = disk_size
+        # The database engine of the instance.
         self.engine = engine
+        # The version of the database engine.
         self.engine_version = engine_version
+        # The IP address of the host on which the instance is deployed.
         self.ip = ip
+        # The instance type of the instance.
         self.level_name = level_name
+        # The maximum number of connections to the instance.
         self.max_conn_increase_ratio_value = max_conn_increase_ratio_value
+        # The memory size of the instance. Unit: GB.
         self.mem_size = mem_size
+        # The maximum memory size of the instance.
         self.memory_increase_ratio_value = memory_increase_ratio_value
+        # The performance information of the host on which the instance is deployed.
         self.perf_info = perf_info
+        # The port number of the host.
         self.port = port
+        # The role of the instance.
         self.role = role
+        # The state of the instance.
         self.status = status
 
     def validate(self):
@@ -4907,7 +5678,9 @@ class QueryHostInstanceConsoleInfoResponseBody(TeaModel):
         host_instance_console_infos: List[QueryHostInstanceConsoleInfoResponseBodyHostInstanceConsoleInfos] = None,
         request_id: str = None,
     ):
+        # The queried instances.
         self.host_instance_console_infos = host_instance_console_infos
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4996,9 +5769,15 @@ class ReplaceDedicatedHostRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The host ID. You can call the [DescribeDedicatedHosts](~~200944~~) operation to query the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The switchover method of the primary instance. Valid values:
+        # 
+        # *   **MaintainTime** (default): The system performs a switchover within a maintenance window. The system switches workloads from the primary instance on the host to the secondary instance on another host, and then restarts the current host. This prevents service interruptions.
+        # *   **Immediate**: The system immediately restarts the host.
         self.failover_mode = failover_mode
         self.owner_id = owner_id
+        # The region ID of the host. You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5050,8 +5829,11 @@ class ReplaceDedicatedHostResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
+        # The ID of the host in the dedicated cluster.
         self.dedicated_host_id = dedicated_host_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5137,10 +5919,22 @@ class RestartDedicatedHostRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The host ID. You can log on to the ApsaraDB for MyBase console and go to the **Hosts** page to view the host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The switchover method of the primary instance. Valid values:
+        # 
+        # *   **MaintainTime** (default): The system performs a switchover within a maintenance window. The system switches workloads from the primary instance on the host to the secondary instance on another host, and then restarts the current host. This prevents service interruptions.
+        # *   **Immediate**: The system immediately restarts the host.
         self.failover_mode = failover_mode
+        # Specifies whether to forcefully restart the host. Valid values:
+        # 
+        # *   true: The system forcefully restarts the host. If this value is used, the system powers off the host. This results in the loss of cached data that is not written to storage. Exercise caution when you select this value.
+        # *   false (default): The system restarts the host normally.
+        # 
+        # >  This parameter takes effect only for hosts that are created in ApsaraDB MyBase for Redis dedicated clusters of the Enhanced Edition (Tair). Hosts that are created in ApsaraDB MyBase dedicated clusters that run other database engines can be restarted normally.
         self.force_stop = force_stop
         self.owner_id = owner_id
+        # [The region ID](~~198326~~) of the host.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5196,8 +5990,11 @@ class RestartDedicatedHostResponseBody(TeaModel):
         request_id: str = None,
         task_id: int = None,
     ):
+        # The host ID.
         self.dedicated_host_id = dedicated_host_id
+        # The request ID.
         self.request_id = request_id
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -5278,7 +6075,23 @@ class TagResourcesRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N.
+        # 
+        # *   **N** specifies the serial number of the tag. Examples:
+        # 
+        #     *   **Tag.1.Key** specifies the key of the first tag.
+        #     *   **Tag.2.Key** specifies the key of the second tag.
+        # 
+        # *   If no tag key exists, a key is automatically created.
         self.key = key
+        # The value of tag N.
+        # 
+        # *   **N** specifies the serial number of the tag. Examples:
+        # 
+        #     *   **Tag.1.Value** specifies the value of the first tag.
+        #     *   **Tag.2.Value** specifies the value of the second tag.
+        # 
+        # *   If no tag value exists, a value is automatically created.
         self.value = value
 
     def validate(self):
@@ -5317,11 +6130,15 @@ class TagResourcesRequest(TeaModel):
         tag: List[TagResourcesRequestTag] = None,
     ):
         self.owner_id = owner_id
+        # The region ID of the host.
         self.region_id = region_id
+        # The ID of host N. You can specify multiple host IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to DEDICATEDHOST.
         self.resource_type = resource_type
+        # The tags.
         self.tag = tag
 
     def validate(self):
@@ -5381,6 +6198,7 @@ class TagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5459,13 +6277,23 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_key: List[str] = None,
     ):
+        # Specifies whether to remove all tags from the host. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
+        # 
+        # >  If you specify both this parameter and the TagKey.N parameter, this parameter does not take effect.
         self.all = all
         self.owner_id = owner_id
+        # The region ID of the host.
         self.region_id = region_id
+        # The ID of host N. You can specify multiple host IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The resource type. Set the value to DEDICATEDHOST.
         self.resource_type = resource_type
+        # The key of tag N.
         self.tag_key = tag_key
 
     def validate(self):
@@ -5521,6 +6349,7 @@ class UntagResourcesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

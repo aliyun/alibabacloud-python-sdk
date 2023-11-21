@@ -180,6 +180,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.CreateDedicatedHostAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.CreateDedicatedHostAccountResponse:
+        """
+        Each host can have only one account. Before you create an account for a host, make sure that the existing account of the host is deleted. For more information, see [Create an account for a host](~~211413~~).
+        
+        @param request: CreateDedicatedHostAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDedicatedHostAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -226,6 +233,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.CreateDedicatedHostAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.CreateDedicatedHostAccountResponse:
+        """
+        Each host can have only one account. Before you create an account for a host, make sure that the existing account of the host is deleted. For more information, see [Create an account for a host](~~211413~~).
+        
+        @param request: CreateDedicatedHostAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDedicatedHostAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -271,6 +285,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.CreateDedicatedHostAccountRequest,
     ) -> cddc_20200320_models.CreateDedicatedHostAccountResponse:
+        """
+        Each host can have only one account. Before you create an account for a host, make sure that the existing account of the host is deleted. For more information, see [Create an account for a host](~~211413~~).
+        
+        @param request: CreateDedicatedHostAccountRequest
+        @return: CreateDedicatedHostAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dedicated_host_account_with_options(request, runtime)
 
@@ -278,6 +298,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.CreateDedicatedHostAccountRequest,
     ) -> cddc_20200320_models.CreateDedicatedHostAccountResponse:
+        """
+        Each host can have only one account. Before you create an account for a host, make sure that the existing account of the host is deleted. For more information, see [Create an account for a host](~~211413~~).
+        
+        @param request: CreateDedicatedHostAccountRequest
+        @return: CreateDedicatedHostAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dedicated_host_account_with_options_async(request, runtime)
 
@@ -413,7 +439,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ecsclass_list):
             request.ecsclass_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ecsclass_list, 'ECSClassList', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
@@ -436,6 +466,10 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth_out):
+            query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.os_password):
@@ -452,12 +486,20 @@ class Client(OpenApiClient):
             query['PeriodType'] = request.period_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.user_data_in_base_64):
+            query['UserDataInBase64'] = request.user_data_in_base_64
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -493,7 +535,11 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.ecsclass_list):
             request.ecsclass_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ecsclass_list, 'ECSClassList', 'json')
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
+        if not UtilClient.is_unset(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.client_token):
@@ -516,6 +562,10 @@ class Client(OpenApiClient):
             query['Engine'] = request.engine
         if not UtilClient.is_unset(request.image_id):
             query['ImageId'] = request.image_id
+        if not UtilClient.is_unset(request.internet_charge_type):
+            query['InternetChargeType'] = request.internet_charge_type
+        if not UtilClient.is_unset(request.internet_max_bandwidth_out):
+            query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.os_password):
@@ -532,12 +582,20 @@ class Client(OpenApiClient):
             query['PeriodType'] = request.period_type
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_data):
+            query['UserData'] = request.user_data
+        if not UtilClient.is_unset(request.user_data_in_base_64):
+            query['UserDataInBase64'] = request.user_data_in_base_64
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not UtilClient.is_unset(request.vpc_id):
@@ -672,6 +730,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DeleteDedicatedHostGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DeleteDedicatedHostGroupResponse:
+        """
+        You can call this operation to delete a dedicated cluster only after all the instances and hosts in the dedicated cluster are deleted.
+        
+        @param request: DeleteDedicatedHostGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDedicatedHostGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_group_id):
@@ -708,6 +773,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DeleteDedicatedHostGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DeleteDedicatedHostGroupResponse:
+        """
+        You can call this operation to delete a dedicated cluster only after all the instances and hosts in the dedicated cluster are deleted.
+        
+        @param request: DeleteDedicatedHostGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDedicatedHostGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_group_id):
@@ -743,6 +815,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DeleteDedicatedHostGroupRequest,
     ) -> cddc_20200320_models.DeleteDedicatedHostGroupResponse:
+        """
+        You can call this operation to delete a dedicated cluster only after all the instances and hosts in the dedicated cluster are deleted.
+        
+        @param request: DeleteDedicatedHostGroupRequest
+        @return: DeleteDedicatedHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dedicated_host_group_with_options(request, runtime)
 
@@ -750,6 +828,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DeleteDedicatedHostGroupRequest,
     ) -> cddc_20200320_models.DeleteDedicatedHostGroupResponse:
+        """
+        You can call this operation to delete a dedicated cluster only after all the instances and hosts in the dedicated cluster are deleted.
+        
+        @param request: DeleteDedicatedHostGroupRequest
+        @return: DeleteDedicatedHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dedicated_host_group_with_options_async(request, runtime)
 
@@ -1028,6 +1112,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeDedicatedHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeDedicatedHostsResponse:
+        """
+        After hosts are created in a dedicated cluster, you can query the information about the hosts such as performance metrics, total number of CPU cores, total memory size, and total storage.
+        
+        @param request: DescribeDedicatedHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDedicatedHostsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_status):
@@ -1082,6 +1173,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeDedicatedHostsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeDedicatedHostsResponse:
+        """
+        After hosts are created in a dedicated cluster, you can query the information about the hosts such as performance metrics, total number of CPU cores, total memory size, and total storage.
+        
+        @param request: DescribeDedicatedHostsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDedicatedHostsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_status):
@@ -1135,6 +1233,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeDedicatedHostsRequest,
     ) -> cddc_20200320_models.DescribeDedicatedHostsResponse:
+        """
+        After hosts are created in a dedicated cluster, you can query the information about the hosts such as performance metrics, total number of CPU cores, total memory size, and total storage.
+        
+        @param request: DescribeDedicatedHostsRequest
+        @return: DescribeDedicatedHostsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dedicated_hosts_with_options(request, runtime)
 
@@ -1142,6 +1246,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeDedicatedHostsRequest,
     ) -> cddc_20200320_models.DescribeDedicatedHostsResponse:
+        """
+        After hosts are created in a dedicated cluster, you can query the information about the hosts such as performance metrics, total number of CPU cores, total memory size, and total storage.
+        
+        @param request: DescribeDedicatedHostsRequest
+        @return: DescribeDedicatedHostsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dedicated_hosts_with_options_async(request, runtime)
 
@@ -1150,6 +1260,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeHostEcsLevelInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
+        """
+        After a host is created, you can call this operation to query the information about the host specifications, such as the CPU resources, memory resources, CPU model, host category, and storage type.
+        
+        @param request: DescribeHostEcsLevelInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHostEcsLevelInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -1192,6 +1309,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeHostEcsLevelInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
+        """
+        After a host is created, you can call this operation to query the information about the host specifications, such as the CPU resources, memory resources, CPU model, host category, and storage type.
+        
+        @param request: DescribeHostEcsLevelInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHostEcsLevelInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.db_type):
@@ -1233,6 +1357,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeHostEcsLevelInfoRequest,
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
+        """
+        After a host is created, you can call this operation to query the information about the host specifications, such as the CPU resources, memory resources, CPU model, host category, and storage type.
+        
+        @param request: DescribeHostEcsLevelInfoRequest
+        @return: DescribeHostEcsLevelInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_host_ecs_level_info_with_options(request, runtime)
 
@@ -1240,6 +1370,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeHostEcsLevelInfoRequest,
     ) -> cddc_20200320_models.DescribeHostEcsLevelInfoResponse:
+        """
+        After a host is created, you can call this operation to query the information about the host specifications, such as the CPU resources, memory resources, CPU model, host category, and storage type.
+        
+        @param request: DescribeHostEcsLevelInfoRequest
+        @return: DescribeHostEcsLevelInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_ecs_level_info_with_options_async(request, runtime)
 
@@ -1248,6 +1384,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeHostWebShellRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
+        """
+        You can use a webshell to access a host in an ApsaraDB MyBase for MySQL or ApsaraDB MyBase for PostgreSQL dedicated cluster. For more information, see [Use a webshell to access a host](~~205456~~).
+        
+        @param request: DescribeHostWebShellRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHostWebShellResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -1286,6 +1429,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeHostWebShellRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
+        """
+        You can use a webshell to access a host in an ApsaraDB MyBase for MySQL or ApsaraDB MyBase for PostgreSQL dedicated cluster. For more information, see [Use a webshell to access a host](~~205456~~).
+        
+        @param request: DescribeHostWebShellRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHostWebShellResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -1323,6 +1473,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeHostWebShellRequest,
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
+        """
+        You can use a webshell to access a host in an ApsaraDB MyBase for MySQL or ApsaraDB MyBase for PostgreSQL dedicated cluster. For more information, see [Use a webshell to access a host](~~205456~~).
+        
+        @param request: DescribeHostWebShellRequest
+        @return: DescribeHostWebShellResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_host_web_shell_with_options(request, runtime)
 
@@ -1330,6 +1486,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeHostWebShellRequest,
     ) -> cddc_20200320_models.DescribeHostWebShellResponse:
+        """
+        You can use a webshell to access a host in an ApsaraDB MyBase for MySQL or ApsaraDB MyBase for PostgreSQL dedicated cluster. For more information, see [Use a webshell to access a host](~~205456~~).
+        
+        @param request: DescribeHostWebShellRequest
+        @return: DescribeHostWebShellResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_host_web_shell_with_options_async(request, runtime)
 
@@ -1338,6 +1500,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeRegionsResponse:
+        """
+        For more information about region IDs, see [Region IDs](~~198326~~).
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -1366,6 +1535,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.DescribeRegionsResponse:
+        """
+        For more information about region IDs, see [Region IDs](~~198326~~).
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -1393,6 +1569,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeRegionsRequest,
     ) -> cddc_20200320_models.DescribeRegionsResponse:
+        """
+        For more information about region IDs, see [Region IDs](~~198326~~).
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -1400,6 +1582,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.DescribeRegionsRequest,
     ) -> cddc_20200320_models.DescribeRegionsResponse:
+        """
+        For more information about region IDs, see [Region IDs](~~198326~~).
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -1690,6 +1878,14 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ModifyDedicatedHostClassRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ModifyDedicatedHostClassResponse:
+        """
+        After a host is created in a dedicated cluster, you can modify the specifications of the host based on your business requirements. The host specifications include the CPU and memory resources. For more information, see [Upgrade host specifications](~~262822~~).
+        >  When you upgrade the specifications of a host, the host restarts. The database instances that are running on the host also restart. For information about the impacts of a host restart, see [Restart a host](~~141772~~).
+        
+        @param request: ModifyDedicatedHostClassRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedHostClassResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -1732,6 +1928,14 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ModifyDedicatedHostClassRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ModifyDedicatedHostClassResponse:
+        """
+        After a host is created in a dedicated cluster, you can modify the specifications of the host based on your business requirements. The host specifications include the CPU and memory resources. For more information, see [Upgrade host specifications](~~262822~~).
+        >  When you upgrade the specifications of a host, the host restarts. The database instances that are running on the host also restart. For information about the impacts of a host restart, see [Restart a host](~~141772~~).
+        
+        @param request: ModifyDedicatedHostClassRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedHostClassResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -1773,6 +1977,13 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ModifyDedicatedHostClassRequest,
     ) -> cddc_20200320_models.ModifyDedicatedHostClassResponse:
+        """
+        After a host is created in a dedicated cluster, you can modify the specifications of the host based on your business requirements. The host specifications include the CPU and memory resources. For more information, see [Upgrade host specifications](~~262822~~).
+        >  When you upgrade the specifications of a host, the host restarts. The database instances that are running on the host also restart. For information about the impacts of a host restart, see [Restart a host](~~141772~~).
+        
+        @param request: ModifyDedicatedHostClassRequest
+        @return: ModifyDedicatedHostClassResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_host_class_with_options(request, runtime)
 
@@ -1780,6 +1991,13 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ModifyDedicatedHostClassRequest,
     ) -> cddc_20200320_models.ModifyDedicatedHostClassResponse:
+        """
+        After a host is created in a dedicated cluster, you can modify the specifications of the host based on your business requirements. The host specifications include the CPU and memory resources. For more information, see [Upgrade host specifications](~~262822~~).
+        >  When you upgrade the specifications of a host, the host restarts. The database instances that are running on the host also restart. For information about the impacts of a host restart, see [Restart a host](~~141772~~).
+        
+        @param request: ModifyDedicatedHostClassRequest
+        @return: ModifyDedicatedHostClassResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_host_class_with_options_async(request, runtime)
 
@@ -1788,6 +2006,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ModifyDedicatedHostGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ModifyDedicatedHostGroupAttributeResponse:
+        """
+        For more information, see [Manage dedicated clusters](~~182328~~).
+        
+        @param request: ModifyDedicatedHostGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedHostGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_policy):
@@ -1838,6 +2063,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ModifyDedicatedHostGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ModifyDedicatedHostGroupAttributeResponse:
+        """
+        For more information, see [Manage dedicated clusters](~~182328~~).
+        
+        @param request: ModifyDedicatedHostGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedHostGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_policy):
@@ -1887,6 +2119,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ModifyDedicatedHostGroupAttributeRequest,
     ) -> cddc_20200320_models.ModifyDedicatedHostGroupAttributeResponse:
+        """
+        For more information, see [Manage dedicated clusters](~~182328~~).
+        
+        @param request: ModifyDedicatedHostGroupAttributeRequest
+        @return: ModifyDedicatedHostGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_host_group_attribute_with_options(request, runtime)
 
@@ -1894,6 +2132,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ModifyDedicatedHostGroupAttributeRequest,
     ) -> cddc_20200320_models.ModifyDedicatedHostGroupAttributeResponse:
+        """
+        For more information, see [Manage dedicated clusters](~~182328~~).
+        
+        @param request: ModifyDedicatedHostGroupAttributeRequest
+        @return: ModifyDedicatedHostGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_host_group_attribute_with_options_async(request, runtime)
 
@@ -1902,6 +2146,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ModifyDedicatedHostPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ModifyDedicatedHostPasswordResponse:
+        """
+        This operation is supported only for ApsaraDB MyBase for Redis Enhanced Edition (Tair) dedicated clusters.
+        
+        @param request: ModifyDedicatedHostPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedHostPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -1940,6 +2191,13 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ModifyDedicatedHostPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ModifyDedicatedHostPasswordResponse:
+        """
+        This operation is supported only for ApsaraDB MyBase for Redis Enhanced Edition (Tair) dedicated clusters.
+        
+        @param request: ModifyDedicatedHostPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDedicatedHostPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -1977,6 +2235,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ModifyDedicatedHostPasswordRequest,
     ) -> cddc_20200320_models.ModifyDedicatedHostPasswordResponse:
+        """
+        This operation is supported only for ApsaraDB MyBase for Redis Enhanced Edition (Tair) dedicated clusters.
+        
+        @param request: ModifyDedicatedHostPasswordRequest
+        @return: ModifyDedicatedHostPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_dedicated_host_password_with_options(request, runtime)
 
@@ -1984,6 +2248,12 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ModifyDedicatedHostPasswordRequest,
     ) -> cddc_20200320_models.ModifyDedicatedHostPasswordResponse:
+        """
+        This operation is supported only for ApsaraDB MyBase for Redis Enhanced Edition (Tair) dedicated clusters.
+        
+        @param request: ModifyDedicatedHostPasswordRequest
+        @return: ModifyDedicatedHostPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_dedicated_host_password_with_options_async(request, runtime)
 
@@ -2164,6 +2434,14 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ReplaceDedicatedHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ReplaceDedicatedHostResponse:
+        """
+        If you specify the manual host replacement policy when you create an ApsaraDB MyBase for MySQL dedicated cluster, you can call this operation to replace a *faulty** host in the dedicated cluster.
+        >  You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the value of the **HostStatus** parameter.
+        
+        @param request: ReplaceDedicatedHostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceDedicatedHostResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -2202,6 +2480,14 @@ class Client(OpenApiClient):
         request: cddc_20200320_models.ReplaceDedicatedHostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cddc_20200320_models.ReplaceDedicatedHostResponse:
+        """
+        If you specify the manual host replacement policy when you create an ApsaraDB MyBase for MySQL dedicated cluster, you can call this operation to replace a *faulty** host in the dedicated cluster.
+        >  You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the value of the **HostStatus** parameter.
+        
+        @param request: ReplaceDedicatedHostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceDedicatedHostResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dedicated_host_id):
@@ -2239,6 +2525,13 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ReplaceDedicatedHostRequest,
     ) -> cddc_20200320_models.ReplaceDedicatedHostResponse:
+        """
+        If you specify the manual host replacement policy when you create an ApsaraDB MyBase for MySQL dedicated cluster, you can call this operation to replace a *faulty** host in the dedicated cluster.
+        >  You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the value of the **HostStatus** parameter.
+        
+        @param request: ReplaceDedicatedHostRequest
+        @return: ReplaceDedicatedHostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.replace_dedicated_host_with_options(request, runtime)
 
@@ -2246,6 +2539,13 @@ class Client(OpenApiClient):
         self,
         request: cddc_20200320_models.ReplaceDedicatedHostRequest,
     ) -> cddc_20200320_models.ReplaceDedicatedHostResponse:
+        """
+        If you specify the manual host replacement policy when you create an ApsaraDB MyBase for MySQL dedicated cluster, you can call this operation to replace a *faulty** host in the dedicated cluster.
+        >  You can call the [DescribeDedicatedHostAttribute](~~213010~~) operation to query the value of the **HostStatus** parameter.
+        
+        @param request: ReplaceDedicatedHostRequest
+        @return: ReplaceDedicatedHostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.replace_dedicated_host_with_options_async(request, runtime)
 
