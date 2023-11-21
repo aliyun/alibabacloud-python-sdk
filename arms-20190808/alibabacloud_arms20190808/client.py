@@ -1331,6 +1331,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def check_commercial_status_with_options(
+        self,
+        request: arms20190808_models.CheckCommercialStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CheckCommercialStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCommercialStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CheckCommercialStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_commercial_status_with_options_async(
+        self,
+        request: arms20190808_models.CheckCommercialStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.CheckCommercialStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCommercialStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.CheckCommercialStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_commercial_status(
+        self,
+        request: arms20190808_models.CheckCommercialStatusRequest,
+    ) -> arms20190808_models.CheckCommercialStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_commercial_status_with_options(request, runtime)
+
+    async def check_commercial_status_async(
+        self,
+        request: arms20190808_models.CheckCommercialStatusRequest,
+    ) -> arms20190808_models.CheckCommercialStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_commercial_status_with_options_async(request, runtime)
+
     def check_service_status_with_options(
         self,
         request: arms20190808_models.CheckServiceStatusRequest,
