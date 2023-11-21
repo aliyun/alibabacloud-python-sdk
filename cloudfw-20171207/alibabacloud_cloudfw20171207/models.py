@@ -1922,13 +1922,13 @@ class CreateVpcFirewallConfigureRequest(TeaModel):
     ):
         # The status of the VPC firewall after you create the firewall. Valid values:
         # 
-        # *   **open**: After you create the VPC firewall, the firewall is automatically enabled. This is the default value.
-        # *   **close**: After you create the VPC firewall, the firewall is not automatically enabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
+        # *   **open**: After you create the VPC firewall, the VPC firewall is automatically enabled. This is the default value.
+        # *   **close**: After you create the VPC firewall, the VPC firewall is disabled. To enable the firewall, you can call the [ModifyVpcFirewallSwitchStatus](~~342935~~) operation.
         self.firewall_switch = firewall_switch
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the request and the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
-        # *   **en**: English
+        # *   **en**: English.
         self.lang = lang
         # The CIDR blocks of the local VPC. The value is a JSON string that contains the following parameters:
         # 
@@ -1939,7 +1939,7 @@ class CreateVpcFirewallConfigureRequest(TeaModel):
         self.local_vpc_id = local_vpc_id
         # The region ID of the local VPC.
         # 
-        # >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+        # >  For more information about the regions in which Cloud Firewall is available, see [Supported regions](~~195657~~).
         self.local_vpc_region = local_vpc_region
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
@@ -1952,7 +1952,7 @@ class CreateVpcFirewallConfigureRequest(TeaModel):
         self.peer_vpc_id = peer_vpc_id
         # The region ID of the peer VPC.
         # 
-        # >  For more information about regions in which Cloud Firewall is supported, see [Supported regions](~~195657~~).
+        # >  For more information about Cloud Firewall supported regions, see [Supported regions](~~195657~~).
         self.peer_vpc_region = peer_vpc_region
         # The instance name of the VPC firewall.
         self.vpc_firewall_name = vpc_firewall_name
@@ -2019,7 +2019,7 @@ class CreateVpcFirewallConfigureResponseBody(TeaModel):
         request_id: str = None,
         vpc_firewall_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The instance ID of the VPC firewall.
         self.vpc_firewall_id = vpc_firewall_id
@@ -3003,7 +3003,12 @@ class DeleteTrFirewallV2Request(TeaModel):
         firewall_id: str = None,
         lang: str = None,
     ):
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
 
     def validate(self):
@@ -3035,6 +3040,7 @@ class DeleteTrFirewallV2ResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5655,18 +5661,39 @@ class DescribeInternetOpenIpRequest(TeaModel):
         service_name: str = None,
         start_time: str = None,
     ):
+        # The instance ID.
         self.assets_instance_id = assets_instance_id
+        # The instance name.
         self.assets_instance_name = assets_instance_name
+        # The asset type of the instance.
         self.assets_type = assets_type
+        # The page number.
         self.current_page = current_page
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The number of entries per page.
         self.page_size = page_size
+        # The port number.
         self.port = port
+        # The public IP address of the instance.
         self.public_ip = public_ip
+        # The region ID of the instance.
         self.region_no = region_no
+        # The risk level. If you leave this parameter empty, all risk levels are queried. Valid values:
+        # 
+        # *   **3**: high risk
+        # *   **2**: medium risk
+        # *   **1**: low risk
+        # *   **0**: no risk
         self.risk_level = risk_level
+        # The application.
         self.service_name = service_name
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5756,20 +5783,48 @@ class DescribeInternetOpenIpResponseBodyDataList(TeaModel):
         traffic_percent_30day: str = None,
         traffic_percent_7day: str = None,
     ):
+        # The reason why recommended intelligent policies are unavailable. Valid values:
+        # 
+        # *   No recommended intelligent policies are available.
+        # *   This feature is available only to some users.
+        # *   The policy configuration has been modified. No recommended intelligent policies are available.
+        # *   The recommended intelligent policies have been configured. No new recommended intelligent policies are available.
         self.acl_recommend_detail = acl_recommend_detail
+        # The instance ID.
         self.assets_instance_id = assets_instance_id
+        # The instance name.
         self.assets_name = assets_name
+        # The asset type of the instance.
         self.assets_type = assets_type
+        # The total number of ports.
         self.detail_num = detail_num
+        # Specifies whether an access control policy is recommended. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.has_acl_recommend = has_acl_recommend
+        # The list of ports.
         self.port_list = port_list
+        # The public IP address of the instance.
         self.public_ip = public_ip
+        # The region ID of the instance.
         self.region_no = region_no
+        # The risk level. Valid values:
+        # 
+        # *   **3**: high risk
+        # *   **2**: medium risk
+        # *   **1**: low risk
+        # *   **0**: no risk
         self.risk_level = risk_level
+        # The reason for the risk.
         self.risk_reason = risk_reason
+        # The list of applications.
         self.service_name_list = service_name_list
+        # The percentage of traffic of a day. Unit: percent (%).
         self.traffic_percent_1day = traffic_percent_1day
+        # The percentage of traffic of 30 days. Unit: percent (%).
         self.traffic_percent_30day = traffic_percent_30day
+        # The percentage of traffic of seven days. Unit: percent (%).
         self.traffic_percent_7day = traffic_percent_7day
 
     def validate(self):
@@ -5855,8 +5910,11 @@ class DescribeInternetOpenIpResponseBodyPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5894,8 +5952,11 @@ class DescribeInternetOpenIpResponseBody(TeaModel):
         page_info: DescribeInternetOpenIpResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # The data returned.
         self.data_list = data_list
+        # The pagination information.
         self.page_info = page_info
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -5994,14 +6055,34 @@ class DescribeInternetTrafficTrendRequest(TeaModel):
         start_time: str = None,
         traffic_type: str = None,
     ):
+        # The direction of the internet traffic.
+        # 
+        # Valid values:
+        # 
+        # *   **in**: inbound traffic
+        # *   **out**: outbound traffic
         self.direction = direction
+        # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.end_time = end_time
+        # The language of the content in the request and response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # The source code.
         self.source_code = source_code
+        # The IP address of the access source.
         self.source_ip = source_ip
+        # The private IP address of the source.
         self.src_private_ip = src_private_ip
+        # The public IP address of the source.
         self.src_public_ip = src_public_ip
+        # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         self.start_time = start_time
+        # The type of the traffic that is captured. Valid values:
+        # 
+        # *   **max** (default): peak traffic
+        # *   **avg**: average traffic
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -6070,15 +6151,25 @@ class DescribeInternetTrafficTrendResponseBodyDataList(TeaModel):
         time: int = None,
         total_bps: int = None,
     ):
+        # The inbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
         self.in_bps = in_bps
+        # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
         self.in_bytes = in_bytes
+        # The inbound network throughput, which indicates the number of packets that are sent inbound per second. Unit: packets per second (pps).
         self.in_pps = in_pps
+        # The number of new connections.
         self.new_conn = new_conn
+        # The outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
         self.out_bps = out_bps
+        # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
         self.out_bytes = out_bytes
+        # The outbound network throughput, which indicates the number of packets that are sent outbound per second. Unit: pps.
         self.out_pps = out_pps
+        # The number of requests.
         self.session_count = session_count
+        # The time when traffic is generated. The value is a UNIX timestamp. Unit: seconds.
         self.time = time
+        # The total inbound and outbound network throughput, which indicates the number of bits that are sent inbound per second. Unit: bit/s.
         self.total_bps = total_bps
 
     def validate(self):
@@ -6156,20 +6247,35 @@ class DescribeInternetTrafficTrendResponseBody(TeaModel):
         total_out_bytes: int = None,
         total_session: int = None,
     ):
+        # The average inbound network throughput, which indicates the average number of bits that are sent inbound per second. Unit: bit/s.
         self.avg_in_bps = avg_in_bps
+        # The average outbound network throughput, which indicates the average number of bits that are sent outbound per second. Unit: bit/s.
         self.avg_out_bps = avg_out_bps
+        # The average number of requests.
         self.avg_session = avg_session
+        # The total average inbound and outbound network throughput, which indicates the average number of bits that are sent inbound and outbound per second. Unit: bit/s.
         self.avg_total_bps = avg_total_bps
+        # The statistics on traffic.
         self.data_list = data_list
+        # The timestamp generated when the bandwidth reaches the peak value. The value is a UNIX timestamp. Unit: seconds.
         self.max_bandwidth_time = max_bandwidth_time
+        # The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
         self.max_in_bps = max_in_bps
+        # The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
         self.max_out_bps = max_out_bps
+        # The number of requests during the peak hour of the network throughout.
         self.max_session = max_session
+        # The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
         self.max_total_bps = max_total_bps
+        # The request ID.
         self.request_id = request_id
+        # The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
         self.total_bytes = total_bytes
+        # The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
         self.total_in_bytes = total_in_bytes
+        # The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
         self.total_out_bytes = total_out_bytes
+        # The total number of requests.
         self.total_session = total_session
 
     def validate(self):
@@ -6968,7 +7074,7 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.acl_uuid = acl_uuid
         # The application names.
         self.application_name_list = application_name_list
-        # The time at which the access control policy was created.
+        # The time when the access control policy was created.
         self.create_time = create_time
         # The description of the access control policy.
         self.description = description
@@ -6983,7 +7089,7 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **port**: port
         # *   **group**: port address book
         self.dest_port_type = dest_port_type
-        # The destination address in the access control policy. The value of this parameter varies based on the value of the DestinationType parameter. Valid values:
+        # The destination address in the access control policy. The value of this parameter varies based on the value of DestinationType. Valid values:
         # 
         # *   If **DestinationType** is set to **net**, the value of Destination is a CIDR block. Example: 192.0.XX.XX/24.
         # *   If **DestinationType** is set to **domain**, the value of Destination is a domain name. Example: aliyuncs.com.
@@ -7002,24 +7108,24 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **domain**: domain name
-        # *   **location**\
+        # *   **location**: location
         self.destination_type = destination_type
         # The DNS resolution result.
         self.dns_result = dns_result
-        # The time of the DNS resolution result. The value is a timestamp. Unit: seconds.
+        # The time when the Domain Name System (DNS) resolution was performed. The value is a UNIX timestamp. Unit: seconds.
         self.dns_result_time = dns_result_time
         # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
         # 
-        # *   **1**: Fully qualified domain name (FQDN)-based
-        # *   **2**: Domain Name System (DNS)-based
-        # *   **3**: FQDN and DNS-based
+        # *   **0**: fully qualified domain name (FQDN) resolution
+        # *   **1**: dynamic DNS resolution
+        # *   **2**: FQDN resolution and dynamic DNS resolution
         self.domain_resolve_type = domain_resolve_type
         self.end_time = end_time
-        # The times when the access control policy was last hit. The value is a timestamp. Unit: seconds.
+        # The time when the access control policy was last hit. The value is a UNIX timestamp. Unit: seconds.
         self.hit_last_time = hit_last_time
         # The number of hits for the access control policy.
         self.hit_times = hit_times
-        # The time at which the access control policy was modified.
+        # The time when the access control policy was modified.
         self.modify_time = modify_time
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
@@ -7027,7 +7133,7 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         # 
         # The priority value starts from 1. A smaller priority value indicates a higher priority.
         self.order = order
-        # The type of the protocol in the access control policy. Valid values:
+        # The protocol type in the access control policy. Valid values:
         # 
         # *   **ANY**\
         # *   **TCP**\
@@ -7053,13 +7159,13 @@ class DescribeNatFirewallControlPolicyResponseBodyPolicys(TeaModel):
         self.source_group_cidrs = source_group_cidrs
         # The type of the source address book in the access control policy. The value is fixed as **ip**. The value indicates an address book that includes one or more CIDR blocks.
         self.source_group_type = source_group_type
-        # The type of the source address book in the access control policy. Valid values:
+        # The type of the source address in the access control policy. Valid values:
         # 
         # *   **net**: CIDR block
         # *   **group**: address book
         # *   **location**: location
         self.source_type = source_type
-        # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated based on the following formula: Quota that is consumed by an access control policy = Number of source CIDR blocks × Number of destination CIDR blocks, regions, or resolved domain names × *Number of applications* × Number of ports.
+        # The total quota consumed by the returned access control policies, which is the sum of the quota consumed by each policy. The quota that is consumed by an access control policy is calculated by using the following formula: Quota that is consumed by an access control policy = Number of source addresses (number of CIDR blocks or regions) × Number of destination addresses (number of CIDR blocks, regions, or domain names) × Number of port ranges × Number of applications.
         self.spread_cnt = spread_cnt
         self.start_time = start_time
 
@@ -7327,7 +7433,7 @@ class DescribeNatFirewallPolicyPriorUsedRequest(TeaModel):
         # 
         # *   **4**: IPv4 (default)
         self.ip_version = ip_version
-        # The language of the content within the request and response. Valid values:
+        # The language of the content within the request and the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
@@ -10140,10 +10246,18 @@ class DescribeTrFirewallV2RoutePolicyListRequest(TeaModel):
         page_size: int = None,
         policy_id: str = None,
     ):
+        # The page number. Default value: 1.
         self.current_page = current_page
+        # The instance ID of the VPC firewall.
         self.firewall_id = firewall_id
+        # The language of the content within the response. Valid values:
+        # 
+        # *   **zh**: Chinese (default)
+        # *   **en**: English
         self.lang = lang
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
+        # The ID of the routing policy.
         self.policy_id = policy_id
 
     def validate(self):
@@ -10188,7 +10302,9 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesDest
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the secondary traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the secondary traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -10221,7 +10337,9 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcC
         candidate_id: str = None,
         candidate_type: str = None,
     ):
+        # The ID of the primary traffic redirection instance.
         self.candidate_id = candidate_id
+        # The type of the primary traffic redirection instance.
         self.candidate_type = candidate_type
 
     def validate(self):
@@ -10259,12 +10377,30 @@ class DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies(Tea
         src_candidate_list: List[DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePoliciesSrcCandidateList] = None,
         tr_firewall_route_policy_id: str = None,
     ):
+        # The secondary traffic redirection instances.
         self.dest_candidate_list = dest_candidate_list
+        # The description of the routing policy.
         self.policy_description = policy_description
+        # The name of the routing policy.
         self.policy_name = policy_name
+        # The status of the routing policy. Valid values:
+        # 
+        # *   creating: The policy is being created.
+        # *   deleting: The policy is being deleted.
+        # *   opening: The policy is being enabled.
+        # *   opened: The policy is enabled.
+        # *   closing: The policy is being disabled.
+        # *   closed: The policy is disabled.
         self.policy_status = policy_status
+        # The type of the traffic redirection scenario of the VPC firewall. Valid values:
+        # 
+        # *   **fullmesh**: interconnected instances
+        # *   **one_to_one**: instance to instance
+        # *   **end_to_end**: instance to instances
         self.policy_type = policy_type
+        # The primary traffic redirection instances.
         self.src_candidate_list = src_candidate_list
+        # The ID of the routing policy.
         self.tr_firewall_route_policy_id = tr_firewall_route_policy_id
 
     def validate(self):
@@ -10335,8 +10471,11 @@ class DescribeTrFirewallV2RoutePolicyListResponseBody(TeaModel):
         total_count: str = None,
         tr_firewall_route_policies: List[DescribeTrFirewallV2RoutePolicyListResponseBodyTrFirewallRoutePolicies] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned.
         self.total_count = total_count
+        # The routing policies.
         self.tr_firewall_route_policies = tr_firewall_route_policies
 
     def validate(self):
@@ -15965,9 +16104,9 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **drop**: denies the traffic.
         # *   **log**: monitors the traffic.
         self.acl_action = acl_action
-        # The ID of the access control policy.
+        # The UUID of the access control policy.
         # 
-        # >  If you want to modify the configurations of an access control policy, you must provide the ID of the policy. You can call the [DescribeControlPolicy](~~138866~~) operation to query the ID.
+        # >  To modify an access control policy, you must specify the UUID of the policy. You can call the [DescribeControlPolicy](~~138866~~) interface to query the UUID.
         self.acl_uuid = acl_uuid
         # The type of the application that the access control policy supports. Valid values:
         # 
@@ -15986,9 +16125,9 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **Memcache**\
         # *   **SSL**\
         # 
-        # >  The value **ANY** indicates all types of applications.
+        # >  The value ANY** indicates all types of applications.
         self.application_name = application_name
-        # The application names. You can specify multiple application names.
+        # The application names.
         self.application_name_list = application_name_list
         # The description of the access control policy.
         self.description = description
@@ -16003,17 +16142,17 @@ class ModifyControlPolicyRequest(TeaModel):
         self.dest_port_type = dest_port_type
         # The destination address in the access control policy.
         # 
-        # *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.XX.XX/24
-        # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group
-        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com
-        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
+        # *   If **DestinationType** is set to net, the value of **Destination** is a CIDR block. Example: 1.2.XX.XX/24.
+        # *   If **DestinationType** is set to group, the value of **Destination** is an address book. Example: db_group.
+        # *   If **DestinationType** is set to domain, the value of **Destination** is a domain name. Example: \*.aliyuncs.com.
+        # *   If **DestinationType** is set to location, the value of **Destination** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"].
         self.destination = destination
         # The type of the destination address in the access control policy. Valid values:
         # 
-        # *   **net**: destination CIDR block
-        # *   **group**: destination address book
-        # *   **domain**: destination domain name
-        # *   **location**: destination location
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **domain**: domain name
+        # *   **location**: location
         self.destination_type = destination_type
         # The direction of the traffic to which the access control policy applies. Valid values:
         # 
@@ -16021,19 +16160,19 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **out**: outbound traffic
         self.direction = direction
         self.end_time = end_time
-        # The language of the content within the request and response. Valid values:
+        # The language of the content within the request and the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
         # *   **en**: English
         self.lang = lang
-        # The type of the protocol in the access control policy. Valid values:
+        # The protocol type supported by the access control policy. Valid values:
         # 
         # *   **ANY**\
         # *   **TCP**\
         # *   **UDP**\
         # *   **ICMP**\
         # 
-        # >  The value **ANY** indicates all types of protocols.
+        # >  The value ANY** indicates all types of applications.
         self.proto = proto
         # The status of the access control policy. Valid values:
         # 
@@ -16046,15 +16185,15 @@ class ModifyControlPolicyRequest(TeaModel):
         self.repeat_type = repeat_type
         # The source address in the access control policy.
         # 
-        # *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24
-        # *   If **SourceType** is set to group, the value of **Source** is an address book. Example: db_group
+        # *   If **SourceType** is set to net, the value of **Source** is a CIDR block. Example: 1.2.XX.XX/24.
+        # *   If **SourceType** is set to group, the value of **Source** is an address book. Example: db_group.
         # *   If **SourceType** is set to location, the value of **Source** is a location. For more information about the location codes, see the "AddControlPolicy" topic. Example: \["BJ11", "ZB"]
         self.source = source
         # The type of the source address in the access control policy. Valid values:
         # 
-        # *   **net**: source CIDR block
-        # *   **group**: source address book
-        # *   **location**: source location
+        # *   **net**: CIDR block
+        # *   **group**: address book
+        # *   **location**: location
         self.source_type = source_type
         self.start_time = start_time
 
@@ -16167,7 +16306,7 @@ class ModifyControlPolicyResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
