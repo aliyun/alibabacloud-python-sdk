@@ -120,6 +120,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.captcha_verify_param):
             body['CaptchaVerifyParam'] = request.captcha_verify_param
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -148,6 +150,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.captcha_verify_param):
             body['CaptchaVerifyParam'] = request.captcha_verify_param
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )

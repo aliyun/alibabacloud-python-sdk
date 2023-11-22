@@ -160,8 +160,10 @@ class VerifyIntelligentCaptchaRequest(TeaModel):
     def __init__(
         self,
         captcha_verify_param: str = None,
+        scene_id: str = None,
     ):
         self.captcha_verify_param = captcha_verify_param
+        self.scene_id = scene_id
 
     def validate(self):
         pass
@@ -174,12 +176,16 @@ class VerifyIntelligentCaptchaRequest(TeaModel):
         result = dict()
         if self.captcha_verify_param is not None:
             result['CaptchaVerifyParam'] = self.captcha_verify_param
+        if self.scene_id is not None:
+            result['SceneId'] = self.scene_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('CaptchaVerifyParam') is not None:
             self.captcha_verify_param = m.get('CaptchaVerifyParam')
+        if m.get('SceneId') is not None:
+            self.scene_id = m.get('SceneId')
         return self
 
 
