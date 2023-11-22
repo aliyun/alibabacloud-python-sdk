@@ -555,7 +555,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
         """
-        The ID of the request.
+        >  You can call this operation up to 20 times per second per account.
         
         @param request: BatchCreateDcdnWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -592,7 +592,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
         """
-        The ID of the request.
+        >  You can call this operation up to 20 times per second per account.
         
         @param request: BatchCreateDcdnWafRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -628,7 +628,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchCreateDcdnWafRulesRequest,
     ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
         """
-        The ID of the request.
+        >  You can call this operation up to 20 times per second per account.
         
         @param request: BatchCreateDcdnWafRulesRequest
         @return: BatchCreateDcdnWafRulesResponse
@@ -641,7 +641,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchCreateDcdnWafRulesRequest,
     ) -> dcdn_20180115_models.BatchCreateDcdnWafRulesResponse:
         """
-        The ID of the request.
+        >  You can call this operation up to 20 times per second per account.
         
         @param request: BatchCreateDcdnWafRulesRequest
         @return: BatchCreateDcdnWafRulesResponse
@@ -771,8 +771,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
         """
-        # Usage notes
-        *   You can call this operation up to 20 times per second per account.
+        You can call this operation up to 20 times per second per account.
         *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
         
         @param request: BatchDeleteDcdnWafRulesRequest
@@ -808,8 +807,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
         """
-        # Usage notes
-        *   You can call this operation up to 20 times per second per account.
+        You can call this operation up to 20 times per second per account.
         *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
         
         @param request: BatchDeleteDcdnWafRulesRequest
@@ -844,8 +842,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
     ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
         """
-        # Usage notes
-        *   You can call this operation up to 20 times per second per account.
+        You can call this operation up to 20 times per second per account.
         *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
         
         @param request: BatchDeleteDcdnWafRulesRequest
@@ -859,8 +856,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchDeleteDcdnWafRulesRequest,
     ) -> dcdn_20180115_models.BatchDeleteDcdnWafRulesResponse:
         """
-        # Usage notes
-        *   You can call this operation up to 20 times per second per account.
+        You can call this operation up to 20 times per second per account.
         *   Alibaba Cloud Dynamic Content Delivery Network (DCDN) supports POST requests.
         
         @param request: BatchDeleteDcdnWafRulesRequest
@@ -1185,9 +1181,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1230,9 +1225,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1274,9 +1268,8 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchSetDcdnDomainConfigsRequest,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @return: BatchSetDcdnDomainConfigsResponse
@@ -1289,9 +1282,8 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchSetDcdnDomainConfigsRequest,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >
-        *   You can specify up to 50 domain names in each request.
-        *   You can call this operation up to 30 times per second per account.
+        >    You can specify up to 50 domain names in each request.
+        >*   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @return: BatchSetDcdnDomainConfigsResponse
@@ -12009,6 +12001,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_l2vips_with_options_async(request, runtime)
 
+    def describe_dcdn_origin_site_health_status_with_options(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnOriginSiteHealthStatus',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dcdn_origin_site_health_status_with_options_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDcdnOriginSiteHealthStatus',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dcdn_origin_site_health_status(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dcdn_origin_site_health_status_with_options(request, runtime)
+
+    async def describe_dcdn_origin_site_health_status_async(
+        self,
+        request: dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusRequest,
+    ) -> dcdn_20180115_models.DescribeDcdnOriginSiteHealthStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dcdn_origin_site_health_status_with_options_async(request, runtime)
+
     def describe_dcdn_real_time_delivery_field_with_options(
         self,
         request: dcdn_20180115_models.DescribeDcdnRealTimeDeliveryFieldRequest,
@@ -20207,16 +20269,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.RefreshDcdnObjectCachesResponse:
         """
-        #
-        *   DCDN supports POST requests in which parameters are sent as a form.
+        DCDN supports POST requests in which parameters are sent as a form.
         *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories per day, including subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. DCDN evaluates your application based on your workloads.
         *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
-        *   You can refresh up to 1,000 URLs per minute for each domain name.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
         *   You can call this operation up to 30 times per second per account.
-        # Precautions
-        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected back to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
-        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
+        #### [](#)Precautions
+        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
+        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than 5 minutes, you wait for it to expire instead of manually running a refresh task.
         *   If you want to use RAM users to refresh or prefetch resources, you need to obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
         
         @param request: RefreshDcdnObjectCachesRequest
@@ -20260,16 +20321,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.RefreshDcdnObjectCachesResponse:
         """
-        #
-        *   DCDN supports POST requests in which parameters are sent as a form.
+        DCDN supports POST requests in which parameters are sent as a form.
         *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories per day, including subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. DCDN evaluates your application based on your workloads.
         *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
-        *   You can refresh up to 1,000 URLs per minute for each domain name.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
         *   You can call this operation up to 30 times per second per account.
-        # Precautions
-        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected back to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
-        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
+        #### [](#)Precautions
+        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
+        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than 5 minutes, you wait for it to expire instead of manually running a refresh task.
         *   If you want to use RAM users to refresh or prefetch resources, you need to obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
         
         @param request: RefreshDcdnObjectCachesRequest
@@ -20312,16 +20372,15 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.RefreshDcdnObjectCachesRequest,
     ) -> dcdn_20180115_models.RefreshDcdnObjectCachesResponse:
         """
-        #
-        *   DCDN supports POST requests in which parameters are sent as a form.
+        DCDN supports POST requests in which parameters are sent as a form.
         *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories per day, including subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. DCDN evaluates your application based on your workloads.
         *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
-        *   You can refresh up to 1,000 URLs per minute for each domain name.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
         *   You can call this operation up to 30 times per second per account.
-        # Precautions
-        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected back to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
-        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
+        #### [](#)Precautions
+        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
+        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than 5 minutes, you wait for it to expire instead of manually running a refresh task.
         *   If you want to use RAM users to refresh or prefetch resources, you need to obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
         
         @param request: RefreshDcdnObjectCachesRequest
@@ -20335,16 +20394,15 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.RefreshDcdnObjectCachesRequest,
     ) -> dcdn_20180115_models.RefreshDcdnObjectCachesResponse:
         """
-        #
-        *   DCDN supports POST requests in which parameters are sent as a form.
+        DCDN supports POST requests in which parameters are sent as a form.
         *   You can call the [RefreshDcdnObjectCaches](~~130620~~) operation to refresh content and call the [PreloadDcdnObjectCaches](~~130636~~) operation to prefetch content.
         *   By default, each Alibaba Cloud account can refresh content from a maximum of 10,000 URLs and 100 directories per day, including subdirectories. If the daily peak bandwidth value exceeds 200 Mbit/s, you can [submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23/ticket/createIndex) to request a quota increase. DCDN evaluates your application based on your workloads.
         *   You can specify up to 1,000 URLs or 100 directories that you want to refresh in each request.
-        *   You can refresh up to 1,000 URLs per minute for each domain name.
+        *   You can refresh a maximum of 1,000 URLs per minute for each domain name.
         *   You can call this operation up to 30 times per second per account.
-        # Precautions
-        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected back to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
-        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than five minutes, you wait for it to expire instead of manually running a refresh task.
+        #### [](#)Precautions
+        *   After a refresh task is submitted and completed, your resources that are stored on DCDN POPs are removed. When a POP receives a request to your resources, the request is redirected to the origin server to retrieve the resources. Then, the resources are returned to the client and cached on the POP. If you frequently run refresh tasks, more requests will be redirected to the origin server for resources, which result in high bandwidth costs and undue pressure on the origin server.
+        *   A refresh task takes effect 5 to 6 minutes after being submitted. This means that if the resource you want to refresh has a TTL of less than 5 minutes, you wait for it to expire instead of manually running a refresh task.
         *   If you want to use RAM users to refresh or prefetch resources, you need to obtain the required permissions. For more information, see [Authorize a RAM user to prefetch and refresh resources](~~445051~~).
         
         @param request: RefreshDcdnObjectCachesRequest

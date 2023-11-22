@@ -4,6 +4,84 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class WafQuotaInteger(TeaModel):
+    def __init__(
+        self,
+        equal: int = None,
+        greater_than: int = None,
+        greater_than_or_equal: int = None,
+        less_than: int = None,
+        less_than_or_equal: int = None,
+    ):
+        self.equal = equal
+        self.greater_than = greater_than
+        self.greater_than_or_equal = greater_than_or_equal
+        self.less_than = less_than
+        self.less_than_or_equal = less_than_or_equal
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.equal is not None:
+            result['Equal'] = self.equal
+        if self.greater_than is not None:
+            result['GreaterThan'] = self.greater_than
+        if self.greater_than_or_equal is not None:
+            result['GreaterThanOrEqual'] = self.greater_than_or_equal
+        if self.less_than is not None:
+            result['LessThan'] = self.less_than
+        if self.less_than_or_equal is not None:
+            result['LessThanOrEqual'] = self.less_than_or_equal
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Equal') is not None:
+            self.equal = m.get('Equal')
+        if m.get('GreaterThan') is not None:
+            self.greater_than = m.get('GreaterThan')
+        if m.get('GreaterThanOrEqual') is not None:
+            self.greater_than_or_equal = m.get('GreaterThanOrEqual')
+        if m.get('LessThan') is not None:
+            self.less_than = m.get('LessThan')
+        if m.get('LessThanOrEqual') is not None:
+            self.less_than_or_equal = m.get('LessThanOrEqual')
+        return self
+
+
+class WafQuotaString(TeaModel):
+    def __init__(
+        self,
+        regexp: str = None,
+    ):
+        self.regexp = regexp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.regexp is not None:
+            result['Regexp'] = self.regexp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Regexp') is not None:
+            self.regexp = m.get('Regexp')
+        return self
+
+
 class AddDcdnDomainRequestTag(TeaModel):
     def __init__(
         self,
@@ -563,9 +641,9 @@ class BatchCreateDcdnWafRulesRequest(TeaModel):
         policy_id: int = None,
         rule_configs: str = None,
     ):
-        # The configurations of the protection rule.
+        # The ID of the protection policy.
         self.policy_id = policy_id
-        # The configurations of the RuleConfigs.
+        # The configuration of the protection rule.
         self.rule_configs = rule_configs
 
     def validate(self):
@@ -625,8 +703,9 @@ class BatchCreateDcdnWafRulesResponseBody(TeaModel):
         request_id: str = None,
         rule_ids: BatchCreateDcdnWafRulesResponseBodyRuleIds = None,
     ):
-        # Creates Web Application Firewall (WAF) protection rules.
+        # The ID of the request.
         self.request_id = request_id
+        # The IDs of created rules.
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -1410,29 +1489,26 @@ class BatchSetDcdnDomainConfigsRequest(TeaModel):
         self.domain_names = domain_names
         # The features that you want to configure. Format:
         # 
-        # > 
-        # 
         # *   **functionName**: The name of the feature. Separate multiple values with commas (,). For more information, see [A list of features](~~410622~~).
-        # 
         # *   **argName**: The feature parameters for **functionName**.
-        # 
         # *   **argValue**: The parameter values set for **functionName**.
         # 
-        #         [
-        #          {
-        #            "functionArgs": [
-        #             {
-        #              "argName": "Parameter A", 
-        #              "argValue": "Parameter value"
-        #             }, 
-        #           {
-        #             "argName": "Parameter B", 
-        #             "argValue": "Parameter value"
-        #              }
-        #          ], 
-        #          "functionName": "Feature name"
-        #             }
-        #         ]
+        # <!---->
+        # 
+        #     [
+        #      {
+        #        "functionArgs": [
+        #         {
+        #          "argName": "Parameter A", 
+        #          "argValue": "Value of parameter A"
+        #         }, 
+        #       {
+        #     "argName": "Parameter B", 
+        #     "argValue": "Value of parameter B"     }
+        #      ], 
+        #      "functionName": "Feature name"
+        #         }
+        #     ]
         self.functions = functions
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1481,8 +1557,11 @@ class BatchSetDcdnDomainConfigsResponseBodyDomainConfigListDomainConfigModel(Tea
         domain_name: str = None,
         function_name: str = None,
     ):
+        # The ID of the configuration. If 0 is returned, the configuration failed and you need reconfigure this configuration.
         self.config_id = config_id
+        # The domain name.
         self.domain_name = domain_name
+        # The feature name.
         self.function_name = function_name
 
     def validate(self):
@@ -1554,6 +1633,7 @@ class BatchSetDcdnDomainConfigsResponseBody(TeaModel):
         domain_config_list: BatchSetDcdnDomainConfigsResponseBodyDomainConfigList = None,
         request_id: str = None,
     ):
+        # The list of domain configurations.
         self.domain_config_list = domain_config_list
         # The ID of the request.
         self.request_id = request_id
@@ -13027,25 +13107,23 @@ class DescribeDcdnDomainQpsDataByLayerRequest(TeaModel):
         location_name_en: str = None,
         start_time: str = None,
     ):
-        # The QPS returned at each time interval.
+        # The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify a domain name, data of all domain names is queried.
         self.domain_name = domain_name
-        # The number of queries per second outside the Chinese mainland.
-        self.end_time = end_time
-        # The layer at which the data was collected.
-        self.interval = interval
-        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        # 
-        # The minimum data granularity is 5 minutes.
-        # 
-        # If you do not set this parameter, data in the last 24 hours is queried.
-        self.isp_name_en = isp_name_en
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # >  The end time must be later than the start time.
+        # > The end time must be later than the start time.
+        self.end_time = end_time
+        # The time interval between the data entries. Unit: seconds.
+        # 
+        # The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Usage notes**.
+        self.interval = interval
+        # The name of the ISP. You can call the DescribeDcdnRegionAndIsp operation to query the ISP name. If you do not specify a value for this parameter, all ISPs are queried.
+        self.isp_name_en = isp_name_en
+        # The layers at which you want to query the QPS. The network layer supports IPv4 and IPv6. The application layer supports http, https, and quic. You can also set the value to all. Default value: all.
         self.layer = layer
-        # The accelerated domain name.
+        # The name of the region. You can call the DescribeDcdnRegionAndIsp operation to query the region name. If you do not specify a value for this parameter, all regions are queried.
         self.location_name_en = location_name_en
-        # The number of requests in the Chinese mainland.
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The minimum data granularity is 5 minutes. If you do not set this parameter, data in the last 24 hours is queried.
         self.start_time = start_time
 
     def validate(self):
@@ -13103,23 +13181,19 @@ class DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule(TeaM
         time_stamp: str = None,
         value: str = None,
     ):
-        # The number of requests outside the Chinese mainland.
+        # The number of requests in the Chinese mainland.
         self.acc_domestic_value = acc_domestic_value
-        # The beginning of the time range during which data was queried.
+        # The number of requests outside the Chinese mainland.
         self.acc_overseas_value = acc_overseas_value
-        # The number of queries per second in the Chinese mainland.
+        # The total number of requests.
         self.acc_value = acc_value
-        # The time interval between the data entries returned. Unit: seconds.
+        # The number of queries per second in the Chinese mainland.
         self.domestic_value = domestic_value
-        # The total number of queries per second.
+        # The number of queries per second outside the Chinese mainland.
         self.overseas_value = overseas_value
-        # The time interval between the data entries to return. Unit: seconds.
-        # 
-        # The time granularity varies with the maximum time range per query. Valid values: 300 (5 minutes), 3600 (1 hour), and 86400 (1 day). For more information, see **Description**.
+        # The timestamp of the returned data.
         self.time_stamp = time_stamp
-        # The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated.
-        # 
-        # If you do not specify a domain name, data of all domain names is queried.
+        # The total number of queries per second.
         self.value = value
 
     def validate(self):
@@ -13212,21 +13286,19 @@ class DescribeDcdnDomainQpsDataByLayerResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The end of the time range during which data was queried.
+        # The time interval between the data entries returned. Unit: seconds.
         self.data_interval = data_interval
-        # The name of the ISP. You can call the DescribeDcdnRegionAndIsp operation to query the ISP name. If you do not specify a value for this parameter, all ISPs are queried.
+        # The accelerated domain name.
         self.domain_name = domain_name
-        # The layers at which you want to query the QPS. The network layer supports IPv4 and IPv6. The application layer supports http, https, and quic. You can also set the value to all.
-        # 
-        # Default value: all.
+        # The end of the time range during which data was queried.
         self.end_time = end_time
-        # The operation that you want to perform. Set the value to **DescribeDcdnDomainQpsDataByLayer**.
+        # The layer at which the data was collected.
         self.layer = layer
-        # The name of the region. You can call the DescribeDcdnRegionAndIsp operation to query the region name. If you do not specify a value for this parameter, all regions are queried.
+        # The QPS returned at each time interval.
         self.qps_data_interval = qps_data_interval
-        # The timestamp of the data returned.
+        # The ID of the request.
         self.request_id = request_id
-        # The total number of requests.
+        # The start of the time range during which data was queried.
         self.start_time = start_time
 
     def validate(self):
@@ -21944,6 +22016,151 @@ class DescribeDcdnL2VipsResponse(TeaModel):
         return self
 
 
+class DescribeDcdnOriginSiteHealthStatusRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+    ):
+        self.domain_name = domain_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        return self
+
+
+class DescribeDcdnOriginSiteHealthStatusResponseBodyOriginSiteStatus(TeaModel):
+    def __init__(
+        self,
+        health_status: str = None,
+        host: str = None,
+    ):
+        self.health_status = health_status
+        self.host = host
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.host is not None:
+            result['Host'] = self.host
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        return self
+
+
+class DescribeDcdnOriginSiteHealthStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        origin_site_status: List[DescribeDcdnOriginSiteHealthStatusResponseBodyOriginSiteStatus] = None,
+        request_id: str = None,
+    ):
+        self.origin_site_status = origin_site_status
+        self.request_id = request_id
+
+    def validate(self):
+        if self.origin_site_status:
+            for k in self.origin_site_status:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['OriginSiteStatus'] = []
+        if self.origin_site_status is not None:
+            for k in self.origin_site_status:
+                result['OriginSiteStatus'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.origin_site_status = []
+        if m.get('OriginSiteStatus') is not None:
+            for k in m.get('OriginSiteStatus'):
+                temp_model = DescribeDcdnOriginSiteHealthStatusResponseBodyOriginSiteStatus()
+                self.origin_site_status.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeDcdnOriginSiteHealthStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDcdnOriginSiteHealthStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDcdnOriginSiteHealthStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDcdnRealTimeDeliveryFieldRequest(TeaModel):
     def __init__(
         self,
@@ -26780,6 +26997,10 @@ class DescribeDcdnUserDomainsByFuncRequest(TeaModel):
         self.func_filter = func_filter
         # The ID of the feature. For more information about how to query feature IDs, see [Parameters for configuring features for domain names](~~410622~~). For example, the ID of the origin host feature (set_req_host_header) is 18.
         self.func_id = func_id
+        # The type of the search. Default value: exact_match. Valid values:
+        # 
+        # *   fuzzy_match: fuzzy search.
+        # *   exact_match: exact search.
         self.match_type = match_type
         # The number of the page to return. Default value: **1**. Valid values: **1 to 100000**.
         self.page_number = page_number
@@ -29547,6 +29768,7 @@ class DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp(TeaM
 class DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol(TeaModel):
     def __init__(
         self,
+        attributes: int = None,
         description: str = None,
         max_length: int = None,
         regexp: DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp = None,
@@ -29554,6 +29776,7 @@ class DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol(TeaModel):
         tip: str = None,
         type: str = None,
     ):
+        self.attributes = attributes
         # The logical symbol that is displayed in the Dynamic Content Delivery Network (DCDN) console.
         self.description = description
         # The maximum number of match contents that can be returned. The value of this parameter varies based on the value of the Type parameter. Valid values:
@@ -29585,6 +29808,8 @@ class DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol(TeaModel):
             return _map
 
         result = dict()
+        if self.attributes is not None:
+            result['Attributes'] = self.attributes
         if self.description is not None:
             result['Description'] = self.description
         if self.max_length is not None:
@@ -29601,6 +29826,8 @@ class DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Attributes') is not None:
+            self.attributes = m.get('Attributes')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('MaxLength') is not None:
@@ -31156,7 +31383,7 @@ class DescribeDcdnWafPolicyResponseBodyPolicy(TeaModel):
         # *   default
         # *   custom
         self.policy_type = policy_type
-        # The protection rule configurations that are defined in the protection policy. The configurations only support bot management. For more information, see [Configure protection rules](~~423350~~).
+        # The protection rule configurations that are defined in the protection policy. The configurations only support bot management. For more information, see [BatchCreateDcdnWafRules](~~BatchCreateDcdnWafRules~~).
         self.rule_configs = rule_configs
         # The number of protection rules in the protection policy.
         self.rule_count = rule_count
@@ -33189,8 +33416,16 @@ class DescribeDdosAllEventListRequest(TeaModel):
         start_time: str = None,
     ):
         self.end_time = end_time
+        # The type of the DDoS attack event that was queried. Valid values:
+        # 
+        # *   *   **web-cc**: web resource exhaustion attacks
+        # *   *   **cc**: connection flood attacks
+        # *   *   **traffic**: volumetric attacks
+        # 
+        # If you do not configure this parameter, DDoS attack events of all types are queried.
         self.event_type = event_type
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **10**. Valid values: 5, 10, and 20.
         self.page_size = page_size
         self.start_time = start_time
 
@@ -37882,8 +38117,13 @@ class RefreshDcdnObjectCachesRequest(TeaModel):
         self.object_path = object_path
         # The refresh type. Valid values:
         # 
-        # *   **File**: URL
-        # *   **Directory**: directory
+        # *   **File** (default): refreshres resources based on URLs.
+        # *   **Directory**: refreshes resources based on directories.
+        # *   **Regex**: refreshes content based on regular expressions.
+        # *   **IgnoreParams**: removes the question mark (`?`) and parameters after `?` in a request URL and refreshes content. After you call this operation with the request URL submitted, the system compares the submitted URL with the URL of the cached resource without specific parameters. If the URLs match, the DCDN POPs refresh the cached resource.
+        # 
+        # >*   For more information about features of URL refresh and directory refresh, see [Refresh and prefetch resources](~~64936~~).
+        # >*   If you set ObjectType to Directory, the resources in the directory that you want to refresh are marked as expired. You cannot delete the directory. If clients request resources after the resources on POPs are marked as expired, DCDN checks whether the resources on your origin server are updated with a later version. If a later version exists, DCDN retrieves the resources of the later version and returns the resources to the clients. Otherwise, DCDN retrieves the 304 status code from the origin server.
         self.object_type = object_type
         self.owner_id = owner_id
         self.security_token = security_token
