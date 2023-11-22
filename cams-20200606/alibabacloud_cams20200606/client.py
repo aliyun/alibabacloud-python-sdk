@@ -1425,6 +1425,174 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_chatapp_template_with_options_async(request, runtime)
 
+    def create_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.CreateFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateFlowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.CreateFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreateFlowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.CreateFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreateFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_flow(
+        self,
+        request: cams_20200606_models.CreateFlowRequest,
+    ) -> cams_20200606_models.CreateFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_flow_with_options(request, runtime)
+
+    async def create_flow_async(
+        self,
+        request: cams_20200606_models.CreateFlowRequest,
+    ) -> cams_20200606_models.CreateFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_flow_with_options_async(request, runtime)
+
+    def create_phone_message_qrdl_with_options(
+        self,
+        request: cams_20200606_models.CreatePhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreatePhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.generate_qr_image):
+            body['GenerateQrImage'] = request.generate_qr_image
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.prefilled_message):
+            body['PrefilledMessage'] = request.prefilled_message
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreatePhoneMessageQrdlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_phone_message_qrdl_with_options_async(
+        self,
+        request: cams_20200606_models.CreatePhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.CreatePhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.generate_qr_image):
+            body['GenerateQrImage'] = request.generate_qr_image
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.prefilled_message):
+            body['PrefilledMessage'] = request.prefilled_message
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreatePhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.CreatePhoneMessageQrdlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_phone_message_qrdl(
+        self,
+        request: cams_20200606_models.CreatePhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.CreatePhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_phone_message_qrdl_with_options(request, runtime)
+
+    async def create_phone_message_qrdl_async(
+        self,
+        request: cams_20200606_models.CreatePhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.CreatePhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_phone_message_qrdl_with_options_async(request, runtime)
+
     def delete_chatapp_template_with_options(
         self,
         request: cams_20200606_models.DeleteChatappTemplateRequest,
@@ -1536,6 +1704,232 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_chatapp_template_with_options_async(request, runtime)
+
+    def delete_flow_with_options(
+        self,
+        request: cams_20200606_models.DeleteFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_flow_with_options_async(
+        self,
+        request: cams_20200606_models.DeleteFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeleteFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeleteFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_flow(
+        self,
+        request: cams_20200606_models.DeleteFlowRequest,
+    ) -> cams_20200606_models.DeleteFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_flow_with_options(request, runtime)
+
+    async def delete_flow_async(
+        self,
+        request: cams_20200606_models.DeleteFlowRequest,
+    ) -> cams_20200606_models.DeleteFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_flow_with_options_async(request, runtime)
+
+    def delete_phone_message_qrdl_with_options(
+        self,
+        request: cams_20200606_models.DeletePhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeletePhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.qrdl_code):
+            body['QrdlCode'] = request.qrdl_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeletePhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeletePhoneMessageQrdlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_phone_message_qrdl_with_options_async(
+        self,
+        request: cams_20200606_models.DeletePhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeletePhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.qrdl_code):
+            body['QrdlCode'] = request.qrdl_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeletePhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeletePhoneMessageQrdlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_phone_message_qrdl(
+        self,
+        request: cams_20200606_models.DeletePhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.DeletePhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_phone_message_qrdl_with_options(request, runtime)
+
+    async def delete_phone_message_qrdl_async(
+        self,
+        request: cams_20200606_models.DeletePhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.DeletePhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_phone_message_qrdl_with_options_async(request, runtime)
+
+    def deprecate_flow_with_options(
+        self,
+        request: cams_20200606_models.DeprecateFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeprecateFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeprecateFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeprecateFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deprecate_flow_with_options_async(
+        self,
+        request: cams_20200606_models.DeprecateFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.DeprecateFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeprecateFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.DeprecateFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deprecate_flow(
+        self,
+        request: cams_20200606_models.DeprecateFlowRequest,
+    ) -> cams_20200606_models.DeprecateFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.deprecate_flow_with_options(request, runtime)
+
+    async def deprecate_flow_async(
+        self,
+        request: cams_20200606_models.DeprecateFlowRequest,
+    ) -> cams_20200606_models.DeprecateFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.deprecate_flow_with_options_async(request, runtime)
 
     def enable_whatsapp_roimetric_with_options(
         self,
@@ -2197,6 +2591,228 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_commerce_setting_with_options_async(request, runtime)
 
+    def get_flow_with_options(
+        self,
+        request: cams_20200606_models.GetFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_with_options_async(
+        self,
+        request: cams_20200606_models.GetFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow(
+        self,
+        request: cams_20200606_models.GetFlowRequest,
+    ) -> cams_20200606_models.GetFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_flow_with_options(request, runtime)
+
+    async def get_flow_async(
+        self,
+        request: cams_20200606_models.GetFlowRequest,
+    ) -> cams_20200606_models.GetFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_flow_with_options_async(request, runtime)
+
+    def get_flow_jsonassest_with_options(
+        self,
+        request: cams_20200606_models.GetFlowJSONAssestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetFlowJSONAssestResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlowJSONAssest',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetFlowJSONAssestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_jsonassest_with_options_async(
+        self,
+        request: cams_20200606_models.GetFlowJSONAssestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetFlowJSONAssestResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlowJSONAssest',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetFlowJSONAssestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow_jsonassest(
+        self,
+        request: cams_20200606_models.GetFlowJSONAssestRequest,
+    ) -> cams_20200606_models.GetFlowJSONAssestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_flow_jsonassest_with_options(request, runtime)
+
+    async def get_flow_jsonassest_async(
+        self,
+        request: cams_20200606_models.GetFlowJSONAssestRequest,
+    ) -> cams_20200606_models.GetFlowJSONAssestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_flow_jsonassest_with_options_async(request, runtime)
+
+    def get_flow_preview_url_with_options(
+        self,
+        request: cams_20200606_models.GetFlowPreviewUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetFlowPreviewUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlowPreviewUrl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetFlowPreviewUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_flow_preview_url_with_options_async(
+        self,
+        request: cams_20200606_models.GetFlowPreviewUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetFlowPreviewUrlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetFlowPreviewUrl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetFlowPreviewUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_flow_preview_url(
+        self,
+        request: cams_20200606_models.GetFlowPreviewUrlRequest,
+    ) -> cams_20200606_models.GetFlowPreviewUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_flow_preview_url_with_options(request, runtime)
+
+    async def get_flow_preview_url_async(
+        self,
+        request: cams_20200606_models.GetFlowPreviewUrlRequest,
+    ) -> cams_20200606_models.GetFlowPreviewUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_flow_preview_url_with_options_async(request, runtime)
+
     def get_migration_verify_code_with_options(
         self,
         request: cams_20200606_models.GetMigrationVerifyCodeRequest,
@@ -2304,6 +2920,166 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_migration_verify_code_with_options_async(request, runtime)
+
+    def get_permission_by_code_with_options(
+        self,
+        tmp_req: cams_20200606_models.GetPermissionByCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetPermissionByCodeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.GetPermissionByCodeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.permissions_shrink):
+            body['Permissions'] = request.permissions_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPermissionByCode',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetPermissionByCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_permission_by_code_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.GetPermissionByCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetPermissionByCodeResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.GetPermissionByCodeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.permissions):
+            request.permissions_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.permissions, 'Permissions', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.code):
+            body['Code'] = request.code
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.permissions_shrink):
+            body['Permissions'] = request.permissions_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPermissionByCode',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetPermissionByCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_permission_by_code(
+        self,
+        request: cams_20200606_models.GetPermissionByCodeRequest,
+    ) -> cams_20200606_models.GetPermissionByCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_permission_by_code_with_options(request, runtime)
+
+    async def get_permission_by_code_async(
+        self,
+        request: cams_20200606_models.GetPermissionByCodeRequest,
+    ) -> cams_20200606_models.GetPermissionByCodeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_permission_by_code_with_options_async(request, runtime)
+
+    def get_phone_encryption_public_key_with_options(
+        self,
+        request: cams_20200606_models.GetPhoneEncryptionPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetPhoneEncryptionPublicKeyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPhoneEncryptionPublicKey',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_phone_encryption_public_key_with_options_async(
+        self,
+        request: cams_20200606_models.GetPhoneEncryptionPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.GetPhoneEncryptionPublicKeyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GetPhoneEncryptionPublicKey',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.GetPhoneEncryptionPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_phone_encryption_public_key(
+        self,
+        request: cams_20200606_models.GetPhoneEncryptionPublicKeyRequest,
+    ) -> cams_20200606_models.GetPhoneEncryptionPublicKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_phone_encryption_public_key_with_options(request, runtime)
+
+    async def get_phone_encryption_public_key_async(
+        self,
+        request: cams_20200606_models.GetPhoneEncryptionPublicKeyRequest,
+    ) -> cams_20200606_models.GetPhoneEncryptionPublicKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_phone_encryption_public_key_with_options_async(request, runtime)
 
     def get_phone_number_verification_status_with_options(
         self,
@@ -2827,6 +3603,166 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_chatapp_template_with_options_async(request, runtime)
 
+    def list_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.ListFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListFlowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.page_shrink):
+            body['Page'] = request.page_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ListFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListFlowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ListFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.page):
+            request.page_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.page, 'Page', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        if not UtilClient.is_unset(request.page_shrink):
+            body['Page'] = request.page_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_flow(
+        self,
+        request: cams_20200606_models.ListFlowRequest,
+    ) -> cams_20200606_models.ListFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_flow_with_options(request, runtime)
+
+    async def list_flow_async(
+        self,
+        request: cams_20200606_models.ListFlowRequest,
+    ) -> cams_20200606_models.ListFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_flow_with_options_async(request, runtime)
+
+    def list_phone_message_qrdl_with_options(
+        self,
+        request: cams_20200606_models.ListPhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListPhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListPhoneMessageQrdlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_phone_message_qrdl_with_options_async(
+        self,
+        request: cams_20200606_models.ListPhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ListPhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListPhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ListPhoneMessageQrdlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_phone_message_qrdl(
+        self,
+        request: cams_20200606_models.ListPhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.ListPhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_phone_message_qrdl_with_options(request, runtime)
+
+    async def list_phone_message_qrdl_async(
+        self,
+        request: cams_20200606_models.ListPhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.ListPhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_phone_message_qrdl_with_options_async(request, runtime)
+
     def list_product_with_options(
         self,
         request: cams_20200606_models.ListProductRequest,
@@ -3231,6 +4167,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_chatapp_template_with_options_async(request, runtime)
 
+    def modify_flow_with_options(
+        self,
+        tmp_req: cams_20200606_models.ModifyFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ModifyFlowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ModifyFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ModifyFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_flow_with_options_async(
+        self,
+        tmp_req: cams_20200606_models.ModifyFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.ModifyFlowResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cams_20200606_models.ModifyFlowShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.categories):
+            request.categories_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.categories, 'Categories', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.categories_shrink):
+            body['Categories'] = request.categories_shrink
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        if not UtilClient.is_unset(request.flow_name):
+            body['FlowName'] = request.flow_name
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.ModifyFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_flow(
+        self,
+        request: cams_20200606_models.ModifyFlowRequest,
+    ) -> cams_20200606_models.ModifyFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_flow_with_options(request, runtime)
+
+    async def modify_flow_async(
+        self,
+        request: cams_20200606_models.ModifyFlowRequest,
+    ) -> cams_20200606_models.ModifyFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_flow_with_options_async(request, runtime)
+
     def modify_phone_business_profile_with_options(
         self,
         tmp_req: cams_20200606_models.ModifyPhoneBusinessProfileRequest,
@@ -3362,6 +4388,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_phone_business_profile_with_options_async(request, runtime)
+
+    def publish_flow_with_options(
+        self,
+        request: cams_20200606_models.PublishFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.PublishFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.PublishFlowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def publish_flow_with_options_async(
+        self,
+        request: cams_20200606_models.PublishFlowRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.PublishFlowResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PublishFlow',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.PublishFlowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def publish_flow(
+        self,
+        request: cams_20200606_models.PublishFlowRequest,
+    ) -> cams_20200606_models.PublishFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.publish_flow_with_options(request, runtime)
+
+    async def publish_flow_async(
+        self,
+        request: cams_20200606_models.PublishFlowRequest,
+    ) -> cams_20200606_models.PublishFlowResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.publish_flow_with_options_async(request, runtime)
 
     def query_chatapp_bind_waba_with_options(
         self,
@@ -4456,6 +5556,248 @@ class Client(OpenApiClient):
     ) -> cams_20200606_models.UpdateCommerceSettingResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_commerce_setting_with_options_async(request, runtime)
+
+    def update_flow_jsonasset_with_options(
+        self,
+        request: cams_20200606_models.UpdateFlowJSONAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateFlowJSONAssetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.file_path):
+            body['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlowJSONAsset',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateFlowJSONAssetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_flow_jsonasset_with_options_async(
+        self,
+        request: cams_20200606_models.UpdateFlowJSONAssetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdateFlowJSONAssetResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.file_path):
+            body['FilePath'] = request.file_path
+        if not UtilClient.is_unset(request.flow_id):
+            body['FlowId'] = request.flow_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateFlowJSONAsset',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdateFlowJSONAssetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_flow_jsonasset(
+        self,
+        request: cams_20200606_models.UpdateFlowJSONAssetRequest,
+    ) -> cams_20200606_models.UpdateFlowJSONAssetResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_flow_jsonasset_with_options(request, runtime)
+
+    async def update_flow_jsonasset_async(
+        self,
+        request: cams_20200606_models.UpdateFlowJSONAssetRequest,
+    ) -> cams_20200606_models.UpdateFlowJSONAssetResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_flow_jsonasset_with_options_async(request, runtime)
+
+    def update_phone_encryption_public_key_with_options(
+        self,
+        request: cams_20200606_models.UpdatePhoneEncryptionPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.encryption_public_key):
+            body['EncryptionPublicKey'] = request.encryption_public_key
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePhoneEncryptionPublicKey',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_phone_encryption_public_key_with_options_async(
+        self,
+        request: cams_20200606_models.UpdatePhoneEncryptionPublicKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.encryption_public_key):
+            body['EncryptionPublicKey'] = request.encryption_public_key
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePhoneEncryptionPublicKey',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_phone_encryption_public_key(
+        self,
+        request: cams_20200606_models.UpdatePhoneEncryptionPublicKeyRequest,
+    ) -> cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_phone_encryption_public_key_with_options(request, runtime)
+
+    async def update_phone_encryption_public_key_async(
+        self,
+        request: cams_20200606_models.UpdatePhoneEncryptionPublicKeyRequest,
+    ) -> cams_20200606_models.UpdatePhoneEncryptionPublicKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_phone_encryption_public_key_with_options_async(request, runtime)
+
+    def update_phone_message_qrdl_with_options(
+        self,
+        request: cams_20200606_models.UpdatePhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdatePhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.generate_qr_image):
+            body['GenerateQrImage'] = request.generate_qr_image
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.prefilled_message):
+            body['PrefilledMessage'] = request.prefilled_message
+        if not UtilClient.is_unset(request.qrdl_code):
+            body['QrdlCode'] = request.qrdl_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_phone_message_qrdl_with_options_async(
+        self,
+        request: cams_20200606_models.UpdatePhoneMessageQrdlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cams_20200606_models.UpdatePhoneMessageQrdlResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.cust_space_id):
+            body['CustSpaceId'] = request.cust_space_id
+        if not UtilClient.is_unset(request.generate_qr_image):
+            body['GenerateQrImage'] = request.generate_qr_image
+        if not UtilClient.is_unset(request.phone_number):
+            body['PhoneNumber'] = request.phone_number
+        if not UtilClient.is_unset(request.prefilled_message):
+            body['PrefilledMessage'] = request.prefilled_message
+        if not UtilClient.is_unset(request.qrdl_code):
+            body['QrdlCode'] = request.qrdl_code
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdatePhoneMessageQrdl',
+            version='2020-06-06',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cams_20200606_models.UpdatePhoneMessageQrdlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_phone_message_qrdl(
+        self,
+        request: cams_20200606_models.UpdatePhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.UpdatePhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_phone_message_qrdl_with_options(request, runtime)
+
+    async def update_phone_message_qrdl_async(
+        self,
+        request: cams_20200606_models.UpdatePhoneMessageQrdlRequest,
+    ) -> cams_20200606_models.UpdatePhoneMessageQrdlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_phone_message_qrdl_with_options_async(request, runtime)
 
     def update_phone_webhook_with_options(
         self,
