@@ -4881,11 +4881,13 @@ class CreateAudioFileRequest(TeaModel):
         instance_id: str = None,
         name: str = None,
         oss_file_key: str = None,
+        usage: str = None,
     ):
         self.audio_file_name = audio_file_name
         self.instance_id = instance_id
         self.name = name
         self.oss_file_key = oss_file_key
+        self.usage = usage
 
     def validate(self):
         pass
@@ -4904,6 +4906,8 @@ class CreateAudioFileRequest(TeaModel):
             result['Name'] = self.name
         if self.oss_file_key is not None:
             result['OssFileKey'] = self.oss_file_key
+        if self.usage is not None:
+            result['Usage'] = self.usage
         return result
 
     def from_map(self, m: dict = None):
@@ -4916,6 +4920,8 @@ class CreateAudioFileRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('OssFileKey') is not None:
             self.oss_file_key = m.get('OssFileKey')
+        if m.get('Usage') is not None:
+            self.usage = m.get('Usage')
         return self
 
 
@@ -9296,7 +9302,9 @@ class GetCampaignResponseBodyData(TeaModel):
         cases_aborted: int = None,
         cases_connected: int = None,
         cases_uncompleted: int = None,
+        cases_uncompleted_after_attempt: str = None,
         cases_uncompleted_after_attempted: int = None,
+        completion_rate: float = None,
         max_attempt_count: int = None,
         min_attempt_interval: int = None,
         name: str = None,
@@ -9317,7 +9325,9 @@ class GetCampaignResponseBodyData(TeaModel):
         self.cases_aborted = cases_aborted
         self.cases_connected = cases_connected
         self.cases_uncompleted = cases_uncompleted
+        self.cases_uncompleted_after_attempt = cases_uncompleted_after_attempt
         self.cases_uncompleted_after_attempted = cases_uncompleted_after_attempted
+        self.completion_rate = completion_rate
         self.max_attempt_count = max_attempt_count
         self.min_attempt_interval = min_attempt_interval
         self.name = name
@@ -9353,8 +9363,12 @@ class GetCampaignResponseBodyData(TeaModel):
             result['CasesConnected'] = self.cases_connected
         if self.cases_uncompleted is not None:
             result['CasesUncompleted'] = self.cases_uncompleted
+        if self.cases_uncompleted_after_attempt is not None:
+            result['CasesUncompletedAfterAttempt'] = self.cases_uncompleted_after_attempt
         if self.cases_uncompleted_after_attempted is not None:
             result['CasesUncompletedAfterAttempted'] = self.cases_uncompleted_after_attempted
+        if self.completion_rate is not None:
+            result['CompletionRate'] = self.completion_rate
         if self.max_attempt_count is not None:
             result['MaxAttemptCount'] = self.max_attempt_count
         if self.min_attempt_interval is not None:
@@ -9397,8 +9411,12 @@ class GetCampaignResponseBodyData(TeaModel):
             self.cases_connected = m.get('CasesConnected')
         if m.get('CasesUncompleted') is not None:
             self.cases_uncompleted = m.get('CasesUncompleted')
+        if m.get('CasesUncompletedAfterAttempt') is not None:
+            self.cases_uncompleted_after_attempt = m.get('CasesUncompletedAfterAttempt')
         if m.get('CasesUncompletedAfterAttempted') is not None:
             self.cases_uncompleted_after_attempted = m.get('CasesUncompletedAfterAttempted')
+        if m.get('CompletionRate') is not None:
+            self.completion_rate = m.get('CompletionRate')
         if m.get('MaxAttemptCount') is not None:
             self.max_attempt_count = m.get('MaxAttemptCount')
         if m.get('MinAttemptInterval') is not None:
@@ -10858,14 +10876,18 @@ class GetHistoricalCampaignReportRequest(TeaModel):
 class GetHistoricalCampaignReportResponseBodyData(TeaModel):
     def __init__(
         self,
+        abandon_rate: float = None,
         abandoned_rate: float = None,
+        answer_rate: float = None,
         calls_abandoned: int = None,
         calls_connected: int = None,
         calls_dialed: int = None,
         connected_rate: float = None,
         occupancy_rate: float = None,
     ):
+        self.abandon_rate = abandon_rate
         self.abandoned_rate = abandoned_rate
+        self.answer_rate = answer_rate
         self.calls_abandoned = calls_abandoned
         self.calls_connected = calls_connected
         self.calls_dialed = calls_dialed
@@ -10881,8 +10903,12 @@ class GetHistoricalCampaignReportResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.abandon_rate is not None:
+            result['AbandonRate'] = self.abandon_rate
         if self.abandoned_rate is not None:
             result['AbandonedRate'] = self.abandoned_rate
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
         if self.calls_abandoned is not None:
             result['CallsAbandoned'] = self.calls_abandoned
         if self.calls_connected is not None:
@@ -10897,8 +10923,12 @@ class GetHistoricalCampaignReportResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AbandonRate') is not None:
+            self.abandon_rate = m.get('AbandonRate')
         if m.get('AbandonedRate') is not None:
             self.abandoned_rate = m.get('AbandonedRate')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
         if m.get('CallsAbandoned') is not None:
             self.calls_abandoned = m.get('CallsAbandoned')
         if m.get('CallsConnected') is not None:
@@ -11014,10 +11044,12 @@ class GetHistoricalInstanceReportRequest(TeaModel):
         self,
         end_time: int = None,
         instance_id: str = None,
+        media_type: str = None,
         start_time: int = None,
     ):
         self.end_time = end_time
         self.instance_id = instance_id
+        self.media_type = media_type
         self.start_time = start_time
 
     def validate(self):
@@ -11033,6 +11065,8 @@ class GetHistoricalInstanceReportRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -11043,8 +11077,43 @@ class GetHistoricalInstanceReportRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        return self
+
+
+class GetHistoricalInstanceReportResponseBodyDataInboundAccessChannelTypeDetailList(TeaModel):
+    def __init__(
+        self,
+        access_channel_type: str = None,
+        calls_offered: int = None,
+    ):
+        self.access_channel_type = access_channel_type
+        self.calls_offered = calls_offered
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_channel_type is not None:
+            result['AccessChannelType'] = self.access_channel_type
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessChannelType') is not None:
+            self.access_channel_type = m.get('AccessChannelType')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
         return self
 
 
@@ -11052,11 +11121,14 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
     def __init__(
         self,
         abandon_rate: float = None,
+        access_channel_type_detail_list: List[GetHistoricalInstanceReportResponseBodyDataInboundAccessChannelTypeDetailList] = None,
         average_abandon_time: float = None,
         average_abandoned_in_ivrtime: float = None,
         average_abandoned_in_queue_time: float = None,
         average_abandoned_in_ring_time: float = None,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_wait_time: float = None,
@@ -11068,6 +11140,7 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         calls_abandoned_in_voice_navigator: int = None,
         calls_attended_transferred: int = None,
         calls_blind_transferred: int = None,
+        calls_caused_ivrexception: int = None,
         calls_forward_to_outside_number: int = None,
         calls_handled: int = None,
         calls_hold: int = None,
@@ -11078,6 +11151,7 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         calls_queuing_overflow: int = None,
         calls_queuing_timeout: int = None,
         calls_ringed: int = None,
+        calls_to_voicemail: int = None,
         calls_voicemail: int = None,
         handle_rate: float = None,
         max_abandon_time: int = None,
@@ -11093,23 +11167,31 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         satisfaction_rate: float = None,
         satisfaction_surveys_offered: int = None,
         satisfaction_surveys_responded: int = None,
+        service_level_15: float = None,
         service_level_20: float = None,
+        service_level_30: float = None,
         total_abandon_time: int = None,
         total_abandoned_in_ivrtime: int = None,
         total_abandoned_in_queue_time: int = None,
         total_abandoned_in_ring_time: int = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_wait_time: int = None,
         total_work_time: int = None,
     ):
         self.abandon_rate = abandon_rate
+        self.access_channel_type_detail_list = access_channel_type_detail_list
         self.average_abandon_time = average_abandon_time
         self.average_abandoned_in_ivrtime = average_abandoned_in_ivrtime
         self.average_abandoned_in_queue_time = average_abandoned_in_queue_time
         self.average_abandoned_in_ring_time = average_abandoned_in_ring_time
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_wait_time = average_wait_time
@@ -11121,6 +11203,7 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         self.calls_abandoned_in_voice_navigator = calls_abandoned_in_voice_navigator
         self.calls_attended_transferred = calls_attended_transferred
         self.calls_blind_transferred = calls_blind_transferred
+        self.calls_caused_ivrexception = calls_caused_ivrexception
         self.calls_forward_to_outside_number = calls_forward_to_outside_number
         self.calls_handled = calls_handled
         self.calls_hold = calls_hold
@@ -11131,6 +11214,7 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         self.calls_queuing_overflow = calls_queuing_overflow
         self.calls_queuing_timeout = calls_queuing_timeout
         self.calls_ringed = calls_ringed
+        self.calls_to_voicemail = calls_to_voicemail
         self.calls_voicemail = calls_voicemail
         self.handle_rate = handle_rate
         self.max_abandon_time = max_abandon_time
@@ -11146,19 +11230,27 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         self.satisfaction_rate = satisfaction_rate
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.service_level_15 = service_level_15
         self.service_level_20 = service_level_20
+        self.service_level_30 = service_level_30
         self.total_abandon_time = total_abandon_time
         self.total_abandoned_in_ivrtime = total_abandoned_in_ivrtime
         self.total_abandoned_in_queue_time = total_abandoned_in_queue_time
         self.total_abandoned_in_ring_time = total_abandoned_in_ring_time
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_wait_time = total_wait_time
         self.total_work_time = total_work_time
 
     def validate(self):
-        pass
+        if self.access_channel_type_detail_list:
+            for k in self.access_channel_type_detail_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -11168,6 +11260,10 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         result = dict()
         if self.abandon_rate is not None:
             result['AbandonRate'] = self.abandon_rate
+        result['AccessChannelTypeDetailList'] = []
+        if self.access_channel_type_detail_list is not None:
+            for k in self.access_channel_type_detail_list:
+                result['AccessChannelTypeDetailList'].append(k.to_map() if k else None)
         if self.average_abandon_time is not None:
             result['AverageAbandonTime'] = self.average_abandon_time
         if self.average_abandoned_in_ivrtime is not None:
@@ -11176,8 +11272,12 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             result['AverageAbandonedInQueueTime'] = self.average_abandoned_in_queue_time
         if self.average_abandoned_in_ring_time is not None:
             result['AverageAbandonedInRingTime'] = self.average_abandoned_in_ring_time
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -11200,6 +11300,8 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             result['CallsAttendedTransferred'] = self.calls_attended_transferred
         if self.calls_blind_transferred is not None:
             result['CallsBlindTransferred'] = self.calls_blind_transferred
+        if self.calls_caused_ivrexception is not None:
+            result['CallsCausedIVRException'] = self.calls_caused_ivrexception
         if self.calls_forward_to_outside_number is not None:
             result['CallsForwardToOutsideNumber'] = self.calls_forward_to_outside_number
         if self.calls_handled is not None:
@@ -11220,6 +11322,8 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             result['CallsQueuingTimeout'] = self.calls_queuing_timeout
         if self.calls_ringed is not None:
             result['CallsRinged'] = self.calls_ringed
+        if self.calls_to_voicemail is not None:
+            result['CallsToVoicemail'] = self.calls_to_voicemail
         if self.calls_voicemail is not None:
             result['CallsVoicemail'] = self.calls_voicemail
         if self.handle_rate is not None:
@@ -11250,8 +11354,12 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
         if self.satisfaction_surveys_responded is not None:
             result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.service_level_15 is not None:
+            result['ServiceLevel15'] = self.service_level_15
         if self.service_level_20 is not None:
             result['ServiceLevel20'] = self.service_level_20
+        if self.service_level_30 is not None:
+            result['ServiceLevel30'] = self.service_level_30
         if self.total_abandon_time is not None:
             result['TotalAbandonTime'] = self.total_abandon_time
         if self.total_abandoned_in_ivrtime is not None:
@@ -11262,6 +11370,12 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             result['TotalAbandonedInRingTime'] = self.total_abandoned_in_ring_time
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -11276,6 +11390,11 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
         m = m or dict()
         if m.get('AbandonRate') is not None:
             self.abandon_rate = m.get('AbandonRate')
+        self.access_channel_type_detail_list = []
+        if m.get('AccessChannelTypeDetailList') is not None:
+            for k in m.get('AccessChannelTypeDetailList'):
+                temp_model = GetHistoricalInstanceReportResponseBodyDataInboundAccessChannelTypeDetailList()
+                self.access_channel_type_detail_list.append(temp_model.from_map(k))
         if m.get('AverageAbandonTime') is not None:
             self.average_abandon_time = m.get('AverageAbandonTime')
         if m.get('AverageAbandonedInIVRTime') is not None:
@@ -11284,8 +11403,12 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             self.average_abandoned_in_queue_time = m.get('AverageAbandonedInQueueTime')
         if m.get('AverageAbandonedInRingTime') is not None:
             self.average_abandoned_in_ring_time = m.get('AverageAbandonedInRingTime')
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -11308,6 +11431,8 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             self.calls_attended_transferred = m.get('CallsAttendedTransferred')
         if m.get('CallsBlindTransferred') is not None:
             self.calls_blind_transferred = m.get('CallsBlindTransferred')
+        if m.get('CallsCausedIVRException') is not None:
+            self.calls_caused_ivrexception = m.get('CallsCausedIVRException')
         if m.get('CallsForwardToOutsideNumber') is not None:
             self.calls_forward_to_outside_number = m.get('CallsForwardToOutsideNumber')
         if m.get('CallsHandled') is not None:
@@ -11328,6 +11453,8 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             self.calls_queuing_timeout = m.get('CallsQueuingTimeout')
         if m.get('CallsRinged') is not None:
             self.calls_ringed = m.get('CallsRinged')
+        if m.get('CallsToVoicemail') is not None:
+            self.calls_to_voicemail = m.get('CallsToVoicemail')
         if m.get('CallsVoicemail') is not None:
             self.calls_voicemail = m.get('CallsVoicemail')
         if m.get('HandleRate') is not None:
@@ -11358,8 +11485,12 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
         if m.get('SatisfactionSurveysResponded') is not None:
             self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('ServiceLevel15') is not None:
+            self.service_level_15 = m.get('ServiceLevel15')
         if m.get('ServiceLevel20') is not None:
             self.service_level_20 = m.get('ServiceLevel20')
+        if m.get('ServiceLevel30') is not None:
+            self.service_level_30 = m.get('ServiceLevel30')
         if m.get('TotalAbandonTime') is not None:
             self.total_abandon_time = m.get('TotalAbandonTime')
         if m.get('TotalAbandonedInIVRTime') is not None:
@@ -11370,6 +11501,12 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             self.total_abandoned_in_ring_time = m.get('TotalAbandonedInRingTime')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
@@ -11378,6 +11515,39 @@ class GetHistoricalInstanceReportResponseBodyDataInbound(TeaModel):
             self.total_wait_time = m.get('TotalWaitTime')
         if m.get('TotalWorkTime') is not None:
             self.total_work_time = m.get('TotalWorkTime')
+        return self
+
+
+class GetHistoricalInstanceReportResponseBodyDataInternal(TeaModel):
+    def __init__(
+        self,
+        calls_answered: int = None,
+        calls_dialed: int = None,
+    ):
+        self.calls_answered = calls_answered
+        self.calls_dialed = calls_dialed
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
         return self
 
 
@@ -11568,6 +11738,7 @@ class GetHistoricalInstanceReportResponseBodyDataOverall(TeaModel):
         average_work_time: float = None,
         max_break_time: int = None,
         max_hold_time: int = None,
+        max_logged_in_agents: int = None,
         max_ready_time: int = None,
         max_talk_time: int = None,
         max_work_time: int = None,
@@ -11591,6 +11762,7 @@ class GetHistoricalInstanceReportResponseBodyDataOverall(TeaModel):
         self.average_work_time = average_work_time
         self.max_break_time = max_break_time
         self.max_hold_time = max_hold_time
+        self.max_logged_in_agents = max_logged_in_agents
         self.max_ready_time = max_ready_time
         self.max_talk_time = max_talk_time
         self.max_work_time = max_work_time
@@ -11630,6 +11802,8 @@ class GetHistoricalInstanceReportResponseBodyDataOverall(TeaModel):
             result['MaxBreakTime'] = self.max_break_time
         if self.max_hold_time is not None:
             result['MaxHoldTime'] = self.max_hold_time
+        if self.max_logged_in_agents is not None:
+            result['MaxLoggedInAgents'] = self.max_logged_in_agents
         if self.max_ready_time is not None:
             result['MaxReadyTime'] = self.max_ready_time
         if self.max_talk_time is not None:
@@ -11678,6 +11852,8 @@ class GetHistoricalInstanceReportResponseBodyDataOverall(TeaModel):
             self.max_break_time = m.get('MaxBreakTime')
         if m.get('MaxHoldTime') is not None:
             self.max_hold_time = m.get('MaxHoldTime')
+        if m.get('MaxLoggedInAgents') is not None:
+            self.max_logged_in_agents = m.get('MaxLoggedInAgents')
         if m.get('MaxReadyTime') is not None:
             self.max_ready_time = m.get('MaxReadyTime')
         if m.get('MaxTalkTime') is not None:
@@ -11715,16 +11891,20 @@ class GetHistoricalInstanceReportResponseBodyData(TeaModel):
     def __init__(
         self,
         inbound: GetHistoricalInstanceReportResponseBodyDataInbound = None,
+        internal: GetHistoricalInstanceReportResponseBodyDataInternal = None,
         outbound: GetHistoricalInstanceReportResponseBodyDataOutbound = None,
         overall: GetHistoricalInstanceReportResponseBodyDataOverall = None,
     ):
         self.inbound = inbound
+        self.internal = internal
         self.outbound = outbound
         self.overall = overall
 
     def validate(self):
         if self.inbound:
             self.inbound.validate()
+        if self.internal:
+            self.internal.validate()
         if self.outbound:
             self.outbound.validate()
         if self.overall:
@@ -11738,6 +11918,8 @@ class GetHistoricalInstanceReportResponseBodyData(TeaModel):
         result = dict()
         if self.inbound is not None:
             result['Inbound'] = self.inbound.to_map()
+        if self.internal is not None:
+            result['Internal'] = self.internal.to_map()
         if self.outbound is not None:
             result['Outbound'] = self.outbound.to_map()
         if self.overall is not None:
@@ -11749,6 +11931,9 @@ class GetHistoricalInstanceReportResponseBodyData(TeaModel):
         if m.get('Inbound') is not None:
             temp_model = GetHistoricalInstanceReportResponseBodyDataInbound()
             self.inbound = temp_model.from_map(m['Inbound'])
+        if m.get('Internal') is not None:
+            temp_model = GetHistoricalInstanceReportResponseBodyDataInternal()
+            self.internal = temp_model.from_map(m['Internal'])
         if m.get('Outbound') is not None:
             temp_model = GetHistoricalInstanceReportResponseBodyDataOutbound()
             self.outbound = temp_model.from_map(m['Outbound'])
@@ -20837,20 +21022,36 @@ class ListCampaignTrendingReportResponseBodyData(TeaModel):
     def __init__(
         self,
         break_agents: int = None,
+        breaking_agents: int = None,
         concurrency: int = None,
         datetime: int = None,
         logged_in_agents: int = None,
+        outbound_scenario_breaking_agents: int = None,
+        outbound_scenario_ready_agents: int = None,
+        outbound_scenario_talking_agents: int = None,
+        outbound_scenario_working_agents: int = None,
         ready_agents: int = None,
+        stats_time: int = None,
         talk_agents: int = None,
+        talking_agents: int = None,
         work_agents: int = None,
+        working_agents: int = None,
     ):
         self.break_agents = break_agents
+        self.breaking_agents = breaking_agents
         self.concurrency = concurrency
         self.datetime = datetime
         self.logged_in_agents = logged_in_agents
+        self.outbound_scenario_breaking_agents = outbound_scenario_breaking_agents
+        self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        self.outbound_scenario_talking_agents = outbound_scenario_talking_agents
+        self.outbound_scenario_working_agents = outbound_scenario_working_agents
         self.ready_agents = ready_agents
+        self.stats_time = stats_time
         self.talk_agents = talk_agents
+        self.talking_agents = talking_agents
         self.work_agents = work_agents
+        self.working_agents = working_agents
 
     def validate(self):
         pass
@@ -20863,36 +21064,68 @@ class ListCampaignTrendingReportResponseBodyData(TeaModel):
         result = dict()
         if self.break_agents is not None:
             result['BreakAgents'] = self.break_agents
+        if self.breaking_agents is not None:
+            result['BreakingAgents'] = self.breaking_agents
         if self.concurrency is not None:
             result['Concurrency'] = self.concurrency
         if self.datetime is not None:
             result['Datetime'] = self.datetime
         if self.logged_in_agents is not None:
             result['LoggedInAgents'] = self.logged_in_agents
+        if self.outbound_scenario_breaking_agents is not None:
+            result['OutboundScenarioBreakingAgents'] = self.outbound_scenario_breaking_agents
+        if self.outbound_scenario_ready_agents is not None:
+            result['OutboundScenarioReadyAgents'] = self.outbound_scenario_ready_agents
+        if self.outbound_scenario_talking_agents is not None:
+            result['OutboundScenarioTalkingAgents'] = self.outbound_scenario_talking_agents
+        if self.outbound_scenario_working_agents is not None:
+            result['OutboundScenarioWorkingAgents'] = self.outbound_scenario_working_agents
         if self.ready_agents is not None:
             result['ReadyAgents'] = self.ready_agents
+        if self.stats_time is not None:
+            result['StatsTime'] = self.stats_time
         if self.talk_agents is not None:
             result['TalkAgents'] = self.talk_agents
+        if self.talking_agents is not None:
+            result['TalkingAgents'] = self.talking_agents
         if self.work_agents is not None:
             result['WorkAgents'] = self.work_agents
+        if self.working_agents is not None:
+            result['WorkingAgents'] = self.working_agents
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('BreakAgents') is not None:
             self.break_agents = m.get('BreakAgents')
+        if m.get('BreakingAgents') is not None:
+            self.breaking_agents = m.get('BreakingAgents')
         if m.get('Concurrency') is not None:
             self.concurrency = m.get('Concurrency')
         if m.get('Datetime') is not None:
             self.datetime = m.get('Datetime')
         if m.get('LoggedInAgents') is not None:
             self.logged_in_agents = m.get('LoggedInAgents')
+        if m.get('OutboundScenarioBreakingAgents') is not None:
+            self.outbound_scenario_breaking_agents = m.get('OutboundScenarioBreakingAgents')
+        if m.get('OutboundScenarioReadyAgents') is not None:
+            self.outbound_scenario_ready_agents = m.get('OutboundScenarioReadyAgents')
+        if m.get('OutboundScenarioTalkingAgents') is not None:
+            self.outbound_scenario_talking_agents = m.get('OutboundScenarioTalkingAgents')
+        if m.get('OutboundScenarioWorkingAgents') is not None:
+            self.outbound_scenario_working_agents = m.get('OutboundScenarioWorkingAgents')
         if m.get('ReadyAgents') is not None:
             self.ready_agents = m.get('ReadyAgents')
+        if m.get('StatsTime') is not None:
+            self.stats_time = m.get('StatsTime')
         if m.get('TalkAgents') is not None:
             self.talk_agents = m.get('TalkAgents')
+        if m.get('TalkingAgents') is not None:
+            self.talking_agents = m.get('TalkingAgents')
         if m.get('WorkAgents') is not None:
             self.work_agents = m.get('WorkAgents')
+        if m.get('WorkingAgents') is not None:
+            self.working_agents = m.get('WorkingAgents')
         return self
 
 
@@ -21431,6 +21664,7 @@ class ListCasesRequest(TeaModel):
 class ListCasesResponseBodyDataList(TeaModel):
     def __init__(
         self,
+        abandon_phase: str = None,
         abandon_type: str = None,
         attempt_count: int = None,
         case_id: str = None,
@@ -21439,6 +21673,7 @@ class ListCasesResponseBodyDataList(TeaModel):
         phone_number: str = None,
         state: str = None,
     ):
+        self.abandon_phase = abandon_phase
         self.abandon_type = abandon_type
         self.attempt_count = attempt_count
         self.case_id = case_id
@@ -21456,6 +21691,8 @@ class ListCasesResponseBodyDataList(TeaModel):
             return _map
 
         result = dict()
+        if self.abandon_phase is not None:
+            result['AbandonPhase'] = self.abandon_phase
         if self.abandon_type is not None:
             result['AbandonType'] = self.abandon_type
         if self.attempt_count is not None:
@@ -21474,6 +21711,8 @@ class ListCasesResponseBodyDataList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AbandonPhase') is not None:
+            self.abandon_phase = m.get('AbandonPhase')
         if m.get('AbandonType') is not None:
             self.abandon_type = m.get('AbandonType')
         if m.get('AttemptCount') is not None:
@@ -22919,15 +23158,19 @@ class ListHistoricalAgentReportRequest(TeaModel):
         self,
         agent_id_list: str = None,
         instance_id: str = None,
+        media_type: str = None,
         page_number: int = None,
         page_size: int = None,
+        skill_group_id: str = None,
         start_time: int = None,
         stop_time: int = None,
     ):
         self.agent_id_list = agent_id_list
         self.instance_id = instance_id
+        self.media_type = media_type
         self.page_number = page_number
         self.page_size = page_size
+        self.skill_group_id = skill_group_id
         self.start_time = start_time
         self.stop_time = stop_time
 
@@ -22944,10 +23187,14 @@ class ListHistoricalAgentReportRequest(TeaModel):
             result['AgentIdList'] = self.agent_id_list
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.stop_time is not None:
@@ -22960,10 +23207,14 @@ class ListHistoricalAgentReportRequest(TeaModel):
             self.agent_id_list = m.get('AgentIdList')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('StopTime') is not None:
@@ -22971,10 +23222,163 @@ class ListHistoricalAgentReportRequest(TeaModel):
         return self
 
 
+class ListHistoricalAgentReportResponseBodyDataListBack2Back(TeaModel):
+    def __init__(
+        self,
+        agent_handle_rate: str = None,
+        answer_rate: str = None,
+        average_customer_ring_time: str = None,
+        average_ring_time: str = None,
+        average_talk_time: str = None,
+        calls_agent_handled: str = None,
+        calls_answered: str = None,
+        calls_customer_answered: str = None,
+        calls_dialed: str = None,
+        customer_answer_rate: str = None,
+        max_customer_ring_time: str = None,
+        max_ring_time: str = None,
+        max_talk_time: str = None,
+        total_customer_ring_time: str = None,
+        total_ring_time: str = None,
+        total_talk_time: str = None,
+    ):
+        self.agent_handle_rate = agent_handle_rate
+        self.answer_rate = answer_rate
+        self.average_customer_ring_time = average_customer_ring_time
+        self.average_ring_time = average_ring_time
+        self.average_talk_time = average_talk_time
+        self.calls_agent_handled = calls_agent_handled
+        self.calls_answered = calls_answered
+        self.calls_customer_answered = calls_customer_answered
+        self.calls_dialed = calls_dialed
+        self.customer_answer_rate = customer_answer_rate
+        self.max_customer_ring_time = max_customer_ring_time
+        self.max_ring_time = max_ring_time
+        self.max_talk_time = max_talk_time
+        self.total_customer_ring_time = total_customer_ring_time
+        self.total_ring_time = total_ring_time
+        self.total_talk_time = total_talk_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_handle_rate is not None:
+            result['AgentHandleRate'] = self.agent_handle_rate
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
+        if self.average_customer_ring_time is not None:
+            result['AverageCustomerRingTime'] = self.average_customer_ring_time
+        if self.average_ring_time is not None:
+            result['AverageRingTime'] = self.average_ring_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_agent_handled is not None:
+            result['CallsAgentHandled'] = self.calls_agent_handled
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_customer_answered is not None:
+            result['CallsCustomerAnswered'] = self.calls_customer_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.customer_answer_rate is not None:
+            result['CustomerAnswerRate'] = self.customer_answer_rate
+        if self.max_customer_ring_time is not None:
+            result['MaxCustomerRingTime'] = self.max_customer_ring_time
+        if self.max_ring_time is not None:
+            result['MaxRingTime'] = self.max_ring_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.total_customer_ring_time is not None:
+            result['TotalCustomerRingTime'] = self.total_customer_ring_time
+        if self.total_ring_time is not None:
+            result['TotalRingTime'] = self.total_ring_time
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentHandleRate') is not None:
+            self.agent_handle_rate = m.get('AgentHandleRate')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
+        if m.get('AverageCustomerRingTime') is not None:
+            self.average_customer_ring_time = m.get('AverageCustomerRingTime')
+        if m.get('AverageRingTime') is not None:
+            self.average_ring_time = m.get('AverageRingTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAgentHandled') is not None:
+            self.calls_agent_handled = m.get('CallsAgentHandled')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsCustomerAnswered') is not None:
+            self.calls_customer_answered = m.get('CallsCustomerAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CustomerAnswerRate') is not None:
+            self.customer_answer_rate = m.get('CustomerAnswerRate')
+        if m.get('MaxCustomerRingTime') is not None:
+            self.max_customer_ring_time = m.get('MaxCustomerRingTime')
+        if m.get('MaxRingTime') is not None:
+            self.max_ring_time = m.get('MaxRingTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('TotalCustomerRingTime') is not None:
+            self.total_customer_ring_time = m.get('TotalCustomerRingTime')
+        if m.get('TotalRingTime') is not None:
+            self.total_ring_time = m.get('TotalRingTime')
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        return self
+
+
+class ListHistoricalAgentReportResponseBodyDataListInboundAccessChannelTypeDetails(TeaModel):
+    def __init__(
+        self,
+        access_channel_type: str = None,
+        calls_offered: int = None,
+    ):
+        self.access_channel_type = access_channel_type
+        self.calls_offered = calls_offered
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_channel_type is not None:
+            result['AccessChannelType'] = self.access_channel_type
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessChannelType') is not None:
+            self.access_channel_type = m.get('AccessChannelType')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
+        return self
+
+
 class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
     def __init__(
         self,
+        access_channel_type_details: List[ListHistoricalAgentReportResponseBodyDataListInboundAccessChannelTypeDetails] = None,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_work_time: float = None,
@@ -22995,12 +23399,19 @@ class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
         satisfaction_rate: float = None,
         satisfaction_surveys_offered: int = None,
         satisfaction_surveys_responded: int = None,
+        service_level_15: float = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: str = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        self.access_channel_type_details = access_channel_type_details
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
@@ -23021,13 +23432,20 @@ class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
         self.satisfaction_rate = satisfaction_rate
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.service_level_15 = service_level_15
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_work_time = total_work_time
 
     def validate(self):
-        pass
+        if self.access_channel_type_details:
+            for k in self.access_channel_type_details:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -23035,8 +23453,16 @@ class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
             return _map
 
         result = dict()
+        result['AccessChannelTypeDetails'] = []
+        if self.access_channel_type_details is not None:
+            for k in self.access_channel_type_details:
+                result['AccessChannelTypeDetails'].append(k.to_map() if k else None)
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -23077,8 +23503,16 @@ class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
             result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
         if self.satisfaction_surveys_responded is not None:
             result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.service_level_15 is not None:
+            result['ServiceLevel15'] = self.service_level_15
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -23089,8 +23523,17 @@ class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.access_channel_type_details = []
+        if m.get('AccessChannelTypeDetails') is not None:
+            for k in m.get('AccessChannelTypeDetails'):
+                temp_model = ListHistoricalAgentReportResponseBodyDataListInboundAccessChannelTypeDetails()
+                self.access_channel_type_details.append(temp_model.from_map(k))
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -23131,14 +23574,91 @@ class ListHistoricalAgentReportResponseBodyDataListInbound(TeaModel):
             self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
         if m.get('SatisfactionSurveysResponded') is not None:
             self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('ServiceLevel15') is not None:
+            self.service_level_15 = m.get('ServiceLevel15')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
             self.total_talk_time = m.get('TotalTalkTime')
         if m.get('TotalWorkTime') is not None:
             self.total_work_time = m.get('TotalWorkTime')
+        return self
+
+
+class ListHistoricalAgentReportResponseBodyDataListInternal(TeaModel):
+    def __init__(
+        self,
+        average_talk_time: float = None,
+        calls_answered: int = None,
+        calls_dialed: int = None,
+        calls_handled: int = None,
+        calls_offered: int = None,
+        calls_talked: int = None,
+        max_talk_time: int = None,
+        total_talk_time: int = None,
+    ):
+        self.average_talk_time = average_talk_time
+        self.calls_answered = calls_answered
+        self.calls_dialed = calls_dialed
+        self.calls_handled = calls_handled
+        self.calls_offered = calls_offered
+        self.calls_talked = calls_talked
+        self.max_talk_time = max_talk_time
+        self.total_talk_time = total_talk_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.calls_handled is not None:
+            result['CallsHandled'] = self.calls_handled
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        if self.calls_talked is not None:
+            result['CallsTalked'] = self.calls_talked
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CallsHandled') is not None:
+            self.calls_handled = m.get('CallsHandled')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsTalked') is not None:
+            self.calls_talked = m.get('CallsTalked')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
         return self
 
 
@@ -23395,9 +23915,13 @@ class ListHistoricalAgentReportResponseBodyDataListOverall(TeaModel):
         total_calls: int = None,
         total_hold_time: int = None,
         total_logged_in_time: int = None,
+        total_off_site_logged_in_time: int = None,
         total_off_site_online_time: int = None,
+        total_office_phone_logged_in_time: int = None,
         total_office_phone_online_time: int = None,
+        total_on_site_logged_in_time: int = None,
         total_on_site_online_time: int = None,
+        total_outbound_scenario_logged_in_time: int = None,
         total_outbound_scenario_ready_time: int = None,
         total_outbound_scenario_time: int = None,
         total_ready_time: int = None,
@@ -23426,9 +23950,13 @@ class ListHistoricalAgentReportResponseBodyDataListOverall(TeaModel):
         self.total_calls = total_calls
         self.total_hold_time = total_hold_time
         self.total_logged_in_time = total_logged_in_time
+        self.total_off_site_logged_in_time = total_off_site_logged_in_time
         self.total_off_site_online_time = total_off_site_online_time
+        self.total_office_phone_logged_in_time = total_office_phone_logged_in_time
         self.total_office_phone_online_time = total_office_phone_online_time
+        self.total_on_site_logged_in_time = total_on_site_logged_in_time
         self.total_on_site_online_time = total_on_site_online_time
+        self.total_outbound_scenario_logged_in_time = total_outbound_scenario_logged_in_time
         self.total_outbound_scenario_ready_time = total_outbound_scenario_ready_time
         self.total_outbound_scenario_time = total_outbound_scenario_time
         self.total_ready_time = total_ready_time
@@ -23493,12 +24021,20 @@ class ListHistoricalAgentReportResponseBodyDataListOverall(TeaModel):
             result['TotalHoldTime'] = self.total_hold_time
         if self.total_logged_in_time is not None:
             result['TotalLoggedInTime'] = self.total_logged_in_time
+        if self.total_off_site_logged_in_time is not None:
+            result['TotalOffSiteLoggedInTime'] = self.total_off_site_logged_in_time
         if self.total_off_site_online_time is not None:
             result['TotalOffSiteOnlineTime'] = self.total_off_site_online_time
+        if self.total_office_phone_logged_in_time is not None:
+            result['TotalOfficePhoneLoggedInTime'] = self.total_office_phone_logged_in_time
         if self.total_office_phone_online_time is not None:
             result['TotalOfficePhoneOnlineTime'] = self.total_office_phone_online_time
+        if self.total_on_site_logged_in_time is not None:
+            result['TotalOnSiteLoggedInTime'] = self.total_on_site_logged_in_time
         if self.total_on_site_online_time is not None:
             result['TotalOnSiteOnlineTime'] = self.total_on_site_online_time
+        if self.total_outbound_scenario_logged_in_time is not None:
+            result['TotalOutboundScenarioLoggedInTime'] = self.total_outbound_scenario_logged_in_time
         if self.total_outbound_scenario_ready_time is not None:
             result['TotalOutboundScenarioReadyTime'] = self.total_outbound_scenario_ready_time
         if self.total_outbound_scenario_time is not None:
@@ -23560,12 +24096,20 @@ class ListHistoricalAgentReportResponseBodyDataListOverall(TeaModel):
             self.total_hold_time = m.get('TotalHoldTime')
         if m.get('TotalLoggedInTime') is not None:
             self.total_logged_in_time = m.get('TotalLoggedInTime')
+        if m.get('TotalOffSiteLoggedInTime') is not None:
+            self.total_off_site_logged_in_time = m.get('TotalOffSiteLoggedInTime')
         if m.get('TotalOffSiteOnlineTime') is not None:
             self.total_off_site_online_time = m.get('TotalOffSiteOnlineTime')
+        if m.get('TotalOfficePhoneLoggedInTime') is not None:
+            self.total_office_phone_logged_in_time = m.get('TotalOfficePhoneLoggedInTime')
         if m.get('TotalOfficePhoneOnlineTime') is not None:
             self.total_office_phone_online_time = m.get('TotalOfficePhoneOnlineTime')
+        if m.get('TotalOnSiteLoggedInTime') is not None:
+            self.total_on_site_logged_in_time = m.get('TotalOnSiteLoggedInTime')
         if m.get('TotalOnSiteOnlineTime') is not None:
             self.total_on_site_online_time = m.get('TotalOnSiteOnlineTime')
+        if m.get('TotalOutboundScenarioLoggedInTime') is not None:
+            self.total_outbound_scenario_logged_in_time = m.get('TotalOutboundScenarioLoggedInTime')
         if m.get('TotalOutboundScenarioReadyTime') is not None:
             self.total_outbound_scenario_ready_time = m.get('TotalOutboundScenarioReadyTime')
         if m.get('TotalOutboundScenarioTime') is not None:
@@ -23584,8 +24128,10 @@ class ListHistoricalAgentReportResponseBodyDataList(TeaModel):
         self,
         agent_id: str = None,
         agent_name: str = None,
+        back_2back: ListHistoricalAgentReportResponseBodyDataListBack2Back = None,
         display_id: str = None,
         inbound: ListHistoricalAgentReportResponseBodyDataListInbound = None,
+        internal: ListHistoricalAgentReportResponseBodyDataListInternal = None,
         outbound: ListHistoricalAgentReportResponseBodyDataListOutbound = None,
         overall: ListHistoricalAgentReportResponseBodyDataListOverall = None,
         skill_group_ids: str = None,
@@ -23593,16 +24139,22 @@ class ListHistoricalAgentReportResponseBodyDataList(TeaModel):
     ):
         self.agent_id = agent_id
         self.agent_name = agent_name
+        self.back_2back = back_2back
         self.display_id = display_id
         self.inbound = inbound
+        self.internal = internal
         self.outbound = outbound
         self.overall = overall
         self.skill_group_ids = skill_group_ids
         self.skill_group_names = skill_group_names
 
     def validate(self):
+        if self.back_2back:
+            self.back_2back.validate()
         if self.inbound:
             self.inbound.validate()
+        if self.internal:
+            self.internal.validate()
         if self.outbound:
             self.outbound.validate()
         if self.overall:
@@ -23618,10 +24170,14 @@ class ListHistoricalAgentReportResponseBodyDataList(TeaModel):
             result['AgentId'] = self.agent_id
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
+        if self.back_2back is not None:
+            result['Back2Back'] = self.back_2back.to_map()
         if self.display_id is not None:
             result['DisplayId'] = self.display_id
         if self.inbound is not None:
             result['Inbound'] = self.inbound.to_map()
+        if self.internal is not None:
+            result['Internal'] = self.internal.to_map()
         if self.outbound is not None:
             result['Outbound'] = self.outbound.to_map()
         if self.overall is not None:
@@ -23638,11 +24194,17 @@ class ListHistoricalAgentReportResponseBodyDataList(TeaModel):
             self.agent_id = m.get('AgentId')
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
+        if m.get('Back2Back') is not None:
+            temp_model = ListHistoricalAgentReportResponseBodyDataListBack2Back()
+            self.back_2back = temp_model.from_map(m['Back2Back'])
         if m.get('DisplayId') is not None:
             self.display_id = m.get('DisplayId')
         if m.get('Inbound') is not None:
             temp_model = ListHistoricalAgentReportResponseBodyDataListInbound()
             self.inbound = temp_model.from_map(m['Inbound'])
+        if m.get('Internal') is not None:
+            temp_model = ListHistoricalAgentReportResponseBodyDataListInternal()
+            self.internal = temp_model.from_map(m['Internal'])
         if m.get('Outbound') is not None:
             temp_model = ListHistoricalAgentReportResponseBodyDataListOutbound()
             self.outbound = temp_model.from_map(m['Outbound'])
@@ -23812,6 +24374,7 @@ class ListHistoricalAgentSkillGroupReportRequest(TeaModel):
         agent_id_list: str = None,
         end_time: int = None,
         instance_id: str = None,
+        media_type: str = None,
         page_number: int = None,
         page_size: int = None,
         skill_group_id_list: str = None,
@@ -23820,6 +24383,7 @@ class ListHistoricalAgentSkillGroupReportRequest(TeaModel):
         self.agent_id_list = agent_id_list
         self.end_time = end_time
         self.instance_id = instance_id
+        self.media_type = media_type
         self.page_number = page_number
         self.page_size = page_size
         self.skill_group_id_list = skill_group_id_list
@@ -23840,6 +24404,8 @@ class ListHistoricalAgentSkillGroupReportRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -23858,6 +24424,8 @@ class ListHistoricalAgentSkillGroupReportRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -23873,13 +24441,17 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
     def __init__(
         self,
         agent_answer_rate: float = None,
+        agent_handle_rate: float = None,
         answer_rate: float = None,
         average_customer_ring_time: float = None,
         average_ring_time: float = None,
         average_talk_time: int = None,
+        calls_agent_handled: int = None,
         calls_answered: int = None,
+        calls_customer_answered: int = None,
         calls_customer_handled: int = None,
         calls_dialed: int = None,
+        customer_answer_rate: float = None,
         customer_handle_rate: float = None,
         max_customer_ring_time: int = None,
         max_ring_time: int = None,
@@ -23889,13 +24461,17 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
         total_talk_time: int = None,
     ):
         self.agent_answer_rate = agent_answer_rate
+        self.agent_handle_rate = agent_handle_rate
         self.answer_rate = answer_rate
         self.average_customer_ring_time = average_customer_ring_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
+        self.calls_agent_handled = calls_agent_handled
         self.calls_answered = calls_answered
+        self.calls_customer_answered = calls_customer_answered
         self.calls_customer_handled = calls_customer_handled
         self.calls_dialed = calls_dialed
+        self.customer_answer_rate = customer_answer_rate
         self.customer_handle_rate = customer_handle_rate
         self.max_customer_ring_time = max_customer_ring_time
         self.max_ring_time = max_ring_time
@@ -23915,6 +24491,8 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
         result = dict()
         if self.agent_answer_rate is not None:
             result['AgentAnswerRate'] = self.agent_answer_rate
+        if self.agent_handle_rate is not None:
+            result['AgentHandleRate'] = self.agent_handle_rate
         if self.answer_rate is not None:
             result['AnswerRate'] = self.answer_rate
         if self.average_customer_ring_time is not None:
@@ -23923,12 +24501,18 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
             result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_agent_handled is not None:
+            result['CallsAgentHandled'] = self.calls_agent_handled
         if self.calls_answered is not None:
             result['CallsAnswered'] = self.calls_answered
+        if self.calls_customer_answered is not None:
+            result['CallsCustomerAnswered'] = self.calls_customer_answered
         if self.calls_customer_handled is not None:
             result['CallsCustomerHandled'] = self.calls_customer_handled
         if self.calls_dialed is not None:
             result['CallsDialed'] = self.calls_dialed
+        if self.customer_answer_rate is not None:
+            result['CustomerAnswerRate'] = self.customer_answer_rate
         if self.customer_handle_rate is not None:
             result['CustomerHandleRate'] = self.customer_handle_rate
         if self.max_customer_ring_time is not None:
@@ -23949,6 +24533,8 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
         m = m or dict()
         if m.get('AgentAnswerRate') is not None:
             self.agent_answer_rate = m.get('AgentAnswerRate')
+        if m.get('AgentHandleRate') is not None:
+            self.agent_handle_rate = m.get('AgentHandleRate')
         if m.get('AnswerRate') is not None:
             self.answer_rate = m.get('AnswerRate')
         if m.get('AverageCustomerRingTime') is not None:
@@ -23957,12 +24543,18 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
             self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAgentHandled') is not None:
+            self.calls_agent_handled = m.get('CallsAgentHandled')
         if m.get('CallsAnswered') is not None:
             self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsCustomerAnswered') is not None:
+            self.calls_customer_answered = m.get('CallsCustomerAnswered')
         if m.get('CallsCustomerHandled') is not None:
             self.calls_customer_handled = m.get('CallsCustomerHandled')
         if m.get('CallsDialed') is not None:
             self.calls_dialed = m.get('CallsDialed')
+        if m.get('CustomerAnswerRate') is not None:
+            self.customer_answer_rate = m.get('CustomerAnswerRate')
         if m.get('CustomerHandleRate') is not None:
             self.customer_handle_rate = m.get('CustomerHandleRate')
         if m.get('MaxCustomerRingTime') is not None:
@@ -23983,7 +24575,9 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back(TeaModel)
 class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
     def __init__(
         self,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_work_time: float = None,
@@ -24005,11 +24599,16 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
         satisfaction_surveys_offered: int = None,
         satisfaction_surveys_responded: int = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
@@ -24031,6 +24630,9 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_work_time = total_work_time
@@ -24044,8 +24646,12 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
             return _map
 
         result = dict()
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -24088,6 +24694,12 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
             result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -24098,8 +24710,12 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -24142,6 +24758,12 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound(TeaModel):
             self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
@@ -24160,6 +24782,7 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal(TeaModel):
         calls_handled: int = None,
         calls_offered: int = None,
         calls_talk: int = None,
+        calls_talked: int = None,
         max_talk_time: int = None,
         total_talk_time: int = None,
     ):
@@ -24169,6 +24792,7 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal(TeaModel):
         self.calls_handled = calls_handled
         self.calls_offered = calls_offered
         self.calls_talk = calls_talk
+        self.calls_talked = calls_talked
         self.max_talk_time = max_talk_time
         self.total_talk_time = total_talk_time
 
@@ -24193,6 +24817,8 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal(TeaModel):
             result['CallsOffered'] = self.calls_offered
         if self.calls_talk is not None:
             result['CallsTalk'] = self.calls_talk
+        if self.calls_talked is not None:
+            result['CallsTalked'] = self.calls_talked
         if self.max_talk_time is not None:
             result['MaxTalkTime'] = self.max_talk_time
         if self.total_talk_time is not None:
@@ -24213,6 +24839,8 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal(TeaModel):
             self.calls_offered = m.get('CallsOffered')
         if m.get('CallsTalk') is not None:
             self.calls_talk = m.get('CallsTalk')
+        if m.get('CallsTalked') is not None:
+            self.calls_talked = m.get('CallsTalked')
         if m.get('MaxTalkTime') is not None:
             self.max_talk_time = m.get('MaxTalkTime')
         if m.get('TotalTalkTime') is not None:
@@ -24473,6 +25101,10 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall(TeaModel):
         total_calls: int = None,
         total_hold_time: int = None,
         total_logged_in_time: int = None,
+        total_off_site_lgged_in_time: int = None,
+        total_office_phone_logged_in_time: int = None,
+        total_on_site_logged_in_time: str = None,
+        total_outbound_scenario_logged_in_time: int = None,
         total_outbound_scenario_ready_time: int = None,
         total_outbound_scenario_time: int = None,
         total_ready_time: int = None,
@@ -24501,6 +25133,10 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall(TeaModel):
         self.total_calls = total_calls
         self.total_hold_time = total_hold_time
         self.total_logged_in_time = total_logged_in_time
+        self.total_off_site_lgged_in_time = total_off_site_lgged_in_time
+        self.total_office_phone_logged_in_time = total_office_phone_logged_in_time
+        self.total_on_site_logged_in_time = total_on_site_logged_in_time
+        self.total_outbound_scenario_logged_in_time = total_outbound_scenario_logged_in_time
         self.total_outbound_scenario_ready_time = total_outbound_scenario_ready_time
         self.total_outbound_scenario_time = total_outbound_scenario_time
         self.total_ready_time = total_ready_time
@@ -24565,6 +25201,14 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall(TeaModel):
             result['TotalHoldTime'] = self.total_hold_time
         if self.total_logged_in_time is not None:
             result['TotalLoggedInTime'] = self.total_logged_in_time
+        if self.total_off_site_lgged_in_time is not None:
+            result['TotalOffSiteLggedInTime'] = self.total_off_site_lgged_in_time
+        if self.total_office_phone_logged_in_time is not None:
+            result['TotalOfficePhoneLoggedInTime'] = self.total_office_phone_logged_in_time
+        if self.total_on_site_logged_in_time is not None:
+            result['TotalOnSiteLoggedInTime'] = self.total_on_site_logged_in_time
+        if self.total_outbound_scenario_logged_in_time is not None:
+            result['TotalOutboundScenarioLoggedInTime'] = self.total_outbound_scenario_logged_in_time
         if self.total_outbound_scenario_ready_time is not None:
             result['TotalOutboundScenarioReadyTime'] = self.total_outbound_scenario_ready_time
         if self.total_outbound_scenario_time is not None:
@@ -24626,6 +25270,14 @@ class ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall(TeaModel):
             self.total_hold_time = m.get('TotalHoldTime')
         if m.get('TotalLoggedInTime') is not None:
             self.total_logged_in_time = m.get('TotalLoggedInTime')
+        if m.get('TotalOffSiteLggedInTime') is not None:
+            self.total_off_site_lgged_in_time = m.get('TotalOffSiteLggedInTime')
+        if m.get('TotalOfficePhoneLoggedInTime') is not None:
+            self.total_office_phone_logged_in_time = m.get('TotalOfficePhoneLoggedInTime')
+        if m.get('TotalOnSiteLoggedInTime') is not None:
+            self.total_on_site_logged_in_time = m.get('TotalOnSiteLoggedInTime')
+        if m.get('TotalOutboundScenarioLoggedInTime') is not None:
+            self.total_outbound_scenario_logged_in_time = m.get('TotalOutboundScenarioLoggedInTime')
         if m.get('TotalOutboundScenarioReadyTime') is not None:
             self.total_outbound_scenario_ready_time = m.get('TotalOutboundScenarioReadyTime')
         if m.get('TotalOutboundScenarioTime') is not None:
@@ -24889,6 +25541,7 @@ class ListHistoricalSkillGroupReportRequest(TeaModel):
         self,
         end_time: int = None,
         instance_id: str = None,
+        media_type: str = None,
         page_number: int = None,
         page_size: int = None,
         skill_group_id_list: str = None,
@@ -24896,6 +25549,7 @@ class ListHistoricalSkillGroupReportRequest(TeaModel):
     ):
         self.end_time = end_time
         self.instance_id = instance_id
+        self.media_type = media_type
         self.page_number = page_number
         self.page_size = page_size
         self.skill_group_id_list = skill_group_id_list
@@ -24914,6 +25568,8 @@ class ListHistoricalSkillGroupReportRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -24930,6 +25586,8 @@ class ListHistoricalSkillGroupReportRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -24941,14 +25599,161 @@ class ListHistoricalSkillGroupReportRequest(TeaModel):
         return self
 
 
+class ListHistoricalSkillGroupReportResponseBodyDataListBack2Back(TeaModel):
+    def __init__(
+        self,
+        agent_handle_rate: float = None,
+        answer_rate: float = None,
+        average_customer_ring_time: float = None,
+        average_ring_time: float = None,
+        average_talk_time: float = None,
+        calls_answered: int = None,
+        calls_customer_answered: int = None,
+        calls_dialed: int = None,
+        customer_answer_rate: float = None,
+        max_customer_ring_time: int = None,
+        max_ring_time: int = None,
+        max_talk_time: int = None,
+        total_customer_ring_time: int = None,
+        total_ring_time: int = None,
+        total_talk_time: int = None,
+    ):
+        self.agent_handle_rate = agent_handle_rate
+        self.answer_rate = answer_rate
+        self.average_customer_ring_time = average_customer_ring_time
+        self.average_ring_time = average_ring_time
+        self.average_talk_time = average_talk_time
+        self.calls_answered = calls_answered
+        self.calls_customer_answered = calls_customer_answered
+        self.calls_dialed = calls_dialed
+        self.customer_answer_rate = customer_answer_rate
+        self.max_customer_ring_time = max_customer_ring_time
+        self.max_ring_time = max_ring_time
+        self.max_talk_time = max_talk_time
+        self.total_customer_ring_time = total_customer_ring_time
+        self.total_ring_time = total_ring_time
+        self.total_talk_time = total_talk_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_handle_rate is not None:
+            result['AgentHandleRate'] = self.agent_handle_rate
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
+        if self.average_customer_ring_time is not None:
+            result['AverageCustomerRingTime'] = self.average_customer_ring_time
+        if self.average_ring_time is not None:
+            result['AverageRingTime'] = self.average_ring_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_customer_answered is not None:
+            result['CallsCustomerAnswered'] = self.calls_customer_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.customer_answer_rate is not None:
+            result['CustomerAnswerRate'] = self.customer_answer_rate
+        if self.max_customer_ring_time is not None:
+            result['MaxCustomerRingTime'] = self.max_customer_ring_time
+        if self.max_ring_time is not None:
+            result['MaxRingTime'] = self.max_ring_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.total_customer_ring_time is not None:
+            result['TotalCustomerRingTime'] = self.total_customer_ring_time
+        if self.total_ring_time is not None:
+            result['TotalRingTime'] = self.total_ring_time
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentHandleRate') is not None:
+            self.agent_handle_rate = m.get('AgentHandleRate')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
+        if m.get('AverageCustomerRingTime') is not None:
+            self.average_customer_ring_time = m.get('AverageCustomerRingTime')
+        if m.get('AverageRingTime') is not None:
+            self.average_ring_time = m.get('AverageRingTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsCustomerAnswered') is not None:
+            self.calls_customer_answered = m.get('CallsCustomerAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CustomerAnswerRate') is not None:
+            self.customer_answer_rate = m.get('CustomerAnswerRate')
+        if m.get('MaxCustomerRingTime') is not None:
+            self.max_customer_ring_time = m.get('MaxCustomerRingTime')
+        if m.get('MaxRingTime') is not None:
+            self.max_ring_time = m.get('MaxRingTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('TotalCustomerRingTime') is not None:
+            self.total_customer_ring_time = m.get('TotalCustomerRingTime')
+        if m.get('TotalRingTime') is not None:
+            self.total_ring_time = m.get('TotalRingTime')
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        return self
+
+
+class ListHistoricalSkillGroupReportResponseBodyDataListInboundAccessChannelTypeDetails(TeaModel):
+    def __init__(
+        self,
+        access_channel_type: str = None,
+        calls_offered: int = None,
+    ):
+        self.access_channel_type = access_channel_type
+        self.calls_offered = calls_offered
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_channel_type is not None:
+            result['AccessChannelType'] = self.access_channel_type
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessChannelType') is not None:
+            self.access_channel_type = m.get('AccessChannelType')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
+        return self
+
+
 class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
     def __init__(
         self,
         abandon_rate: float = None,
+        access_channel_type_details: List[ListHistoricalSkillGroupReportResponseBodyDataListInboundAccessChannelTypeDetails] = None,
         average_abandon_time: float = None,
         average_abandoned_in_queue_time: float = None,
         average_abandoned_in_ring_time: float = None,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_wait_time: float = None,
@@ -24965,6 +25770,9 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
         calls_offered: int = None,
         calls_overflow: int = None,
         calls_queued: int = None,
+        calls_queuing_failed: int = None,
+        calls_queuing_overflow: int = None,
+        calls_queuing_timeout: int = None,
         calls_ringed: int = None,
         calls_timeout: int = None,
         handle_rate: float = None,
@@ -24980,21 +25788,29 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
         satisfaction_rate: float = None,
         satisfaction_surveys_offered: int = None,
         satisfaction_surveys_responded: int = None,
+        service_level_15: float = None,
         service_level_20: float = None,
+        service_level_30: float = None,
         total_abandon_time: int = None,
         total_abandoned_in_queue_time: int = None,
         total_abandoned_in_ring_time: int = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_wait_time: int = None,
         total_work_time: int = None,
     ):
         self.abandon_rate = abandon_rate
+        self.access_channel_type_details = access_channel_type_details
         self.average_abandon_time = average_abandon_time
         self.average_abandoned_in_queue_time = average_abandoned_in_queue_time
         self.average_abandoned_in_ring_time = average_abandoned_in_ring_time
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_wait_time = average_wait_time
@@ -25011,6 +25827,9 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
         self.calls_offered = calls_offered
         self.calls_overflow = calls_overflow
         self.calls_queued = calls_queued
+        self.calls_queuing_failed = calls_queuing_failed
+        self.calls_queuing_overflow = calls_queuing_overflow
+        self.calls_queuing_timeout = calls_queuing_timeout
         self.calls_ringed = calls_ringed
         self.calls_timeout = calls_timeout
         self.handle_rate = handle_rate
@@ -25026,18 +25845,26 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
         self.satisfaction_rate = satisfaction_rate
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.service_level_15 = service_level_15
         self.service_level_20 = service_level_20
+        self.service_level_30 = service_level_30
         self.total_abandon_time = total_abandon_time
         self.total_abandoned_in_queue_time = total_abandoned_in_queue_time
         self.total_abandoned_in_ring_time = total_abandoned_in_ring_time
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_wait_time = total_wait_time
         self.total_work_time = total_work_time
 
     def validate(self):
-        pass
+        if self.access_channel_type_details:
+            for k in self.access_channel_type_details:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25047,14 +25874,22 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
         result = dict()
         if self.abandon_rate is not None:
             result['AbandonRate'] = self.abandon_rate
+        result['AccessChannelTypeDetails'] = []
+        if self.access_channel_type_details is not None:
+            for k in self.access_channel_type_details:
+                result['AccessChannelTypeDetails'].append(k.to_map() if k else None)
         if self.average_abandon_time is not None:
             result['AverageAbandonTime'] = self.average_abandon_time
         if self.average_abandoned_in_queue_time is not None:
             result['AverageAbandonedInQueueTime'] = self.average_abandoned_in_queue_time
         if self.average_abandoned_in_ring_time is not None:
             result['AverageAbandonedInRingTime'] = self.average_abandoned_in_ring_time
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -25087,6 +25922,12 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
             result['CallsOverflow'] = self.calls_overflow
         if self.calls_queued is not None:
             result['CallsQueued'] = self.calls_queued
+        if self.calls_queuing_failed is not None:
+            result['CallsQueuingFailed'] = self.calls_queuing_failed
+        if self.calls_queuing_overflow is not None:
+            result['CallsQueuingOverflow'] = self.calls_queuing_overflow
+        if self.calls_queuing_timeout is not None:
+            result['CallsQueuingTimeout'] = self.calls_queuing_timeout
         if self.calls_ringed is not None:
             result['CallsRinged'] = self.calls_ringed
         if self.calls_timeout is not None:
@@ -25117,8 +25958,12 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
             result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
         if self.satisfaction_surveys_responded is not None:
             result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.service_level_15 is not None:
+            result['ServiceLevel15'] = self.service_level_15
         if self.service_level_20 is not None:
             result['ServiceLevel20'] = self.service_level_20
+        if self.service_level_30 is not None:
+            result['ServiceLevel30'] = self.service_level_30
         if self.total_abandon_time is not None:
             result['TotalAbandonTime'] = self.total_abandon_time
         if self.total_abandoned_in_queue_time is not None:
@@ -25127,6 +25972,12 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
             result['TotalAbandonedInRingTime'] = self.total_abandoned_in_ring_time
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -25141,14 +25992,23 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
         m = m or dict()
         if m.get('AbandonRate') is not None:
             self.abandon_rate = m.get('AbandonRate')
+        self.access_channel_type_details = []
+        if m.get('AccessChannelTypeDetails') is not None:
+            for k in m.get('AccessChannelTypeDetails'):
+                temp_model = ListHistoricalSkillGroupReportResponseBodyDataListInboundAccessChannelTypeDetails()
+                self.access_channel_type_details.append(temp_model.from_map(k))
         if m.get('AverageAbandonTime') is not None:
             self.average_abandon_time = m.get('AverageAbandonTime')
         if m.get('AverageAbandonedInQueueTime') is not None:
             self.average_abandoned_in_queue_time = m.get('AverageAbandonedInQueueTime')
         if m.get('AverageAbandonedInRingTime') is not None:
             self.average_abandoned_in_ring_time = m.get('AverageAbandonedInRingTime')
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -25181,6 +26041,12 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
             self.calls_overflow = m.get('CallsOverflow')
         if m.get('CallsQueued') is not None:
             self.calls_queued = m.get('CallsQueued')
+        if m.get('CallsQueuingFailed') is not None:
+            self.calls_queuing_failed = m.get('CallsQueuingFailed')
+        if m.get('CallsQueuingOverflow') is not None:
+            self.calls_queuing_overflow = m.get('CallsQueuingOverflow')
+        if m.get('CallsQueuingTimeout') is not None:
+            self.calls_queuing_timeout = m.get('CallsQueuingTimeout')
         if m.get('CallsRinged') is not None:
             self.calls_ringed = m.get('CallsRinged')
         if m.get('CallsTimeout') is not None:
@@ -25211,8 +26077,12 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
             self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
         if m.get('SatisfactionSurveysResponded') is not None:
             self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('ServiceLevel15') is not None:
+            self.service_level_15 = m.get('ServiceLevel15')
         if m.get('ServiceLevel20') is not None:
             self.service_level_20 = m.get('ServiceLevel20')
+        if m.get('ServiceLevel30') is not None:
+            self.service_level_30 = m.get('ServiceLevel30')
         if m.get('TotalAbandonTime') is not None:
             self.total_abandon_time = m.get('TotalAbandonTime')
         if m.get('TotalAbandonedInQueueTime') is not None:
@@ -25221,6 +26091,12 @@ class ListHistoricalSkillGroupReportResponseBodyDataListInbound(TeaModel):
             self.total_abandoned_in_ring_time = m.get('TotalAbandonedInRingTime')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
@@ -25421,6 +26297,45 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOutbound(TeaModel):
         return self
 
 
+class ListHistoricalSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList(TeaModel):
+    def __init__(
+        self,
+        break_code: str = None,
+        count: int = None,
+        duration: int = None,
+    ):
+        self.break_code = break_code
+        self.count = count
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.break_code is not None:
+            result['BreakCode'] = self.break_code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BreakCode') is not None:
+            self.break_code = m.get('BreakCode')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        return self
+
+
 class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
     def __init__(
         self,
@@ -25429,6 +26344,7 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
         average_ready_time: float = None,
         average_talk_time: float = None,
         average_work_time: float = None,
+        break_code_detail_list: List[ListHistoricalSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList] = None,
         max_break_time: int = None,
         max_hold_time: int = None,
         max_ready_time: int = None,
@@ -25452,6 +26368,7 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
         self.average_ready_time = average_ready_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
+        self.break_code_detail_list = break_code_detail_list
         self.max_break_time = max_break_time
         self.max_hold_time = max_hold_time
         self.max_ready_time = max_ready_time
@@ -25471,7 +26388,10 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
         self.total_work_time = total_work_time
 
     def validate(self):
-        pass
+        if self.break_code_detail_list:
+            for k in self.break_code_detail_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -25489,6 +26409,10 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
             result['AverageTalkTime'] = self.average_talk_time
         if self.average_work_time is not None:
             result['AverageWorkTime'] = self.average_work_time
+        result['BreakCodeDetailList'] = []
+        if self.break_code_detail_list is not None:
+            for k in self.break_code_detail_list:
+                result['BreakCodeDetailList'].append(k.to_map() if k else None)
         if self.max_break_time is not None:
             result['MaxBreakTime'] = self.max_break_time
         if self.max_hold_time is not None:
@@ -25537,6 +26461,11 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
             self.average_talk_time = m.get('AverageTalkTime')
         if m.get('AverageWorkTime') is not None:
             self.average_work_time = m.get('AverageWorkTime')
+        self.break_code_detail_list = []
+        if m.get('BreakCodeDetailList') is not None:
+            for k in m.get('BreakCodeDetailList'):
+                temp_model = ListHistoricalSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList()
+                self.break_code_detail_list.append(temp_model.from_map(k))
         if m.get('MaxBreakTime') is not None:
             self.max_break_time = m.get('MaxBreakTime')
         if m.get('MaxHoldTime') is not None:
@@ -25577,12 +26506,14 @@ class ListHistoricalSkillGroupReportResponseBodyDataListOverall(TeaModel):
 class ListHistoricalSkillGroupReportResponseBodyDataList(TeaModel):
     def __init__(
         self,
+        back_2back: ListHistoricalSkillGroupReportResponseBodyDataListBack2Back = None,
         inbound: ListHistoricalSkillGroupReportResponseBodyDataListInbound = None,
         outbound: ListHistoricalSkillGroupReportResponseBodyDataListOutbound = None,
         overall: ListHistoricalSkillGroupReportResponseBodyDataListOverall = None,
         skill_group_id: str = None,
         skill_group_name: str = None,
     ):
+        self.back_2back = back_2back
         self.inbound = inbound
         self.outbound = outbound
         self.overall = overall
@@ -25590,6 +26521,8 @@ class ListHistoricalSkillGroupReportResponseBodyDataList(TeaModel):
         self.skill_group_name = skill_group_name
 
     def validate(self):
+        if self.back_2back:
+            self.back_2back.validate()
         if self.inbound:
             self.inbound.validate()
         if self.outbound:
@@ -25603,6 +26536,8 @@ class ListHistoricalSkillGroupReportResponseBodyDataList(TeaModel):
             return _map
 
         result = dict()
+        if self.back_2back is not None:
+            result['Back2Back'] = self.back_2back.to_map()
         if self.inbound is not None:
             result['Inbound'] = self.inbound.to_map()
         if self.outbound is not None:
@@ -25617,6 +26552,9 @@ class ListHistoricalSkillGroupReportResponseBodyDataList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Back2Back') is not None:
+            temp_model = ListHistoricalSkillGroupReportResponseBodyDataListBack2Back()
+            self.back_2back = temp_model.from_map(m['Back2Back'])
         if m.get('Inbound') is not None:
             temp_model = ListHistoricalSkillGroupReportResponseBodyDataListInbound()
             self.inbound = temp_model.from_map(m['Inbound'])
@@ -26681,12 +27619,14 @@ class ListIntervalAgentReportRequest(TeaModel):
         end_time: int = None,
         instance_id: str = None,
         interval: str = None,
+        media_type: str = None,
         start_time: int = None,
     ):
         self.agent_id = agent_id
         self.end_time = end_time
         self.instance_id = instance_id
         self.interval = interval
+        self.media_type = media_type
         self.start_time = start_time
 
     def validate(self):
@@ -26706,6 +27646,8 @@ class ListIntervalAgentReportRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -26720,15 +27662,170 @@ class ListIntervalAgentReportRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        return self
+
+
+class ListIntervalAgentReportResponseBodyDataBack2Back(TeaModel):
+    def __init__(
+        self,
+        agent_handle_rate: float = None,
+        answer_rate: float = None,
+        average_customer_ring_time: float = None,
+        average_ring_time: float = None,
+        average_talk_time: float = None,
+        calls_agent_handled: int = None,
+        calls_answered: int = None,
+        calls_customer_answered: int = None,
+        calls_dialed: int = None,
+        customer_answer_rate: float = None,
+        max_customer_ring_time: int = None,
+        max_ring_time: int = None,
+        max_talk_time: int = None,
+        total_customer_ring_time: int = None,
+        total_ring_time: int = None,
+        total_talk_time: int = None,
+    ):
+        self.agent_handle_rate = agent_handle_rate
+        self.answer_rate = answer_rate
+        self.average_customer_ring_time = average_customer_ring_time
+        self.average_ring_time = average_ring_time
+        self.average_talk_time = average_talk_time
+        self.calls_agent_handled = calls_agent_handled
+        self.calls_answered = calls_answered
+        self.calls_customer_answered = calls_customer_answered
+        self.calls_dialed = calls_dialed
+        self.customer_answer_rate = customer_answer_rate
+        self.max_customer_ring_time = max_customer_ring_time
+        self.max_ring_time = max_ring_time
+        self.max_talk_time = max_talk_time
+        self.total_customer_ring_time = total_customer_ring_time
+        self.total_ring_time = total_ring_time
+        self.total_talk_time = total_talk_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_handle_rate is not None:
+            result['AgentHandleRate'] = self.agent_handle_rate
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
+        if self.average_customer_ring_time is not None:
+            result['AverageCustomerRingTime'] = self.average_customer_ring_time
+        if self.average_ring_time is not None:
+            result['AverageRingTime'] = self.average_ring_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_agent_handled is not None:
+            result['CallsAgentHandled'] = self.calls_agent_handled
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_customer_answered is not None:
+            result['CallsCustomerAnswered'] = self.calls_customer_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.customer_answer_rate is not None:
+            result['CustomerAnswerRate'] = self.customer_answer_rate
+        if self.max_customer_ring_time is not None:
+            result['MaxCustomerRingTime'] = self.max_customer_ring_time
+        if self.max_ring_time is not None:
+            result['MaxRingTime'] = self.max_ring_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.total_customer_ring_time is not None:
+            result['TotalCustomerRingTime'] = self.total_customer_ring_time
+        if self.total_ring_time is not None:
+            result['TotalRingTime'] = self.total_ring_time
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentHandleRate') is not None:
+            self.agent_handle_rate = m.get('AgentHandleRate')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
+        if m.get('AverageCustomerRingTime') is not None:
+            self.average_customer_ring_time = m.get('AverageCustomerRingTime')
+        if m.get('AverageRingTime') is not None:
+            self.average_ring_time = m.get('AverageRingTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAgentHandled') is not None:
+            self.calls_agent_handled = m.get('CallsAgentHandled')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsCustomerAnswered') is not None:
+            self.calls_customer_answered = m.get('CallsCustomerAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CustomerAnswerRate') is not None:
+            self.customer_answer_rate = m.get('CustomerAnswerRate')
+        if m.get('MaxCustomerRingTime') is not None:
+            self.max_customer_ring_time = m.get('MaxCustomerRingTime')
+        if m.get('MaxRingTime') is not None:
+            self.max_ring_time = m.get('MaxRingTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('TotalCustomerRingTime') is not None:
+            self.total_customer_ring_time = m.get('TotalCustomerRingTime')
+        if m.get('TotalRingTime') is not None:
+            self.total_ring_time = m.get('TotalRingTime')
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
+        return self
+
+
+class ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails(TeaModel):
+    def __init__(
+        self,
+        access_channel_type: str = None,
+        calls_offered: int = None,
+    ):
+        self.access_channel_type = access_channel_type
+        self.calls_offered = calls_offered
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_channel_type is not None:
+            result['AccessChannelType'] = self.access_channel_type
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessChannelType') is not None:
+            self.access_channel_type = m.get('AccessChannelType')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
         return self
 
 
 class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
     def __init__(
         self,
+        access_channel_type_details: List[ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails] = None,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_work_time: float = None,
@@ -26749,12 +27846,19 @@ class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
         satisfaction_rate: float = None,
         satisfaction_surveys_offered: int = None,
         satisfaction_surveys_responded: int = None,
+        service_level_15: float = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        self.access_channel_type_details = access_channel_type_details
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
@@ -26775,13 +27879,20 @@ class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
         self.satisfaction_rate = satisfaction_rate
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
+        self.service_level_15 = service_level_15
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_work_time = total_work_time
 
     def validate(self):
-        pass
+        if self.access_channel_type_details:
+            for k in self.access_channel_type_details:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -26789,8 +27900,16 @@ class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
             return _map
 
         result = dict()
+        result['AccessChannelTypeDetails'] = []
+        if self.access_channel_type_details is not None:
+            for k in self.access_channel_type_details:
+                result['AccessChannelTypeDetails'].append(k.to_map() if k else None)
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -26831,8 +27950,16 @@ class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
             result['SatisfactionSurveysOffered'] = self.satisfaction_surveys_offered
         if self.satisfaction_surveys_responded is not None:
             result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
+        if self.service_level_15 is not None:
+            result['ServiceLevel15'] = self.service_level_15
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -26843,8 +27970,17 @@ class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.access_channel_type_details = []
+        if m.get('AccessChannelTypeDetails') is not None:
+            for k in m.get('AccessChannelTypeDetails'):
+                temp_model = ListIntervalAgentReportResponseBodyDataInboundAccessChannelTypeDetails()
+                self.access_channel_type_details.append(temp_model.from_map(k))
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -26885,14 +28021,79 @@ class ListIntervalAgentReportResponseBodyDataInbound(TeaModel):
             self.satisfaction_surveys_offered = m.get('SatisfactionSurveysOffered')
         if m.get('SatisfactionSurveysResponded') is not None:
             self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
+        if m.get('ServiceLevel15') is not None:
+            self.service_level_15 = m.get('ServiceLevel15')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
             self.total_talk_time = m.get('TotalTalkTime')
         if m.get('TotalWorkTime') is not None:
             self.total_work_time = m.get('TotalWorkTime')
+        return self
+
+
+class ListIntervalAgentReportResponseBodyDataInternal(TeaModel):
+    def __init__(
+        self,
+        average_talk_time: float = None,
+        calls_answered: int = None,
+        calls_dialed: int = None,
+        calls_handled: int = None,
+        calls_offered: int = None,
+        calls_talked: int = None,
+    ):
+        self.average_talk_time = average_talk_time
+        self.calls_answered = calls_answered
+        self.calls_dialed = calls_dialed
+        self.calls_handled = calls_handled
+        self.calls_offered = calls_offered
+        self.calls_talked = calls_talked
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.calls_handled is not None:
+            result['CallsHandled'] = self.calls_handled
+        if self.calls_offered is not None:
+            result['CallsOffered'] = self.calls_offered
+        if self.calls_talked is not None:
+            result['CallsTalked'] = self.calls_talked
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CallsHandled') is not None:
+            self.calls_handled = m.get('CallsHandled')
+        if m.get('CallsOffered') is not None:
+            self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsTalked') is not None:
+            self.calls_talked = m.get('CallsTalked')
         return self
 
 
@@ -27134,6 +28335,7 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
         average_work_time: float = None,
         break_code_detail_list: List[ListIntervalAgentReportResponseBodyDataOverallBreakCodeDetailList] = None,
         first_check_in_time: int = None,
+        last_check_out_time: int = None,
         last_checkout_time: int = None,
         max_break_time: int = None,
         max_hold_time: int = None,
@@ -27149,9 +28351,13 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
         total_calls: int = None,
         total_hold_time: int = None,
         total_logged_in_time: int = None,
+        total_off_site_logged_in_time: int = None,
         total_off_site_online_time: int = None,
+        total_office_phone_logged_in_time: int = None,
         total_office_phone_online_time: int = None,
+        total_on_site_logged_in_time: int = None,
         total_on_site_online_time: int = None,
+        total_outbound_scenario_logged_in_time: int = None,
         total_outbound_scenario_ready_time: int = None,
         total_outbound_scenario_time: int = None,
         total_ready_time: int = None,
@@ -27165,6 +28371,7 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
         self.average_work_time = average_work_time
         self.break_code_detail_list = break_code_detail_list
         self.first_check_in_time = first_check_in_time
+        self.last_check_out_time = last_check_out_time
         self.last_checkout_time = last_checkout_time
         self.max_break_time = max_break_time
         self.max_hold_time = max_hold_time
@@ -27180,9 +28387,13 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
         self.total_calls = total_calls
         self.total_hold_time = total_hold_time
         self.total_logged_in_time = total_logged_in_time
+        self.total_off_site_logged_in_time = total_off_site_logged_in_time
         self.total_off_site_online_time = total_off_site_online_time
+        self.total_office_phone_logged_in_time = total_office_phone_logged_in_time
         self.total_office_phone_online_time = total_office_phone_online_time
+        self.total_on_site_logged_in_time = total_on_site_logged_in_time
         self.total_on_site_online_time = total_on_site_online_time
+        self.total_outbound_scenario_logged_in_time = total_outbound_scenario_logged_in_time
         self.total_outbound_scenario_ready_time = total_outbound_scenario_ready_time
         self.total_outbound_scenario_time = total_outbound_scenario_time
         self.total_ready_time = total_ready_time
@@ -27217,6 +28428,8 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
                 result['BreakCodeDetailList'].append(k.to_map() if k else None)
         if self.first_check_in_time is not None:
             result['FirstCheckInTime'] = self.first_check_in_time
+        if self.last_check_out_time is not None:
+            result['LastCheckOutTime'] = self.last_check_out_time
         if self.last_checkout_time is not None:
             result['LastCheckoutTime'] = self.last_checkout_time
         if self.max_break_time is not None:
@@ -27247,12 +28460,20 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
             result['TotalHoldTime'] = self.total_hold_time
         if self.total_logged_in_time is not None:
             result['TotalLoggedInTime'] = self.total_logged_in_time
+        if self.total_off_site_logged_in_time is not None:
+            result['TotalOffSiteLoggedInTime'] = self.total_off_site_logged_in_time
         if self.total_off_site_online_time is not None:
             result['TotalOffSiteOnlineTime'] = self.total_off_site_online_time
+        if self.total_office_phone_logged_in_time is not None:
+            result['TotalOfficePhoneLoggedInTime'] = self.total_office_phone_logged_in_time
         if self.total_office_phone_online_time is not None:
             result['TotalOfficePhoneOnlineTime'] = self.total_office_phone_online_time
+        if self.total_on_site_logged_in_time is not None:
+            result['TotalOnSiteLoggedInTime'] = self.total_on_site_logged_in_time
         if self.total_on_site_online_time is not None:
             result['TotalOnSiteOnlineTime'] = self.total_on_site_online_time
+        if self.total_outbound_scenario_logged_in_time is not None:
+            result['TotalOutboundScenarioLoggedInTime'] = self.total_outbound_scenario_logged_in_time
         if self.total_outbound_scenario_ready_time is not None:
             result['TotalOutboundScenarioReadyTime'] = self.total_outbound_scenario_ready_time
         if self.total_outbound_scenario_time is not None:
@@ -27284,6 +28505,8 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
                 self.break_code_detail_list.append(temp_model.from_map(k))
         if m.get('FirstCheckInTime') is not None:
             self.first_check_in_time = m.get('FirstCheckInTime')
+        if m.get('LastCheckOutTime') is not None:
+            self.last_check_out_time = m.get('LastCheckOutTime')
         if m.get('LastCheckoutTime') is not None:
             self.last_checkout_time = m.get('LastCheckoutTime')
         if m.get('MaxBreakTime') is not None:
@@ -27314,12 +28537,20 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
             self.total_hold_time = m.get('TotalHoldTime')
         if m.get('TotalLoggedInTime') is not None:
             self.total_logged_in_time = m.get('TotalLoggedInTime')
+        if m.get('TotalOffSiteLoggedInTime') is not None:
+            self.total_off_site_logged_in_time = m.get('TotalOffSiteLoggedInTime')
         if m.get('TotalOffSiteOnlineTime') is not None:
             self.total_off_site_online_time = m.get('TotalOffSiteOnlineTime')
+        if m.get('TotalOfficePhoneLoggedInTime') is not None:
+            self.total_office_phone_logged_in_time = m.get('TotalOfficePhoneLoggedInTime')
         if m.get('TotalOfficePhoneOnlineTime') is not None:
             self.total_office_phone_online_time = m.get('TotalOfficePhoneOnlineTime')
+        if m.get('TotalOnSiteLoggedInTime') is not None:
+            self.total_on_site_logged_in_time = m.get('TotalOnSiteLoggedInTime')
         if m.get('TotalOnSiteOnlineTime') is not None:
             self.total_on_site_online_time = m.get('TotalOnSiteOnlineTime')
+        if m.get('TotalOutboundScenarioLoggedInTime') is not None:
+            self.total_outbound_scenario_logged_in_time = m.get('TotalOutboundScenarioLoggedInTime')
         if m.get('TotalOutboundScenarioReadyTime') is not None:
             self.total_outbound_scenario_ready_time = m.get('TotalOutboundScenarioReadyTime')
         if m.get('TotalOutboundScenarioTime') is not None:
@@ -27336,19 +28567,27 @@ class ListIntervalAgentReportResponseBodyDataOverall(TeaModel):
 class ListIntervalAgentReportResponseBodyData(TeaModel):
     def __init__(
         self,
+        back_2back: ListIntervalAgentReportResponseBodyDataBack2Back = None,
         inbound: ListIntervalAgentReportResponseBodyDataInbound = None,
+        internal: ListIntervalAgentReportResponseBodyDataInternal = None,
         outbound: ListIntervalAgentReportResponseBodyDataOutbound = None,
         overall: ListIntervalAgentReportResponseBodyDataOverall = None,
         stats_time: int = None,
     ):
+        self.back_2back = back_2back
         self.inbound = inbound
+        self.internal = internal
         self.outbound = outbound
         self.overall = overall
         self.stats_time = stats_time
 
     def validate(self):
+        if self.back_2back:
+            self.back_2back.validate()
         if self.inbound:
             self.inbound.validate()
+        if self.internal:
+            self.internal.validate()
         if self.outbound:
             self.outbound.validate()
         if self.overall:
@@ -27360,8 +28599,12 @@ class ListIntervalAgentReportResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.back_2back is not None:
+            result['Back2Back'] = self.back_2back.to_map()
         if self.inbound is not None:
             result['Inbound'] = self.inbound.to_map()
+        if self.internal is not None:
+            result['Internal'] = self.internal.to_map()
         if self.outbound is not None:
             result['Outbound'] = self.outbound.to_map()
         if self.overall is not None:
@@ -27372,9 +28615,15 @@ class ListIntervalAgentReportResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Back2Back') is not None:
+            temp_model = ListIntervalAgentReportResponseBodyDataBack2Back()
+            self.back_2back = temp_model.from_map(m['Back2Back'])
         if m.get('Inbound') is not None:
             temp_model = ListIntervalAgentReportResponseBodyDataInbound()
             self.inbound = temp_model.from_map(m['Inbound'])
+        if m.get('Internal') is not None:
+            temp_model = ListIntervalAgentReportResponseBodyDataInternal()
+            self.internal = temp_model.from_map(m['Internal'])
         if m.get('Outbound') is not None:
             temp_model = ListIntervalAgentReportResponseBodyDataOutbound()
             self.outbound = temp_model.from_map(m['Outbound'])
@@ -27550,13 +28799,17 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
     def __init__(
         self,
         agent_answer_rate: float = None,
+        agent_handle_rate: float = None,
         answer_rate: float = None,
         average_customer_ring_time: float = None,
         average_ring_time: float = None,
         average_talk_time: int = None,
+        calls_agent_handled: int = None,
         calls_answered: int = None,
+        calls_customer_answered: int = None,
         calls_customer_handled: int = None,
         calls_dialed: int = None,
+        customer_answer_rate: float = None,
         customer_handle_rate: float = None,
         max_customer_ring_time: int = None,
         max_ring_time: int = None,
@@ -27566,13 +28819,17 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
         total_talk_time: int = None,
     ):
         self.agent_answer_rate = agent_answer_rate
+        self.agent_handle_rate = agent_handle_rate
         self.answer_rate = answer_rate
         self.average_customer_ring_time = average_customer_ring_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
+        self.calls_agent_handled = calls_agent_handled
         self.calls_answered = calls_answered
+        self.calls_customer_answered = calls_customer_answered
         self.calls_customer_handled = calls_customer_handled
         self.calls_dialed = calls_dialed
+        self.customer_answer_rate = customer_answer_rate
         self.customer_handle_rate = customer_handle_rate
         self.max_customer_ring_time = max_customer_ring_time
         self.max_ring_time = max_ring_time
@@ -27592,6 +28849,8 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
         result = dict()
         if self.agent_answer_rate is not None:
             result['AgentAnswerRate'] = self.agent_answer_rate
+        if self.agent_handle_rate is not None:
+            result['AgentHandleRate'] = self.agent_handle_rate
         if self.answer_rate is not None:
             result['AnswerRate'] = self.answer_rate
         if self.average_customer_ring_time is not None:
@@ -27600,12 +28859,18 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
             result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_agent_handled is not None:
+            result['CallsAgentHandled'] = self.calls_agent_handled
         if self.calls_answered is not None:
             result['CallsAnswered'] = self.calls_answered
+        if self.calls_customer_answered is not None:
+            result['CallsCustomerAnswered'] = self.calls_customer_answered
         if self.calls_customer_handled is not None:
             result['CallsCustomerHandled'] = self.calls_customer_handled
         if self.calls_dialed is not None:
             result['CallsDialed'] = self.calls_dialed
+        if self.customer_answer_rate is not None:
+            result['CustomerAnswerRate'] = self.customer_answer_rate
         if self.customer_handle_rate is not None:
             result['CustomerHandleRate'] = self.customer_handle_rate
         if self.max_customer_ring_time is not None:
@@ -27626,6 +28891,8 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
         m = m or dict()
         if m.get('AgentAnswerRate') is not None:
             self.agent_answer_rate = m.get('AgentAnswerRate')
+        if m.get('AgentHandleRate') is not None:
+            self.agent_handle_rate = m.get('AgentHandleRate')
         if m.get('AnswerRate') is not None:
             self.answer_rate = m.get('AnswerRate')
         if m.get('AverageCustomerRingTime') is not None:
@@ -27634,12 +28901,18 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
             self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAgentHandled') is not None:
+            self.calls_agent_handled = m.get('CallsAgentHandled')
         if m.get('CallsAnswered') is not None:
             self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsCustomerAnswered') is not None:
+            self.calls_customer_answered = m.get('CallsCustomerAnswered')
         if m.get('CallsCustomerHandled') is not None:
             self.calls_customer_handled = m.get('CallsCustomerHandled')
         if m.get('CallsDialed') is not None:
             self.calls_dialed = m.get('CallsDialed')
+        if m.get('CustomerAnswerRate') is not None:
+            self.customer_answer_rate = m.get('CustomerAnswerRate')
         if m.get('CustomerHandleRate') is not None:
             self.customer_handle_rate = m.get('CustomerHandleRate')
         if m.get('MaxCustomerRingTime') is not None:
@@ -27660,7 +28933,9 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back(TeaModel):
 class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
     def __init__(
         self,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_work_time: float = None,
@@ -27682,11 +28957,16 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
         satisfaction_surveys_offered: int = None,
         satisfaction_surveys_responded: int = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_work_time: int = None,
     ):
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
@@ -27708,6 +28988,9 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
         self.satisfaction_surveys_offered = satisfaction_surveys_offered
         self.satisfaction_surveys_responded = satisfaction_surveys_responded
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_work_time = total_work_time
@@ -27721,8 +29004,12 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
             return _map
 
         result = dict()
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -27765,6 +29052,12 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
             result['SatisfactionSurveysResponded'] = self.satisfaction_surveys_responded
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -27775,8 +29068,12 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -27819,6 +29116,12 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInbound(TeaModel):
             self.satisfaction_surveys_responded = m.get('SatisfactionSurveysResponded')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
@@ -27837,6 +29140,7 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInternal(TeaModel):
         calls_handled: int = None,
         calls_offered: int = None,
         calls_talk: int = None,
+        calls_talked: int = None,
         max_talk_time: int = None,
         total_talk_time: int = None,
     ):
@@ -27846,6 +29150,7 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInternal(TeaModel):
         self.calls_handled = calls_handled
         self.calls_offered = calls_offered
         self.calls_talk = calls_talk
+        self.calls_talked = calls_talked
         self.max_talk_time = max_talk_time
         self.total_talk_time = total_talk_time
 
@@ -27870,6 +29175,8 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInternal(TeaModel):
             result['CallsOffered'] = self.calls_offered
         if self.calls_talk is not None:
             result['CallsTalk'] = self.calls_talk
+        if self.calls_talked is not None:
+            result['CallsTalked'] = self.calls_talked
         if self.max_talk_time is not None:
             result['MaxTalkTime'] = self.max_talk_time
         if self.total_talk_time is not None:
@@ -27890,6 +29197,8 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataInternal(TeaModel):
             self.calls_offered = m.get('CallsOffered')
         if m.get('CallsTalk') is not None:
             self.calls_talk = m.get('CallsTalk')
+        if m.get('CallsTalked') is not None:
+            self.calls_talked = m.get('CallsTalked')
         if m.get('MaxTalkTime') is not None:
             self.max_talk_time = m.get('MaxTalkTime')
         if m.get('TotalTalkTime') is not None:
@@ -28135,6 +29444,7 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
         average_work_time: float = None,
         break_code_detail_list: List[ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList] = None,
         first_check_in_time: int = None,
+        last_check_out_time: int = None,
         last_checkout_time: int = None,
         max_break_time: int = None,
         max_hold_time: int = None,
@@ -28150,6 +29460,10 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
         total_calls: int = None,
         total_hold_time: int = None,
         total_logged_in_time: int = None,
+        total_off_site_logged_in_time: str = None,
+        total_office_phone_logged_in_time: str = None,
+        total_on_site_logged_in_time: str = None,
+        total_outbound_scenario_logged_in_time: int = None,
         total_outbound_scenario_ready_time: int = None,
         total_outbound_scenario_time: int = None,
         total_ready_time: int = None,
@@ -28163,6 +29477,7 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
         self.average_work_time = average_work_time
         self.break_code_detail_list = break_code_detail_list
         self.first_check_in_time = first_check_in_time
+        self.last_check_out_time = last_check_out_time
         self.last_checkout_time = last_checkout_time
         self.max_break_time = max_break_time
         self.max_hold_time = max_hold_time
@@ -28178,6 +29493,10 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
         self.total_calls = total_calls
         self.total_hold_time = total_hold_time
         self.total_logged_in_time = total_logged_in_time
+        self.total_off_site_logged_in_time = total_off_site_logged_in_time
+        self.total_office_phone_logged_in_time = total_office_phone_logged_in_time
+        self.total_on_site_logged_in_time = total_on_site_logged_in_time
+        self.total_outbound_scenario_logged_in_time = total_outbound_scenario_logged_in_time
         self.total_outbound_scenario_ready_time = total_outbound_scenario_ready_time
         self.total_outbound_scenario_time = total_outbound_scenario_time
         self.total_ready_time = total_ready_time
@@ -28212,6 +29531,8 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
                 result['BreakCodeDetailList'].append(k.to_map() if k else None)
         if self.first_check_in_time is not None:
             result['FirstCheckInTime'] = self.first_check_in_time
+        if self.last_check_out_time is not None:
+            result['LastCheckOutTime'] = self.last_check_out_time
         if self.last_checkout_time is not None:
             result['LastCheckoutTime'] = self.last_checkout_time
         if self.max_break_time is not None:
@@ -28242,6 +29563,14 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
             result['TotalHoldTime'] = self.total_hold_time
         if self.total_logged_in_time is not None:
             result['TotalLoggedInTime'] = self.total_logged_in_time
+        if self.total_off_site_logged_in_time is not None:
+            result['TotalOffSiteLoggedInTime'] = self.total_off_site_logged_in_time
+        if self.total_office_phone_logged_in_time is not None:
+            result['TotalOfficePhoneLoggedInTime'] = self.total_office_phone_logged_in_time
+        if self.total_on_site_logged_in_time is not None:
+            result['TotalOnSiteLoggedInTime'] = self.total_on_site_logged_in_time
+        if self.total_outbound_scenario_logged_in_time is not None:
+            result['TotalOutboundScenarioLoggedInTime'] = self.total_outbound_scenario_logged_in_time
         if self.total_outbound_scenario_ready_time is not None:
             result['TotalOutboundScenarioReadyTime'] = self.total_outbound_scenario_ready_time
         if self.total_outbound_scenario_time is not None:
@@ -28273,6 +29602,8 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
                 self.break_code_detail_list.append(temp_model.from_map(k))
         if m.get('FirstCheckInTime') is not None:
             self.first_check_in_time = m.get('FirstCheckInTime')
+        if m.get('LastCheckOutTime') is not None:
+            self.last_check_out_time = m.get('LastCheckOutTime')
         if m.get('LastCheckoutTime') is not None:
             self.last_checkout_time = m.get('LastCheckoutTime')
         if m.get('MaxBreakTime') is not None:
@@ -28303,6 +29634,14 @@ class ListIntervalAgentSkillGroupReportResponseBodyDataOverall(TeaModel):
             self.total_hold_time = m.get('TotalHoldTime')
         if m.get('TotalLoggedInTime') is not None:
             self.total_logged_in_time = m.get('TotalLoggedInTime')
+        if m.get('TotalOffSiteLoggedInTime') is not None:
+            self.total_off_site_logged_in_time = m.get('TotalOffSiteLoggedInTime')
+        if m.get('TotalOfficePhoneLoggedInTime') is not None:
+            self.total_office_phone_logged_in_time = m.get('TotalOfficePhoneLoggedInTime')
+        if m.get('TotalOnSiteLoggedInTime') is not None:
+            self.total_on_site_logged_in_time = m.get('TotalOnSiteLoggedInTime')
+        if m.get('TotalOutboundScenarioLoggedInTime') is not None:
+            self.total_outbound_scenario_logged_in_time = m.get('TotalOutboundScenarioLoggedInTime')
         if m.get('TotalOutboundScenarioReadyTime') is not None:
             self.total_outbound_scenario_ready_time = m.get('TotalOutboundScenarioReadyTime')
         if m.get('TotalOutboundScenarioTime') is not None:
@@ -28538,12 +29877,15 @@ class ListIntervalInstanceReportRequest(TeaModel):
 class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
     def __init__(
         self,
+        abandon_rate: float = None,
         abandoned_rate: float = None,
         average_abandon_time: float = None,
         average_abandoned_in_ivrtime: float = None,
         average_abandoned_in_queue_time: float = None,
         average_abandoned_in_ring_time: float = None,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_wait_time: float = None,
@@ -28555,6 +29897,7 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
         calls_abandoned_in_voice_navigator: int = None,
         calls_attended_transferred: int = None,
         calls_blind_transferred: int = None,
+        calls_caused_ivrexception: int = None,
         calls_forward_to_outside_number: int = None,
         calls_handled: int = None,
         calls_hold: int = None,
@@ -28565,6 +29908,7 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
         calls_queuing_overflow: int = None,
         calls_queuing_timeout: int = None,
         calls_ringed: int = None,
+        calls_to_voicemail: int = None,
         calls_voicemail: int = None,
         handle_rate: float = None,
         max_abandon_time: int = None,
@@ -28586,17 +29930,23 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
         total_abandoned_in_queue_time: int = None,
         total_abandoned_in_ring_time: int = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_wait_time: int = None,
         total_work_time: int = None,
     ):
+        self.abandon_rate = abandon_rate
         self.abandoned_rate = abandoned_rate
         self.average_abandon_time = average_abandon_time
         self.average_abandoned_in_ivrtime = average_abandoned_in_ivrtime
         self.average_abandoned_in_queue_time = average_abandoned_in_queue_time
         self.average_abandoned_in_ring_time = average_abandoned_in_ring_time
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_wait_time = average_wait_time
@@ -28608,6 +29958,7 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
         self.calls_abandoned_in_voice_navigator = calls_abandoned_in_voice_navigator
         self.calls_attended_transferred = calls_attended_transferred
         self.calls_blind_transferred = calls_blind_transferred
+        self.calls_caused_ivrexception = calls_caused_ivrexception
         self.calls_forward_to_outside_number = calls_forward_to_outside_number
         self.calls_handled = calls_handled
         self.calls_hold = calls_hold
@@ -28618,6 +29969,7 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
         self.calls_queuing_overflow = calls_queuing_overflow
         self.calls_queuing_timeout = calls_queuing_timeout
         self.calls_ringed = calls_ringed
+        self.calls_to_voicemail = calls_to_voicemail
         self.calls_voicemail = calls_voicemail
         self.handle_rate = handle_rate
         self.max_abandon_time = max_abandon_time
@@ -28639,6 +29991,9 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
         self.total_abandoned_in_queue_time = total_abandoned_in_queue_time
         self.total_abandoned_in_ring_time = total_abandoned_in_ring_time
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_wait_time = total_wait_time
@@ -28653,6 +30008,8 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             return _map
 
         result = dict()
+        if self.abandon_rate is not None:
+            result['AbandonRate'] = self.abandon_rate
         if self.abandoned_rate is not None:
             result['AbandonedRate'] = self.abandoned_rate
         if self.average_abandon_time is not None:
@@ -28663,8 +30020,12 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             result['AverageAbandonedInQueueTime'] = self.average_abandoned_in_queue_time
         if self.average_abandoned_in_ring_time is not None:
             result['AverageAbandonedInRingTime'] = self.average_abandoned_in_ring_time
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -28687,6 +30048,8 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             result['CallsAttendedTransferred'] = self.calls_attended_transferred
         if self.calls_blind_transferred is not None:
             result['CallsBlindTransferred'] = self.calls_blind_transferred
+        if self.calls_caused_ivrexception is not None:
+            result['CallsCausedIVRException'] = self.calls_caused_ivrexception
         if self.calls_forward_to_outside_number is not None:
             result['CallsForwardToOutsideNumber'] = self.calls_forward_to_outside_number
         if self.calls_handled is not None:
@@ -28707,6 +30070,8 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             result['CallsQueuingTimeout'] = self.calls_queuing_timeout
         if self.calls_ringed is not None:
             result['CallsRinged'] = self.calls_ringed
+        if self.calls_to_voicemail is not None:
+            result['CallsToVoicemail'] = self.calls_to_voicemail
         if self.calls_voicemail is not None:
             result['CallsVoicemail'] = self.calls_voicemail
         if self.handle_rate is not None:
@@ -28749,6 +30114,12 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             result['TotalAbandonedInRingTime'] = self.total_abandoned_in_ring_time
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -28761,6 +30132,8 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AbandonRate') is not None:
+            self.abandon_rate = m.get('AbandonRate')
         if m.get('AbandonedRate') is not None:
             self.abandoned_rate = m.get('AbandonedRate')
         if m.get('AverageAbandonTime') is not None:
@@ -28771,8 +30144,12 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             self.average_abandoned_in_queue_time = m.get('AverageAbandonedInQueueTime')
         if m.get('AverageAbandonedInRingTime') is not None:
             self.average_abandoned_in_ring_time = m.get('AverageAbandonedInRingTime')
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -28795,6 +30172,8 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             self.calls_attended_transferred = m.get('CallsAttendedTransferred')
         if m.get('CallsBlindTransferred') is not None:
             self.calls_blind_transferred = m.get('CallsBlindTransferred')
+        if m.get('CallsCausedIVRException') is not None:
+            self.calls_caused_ivrexception = m.get('CallsCausedIVRException')
         if m.get('CallsForwardToOutsideNumber') is not None:
             self.calls_forward_to_outside_number = m.get('CallsForwardToOutsideNumber')
         if m.get('CallsHandled') is not None:
@@ -28815,6 +30194,8 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             self.calls_queuing_timeout = m.get('CallsQueuingTimeout')
         if m.get('CallsRinged') is not None:
             self.calls_ringed = m.get('CallsRinged')
+        if m.get('CallsToVoicemail') is not None:
+            self.calls_to_voicemail = m.get('CallsToVoicemail')
         if m.get('CallsVoicemail') is not None:
             self.calls_voicemail = m.get('CallsVoicemail')
         if m.get('HandleRate') is not None:
@@ -28857,6 +30238,12 @@ class ListIntervalInstanceReportResponseBodyDataInbound(TeaModel):
             self.total_abandoned_in_ring_time = m.get('TotalAbandonedInRingTime')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
@@ -29360,12 +30747,14 @@ class ListIntervalSkillGroupReportRequest(TeaModel):
         end_time: int = None,
         instance_id: str = None,
         interval: str = None,
+        media_type: str = None,
         skill_group_id: str = None,
         start_time: int = None,
     ):
         self.end_time = end_time
         self.instance_id = instance_id
         self.interval = interval
+        self.media_type = media_type
         self.skill_group_id = skill_group_id
         self.start_time = start_time
 
@@ -29384,6 +30773,8 @@ class ListIntervalSkillGroupReportRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
         if self.skill_group_id is not None:
             result['SkillGroupId'] = self.skill_group_id
         if self.start_time is not None:
@@ -29398,10 +30789,129 @@ class ListIntervalSkillGroupReportRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
         if m.get('SkillGroupId') is not None:
             self.skill_group_id = m.get('SkillGroupId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        return self
+
+
+class ListIntervalSkillGroupReportResponseBodyDataBack2Back(TeaModel):
+    def __init__(
+        self,
+        agent_handle_rate: float = None,
+        answer_rate: str = None,
+        average_customer_ring_time: float = None,
+        average_ring_time: float = None,
+        average_talk_time: str = None,
+        calls_agent_handled: int = None,
+        calls_answered: int = None,
+        calls_customer_answered: int = None,
+        calls_dialed: int = None,
+        customer_answer_rate: float = None,
+        max_customer_ring_time: int = None,
+        max_ring_time: int = None,
+        max_talk_time: str = None,
+        total_customer_ring_time: int = None,
+        total_ring_time: int = None,
+        total_talk_time: int = None,
+    ):
+        self.agent_handle_rate = agent_handle_rate
+        self.answer_rate = answer_rate
+        self.average_customer_ring_time = average_customer_ring_time
+        self.average_ring_time = average_ring_time
+        self.average_talk_time = average_talk_time
+        self.calls_agent_handled = calls_agent_handled
+        self.calls_answered = calls_answered
+        self.calls_customer_answered = calls_customer_answered
+        self.calls_dialed = calls_dialed
+        self.customer_answer_rate = customer_answer_rate
+        self.max_customer_ring_time = max_customer_ring_time
+        self.max_ring_time = max_ring_time
+        self.max_talk_time = max_talk_time
+        self.total_customer_ring_time = total_customer_ring_time
+        self.total_ring_time = total_ring_time
+        self.total_talk_time = total_talk_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_handle_rate is not None:
+            result['AgentHandleRate'] = self.agent_handle_rate
+        if self.answer_rate is not None:
+            result['AnswerRate'] = self.answer_rate
+        if self.average_customer_ring_time is not None:
+            result['AverageCustomerRingTime'] = self.average_customer_ring_time
+        if self.average_ring_time is not None:
+            result['AverageRingTime'] = self.average_ring_time
+        if self.average_talk_time is not None:
+            result['AverageTalkTime'] = self.average_talk_time
+        if self.calls_agent_handled is not None:
+            result['CallsAgentHandled'] = self.calls_agent_handled
+        if self.calls_answered is not None:
+            result['CallsAnswered'] = self.calls_answered
+        if self.calls_customer_answered is not None:
+            result['CallsCustomerAnswered'] = self.calls_customer_answered
+        if self.calls_dialed is not None:
+            result['CallsDialed'] = self.calls_dialed
+        if self.customer_answer_rate is not None:
+            result['CustomerAnswerRate'] = self.customer_answer_rate
+        if self.max_customer_ring_time is not None:
+            result['MaxCustomerRingTime'] = self.max_customer_ring_time
+        if self.max_ring_time is not None:
+            result['MaxRingTime'] = self.max_ring_time
+        if self.max_talk_time is not None:
+            result['MaxTalkTime'] = self.max_talk_time
+        if self.total_customer_ring_time is not None:
+            result['TotalCustomerRingTime'] = self.total_customer_ring_time
+        if self.total_ring_time is not None:
+            result['TotalRingTime'] = self.total_ring_time
+        if self.total_talk_time is not None:
+            result['TotalTalkTime'] = self.total_talk_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentHandleRate') is not None:
+            self.agent_handle_rate = m.get('AgentHandleRate')
+        if m.get('AnswerRate') is not None:
+            self.answer_rate = m.get('AnswerRate')
+        if m.get('AverageCustomerRingTime') is not None:
+            self.average_customer_ring_time = m.get('AverageCustomerRingTime')
+        if m.get('AverageRingTime') is not None:
+            self.average_ring_time = m.get('AverageRingTime')
+        if m.get('AverageTalkTime') is not None:
+            self.average_talk_time = m.get('AverageTalkTime')
+        if m.get('CallsAgentHandled') is not None:
+            self.calls_agent_handled = m.get('CallsAgentHandled')
+        if m.get('CallsAnswered') is not None:
+            self.calls_answered = m.get('CallsAnswered')
+        if m.get('CallsCustomerAnswered') is not None:
+            self.calls_customer_answered = m.get('CallsCustomerAnswered')
+        if m.get('CallsDialed') is not None:
+            self.calls_dialed = m.get('CallsDialed')
+        if m.get('CustomerAnswerRate') is not None:
+            self.customer_answer_rate = m.get('CustomerAnswerRate')
+        if m.get('MaxCustomerRingTime') is not None:
+            self.max_customer_ring_time = m.get('MaxCustomerRingTime')
+        if m.get('MaxRingTime') is not None:
+            self.max_ring_time = m.get('MaxRingTime')
+        if m.get('MaxTalkTime') is not None:
+            self.max_talk_time = m.get('MaxTalkTime')
+        if m.get('TotalCustomerRingTime') is not None:
+            self.total_customer_ring_time = m.get('TotalCustomerRingTime')
+        if m.get('TotalRingTime') is not None:
+            self.total_ring_time = m.get('TotalRingTime')
+        if m.get('TotalTalkTime') is not None:
+            self.total_talk_time = m.get('TotalTalkTime')
         return self
 
 
@@ -29412,7 +30922,9 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
         average_abandon_time: float = None,
         average_abandoned_in_queue_time: float = None,
         average_abandoned_in_ring_time: float = None,
+        average_first_response_time: float = None,
         average_hold_time: float = None,
+        average_response_time: float = None,
         average_ring_time: float = None,
         average_talk_time: float = None,
         average_wait_time: float = None,
@@ -29429,6 +30941,8 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
         calls_offered: int = None,
         calls_overflow: int = None,
         calls_queued: int = None,
+        calls_queuing_overflow: int = None,
+        calls_queuing_timeout: int = None,
         calls_ringed: int = None,
         calls_timeout: int = None,
         handle_rate: float = None,
@@ -29449,6 +30963,9 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
         total_abandoned_in_queue_time: int = None,
         total_abandoned_in_ring_time: int = None,
         total_hold_time: int = None,
+        total_messages_sent: int = None,
+        total_messages_sent_by_agent: int = None,
+        total_messages_sent_by_customer: int = None,
         total_ring_time: int = None,
         total_talk_time: int = None,
         total_wait_time: int = None,
@@ -29458,7 +30975,9 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
         self.average_abandon_time = average_abandon_time
         self.average_abandoned_in_queue_time = average_abandoned_in_queue_time
         self.average_abandoned_in_ring_time = average_abandoned_in_ring_time
+        self.average_first_response_time = average_first_response_time
         self.average_hold_time = average_hold_time
+        self.average_response_time = average_response_time
         self.average_ring_time = average_ring_time
         self.average_talk_time = average_talk_time
         self.average_wait_time = average_wait_time
@@ -29475,6 +30994,8 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
         self.calls_offered = calls_offered
         self.calls_overflow = calls_overflow
         self.calls_queued = calls_queued
+        self.calls_queuing_overflow = calls_queuing_overflow
+        self.calls_queuing_timeout = calls_queuing_timeout
         self.calls_ringed = calls_ringed
         self.calls_timeout = calls_timeout
         self.handle_rate = handle_rate
@@ -29495,6 +31016,9 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
         self.total_abandoned_in_queue_time = total_abandoned_in_queue_time
         self.total_abandoned_in_ring_time = total_abandoned_in_ring_time
         self.total_hold_time = total_hold_time
+        self.total_messages_sent = total_messages_sent
+        self.total_messages_sent_by_agent = total_messages_sent_by_agent
+        self.total_messages_sent_by_customer = total_messages_sent_by_customer
         self.total_ring_time = total_ring_time
         self.total_talk_time = total_talk_time
         self.total_wait_time = total_wait_time
@@ -29517,8 +31041,12 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
             result['AverageAbandonedInQueueTime'] = self.average_abandoned_in_queue_time
         if self.average_abandoned_in_ring_time is not None:
             result['AverageAbandonedInRingTime'] = self.average_abandoned_in_ring_time
+        if self.average_first_response_time is not None:
+            result['AverageFirstResponseTime'] = self.average_first_response_time
         if self.average_hold_time is not None:
             result['AverageHoldTime'] = self.average_hold_time
+        if self.average_response_time is not None:
+            result['AverageResponseTime'] = self.average_response_time
         if self.average_ring_time is not None:
             result['AverageRingTime'] = self.average_ring_time
         if self.average_talk_time is not None:
@@ -29551,6 +31079,10 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
             result['CallsOverflow'] = self.calls_overflow
         if self.calls_queued is not None:
             result['CallsQueued'] = self.calls_queued
+        if self.calls_queuing_overflow is not None:
+            result['CallsQueuingOverflow'] = self.calls_queuing_overflow
+        if self.calls_queuing_timeout is not None:
+            result['CallsQueuingTimeout'] = self.calls_queuing_timeout
         if self.calls_ringed is not None:
             result['CallsRinged'] = self.calls_ringed
         if self.calls_timeout is not None:
@@ -29591,6 +31123,12 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
             result['TotalAbandonedInRingTime'] = self.total_abandoned_in_ring_time
         if self.total_hold_time is not None:
             result['TotalHoldTime'] = self.total_hold_time
+        if self.total_messages_sent is not None:
+            result['TotalMessagesSent'] = self.total_messages_sent
+        if self.total_messages_sent_by_agent is not None:
+            result['TotalMessagesSentByAgent'] = self.total_messages_sent_by_agent
+        if self.total_messages_sent_by_customer is not None:
+            result['TotalMessagesSentByCustomer'] = self.total_messages_sent_by_customer
         if self.total_ring_time is not None:
             result['TotalRingTime'] = self.total_ring_time
         if self.total_talk_time is not None:
@@ -29611,8 +31149,12 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
             self.average_abandoned_in_queue_time = m.get('AverageAbandonedInQueueTime')
         if m.get('AverageAbandonedInRingTime') is not None:
             self.average_abandoned_in_ring_time = m.get('AverageAbandonedInRingTime')
+        if m.get('AverageFirstResponseTime') is not None:
+            self.average_first_response_time = m.get('AverageFirstResponseTime')
         if m.get('AverageHoldTime') is not None:
             self.average_hold_time = m.get('AverageHoldTime')
+        if m.get('AverageResponseTime') is not None:
+            self.average_response_time = m.get('AverageResponseTime')
         if m.get('AverageRingTime') is not None:
             self.average_ring_time = m.get('AverageRingTime')
         if m.get('AverageTalkTime') is not None:
@@ -29645,6 +31187,10 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
             self.calls_overflow = m.get('CallsOverflow')
         if m.get('CallsQueued') is not None:
             self.calls_queued = m.get('CallsQueued')
+        if m.get('CallsQueuingOverflow') is not None:
+            self.calls_queuing_overflow = m.get('CallsQueuingOverflow')
+        if m.get('CallsQueuingTimeout') is not None:
+            self.calls_queuing_timeout = m.get('CallsQueuingTimeout')
         if m.get('CallsRinged') is not None:
             self.calls_ringed = m.get('CallsRinged')
         if m.get('CallsTimeout') is not None:
@@ -29685,6 +31231,12 @@ class ListIntervalSkillGroupReportResponseBodyDataInbound(TeaModel):
             self.total_abandoned_in_ring_time = m.get('TotalAbandonedInRingTime')
         if m.get('TotalHoldTime') is not None:
             self.total_hold_time = m.get('TotalHoldTime')
+        if m.get('TotalMessagesSent') is not None:
+            self.total_messages_sent = m.get('TotalMessagesSent')
+        if m.get('TotalMessagesSentByAgent') is not None:
+            self.total_messages_sent_by_agent = m.get('TotalMessagesSentByAgent')
+        if m.get('TotalMessagesSentByCustomer') is not None:
+            self.total_messages_sent_by_customer = m.get('TotalMessagesSentByCustomer')
         if m.get('TotalRingTime') is not None:
             self.total_ring_time = m.get('TotalRingTime')
         if m.get('TotalTalkTime') is not None:
@@ -29885,6 +31437,45 @@ class ListIntervalSkillGroupReportResponseBodyDataOutbound(TeaModel):
         return self
 
 
+class ListIntervalSkillGroupReportResponseBodyDataOverallBreakCodeDetailList(TeaModel):
+    def __init__(
+        self,
+        break_code: str = None,
+        count: int = None,
+        duration: int = None,
+    ):
+        self.break_code = break_code
+        self.count = count
+        self.duration = duration
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.break_code is not None:
+            result['BreakCode'] = self.break_code
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.duration is not None:
+            result['Duration'] = self.duration
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BreakCode') is not None:
+            self.break_code = m.get('BreakCode')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+        return self
+
+
 class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
     def __init__(
         self,
@@ -29893,6 +31484,7 @@ class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
         average_ready_time: float = None,
         average_talk_time: float = None,
         average_work_time: float = None,
+        break_code_detail_list: List[ListIntervalSkillGroupReportResponseBodyDataOverallBreakCodeDetailList] = None,
         max_break_time: int = None,
         max_hold_time: int = None,
         max_ready_time: int = None,
@@ -29916,6 +31508,7 @@ class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
         self.average_ready_time = average_ready_time
         self.average_talk_time = average_talk_time
         self.average_work_time = average_work_time
+        self.break_code_detail_list = break_code_detail_list
         self.max_break_time = max_break_time
         self.max_hold_time = max_hold_time
         self.max_ready_time = max_ready_time
@@ -29935,7 +31528,10 @@ class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
         self.total_work_time = total_work_time
 
     def validate(self):
-        pass
+        if self.break_code_detail_list:
+            for k in self.break_code_detail_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -29953,6 +31549,10 @@ class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
             result['AverageTalkTime'] = self.average_talk_time
         if self.average_work_time is not None:
             result['AverageWorkTime'] = self.average_work_time
+        result['BreakCodeDetailList'] = []
+        if self.break_code_detail_list is not None:
+            for k in self.break_code_detail_list:
+                result['BreakCodeDetailList'].append(k.to_map() if k else None)
         if self.max_break_time is not None:
             result['MaxBreakTime'] = self.max_break_time
         if self.max_hold_time is not None:
@@ -30001,6 +31601,11 @@ class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
             self.average_talk_time = m.get('AverageTalkTime')
         if m.get('AverageWorkTime') is not None:
             self.average_work_time = m.get('AverageWorkTime')
+        self.break_code_detail_list = []
+        if m.get('BreakCodeDetailList') is not None:
+            for k in m.get('BreakCodeDetailList'):
+                temp_model = ListIntervalSkillGroupReportResponseBodyDataOverallBreakCodeDetailList()
+                self.break_code_detail_list.append(temp_model.from_map(k))
         if m.get('MaxBreakTime') is not None:
             self.max_break_time = m.get('MaxBreakTime')
         if m.get('MaxHoldTime') is not None:
@@ -30041,17 +31646,21 @@ class ListIntervalSkillGroupReportResponseBodyDataOverall(TeaModel):
 class ListIntervalSkillGroupReportResponseBodyData(TeaModel):
     def __init__(
         self,
+        back_2back: ListIntervalSkillGroupReportResponseBodyDataBack2Back = None,
         inbound: ListIntervalSkillGroupReportResponseBodyDataInbound = None,
         outbound: ListIntervalSkillGroupReportResponseBodyDataOutbound = None,
         overall: ListIntervalSkillGroupReportResponseBodyDataOverall = None,
         stats_time: int = None,
     ):
+        self.back_2back = back_2back
         self.inbound = inbound
         self.outbound = outbound
         self.overall = overall
         self.stats_time = stats_time
 
     def validate(self):
+        if self.back_2back:
+            self.back_2back.validate()
         if self.inbound:
             self.inbound.validate()
         if self.outbound:
@@ -30065,6 +31674,8 @@ class ListIntervalSkillGroupReportResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.back_2back is not None:
+            result['Back2Back'] = self.back_2back.to_map()
         if self.inbound is not None:
             result['Inbound'] = self.inbound.to_map()
         if self.outbound is not None:
@@ -30077,6 +31688,9 @@ class ListIntervalSkillGroupReportResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Back2Back') is not None:
+            temp_model = ListIntervalSkillGroupReportResponseBodyDataBack2Back()
+            self.back_2back = temp_model.from_map(m['Back2Back'])
         if m.get('Inbound') is not None:
             temp_model = ListIntervalSkillGroupReportResponseBodyDataInbound()
             self.inbound = temp_model.from_map(m['Inbound'])
@@ -34278,32 +35892,14 @@ class ListRealtimeSkillGroupStatesRequest(TeaModel):
         return self
 
 
-class ListRealtimeSkillGroupStatesResponseBodyDataList(TeaModel):
+class ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList(TeaModel):
     def __init__(
         self,
-        breaking_agents: int = None,
-        instance_id: str = None,
-        logged_in_agents: int = None,
-        longest_waiting_time: int = None,
-        outbound_scenario_ready_agents: int = None,
-        ready_agents: int = None,
-        skill_group_id: str = None,
-        skill_group_name: str = None,
-        talking_agents: int = None,
-        waiting_calls: int = None,
-        working_agents: int = None,
+        break_code: str = None,
+        count: int = None,
     ):
-        self.breaking_agents = breaking_agents
-        self.instance_id = instance_id
-        self.logged_in_agents = logged_in_agents
-        self.longest_waiting_time = longest_waiting_time
-        self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
-        self.ready_agents = ready_agents
-        self.skill_group_id = skill_group_id
-        self.skill_group_name = skill_group_name
-        self.talking_agents = talking_agents
-        self.waiting_calls = waiting_calls
-        self.working_agents = working_agents
+        self.break_code = break_code
+        self.count = count
 
     def validate(self):
         pass
@@ -34314,6 +35910,68 @@ class ListRealtimeSkillGroupStatesResponseBodyDataList(TeaModel):
             return _map
 
         result = dict()
+        if self.break_code is not None:
+            result['BreakCode'] = self.break_code
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BreakCode') is not None:
+            self.break_code = m.get('BreakCode')
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        return self
+
+
+class ListRealtimeSkillGroupStatesResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        break_code_detail_list: List[ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList] = None,
+        breaking_agents: int = None,
+        instance_id: str = None,
+        logged_in_agents: int = None,
+        longest_waiting_time: int = None,
+        outbound_scenario_ready_agents: int = None,
+        ready_agents: int = None,
+        skill_group_id: str = None,
+        skill_group_name: str = None,
+        talking_agents: int = None,
+        total_agents: int = None,
+        waiting_calls: int = None,
+        working_agents: int = None,
+    ):
+        self.break_code_detail_list = break_code_detail_list
+        self.breaking_agents = breaking_agents
+        self.instance_id = instance_id
+        self.logged_in_agents = logged_in_agents
+        self.longest_waiting_time = longest_waiting_time
+        self.outbound_scenario_ready_agents = outbound_scenario_ready_agents
+        self.ready_agents = ready_agents
+        self.skill_group_id = skill_group_id
+        self.skill_group_name = skill_group_name
+        self.talking_agents = talking_agents
+        self.total_agents = total_agents
+        self.waiting_calls = waiting_calls
+        self.working_agents = working_agents
+
+    def validate(self):
+        if self.break_code_detail_list:
+            for k in self.break_code_detail_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['BreakCodeDetailList'] = []
+        if self.break_code_detail_list is not None:
+            for k in self.break_code_detail_list:
+                result['BreakCodeDetailList'].append(k.to_map() if k else None)
         if self.breaking_agents is not None:
             result['BreakingAgents'] = self.breaking_agents
         if self.instance_id is not None:
@@ -34332,6 +35990,8 @@ class ListRealtimeSkillGroupStatesResponseBodyDataList(TeaModel):
             result['SkillGroupName'] = self.skill_group_name
         if self.talking_agents is not None:
             result['TalkingAgents'] = self.talking_agents
+        if self.total_agents is not None:
+            result['TotalAgents'] = self.total_agents
         if self.waiting_calls is not None:
             result['WaitingCalls'] = self.waiting_calls
         if self.working_agents is not None:
@@ -34340,6 +36000,11 @@ class ListRealtimeSkillGroupStatesResponseBodyDataList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.break_code_detail_list = []
+        if m.get('BreakCodeDetailList') is not None:
+            for k in m.get('BreakCodeDetailList'):
+                temp_model = ListRealtimeSkillGroupStatesResponseBodyDataListBreakCodeDetailList()
+                self.break_code_detail_list.append(temp_model.from_map(k))
         if m.get('BreakingAgents') is not None:
             self.breaking_agents = m.get('BreakingAgents')
         if m.get('InstanceId') is not None:
@@ -34358,6 +36023,8 @@ class ListRealtimeSkillGroupStatesResponseBodyDataList(TeaModel):
             self.skill_group_name = m.get('SkillGroupName')
         if m.get('TalkingAgents') is not None:
             self.talking_agents = m.get('TalkingAgents')
+        if m.get('TotalAgents') is not None:
+            self.total_agents = m.get('TotalAgents')
         if m.get('WaitingCalls') is not None:
             self.waiting_calls = m.get('WaitingCalls')
         if m.get('WorkingAgents') is not None:
@@ -37042,11 +38709,13 @@ class ListUsersRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         search_pattern: str = None,
+        skill_group_id: str = None,
     ):
         self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
         self.search_pattern = search_pattern
+        self.skill_group_id = skill_group_id
 
     def validate(self):
         pass
@@ -37065,6 +38734,8 @@ class ListUsersRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.search_pattern is not None:
             result['SearchPattern'] = self.search_pattern
+        if self.skill_group_id is not None:
+            result['SkillGroupId'] = self.skill_group_id
         return result
 
     def from_map(self, m: dict = None):
@@ -37077,6 +38748,8 @@ class ListUsersRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('SearchPattern') is not None:
             self.search_pattern = m.get('SearchPattern')
+        if m.get('SkillGroupId') is not None:
+            self.skill_group_id = m.get('SkillGroupId')
         return self
 
 
@@ -37183,6 +38856,7 @@ class ListUsersResponseBodyDataList(TeaModel):
         login_name: str = None,
         mobile: str = None,
         personal_outbound_number_list: List[ListUsersResponseBodyDataListPersonalOutboundNumberList] = None,
+        primary: bool = None,
         primary_account: bool = None,
         ram_id: int = None,
         role_id: str = None,
@@ -37201,6 +38875,7 @@ class ListUsersResponseBodyDataList(TeaModel):
         self.login_name = login_name
         self.mobile = mobile
         self.personal_outbound_number_list = personal_outbound_number_list
+        self.primary = primary
         self.primary_account = primary_account
         self.ram_id = ram_id
         self.role_id = role_id
@@ -37247,6 +38922,8 @@ class ListUsersResponseBodyDataList(TeaModel):
         if self.personal_outbound_number_list is not None:
             for k in self.personal_outbound_number_list:
                 result['PersonalOutboundNumberList'].append(k.to_map() if k else None)
+        if self.primary is not None:
+            result['Primary'] = self.primary
         if self.primary_account is not None:
             result['PrimaryAccount'] = self.primary_account
         if self.ram_id is not None:
@@ -37290,6 +38967,8 @@ class ListUsersResponseBodyDataList(TeaModel):
             for k in m.get('PersonalOutboundNumberList'):
                 temp_model = ListUsersResponseBodyDataListPersonalOutboundNumberList()
                 self.personal_outbound_number_list.append(temp_model.from_map(k))
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
         if m.get('PrimaryAccount') is not None:
             self.primary_account = m.get('PrimaryAccount')
         if m.get('RamId') is not None:
@@ -37370,12 +39049,14 @@ class ListUsersResponseBody(TeaModel):
         data: ListUsersResponseBodyData = None,
         http_status_code: int = None,
         message: str = None,
+        params: List[str] = None,
         request_id: str = None,
     ):
         self.code = code
         self.data = data
         self.http_status_code = http_status_code
         self.message = message
+        self.params = params
         self.request_id = request_id
 
     def validate(self):
@@ -37396,6 +39077,8 @@ class ListUsersResponseBody(TeaModel):
             result['HttpStatusCode'] = self.http_status_code
         if self.message is not None:
             result['Message'] = self.message
+        if self.params is not None:
+            result['Params'] = self.params
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -37411,6 +39094,8 @@ class ListUsersResponseBody(TeaModel):
             self.http_status_code = m.get('HttpStatusCode')
         if m.get('Message') is not None:
             self.message = m.get('Message')
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
