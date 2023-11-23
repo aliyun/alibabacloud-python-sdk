@@ -5644,6 +5644,14 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+        
+        @param request: DescribeDomainRecordInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainRecordInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -5676,6 +5684,14 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+        
+        @param request: DescribeDomainRecordInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainRecordInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -5707,6 +5723,13 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainRecordInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+        
+        @param request: DescribeDomainRecordInfoRequest
+        @return: DescribeDomainRecordInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_record_info_with_options(request, runtime)
 
@@ -5714,6 +5737,13 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainRecordInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
+        
+        @param request: DescribeDomainRecordInfoRequest
+        @return: DescribeDomainRecordInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_record_info_with_options_async(request, runtime)
 
