@@ -1758,6 +1758,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.delete):
             query['Delete'] = request.delete
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1800,6 +1802,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.delete):
             query['Delete'] = request.delete
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
