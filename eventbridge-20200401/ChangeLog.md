@@ -1,3 +1,6 @@
+2023-11-23 Version: 2.0.3
+- Generated python 2020-04-01 for eventbridge.
+
 2023-11-07 Version: 2.0.2
 - Generated python 2020-04-01 for eventbridge.
 
