@@ -6532,6 +6532,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         international_flight_invoice_fee: str = None,
         international_hotel_invoice_fee: str = None,
         invoice_third_part_id: str = None,
+        invoice_type: int = None,
         mail_address: str = None,
         mail_city: str = None,
         mail_full_address: str = None,
@@ -6552,6 +6553,7 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
         self.international_flight_invoice_fee = international_flight_invoice_fee
         self.international_hotel_invoice_fee = international_hotel_invoice_fee
         self.invoice_third_part_id = invoice_third_part_id
+        self.invoice_type = invoice_type
         self.mail_address = mail_address
         self.mail_city = mail_city
         self.mail_full_address = mail_full_address
@@ -6590,6 +6592,8 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
             result['international_hotel_invoice_fee'] = self.international_hotel_invoice_fee
         if self.invoice_third_part_id is not None:
             result['invoice_third_part_id'] = self.invoice_third_part_id
+        if self.invoice_type is not None:
+            result['invoice_type'] = self.invoice_type
         if self.mail_address is not None:
             result['mail_address'] = self.mail_address
         if self.mail_city is not None:
@@ -6632,6 +6636,8 @@ class ApplyInvoiceTaskRequestInvoiceTaskList(TeaModel):
             self.international_hotel_invoice_fee = m.get('international_hotel_invoice_fee')
         if m.get('invoice_third_part_id') is not None:
             self.invoice_third_part_id = m.get('invoice_third_part_id')
+        if m.get('invoice_type') is not None:
+            self.invoice_type = m.get('invoice_type')
         if m.get('mail_address') is not None:
             self.mail_address = m.get('mail_address')
         if m.get('mail_city') is not None:
