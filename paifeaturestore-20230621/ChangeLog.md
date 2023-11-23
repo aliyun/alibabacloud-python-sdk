@@ -1,3 +1,6 @@
+2023-11-23 Version: 3.0.2
+- Generated python 2023-06-21 for PaiFeatureStore.
+
 2023-10-30 Version: 3.0.1
 - Generated python 2023-06-21 for PaiFeatureStore.
 

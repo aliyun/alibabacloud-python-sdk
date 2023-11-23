@@ -2843,6 +2843,7 @@ class GetLabelTableResponseBody(TeaModel):
         owner: str = None,
         project_id: str = None,
         project_name: str = None,
+        related_model_features: List[str] = None,
         request_id: str = None,
     ):
         self.datasource_id = datasource_id
@@ -2854,6 +2855,7 @@ class GetLabelTableResponseBody(TeaModel):
         self.owner = owner
         self.project_id = project_id
         self.project_name = project_name
+        self.related_model_features = related_model_features
         self.request_id = request_id
 
     def validate(self):
@@ -2888,6 +2890,8 @@ class GetLabelTableResponseBody(TeaModel):
             result['ProjectId'] = self.project_id
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
+        if self.related_model_features is not None:
+            result['RelatedModelFeatures'] = self.related_model_features
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -2915,6 +2919,8 @@ class GetLabelTableResponseBody(TeaModel):
             self.project_id = m.get('ProjectId')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+        if m.get('RelatedModelFeatures') is not None:
+            self.related_model_features = m.get('RelatedModelFeatures')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
