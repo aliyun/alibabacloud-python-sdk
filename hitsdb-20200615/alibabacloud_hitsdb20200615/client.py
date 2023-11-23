@@ -41,11 +41,116 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_ldps_namespace_with_options(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLdpsNamespace',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLdpsNamespaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ldps_namespace_with_options_async(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLdpsNamespace',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLdpsNamespaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ldps_namespace(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
+    ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ldps_namespace_with_options(request, runtime)
+
+    async def create_ldps_namespace_async(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
+    ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ldps_namespace_with_options_async(request, runtime)
+
     def create_lindorm_instance_with_options(
         self,
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        """
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        
+        @param request: CreateLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -154,6 +259,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        """
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        
+        @param request: CreateLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.arbiter_vswitch_id):
@@ -261,6 +373,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        """
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        
+        @param request: CreateLindormInstanceRequest
+        @return: CreateLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_lindorm_instance_with_options(request, runtime)
 
@@ -268,6 +386,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
+        """
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        
+        @param request: CreateLindormInstanceRequest
+        @return: CreateLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_lindorm_instance_with_options_async(request, runtime)
 
@@ -368,8 +492,6 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.group_name):
-            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -408,8 +530,6 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.group_name):
-            query['GroupName'] = request.group_name
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -454,6 +574,104 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_ip_white_list_with_options_async(request, runtime)
+
+    def get_ldps_namespaced_quota_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLdpsNamespacedQuota',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ldps_namespaced_quota_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.namespace):
+            query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLdpsNamespacedQuota',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ldps_namespaced_quota(
+        self,
+        request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
+    ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ldps_namespaced_quota_with_options(request, runtime)
+
+    async def get_ldps_namespaced_quota_async(
+        self,
+        request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
+    ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ldps_namespaced_quota_with_options_async(request, runtime)
 
     def get_ldps_resource_cost_with_options(
         self,
@@ -1201,7 +1419,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1252,7 +1471,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1302,7 +1522,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
         @return: RenewLindormInstanceResponse
@@ -1315,7 +1536,8 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
+        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
         @return: RenewLindormInstanceResponse
@@ -1532,17 +1754,10 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
-        """
-        **\
-        
-        @param request: UpdateInstanceIpWhiteListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstanceIpWhiteListResponse
-        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.group_name):
-            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.delete):
+            query['Delete'] = request.delete
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1581,17 +1796,10 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
-        """
-        **\
-        
-        @param request: UpdateInstanceIpWhiteListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstanceIpWhiteListResponse
-        """
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.group_name):
-            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.delete):
+            query['Delete'] = request.delete
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.owner_account):
@@ -1629,12 +1837,6 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
-        """
-        **\
-        
-        @param request: UpdateInstanceIpWhiteListRequest
-        @return: UpdateInstanceIpWhiteListResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_ip_white_list_with_options(request, runtime)
 
@@ -1642,12 +1844,6 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
-        """
-        **\
-        
-        @param request: UpdateInstanceIpWhiteListRequest
-        @return: UpdateInstanceIpWhiteListResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_ip_white_list_with_options_async(request, runtime)
 
@@ -1657,7 +1853,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: UpgradeLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1695,10 +1891,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.phoenix_core_num):
-            query['PhoenixCoreNum'] = request.phoenix_core_num
-        if not UtilClient.is_unset(request.phoenix_core_spec):
-            query['PhoenixCoreSpec'] = request.phoenix_core_spec
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1748,7 +1940,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: UpgradeLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1786,10 +1978,6 @@ class Client(OpenApiClient):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
-        if not UtilClient.is_unset(request.phoenix_core_num):
-            query['PhoenixCoreNum'] = request.phoenix_core_num
-        if not UtilClient.is_unset(request.phoenix_core_spec):
-            query['PhoenixCoreSpec'] = request.phoenix_core_spec
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -1838,7 +2026,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: UpgradeLindormInstanceRequest
         @return: UpgradeLindormInstanceResponse
@@ -1851,7 +2039,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: UpgradeLindormInstanceRequest
         @return: UpgradeLindormInstanceResponse

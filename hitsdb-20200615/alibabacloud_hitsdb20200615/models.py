@@ -4,6 +4,146 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class CreateLdpsNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespace: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.instance_id = instance_id
+        self.namespace = namespace
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class CreateLdpsNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateLdpsNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLdpsNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLdpsNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateLindormInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -49,56 +189,174 @@ class CreateLindormInstanceRequest(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch that is specified for the zone for the coordinate node of the instance. The vSwitch must be deployed in the zone specified by the ArbiterZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
         self.arbiter_vswitch_id = arbiter_vswitch_id
+        # The ID of the zone for the coordinate node of the instance. **This parameter is required if you want to create a multi-zone instance**.
         self.arbiter_zone_id = arbiter_zone_id
+        # The architecture of the instance. Valid values:
+        # 
+        # *   **1.0**: The instance that you want to create is a single-zone instance.
+        # *   **2.0**: The instance that you want to create is a multi-zone instance.
+        # 
+        # By default, the value of this parameter is 1.0. To create a multi-zone instance, set this parameter to 2.0. **This parameter is required if you want to create a multi-zone instance**.
         self.arch_version = arch_version
+        # The cold storage capacity of the instance. By default, if you leave this parameter unspecified, cold storage is not enabled for the instance. Unit: GB. Valid values: **800** to **1000000**.
         self.cold_storage = cold_storage
+        # The storage capacity of the disk of a single core node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
         self.core_single_storage = core_single_storage
+        # The specification of the nodes in the instance if you set DiskCategory to local_ssd_pro or local_hdd_pro.
+        # 
+        # When DiskCategory is set to local_ssd_pro, you can set this parameter to the following values:
+        # 
+        # *   **lindorm.i2.xlarge**: Each node has 4 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.i2.2xlarge**: Each node has 8 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.i2.4xlarge**: Each node has 16 dedicated CPU cores and 128 GB of dedicated memory.
+        # *   **lindorm.i2.8xlarge**: Each node has 32 dedicated CPU cores and 256 GB of dedicated memory.
+        # 
+        # When DiskCategory is set to local_hdd_pro, you can set this parameter to the following values:
+        # 
+        # *   **lindorm.d1.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.d1.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.d1.6xlarge**: Each node has 24 dedicated CPU cores and 96 GB of dedicated memory.
         self.core_spec = core_spec
+        # The storage type of the instance. Valid values:
+        # 
+        # *   **cloud_efficiency**: This instance uses the Standard type of storage.
+        # *   **cloud_ssd**: This instance uses the Performance type of storage.
+        # *   **capacity_cloud_storage**: This instance uses the Capacity type of storage.
+        # *   **local_ssd_pro**: This instance uses local SSDs.
+        # *   **local_hdd_pro**: This instance uses local HDDs.
         self.disk_category = disk_category
+        # The subscription period of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
+        # 
+        # *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
+        # *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+        # 
+        # > This parameter is available and required when the PayType parameter is set to **PREPAY**.
         self.duration = duration
+        # The number of LindormDFS nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
+        # 
+        # *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **60**.
+        # *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **8**.
         self.filestore_num = filestore_num
+        # The specification of LindormDFS nodes in the instance. Set the value of this parameter to **lindorm.c.xlarge**, which indicates that each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
         self.filestore_spec = filestore_spec
+        # The name of the instance that you want to create.
         self.instance_alias = instance_alias
+        # The storage capacity of the instance you want to create. Unit: GB.
         self.instance_storage = instance_storage
+        # The number of LindormTable nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
+        # 
+        # *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **90**.
+        # *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **400**.
+        # 
+        # **This parameter is required if you want to create a multi-zone instance**.  The valid values of this parameter range from 4 to 400 if you want to create a multi-zone instance.
         self.lindorm_num = lindorm_num
+        # The specification of LindormTable nodes in the instance. Valid values:
+        # 
+        # *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+        # *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
         self.lindorm_spec = lindorm_spec
+        # The disk type of the log nodes. Valid values:
+        # 
+        # *   **cloud_efficiency**: This instance uses the Standard type of storage.
+        # *   **cloud_ssd**: This instance uses the Performance type of storage.
+        # 
+        # **This parameter is required if you want to create a multi-zone instance**.
         self.log_disk_category = log_disk_category
+        # The number of the log nodes. Valid values: 4 to 400. **This parameter is required if you want to create a multi-zone instance**.
         self.log_num = log_num
+        # The storage capacity of the disk of a single log node. Valid values: 400 to 64000. Unit: GB. **This parameter is required if you want to create a multi-zone instance**.
         self.log_single_storage = log_single_storage
+        # The type of the log nodes. Valid values:
+        # 
+        # *   **lindorm.sn1.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+        # *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+        # 
+        # **This parameter is required if you want to create a multi-zone instance**.
         self.log_spec = log_spec
+        # The combinations of zones that are available for the multi-zone instance. You can go to the purchase page of Lindorm to view the supported zone combinations.
+        # 
+        # *   **ap-southeast-5abc-aliyun**: Zone A+B+C in the Indonesia (Jakarta) region.
+        # *   **cn-hangzhou-ehi-aliyun**: Zone E+H+I in the China (Hangzhou) region.
+        # *   **cn-beijing-acd-aliyun**: Zone A+C+D in the China (Beijing) region.
+        # *   **ap-southeast-1-abc-aliyun**: Zone A+B+C in the Singapore region.
+        # *   **cn-zhangjiakou-abc-aliyun**: Zone A+B+C in the China (Zhangjiakou) region.
+        # *   **cn-shanghai-efg-aliyun**: Zone E+F+G in the China (Shanghai) region.
+        # *   **cn-shanghai-abd-aliyun**: Zone A+B+D in the China (Shanghai) region.
+        # *   **cn-hangzhou-bef-aliyun**: Zone B+E+F in the China (Hangzhou) region.
+        # *   **cn-hangzhou-bce-aliyun**: Zone B+C+E in the China (Hangzhou) region.
+        # *   **cn-beijing-fgh-aliyun**: Zone F+G+H in the China (Beijing) region.
+        # *   **cn-shenzhen-abc-aliyun**: Zone A+B+C in the China (Shenzhen) region.
+        # 
+        # **This parameter is required if you want to create a multi-zone instance**.
         self.multi_zone_combination = multi_zone_combination
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The billing method of the instance you want to create. Valid values:
+        # 
+        # *   **PREPAY**: subscription.
+        # *   **POSTPAY**: pay-as-you-go.
         self.pay_type = pay_type
+        # The period based on which you are charged for the instance. Valid values:
+        # 
+        # *   **Month**: You are charged for the instance on a monthly basis.
+        # *   **Year**: You are charged for the instance on a yearly basis.
+        # 
+        # > This parameter is available and required when the PayType parameter is set to **PREPAY**.
         self.pricing_cycle = pricing_cycle
+        # The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
         self.primary_vswitch_id = primary_vswitch_id
+        # 多可用区实例，主可用区的可用区ID。**如果需要创建多可用区实例，该参数必填。**\
         self.primary_zone_id = primary_zone_id
+        # The ID of the region in which you want to create the instance. You can call the [DescribeRegions](~~426062~~) operation to query the region in which you can create the instance.
         self.region_id = region_id
+        # The ID of the resource group to which the Lindorm instance belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The number of LindormSearch nodes in the instance. Valid values: integers from **0** to **60**.
         self.solr_num = solr_num
-        self.solr_spec = solr_spec
-        self.standby_vswitch_id = standby_vswitch_id
-        self.standby_zone_id = standby_zone_id
-        # 实例的流引擎节点数量，取值：**0**~**60**。
-        self.stream_num = stream_num
-        # 实例的流引擎节点规格，取值：
+        # The specification of the LindormSearch nodes in the instance. Valid values:
         # 
-        # - **lindorm.g.xlarge**：表示4核16GB（独享规格）。
-        # - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
-        # - **lindorm.g.2xlarge**：表示8核32GB（独享规格）。
-        # - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
-        # - **lindorm.g.4xlarge**：表示16核64GB（独享规格）。
-        # - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
-        # - **lindorm.g.8xlarge**：表示32核128GB（独享规格）。
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+        self.solr_spec = solr_spec
+        # The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
+        self.standby_vswitch_id = standby_vswitch_id
+        # The ID of the secondary zone of the instance. **This parameter is required if you want to create a multi-zone instance**.
+        self.standby_zone_id = standby_zone_id
+        # The number of LindormStream nodes in the instance. Valid values: integers from **0** to **60**.
+        self.stream_num = stream_num
+        # The specification of the LindormStream nodes in the instance. Valid values:
+        # 
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.stream_spec = stream_spec
+        # The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
+        # 
+        # *   If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0** to **24**.
+        # *   If the PayType parameter is set to **POSTPAY**, set this parameter to an integer that ranges from **0** to **32**.
         self.tsdb_num = tsdb_num
+        # The specification of the LindormTSDB nodes in the instance. Valid values:
+        # 
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.tsdb_spec = tsdb_spec
+        # The ID of the VPC in which you want to create the instance.
         self.vpcid = vpcid
+        # The ID of the vSwitch to which you want the instance to connect.
         self.v_switch_id = v_switch_id
+        # The ID of the zone in which you want to create the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -288,8 +546,11 @@ class CreateLindormInstanceResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the Lindorm instance that is created.
         self.instance_id = instance_id
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -552,7 +813,6 @@ class DescribeRegionsResponse(TeaModel):
 class GetInstanceIpWhiteListRequest(TeaModel):
     def __init__(
         self,
-        group_name: str = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -560,8 +820,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
-        self.group_name = group_name
         # The ID of the instance whose whitelist you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to query the instance ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
@@ -579,8 +837,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.group_name is not None:
-            result['GroupName'] = self.group_name
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_account is not None:
@@ -597,8 +853,6 @@ class GetInstanceIpWhiteListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupName') is not None:
-            self.group_name = m.get('GroupName')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerAccount') is not None:
@@ -614,18 +868,14 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         return self
 
 
-class GetInstanceIpWhiteListResponseBody(TeaModel):
+class GetInstanceIpWhiteListResponseBodyGroupList(TeaModel):
     def __init__(
         self,
-        instance_id: str = None,
-        ip_list: List[str] = None,
-        request_id: str = None,
+        group_name: str = None,
+        security_ip_list: str = None,
     ):
-        # The ID of the Lindorm instance.
-        self.instance_id = instance_id
-        self.ip_list = ip_list
-        # The ID of the request.
-        self.request_id = request_id
+        self.group_name = group_name
+        self.security_ip_list = security_ip_list
 
     def validate(self):
         pass
@@ -636,6 +886,52 @@ class GetInstanceIpWhiteListResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.security_ip_list is not None:
+            result['SecurityIpList'] = self.security_ip_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('SecurityIpList') is not None:
+            self.security_ip_list = m.get('SecurityIpList')
+        return self
+
+
+class GetInstanceIpWhiteListResponseBody(TeaModel):
+    def __init__(
+        self,
+        group_list: List[GetInstanceIpWhiteListResponseBodyGroupList] = None,
+        instance_id: str = None,
+        ip_list: List[str] = None,
+        request_id: str = None,
+    ):
+        self.group_list = group_list
+        # The ID of the Lindorm instance.
+        self.instance_id = instance_id
+        self.ip_list = ip_list
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.group_list:
+            for k in self.group_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['GroupList'] = []
+        if self.group_list is not None:
+            for k in self.group_list:
+                result['GroupList'].append(k.to_map() if k else None)
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.ip_list is not None:
@@ -646,6 +942,11 @@ class GetInstanceIpWhiteListResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.group_list = []
+        if m.get('GroupList') is not None:
+            for k in m.get('GroupList'):
+                temp_model = GetInstanceIpWhiteListResponseBodyGroupList()
+                self.group_list.append(temp_model.from_map(k))
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('IpList') is not None:
@@ -695,6 +996,211 @@ class GetInstanceIpWhiteListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceIpWhiteListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetLdpsNamespacedQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        namespace: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        security_token: str = None,
+    ):
+        self.instance_id = instance_id
+        self.namespace = namespace
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas(TeaModel):
+    def __init__(
+        self,
+        cpu_amount: str = None,
+        memory_amount: str = None,
+        name: str = None,
+        used_cpu: str = None,
+        used_memory: str = None,
+    ):
+        self.cpu_amount = cpu_amount
+        self.memory_amount = memory_amount
+        self.name = name
+        self.used_cpu = used_cpu
+        self.used_memory = used_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu_amount is not None:
+            result['CpuAmount'] = self.cpu_amount
+        if self.memory_amount is not None:
+            result['MemoryAmount'] = self.memory_amount
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.used_cpu is not None:
+            result['UsedCpu'] = self.used_cpu
+        if self.used_memory is not None:
+            result['UsedMemory'] = self.used_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CpuAmount') is not None:
+            self.cpu_amount = m.get('CpuAmount')
+        if m.get('MemoryAmount') is not None:
+            self.memory_amount = m.get('MemoryAmount')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('UsedCpu') is not None:
+            self.used_cpu = m.get('UsedCpu')
+        if m.get('UsedMemory') is not None:
+            self.used_memory = m.get('UsedMemory')
+        return self
+
+
+class GetLdpsNamespacedQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        namespaced_quotas: List[GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas] = None,
+        request_id: str = None,
+    ):
+        self.namespaced_quotas = namespaced_quotas
+        self.request_id = request_id
+
+    def validate(self):
+        if self.namespaced_quotas:
+            for k in self.namespaced_quotas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NamespacedQuotas'] = []
+        if self.namespaced_quotas is not None:
+            for k in self.namespaced_quotas:
+                result['NamespacedQuotas'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.namespaced_quotas = []
+        if m.get('NamespacedQuotas') is not None:
+            for k in m.get('NamespacedQuotas'):
+                temp_model = GetLdpsNamespacedQuotaResponseBodyNamespacedQuotas()
+                self.namespaced_quotas.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GetLdpsNamespacedQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetLdpsNamespacedQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetLdpsNamespacedQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1029,6 +1535,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         enable_compute: bool = None,
         enable_kms: bool = None,
         enable_lts: bool = None,
+        enable_lsql_version_v3: bool = None,
         enable_mlctrl: bool = None,
         enable_ssl: bool = None,
         enable_shs: bool = None,
@@ -1084,6 +1591,7 @@ class GetLindormInstanceResponseBody(TeaModel):
         self.enable_compute = enable_compute
         self.enable_kms = enable_kms
         self.enable_lts = enable_lts
+        self.enable_lsql_version_v3 = enable_lsql_version_v3
         self.enable_mlctrl = enable_mlctrl
         self.enable_ssl = enable_ssl
         self.enable_shs = enable_shs
@@ -1174,6 +1682,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             result['EnableKms'] = self.enable_kms
         if self.enable_lts is not None:
             result['EnableLTS'] = self.enable_lts
+        if self.enable_lsql_version_v3 is not None:
+            result['EnableLsqlVersionV3'] = self.enable_lsql_version_v3
         if self.enable_mlctrl is not None:
             result['EnableMLCtrl'] = self.enable_mlctrl
         if self.enable_ssl is not None:
@@ -1286,6 +1796,8 @@ class GetLindormInstanceResponseBody(TeaModel):
             self.enable_kms = m.get('EnableKms')
         if m.get('EnableLTS') is not None:
             self.enable_lts = m.get('EnableLTS')
+        if m.get('EnableLsqlVersionV3') is not None:
+            self.enable_lsql_version_v3 = m.get('EnableLsqlVersionV3')
         if m.get('EnableMLCtrl') is not None:
             self.enable_mlctrl = m.get('EnableMLCtrl')
         if m.get('EnableSSL') is not None:
@@ -2530,6 +3042,7 @@ class ReleaseLindormInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # Specifies whether to release the instance immediately. If you set this parameter to false, data in the released instance is retained for seven days before it is completely deleted. If you set this parameter to true, data in the released instance is immediately deleted. The default value is false.
         self.immediately = immediately
         self.instance_id = instance_id
         self.owner_account = owner_account
@@ -2666,11 +3179,21 @@ class RenewLindormInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # The subscription duration of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
+        # 
+        # *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
+        # *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
         self.duration = duration
+        # The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the instance ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The period based on which you are charged for the instance. Valid values:
+        # 
+        # *   **Month**: You are charged for the instance based on months.
+        # *   **Year**: You are charged for the instance based on years.
         self.pricing_cycle = pricing_cycle
+        # The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2735,8 +3258,11 @@ class RenewLindormInstanceResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the instance.
         self.instance_id = instance_id
+        # The ID of the order. You can obtain an order ID on the Orders page in Alibaba Cloud User Center.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3172,7 +3698,7 @@ class UntagResourcesResponse(TeaModel):
 class UpdateInstanceIpWhiteListRequest(TeaModel):
     def __init__(
         self,
-        group_name: str = None,
+        delete: bool = None,
         instance_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -3181,8 +3707,7 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         security_ip_list: str = None,
         security_token: str = None,
     ):
-        # The name of the group to which the instance belongs. The group name can contain only letters, digits, and underscores (\_).
-        self.group_name = group_name
+        self.delete = delete
         # The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
         self.instance_id = instance_id
         self.owner_account = owner_account
@@ -3204,8 +3729,8 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.group_name is not None:
-            result['GroupName'] = self.group_name
+        if self.delete is not None:
+            result['Delete'] = self.delete
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.owner_account is not None:
@@ -3224,8 +3749,8 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('GroupName') is not None:
-            self.group_name = m.get('GroupName')
+        if m.get('Delete') is not None:
+            self.delete = m.get('Delete')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OwnerAccount') is not None:
@@ -3333,8 +3858,6 @@ class UpgradeLindormInstanceRequest(TeaModel):
         lts_core_spec: str = None,
         owner_account: str = None,
         owner_id: int = None,
-        phoenix_core_num: int = None,
-        phoenix_core_spec: str = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -3348,40 +3871,89 @@ class UpgradeLindormInstanceRequest(TeaModel):
         upgrade_type: str = None,
         zone_id: str = None,
     ):
+        # The storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **480** to **1017600**.
         self.cluster_storage = cluster_storage
+        # The cold storage capacity of the instance after it is upgraded. Unit: GB. Valid values: **800** to **1000000**.
         self.cold_storage = cold_storage
+        # The storage capacity of a single core node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Unit: GB. Valid values: 400 to 64000. **This parameter is optional**.
         self.core_single_storage = core_single_storage
+        # The number of LindormDFS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
         self.filestore_num = filestore_num
+        # The specification of LindormDFS nodes in the instance after the instance is upgraded. Valid values:
+        # 
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.filestore_spec = filestore_spec
+        # The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](~~426069~~) operation to query the instance ID.
         self.instance_id = instance_id
+        # The number of LindormTable nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **90**.
+        # 
+        # > This parameter must be specified together with the LindormSpec parameter.
         self.lindorm_num = lindorm_num
+        # The specification of LindormTable nodes in the instance after the instance is upgraded. Valid values:
+        # 
+        # *   **lindorm.c.xlarge**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+        # *   **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
         self.lindorm_spec = lindorm_spec
+        # The number of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
         self.log_num = log_num
+        # The storage capacity of a single log node in the instance after the instance upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. **This parameter is optional**.
         self.log_single_storage = log_single_storage
+        # The specification of log nodes in the instance after the instance is upgraded. This parameter is available only if the instance you want to upgrade is a multi-zone instance. Valid values:
+        # 
+        # *   **lindorm.sn1.large**: Each node has 4 dedicated CPU cores and 8 GB of dedicated memory.
+        # *   **lindorm.sn1.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+        # 
+        # **This parameter is optional**.
         self.log_spec = log_spec
+        # The number of LTS nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **50**.
         self.lts_core_num = lts_core_num
+        # The specification of Lindorm Tunnel Service (LTS) nodes in the instance after the instance is upgraded. Valid values:
+        # 
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
         self.lts_core_spec = lts_core_spec
         self.owner_account = owner_account
         self.owner_id = owner_id
-        self.phoenix_core_num = phoenix_core_num
-        self.phoenix_core_spec = phoenix_core_spec
+        # The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
+        # The number of LindormSearch nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
         self.solr_num = solr_num
-        self.solr_spec = solr_spec
-        # 变配后实例的流引擎节点数量，取值：**0**~**90**。
-        self.stream_num = stream_num
-        # 变配后实例的流引擎节点规格，取值：
+        # The specification of LindormSearch nodes in the instance after the instance is upgraded. Valid values:
         # 
-        # - **lindorm.c.2xlarge**：表示8核16GB（独享规格）。
-        # - **lindorm.c.4xlarge**：表示16核32GB（独享规格）。
-        # - **lindorm.c.8xlarge**：表示32核64GB（独享规格）。
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
+        self.solr_spec = solr_spec
+        # The number of LindormStream nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **60**.
+        self.stream_num = stream_num
+        # The specification of LindormStream nodes in the instance after the instance is upgraded. Valid values:
+        # 
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.stream_spec = stream_spec
+        # The number of LindormTSDB nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **24**.
         self.tsdb_num = tsdb_num
+        # The specification of LindormTSDB nodes in the instance after the instance is upgraded. Valid values:
+        # 
+        # *   **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
+        # *   **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+        # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+        # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.tsdb_spec = tsdb_spec
+        # The upgrade type of the operation. For more information about upgrade types, see the UpgradeType parameters section.
         self.upgrade_type = upgrade_type
+        # The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](~~426067~~) operation to query the zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -3423,10 +3995,6 @@ class UpgradeLindormInstanceRequest(TeaModel):
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-        if self.phoenix_core_num is not None:
-            result['PhoenixCoreNum'] = self.phoenix_core_num
-        if self.phoenix_core_spec is not None:
-            result['PhoenixCoreSpec'] = self.phoenix_core_spec
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
@@ -3485,10 +4053,6 @@ class UpgradeLindormInstanceRequest(TeaModel):
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-        if m.get('PhoenixCoreNum') is not None:
-            self.phoenix_core_num = m.get('PhoenixCoreNum')
-        if m.get('PhoenixCoreSpec') is not None:
-            self.phoenix_core_spec = m.get('PhoenixCoreSpec')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
@@ -3522,7 +4086,9 @@ class UpgradeLindormInstanceResponseBody(TeaModel):
         order_id: int = None,
         request_id: str = None,
     ):
+        # The ID of the order.
         self.order_id = order_id
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
