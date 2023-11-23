@@ -19217,8 +19217,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeLogBackupFilesResponse:
         """
         ### [](#)Supported database engines
-        RDS SQL Server
-        >  You can call the [DescribeBinlogFiles](~~610550~~) operation to query the log files of other database engines.
+        SQL Server
+        >  You can call the DescribeBinlogFiles operation to query the log files of instances that run different database engines.
         
         @param request: DescribeLogBackupFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19270,8 +19270,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeLogBackupFilesResponse:
         """
         ### [](#)Supported database engines
-        RDS SQL Server
-        >  You can call the [DescribeBinlogFiles](~~610550~~) operation to query the log files of other database engines.
+        SQL Server
+        >  You can call the DescribeBinlogFiles operation to query the log files of instances that run different database engines.
         
         @param request: DescribeLogBackupFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19322,8 +19322,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeLogBackupFilesResponse:
         """
         ### [](#)Supported database engines
-        RDS SQL Server
-        >  You can call the [DescribeBinlogFiles](~~610550~~) operation to query the log files of other database engines.
+        SQL Server
+        >  You can call the DescribeBinlogFiles operation to query the log files of instances that run different database engines.
         
         @param request: DescribeLogBackupFilesRequest
         @return: DescribeLogBackupFilesResponse
@@ -19337,8 +19337,8 @@ class Client(OpenApiClient):
     ) -> rds_20140815_models.DescribeLogBackupFilesResponse:
         """
         ### [](#)Supported database engines
-        RDS SQL Server
-        >  You can call the [DescribeBinlogFiles](~~610550~~) operation to query the log files of other database engines.
+        SQL Server
+        >  You can call the DescribeBinlogFiles operation to query the log files of instances that run different database engines.
         
         @param request: DescribeLogBackupFilesRequest
         @return: DescribeLogBackupFilesResponse
@@ -31258,6 +31258,8 @@ class Client(OpenApiClient):
             query['DBNode'] = request.dbnode_shrink
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -31323,6 +31325,8 @@ class Client(OpenApiClient):
             query['DBNode'] = request.dbnode_shrink
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.effective_time):
+            query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
