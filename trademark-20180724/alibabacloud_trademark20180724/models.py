@@ -19996,9 +19996,12 @@ class QueryTrademarkModelEspDetailResponse(TeaModel):
 class QueryTrademarkModelEspListRequest(TeaModel):
     def __init__(
         self,
+        additional_submit_status: str = None,
+        additional_submit_time: str = None,
         biz_id: str = None,
         biz_type: str = None,
         env: str = None,
+        exist_status: List[str] = None,
         order_id: str = None,
         order_ids_str: str = None,
         order_instance_id: str = None,
@@ -20010,9 +20013,12 @@ class QueryTrademarkModelEspListRequest(TeaModel):
         submit_status: str = None,
         submit_time: str = None,
     ):
+        self.additional_submit_status = additional_submit_status
+        self.additional_submit_time = additional_submit_time
         self.biz_id = biz_id
         self.biz_type = biz_type
         self.env = env
+        self.exist_status = exist_status
         self.order_id = order_id
         self.order_ids_str = order_ids_str
         self.order_instance_id = order_instance_id
@@ -20033,12 +20039,18 @@ class QueryTrademarkModelEspListRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.additional_submit_status is not None:
+            result['AdditionalSubmitStatus'] = self.additional_submit_status
+        if self.additional_submit_time is not None:
+            result['AdditionalSubmitTime'] = self.additional_submit_time
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
         if self.biz_type is not None:
             result['BizType'] = self.biz_type
         if self.env is not None:
             result['Env'] = self.env
+        if self.exist_status is not None:
+            result['ExistStatus'] = self.exist_status
         if self.order_id is not None:
             result['OrderId'] = self.order_id
         if self.order_ids_str is not None:
@@ -20063,12 +20075,135 @@ class QueryTrademarkModelEspListRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdditionalSubmitStatus') is not None:
+            self.additional_submit_status = m.get('AdditionalSubmitStatus')
+        if m.get('AdditionalSubmitTime') is not None:
+            self.additional_submit_time = m.get('AdditionalSubmitTime')
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
         if m.get('BizType') is not None:
             self.biz_type = m.get('BizType')
         if m.get('Env') is not None:
             self.env = m.get('Env')
+        if m.get('ExistStatus') is not None:
+            self.exist_status = m.get('ExistStatus')
+        if m.get('OrderId') is not None:
+            self.order_id = m.get('OrderId')
+        if m.get('OrderIdsStr') is not None:
+            self.order_ids_str = m.get('OrderIdsStr')
+        if m.get('OrderInstanceId') is not None:
+            self.order_instance_id = m.get('OrderInstanceId')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PrincipalKey') is not None:
+            self.principal_key = m.get('PrincipalKey')
+        if m.get('PrincipalName') is not None:
+            self.principal_name = m.get('PrincipalName')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubmitStatus') is not None:
+            self.submit_status = m.get('SubmitStatus')
+        if m.get('SubmitTime') is not None:
+            self.submit_time = m.get('SubmitTime')
+        return self
+
+
+class QueryTrademarkModelEspListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        additional_submit_status: str = None,
+        additional_submit_time: str = None,
+        biz_id: str = None,
+        biz_type: str = None,
+        env: str = None,
+        exist_status_shrink: str = None,
+        order_id: str = None,
+        order_ids_str: str = None,
+        order_instance_id: str = None,
+        page_num: int = None,
+        page_size: int = None,
+        principal_key: str = None,
+        principal_name: str = None,
+        status: str = None,
+        submit_status: str = None,
+        submit_time: str = None,
+    ):
+        self.additional_submit_status = additional_submit_status
+        self.additional_submit_time = additional_submit_time
+        self.biz_id = biz_id
+        self.biz_type = biz_type
+        self.env = env
+        self.exist_status_shrink = exist_status_shrink
+        self.order_id = order_id
+        self.order_ids_str = order_ids_str
+        self.order_instance_id = order_instance_id
+        self.page_num = page_num
+        self.page_size = page_size
+        self.principal_key = principal_key
+        self.principal_name = principal_name
+        self.status = status
+        self.submit_status = submit_status
+        self.submit_time = submit_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_submit_status is not None:
+            result['AdditionalSubmitStatus'] = self.additional_submit_status
+        if self.additional_submit_time is not None:
+            result['AdditionalSubmitTime'] = self.additional_submit_time
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+        if self.env is not None:
+            result['Env'] = self.env
+        if self.exist_status_shrink is not None:
+            result['ExistStatus'] = self.exist_status_shrink
+        if self.order_id is not None:
+            result['OrderId'] = self.order_id
+        if self.order_ids_str is not None:
+            result['OrderIdsStr'] = self.order_ids_str
+        if self.order_instance_id is not None:
+            result['OrderInstanceId'] = self.order_instance_id
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.principal_key is not None:
+            result['PrincipalKey'] = self.principal_key
+        if self.principal_name is not None:
+            result['PrincipalName'] = self.principal_name
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.submit_status is not None:
+            result['SubmitStatus'] = self.submit_status
+        if self.submit_time is not None:
+            result['SubmitTime'] = self.submit_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdditionalSubmitStatus') is not None:
+            self.additional_submit_status = m.get('AdditionalSubmitStatus')
+        if m.get('AdditionalSubmitTime') is not None:
+            self.additional_submit_time = m.get('AdditionalSubmitTime')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+        if m.get('Env') is not None:
+            self.env = m.get('Env')
+        if m.get('ExistStatus') is not None:
+            self.exist_status_shrink = m.get('ExistStatus')
         if m.get('OrderId') is not None:
             self.order_id = m.get('OrderId')
         if m.get('OrderIdsStr') is not None:
@@ -27143,10 +27278,12 @@ class UpdateProduceRequest(TeaModel):
         biz_id: str = None,
         biz_type: str = None,
         ext_map: str = None,
+        operate_type: str = None,
     ):
         self.biz_id = biz_id
         self.biz_type = biz_type
         self.ext_map = ext_map
+        self.operate_type = operate_type
 
     def validate(self):
         pass
@@ -27163,6 +27300,8 @@ class UpdateProduceRequest(TeaModel):
             result['BizType'] = self.biz_type
         if self.ext_map is not None:
             result['ExtMap'] = self.ext_map
+        if self.operate_type is not None:
+            result['OperateType'] = self.operate_type
         return result
 
     def from_map(self, m: dict = None):
@@ -27173,6 +27312,8 @@ class UpdateProduceRequest(TeaModel):
             self.biz_type = m.get('BizType')
         if m.get('ExtMap') is not None:
             self.ext_map = m.get('ExtMap')
+        if m.get('OperateType') is not None:
+            self.operate_type = m.get('OperateType')
         return self
 
 
