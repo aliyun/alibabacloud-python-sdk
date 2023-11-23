@@ -403,8 +403,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.cover_url):
             query['CoverUrl'] = request.cover_url
         if not UtilClient.is_unset(request.name):
@@ -419,8 +417,12 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddTemplate',
@@ -445,8 +447,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.AddTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.cover_url):
             query['CoverUrl'] = request.cover_url
         if not UtilClient.is_unset(request.name):
@@ -461,8 +461,12 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='AddTemplate',
@@ -503,6 +507,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.index_config):
             query['IndexConfig'] = request.index_config
+        if not UtilClient.is_unset(request.index_status):
+            query['IndexStatus'] = request.index_status
         if not UtilClient.is_unset(request.index_type):
             query['IndexType'] = request.index_type
         if not UtilClient.is_unset(request.search_lib_name):
@@ -535,6 +541,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.index_config):
             query['IndexConfig'] = request.index_config
+        if not UtilClient.is_unset(request.index_status):
+            query['IndexStatus'] = request.index_status
         if not UtilClient.is_unset(request.index_type):
             query['IndexType'] = request.index_type
         if not UtilClient.is_unset(request.search_lib_name):
@@ -1251,12 +1259,14 @@ class Client(OpenApiClient):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
-        if not UtilClient.is_unset(request.timeline):
-            query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateEditingProject',
@@ -1297,12 +1307,14 @@ class Client(OpenApiClient):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.template_type):
             query['TemplateType'] = request.template_type
-        if not UtilClient.is_unset(request.timeline):
-            query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='CreateEditingProject',
@@ -1671,6 +1683,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.index_config):
             query['IndexConfig'] = request.index_config
+        if not UtilClient.is_unset(request.index_status):
+            query['IndexStatus'] = request.index_status
         if not UtilClient.is_unset(request.index_type):
             query['IndexType'] = request.index_type
         if not UtilClient.is_unset(request.search_lib_name):
@@ -1703,6 +1717,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.index_config):
             query['IndexConfig'] = request.index_config
+        if not UtilClient.is_unset(request.index_status):
+            query['IndexStatus'] = request.index_status
         if not UtilClient.is_unset(request.index_type):
             query['IndexType'] = request.index_type
         if not UtilClient.is_unset(request.search_lib_name):
@@ -7643,6 +7659,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7673,6 +7691,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7717,6 +7737,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7747,6 +7769,8 @@ class Client(OpenApiClient):
             query['PageNo'] = request.page_no
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -10091,6 +10115,80 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_media_censor_job_list_with_options_async(request, runtime)
+
+    def query_media_index_job_with_options(
+        self,
+        request: ice20201109_models.QueryMediaIndexJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMediaIndexJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryMediaIndexJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_media_index_job_with_options_async(
+        self,
+        request: ice20201109_models.QueryMediaIndexJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMediaIndexJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.QueryMediaIndexJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_media_index_job(
+        self,
+        request: ice20201109_models.QueryMediaIndexJobRequest,
+    ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_media_index_job_with_options(request, runtime)
+
+    async def query_media_index_job_async(
+        self,
+        request: ice20201109_models.QueryMediaIndexJobRequest,
+    ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_media_index_job_with_options_async(request, runtime)
 
     def query_search_index_with_options(
         self,
@@ -13301,12 +13399,14 @@ class Client(OpenApiClient):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.timeline):
-            query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SubmitMediaProducingJob',
@@ -13351,12 +13451,14 @@ class Client(OpenApiClient):
             query['Source'] = request.source
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.timeline):
-            query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.user_data):
             query['UserData'] = request.user_data
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='SubmitMediaProducingJob',
@@ -13717,6 +13819,92 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_snapshot_job_with_options_async(request, runtime)
+
+    def submit_standard_customized_voice_job_with_options(
+        self,
+        request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audios):
+            query['Audios'] = request.audios
+        if not UtilClient.is_unset(request.authentication):
+            query['Authentication'] = request.authentication
+        if not UtilClient.is_unset(request.demo_audio_media_url):
+            query['DemoAudioMediaURL'] = request.demo_audio_media_url
+        if not UtilClient.is_unset(request.gender):
+            query['Gender'] = request.gender
+        if not UtilClient.is_unset(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitStandardCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitStandardCustomizedVoiceJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_standard_customized_voice_job_with_options_async(
+        self,
+        request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.audios):
+            query['Audios'] = request.audios
+        if not UtilClient.is_unset(request.authentication):
+            query['Authentication'] = request.authentication
+        if not UtilClient.is_unset(request.demo_audio_media_url):
+            query['DemoAudioMediaURL'] = request.demo_audio_media_url
+        if not UtilClient.is_unset(request.gender):
+            query['Gender'] = request.gender
+        if not UtilClient.is_unset(request.voice_name):
+            query['VoiceName'] = request.voice_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitStandardCustomizedVoiceJob',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SubmitStandardCustomizedVoiceJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_standard_customized_voice_job(
+        self,
+        request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_standard_customized_voice_job_with_options(request, runtime)
+
+    async def submit_standard_customized_voice_job_async(
+        self,
+        request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
+    ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_standard_customized_voice_job_with_options_async(request, runtime)
 
     def submit_subtitle_produce_job_with_options(
         self,
@@ -14385,12 +14573,14 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.timeline):
-            query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateEditingProject',
@@ -14427,12 +14617,14 @@ class Client(OpenApiClient):
             query['ProjectId'] = request.project_id
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
-        if not UtilClient.is_unset(request.timeline):
-            query['Timeline'] = request.timeline
         if not UtilClient.is_unset(request.title):
             query['Title'] = request.title
+        body = {}
+        if not UtilClient.is_unset(request.timeline):
+            body['Timeline'] = request.timeline
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateEditingProject',
@@ -15179,8 +15371,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.cover_url):
             query['CoverUrl'] = request.cover_url
         if not UtilClient.is_unset(request.name):
@@ -15195,8 +15385,12 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
@@ -15221,8 +15415,6 @@ class Client(OpenApiClient):
     ) -> ice20201109_models.UpdateTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
-        if not UtilClient.is_unset(request.config):
-            query['Config'] = request.config
         if not UtilClient.is_unset(request.cover_url):
             query['CoverUrl'] = request.cover_url
         if not UtilClient.is_unset(request.name):
@@ -15237,8 +15429,12 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
         req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
             action='UpdateTemplate',
