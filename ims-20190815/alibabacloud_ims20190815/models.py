@@ -1115,6 +1115,7 @@ class CreateApplicationRequest(TeaModel):
         predefined_scopes: str = None,
         redirect_uris: str = None,
         refresh_token_validity: int = None,
+        required_scopes: str = None,
         secret_required: bool = None,
     ):
         # The validity period of the access token.
@@ -1161,6 +1162,7 @@ class CreateApplicationRequest(TeaModel):
         # *   For applications of the WebApp and ServerApp types, if this parameter is left empty, the value 2592000 is used. The value 2592000 indicates that the validity period of the refreshed token is 30 days.
         # *   For applications of the NativeApp type, if this parameter is left empty, the value 7776000 is used. The value 7776000 indicates that the validity period of the refreshed token is 90 days.
         self.refresh_token_validity = refresh_token_validity
+        self.required_scopes = required_scopes
         # Indicates whether a secret is required. Valid values:
         # 
         # *   true
@@ -1197,6 +1199,8 @@ class CreateApplicationRequest(TeaModel):
             result['RedirectUris'] = self.redirect_uris
         if self.refresh_token_validity is not None:
             result['RefreshTokenValidity'] = self.refresh_token_validity
+        if self.required_scopes is not None:
+            result['RequiredScopes'] = self.required_scopes
         if self.secret_required is not None:
             result['SecretRequired'] = self.secret_required
         return result
@@ -1219,6 +1223,8 @@ class CreateApplicationRequest(TeaModel):
             self.redirect_uris = m.get('RedirectUris')
         if m.get('RefreshTokenValidity') is not None:
             self.refresh_token_validity = m.get('RefreshTokenValidity')
+        if m.get('RequiredScopes') is not None:
+            self.required_scopes = m.get('RequiredScopes')
         if m.get('SecretRequired') is not None:
             self.secret_required = m.get('SecretRequired')
         return self
@@ -1229,11 +1235,13 @@ class CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
         self,
         description: str = None,
         name: str = None,
+        required: bool = None,
     ):
         # The description of the permission scope.
         self.description = description
         # The name of the scope.
         self.name = name
+        self.required = required
 
     def validate(self):
         pass
@@ -1248,6 +1256,8 @@ class CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.required is not None:
+            result['Required'] = self.required
         return result
 
     def from_map(self, m: dict = None):
@@ -1256,6 +1266,8 @@ class CreateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
         return self
 
 
@@ -2057,7 +2069,7 @@ class CreateOIDCProviderResponseBodyOIDCProvider(TeaModel):
         self.gmt_modified = gmt_modified
         # The earliest time when an external IdP can issue an ID token. If the value of the iat field in the ID token is later than the current time, the request is rejected. Unit: hours. Valid values: 1 to 168.
         self.issuance_limit_time = issuance_limit_time
-        # The URL of the issuer,
+        # The URL of the issuer.
         self.issuer_url = issuer_url
         # The name of the OIDC IdP.
         self.oidcprovider_name = oidcprovider_name
@@ -4927,11 +4939,13 @@ class GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefi
         self,
         description: str = None,
         name: str = None,
+        required: bool = None,
     ):
         # The description of the permission.
         self.description = description
         # The name of the permission.
         self.name = name
+        self.required = required
 
     def validate(self):
         pass
@@ -4946,6 +4960,8 @@ class GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefi
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.required is not None:
+            result['Required'] = self.required
         return result
 
     def from_map(self, m: dict = None):
@@ -4954,6 +4970,8 @@ class GetApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPredefi
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
         return self
 
 
@@ -5257,7 +5275,11 @@ class GetCredentialReportRequest(TeaModel):
         max_items: str = None,
         next_token: str = None,
     ):
+        # The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+        # 
+        # Valid values: 1 to 3501. Default value: 3501.
         self.max_items = max_items
+        # The token that is used to initiate the next request if the response of the current request is truncated. You can use the token to initiate another request and obtain the remaining records.``
         self.next_token = next_token
 
     def validate(self):
@@ -5299,7 +5321,12 @@ class GetCredentialReportResponseBody(TeaModel):
         self.content = content
         # The time when the user credential report was generated.
         self.generated_time = generated_time
+        # Indicates whether the response is truncated. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
+        # The parameter that is used to obtain the truncated part. This parameter takes effect only when `IsTruncated` is set to true.
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
@@ -7696,11 +7723,13 @@ class ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefine
         self,
         description: str = None,
         name: str = None,
+        required: bool = None,
     ):
         # The description of the permission.
         self.description = description
         # The name of the permission.
         self.name = name
+        self.required = required
 
     def validate(self):
         pass
@@ -7715,6 +7744,8 @@ class ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefine
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.required is not None:
+            result['Required'] = self.required
         return result
 
     def from_map(self, m: dict = None):
@@ -7723,6 +7754,8 @@ class ListApplicationsResponseBodyApplicationsApplicationDelegatedScopePredefine
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
         return self
 
 
@@ -9787,11 +9820,11 @@ class ListUsersRequest(TeaModel):
     ):
         # The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
         self.marker = marker
-        # The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+        # The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
         # 
         # Valid values: 1 to 1000. Default value: 1000.
         self.max_items = max_items
-        # The tag value.
+        # The tags. A maximum number of 20 tags are supported.
         self.tag = tag
 
     def validate(self):
@@ -9836,9 +9869,9 @@ class ListUsersResponseBodyUsersUserTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
+        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value.
+        # The value of the tag
         self.tag_value = tag_value
 
     def validate(self):
@@ -9917,19 +9950,19 @@ class ListUsersResponseBodyUsersUser(TeaModel):
     ):
         # The description.
         self.comments = comments
-        # The time when the RAM user was created.
+        # The point in time when the RAM user was created. The time is displayed in UTC.
         self.create_date = create_date
         # The display name of the RAM user.
         self.display_name = display_name
         # The email address of the RAM user.
         # 
-        # >  This parameter is valid only on the China site (aliyun.com).
+        # >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
         self.email = email
-        # The last time when the RAM user logged on to the Alibaba Cloud Management Console.
+        # The timestamp when the RAM user last logged on to the console.
         self.last_login_date = last_login_date
         # The mobile phone number of the RAM user.
         # 
-        # >  This parameter is valid only on the China site (aliyun.com).
+        # >  This parameter applies only to the Alibaba Cloud China site (aliyun.com).
         self.mobile_phone = mobile_phone
         # The source of the RAM user. Valid values:
         # 
@@ -9937,9 +9970,9 @@ class ListUsersResponseBodyUsersUser(TeaModel):
         # *   SCIM: The RAM user is mapped by using System for Cross-domain Identity Management (SCIM).
         # *   CloudSSO: The RAM user is mapped from a CloudSSO user.
         self.provision_type = provision_type
-        # An array that consists of tags.
+        # The tags.
         self.tags = tags
-        # The time when the information about the RAM user was updated.
+        # The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
         self.update_date = update_date
         # The ID of the RAM user.
         self.user_id = user_id
@@ -10058,9 +10091,9 @@ class ListUsersResponseBody(TeaModel):
         self.is_truncated = is_truncated
         # The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
         self.marker = marker
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of the information about the RAM user.
+        # The details of the RAM user.
         self.users = users
 
     def validate(self):
@@ -11627,14 +11660,14 @@ class SetSecurityPreferenceRequest(TeaModel):
         # *   true
         # *   false (default)
         self.enable_save_mfaticket = enable_save_mfaticket
-        # The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+        # The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). This parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
         # 
         # *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
         # *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
         # 
         # If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         # 
-        # You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+        # You can specify up to 40 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
         self.login_network_masks = login_network_masks
         # The validity period of the logon session of RAM users.
         # 
@@ -11751,14 +11784,14 @@ class SetSecurityPreferenceShrinkRequest(TeaModel):
         # *   true
         # *   false (default)
         self.enable_save_mfaticket = enable_save_mfaticket
-        # The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). However, this parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
+        # The subnet mask that specifies the IP addresses from which you can log on to the Alibaba Cloud Management Console. This parameter takes effect on password-based logon and single sign-on (SSO). This parameter does not take effect on API calls that are authenticated by using AccessKey pairs.
         # 
         # *   If you specify a subnet mask, RAM users can use only the IP addresses in the subnet mask to log on to the Alibaba Cloud Management Console.
         # *   If you do not specify a subnet mask, RAM users can use all IP addresses to log on to the Alibaba Cloud Management Console.
         # 
         # If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
         # 
-        # You can specify up to 25 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
+        # You can specify up to 40 subnet masks. The total length of the subnet masks can be a maximum of 512 characters.
         self.login_network_masks = login_network_masks
         # The validity period of the logon session of RAM users.
         # 
@@ -12921,6 +12954,7 @@ class UpdateApplicationRequest(TeaModel):
         new_predefined_scopes: str = None,
         new_redirect_uris: str = None,
         new_refresh_token_validity: int = None,
+        new_required_scopes: str = None,
         new_secret_required: bool = None,
     ):
         # The ID of the application.
@@ -12952,6 +12986,7 @@ class UpdateApplicationRequest(TeaModel):
         # 
         # Valid values: 7200 to 31536000. Unit: seconds.
         self.new_refresh_token_validity = new_refresh_token_validity
+        self.new_required_scopes = new_required_scopes
         # Specifies whether a secret is required. Valid values:
         # 
         # *   true
@@ -12986,6 +13021,8 @@ class UpdateApplicationRequest(TeaModel):
             result['NewRedirectUris'] = self.new_redirect_uris
         if self.new_refresh_token_validity is not None:
             result['NewRefreshTokenValidity'] = self.new_refresh_token_validity
+        if self.new_required_scopes is not None:
+            result['NewRequiredScopes'] = self.new_required_scopes
         if self.new_secret_required is not None:
             result['NewSecretRequired'] = self.new_secret_required
         return result
@@ -13006,6 +13043,8 @@ class UpdateApplicationRequest(TeaModel):
             self.new_redirect_uris = m.get('NewRedirectUris')
         if m.get('NewRefreshTokenValidity') is not None:
             self.new_refresh_token_validity = m.get('NewRefreshTokenValidity')
+        if m.get('NewRequiredScopes') is not None:
+            self.new_required_scopes = m.get('NewRequiredScopes')
         if m.get('NewSecretRequired') is not None:
             self.new_secret_required = m.get('NewSecretRequired')
         return self
@@ -13016,11 +13055,13 @@ class UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
         self,
         description: str = None,
         name: str = None,
+        required: bool = None,
     ):
         # The description of the permission scope.
         self.description = description
         # The name of the scope.
         self.name = name
+        self.required = required
 
     def validate(self):
         pass
@@ -13035,6 +13076,8 @@ class UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
             result['Description'] = self.description
         if self.name is not None:
             result['Name'] = self.name
+        if self.required is not None:
+            result['Required'] = self.required
         return result
 
     def from_map(self, m: dict = None):
@@ -13043,6 +13086,8 @@ class UpdateApplicationResponseBodyApplicationDelegatedScopePredefinedScopesPred
             self.description = m.get('Description')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('Required') is not None:
+            self.required = m.get('Required')
         return self
 
 
