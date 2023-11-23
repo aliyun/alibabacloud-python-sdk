@@ -31421,6 +31421,8 @@ class Client(OpenApiClient):
             query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_num):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
+        if not UtilClient.is_unset(request.dbproxy_instance_type):
+            query['DBProxyInstanceType'] = request.dbproxy_instance_type
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.owner_id):
@@ -31487,6 +31489,8 @@ class Client(OpenApiClient):
             query['DBProxyEngineType'] = request.dbproxy_engine_type
         if not UtilClient.is_unset(request.dbproxy_instance_num):
             query['DBProxyInstanceNum'] = request.dbproxy_instance_num
+        if not UtilClient.is_unset(request.dbproxy_instance_type):
+            query['DBProxyInstanceType'] = request.dbproxy_instance_type
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.owner_id):

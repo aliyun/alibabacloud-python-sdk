@@ -31751,6 +31751,7 @@ class DescribeDBProxyResponseBody(TeaModel):
         dbproxy_instance_size: str = None,
         dbproxy_instance_status: str = None,
         dbproxy_instance_type: str = None,
+        dbproxy_persistent_connection_support: str = None,
         dbproxy_service_status: str = None,
         db_proxy_endpoint_items: DescribeDBProxyResponseBodyDbProxyEndpointItems = None,
         request_id: str = None,
@@ -31790,6 +31791,7 @@ class DescribeDBProxyResponseBody(TeaModel):
         # 
         # >  ApsaraDB RDS for PostgreSQL instances support only dedicated proxies.
         self.dbproxy_instance_type = dbproxy_instance_type
+        self.dbproxy_persistent_connection_support = dbproxy_persistent_connection_support
         # The status of the database proxy.
         # 
         # *   Shutdown: disabled
@@ -31836,6 +31838,8 @@ class DescribeDBProxyResponseBody(TeaModel):
             result['DBProxyInstanceStatus'] = self.dbproxy_instance_status
         if self.dbproxy_instance_type is not None:
             result['DBProxyInstanceType'] = self.dbproxy_instance_type
+        if self.dbproxy_persistent_connection_support is not None:
+            result['DBProxyPersistentConnectionSupport'] = self.dbproxy_persistent_connection_support
         if self.dbproxy_service_status is not None:
             result['DBProxyServiceStatus'] = self.dbproxy_service_status
         if self.db_proxy_endpoint_items is not None:
@@ -31870,6 +31874,8 @@ class DescribeDBProxyResponseBody(TeaModel):
             self.dbproxy_instance_status = m.get('DBProxyInstanceStatus')
         if m.get('DBProxyInstanceType') is not None:
             self.dbproxy_instance_type = m.get('DBProxyInstanceType')
+        if m.get('DBProxyPersistentConnectionSupport') is not None:
+            self.dbproxy_persistent_connection_support = m.get('DBProxyPersistentConnectionSupport')
         if m.get('DBProxyServiceStatus') is not None:
             self.dbproxy_service_status = m.get('DBProxyServiceStatus')
         if m.get('DbProxyEndpointItems') is not None:
@@ -60689,6 +60695,7 @@ class ModifyDBProxyRequest(TeaModel):
         dbinstance_id: str = None,
         dbproxy_engine_type: str = None,
         dbproxy_instance_num: str = None,
+        dbproxy_instance_type: str = None,
         instance_network_type: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -60711,6 +60718,7 @@ class ModifyDBProxyRequest(TeaModel):
         # 
         # >  The capability of the database proxy to process requests increases with the number of proxy instances that are enabled. You can monitor the load on the instance and specify an appropriate number of proxy instances based on the load monitoring data.
         self.dbproxy_instance_num = dbproxy_instance_num
+        self.dbproxy_instance_type = dbproxy_instance_type
         # The network type of the instance. Set the value to **VPC**.
         # 
         # > This parameter is required if you enable the database proxy feature for an ApsaraDB RDS for MySQL instance that uses cloud disks or an ApsaraDB RDS for PostgreSQL instance.
@@ -60748,6 +60756,8 @@ class ModifyDBProxyRequest(TeaModel):
             result['DBProxyEngineType'] = self.dbproxy_engine_type
         if self.dbproxy_instance_num is not None:
             result['DBProxyInstanceNum'] = self.dbproxy_instance_num
+        if self.dbproxy_instance_type is not None:
+            result['DBProxyInstanceType'] = self.dbproxy_instance_type
         if self.instance_network_type is not None:
             result['InstanceNetworkType'] = self.instance_network_type
         if self.owner_id is not None:
@@ -60776,6 +60786,8 @@ class ModifyDBProxyRequest(TeaModel):
             self.dbproxy_engine_type = m.get('DBProxyEngineType')
         if m.get('DBProxyInstanceNum') is not None:
             self.dbproxy_instance_num = m.get('DBProxyInstanceNum')
+        if m.get('DBProxyInstanceType') is not None:
+            self.dbproxy_instance_type = m.get('DBProxyInstanceType')
         if m.get('InstanceNetworkType') is not None:
             self.instance_network_type = m.get('InstanceNetworkType')
         if m.get('OwnerId') is not None:
