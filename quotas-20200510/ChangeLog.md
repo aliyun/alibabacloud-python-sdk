@@ -1,3 +1,6 @@
+2023-11-23 Version: 1.1.2
+- Generated python 2020-05-10 for quotas.
+
 2023-09-22 Version: 1.1.1
 - Generated python 2020-05-10 for quotas.
 

@@ -405,8 +405,8 @@ class CreateQuotaApplicationResponseBody(TeaModel):
         self.expire_time = expire_time
         # Indicates whether Quota Center sends a notification about the application result. Valid values:
         # 
-        # *   0: Quota Center sends a notification.
-        # *   3: Quota Center does not send a notification.
+        # *   0: Quota Center does not send a notification.
+        # *   3: Quota Center sends a notification.
         self.notice_type = notice_type
         # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
@@ -570,7 +570,15 @@ class CreateQuotaApplicationsForTemplateRequestDimensions(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the quota dimension.
+        # 
+        # The value range of N varies based on the number of dimensions that are supported by the Alibaba Cloud service.
+        # 
+        # >  This parameter is required if you set the ProductCode parameter to ecs, ecs-spec, actiontrail, or ess.
         self.key = key
+        # The value of the quota dimension.
+        # 
+        # >  The value range of N varies based on the number of dimensions that are supported by the Alibaba Cloud service.
         self.value = value
 
     def validate(self):
@@ -612,16 +620,49 @@ class CreateQuotaApplicationsForTemplateRequest(TeaModel):
         quota_category: str = None,
         reason: str = None,
     ):
+        # The Alibaba Cloud accounts for which the quotas are applied.
+        # 
+        # >  For more information about the members of a resource directory, see [Query all the members in a resource directory](~~604207~~).
         self.aliyun_uids = aliyun_uids
+        # The requested value of the quota.
+        # 
+        # >  Applications are reviewed by the technical support team of each Alibaba Cloud service. To increase the success rate of your application, you must specify a reasonable quota value and detailed reasons when you submit the application.
         self.desire_value = desire_value
+        # The quota dimensions.
         self.dimensions = dimensions
+        # The start time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
+        # 
+        # >  If you do not specify a start time, the value is the time when the quota application is submitted.
         self.effective_time = effective_time
+        # The language of the notification about the application result. Valid values:
+        # 
+        # *   zh (default): Chinese
+        # *   en: English
         self.env_language = env_language
+        # The end time of the validity period of the quota. Specify the value in UTC. This parameter is valid only if you set the QuotaCategory parameter to WhiteListLabel.
+        # 
+        # >  If you do not specify an end time, the value is 99 years after the start time of the validity period.
         self.expire_time = expire_time
+        # Specifies whether to send a notification about the application result. Valid values:
+        # 
+        # *   0 (default): no
+        # *   3: yes
         self.notice_type = notice_type
+        # The abbreviation of the Alibaba Cloud service name.
+        # 
+        # >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
         self.product_code = product_code
+        # The quota ID.
         self.quota_action_code = quota_action_code
+        # The quota type. Valid values:
+        # 
+        # *   CommonQuota (default): general quota
+        # *   FlowControl: API rate limit
+        # *   WhiteListLabel: privilege
         self.quota_category = quota_category
+        # The reason for the quota application.
+        # 
+        # >  Applications are reviewed by the technical support team of each Alibaba Cloud service. To increase the success rate of your application, you must specify a reasonable quota value and detailed reasons when you submit the application.
         self.reason = reason
 
     def validate(self):
@@ -692,19 +733,60 @@ class CreateQuotaApplicationsForTemplateRequest(TeaModel):
         return self
 
 
+class CreateQuotaApplicationsForTemplateResponseBodyFailResults(TeaModel):
+    def __init__(
+        self,
+        aliyun_uid: str = None,
+        reason: str = None,
+    ):
+        self.aliyun_uid = aliyun_uid
+        self.reason = reason
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.reason is not None:
+            result['Reason'] = self.reason
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
+        return self
+
+
 class CreateQuotaApplicationsForTemplateResponseBody(TeaModel):
     def __init__(
         self,
         aliyun_uids: List[str] = None,
         batch_quota_application_id: str = None,
+        fail_results: List[CreateQuotaApplicationsForTemplateResponseBodyFailResults] = None,
         request_id: str = None,
     ):
+        # The Alibaba Cloud accounts for which the quotas are applied.
         self.aliyun_uids = aliyun_uids
+        # The ID of the quota application batch.
         self.batch_quota_application_id = batch_quota_application_id
+        self.fail_results = fail_results
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
-        pass
+        if self.fail_results:
+            for k in self.fail_results:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -716,6 +798,10 @@ class CreateQuotaApplicationsForTemplateResponseBody(TeaModel):
             result['AliyunUids'] = self.aliyun_uids
         if self.batch_quota_application_id is not None:
             result['BatchQuotaApplicationId'] = self.batch_quota_application_id
+        result['FailResults'] = []
+        if self.fail_results is not None:
+            for k in self.fail_results:
+                result['FailResults'].append(k.to_map() if k else None)
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -726,6 +812,11 @@ class CreateQuotaApplicationsForTemplateResponseBody(TeaModel):
             self.aliyun_uids = m.get('AliyunUids')
         if m.get('BatchQuotaApplicationId') is not None:
             self.batch_quota_application_id = m.get('BatchQuotaApplicationId')
+        self.fail_results = []
+        if m.get('FailResults') is not None:
+            for k in m.get('FailResults'):
+                temp_model = CreateQuotaApplicationsForTemplateResponseBodyFailResults()
+                self.fail_results.append(temp_model.from_map(k))
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -1220,19 +1311,13 @@ class GetProductQuotaRequestDimensions(TeaModel):
     ):
         # The key of the dimension.
         # 
-        # > 
-        # 
-        # *   The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-        # 
-        # *   If you call the operation to query the details of a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: ECS whose service code is ecs, Enterprise Distributed Application Service (EDAS) whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and Auto Scaling (ESS) whose service code is ess.
+        # >- The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+        # >- If you call the operation to query the details of a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: ECS whose service code is ecs, Enterprise Distributed Application Service (EDAS) whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and Auto Scaling (ESS) whose service code is ess.
         self.key = key
         # The value of the dimension.
         # 
-        # > 
-        # 
-        # *   The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
-        # 
-        # *   If you call the operation to query the details of a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: ECS whose service code is ecs, EDAS whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and ESS whose service code is ess.
+        # > - The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service.
+        # > - If you call the operation to query the details of a quota that belongs to a cloud service that supports dimensions, you must configure this parameter. You must configure the `Dimensions.N.Key` and `Dimensions.N.Value` parameters at the same time. The following cloud services support dimensions: ECS whose service code is ecs, EDAS whose service code is edas, ECS Quotas by Instance Type whose service code is ecs-spec, and ESS whose service code is ess.
         self.value = value
 
     def validate(self):
@@ -1362,16 +1447,14 @@ class GetProductQuotaResponseBodyQuotaQuotaItems(TeaModel):
     ):
         # The value of the quota.
         self.quota = quota
-        # The unit of the new quota value.
+        # The unit of the quota.
         # 
-        # **\
-        # 
-        # **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of ACK clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+        # >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of ACK clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
         self.quota_unit = quota_unit
         # The category of the quota. Valid values:
         # 
-        # *   BaseQuota: base quota
-        # *   ReservedQuota: reserved quota
+        # *   BaseQuota: base quota.
+        # *   ReservedQuota: reserved quota.
         self.type = type
         # The used quota.
         self.usage = usage
@@ -1419,6 +1502,7 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
         dimensions: Dict[str, Any] = None,
         effective_time: str = None,
         expire_time: str = None,
+        global_quota: bool = None,
         period: GetProductQuotaResponseBodyQuotaPeriod = None,
         product_code: str = None,
         quota_action_code: str = None,
@@ -1446,6 +1530,7 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
         # *   continuous
         # *   discontinuous
         self.applicable_type = applicable_type
+        # The reason for submitting a quota increase request.
         self.apply_reason_tips = apply_reason_tips
         # Indicates whether the system shows the used value of the quota. Valid values:
         # 
@@ -1458,6 +1543,11 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
         self.effective_time = effective_time
         # The end time of the validity period of the quota. Specify the value in UTC.
         self.expire_time = expire_time
+        # Indicates whether the quota is a global quota. Valid values:
+        # 
+        # *   true: The quota is shared in all regions.
+        # *   false: The quota is independently used in a region.
+        self.global_quota = global_quota
         # The calculation cycle of the quota.
         self.period = period
         # The abbreviation of the Alibaba Cloud service name.
@@ -1485,9 +1575,7 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
         self.quota_type = quota_type
         # The unit of the new quota value.
         # 
-        # **\
-        # 
-        # **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+        # > The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
         self.quota_unit = quota_unit
         # The range of the quota value.
         self.supported_range = supported_range
@@ -1533,6 +1621,8 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
             result['EffectiveTime'] = self.effective_time
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.global_quota is not None:
+            result['GlobalQuota'] = self.global_quota
         if self.period is not None:
             result['Period'] = self.period.to_map()
         if self.product_code is not None:
@@ -1583,6 +1673,8 @@ class GetProductQuotaResponseBodyQuota(TeaModel):
             self.effective_time = m.get('EffectiveTime')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('GlobalQuota') is not None:
+            self.global_quota = m.get('GlobalQuota')
         if m.get('Period') is not None:
             temp_model = GetProductQuotaResponseBodyQuotaPeriod()
             self.period = temp_model.from_map(m['Period'])
@@ -1624,7 +1716,7 @@ class GetProductQuotaResponseBody(TeaModel):
         quota: GetProductQuotaResponseBodyQuota = None,
         request_id: str = None,
     ):
-        # The details of the quotas.
+        # The details of the quota.
         self.quota = quota
         # The ID of the request.
         self.request_id = request_id
@@ -1796,9 +1888,9 @@ class GetProductQuotaDimensionResponseBodyQuotaDimensionDimensionValueDetail(Tea
         name: str = None,
         value: str = None,
     ):
-        # The name of the quota dimension value.
+        # The name of the quota dimension.
         self.name = name
-        # The quota dimension value.
+        # The value of the quota dimension.
         self.value = value
 
     def validate(self):
@@ -2027,9 +2119,11 @@ class GetQuotaAlarmResponseBodyQuotaAlarm(TeaModel):
         self.alarm_name = alarm_name
         # The ID of the quota.
         self.create_time = create_time
+        # The alert notification methods.
         self.notify_channels = notify_channels
         # The used quota.
         self.notify_target = notify_target
+        # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
         # The name of the quota alert.
         self.quota_action_code = quota_action_code
@@ -2048,6 +2142,7 @@ class GetQuotaAlarmResponseBodyQuotaAlarm(TeaModel):
         self.threshold_percent = threshold_percent
         # The quota dimension.
         self.threshold_type = threshold_type
+        # The webhook URL. Quota Center sends alert notifications to the specified URL by using HTTP POST requests.
         self.webhook = webhook
 
     def validate(self):
@@ -2128,7 +2223,7 @@ class GetQuotaAlarmResponseBody(TeaModel):
         quota_alarm: GetQuotaAlarmResponseBodyQuotaAlarm = None,
         request_id: str = None,
     ):
-        # The percentage of the alert threshold.
+        # The details of the quota alert rule.
         self.quota_alarm = quota_alarm
         # The details of the quota alert.
         self.request_id = request_id
@@ -2692,20 +2787,21 @@ class ListAlarmHistoriesResponseBodyAlarmHistories(TeaModel):
     ):
         # The name of the quota alert.
         self.alarm_name = alarm_name
-        # The time when the quota alert was created.
+        # The time when the quota alert rule was created.
         self.create_time = create_time
+        # The notification methods of the quota alert.
         self.notify_channels = notify_channels
-        # The alert contact.
+        # The quota alert contact.
         self.notify_target = notify_target
         # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
-        # The ID of the quota.
+        # The quota ID.
         self.quota_action_code = quota_action_code
         # The used quota.
         self.quota_usage = quota_usage
-        # The numeric value of the alert threshold.
+        # The threshold to trigger quota alerts.
         self.threshold = threshold
-        # The percentage of the alert threshold.
+        # The percentage of the quota alert threshold.
         self.threshold_percent = threshold_percent
 
     def validate(self):
@@ -2769,7 +2865,7 @@ class ListAlarmHistoriesResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the alert records.
+        # The details of the quota alert records.
         self.alarm_histories = alarm_histories
         # The maximum number of records that are returned for the query.
         self.max_results = max_results
@@ -2912,9 +3008,11 @@ class ListDependentQuotasResponseBodyQuotasDimensions(TeaModel):
         dimension_key: str = None,
         dimension_values: List[str] = None,
     ):
+        # The dimensions of the quotas on which the specified quota depends.
         self.dependent_dimension = dependent_dimension
         # The key of the quota dimension.
         self.dimension_key = dimension_key
+        # The dimension values.
         self.dimension_values = dimension_values
 
     def validate(self):
@@ -3352,9 +3450,9 @@ class ListProductQuotaDimensionsResponseBodyQuotaDimensionsDimensionValueDetail(
         name: str = None,
         value: str = None,
     ):
-        # The name of the quota dimension value.
+        # The name of the quota dimension.
         self.name = name
-        # The quota dimension value.
+        # The value of the quota dimension.
         self.value = value
 
     def validate(self):
@@ -3391,6 +3489,7 @@ class ListProductQuotaDimensionsResponseBodyQuotaDimensions(TeaModel):
         name: str = None,
         requisite: bool = None,
     ):
+        # The quota dimensions on which the quota dimension that you want to query is dependent.
         self.dependent_dimensions = dependent_dimensions
         # The key of the quota dimension. Valid values:
         # 
@@ -3399,8 +3498,9 @@ class ListProductQuotaDimensionsResponseBodyQuotaDimensions(TeaModel):
         # *   chargeType: the billing method.
         # *   networkType: the network type.
         self.dimension_key = dimension_key
-        # The details of the quota dimension value.
+        # The details about the dimension value.
         self.dimension_value_detail = dimension_value_detail
+        # The dimension values.
         self.dimension_values = dimension_values
         # The name of the quota dimension.
         self.name = name
@@ -3471,7 +3571,7 @@ class ListProductQuotaDimensionsResponseBody(TeaModel):
         self.max_results = max_results
         # The token that marks the position at which the query ends. An empty value indicates that all data is returned.
         self.next_token = next_token
-        # The information about quota dimensions.
+        # The quota dimensions.
         self.quota_dimensions = quota_dimensions
         # The ID of the request.
         self.request_id = request_id
@@ -3768,20 +3868,18 @@ class ListProductQuotasResponseBodyQuotasQuotaItems(TeaModel):
         type: str = None,
         usage: str = None,
     ):
-        # The value of the quota.
+        # The quota value.
         self.quota = quota
-        # The unit of the new quota value.
+        # The unit of the quota.
         # 
-        # **\
-        # 
-        # **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of ACK clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+        # >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
         self.quota_unit = quota_unit
         # The category of the quota. Valid values:
         # 
         # *   BaseQuota: base quota
         # *   ReservedQuota: reserved quota
         self.type = type
-        # The used quota.
+        # The quota usage.
         self.usage = usage
 
     def validate(self):
@@ -3827,6 +3925,7 @@ class ListProductQuotasResponseBodyQuotas(TeaModel):
         dimensions: Dict[str, Any] = None,
         effective_time: str = None,
         expire_time: str = None,
+        global_quota: bool = None,
         period: ListProductQuotasResponseBodyQuotasPeriod = None,
         product_code: str = None,
         quota_action_code: str = None,
@@ -3847,61 +3946,61 @@ class ListProductQuotasResponseBodyQuotas(TeaModel):
         # *   true: The quota is adjustable.
         # *   false: The quota is not adjustable.
         self.adjustable = adjustable
-        # None
+        # None.
         self.applicable_range = applicable_range
         # The type of the adjustable value. Valid values:
         # 
         # *   continuous
         # *   discontinuous
         self.applicable_type = applicable_type
+        # The reason for submitting a quota increase request.
         self.apply_reason_tips = apply_reason_tips
         # Indicates whether the system shows the used value of the quota. Valid values:
         # 
         # *   true: The system shows the used value of the quota.
         # *   false: The system does not show the used value of the quota.
         self.consumable = consumable
-        # The quota dimension. Format: `{"regionId":"Region"}`.
+        # The quota dimensions. Format: `{"regionId":"Region"}`.
         self.dimensions = dimensions
-        # The start time of the validity period of the quota. Specify the value in UTC.
+        # The start time of the validity period of the quota. The value is displayed in UTC.
         self.effective_time = effective_time
-        # The end time of the validity period of the quota. Specify the value in UTC.
+        # The end time of the validity period of the quota. The value is displayed in UTC.
         self.expire_time = expire_time
+        self.global_quota = global_quota
         # The calculation cycle of the quota.
         self.period = period
         # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
-        # The ID of the quota.
+        # The quota ID.
         self.quota_action_code = quota_action_code
         # The Alibaba Cloud Resource Name (ARN) of the quota.
         self.quota_arn = quota_arn
-        # The type of the quota.
+        # The type of the quota. Valid values:
         # 
         # *   CommonQuota: general quota
         # *   FlowControl: API rate limit
-        # *   WhiteListLabel: whitelist quota
+        # *   WhiteListLabel: privilege
         self.quota_category = quota_category
         # The description of the quota.
         self.quota_description = quota_description
-        # The details of the quotas.
+        # The details of the quota.
         self.quota_items = quota_items
-        # The name of the quota.
+        # The quota name.
         self.quota_name = quota_name
         # The type of the quota. Valid values:
         # 
         # *   privilege
         # *   normal
         self.quota_type = quota_type
-        # The unit of the new quota value.
+        # The unit of the quota.
         # 
-        # **\
-        # 
-        # **The unit of each quota is unique.** For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
+        # >  The unit of each quota is unique. For example, the quota whose ID is `q_cbdch3` represents the maximum number of Container Service for Kubernetes (ACK) clusters. The unit of this quota is clusters. The quota whose ID is `q_security-groups` represents the maximum number of security groups. The unit of this quota is security groups.
         self.quota_unit = quota_unit
-        # None
+        # None.
         self.supported_range = supported_range
-        # The value of the quota.
+        # The quota value.
         self.total_quota = total_quota
-        # The used quota.
+        # The quota usage.
         self.total_usage = total_usage
         # The reason why the quota is not adjustable. Valid values:
         # 
@@ -3940,6 +4039,8 @@ class ListProductQuotasResponseBodyQuotas(TeaModel):
             result['EffectiveTime'] = self.effective_time
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.global_quota is not None:
+            result['GlobalQuota'] = self.global_quota
         if self.period is not None:
             result['Period'] = self.period.to_map()
         if self.product_code is not None:
@@ -3990,6 +4091,8 @@ class ListProductQuotasResponseBodyQuotas(TeaModel):
             self.effective_time = m.get('EffectiveTime')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('GlobalQuota') is not None:
+            self.global_quota = m.get('GlobalQuota')
         if m.get('Period') is not None:
             temp_model = ListProductQuotasResponseBodyQuotasPeriod()
             self.period = temp_model.from_map(m['Period'])
@@ -4038,7 +4141,7 @@ class ListProductQuotasResponseBody(TeaModel):
         self.max_results = max_results
         # The token that marks the position at which the query ends. An empty value indicates that all data is returned.
         self.next_token = next_token
-        # The details of the quotas.
+        # The queried quotas.
         self.quotas = quotas
         # The ID of the request.
         self.request_id = request_id
@@ -4432,7 +4535,7 @@ class ListQuotaAlarmsRequest(TeaModel):
     ):
         # The name of the alert.
         self.alarm_name = alarm_name
-        # The maximum number of records that can be returned for the query.
+        # The maximum number of records that you want to return for the query.
         # 
         # Valid values: 1 to 200. Default value: 30.
         self.max_results = max_results
@@ -4529,6 +4632,7 @@ class ListQuotaAlarmsResponseBodyQuotaAlarms(TeaModel):
         # *   false
         # *   true
         self.exceed_threshold = exceed_threshold
+        # The alert notification methods.
         self.notify_channels = notify_channels
         # The alert contact. The value is accountContact.
         self.notify_target = notify_target
@@ -4925,7 +5029,7 @@ class ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates(TeaMode
         quota_description: str = None,
         quota_name: str = None,
     ):
-        # N/A
+        # None
         self.applicable_range = applicable_range
         # The type of the adjustable value. Valid values:
         # 
@@ -4960,9 +5064,10 @@ class ListQuotaApplicationTemplatesResponseBodyQuotaApplicationTemplates(TeaMode
         self.product_code = product_code
         # The ID of the quota.
         self.quota_action_code = quota_action_code
-        # The type of the quota.
+        # The type of the quota. Valid values:
         # 
         # *   CommonQuota: general quota
+        # *   FlowControl: API rate limit
         # *   WhiteListLabel: privilege
         self.quota_category = quota_category
         # The description of the quota.
@@ -5063,7 +5168,7 @@ class ListQuotaApplicationTemplatesResponseBody(TeaModel):
         # 
         # > An empty value indicates that all data is returned.
         self.next_token = next_token
-        # The returned quota templates.
+        # The queried quota templates.
         self.quota_application_templates = quota_application_templates
         # The request ID.
         self.request_id = request_id
@@ -5620,13 +5725,36 @@ class ListQuotaApplicationsDetailForTemplateRequest(TeaModel):
         quota_category: str = None,
         status: str = None,
     ):
+        # The Alibaba Cloud account that is used to submit the quota increase application.
         self.aliyun_uid = aliyun_uid
+        # The ID of the quota application batch.
         self.batch_quota_application_id = batch_quota_application_id
+        # The maximum number of records that can be returned for the query.
+        # 
+        # Valid values: 1 to 100. Default value: 30.
         self.max_results = max_results
+        # The token that marks the position from which you want to start the query.
+        # 
+        # >  An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
+        # The abbreviation of the Alibaba Cloud service name.
+        # 
+        # >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
         self.product_code = product_code
+        # The quota ID.
         self.quota_action_code = quota_action_code
+        # The quota type. Valid values:
+        # 
+        # *   CommonQuota: general quota
+        # *   FlowControl: API rate limit
+        # *   WhiteListLabel: privilege
         self.quota_category = quota_category
+        # The approval status of the quota increase application. Valid values:
+        # 
+        # *   Disagree: The application is rejected.
+        # *   Agree: The application is approved.
+        # *   Process: The application is pending approval.
+        # *   Cancel: The application is canceled.
         self.status = status
 
     def validate(self):
@@ -5683,7 +5811,9 @@ class ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplicationsPeriod(
         period_unit: str = None,
         period_value: int = None,
     ):
+        # The unit of the calculation cycle of the quota.
         self.period_unit = period_unit
+        # The value of the calculation cycle of the quota.
         self.period_value = period_value
 
     def validate(self):
@@ -5736,27 +5866,64 @@ class ListQuotaApplicationsDetailForTemplateResponseBodyQuotaApplications(TeaMod
         reason: str = None,
         status: str = None,
     ):
+        # The ID of the Alibaba Cloud account.
         self.aliyun_uid = aliyun_uid
+        # The ID of the quota increase application.
         self.application_id = application_id
+        # The time when the quota increase application was submitted. The value is displayed in UTC.
         self.apply_time = apply_time
+        # The quota value that is approved.
         self.approve_value = approve_value
+        # The approval result of the quota increase application.
         self.audit_reason = audit_reason
+        # The ID of the quota application batch.
         self.batch_quota_application_id = batch_quota_application_id
+        # The requested value of the quota.
         self.desire_value = desire_value
+        # The start time of the validity period of the quota. The value is displayed in UTC.
         self.effective_time = effective_time
+        # The language of the quota alert notification. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
         self.env_language = env_language
+        # The end time of the validity period of the quota. The value is displayed in UTC.
         self.expire_time = expire_time
+        # Indicates whether Quota Center sends a notification about the application result. Valid values:
+        # 
+        # *   0: no
+        # *   3: yes
         self.notice_type = notice_type
+        # The calculation cycle of the quota.
         self.period = period
+        # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
+        # The quota ID.
         self.quota_action_code = quota_action_code
+        # The Alibaba Cloud Resource Name (ARN) of the quota.
         self.quota_arn = quota_arn
+        # The quota type. Valid values:
+        # 
+        # *   CommonQuota (default): general quota
+        # *   WhiteListLabel: privilege
+        # *   FlowControl: API rate limit
         self.quota_category = quota_category
+        # The description of the quota.
         self.quota_description = quota_description
+        # The quota dimensions.
         self.quota_dimension = quota_dimension
+        # The quota name.
         self.quota_name = quota_name
+        # The unit of the quota.
         self.quota_unit = quota_unit
+        # The reason for the quota increase application.
         self.reason = reason
+        # The approval status of the quota increase application. Valid values:
+        # 
+        # *   Disagree: The application is rejected.
+        # *   Agree: The application is approved.
+        # *   Process: The application is pending approval.
+        # *   Cancel: The application is canceled.
         self.status = status
 
     def validate(self):
@@ -5874,10 +6041,15 @@ class ListQuotaApplicationsDetailForTemplateResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of records that can be returned for the query.
         self.max_results = max_results
+        # The token that marks the position from which you want to start the query.
         self.next_token = next_token
+        # The details of the quota increase application.
         self.quota_applications = quota_applications
+        # The request ID.
         self.request_id = request_id
+        # The total number of records that are returned for the query.
         self.total_count = total_count
 
     def validate(self):
@@ -5980,13 +6152,31 @@ class ListQuotaApplicationsForTemplateRequest(TeaModel):
         quota_action_code: str = None,
         quota_category: str = None,
     ):
+        # The UTC time when the quota application ends.
         self.apply_end_time = apply_end_time
+        # The UTC time when the quota application starts.
         self.apply_start_time = apply_start_time
+        # The ID of the quota application batch.
         self.batch_quota_application_id = batch_quota_application_id
+        # The maximum number of entries to return for a single request.
+        # 
+        # Valid values: 1 to 100. Default value: 30.
         self.max_results = max_results
+        # The token that marks the position from which you want to start the query.
+        # 
+        # >  An empty value indicates that the query starts from the beginning.
         self.next_token = next_token
+        # The abbreviation of the Alibaba Cloud service name.
+        # 
+        # >  For more information, see [Alibaba Cloud services that support Quota Center](~~182368~~).
         self.product_code = product_code
+        # The quota ID.
         self.quota_action_code = quota_action_code
+        # The quota type. Valid values:
+        # 
+        # *   CommonQuota: general quota
+        # *   FlowControl: API rate limit
+        # *   WhiteListLabel: privilege
         self.quota_category = quota_category
 
     def validate(self):
@@ -6043,7 +6233,14 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditSta
         count: int = None,
         status: str = None,
     ):
+        # The number of approval documents.
         self.count = count
+        # The approval status of the quota increase application. Valid values:
+        # 
+        # *   Disagree: The application is rejected.
+        # *   Agree: The application is approved.
+        # *   Process: The application is pending approval.
+        # *   Cancel: The application is canceled.
         self.status = status
 
     def validate(self):
@@ -6084,15 +6281,31 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
         quota_action_code: str = None,
         quota_category: str = None,
     ):
+        # The time when the quota increase application was submitted. The value is displayed in UTC.
         self.apply_time = apply_time
+        # The number of applications in different approval states.
         self.audit_status_vos = audit_status_vos
+        # The ID of the quota application batch.
         self.batch_quota_application_id = batch_quota_application_id
+        # The requested value of the quota.
         self.desire_value = desire_value
+        # The quota dimensions.
+        # 
+        # Format: {"regionId":"cn-hangzhou"}.
         self.dimensions = dimensions
+        # The start time of the validity period of the quota. The value is displayed in UTC.
         self.effective_time = effective_time
+        # The end time of the validity period of the quota. The value is displayed in UTC.
         self.expire_time = expire_time
+        # The abbreviation of the Alibaba Cloud service name.
         self.product_code = product_code
+        # The quota ID.
         self.quota_action_code = quota_action_code
+        # The quota type. Valid values:
+        # 
+        # *   CommonQuota: general quota
+        # *   FlowControl: API rate limit
+        # *   WhiteListLabel: privilege
         self.quota_category = quota_category
 
     def validate(self):
@@ -6168,10 +6381,15 @@ class ListQuotaApplicationsForTemplateResponseBody(TeaModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of records that can be returned for the query.
         self.max_results = max_results
+        # The token that marks the position from which you want to start the query.
         self.next_token = next_token
+        # The queried quota application records.
         self.quota_batch_applications = quota_batch_applications
+        # The request ID.
         self.request_id = request_id
+        # The total number of records that are returned for the query.
         self.total_count = total_count
 
     def validate(self):
