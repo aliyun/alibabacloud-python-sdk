@@ -1,7 +1,40 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import List, Dict, Any
+
+
+class ACS(TeaModel):
+    def __init__(
+        self,
+        acsquota_id: str = None,
+        associated_products: List[str] = None,
+    ):
+        self.acsquota_id = acsquota_id
+        self.associated_products = associated_products
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acsquota_id is not None:
+            result['ACSQuotaId'] = self.acsquota_id
+        if self.associated_products is not None:
+            result['AssociatedProducts'] = self.associated_products
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ACSQuotaId') is not None:
+            self.acsquota_id = m.get('ACSQuotaId')
+        if m.get('AssociatedProducts') is not None:
+            self.associated_products = m.get('AssociatedProducts')
+        return self
 
 
 class AlgorithmSpecComputeResourcePolicy(TeaModel):
@@ -654,6 +687,74 @@ class AlgorithmSpec(TeaModel):
         return self
 
 
+class NodeSpec(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+        type: str = None,
+    ):
+        self.count = count
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class AllocateStrategySpec(TeaModel):
+    def __init__(
+        self,
+        node_specs: List[NodeSpec] = None,
+    ):
+        self.node_specs = node_specs
+
+    def validate(self):
+        if self.node_specs:
+            for k in self.node_specs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NodeSpecs'] = []
+        if self.node_specs is not None:
+            for k in self.node_specs:
+                result['NodeSpecs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.node_specs = []
+        if m.get('NodeSpecs') is not None:
+            for k in m.get('NodeSpecs'):
+                temp_model = NodeSpec()
+                self.node_specs.append(temp_model.from_map(k))
+        return self
+
+
 class ChannelProperty(TeaModel):
     def __init__(
         self,
@@ -806,6 +907,62 @@ class ComponentSpec(TeaModel):
             for k in m.get('ResourceRequirements'):
                 temp_model = ConditionExpression()
                 self.resource_requirements.append(temp_model.from_map(k))
+        return self
+
+
+class FeaturesQuota(TeaModel):
+    def __init__(
+        self,
+        is_enabled: bool = None,
+    ):
+        self.is_enabled = is_enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.is_enabled is not None:
+            result['IsEnabled'] = self.is_enabled
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('IsEnabled') is not None:
+            self.is_enabled = m.get('IsEnabled')
+        return self
+
+
+class Features(TeaModel):
+    def __init__(
+        self,
+        quota: FeaturesQuota = None,
+    ):
+        self.quota = quota
+
+    def validate(self):
+        if self.quota:
+            self.quota.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota is not None:
+            result['Quota'] = self.quota.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Quota') is not None:
+            temp_model = FeaturesQuota()
+            self.quota = temp_model.from_map(m['Quota'])
         return self
 
 
@@ -1160,6 +1317,188 @@ class Metric(TeaModel):
         return self
 
 
+class QuotaIdName(TeaModel):
+    def __init__(
+        self,
+        quota_id: str = None,
+        quota_name: str = None,
+    ):
+        self.quota_id = quota_id
+        self.quota_name = quota_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        return self
+
+
+class Node(TeaModel):
+    def __init__(
+        self,
+        accelerator_type: str = None,
+        bound_quotas: List[QuotaIdName] = None,
+        cpu: str = None,
+        creator_id: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        gmt_create_time: str = None,
+        gmt_expired_time: str = None,
+        gmt_modified_time: str = None,
+        is_bound: bool = None,
+        machine_group_id: str = None,
+        memory: str = None,
+        node_name: str = None,
+        node_status: str = None,
+        node_type: str = None,
+        order_status: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        resource_group_id: str = None,
+        resource_group_name: str = None,
+    ):
+        self.accelerator_type = accelerator_type
+        self.bound_quotas = bound_quotas
+        self.cpu = cpu
+        self.creator_id = creator_id
+        self.gpu = gpu
+        self.gputype = gputype
+        self.gmt_create_time = gmt_create_time
+        self.gmt_expired_time = gmt_expired_time
+        self.gmt_modified_time = gmt_modified_time
+        self.is_bound = is_bound
+        self.machine_group_id = machine_group_id
+        self.memory = memory
+        self.node_name = node_name
+        self.node_status = node_status
+        self.node_type = node_type
+        self.order_status = order_status
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.resource_group_id = resource_group_id
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        if self.bound_quotas:
+            for k in self.bound_quotas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_type is not None:
+            result['AcceleratorType'] = self.accelerator_type
+        result['BoundQuotas'] = []
+        if self.bound_quotas is not None:
+            for k in self.bound_quotas:
+                result['BoundQuotas'].append(k.to_map() if k else None)
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.gmt_create_time is not None:
+            result['GmtCreateTime'] = self.gmt_create_time
+        if self.gmt_expired_time is not None:
+            result['GmtExpiredTime'] = self.gmt_expired_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.is_bound is not None:
+            result['IsBound'] = self.is_bound
+        if self.machine_group_id is not None:
+            result['MachineGroupId'] = self.machine_group_id
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.node_name is not None:
+            result['NodeName'] = self.node_name
+        if self.node_status is not None:
+            result['NodeStatus'] = self.node_status
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.order_status is not None:
+            result['OrderStatus'] = self.order_status
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorType') is not None:
+            self.accelerator_type = m.get('AcceleratorType')
+        self.bound_quotas = []
+        if m.get('BoundQuotas') is not None:
+            for k in m.get('BoundQuotas'):
+                temp_model = QuotaIdName()
+                self.bound_quotas.append(temp_model.from_map(k))
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('GmtCreateTime') is not None:
+            self.gmt_create_time = m.get('GmtCreateTime')
+        if m.get('GmtExpiredTime') is not None:
+            self.gmt_expired_time = m.get('GmtExpiredTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('IsBound') is not None:
+            self.is_bound = m.get('IsBound')
+        if m.get('MachineGroupId') is not None:
+            self.machine_group_id = m.get('MachineGroupId')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NodeName') is not None:
+            self.node_name = m.get('NodeName')
+        if m.get('NodeStatus') is not None:
+            self.node_status = m.get('NodeStatus')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('OrderStatus') is not None:
+            self.order_status = m.get('OrderStatus')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
 class NodeMetric(TeaModel):
     def __init__(
         self,
@@ -1204,6 +1543,102 @@ class NodeMetric(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('NodeID') is not None:
             self.node_id = m.get('NodeID')
+        return self
+
+
+class NodeType(TeaModel):
+    def __init__(
+        self,
+        accelerator_type: str = None,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        node_type: str = None,
+    ):
+        self.accelerator_type = accelerator_type
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gputype = gputype
+        self.memory = memory
+        self.node_type = node_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_type is not None:
+            result['AcceleratorType'] = self.accelerator_type
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorType') is not None:
+            self.accelerator_type = m.get('AcceleratorType')
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        return self
+
+
+class NodeTypeStatistic(TeaModel):
+    def __init__(
+        self,
+        can_be_bound_count: int = None,
+        node_type: str = None,
+        total_count: int = None,
+    ):
+        self.can_be_bound_count = can_be_bound_count
+        self.node_type = node_type
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.can_be_bound_count is not None:
+            result['CanBeBoundCount'] = self.can_be_bound_count
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CanBeBoundCount') is not None:
+            self.can_be_bound_count = m.get('CanBeBoundCount')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
         return self
 
 
@@ -1393,6 +1828,41 @@ class Permission(TeaModel):
         return self
 
 
+class ResourceSpec(TeaModel):
+    def __init__(
+        self,
+        node_specs: List[NodeSpec] = None,
+    ):
+        self.node_specs = node_specs
+
+    def validate(self):
+        if self.node_specs:
+            for k in self.node_specs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['NodeSpecs'] = []
+        if self.node_specs is not None:
+            for k in self.node_specs:
+                result['NodeSpecs'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.node_specs = []
+        if m.get('NodeSpecs') is not None:
+            for k in m.get('NodeSpecs'):
+                temp_model = NodeSpec()
+                self.node_specs.append(temp_model.from_map(k))
+        return self
+
+
 class UserVpc(TeaModel):
     def __init__(
         self,
@@ -1447,6 +1917,848 @@ class UserVpc(TeaModel):
             self.switch_id = m.get('SwitchId')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
+        return self
+
+
+class QuotaConfig(TeaModel):
+    def __init__(
+        self,
+        acs: ACS = None,
+        cluster_id: str = None,
+        default_gpudriver: str = None,
+        support_gpudrivers: List[str] = None,
+        support_rdma: bool = None,
+        user_vpc: UserVpc = None,
+    ):
+        self.acs = acs
+        self.cluster_id = cluster_id
+        self.default_gpudriver = default_gpudriver
+        self.support_gpudrivers = support_gpudrivers
+        self.support_rdma = support_rdma
+        self.user_vpc = user_vpc
+
+    def validate(self):
+        if self.acs:
+            self.acs.validate()
+        if self.user_vpc:
+            self.user_vpc.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acs is not None:
+            result['ACS'] = self.acs.to_map()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.default_gpudriver is not None:
+            result['DefaultGPUDriver'] = self.default_gpudriver
+        if self.support_gpudrivers is not None:
+            result['SupportGPUDrivers'] = self.support_gpudrivers
+        if self.support_rdma is not None:
+            result['SupportRDMA'] = self.support_rdma
+        if self.user_vpc is not None:
+            result['UserVpc'] = self.user_vpc.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ACS') is not None:
+            temp_model = ACS()
+            self.acs = temp_model.from_map(m['ACS'])
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DefaultGPUDriver') is not None:
+            self.default_gpudriver = m.get('DefaultGPUDriver')
+        if m.get('SupportGPUDrivers') is not None:
+            self.support_gpudrivers = m.get('SupportGPUDrivers')
+        if m.get('SupportRDMA') is not None:
+            self.support_rdma = m.get('SupportRDMA')
+        if m.get('UserVpc') is not None:
+            temp_model = UserVpc()
+            self.user_vpc = temp_model.from_map(m['UserVpc'])
+        return self
+
+
+class ResourceAmount(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gputype = gputype
+        self.memory = memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
+class QuotaDetails(TeaModel):
+    def __init__(
+        self,
+        actual_min_quota: ResourceAmount = None,
+        desired_min_quota: ResourceAmount = None,
+        requested_quota: ResourceAmount = None,
+        used_quota: ResourceAmount = None,
+    ):
+        self.actual_min_quota = actual_min_quota
+        self.desired_min_quota = desired_min_quota
+        self.requested_quota = requested_quota
+        self.used_quota = used_quota
+
+    def validate(self):
+        if self.actual_min_quota:
+            self.actual_min_quota.validate()
+        if self.desired_min_quota:
+            self.desired_min_quota.validate()
+        if self.requested_quota:
+            self.requested_quota.validate()
+        if self.used_quota:
+            self.used_quota.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_min_quota is not None:
+            result['ActualMinQuota'] = self.actual_min_quota.to_map()
+        if self.desired_min_quota is not None:
+            result['DesiredMinQuota'] = self.desired_min_quota.to_map()
+        if self.requested_quota is not None:
+            result['RequestedQuota'] = self.requested_quota.to_map()
+        if self.used_quota is not None:
+            result['UsedQuota'] = self.used_quota.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActualMinQuota') is not None:
+            temp_model = ResourceAmount()
+            self.actual_min_quota = temp_model.from_map(m['ActualMinQuota'])
+        if m.get('DesiredMinQuota') is not None:
+            temp_model = ResourceAmount()
+            self.desired_min_quota = temp_model.from_map(m['DesiredMinQuota'])
+        if m.get('RequestedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.requested_quota = temp_model.from_map(m['RequestedQuota'])
+        if m.get('UsedQuota') is not None:
+            temp_model = ResourceAmount()
+            self.used_quota = temp_model.from_map(m['UsedQuota'])
+        return self
+
+
+class WorkspaceIdName(TeaModel):
+    def __init__(
+        self,
+        workspace_id: str = None,
+    ):
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class Quota(TeaModel):
+    def __init__(
+        self,
+        allocate_strategy: str = None,
+        creator_id: str = None,
+        description: str = None,
+        gmt_created_time: str = None,
+        gmt_modified_time: str = None,
+        labels: List[Label] = None,
+        latest_operation_id: str = None,
+        min: ResourceSpec = None,
+        parent_quota_id: str = None,
+        queue_strategy: str = None,
+        quota_config: QuotaConfig = None,
+        quota_details: QuotaDetails = None,
+        quota_id: str = None,
+        quota_name: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        resource_group_ids: List[str] = None,
+        resource_type: str = None,
+        status: str = None,
+        sub_quotas: List[QuotaIdName] = None,
+        workspaces: List[WorkspaceIdName] = None,
+    ):
+        self.allocate_strategy = allocate_strategy
+        self.creator_id = creator_id
+        self.description = description
+        self.gmt_created_time = gmt_created_time
+        self.gmt_modified_time = gmt_modified_time
+        self.labels = labels
+        self.latest_operation_id = latest_operation_id
+        self.min = min
+        self.parent_quota_id = parent_quota_id
+        self.queue_strategy = queue_strategy
+        self.quota_config = quota_config
+        self.quota_details = quota_details
+        self.quota_id = quota_id
+        self.quota_name = quota_name
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.resource_group_ids = resource_group_ids
+        self.resource_type = resource_type
+        self.status = status
+        self.sub_quotas = sub_quotas
+        self.workspaces = workspaces
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.min:
+            self.min.validate()
+        if self.quota_config:
+            self.quota_config.validate()
+        if self.quota_details:
+            self.quota_details.validate()
+        if self.sub_quotas:
+            for k in self.sub_quotas:
+                if k:
+                    k.validate()
+        if self.workspaces:
+            for k in self.workspaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocate_strategy is not None:
+            result['AllocateStrategy'] = self.allocate_strategy
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.latest_operation_id is not None:
+            result['LatestOperationId'] = self.latest_operation_id
+        if self.min is not None:
+            result['Min'] = self.min.to_map()
+        if self.parent_quota_id is not None:
+            result['ParentQuotaId'] = self.parent_quota_id
+        if self.queue_strategy is not None:
+            result['QueueStrategy'] = self.queue_strategy
+        if self.quota_config is not None:
+            result['QuotaConfig'] = self.quota_config.to_map()
+        if self.quota_details is not None:
+            result['QuotaDetails'] = self.quota_details.to_map()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['SubQuotas'] = []
+        if self.sub_quotas is not None:
+            for k in self.sub_quotas:
+                result['SubQuotas'].append(k.to_map() if k else None)
+        result['Workspaces'] = []
+        if self.workspaces is not None:
+            for k in self.workspaces:
+                result['Workspaces'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateStrategy') is not None:
+            self.allocate_strategy = m.get('AllocateStrategy')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('LatestOperationId') is not None:
+            self.latest_operation_id = m.get('LatestOperationId')
+        if m.get('Min') is not None:
+            temp_model = ResourceSpec()
+            self.min = temp_model.from_map(m['Min'])
+        if m.get('ParentQuotaId') is not None:
+            self.parent_quota_id = m.get('ParentQuotaId')
+        if m.get('QueueStrategy') is not None:
+            self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaConfig') is not None:
+            temp_model = QuotaConfig()
+            self.quota_config = temp_model.from_map(m['QuotaConfig'])
+        if m.get('QuotaDetails') is not None:
+            temp_model = QuotaDetails()
+            self.quota_details = temp_model.from_map(m['QuotaDetails'])
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.sub_quotas = []
+        if m.get('SubQuotas') is not None:
+            for k in m.get('SubQuotas'):
+                temp_model = QuotaIdName()
+                self.sub_quotas.append(temp_model.from_map(k))
+        self.workspaces = []
+        if m.get('Workspaces') is not None:
+            for k in m.get('Workspaces'):
+                temp_model = WorkspaceIdName()
+                self.workspaces.append(temp_model.from_map(k))
+        return self
+
+
+class QuotaJobViewMetric(TeaModel):
+    def __init__(
+        self,
+        cpuusage_rate: str = None,
+        disk_read_rate: str = None,
+        disk_write_rate: str = None,
+        gpuusage_rate: str = None,
+        job_id: str = None,
+        job_type: str = None,
+        memory_usage_rate: str = None,
+        network_input_rate: str = None,
+        network_output_rate: str = None,
+        node_names: List[str] = None,
+        request_cpu: int = None,
+        request_gpu: int = None,
+        request_memory: int = None,
+        total_cpu: int = None,
+        total_gpu: int = None,
+        total_memory: int = None,
+        user_id: str = None,
+    ):
+        self.cpuusage_rate = cpuusage_rate
+        self.disk_read_rate = disk_read_rate
+        self.disk_write_rate = disk_write_rate
+        self.gpuusage_rate = gpuusage_rate
+        self.job_id = job_id
+        self.job_type = job_type
+        self.memory_usage_rate = memory_usage_rate
+        self.network_input_rate = network_input_rate
+        self.network_output_rate = network_output_rate
+        self.node_names = node_names
+        self.request_cpu = request_cpu
+        self.request_gpu = request_gpu
+        self.request_memory = request_memory
+        self.total_cpu = total_cpu
+        self.total_gpu = total_gpu
+        self.total_memory = total_memory
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpuusage_rate is not None:
+            result['CPUUsageRate'] = self.cpuusage_rate
+        if self.disk_read_rate is not None:
+            result['DiskReadRate'] = self.disk_read_rate
+        if self.disk_write_rate is not None:
+            result['DiskWriteRate'] = self.disk_write_rate
+        if self.gpuusage_rate is not None:
+            result['GPUUsageRate'] = self.gpuusage_rate
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.memory_usage_rate is not None:
+            result['MemoryUsageRate'] = self.memory_usage_rate
+        if self.network_input_rate is not None:
+            result['NetworkInputRate'] = self.network_input_rate
+        if self.network_output_rate is not None:
+            result['NetworkOutputRate'] = self.network_output_rate
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_gpu is not None:
+            result['RequestGPU'] = self.request_gpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.total_cpu is not None:
+            result['TotalCPU'] = self.total_cpu
+        if self.total_gpu is not None:
+            result['TotalGPU'] = self.total_gpu
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPUUsageRate') is not None:
+            self.cpuusage_rate = m.get('CPUUsageRate')
+        if m.get('DiskReadRate') is not None:
+            self.disk_read_rate = m.get('DiskReadRate')
+        if m.get('DiskWriteRate') is not None:
+            self.disk_write_rate = m.get('DiskWriteRate')
+        if m.get('GPUUsageRate') is not None:
+            self.gpuusage_rate = m.get('GPUUsageRate')
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('MemoryUsageRate') is not None:
+            self.memory_usage_rate = m.get('MemoryUsageRate')
+        if m.get('NetworkInputRate') is not None:
+            self.network_input_rate = m.get('NetworkInputRate')
+        if m.get('NetworkOutputRate') is not None:
+            self.network_output_rate = m.get('NetworkOutputRate')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        if m.get('RequestCPU') is not None:
+            self.request_cpu = m.get('RequestCPU')
+        if m.get('RequestGPU') is not None:
+            self.request_gpu = m.get('RequestGPU')
+        if m.get('RequestMemory') is not None:
+            self.request_memory = m.get('RequestMemory')
+        if m.get('TotalCPU') is not None:
+            self.total_cpu = m.get('TotalCPU')
+        if m.get('TotalGPU') is not None:
+            self.total_gpu = m.get('TotalGPU')
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QuotaMetric(TeaModel):
+    def __init__(
+        self,
+        gputype: str = None,
+        metrics: List[Metric] = None,
+    ):
+        self.gputype = gputype
+        self.metrics = metrics
+
+    def validate(self):
+        if self.metrics:
+            for k in self.metrics:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        result['Metrics'] = []
+        if self.metrics is not None:
+            for k in self.metrics:
+                result['Metrics'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        self.metrics = []
+        if m.get('Metrics') is not None:
+            for k in m.get('Metrics'):
+                temp_model = Metric()
+                self.metrics.append(temp_model.from_map(k))
+        return self
+
+
+class QuotaNodeViewMetric(TeaModel):
+    def __init__(
+        self,
+        cpuusage_rate: str = None,
+        created_time: str = None,
+        disk_read_rate: str = None,
+        disk_write_rate: str = None,
+        gputype: str = None,
+        memory_usage_rate: str = None,
+        network_input_rate: str = None,
+        network_output_rate: str = None,
+        node_id: str = None,
+        node_status: str = None,
+        node_type: str = None,
+        quota_id: str = None,
+        request_cpu: int = None,
+        request_gpu: int = None,
+        request_memory: int = None,
+        task_id_map: Dict[str, Any] = None,
+        total_cpu: int = None,
+        total_gpu: int = None,
+        total_memory: int = None,
+        total_tasks: int = None,
+        user_ids: List[str] = None,
+        user_number: str = None,
+    ):
+        self.cpuusage_rate = cpuusage_rate
+        self.created_time = created_time
+        self.disk_read_rate = disk_read_rate
+        self.disk_write_rate = disk_write_rate
+        self.gputype = gputype
+        self.memory_usage_rate = memory_usage_rate
+        self.network_input_rate = network_input_rate
+        self.network_output_rate = network_output_rate
+        self.node_id = node_id
+        self.node_status = node_status
+        self.node_type = node_type
+        self.quota_id = quota_id
+        self.request_cpu = request_cpu
+        self.request_gpu = request_gpu
+        self.request_memory = request_memory
+        self.task_id_map = task_id_map
+        self.total_cpu = total_cpu
+        self.total_gpu = total_gpu
+        self.total_memory = total_memory
+        self.total_tasks = total_tasks
+        self.user_ids = user_ids
+        self.user_number = user_number
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpuusage_rate is not None:
+            result['CPUUsageRate'] = self.cpuusage_rate
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.disk_read_rate is not None:
+            result['DiskReadRate'] = self.disk_read_rate
+        if self.disk_write_rate is not None:
+            result['DiskWriteRate'] = self.disk_write_rate
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory_usage_rate is not None:
+            result['MemoryUsageRate'] = self.memory_usage_rate
+        if self.network_input_rate is not None:
+            result['NetworkInputRate'] = self.network_input_rate
+        if self.network_output_rate is not None:
+            result['NetworkOutputRate'] = self.network_output_rate
+        if self.node_id is not None:
+            result['NodeID'] = self.node_id
+        if self.node_status is not None:
+            result['NodeStatus'] = self.node_status
+        if self.node_type is not None:
+            result['NodeType'] = self.node_type
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_gpu is not None:
+            result['RequestGPU'] = self.request_gpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.task_id_map is not None:
+            result['TaskIdMap'] = self.task_id_map
+        if self.total_cpu is not None:
+            result['TotalCPU'] = self.total_cpu
+        if self.total_gpu is not None:
+            result['TotalGPU'] = self.total_gpu
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.total_tasks is not None:
+            result['TotalTasks'] = self.total_tasks
+        if self.user_ids is not None:
+            result['UserIDs'] = self.user_ids
+        if self.user_number is not None:
+            result['UserNumber'] = self.user_number
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPUUsageRate') is not None:
+            self.cpuusage_rate = m.get('CPUUsageRate')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('DiskReadRate') is not None:
+            self.disk_read_rate = m.get('DiskReadRate')
+        if m.get('DiskWriteRate') is not None:
+            self.disk_write_rate = m.get('DiskWriteRate')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('MemoryUsageRate') is not None:
+            self.memory_usage_rate = m.get('MemoryUsageRate')
+        if m.get('NetworkInputRate') is not None:
+            self.network_input_rate = m.get('NetworkInputRate')
+        if m.get('NetworkOutputRate') is not None:
+            self.network_output_rate = m.get('NetworkOutputRate')
+        if m.get('NodeID') is not None:
+            self.node_id = m.get('NodeID')
+        if m.get('NodeStatus') is not None:
+            self.node_status = m.get('NodeStatus')
+        if m.get('NodeType') is not None:
+            self.node_type = m.get('NodeType')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('RequestCPU') is not None:
+            self.request_cpu = m.get('RequestCPU')
+        if m.get('RequestGPU') is not None:
+            self.request_gpu = m.get('RequestGPU')
+        if m.get('RequestMemory') is not None:
+            self.request_memory = m.get('RequestMemory')
+        if m.get('TaskIdMap') is not None:
+            self.task_id_map = m.get('TaskIdMap')
+        if m.get('TotalCPU') is not None:
+            self.total_cpu = m.get('TotalCPU')
+        if m.get('TotalGPU') is not None:
+            self.total_gpu = m.get('TotalGPU')
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('TotalTasks') is not None:
+            self.total_tasks = m.get('TotalTasks')
+        if m.get('UserIDs') is not None:
+            self.user_ids = m.get('UserIDs')
+        if m.get('UserNumber') is not None:
+            self.user_number = m.get('UserNumber')
+        return self
+
+
+class QuotaUserViewMetric(TeaModel):
+    def __init__(
+        self,
+        cpunode_number: int = None,
+        cpuusage_rate: str = None,
+        cpu_job_names: List[str] = None,
+        cpu_node_names: List[str] = None,
+        disk_read_rate: str = None,
+        disk_write_rate: str = None,
+        gpunode_number: int = None,
+        gpuusage_rate: str = None,
+        gpu_job_names: List[str] = None,
+        gpu_node_names: List[str] = None,
+        job_type: str = None,
+        memory_usage_rate: str = None,
+        network_input_rate: str = None,
+        network_output_rate: str = None,
+        node_names: List[str] = None,
+        request_cpu: int = None,
+        request_gpu: int = None,
+        request_memory: int = None,
+        total_cpu: int = None,
+        total_gpu: int = None,
+        total_memory: int = None,
+        user_id: str = None,
+    ):
+        self.cpunode_number = cpunode_number
+        self.cpuusage_rate = cpuusage_rate
+        self.cpu_job_names = cpu_job_names
+        self.cpu_node_names = cpu_node_names
+        self.disk_read_rate = disk_read_rate
+        self.disk_write_rate = disk_write_rate
+        self.gpunode_number = gpunode_number
+        self.gpuusage_rate = gpuusage_rate
+        self.gpu_job_names = gpu_job_names
+        self.gpu_node_names = gpu_node_names
+        self.job_type = job_type
+        self.memory_usage_rate = memory_usage_rate
+        self.network_input_rate = network_input_rate
+        self.network_output_rate = network_output_rate
+        self.node_names = node_names
+        self.request_cpu = request_cpu
+        self.request_gpu = request_gpu
+        self.request_memory = request_memory
+        self.total_cpu = total_cpu
+        self.total_gpu = total_gpu
+        self.total_memory = total_memory
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpunode_number is not None:
+            result['CPUNodeNumber'] = self.cpunode_number
+        if self.cpuusage_rate is not None:
+            result['CPUUsageRate'] = self.cpuusage_rate
+        if self.cpu_job_names is not None:
+            result['CpuJobNames'] = self.cpu_job_names
+        if self.cpu_node_names is not None:
+            result['CpuNodeNames'] = self.cpu_node_names
+        if self.disk_read_rate is not None:
+            result['DiskReadRate'] = self.disk_read_rate
+        if self.disk_write_rate is not None:
+            result['DiskWriteRate'] = self.disk_write_rate
+        if self.gpunode_number is not None:
+            result['GPUNodeNumber'] = self.gpunode_number
+        if self.gpuusage_rate is not None:
+            result['GPUUsageRate'] = self.gpuusage_rate
+        if self.gpu_job_names is not None:
+            result['GpuJobNames'] = self.gpu_job_names
+        if self.gpu_node_names is not None:
+            result['GpuNodeNames'] = self.gpu_node_names
+        if self.job_type is not None:
+            result['JobType'] = self.job_type
+        if self.memory_usage_rate is not None:
+            result['MemoryUsageRate'] = self.memory_usage_rate
+        if self.network_input_rate is not None:
+            result['NetworkInputRate'] = self.network_input_rate
+        if self.network_output_rate is not None:
+            result['NetworkOutputRate'] = self.network_output_rate
+        if self.node_names is not None:
+            result['NodeNames'] = self.node_names
+        if self.request_cpu is not None:
+            result['RequestCPU'] = self.request_cpu
+        if self.request_gpu is not None:
+            result['RequestGPU'] = self.request_gpu
+        if self.request_memory is not None:
+            result['RequestMemory'] = self.request_memory
+        if self.total_cpu is not None:
+            result['TotalCPU'] = self.total_cpu
+        if self.total_gpu is not None:
+            result['TotalGPU'] = self.total_gpu
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPUNodeNumber') is not None:
+            self.cpunode_number = m.get('CPUNodeNumber')
+        if m.get('CPUUsageRate') is not None:
+            self.cpuusage_rate = m.get('CPUUsageRate')
+        if m.get('CpuJobNames') is not None:
+            self.cpu_job_names = m.get('CpuJobNames')
+        if m.get('CpuNodeNames') is not None:
+            self.cpu_node_names = m.get('CpuNodeNames')
+        if m.get('DiskReadRate') is not None:
+            self.disk_read_rate = m.get('DiskReadRate')
+        if m.get('DiskWriteRate') is not None:
+            self.disk_write_rate = m.get('DiskWriteRate')
+        if m.get('GPUNodeNumber') is not None:
+            self.gpunode_number = m.get('GPUNodeNumber')
+        if m.get('GPUUsageRate') is not None:
+            self.gpuusage_rate = m.get('GPUUsageRate')
+        if m.get('GpuJobNames') is not None:
+            self.gpu_job_names = m.get('GpuJobNames')
+        if m.get('GpuNodeNames') is not None:
+            self.gpu_node_names = m.get('GpuNodeNames')
+        if m.get('JobType') is not None:
+            self.job_type = m.get('JobType')
+        if m.get('MemoryUsageRate') is not None:
+            self.memory_usage_rate = m.get('MemoryUsageRate')
+        if m.get('NetworkInputRate') is not None:
+            self.network_input_rate = m.get('NetworkInputRate')
+        if m.get('NetworkOutputRate') is not None:
+            self.network_output_rate = m.get('NetworkOutputRate')
+        if m.get('NodeNames') is not None:
+            self.node_names = m.get('NodeNames')
+        if m.get('RequestCPU') is not None:
+            self.request_cpu = m.get('RequestCPU')
+        if m.get('RequestGPU') is not None:
+            self.request_gpu = m.get('RequestGPU')
+        if m.get('RequestMemory') is not None:
+            self.request_memory = m.get('RequestMemory')
+        if m.get('TotalCPU') is not None:
+            self.total_cpu = m.get('TotalCPU')
+        if m.get('TotalGPU') is not None:
+            self.total_gpu = m.get('TotalGPU')
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
         return self
 
 
@@ -1565,6 +2877,111 @@ class ResourceGroupMetric(TeaModel):
                 self.metrics.append(temp_model.from_map(k))
         if m.get('ResourceGroupID') is not None:
             self.resource_group_id = m.get('ResourceGroupID')
+        return self
+
+
+class ResourceOperation(TeaModel):
+    def __init__(
+        self,
+        creator_id: str = None,
+        gmt_created_time: str = None,
+        gmt_end_time: str = None,
+        gmt_modified_time: str = None,
+        gmt_start_time: str = None,
+        object_id: str = None,
+        object_type: str = None,
+        operation_description: str = None,
+        operation_id: str = None,
+        operation_spec_json: str = None,
+        operation_type: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        status: str = None,
+    ):
+        self.creator_id = creator_id
+        self.gmt_created_time = gmt_created_time
+        self.gmt_end_time = gmt_end_time
+        self.gmt_modified_time = gmt_modified_time
+        self.gmt_start_time = gmt_start_time
+        self.object_id = object_id
+        self.object_type = object_type
+        self.operation_description = operation_description
+        self.operation_id = operation_id
+        self.operation_spec_json = operation_spec_json
+        self.operation_type = operation_type
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
+        if self.gmt_end_time is not None:
+            result['GmtEndTime'] = self.gmt_end_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        if self.gmt_start_time is not None:
+            result['GmtStartTime'] = self.gmt_start_time
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+        if self.object_type is not None:
+            result['ObjectType'] = self.object_type
+        if self.operation_description is not None:
+            result['OperationDescription'] = self.operation_description
+        if self.operation_id is not None:
+            result['OperationId'] = self.operation_id
+        if self.operation_spec_json is not None:
+            result['OperationSpecJson'] = self.operation_spec_json
+        if self.operation_type is not None:
+            result['OperationType'] = self.operation_type
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
+        if m.get('GmtEndTime') is not None:
+            self.gmt_end_time = m.get('GmtEndTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        if m.get('GmtStartTime') is not None:
+            self.gmt_start_time = m.get('GmtStartTime')
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
+        if m.get('ObjectType') is not None:
+            self.object_type = m.get('ObjectType')
+        if m.get('OperationDescription') is not None:
+            self.operation_description = m.get('OperationDescription')
+        if m.get('OperationId') is not None:
+            self.operation_id = m.get('OperationId')
+        if m.get('OperationSpecJson') is not None:
+            self.operation_spec_json = m.get('OperationSpecJson')
+        if m.get('OperationType') is not None:
+            self.operation_type = m.get('OperationType')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
@@ -1982,6 +3399,179 @@ class CreateAlgorithmVersionResponse(TeaModel):
         return self
 
 
+class CreateQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        allocate_strategy: str = None,
+        description: str = None,
+        labels: List[Label] = None,
+        min: ResourceSpec = None,
+        parent_quota_id: str = None,
+        queue_strategy: str = None,
+        quota_config: QuotaConfig = None,
+        quota_name: str = None,
+        resource_group_ids: List[str] = None,
+        resource_type: str = None,
+    ):
+        self.allocate_strategy = allocate_strategy
+        self.description = description
+        self.labels = labels
+        self.min = min
+        self.parent_quota_id = parent_quota_id
+        self.queue_strategy = queue_strategy
+        self.quota_config = quota_config
+        self.quota_name = quota_name
+        self.resource_group_ids = resource_group_ids
+        self.resource_type = resource_type
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.min:
+            self.min.validate()
+        if self.quota_config:
+            self.quota_config.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocate_strategy is not None:
+            result['AllocateStrategy'] = self.allocate_strategy
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.min is not None:
+            result['Min'] = self.min.to_map()
+        if self.parent_quota_id is not None:
+            result['ParentQuotaId'] = self.parent_quota_id
+        if self.queue_strategy is not None:
+            result['QueueStrategy'] = self.queue_strategy
+        if self.quota_config is not None:
+            result['QuotaConfig'] = self.quota_config.to_map()
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateStrategy') is not None:
+            self.allocate_strategy = m.get('AllocateStrategy')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('Min') is not None:
+            temp_model = ResourceSpec()
+            self.min = temp_model.from_map(m['Min'])
+        if m.get('ParentQuotaId') is not None:
+            self.parent_quota_id = m.get('ParentQuotaId')
+        if m.get('QueueStrategy') is not None:
+            self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaConfig') is not None:
+            temp_model = QuotaConfig()
+            self.quota_config = temp_model.from_map(m['QuotaConfig'])
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class CreateQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        quota_id: str = None,
+        request_id: str = None,
+    ):
+        # Quota Id
+        self.quota_id = quota_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -2170,13 +3760,13 @@ class CreateTrainingJobRequestComputeResource(TeaModel):
         ecs_spec: str = None,
         instance_count: int = None,
         instance_spec: CreateTrainingJobRequestComputeResourceInstanceSpec = None,
-        resource_group_id: str = None,
+        resource_id: str = None,
     ):
         self.ecs_count = ecs_count
         self.ecs_spec = ecs_spec
         self.instance_count = instance_count
         self.instance_spec = instance_spec
-        self.resource_group_id = resource_group_id
+        self.resource_id = resource_id
 
     def validate(self):
         if self.instance_spec:
@@ -2196,8 +3786,8 @@ class CreateTrainingJobRequestComputeResource(TeaModel):
             result['InstanceCount'] = self.instance_count
         if self.instance_spec is not None:
             result['InstanceSpec'] = self.instance_spec.to_map()
-        if self.resource_group_id is not None:
-            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2211,8 +3801,8 @@ class CreateTrainingJobRequestComputeResource(TeaModel):
         if m.get('InstanceSpec') is not None:
             temp_model = CreateTrainingJobRequestComputeResourceInstanceSpec()
             self.instance_spec = temp_model.from_map(m['InstanceSpec'])
-        if m.get('ResourceGroupId') is not None:
-            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
@@ -2749,6 +4339,84 @@ class DeleteMachineGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteMachineGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        quota_id: str = None,
+        request_id: str = None,
+    ):
+        # Quota Id
+        self.quota_id = quota_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3464,6 +5132,239 @@ class GetNodeMetricsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetNodeMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        allocate_strategy: str = None,
+        creator_id: str = None,
+        description: str = None,
+        gmt_created_time: str = None,
+        gmt_modified_time: str = None,
+        labels: List[Label] = None,
+        latest_operation_id: str = None,
+        min: ResourceSpec = None,
+        parent_quota_id: str = None,
+        queue_strategy: str = None,
+        quota_config: QuotaConfig = None,
+        quota_details: QuotaDetails = None,
+        quota_id: str = None,
+        quota_name: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        request_id: str = None,
+        resource_group_ids: List[str] = None,
+        resource_type: str = None,
+        status: str = None,
+        sub_quotas: List[QuotaIdName] = None,
+        workspaces: List[WorkspaceIdName] = None,
+    ):
+        self.allocate_strategy = allocate_strategy
+        self.creator_id = creator_id
+        self.description = description
+        self.gmt_created_time = gmt_created_time
+        self.gmt_modified_time = gmt_modified_time
+        self.labels = labels
+        self.latest_operation_id = latest_operation_id
+        self.min = min
+        self.parent_quota_id = parent_quota_id
+        self.queue_strategy = queue_strategy
+        self.quota_config = quota_config
+        self.quota_details = quota_details
+        # Quota Id
+        self.quota_id = quota_id
+        self.quota_name = quota_name
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.request_id = request_id
+        self.resource_group_ids = resource_group_ids
+        self.resource_type = resource_type
+        self.status = status
+        self.sub_quotas = sub_quotas
+        self.workspaces = workspaces
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+        if self.min:
+            self.min.validate()
+        if self.quota_config:
+            self.quota_config.validate()
+        if self.quota_details:
+            self.quota_details.validate()
+        if self.sub_quotas:
+            for k in self.sub_quotas:
+                if k:
+                    k.validate()
+        if self.workspaces:
+            for k in self.workspaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allocate_strategy is not None:
+            result['AllocateStrategy'] = self.allocate_strategy
+        if self.creator_id is not None:
+            result['CreatorId'] = self.creator_id
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.gmt_created_time is not None:
+            result['GmtCreatedTime'] = self.gmt_created_time
+        if self.gmt_modified_time is not None:
+            result['GmtModifiedTime'] = self.gmt_modified_time
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        if self.latest_operation_id is not None:
+            result['LatestOperationId'] = self.latest_operation_id
+        if self.min is not None:
+            result['Min'] = self.min.to_map()
+        if self.parent_quota_id is not None:
+            result['ParentQuotaId'] = self.parent_quota_id
+        if self.queue_strategy is not None:
+            result['QueueStrategy'] = self.queue_strategy
+        if self.quota_config is not None:
+            result['QuotaConfig'] = self.quota_config.to_map()
+        if self.quota_details is not None:
+            result['QuotaDetails'] = self.quota_details.to_map()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.status is not None:
+            result['Status'] = self.status
+        result['SubQuotas'] = []
+        if self.sub_quotas is not None:
+            for k in self.sub_quotas:
+                result['SubQuotas'].append(k.to_map() if k else None)
+        result['Workspaces'] = []
+        if self.workspaces is not None:
+            for k in self.workspaces:
+                result['Workspaces'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllocateStrategy') is not None:
+            self.allocate_strategy = m.get('AllocateStrategy')
+        if m.get('CreatorId') is not None:
+            self.creator_id = m.get('CreatorId')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('GmtCreatedTime') is not None:
+            self.gmt_created_time = m.get('GmtCreatedTime')
+        if m.get('GmtModifiedTime') is not None:
+            self.gmt_modified_time = m.get('GmtModifiedTime')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        if m.get('LatestOperationId') is not None:
+            self.latest_operation_id = m.get('LatestOperationId')
+        if m.get('Min') is not None:
+            temp_model = ResourceSpec()
+            self.min = temp_model.from_map(m['Min'])
+        if m.get('ParentQuotaId') is not None:
+            self.parent_quota_id = m.get('ParentQuotaId')
+        if m.get('QueueStrategy') is not None:
+            self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaConfig') is not None:
+            temp_model = QuotaConfig()
+            self.quota_config = temp_model.from_map(m['QuotaConfig'])
+        if m.get('QuotaDetails') is not None:
+            temp_model = QuotaDetails()
+            self.quota_details = temp_model.from_map(m['QuotaDetails'])
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        self.sub_quotas = []
+        if m.get('SubQuotas') is not None:
+            for k in m.get('SubQuotas'):
+                temp_model = QuotaIdName()
+                self.sub_quotas.append(temp_model.from_map(k))
+        self.workspaces = []
+        if m.get('Workspaces') is not None:
+            for k in m.get('Workspaces'):
+                temp_model = WorkspaceIdName()
+                self.workspaces.append(temp_model.from_map(k))
+        return self
+
+
+class GetQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5450,6 +7351,178 @@ class ListAlgorithmsResponse(TeaModel):
         return self
 
 
+class ListQuotasRequest(TeaModel):
+    def __init__(
+        self,
+        labels: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        parent_quota_id: str = None,
+        quota_ids: str = None,
+        quota_name: str = None,
+        resource_type: str = None,
+        sort_by: str = None,
+        statuses: str = None,
+        workspace_ids: str = None,
+    ):
+        self.labels = labels
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.parent_quota_id = parent_quota_id
+        self.quota_ids = quota_ids
+        self.quota_name = quota_name
+        self.resource_type = resource_type
+        self.sort_by = sort_by
+        self.statuses = statuses
+        self.workspace_ids = workspace_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.parent_quota_id is not None:
+            result['ParentQuotaId'] = self.parent_quota_id
+        if self.quota_ids is not None:
+            result['QuotaIds'] = self.quota_ids
+        if self.quota_name is not None:
+            result['QuotaName'] = self.quota_name
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.statuses is not None:
+            result['Statuses'] = self.statuses
+        if self.workspace_ids is not None:
+            result['WorkspaceIds'] = self.workspace_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ParentQuotaId') is not None:
+            self.parent_quota_id = m.get('ParentQuotaId')
+        if m.get('QuotaIds') is not None:
+            self.quota_ids = m.get('QuotaIds')
+        if m.get('QuotaName') is not None:
+            self.quota_name = m.get('QuotaName')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Statuses') is not None:
+            self.statuses = m.get('Statuses')
+        if m.get('WorkspaceIds') is not None:
+            self.workspace_ids = m.get('WorkspaceIds')
+        return self
+
+
+class ListQuotasResponseBody(TeaModel):
+    def __init__(
+        self,
+        quotas: List[Quota] = None,
+        request_id: str = None,
+    ):
+        self.quotas = quotas
+        self.request_id = request_id
+
+    def validate(self):
+        if self.quotas:
+            for k in self.quotas:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Quotas'] = []
+        if self.quotas is not None:
+            for k in self.quotas:
+                result['Quotas'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.quotas = []
+        if m.get('Quotas') is not None:
+            for k in m.get('Quotas'):
+                temp_model = Quota()
+                self.quotas.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListQuotasResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListQuotasResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListQuotasResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListResourceGroupMachineGroupsRequest(TeaModel):
     def __init__(
         self,
@@ -5798,12 +7871,14 @@ class ListTrainingJobLogsRequest(TeaModel):
     def __init__(
         self,
         end_time: str = None,
+        instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         start_time: str = None,
         worker_id: str = None,
     ):
         self.end_time = end_time
+        self.instance_id = instance_id
         self.page_number = page_number
         self.page_size = page_size
         self.start_time = start_time
@@ -5820,6 +7895,8 @@ class ListTrainingJobLogsRequest(TeaModel):
         result = dict()
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
@@ -5834,6 +7911,8 @@ class ListTrainingJobLogsRequest(TeaModel):
         m = m or dict()
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
@@ -6319,17 +8398,75 @@ class ListTrainingJobsShrinkRequest(TeaModel):
         return self
 
 
+class ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        shared_memory: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gputype = gputype
+        self.memory = memory
+        self.shared_memory = shared_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.shared_memory is not None:
+            result['SharedMemory'] = self.shared_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SharedMemory') is not None:
+            self.shared_memory = m.get('SharedMemory')
+        return self
+
+
 class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
     def __init__(
         self,
         ecs_count: int = None,
         ecs_spec: str = None,
+        instance_count: int = None,
+        instance_spec: ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec = None,
+        resource_id: str = None,
     ):
         self.ecs_count = ecs_count
         self.ecs_spec = ecs_spec
+        self.instance_count = instance_count
+        self.instance_spec = instance_spec
+        self.resource_id = resource_id
 
     def validate(self):
-        pass
+        if self.instance_spec:
+            self.instance_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -6341,6 +8478,12 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
             result['EcsCount'] = self.ecs_count
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec.to_map()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
@@ -6349,6 +8492,13 @@ class ListTrainingJobsResponseBodyTrainingJobsComputeResource(TeaModel):
             self.ecs_count = m.get('EcsCount')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('InstanceSpec') is not None:
+            temp_model = ListTrainingJobsResponseBodyTrainingJobsComputeResourceInstanceSpec()
+            self.instance_spec = temp_model.from_map(m['InstanceSpec'])
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
@@ -6922,6 +9072,119 @@ class ListTrainingJobsResponse(TeaModel):
         return self
 
 
+class ScaleQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        min: ResourceSpec = None,
+        resource_group_ids: List[str] = None,
+    ):
+        self.min = min
+        self.resource_group_ids = resource_group_ids
+
+    def validate(self):
+        if self.min:
+            self.min.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.min is not None:
+            result['Min'] = self.min.to_map()
+        if self.resource_group_ids is not None:
+            result['ResourceGroupIds'] = self.resource_group_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Min') is not None:
+            temp_model = ResourceSpec()
+            self.min = temp_model.from_map(m['Min'])
+        if m.get('ResourceGroupIds') is not None:
+            self.resource_group_ids = m.get('ResourceGroupIds')
+        return self
+
+
+class ScaleQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        quota_id: str = None,
+        request_id: str = None,
+    ):
+        # Quota Id
+        self.quota_id = quota_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ScaleQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ScaleQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ScaleQuotaResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class StopTrainingJobResponseBody(TeaModel):
     def __init__(
         self,
@@ -7232,6 +9495,125 @@ class UpdateAlgorithmVersionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAlgorithmVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateQuotaRequest(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        labels: List[Label] = None,
+    ):
+        self.description = description
+        self.labels = labels
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = Label()
+                self.labels.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateQuotaResponseBody(TeaModel):
+    def __init__(
+        self,
+        quota_id: str = None,
+        request_id: str = None,
+    ):
+        # Quota Id
+        self.quota_id = quota_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateQuotaResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateQuotaResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateQuotaResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

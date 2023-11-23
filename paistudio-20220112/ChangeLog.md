@@ -1,3 +1,6 @@
+2023-11-23 Version: 1.1.0
+- Generated python 2022-01-12 for PaiStudio.
+
 2023-09-06 Version: 1.0.12
 - Generated python 2022-01-12 for PaiStudio.
 

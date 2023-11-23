@@ -239,6 +239,118 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_algorithm_version_with_options_async(algorithm_id, algorithm_version, request, headers, runtime)
 
+    def create_quota_with_options(
+        self,
+        request: pai_studio_20220112_models.CreateQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.allocate_strategy):
+            body['AllocateStrategy'] = request.allocate_strategy
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.min):
+            body['Min'] = request.min
+        if not UtilClient.is_unset(request.parent_quota_id):
+            body['ParentQuotaId'] = request.parent_quota_id
+        if not UtilClient.is_unset(request.queue_strategy):
+            body['QueueStrategy'] = request.queue_strategy
+        if not UtilClient.is_unset(request.quota_config):
+            body['QuotaConfig'] = request.quota_config
+        if not UtilClient.is_unset(request.quota_name):
+            body['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.resource_group_ids):
+            body['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.CreateQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_quota_with_options_async(
+        self,
+        request: pai_studio_20220112_models.CreateQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.allocate_strategy):
+            body['AllocateStrategy'] = request.allocate_strategy
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.min):
+            body['Min'] = request.min
+        if not UtilClient.is_unset(request.parent_quota_id):
+            body['ParentQuotaId'] = request.parent_quota_id
+        if not UtilClient.is_unset(request.queue_strategy):
+            body['QueueStrategy'] = request.queue_strategy
+        if not UtilClient.is_unset(request.quota_config):
+            body['QuotaConfig'] = request.quota_config
+        if not UtilClient.is_unset(request.quota_name):
+            body['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.resource_group_ids):
+            body['ResourceGroupIds'] = request.resource_group_ids
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.CreateQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_quota(
+        self,
+        request: pai_studio_20220112_models.CreateQuotaRequest,
+    ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_quota_with_options(request, headers, runtime)
+
+    async def create_quota_async(
+        self,
+        request: pai_studio_20220112_models.CreateQuotaRequest,
+    ) -> pai_studio_20220112_models.CreateQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_quota_with_options_async(request, headers, runtime)
+
     def create_resource_group_with_options(
         self,
         request: pai_studio_20220112_models.CreateResourceGroupRequest,
@@ -532,6 +644,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_machine_group_with_options_async(machine_group_id, headers, runtime)
+
+    def delete_quota_with_options(
+        self,
+        quota_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_quota_with_options_async(
+        self,
+        quota_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.DeleteQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_quota(
+        self,
+        quota_id: str,
+    ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_quota_with_options(quota_id, headers, runtime)
+
+    async def delete_quota_async(
+        self,
+        quota_id: str,
+    ) -> pai_studio_20220112_models.DeleteQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_quota_with_options_async(quota_id, headers, runtime)
 
     def delete_resource_group_with_options(
         self,
@@ -970,6 +1148,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_node_metrics_with_options_async(resource_group_id, metric_type, request, headers, runtime)
+
+    def get_quota_with_options(
+        self,
+        quota_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetQuotaResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_quota_with_options_async(
+        self,
+        quota_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.GetQuotaResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.GetQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_quota(
+        self,
+        quota_id: str,
+    ) -> pai_studio_20220112_models.GetQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_quota_with_options(quota_id, headers, runtime)
+
+    async def get_quota_async(
+        self,
+        quota_id: str,
+    ) -> pai_studio_20220112_models.GetQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_quota_with_options_async(quota_id, headers, runtime)
 
     def get_resource_group_with_options(
         self,
@@ -1627,6 +1871,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_algorithms_with_options_async(request, headers, runtime)
 
+    def list_quotas_with_options(
+        self,
+        request: pai_studio_20220112_models.ListQuotasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListQuotasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_quota_id):
+            query['ParentQuotaId'] = request.parent_quota_id
+        if not UtilClient.is_unset(request.quota_ids):
+            query['QuotaIds'] = request.quota_ids
+        if not UtilClient.is_unset(request.quota_name):
+            query['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.statuses):
+            query['Statuses'] = request.statuses
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQuotas',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListQuotasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_quotas_with_options_async(
+        self,
+        request: pai_studio_20220112_models.ListQuotasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ListQuotasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.labels):
+            query['Labels'] = request.labels
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.parent_quota_id):
+            query['ParentQuotaId'] = request.parent_quota_id
+        if not UtilClient.is_unset(request.quota_ids):
+            query['QuotaIds'] = request.quota_ids
+        if not UtilClient.is_unset(request.quota_name):
+            query['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.statuses):
+            query['Statuses'] = request.statuses
+        if not UtilClient.is_unset(request.workspace_ids):
+            query['WorkspaceIds'] = request.workspace_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListQuotas',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ListQuotasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_quotas(
+        self,
+        request: pai_studio_20220112_models.ListQuotasRequest,
+    ) -> pai_studio_20220112_models.ListQuotasResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_quotas_with_options(request, headers, runtime)
+
+    async def list_quotas_async(
+        self,
+        request: pai_studio_20220112_models.ListQuotasRequest,
+    ) -> pai_studio_20220112_models.ListQuotasResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_quotas_with_options_async(request, headers, runtime)
+
     def list_resource_group_machine_groups_with_options(
         self,
         resource_group_id: str,
@@ -1866,6 +2226,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -1905,6 +2267,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
@@ -2187,6 +2551,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_training_jobs_with_options_async(request, headers, runtime)
 
+    def scale_quota_with_options(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ScaleQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.min):
+            body['Min'] = request.min
+        if not UtilClient.is_unset(request.resource_group_ids):
+            body['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScaleQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}/action/scale',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ScaleQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scale_quota_with_options_async(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ScaleQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.min):
+            body['Min'] = request.min
+        if not UtilClient.is_unset(request.resource_group_ids):
+            body['ResourceGroupIds'] = request.resource_group_ids
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ScaleQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}/action/scale',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.ScaleQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scale_quota(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ScaleQuotaRequest,
+    ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.scale_quota_with_options(quota_id, request, headers, runtime)
+
+    async def scale_quota_async(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.ScaleQuotaRequest,
+    ) -> pai_studio_20220112_models.ScaleQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.scale_quota_with_options_async(quota_id, request, headers, runtime)
+
     def stop_training_job_with_options(
         self,
         training_job_id: str,
@@ -2428,6 +2876,90 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_algorithm_version_with_options_async(algorithm_id, algorithm_version, request, headers, runtime)
+
+    def update_quota_with_options(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.UpdateQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.UpdateQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_quota_with_options_async(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.UpdateQuotaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.labels):
+            body['Labels'] = request.labels
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateQuota',
+            version='2022-01-12',
+            protocol='HTTPS',
+            pathname=f'/api/v1/quotas/{OpenApiUtilClient.get_encode_param(quota_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_studio_20220112_models.UpdateQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_quota(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.UpdateQuotaRequest,
+    ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_quota_with_options(quota_id, request, headers, runtime)
+
+    async def update_quota_async(
+        self,
+        quota_id: str,
+        request: pai_studio_20220112_models.UpdateQuotaRequest,
+    ) -> pai_studio_20220112_models.UpdateQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_quota_with_options_async(quota_id, request, headers, runtime)
 
     def update_resource_group_with_options(
         self,
