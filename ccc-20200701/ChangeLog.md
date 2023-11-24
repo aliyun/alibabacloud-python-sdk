@@ -1,3 +1,6 @@
+2023-11-24 Version: 2.11.6
+- Generated python 2020-07-01 for CCC.
+
 2023-11-23 Version: 2.11.5
 - Generated python 2020-07-01 for CCC.
 
