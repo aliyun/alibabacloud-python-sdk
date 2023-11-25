@@ -3731,11 +3731,19 @@ class Client(OpenApiClient):
     def describe_cluster_tasks_with_options(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterTasksRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterTasks',
@@ -3756,11 +3764,19 @@ class Client(OpenApiClient):
     async def describe_cluster_tasks_with_options_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterTasksRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['page_number'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['page_size'] = request.page_size
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='DescribeClusterTasks',
@@ -3781,18 +3797,20 @@ class Client(OpenApiClient):
     def describe_cluster_tasks(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterTasksRequest,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.describe_cluster_tasks_with_options(cluster_id, headers, runtime)
+        return self.describe_cluster_tasks_with_options(cluster_id, request, headers, runtime)
 
     async def describe_cluster_tasks_async(
         self,
         cluster_id: str,
+        request: cs20151215_models.DescribeClusterTasksRequest,
     ) -> cs20151215_models.DescribeClusterTasksResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.describe_cluster_tasks_with_options_async(cluster_id, headers, runtime)
+        return await self.describe_cluster_tasks_with_options_async(cluster_id, request, headers, runtime)
 
     def describe_cluster_user_kubeconfig_with_options(
         self,
@@ -4176,6 +4194,8 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DescribeClustersV1Response:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
         if not UtilClient.is_unset(request.cluster_spec):
             query['cluster_spec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cluster_type):
@@ -4218,6 +4238,8 @@ class Client(OpenApiClient):
     ) -> cs20151215_models.DescribeClustersV1Response:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['cluster_id'] = request.cluster_id
         if not UtilClient.is_unset(request.cluster_spec):
             query['cluster_spec'] = request.cluster_spec
         if not UtilClient.is_unset(request.cluster_type):
