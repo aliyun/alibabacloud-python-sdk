@@ -1120,17 +1120,19 @@ class ListDigitalHumanMaterialsRequest(TeaModel):
         return self
 
 
-class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
+class ListDigitalHumanMaterialsResponseBodyDataComponents(TeaModel):
     def __init__(
         self,
         ext: str = None,
         file_url: str = None,
+        files: Dict[str, Any] = None,
         id: str = None,
         name: str = None,
         type: str = None,
     ):
         self.ext = ext
         self.file_url = file_url
+        self.files = files
         self.id = id
         self.name = name
         self.type = type
@@ -1148,6 +1150,8 @@ class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
             result['Ext'] = self.ext
         if self.file_url is not None:
             result['FileUrl'] = self.file_url
+        if self.files is not None:
+            result['Files'] = self.files
         if self.id is not None:
             result['Id'] = self.id
         if self.name is not None:
@@ -1162,6 +1166,79 @@ class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
             self.ext = m.get('Ext')
         if m.get('FileUrl') is not None:
             self.file_url = m.get('FileUrl')
+        if m.get('Files') is not None:
+            self.files = m.get('Files')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListDigitalHumanMaterialsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        components: List[ListDigitalHumanMaterialsResponseBodyDataComponents] = None,
+        ext: str = None,
+        file_url: str = None,
+        files: Dict[str, Any] = None,
+        id: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.components = components
+        self.ext = ext
+        self.file_url = file_url
+        self.files = files
+        self.id = id
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        if self.components:
+            for k in self.components:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Components'] = []
+        if self.components is not None:
+            for k in self.components:
+                result['Components'].append(k.to_map() if k else None)
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.files is not None:
+            result['Files'] = self.files
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.components = []
+        if m.get('Components') is not None:
+            for k in m.get('Components'):
+                temp_model = ListDigitalHumanMaterialsResponseBodyDataComponents()
+                self.components.append(temp_model.from_map(k))
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Files') is not None:
+            self.files = m.get('Files')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Name') is not None:
