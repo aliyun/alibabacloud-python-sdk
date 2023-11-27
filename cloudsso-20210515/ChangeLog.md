@@ -1,3 +1,6 @@
+2023-11-27 Version: 1.3.0
+- Generated python 2021-05-15 for cloudsso.
+
 2023-11-07 Version: 1.2.0
 - Generated python 2021-05-15 for cloudsso.
 
