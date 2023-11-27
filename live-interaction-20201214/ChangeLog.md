@@ -1,3 +1,6 @@
+2023-11-27 Version: 2.1.6
+- Generated python 2020-12-14 for live-interaction.
+
 2021-10-22 Version: 2.1.5
 - Feature Add Interconnection Uid And Cid Bind API.
 
