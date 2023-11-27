@@ -24818,6 +24818,8 @@ class Client(OpenApiClient):
             query['RouteTableId'] = request.route_table_id
         if not UtilClient.is_unset(request.route_table_name):
             query['RouteTableName'] = request.route_table_name
+        if not UtilClient.is_unset(request.route_table_type):
+            query['RouteTableType'] = request.route_table_type
         if not UtilClient.is_unset(request.router_id):
             query['RouterId'] = request.router_id
         if not UtilClient.is_unset(request.router_type):
@@ -24872,6 +24874,8 @@ class Client(OpenApiClient):
             query['RouteTableId'] = request.route_table_id
         if not UtilClient.is_unset(request.route_table_name):
             query['RouteTableName'] = request.route_table_name
+        if not UtilClient.is_unset(request.route_table_type):
+            query['RouteTableType'] = request.route_table_type
         if not UtilClient.is_unset(request.router_id):
             query['RouterId'] = request.router_id
         if not UtilClient.is_unset(request.router_type):

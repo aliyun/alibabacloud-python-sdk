@@ -45781,6 +45781,7 @@ class DescribeRouteTableListRequest(TeaModel):
         resource_owner_id: int = None,
         route_table_id: str = None,
         route_table_name: str = None,
+        route_table_type: str = None,
         router_id: str = None,
         router_type: str = None,
         tag: List[DescribeRouteTableListRequestTag] = None,
@@ -45804,6 +45805,7 @@ class DescribeRouteTableListRequest(TeaModel):
         self.route_table_id = route_table_id
         # The name of the route table that you want to query.
         self.route_table_name = route_table_name
+        self.route_table_type = route_table_type
         # The ID of the router to which the route table belongs.
         self.router_id = router_id
         # The type of the router to which the route table belongs. Valid values:
@@ -45850,6 +45852,8 @@ class DescribeRouteTableListRequest(TeaModel):
             result['RouteTableId'] = self.route_table_id
         if self.route_table_name is not None:
             result['RouteTableName'] = self.route_table_name
+        if self.route_table_type is not None:
+            result['RouteTableType'] = self.route_table_type
         if self.router_id is not None:
             result['RouterId'] = self.router_id
         if self.router_type is not None:
@@ -45884,6 +45888,8 @@ class DescribeRouteTableListRequest(TeaModel):
             self.route_table_id = m.get('RouteTableId')
         if m.get('RouteTableName') is not None:
             self.route_table_name = m.get('RouteTableName')
+        if m.get('RouteTableType') is not None:
+            self.route_table_type = m.get('RouteTableType')
         if m.get('RouterId') is not None:
             self.router_id = m.get('RouterId')
         if m.get('RouterType') is not None:
