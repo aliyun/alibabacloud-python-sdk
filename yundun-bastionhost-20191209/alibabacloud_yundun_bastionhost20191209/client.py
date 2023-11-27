@@ -1106,6 +1106,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_region_id):
             query['InstanceRegionId'] = request.instance_region_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
         if not UtilClient.is_unset(request.ostype):
             query['OSType'] = request.ostype
         if not UtilClient.is_unset(request.region_id):
@@ -1154,6 +1156,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_region_id):
             query['InstanceRegionId'] = request.instance_region_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
         if not UtilClient.is_unset(request.ostype):
             query['OSType'] = request.ostype
         if not UtilClient.is_unset(request.region_id):
@@ -6039,6 +6043,8 @@ class Client(OpenApiClient):
             query['HostPublicAddress'] = request.host_public_address
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
         if not UtilClient.is_unset(request.ostype):
             query['OSType'] = request.ostype
         if not UtilClient.is_unset(request.region_id):
@@ -6088,6 +6094,8 @@ class Client(OpenApiClient):
             query['HostPublicAddress'] = request.host_public_address
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_domain_id):
+            query['NetworkDomainId'] = request.network_domain_id
         if not UtilClient.is_unset(request.ostype):
             query['OSType'] = request.ostype
         if not UtilClient.is_unset(request.region_id):
