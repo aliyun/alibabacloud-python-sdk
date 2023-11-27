@@ -41,6 +41,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def check_commercial_status_with_options(
+        self,
+        request: xtrace_20190808_models.CheckCommercialStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCommercialStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.CheckCommercialStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_commercial_status_with_options_async(
+        self,
+        request: xtrace_20190808_models.CheckCommercialStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service):
+            query['Service'] = request.service
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckCommercialStatus',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xtrace_20190808_models.CheckCommercialStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_commercial_status(
+        self,
+        request: xtrace_20190808_models.CheckCommercialStatusRequest,
+    ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.check_commercial_status_with_options(request, runtime)
+
+    async def check_commercial_status_async(
+        self,
+        request: xtrace_20190808_models.CheckCommercialStatusRequest,
+    ) -> xtrace_20190808_models.CheckCommercialStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.check_commercial_status_with_options_async(request, runtime)
+
     def get_tag_key_with_options(
         self,
         request: xtrace_20190808_models.GetTagKeyRequest,
