@@ -14475,6 +14475,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_app_metadata_with_options_async(request, runtime)
 
+    def query_commercial_usage_with_options(
+        self,
+        request: arms20190808_models.QueryCommercialUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.QueryCommercialUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advanced_filters):
+            query['AdvancedFilters'] = request.advanced_filters
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval_in_sec):
+            query['IntervalInSec'] = request.interval_in_sec
+        if not UtilClient.is_unset(request.measures):
+            query['Measures'] = request.measures
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCommercialUsage',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.QueryCommercialUsageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_commercial_usage_with_options_async(
+        self,
+        request: arms20190808_models.QueryCommercialUsageRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.QueryCommercialUsageResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advanced_filters):
+            query['AdvancedFilters'] = request.advanced_filters
+        if not UtilClient.is_unset(request.dimensions):
+            query['Dimensions'] = request.dimensions
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval_in_sec):
+            query['IntervalInSec'] = request.interval_in_sec
+        if not UtilClient.is_unset(request.measures):
+            query['Measures'] = request.measures
+        if not UtilClient.is_unset(request.metric):
+            query['Metric'] = request.metric
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.query_type):
+            query['QueryType'] = request.query_type
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryCommercialUsage',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.QueryCommercialUsageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_commercial_usage(
+        self,
+        request: arms20190808_models.QueryCommercialUsageRequest,
+    ) -> arms20190808_models.QueryCommercialUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_commercial_usage_with_options(request, runtime)
+
+    async def query_commercial_usage_async(
+        self,
+        request: arms20190808_models.QueryCommercialUsageRequest,
+    ) -> arms20190808_models.QueryCommercialUsageResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_commercial_usage_with_options_async(request, runtime)
+
     def query_metric_by_page_with_options(
         self,
         request: arms20190808_models.QueryMetricByPageRequest,

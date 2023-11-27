@@ -1348,6 +1348,81 @@ class GrafanaWorkspaceIntegrationDetail(TeaModel):
         return self
 
 
+class GrafanaWorkspaceMoveProcess(TeaModel):
+    def __init__(
+        self,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        grafana_workspace_id: str = None,
+        id: int = None,
+        msg: str = None,
+        process_name: str = None,
+        process_status: str = None,
+        sub_type: str = None,
+        user_id: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.grafana_workspace_id = grafana_workspace_id
+        self.id = id
+        self.msg = msg
+        self.process_name = process_name
+        self.process_status = process_status
+        self.sub_type = sub_type
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.grafana_workspace_id is not None:
+            result['grafanaWorkspaceId'] = self.grafana_workspace_id
+        if self.id is not None:
+            result['id'] = self.id
+        if self.msg is not None:
+            result['msg'] = self.msg
+        if self.process_name is not None:
+            result['processName'] = self.process_name
+        if self.process_status is not None:
+            result['processStatus'] = self.process_status
+        if self.sub_type is not None:
+            result['subType'] = self.sub_type
+        if self.user_id is not None:
+            result['userId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('grafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('grafanaWorkspaceId')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('msg') is not None:
+            self.msg = m.get('msg')
+        if m.get('processName') is not None:
+            self.process_name = m.get('processName')
+        if m.get('processStatus') is not None:
+            self.process_status = m.get('processStatus')
+        if m.get('subType') is not None:
+            self.sub_type = m.get('subType')
+        if m.get('userId') is not None:
+            self.user_id = m.get('userId')
+        return self
+
+
 class GrafanaWorkspaceNews(TeaModel):
     def __init__(
         self,
@@ -45171,6 +45246,264 @@ class QueryAppMetadataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryAppMetadataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryCommercialUsageRequestAdvancedFilters(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        op_type: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.op_type = op_type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.op_type is not None:
+            result['OpType'] = self.op_type
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('OpType') is not None:
+            self.op_type = m.get('OpType')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class QueryCommercialUsageRequest(TeaModel):
+    def __init__(
+        self,
+        advanced_filters: List[QueryCommercialUsageRequestAdvancedFilters] = None,
+        dimensions: List[str] = None,
+        end_time: int = None,
+        interval_in_sec: int = None,
+        measures: List[str] = None,
+        metric: str = None,
+        order: str = None,
+        order_by: str = None,
+        query_type: str = None,
+        start_time: int = None,
+    ):
+        self.advanced_filters = advanced_filters
+        self.dimensions = dimensions
+        self.end_time = end_time
+        self.interval_in_sec = interval_in_sec
+        self.measures = measures
+        self.metric = metric
+        self.order = order
+        self.order_by = order_by
+        self.query_type = query_type
+        self.start_time = start_time
+
+    def validate(self):
+        if self.advanced_filters:
+            for k in self.advanced_filters:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdvancedFilters'] = []
+        if self.advanced_filters is not None:
+            for k in self.advanced_filters:
+                result['AdvancedFilters'].append(k.to_map() if k else None)
+        if self.dimensions is not None:
+            result['Dimensions'] = self.dimensions
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.interval_in_sec is not None:
+            result['IntervalInSec'] = self.interval_in_sec
+        if self.measures is not None:
+            result['Measures'] = self.measures
+        if self.metric is not None:
+            result['Metric'] = self.metric
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
+        if self.query_type is not None:
+            result['QueryType'] = self.query_type
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advanced_filters = []
+        if m.get('AdvancedFilters') is not None:
+            for k in m.get('AdvancedFilters'):
+                temp_model = QueryCommercialUsageRequestAdvancedFilters()
+                self.advanced_filters.append(temp_model.from_map(k))
+        if m.get('Dimensions') is not None:
+            self.dimensions = m.get('Dimensions')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IntervalInSec') is not None:
+            self.interval_in_sec = m.get('IntervalInSec')
+        if m.get('Measures') is not None:
+            self.measures = m.get('Measures')
+        if m.get('Metric') is not None:
+            self.metric = m.get('Metric')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
+        if m.get('QueryType') is not None:
+            self.query_type = m.get('QueryType')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QueryCommercialUsageResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        complete: bool = None,
+        items: List[Dict[str, Any]] = None,
+    ):
+        self.complete = complete
+        self.items = items
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.complete is not None:
+            result['Complete'] = self.complete
+        if self.items is not None:
+            result['Items'] = self.items
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Complete') is not None:
+            self.complete = m.get('Complete')
+        if m.get('Items') is not None:
+            self.items = m.get('Items')
+        return self
+
+
+class QueryCommercialUsageResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryCommercialUsageResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryCommercialUsageResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryCommercialUsageResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryCommercialUsageResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryCommercialUsageResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
