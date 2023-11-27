@@ -453,10 +453,14 @@ class Client(OpenApiClient):
 
     def create_listener_with_options(
         self,
-        request: nlb_20220430_models.CreateListenerRequest,
+        tmp_req: nlb_20220430_models.CreateListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateListenerResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = nlb_20220430_models.CreateListenerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.proxy_protocol_v2config):
+            request.proxy_protocol_v2config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.proxy_protocol_v2config, 'ProxyProtocolV2Config', 'json')
         body = {}
         if not UtilClient.is_unset(request.alpn_enabled):
             body['AlpnEnabled'] = request.alpn_enabled
@@ -490,6 +494,8 @@ class Client(OpenApiClient):
             body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
+        if not UtilClient.is_unset(request.proxy_protocol_v2config_shrink):
+            body['ProxyProtocolV2Config'] = request.proxy_protocol_v2config_shrink
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.sec_sensor_enabled):
@@ -523,10 +529,14 @@ class Client(OpenApiClient):
 
     async def create_listener_with_options_async(
         self,
-        request: nlb_20220430_models.CreateListenerRequest,
+        tmp_req: nlb_20220430_models.CreateListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.CreateListenerResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = nlb_20220430_models.CreateListenerShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.proxy_protocol_v2config):
+            request.proxy_protocol_v2config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.proxy_protocol_v2config, 'ProxyProtocolV2Config', 'json')
         body = {}
         if not UtilClient.is_unset(request.alpn_enabled):
             body['AlpnEnabled'] = request.alpn_enabled
@@ -560,6 +570,8 @@ class Client(OpenApiClient):
             body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
+        if not UtilClient.is_unset(request.proxy_protocol_v2config_shrink):
+            body['ProxyProtocolV2Config'] = request.proxy_protocol_v2config_shrink
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.sec_sensor_enabled):
@@ -3923,10 +3935,14 @@ class Client(OpenApiClient):
 
     def update_listener_attribute_with_options(
         self,
-        request: nlb_20220430_models.UpdateListenerAttributeRequest,
+        tmp_req: nlb_20220430_models.UpdateListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateListenerAttributeResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = nlb_20220430_models.UpdateListenerAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.proxy_protocol_v2config):
+            request.proxy_protocol_v2config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.proxy_protocol_v2config, 'ProxyProtocolV2Config', 'json')
         body = {}
         if not UtilClient.is_unset(request.alpn_enabled):
             body['AlpnEnabled'] = request.alpn_enabled
@@ -3954,6 +3970,8 @@ class Client(OpenApiClient):
             body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
+        if not UtilClient.is_unset(request.proxy_protocol_v2config_shrink):
+            body['ProxyProtocolV2Config'] = request.proxy_protocol_v2config_shrink
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.sec_sensor_enabled):
@@ -3983,10 +4001,14 @@ class Client(OpenApiClient):
 
     async def update_listener_attribute_with_options_async(
         self,
-        request: nlb_20220430_models.UpdateListenerAttributeRequest,
+        tmp_req: nlb_20220430_models.UpdateListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> nlb_20220430_models.UpdateListenerAttributeResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = nlb_20220430_models.UpdateListenerAttributeShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.proxy_protocol_v2config):
+            request.proxy_protocol_v2config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.proxy_protocol_v2config, 'ProxyProtocolV2Config', 'json')
         body = {}
         if not UtilClient.is_unset(request.alpn_enabled):
             body['AlpnEnabled'] = request.alpn_enabled
@@ -4014,6 +4036,8 @@ class Client(OpenApiClient):
             body['Mss'] = request.mss
         if not UtilClient.is_unset(request.proxy_protocol_enabled):
             body['ProxyProtocolEnabled'] = request.proxy_protocol_enabled
+        if not UtilClient.is_unset(request.proxy_protocol_v2config_shrink):
+            body['ProxyProtocolV2Config'] = request.proxy_protocol_v2config_shrink
         if not UtilClient.is_unset(request.region_id):
             body['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.sec_sensor_enabled):
