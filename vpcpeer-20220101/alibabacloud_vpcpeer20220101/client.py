@@ -195,6 +195,8 @@ class Client(OpenApiClient):
             body['AcceptingRegionId'] = request.accepting_region_id
         if not UtilClient.is_unset(request.accepting_vpc_id):
             body['AcceptingVpcId'] = request.accepting_vpc_id
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):
@@ -254,6 +256,8 @@ class Client(OpenApiClient):
             body['AcceptingRegionId'] = request.accepting_region_id
         if not UtilClient.is_unset(request.accepting_vpc_id):
             body['AcceptingVpcId'] = request.accepting_vpc_id
+        if not UtilClient.is_unset(request.bandwidth):
+            body['Bandwidth'] = request.bandwidth
         if not UtilClient.is_unset(request.client_token):
             body['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.description):

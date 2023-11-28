@@ -146,6 +146,7 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         accepting_ali_uid: int = None,
         accepting_region_id: str = None,
         accepting_vpc_id: str = None,
+        bandwidth: int = None,
         client_token: str = None,
         description: str = None,
         dry_run: bool = None,
@@ -169,6 +170,7 @@ class CreateVpcPeerConnectionRequest(TeaModel):
         self.accepting_region_id = accepting_region_id
         # The ID of the accepter VPC.
         self.accepting_vpc_id = accepting_vpc_id
+        self.bandwidth = bandwidth
         # The client token that is used to ensure the idempotence of the request.
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
@@ -214,6 +216,8 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             result['AcceptingRegionId'] = self.accepting_region_id
         if self.accepting_vpc_id is not None:
             result['AcceptingVpcId'] = self.accepting_vpc_id
+        if self.bandwidth is not None:
+            result['Bandwidth'] = self.bandwidth
         if self.client_token is not None:
             result['ClientToken'] = self.client_token
         if self.description is not None:
@@ -238,6 +242,8 @@ class CreateVpcPeerConnectionRequest(TeaModel):
             self.accepting_region_id = m.get('AcceptingRegionId')
         if m.get('AcceptingVpcId') is not None:
             self.accepting_vpc_id = m.get('AcceptingVpcId')
+        if m.get('Bandwidth') is not None:
+            self.bandwidth = m.get('Bandwidth')
         if m.get('ClientToken') is not None:
             self.client_token = m.get('ClientToken')
         if m.get('Description') is not None:
