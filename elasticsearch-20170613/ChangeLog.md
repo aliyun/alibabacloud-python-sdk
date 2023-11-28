@@ -1,3 +1,6 @@
+2023-11-28 Version: 1.2.0
+- Generated python 2017-06-13 for elasticsearch.
+
 2023-03-06 Version: 1.1.5
 - Improve API parameters.
 

@@ -1596,6 +1596,206 @@ class Logstash(TeaModel):
         return self
 
 
+class MigrationJobSourceCluster(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class MigrationJobStatusResult(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class MigrationJobTargetCluster(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        type: str = None,
+    ):
+        self.instance_id = instance_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['instanceId'] = self.instance_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('instanceId') is not None:
+            self.instance_id = m.get('instanceId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class MigrationJob(TeaModel):
+    def __init__(
+        self,
+        current_state: str = None,
+        disable_source_cluster_auth: bool = None,
+        disable_target_cluster_auth: bool = None,
+        end_time: int = None,
+        migration_job_id: str = None,
+        phase: str = None,
+        source_cluster: MigrationJobSourceCluster = None,
+        start_time: int = None,
+        status_result: List[MigrationJobStatusResult] = None,
+        target_cluster: MigrationJobTargetCluster = None,
+        update_time: int = None,
+    ):
+        self.current_state = current_state
+        self.disable_source_cluster_auth = disable_source_cluster_auth
+        self.disable_target_cluster_auth = disable_target_cluster_auth
+        self.end_time = end_time
+        self.migration_job_id = migration_job_id
+        self.phase = phase
+        self.source_cluster = source_cluster
+        self.start_time = start_time
+        self.status_result = status_result
+        self.target_cluster = target_cluster
+        self.update_time = update_time
+
+    def validate(self):
+        if self.source_cluster:
+            self.source_cluster.validate()
+        if self.status_result:
+            for k in self.status_result:
+                if k:
+                    k.validate()
+        if self.target_cluster:
+            self.target_cluster.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current_state is not None:
+            result['currentState'] = self.current_state
+        if self.disable_source_cluster_auth is not None:
+            result['disableSourceClusterAuth'] = self.disable_source_cluster_auth
+        if self.disable_target_cluster_auth is not None:
+            result['disableTargetClusterAuth'] = self.disable_target_cluster_auth
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.migration_job_id is not None:
+            result['migrationJobId'] = self.migration_job_id
+        if self.phase is not None:
+            result['phase'] = self.phase
+        if self.source_cluster is not None:
+            result['sourceCluster'] = self.source_cluster.to_map()
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        result['statusResult'] = []
+        if self.status_result is not None:
+            for k in self.status_result:
+                result['statusResult'].append(k.to_map() if k else None)
+        if self.target_cluster is not None:
+            result['targetCluster'] = self.target_cluster.to_map()
+        if self.update_time is not None:
+            result['updateTime'] = self.update_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('currentState') is not None:
+            self.current_state = m.get('currentState')
+        if m.get('disableSourceClusterAuth') is not None:
+            self.disable_source_cluster_auth = m.get('disableSourceClusterAuth')
+        if m.get('disableTargetClusterAuth') is not None:
+            self.disable_target_cluster_auth = m.get('disableTargetClusterAuth')
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('migrationJobId') is not None:
+            self.migration_job_id = m.get('migrationJobId')
+        if m.get('phase') is not None:
+            self.phase = m.get('phase')
+        if m.get('sourceCluster') is not None:
+            temp_model = MigrationJobSourceCluster()
+            self.source_cluster = temp_model.from_map(m['sourceCluster'])
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        self.status_result = []
+        if m.get('statusResult') is not None:
+            for k in m.get('statusResult'):
+                temp_model = MigrationJobStatusResult()
+                self.status_result.append(temp_model.from_map(k))
+        if m.get('targetCluster') is not None:
+            temp_model = MigrationJobTargetCluster()
+            self.target_cluster = temp_model.from_map(m['targetCluster'])
+        if m.get('updateTime') is not None:
+            self.update_time = m.get('updateTime')
+        return self
+
+
 class NodeInfo(TeaModel):
     def __init__(
         self,
@@ -1693,6 +1893,7 @@ class ActivateZonesRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -1725,7 +1926,12 @@ class ActivateZonesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the nodes in disabled zones are restored. Valid values:
+        # 
+        # *   true
+        # *   false
         self.result = result
 
     def validate(self):
@@ -1803,7 +2009,6 @@ class AddConnectableClusterRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
 
     def validate(self):
@@ -1836,12 +2041,7 @@ class AddConnectableClusterResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The following information is returned:
-        # 
-        # *   true: The configuration is successful.
-        # *   false: The configuration failed.
         self.result = result
 
     def validate(self):
@@ -2026,6 +2226,7 @@ class CancelDeletionRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -2054,7 +2255,12 @@ class CancelDeletionResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the cluster is restored. Valid values:
+        # 
+        # *   true: The cluster is restored.
+        # *   false: The cluster fails to be restored.
         self.result = result
 
     def validate(self):
@@ -2130,6 +2336,7 @@ class CancelLogstashDeletionRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -2158,7 +2365,12 @@ class CancelLogstashDeletionResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the cluster is restored. Valid values:
+        # 
+        # *   true: The cluster is restored.
+        # *   false: The cluster is not restored.
         self.result = result
 
     def validate(self):
@@ -2529,15 +2741,17 @@ class CapacityPlanResponseBodyResultExtendConfigs(TeaModel):
         disk: int = None,
         disk_type: str = None,
     ):
-        # The type of the configuration. Set the value to sharedDisk.
-        # 
-        # >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
-        self.config_type = config_type
         # The size of the disk. Unit: GiB.
-        self.disk = disk
+        self.config_type = config_type
         # The type of the disk. Valid value: CPFS_PREMIUM.
         # 
         # >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
+        self.disk = disk
+        # The version type. Valid values:
+        # 
+        # *   advanced: enhanced edition
+        # *   x-pack: Commercial Edition
+        # *   community: community version
         self.disk_type = disk_type
 
     def validate(self):
@@ -2578,12 +2792,10 @@ class CapacityPlanResponseBodyResultNodeConfigurations(TeaModel):
         memory: int = None,
         node_type: str = None,
     ):
-        # The number of cores.
-        self.amount = amount
         # The number of CPUs of the cloud desktop.
-        self.cpu = cpu
+        self.amount = amount
         # The size of the disk. Unit: GiB.
-        self.disk = disk
+        self.cpu = cpu
         # The type of the hard disk. Valid values:
         # 
         # *   cloud_essd: enhanced SSD (ESSD)
@@ -2591,9 +2803,9 @@ class CapacityPlanResponseBodyResultNodeConfigurations(TeaModel):
         # *   cloud_efficiency: ultra disk
         # *   local_ssd: local SSD
         # *   local_efficiency: local ultra disk
-        self.disk_type = disk_type
+        self.disk = disk
         # The memory size of the current node role.
-        self.memory = memory
+        self.disk_type = disk_type
         # The type of the node. Supported types are as follows:
         # 
         # *   WORKER: data node
@@ -2602,6 +2814,11 @@ class CapacityPlanResponseBodyResultNodeConfigurations(TeaModel):
         # *   KIBANA: Kibana node
         # *   COORDINATING: client node
         # *   ELASTIC_WORKER: elastic node
+        self.memory = memory
+        # The result calculated based on the capacity planning. No default value is available. The values are as follows:
+        # 
+        # *   true: indicates that the number of data nodes calculated by capacity planning exceeds the threshold of 50.
+        # *   false: The number of data nodes calculated by capacity planning is less than 50.
         self.node_type = node_type
 
     def validate(self):
@@ -2652,20 +2869,14 @@ class CapacityPlanResponseBodyResult(TeaModel):
         node_configurations: List[CapacityPlanResponseBodyResultNodeConfigurations] = None,
         oversized_cluster: bool = None,
     ):
-        # The extension configuration information.
+        # The type of the configuration. Set the value to sharedDisk.
+        # 
+        # >  The extendConfigs attribute that may occur when the planned instance type is enhanced (advanced).
         self.extend_configs = extend_configs
-        # The version type. Valid values:
-        # 
-        # *   advanced: enhanced edition
-        # *   x-pack: Commercial Edition
-        # *   community: community version
-        self.instance_category = instance_category
         # The node information.
+        self.instance_category = instance_category
+        # The number of cores.
         self.node_configurations = node_configurations
-        # The result calculated based on the capacity planning. No default value is available. The values are as follows:
-        # 
-        # *   true: indicates that the number of data nodes calculated by capacity planning exceeds the threshold of 50.
-        # *   false: The number of data nodes calculated by capacity planning is less than 50.
         self.oversized_cluster = oversized_cluster
 
     def validate(self):
@@ -2723,9 +2934,9 @@ class CapacityPlanResponseBody(TeaModel):
         request_id: str = None,
         result: CapacityPlanResponseBodyResult = None,
     ):
-        # The ID of the current request.
-        self.request_id = request_id
         # The response of the request.
+        self.request_id = request_id
+        # The extension configuration information.
         self.result = result
 
     def validate(self):
@@ -2804,9 +3015,8 @@ class CloseDiagnosisRequest(TeaModel):
         client_token: str = None,
         lang: str = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The ID of the request.
         self.client_token = client_token
-        # spanish
         self.lang = lang
 
     def validate(self):
@@ -2839,12 +3049,7 @@ class CloseDiagnosisResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether intelligent O\&M is successfully disabled. Valid values:
-        # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
         self.result = result
 
     def validate(self):
@@ -2920,7 +3125,6 @@ class CloseHttpsRequest(TeaModel):
         self,
         client_token: str = None,
     ):
-        # A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate a token, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -2949,12 +3153,7 @@ class CloseHttpsResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Return results:
-        # 
-        # *   true: HTTPS protocol closed successfully
-        # *   false: HTTPS protocol closed failed
         self.result = result
 
     def validate(self):
@@ -3183,7 +3382,7 @@ class CreateCollectorRequest(TeaModel):
         self.res_type = res_type
         self.res_version = res_version
         self.vpc_id = vpc_id
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The ID of the created crawer.
         self.client_token = client_token
 
     def validate(self):
@@ -3251,7 +3450,6 @@ class CreateCollectorResponseBodyResult(TeaModel):
         self,
         res_id: str = None,
     ):
-        # The ID of the created crawer.
         self.res_id = res_id
 
     def validate(self):
@@ -3280,9 +3478,7 @@ class CreateCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: CreateCollectorResponseBodyResult = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The returned result.
         self.result = result
 
     def validate(self):
@@ -3869,7 +4065,7 @@ class CreateDataTasksRequest(TeaModel):
         client_token: str = None,
         body: List[CreateDataTasksRequestBody] = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # es-cn-n6w1o1x0w001c\*\*\*\*\
         self.client_token = client_token
         self.body = body
 
@@ -3920,27 +4116,26 @@ class CreateDataTasksResponseBodyResultSinkCluster(TeaModel):
         vpc_instance_id: str = None,
         vpc_instance_port: str = None,
     ):
-        # The type of the target cluster.
         self.data_source_type = data_source_type
-        # The name of the target index.
-        self.index = index
-        # Mapping configuration.
-        self.mapping = mapping
-        # The access password of the target cluster.
-        self.password = password
-        # The routing field. The primary key field is used by default.
-        self.routing = routing
         # The settings configuration.
-        self.settings = settings
+        self.index = index
         # The type of the target index.
-        self.type = type
+        self.mapping = mapping
+        # The name of the target index.
+        self.password = password
         # The username of the destination cluster.
-        self.username = username
+        self.routing = routing
+        # Mapping configuration.
+        self.settings = settings
+        # The routing field. The primary key field is used by default.
+        self.type = type
         # The ID of the Virtual Private Cloud to which the cluster belongs. If the cluster access address is a public domain name, you can not specify the private endpoint.
-        self.vpc_id = vpc_id
-        # The instance ID of the cluster under the Virtual Private Cloud, or the ID of the SLB instance.
-        self.vpc_instance_id = vpc_instance_id
+        self.username = username
         # The access port number of the cluster.
+        self.vpc_id = vpc_id
+        # The type of the target cluster.
+        self.vpc_instance_id = vpc_instance_id
+        # The instance ID of the cluster under the Virtual Private Cloud, or the ID of the SLB instance.
         self.vpc_instance_port = vpc_instance_port
 
     def validate(self):
@@ -4016,23 +4211,23 @@ class CreateDataTasksResponseBodyResultSourceCluster(TeaModel):
         vpc_instance_id: str = None,
         vpc_instance_port: int = None,
     ):
-        # The type of the source cluster. Default value: Elasticsearch.
+        # The information about the target cluster.
         self.data_source_type = data_source_type
-        # The public domain name of the cluster.
-        self.endpoint = endpoint
-        # Specifies the indexes to be migrated.
-        self.index = index
-        # The access password of the source cluster.
-        self.password = password
-        # The type of the specified index.
-        self.type = type
         # The username of the source cluster.
-        self.username = username
+        self.endpoint = endpoint
+        # The type of the specified index.
+        self.index = index
+        # Specifies the indexes to be migrated.
+        self.password = password
+        # The public domain name of the cluster.
+        self.type = type
         # The ID of the Virtual Private Cloud where the source cluster resides. If the cluster access address is a public domain name, you can not specify the private endpoint.
-        self.vpc_id = vpc_id
+        self.username = username
         # The instance ID of the cluster under the Virtual Private Cloud, or the ID of the SLB instance.
-        self.vpc_instance_id = vpc_instance_id
+        self.vpc_id = vpc_id
         # The access port number of the source cluster.
+        self.vpc_instance_id = vpc_instance_id
+        # The type of the source cluster. Default value: Elasticsearch.
         self.vpc_instance_port = vpc_instance_port
 
     def validate(self):
@@ -4093,9 +4288,9 @@ class CreateDataTasksResponseBodyResult(TeaModel):
         sink_cluster: CreateDataTasksResponseBodyResultSinkCluster = None,
         source_cluster: CreateDataTasksResponseBodyResultSourceCluster = None,
     ):
-        # The information about the target cluster.
+        # The access password of the target cluster.
         self.sink_cluster = sink_cluster
-        # The information about the source cluster.
+        # The access password of the source cluster.
         self.source_cluster = source_cluster
 
     def validate(self):
@@ -4133,9 +4328,9 @@ class CreateDataTasksResponseBody(TeaModel):
         request_id: str = None,
         result: List[CreateDataTasksResponseBodyResult] = None,
     ):
-        # The ID of the request.
-        self.request_id = request_id
         # The result of the request.
+        self.request_id = request_id
+        # The information about the source cluster.
         self.result = result
 
     def validate(self):
@@ -4655,7 +4850,6 @@ class CreateLogstashRequest(TeaModel):
         self.payment_type = payment_type
         self.resource_group_id = resource_group_id
         self.version = version
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
 
     def validate(self):
@@ -4724,9 +4918,7 @@ class CreateLogstashResponseBody(TeaModel):
         request_id: str = None,
         result: Logstash = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The result of the request.
         self.result = result
 
     def validate(self):
@@ -4881,10 +5073,8 @@ class CreatePipelinesRequest(TeaModel):
         body: List[CreatePipelinesRequestBody] = None,
         trigger: bool = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
         self.body = body
-        # false
         self.trigger = trigger
 
     def validate(self):
@@ -4929,12 +5119,7 @@ class CreatePipelinesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the pipeline is created. Valor:
-        # 
-        # *   true: The task is created.
-        # *   false: The instance failed to be created.
         self.result = result
 
     def validate(self):
@@ -5129,11 +5314,11 @@ class CreateVpcEndpointRequest(TeaModel):
         zone_id: str = None,
         dry_run: bool = None,
     ):
-        # 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\*\*\*\
+        # The returned result details.
         self.client_token = client_token
         self.service_id = service_id
         self.zone_id = zone_id
-        # false
+        # The ID of the user endpoint service associated with the endpoint.
         self.dry_run = dry_run
 
     def validate(self):
@@ -5176,13 +5361,10 @@ class CreateVpcEndpointResponseBodyResult(TeaModel):
         endpoint_name: str = None,
         service_id: str = None,
     ):
-        # The endpoint domain name, which is used to configure the connection.
         self.endpoint_domain = endpoint_domain
-        # The ID of the endpoint on the service VPC side.
         self.endpoint_id = endpoint_id
-        # The name of the service VPC-side endpoint.
         self.endpoint_name = endpoint_name
-        # The ID of the user endpoint service associated with the endpoint.
+        # The name of the service VPC-side endpoint.
         self.service_id = service_id
 
     def validate(self):
@@ -5223,9 +5405,9 @@ class CreateVpcEndpointResponseBody(TeaModel):
         request_id: str = None,
         result: CreateVpcEndpointResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The endpoint domain name, which is used to configure the connection.
         self.request_id = request_id
-        # The returned result details.
+        # The ID of the endpoint on the service VPC side.
         self.result = result
 
     def validate(self):
@@ -5419,6 +5601,7 @@ class DeleteCollectorRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -5447,7 +5630,12 @@ class DeleteCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the shipper is deleted. Valid values:
+        # 
+        # *   true: The shipper is deleted.
+        # *   false: The shipper fails to be deleted.
         self.result = result
 
     def validate(self):
@@ -6273,7 +6461,12 @@ class DeleteLogstashRequest(TeaModel):
         client_token: str = None,
         delete_type: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The type of the release operation. Valid values:
+        # 
+        # *   immediate: The cluster is immediately deleted when it is released. After the cluster is deleted, the data stored in the cluster is deleted, and the system removes the cluster from the Logstash cluster list.
+        # *   protective: The cluster is released 24 hours later. During the period of 24 hours, you can still find the cluster in the Logstash cluster list, and [restore the cluster](~~202205~~) or [immediately release the cluster](~~160591~~). After 24 hours elapse, the data stored in the cluster is deleted.
         self.delete_type = delete_type
 
     def validate(self):
@@ -6305,6 +6498,7 @@ class DeleteLogstashResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6377,7 +6571,9 @@ class DeletePipelinesRequest(TeaModel):
         client_token: str = None,
         pipeline_ids: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The ID of the pipeline.
         self.pipeline_ids = pipeline_ids
 
     def validate(self):
@@ -6410,7 +6606,12 @@ class DeletePipelinesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the pipeline is deleted. Valid values:
+        # 
+        # *   true: The pipeline is deleted.
+        # *   false: The pipeline fails to be deleted.
         self.result = result
 
     def validate(self):
@@ -6708,7 +6909,14 @@ class DescribeAckOperatorResponseBodyResult(TeaModel):
         status: str = None,
         version: str = None,
     ):
+        # The installation status of ES-operator. Valid values:
+        # 
+        # *   deployed: ES-operator is installed.
+        # *   not-deploy: ES-operator is not installed.
+        # *   failed: ES-operator fails to be installed.
+        # *   unknown: The installation status of ES-operator is unknown.
         self.status = status
+        # The version of ES-operator.
         self.version = version
 
     def validate(self):
@@ -6741,7 +6949,9 @@ class DescribeAckOperatorResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeAckOperatorResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -7034,7 +7244,9 @@ class DescribeCollectorResponseBodyResultConfigs(TeaModel):
         content: str = None,
         file_name: str = None,
     ):
+        # The content of the file.
         self.content = content
+        # The name of the file.
         self.file_name = file_name
 
     def validate(self):
@@ -7067,7 +7279,14 @@ class DescribeCollectorResponseBodyResultExtendConfigsMachines(TeaModel):
         agent_status: str = None,
         instance_id: str = None,
     ):
+        # The status of the shipper on the ECS instance. Valid values:
+        # 
+        # *   heartOk: The heartbeat is normal.
+        # *   heartLost: The heartbeat is abnormal.
+        # *   uninstalled: The shipper is not installed.
+        # *   failed: The shipper fails to be installed.
         self.agent_status = agent_status
+        # The IDs of the ECS instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7112,19 +7331,42 @@ class DescribeCollectorResponseBodyResultExtendConfigs(TeaModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The configuration type. Valid values:
+        # 
+        # *   collectorTargetInstance
+        # *   collectorDeployMachine
+        # *   collectorElasticsearchForKibana
         self.config_type = config_type
+        # Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance**. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_monitoring = enable_monitoring
+        # The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
         self.group_id = group_id
+        # The private endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
         self.host = host
         self.hosts = hosts
+        # The ID of the resource that is associated with the shipper. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachines** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
         self.instance_id = instance_id
+        # The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
         self.instance_type = instance_type
+        # The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
         self.kibana_host = kibana_host
+        # The information about the Elastic Compute Service (ECS) instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachines** and the value of **type** is **ECSInstanceId**.
         self.machines = machines
+        # The transmission protocol, which must be the same as the access protocol of the resource specified in the output configuration part of the shipper. Valid values: HTTP and HTTPS. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
         self.protocol = protocol
+        # The number of pods from which data is succcessfully collected in the Container Service for Kubernetes (ACK) cluster.
         self.success_pods_count = success_pods_count
+        # The total number of pods from which data is collected in the ACK cluster.
         self.total_pods_count = total_pods_count
+        # The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+        # 
+        # *   ECSInstanceId
+        # *   ACKCluster
         self.type = type
+        # The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -7225,17 +7467,35 @@ class DescribeCollectorResponseBodyResult(TeaModel):
         vpc_id: str = None,
     ):
         self.collector_paths = collector_paths
+        # The information about the configuration file of the shipper.
         self.configs = configs
+        # Indicates whether a dry run is performed. Valid values:
+        # 
+        # *   true
+        # *   false
         self.dry_run = dry_run
+        # The extended configurations of the shipper.
         self.extend_configs = extend_configs
+        # The time when the shipper was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the shipper was updated.
         self.gmt_update_time = gmt_update_time
+        # The name of the shipper.
         self.name = name
+        # The account ID.
         self.owner_id = owner_id
+        # The ID of the shipper.
         self.res_id = res_id
+        # The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
+        # The version of the shipper.
         self.res_version = res_version
+        # The status of the shipper. Valid values:
+        # 
+        # *   activating
+        # *   active
         self.status = status
+        # The ID of the virtual private cloud (VPC) where the shipper resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -7329,7 +7589,9 @@ class DescribeCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeCollectorResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -7560,7 +7822,7 @@ class DescribeConnectableClustersRequest(TeaModel):
         self,
         already_set_items: bool = None,
     ):
-        # true
+        # The ID of the instance that can communicate with each other.
         self.already_set_items = already_set_items
 
     def validate(self):
@@ -7589,9 +7851,7 @@ class DescribeConnectableClustersResponseBodyResult(TeaModel):
         instances: str = None,
         network_type: str = None,
     ):
-        # The ID of the instance that can communicate with each other.
         self.instances = instances
-        # The network type of the instance.
         self.network_type = network_type
 
     def validate(self):
@@ -7624,9 +7884,7 @@ class DescribeConnectableClustersResponseBody(TeaModel):
         request_id: str = None,
         result: List[DescribeConnectableClustersResponseBodyResult] = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The returned data.
         self.result = result
 
     def validate(self):
@@ -7887,7 +8145,6 @@ class DescribeDiagnoseReportRequest(TeaModel):
         self,
         lang: str = None,
     ):
-        # en
         self.lang = lang
 
     def validate(self):
@@ -7919,15 +8176,10 @@ class DescribeDiagnoseReportResponseBodyResultDiagnoseItemsDetail(TeaModel):
         suggest: str = None,
         type: str = None,
     ):
-        # The description of the diagnostic item.
         self.desc = desc
-        # The full name of the diagnostic item.
         self.name = name
-        # The diagnosis.
         self.result = result
-        # The suggestion for the diagnosis.
         self.suggest = suggest
-        # The type of the diagnostic result. Supported: TEXT (text description), CONSOLE_API (console trigger), ES_API(API trigger).
         self.type = type
 
     def validate(self):
@@ -7973,11 +8225,8 @@ class DescribeDiagnoseReportResponseBodyResultDiagnoseItems(TeaModel):
         health: str = None,
         item: str = None,
     ):
-        # The details of the diagnostic item.
         self.detail = detail
-        # The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
         self.health = health
-        # The name of the item.
         self.item = item
 
     def validate(self):
@@ -8021,19 +8270,12 @@ class DescribeDiagnoseReportResponseBodyResult(TeaModel):
         state: str = None,
         trigger: str = None,
     ):
-        # The timestamp when the report was created. Unit: ms.
         self.create_time = create_time
-        # Reports the list of diagnostic item information.
         self.diagnose_items = diagnose_items
-        # The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
         self.health = health
-        # The ID of the instance for diagnosis.
         self.instance_id = instance_id
-        # The ID of the report.
         self.report_id = report_id
-        # The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
         self.state = state
-        # The trigger mode of health diagnostics. Supported: SYSTEM (automatic system trigger), INNER (internal trigger), and USER (manual user trigger).
         self.trigger = trigger
 
     def validate(self):
@@ -8094,9 +8336,7 @@ class DescribeDiagnoseReportResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeDiagnoseReportResponseBodyResult = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The result of the request.
         self.result = result
 
     def validate(self):
@@ -8398,9 +8638,13 @@ class DescribeElasticsearchHealthResponseBody(TeaModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The response code returned.
         self.code = code
+        # The response message returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # The color that indicates the health status of the cluster.
         self.result = result
 
     def validate(self):
@@ -9916,9 +10160,7 @@ class DescribeKibanaSettingsResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Some configurable Kibana settings information. For more information, see [Kibana settings](https://www.elastic.co/guide/cn/kibana/current/settings.html).
         self.result = result
 
     def validate(self):
@@ -9995,9 +10237,9 @@ class DescribeLogstashResponseBodyResultTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
-        self.tag_key = tag_key
         # The value of the tag.
+        self.tag_key = tag_key
+        # The information about the zones.
         self.tag_value = tag_value
 
     def validate(self):
@@ -10030,12 +10272,9 @@ class DescribeLogstashResponseBodyResultZoneInfos(TeaModel):
         status: str = None,
         zone_id: str = None,
     ):
-        # The status of the zone. Valid values:
-        # 
-        # *   ISOLATION: offline
-        # *   NORMAL
-        self.status = status
         # The zone ID of the new instance.
+        self.status = status
+        # The configuration of cluster extension parameters.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10069,11 +10308,11 @@ class DescribeLogstashResponseBodyResultEndpointList(TeaModel):
         port: str = None,
         zone_id: str = None,
     ):
-        # The IP address of the node.
+        # The tags added to the ALB instance.
         self.host = host
-        # The port number.
+        # The IP address of the node.
         self.port = port
-        # The ID of the zone where the node resides.
+        # The port number.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10112,13 +10351,12 @@ class DescribeLogstashResponseBodyResultNetworkConfig(TeaModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The network type of the instance. Valid values: Currently, only Virtual Private Cloud (VPC) are supported.
-        self.type = type
-        # The ID of the virtual private cloud (VPC).
-        self.vpc_id = vpc_id
-        # The zone where the cluster resides.
-        self.vs_area = vs_area
         # The ID of the vSwitch to which the instance is connected.
+        self.type = type
+        # The zone where the cluster resides.
+        self.vpc_id = vpc_id
+        # The network type of the instance. Valid values: Currently, only Virtual Private Cloud (VPC) are supported.
+        self.vs_area = vs_area
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -10161,16 +10399,16 @@ class DescribeLogstashResponseBodyResultNodeSpec(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The disk size of the node.
-        self.disk = disk
         # Whether to use disk encryption:
         # 
         # *   true
         # *   false
-        self.disk_encryption = disk_encryption
+        self.disk = disk
         # The disk type of the node.
+        self.disk_encryption = disk_encryption
+        # The network configurations.
         self.disk_type = disk_type
-        # The specifications of the node.
+        # The disk size of the node.
         self.spec = spec
 
     def validate(self):
@@ -10226,47 +10464,50 @@ class DescribeLogstashResponseBodyResult(TeaModel):
         version: str = None,
         vpc_instance_id: str = None,
     ):
-        # The configuration of cluster extension parameters.
-        self.extend_configs = extend_configs
-        # The ID of the resource group to which the instance belongs.
-        self.resource_group_id = resource_group_id
-        # The tags added to the ALB instance.
-        self.tags = tags
-        # The information about the zones.
-        self.zone_infos = zone_infos
-        # The configurations of the instance.
-        self.config = config
-        # The time when the instance was created.
-        self.created_at = created_at
-        # The name of the instance.
-        self.description = description
-        # The access information of the node.
-        self.endpoint_list = endpoint_list
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # The network configurations.
-        self.network_config = network_config
-        # The number of data nodes.
-        self.node_amount = node_amount
         # The configuration information of the node.
-        self.node_spec = node_spec
+        self.extend_configs = extend_configs
+        # The number of data nodes.
+        self.resource_group_id = resource_group_id
+        # The key of the tag.
+        self.tags = tags
+        # The status of the zone. Valid values:
+        # 
+        # *   ISOLATION: offline
+        # *   NORMAL
+        self.zone_infos = zone_infos
         # The billing method of the instance. Valid values:
         # 
         # *   prepaid: subscription
         # *   postpaid: pay-as-you-go
-        self.payment_type = payment_type
+        self.config = config
         # The state of the instance. Four states are supported:
         # 
         # *   Normal: active
         # *   Active: activating
         # *   Freeze: inactive
         # *   Invalid: invalid
-        self.status = status
-        # The time when the instance was last updated.
-        self.updated_at = updated_at
-        # The edition of the dedicated KMS instance.
-        self.version = version
+        self.created_at = created_at
+        # The time when the instance was created.
+        self.description = description
+        # The ID of the zone where the node resides.
+        self.endpoint_list = endpoint_list
+        # The access information of the node.
+        self.instance_id = instance_id
+        # The ID of the virtual private cloud (VPC).
+        self.network_config = network_config
+        # The name of the instance.
+        self.node_amount = node_amount
+        # The specifications of the node.
+        self.node_spec = node_spec
+        # The ID of the resource group to which the instance belongs.
+        self.payment_type = payment_type
         # The ID of the virtual private cloud (VPC) to which the elastic container instances belong.
+        self.status = status
+        # The edition of the dedicated KMS instance.
+        self.updated_at = updated_at
+        # The ID of the instance.
+        self.version = version
+        # The time when the instance was last updated.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -10391,9 +10632,9 @@ class DescribeLogstashResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeLogstashResponseBodyResult = None,
     ):
-        # The ID of the request.
-        self.request_id = request_id
         # Detailed information about the instance.
+        self.request_id = request_id
+        # The configurations of the instance.
         self.result = result
 
     def validate(self):
@@ -10482,36 +10723,30 @@ class DescribePipelineResponseBodyResult(TeaModel):
         queue_type: str = None,
         workers: int = None,
     ):
-        # Pipeline batch delay. Unit: milliseconds.
-        self.batch_delay = batch_delay
-        # The size of the pipeline batch.
-        self.batch_size = batch_size
-        # The specific configuration of the pipeline.
-        self.config = config
-        # The description of the pipeline.
-        self.description = description
         # The time when the pipeline was created.
-        self.gmt_created_time = gmt_created_time
-        # The time when the pipeline was updated.
-        self.gmt_update_time = gmt_update_time
-        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
-        self.pipeline_id = pipeline_id
+        self.batch_delay = batch_delay
+        self.batch_size = batch_size
+        # The description of the pipeline.
+        self.config = config
         # The state of the MPS queue. Valid values:
         # 
         # *   NOT_DEPLOYED: The node is not deployed.
         # *   RUNNING
         # *   DELETED: Deleted. The console does not display this status.
-        self.pipeline_status = pipeline_status
-        # Number of queue checkpoint writes.
-        self.queue_check_point_writes = queue_check_point_writes
+        self.description = description
+        self.gmt_created_time = gmt_created_time
         # The total capacity of the queue in bytes. Unit: MB.
-        self.queue_max_bytes = queue_max_bytes
-        # The type of the queue. Valid values:
-        # 
-        # *   MEMORY: a traditional memory-based queue.
-        # *   PERSISTED: disk-based ACKed queue (persistent queue).
-        self.queue_type = queue_type
+        self.gmt_update_time = gmt_update_time
+        # Number of queue checkpoint writes.
+        self.pipeline_id = pipeline_id
+        self.pipeline_status = pipeline_status
+        # Pipeline batch delay. Unit: milliseconds.
+        self.queue_check_point_writes = queue_check_point_writes
         # The number of pipeline workers.
+        self.queue_max_bytes = queue_max_bytes
+        # The specific configuration of the pipeline.
+        self.queue_type = queue_type
+        # The size of the pipeline batch.
         self.workers = workers
 
     def validate(self):
@@ -10584,9 +10819,12 @@ class DescribePipelineResponseBody(TeaModel):
         request_id: str = None,
         result: DescribePipelineResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The time when the pipeline was updated.
         self.request_id = request_id
-        # The information about the returned pipeline. For more information, see [logstash.yml](https://www.elastic.co/guide/en/logstash/6.7/logstash-settings-file.html).
+        # The type of the queue. Valid values:
+        # 
+        # *   MEMORY: a traditional memory-based queue.
+        # *   PERSISTED: disk-based ACKed queue (persistent queue).
         self.result = result
 
     def validate(self):
@@ -10664,6 +10902,7 @@ class DescribePipelineManagementConfigRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -10695,10 +10934,14 @@ class DescribePipelineManagementConfigResponseBodyResult(TeaModel):
         pipeline_management_type: str = None,
         user_name: str = None,
     ):
+        # The access addresses of the Elasticsearch cluster. Specify each address in the `http://Endpoint of the Elasticsearch cluster:Port number` format.
         self.endpoints = endpoints
+        # The ID of the Elasticsearch cluster.
         self.es_instance_id = es_instance_id
         self.pipeline_ids = pipeline_ids
+        # The pipeline management method. Valid values: Kibana and MULTIPLE_PIPELINE.
         self.pipeline_management_type = pipeline_management_type
+        # The username that is used to access the Elasticsearch cluster.
         self.user_name = user_name
 
     def validate(self):
@@ -10743,7 +10986,9 @@ class DescribePipelineManagementConfigResponseBody(TeaModel):
         request_id: str = None,
         result: DescribePipelineManagementConfigResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -10825,15 +11070,12 @@ class DescribeRegionsResponseBodyResult(TeaModel):
         region_id: str = None,
         status: str = None,
     ):
-        # The endpoint of the region that is exposed in the console.
         self.console_endpoint = console_endpoint
-        # The name of the region.
         self.local_name = local_name
-        # The endpoint of the region.
         self.region_endpoint = region_endpoint
-        # The region ID of the cluster.
+        # The name of the region.
         self.region_id = region_id
-        # The available status of the region.
+        # The endpoint of the region that is exposed in the console.
         self.status = status
 
     def validate(self):
@@ -10878,9 +11120,9 @@ class DescribeRegionsResponseBody(TeaModel):
         request_id: str = None,
         result: List[DescribeRegionsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The available status of the region.
         self.request_id = request_id
-        # The list of returned database shards.
+        # The endpoint of the region.
         self.result = result
 
     def validate(self):
@@ -11202,10 +11444,16 @@ class DescribeXpackMonitorConfigResponseBodyResult(TeaModel):
         pipeline_ids: List[str] = None,
         user_name: str = None,
     ):
+        # Indicates whether the X-Pack Monitoring feature is enabled. Valid values:
+        # 
+        # *   true: enabled
+        # *   false: disabled
         self.enable = enable
         self.endpoints = endpoints
+        # The ID of the associated Elasticsearch cluster.
         self.es_instance_id = es_instance_id
         self.pipeline_ids = pipeline_ids
+        # The username that is used to access the associated Elasticsearch cluster.
         self.user_name = user_name
 
     def validate(self):
@@ -11250,7 +11498,9 @@ class DescribeXpackMonitorConfigResponseBody(TeaModel):
         request_id: str = None,
         result: DescribeXpackMonitorConfigResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -11332,12 +11582,12 @@ class DiagnoseInstanceRequest(TeaModel):
         type: str = None,
         lang: str = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The timestamp when the diagnostic report was generated.
         self.client_token = client_token
         self.diagnose_items = diagnose_items
         self.indices = indices
         self.type = type
-        # en
+        # The returned data.
         self.lang = lang
 
     def validate(self):
@@ -11384,13 +11634,10 @@ class DiagnoseInstanceResponseBodyResult(TeaModel):
         report_id: str = None,
         state: str = None,
     ):
-        # The timestamp when the diagnostic report was generated.
-        self.create_time = create_time
         # The ID of the diagnostic instance.
+        self.create_time = create_time
         self.instance_id = instance_id
-        # The ID of the report.
         self.report_id = report_id
-        # The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
         self.state = state
 
     def validate(self):
@@ -11431,9 +11678,9 @@ class DiagnoseInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: DiagnoseInstanceResponseBodyResult = None,
     ):
-        # The ID of the request.
+        # The ID of the report.
         self.request_id = request_id
-        # The returned data.
+        # The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
         self.result = result
 
     def validate(self):
@@ -11513,6 +11760,7 @@ class EstimatedLogstashRestartTimeRequest(TeaModel):
         force: bool = None,
     ):
         self.body = body
+        # Specifies whether to forcibly restart the cluster. Default value: false.
         self.force = force
 
     def validate(self):
@@ -11545,7 +11793,9 @@ class EstimatedLogstashRestartTimeResponseBodyResult(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The unit.
         self.unit = unit
+        # The estimated restart time.
         self.value = value
 
     def validate(self):
@@ -11578,7 +11828,9 @@ class EstimatedLogstashRestartTimeResponseBody(TeaModel):
         request_id: str = None,
         result: EstimatedLogstashRestartTimeResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -11658,6 +11910,7 @@ class EstimatedRestartTimeRequest(TeaModel):
         force: bool = None,
     ):
         self.body = body
+        # Specifies whether to forcibly restart the cluster. Default value: false.
         self.force = force
 
     def validate(self):
@@ -11690,7 +11943,9 @@ class EstimatedRestartTimeResponseBodyResult(TeaModel):
         unit: str = None,
         value: int = None,
     ):
+        # The unit.
         self.unit = unit
+        # The estimated restart time.
         self.value = value
 
     def validate(self):
@@ -11723,7 +11978,9 @@ class EstimatedRestartTimeResponseBody(TeaModel):
         request_id: str = None,
         result: EstimatedRestartTimeResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -14160,6 +14417,7 @@ class InitializeOperationRoleRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -14193,7 +14451,12 @@ class InitializeOperationRoleResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the service-linked role is created. Valid values:
+        # 
+        # *   true: The service-linked role is created.
+        # *   false: The service-linked role fails to be created.
         self.result = result
 
     def validate(self):
@@ -14270,6 +14533,7 @@ class InstallAckOperatorRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -14303,7 +14567,12 @@ class InstallAckOperatorResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether ES-operator is installed. Valid values:
+        # 
+        # *   true
+        # *   false
         self.result = result
 
     def validate(self):
@@ -14494,7 +14763,6 @@ class InstallLogstashSystemPluginRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
-        # ls-cn-oew1qbgl\*\*\*\*\
         self.client_token = client_token
 
     def validate(self):
@@ -14527,9 +14795,7 @@ class InstallLogstashSystemPluginResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.request_id = request_id
-        # The ID of the request.
         self.result = result
 
     def validate(self):
@@ -14746,6 +15012,7 @@ class InstallUserPluginsResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.result = result
 
@@ -14946,6 +15213,7 @@ class InterruptLogstashTaskRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -14976,9 +15244,16 @@ class InterruptLogstashTaskResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The error code returned. If the API operation is successfully called, this parameter is not returned.
         self.code = code
+        # The error message returned. If the API operation is successfully called, this parameter is not returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the task is suspended. Valid values:
+        # 
+        # *   true
+        # *   false
         self.result = result
 
     def validate(self):
@@ -15064,8 +15339,11 @@ class ListAckClustersRequest(TeaModel):
         size: int = None,
         vpc_id: str = None,
     ):
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
+        # The ID of the virtual private cloud (VPC) to which the ACK clusters belong.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -15104,9 +15382,13 @@ class ListAckClustersResponseBodyResult(TeaModel):
         name: str = None,
         vpc_id: str = None,
     ):
+        # The ID of cluster.
         self.cluster_id = cluster_id
+        # The type of the cluster. The value is fixed as ManagedKubernetes.
         self.cluster_type = cluster_type
+        # The name of the cluster.
         self.name = name
+        # The ID of the VPC to which the cluster belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -15147,7 +15429,9 @@ class ListAckClustersResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListAckClustersResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -15232,7 +15516,9 @@ class ListAckNamespacesRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -15265,7 +15551,9 @@ class ListAckNamespacesResponseBodyResult(TeaModel):
         namespace: str = None,
         status: str = None,
     ):
+        # The namespace of the cluster.
         self.namespace = namespace
+        # The status of the namespace.
         self.status = status
 
     def validate(self):
@@ -15298,7 +15586,9 @@ class ListAckNamespacesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListAckNamespacesResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -15837,7 +16127,7 @@ class ListAllNodeRequest(TeaModel):
         self,
         extended: bool = None,
     ):
-        # false
+        # The Java Virtual Machine (JVM) heap memory usage of the node.
         self.extended = extended
 
     def validate(self):
@@ -15873,20 +16163,19 @@ class ListAllNodeResponseBodyResult(TeaModel):
         port: int = None,
         zone_id: str = None,
     ):
-        # The CPU utilization.
-        # 
-        # >  If the **extended** request parameter is set to **true** and the monitoring information of the nodes in the cluster is being synchronized, the value of the cpuPercent parameter is null. In this case, you need to send a request again after 10 seconds to obtain the value of the cpuPercent parameter.
-        self.cpu_percent = cpu_percent
         # The disk usage.
-        self.disk_used_percent = disk_used_percent
+        self.cpu_percent = cpu_percent
         # The health status of the node. Valid values: GREEN, YELLOW, RED, and GRAY.
+        self.disk_used_percent = disk_used_percent
         self.health = health
-        # The Java Virtual Machine (JVM) heap memory usage of the node.
-        self.heap_percent = heap_percent
         # The IP address of the node.
+        self.heap_percent = heap_percent
+        # The port that is used to connect to the node.
         self.host = host
-        # The 1-minute load of the node.
         self.load_one_m = load_one_m
+        # The 1-minute load of the node.
+        self.node_type = node_type
+        self.port = port
         # The type of the nodes. Valid values:
         # 
         # *   MASTER: dedicated master node
@@ -15894,10 +16183,6 @@ class ListAllNodeResponseBodyResult(TeaModel):
         # *   WORKER_WARM: warm node
         # *   COORDINATING: client node
         # *   KIBANA: Kibana node
-        self.node_type = node_type
-        # The port that is used to connect to the node.
-        self.port = port
-        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -15958,9 +16243,11 @@ class ListAllNodeResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListAllNodeResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The zone ID of the node.
         self.request_id = request_id
-        # The return results.
+        # The CPU utilization.
+        # 
+        # >  If the **extended** request parameter is set to **true** and the monitoring information of the nodes in the cluster is being synchronized, the value of the cpuPercent parameter is null. In this case, you need to send a request again after 10 seconds to obtain the value of the cpuPercent parameter.
         self.result = result
 
     def validate(self):
@@ -16492,9 +16779,13 @@ class ListAvailableEsInstanceIdsResponseBodyResult(TeaModel):
         es_instance_id: str = None,
         kibana_endpoint: str = None,
     ):
+        # The name of the Elasticsearch cluster.
         self.description = description
+        # The address that is used to access the Elasticsearch cluster over the Internet.
         self.endpoint = endpoint
+        # The ID of the Elasticsearch cluster.
         self.es_instance_id = es_instance_id
+        # The address that is used to access the Kibana console of the Elasticsearch cluster over the Internet.
         self.kibana_endpoint = kibana_endpoint
 
     def validate(self):
@@ -16535,7 +16826,9 @@ class ListAvailableEsInstanceIdsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListAvailableEsInstanceIdsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -16624,11 +16917,20 @@ class ListCollectorsRequest(TeaModel):
         size: int = None,
         source_type: str = None,
     ):
+        # The ID of the resource with which the shipper is associated.
         self.instance_id = instance_id
+        # The name of the shipper.
         self.name = name
+        # The number of the page to return. Valid values: 1 to 200. Default value: 1.
         self.page = page
+        # The ID of the shipper.
         self.res_id = res_id
+        # The number of entries to return on each page. Valid values: 1 to 500. Default value: 20.
         self.size = size
+        # The type of the machine on which the shipper is deployed. If you leave this parameter empty, shippers deployed on all types of machines are returned. Valid values:
+        # 
+        # *   ECS
+        # *   ACK
         self.source_type = source_type
 
     def validate(self):
@@ -16676,6 +16978,7 @@ class ListCollectorsResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
+        # The total number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -16704,7 +17007,9 @@ class ListCollectorsResponseBodyResultConfigs(TeaModel):
         content: str = None,
         file_name: str = None,
     ):
+        # The content of the file.
         self.content = content
+        # The name of the file.
         self.file_name = file_name
 
     def validate(self):
@@ -16737,7 +17042,14 @@ class ListCollectorsResponseBodyResultExtendConfigsMachines(TeaModel):
         agent_status: str = None,
         instance_id: str = None,
     ):
+        # The status of the shipper on the ECS instance. Valid values:
+        # 
+        # *   heartOk
+        # *   heartLost
+        # *   uninstalled
+        # *   failed
         self.agent_status = agent_status
+        # The IDs of the ECS instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16782,19 +17094,42 @@ class ListCollectorsResponseBodyResultExtendConfigs(TeaModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The configuration type. Valid values:
+        # 
+        # *   collectorTargetInstance
+        # *   collectorDeployMachine
+        # *   collectorElasticsearchForKibana
         self.config_type = config_type
+        # Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance** and the value of **instanceType** is **elasticsearch**. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_monitoring = enable_monitoring
+        # The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
         self.group_id = group_id
+        # The internal endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
         self.host = host
         self.hosts = hosts
+        # The ID of the resource with which the shipper is associated. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
         self.instance_id = instance_id
+        # The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
         self.instance_type = instance_type
+        # The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
         self.kibana_host = kibana_host
+        # The information about the ECS instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ECSInstanceId**.
         self.machines = machines
+        # The transmission protocol, which must be the same as the access protocol of the resource specified in the output configuration part of the shipper. Valid values: HTTP and HTTPS. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
         self.protocol = protocol
+        # The number of pods from which data is successfully collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
         self.success_pods_count = success_pods_count
+        # The total number of pods from which data is collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
         self.total_pods_count = total_pods_count
+        # The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+        # 
+        # *   ECSInstanceId
+        # *   ACKCluster
         self.type = type
+        # The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -16895,17 +17230,35 @@ class ListCollectorsResponseBodyResult(TeaModel):
         vpc_id: str = None,
     ):
         self.collector_paths = collector_paths
+        # The information about the configuration file of the shipper.
         self.configs = configs
+        # Indicates whether a dry run is performed. Valid values:
+        # 
+        # *   true
+        # *   false
         self.dry_run = dry_run
+        # The extended configurations of the shipper.
         self.extend_configs = extend_configs
+        # The time when the shipper was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the shipper was updated.
         self.gmt_update_time = gmt_update_time
+        # The name of the shipper.
         self.name = name
+        # The account ID.
         self.owner_id = owner_id
+        # The ID of the shipper.
         self.res_id = res_id
+        # The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
+        # The version of the shipper.
         self.res_version = res_version
+        # The status of the shipper. Valid values:
+        # 
+        # *   activating
+        # *   active
         self.status = status
+        # The ID of the virtual private cloud (VPC) where the shipper resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -17000,8 +17353,11 @@ class ListCollectorsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListCollectorsResponseBodyResult] = None,
     ):
+        # The header of the response.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -18176,8 +18532,22 @@ class ListDefaultCollectorConfigurationsRequest(TeaModel):
         res_version: str = None,
         source_type: str = None,
     ):
+        # The shipper type. Valid values:
+        # 
+        # *   fileBeat
+        # *   metricBeat
+        # *   heartBeat
+        # *   auditBeat
         self.res_type = res_type
+        # The shipper version. The shipper version varies based on the type of the machine on which the shipper is deployed. Valid values:
+        # 
+        # *   ECS: 6.8.5\_with_community
+        # *   ACK: 6.8.13\_with_community
         self.res_version = res_version
+        # The type of the machine on which the shipper is deployed. If you do not configure this parameter, the default configuration files of shippers deployed on all types of machines are returned. Valid values:
+        # 
+        # *   ECS: ECS instance
+        # *   ACK: ACK cluster
         self.source_type = source_type
 
     def validate(self):
@@ -18214,7 +18584,9 @@ class ListDefaultCollectorConfigurationsResponseBodyResult(TeaModel):
         content: str = None,
         file_name: str = None,
     ):
+        # The content of the configuration file.
         self.content = content
+        # The name of the configuration file.
         self.file_name = file_name
 
     def validate(self):
@@ -18247,7 +18619,9 @@ class ListDefaultCollectorConfigurationsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListDefaultCollectorConfigurationsResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -18589,6 +18963,7 @@ class ListDiagnoseIndicesRequest(TeaModel):
         self,
         lang: str = None,
     ):
+        # The language. Multiple languages are supported.
         self.lang = lang
 
     def validate(self):
@@ -18617,6 +18992,7 @@ class ListDiagnoseIndicesResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The request ID.
         self.request_id = request_id
         self.result = result
 
@@ -18699,19 +19075,19 @@ class ListDiagnoseReportRequest(TeaModel):
         start_time: int = None,
         trigger: str = None,
     ):
-        # true
-        self.detail = detail
-        # 1595174399999
-        self.end_time = end_time
-        # spanish
-        self.lang = lang
-        # 1
-        self.page = page
-        # 20
-        self.size = size
-        # 1594569600000
-        self.start_time = start_time
         # SYSTEM
+        self.detail = detail
+        # 1
+        self.end_time = end_time
+        # 1594569600000
+        self.lang = lang
+        # 20
+        self.page = page
+        # true
+        self.size = size
+        # 1595174399999
+        self.start_time = start_time
+        # The ID of the request.
         self.trigger = trigger
 
     def validate(self):
@@ -18763,7 +19139,7 @@ class ListDiagnoseReportResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The returned results.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -18795,19 +19171,14 @@ class ListDiagnoseReportResponseBodyResultDiagnoseItemsDetail(TeaModel):
         suggest: str = None,
         type: str = None,
     ):
-        # The description of the diagnostic item.
-        self.desc = desc
-        # The full name of the diagnostic item.
-        self.name = name
         # The diagnosis.
-        self.result = result
+        self.desc = desc
+        # The description of the diagnostic item.
+        self.name = name
         # The suggestion for the diagnosis.
+        self.result = result
         self.suggest = suggest
-        # The type of the diagnostic result. Valid values:
-        # 
-        # *   TEXT: text description
-        # *   CONSOLE_API: console-triggered
-        # *   ES_API: API triggered
+        # The full name of the diagnostic item.
         self.type = type
 
     def validate(self):
@@ -18853,11 +19224,15 @@ class ListDiagnoseReportResponseBodyResultDiagnoseItems(TeaModel):
         health: str = None,
         item: str = None,
     ):
-        # The details of the diagnostic item.
+        # The type of the diagnostic result. Valid values:
+        # 
+        # *   TEXT: text description
+        # *   CONSOLE_API: console-triggered
+        # *   ES_API: API triggered
         self.detail = detail
-        # The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
+        # The details of the diagnostic item.
         self.health = health
-        # The name of the item.
+        # The health of the diagnostic item. Supported: GREEN, YELLOW, RED, and UNKNOWN.
         self.item = item
 
     def validate(self):
@@ -18901,23 +19276,19 @@ class ListDiagnoseReportResponseBodyResult(TeaModel):
         state: str = None,
         trigger: str = None,
     ):
-        # The timestamp when the report was created.
-        self.create_time = create_time
-        # Reports the list of diagnostic item information.
-        self.diagnose_items = diagnose_items
-        # The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
-        self.health = health
-        # The ID of the instance for diagnosis.
-        self.instance_id = instance_id
         # The ID of the report.
-        self.report_id = report_id
+        self.create_time = create_time
+        # The name of the item.
+        self.diagnose_items = diagnose_items
+        # Reports the list of diagnostic item information.
+        self.health = health
+        # The overall health of the cluster in the report. Supported: GREEN, YELLOW, RED, and UNKNOWN.
+        self.instance_id = instance_id
         # The diagnosis status. Valid values: Supported: SUCCESS, FAILED, and RUNNING.
+        self.report_id = report_id
+        # The ID of the instance for diagnosis.
         self.state = state
-        # The trigger mode of health diagnostics. Valid values:
-        # 
-        # *   SYSTEM: The system is automatically triggered.
-        # *   INNER: internal trigger
-        # *   USER: manually triggered by the user
+        # The timestamp when the report was created.
         self.trigger = trigger
 
     def validate(self):
@@ -18979,11 +19350,15 @@ class ListDiagnoseReportResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListDiagnoseReportResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The total number of entries returned.
         self.headers = headers
-        # The ID of the request.
+        # The header of the response.
         self.request_id = request_id
-        # The returned results.
+        # The trigger mode of health diagnostics. Valid values:
+        # 
+        # *   SYSTEM: The system is automatically triggered.
+        # *   INNER: internal trigger
+        # *   USER: manually triggered by the user
         self.result = result
 
     def validate(self):
@@ -19079,11 +19454,17 @@ class ListDiagnoseReportIdsRequest(TeaModel):
         start_time: int = None,
         trigger: str = None,
     ):
+        # The end of the time range to query. The value must be a UNIX timestamp.
         self.end_time = end_time
+        # The language of the reports.
         self.lang = lang
+        # The number of the page to return. Valid values: 1 to 200. Default value: 1.
         self.page = page
+        # The number of entries to return on each page. Valid values: 1 to 500. Default value: 10.
         self.size = size
+        # The beginning of the time range to query. The value must be a UNIX timestamp.
         self.start_time = start_time
+        # The method that is used to trigger health diagnostics. Valid values: SYSTEM, INNER, and USER.
         self.trigger = trigger
 
     def validate(self):
@@ -19131,6 +19512,7 @@ class ListDiagnoseReportIdsResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
+        # The total number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -19160,7 +19542,9 @@ class ListDiagnoseReportIdsResponseBody(TeaModel):
         request_id: str = None,
         result: List[str] = None,
     ):
+        # The header of the response.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
         self.result = result
 
@@ -19593,7 +19977,14 @@ class ListDictsRequest(TeaModel):
         analyzer_type: str = None,
         name: str = None,
     ):
+        # The type of the dictionary. Valid values:
+        # 
+        # *   IK: IK dictionary after a standard update
+        # *   IK_HOT: IK dictionary after a rolling update
+        # *   SYNONYMS: synonym dictionary
+        # *   ALIWS: Alibaba Cloud dictionary
         self.analyzer_type = analyzer_type
+        # The name of the dictionary file.
         self.name = name
 
     def validate(self):
@@ -19625,6 +20016,7 @@ class ListDictsResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
+        # The total number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -19656,10 +20048,18 @@ class ListDictsResponseBodyResult(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The link that is used to download the dictionary over the Internet. The link is valid for 90s.
         self.download_url = download_url
+        # The size of the dictionary file. Unit: byte.
         self.file_size = file_size
+        # The name of the dictionary file.
         self.name = name
+        # The source type.
         self.source_type = source_type
+        # The type of the IK dictionary. Valid values:
+        # 
+        # *   MAIN: main dictionary
+        # *   STOP: stopword list
         self.type = type
 
     def validate(self):
@@ -19705,8 +20105,11 @@ class ListDictsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListDictsResponseBodyResult] = None,
     ):
+        # The header of the response.
         self.headers = headers
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -19802,17 +20205,17 @@ class ListEcsInstancesRequest(TeaModel):
         tags: str = None,
         vpc_id: str = None,
     ):
-        # \["i-bp13y63575oypr9d\*\*\*\*","i-bp1gyhphjaj73jsr\*\*\*\*"]
-        self.ecs_instance_ids = ecs_instance_ids
         # test
-        self.ecs_instance_name = ecs_instance_name
-        # 1
-        self.page = page
-        # 10
-        self.size = size
+        self.ecs_instance_ids = ecs_instance_ids
         # \[{ "tagKey":"a","tagValue":"b"}]
-        self.tags = tags
+        self.ecs_instance_name = ecs_instance_name
+        # 10
+        self.page = page
+        # \["i-bp13y63575oypr9d\*\*\*\*","i-bp1gyhphjaj73jsr\*\*\*\*"]
+        self.size = size
         # vpc-bp16k1dvzxtmagcva\*\*\*\*\
+        self.tags = tags
+        # The ID of the request.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -19860,7 +20263,7 @@ class ListEcsInstancesResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The number of returned records.
+        # The returned data.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -19889,9 +20292,9 @@ class ListEcsInstancesResponseBodyResultCollectorsConfigs(TeaModel):
         content: str = None,
         file_name: str = None,
     ):
-        # The content of the file.
-        self.content = content
         # The name of the file.
+        self.content = content
+        # The information about the extended parameter.
         self.file_name = file_name
 
     def validate(self):
@@ -19924,14 +20327,9 @@ class ListEcsInstancesResponseBodyResultCollectorsExtendConfigsMachines(TeaModel
         agent_status: str = None,
         instance_id: str = None,
     ):
-        # The status of each crawl on the ECS instance. Valid values:
-        # 
-        # *   heartOk: The heartbeat is normal.
-        # *   heartLost: The heartbeat is abnormal.
-        # *   uninstalled
-        # *   failed: The installation failed.
-        self.agent_status = agent_status
         # The IDs of ECS instances.
+        self.agent_status = agent_status
+        # The list of access addresses of the specified instance for the output of the collector. Displayed when the **configType** is **collectorTargetInstance**.
         self.instance_id = instance_id
 
     def validate(self):
@@ -19972,35 +20370,37 @@ class ListEcsInstancesResponseBodyResultCollectorsExtendConfigs(TeaModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The instance type specified by Collector Output. Supports Elasticsearch and Logstash. Displayed when the **configType** is **collectorTargetInstance**.
+        self.config_type = config_type
+        # The ID of the host group. Displayed when the **configType** is **collectorDeployMachine**.
+        self.enable_monitoring = enable_monitoring
         # The configuration type. Valid values:
         # 
         # *   collectorTargetInstance: Collector Output
         # *   collectorDeployMachine: Collector Deployment Machine
         # *   Collector Elasticsearch ForKibana: Elasticsearch instance information that supports the Kibana dashboard
-        self.config_type = config_type
-        # Whether Monitoring is enabled. This field is displayed when the **configType** is **collectorTargetInstance** and the **instanceType** is **Elasticsearch**. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.enable_monitoring = enable_monitoring
-        # The ID of the host group. Displayed when the **configType** is **collectorDeployMachine**.
         self.group_id = group_id
-        # The list of access addresses of the specified instance for the output of the collector. Displayed when the **configType** is **collectorTargetInstance**.
+        # The path in which Filebeat is collected.
         self.hosts = hosts
-        # The ID of the instance that is associated with the crawker. If the **configType** parameter is set to **collectorTargetInstance**, the value of this parameter is the ID of the output collector. If the **configType** parameter is set to **collectorDeployMachines** and the **type** parameter is set to **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
-        self.instance_id = instance_id
-        # The instance type specified by Collector Output. Supports Elasticsearch and Logstash. Displayed when the **configType** is **collectorTargetInstance**.
-        self.instance_type = instance_type
         # The list of ECS instances on which the collector is deployed. Displayed when the **configType** is **collectorDeployMachines** and the **type** is **ECSInstanceId**.
-        self.machines = machines
+        self.instance_id = instance_id
         # The transmission protocol, which must be the same as the access protocol of the instance specified by Output. HTTP and HTTPS. Displayed when the **configType** is **collectorTargetInstance**.
+        self.instance_type = instance_type
+        # The status of each crawl on the ECS instance. Valid values:
+        # 
+        # *   heartOk: The heartbeat is normal.
+        # *   heartLost: The heartbeat is abnormal.
+        # *   uninstalled
+        # *   failed: The installation failed.
+        self.machines = machines
+        # The username that is used to access the instance. The default value is elastic. Displayed when the **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.protocol = protocol
+        # The ID of the instance that is associated with the crawker. If the **configType** parameter is set to **collectorTargetInstance**, the value of this parameter is the ID of the output collector. If the **configType** parameter is set to **collectorDeployMachines** and the **type** parameter is set to **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
+        self.type = type
         # The type of the machine on which the Collector is deployed. This parameter is displayed when the **configType** is **collectorDeployMachine**. Valid values:
         # 
         # *   ECSInstanceId:ECS
         # *   ACKCluster: Container Kubernetes
-        self.type = type
-        # The username that is used to access the instance. The default value is elastic. Displayed when the **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -20084,37 +20484,39 @@ class ListEcsInstancesResponseBodyResultCollectors(TeaModel):
         status: str = None,
         vpc_id: str = None,
     ):
-        # The path in which Filebeat is collected.
         self.collector_paths = collector_paths
-        # The configuration file information of the collector.
+        # The content of the file.
         self.configs = configs
-        # Specifies whether to verify and create a crawer. Valid values:
-        # 
-        # *   true: only verifies and does not create a
-        # *   false: verifies and creates a
-        self.dry_run = dry_run
-        # The information about the extended parameter.
-        self.extend_configs = extend_configs
-        # The time when the crawl collector was created.
-        self.gmt_created_time = gmt_created_time
-        # The time when the collector was updated.
-        self.gmt_update_time = gmt_update_time
-        # The name of the collector.
-        self.name = name
         # The ID of the Alibaba Cloud account.
-        self.owner_id = owner_id
-        # The ID of the collector instance.
-        self.res_id = res_id
-        # The type of the collector. FileBeat, metricBeat, heartBeat, and auditBeat are supported.
-        self.res_type = res_type
-        # The version of the collector. If the machine type of the collector is ECS, only **6.8.5\_with_community** is supported.
-        self.res_version = res_version
+        self.dry_run = dry_run
+        # Whether Monitoring is enabled. This field is displayed when the **configType** is **collectorTargetInstance** and the **instanceType** is **Elasticsearch**. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.extend_configs = extend_configs
         # The status of the collector. Valid values:
         # 
         # *   activating: The project is taking effect.
         # *   active: The instance has taken effect.
-        self.status = status
+        self.gmt_created_time = gmt_created_time
+        # Specifies whether to verify and create a crawer. Valid values:
+        # 
+        # *   true: only verifies and does not create a
+        # *   false: verifies and creates a
+        self.gmt_update_time = gmt_update_time
+        # The configuration file information of the collector.
+        self.name = name
         # The ID of the Virtual Private Cloud to which the collector belongs.
+        self.owner_id = owner_id
+        # The time when the collector was updated.
+        self.res_id = res_id
+        # The version of the collector. If the machine type of the collector is ECS, only **6.8.5\_with_community** is supported.
+        self.res_type = res_type
+        # The time when the crawl collector was created.
+        self.res_version = res_version
+        # The name of the collector.
+        self.status = status
+        # The type of the collector. FileBeat, metricBeat, heartBeat, and auditBeat are supported.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -20208,12 +20610,9 @@ class ListEcsInstancesResponseBodyResultIpAddress(TeaModel):
         host: str = None,
         ip_type: str = None,
     ):
-        # The IP address of the endpoint.
+        # The information about the collectors on the ECS instance.
         self.host = host
-        # The type of the IP address that is used by the instance. Valid values:
-        # 
-        # *   public: public endpoint
-        # *   private: private network address
+        # The IP address of the endpoint.
         self.ip_type = ip_type
 
     def validate(self):
@@ -20252,32 +20651,32 @@ class ListEcsInstancesResponseBodyResult(TeaModel):
         status: str = None,
         tags: str = None,
     ):
-        # Cloud Assistant the installation status, support:
-        # 
-        # *   true: The Prometheus agent was installed.
-        # *   false: The Prometheus agent was not installed.
-        self.cloud_assistant_status = cloud_assistant_status
-        # The information about the collectors on the ECS instance.
-        self.collectors = collectors
-        # The ID of the ECS instance.
-        self.ecs_instance_id = ecs_instance_id
         # The name of the ECS instance.
+        self.cloud_assistant_status = cloud_assistant_status
+        # The ID of the collector instance.
+        self.collectors = collectors
+        # The tags of the ECS instance.
+        self.ecs_instance_id = ecs_instance_id
+        # The ID of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
-        # The IP address of the ECS instance.
-        self.ip_address = ip_address
-        # The operating system type of the ECS instance. Valid values:
+        # The type of the IP address that is used by the instance. Valid values:
         # 
-        # *   windows:Windows operating system
-        # *   linux:Linux operating system
-        self.os_type = os_type
+        # *   public: public endpoint
+        # *   private: private network address
+        self.ip_address = ip_address
         # The status of the ECS instance. Valid values:
         # 
         # *   running: The master instance is running
         # *   starting
         # *   stopping: The task is being stopped.
         # *   stopped: The node is stopped.
+        self.os_type = os_type
+        # The IP address of the ECS instance.
         self.status = status
-        # The tags of the ECS instance.
+        # The operating system type of the ECS instance. Valid values:
+        # 
+        # *   windows:Windows operating system
+        # *   linux:Linux operating system
         self.tags = tags
 
     def validate(self):
@@ -20352,11 +20751,14 @@ class ListEcsInstancesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListEcsInstancesResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The number of returned records.
         self.headers = headers
-        # The ID of the request.
+        # The header of the response.
         self.request_id = request_id
-        # The returned data.
+        # Cloud Assistant the installation status, support:
+        # 
+        # *   true: The Prometheus agent was installed.
+        # *   false: The Prometheus agent was not installed.
         self.result = result
 
     def validate(self):
@@ -20450,9 +20852,13 @@ class ListExtendfilesResponseBodyResult(TeaModel):
         name: str = None,
         source_type: str = None,
     ):
+        # The path of the driver file.
         self.file_path = file_path
+        # The size of the driver file.
         self.file_size = file_size
+        # The name of the driver file.
         self.name = name
+        # The source type.
         self.source_type = source_type
 
     def validate(self):
@@ -20493,7 +20899,9 @@ class ListExtendfilesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListExtendfilesResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -20954,27 +21362,30 @@ class ListInstanceRequest(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # aliyunes_test1
-        self.description = description
-        # 6.7\_with_X-Pack
-        self.es_version = es_version
-        # advanced
-        self.instance_category = instance_category
-        # es-cn-v641a0ta3000g\*\*\*\*\
-        self.instance_id = instance_id
-        # 1
-        self.page = page
-        # postpaid
-        self.payment_type = payment_type
-        # rg-aekzvowej3i\*\*\*\*\
-        self.resource_group_id = resource_group_id
-        # 10
-        self.size = size
-        # \[{"tagKey":"key1","tagValue":"value1"}]
-        self.tags = tags
-        # vpc-bp16k1dvzxtmagcva\*\*\*\*\
-        self.vpc_id = vpc_id
         # cn-hangzhou-i
+        self.description = description
+        # advanced
+        self.es_version = es_version
+        # The number of data nodes.
+        self.instance_category = instance_category
+        # postpaid
+        self.instance_id = instance_id
+        # \[{"tagKey":"key1","tagValue":"value1"}]
+        self.page = page
+        # Specifies whether to include dedicated master nodes. Valid values:
+        # 
+        # *   true: The files contain data that is dumped to the IA storage medium.
+        # *   false: The files do not contain data that is dumped to the IA storage medium.
+        self.payment_type = payment_type
+        # The ID of the request.
+        self.resource_group_id = resource_group_id
+        # vpc-bp16k1dvzxtmagcva\*\*\*\*\
+        self.size = size
+        # The header of the response.
+        self.tags = tags
+        # The number of entries returned per page.
+        self.vpc_id = vpc_id
+        # The returned data.
         self.zone_id = zone_id
 
     def validate(self):
@@ -21042,7 +21453,10 @@ class ListInstanceResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The number of entries returned per page.
+        # Specifies whether to include dedicated master nodes (obsolete). Valid values:
+        # 
+        # *   true: The files contain data that is dumped to the IA storage medium.
+        # *   false: The files do not contain data that is dumped to the IA storage medium.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -21073,13 +21487,20 @@ class ListInstanceResponseBodyResultClientNodeConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of nodes.
-        self.amount = amount
         # The size of the node storage space. Unit: GB.
+        self.amount = amount
+        # Specifies whether to enable disk encryption for the node. Valid values:
+        # 
+        # *   true: enables instant image cache.
+        # *   false: disables reuse of image cache layers.
         self.disk = disk
-        # The storage type of the node. Only ultra disks (cloud_efficiency) are supported.
+        # The storage type of the node. Valid values:
+        # 
+        # *   cloud_ssd: SSD.
+        # *   cloud_essd: ESSD.
+        # *   cloud_efficiency: ultra disk
         self.disk_type = disk_type
-        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        # The number of nodes.
         self.spec = spec
 
     def validate(self):
@@ -21127,16 +21548,9 @@ class ListInstanceResponseBodyResultElasticDataNodeConfiguration(TeaModel):
         self.amount = amount
         # The size of the node storage space. Unit: GB.
         self.disk = disk
-        # Specifies whether to enable disk encryption for the node. Valid values:
-        # 
-        # *   true: enables instant image cache.
-        # *   false: disables reuse of image cache layers.
+        # The storage type of the node.
         self.disk_encryption = disk_encryption
-        # The storage type of the node. Valid values:
-        # 
-        # *   cloud_ssd: SSD.
-        # *   cloud_essd: ESSD.
-        # *   cloud_efficiency: ultra disk
+        # The configuration of dedicated master nodes.
         self.disk_type = disk_type
         # The instance type of the node. For more information, see [Specifications](~~271718~~).
         self.spec = spec
@@ -21185,13 +21599,13 @@ class ListInstanceResponseBodyResultKibanaConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of nodes.
-        self.amount = amount
         # The size of the node storage space. Unit: GB.
+        self.amount = amount
+        # The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
         self.disk = disk
-        # The storage type of the node.
+        # The network configurations.
         self.disk_type = disk_type
-        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        # The number of nodes.
         self.spec = spec
 
     def validate(self):
@@ -21234,13 +21648,13 @@ class ListInstanceResponseBodyResultMasterConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of nodes.
+        # The network type. Only Virtual Private Cloud (VPC) is supported.
         self.amount = amount
-        # The size of the node storage space. Unit: GB.
+        # The vSwitch ID of the cluster.
         self.disk = disk
-        # The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
+        # The configuration of data nodes.
         self.disk_type = disk_type
-        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        # The zone where the cluster resides.
         self.spec = spec
 
     def validate(self):
@@ -21323,13 +21737,19 @@ class ListInstanceResponseBodyResultNetworkConfig(TeaModel):
         vswitch_id: str = None,
         white_ip_group_list: List[ListInstanceResponseBodyResultNetworkConfigWhiteIpGroupList] = None,
     ):
-        # The network type. Only Virtual Private Cloud (VPC) is supported.
+        # The storage type of the node. Valid values:
+        # 
+        # *   cloud_ssd: standard SSD
+        # *   cloud_efficiency: ultra disk
         self.type = type
-        # The VPC ID of the cluster.
+        # The storage space of the node. Unit: GB.
         self.vpc_id = vpc_id
-        # The zone where the cluster resides.
+        # Specifies whether to use disk encryption. Valid values:
+        # 
+        # *   true
+        # *   false
         self.vs_area = vs_area
-        # The vSwitch ID of the cluster.
+        # The performance level of the ESSD. This parameter is required when the diskType parameter is set to cloud_essd. Valid values: PL1, PL2, and PL3.
         self.vswitch_id = vswitch_id
         self.white_ip_group_list = white_ip_group_list
 
@@ -21386,21 +21806,10 @@ class ListInstanceResponseBodyResultNodeSpec(TeaModel):
         performance_level: str = None,
         spec: str = None,
     ):
-        # The storage space of the node. Unit: GB.
         self.disk = disk
-        # Specifies whether to use disk encryption. Valid values:
-        # 
-        # *   true
-        # *   false
         self.disk_encryption = disk_encryption
-        # The storage type of the node. Valid values:
-        # 
-        # *   cloud_ssd: standard SSD
-        # *   cloud_efficiency: ultra disk
         self.disk_type = disk_type
-        # The performance level of the ESSD. This parameter is required when the diskType parameter is set to cloud_essd. Valid values: PL1, PL2, and PL3.
         self.performance_level = performance_level
-        # The instance type of the node. For more information, see [Specifications](~~271718~~).
         self.spec = spec
 
     def validate(self):
@@ -21445,9 +21854,9 @@ class ListInstanceResponseBodyResultTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The size of the node storage space. Unit: GB.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The storage type of the node. Only ultra disks (cloud_efficiency) are supported.
         self.tag_value = tag_value
 
     def validate(self):
@@ -21505,73 +21914,61 @@ class ListInstanceResponseBodyResult(TeaModel):
         updated_at: str = None,
         vpc_instance_id: str = None,
     ):
-        # Specifies whether to include dedicated master nodes. Valid values:
-        # 
-        # *   true: The files contain data that is dumped to the IA storage medium.
-        # *   false: The files do not contain data that is dumped to the IA storage medium.
-        self.advanced_dedicate_master = advanced_dedicate_master
-        # Coordination node configuration.
-        self.client_node_configuration = client_node_configuration
-        # The time when the node is created.
-        self.created_at = created_at
-        # Specifies whether to include dedicated master nodes (obsolete). Valid values:
-        # 
-        # *   true: The files contain data that is dumped to the IA storage medium.
-        # *   false: The files do not contain data that is dumped to the IA storage medium.
-        self.dedicate_master = dedicate_master
-        # The name of the instance.
-        self.description = description
-        # The configurations of elastic data nodes.
-        self.elastic_data_node_configuration = elastic_data_node_configuration
-        # The edition of the dedicated KMS instance.
-        self.es_version = es_version
-        # The configuration of cluster extension parameters.
-        self.extend_configs = extend_configs
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # Specifies whether to deploy the new architecture.
-        self.is_new_deployment = is_new_deployment
-        # The configuration of Kibana nodes.
-        self.kibana_configuration = kibana_configuration
-        self.kibana_ipwhitelist = kibana_ipwhitelist
-        self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
-        # The configuration of dedicated master nodes.
-        self.master_configuration = master_configuration
-        # The network configurations.
-        self.network_config = network_config
-        # The number of data nodes.
-        self.node_amount = node_amount
-        # The configuration of data nodes.
-        self.node_spec = node_spec
         # The billing method of the instance. Valid values:
         # 
         # *   **prepaid**: subscription
         # *   **postpaid**: pay-as-you-go
-        self.payment_type = payment_type
+        self.advanced_dedicate_master = advanced_dedicate_master
+        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        self.client_node_configuration = client_node_configuration
         # The status of the pay-as-you-go service that is overlaid on a subscription instance. Valid values:
         # 
         # *   **active**: normal
         # *   **closed**: Close
         # *   **indebt**: Overdue payments are frozen
+        self.created_at = created_at
+        # The edition of the dedicated KMS instance.
+        self.dedicate_master = dedicate_master
+        # The key of the tag.
+        self.description = description
+        # The configuration of Kibana nodes.
+        self.elastic_data_node_configuration = elastic_data_node_configuration
+        # The value of the tag.
+        self.es_version = es_version
+        # The configurations of elastic data nodes.
+        self.extend_configs = extend_configs
+        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        self.instance_id = instance_id
+        # The configuration of cluster extension parameters.
+        self.is_new_deployment = is_new_deployment
+        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        self.kibana_configuration = kibana_configuration
+        self.kibana_ipwhitelist = kibana_ipwhitelist
+        self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
+        # The VPC ID of the cluster.
+        self.master_configuration = master_configuration
+        # The instance type of the node. For more information, see [Specifications](~~271718~~).
+        self.network_config = network_config
+        # The ID of the resource group.
+        self.node_amount = node_amount
+        # The VPC ID of the cluster.
+        self.node_spec = node_spec
+        # The time when the instance was last updated.
+        self.payment_type = payment_type
+        # The tags of the instance. Each tag is a key-value pair.
         self.postpaid_service_status = postpaid_service_status
         self.private_network_ip_white_list = private_network_ip_white_list
         self.public_ip_whitelist = public_ip_whitelist
-        # The ID of the resource group.
+        # The ID of the instance.
         self.resource_group_id = resource_group_id
-        # Indicates whether it is a service VPC.
+        # Specifies whether to deploy the new architecture.
         self.service_vpc = service_vpc
-        # The status of the instance. Valid values:
-        # 
-        # *   active: normal
-        # *   activating: taking effect
-        # *   inactive: frozen
-        # *   invalid: invalid
+        # The name of the instance.
         self.status = status
-        # The tags of the instance. Each tag is a key-value pair.
+        # The number of nodes.
         self.tags = tags
-        # The time when the instance was last updated.
+        # Coordination node configuration.
         self.updated_at = updated_at
-        # The VPC ID of the cluster.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -21731,11 +22128,16 @@ class ListInstanceResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListInstanceResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The status of the instance. Valid values:
+        # 
+        # *   active: normal
+        # *   activating: taking effect
+        # *   inactive: frozen
+        # *   invalid: invalid
         self.headers = headers
-        # The ID of the request.
+        # The time when the node is created.
         self.request_id = request_id
-        # The returned data.
+        # Indicates whether it is a service VPC.
         self.result = result
 
     def validate(self):
@@ -22339,15 +22741,15 @@ class ListInstanceIndicesRequest(TeaModel):
     ):
         # false
         self.all = all
-        # false
-        self.is_managed = is_managed
-        # false
-        self.is_openstore = is_openstore
-        # log-0001
-        self.name = name
-        # 1
-        self.page = page
         # 15
+        self.is_managed = is_managed
+        # The ID of the request.
+        self.is_openstore = is_openstore
+        # 1
+        self.name = name
+        # The header of the response.
+        self.page = page
+        # The total size of the index in Cloud Hosting. Unit: bytes.
         self.size = size
 
     def validate(self):
@@ -22398,13 +22800,13 @@ class ListInstanceIndicesResponseBodyHeaders(TeaModel):
         x_osscount: int = None,
         x_ossstorage_size: int = None,
     ):
-        # The total number of indexes in Cloud Hosting.
+        # The details of the index list.
         self.x_managed_count = x_managed_count
-        # The total size of the index in Cloud Hosting. Unit: bytes.
-        self.x_managed_storage_size = x_managed_storage_size
         # The total number of indexes in the OpenStore cold phase.
+        self.x_managed_storage_size = x_managed_storage_size
+        # The time when the index list was queried.
         self.x_osscount = x_osscount
-        # The total size of the OpenStore cold stage index for this instance. Unit: bytes.
+        # This parameter is deprecated.
         self.x_ossstorage_size = x_ossstorage_size
 
     def validate(self):
@@ -22451,26 +22853,16 @@ class ListInstanceIndicesResponseBodyResult(TeaModel):
         phase: str = None,
         size: int = None,
     ):
-        # The time when the index list was queried.
+        # The name of the Elasticsearch index.
         self.create_time = create_time
-        # The running status of the index. The following three statuses are supported:
-        # 
-        # *   green: healthy.
-        # *   yellow: alerts.
-        # *   red: an exception.
         self.health = health
-        # The full lifecycle status of the current index.
         self.ilm_explain = ilm_explain
-        # This parameter is deprecated.
-        self.is_managed = is_managed
         # The managed status of the index. The following three statuses are supported:
         # 
         # *   following: Hosting.
         # *   closing: The instance is being unhosted.
         # *   closed: unmanaged.
-        self.managed_status = managed_status
-        # The name of the Elasticsearch index.
-        self.name = name
+        self.is_managed = is_managed
         # The current storage lifecycle. Value meaning:
         # 
         # *   warm: warm.
@@ -22479,8 +22871,15 @@ class ListInstanceIndicesResponseBodyResult(TeaModel):
         # *   delete: deletes a stage.
         # 
         # >  If this parameter is empty, the current index is not managed by the lifecycle.
+        self.managed_status = managed_status
+        # The full lifecycle status of the current index.
+        self.name = name
         self.phase = phase
-        # The total storage space occupied by the current index. Unit: bytes.
+        # The running status of the index. The following three statuses are supported:
+        # 
+        # *   green: healthy.
+        # *   yellow: alerts.
+        # *   red: an exception.
         self.size = size
 
     def validate(self):
@@ -22538,11 +22937,11 @@ class ListInstanceIndicesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListInstanceIndicesResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The total size of the OpenStore cold stage index for this instance. Unit: bytes.
         self.headers = headers
-        # The ID of the request.
+        # The total number of indexes in Cloud Hosting.
         self.request_id = request_id
-        # The details of the index list.
+        # The total storage space occupied by the current index. Unit: bytes.
         self.result = result
 
     def validate(self):
@@ -22634,7 +23033,9 @@ class ListKibanaPluginsRequest(TeaModel):
         page: str = None,
         size: int = None,
     ):
+        # The number of the page to return. Default value: 1.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
 
     def validate(self):
@@ -22666,6 +23067,7 @@ class ListKibanaPluginsResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
+        # The total number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -22697,10 +23099,15 @@ class ListKibanaPluginsResponseBodyResult(TeaModel):
         specification_url: str = None,
         state: str = None,
     ):
+        # The description of the plug-in.
         self.description = description
+        # The name of the plug-in.
         self.name = name
+        # The source of the plug-in.
         self.source = source
+        # The URL of the introduction to the plug-in. The value null is supported.
         self.specification_url = specification_url
+        # The installation status of the plug-in.
         self.state = state
 
     def validate(self):
@@ -22746,8 +23153,11 @@ class ListKibanaPluginsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListKibanaPluginsResponseBodyResult] = None,
     ):
+        # The request header.
         self.headers = headers
+        # The request ID.
         self.request_id = request_id
+        # The information about the plug-ins.
         self.result = result
 
     def validate(self):
@@ -22844,19 +23254,19 @@ class ListLogstashRequest(TeaModel):
         tags: str = None,
         version: str = None,
     ):
-        # ls-cn-abc
-        self.description = description
-        # ls-cn-n6w1o5jq\*\*\*\*\
-        self.instance_id = instance_id
-        # 1
-        self.page = page
         # rg-acfm2h5vbzd\*\*\*\*\
-        self.resource_group_id = resource_group_id
-        # 10
-        self.size = size
+        self.description = description
         # \[{"tagKey":"key1","tagValue":"value1"}]
-        self.tags = tags
+        self.instance_id = instance_id
+        # ls-cn-n6w1o5jq\*\*\*\*\
+        self.page = page
+        # Details of the request header.
+        self.resource_group_id = resource_group_id
         # 5.5.3\_with_X-Pack
+        self.size = size
+        # The number of entries returned per page.
+        self.tags = tags
+        # The ID of the request.
         self.version = version
 
     def validate(self):
@@ -22908,7 +23318,7 @@ class ListLogstashResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The number of entries returned per page.
+        # The number of data nodes.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -22937,9 +23347,9 @@ class ListLogstashResponseBodyResultTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the cloud disk.
+        # The disk size of the node.
         self.tag_key = tag_key
-        # The tag value of the cloud disk.
+        # The instance type of the ECS instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -22974,13 +23384,10 @@ class ListLogstashResponseBodyResultNetworkConfig(TeaModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
-        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
         self.type = type
-        # The ID of the VPC.
-        self.vpc_id = vpc_id
-        # The zone where the cluster resides.
-        self.vs_area = vs_area
         # The ID of the vSwitch.
+        self.vpc_id = vpc_id
+        self.vs_area = vs_area
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -23023,16 +23430,13 @@ class ListLogstashResponseBodyResultNodeSpec(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The disk size of the node.
+        # The network configurations.
         self.disk = disk
-        # Specifies whether to use disk encryption. Valid values:
-        # 
-        # *   true: Enables the concurrent query feature for queries other than aggregate queries.
-        # *   false: Disables the concurrent query feature for queries other than aggregate queries.
+        # The ID of the VPC.
         self.disk_encryption = disk_encryption
-        # The type of the disk.
+        # The zone where the cluster resides.
         self.disk_type = disk_type
-        # The instance type of the ECS instance.
+        # The type of the disk.
         self.spec = spec
 
     def validate(self):
@@ -23083,28 +23487,31 @@ class ListLogstashResponseBodyResult(TeaModel):
         updated_at: str = None,
         version: str = None,
     ):
-        # The tag of the instance. Valid values:
-        self.tags = tags
-        # The time when the instance was created.
-        self.created_at = created_at
-        # The name of the VPC.
-        self.description = description
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # The network configurations.
-        self.network_config = network_config
-        # The number of data nodes.
-        self.node_amount = node_amount
         # The configuration information of the data node.
+        self.tags = tags
+        # The ID of the instance.
+        self.created_at = created_at
+        # The time when the instance was last updated.
+        self.description = description
+        # The tag value of the cloud disk.
+        self.instance_id = instance_id
+        # The network type. Currently, only Virtual Private Cloud (VPC) is supported.
+        self.network_config = network_config
+        # The state of the instance. Valid values: Normal, Active, Inactive, and Invalid.
+        self.node_amount = node_amount
+        # Specifies whether to use disk encryption. Valid values:
+        # 
+        # *   true: Enables the concurrent query feature for queries other than aggregate queries.
+        # *   false: Disables the concurrent query feature for queries other than aggregate queries.
         self.node_spec = node_spec
-        # The billing method of the instance. Supported: prepaid (subscription) and postpaid (pay-as-you-go).
+        # The time when the instance was created.
         self.payment_type = payment_type
         self.resource_group_id = resource_group_id
-        # The state of the instance. Valid values: Normal, Active, Inactive, and Invalid.
-        self.status = status
-        # The time when the instance was last updated.
-        self.updated_at = updated_at
         # The version of the instance. Currently, only 6.7.0\_with_X-Pack and 7.4.0\_with_X-Pack are supported.
+        self.status = status
+        # The tag of the instance. Valid values:
+        self.updated_at = updated_at
+        # The tag key of the cloud disk.
         self.version = version
 
     def validate(self):
@@ -23192,11 +23599,11 @@ class ListLogstashResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListLogstashResponseBodyResult] = None,
     ):
-        # Details of the request header.
+        # The billing method of the instance. Supported: prepaid (subscription) and postpaid (pay-as-you-go).
         self.headers = headers
-        # The ID of the request.
-        self.request_id = request_id
         # Detailed information about the matching instances.
+        self.request_id = request_id
+        # The name of the VPC.
         self.result = result
 
     def validate(self):
@@ -23292,17 +23699,17 @@ class ListLogstashLogRequest(TeaModel):
         size: int = None,
         type: str = None,
     ):
-        # 1531910852074
-        self.begin_time = begin_time
-        # 1531910852074
-        self.end_time = end_time
-        # 1
-        self.page = page
-        # host:10.7.xx.xx AND level:info AND content:opening
-        self.query = query
         # 20
+        self.begin_time = begin_time
+        # The ID of the request.
+        self.end_time = end_time
+        # The returned data.
+        self.page = page
+        # 1
+        self.query = query
+        # The severity level of the log entry. Including trace, debug, info, warn, error, etc. (GC logs have no level).
         self.size = size
-        # LOGSTASH_INSTANCE_LOG
+        # 1531910852074
         self.type = type
 
     def validate(self):
@@ -23354,15 +23761,12 @@ class ListLogstashLogResponseBodyResult(TeaModel):
         level: str = None,
         timestamp: int = None,
     ):
-        # The details of the log.
-        self.content = content
         # The IP address of the node that generates the log.
+        self.content = content
         self.host = host
-        # The ID of the instance.
         self.instance_id = instance_id
-        # The severity level of the log entry. Including trace, debug, info, warn, error, etc. (GC logs have no level).
+        # The ID of the instance.
         self.level = level
-        # The timestamp of log generation. Unit: ms.
         self.timestamp = timestamp
 
     def validate(self):
@@ -23407,9 +23811,9 @@ class ListLogstashLogResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListLogstashLogResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The details of the log.
         self.request_id = request_id
-        # The returned data.
+        # The timestamp of log generation. Unit: ms.
         self.result = result
 
     def validate(self):
@@ -23496,13 +23900,13 @@ class ListLogstashPluginsRequest(TeaModel):
         size: int = None,
         source: str = None,
     ):
-        # logstash-filter-clone
-        self.name = name
-        # 10
-        self.page = page
-        # 3
-        self.size = size
         # USER
+        self.name = name
+        # The ID of the request.
+        self.page = page
+        # The returned results.
+        self.size = size
+        # The description of the plug-in.
         self.source = source
 
     def validate(self):
@@ -23546,23 +23950,12 @@ class ListLogstashPluginsResponseBodyResult(TeaModel):
         specification_url: str = None,
         state: str = None,
     ):
-        # The description of the plug-in.
-        self.description = description
-        # The name of the plug-in.
-        self.name = name
         # The source of the plug-in.
+        self.description = description
+        self.name = name
         self.source = source
-        # The address of the documentation for the plug-in.
+        # The name of the plug-in.
         self.specification_url = specification_url
-        # The status of the plug-in. Valid values:
-        # 
-        # *   INSTALLED: Installed
-        # *   UNINSTALLED: Not installed
-        # *   INSTALLING: The instance is being installed.
-        # *   UNINSTALLING: The instance is being uninstalled.
-        # *   UPGRADING: The backup gateway is being upgraded.
-        # *   FAILED: Installation failed
-        # *   UNKNOWN: The cluster is lost and cannot be created.
         self.state = state
 
     def validate(self):
@@ -23607,9 +24000,17 @@ class ListLogstashPluginsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListLogstashPluginsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The address of the documentation for the plug-in.
         self.request_id = request_id
-        # The returned results.
+        # The status of the plug-in. Valid values:
+        # 
+        # *   INSTALLED: Installed
+        # *   UNINSTALLED: Not installed
+        # *   INSTALLING: The instance is being installed.
+        # *   UNINSTALLING: The instance is being uninstalled.
+        # *   UPGRADING: The backup gateway is being upgraded.
+        # *   FAILED: Installation failed
+        # *   UNKNOWN: The cluster is lost and cannot be created.
         self.result = result
 
     def validate(self):
@@ -23697,10 +24098,15 @@ class ListNodesRequest(TeaModel):
         size: int = None,
         tags: str = None,
     ):
+        # The IDs of the ECS instances.
         self.ecs_instance_ids = ecs_instance_ids
+        # The name of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
+        # The number of the page to return.
         self.page = page
+        # The number of entries to return on each page.
         self.size = size
+        # The tags of the ECS instance. You must configure tagKey and tagValue.
         self.tags = tags
 
     def validate(self):
@@ -23744,6 +24150,7 @@ class ListNodesResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
+        # The number of entries returned.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -23772,7 +24179,12 @@ class ListNodesResponseBodyResultIpAddress(TeaModel):
         host: str = None,
         ip_type: str = None,
     ):
+        # The IP address.
         self.host = host
+        # The type of the IP address. Valid values:
+        # 
+        # *   public: public IP address
+        # *   private: private IP address
         self.ip_type = ip_type
 
     def validate(self):
@@ -23805,7 +24217,9 @@ class ListNodesResponseBodyResultTags(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
+        # The key of the tag.
         self.tag_key = tag_key
+        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):
@@ -23844,13 +24258,37 @@ class ListNodesResponseBodyResult(TeaModel):
         status: str = None,
         tags: List[ListNodesResponseBodyResultTags] = None,
     ):
+        # The status of the shipper on the ECS instance. Valid values:
+        # 
+        # *   heartOk: The heartbeat is normal.
+        # *   heartLost: The heartbeat is abnormal.
+        # *   uninstalled: The shipper is not installed.
+        # *   failed: The shipper fails to be installed.
         self.agent_status = agent_status
+        # Indicates whether the Cloud Assistant client is installed. Valid values:
+        # 
+        # *   true: installed
+        # *   false: not installed
         self.cloud_assistant_status = cloud_assistant_status
+        # The ID of the ECS instance.
         self.ecs_instance_id = ecs_instance_id
+        # The name of the ECS instance.
         self.ecs_instance_name = ecs_instance_name
+        # The IP addresses of the ECS instance.
         self.ip_address = ip_address
+        # The operating system type of the ECS instance. Valid values:
+        # 
+        # *   windows: Windows Server
+        # *   linux: Linux
         self.os_type = os_type
+        # The status of the ECS instance. Valid values:
+        # 
+        # *   running: The instance is running.
+        # *   starting: The instance is being started.
+        # *   stopping: The instance is being stopped.
+        # *   stopped: The instance is stopped.
         self.status = status
+        # The tags of the ECS instance.
         self.tags = tags
 
     def validate(self):
@@ -23925,8 +24363,11 @@ class ListNodesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListNodesResponseBodyResult] = None,
     ):
+        # The header of the response.
         self.headers = headers
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -24019,11 +24460,11 @@ class ListPipelineRequest(TeaModel):
         pipeline_id: str = None,
         size: int = None,
     ):
-        # 1
+        # The header of the response.
         self.page = page
-        # pipeline_test
+        # The ID of the request.
         self.pipeline_id = pipeline_id
-        # 15
+        # The total number of returned entries.
         self.size = size
 
     def validate(self):
@@ -24059,7 +24500,7 @@ class ListPipelineResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of returned entries.
+        # The time when the pipeline was updated.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -24090,17 +24531,14 @@ class ListPipelineResponseBodyResult(TeaModel):
         pipeline_id: str = None,
         pipeline_status: str = None,
     ):
-        # The time when the pipeline was created.
         self.gmt_created_time = gmt_created_time
-        # The time when the pipeline was updated.
         self.gmt_update_time = gmt_update_time
-        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
-        self.pipeline_id = pipeline_id
         # The status of the pipeline. Supported:
         # 
         # *   NOT_DEPLOYED: The node is not deployed.
         # *   RUNNING
         # *   DELETED: Deleted. The console does not display this status.
+        self.pipeline_id = pipeline_id
         self.pipeline_status = pipeline_status
 
     def validate(self):
@@ -24142,11 +24580,11 @@ class ListPipelineResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListPipelineResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The ID of the ApsaraVideo Media Processing (MPS) queue that is used to run the job.
         self.headers = headers
-        # The ID of the request.
-        self.request_id = request_id
         # The response.
+        self.request_id = request_id
+        # The time when the pipeline was created.
         self.result = result
 
     def validate(self):
@@ -24397,13 +24835,13 @@ class ListPluginsRequest(TeaModel):
         size: int = None,
         source: str = None,
     ):
-        # analysis-ik
-        self.name = name
-        # 1
-        self.page = page
-        # 10
-        self.size = size
         # SYSTEM
+        self.name = name
+        # The ID of the request.
+        self.page = page
+        # The header of the response.
+        self.size = size
+        # The total number of entries returned.
         self.source = source
 
     def validate(self):
@@ -24443,7 +24881,7 @@ class ListPluginsResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The total number of entries returned.
+        # The address of the plug-in description document.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -24475,15 +24913,12 @@ class ListPluginsResponseBodyResult(TeaModel):
         specification_url: str = None,
         state: str = None,
     ):
-        # The description of the plug-in.
-        self.description = description
-        # The name of the plug-in.
-        self.name = name
         # The source type of the plug-in.
+        self.description = description
+        self.name = name
         self.source = source
-        # The address of the plug-in description document.
+        # The name of the plug-in.
         self.specification_url = specification_url
-        # The status of the plug-in.
         self.state = state
 
     def validate(self):
@@ -24529,11 +24964,11 @@ class ListPluginsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListPluginsResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The description of the plug-in.
         self.headers = headers
-        # The ID of the request.
-        self.request_id = request_id
         # The return results.
+        self.request_id = request_id
+        # The status of the plug-in.
         self.result = result
 
     def validate(self):
@@ -24629,17 +25064,17 @@ class ListSearchLogRequest(TeaModel):
         size: int = None,
         type: str = None,
     ):
-        # 1531910852074
-        self.begin_time = begin_time
-        # 1531910852074
-        self.end_time = end_time
-        # 1
-        self.page = page
-        # host:172.16.\*\*.\*\* AND content:netty
-        self.query = query
         # 20
+        self.begin_time = begin_time
+        # The ID of the request.
+        self.end_time = end_time
+        # The header of the response.
+        self.page = page
+        # 1
+        self.query = query
+        # The number of entries returned per page.
         self.size = size
-        # INSTANCELOG
+        # 1531910852074
         self.type = type
 
     def validate(self):
@@ -24687,7 +25122,7 @@ class ListSearchLogResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The number of entries returned per page.
+        # The IP address of the node that generates the log.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -24720,25 +25155,14 @@ class ListSearchLogResponseBodyResult(TeaModel):
         level: str = None,
         timestamp: int = None,
     ):
-        # The content of the log entry. Migrated to the contentCollection field.
-        self.content = content
-        # Details of the log entry. Different content fields are returned for different log types.
-        self.content_collection = content_collection
-        # The IP address of the node that generates the log.
-        self.host = host
         # The ID of the instance.
+        self.content = content
+        self.content_collection = content_collection
+        # Details of the log entry. Different content fields are returned for different log types.
+        self.host = host
         self.instance_id = instance_id
-        # The level of the log. Valid values:
-        # 
-        # *   warn: warning log
-        # *   info: information log
-        # *   error: error log
-        # *   trace: trace logs
-        # *   debug: debug logs
-        # 
-        # The level information has been migrated to the contentCollection field.
-        self.level = level
         # The timestamp when the log is generated. Unit: ms.
+        self.level = level
         self.timestamp = timestamp
 
     def validate(self):
@@ -24788,11 +25212,19 @@ class ListSearchLogResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListSearchLogResponseBodyResult] = None,
     ):
-        # The header of the response.
+        # The level of the log. Valid values:
+        # 
+        # *   warn: warning log
+        # *   info: information log
+        # *   error: error log
+        # *   trace: trace logs
+        # *   debug: debug logs
+        # 
+        # The level information has been migrated to the contentCollection field.
         self.headers = headers
-        # The ID of the request.
-        self.request_id = request_id
         # The list of logs returned by the request.
+        self.request_id = request_id
+        # The content of the log entry. Migrated to the contentCollection field.
         self.result = result
 
     def validate(self):
@@ -24883,6 +25315,10 @@ class ListShardRecoveriesRequest(TeaModel):
         self,
         active_only: bool = None,
     ):
+        # Specifies whether to return information about data restoration of shards. Valid values:
+        # 
+        # *   true: returns information about data restoration of shards that are being restored.
+        # *   false: returns information about data restoration of all shards.
         self.active_only = active_only
 
     def validate(self):
@@ -24921,17 +25357,36 @@ class ListShardRecoveriesResponseBodyResult(TeaModel):
         translog_ops: int = None,
         translog_ops_percent: str = None,
     ):
+        # The data restoration progress.
         self.bytes_percent = bytes_percent
+        # The total amount of data that is restored.
         self.bytes_total = bytes_total
+        # The file execution progress.
         self.files_percent = files_percent
+        # The total number of files.
         self.files_total = files_total
+        # The name of the index.
         self.index = index
+        # The IP address of the source node.
         self.source_host = source_host
+        # The name of the source node.
         self.source_node = source_node
+        # The data restoration status. Valid values:
+        # 
+        # *   done: Data restoration is complete.
+        # *   finalize: Data is being cleared.
+        # *   index: Index metadata is being read, and bytes are being copied from source to destination.
+        # *   init: Data restoration is not started.
+        # *   start: Data restoration is started.
+        # *   translog: Translogs are being redone.
         self.stage = stage
+        # The IP address of the destination node.
         self.target_host = target_host
+        # The name of the destination node.
         self.target_node = target_node
+        # The number of translog operations to be restored.
         self.translog_ops = translog_ops
+        # The restoration progress of translog operations.
         self.translog_ops_percent = translog_ops_percent
 
     def validate(self):
@@ -25004,7 +25459,9 @@ class ListShardRecoveriesResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListShardRecoveriesResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -25229,17 +25686,19 @@ class ListTagResourcesRequest(TeaModel):
         size: int = None,
         tags: str = None,
     ):
-        # 1d2db86sca4384811e0b5e8707e\*\*\*\*\*\*\
+        # The number of the returned page.
         self.next_token = next_token
-        # 1
+        # 1d2db86sca4384811e0b5e8707e\*\*\*\*\*\*\
         self.page = page
-        # \["es-cn-aaa","es-cn-bbb"]
+        # The ID of the request.
         self.resource_ids = resource_ids
-        # INSTANCE
-        self.resource_type = resource_type
-        # 10
-        self.size = size
         # \[{"key":"env","value","dev"},{"key":"dev", "value":"IT"}]
+        self.resource_type = resource_type
+        # \["es-cn-aaa","es-cn-bbb"]
+        self.size = size
+        # The header of the response. This parameter is empty and is for reference only. You cannot force this parameter to be relied on in the program.
+        # 
+        # >  The return examples does not contain this parameter.
         self.tags = tags
 
     def validate(self):
@@ -25287,7 +25746,7 @@ class ListTagResourcesResponseBodyHeaders(TeaModel):
         self,
         x_total_count: int = None,
     ):
-        # The number of resources to query.
+        # The value of the tag.
         self.x_total_count = x_total_count
 
     def validate(self):
@@ -25318,13 +25777,10 @@ class ListTagResourcesResponseBodyTagResourcesTagResource(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # Indicates the ID of a resource.
         self.resource_id = resource_id
-        # The type of the resource. Fixed to `ALIYUN::ELASTICSEARCH::INSTANCE`.
         self.resource_type = resource_type
-        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag key.
         self.tag_value = tag_value
 
     def validate(self):
@@ -25364,7 +25820,7 @@ class ListTagResourcesResponseBodyTagResources(TeaModel):
         self,
         tag_resource: List[ListTagResourcesResponseBodyTagResourcesTagResource] = None,
     ):
-        # The labels of the resource.
+        # Indicates the ID of a resource.
         self.tag_resource = tag_resource
 
     def validate(self):
@@ -25403,15 +25859,13 @@ class ListTagResourcesResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: ListTagResourcesResponseBodyTagResources = None,
     ):
-        # The header of the response. This parameter is empty and is for reference only. You cannot force this parameter to be relied on in the program.
-        # 
-        # >  The return examples does not contain this parameter.
+        # The labels of the resource.
         self.headers = headers
-        # The number of the returned page.
+        # The number of resources to query.
         self.page_size = page_size
-        # The ID of the request.
-        self.request_id = request_id
         # A list of resources that have tags.
+        self.request_id = request_id
+        # The type of the resource. Fixed to `ALIYUN::ELASTICSEARCH::INSTANCE`.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -25501,9 +25955,9 @@ class ListTagsRequest(TeaModel):
         page_size: int = None,
         resource_type: str = None,
     ):
-        # 20
+        # The return results.
         self.page_size = page_size
-        # INSTANCE
+        # The tag value of the ENI.
         self.resource_type = resource_type
 
     def validate(self):
@@ -25536,9 +25990,7 @@ class ListTagsResponseBodyResult(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The tag value of the ENI.
         self.tag_value = tag_value
 
     def validate(self):
@@ -25571,9 +26023,8 @@ class ListTagsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListTagsResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The key of the tag.
         self.request_id = request_id
-        # The return results.
         self.result = result
 
     def validate(self):
@@ -25658,7 +26109,11 @@ class ListVpcEndpointsRequest(TeaModel):
         page: int = None,
         size: int = None,
     ):
+        # The number of the page to return.
+        # 
+        # Pages start from page 1. Default value: 1.
         self.page = page
+        # The number of entries to return on each page. Default value: 20.
         self.size = size
 
     def validate(self):
@@ -25698,14 +26153,39 @@ class ListVpcEndpointsResponseBodyResult(TeaModel):
         service_id: str = None,
         service_name: str = None,
     ):
+        # The status of the endpoint connection. Valid values:
+        # 
+        # *   Pending
+        # *   Connecting
+        # *   Connected
+        # *   Disconnecting
+        # *   Disconnected
+        # *   Deleting
+        # *   ServiceDeleted
         self.connection_status = connection_status
+        # The time when the endpoint was created.
         self.create_time = create_time
+        # The business status of the endpoint. Valid values:
+        # 
+        # *   Normal
+        # *   FinancialLocked
         self.endpoint_business_status = endpoint_business_status
+        # The domain name of the endpoint. The domain name is used for connection configuration.
         self.endpoint_domain = endpoint_domain
+        # The ID of the endpoint.
         self.endpoint_id = endpoint_id
+        # The name of the endpoint.
         self.endpoint_name = endpoint_name
+        # The status of the endpoint. Valid values:
+        # 
+        # *   Creating
+        # *   Active
+        # *   Pending
+        # *   Deleting
         self.endpoint_status = endpoint_status
+        # The ID of the endpoint service with which the endpoint is associated.
         self.service_id = service_id
+        # The name of the endpoint service with which the endpoint is associated.
         self.service_name = service_name
 
     def validate(self):
@@ -25766,7 +26246,9 @@ class ListVpcEndpointsResponseBody(TeaModel):
         request_id: str = None,
         result: List[ListVpcEndpointsResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The details of the endpoints.
         self.result = result
 
     def validate(self):
@@ -25967,6 +26449,7 @@ class ModifyDeployMachineRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -26000,7 +26483,12 @@ class ModifyDeployMachineResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the ECS instances are changed. Valid values:
+        # 
+        # *   true
+        # *   false
         self.result = result
 
     def validate(self):
@@ -26323,7 +26811,6 @@ class ModifyInstanceMaintainTimeRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
         self.body = body
 
@@ -26357,9 +26844,7 @@ class ModifyInstanceMaintainTimeResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The returned result.
         self.result = result
 
     def validate(self):
@@ -26437,8 +26922,16 @@ class ModifyWhiteIpsRequestWhiteIpGroup(TeaModel):
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
+        # The type of the IP address whitelist. Valid values:
+        # 
+        # *   PRIVATE_KIBANA
+        # *   PRIVATE_ES
+        # *   PUBLIC_ES
+        # *   PUBLIC_KIBANA
         self.group_name = group_name
+        # The returned result.
         self.ips = ips
+        # The request ID.
         self.white_ip_type = white_ip_type
 
     def validate(self):
@@ -26479,12 +26972,24 @@ class ModifyWhiteIpsRequest(TeaModel):
         white_ip_list: List[str] = None,
         client_token: str = None,
     ):
+        # The information about the IP address whitelist that you want to update. You can specify only one whitelist.
+        # 
+        # > You cannot configure both the whiteIpList and whiteIpGroup parameters.
         self.modify_mode = modify_mode
+        # The IP addresses in the whitelist. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+        # 
+        # > You cannot configure both the whiteIpList and whiteIpGroup parameters.
         self.network_type = network_type
+        # The IP addresses in the whitelist. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
         self.node_type = node_type
+        # The IP addresses in the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
         self.white_ip_group = white_ip_group
+        # The name of the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
         self.white_ip_list = white_ip_list
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The network type. This parameter is required if you configure the whiteIpList parameter. Valid values:
+        # 
+        # *   PRIVATE
+        # *   PUBLIC
         self.client_token = client_token
 
     def validate(self):
@@ -26535,12 +27040,7 @@ class ModifyWhiteIpsResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Response:
-        # 
-        # *   true: The whitelist is updated.
-        # *   false: The whitelist failed to be updated.
         self.result = result
 
     def validate(self):
@@ -26618,6 +27118,7 @@ class MoveResourceGroupRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -26652,9 +27153,21 @@ class MoveResourceGroupResponseBodyResultDictList(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The name of the dictionary file.
         self.name = name
+        # The type of the source of the dictionary file. Valid values:
+        # 
+        # *   OSS: Object Storage Service (OSS). You must make sure that the access control list (ACL) of the related OSS bucket is public read.
+        # *   ORIGIN: previously uploaded dictionary.
         self.source_type = source_type
+        # The type of the dictionary. Valid values:
+        # 
+        # *   STOP: stopword list
+        # *   MAIN: main dictionary
+        # *   SYNONYMS: synonym dictionary
+        # *   ALI_WS: Alibaba Cloud dictionary
         self.type = type
 
     def validate(self):
@@ -26697,9 +27210,13 @@ class MoveResourceGroupResponseBodyResultKibanaConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The number of nodes.
         self.amount = amount
+        # The storage capacity. Unit: GB.
         self.disk = disk
+        # The storage type.
         self.disk_type = disk_type
+        # The specification category.
         self.spec = spec
 
     def validate(self):
@@ -26742,9 +27259,13 @@ class MoveResourceGroupResponseBodyResultMasterConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The number of nodes.
         self.amount = amount
+        # The storage capacity. Unit: GB.
         self.disk = disk
+        # The storage type.
         self.disk_type = disk_type
+        # The specification category.
         self.spec = spec
 
     def validate(self):
@@ -26787,9 +27308,13 @@ class MoveResourceGroupResponseBodyResultNetworkConfig(TeaModel):
         vs_area: str = None,
         vswitch_id: str = None,
     ):
+        # The network type. Only the VPC is supported.
         self.type = type
+        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
+        # The zone where the cluster resides.
         self.vs_area = vs_area
+        # The ID of the vSwitch.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -26831,8 +27356,11 @@ class MoveResourceGroupResponseBodyResultNodeSpec(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
+        # The storage capacity. Unit: GB.
         self.disk = disk
+        # The storage type.
         self.disk_type = disk_type
+        # The specification category.
         self.spec = spec
 
     def validate(self):
@@ -26871,9 +27399,21 @@ class MoveResourceGroupResponseBodyResultSynonymsDicts(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The name of the dictionary file.
         self.name = name
+        # The type of the source of the dictionary file. Valid values:
+        # 
+        # *   OSS: Object Storage Service (OSS). You must make sure that the ACL of the related OSS bucket is public read.
+        # *   ORIGIN: previously uploaded dictionary.
         self.source_type = source_type
+        # The type of the dictionary. Valid values:
+        # 
+        # *   STOP: stopword list
+        # *   MAIN: main dictionary
+        # *   SYNONYMS: synonym dictionary
+        # *   ALI_WS: Alibaba Cloud dictionary
         self.type = type
 
     def validate(self):
@@ -26931,24 +27471,51 @@ class MoveResourceGroupResponseBodyResult(TeaModel):
         synonyms_dicts: List[MoveResourceGroupResponseBodyResultSynonymsDicts] = None,
         updated_at: str = None,
     ):
+        # The time when the cluster was created.
         self.created_at = created_at
+        # The name of the cluster.
         self.description = description
+        # The configurations of IK dictionaries.
         self.dict_list = dict_list
+        # The internal endpoint of the cluster.
         self.domain = domain
+        # The version of the cluster.
         self.es_version = es_version
+        # The ID of the cluster.
         self.instance_id = instance_id
+        # The configurations of Kibana nodes.
         self.kibana_configuration = kibana_configuration
+        # The public endpoint of the Kibana console of the cluster.
         self.kibana_domain = kibana_domain
+        # The port number that is used to access the Kibana console of the cluster over the Internet.
         self.kibana_port = kibana_port
+        # The configurations of dedicated master nodes.
         self.master_configuration = master_configuration
+        # The network configurations.
         self.network_config = network_config
+        # The number of data nodes in the cluster.
         self.node_amount = node_amount
+        # The configurations of data nodes.
         self.node_spec = node_spec
+        # The billing method of the cluster. Valid values:
+        # 
+        # *   prepaid: subscription
+        # *   postpaid: pay-as-you-go
         self.payment_type = payment_type
+        # The public endpoint of the cluster.
         self.public_domain = public_domain
+        # The port number that is used to access the cluster over the Internet.
         self.public_port = public_port
+        # The status of the cluster. Valid values:
+        # 
+        # *   active: The cluster is normal.
+        # *   activating: The cluster is being activated.
+        # *   Inactive: The cluster is frozen.
+        # *   invalid: The cluster is valid.
         self.status = status
+        # The configurations of synonym dictionaries.
         self.synonyms_dicts = synonyms_dicts
+        # The time when the cluster was last updated.
         self.updated_at = updated_at
 
     def validate(self):
@@ -27078,7 +27645,9 @@ class MoveResourceGroupResponseBody(TeaModel):
         request_id: str = None,
         result: MoveResourceGroupResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -27157,9 +27726,8 @@ class OpenDiagnosisRequest(TeaModel):
         client_token: str = None,
         lang: str = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The ID of the request.
         self.client_token = client_token
-        # en
         self.lang = lang
 
     def validate(self):
@@ -27192,12 +27760,7 @@ class OpenDiagnosisResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the intelligent O\&M feature is enabled. Valid values:
-        # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
         self.result = result
 
     def validate(self):
@@ -27499,6 +28062,15 @@ class RecommendTemplatesRequest(TeaModel):
         self,
         usage_scenario: str = None,
     ):
+        # *\
+        # *\
+        # *\
+        # *\
+        # *\
+        # 
+        # **\
+        # 
+        # ****\
         self.usage_scenario = usage_scenario
 
     def validate(self):
@@ -27528,6 +28100,14 @@ class RecommendTemplatesResponseBodyResult(TeaModel):
         template_name: str = None,
     ):
         self.content = content
+        # *\
+        # *\
+        # *\
+        # *\
+        # 
+        # **\
+        # 
+        # ****\
         self.template_name = template_name
 
     def validate(self):
@@ -27645,7 +28225,12 @@ class ReinstallCollectorRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The request body parameters. For more information, see the Request body section in this topic.
         self.client_token = client_token
+        # Indicates whether the shipper is installed. Valid values:
+        # 
+        # *   true: The shipper is installed.
+        # *   false: The shipper fails to be installed.
         self.body = body
 
     def validate(self):
@@ -27679,6 +28264,7 @@ class ReinstallCollectorResponseBody(TeaModel):
         result: bool = None,
     ):
         self.request_id = request_id
+        # The ID of the request.
         self.result = result
 
     def validate(self):
@@ -27949,6 +28535,7 @@ class RenewLogstashRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -27981,7 +28568,12 @@ class RenewLogstashResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result. Valid values:
+        # 
+        # *   true: The cluster is renewed.
+        # *   false: The cluster fails to be renewed.
         self.result = result
 
     def validate(self):
@@ -28057,6 +28649,7 @@ class RestartCollectorRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -28085,7 +28678,12 @@ class RestartCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the shipper is restarted. Valid values:
+        # 
+        # *   true: The shipper is restarted.
+        # *   false: The shipper fails to be restarted.
         self.result = result
 
     def validate(self):
@@ -28786,9 +29384,7 @@ class RestartLogstashRequest(TeaModel):
         self.node_types = node_types
         self.nodes = nodes
         self.restart_type = restart_type
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
-        # true
         self.force = force
 
     def validate(self):
@@ -28841,9 +29437,7 @@ class RestartLogstashResponseBody(TeaModel):
         request_id: str = None,
         result: Logstash = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # The details of the current instance.
         self.result = result
 
     def validate(self):
@@ -29031,6 +29625,7 @@ class ResumeLogstashTaskRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -29061,9 +29656,16 @@ class ResumeLogstashTaskResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The error code returned. If the API operation is successfully called, this parameter is not returned.
         self.code = code
+        # The error message returned. If the API operation is successfully called, this parameter is not returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the change task is resumed. Valid values:
+        # 
+        # *   true: The change task is resumed.
+        # *   false: The change task fails to be resumed.
         self.result = result
 
     def validate(self):
@@ -29252,6 +29854,7 @@ class RunPipelinesRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -29285,7 +29888,12 @@ class RunPipelinesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result. Valid values:
+        # 
+        # *   true: successful
+        # *   false: failed
         self.result = result
 
     def validate(self):
@@ -29417,13 +30025,9 @@ class ShrinkNodeRequest(TeaModel):
         node_type: str = None,
     ):
         self.body = body
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
-        # 2
         self.count = count
-        # false
         self.ignore_status = ignore_status
-        # WORKER
         self.node_type = node_type
 
     def validate(self):
@@ -29476,12 +30080,7 @@ class ShrinkNodeResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the region.
         self.request_id = request_id
-        # Command output:
-        # 
-        # *   true: The scale-in is successful.
-        # *   false: The scale-in failed.
         self.result = result
 
     def validate(self):
@@ -29634,6 +30233,7 @@ class StartCollectorRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -29662,7 +30262,9 @@ class StartCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -29815,6 +30417,7 @@ class StopCollectorRequest(TeaModel):
         self,
         client_token: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -29843,7 +30446,9 @@ class StopCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -29920,6 +30525,7 @@ class StopPipelinesRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -29953,7 +30559,12 @@ class StopPipelinesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result. Valid values:
+        # 
+        # *   true: The pipelines are stopped.
+        # *   false: The pipelines fail to be stopped.
         self.result = result
 
     def validate(self):
@@ -30030,7 +30641,12 @@ class TagResourcesRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The returned object.
         self.key = key
+        # Indicates whether tags are added to the clusters. Valid values:
+        # 
+        # *   true
+        # *   false
         self.value = value
 
     def validate(self):
@@ -30064,8 +30680,11 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tags: List[TagResourcesRequestTags] = None,
     ):
+        # A tag.
         self.resource_ids = resource_ids
+        # The request ID.
         self.resource_type = resource_type
+        # The value of the tag.
         self.tags = tags
 
     def validate(self):
@@ -30110,12 +30729,7 @@ class TagResourcesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Returned results:
-        # 
-        # *   true: The tag resource relationship is created.
-        # *   false: The tag resource relationship fails to be created.
         self.result = result
 
     def validate(self):
@@ -30233,9 +30847,7 @@ class TransferNodeRequest(TeaModel):
         node_type: str = None,
     ):
         self.body = body
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
-        # WORKER
         self.node_type = node_type
 
     def validate(self):
@@ -30280,12 +30892,7 @@ class TransferNodeResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Output:
-        # 
-        # *   true: The task is successfully executed.
-        # *   false: The task failed to be executed.
         self.result = result
 
     def validate(self):
@@ -30712,10 +31319,12 @@ class UninstallPluginRequest(TeaModel):
         self,
         body: str = None,
         client_token: str = None,
+        force: bool = None,
     ):
         self.body = body
         # A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        self.force = force
 
     def validate(self):
         pass
@@ -30730,6 +31339,8 @@ class UninstallPluginRequest(TeaModel):
             result['body'] = self.body
         if self.client_token is not None:
             result['clientToken'] = self.client_token
+        if self.force is not None:
+            result['force'] = self.force
         return result
 
     def from_map(self, m: dict = None):
@@ -30738,6 +31349,8 @@ class UninstallPluginRequest(TeaModel):
             self.body = m.get('body')
         if m.get('clientToken') is not None:
             self.client_token = m.get('clientToken')
+        if m.get('force') is not None:
+            self.force = m.get('force')
         return self
 
 
@@ -30964,7 +31577,10 @@ class UpdateAdminPasswordRequest(TeaModel):
         client_token: str = None,
     ):
         self.es_admin_password = es_admin_password
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # Indicates whether the password was updated. Valid values:
+        # 
+        # *   true: The call was successful.
+        # *   false: The call failed.
         self.client_token = client_token
 
     def validate(self):
@@ -30997,12 +31613,7 @@ class UpdateAdminPasswordResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the password was updated. Valid values:
-        # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
         self.result = result
 
     def validate(self):
@@ -31196,6 +31807,7 @@ class UpdateAliwsDictRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -31230,9 +31842,16 @@ class UpdateAliwsDictResponseBodyResult(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The name of the uploaded dictionary file.
         self.name = name
+        # The source type of the dictionary file. Valid values:
+        # 
+        # *   OSS
+        # *   ORIGIN
         self.source_type = source_type
+        # The dictionary type. The value is fixed as ALI_WS.
         self.type = type
 
     def validate(self):
@@ -31273,7 +31892,9 @@ class UpdateAliwsDictResponseBody(TeaModel):
         request_id: str = None,
         result: List[UpdateAliwsDictResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -31619,6 +32240,7 @@ class UpdateCollectorRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -31652,7 +32274,9 @@ class UpdateCollectorResponseBodyResultConfigs(TeaModel):
         content: str = None,
         file_name: str = None,
     ):
+        # The content of the configuration file.
         self.content = content
+        # The name of the configuration file.
         self.file_name = file_name
 
     def validate(self):
@@ -31685,7 +32309,14 @@ class UpdateCollectorResponseBodyResultExtendConfigsMachines(TeaModel):
         agent_status: str = None,
         instance_id: str = None,
     ):
+        # The installation status of the shipper on an ECS instance. Valid values:
+        # 
+        # *   heartOk
+        # *   heartLost
+        # *   uninstalled
+        # *   failed
         self.agent_status = agent_status
+        # The ID of the ECS instance on which the shipper is installed.
         self.instance_id = instance_id
 
     def validate(self):
@@ -31730,19 +32361,41 @@ class UpdateCollectorResponseBodyResultExtendConfigs(TeaModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The type of the configuration items. Valid values:
+        # 
+        # *   collectorTargetInstance: indicates the information about the output of the shipper.
+        # *   collectorDeployMachine: indicates the information about the machine on which the shipper is installed.
+        # *   collectorElasticsearchForKibana: indicates the information about the Elasticsearch cluster for which Kibana Dashboard is enabled.
         self.config_type = config_type
+        # Indicates whether Kibana Monitoring is enabled. This parameter is returned only when **configType** is set to **collectorTargetInstance** and **instanceType** is set to **elasticsearch**. Valid values: true and false.
         self.enable_monitoring = enable_monitoring
+        # The machine group ID. This parameter is returned only when **configType** is set to **collectorDeployMachine**.
         self.group_id = group_id
+        # The address that is used to access Kibana over an internal network after you enable Kibana Dashboard. This parameter is returned only when **configType** is set to **collectorElasticsearchForKibana**.
         self.host = host
         self.hosts = hosts
+        # The ID of the object that is associated with the shipper. If **configType** is set to **collectorTargetInstance**, the value of this parameter is the ID of the output of the shipper. If **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**, the value of this parameter is the ID of an ACK cluster.
         self.instance_id = instance_id
+        # The type of the output of the shipper. Valid values: elasticsearch and logstash. This parameter is returned only when **configType** is set to **collectorTargetInstance**.
         self.instance_type = instance_type
+        # The address that is used to access Kibana over the Internet after you enable Kibana Dashboard. This parameter is returned only when **configType** is set to **collectorElasticsearchForKibana**.
         self.kibana_host = kibana_host
+        # This parameter is returned only when configType is set to collectorDeployMachine.
+        # 
+        # This parameter indicates the information about the ECS instances or ACK clusters on which the shipper is installed.
         self.machines = machines
+        # The transfer protocol that is used. It is the same as the protocol over which you can access the output of the shipper. Valid values: HTTP and HTTPS. This parameter is returned only when **configType** is set to **collectorTargetInstance**.
         self.protocol = protocol
+        # The number of pods from which logs are successfully collected in the ACK cluster. This parameter is returned only when **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**.
         self.success_pods_count = success_pods_count
+        # The number of pods from which logs needed to be collected in the ACK cluster. This parameter is returned only when **configType** is set to **collectorDeployMachines** and **type** is set to **ACKCluster**.
         self.total_pods_count = total_pods_count
+        # The type of the machine on which the shipper is installed. This parameter is returned only when **configType** is set to **collectorDeployMachine**. Valid values:
+        # 
+        # *   ECSInstanceId
+        # *   ACKCluster
         self.type = type
+        # The username that is used to access the output of the shipper. Default value: elastic. This parameter is returned only when **configType** is set to **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -31843,17 +32496,35 @@ class UpdateCollectorResponseBodyResult(TeaModel):
         vpc_id: str = None,
     ):
         self.collector_paths = collector_paths
+        # The information about the configuration file for the shipper.
         self.configs = configs
+        # Indicates whether the shipper is checked and updated. Valid values:
+        # 
+        # *   true: The shipper is only checked.
+        # *   false: The shipper is checked and updated.
         self.dry_run = dry_run
+        # The extended parameters that are configured for the shipper.
         self.extend_configs = extend_configs
+        # The time when the shipper was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the shipper was updated.
         self.gmt_update_time = gmt_update_time
+        # The name of the shipper.
         self.name = name
+        # The account ID.
         self.owner_id = owner_id
+        # The shipper ID.
         self.res_id = res_id
+        # The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and auditBeat.
         self.res_type = res_type
+        # The version of the shipper.
         self.res_version = res_version
+        # The status of the shipper. Valid values:
+        # 
+        # *   activing: The shipper is being initialized.
+        # *   active: The shipper is in effect.
         self.status = status
+        # The ID of the VPC in which the shipper resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -31947,7 +32618,9 @@ class UpdateCollectorResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateCollectorResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -32026,6 +32699,7 @@ class UpdateCollectorNameRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -32059,7 +32733,9 @@ class UpdateCollectorNameResponseBodyResultConfigs(TeaModel):
         content: str = None,
         file_name: str = None,
     ):
+        # The content of the file.
         self.content = content
+        # The name of the file.
         self.file_name = file_name
 
     def validate(self):
@@ -32092,7 +32768,9 @@ class UpdateCollectorNameResponseBodyResultExtendConfigsMachines(TeaModel):
         agent_status: str = None,
         instance_id: str = None,
     ):
+        # The status of the shipper on the ECS instance. Valid values: **heartOk**, **heartLost**, **uninstalled**, and **failed**.
         self.agent_status = agent_status
+        # The IDs of the ECS instances.
         self.instance_id = instance_id
 
     def validate(self):
@@ -32137,19 +32815,42 @@ class UpdateCollectorNameResponseBodyResultExtendConfigs(TeaModel):
         type: str = None,
         user_name: str = None,
     ):
+        # The configuration type. Valid values:
+        # 
+        # *   collectorTargetInstance
+        # *   collectorDeployMachine
+        # *   collectorElasticsearchForKibana
         self.config_type = config_type
+        # Indicates whether monitoring is enabled. This parameter is returned if the value of **configType** is **collectorTargetInstance** and the value of **instanceType** is **elasticsearch**. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_monitoring = enable_monitoring
+        # The ID of the machine group. This parameter is returned if the value of **configType** is **collectorDeployMachine**.
         self.group_id = group_id
+        # The private endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
         self.host = host
         self.hosts = hosts
+        # The ID of the resource that is associated with the shipper. If the value of **configType** is **collectorTargetInstance**, the value of this parameter is the ID of the resource specified in the output configuration part of the shipper. If the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**, the value of this parameter is the ID of the ACK cluster.
         self.instance_id = instance_id
+        # The type of the cluster specified in the output configuration part of the shipper. Valid values: elasticsearch and logstash. This parameter is returned if the value of **configType** is **collectorTargetInstance**.
         self.instance_type = instance_type
+        # The public endpoint of Kibana after you enable the Kibana dashboard. This parameter is returned if the value of **configType** is **collectorElasticsearchForKibana**.
         self.kibana_host = kibana_host
+        # The information about the ECS instances on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ECSInstanceId**.
         self.machines = machines
+        # The transmission protocol. Valid values: **HTTP** and **HTTPS**.
         self.protocol = protocol
+        # The number of pods from which data is successfully collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
         self.success_pods_count = success_pods_count
+        # The total number of pods from which data is collected in the ACK cluster. This parameter is returned if the value of **configType** is **collectorDeployMachine** and the value of **type** is **ACKCluster**.
         self.total_pods_count = total_pods_count
+        # The type of the machine on which the shipper is deployed. This parameter is returned if the value of **configType** is **collectorDeployMachine**. Valid values:
+        # 
+        # *   ECSInstanceId
+        # *   ACKCluster
         self.type = type
+        # The username that is used to access the resource specified in the output configuration part of the shipper. The default value is elastic. This parameter is returned if the value of **configType** is **collectorTargetInstance** or **collectorElasticsearchForKibana**.
         self.user_name = user_name
 
     def validate(self):
@@ -32250,17 +32951,35 @@ class UpdateCollectorNameResponseBodyResult(TeaModel):
         vpc_id: str = None,
     ):
         self.collector_paths = collector_paths
+        # The information about the configuration file of the shipper.
         self.configs = configs
+        # Indicates whether a dry run is performed. Valid values:
+        # 
+        # *   true
+        # *   false
         self.dry_run = dry_run
+        # The extended configurations of the shipper.
         self.extend_configs = extend_configs
+        # The time when the shipper was created.
         self.gmt_created_time = gmt_created_time
+        # The time when the shipper was updated.
         self.gmt_update_time = gmt_update_time
+        # The name of the shipper.
         self.name = name
+        # The account ID.
         self.owner_id = owner_id
+        # The ID of the shipper.
         self.res_id = res_id
+        # The type of the shipper. Valid values: fileBeat, metricBeat, heartBeat, and audiBeat.
         self.res_type = res_type
+        # The version of the shipper. The version of a shipper depends on the type of the machine on which the shipper is deployed.
+        # 
+        # *   Elastic Compute Service (ECS) instance: 6.8.5\_with_community
+        # *   Container Service for Kubernetes (ACK) cluster: 6.8.13\_with_community
         self.res_version = res_version
+        # The status of the shipper. Valid values: activating and active.
         self.status = status
+        # The ID of the virtual private cloud (VPC) where the shipper resides.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -32354,7 +33073,9 @@ class UpdateCollectorNameResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateCollectorNameResponseBodyResult = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -32579,6 +33300,7 @@ class UpdateDescriptionRequest(TeaModel):
         client_token: str = None,
     ):
         self.description = description
+        # The new name of the instance.
         self.client_token = client_token
 
     def validate(self):
@@ -32841,6 +33563,7 @@ class UpdateDictRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -32875,9 +33598,19 @@ class UpdateDictResponseBodyResult(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The name of the dictionary file.
         self.name = name
+        # The source type of the dictionary file. Valid values:
+        # 
+        # *   OSS
+        # *   ORIGIN
         self.source_type = source_type
+        # The dictionary type. Valid values:
+        # 
+        # *   MAIN: IK main dicrionary
+        # *   STOP: IK stopword list
         self.type = type
 
     def validate(self):
@@ -32918,7 +33651,9 @@ class UpdateDictResponseBody(TeaModel):
         request_id: str = None,
         result: List[UpdateDictResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -33235,6 +33970,7 @@ class UpdateExtendfilesRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -33269,8 +34005,11 @@ class UpdateExtendfilesResponseBodyResult(TeaModel):
         name: str = None,
         source_type: str = None,
     ):
+        # The size of the driver file. Unit: byte.
         self.file_size = file_size
+        # The name of the driver file.
         self.name = name
+        # The source of the driver file. This parameter is fixed as ORIGIN, which indicates that the driver file is retained.
         self.source_type = source_type
 
     def validate(self):
@@ -33307,7 +34046,9 @@ class UpdateExtendfilesResponseBody(TeaModel):
         request_id: str = None,
         result: List[UpdateExtendfilesResponseBodyResult] = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -33393,6 +34134,7 @@ class UpdateHotIkDictsRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -33427,9 +34169,19 @@ class UpdateHotIkDictsResponseBodyResult(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The name of the dictionary file.
         self.name = name
+        # The source type of the dictionary file. Valid values:
+        # 
+        # *   OSS
+        # *   ORIGIN
         self.source_type = source_type
+        # The type of the dictionaries. Valid values:
+        # 
+        # *   MAIN: IK main dictionary
+        # *   STOP: IK stopword list
         self.type = type
 
     def validate(self):
@@ -33470,7 +34222,9 @@ class UpdateHotIkDictsResponseBody(TeaModel):
         request_id: str = None,
         result: List[UpdateHotIkDictsResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -33792,10 +34546,10 @@ class UpdateInstanceRequest(TeaModel):
         self.node_amount = node_amount
         self.node_spec = node_spec
         self.warm_node_configuration = warm_node_configuration
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The result of the request.
         self.client_token = client_token
         self.force = force
-        # upgrade
+        # The number of data nodes.
         self.order_action_type = order_action_type
 
     def validate(self):
@@ -33883,13 +34637,13 @@ class UpdateInstanceResponseBodyResultKibanaConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of nodes.
+        # The configuration of dedicated master nodes.
         self.amount = amount
-        # The size of the node storage space.
-        self.disk = disk
-        # The storage type of the node. This parameter can be ignored.
-        self.disk_type = disk_type
         # The node specifications.
+        self.disk = disk
+        # The number of nodes.
+        self.disk_type = disk_type
+        # The storage type of the node. This parameter can be ignored.
         self.spec = spec
 
     def validate(self):
@@ -33932,13 +34686,10 @@ class UpdateInstanceResponseBodyResultMasterConfiguration(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The number of nodes.
         self.amount = amount
-        # The storage space of the node. Unit: GB.
         self.disk = disk
-        # The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
         self.disk_type = disk_type
-        # The node specifications.
+        # The storage type of the node. Only cloud_ssd(SSD cloud disk) is supported.
         self.spec = spec
 
     def validate(self):
@@ -33980,14 +34731,11 @@ class UpdateInstanceResponseBodyResultNodeSpec(TeaModel):
         disk_type: str = None,
         spec: str = None,
     ):
-        # The storage space of the node. Unit: GB.
-        self.disk = disk
-        # The storage type of the node. Valid values:
-        # 
-        # *   cloud_ssd: standard SSD
-        # *   cloud_efficiency: ultra disk
-        self.disk_type = disk_type
         # The node specifications.
+        self.disk = disk
+        # The number of nodes.
+        self.disk_type = disk_type
+        # The configuration of Kibana nodes.
         self.spec = spec
 
     def validate(self):
@@ -34033,35 +34781,33 @@ class UpdateInstanceResponseBodyResult(TeaModel):
         payment_type: str = None,
         status: str = None,
     ):
-        # The time when the instance was created.
-        self.created_at = created_at
-        # The name of the instance.
-        self.description = description
         # The private domain name of the instance.
-        self.domain = domain
-        # The edition of the dedicated KMS instance.
-        self.es_version = es_version
-        # The ID of the instance.
-        self.instance_id = instance_id
-        # The configuration of Kibana nodes.
-        self.kibana_configuration = kibana_configuration
-        # The configuration of dedicated master nodes.
-        self.master_configuration = master_configuration
-        # The number of data nodes.
-        self.node_amount = node_amount
+        self.created_at = created_at
         # The configuration of data nodes.
-        self.node_spec = node_spec
+        self.description = description
+        # The ID of the instance.
+        self.domain = domain
+        # The node specifications.
+        self.es_version = es_version
+        # The storage space of the node. Unit: GB.
+        self.instance_id = instance_id
+        # The size of the node storage space.
+        self.kibana_configuration = kibana_configuration
+        # The storage space of the node. Unit: GB.
+        self.master_configuration = master_configuration
         # The billing method of the instance. Valid values:
         # 
         # *   prepaid: subscription
         # *   postpaid: pay-as-you-go
-        self.payment_type = payment_type
-        # The state of the instance. Valid values:
+        self.node_amount = node_amount
+        # The storage type of the node. Valid values:
         # 
-        # *   active: normal
-        # *   activating: taking effect
-        # *   inactive: frozen
-        # *   invalid: invalid
+        # *   cloud_ssd: standard SSD
+        # *   cloud_efficiency: ultra disk
+        self.node_spec = node_spec
+        # The edition of the dedicated KMS instance.
+        self.payment_type = payment_type
+        # The name of the instance.
         self.status = status
 
     def validate(self):
@@ -34142,9 +34888,14 @@ class UpdateInstanceResponseBody(TeaModel):
     ):
         self.code = code
         self.message = message
-        # The ID of the request.
+        # The time when the instance was created.
         self.request_id = request_id
-        # The result of the request.
+        # The state of the instance. Valid values:
+        # 
+        # *   active: normal
+        # *   activating: taking effect
+        # *   inactive: frozen
+        # *   invalid: invalid
         self.result = result
 
     def validate(self):
@@ -34232,6 +34983,7 @@ class UpdateInstanceChargeTypeRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -34264,7 +35016,12 @@ class UpdateInstanceChargeTypeResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Return results:
+        # 
+        # *   true: conversion successful
+        # *   false: conversion failed
         self.result = result
 
     def validate(self):
@@ -34448,6 +35205,7 @@ class UpdateKibanaSettingsRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # This parameter is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -34480,7 +35238,12 @@ class UpdateKibanaSettingsResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Return results:
+        # 
+        # *   true: The Kibana language modified successfully
+        # *   false: The Kibana language modified failed
         self.result = result
 
     def validate(self):
@@ -34558,8 +35321,11 @@ class UpdateKibanaWhiteIpsRequestWhiteIpGroup(TeaModel):
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
+        # The type of the whitelist. Set the value to PUBLIC_KIBANA. This value indicates a public IP address whitelist.
         self.group_name = group_name
+        # The IP addresses in the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
         self.ips = ips
+        # The IP addresses in the whitelist.
         self.white_ip_type = white_ip_type
 
     def validate(self):
@@ -34598,9 +35364,19 @@ class UpdateKibanaWhiteIpsRequest(TeaModel):
         client_token: str = None,
         modify_mode: str = None,
     ):
+        # The IP address whitelists. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+        # 
+        # You cannot configure both the kibanaIPWhitelist and whiteIpGroup parameters.
         self.kibana_ipwhitelist = kibana_ipwhitelist
+        # The name of the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
         self.white_ip_group = white_ip_group
+        # The update mode. Valid values:
+        # 
+        # *   Cover: overwrites the IP addresses in the specified IP address whitelist with the IP addresses specified by using the ips parameter. This is the default value.
+        # *   Append: adds the IP addresses specified by using the ips parameter to the specified IP address whitelist.
+        # *   Delete: deletes the IP addresses specified by using the ips parameter from the specified IP address whitelist. At least one IP address must be retained for the whitelist.
         self.client_token = client_token
+        # The body of the request.
         self.modify_mode = modify_mode
 
     def validate(self):
@@ -34644,7 +35420,9 @@ class UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList(TeaMod
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
+        # The IP addresses in the whitelist.
         self.group_name = group_name
+        # The IP addresses in the whitelist.
         self.ips = ips
         self.white_ip_type = white_ip_type
 
@@ -34685,10 +35463,15 @@ class UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig(TeaModel):
         vswitch_id: str = None,
         white_ip_group_list: List[UpdateKibanaWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList] = None,
     ):
+        # The IP address whitelists.
         self.type = type
+        # The ID of the vSwitch.
         self.vpc_id = vpc_id
+        # The network type.
         self.vs_area = vs_area
+        # The region ID.
         self.vswitch_id = vswitch_id
+        # The IP address whitelists.
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
@@ -34742,8 +35525,11 @@ class UpdateKibanaWhiteIpsResponseBodyResult(TeaModel):
         kibana_private_ipwhitelist: List[str] = None,
         network_config: UpdateKibanaWhiteIpsResponseBodyResultNetworkConfig = None,
     ):
+        # The public IP address whitelists for access to the Kibana console of the cluster.
         self.kibana_ipwhitelist = kibana_ipwhitelist
+        # The private IP address whitelists for access to the Kibana console of the cluster.
         self.kibana_private_ipwhitelist = kibana_private_ipwhitelist
+        # The ID of the virtual private cloud (VPC).
         self.network_config = network_config
 
     def validate(self):
@@ -34782,7 +35568,9 @@ class UpdateKibanaWhiteIpsResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateKibanaWhiteIpsResponseBodyResult = None,
     ):
+        # The details of the Elasticsearch cluster.
         self.request_id = request_id
+        # The private IP address whitelists for access to the Kibana console of the cluster.
         self.result = result
 
     def validate(self):
@@ -34903,7 +35691,6 @@ class UpdateLogstashRequest(TeaModel):
     ):
         self.node_amount = node_amount
         self.node_spec = node_spec
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
 
     def validate(self):
@@ -34942,12 +35729,7 @@ class UpdateLogstashResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the instance information is modified. Valid values:
-        # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
         self.result = result
 
     def validate(self):
@@ -35025,6 +35807,7 @@ class UpdateLogstashChargeTypeRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -35057,7 +35840,12 @@ class UpdateLogstashChargeTypeResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the billing method of the cluster is switched. Valid values:
+        # 
+        # *   true: The billing method is switched.
+        # *   false: The billing method fails to be switched.
         self.result = result
 
     def validate(self):
@@ -35135,6 +35923,7 @@ class UpdateLogstashDescriptionRequest(TeaModel):
         client_token: str = None,
     ):
         self.description = description
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -35166,6 +35955,7 @@ class UpdateLogstashDescriptionResponseBodyResult(TeaModel):
         self,
         description: str = None,
     ):
+        # The name of the cluster.
         self.description = description
 
     def validate(self):
@@ -35194,7 +35984,9 @@ class UpdateLogstashDescriptionResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateLogstashDescriptionResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The result returned.
         self.result = result
 
     def validate(self):
@@ -35515,7 +36307,9 @@ class UpdatePipelinesRequest(TeaModel):
         trigger: bool = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # Specifies whether to deploy the pipeline immediately.
         self.trigger = trigger
 
     def validate(self):
@@ -35552,7 +36346,12 @@ class UpdatePipelinesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the pipeline is updated. Valid values:
+        # 
+        # *   true: The pipeline is updated.
+        # *   false: The pipeline fails to be updated.
         self.result = result
 
     def validate(self):
@@ -35631,7 +36430,9 @@ class UpdatePrivateNetworkWhiteIpsRequest(TeaModel):
         modify_mode: str = None,
     ):
         self.body = body
+        # The ID of the request.
         self.client_token = client_token
+        # The results that are returned.
         self.modify_mode = modify_mode
 
     def validate(self):
@@ -35775,6 +36576,7 @@ class UpdatePublicNetworkRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # A unique token generated by the client to guarantee the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -35806,6 +36608,7 @@ class UpdatePublicNetworkResponseBodyResult(TeaModel):
         self,
         enable_public: bool = None,
     ):
+        # The status of the public network access switch.
         self.enable_public = enable_public
 
     def validate(self):
@@ -35834,7 +36637,9 @@ class UpdatePublicNetworkResponseBody(TeaModel):
         request_id: str = None,
         result: UpdatePublicNetworkResponseBodyResult = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The return results.
         self.result = result
 
     def validate(self):
@@ -35915,7 +36720,9 @@ class UpdatePublicWhiteIpsRequest(TeaModel):
         modify_mode: str = None,
     ):
         self.body = body
+        # The ID of the request.
         self.client_token = client_token
+        # The results that are returned.
         self.modify_mode = modify_mode
 
     def validate(self):
@@ -36312,6 +37119,7 @@ class UpdateSynonymsDictsRequest(TeaModel):
         client_token: str = None,
     ):
         self.body = body
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
 
     def validate(self):
@@ -36346,9 +37154,16 @@ class UpdateSynonymsDictsResponseBodyResult(TeaModel):
         source_type: str = None,
         type: str = None,
     ):
+        # The size of the dictionary file. Unit: bytes.
         self.file_size = file_size
+        # The name of the dictionary file.
         self.name = name
+        # The source type of the dictionary file. Valid values:
+        # 
+        # *   OSS
+        # *   ORIGIN
         self.source_type = source_type
+        # The dictionary type. The value is fixed as SYNONYMS.
         self.type = type
 
     def validate(self):
@@ -36389,7 +37204,9 @@ class UpdateSynonymsDictsResponseBody(TeaModel):
         request_id: str = None,
         result: List[UpdateSynonymsDictsResponseBodyResult] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result.
         self.result = result
 
     def validate(self):
@@ -36585,8 +37402,11 @@ class UpdateWhiteIpsRequestWhiteIpGroup(TeaModel):
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
+        # The type of the whitelist. Set the value to **PRIVATE_ES**. This value indicates a private IP address whitelist.
         self.group_name = group_name
+        # The returned result.
         self.ips = ips
+        # The returned result.
         self.white_ip_type = white_ip_type
 
     def validate(self):
@@ -36625,9 +37445,15 @@ class UpdateWhiteIpsRequest(TeaModel):
         client_token: str = None,
         modify_mode: str = None,
     ):
+        # The name of the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
         self.es_ipwhitelist = es_ipwhitelist
+        # The IP addresses in the whitelist. This parameter is required if you configure the whiteIpGroup parameter.
         self.white_ip_group = white_ip_group
+        # The IP addresses in the whitelist.
         self.client_token = client_token
+        # The IP addresses in the whitelist. This parameter is available if the whiteIpGroup parameter is left empty. The default IP address whitelist is updated based on the value of this parameter.
+        # 
+        # >  You cannot configure both the esIPWhitelist and whiteIpGroup parameters.
         self.modify_mode = modify_mode
 
     def validate(self):
@@ -36671,6 +37497,7 @@ class UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList(TeaModel):
         ips: List[str] = None,
         white_ip_type: str = None,
     ):
+        # The type of the whitelist. The value of this parameter is fixed as PRIVATE_ES, which indicates a private IP address whitelist.
         self.group_name = group_name
         self.ips = ips
         self.white_ip_type = white_ip_type
@@ -36708,6 +37535,7 @@ class UpdateWhiteIpsResponseBodyResultNetworkConfig(TeaModel):
         self,
         white_ip_group_list: List[UpdateWhiteIpsResponseBodyResultNetworkConfigWhiteIpGroupList] = None,
     ):
+        # The IP addresses in the whitelist.
         self.white_ip_group_list = white_ip_group_list
 
     def validate(self):
@@ -36744,7 +37572,9 @@ class UpdateWhiteIpsResponseBodyResult(TeaModel):
         es_ipwhitelist: List[str] = None,
         network_config: UpdateWhiteIpsResponseBodyResultNetworkConfig = None,
     ):
+        # The list of whitelists.
         self.es_ipwhitelist = es_ipwhitelist
+        # The name of the whitelist. By default, the default whitelist is included.
         self.network_config = network_config
 
     def validate(self):
@@ -36779,7 +37609,9 @@ class UpdateWhiteIpsResponseBody(TeaModel):
         request_id: str = None,
         result: UpdateWhiteIpsResponseBodyResult = None,
     ):
+        # The updated whitelist.
         self.request_id = request_id
+        # The network configurations.
         self.result = result
 
     def validate(self):
@@ -36861,7 +37693,6 @@ class UpdateXpackMonitorConfigRequest(TeaModel):
         password: str = None,
         user_name: str = None,
     ):
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
         self.client_token = client_token
         self.enable = enable
         self.endpoints = endpoints
@@ -36910,12 +37741,7 @@ class UpdateXpackMonitorConfigResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Returned results:
-        # 
-        # *   true: The update was successful.
-        # *   false: The update failed.
         self.result = result
 
     def validate(self):
@@ -36996,9 +37822,14 @@ class UpgradeEngineVersionRequest(TeaModel):
     ):
         self.type = type
         self.version = version
-        # 5A2CFF0E-5718-45B5-9D4D-70B3FF\*\*\*\*\
+        # The moderation results.
         self.client_token = client_token
-        # false
+        # The monitoring type. Valid values:
+        # 
+        # *   checkClusterHealth: Cluster Health Status
+        # *   checkConfigCompatible: Configuration Compatibility Status
+        # *   checkClusterResource: resource space status
+        # *   checkClusterSnapshot: Whether a snapshot exists
         self.dry_run = dry_run
 
     def validate(self):
@@ -37040,17 +37871,12 @@ class UpgradeEngineVersionResponseBodyResultValidateResult(TeaModel):
         error_msg: str = None,
         error_type: str = None,
     ):
-        # The error code returned if the request failed.
         self.error_code = error_code
-        # The error message returned.
         self.error_msg = error_msg
-        # The type of the error. Valid values:
+        # The verification is passed. Valid values:
         # 
-        # *   clusterStatus: the health status of the cluster.
-        # *   clusterConfigYml: Cluster YML File
-        # *   clusterConfigPlugins: Cluster Configuration File
-        # *   clusterResource: cluster resources
-        # *   clusterSnapshot: cluster snapshot
+        # *   success: through
+        # *   failed: failed
         self.error_type = error_type
 
     def validate(self):
@@ -37088,19 +37914,10 @@ class UpgradeEngineVersionResponseBodyResult(TeaModel):
         validate_result: List[UpgradeEngineVersionResponseBodyResultValidateResult] = None,
         validate_type: str = None,
     ):
-        # The verification is passed. Valid values:
-        # 
-        # *   success: through
-        # *   failed: failed
         self.status = status
-        # The verification information.
+        # The error message returned.
         self.validate_result = validate_result
-        # The monitoring type. Valid values:
-        # 
-        # *   checkClusterHealth: Cluster Health Status
-        # *   checkConfigCompatible: Configuration Compatibility Status
-        # *   checkClusterResource: resource space status
-        # *   checkClusterSnapshot: Whether a snapshot exists
+        # The error code returned if the request failed.
         self.validate_type = validate_type
 
     def validate(self):
@@ -37145,9 +37962,15 @@ class UpgradeEngineVersionResponseBody(TeaModel):
         request_id: str = None,
         result: List[UpgradeEngineVersionResponseBodyResult] = None,
     ):
-        # The ID of the request.
+        # The verification information.
         self.request_id = request_id
-        # The moderation results.
+        # The type of the error. Valid values:
+        # 
+        # *   clusterStatus: the health status of the cluster.
+        # *   clusterConfigYml: Cluster YML File
+        # *   clusterConfigPlugins: Cluster Configuration File
+        # *   clusterResource: cluster resources
+        # *   clusterSnapshot: cluster snapshot
         self.result = result
 
     def validate(self):
@@ -37232,6 +38055,7 @@ class ValidateConnectionRequest(TeaModel):
         client_token: str = None,
         body: str = None,
     ):
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.body = body
 
@@ -37265,7 +38089,12 @@ class ValidateConnectionResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the connectivity is normal. Valid values:
+        # 
+        # *   true
+        # *   false
         self.result = result
 
     def validate(self):
@@ -37396,11 +38225,13 @@ class ValidateShrinkNodesRequest(TeaModel):
         node_type: str = None,
     ):
         self.body = body
-        # 2
         self.count = count
-        # false
+        # The ID of the request.
         self.ignore_status = ignore_status
-        # WORKER
+        # Returned results:
+        # 
+        # *   true: can be scaled in
+        # *   false: cannot be scaled in.
         self.node_type = node_type
 
     def validate(self):
@@ -37449,12 +38280,7 @@ class ValidateShrinkNodesResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
-        # Returned results:
-        # 
-        # *   true: can be scaled in
-        # *   false: cannot be scaled in.
         self.result = result
 
     def validate(self):
@@ -37792,6 +38618,39 @@ class ValidateTransferableNodesResponse(TeaModel):
         return self
 
 
+class CreateInstanceRequestTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['tagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['tagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagKey') is not None:
+            self.tag_key = m.get('tagKey')
+        if m.get('tagValue') is not None:
+            self.tag_value = m.get('tagValue')
+        return self
+
+
 class CreateInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -37809,6 +38668,7 @@ class CreateInstanceRequest(TeaModel):
         payment_info: PaymentInfo = None,
         payment_type: str = None,
         resource_group_id: str = None,
+        tags: List[CreateInstanceRequestTags] = None,
         warm_node_configuration: WarmNodeConfiguration = None,
         zone_count: int = None,
         client_token: str = None,
@@ -37827,6 +38687,7 @@ class CreateInstanceRequest(TeaModel):
         self.payment_info = payment_info
         self.payment_type = payment_type
         self.resource_group_id = resource_group_id
+        self.tags = tags
         self.warm_node_configuration = warm_node_configuration
         self.zone_count = zone_count
         self.client_token = client_token
@@ -37846,6 +38707,10 @@ class CreateInstanceRequest(TeaModel):
             self.node_spec.validate()
         if self.payment_info:
             self.payment_info.validate()
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
         if self.warm_node_configuration:
             self.warm_node_configuration.validate()
 
@@ -37883,6 +38748,10 @@ class CreateInstanceRequest(TeaModel):
             result['paymentType'] = self.payment_type
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
+        result['tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['tags'].append(k.to_map() if k else None)
         if self.warm_node_configuration is not None:
             result['warmNodeConfiguration'] = self.warm_node_configuration.to_map()
         if self.zone_count is not None:
@@ -37928,6 +38797,11 @@ class CreateInstanceRequest(TeaModel):
             self.payment_type = m.get('paymentType')
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+        self.tags = []
+        if m.get('tags') is not None:
+            for k in m.get('tags'):
+                temp_model = CreateInstanceRequestTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('warmNodeConfiguration') is not None:
             temp_model = WarmNodeConfiguration()
             self.warm_node_configuration = temp_model.from_map(m['warmNodeConfiguration'])
