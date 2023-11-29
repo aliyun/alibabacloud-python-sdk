@@ -145,7 +145,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: CreateLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -260,7 +260,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: CreateLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -374,7 +374,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: CreateLindormInstanceRequest
         @return: CreateLindormInstanceResponse
@@ -387,7 +387,7 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
         
         @param request: CreateLindormInstanceRequest
         @return: CreateLindormInstanceResponse
@@ -1544,6 +1544,100 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.renew_lindorm_instance_with_options_async(request, runtime)
+
+    def switch_lsqlv3my_sqlservice_with_options(
+        self,
+        request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchLSQLV3MySQLService',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def switch_lsqlv3my_sqlservice_with_options_async(
+        self,
+        request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SwitchLSQLV3MySQLService',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def switch_lsqlv3my_sqlservice(
+        self,
+        request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
+    ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.switch_lsqlv3my_sqlservice_with_options(request, runtime)
+
+    async def switch_lsqlv3my_sqlservice_async(
+        self,
+        request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
+    ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.switch_lsqlv3my_sqlservice_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
