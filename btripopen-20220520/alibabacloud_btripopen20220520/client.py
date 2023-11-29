@@ -10953,6 +10953,392 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.InsureRefundDetailHeaders()
         return await self.insure_refund_detail_with_options_async(request, headers, runtime)
 
+    def intl_flight_listing_search_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightListingSearchRequest,
+        headers: btrip_open_20220520_models.IntlFlightListingSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightListingSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.search_journeys):
+            request.search_journeys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not UtilClient.is_unset(tmp_req.search_passenger_list):
+            request.search_passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_passenger_list, 'search_passenger_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.cabin_type):
+            query['cabin_type'] = request.cabin_type
+        if not UtilClient.is_unset(request.direct_only):
+            query['direct_only'] = request.direct_only
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.need_share_flight):
+            query['need_share_flight'] = request.need_share_flight
+        if not UtilClient.is_unset(request.out_wheel_search):
+            query['out_wheel_search'] = request.out_wheel_search
+        if not UtilClient.is_unset(request.query_record_id):
+            query['query_record_id'] = request.query_record_id
+        if not UtilClient.is_unset(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not UtilClient.is_unset(request.search_mode):
+            query['search_mode'] = request.search_mode
+        if not UtilClient.is_unset(request.search_passenger_list_shrink):
+            query['search_passenger_list'] = request.search_passenger_list_shrink
+        if not UtilClient.is_unset(request.supplier_code):
+            query['supplier_code'] = request.supplier_code
+        if not UtilClient.is_unset(request.token):
+            query['token'] = request.token
+        if not UtilClient.is_unset(request.trip_type):
+            query['trip_type'] = request.trip_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightListingSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/listing-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightListingSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_listing_search_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightListingSearchRequest,
+        headers: btrip_open_20220520_models.IntlFlightListingSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightListingSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.search_journeys):
+            request.search_journeys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not UtilClient.is_unset(tmp_req.search_passenger_list):
+            request.search_passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_passenger_list, 'search_passenger_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.cabin_type):
+            query['cabin_type'] = request.cabin_type
+        if not UtilClient.is_unset(request.direct_only):
+            query['direct_only'] = request.direct_only
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.need_share_flight):
+            query['need_share_flight'] = request.need_share_flight
+        if not UtilClient.is_unset(request.out_wheel_search):
+            query['out_wheel_search'] = request.out_wheel_search
+        if not UtilClient.is_unset(request.query_record_id):
+            query['query_record_id'] = request.query_record_id
+        if not UtilClient.is_unset(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not UtilClient.is_unset(request.search_mode):
+            query['search_mode'] = request.search_mode
+        if not UtilClient.is_unset(request.search_passenger_list_shrink):
+            query['search_passenger_list'] = request.search_passenger_list_shrink
+        if not UtilClient.is_unset(request.supplier_code):
+            query['supplier_code'] = request.supplier_code
+        if not UtilClient.is_unset(request.token):
+            query['token'] = request.token
+        if not UtilClient.is_unset(request.trip_type):
+            query['trip_type'] = request.trip_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightListingSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/listing-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightListingSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_listing_search(
+        self,
+        request: btrip_open_20220520_models.IntlFlightListingSearchRequest,
+    ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightListingSearchHeaders()
+        return self.intl_flight_listing_search_with_options(request, headers, runtime)
+
+    async def intl_flight_listing_search_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightListingSearchRequest,
+    ) -> btrip_open_20220520_models.IntlFlightListingSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightListingSearchHeaders()
+        return await self.intl_flight_listing_search_with_options_async(request, headers, runtime)
+
+    def intl_flight_ota_item_detail_with_options(
+        self,
+        ota_item_id: str,
+        request: btrip_open_20220520_models.IntlFlightOtaItemDetailRequest,
+        headers: btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.supplier_code):
+            query['supplier_code'] = request.supplier_code
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightOtaItemDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/items/{OpenApiUtilClient.get_encode_param(ota_item_id)}/action/ota-get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightOtaItemDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_ota_item_detail_with_options_async(
+        self,
+        ota_item_id: str,
+        request: btrip_open_20220520_models.IntlFlightOtaItemDetailRequest,
+        headers: btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.supplier_code):
+            query['supplier_code'] = request.supplier_code
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightOtaItemDetail',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/items/{OpenApiUtilClient.get_encode_param(ota_item_id)}/action/ota-get',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightOtaItemDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_ota_item_detail(
+        self,
+        ota_item_id: str,
+        request: btrip_open_20220520_models.IntlFlightOtaItemDetailRequest,
+    ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders()
+        return self.intl_flight_ota_item_detail_with_options(ota_item_id, request, headers, runtime)
+
+    async def intl_flight_ota_item_detail_async(
+        self,
+        ota_item_id: str,
+        request: btrip_open_20220520_models.IntlFlightOtaItemDetailRequest,
+    ) -> btrip_open_20220520_models.IntlFlightOtaItemDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightOtaItemDetailHeaders()
+        return await self.intl_flight_ota_item_detail_with_options_async(ota_item_id, request, headers, runtime)
+
+    def intl_flight_ota_search_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightOtaSearchRequest,
+        headers: btrip_open_20220520_models.IntlFlightOtaSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightOtaSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.search_journeys):
+            request.search_journeys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not UtilClient.is_unset(tmp_req.search_passenger_list):
+            request.search_passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_passenger_list, 'search_passenger_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.cabin_type):
+            query['cabin_type'] = request.cabin_type
+        if not UtilClient.is_unset(request.direct_only):
+            query['direct_only'] = request.direct_only
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.need_share_flight):
+            query['need_share_flight'] = request.need_share_flight
+        if not UtilClient.is_unset(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not UtilClient.is_unset(request.search_passenger_list_shrink):
+            query['search_passenger_list'] = request.search_passenger_list_shrink
+        if not UtilClient.is_unset(request.supplier_code):
+            query['supplier_code'] = request.supplier_code
+        if not UtilClient.is_unset(request.trip_type):
+            query['trip_type'] = request.trip_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightOtaSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/ota-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightOtaSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def intl_flight_ota_search_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.IntlFlightOtaSearchRequest,
+        headers: btrip_open_20220520_models.IntlFlightOtaSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.IntlFlightOtaSearchShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.search_journeys):
+            request.search_journeys_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_journeys, 'search_journeys', 'json')
+        if not UtilClient.is_unset(tmp_req.search_passenger_list):
+            request.search_passenger_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.search_passenger_list, 'search_passenger_list', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.btrip_user_id):
+            query['btrip_user_id'] = request.btrip_user_id
+        if not UtilClient.is_unset(request.buyer_name):
+            query['buyer_name'] = request.buyer_name
+        if not UtilClient.is_unset(request.cabin_type):
+            query['cabin_type'] = request.cabin_type
+        if not UtilClient.is_unset(request.direct_only):
+            query['direct_only'] = request.direct_only
+        if not UtilClient.is_unset(request.isv_name):
+            query['isv_name'] = request.isv_name
+        if not UtilClient.is_unset(request.need_share_flight):
+            query['need_share_flight'] = request.need_share_flight
+        if not UtilClient.is_unset(request.search_journeys_shrink):
+            query['search_journeys'] = request.search_journeys_shrink
+        if not UtilClient.is_unset(request.search_passenger_list_shrink):
+            query['search_passenger_list'] = request.search_passenger_list_shrink
+        if not UtilClient.is_unset(request.supplier_code):
+            query['supplier_code'] = request.supplier_code
+        if not UtilClient.is_unset(request.trip_type):
+            query['trip_type'] = request.trip_type
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='IntlFlightOtaSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/intl-flight/v1/flights/action/ota-search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.IntlFlightOtaSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def intl_flight_ota_search(
+        self,
+        request: btrip_open_20220520_models.IntlFlightOtaSearchRequest,
+    ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightOtaSearchHeaders()
+        return self.intl_flight_ota_search_with_options(request, headers, runtime)
+
+    async def intl_flight_ota_search_async(
+        self,
+        request: btrip_open_20220520_models.IntlFlightOtaSearchRequest,
+    ) -> btrip_open_20220520_models.IntlFlightOtaSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.IntlFlightOtaSearchHeaders()
+        return await self.intl_flight_ota_search_with_options_async(request, headers, runtime)
+
     def invoice_add_with_options(
         self,
         request: btrip_open_20220520_models.InvoiceAddRequest,
