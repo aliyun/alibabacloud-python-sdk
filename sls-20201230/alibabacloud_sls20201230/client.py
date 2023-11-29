@@ -36,6 +36,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyConfigToMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -66,6 +73,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyConfigToMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -94,6 +108,11 @@ class Client(OpenApiClient):
         machine_group: str,
         config_name: str,
     ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: ApplyConfigToMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.apply_config_to_machine_group_with_options(project, machine_group, config_name, headers, runtime)
@@ -104,6 +123,11 @@ class Client(OpenApiClient):
         machine_group: str,
         config_name: str,
     ) -> sls_20201230_models.ApplyConfigToMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: ApplyConfigToMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.apply_config_to_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
@@ -534,6 +558,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   You can create up to 30 consumer groups for a Logstore.
+        *   Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDKs for Java. For more information, see [Consume log data](~~120035~~) and [Use consumer groups to consume data](~~28998~~).
+        
+        @param request: CreateConsumerGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -573,6 +608,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   You can create up to 30 consumer groups for a Logstore.
+        *   Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDKs for Java. For more information, see [Consume log data](~~120035~~) and [Use consumer groups to consume data](~~28998~~).
+        
+        @param request: CreateConsumerGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -610,6 +656,15 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.CreateConsumerGroupRequest,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   You can create up to 30 consumer groups for a Logstore.
+        *   Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDKs for Java. For more information, see [Consume log data](~~120035~~) and [Use consumer groups to consume data](~~28998~~).
+        
+        @param request: CreateConsumerGroupRequest
+        @return: CreateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_consumer_group_with_options(project, logstore, request, headers, runtime)
@@ -620,6 +675,15 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.CreateConsumerGroupRequest,
     ) -> sls_20201230_models.CreateConsumerGroupResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   You can create up to 30 consumer groups for a Logstore.
+        *   Simple Log Service provides examples of both regular log consumption and consumer group-based log consumption by using Simple Log Service SDKs for Java. For more information, see [Consume log data](~~120035~~) and [Use consumer groups to consume data](~~28998~~).
+        
+        @param request: CreateConsumerGroupRequest
+        @return: CreateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_consumer_group_with_options_async(project, logstore, request, headers, runtime)
@@ -711,6 +775,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -745,6 +817,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -777,6 +857,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateDomainRequest,
     ) -> sls_20201230_models.CreateDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateDomainRequest
+        @return: CreateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_domain_with_options(project, request, headers, runtime)
@@ -786,6 +872,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateDomainRequest,
     ) -> sls_20201230_models.CreateDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateDomainRequest
+        @return: CreateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_domain_with_options_async(project, request, headers, runtime)
@@ -798,6 +890,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateIndexResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndexResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -845,6 +945,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateIndexResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndexResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -890,6 +998,12 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.CreateIndexRequest,
     ) -> sls_20201230_models.CreateIndexResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateIndexRequest
+        @return: CreateIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_index_with_options(project, logstore, request, headers, runtime)
@@ -900,6 +1014,12 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.CreateIndexRequest,
     ) -> sls_20201230_models.CreateIndexResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateIndexRequest
+        @return: CreateIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_index_with_options_async(project, logstore, request, headers, runtime)
@@ -911,6 +1031,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLogStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -965,6 +1094,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLogStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1017,6 +1155,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateLogStoreRequest,
     ) -> sls_20201230_models.CreateLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLogStoreRequest
+        @return: CreateLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_log_store_with_options(project, request, headers, runtime)
@@ -1026,6 +1171,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateLogStoreRequest,
     ) -> sls_20201230_models.CreateLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLogStoreRequest
+        @return: CreateLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_log_store_with_options_async(project, request, headers, runtime)
@@ -1037,6 +1189,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLoggingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoggingResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1073,6 +1233,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLoggingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoggingResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1107,6 +1275,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateLoggingRequest,
     ) -> sls_20201230_models.CreateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLoggingRequest
+        @return: CreateLoggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_logging_with_options(project, request, headers, runtime)
@@ -1116,6 +1290,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateLoggingRequest,
     ) -> sls_20201230_models.CreateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateLoggingRequest
+        @return: CreateLoggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_logging_with_options_async(project, request, headers, runtime)
@@ -1237,6 +1417,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMachineGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1279,6 +1468,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMachineGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1319,6 +1517,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateMachineGroupRequest,
     ) -> sls_20201230_models.CreateMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateMachineGroupRequest
+        @return: CreateMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_machine_group_with_options(project, request, headers, runtime)
@@ -1328,6 +1533,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateMachineGroupRequest,
     ) -> sls_20201230_models.CreateMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateMachineGroupRequest
+        @return: CreateMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_machine_group_with_options_async(project, request, headers, runtime)
@@ -1339,6 +1551,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateOssExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOssExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1377,6 +1597,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateOssExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOssExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1413,6 +1641,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateOssExternalStoreRequest,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateOssExternalStoreRequest
+        @return: CreateOssExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_oss_external_store_with_options(project, request, headers, runtime)
@@ -1422,6 +1656,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateOssExternalStoreRequest,
     ) -> sls_20201230_models.CreateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateOssExternalStoreRequest
+        @return: CreateOssExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_oss_external_store_with_options_async(project, request, headers, runtime)
@@ -1521,6 +1761,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateRdsExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRdsExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1559,6 +1807,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateRdsExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRdsExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1595,6 +1851,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateRdsExternalStoreRequest,
     ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateRdsExternalStoreRequest
+        @return: CreateRdsExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_rds_external_store_with_options(project, request, headers, runtime)
@@ -1604,6 +1866,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateRdsExternalStoreRequest,
     ) -> sls_20201230_models.CreateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateRdsExternalStoreRequest
+        @return: CreateRdsExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_rds_external_store_with_options_async(project, request, headers, runtime)
@@ -1615,6 +1883,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateSavedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSavedSearchResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1657,6 +1934,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateSavedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSavedSearchResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -1697,6 +1983,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateSavedSearchRequest,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateSavedSearchRequest
+        @return: CreateSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_saved_search_with_options(project, request, headers, runtime)
@@ -1706,89 +1999,16 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.CreateSavedSearchRequest,
     ) -> sls_20201230_models.CreateSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: CreateSavedSearchRequest
+        @return: CreateSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_saved_search_with_options_async(project, request, headers, runtime)
-
-    def create_ticket_with_options(
-        self,
-        request: sls_20201230_models.CreateTicketRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.CreateTicketResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.play_access_key_id):
-            body['playAccessKeyId'] = request.play_access_key_id
-        if not UtilClient.is_unset(request.play_access_key_secret):
-            body['playAccessKeySecret'] = request.play_access_key_secret
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateTicket',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/tickets',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.CreateTicketResponse(),
-            self.execute(params, req, runtime)
-        )
-
-    async def create_ticket_with_options_async(
-        self,
-        request: sls_20201230_models.CreateTicketRequest,
-        headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sls_20201230_models.CreateTicketResponse:
-        UtilClient.validate_model(request)
-        body = {}
-        if not UtilClient.is_unset(request.play_access_key_id):
-            body['playAccessKeyId'] = request.play_access_key_id
-        if not UtilClient.is_unset(request.play_access_key_secret):
-            body['playAccessKeySecret'] = request.play_access_key_secret
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
-        )
-        params = open_api_models.Params(
-            action='CreateTicket',
-            version='2020-12-30',
-            protocol='HTTPS',
-            pathname=f'/tickets',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            sls_20201230_models.CreateTicketResponse(),
-            await self.execute_async(params, req, runtime)
-        )
-
-    def create_ticket(
-        self,
-        request: sls_20201230_models.CreateTicketRequest,
-    ) -> sls_20201230_models.CreateTicketResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return self.create_ticket_with_options(request, headers, runtime)
-
-    async def create_ticket_async(
-        self,
-        request: sls_20201230_models.CreateTicketRequest,
-    ) -> sls_20201230_models.CreateTicketResponse:
-        runtime = util_models.RuntimeOptions()
-        headers = {}
-        return await self.create_ticket_with_options_async(request, headers, runtime)
 
     def delete_annotation_data_with_options(
         self,
@@ -2160,6 +2380,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteConsumerGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2190,6 +2417,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteConsumerGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConsumerGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2218,6 +2452,11 @@ class Client(OpenApiClient):
         logstore: str,
         consumer_group: str,
     ) -> sls_20201230_models.DeleteConsumerGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_consumer_group_with_options(project, logstore, consumer_group, headers, runtime)
@@ -2228,6 +2467,11 @@ class Client(OpenApiClient):
         logstore: str,
         consumer_group: str,
     ) -> sls_20201230_models.DeleteConsumerGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_consumer_group_with_options_async(project, logstore, consumer_group, headers, runtime)
@@ -2315,6 +2559,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2344,6 +2595,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2371,6 +2629,11 @@ class Client(OpenApiClient):
         project: str,
         domain_name: str,
     ) -> sls_20201230_models.DeleteDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_domain_with_options(project, domain_name, headers, runtime)
@@ -2380,6 +2643,11 @@ class Client(OpenApiClient):
         project: str,
         domain_name: str,
     ) -> sls_20201230_models.DeleteDomainResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_domain_with_options_async(project, domain_name, headers, runtime)
@@ -2391,6 +2659,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExternalStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2420,6 +2695,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExternalStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2447,6 +2729,11 @@ class Client(OpenApiClient):
         project: str,
         external_store_name: str,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_external_store_with_options(project, external_store_name, headers, runtime)
@@ -2456,6 +2743,11 @@ class Client(OpenApiClient):
         project: str,
         external_store_name: str,
     ) -> sls_20201230_models.DeleteExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_external_store_with_options_async(project, external_store_name, headers, runtime)
@@ -2467,6 +2759,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2496,6 +2796,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2523,6 +2831,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.DeleteIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_index_with_options(project, logstore, headers, runtime)
@@ -2532,6 +2846,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.DeleteIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_index_with_options_async(project, logstore, headers, runtime)
@@ -2543,6 +2863,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2572,6 +2900,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLogStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2599,6 +2935,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.DeleteLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_log_store_with_options(project, logstore, headers, runtime)
@@ -2608,6 +2950,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.DeleteLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_log_store_with_options_async(project, logstore, headers, runtime)
@@ -2767,6 +3115,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2796,6 +3152,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2823,6 +3187,12 @@ class Client(OpenApiClient):
         project: str,
         machine_group: str,
     ) -> sls_20201230_models.DeleteMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_machine_group_with_options(project, machine_group, headers, runtime)
@@ -2832,6 +3202,12 @@ class Client(OpenApiClient):
         project: str,
         machine_group: str,
     ) -> sls_20201230_models.DeleteMachineGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_machine_group_with_options_async(project, machine_group, headers, runtime)
@@ -2914,6 +3290,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectPolicyResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2942,6 +3326,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectPolicyResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -2968,6 +3360,12 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.DeleteProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_project_policy_with_options(project, headers, runtime)
@@ -2976,6 +3374,12 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.DeleteProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_policy_with_options_async(project, headers, runtime)
@@ -2987,6 +3391,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSavedSearchResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3016,6 +3428,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSavedSearchResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3043,6 +3463,12 @@ class Client(OpenApiClient):
         project: str,
         savedsearch_name: str,
     ) -> sls_20201230_models.DeleteSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_saved_search_with_options(project, savedsearch_name, headers, runtime)
@@ -3052,6 +3478,12 @@ class Client(OpenApiClient):
         project: str,
         savedsearch_name: str,
     ) -> sls_20201230_models.DeleteSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_saved_search_with_options_async(project, savedsearch_name, headers, runtime)
@@ -3064,6 +3496,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteShipperResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3094,6 +3533,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.DeleteShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteShipperResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3122,6 +3568,11 @@ class Client(OpenApiClient):
         logstore: str,
         shipper_name: str,
     ) -> sls_20201230_models.DeleteShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteShipperResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_shipper_with_options(project, logstore, shipper_name, headers, runtime)
@@ -3132,6 +3583,11 @@ class Client(OpenApiClient):
         logstore: str,
         shipper_name: str,
     ) -> sls_20201230_models.DeleteShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: DeleteShipperResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_shipper_with_options_async(project, logstore, shipper_name, headers, runtime)
@@ -3345,6 +3801,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAppliedConfigsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppliedConfigsResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3374,6 +3837,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAppliedConfigsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppliedConfigsResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3401,6 +3871,11 @@ class Client(OpenApiClient):
         project: str,
         machine_group: str,
     ) -> sls_20201230_models.GetAppliedConfigsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetAppliedConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_applied_configs_with_options(project, machine_group, headers, runtime)
@@ -3410,6 +3885,11 @@ class Client(OpenApiClient):
         project: str,
         machine_group: str,
     ) -> sls_20201230_models.GetAppliedConfigsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetAppliedConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_applied_configs_with_options_async(project, machine_group, headers, runtime)
@@ -3421,6 +3901,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppliedMachineGroupsResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3450,6 +3937,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppliedMachineGroupsResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -3477,6 +3971,11 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetAppliedMachineGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_applied_machine_groups_with_options(project, config_name, headers, runtime)
@@ -3486,6 +3985,11 @@ class Client(OpenApiClient):
         project: str,
         config_name: str,
     ) -> sls_20201230_models.GetAppliedMachineGroupsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetAppliedMachineGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_applied_machine_groups_with_options_async(project, config_name, headers, runtime)
@@ -3499,6 +4003,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetCheckPointResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetCheckPointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCheckPointResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -3535,6 +4047,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetCheckPointResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetCheckPointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCheckPointResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -3569,6 +4089,12 @@ class Client(OpenApiClient):
         consumer_group: str,
         request: sls_20201230_models.GetCheckPointRequest,
     ) -> sls_20201230_models.GetCheckPointResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetCheckPointRequest
+        @return: GetCheckPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_check_point_with_options(project, logstore, consumer_group, request, headers, runtime)
@@ -3580,6 +4106,12 @@ class Client(OpenApiClient):
         consumer_group: str,
         request: sls_20201230_models.GetCheckPointRequest,
     ) -> sls_20201230_models.GetCheckPointResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetCheckPointRequest
+        @return: GetCheckPointResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_check_point_with_options_async(project, logstore, consumer_group, request, headers, runtime)
@@ -3752,6 +4284,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetContextLogsResponse:
+        """
+        You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetContextLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetContextLogsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -3795,6 +4336,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetContextLogsResponse:
+        """
+        You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetContextLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetContextLogsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -3836,6 +4386,13 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetContextLogsRequest,
     ) -> sls_20201230_models.GetContextLogsResponse:
+        """
+        You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetContextLogsRequest
+        @return: GetContextLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_context_logs_with_options(project, logstore, request, headers, runtime)
@@ -3846,6 +4403,13 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetContextLogsRequest,
     ) -> sls_20201230_models.GetContextLogsResponse:
+        """
+        You can specify a log as the start log. The time range of a contextual query is one day before and one day after the generation time of the start log.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetContextLogsRequest
+        @return: GetContextLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_context_logs_with_options_async(project, logstore, request, headers, runtime)
@@ -3859,6 +4423,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetCursorResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The following content describes the relationships among a cursor, project, Logstore, and shard:
+        *   A project can have multiple Logstores.
+        *   A Logstore can have multiple shards.
+        *   You can use a cursor to obtain a log in a shard.
+        
+        @param request: GetCursorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCursorResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -3895,6 +4472,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetCursorResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The following content describes the relationships among a cursor, project, Logstore, and shard:
+        *   A project can have multiple Logstores.
+        *   A Logstore can have multiple shards.
+        *   You can use a cursor to obtain a log in a shard.
+        
+        @param request: GetCursorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCursorResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -3929,6 +4519,17 @@ class Client(OpenApiClient):
         shard_id: str,
         request: sls_20201230_models.GetCursorRequest,
     ) -> sls_20201230_models.GetCursorResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The following content describes the relationships among a cursor, project, Logstore, and shard:
+        *   A project can have multiple Logstores.
+        *   A Logstore can have multiple shards.
+        *   You can use a cursor to obtain a log in a shard.
+        
+        @param request: GetCursorRequest
+        @return: GetCursorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_cursor_with_options(project, logstore, shard_id, request, headers, runtime)
@@ -3940,6 +4541,17 @@ class Client(OpenApiClient):
         shard_id: str,
         request: sls_20201230_models.GetCursorRequest,
     ) -> sls_20201230_models.GetCursorResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The following content describes the relationships among a cursor, project, Logstore, and shard:
+        *   A project can have multiple Logstores.
+        *   A Logstore can have multiple shards.
+        *   You can use a cursor to obtain a log in a shard.
+        
+        @param request: GetCursorRequest
+        @return: GetCursorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_cursor_with_options_async(project, logstore, shard_id, request, headers, runtime)
@@ -4121,6 +4733,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetExternalStoreResponse:
+        """
+        The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExternalStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4150,6 +4770,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetExternalStoreResponse:
+        """
+        The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetExternalStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4177,6 +4805,12 @@ class Client(OpenApiClient):
         project: str,
         external_store_name: str,
     ) -> sls_20201230_models.GetExternalStoreResponse:
+        """
+        The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_external_store_with_options(project, external_store_name, headers, runtime)
@@ -4186,6 +4820,12 @@ class Client(OpenApiClient):
         project: str,
         external_store_name: str,
     ) -> sls_20201230_models.GetExternalStoreResponse:
+        """
+        The supported data sources of external stores include Object Storage Service (OSS) buckets and ApsaraDB RDS for MySQL databases in a virtual private cloud (VPC).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_external_store_with_options_async(project, external_store_name, headers, runtime)
@@ -4198,6 +4838,23 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetHistogramsResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        *   Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:\\__receive_time\\_\\_ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](~~462234~~).
+        
+        @param request: GetHistogramsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistogramsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -4239,6 +4896,23 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetHistogramsResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        *   Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:\\__receive_time\\_\\_ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](~~462234~~).
+        
+        @param request: GetHistogramsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHistogramsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -4278,6 +4952,21 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetHistogramsRequest,
     ) -> sls_20201230_models.GetHistogramsResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        *   Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:\\__receive_time\\_\\_ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](~~462234~~).
+        
+        @param request: GetHistogramsRequest
+        @return: GetHistogramsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_histograms_with_options(project, logstore, request, headers, runtime)
@@ -4288,6 +4977,21 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetHistogramsRequest,
     ) -> sls_20201230_models.GetHistogramsResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   The time range is evenly divided into subintervals in the responses. If the time range that is specified in the request remains unchanged, the subintervals in the responses also remain unchanged.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        *   Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:\\__receive_time\\_\\_ field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetHistograms operation by using Simple Log Service SDK for Java. For more information, see [Use GetHistograms to query the distribution of logs](~~462234~~).
+        
+        @param request: GetHistogramsRequest
+        @return: GetHistogramsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_histograms_with_options_async(project, logstore, request, headers, runtime)
@@ -4299,6 +5003,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIndexResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4328,6 +5040,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIndexResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4355,6 +5075,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.GetIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_index_with_options(project, logstore, headers, runtime)
@@ -4364,6 +5090,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.GetIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_index_with_options_async(project, logstore, headers, runtime)
@@ -4375,6 +5107,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4404,6 +5144,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogStoreResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4431,6 +5179,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.GetLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_log_store_with_options(project, logstore, headers, runtime)
@@ -4440,6 +5194,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.GetLogStoreResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_log_store_with_options_async(project, logstore, headers, runtime)
@@ -4526,6 +5286,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoggingResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4554,6 +5321,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoggingResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4580,6 +5354,11 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.GetLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetLoggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_logging_with_options(project, headers, runtime)
@@ -4588,6 +5367,11 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.GetLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetLoggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_logging_with_options_async(project, headers, runtime)
@@ -4600,6 +5384,23 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogsResponse:
+        """
+        ### Usage notes
+        > Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a Scheduled SQL job](~~286457~~).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot forecast the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:**receive_time** field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](~~407683~~) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](~~407684~~).
+        
+        @param request: GetLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -4649,6 +5450,23 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogsResponse:
+        """
+        ### Usage notes
+        > Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a Scheduled SQL job](~~286457~~).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot forecast the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:**receive_time** field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](~~407683~~) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](~~407684~~).
+        
+        @param request: GetLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -4696,6 +5514,21 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetLogsRequest,
     ) -> sls_20201230_models.GetLogsResponse:
+        """
+        ### Usage notes
+        > Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a Scheduled SQL job](~~286457~~).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot forecast the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:**receive_time** field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](~~407683~~) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](~~407684~~).
+        
+        @param request: GetLogsRequest
+        @return: GetLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_logs_with_options(project, logstore, request, headers, runtime)
@@ -4706,6 +5539,21 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetLogsRequest,
     ) -> sls_20201230_models.GetLogsResponse:
+        """
+        ### Usage notes
+        > Simple Log Service allows you to create a Scheduled SQL job. For more information, see [Create a Scheduled SQL job](~~286457~~).
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot forecast the number of times that you must call this operation to obtain the complete result. In this case, you must check the value of the x-log-progress parameter in the response of each request and determine whether to call this operation one more time to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log after a short latency. The latency of a query varies based on the type of the log. Simple Log Service classifies logs into the following types based on the log time:
+        Real-time data: The difference between the time record in a log and the current time on Simple Log Service is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as real-time data. This type of log is usually generated in common scenarios.
+        *   Historical data: The difference between the time record in a log and the current time on Simple Log Service is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and Simple Log Service received the log at 12:05:00, September 25, 2014 (UTC), Simple Log Service processes the log as historical data. This type of log is usually generated in data backfill scenarios.
+        After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        > Simple Log Service calculates the difference between the log time that is specified by the \\__time\\_\\_ field and the receiving time that is specified by the \\__tag\\_\\_:**receive_time** field for each log. The receiving time indicates the time at which Simple Log Service receives the log. If the difference is within the interval (-180 seconds,900 seconds], Simple Log Service processes the log as real-time data. If the difference is within the interval \\[-604,800 seconds,-180 seconds), Simple Log Service processes the log as historical data.
+        *   Simple Log Service provides examples on how to call the GetLogs operation by using Simple Log Service SDK for Java and Simple Log Service SDK for Python. For more information, see [Examples of calling the GetLogs operation by using Simple Log Service SDK for Java](~~407683~~) and [Examples of calling the GetLogs operation by using Simple Log Service SDK for Python](~~407684~~).
+        
+        @param request: GetLogsRequest
+        @return: GetLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_logs_with_options_async(project, logstore, request, headers, runtime)
@@ -4718,6 +5566,18 @@ class Client(OpenApiClient):
         headers: sls_20201230_models.GetLogsV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogsV2Response:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+        1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
+        2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        
+        @param request: GetLogsV2Request
+        @param headers: GetLogsV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogsV2Response
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -4778,6 +5638,18 @@ class Client(OpenApiClient):
         headers: sls_20201230_models.GetLogsV2Headers,
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetLogsV2Response:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+        1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
+        2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        
+        @param request: GetLogsV2Request
+        @param headers: GetLogsV2Headers
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogsV2Response
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -4836,6 +5708,16 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetLogsV2Request,
     ) -> sls_20201230_models.GetLogsV2Response:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+        1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
+        2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        
+        @param request: GetLogsV2Request
+        @return: GetLogsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = sls_20201230_models.GetLogsV2Headers()
         return self.get_logs_v2with_options(project, logstore, request, headers, runtime)
@@ -4846,6 +5728,16 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.GetLogsV2Request,
     ) -> sls_20201230_models.GetLogsV2Response:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   If the number of logs in a Logstore significantly changes, Simple Log Service cannot predict the number of times you must call this API operation to obtain a complete result. In this case, you must check the value of the progress parameter in the response of each request and determine whether to call this operation again to obtain the complete result. Each time you call this operation, the same number of charge units (CUs) are consumed.
+        *   After a log is written to a Logstore, you can call the GetHistograms or GetLogs operation to query the log. The latency of the query varies based on the type of the log. Simple Log Service classifies logs into the following types based on log timestamps:
+        1.  1.  Real-time data: The difference between the time record in the log and the current server time is within the interval (-180 seconds,900 seconds]. For example, if a log was generated at 12:03:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as real-time data. This type of log is usually generated in common scenarios.
+        2.  2.  Historical data: The difference between the time record in the log and the current server time is within the interval \\[-604,800 seconds,-180 seconds). For example, if a log was generated at 12:00:00, September 25, 2014 (UTC) and the server received the log at 12:05:00, September 25, 2014 (UTC), the server processes the log as historical data. This type of log is usually generated in data backfill scenarios. After real-time data is written to a Logstore, the data can be queried with a maximum latency of 3 seconds. For 99.9% of queries, the latency is no more than 1 second.
+        
+        @param request: GetLogsV2Request
+        @return: GetLogsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = sls_20201230_models.GetLogsV2Headers()
         return await self.get_logs_v2with_options_async(project, logstore, request, headers, runtime)
@@ -4926,6 +5818,88 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_logtail_pipeline_config_with_options_async(project, config_name, headers, runtime)
 
+    def get_mlservice_results_with_options(
+        self,
+        service_name: str,
+        request: sls_20201230_models.GetMLServiceResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetMLServiceResultsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_builtin):
+            query['allowBuiltin'] = request.allow_builtin
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='GetMLServiceResults',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ml/service/{service_name}/analysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetMLServiceResultsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_mlservice_results_with_options_async(
+        self,
+        service_name: str,
+        request: sls_20201230_models.GetMLServiceResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> sls_20201230_models.GetMLServiceResultsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_builtin):
+            query['allowBuiltin'] = request.allow_builtin
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(request.body)
+        )
+        params = open_api_models.Params(
+            action='GetMLServiceResults',
+            version='2020-12-30',
+            protocol='HTTPS',
+            pathname=f'/ml/service/{service_name}/analysis',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sls_20201230_models.GetMLServiceResultsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_mlservice_results(
+        self,
+        service_name: str,
+        request: sls_20201230_models.GetMLServiceResultsRequest,
+    ) -> sls_20201230_models.GetMLServiceResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_mlservice_results_with_options(service_name, request, headers, runtime)
+
+    async def get_mlservice_results_async(
+        self,
+        service_name: str,
+        request: sls_20201230_models.GetMLServiceResultsRequest,
+    ) -> sls_20201230_models.GetMLServiceResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_mlservice_results_with_options_async(service_name, request, headers, runtime)
+
     def get_machine_group_with_options(
         self,
         project: str,
@@ -4933,6 +5907,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4962,6 +5943,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -4989,6 +5977,11 @@ class Client(OpenApiClient):
         project: str,
         machine_group: str,
     ) -> sls_20201230_models.GetMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_machine_group_with_options(project, machine_group, headers, runtime)
@@ -4998,6 +5991,11 @@ class Client(OpenApiClient):
         project: str,
         machine_group: str,
     ) -> sls_20201230_models.GetMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_machine_group_with_options_async(project, machine_group, headers, runtime)
@@ -5008,6 +6006,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5036,6 +6042,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5062,6 +6076,12 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.GetProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_with_options(project, headers, runtime)
@@ -5070,6 +6090,12 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.GetProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_with_options_async(project, headers, runtime)
@@ -5081,6 +6107,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectLogsResponse:
+        """
+        ### Usage notes
+        *   You can use the query parameter to specify a standard SQL statement.
+        *   You must specify a project in the domain name of the request.
+        *   You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
+        *   You must specify a time range in the SQL statement by using the \\__date\\_\\_ parameter or \\__time\\_\\_ parameter. The value of the \\__date\\_\\_ parameter is a timestamp, and the value of the \\__time\\_\\_ parameter is an integer. The unit of the \\__time\\_\\_ parameter is seconds.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetProjectLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectLogsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -5117,6 +6156,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectLogsResponse:
+        """
+        ### Usage notes
+        *   You can use the query parameter to specify a standard SQL statement.
+        *   You must specify a project in the domain name of the request.
+        *   You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
+        *   You must specify a time range in the SQL statement by using the \\__date\\_\\_ parameter or \\__time\\_\\_ parameter. The value of the \\__date\\_\\_ parameter is a timestamp, and the value of the \\__time\\_\\_ parameter is an integer. The unit of the \\__time\\_\\_ parameter is seconds.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetProjectLogsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectLogsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -5151,6 +6203,17 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.GetProjectLogsRequest,
     ) -> sls_20201230_models.GetProjectLogsResponse:
+        """
+        ### Usage notes
+        *   You can use the query parameter to specify a standard SQL statement.
+        *   You must specify a project in the domain name of the request.
+        *   You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
+        *   You must specify a time range in the SQL statement by using the \\__date\\_\\_ parameter or \\__time\\_\\_ parameter. The value of the \\__date\\_\\_ parameter is a timestamp, and the value of the \\__time\\_\\_ parameter is an integer. The unit of the \\__time\\_\\_ parameter is seconds.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetProjectLogsRequest
+        @return: GetProjectLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_logs_with_options(project, request, headers, runtime)
@@ -5160,6 +6223,17 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.GetProjectLogsRequest,
     ) -> sls_20201230_models.GetProjectLogsResponse:
+        """
+        ### Usage notes
+        *   You can use the query parameter to specify a standard SQL statement.
+        *   You must specify a project in the domain name of the request.
+        *   You must specify a Logstore in the FROM clause of the SQL statement. A Logstore can be used as an SQL table.
+        *   You must specify a time range in the SQL statement by using the \\__date\\_\\_ parameter or \\__time\\_\\_ parameter. The value of the \\__date\\_\\_ parameter is a timestamp, and the value of the \\__time\\_\\_ parameter is an integer. The unit of the \\__time\\_\\_ parameter is seconds.
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetProjectLogsRequest
+        @return: GetProjectLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_logs_with_options_async(project, request, headers, runtime)
@@ -5170,6 +6244,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectPolicyResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5198,6 +6280,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectPolicyResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5224,6 +6314,12 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.GetProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_policy_with_options(project, headers, runtime)
@@ -5232,6 +6328,12 @@ class Client(OpenApiClient):
         self,
         project: str,
     ) -> sls_20201230_models.GetProjectPolicyResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_policy_with_options_async(project, headers, runtime)
@@ -5243,6 +6345,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavedSearchResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5272,6 +6382,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSavedSearchResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5299,6 +6417,12 @@ class Client(OpenApiClient):
         project: str,
         savedsearch_name: str,
     ) -> sls_20201230_models.GetSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_saved_search_with_options(project, savedsearch_name, headers, runtime)
@@ -5308,6 +6432,12 @@ class Client(OpenApiClient):
         project: str,
         savedsearch_name: str,
     ) -> sls_20201230_models.GetSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: GetSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_saved_search_with_options_async(project, savedsearch_name, headers, runtime)
@@ -5321,6 +6451,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetShipperStatusResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetShipperStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShipperStatusResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -5365,6 +6503,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.GetShipperStatusResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetShipperStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShipperStatusResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -5407,6 +6553,12 @@ class Client(OpenApiClient):
         shipper_name: str,
         request: sls_20201230_models.GetShipperStatusRequest,
     ) -> sls_20201230_models.GetShipperStatusResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetShipperStatusRequest
+        @return: GetShipperStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_shipper_status_with_options(project, logstore, shipper_name, request, headers, runtime)
@@ -5418,6 +6570,12 @@ class Client(OpenApiClient):
         shipper_name: str,
         request: sls_20201230_models.GetShipperStatusRequest,
     ) -> sls_20201230_models.GetShipperStatusResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: GetShipperStatusRequest
+        @return: GetShipperStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_shipper_status_with_options_async(project, logstore, shipper_name, request, headers, runtime)
@@ -5879,6 +7037,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumerGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5908,6 +7074,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumerGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -5935,6 +7109,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.ListConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: ListConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_consumer_group_with_options(project, logstore, headers, runtime)
@@ -5944,6 +7124,12 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.ListConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: ListConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_consumer_group_with_options_async(project, logstore, headers, runtime)
@@ -6045,6 +7231,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDomainsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Only one custom domain name can be bound to each project.
+        
+        @param request: ListDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDomainsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6083,6 +7278,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListDomainsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Only one custom domain name can be bound to each project.
+        
+        @param request: ListDomainsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDomainsResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6119,6 +7323,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListDomainsRequest,
     ) -> sls_20201230_models.ListDomainsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Only one custom domain name can be bound to each project.
+        
+        @param request: ListDomainsRequest
+        @return: ListDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_domains_with_options(project, request, headers, runtime)
@@ -6128,6 +7339,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListDomainsRequest,
     ) -> sls_20201230_models.ListDomainsResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Only one custom domain name can be bound to each project.
+        
+        @param request: ListDomainsRequest
+        @return: ListDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_domains_with_options_async(project, request, headers, runtime)
@@ -6139,6 +7357,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6177,6 +7403,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6213,6 +7447,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListExternalStoreRequest,
     ) -> sls_20201230_models.ListExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListExternalStoreRequest
+        @return: ListExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_external_store_with_options(project, request, headers, runtime)
@@ -6222,6 +7462,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListExternalStoreRequest,
     ) -> sls_20201230_models.ListExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListExternalStoreRequest
+        @return: ListExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_external_store_with_options_async(project, request, headers, runtime)
@@ -6233,6 +7479,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListLogStoresResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListLogStoresRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogStoresResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6275,6 +7530,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListLogStoresResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListLogStoresRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogStoresResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6315,6 +7579,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListLogStoresRequest,
     ) -> sls_20201230_models.ListLogStoresResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListLogStoresRequest
+        @return: ListLogStoresResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_log_stores_with_options(project, request, headers, runtime)
@@ -6324,6 +7595,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListLogStoresRequest,
     ) -> sls_20201230_models.ListLogStoresResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListLogStoresRequest
+        @return: ListLogStoresResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_log_stores_with_options_async(project, request, headers, runtime)
@@ -6433,6 +7711,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachineGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6471,6 +7757,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachineGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6507,6 +7801,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListMachineGroupRequest,
     ) -> sls_20201230_models.ListMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachineGroupRequest
+        @return: ListMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_machine_group_with_options(project, request, headers, runtime)
@@ -6516,6 +7816,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListMachineGroupRequest,
     ) -> sls_20201230_models.ListMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachineGroupRequest
+        @return: ListMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_machine_group_with_options_async(project, request, headers, runtime)
@@ -6528,6 +7834,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListMachinesResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachinesResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6565,6 +7879,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListMachinesResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMachinesResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6600,6 +7922,12 @@ class Client(OpenApiClient):
         machine_group: str,
         request: sls_20201230_models.ListMachinesRequest,
     ) -> sls_20201230_models.ListMachinesResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachinesRequest
+        @return: ListMachinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_machines_with_options(project, machine_group, request, headers, runtime)
@@ -6610,23 +7938,39 @@ class Client(OpenApiClient):
         machine_group: str,
         request: sls_20201230_models.ListMachinesRequest,
     ) -> sls_20201230_models.ListMachinesResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListMachinesRequest
+        @return: ListMachinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_machines_with_options_async(project, machine_group, request, headers, runtime)
 
     def list_project_with_options(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.project_name):
             query['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
@@ -6651,17 +7995,27 @@ class Client(OpenApiClient):
 
     async def list_project_with_options_async(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.project_name):
             query['projectName'] = request.project_name
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not UtilClient.is_unset(request.size):
             query['size'] = request.size
         req = open_api_models.OpenApiRequest(
@@ -6686,21 +8040,33 @@ class Client(OpenApiClient):
 
     def list_project(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListProjectRequest
+        @return: ListProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_project_with_options(resource_group_id, request, headers, runtime)
+        return self.list_project_with_options(request, headers, runtime)
 
     async def list_project_async(
         self,
-        resource_group_id: str,
         request: sls_20201230_models.ListProjectRequest,
     ) -> sls_20201230_models.ListProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListProjectRequest
+        @return: ListProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_project_with_options_async(resource_group_id, request, headers, runtime)
+        return await self.list_project_with_options_async(request, headers, runtime)
 
     def list_saved_search_with_options(
         self,
@@ -6709,6 +8075,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListSavedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSavedSearchResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6745,6 +8120,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListSavedSearchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSavedSearchResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -6779,6 +8163,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListSavedSearchRequest,
     ) -> sls_20201230_models.ListSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListSavedSearchRequest
+        @return: ListSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_saved_search_with_options(project, request, headers, runtime)
@@ -6788,6 +8179,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.ListSavedSearchRequest,
     ) -> sls_20201230_models.ListSavedSearchResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListSavedSearchRequest
+        @return: ListSavedSearchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_saved_search_with_options_async(project, request, headers, runtime)
@@ -6875,6 +8273,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShipperResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -6904,6 +8309,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShipperResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -6931,6 +8343,11 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.ListShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: ListShipperResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_shipper_with_options(project, logstore, headers, runtime)
@@ -6940,6 +8357,11 @@ class Client(OpenApiClient):
         project: str,
         logstore: str,
     ) -> sls_20201230_models.ListShipperResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: ListShipperResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_shipper_with_options_async(project, logstore, headers, runtime)
@@ -6950,6 +8372,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListTagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = sls_20201230_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6990,6 +8421,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.ListTagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param tmp_req: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = sls_20201230_models.ListTagResourcesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7028,6 +8468,13 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.ListTagResourcesRequest,
     ) -> sls_20201230_models.ListTagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
@@ -7036,6 +8483,13 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.ListTagResourcesRequest,
     ) -> sls_20201230_models.ListTagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
@@ -7139,6 +8593,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutProjectPolicyResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+        *   You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](~~128139~~).
+        *   If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+        *   You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+        
+        @param request: PutProjectPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutProjectPolicyResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7170,6 +8637,19 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.PutProjectPolicyResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+        *   You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](~~128139~~).
+        *   If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+        *   You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+        
+        @param request: PutProjectPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutProjectPolicyResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7199,6 +8679,17 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.PutProjectPolicyRequest,
     ) -> sls_20201230_models.PutProjectPolicyResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+        *   You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](~~128139~~).
+        *   If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+        *   You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+        
+        @param request: PutProjectPolicyRequest
+        @return: PutProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.put_project_policy_with_options(project, request, headers, runtime)
@@ -7208,6 +8699,17 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.PutProjectPolicyRequest,
     ) -> sls_20201230_models.PutProjectPolicyResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Alibaba Cloud Simple Log Service allows you to configure a project policy to authorize other users to access the specified Log Service resources.
+        *   You must configure a project policy based on policy syntax. Before you configure a project policy, you must be familiar with the Action, Resource, and Condition parameters. For more information, see [RAM](~~128139~~).
+        *   If you set the Principal element to an asterisk (\\*) and do not configure the Condition element when you configure a project policy, the policy applies to all users except for the project owner. If you set the Principal element to an asterisk (\\*) and configure the Condition element when you configure a project policy, the policy applies to all users including the project owner.
+        *   You can configure multiple project policies for a project. The total size of the policies cannot exceed 16 KB.
+        
+        @param request: PutProjectPolicyRequest
+        @return: PutProjectPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.put_project_policy_with_options_async(project, request, headers, runtime)
@@ -7321,6 +8823,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.QueryMLServiceResultsResponse:
+        """
+        @deprecated
+        
+        @param request: QueryMLServiceResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMLServiceResultsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_builtin):
@@ -7353,6 +8864,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.QueryMLServiceResultsResponse:
+        """
+        @deprecated
+        
+        @param request: QueryMLServiceResultsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMLServiceResultsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allow_builtin):
@@ -7383,6 +8903,13 @@ class Client(OpenApiClient):
         service_name: str,
         request: sls_20201230_models.QueryMLServiceResultsRequest,
     ) -> sls_20201230_models.QueryMLServiceResultsResponse:
+        """
+        @deprecated
+        
+        @param request: QueryMLServiceResultsRequest
+        @return: QueryMLServiceResultsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.query_mlservice_results_with_options(service_name, request, headers, runtime)
@@ -7392,6 +8919,13 @@ class Client(OpenApiClient):
         service_name: str,
         request: sls_20201230_models.QueryMLServiceResultsRequest,
     ) -> sls_20201230_models.QueryMLServiceResultsResponse:
+        """
+        @deprecated
+        
+        @param request: QueryMLServiceResultsRequest
+        @return: QueryMLServiceResultsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.query_mlservice_results_with_options_async(service_name, request, headers, runtime)
@@ -7404,6 +8938,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveConfigFromMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -7434,6 +8975,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveConfigFromMachineGroupResponse
+        """
         host_map = {}
         host_map['project'] = project
         req = open_api_models.OpenApiRequest(
@@ -7462,6 +9010,11 @@ class Client(OpenApiClient):
         machine_group: str,
         config_name: str,
     ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: RemoveConfigFromMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_config_from_machine_group_with_options(project, machine_group, config_name, headers, runtime)
@@ -7472,6 +9025,11 @@ class Client(OpenApiClient):
         machine_group: str,
         config_name: str,
     ) -> sls_20201230_models.RemoveConfigFromMachineGroupResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @return: RemoveConfigFromMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_config_from_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
@@ -7485,6 +9043,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.SplitShardResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](~~28976~~).
+        
+        @param request: SplitShardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SplitShardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7523,6 +9091,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.SplitShardResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](~~28976~~).
+        
+        @param request: SplitShardRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SplitShardResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -7559,6 +9137,14 @@ class Client(OpenApiClient):
         shard: str,
         request: sls_20201230_models.SplitShardRequest,
     ) -> sls_20201230_models.SplitShardResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](~~28976~~).
+        
+        @param request: SplitShardRequest
+        @return: SplitShardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.split_shard_with_options(project, logstore, shard, request, headers, runtime)
@@ -7570,6 +9156,14 @@ class Client(OpenApiClient):
         shard: str,
         request: sls_20201230_models.SplitShardRequest,
     ) -> sls_20201230_models.SplitShardResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        *   Each shard has an MD5 hash range, and each range is a left-closed, right-open interval. The interval is in the `[BeginKey,EndKey)` format. A shard can be in the readwrite or readonly state. You can split a shard and merge shards. For more information, see [Shard](~~28976~~).
+        
+        @param request: SplitShardRequest
+        @return: SplitShardResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.split_shard_with_options_async(project, logstore, shard, request, headers, runtime)
@@ -7580,6 +9174,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.TagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -7614,6 +9217,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.TagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_id):
@@ -7646,6 +9258,13 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.TagResourcesRequest,
     ) -> sls_20201230_models.TagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
@@ -7654,6 +9273,13 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.TagResourcesRequest,
     ) -> sls_20201230_models.TagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
@@ -7664,6 +9290,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UntagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -7700,6 +9335,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UntagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UntagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.all):
@@ -7734,6 +9378,13 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.UntagResourcesRequest,
     ) -> sls_20201230_models.UntagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.untag_resources_with_options(request, headers, runtime)
@@ -7742,6 +9393,13 @@ class Client(OpenApiClient):
         self,
         request: sls_20201230_models.UntagResourcesRequest,
     ) -> sls_20201230_models.UntagResourcesResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
@@ -7983,6 +9641,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateConsumerGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8021,6 +9688,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateConsumerGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConsumerGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8057,6 +9733,13 @@ class Client(OpenApiClient):
         consumer_group: str,
         request: sls_20201230_models.UpdateConsumerGroupRequest,
     ) -> sls_20201230_models.UpdateConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateConsumerGroupRequest
+        @return: UpdateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_consumer_group_with_options(project, logstore, consumer_group, request, headers, runtime)
@@ -8068,6 +9751,13 @@ class Client(OpenApiClient):
         consumer_group: str,
         request: sls_20201230_models.UpdateConsumerGroupRequest,
     ) -> sls_20201230_models.UpdateConsumerGroupResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateConsumerGroupRequest
+        @return: UpdateConsumerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_consumer_group_with_options_async(project, logstore, consumer_group, request, headers, runtime)
@@ -8186,6 +9876,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIndexResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8233,6 +9932,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIndexResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8278,6 +9986,13 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.UpdateIndexRequest,
     ) -> sls_20201230_models.UpdateIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateIndexRequest
+        @return: UpdateIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_index_with_options(project, logstore, request, headers, runtime)
@@ -8288,6 +10003,13 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.UpdateIndexRequest,
     ) -> sls_20201230_models.UpdateIndexResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateIndexRequest
+        @return: UpdateIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_index_with_options_async(project, logstore, request, headers, runtime)
@@ -8300,6 +10022,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogStoreResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        *   You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+        
+        @param request: UpdateLogStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8355,6 +10087,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLogStoreResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        *   You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+        
+        @param request: UpdateLogStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8408,6 +10150,14 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.UpdateLogStoreRequest,
     ) -> sls_20201230_models.UpdateLogStoreResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        *   You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+        
+        @param request: UpdateLogStoreRequest
+        @return: UpdateLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_log_store_with_options(project, logstore, request, headers, runtime)
@@ -8418,6 +10168,14 @@ class Client(OpenApiClient):
         logstore: str,
         request: sls_20201230_models.UpdateLogStoreRequest,
     ) -> sls_20201230_models.UpdateLogStoreResponse:
+        """
+        ### Usage notes
+        *   Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        *   You can call the UpdateLogStore operation to change only the time-to-live (TTL) attribute.
+        
+        @param request: UpdateLogStoreRequest
+        @return: UpdateLogStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_log_store_with_options_async(project, logstore, request, headers, runtime)
@@ -8519,6 +10277,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateLoggingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoggingResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8555,6 +10321,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateLoggingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLoggingResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8589,6 +10363,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.UpdateLoggingRequest,
     ) -> sls_20201230_models.UpdateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateLoggingRequest
+        @return: UpdateLoggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_logging_with_options(project, request, headers, runtime)
@@ -8598,6 +10378,12 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.UpdateLoggingRequest,
     ) -> sls_20201230_models.UpdateLoggingResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateLoggingRequest
+        @return: UpdateLoggingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_logging_with_options_async(project, request, headers, runtime)
@@ -8724,6 +10510,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateMachineGroupResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMachineGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8767,6 +10561,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateMachineGroupResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMachineGroupResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8808,6 +10610,12 @@ class Client(OpenApiClient):
         group_name: str,
         request: sls_20201230_models.UpdateMachineGroupRequest,
     ) -> sls_20201230_models.UpdateMachineGroupResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupRequest
+        @return: UpdateMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_machine_group_with_options(project, group_name, request, headers, runtime)
@@ -8818,6 +10626,12 @@ class Client(OpenApiClient):
         group_name: str,
         request: sls_20201230_models.UpdateMachineGroupRequest,
     ) -> sls_20201230_models.UpdateMachineGroupResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupRequest
+        @return: UpdateMachineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_machine_group_with_options_async(project, group_name, request, headers, runtime)
@@ -8830,6 +10644,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMachineGroupMachineResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8866,6 +10688,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMachineGroupMachineResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8900,6 +10730,12 @@ class Client(OpenApiClient):
         machine_group: str,
         request: sls_20201230_models.UpdateMachineGroupMachineRequest,
     ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupMachineRequest
+        @return: UpdateMachineGroupMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_machine_group_machine_with_options(project, machine_group, request, headers, runtime)
@@ -8910,6 +10746,12 @@ class Client(OpenApiClient):
         machine_group: str,
         request: sls_20201230_models.UpdateMachineGroupMachineRequest,
     ) -> sls_20201230_models.UpdateMachineGroupMachineResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateMachineGroupMachineRequest
+        @return: UpdateMachineGroupMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_machine_group_machine_with_options_async(project, machine_group, request, headers, runtime)
@@ -8922,6 +10764,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateOssExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8961,6 +10811,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateOssExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateOssExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -8998,6 +10856,12 @@ class Client(OpenApiClient):
         external_store_name: str,
         request: sls_20201230_models.UpdateOssExternalStoreRequest,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateOssExternalStoreRequest
+        @return: UpdateOssExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_oss_external_store_with_options(project, external_store_name, request, headers, runtime)
@@ -9008,6 +10872,12 @@ class Client(OpenApiClient):
         external_store_name: str,
         request: sls_20201230_models.UpdateOssExternalStoreRequest,
     ) -> sls_20201230_models.UpdateOssExternalStoreResponse:
+        """
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateOssExternalStoreRequest
+        @return: UpdateOssExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_oss_external_store_with_options_async(project, external_store_name, request, headers, runtime)
@@ -9019,6 +10889,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9053,6 +10932,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9085,6 +10973,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.UpdateProjectRequest,
     ) -> sls_20201230_models.UpdateProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_project_with_options(project, request, headers, runtime)
@@ -9094,6 +10989,13 @@ class Client(OpenApiClient):
         project: str,
         request: sls_20201230_models.UpdateProjectRequest,
     ) -> sls_20201230_models.UpdateProjectResponse:
+        """
+        ### Usage notes
+        Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateProjectRequest
+        @return: UpdateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_with_options_async(project, request, headers, runtime)
@@ -9106,6 +11008,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateRdsExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRdsExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9145,6 +11055,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateRdsExternalStoreRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRdsExternalStoreResponse
+        """
         UtilClient.validate_model(request)
         host_map = {}
         host_map['project'] = project
@@ -9182,6 +11100,12 @@ class Client(OpenApiClient):
         external_store_name: str,
         request: sls_20201230_models.UpdateRdsExternalStoreRequest,
     ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateRdsExternalStoreRequest
+        @return: UpdateRdsExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_rds_external_store_with_options(project, external_store_name, request, headers, runtime)
@@ -9192,6 +11116,12 @@ class Client(OpenApiClient):
         external_store_name: str,
         request: sls_20201230_models.UpdateRdsExternalStoreRequest,
     ) -> sls_20201230_models.UpdateRdsExternalStoreResponse:
+        """
+        Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+        
+        @param request: UpdateRdsExternalStoreRequest
+        @return: UpdateRdsExternalStoreResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_rds_external_store_with_options_async(project, external_store_name, request, headers, runtime)
