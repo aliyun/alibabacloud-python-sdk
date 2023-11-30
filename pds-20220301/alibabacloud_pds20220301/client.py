@@ -203,6 +203,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AssignRoleResponse:
+        """
+        You can call this operation to assign a group administrator role to a user.
+        
+        @param request: AssignRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity):
@@ -239,6 +247,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AssignRoleResponse:
+        """
+        You can call this operation to assign a group administrator role to a user.
+        
+        @param request: AssignRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity):
@@ -273,6 +289,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AssignRoleRequest,
     ) -> pds_20220301_models.AssignRoleResponse:
+        """
+        You can call this operation to assign a group administrator role to a user.
+        
+        @param request: AssignRoleRequest
+        @return: AssignRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.assign_role_with_options(request, headers, runtime)
@@ -281,6 +303,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AssignRoleRequest,
     ) -> pds_20220301_models.AssignRoleResponse:
+        """
+        You can call this operation to assign a group administrator role to a user.
+        
+        @param request: AssignRoleRequest
+        @return: AssignRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.assign_role_with_options_async(request, headers, runtime)
@@ -291,6 +319,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AuthorizeResponse:
+        """
+        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        
+        @param tmp_req: AuthorizeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pds_20220301_models.AuthorizeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -324,7 +360,7 @@ class Client(OpenApiClient):
             auth_type='Anonymous',
             style='ROA',
             req_body_type='formData',
-            body_type='json'
+            body_type='binary'
         )
         return TeaCore.from_map(
             pds_20220301_models.AuthorizeResponse(),
@@ -337,6 +373,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.AuthorizeResponse:
+        """
+        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        
+        @param tmp_req: AuthorizeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = pds_20220301_models.AuthorizeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -370,7 +414,7 @@ class Client(OpenApiClient):
             auth_type='Anonymous',
             style='ROA',
             req_body_type='formData',
-            body_type='json'
+            body_type='binary'
         )
         return TeaCore.from_map(
             pds_20220301_models.AuthorizeResponse(),
@@ -381,6 +425,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AuthorizeRequest,
     ) -> pds_20220301_models.AuthorizeResponse:
+        """
+        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        
+        @param request: AuthorizeRequest
+        @return: AuthorizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.authorize_with_options(request, headers, runtime)
@@ -389,6 +439,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.AuthorizeRequest,
     ) -> pds_20220301_models.AuthorizeResponse:
+        """
+        For more information, see "OAuth 2.0 For Web Server Applications" at [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/en/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications) in User Guide.
+        
+        @param request: AuthorizeRequest
+        @return: AuthorizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.authorize_with_options_async(request, headers, runtime)
@@ -479,6 +535,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
+        """
+        You can cancel only the group administrator role.
+        
+        @param request: CancelAssignRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAssignRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity):
@@ -515,6 +579,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
+        """
+        You can cancel only the group administrator role.
+        
+        @param request: CancelAssignRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAssignRoleResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.identity):
@@ -549,6 +621,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CancelAssignRoleRequest,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
+        """
+        You can cancel only the group administrator role.
+        
+        @param request: CancelAssignRoleRequest
+        @return: CancelAssignRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_assign_role_with_options(request, headers, runtime)
@@ -557,6 +635,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CancelAssignRoleRequest,
     ) -> pds_20220301_models.CancelAssignRoleResponse:
+        """
+        You can cancel only the group administrator role.
+        
+        @param request: CancelAssignRoleRequest
+        @return: CancelAssignRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_assign_role_with_options_async(request, headers, runtime)
@@ -999,6 +1083,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDomainResponse:
+        """
+        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        
+        @param request: CreateDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1041,6 +1133,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateDomainResponse:
+        """
+        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        
+        @param request: CreateDomainRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1081,6 +1181,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateDomainRequest,
     ) -> pds_20220301_models.CreateDomainResponse:
+        """
+        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        
+        @param request: CreateDomainRequest
+        @return: CreateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_domain_with_options(request, headers, runtime)
@@ -1089,6 +1195,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateDomainRequest,
     ) -> pds_20220301_models.CreateDomainResponse:
+        """
+        If you want to perform secondary operations based on Drive and Photo Service and perform fine-grained control on your tenants, you can use the parent-child domain feature of Drive and Photo Service. For more information, join the DingTalk group whose ID is 23146118.
+        
+        @param request: CreateDomainRequest
+        @return: CreateDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_domain_with_options_async(request, headers, runtime)
@@ -1447,6 +1559,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        """
+        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        
+        @param request: CreateIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amount):
@@ -1485,6 +1605,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        """
+        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        
+        @param request: CreateIdentityToBenefitPkgMappingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdentityToBenefitPkgMappingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.amount):
@@ -1521,6 +1649,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        """
+        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        
+        @param request: CreateIdentityToBenefitPkgMappingRequest
+        @return: CreateIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_identity_to_benefit_pkg_mapping_with_options(request, headers, runtime)
@@ -1529,6 +1663,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateIdentityToBenefitPkgMappingRequest,
     ) -> pds_20220301_models.CreateIdentityToBenefitPkgMappingResponse:
+        """
+        If you need to manage a large number of users based on Drive and Photo Service, you can control the features and quotas that users can use based on the benefits to which they are entitled. For more information, join the DingTalk group (ID 23146118).
+        
+        @param request: CreateIdentityToBenefitPkgMappingRequest
+        @return: CreateIdentityToBenefitPkgMappingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_identity_to_benefit_pkg_mapping_with_options_async(request, headers, runtime)
@@ -1651,6 +1791,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateShareLinkResponse:
+        """
+        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        
+        @param request: CreateShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1709,6 +1857,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.CreateShareLinkResponse:
+        """
+        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        
+        @param request: CreateShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1765,6 +1921,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateShareLinkRequest,
     ) -> pds_20220301_models.CreateShareLinkResponse:
+        """
+        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        
+        @param request: CreateShareLinkRequest
+        @return: CreateShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_share_link_with_options(request, headers, runtime)
@@ -1773,6 +1935,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.CreateShareLinkRequest,
     ) -> pds_20220301_models.CreateShareLinkResponse:
+        """
+        A share is a file view container. You can grant anonymous users the permissions to access files in the user drive by using the share URL. Anonymous users can access the files based on the granted permissions.
+        
+        @param request: CreateShareLinkRequest
+        @return: CreateShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_share_link_with_options_async(request, headers, runtime)
@@ -2803,6 +2971,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DownloadFileResponse:
+        """
+        For information about best practices for downloading a file.
+        
+        @param request: DownloadFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2843,6 +3019,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.DownloadFileResponse:
+        """
+        For information about best practices for downloading a file.
+        
+        @param request: DownloadFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DownloadFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -2881,6 +3065,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DownloadFileRequest,
     ) -> pds_20220301_models.DownloadFileResponse:
+        """
+        For information about best practices for downloading a file.
+        
+        @param request: DownloadFileRequest
+        @return: DownloadFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.download_file_with_options(request, headers, runtime)
@@ -2889,6 +3079,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.DownloadFileRequest,
     ) -> pds_20220301_models.DownloadFileResponse:
+        """
+        For information about best practices for downloading a file.
+        
+        @param request: DownloadFileRequest
+        @return: DownloadFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.download_file_with_options_async(request, headers, runtime)
@@ -3147,6 +3343,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
+        """
+        This operation is an incremental update operation. Take note of the following items:
+        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        *   The existing tags with unique names are not affected.
+        
+        @param request: FilePutUserTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FilePutUserTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3181,6 +3388,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
+        """
+        This operation is an incremental update operation. Take note of the following items:
+        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        *   The existing tags with unique names are not affected.
+        
+        @param request: FilePutUserTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FilePutUserTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -3213,6 +3431,15 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FilePutUserTagsRequest,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
+        """
+        This operation is an incremental update operation. Take note of the following items:
+        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        *   The existing tags with unique names are not affected.
+        
+        @param request: FilePutUserTagsRequest
+        @return: FilePutUserTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.file_put_user_tags_with_options(request, headers, runtime)
@@ -3221,6 +3448,15 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.FilePutUserTagsRequest,
     ) -> pds_20220301_models.FilePutUserTagsResponse:
+        """
+        This operation is an incremental update operation. Take note of the following items:
+        *   If a tag name specified in the request is the same as an existing tag name, the existing tag is overwritten.
+        *   If a tag name specified in the request is different from the existing tag names, the specified tag is added.
+        *   The existing tags with unique names are not affected.
+        
+        @param request: FilePutUserTagsRequest
+        @return: FilePutUserTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.file_put_user_tags_with_options_async(request, headers, runtime)
@@ -3540,6 +3776,64 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_domain_with_options_async(request, headers, runtime)
+
+    def get_domain_quota_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetDomainQuotaResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDomainQuota',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/get_quota',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetDomainQuotaResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_domain_quota_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GetDomainQuotaResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetDomainQuota',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/domain/get_quota',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GetDomainQuotaResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_domain_quota(self) -> pds_20220301_models.GetDomainQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_domain_quota_with_options(headers, runtime)
+
+    async def get_domain_quota_async(self) -> pds_20220301_models.GetDomainQuotaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_domain_quota_with_options_async(headers, runtime)
 
     def get_download_url_with_options(
         self,
@@ -4375,6 +4669,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
+        """
+        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        
+        @param request: GetShareLinkTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShareLinkTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expire_sec):
@@ -4409,6 +4711,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
+        """
+        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        
+        @param request: GetShareLinkTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetShareLinkTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.expire_sec):
@@ -4441,6 +4751,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetShareLinkTokenRequest,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
+        """
+        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        
+        @param request: GetShareLinkTokenRequest
+        @return: GetShareLinkTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_share_link_token_with_options(request, headers, runtime)
@@ -4449,6 +4765,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetShareLinkTokenRequest,
     ) -> pds_20220301_models.GetShareLinkTokenResponse:
+        """
+        To access a file by using a share link, you must first obtain a share token, even if the value of share_pwd of this share is an empty string, which specifies that the share is not private.
+        
+        @param request: GetShareLinkTokenRequest
+        @return: GetShareLinkTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_share_link_token_with_options_async(request, headers, runtime)
@@ -4563,6 +4885,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetTaskStatusResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        To call this operation, make sure that the value-added image processing feature is enabled.
+        Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
+        
+        @param request: GetTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -4595,6 +4927,16 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetTaskStatusResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        To call this operation, make sure that the value-added image processing feature is enabled.
+        Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
+        
+        @param request: GetTaskStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -4625,6 +4967,14 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetTaskStatusRequest,
     ) -> pds_20220301_models.GetTaskStatusResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        To call this operation, make sure that the value-added image processing feature is enabled.
+        Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
+        
+        @param request: GetTaskStatusRequest
+        @return: GetTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_task_status_with_options(request, headers, runtime)
@@ -4633,6 +4983,14 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetTaskStatusRequest,
     ) -> pds_20220301_models.GetTaskStatusResponse:
+        """
+        *Before you call this operation, make sure that you are familiar with the [billing](~~425220~~) of Drive and Photo Service**.
+        To call this operation, make sure that the value-added image processing feature is enabled.
+        Before you call this operation, a value-added asynchronous task must be created. For example, you can call the CreateSimilarImageClusterTask operation to create an asynchronous task. Then, you can call this operation to query the execution status of the asynchronous task based on the task ID.
+        
+        @param request: GetTaskStatusRequest
+        @return: GetTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_status_with_options_async(request, headers, runtime)
@@ -4811,6 +5169,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoPreviewPlayInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -4819,6 +5185,8 @@ class Client(OpenApiClient):
             body['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.get_master_url):
+            body['get_master_url'] = request.get_master_url
         if not UtilClient.is_unset(request.get_without_url):
             body['get_without_url'] = request.get_without_url
         if not UtilClient.is_unset(request.share_id):
@@ -4853,6 +5221,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoPreviewPlayInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -4861,6 +5237,8 @@ class Client(OpenApiClient):
             body['drive_id'] = request.drive_id
         if not UtilClient.is_unset(request.file_id):
             body['file_id'] = request.file_id
+        if not UtilClient.is_unset(request.get_master_url):
+            body['get_master_url'] = request.get_master_url
         if not UtilClient.is_unset(request.get_without_url):
             body['get_without_url'] = request.get_without_url
         if not UtilClient.is_unset(request.share_id):
@@ -4893,6 +5271,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayInfoRequest
+        @return: GetVideoPreviewPlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_video_preview_play_info_with_options(request, headers, runtime)
@@ -4901,6 +5285,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetVideoPreviewPlayInfoRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayInfoResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayInfoRequest
+        @return: GetVideoPreviewPlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_video_preview_play_info_with_options_async(request, headers, runtime)
@@ -4911,6 +5301,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoPreviewPlayMetaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -4947,6 +5345,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayMetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoPreviewPlayMetaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.category):
@@ -4981,6 +5387,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayMetaRequest
+        @return: GetVideoPreviewPlayMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_video_preview_play_meta_with_options(request, headers, runtime)
@@ -4989,9 +5401,95 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.GetVideoPreviewPlayMetaRequest,
     ) -> pds_20220301_models.GetVideoPreviewPlayMetaResponse:
+        """
+        For more information about best practices, see [Preview videos online](~~427477~~).
+        
+        @param request: GetVideoPreviewPlayMetaRequest
+        @return: GetVideoPreviewPlayMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_video_preview_play_meta_with_options_async(request, headers, runtime)
+
+    def group_update_name_with_options(
+        self,
+        request: pds_20220301_models.GroupUpdateNameRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GroupUpdateNameResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupUpdateName',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/update_name',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GroupUpdateNameResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def group_update_name_with_options_async(
+        self,
+        request: pds_20220301_models.GroupUpdateNameRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.GroupUpdateNameResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.group_id):
+            body['group_id'] = request.group_id
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GroupUpdateName',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/group/update_name',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.GroupUpdateNameResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def group_update_name(
+        self,
+        request: pds_20220301_models.GroupUpdateNameRequest,
+    ) -> pds_20220301_models.GroupUpdateNameResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.group_update_name_with_options(request, headers, runtime)
+
+    async def group_update_name_async(
+        self,
+        request: pds_20220301_models.GroupUpdateNameRequest,
+    ) -> pds_20220301_models.GroupUpdateNameResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.group_update_name_with_options_async(request, headers, runtime)
 
     def import_user_with_options(
         self,
@@ -6081,6 +6579,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_group_member_with_options_async(request, headers, runtime)
 
+    def list_identity_role_with_options(
+        self,
+        request: pds_20220301_models.ListIdentityRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListIdentityRoleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityRole',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/list_identity_role',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListIdentityRoleResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_identity_role_with_options_async(
+        self,
+        request: pds_20220301_models.ListIdentityRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pds_20220301_models.ListIdentityRoleResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.identity):
+            body['identity'] = request.identity
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListIdentityRole',
+            version='2022-03-01',
+            protocol='HTTPS',
+            pathname=f'/v2/role/list_identity_role',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pds_20220301_models.ListIdentityRoleResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_identity_role(
+        self,
+        request: pds_20220301_models.ListIdentityRoleRequest,
+    ) -> pds_20220301_models.ListIdentityRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_identity_role_with_options(request, headers, runtime)
+
+    async def list_identity_role_async(
+        self,
+        request: pds_20220301_models.ListIdentityRoleRequest,
+    ) -> pds_20220301_models.ListIdentityRoleResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_identity_role_with_options_async(request, headers, runtime)
+
     def list_identity_to_benefit_pkg_mapping_with_options(
         self,
         request: pds_20220301_models.ListIdentityToBenefitPkgMappingRequest,
@@ -6591,6 +7165,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListShareLinkResponse:
+        """
+        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        
+        @param request: ListShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.creator):
@@ -6631,6 +7213,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListShareLinkResponse:
+        """
+        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        
+        @param request: ListShareLinkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListShareLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.creator):
@@ -6669,6 +7259,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListShareLinkRequest,
     ) -> pds_20220301_models.ListShareLinkResponse:
+        """
+        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        
+        @param request: ListShareLinkRequest
+        @return: ListShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_share_link_with_options(request, headers, runtime)
@@ -6677,6 +7273,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListShareLinkRequest,
     ) -> pds_20220301_models.ListShareLinkResponse:
+        """
+        This operation is discontinued. To query shares, you can call the SearchShareLink operation.
+        
+        @param request: ListShareLinkRequest
+        @return: ListShareLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_share_link_with_options_async(request, headers, runtime)
@@ -6687,6 +7289,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListTagsResponse:
+        """
+        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        
+        @param request: ListTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -6721,6 +7331,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.ListTagsResponse:
+        """
+        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        
+        @param request: ListTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.drive_id):
@@ -6753,6 +7371,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListTagsRequest,
     ) -> pds_20220301_models.ListTagsResponse:
+        """
+        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tags_with_options(request, headers, runtime)
@@ -6761,6 +7385,12 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.ListTagsRequest,
     ) -> pds_20220301_models.ListTagsResponse:
+        """
+        You can call this operation to query the tags within the specified drive at a time. The top 2,000 tags of the images are returned.
+        
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tags_with_options_async(request, headers, runtime)
@@ -8467,6 +9097,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.TokenResponse:
+        """
+        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        
+        @param request: TokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assertion):
@@ -8509,6 +9148,15 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pds_20220301_models.TokenResponse:
+        """
+        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        
+        @param request: TokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assertion):
@@ -8549,6 +9197,13 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.TokenRequest,
     ) -> pds_20220301_models.TokenResponse:
+        """
+        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        
+        @param request: TokenRequest
+        @return: TokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.token_with_options(request, headers, runtime)
@@ -8557,6 +9212,13 @@ class Client(OpenApiClient):
         self,
         request: pds_20220301_models.TokenRequest,
     ) -> pds_20220301_models.TokenResponse:
+        """
+        For more information about how to access Drive and Photo Service from a web server application by using OAuth 2.0, visit [OAuth 2.0 For Web Server Applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/oauth-2-0-access-process-for-web-server-applications).<props="intl">只发布国际站</props>
+        For more information about how to access Drive and Photo Service by using a JSON Web Token (JWT) application, visit [Access process for JWT applications](https://www.alibabacloud.com/help/zh/pds/drive-and-photo-service-dev/user-guide/access-process-for-jwt-applications).<props="intl">只发布国际站</props>
+        
+        @param request: TokenRequest
+        @return: TokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.token_with_options_async(request, headers, runtime)
@@ -8641,12 +9303,12 @@ class Client(OpenApiClient):
         headers = {}
         return await self.trash_file_with_options_async(request, headers, runtime)
 
-    def un_link_acount_with_options(
+    def un_link_account_with_options(
         self,
-        request: pds_20220301_models.UnLinkAcountRequest,
+        request: pds_20220301_models.UnLinkAccountRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.UnLinkAcountResponse:
+    ) -> pds_20220301_models.UnLinkAccountResponse:
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -8662,7 +9324,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UnLinkAcount',
+            action='UnLinkAccount',
             version='2022-03-01',
             protocol='HTTPS',
             pathname=f'/v2/account/unlink',
@@ -8673,16 +9335,16 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pds_20220301_models.UnLinkAcountResponse(),
+            pds_20220301_models.UnLinkAccountResponse(),
             self.execute(params, req, runtime)
         )
 
-    async def un_link_acount_with_options_async(
+    async def un_link_account_with_options_async(
         self,
-        request: pds_20220301_models.UnLinkAcountRequest,
+        request: pds_20220301_models.UnLinkAccountRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
-    ) -> pds_20220301_models.UnLinkAcountResponse:
+    ) -> pds_20220301_models.UnLinkAccountResponse:
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.extra):
@@ -8698,7 +9360,7 @@ class Client(OpenApiClient):
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
-            action='UnLinkAcount',
+            action='UnLinkAccount',
             version='2022-03-01',
             protocol='HTTPS',
             pathname=f'/v2/account/unlink',
@@ -8709,25 +9371,25 @@ class Client(OpenApiClient):
             body_type='json'
         )
         return TeaCore.from_map(
-            pds_20220301_models.UnLinkAcountResponse(),
+            pds_20220301_models.UnLinkAccountResponse(),
             await self.execute_async(params, req, runtime)
         )
 
-    def un_link_acount(
+    def un_link_account(
         self,
-        request: pds_20220301_models.UnLinkAcountRequest,
-    ) -> pds_20220301_models.UnLinkAcountResponse:
+        request: pds_20220301_models.UnLinkAccountRequest,
+    ) -> pds_20220301_models.UnLinkAccountResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.un_link_acount_with_options(request, headers, runtime)
+        return self.un_link_account_with_options(request, headers, runtime)
 
-    async def un_link_acount_async(
+    async def un_link_account_async(
         self,
-        request: pds_20220301_models.UnLinkAcountRequest,
-    ) -> pds_20220301_models.UnLinkAcountResponse:
+        request: pds_20220301_models.UnLinkAccountRequest,
+    ) -> pds_20220301_models.UnLinkAccountResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.un_link_acount_with_options_async(request, headers, runtime)
+        return await self.un_link_account_with_options_async(request, headers, runtime)
 
     def update_domain_with_options(
         self,
