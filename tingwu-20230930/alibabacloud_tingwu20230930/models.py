@@ -9,14 +9,18 @@ class CreateTaskRequestInput(TeaModel):
         self,
         file_url: str = None,
         format: str = None,
+        progressive_callbacks_enabled: bool = None,
         sample_rate: int = None,
         source_language: str = None,
+        task_id: str = None,
         task_key: str = None,
     ):
         self.file_url = file_url
         self.format = format
+        self.progressive_callbacks_enabled = progressive_callbacks_enabled
         self.sample_rate = sample_rate
         self.source_language = source_language
+        self.task_id = task_id
         self.task_key = task_key
 
     def validate(self):
@@ -32,10 +36,14 @@ class CreateTaskRequestInput(TeaModel):
             result['FileUrl'] = self.file_url
         if self.format is not None:
             result['Format'] = self.format
+        if self.progressive_callbacks_enabled is not None:
+            result['ProgressiveCallbacksEnabled'] = self.progressive_callbacks_enabled
         if self.sample_rate is not None:
             result['SampleRate'] = self.sample_rate
         if self.source_language is not None:
             result['SourceLanguage'] = self.source_language
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
         if self.task_key is not None:
             result['TaskKey'] = self.task_key
         return result
@@ -46,10 +54,14 @@ class CreateTaskRequestInput(TeaModel):
             self.file_url = m.get('FileUrl')
         if m.get('Format') is not None:
             self.format = m.get('Format')
+        if m.get('ProgressiveCallbacksEnabled') is not None:
+            self.progressive_callbacks_enabled = m.get('ProgressiveCallbacksEnabled')
         if m.get('SampleRate') is not None:
             self.sample_rate = m.get('SampleRate')
         if m.get('SourceLanguage') is not None:
             self.source_language = m.get('SourceLanguage')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
         if m.get('TaskKey') is not None:
             self.task_key = m.get('TaskKey')
         return self
@@ -160,10 +172,12 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         audio_event_detection_enabled: bool = None,
         diarization: CreateTaskRequestParametersTranscriptionDiarization = None,
         diarization_enabled: bool = None,
+        output_level: int = None,
     ):
         self.audio_event_detection_enabled = audio_event_detection_enabled
         self.diarization = diarization
         self.diarization_enabled = diarization_enabled
+        self.output_level = output_level
 
     def validate(self):
         if self.diarization:
@@ -181,6 +195,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             result['Diarization'] = self.diarization.to_map()
         if self.diarization_enabled is not None:
             result['DiarizationEnabled'] = self.diarization_enabled
+        if self.output_level is not None:
+            result['OutputLevel'] = self.output_level
         return result
 
     def from_map(self, m: dict = None):
@@ -192,14 +208,18 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             self.diarization = temp_model.from_map(m['Diarization'])
         if m.get('DiarizationEnabled') is not None:
             self.diarization_enabled = m.get('DiarizationEnabled')
+        if m.get('OutputLevel') is not None:
+            self.output_level = m.get('OutputLevel')
         return self
 
 
 class CreateTaskRequestParametersTranslation(TeaModel):
     def __init__(
         self,
+        output_level: int = None,
         target_languages: Dict[str, Any] = None,
     ):
+        self.output_level = output_level
         self.target_languages = target_languages
 
     def validate(self):
@@ -211,12 +231,16 @@ class CreateTaskRequestParametersTranslation(TeaModel):
             return _map
 
         result = dict()
+        if self.output_level is not None:
+            result['OutputLevel'] = self.output_level
         if self.target_languages is not None:
             result['TargetLanguages'] = self.target_languages
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('OutputLevel') is not None:
+            self.output_level = m.get('OutputLevel')
         if m.get('TargetLanguages') is not None:
             self.target_languages = m.get('TargetLanguages')
         return self
@@ -227,6 +251,7 @@ class CreateTaskRequestParameters(TeaModel):
         self,
         auto_chapters_enabled: bool = None,
         meeting_assistance_enabled: bool = None,
+        ppt_extraction_enabled: bool = None,
         summarization: CreateTaskRequestParametersSummarization = None,
         summarization_enabled: bool = None,
         transcoding: CreateTaskRequestParametersTranscoding = None,
@@ -236,6 +261,7 @@ class CreateTaskRequestParameters(TeaModel):
     ):
         self.auto_chapters_enabled = auto_chapters_enabled
         self.meeting_assistance_enabled = meeting_assistance_enabled
+        self.ppt_extraction_enabled = ppt_extraction_enabled
         self.summarization = summarization
         self.summarization_enabled = summarization_enabled
         self.transcoding = transcoding
@@ -263,6 +289,8 @@ class CreateTaskRequestParameters(TeaModel):
             result['AutoChaptersEnabled'] = self.auto_chapters_enabled
         if self.meeting_assistance_enabled is not None:
             result['MeetingAssistanceEnabled'] = self.meeting_assistance_enabled
+        if self.ppt_extraction_enabled is not None:
+            result['PptExtractionEnabled'] = self.ppt_extraction_enabled
         if self.summarization is not None:
             result['Summarization'] = self.summarization.to_map()
         if self.summarization_enabled is not None:
@@ -283,6 +311,8 @@ class CreateTaskRequestParameters(TeaModel):
             self.auto_chapters_enabled = m.get('AutoChaptersEnabled')
         if m.get('MeetingAssistanceEnabled') is not None:
             self.meeting_assistance_enabled = m.get('MeetingAssistanceEnabled')
+        if m.get('PptExtractionEnabled') is not None:
+            self.ppt_extraction_enabled = m.get('PptExtractionEnabled')
         if m.get('Summarization') is not None:
             temp_model = CreateTaskRequestParametersSummarization()
             self.summarization = temp_model.from_map(m['Summarization'])
