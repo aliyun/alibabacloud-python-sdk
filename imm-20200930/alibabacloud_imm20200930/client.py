@@ -247,6 +247,8 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.AttachOSSBucketResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.ossbucket):
             query['OSSBucket'] = request.ossbucket
         if not UtilClient.is_unset(request.project_name):
@@ -277,6 +279,8 @@ class Client(OpenApiClient):
     ) -> imm_20200930_models.AttachOSSBucketResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.ossbucket):
             query['OSSBucket'] = request.ossbucket
         if not UtilClient.is_unset(request.project_name):
@@ -5100,10 +5104,14 @@ class Client(OpenApiClient):
 
     def fuzzy_query_with_options(
         self,
-        request: imm_20200930_models.FuzzyQueryRequest,
+        tmp_req: imm_20200930_models.FuzzyQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.FuzzyQueryResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.FuzzyQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -5119,6 +5127,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5140,10 +5150,14 @@ class Client(OpenApiClient):
 
     async def fuzzy_query_with_options_async(
         self,
-        request: imm_20200930_models.FuzzyQueryRequest,
+        tmp_req: imm_20200930_models.FuzzyQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.FuzzyQueryResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.FuzzyQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
@@ -5159,6 +5173,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not UtilClient.is_unset(request.sort):
             query['Sort'] = request.sort
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8000,21 +8016,31 @@ class Client(OpenApiClient):
 
     def semantic_query_with_options(
         self,
-        request: imm_20200930_models.SemanticQueryRequest,
+        tmp_req: imm_20200930_models.SemanticQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SemanticQueryResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.SemanticQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.media_types):
+            request.media_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.media_types, 'MediaTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.media_types_shrink):
+            query['MediaTypes'] = request.media_types_shrink
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8036,21 +8062,31 @@ class Client(OpenApiClient):
 
     async def semantic_query_with_options_async(
         self,
-        request: imm_20200930_models.SemanticQueryRequest,
+        tmp_req: imm_20200930_models.SemanticQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.SemanticQueryResponse:
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.SemanticQueryShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.media_types):
+            request.media_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.media_types, 'MediaTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.with_fields):
+            request.with_fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.with_fields, 'WithFields', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_name):
             query['DatasetName'] = request.dataset_name
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.media_types_shrink):
+            query['MediaTypes'] = request.media_types_shrink
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.project_name):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.query):
             query['Query'] = request.query
+        if not UtilClient.is_unset(request.with_fields_shrink):
+            query['WithFields'] = request.with_fields_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8117,6 +8153,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.with_fields_shrink):
             query['WithFields'] = request.with_fields_shrink
+        if not UtilClient.is_unset(request.without_total_hits):
+            query['WithoutTotalHits'] = request.without_total_hits
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8169,6 +8207,8 @@ class Client(OpenApiClient):
             query['Sort'] = request.sort
         if not UtilClient.is_unset(request.with_fields_shrink):
             query['WithFields'] = request.with_fields_shrink
+        if not UtilClient.is_unset(request.without_total_hits):
+            query['WithoutTotalHits'] = request.without_total_hits
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

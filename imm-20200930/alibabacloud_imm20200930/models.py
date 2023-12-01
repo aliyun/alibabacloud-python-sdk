@@ -777,6 +777,81 @@ class AlgorithmDefinition(TeaModel):
         return self
 
 
+class App(TeaModel):
+    def __init__(
+        self,
+        app_description: str = None,
+        app_id: str = None,
+        app_key: str = None,
+        app_name: str = None,
+        app_region: int = None,
+        app_type: int = None,
+        english_name: str = None,
+        owner_id: str = None,
+        package_name: str = None,
+    ):
+        self.app_description = app_description
+        self.app_id = app_id
+        self.app_key = app_key
+        self.app_name = app_name
+        self.app_region = app_region
+        self.app_type = app_type
+        self.english_name = english_name
+        self.owner_id = owner_id
+        self.package_name = package_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_description is not None:
+            result['AppDescription'] = self.app_description
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_name is not None:
+            result['AppName'] = self.app_name
+        if self.app_region is not None:
+            result['AppRegion'] = self.app_region
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.english_name is not None:
+            result['EnglishName'] = self.english_name
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.package_name is not None:
+            result['PackageName'] = self.package_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppDescription') is not None:
+            self.app_description = m.get('AppDescription')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppName') is not None:
+            self.app_name = m.get('AppName')
+        if m.get('AppRegion') is not None:
+            self.app_region = m.get('AppRegion')
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('EnglishName') is not None:
+            self.english_name = m.get('EnglishName')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PackageName') is not None:
+            self.package_name = m.get('PackageName')
+        return self
+
+
 class AssumeRoleChainNode(TeaModel):
     def __init__(
         self,
@@ -1533,14 +1608,12 @@ class CroppingSuggestion(TeaModel):
         return self
 
 
-class DataIngestionActions(TeaModel):
+class FastFailPolicy(TeaModel):
     def __init__(
         self,
-        name: str = None,
-        parameters: List[str] = None,
+        action: str = None,
     ):
-        self.name = name
-        self.parameters = parameters
+        self.action = action
 
     def validate(self):
         pass
@@ -1551,6 +1624,40 @@ class DataIngestionActions(TeaModel):
             return _map
 
         result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        return self
+
+
+class DataIngestionActions(TeaModel):
+    def __init__(
+        self,
+        fast_fail_policy: FastFailPolicy = None,
+        name: str = None,
+        parameters: List[str] = None,
+    ):
+        self.fast_fail_policy = fast_fail_policy
+        self.name = name
+        self.parameters = parameters
+
+    def validate(self):
+        if self.fast_fail_policy:
+            self.fast_fail_policy.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.fast_fail_policy is not None:
+            result['FastFailPolicy'] = self.fast_fail_policy.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.parameters is not None:
@@ -1559,6 +1666,9 @@ class DataIngestionActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FastFailPolicy') is not None:
+            temp_model = FastFailPolicy()
+            self.fast_fail_policy = temp_model.from_map(m['FastFailPolicy'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Parameters') is not None:
@@ -1710,6 +1820,7 @@ class DataIngestion(TeaModel):
         input: Input = None,
         marker: str = None,
         notification: DataIngestionNotification = None,
+        phase: str = None,
         state: str = None,
         statistic: DataIngestionStatistic = None,
         tags: Dict[str, Any] = None,
@@ -1722,6 +1833,7 @@ class DataIngestion(TeaModel):
         self.input = input
         self.marker = marker
         self.notification = notification
+        self.phase = phase
         self.state = state
         self.statistic = statistic
         self.tags = tags
@@ -1761,6 +1873,8 @@ class DataIngestion(TeaModel):
             result['Marker'] = self.marker
         if self.notification is not None:
             result['Notification'] = self.notification.to_map()
+        if self.phase is not None:
+            result['Phase'] = self.phase
         if self.state is not None:
             result['State'] = self.state
         if self.statistic is not None:
@@ -1792,6 +1906,8 @@ class DataIngestion(TeaModel):
         if m.get('Notification') is not None:
             temp_model = DataIngestionNotification()
             self.notification = temp_model.from_map(m['Notification'])
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
         if m.get('State') is not None:
             self.state = m.get('State')
         if m.get('Statistic') is not None:
@@ -3491,8 +3607,10 @@ class InputFile(TeaModel):
         custom_labels: Dict[str, Any] = None,
         figures: List[InputFileFigures] = None,
         file_hash: str = None,
+        lat_long: str = None,
         media_type: str = None,
         ossuri: str = None,
+        produce_time: str = None,
         uri: str = None,
     ):
         self.content_type = content_type
@@ -3500,8 +3618,10 @@ class InputFile(TeaModel):
         self.custom_labels = custom_labels
         self.figures = figures
         self.file_hash = file_hash
+        self.lat_long = lat_long
         self.media_type = media_type
         self.ossuri = ossuri
+        self.produce_time = produce_time
         self.uri = uri
 
     def validate(self):
@@ -3528,10 +3648,14 @@ class InputFile(TeaModel):
                 result['Figures'].append(k.to_map() if k else None)
         if self.file_hash is not None:
             result['FileHash'] = self.file_hash
+        if self.lat_long is not None:
+            result['LatLong'] = self.lat_long
         if self.media_type is not None:
             result['MediaType'] = self.media_type
         if self.ossuri is not None:
             result['OSSURI'] = self.ossuri
+        if self.produce_time is not None:
+            result['ProduceTime'] = self.produce_time
         if self.uri is not None:
             result['URI'] = self.uri
         return result
@@ -3551,10 +3675,14 @@ class InputFile(TeaModel):
                 self.figures.append(temp_model.from_map(k))
         if m.get('FileHash') is not None:
             self.file_hash = m.get('FileHash')
+        if m.get('LatLong') is not None:
+            self.lat_long = m.get('LatLong')
         if m.get('MediaType') is not None:
             self.media_type = m.get('MediaType')
         if m.get('OSSURI') is not None:
             self.ossuri = m.get('OSSURI')
+        if m.get('ProduceTime') is not None:
+            self.produce_time = m.get('ProduceTime')
         if m.get('URI') is not None:
             self.uri = m.get('URI')
         return self
@@ -6207,9 +6335,11 @@ class AddStoryFilesResponse(TeaModel):
 class AttachOSSBucketRequest(TeaModel):
     def __init__(
         self,
+        description: str = None,
         ossbucket: str = None,
         project_name: str = None,
     ):
+        self.description = description
         self.ossbucket = ossbucket
         self.project_name = project_name
 
@@ -6222,6 +6352,8 @@ class AttachOSSBucketRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
         if self.ossbucket is not None:
             result['OSSBucket'] = self.ossbucket
         if self.project_name is not None:
@@ -6230,6 +6362,8 @@ class AttachOSSBucketRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('OSSBucket') is not None:
             self.ossbucket = m.get('OSSBucket')
         if m.get('ProjectName') is not None:
@@ -7569,14 +7703,17 @@ class CreateArchiveFileInspectionTaskResponse(TeaModel):
 class CreateBatchRequestActions(TeaModel):
     def __init__(
         self,
+        fast_fail_policy: FastFailPolicy = None,
         name: str = None,
         parameters: List[str] = None,
     ):
+        self.fast_fail_policy = fast_fail_policy
         self.name = name
         self.parameters = parameters
 
     def validate(self):
-        pass
+        if self.fast_fail_policy:
+            self.fast_fail_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -7584,6 +7721,8 @@ class CreateBatchRequestActions(TeaModel):
             return _map
 
         result = dict()
+        if self.fast_fail_policy is not None:
+            result['FastFailPolicy'] = self.fast_fail_policy.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.parameters is not None:
@@ -7592,6 +7731,9 @@ class CreateBatchRequestActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FastFailPolicy') is not None:
+            temp_model = FastFailPolicy()
+            self.fast_fail_policy = temp_model.from_map(m['FastFailPolicy'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Parameters') is not None:
@@ -9314,9 +9456,11 @@ class CreateFileCompressionTaskRequestSources(TeaModel):
     def __init__(
         self,
         alias: str = None,
+        mode: str = None,
         uri: str = None,
     ):
         self.alias = alias
+        self.mode = mode
         self.uri = uri
 
     def validate(self):
@@ -9330,6 +9474,8 @@ class CreateFileCompressionTaskRequestSources(TeaModel):
         result = dict()
         if self.alias is not None:
             result['Alias'] = self.alias
+        if self.mode is not None:
+            result['Mode'] = self.mode
         if self.uri is not None:
             result['URI'] = self.uri
         return result
@@ -9338,6 +9484,8 @@ class CreateFileCompressionTaskRequestSources(TeaModel):
         m = m or dict()
         if m.get('Alias') is not None:
             self.alias = m.get('Alias')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
         if m.get('URI') is not None:
             self.uri = m.get('URI')
         return self
@@ -12592,14 +12740,17 @@ class CreateStoryResponse(TeaModel):
 class CreateTriggerRequestActions(TeaModel):
     def __init__(
         self,
+        fast_fail_policy: FastFailPolicy = None,
         name: str = None,
         parameters: List[str] = None,
     ):
+        self.fast_fail_policy = fast_fail_policy
         self.name = name
         self.parameters = parameters
 
     def validate(self):
-        pass
+        if self.fast_fail_policy:
+            self.fast_fail_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -12607,6 +12758,8 @@ class CreateTriggerRequestActions(TeaModel):
             return _map
 
         result = dict()
+        if self.fast_fail_policy is not None:
+            result['FastFailPolicy'] = self.fast_fail_policy.to_map()
         if self.name is not None:
             result['Name'] = self.name
         if self.parameters is not None:
@@ -12615,6 +12768,9 @@ class CreateTriggerRequestActions(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FastFailPolicy') is not None:
+            temp_model = FastFailPolicy()
+            self.fast_fail_policy = temp_model.from_map(m['FastFailPolicy'])
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Parameters') is not None:
@@ -16061,6 +16217,7 @@ class FuzzyQueryRequest(TeaModel):
         project_name: str = None,
         query: str = None,
         sort: str = None,
+        with_fields: List[str] = None,
     ):
         self.dataset_name = dataset_name
         self.max_results = max_results
@@ -16069,6 +16226,7 @@ class FuzzyQueryRequest(TeaModel):
         self.project_name = project_name
         self.query = query
         self.sort = sort
+        self.with_fields = with_fields
 
     def validate(self):
         pass
@@ -16093,6 +16251,8 @@ class FuzzyQueryRequest(TeaModel):
             result['Query'] = self.query
         if self.sort is not None:
             result['Sort'] = self.sort
+        if self.with_fields is not None:
+            result['WithFields'] = self.with_fields
         return result
 
     def from_map(self, m: dict = None):
@@ -16111,6 +16271,77 @@ class FuzzyQueryRequest(TeaModel):
             self.query = m.get('Query')
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+        if m.get('WithFields') is not None:
+            self.with_fields = m.get('WithFields')
+        return self
+
+
+class FuzzyQueryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        order: str = None,
+        project_name: str = None,
+        query: str = None,
+        sort: str = None,
+        with_fields_shrink: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.max_results = max_results
+        self.next_token = next_token
+        self.order = order
+        self.project_name = project_name
+        self.query = query
+        self.sort = sort
+        self.with_fields_shrink = with_fields_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.sort is not None:
+            result['Sort'] = self.sort
+        if self.with_fields_shrink is not None:
+            result['WithFields'] = self.with_fields_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('Sort') is not None:
+            self.sort = m.get('Sort')
+        if m.get('WithFields') is not None:
+            self.with_fields_shrink = m.get('WithFields')
         return self
 
 
@@ -17487,11 +17718,17 @@ class GetOSSBucketAttachmentRequest(TeaModel):
 class GetOSSBucketAttachmentResponseBody(TeaModel):
     def __init__(
         self,
+        create_time: str = None,
+        description: str = None,
         project_name: str = None,
         request_id: str = None,
+        update_time: str = None,
     ):
+        self.create_time = create_time
+        self.description = description
         self.project_name = project_name
         self.request_id = request_id
+        self.update_time = update_time
 
     def validate(self):
         pass
@@ -17502,18 +17739,30 @@ class GetOSSBucketAttachmentResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.description is not None:
+            result['Description'] = self.description
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
         return self
 
 
@@ -21754,15 +22003,19 @@ class SemanticQueryRequest(TeaModel):
         self,
         dataset_name: str = None,
         max_results: int = None,
+        media_types: List[str] = None,
         next_token: str = None,
         project_name: str = None,
         query: str = None,
+        with_fields: List[str] = None,
     ):
         self.dataset_name = dataset_name
         self.max_results = max_results
+        self.media_types = media_types
         self.next_token = next_token
         self.project_name = project_name
         self.query = query
+        self.with_fields = with_fields
 
     def validate(self):
         pass
@@ -21777,12 +22030,16 @@ class SemanticQueryRequest(TeaModel):
             result['DatasetName'] = self.dataset_name
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
+        if self.media_types is not None:
+            result['MediaTypes'] = self.media_types
         if self.next_token is not None:
             result['NextToken'] = self.next_token
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
         if self.query is not None:
             result['Query'] = self.query
+        if self.with_fields is not None:
+            result['WithFields'] = self.with_fields
         return result
 
     def from_map(self, m: dict = None):
@@ -21791,12 +22048,79 @@ class SemanticQueryRequest(TeaModel):
             self.dataset_name = m.get('DatasetName')
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
+        if m.get('MediaTypes') is not None:
+            self.media_types = m.get('MediaTypes')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
         if m.get('Query') is not None:
             self.query = m.get('Query')
+        if m.get('WithFields') is not None:
+            self.with_fields = m.get('WithFields')
+        return self
+
+
+class SemanticQueryShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_name: str = None,
+        max_results: int = None,
+        media_types_shrink: str = None,
+        next_token: str = None,
+        project_name: str = None,
+        query: str = None,
+        with_fields_shrink: str = None,
+    ):
+        self.dataset_name = dataset_name
+        self.max_results = max_results
+        self.media_types_shrink = media_types_shrink
+        self.next_token = next_token
+        self.project_name = project_name
+        self.query = query
+        self.with_fields_shrink = with_fields_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_name is not None:
+            result['DatasetName'] = self.dataset_name
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.media_types_shrink is not None:
+            result['MediaTypes'] = self.media_types_shrink
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.query is not None:
+            result['Query'] = self.query
+        if self.with_fields_shrink is not None:
+            result['WithFields'] = self.with_fields_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetName') is not None:
+            self.dataset_name = m.get('DatasetName')
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('MediaTypes') is not None:
+            self.media_types_shrink = m.get('MediaTypes')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+        if m.get('WithFields') is not None:
+            self.with_fields_shrink = m.get('WithFields')
         return self
 
 
@@ -21804,14 +22128,10 @@ class SemanticQueryResponseBody(TeaModel):
     def __init__(
         self,
         files: List[File] = None,
-        next_token: str = None,
         request_id: str = None,
-        total_hits: int = None,
     ):
         self.files = files
-        self.next_token = next_token
         self.request_id = request_id
-        self.total_hits = total_hits
 
     def validate(self):
         if self.files:
@@ -21829,12 +22149,8 @@ class SemanticQueryResponseBody(TeaModel):
         if self.files is not None:
             for k in self.files:
                 result['Files'].append(k.to_map() if k else None)
-        if self.next_token is not None:
-            result['NextToken'] = self.next_token
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.total_hits is not None:
-            result['TotalHits'] = self.total_hits
         return result
 
     def from_map(self, m: dict = None):
@@ -21844,12 +22160,8 @@ class SemanticQueryResponseBody(TeaModel):
             for k in m.get('Files'):
                 temp_model = File()
                 self.files.append(temp_model.from_map(k))
-        if m.get('NextToken') is not None:
-            self.next_token = m.get('NextToken')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('TotalHits') is not None:
-            self.total_hits = m.get('TotalHits')
         return self
 
 
@@ -21942,6 +22254,7 @@ class SimpleQueryRequest(TeaModel):
         query: SimpleQuery = None,
         sort: str = None,
         with_fields: List[str] = None,
+        without_total_hits: bool = None,
     ):
         self.aggregations = aggregations
         self.dataset_name = dataset_name
@@ -21952,6 +22265,7 @@ class SimpleQueryRequest(TeaModel):
         self.query = query
         self.sort = sort
         self.with_fields = with_fields
+        self.without_total_hits = without_total_hits
 
     def validate(self):
         if self.aggregations:
@@ -21987,6 +22301,8 @@ class SimpleQueryRequest(TeaModel):
             result['Sort'] = self.sort
         if self.with_fields is not None:
             result['WithFields'] = self.with_fields
+        if self.without_total_hits is not None:
+            result['WithoutTotalHits'] = self.without_total_hits
         return result
 
     def from_map(self, m: dict = None):
@@ -22013,6 +22329,8 @@ class SimpleQueryRequest(TeaModel):
             self.sort = m.get('Sort')
         if m.get('WithFields') is not None:
             self.with_fields = m.get('WithFields')
+        if m.get('WithoutTotalHits') is not None:
+            self.without_total_hits = m.get('WithoutTotalHits')
         return self
 
 
@@ -22028,6 +22346,7 @@ class SimpleQueryShrinkRequest(TeaModel):
         query_shrink: str = None,
         sort: str = None,
         with_fields_shrink: str = None,
+        without_total_hits: bool = None,
     ):
         self.aggregations_shrink = aggregations_shrink
         self.dataset_name = dataset_name
@@ -22038,6 +22357,7 @@ class SimpleQueryShrinkRequest(TeaModel):
         self.query_shrink = query_shrink
         self.sort = sort
         self.with_fields_shrink = with_fields_shrink
+        self.without_total_hits = without_total_hits
 
     def validate(self):
         pass
@@ -22066,6 +22386,8 @@ class SimpleQueryShrinkRequest(TeaModel):
             result['Sort'] = self.sort
         if self.with_fields_shrink is not None:
             result['WithFields'] = self.with_fields_shrink
+        if self.without_total_hits is not None:
+            result['WithoutTotalHits'] = self.without_total_hits
         return result
 
     def from_map(self, m: dict = None):
@@ -22088,6 +22410,8 @@ class SimpleQueryShrinkRequest(TeaModel):
             self.sort = m.get('Sort')
         if m.get('WithFields') is not None:
             self.with_fields_shrink = m.get('WithFields')
+        if m.get('WithoutTotalHits') is not None:
+            self.without_total_hits = m.get('WithoutTotalHits')
         return self
 
 
