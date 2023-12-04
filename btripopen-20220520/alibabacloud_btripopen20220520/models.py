@@ -71845,6 +71845,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         third_depart_id_list: List[str] = None,
         user_id: str = None,
         user_name: str = None,
+        user_nick: str = None,
     ):
         self.base_city_code = base_city_code
         self.birthday = birthday
@@ -71864,6 +71865,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         self.third_depart_id_list = third_depart_id_list
         self.user_id = user_id
         self.user_name = user_name
+        self.user_nick = user_nick
 
     def validate(self):
         if self.cert_list:
@@ -71915,6 +71917,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             result['user_id'] = self.user_id
         if self.user_name is not None:
             result['user_name'] = self.user_name
+        if self.user_nick is not None:
+            result['user_nick'] = self.user_nick
         return result
 
     def from_map(self, m: dict = None):
@@ -71958,6 +71962,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             self.user_id = m.get('user_id')
         if m.get('user_name') is not None:
             self.user_name = m.get('user_name')
+        if m.get('user_nick') is not None:
+            self.user_nick = m.get('user_nick')
         return self
 
 
