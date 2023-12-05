@@ -1288,6 +1288,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.quota_name):
             query['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -1318,6 +1320,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.quota_name):
             query['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         req = open_api_models.OpenApiRequest(
@@ -3222,6 +3226,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.quota_name):
             query['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         if not UtilClient.is_unset(request.value):
@@ -3254,6 +3260,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.quota_name):
             query['QuotaName'] = request.quota_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.uid):
             query['Uid'] = request.uid
         if not UtilClient.is_unset(request.value):

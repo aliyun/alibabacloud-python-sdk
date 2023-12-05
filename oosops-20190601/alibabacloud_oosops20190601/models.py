@@ -2564,9 +2564,11 @@ class GetQuotaRequest(TeaModel):
     def __init__(
         self,
         quota_name: str = None,
+        region_id: str = None,
         uid: str = None,
     ):
         self.quota_name = quota_name
+        self.region_id = region_id
         self.uid = uid
 
     def validate(self):
@@ -2580,6 +2582,8 @@ class GetQuotaRequest(TeaModel):
         result = dict()
         if self.quota_name is not None:
             result['QuotaName'] = self.quota_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.uid is not None:
             result['Uid'] = self.uid
         return result
@@ -2588,6 +2592,8 @@ class GetQuotaRequest(TeaModel):
         m = m or dict()
         if m.get('QuotaName') is not None:
             self.quota_name = m.get('QuotaName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')
         return self
@@ -7133,10 +7139,12 @@ class SetQuotaRequest(TeaModel):
     def __init__(
         self,
         quota_name: str = None,
+        region_id: str = None,
         uid: str = None,
         value: str = None,
     ):
         self.quota_name = quota_name
+        self.region_id = region_id
         self.uid = uid
         self.value = value
 
@@ -7151,6 +7159,8 @@ class SetQuotaRequest(TeaModel):
         result = dict()
         if self.quota_name is not None:
             result['QuotaName'] = self.quota_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.uid is not None:
             result['Uid'] = self.uid
         if self.value is not None:
@@ -7161,6 +7171,8 @@ class SetQuotaRequest(TeaModel):
         m = m or dict()
         if m.get('QuotaName') is not None:
             self.quota_name = m.get('QuotaName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')
         if m.get('Value') is not None:
