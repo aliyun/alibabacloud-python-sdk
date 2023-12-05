@@ -1023,7 +1023,9 @@ class CancelShiftLoadBalancerZonesRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
+        # The zone ID. You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1058,9 +1060,22 @@ class CancelShiftLoadBalancerZonesRequest(TeaModel):
         load_balancer_id: str = None,
         zone_mappings: List[CancelShiftLoadBalancerZonesRequestZoneMappings] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
+        # The mappings between zones and vSwitches.
+        # 
+        # >  You can add only one zone in each call.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -1108,6 +1123,7 @@ class CancelShiftLoadBalancerZonesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15742,6 +15758,39 @@ class ListRulesResponseBodyRulesRuleActionsFixedResponseConfig(TeaModel):
         return self
 
 
+class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession(TeaModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        timeout: int = None,
+    ):
+        self.enabled = enabled
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
 class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples(TeaModel):
     def __init__(
         self,
@@ -15780,12 +15829,16 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples(T
 class ListRulesResponseBodyRulesRuleActionsForwardGroupConfig(TeaModel):
     def __init__(
         self,
+        server_group_sticky_session: ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession = None,
         server_group_tuples: List[ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples] = None,
     ):
+        self.server_group_sticky_session = server_group_sticky_session
         # The server groups to which requests are forwarded.
         self.server_group_tuples = server_group_tuples
 
     def validate(self):
+        if self.server_group_sticky_session:
+            self.server_group_sticky_session.validate()
         if self.server_group_tuples:
             for k in self.server_group_tuples:
                 if k:
@@ -15797,6 +15850,8 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfig(TeaModel):
             return _map
 
         result = dict()
+        if self.server_group_sticky_session is not None:
+            result['ServerGroupStickySession'] = self.server_group_sticky_session.to_map()
         result['ServerGroupTuples'] = []
         if self.server_group_tuples is not None:
             for k in self.server_group_tuples:
@@ -15805,6 +15860,9 @@ class ListRulesResponseBodyRulesRuleActionsForwardGroupConfig(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ServerGroupStickySession') is not None:
+            temp_model = ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupStickySession()
+            self.server_group_sticky_session = temp_model.from_map(m['ServerGroupStickySession'])
         self.server_group_tuples = []
         if m.get('ServerGroupTuples') is not None:
             for k in m.get('ServerGroupTuples'):
@@ -16156,9 +16214,11 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
     def __init__(
         self,
         mirror_group_config: ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig = None,
+        target_type: str = None,
     ):
         # The configuration of the server group to which traffic is mirrored.
         self.mirror_group_config = mirror_group_config
+        self.target_type = target_type
 
     def validate(self):
         if self.mirror_group_config:
@@ -16172,6 +16232,8 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
         result = dict()
         if self.mirror_group_config is not None:
             result['MirrorGroupConfig'] = self.mirror_group_config.to_map()
+        if self.target_type is not None:
+            result['TargetType'] = self.target_type
         return result
 
     def from_map(self, m: dict = None):
@@ -16179,6 +16241,8 @@ class ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig(TeaModel):
         if m.get('MirrorGroupConfig') is not None:
             temp_model = ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig()
             self.mirror_group_config = temp_model.from_map(m['MirrorGroupConfig'])
+        if m.get('TargetType') is not None:
+            self.target_type = m.get('TargetType')
         return self
 
 
@@ -20273,7 +20337,9 @@ class StartShiftLoadBalancerZonesRequestZoneMappings(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
+        # The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
         self.v_switch_id = v_switch_id
+        # The zone ID. You can call the [DescribeZones](~~189196~~) operation to query the most recent zone list.
         self.zone_id = zone_id
 
     def validate(self):
@@ -20308,9 +20374,22 @@ class StartShiftLoadBalancerZonesRequest(TeaModel):
         load_balancer_id: str = None,
         zone_mappings: List[StartShiftLoadBalancerZonesRequestZoneMappings] = None,
     ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a `2xx HTTP` status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The ALB instance ID.
         self.load_balancer_id = load_balancer_id
+        # The mappings between zones and vSwitches.
+        # 
+        # >  You can remove only one zone in each call.
         self.zone_mappings = zone_mappings
 
     def validate(self):
@@ -20358,6 +20437,7 @@ class StartShiftLoadBalancerZonesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -744,6 +744,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        
+        @param request: CancelShiftLoadBalancerZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelShiftLoadBalancerZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -778,6 +785,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        
+        @param request: CancelShiftLoadBalancerZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelShiftLoadBalancerZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -811,6 +825,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        
+        @param request: CancelShiftLoadBalancerZonesRequest
+        @return: CancelShiftLoadBalancerZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_shift_load_balancer_zones_with_options(request, runtime)
 
@@ -818,6 +838,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.CancelShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.CancelShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported only by Application Load Balancer (ALB) instances that use static IP addresses. Before you call this operation, you must call the StartShiftLoadBalancerZones operation to remove the zone from the ALB instance.
+        
+        @param request: CancelShiftLoadBalancerZonesRequest
+        @return: CancelShiftLoadBalancerZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_shift_load_balancer_zones_with_options_async(request, runtime)
 
@@ -6524,6 +6550,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        
+        @param request: StartShiftLoadBalancerZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartShiftLoadBalancerZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6558,6 +6591,13 @@ class Client(OpenApiClient):
         request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        
+        @param request: StartShiftLoadBalancerZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartShiftLoadBalancerZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6591,6 +6631,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        
+        @param request: StartShiftLoadBalancerZonesRequest
+        @return: StartShiftLoadBalancerZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_shift_load_balancer_zones_with_options(request, runtime)
 
@@ -6598,6 +6644,12 @@ class Client(OpenApiClient):
         self,
         request: alb_20200616_models.StartShiftLoadBalancerZonesRequest,
     ) -> alb_20200616_models.StartShiftLoadBalancerZonesResponse:
+        """
+        This operation is supported by Application Load Balancer (ALB) instances that use static IP addresses. The zone cannot be removed if the ALB instance has only one available zone.
+        
+        @param request: StartShiftLoadBalancerZonesRequest
+        @return: StartShiftLoadBalancerZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_shift_load_balancer_zones_with_options_async(request, runtime)
 
