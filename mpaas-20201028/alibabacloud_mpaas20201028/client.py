@@ -6073,6 +6073,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.log_msa_query_with_options_async(request, runtime)
 
+    def m_trsocrservice_with_options(
+        self,
+        request: m_paa_s20201028_models.MTRSOCRServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.image_raw):
+            body['ImageRaw'] = request.image_raw
+        if not UtilClient.is_unset(request.mask):
+            body['Mask'] = request.mask
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MTRSOCRService',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.MTRSOCRServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def m_trsocrservice_with_options_async(
+        self,
+        request: m_paa_s20201028_models.MTRSOCRServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.image_raw):
+            body['ImageRaw'] = request.image_raw
+        if not UtilClient.is_unset(request.mask):
+            body['Mask'] = request.mask
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MTRSOCRService',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.MTRSOCRServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def m_trsocrservice(
+        self,
+        request: m_paa_s20201028_models.MTRSOCRServiceRequest,
+    ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.m_trsocrservice_with_options(request, runtime)
+
+    async def m_trsocrservice_async(
+        self,
+        request: m_paa_s20201028_models.MTRSOCRServiceRequest,
+    ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.m_trsocrservice_with_options_async(request, runtime)
+
     def open_api_add_active_code_with_options(
         self,
         request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
@@ -9922,6 +10012,8 @@ class Client(OpenApiClient):
             body['License'] = request.license
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -9960,6 +10052,8 @@ class Client(OpenApiClient):
             body['License'] = request.license
         if not UtilClient.is_unset(request.tenant_id):
             body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
         if not UtilClient.is_unset(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
