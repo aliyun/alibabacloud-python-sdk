@@ -26547,6 +26547,151 @@ class ResumeProcessesResponse(TeaModel):
         return self
 
 
+class ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ScaleWithAdjustmentRequestOverridesContainerOverrides(TeaModel):
+    def __init__(
+        self,
+        args: List[str] = None,
+        commands: List[str] = None,
+        cpu: float = None,
+        environment_vars: List[ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars] = None,
+        memory: float = None,
+        name: str = None,
+    ):
+        self.args = args
+        self.commands = commands
+        self.cpu = cpu
+        self.environment_vars = environment_vars
+        self.memory = memory
+        self.name = name
+
+    def validate(self):
+        if self.environment_vars:
+            for k in self.environment_vars:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['Args'] = self.args
+        if self.commands is not None:
+            result['Commands'] = self.commands
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        result['EnvironmentVars'] = []
+        if self.environment_vars is not None:
+            for k in self.environment_vars:
+                result['EnvironmentVars'].append(k.to_map() if k else None)
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Args') is not None:
+            self.args = m.get('Args')
+        if m.get('Commands') is not None:
+            self.commands = m.get('Commands')
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        self.environment_vars = []
+        if m.get('EnvironmentVars') is not None:
+            for k in m.get('EnvironmentVars'):
+                temp_model = ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars()
+                self.environment_vars.append(temp_model.from_map(k))
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class ScaleWithAdjustmentRequestOverrides(TeaModel):
+    def __init__(
+        self,
+        container_overrides: List[ScaleWithAdjustmentRequestOverridesContainerOverrides] = None,
+        cpu: float = None,
+        memory: float = None,
+    ):
+        self.container_overrides = container_overrides
+        self.cpu = cpu
+        self.memory = memory
+
+    def validate(self):
+        if self.container_overrides:
+            for k in self.container_overrides:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ContainerOverrides'] = []
+        if self.container_overrides is not None:
+            for k in self.container_overrides:
+                result['ContainerOverrides'].append(k.to_map() if k else None)
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.container_overrides = []
+        if m.get('ContainerOverrides') is not None:
+            for k in m.get('ContainerOverrides'):
+                temp_model = ScaleWithAdjustmentRequestOverridesContainerOverrides()
+                self.container_overrides.append(temp_model.from_map(k))
+        if m.get('Cpu') is not None:
+            self.cpu = m.get('Cpu')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        return self
+
+
 class ScaleWithAdjustmentRequest(TeaModel):
     def __init__(
         self,
@@ -26554,6 +26699,7 @@ class ScaleWithAdjustmentRequest(TeaModel):
         adjustment_value: int = None,
         client_token: str = None,
         min_adjustment_magnitude: int = None,
+        overrides: ScaleWithAdjustmentRequestOverrides = None,
         owner_id: int = None,
         resource_owner_account: str = None,
         scaling_group_id: str = None,
@@ -26575,6 +26721,105 @@ class ScaleWithAdjustmentRequest(TeaModel):
         self.client_token = client_token
         # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
         self.min_adjustment_magnitude = min_adjustment_magnitude
+        self.overrides = overrides
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        # The ID of the scaling group.
+        self.scaling_group_id = scaling_group_id
+        # Specifies whether to trigger the scaling activity in a synchronous manner. This parameter takes effect only on scaling groups for which you specified an expected number of instances. Valid values:
+        # 
+        # *   true: triggers the scaling activity in a synchronous manner. The scaling activity is triggered at the time when the scaling rule is executed.
+        # *   false: does not trigger the scaling activity in a synchronous manner. After you change the expected number of instances for the scaling group, Auto Scaling checks whether the total number of instances in the scaling group matches the new expected number of instances and determines whether to trigger the scaling activity based on the check result.
+        # 
+        # > For more information about the Expected Number of Instances feature, see [Expected number of instances](~~146231~~).
+        # 
+        # Default value: false.
+        self.sync_activity = sync_activity
+
+    def validate(self):
+        if self.overrides:
+            self.overrides.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.adjustment_type is not None:
+            result['AdjustmentType'] = self.adjustment_type
+        if self.adjustment_value is not None:
+            result['AdjustmentValue'] = self.adjustment_value
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.min_adjustment_magnitude is not None:
+            result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
+        if self.overrides is not None:
+            result['Overrides'] = self.overrides.to_map()
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.scaling_group_id is not None:
+            result['ScalingGroupId'] = self.scaling_group_id
+        if self.sync_activity is not None:
+            result['SyncActivity'] = self.sync_activity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AdjustmentType') is not None:
+            self.adjustment_type = m.get('AdjustmentType')
+        if m.get('AdjustmentValue') is not None:
+            self.adjustment_value = m.get('AdjustmentValue')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('MinAdjustmentMagnitude') is not None:
+            self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
+        if m.get('Overrides') is not None:
+            temp_model = ScaleWithAdjustmentRequestOverrides()
+            self.overrides = temp_model.from_map(m['Overrides'])
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ScalingGroupId') is not None:
+            self.scaling_group_id = m.get('ScalingGroupId')
+        if m.get('SyncActivity') is not None:
+            self.sync_activity = m.get('SyncActivity')
+        return self
+
+
+class ScaleWithAdjustmentShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        adjustment_type: str = None,
+        adjustment_value: int = None,
+        client_token: str = None,
+        min_adjustment_magnitude: int = None,
+        overrides_shrink: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        scaling_group_id: str = None,
+        sync_activity: bool = None,
+    ):
+        # The type of the scaling policy. Valid values:
+        # 
+        # *   QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
+        # *   PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group.
+        # *   TotalCapacity: adjusts the number of ECS instances in the scaling group to a specified number.
+        self.adjustment_type = adjustment_type
+        # The number of instances in each adjustment. The number of ECS instances in each adjustment cannot exceed 1,000.
+        # 
+        # *   Valid values if you set the AdjustmentType parameter to QuantityChangeInCapacity: -1000 to 1000.
+        # *   Valid values if you set the AdjustmentType parameter to PercentChangeInCapacity: -100 to 10000.
+        # *   Valid values if you set the AdjustmentType parameter to TotalCapacity: 0 to 2000.
+        self.adjustment_value = adjustment_value
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        self.client_token = client_token
+        # The minimum number of instances allowed in each adjustment. This parameter takes effect only if you set the `AdjustmentType` parameter to `PercentChangeInCapacity`.
+        self.min_adjustment_magnitude = min_adjustment_magnitude
+        self.overrides_shrink = overrides_shrink
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         # The ID of the scaling group.
@@ -26606,6 +26851,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.min_adjustment_magnitude is not None:
             result['MinAdjustmentMagnitude'] = self.min_adjustment_magnitude
+        if self.overrides_shrink is not None:
+            result['Overrides'] = self.overrides_shrink
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.resource_owner_account is not None:
@@ -26626,6 +26873,8 @@ class ScaleWithAdjustmentRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('MinAdjustmentMagnitude') is not None:
             self.min_adjustment_magnitude = m.get('MinAdjustmentMagnitude')
+        if m.get('Overrides') is not None:
+            self.overrides_shrink = m.get('Overrides')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('ResourceOwnerAccount') is not None:

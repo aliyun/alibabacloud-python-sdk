@@ -9061,7 +9061,7 @@ class Client(OpenApiClient):
 
     def scale_with_adjustment_with_options(
         self,
-        request: ess_20220222_models.ScaleWithAdjustmentRequest,
+        tmp_req: ess_20220222_models.ScaleWithAdjustmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ScaleWithAdjustmentResponse:
         """
@@ -9074,11 +9074,15 @@ class Client(OpenApiClient):
         *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
         A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
         
-        @param request: ScaleWithAdjustmentRequest
+        @param tmp_req: ScaleWithAdjustmentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ScaleWithAdjustmentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ess_20220222_models.ScaleWithAdjustmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.overrides):
+            request.overrides_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.overrides, 'Overrides', 'json')
         query = {}
         if not UtilClient.is_unset(request.adjustment_type):
             query['AdjustmentType'] = request.adjustment_type
@@ -9088,6 +9092,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
+        if not UtilClient.is_unset(request.overrides_shrink):
+            query['Overrides'] = request.overrides_shrink
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
@@ -9117,7 +9123,7 @@ class Client(OpenApiClient):
 
     async def scale_with_adjustment_with_options_async(
         self,
-        request: ess_20220222_models.ScaleWithAdjustmentRequest,
+        tmp_req: ess_20220222_models.ScaleWithAdjustmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ScaleWithAdjustmentResponse:
         """
@@ -9130,11 +9136,15 @@ class Client(OpenApiClient):
         *   If the removal of a specified number of ECS instances from a scaling group causes the total number of ECS instances in the scaling group to drop below the minimum number of instances allowed, Auto Scaling removes only a specific number of ECS instances to ensure that the total number of instances is equal to the minimum number of instances.
         A successful call indicates that Auto Scaling accepts the request. However, the scaling activity may still fail. You can obtain the status of a scaling activity by using the value of the `ScalingActivityId` parameter in the response.
         
-        @param request: ScaleWithAdjustmentRequest
+        @param tmp_req: ScaleWithAdjustmentRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ScaleWithAdjustmentResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = ess_20220222_models.ScaleWithAdjustmentShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.overrides):
+            request.overrides_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.overrides, 'Overrides', 'json')
         query = {}
         if not UtilClient.is_unset(request.adjustment_type):
             query['AdjustmentType'] = request.adjustment_type
@@ -9144,6 +9154,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.min_adjustment_magnitude):
             query['MinAdjustmentMagnitude'] = request.min_adjustment_magnitude
+        if not UtilClient.is_unset(request.overrides_shrink):
+            query['Overrides'] = request.overrides_shrink
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.resource_owner_account):
