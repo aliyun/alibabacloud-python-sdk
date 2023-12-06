@@ -18179,6 +18179,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.update_integration_with_options_async(request, runtime)
 
+    def update_metric_drop_with_options(
+        self,
+        request: arms20190808_models.UpdateMetricDropRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateMetricDropResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.metric_drop):
+            query['MetricDrop'] = request.metric_drop
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetricDrop',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateMetricDropResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_metric_drop_with_options_async(
+        self,
+        request: arms20190808_models.UpdateMetricDropRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> arms20190808_models.UpdateMetricDropResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not UtilClient.is_unset(request.metric_drop):
+            query['MetricDrop'] = request.metric_drop
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateMetricDrop',
+            version='2019-08-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            arms20190808_models.UpdateMetricDropResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_metric_drop(
+        self,
+        request: arms20190808_models.UpdateMetricDropRequest,
+    ) -> arms20190808_models.UpdateMetricDropResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_metric_drop_with_options(request, runtime)
+
+    async def update_metric_drop_async(
+        self,
+        request: arms20190808_models.UpdateMetricDropRequest,
+    ) -> arms20190808_models.UpdateMetricDropResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_metric_drop_with_options_async(request, runtime)
+
     def update_prometheus_alert_rule_with_options(
         self,
         request: arms20190808_models.UpdatePrometheusAlertRuleRequest,

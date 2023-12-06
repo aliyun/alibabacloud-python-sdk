@@ -26141,12 +26141,21 @@ class GetPrometheusInstanceResponseBodyDataTags(TeaModel):
 class GetPrometheusInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
+        auth_token: str = None,
         cluster_id: str = None,
         cluster_name: str = None,
         cluster_type: str = None,
         grafana_instance_id: str = None,
+        http_api_inter_url: str = None,
+        http_api_intra_url: str = None,
         payment_type: str = None,
+        push_gateway_inter_url: str = None,
+        push_gateway_intra_url: str = None,
         region_id: str = None,
+        remote_read_inter_url: str = None,
+        remote_read_intra_url: str = None,
+        remote_write_inter_url: str = None,
+        remote_write_intra_url: str = None,
         resource_group_id: str = None,
         resource_type: str = None,
         security_group_id: str = None,
@@ -26156,6 +26165,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.auth_token = auth_token
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
         # The name of the monitoring object.
@@ -26169,13 +26179,21 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
+        self.http_api_inter_url = http_api_inter_url
+        self.http_api_intra_url = http_api_intra_url
         # The billing method. Valid values:
         # 
         # *   PREPAY: subscription
         # *   POSTPAY: pay-as-you-go
         self.payment_type = payment_type
+        self.push_gateway_inter_url = push_gateway_inter_url
+        self.push_gateway_intra_url = push_gateway_intra_url
         # The region ID.
         self.region_id = region_id
+        self.remote_read_inter_url = remote_read_inter_url
+        self.remote_read_intra_url = remote_read_intra_url
+        self.remote_write_inter_url = remote_write_inter_url
+        self.remote_write_intra_url = remote_write_intra_url
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
         # The type of the resource. Set the value to PROMETHEUS.
@@ -26205,6 +26223,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_token is not None:
+            result['AuthToken'] = self.auth_token
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
         if self.cluster_name is not None:
@@ -26213,10 +26233,26 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['ClusterType'] = self.cluster_type
         if self.grafana_instance_id is not None:
             result['GrafanaInstanceId'] = self.grafana_instance_id
+        if self.http_api_inter_url is not None:
+            result['HttpApiInterUrl'] = self.http_api_inter_url
+        if self.http_api_intra_url is not None:
+            result['HttpApiIntraUrl'] = self.http_api_intra_url
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+        if self.push_gateway_inter_url is not None:
+            result['PushGatewayInterUrl'] = self.push_gateway_inter_url
+        if self.push_gateway_intra_url is not None:
+            result['PushGatewayIntraUrl'] = self.push_gateway_intra_url
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.remote_read_inter_url is not None:
+            result['RemoteReadInterUrl'] = self.remote_read_inter_url
+        if self.remote_read_intra_url is not None:
+            result['RemoteReadIntraUrl'] = self.remote_read_intra_url
+        if self.remote_write_inter_url is not None:
+            result['RemoteWriteInterUrl'] = self.remote_write_inter_url
+        if self.remote_write_intra_url is not None:
+            result['RemoteWriteIntraUrl'] = self.remote_write_intra_url
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_type is not None:
@@ -26239,6 +26275,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthToken') is not None:
+            self.auth_token = m.get('AuthToken')
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
         if m.get('ClusterName') is not None:
@@ -26247,10 +26285,26 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.cluster_type = m.get('ClusterType')
         if m.get('GrafanaInstanceId') is not None:
             self.grafana_instance_id = m.get('GrafanaInstanceId')
+        if m.get('HttpApiInterUrl') is not None:
+            self.http_api_inter_url = m.get('HttpApiInterUrl')
+        if m.get('HttpApiIntraUrl') is not None:
+            self.http_api_intra_url = m.get('HttpApiIntraUrl')
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+        if m.get('PushGatewayInterUrl') is not None:
+            self.push_gateway_inter_url = m.get('PushGatewayInterUrl')
+        if m.get('PushGatewayIntraUrl') is not None:
+            self.push_gateway_intra_url = m.get('PushGatewayIntraUrl')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('RemoteReadInterUrl') is not None:
+            self.remote_read_inter_url = m.get('RemoteReadInterUrl')
+        if m.get('RemoteReadIntraUrl') is not None:
+            self.remote_read_intra_url = m.get('RemoteReadIntraUrl')
+        if m.get('RemoteWriteInterUrl') is not None:
+            self.remote_write_inter_url = m.get('RemoteWriteInterUrl')
+        if m.get('RemoteWriteIntraUrl') is not None:
+            self.remote_write_intra_url = m.get('RemoteWriteIntraUrl')
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceType') is not None:
@@ -44627,6 +44681,7 @@ class OpenArmsDefaultSLRRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -44655,7 +44710,9 @@ class OpenArmsDefaultSLRResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
+        # The returned result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -45018,9 +45075,12 @@ class OpenXtraceDefaultSLRResponseBody(TeaModel):
         data: str = None,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.data = data
-        # Activates the service-linked role AliyunServiceRoleForXtrace for Tracing Analysis.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51516,7 +51576,9 @@ class StopTimingSyntheticTaskRequest(TeaModel):
         region_id: str = None,
         task_ids: List[str] = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The task IDs.
         self.task_ids = task_ids
 
     def validate(self):
@@ -51549,7 +51611,9 @@ class StopTimingSyntheticTaskShrinkRequest(TeaModel):
         region_id: str = None,
         task_ids_shrink: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The task IDs.
         self.task_ids_shrink = task_ids_shrink
 
     def validate(self):
@@ -51584,9 +51648,13 @@ class StopTimingSyntheticTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # Indicates whether the request was successful. Valid values: true and false.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54215,6 +54283,141 @@ class UpdateIntegrationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateIntegrationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateMetricDropRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        metric_drop: str = None,
+        region_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.metric_drop = metric_drop
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.metric_drop is not None:
+            result['MetricDrop'] = self.metric_drop
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('MetricDrop') is not None:
+            self.metric_drop = m.get('MetricDrop')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class UpdateMetricDropResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateMetricDropResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateMetricDropResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateMetricDropResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
