@@ -1775,6 +1775,7 @@ class SkuSpec(TeaModel):
 class Sku(TeaModel):
     def __init__(
         self,
+        barcode: str = None,
         can_sell: bool = None,
         division_code: str = None,
         fuzzy_quantity: str = None,
@@ -1791,6 +1792,7 @@ class Sku(TeaModel):
         sku_status: str = None,
         title: str = None,
     ):
+        self.barcode = barcode
         self.can_sell = can_sell
         self.division_code = division_code
         self.fuzzy_quantity = fuzzy_quantity
@@ -1819,6 +1821,8 @@ class Sku(TeaModel):
             return _map
 
         result = dict()
+        if self.barcode is not None:
+            result['barcode'] = self.barcode
         if self.can_sell is not None:
             result['canSell'] = self.can_sell
         if self.division_code is not None:
@@ -1855,6 +1859,8 @@ class Sku(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('barcode') is not None:
+            self.barcode = m.get('barcode')
         if m.get('canSell') is not None:
             self.can_sell = m.get('canSell')
         if m.get('divisionCode') is not None:
@@ -1894,6 +1900,7 @@ class Sku(TeaModel):
 class Product(TeaModel):
     def __init__(
         self,
+        brand_name: str = None,
         can_sell: bool = None,
         category_chain: List[Category] = None,
         category_leaf_id: int = None,
@@ -1916,6 +1923,7 @@ class Product(TeaModel):
         tax_rate: int = None,
         title: str = None,
     ):
+        self.brand_name = brand_name
         self.can_sell = can_sell
         self.category_chain = category_chain
         self.category_leaf_id = category_leaf_id
@@ -1962,6 +1970,8 @@ class Product(TeaModel):
             return _map
 
         result = dict()
+        if self.brand_name is not None:
+            result['brandName'] = self.brand_name
         if self.can_sell is not None:
             result['canSell'] = self.can_sell
         result['categoryChain'] = []
@@ -2016,6 +2026,8 @@ class Product(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('brandName') is not None:
+            self.brand_name = m.get('brandName')
         if m.get('canSell') is not None:
             self.can_sell = m.get('canSell')
         self.category_chain = []
