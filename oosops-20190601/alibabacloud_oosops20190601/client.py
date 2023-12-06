@@ -3642,6 +3642,8 @@ class Client(OpenApiClient):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.popularity):
             query['Popularity'] = request.popularity
+        if not UtilClient.is_unset(request.publisher):
+            query['Publisher'] = request.publisher
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):
@@ -3676,6 +3678,8 @@ class Client(OpenApiClient):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.popularity):
             query['Popularity'] = request.popularity
+        if not UtilClient.is_unset(request.publisher):
+            query['Publisher'] = request.publisher
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.template_name):

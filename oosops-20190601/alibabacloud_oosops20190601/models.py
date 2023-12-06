@@ -7970,11 +7970,13 @@ class UpdatePublicTemplateRequest(TeaModel):
         self,
         content: str = None,
         popularity: int = None,
+        publisher: str = None,
         region_id: str = None,
         template_name: str = None,
     ):
         self.content = content
         self.popularity = popularity
+        self.publisher = publisher
         self.region_id = region_id
         self.template_name = template_name
 
@@ -7991,6 +7993,8 @@ class UpdatePublicTemplateRequest(TeaModel):
             result['Content'] = self.content
         if self.popularity is not None:
             result['Popularity'] = self.popularity
+        if self.publisher is not None:
+            result['Publisher'] = self.publisher
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.template_name is not None:
@@ -8003,6 +8007,8 @@ class UpdatePublicTemplateRequest(TeaModel):
             self.content = m.get('Content')
         if m.get('Popularity') is not None:
             self.popularity = m.get('Popularity')
+        if m.get('Publisher') is not None:
+            self.publisher = m.get('Publisher')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('TemplateName') is not None:
