@@ -747,178 +747,6 @@ class RefineMaskResponse(TeaModel):
         return self
 
 
-class SegmentAnimalRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-        return_form: str = None,
-    ):
-        self.image_url = image_url
-        self.return_form = return_form
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        if self.return_form is not None:
-            result['ReturnForm'] = self.return_form
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        if m.get('ReturnForm') is not None:
-            self.return_form = m.get('ReturnForm')
-        return self
-
-
-class SegmentAnimalAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-        return_form: str = None,
-    ):
-        self.image_urlobject = image_urlobject
-        self.return_form = return_form
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        if self.return_form is not None:
-            result['ReturnForm'] = self.return_form
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        if m.get('ReturnForm') is not None:
-            self.return_form = m.get('ReturnForm')
-        return self
-
-
-class SegmentAnimalResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentAnimalResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SegmentAnimalResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SegmentAnimalResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SegmentAnimalResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SegmentAnimalResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SegmentAnimalResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SegmentBodyRequest(TeaModel):
     def __init__(
         self,
@@ -1094,9 +922,13 @@ class SegmentBodyResponse(TeaModel):
 class SegmentClothRequest(TeaModel):
     def __init__(
         self,
+        cloth_class: List[str] = None,
         image_url: str = None,
+        return_form: str = None,
     ):
+        self.cloth_class = cloth_class
         self.image_url = image_url
+        self.return_form = return_form
 
     def validate(self):
         pass
@@ -1107,23 +939,35 @@ class SegmentClothRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cloth_class is not None:
+            result['ClothClass'] = self.cloth_class
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
+        if self.return_form is not None:
+            result['ReturnForm'] = self.return_form
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClothClass') is not None:
+            self.cloth_class = m.get('ClothClass')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
+        if m.get('ReturnForm') is not None:
+            self.return_form = m.get('ReturnForm')
         return self
 
 
 class SegmentClothAdvanceRequest(TeaModel):
     def __init__(
         self,
+        cloth_class: List[str] = None,
         image_urlobject: BinaryIO = None,
+        return_form: str = None,
     ):
+        self.cloth_class = cloth_class
         self.image_urlobject = image_urlobject
+        self.return_form = return_form
 
     def validate(self):
         pass
@@ -1134,22 +978,32 @@ class SegmentClothAdvanceRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.cloth_class is not None:
+            result['ClothClass'] = self.cloth_class
         if self.image_urlobject is not None:
             result['ImageURL'] = self.image_urlobject
+        if self.return_form is not None:
+            result['ReturnForm'] = self.return_form
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClothClass') is not None:
+            self.cloth_class = m.get('ClothClass')
         if m.get('ImageURL') is not None:
             self.image_urlobject = m.get('ImageURL')
+        if m.get('ReturnForm') is not None:
+            self.return_form = m.get('ReturnForm')
         return self
 
 
 class SegmentClothResponseBodyDataElements(TeaModel):
     def __init__(
         self,
+        class_url: Dict[str, str] = None,
         image_url: str = None,
     ):
+        self.class_url = class_url
         self.image_url = image_url
 
     def validate(self):
@@ -1161,12 +1015,16 @@ class SegmentClothResponseBodyDataElements(TeaModel):
             return _map
 
         result = dict()
+        if self.class_url is not None:
+            result['ClassUrl'] = self.class_url
         if self.image_url is not None:
             result['ImageURL'] = self.image_url
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClassUrl') is not None:
+            self.class_url = m.get('ClassUrl')
         if m.get('ImageURL') is not None:
             self.image_url = m.get('ImageURL')
         return self
@@ -1630,225 +1488,6 @@ class SegmentCommonImageResponse(TeaModel):
         return self
 
 
-class SegmentFaceRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentFaceAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class SegmentFaceResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        height: int = None,
-        image_url: str = None,
-        width: int = None,
-        x: int = None,
-        y: int = None,
-    ):
-        self.height = height
-        self.image_url = image_url
-        self.width = width
-        self.x = x
-        self.y = y
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.height is not None:
-            result['Height'] = self.height
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        if self.width is not None:
-            result['Width'] = self.width
-        if self.x is not None:
-            result['X'] = self.x
-        if self.y is not None:
-            result['Y'] = self.y
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Height') is not None:
-            self.height = m.get('Height')
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        if m.get('Width') is not None:
-            self.width = m.get('Width')
-        if m.get('X') is not None:
-            self.x = m.get('X')
-        if m.get('Y') is not None:
-            self.y = m.get('Y')
-        return self
-
-
-class SegmentFaceResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[SegmentFaceResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = SegmentFaceResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class SegmentFaceResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SegmentFaceResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SegmentFaceResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SegmentFaceResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SegmentFaceResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SegmentFaceResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SegmentFoodRequest(TeaModel):
     def __init__(
         self,
@@ -2017,201 +1656,6 @@ class SegmentFoodResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SegmentFoodResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SegmentFurnitureRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentFurnitureAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class SegmentFurnitureResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentFurnitureResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[SegmentFurnitureResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = SegmentFurnitureResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class SegmentFurnitureResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SegmentFurnitureResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SegmentFurnitureResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SegmentFurnitureResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SegmentFurnitureResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SegmentFurnitureResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3152,166 +2596,6 @@ class SegmentHeadResponse(TeaModel):
         return self
 
 
-class SegmentLogoRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentLogoAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class SegmentLogoResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentLogoResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SegmentLogoResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SegmentLogoResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SegmentLogoResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SegmentLogoResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SegmentLogoResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
 class SegmentSceneRequest(TeaModel):
     def __init__(
         self,
@@ -3788,207 +3072,6 @@ class SegmentSkyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SegmentSkyResponseBody()
-            self.body = temp_model.from_map(m['body'])
-        return self
-
-
-class SegmentVehicleRequest(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-    ):
-        self.image_url = image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        return self
-
-
-class SegmentVehicleAdvanceRequest(TeaModel):
-    def __init__(
-        self,
-        image_urlobject: BinaryIO = None,
-    ):
-        self.image_urlobject = image_urlobject
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_urlobject is not None:
-            result['ImageURL'] = self.image_urlobject
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_urlobject = m.get('ImageURL')
-        return self
-
-
-class SegmentVehicleResponseBodyDataElements(TeaModel):
-    def __init__(
-        self,
-        image_url: str = None,
-        origin_image_url: str = None,
-    ):
-        self.image_url = image_url
-        self.origin_image_url = origin_image_url
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.image_url is not None:
-            result['ImageURL'] = self.image_url
-        if self.origin_image_url is not None:
-            result['OriginImageURL'] = self.origin_image_url
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('ImageURL') is not None:
-            self.image_url = m.get('ImageURL')
-        if m.get('OriginImageURL') is not None:
-            self.origin_image_url = m.get('OriginImageURL')
-        return self
-
-
-class SegmentVehicleResponseBodyData(TeaModel):
-    def __init__(
-        self,
-        elements: List[SegmentVehicleResponseBodyDataElements] = None,
-    ):
-        self.elements = elements
-
-    def validate(self):
-        if self.elements:
-            for k in self.elements:
-                if k:
-                    k.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        result['Elements'] = []
-        if self.elements is not None:
-            for k in self.elements:
-                result['Elements'].append(k.to_map() if k else None)
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        self.elements = []
-        if m.get('Elements') is not None:
-            for k in m.get('Elements'):
-                temp_model = SegmentVehicleResponseBodyDataElements()
-                self.elements.append(temp_model.from_map(k))
-        return self
-
-
-class SegmentVehicleResponseBody(TeaModel):
-    def __init__(
-        self,
-        data: SegmentVehicleResponseBodyData = None,
-        request_id: str = None,
-    ):
-        self.data = data
-        self.request_id = request_id
-
-    def validate(self):
-        if self.data:
-            self.data.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Data') is not None:
-            temp_model = SegmentVehicleResponseBodyData()
-            self.data = temp_model.from_map(m['Data'])
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
-        return self
-
-
-class SegmentVehicleResponse(TeaModel):
-    def __init__(
-        self,
-        headers: Dict[str, str] = None,
-        status_code: int = None,
-        body: SegmentVehicleResponseBody = None,
-    ):
-        self.headers = headers
-        self.status_code = status_code
-        self.body = body
-
-    def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
-        if self.body:
-            self.body.validate()
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.headers is not None:
-            result['headers'] = self.headers
-        if self.status_code is not None:
-            result['statusCode'] = self.status_code
-        if self.body is not None:
-            result['body'] = self.body.to_map()
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('headers') is not None:
-            self.headers = m.get('headers')
-        if m.get('statusCode') is not None:
-            self.status_code = m.get('statusCode')
-        if m.get('body') is not None:
-            temp_model = SegmentVehicleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
