@@ -813,6 +813,12 @@ class Client(OpenApiClient):
             body['deliverableUID'] = request.deliverable_uid
         if not UtilClient.is_unset(request.env_uid):
             body['envUID'] = request.env_uid
+        if not UtilClient.is_unset(request.foundation):
+            body['foundation'] = request.foundation
+        if not UtilClient.is_unset(request.products):
+            body['products'] = request.products
+        if not UtilClient.is_unset(request.template_uid):
+            body['templateUID'] = request.template_uid
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -849,6 +855,12 @@ class Client(OpenApiClient):
             body['deliverableUID'] = request.deliverable_uid
         if not UtilClient.is_unset(request.env_uid):
             body['envUID'] = request.env_uid
+        if not UtilClient.is_unset(request.foundation):
+            body['foundation'] = request.foundation
+        if not UtilClient.is_unset(request.products):
+            body['products'] = request.products
+        if not UtilClient.is_unset(request.template_uid):
+            body['templateUID'] = request.template_uid
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -993,6 +1005,8 @@ class Client(OpenApiClient):
             body['annotations'] = request.annotations
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.expired_at):
+            body['expiredAt'] = request.expired_at
         if not UtilClient.is_unset(request.location):
             body['location'] = request.location
         if not UtilClient.is_unset(request.name):
@@ -1046,6 +1060,8 @@ class Client(OpenApiClient):
             body['annotations'] = request.annotations
         if not UtilClient.is_unset(request.description):
             body['description'] = request.description
+        if not UtilClient.is_unset(request.expired_at):
+            body['expiredAt'] = request.expired_at
         if not UtilClient.is_unset(request.location):
             body['location'] = request.location
         if not UtilClient.is_unset(request.name):
@@ -1539,6 +1555,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
+        if not UtilClient.is_unset(request.without_base_product_version):
+            body['withoutBaseProductVersion'] = request.without_base_product_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -1574,6 +1592,8 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
+        if not UtilClient.is_unset(request.without_base_product_version):
+            body['withoutBaseProductVersion'] = request.without_base_product_version
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query),
@@ -4335,6 +4355,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deliverable_uid):
             query['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.platform):
+            query['platform'] = request.platform
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4365,6 +4387,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.deliverable_uid):
             query['deliverableUID'] = request.deliverable_uid
+        if not UtilClient.is_unset(request.platform):
+            query['platform'] = request.platform
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -4653,6 +4677,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_uid):
             query['clusterUID'] = request.cluster_uid
+        if not UtilClient.is_unset(request.endpoint):
+            query['endpoint'] = request.endpoint
         if not UtilClient.is_unset(request.foundation_type):
             query['foundationType'] = request.foundation_type
         if not UtilClient.is_unset(request.fuzzy):
@@ -4699,6 +4725,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.cluster_uid):
             query['clusterUID'] = request.cluster_uid
+        if not UtilClient.is_unset(request.endpoint):
+            query['endpoint'] = request.endpoint
         if not UtilClient.is_unset(request.foundation_type):
             query['foundationType'] = request.foundation_type
         if not UtilClient.is_unset(request.fuzzy):
@@ -4760,6 +4788,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.only_enabled):
+            query['onlyEnabled'] = request.only_enabled
         if not UtilClient.is_unset(request.parent_component_relation_uid):
             query['parentComponentRelationUID'] = request.parent_component_relation_uid
         req = open_api_models.OpenApiRequest(
@@ -4791,6 +4821,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListFoundationComponentVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.only_enabled):
+            query['onlyEnabled'] = request.only_enabled
         if not UtilClient.is_unset(request.parent_component_relation_uid):
             query['parentComponentRelationUID'] = request.parent_component_relation_uid
         req = open_api_models.OpenApiRequest(
@@ -4931,6 +4963,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListFoundationVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.only_default):
+            query['onlyDefault'] = request.only_default
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -4971,6 +5005,8 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListFoundationVersionsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.only_default):
+            query['onlyDefault'] = request.only_default
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -5421,14 +5457,20 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListProductInstanceConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.component_release_name):
+            query['componentReleaseName'] = request.component_release_name
         if not UtilClient.is_unset(request.environment_uid):
             query['environmentUID'] = request.environment_uid
+        if not UtilClient.is_unset(request.fuzzy):
+            query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.param_type):
             query['paramType'] = request.param_type
+        if not UtilClient.is_unset(request.parameter):
+            query['parameter'] = request.parameter
         if not UtilClient.is_unset(request.product_version_uid):
             query['productVersionUID'] = request.product_version_uid
         req = open_api_models.OpenApiRequest(
@@ -5459,14 +5501,20 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListProductInstanceConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.component_release_name):
+            query['componentReleaseName'] = request.component_release_name
         if not UtilClient.is_unset(request.environment_uid):
             query['environmentUID'] = request.environment_uid
+        if not UtilClient.is_unset(request.fuzzy):
+            query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['pageSize'] = request.page_size
         if not UtilClient.is_unset(request.param_type):
             query['paramType'] = request.param_type
+        if not UtilClient.is_unset(request.parameter):
+            query['parameter'] = request.parameter
         if not UtilClient.is_unset(request.product_version_uid):
             query['productVersionUID'] = request.product_version_uid
         req = open_api_models.OpenApiRequest(
@@ -5614,8 +5662,12 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListProductVersionConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.component_release_name):
+            query['componentReleaseName'] = request.component_release_name
         if not UtilClient.is_unset(request.config_type):
             query['configType'] = request.config_type
+        if not UtilClient.is_unset(request.fuzzy):
+            query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -5653,8 +5705,12 @@ class Client(OpenApiClient):
     ) -> adp_20210720_models.ListProductVersionConfigsResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.component_release_name):
+            query['componentReleaseName'] = request.component_release_name
         if not UtilClient.is_unset(request.config_type):
             query['configType'] = request.config_type
+        if not UtilClient.is_unset(request.fuzzy):
+            query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -5714,7 +5770,11 @@ class Client(OpenApiClient):
             request.platforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.platforms, 'platforms', 'json')
         if not UtilClient.is_unset(tmp_req.supported_foundation_types):
             request.supported_foundation_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.supported_foundation_types, 'supportedFoundationTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
+        if not UtilClient.is_unset(request.fuzzy):
+            query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -5729,6 +5789,8 @@ class Client(OpenApiClient):
             query['released'] = request.released
         if not UtilClient.is_unset(request.supported_foundation_types_shrink):
             query['supportedFoundationTypes'] = request.supported_foundation_types_shrink
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.version):
             query['version'] = request.version
         req = open_api_models.OpenApiRequest(
@@ -5764,7 +5826,11 @@ class Client(OpenApiClient):
             request.platforms_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.platforms, 'platforms', 'json')
         if not UtilClient.is_unset(tmp_req.supported_foundation_types):
             request.supported_foundation_types_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.supported_foundation_types, 'supportedFoundationTypes', 'json')
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'tag', 'json')
         query = {}
+        if not UtilClient.is_unset(request.fuzzy):
+            query['fuzzy'] = request.fuzzy
         if not UtilClient.is_unset(request.page_num):
             query['pageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
@@ -5779,6 +5845,8 @@ class Client(OpenApiClient):
             query['released'] = request.released
         if not UtilClient.is_unset(request.supported_foundation_types_shrink):
             query['supportedFoundationTypes'] = request.supported_foundation_types_shrink
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.version):
             query['version'] = request.version
         req = open_api_models.OpenApiRequest(
