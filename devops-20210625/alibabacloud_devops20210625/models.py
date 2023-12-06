@@ -1246,6 +1246,282 @@ class CreateBranchResponse(TeaModel):
         return self
 
 
+class CreateCommitStatusRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        context: str = None,
+        description: str = None,
+        state: str = None,
+        target_url: str = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+        sha: str = None,
+    ):
+        self.access_token = access_token
+        self.context = context
+        self.description = description
+        self.state = state
+        self.target_url = target_url
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+        self.sha = sha
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.context is not None:
+            result['context'] = self.context
+        if self.description is not None:
+            result['description'] = self.description
+        if self.state is not None:
+            result['state'] = self.state
+        if self.target_url is not None:
+            result['targetUrl'] = self.target_url
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        if self.sha is not None:
+            result['sha'] = self.sha
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('context') is not None:
+            self.context = m.get('context')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('targetUrl') is not None:
+            self.target_url = m.get('targetUrl')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        if m.get('sha') is not None:
+            self.sha = m.get('sha')
+        return self
+
+
+class CreateCommitStatusResponseBodyResultCreator(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: int = None,
+        avatar_url: str = None,
+        login: str = None,
+        type: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.login = login
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.login is not None:
+            result['login'] = self.login
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('login') is not None:
+            self.login = m.get('login')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class CreateCommitStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        context: str = None,
+        creator: CreateCommitStatusResponseBodyResultCreator = None,
+        description: str = None,
+        id: int = None,
+        sha: str = None,
+        state: str = None,
+        target_url: str = None,
+    ):
+        self.context = context
+        self.creator = creator
+        self.description = description
+        self.id = id
+        self.sha = sha
+        self.state = state
+        self.target_url = target_url
+
+    def validate(self):
+        if self.creator:
+            self.creator.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context
+        if self.creator is not None:
+            result['creator'] = self.creator.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.sha is not None:
+            result['sha'] = self.sha
+        if self.state is not None:
+            result['state'] = self.state
+        if self.target_url is not None:
+            result['targetUrl'] = self.target_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            self.context = m.get('context')
+        if m.get('creator') is not None:
+            temp_model = CreateCommitStatusResponseBodyResultCreator()
+            self.creator = temp_model.from_map(m['creator'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('sha') is not None:
+            self.sha = m.get('sha')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('targetUrl') is not None:
+            self.target_url = m.get('targetUrl')
+        return self
+
+
+class CreateCommitStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: CreateCommitStatusResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = CreateCommitStatusResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class CreateCommitStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCommitStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCommitStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDeployKeyRequest(TeaModel):
     def __init__(
         self,
@@ -16259,6 +16535,282 @@ class GetMergeRequestResponse(TeaModel):
         return self
 
 
+class GetMergeRequestChangeTreeRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        from_patch_set_biz_id: str = None,
+        local_id: int = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+        to_patch_set_biz_id: str = None,
+    ):
+        self.access_token = access_token
+        self.from_patch_set_biz_id = from_patch_set_biz_id
+        self.local_id = local_id
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+        self.to_patch_set_biz_id = to_patch_set_biz_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.from_patch_set_biz_id is not None:
+            result['fromPatchSetBizId'] = self.from_patch_set_biz_id
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        if self.to_patch_set_biz_id is not None:
+            result['toPatchSetBizId'] = self.to_patch_set_biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('fromPatchSetBizId') is not None:
+            self.from_patch_set_biz_id = m.get('fromPatchSetBizId')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        if m.get('toPatchSetBizId') is not None:
+            self.to_patch_set_biz_id = m.get('toPatchSetBizId')
+        return self
+
+
+class GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos(TeaModel):
+    def __init__(
+        self,
+        add_lines: int = None,
+        binary_file: bool = None,
+        del_lines: int = None,
+        deleted_file: bool = None,
+        new_file: bool = None,
+        new_path: str = None,
+        old_path: str = None,
+        renamed_file: bool = None,
+    ):
+        self.add_lines = add_lines
+        self.binary_file = binary_file
+        self.del_lines = del_lines
+        self.deleted_file = deleted_file
+        self.new_file = new_file
+        self.new_path = new_path
+        self.old_path = old_path
+        self.renamed_file = renamed_file
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.add_lines is not None:
+            result['addLines'] = self.add_lines
+        if self.binary_file is not None:
+            result['binaryFile'] = self.binary_file
+        if self.del_lines is not None:
+            result['delLines'] = self.del_lines
+        if self.deleted_file is not None:
+            result['deletedFile'] = self.deleted_file
+        if self.new_file is not None:
+            result['newFile'] = self.new_file
+        if self.new_path is not None:
+            result['newPath'] = self.new_path
+        if self.old_path is not None:
+            result['oldPath'] = self.old_path
+        if self.renamed_file is not None:
+            result['renamedFile'] = self.renamed_file
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('addLines') is not None:
+            self.add_lines = m.get('addLines')
+        if m.get('binaryFile') is not None:
+            self.binary_file = m.get('binaryFile')
+        if m.get('delLines') is not None:
+            self.del_lines = m.get('delLines')
+        if m.get('deletedFile') is not None:
+            self.deleted_file = m.get('deletedFile')
+        if m.get('newFile') is not None:
+            self.new_file = m.get('newFile')
+        if m.get('newPath') is not None:
+            self.new_path = m.get('newPath')
+        if m.get('oldPath') is not None:
+            self.old_path = m.get('oldPath')
+        if m.get('renamedFile') is not None:
+            self.renamed_file = m.get('renamedFile')
+        return self
+
+
+class GetMergeRequestChangeTreeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        changed_files_count: int = None,
+        changed_files_infos: List[GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos] = None,
+        total_add_lines: int = None,
+        total_del_lines: int = None,
+    ):
+        self.changed_files_count = changed_files_count
+        self.changed_files_infos = changed_files_infos
+        self.total_add_lines = total_add_lines
+        self.total_del_lines = total_del_lines
+
+    def validate(self):
+        if self.changed_files_infos:
+            for k in self.changed_files_infos:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.changed_files_count is not None:
+            result['changedFilesCount'] = self.changed_files_count
+        result['changedFilesInfos'] = []
+        if self.changed_files_infos is not None:
+            for k in self.changed_files_infos:
+                result['changedFilesInfos'].append(k.to_map() if k else None)
+        if self.total_add_lines is not None:
+            result['totalAddLines'] = self.total_add_lines
+        if self.total_del_lines is not None:
+            result['totalDelLines'] = self.total_del_lines
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('changedFilesCount') is not None:
+            self.changed_files_count = m.get('changedFilesCount')
+        self.changed_files_infos = []
+        if m.get('changedFilesInfos') is not None:
+            for k in m.get('changedFilesInfos'):
+                temp_model = GetMergeRequestChangeTreeResponseBodyResultChangedFilesInfos()
+                self.changed_files_infos.append(temp_model.from_map(k))
+        if m.get('totalAddLines') is not None:
+            self.total_add_lines = m.get('totalAddLines')
+        if m.get('totalDelLines') is not None:
+            self.total_del_lines = m.get('totalDelLines')
+        return self
+
+
+class GetMergeRequestChangeTreeResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: GetMergeRequestChangeTreeResponseBodyResult = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.result is not None:
+            result['result'] = self.result.to_map()
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('result') is not None:
+            temp_model = GetMergeRequestChangeTreeResponseBodyResult()
+            self.result = temp_model.from_map(m['result'])
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class GetMergeRequestChangeTreeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetMergeRequestChangeTreeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetMergeRequestChangeTreeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetOrganizationMemberResponseBodyMemberIdentities(TeaModel):
     def __init__(
         self,
@@ -16301,6 +16853,7 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
         email: str = None,
         hired_date: int = None,
         identities: GetOrganizationMemberResponseBodyMemberIdentities = None,
+        job_number: str = None,
         join_time: int = None,
         last_visit_time: int = None,
         mobile: str = None,
@@ -16315,6 +16868,7 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
         self.email = email
         self.hired_date = hired_date
         self.identities = identities
+        self.job_number = job_number
         self.join_time = join_time
         self.last_visit_time = last_visit_time
         self.mobile = mobile
@@ -16345,6 +16899,8 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
             result['hiredDate'] = self.hired_date
         if self.identities is not None:
             result['identities'] = self.identities.to_map()
+        if self.job_number is not None:
+            result['jobNumber'] = self.job_number
         if self.join_time is not None:
             result['joinTime'] = self.join_time
         if self.last_visit_time is not None:
@@ -16376,6 +16932,8 @@ class GetOrganizationMemberResponseBodyMember(TeaModel):
         if m.get('identities') is not None:
             temp_model = GetOrganizationMemberResponseBodyMemberIdentities()
             self.identities = temp_model.from_map(m['identities'])
+        if m.get('jobNumber') is not None:
+            self.job_number = m.get('jobNumber')
         if m.get('joinTime') is not None:
             self.join_time = m.get('joinTime')
         if m.get('lastVisitTime') is not None:
@@ -23938,6 +24496,282 @@ class JoinPipelineGroupResponse(TeaModel):
         return self
 
 
+class ListCommitStatusesRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        organization_id: str = None,
+        page: int = None,
+        page_size: int = None,
+        repository_identity: str = None,
+        sha: str = None,
+    ):
+        self.access_token = access_token
+        self.organization_id = organization_id
+        self.page = page
+        self.page_size = page_size
+        self.repository_identity = repository_identity
+        self.sha = sha
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.page is not None:
+            result['page'] = self.page
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        if self.sha is not None:
+            result['sha'] = self.sha
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('page') is not None:
+            self.page = m.get('page')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        if m.get('sha') is not None:
+            self.sha = m.get('sha')
+        return self
+
+
+class ListCommitStatusesResponseBodyResultCreator(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        login: str = None,
+        type: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.login = login
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.login is not None:
+            result['login'] = self.login
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('login') is not None:
+            self.login = m.get('login')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListCommitStatusesResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        context: str = None,
+        creator: ListCommitStatusesResponseBodyResultCreator = None,
+        description: str = None,
+        id: int = None,
+        sha: str = None,
+        state: str = None,
+        target_url: str = None,
+    ):
+        self.context = context
+        self.creator = creator
+        self.description = description
+        self.id = id
+        self.sha = sha
+        self.state = state
+        self.target_url = target_url
+
+    def validate(self):
+        if self.creator:
+            self.creator.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.context is not None:
+            result['context'] = self.context
+        if self.creator is not None:
+            result['creator'] = self.creator.to_map()
+        if self.description is not None:
+            result['description'] = self.description
+        if self.id is not None:
+            result['id'] = self.id
+        if self.sha is not None:
+            result['sha'] = self.sha
+        if self.state is not None:
+            result['state'] = self.state
+        if self.target_url is not None:
+            result['targetUrl'] = self.target_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('context') is not None:
+            self.context = m.get('context')
+        if m.get('creator') is not None:
+            temp_model = ListCommitStatusesResponseBodyResultCreator()
+            self.creator = temp_model.from_map(m['creator'])
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('sha') is not None:
+            self.sha = m.get('sha')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('targetUrl') is not None:
+            self.target_url = m.get('targetUrl')
+        return self
+
+
+class ListCommitStatusesResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListCommitStatusesResponseBodyResult] = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListCommitStatusesResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListCommitStatusesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCommitStatusesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCommitStatusesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListFlowTagGroupsResponseBodyFlowTagGroups(TeaModel):
     def __init__(
         self,
@@ -24920,6 +25754,1397 @@ class ListHostGroupsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListHostGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMergeRequestCommentsRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        comment_type: str = None,
+        file_path: str = None,
+        patch_set_biz_ids: List[str] = None,
+        resolved: bool = None,
+        state: str = None,
+        local_id: int = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+    ):
+        self.access_token = access_token
+        self.comment_type = comment_type
+        self.file_path = file_path
+        self.patch_set_biz_ids = patch_set_biz_ids
+        self.resolved = resolved
+        self.state = state
+        self.local_id = local_id
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.comment_type is not None:
+            result['commentType'] = self.comment_type
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.patch_set_biz_ids is not None:
+            result['patchSetBizIds'] = self.patch_set_biz_ids
+        if self.resolved is not None:
+            result['resolved'] = self.resolved
+        if self.state is not None:
+            result['state'] = self.state
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('commentType') is not None:
+            self.comment_type = m.get('commentType')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('patchSetBizIds') is not None:
+            self.patch_set_biz_ids = m.get('patchSetBizIds')
+        if m.get('resolved') is not None:
+            self.resolved = m.get('resolved')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultAuthor(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        created_at: str = None,
+        patch_set_biz_id: str = None,
+        patch_set_name: str = None,
+        patch_set_no: str = None,
+        related_merge_item_type: str = None,
+        short_id: str = None,
+    ):
+        self.commit_id = commit_id
+        self.created_at = created_at
+        self.patch_set_biz_id = patch_set_biz_id
+        self.patch_set_name = patch_set_name
+        self.patch_set_no = patch_set_no
+        self.related_merge_item_type = related_merge_item_type
+        self.short_id = short_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.patch_set_biz_id is not None:
+            result['patchSetBizId'] = self.patch_set_biz_id
+        if self.patch_set_name is not None:
+            result['patchSetName'] = self.patch_set_name
+        if self.patch_set_no is not None:
+            result['patchSetNo'] = self.patch_set_no
+        if self.related_merge_item_type is not None:
+            result['relatedMergeItemType'] = self.related_merge_item_type
+        if self.short_id is not None:
+            result['shortId'] = self.short_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('patchSetBizId') is not None:
+            self.patch_set_biz_id = m.get('patchSetBizId')
+        if m.get('patchSetName') is not None:
+            self.patch_set_name = m.get('patchSetName')
+        if m.get('patchSetNo') is not None:
+            self.patch_set_no = m.get('patchSetNo')
+        if m.get('relatedMergeItemType') is not None:
+            self.related_merge_item_type = m.get('relatedMergeItemType')
+        if m.get('shortId') is not None:
+            self.short_id = m.get('shortId')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments(TeaModel):
+    def __init__(
+        self,
+        author: ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor = None,
+        comment_biz_id: str = None,
+        comment_time: str = None,
+        comment_type: str = None,
+        content: str = None,
+        deleted: bool = None,
+        file_path: str = None,
+        last_edit_time: str = None,
+        line_number: str = None,
+        parent_comment_biz_id: str = None,
+        related_patch_set: ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet = None,
+        resolved: bool = None,
+        root_comment_biz_id: str = None,
+        state: str = None,
+    ):
+        self.author = author
+        self.comment_biz_id = comment_biz_id
+        self.comment_time = comment_time
+        self.comment_type = comment_type
+        self.content = content
+        self.deleted = deleted
+        self.file_path = file_path
+        self.last_edit_time = last_edit_time
+        self.line_number = line_number
+        self.parent_comment_biz_id = parent_comment_biz_id
+        self.related_patch_set = related_patch_set
+        self.resolved = resolved
+        self.root_comment_biz_id = root_comment_biz_id
+        self.state = state
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.related_patch_set:
+            self.related_patch_set.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.comment_biz_id is not None:
+            result['commentBizId'] = self.comment_biz_id
+        if self.comment_time is not None:
+            result['commentTime'] = self.comment_time
+        if self.comment_type is not None:
+            result['commentType'] = self.comment_type
+        if self.content is not None:
+            result['content'] = self.content
+        if self.deleted is not None:
+            result['deleted'] = self.deleted
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.last_edit_time is not None:
+            result['lastEditTime'] = self.last_edit_time
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.parent_comment_biz_id is not None:
+            result['parentCommentBizId'] = self.parent_comment_biz_id
+        if self.related_patch_set is not None:
+            result['relatedPatchSet'] = self.related_patch_set.to_map()
+        if self.resolved is not None:
+            result['resolved'] = self.resolved
+        if self.root_comment_biz_id is not None:
+            result['rootCommentBizId'] = self.root_comment_biz_id
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('commentBizId') is not None:
+            self.comment_biz_id = m.get('commentBizId')
+        if m.get('commentTime') is not None:
+            self.comment_time = m.get('commentTime')
+        if m.get('commentType') is not None:
+            self.comment_type = m.get('commentType')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('deleted') is not None:
+            self.deleted = m.get('deleted')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('lastEditTime') is not None:
+            self.last_edit_time = m.get('lastEditTime')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('parentCommentBizId') is not None:
+            self.parent_comment_biz_id = m.get('parentCommentBizId')
+        if m.get('relatedPatchSet') is not None:
+            temp_model = ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildCommentsRelatedPatchSet()
+            self.related_patch_set = temp_model.from_map(m['relatedPatchSet'])
+        if m.get('resolved') is not None:
+            self.resolved = m.get('resolved')
+        if m.get('rootCommentBizId') is not None:
+            self.root_comment_biz_id = m.get('rootCommentBizId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        created_at: str = None,
+        patch_set_biz_id: str = None,
+        patch_set_name: str = None,
+        patch_set_no: str = None,
+        related_merge_item_type: str = None,
+        short_id: str = None,
+    ):
+        self.commit_id = commit_id
+        self.created_at = created_at
+        self.patch_set_biz_id = patch_set_biz_id
+        self.patch_set_name = patch_set_name
+        self.patch_set_no = patch_set_no
+        self.related_merge_item_type = related_merge_item_type
+        self.short_id = short_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.patch_set_biz_id is not None:
+            result['patchSetBizId'] = self.patch_set_biz_id
+        if self.patch_set_name is not None:
+            result['patchSetName'] = self.patch_set_name
+        if self.patch_set_no is not None:
+            result['patchSetNo'] = self.patch_set_no
+        if self.related_merge_item_type is not None:
+            result['relatedMergeItemType'] = self.related_merge_item_type
+        if self.short_id is not None:
+            result['shortId'] = self.short_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('patchSetBizId') is not None:
+            self.patch_set_biz_id = m.get('patchSetBizId')
+        if m.get('patchSetName') is not None:
+            self.patch_set_name = m.get('patchSetName')
+        if m.get('patchSetNo') is not None:
+            self.patch_set_no = m.get('patchSetNo')
+        if m.get('relatedMergeItemType') is not None:
+            self.related_merge_item_type = m.get('relatedMergeItemType')
+        if m.get('shortId') is not None:
+            self.short_id = m.get('shortId')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultChildComments(TeaModel):
+    def __init__(
+        self,
+        author: ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor = None,
+        comment_biz_id: str = None,
+        comment_time: str = None,
+        comment_type: str = None,
+        content: str = None,
+        deleted: bool = None,
+        file_path: str = None,
+        final_child_comments: List[ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments] = None,
+        last_edit_time: str = None,
+        line_number: str = None,
+        parent_comment_biz_id: str = None,
+        related_patch_set: ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet = None,
+        resolved: bool = None,
+        root_comment_biz_id: str = None,
+        state: str = None,
+    ):
+        self.author = author
+        self.comment_biz_id = comment_biz_id
+        self.comment_time = comment_time
+        self.comment_type = comment_type
+        self.content = content
+        self.deleted = deleted
+        self.file_path = file_path
+        self.final_child_comments = final_child_comments
+        self.last_edit_time = last_edit_time
+        self.line_number = line_number
+        self.parent_comment_biz_id = parent_comment_biz_id
+        self.related_patch_set = related_patch_set
+        self.resolved = resolved
+        self.root_comment_biz_id = root_comment_biz_id
+        self.state = state
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.final_child_comments:
+            for k in self.final_child_comments:
+                if k:
+                    k.validate()
+        if self.related_patch_set:
+            self.related_patch_set.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        if self.comment_biz_id is not None:
+            result['commentBizId'] = self.comment_biz_id
+        if self.comment_time is not None:
+            result['commentTime'] = self.comment_time
+        if self.comment_type is not None:
+            result['commentType'] = self.comment_type
+        if self.content is not None:
+            result['content'] = self.content
+        if self.deleted is not None:
+            result['deleted'] = self.deleted
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        result['finalChildComments'] = []
+        if self.final_child_comments is not None:
+            for k in self.final_child_comments:
+                result['finalChildComments'].append(k.to_map() if k else None)
+        if self.last_edit_time is not None:
+            result['lastEditTime'] = self.last_edit_time
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.parent_comment_biz_id is not None:
+            result['parentCommentBizId'] = self.parent_comment_biz_id
+        if self.related_patch_set is not None:
+            result['relatedPatchSet'] = self.related_patch_set.to_map()
+        if self.resolved is not None:
+            result['resolved'] = self.resolved
+        if self.root_comment_biz_id is not None:
+            result['rootCommentBizId'] = self.root_comment_biz_id
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = ListMergeRequestCommentsResponseBodyResultChildCommentsAuthor()
+            self.author = temp_model.from_map(m['author'])
+        if m.get('commentBizId') is not None:
+            self.comment_biz_id = m.get('commentBizId')
+        if m.get('commentTime') is not None:
+            self.comment_time = m.get('commentTime')
+        if m.get('commentType') is not None:
+            self.comment_type = m.get('commentType')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('deleted') is not None:
+            self.deleted = m.get('deleted')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        self.final_child_comments = []
+        if m.get('finalChildComments') is not None:
+            for k in m.get('finalChildComments'):
+                temp_model = ListMergeRequestCommentsResponseBodyResultChildCommentsFinalChildComments()
+                self.final_child_comments.append(temp_model.from_map(k))
+        if m.get('lastEditTime') is not None:
+            self.last_edit_time = m.get('lastEditTime')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('parentCommentBizId') is not None:
+            self.parent_comment_biz_id = m.get('parentCommentBizId')
+        if m.get('relatedPatchSet') is not None:
+            temp_model = ListMergeRequestCommentsResponseBodyResultChildCommentsRelatedPatchSet()
+            self.related_patch_set = temp_model.from_map(m['relatedPatchSet'])
+        if m.get('resolved') is not None:
+            self.resolved = m.get('resolved')
+        if m.get('rootCommentBizId') is not None:
+            self.root_comment_biz_id = m.get('rootCommentBizId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResultRelatedPatchSet(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        created_at: str = None,
+        patch_set_biz_id: str = None,
+        patch_set_name: str = None,
+        patch_set_no: str = None,
+        related_merge_item_type: str = None,
+        short_id: str = None,
+    ):
+        self.commit_id = commit_id
+        self.created_at = created_at
+        self.patch_set_biz_id = patch_set_biz_id
+        self.patch_set_name = patch_set_name
+        self.patch_set_no = patch_set_no
+        self.related_merge_item_type = related_merge_item_type
+        self.short_id = short_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.patch_set_biz_id is not None:
+            result['patchSetBizId'] = self.patch_set_biz_id
+        if self.patch_set_name is not None:
+            result['patchSetName'] = self.patch_set_name
+        if self.patch_set_no is not None:
+            result['patchSetNo'] = self.patch_set_no
+        if self.related_merge_item_type is not None:
+            result['relatedMergeItemType'] = self.related_merge_item_type
+        if self.short_id is not None:
+            result['shortId'] = self.short_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('patchSetBizId') is not None:
+            self.patch_set_biz_id = m.get('patchSetBizId')
+        if m.get('patchSetName') is not None:
+            self.patch_set_name = m.get('patchSetName')
+        if m.get('patchSetNo') is not None:
+            self.patch_set_no = m.get('patchSetNo')
+        if m.get('relatedMergeItemType') is not None:
+            self.related_merge_item_type = m.get('relatedMergeItemType')
+        if m.get('shortId') is not None:
+            self.short_id = m.get('shortId')
+        return self
+
+
+class ListMergeRequestCommentsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        author: ListMergeRequestCommentsResponseBodyResultAuthor = None,
+        child_comments: List[ListMergeRequestCommentsResponseBodyResultChildComments] = None,
+        comment_biz_id: str = None,
+        comment_time: str = None,
+        comment_type: str = None,
+        content: str = None,
+        deleted: bool = None,
+        file_path: str = None,
+        last_edit_time: str = None,
+        line_number: str = None,
+        parent_comment_biz_id: str = None,
+        related_patch_set: ListMergeRequestCommentsResponseBodyResultRelatedPatchSet = None,
+        resolved: bool = None,
+        root_comment_biz_id: str = None,
+        state: str = None,
+    ):
+        self.author = author
+        self.child_comments = child_comments
+        self.comment_biz_id = comment_biz_id
+        self.comment_time = comment_time
+        self.comment_type = comment_type
+        self.content = content
+        self.deleted = deleted
+        self.file_path = file_path
+        self.last_edit_time = last_edit_time
+        self.line_number = line_number
+        self.parent_comment_biz_id = parent_comment_biz_id
+        self.related_patch_set = related_patch_set
+        self.resolved = resolved
+        self.root_comment_biz_id = root_comment_biz_id
+        self.state = state
+
+    def validate(self):
+        if self.author:
+            self.author.validate()
+        if self.child_comments:
+            for k in self.child_comments:
+                if k:
+                    k.validate()
+        if self.related_patch_set:
+            self.related_patch_set.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.author is not None:
+            result['author'] = self.author.to_map()
+        result['childComments'] = []
+        if self.child_comments is not None:
+            for k in self.child_comments:
+                result['childComments'].append(k.to_map() if k else None)
+        if self.comment_biz_id is not None:
+            result['commentBizId'] = self.comment_biz_id
+        if self.comment_time is not None:
+            result['commentTime'] = self.comment_time
+        if self.comment_type is not None:
+            result['commentType'] = self.comment_type
+        if self.content is not None:
+            result['content'] = self.content
+        if self.deleted is not None:
+            result['deleted'] = self.deleted
+        if self.file_path is not None:
+            result['filePath'] = self.file_path
+        if self.last_edit_time is not None:
+            result['lastEditTime'] = self.last_edit_time
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.parent_comment_biz_id is not None:
+            result['parentCommentBizId'] = self.parent_comment_biz_id
+        if self.related_patch_set is not None:
+            result['relatedPatchSet'] = self.related_patch_set.to_map()
+        if self.resolved is not None:
+            result['resolved'] = self.resolved
+        if self.root_comment_biz_id is not None:
+            result['rootCommentBizId'] = self.root_comment_biz_id
+        if self.state is not None:
+            result['state'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('author') is not None:
+            temp_model = ListMergeRequestCommentsResponseBodyResultAuthor()
+            self.author = temp_model.from_map(m['author'])
+        self.child_comments = []
+        if m.get('childComments') is not None:
+            for k in m.get('childComments'):
+                temp_model = ListMergeRequestCommentsResponseBodyResultChildComments()
+                self.child_comments.append(temp_model.from_map(k))
+        if m.get('commentBizId') is not None:
+            self.comment_biz_id = m.get('commentBizId')
+        if m.get('commentTime') is not None:
+            self.comment_time = m.get('commentTime')
+        if m.get('commentType') is not None:
+            self.comment_type = m.get('commentType')
+        if m.get('content') is not None:
+            self.content = m.get('content')
+        if m.get('deleted') is not None:
+            self.deleted = m.get('deleted')
+        if m.get('filePath') is not None:
+            self.file_path = m.get('filePath')
+        if m.get('lastEditTime') is not None:
+            self.last_edit_time = m.get('lastEditTime')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('parentCommentBizId') is not None:
+            self.parent_comment_biz_id = m.get('parentCommentBizId')
+        if m.get('relatedPatchSet') is not None:
+            temp_model = ListMergeRequestCommentsResponseBodyResultRelatedPatchSet()
+            self.related_patch_set = temp_model.from_map(m['relatedPatchSet'])
+        if m.get('resolved') is not None:
+            self.resolved = m.get('resolved')
+        if m.get('rootCommentBizId') is not None:
+            self.root_comment_biz_id = m.get('rootCommentBizId')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        return self
+
+
+class ListMergeRequestCommentsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListMergeRequestCommentsResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListMergeRequestCommentsResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListMergeRequestCommentsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMergeRequestCommentsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMergeRequestCommentsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMergeRequestFilesReadsRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        from_patch_set_biz_id: str = None,
+        local_id: int = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+        to_patch_set_biz_id: str = None,
+    ):
+        self.access_token = access_token
+        self.from_patch_set_biz_id = from_patch_set_biz_id
+        self.local_id = local_id
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+        self.to_patch_set_biz_id = to_patch_set_biz_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.from_patch_set_biz_id is not None:
+            result['fromPatchSetBizId'] = self.from_patch_set_biz_id
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        if self.to_patch_set_biz_id is not None:
+            result['toPatchSetBizId'] = self.to_patch_set_biz_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('fromPatchSetBizId') is not None:
+            self.from_patch_set_biz_id = m.get('fromPatchSetBizId')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        if m.get('toPatchSetBizId') is not None:
+            self.to_patch_set_biz_id = m.get('toPatchSetBizId')
+        return self
+
+
+class ListMergeRequestFilesReadsResponseBodyResultReadUsers(TeaModel):
+    def __init__(
+        self,
+        aliyun_pk: str = None,
+        avatar_url: str = None,
+        email: str = None,
+        name: str = None,
+        state: str = None,
+        username: str = None,
+    ):
+        self.aliyun_pk = aliyun_pk
+        self.avatar_url = avatar_url
+        self.email = email
+        self.name = name
+        self.state = state
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_pk is not None:
+            result['aliyunPk'] = self.aliyun_pk
+        if self.avatar_url is not None:
+            result['avatarUrl'] = self.avatar_url
+        if self.email is not None:
+            result['email'] = self.email
+        if self.name is not None:
+            result['name'] = self.name
+        if self.state is not None:
+            result['state'] = self.state
+        if self.username is not None:
+            result['username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('aliyunPk') is not None:
+            self.aliyun_pk = m.get('aliyunPk')
+        if m.get('avatarUrl') is not None:
+            self.avatar_url = m.get('avatarUrl')
+        if m.get('email') is not None:
+            self.email = m.get('email')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('username') is not None:
+            self.username = m.get('username')
+        return self
+
+
+class ListMergeRequestFilesReadsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        deleted_file: str = None,
+        new_file: bool = None,
+        new_file_path: str = None,
+        old_file_path: str = None,
+        read_users: List[ListMergeRequestFilesReadsResponseBodyResultReadUsers] = None,
+        renamed_file: str = None,
+    ):
+        self.deleted_file = deleted_file
+        self.new_file = new_file
+        self.new_file_path = new_file_path
+        self.old_file_path = old_file_path
+        self.read_users = read_users
+        self.renamed_file = renamed_file
+
+    def validate(self):
+        if self.read_users:
+            for k in self.read_users:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.deleted_file is not None:
+            result['deletedFile'] = self.deleted_file
+        if self.new_file is not None:
+            result['newFile'] = self.new_file
+        if self.new_file_path is not None:
+            result['newFilePath'] = self.new_file_path
+        if self.old_file_path is not None:
+            result['oldFilePath'] = self.old_file_path
+        result['readUsers'] = []
+        if self.read_users is not None:
+            for k in self.read_users:
+                result['readUsers'].append(k.to_map() if k else None)
+        if self.renamed_file is not None:
+            result['renamedFile'] = self.renamed_file
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('deletedFile') is not None:
+            self.deleted_file = m.get('deletedFile')
+        if m.get('newFile') is not None:
+            self.new_file = m.get('newFile')
+        if m.get('newFilePath') is not None:
+            self.new_file_path = m.get('newFilePath')
+        if m.get('oldFilePath') is not None:
+            self.old_file_path = m.get('oldFilePath')
+        self.read_users = []
+        if m.get('readUsers') is not None:
+            for k in m.get('readUsers'):
+                temp_model = ListMergeRequestFilesReadsResponseBodyResultReadUsers()
+                self.read_users.append(temp_model.from_map(k))
+        if m.get('renamedFile') is not None:
+            self.renamed_file = m.get('renamedFile')
+        return self
+
+
+class ListMergeRequestFilesReadsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListMergeRequestFilesReadsResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListMergeRequestFilesReadsResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListMergeRequestFilesReadsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMergeRequestFilesReadsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMergeRequestFilesReadsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListMergeRequestPatchSetsRequest(TeaModel):
+    def __init__(
+        self,
+        access_token: str = None,
+        local_id: int = None,
+        organization_id: str = None,
+        repository_identity: str = None,
+    ):
+        self.access_token = access_token
+        self.local_id = local_id
+        self.organization_id = organization_id
+        self.repository_identity = repository_identity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_token is not None:
+            result['accessToken'] = self.access_token
+        if self.local_id is not None:
+            result['localId'] = self.local_id
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.repository_identity is not None:
+            result['repositoryIdentity'] = self.repository_identity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('accessToken') is not None:
+            self.access_token = m.get('accessToken')
+        if m.get('localId') is not None:
+            self.local_id = m.get('localId')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('repositoryIdentity') is not None:
+            self.repository_identity = m.get('repositoryIdentity')
+        return self
+
+
+class ListMergeRequestPatchSetsResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        commit_id: str = None,
+        created_at: str = None,
+        patch_set_biz_id: str = None,
+        patch_set_name: str = None,
+        patch_set_no: int = None,
+        related_merge_item_type: str = None,
+        short_commit_id: str = None,
+    ):
+        self.commit_id = commit_id
+        self.created_at = created_at
+        self.patch_set_biz_id = patch_set_biz_id
+        self.patch_set_name = patch_set_name
+        self.patch_set_no = patch_set_no
+        self.related_merge_item_type = related_merge_item_type
+        self.short_commit_id = short_commit_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commit_id is not None:
+            result['commitId'] = self.commit_id
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
+        if self.patch_set_biz_id is not None:
+            result['patchSetBizId'] = self.patch_set_biz_id
+        if self.patch_set_name is not None:
+            result['patchSetName'] = self.patch_set_name
+        if self.patch_set_no is not None:
+            result['patchSetNo'] = self.patch_set_no
+        if self.related_merge_item_type is not None:
+            result['relatedMergeItemType'] = self.related_merge_item_type
+        if self.short_commit_id is not None:
+            result['shortCommitId'] = self.short_commit_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commitId') is not None:
+            self.commit_id = m.get('commitId')
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
+        if m.get('patchSetBizId') is not None:
+            self.patch_set_biz_id = m.get('patchSetBizId')
+        if m.get('patchSetName') is not None:
+            self.patch_set_name = m.get('patchSetName')
+        if m.get('patchSetNo') is not None:
+            self.patch_set_no = m.get('patchSetNo')
+        if m.get('relatedMergeItemType') is not None:
+            self.related_merge_item_type = m.get('relatedMergeItemType')
+        if m.get('shortCommitId') is not None:
+            self.short_commit_id = m.get('shortCommitId')
+        return self
+
+
+class ListMergeRequestPatchSetsResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_message: str = None,
+        request_id: str = None,
+        result: List[ListMergeRequestPatchSetsResponseBodyResult] = None,
+        success: bool = None,
+    ):
+        self.error_code = error_code
+        self.error_message = error_message
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
+        if self.error_message is not None:
+            result['errorMessage'] = self.error_message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
+        if m.get('errorMessage') is not None:
+            self.error_message = m.get('errorMessage')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ListMergeRequestPatchSetsResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListMergeRequestPatchSetsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMergeRequestPatchSetsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMergeRequestPatchSetsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
