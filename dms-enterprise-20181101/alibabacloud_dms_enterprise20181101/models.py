@@ -7123,6 +7123,7 @@ class CreateProcCorrectOrderRequestParam(TeaModel):
         self,
         classify: str = None,
         db_item_list: List[CreateProcCorrectOrderRequestParamDbItemList] = None,
+        exec_mode: str = None,
         exec_sql: str = None,
         rollback_attachment_name: str = None,
         rollback_sql: str = None,
@@ -7130,6 +7131,7 @@ class CreateProcCorrectOrderRequestParam(TeaModel):
     ):
         self.classify = classify
         self.db_item_list = db_item_list
+        self.exec_mode = exec_mode
         self.exec_sql = exec_sql
         self.rollback_attachment_name = rollback_attachment_name
         self.rollback_sql = rollback_sql
@@ -7153,6 +7155,8 @@ class CreateProcCorrectOrderRequestParam(TeaModel):
         if self.db_item_list is not None:
             for k in self.db_item_list:
                 result['DbItemList'].append(k.to_map() if k else None)
+        if self.exec_mode is not None:
+            result['ExecMode'] = self.exec_mode
         if self.exec_sql is not None:
             result['ExecSQL'] = self.exec_sql
         if self.rollback_attachment_name is not None:
@@ -7172,6 +7176,8 @@ class CreateProcCorrectOrderRequestParam(TeaModel):
             for k in m.get('DbItemList'):
                 temp_model = CreateProcCorrectOrderRequestParamDbItemList()
                 self.db_item_list.append(temp_model.from_map(k))
+        if m.get('ExecMode') is not None:
+            self.exec_mode = m.get('ExecMode')
         if m.get('ExecSQL') is not None:
             self.exec_sql = m.get('ExecSQL')
         if m.get('RollbackAttachmentName') is not None:
