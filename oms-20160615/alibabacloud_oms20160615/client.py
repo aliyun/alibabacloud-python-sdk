@@ -291,6 +291,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_part_by_proxy_with_options_async(request, runtime)
 
+    def delete_measure_data_with_options(
+        self,
+        request: oms_20160615_models.DeleteMeasureDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oms_20160615_models.DeleteMeasureDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_type):
+            query['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.compressed):
+            query['Compressed'] = request.compressed
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.domain_code):
+            query['DomainCode'] = request.domain_code
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMeasureData',
+            version='2016-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oms_20160615_models.DeleteMeasureDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_measure_data_with_options_async(
+        self,
+        request: oms_20160615_models.DeleteMeasureDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oms_20160615_models.DeleteMeasureDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.api_type):
+            query['ApiType'] = request.api_type
+        if not UtilClient.is_unset(request.compressed):
+            query['Compressed'] = request.compressed
+        if not UtilClient.is_unset(request.data):
+            query['Data'] = request.data
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
+        if not UtilClient.is_unset(request.domain_code):
+            query['DomainCode'] = request.domain_code
+        if not UtilClient.is_unset(request.filter):
+            query['Filter'] = request.filter
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteMeasureData',
+            version='2016-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oms_20160615_models.DeleteMeasureDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_measure_data(
+        self,
+        request: oms_20160615_models.DeleteMeasureDataRequest,
+    ) -> oms_20160615_models.DeleteMeasureDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_measure_data_with_options(request, runtime)
+
+    async def delete_measure_data_async(
+        self,
+        request: oms_20160615_models.DeleteMeasureDataRequest,
+    ) -> oms_20160615_models.DeleteMeasureDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_measure_data_with_options_async(request, runtime)
+
     def get_access_policy_config_with_options(
         self,
         request: oms_20160615_models.GetAccessPolicyConfigRequest,
