@@ -1,3 +1,6 @@
+2023-12-07 Version: 1.2.0
+- Generated python 2021-03-20 for Emr.
+
 2023-11-13 Version: 1.1.2
 - Generated python 2021-03-20 for Emr.
 
