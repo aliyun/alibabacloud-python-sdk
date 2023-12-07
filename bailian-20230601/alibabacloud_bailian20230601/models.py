@@ -938,6 +938,7 @@ class DeleteEnterpriseDataResponseBody(TeaModel):
         self.data = data
         self.error_code = error_code
         self.error_msg = error_msg
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -1887,6 +1888,7 @@ class GetEnterpriseDataChunkResponseBody(TeaModel):
         self.data = data
         self.error_code = error_code
         self.error_msg = error_msg
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -2068,6 +2070,7 @@ class GetEnterpriseDataPageImageResponseBody(TeaModel):
         self.data = data
         self.error_code = error_code
         self.error_msg = error_msg
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -2204,6 +2207,7 @@ class GetEnterpriseDataParseResultResponseBody(TeaModel):
         self.data = data
         self.error_code = error_code
         self.error_msg = error_msg
+        # Id of the request
         self.request_id = request_id
         self.success = success
 
@@ -2283,6 +2287,217 @@ class GetEnterpriseDataParseResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetEnterpriseDataParseResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetFileStoreUploadPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        file_name: str = None,
+        file_store_id: int = None,
+        user_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.file_name = file_name
+        self.file_store_id = file_store_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_store_id is not None:
+            result['FileStoreId'] = self.file_store_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileStoreId') is not None:
+            self.file_store_id = m.get('FileStoreId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class GetFileStoreUploadPolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        dir: str = None,
+        expire: str = None,
+        host: str = None,
+        key: str = None,
+        policy: str = None,
+        security_token: str = None,
+        signature: str = None,
+    ):
+        self.access_id = access_id
+        self.dir = dir
+        self.expire = expire
+        self.host = host
+        self.key = key
+        self.policy = policy
+        self.security_token = security_token
+        self.signature = signature
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.dir is not None:
+            result['Dir'] = self.dir
+        if self.expire is not None:
+            result['Expire'] = self.expire
+        if self.host is not None:
+            result['Host'] = self.host
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        if self.signature is not None:
+            result['Signature'] = self.signature
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('Dir') is not None:
+            self.dir = m.get('Dir')
+        if m.get('Expire') is not None:
+            self.expire = m.get('Expire')
+        if m.get('Host') is not None:
+            self.host = m.get('Host')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        if m.get('Signature') is not None:
+            self.signature = m.get('Signature')
+        return self
+
+
+class GetFileStoreUploadPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetFileStoreUploadPolicyResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = GetFileStoreUploadPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetFileStoreUploadPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetFileStoreUploadPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetFileStoreUploadPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2511,6 +2726,182 @@ class GetImportTaskResultResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetImportTaskResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetPromptRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        prompt_id: str = None,
+        vars: str = None,
+    ):
+        self.agent_key = agent_key
+        self.prompt_id = prompt_id
+        self.vars = vars
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.prompt_id is not None:
+            result['PromptId'] = self.prompt_id
+        if self.vars is not None:
+            result['Vars'] = self.vars
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('PromptId') is not None:
+            self.prompt_id = m.get('PromptId')
+        if m.get('Vars') is not None:
+            self.vars = m.get('Vars')
+        return self
+
+
+class GetPromptResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        prompt_content: str = None,
+        prompt_id: str = None,
+    ):
+        self.prompt_content = prompt_content
+        self.prompt_id = prompt_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.prompt_content is not None:
+            result['PromptContent'] = self.prompt_content
+        if self.prompt_id is not None:
+            result['PromptId'] = self.prompt_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PromptContent') is not None:
+            self.prompt_content = m.get('PromptContent')
+        if m.get('PromptId') is not None:
+            self.prompt_id = m.get('PromptId')
+        return self
+
+
+class GetPromptResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetPromptResponseBodyData = None,
+        http_status_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.http_status_code = http_status_code
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetPromptResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetPromptResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetPromptResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetPromptResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -2767,6 +3158,193 @@ class ImportEnterpriseDocumentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ImportEnterpriseDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ImportUserDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        file_name: str = None,
+        file_store_id: int = None,
+        oss_path: str = None,
+        store_id: int = None,
+        user_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.file_name = file_name
+        self.file_store_id = file_store_id
+        self.oss_path = oss_path
+        self.store_id = store_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.file_name is not None:
+            result['FileName'] = self.file_name
+        if self.file_store_id is not None:
+            result['FileStoreId'] = self.file_store_id
+        if self.oss_path is not None:
+            result['OssPath'] = self.oss_path
+        if self.store_id is not None:
+            result['StoreId'] = self.store_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('FileName') is not None:
+            self.file_name = m.get('FileName')
+        if m.get('FileStoreId') is not None:
+            self.file_store_id = m.get('FileStoreId')
+        if m.get('OssPath') is not None:
+            self.oss_path = m.get('OssPath')
+        if m.get('StoreId') is not None:
+            self.store_id = m.get('StoreId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class ImportUserDocumentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        data_status: int = None,
+    ):
+        self.data_id = data_id
+        self.data_status = data_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.data_status is not None:
+            result['DataStatus'] = self.data_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('DataStatus') is not None:
+            self.data_status = m.get('DataStatus')
+        return self
+
+
+class ImportUserDocumentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ImportUserDocumentResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = ImportUserDocumentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ImportUserDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportUserDocumentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportUserDocumentResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -3579,6 +4157,175 @@ class QueryEnterpriseDataListResponse(TeaModel):
         return self
 
 
+class QueryUserDocumentRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        data_id: str = None,
+        user_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.data_id = data_id
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class QueryUserDocumentResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        data_status: int = None,
+    ):
+        self.data_id = data_id
+        self.data_status = data_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.data_status is not None:
+            result['DataStatus'] = self.data_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('DataStatus') is not None:
+            self.data_status = m.get('DataStatus')
+        return self
+
+
+class QueryUserDocumentResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryUserDocumentResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = QueryUserDocumentResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryUserDocumentResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryUserDocumentResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryUserDocumentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SearchEnterpriseDataRequest(TeaModel):
     def __init__(
         self,
@@ -3780,6 +4527,7 @@ class SearchEnterpriseDataResponseBody(TeaModel):
         self.data = data
         self.error_code = error_code
         self.error_msg = error_msg
+        # Id of the request
         self.request_id = request_id
         self.success = success
 

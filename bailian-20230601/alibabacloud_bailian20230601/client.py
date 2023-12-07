@@ -1153,6 +1153,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_enterprise_data_parse_result_with_options_async(request, runtime)
 
+    def get_file_store_upload_policy_with_options(
+        self,
+        request: bailian_20230601_models.GetFileStoreUploadPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.GetFileStoreUploadPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_store_id):
+            query['FileStoreId'] = request.file_store_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileStoreUploadPolicy',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.GetFileStoreUploadPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_file_store_upload_policy_with_options_async(
+        self,
+        request: bailian_20230601_models.GetFileStoreUploadPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.GetFileStoreUploadPolicyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_store_id):
+            query['FileStoreId'] = request.file_store_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetFileStoreUploadPolicy',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.GetFileStoreUploadPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_file_store_upload_policy(
+        self,
+        request: bailian_20230601_models.GetFileStoreUploadPolicyRequest,
+    ) -> bailian_20230601_models.GetFileStoreUploadPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_file_store_upload_policy_with_options(request, runtime)
+
+    async def get_file_store_upload_policy_async(
+        self,
+        request: bailian_20230601_models.GetFileStoreUploadPolicyRequest,
+    ) -> bailian_20230601_models.GetFileStoreUploadPolicyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_file_store_upload_policy_with_options_async(request, runtime)
+
     def get_import_task_result_with_options(
         self,
         request: bailian_20230601_models.GetImportTaskResultRequest,
@@ -1226,6 +1308,84 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.GetImportTaskResultResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_import_task_result_with_options_async(request, runtime)
+
+    def get_prompt_with_options(
+        self,
+        request: bailian_20230601_models.GetPromptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.GetPromptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.prompt_id):
+            query['PromptId'] = request.prompt_id
+        if not UtilClient.is_unset(request.vars):
+            query['Vars'] = request.vars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrompt',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.GetPromptResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prompt_with_options_async(
+        self,
+        request: bailian_20230601_models.GetPromptRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.GetPromptResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.prompt_id):
+            query['PromptId'] = request.prompt_id
+        if not UtilClient.is_unset(request.vars):
+            query['Vars'] = request.vars
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrompt',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.GetPromptResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prompt(
+        self,
+        request: bailian_20230601_models.GetPromptRequest,
+    ) -> bailian_20230601_models.GetPromptResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_prompt_with_options(request, runtime)
+
+    async def get_prompt_async(
+        self,
+        request: bailian_20230601_models.GetPromptRequest,
+    ) -> bailian_20230601_models.GetPromptResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_prompt_with_options_async(request, runtime)
 
     def import_enterprise_document_with_options(
         self,
@@ -1324,6 +1484,96 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.ImportEnterpriseDocumentResponse:
         runtime = util_models.RuntimeOptions()
         return await self.import_enterprise_document_with_options_async(request, runtime)
+
+    def import_user_document_with_options(
+        self,
+        request: bailian_20230601_models.ImportUserDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.ImportUserDocumentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_store_id):
+            query['FileStoreId'] = request.file_store_id
+        if not UtilClient.is_unset(request.oss_path):
+            query['OssPath'] = request.oss_path
+        if not UtilClient.is_unset(request.store_id):
+            query['StoreId'] = request.store_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportUserDocument',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.ImportUserDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_user_document_with_options_async(
+        self,
+        request: bailian_20230601_models.ImportUserDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.ImportUserDocumentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.file_name):
+            query['FileName'] = request.file_name
+        if not UtilClient.is_unset(request.file_store_id):
+            query['FileStoreId'] = request.file_store_id
+        if not UtilClient.is_unset(request.oss_path):
+            query['OssPath'] = request.oss_path
+        if not UtilClient.is_unset(request.store_id):
+            query['StoreId'] = request.store_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportUserDocument',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.ImportUserDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_user_document(
+        self,
+        request: bailian_20230601_models.ImportUserDocumentRequest,
+    ) -> bailian_20230601_models.ImportUserDocumentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.import_user_document_with_options(request, runtime)
+
+    async def import_user_document_async(
+        self,
+        request: bailian_20230601_models.ImportUserDocumentRequest,
+    ) -> bailian_20230601_models.ImportUserDocumentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.import_user_document_with_options_async(request, runtime)
 
     def list_fine_tune_jobs_with_options(
         self,
@@ -1582,6 +1832,84 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.QueryEnterpriseDataListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.query_enterprise_data_list_with_options_async(request, runtime)
+
+    def query_user_document_with_options(
+        self,
+        request: bailian_20230601_models.QueryUserDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.QueryUserDocumentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryUserDocument',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.QueryUserDocumentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_user_document_with_options_async(
+        self,
+        request: bailian_20230601_models.QueryUserDocumentRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.QueryUserDocumentResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryUserDocument',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.QueryUserDocumentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_user_document(
+        self,
+        request: bailian_20230601_models.QueryUserDocumentRequest,
+    ) -> bailian_20230601_models.QueryUserDocumentResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_user_document_with_options(request, runtime)
+
+    async def query_user_document_async(
+        self,
+        request: bailian_20230601_models.QueryUserDocumentRequest,
+    ) -> bailian_20230601_models.QueryUserDocumentResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_user_document_with_options_async(request, runtime)
 
     def search_enterprise_data_with_options(
         self,
