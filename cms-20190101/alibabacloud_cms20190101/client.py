@@ -5133,6 +5133,8 @@ class Client(OpenApiClient):
             query['ContactGroup'] = request.contact_group
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.group_id):
@@ -5151,6 +5153,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.search_key):
@@ -5198,6 +5202,8 @@ class Client(OpenApiClient):
             query['ContactGroup'] = request.contact_group
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.group_id):
@@ -5216,6 +5222,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.search_key):
@@ -5289,6 +5297,8 @@ class Client(OpenApiClient):
             query['ContactGroup'] = request.contact_group
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.group_id):
@@ -5307,6 +5317,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.search_key):
@@ -5354,6 +5366,8 @@ class Client(OpenApiClient):
             query['ContactGroup'] = request.contact_group
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.group_id):
@@ -5372,6 +5386,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.product):
             query['Product'] = request.product
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
         if not UtilClient.is_unset(request.rule_name):
             query['RuleName'] = request.rule_name
         if not UtilClient.is_unset(request.search_key):
@@ -5445,6 +5461,8 @@ class Client(OpenApiClient):
             query['ContactGroup'] = request.contact_group
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.group_id):
@@ -5512,6 +5530,8 @@ class Client(OpenApiClient):
             query['ContactGroup'] = request.contact_group
         if not UtilClient.is_unset(request.end_time):
             query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
         if not UtilClient.is_unset(request.group_by):
             query['GroupBy'] = request.group_by
         if not UtilClient.is_unset(request.group_id):
@@ -6859,7 +6879,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
         """
-        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
+        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and configure alert rules for the process monitoring task.
         
         @param request: DescribeGroupMonitoringAgentProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6900,7 +6920,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
         """
-        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
+        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and configure alert rules for the process monitoring task.
         
         @param request: DescribeGroupMonitoringAgentProcessRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6940,7 +6960,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeGroupMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
         """
-        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
+        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and configure alert rules for the process monitoring task.
         
         @param request: DescribeGroupMonitoringAgentProcessRequest
         @return: DescribeGroupMonitoringAgentProcessResponse
@@ -6953,7 +6973,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeGroupMonitoringAgentProcessRequest,
     ) -> cms_20190101_models.DescribeGroupMonitoringAgentProcessResponse:
         """
-        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and set alert rules for the process monitoring task.
+        You can create a process monitoring task to monitor all or the specified Elastic Compute Service (ECS) instances in an application group and configure alert rules for the process monitoring task.
         
         @param request: DescribeGroupMonitoringAgentProcessRequest
         @return: DescribeGroupMonitoringAgentProcessResponse
