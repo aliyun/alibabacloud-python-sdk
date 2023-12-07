@@ -5968,17 +5968,75 @@ class GetResourceGroupTotalResponse(TeaModel):
         return self
 
 
+class GetTrainingJobResponseBodyComputeResourceInstanceSpec(TeaModel):
+    def __init__(
+        self,
+        cpu: str = None,
+        gpu: str = None,
+        gputype: str = None,
+        memory: str = None,
+        shared_memory: str = None,
+    ):
+        self.cpu = cpu
+        self.gpu = gpu
+        self.gputype = gputype
+        self.memory = memory
+        self.shared_memory = shared_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cpu is not None:
+            result['CPU'] = self.cpu
+        if self.gpu is not None:
+            result['GPU'] = self.gpu
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
+        if self.memory is not None:
+            result['Memory'] = self.memory
+        if self.shared_memory is not None:
+            result['SharedMemory'] = self.shared_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CPU') is not None:
+            self.cpu = m.get('CPU')
+        if m.get('GPU') is not None:
+            self.gpu = m.get('GPU')
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
+        if m.get('Memory') is not None:
+            self.memory = m.get('Memory')
+        if m.get('SharedMemory') is not None:
+            self.shared_memory = m.get('SharedMemory')
+        return self
+
+
 class GetTrainingJobResponseBodyComputeResource(TeaModel):
     def __init__(
         self,
         ecs_count: int = None,
         ecs_spec: str = None,
+        instance_count: int = None,
+        instance_spec: GetTrainingJobResponseBodyComputeResourceInstanceSpec = None,
+        resource_id: str = None,
     ):
         self.ecs_count = ecs_count
         self.ecs_spec = ecs_spec
+        self.instance_count = instance_count
+        self.instance_spec = instance_spec
+        self.resource_id = resource_id
 
     def validate(self):
-        pass
+        if self.instance_spec:
+            self.instance_spec.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5990,6 +6048,12 @@ class GetTrainingJobResponseBodyComputeResource(TeaModel):
             result['EcsCount'] = self.ecs_count
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
+        if self.instance_count is not None:
+            result['InstanceCount'] = self.instance_count
+        if self.instance_spec is not None:
+            result['InstanceSpec'] = self.instance_spec.to_map()
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
         return result
 
     def from_map(self, m: dict = None):
@@ -5998,6 +6062,13 @@ class GetTrainingJobResponseBodyComputeResource(TeaModel):
             self.ecs_count = m.get('EcsCount')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
+        if m.get('InstanceCount') is not None:
+            self.instance_count = m.get('InstanceCount')
+        if m.get('InstanceSpec') is not None:
+            temp_model = GetTrainingJobResponseBodyComputeResourceInstanceSpec()
+            self.instance_spec = temp_model.from_map(m['InstanceSpec'])
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
         return self
 
 
@@ -6327,6 +6398,39 @@ class GetTrainingJobResponseBodyOutputChannels(TeaModel):
         return self
 
 
+class GetTrainingJobResponseBodyOutputModel(TeaModel):
+    def __init__(
+        self,
+        output_channel_name: str = None,
+        uri: str = None,
+    ):
+        self.output_channel_name = output_channel_name
+        self.uri = uri
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.output_channel_name is not None:
+            result['OutputChannelName'] = self.output_channel_name
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OutputChannelName') is not None:
+            self.output_channel_name = m.get('OutputChannelName')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
 class GetTrainingJobResponseBodyScheduler(TeaModel):
     def __init__(
         self,
@@ -6469,6 +6573,7 @@ class GetTrainingJobResponseBody(TeaModel):
         latest_metrics: List[GetTrainingJobResponseBodyLatestMetrics] = None,
         latest_progress: GetTrainingJobResponseBodyLatestProgress = None,
         output_channels: List[GetTrainingJobResponseBodyOutputChannels] = None,
+        output_model: GetTrainingJobResponseBodyOutputModel = None,
         reason_code: str = None,
         reason_message: str = None,
         request_id: str = None,
@@ -6500,6 +6605,7 @@ class GetTrainingJobResponseBody(TeaModel):
         self.latest_metrics = latest_metrics
         self.latest_progress = latest_progress
         self.output_channels = output_channels
+        self.output_model = output_model
         self.reason_code = reason_code
         self.reason_message = reason_message
         self.request_id = request_id
@@ -6546,6 +6652,8 @@ class GetTrainingJobResponseBody(TeaModel):
             for k in self.output_channels:
                 if k:
                     k.validate()
+        if self.output_model:
+            self.output_model.validate()
         if self.scheduler:
             self.scheduler.validate()
         if self.status_transitions:
@@ -6605,6 +6713,8 @@ class GetTrainingJobResponseBody(TeaModel):
         if self.output_channels is not None:
             for k in self.output_channels:
                 result['OutputChannels'].append(k.to_map() if k else None)
+        if self.output_model is not None:
+            result['OutputModel'] = self.output_model.to_map()
         if self.reason_code is not None:
             result['ReasonCode'] = self.reason_code
         if self.reason_message is not None:
@@ -6692,6 +6802,9 @@ class GetTrainingJobResponseBody(TeaModel):
             for k in m.get('OutputChannels'):
                 temp_model = GetTrainingJobResponseBodyOutputChannels()
                 self.output_channels.append(temp_model.from_map(k))
+        if m.get('OutputModel') is not None:
+            temp_model = GetTrainingJobResponseBodyOutputModel()
+            self.output_model = temp_model.from_map(m['OutputModel'])
         if m.get('ReasonCode') is not None:
             self.reason_code = m.get('ReasonCode')
         if m.get('ReasonMessage') is not None:
