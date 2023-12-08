@@ -1967,6 +1967,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.deploy_application_group_with_options_async(request, runtime)
 
+    def describe_application_group_bill_with_options(
+        self,
+        request: oos_20190601_models.DescribeApplicationGroupBillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationGroupBill',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DescribeApplicationGroupBillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_application_group_bill_with_options_async(
+        self,
+        request: oos_20190601_models.DescribeApplicationGroupBillRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.application_name):
+            query['ApplicationName'] = request.application_name
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
+        if not UtilClient.is_unset(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.next_token):
+            query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeApplicationGroupBill',
+            version='2019-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            oos_20190601_models.DescribeApplicationGroupBillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_application_group_bill(
+        self,
+        request: oos_20190601_models.DescribeApplicationGroupBillRequest,
+    ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_application_group_bill_with_options(request, runtime)
+
+    async def describe_application_group_bill_async(
+        self,
+        request: oos_20190601_models.DescribeApplicationGroupBillRequest,
+    ) -> oos_20190601_models.DescribeApplicationGroupBillResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_application_group_bill_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: oos_20190601_models.DescribeRegionsRequest,
@@ -2052,6 +2146,8 @@ class Client(OpenApiClient):
             query['RamRole'] = request.ram_role
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_version):
@@ -2086,6 +2182,8 @@ class Client(OpenApiClient):
             query['RamRole'] = request.ram_role
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.template_content):
+            query['TemplateContent'] = request.template_content
         if not UtilClient.is_unset(request.template_name):
             query['TemplateName'] = request.template_name
         if not UtilClient.is_unset(request.template_version):
@@ -5484,6 +5582,8 @@ class Client(OpenApiClient):
             query['CreatedDateBefore'] = request.created_date_before
         if not UtilClient.is_unset(request.has_trigger):
             query['HasTrigger'] = request.has_trigger
+        if not UtilClient.is_unset(request.is_favorite):
+            query['IsFavorite'] = request.is_favorite
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
@@ -5546,6 +5646,8 @@ class Client(OpenApiClient):
             query['CreatedDateBefore'] = request.created_date_before
         if not UtilClient.is_unset(request.has_trigger):
             query['HasTrigger'] = request.has_trigger
+        if not UtilClient.is_unset(request.is_favorite):
+            query['IsFavorite'] = request.is_favorite
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
