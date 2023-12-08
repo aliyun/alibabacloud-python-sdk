@@ -514,8 +514,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+        This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
         
         @param request: CreateTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -558,8 +558,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+        This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
         
         @param request: CreateTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -601,8 +601,8 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreateTagsRequest,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+        This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
         
         @param request: CreateTagsRequest
         @return: CreateTagsResponse
@@ -615,8 +615,8 @@ class Client(OpenApiClient):
         request: tag_20180828_models.CreateTagsRequest,
     ) -> tag_20180828_models.CreateTagsResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        A preset tag is a tag that you create in advance and is available for the resources in all regions. You can create preset tags in the stage of tag planning and add them to specific resources in the stage of tag implementation. When you create a preset tag, you can specify only the tag key. You can specify a tag value in the future.
+        This topic provides an example on how to call the API operation to create a preset tag whose tag key is `Environment` to indicate the business environment.
         
         @param request: CreateTagsRequest
         @return: CreateTagsResponse
@@ -746,8 +746,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeleteTagResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
         
         @param request: DeleteTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -792,8 +791,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.DeleteTagResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
         
         @param request: DeleteTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -837,8 +835,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeleteTagRequest,
     ) -> tag_20180828_models.DeleteTagResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
         
         @param request: DeleteTagRequest
         @return: DeleteTagResponse
@@ -851,8 +848,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.DeleteTagRequest,
     ) -> tag_20180828_models.DeleteTagResponse:
         """
-        The region ID.
-        >  Only `cn-hangzhou` is supported.
+        This topic provides an example on how to call the API operation to delete the preset tag whose tag key is `Environment` and tag value is `test`.
         
         @param request: DeleteTagRequest
         @return: DeleteTagResponse
@@ -2132,7 +2128,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
         
         @param request: ListPoliciesForTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2181,7 +2178,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
         
         @param request: ListPoliciesForTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2229,7 +2227,8 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListPoliciesForTargetRequest,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
         
         @param request: ListPoliciesForTargetRequest
         @return: ListPoliciesForTargetResponse
@@ -2242,7 +2241,8 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListPoliciesForTargetRequest,
     ) -> tag_20180828_models.ListPoliciesForTargetResponse:
         """
-        For more information about common request parameters, see [Common parameters](~~159973~~).
+        If you use the Tag Policy feature in single-account mode, you can use the current logon account to call this API operation to query the tag policies that are attached to the account. If you use the Tag Policy feature in multi-account mode, you can use the management account of a resource directory to call this API operation to query the tag policies that are attached to the Root folder, a folder other than the Root folder, or a member in the resource directory. For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
+        This topic provides an example on how to call the API operation to query the tag policies that are attached to the current logon account. In this example, the Tag Policy feature in single-account mode is used. The response shows that only one tag policy is attached to the current logon account.
         
         @param request: ListPoliciesForTargetRequest
         @return: ListPoliciesForTargetResponse
@@ -2664,10 +2664,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
-        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2720,10 +2717,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.ListTagResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
-        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2775,10 +2769,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagResourcesRequest,
     ) -> tag_20180828_models.ListTagResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
-        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -2791,10 +2782,7 @@ class Client(OpenApiClient):
         request: tag_20180828_models.ListTagResourcesRequest,
     ) -> tag_20180828_models.ListTagResourcesResponse:
         """
-        This topic provides an example on how to call the API operation to query the tags that are added to resources in the cn-hangzhou region. The response shows the following information:
-        *   The tags `k1:v1` and `k2:v2` are added to the Elastic Compute Service (ECS) instance `i-bp15hr53jws84akg****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the disk `d-bp16cat8zekjocv4****`.
-        *   The tags `k1:v1` and `k2:v2` are added to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****`.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -3199,6 +3187,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.OpenCreatedByRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.OpenCreatedByResponse:
+        """
+        createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+        
+        @param request: OpenCreatedByRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenCreatedByResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3235,6 +3230,13 @@ class Client(OpenApiClient):
         request: tag_20180828_models.OpenCreatedByRequest,
         runtime: util_models.RuntimeOptions,
     ) -> tag_20180828_models.OpenCreatedByResponse:
+        """
+        createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+        
+        @param request: OpenCreatedByRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenCreatedByResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3270,6 +3272,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.OpenCreatedByRequest,
     ) -> tag_20180828_models.OpenCreatedByResponse:
+        """
+        createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+        
+        @param request: OpenCreatedByRequest
+        @return: OpenCreatedByResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_created_by_with_options(request, runtime)
 
@@ -3277,6 +3285,12 @@ class Client(OpenApiClient):
         self,
         request: tag_20180828_models.OpenCreatedByRequest,
     ) -> tag_20180828_models.OpenCreatedByResponse:
+        """
+        createdby tags can help you analyze costs and bills and manage the costs of cloud resources in an efficient manner. You can identify the creators of resources based on the createdby tags added to the resources. createdby tags are system tags that are provided by Alibaba Cloud and automatically added to resources. The key of createdby tags is `acs:tag:createdby`.
+        
+        @param request: OpenCreatedByRequest
+        @return: OpenCreatedByResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_created_by_with_options_async(request, runtime)
 
@@ -3287,7 +3301,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.TagResourcesResponse:
         """
         Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
-        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3335,7 +3349,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.TagResourcesResponse:
         """
         Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
-        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3382,7 +3396,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.TagResourcesResponse:
         """
         Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
-        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -3396,7 +3410,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.TagResourcesResponse:
         """
         Tags are used to identify resources. Tags allow you to categorize, search for, and aggregate resources that have the same characteristics from different dimensions. This facilitates resource management. For more information, see [Tag overview](~~156983~~).
-        This topic provides an example on how to call the API operation to add the tags `k1:v1` and `k2:v2` to the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -3411,7 +3425,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.UntagResourcesResponse:
         """
         After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
-        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3459,7 +3473,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.UntagResourcesResponse:
         """
         After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
-        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3506,7 +3520,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.UntagResourcesResponse:
         """
         After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
-        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -3520,7 +3534,7 @@ class Client(OpenApiClient):
     ) -> tag_20180828_models.UntagResourcesResponse:
         """
         After you remove a tag, the tag is automatically deleted within 24 hours if it is not added to other resources.
-        This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the virtual private cloud (VPC) `vpc-bp19dd90tkt6tz7wu****` in the `cn-hangzhou` region.
+        For information about the Alibaba Cloud services that support tags, see [Services that work with Tag](~~171455~~).
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse

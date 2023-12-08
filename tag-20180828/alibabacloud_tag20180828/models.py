@@ -501,10 +501,12 @@ class CreatePolicyResponseBody(TeaModel):
     def __init__(
         self,
         policy_id: str = None,
+        policy_name: str = None,
         request_id: str = None,
     ):
         # The ID of the tag policy.
         self.policy_id = policy_id
+        self.policy_name = policy_name
         # The ID of the request.
         self.request_id = request_id
 
@@ -519,6 +521,8 @@ class CreatePolicyResponseBody(TeaModel):
         result = dict()
         if self.policy_id is not None:
             result['PolicyId'] = self.policy_id
+        if self.policy_name is not None:
+            result['PolicyName'] = self.policy_name
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
@@ -527,6 +531,8 @@ class CreatePolicyResponseBody(TeaModel):
         m = m or dict()
         if m.get('PolicyId') is not None:
             self.policy_id = m.get('PolicyId')
+        if m.get('PolicyName') is not None:
+            self.policy_name = m.get('PolicyName')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self
@@ -582,8 +588,15 @@ class CreateTagsRequestTagKeyValueParamListTagValueParamList(TeaModel):
         description: str = None,
         value: str = None,
     ):
+        # The description of the tag value.
+        # 
+        # Valid values of N: 1 to 10.
         self.description = description
-        # The ID of the request.
+        # The tag value.
+        # 
+        # The tag value can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+        # 
+        # Valid values of N: 1 to 10.
         self.value = value
 
     def validate(self):
@@ -617,11 +630,17 @@ class CreateTagsRequestTagKeyValueParamList(TeaModel):
         key: str = None,
         tag_value_param_list: List[CreateTagsRequestTagKeyValueParamListTagValueParamList] = None,
     ):
-        self.description = description
         # The description of the tag key.
         # 
         # Valid values of N: 1 to 10.
+        self.description = description
+        # The tag key.
+        # 
+        # The tag key can be a maximum of 128 characters in length. It cannot contain `http://` or `https://` and cannot start with `acs:` or `aliyun`.
+        # 
+        # Valid values of N: 1 to 10.
         self.key = key
+        # The tag values list.
         self.tag_value_param_list = tag_value_param_list
 
     def validate(self):
@@ -671,11 +690,12 @@ class CreateTagsRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The description of the tag value.
+        # The region ID.
         # 
-        # Valid values of N: 1 to 10.
+        # >  Only `cn-hangzhou` is supported.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The tag keys and values list.
         self.tag_key_value_param_list = tag_key_value_param_list
 
     def validate(self):
@@ -727,6 +747,7 @@ class CreateTagsResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -928,12 +949,18 @@ class DeleteTagRequest(TeaModel):
         resource_owner_account: str = None,
         value: str = None,
     ):
+        # The tag key.
+        # 
+        # If no tag value is associated with a tag key, you can specify the `Key` parameter without specifying the Value parameter to delete the tag key. Otherwise, you must specify both the `Key` and `Value` parameters to delete a preset tag.
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the request.
+        # The region ID.
+        # 
+        # >  Only `cn-hangzhou` is supported.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -981,6 +1008,7 @@ class DeleteTagResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -1057,11 +1085,15 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The information of the regions.
+        # The supported natural language. Valid values:
+        # 
+        # *   zh-CN: Chinese (default value)
+        # *   en-US: English
+        # *   ja: Japanese
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the request.
+        # The ID of the region.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1113,9 +1145,11 @@ class DescribeRegionsResponseBodyRegionsRegion(TeaModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The ID of the region.
+        # The name of the region.
         self.local_name = local_name
+        # The endpoint of the Tag service in the region.
         self.region_endpoint = region_endpoint
+        # The ID of the region.
         self.region_id = region_id
 
     def validate(self):
@@ -1187,9 +1221,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # The endpoint of the Tag service in the region.
+        # The information of the regions.
         self.regions = regions
-        # The name of the region.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2720,6 +2754,7 @@ class ListConfigRulesForTargetResponseBodyData(TeaModel):
         policy_type: str = None,
         remediation: bool = None,
         tag_key: str = None,
+        tag_value: str = None,
         target_id: str = None,
         target_type: str = None,
     ):
@@ -2738,11 +2773,13 @@ class ListConfigRulesForTargetResponseBodyData(TeaModel):
         self.policy_type = policy_type
         # Indicates whether automatic remediation is enabled. Valid values:
         # 
-        # *   true: enabled
-        # *   false: disabled
+        # *   true
+        # *   false
         self.remediation = remediation
         # The tag key.
         self.tag_key = tag_key
+        # The tag value for automatic remediation.
+        self.tag_value = tag_value
         # The ID of the object.
         self.target_id = target_id
         # The type of the object. Valid values:
@@ -2772,6 +2809,8 @@ class ListConfigRulesForTargetResponseBodyData(TeaModel):
             result['Remediation'] = self.remediation
         if self.tag_key is not None:
             result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
         if self.target_id is not None:
             result['TargetId'] = self.target_id
         if self.target_type is not None:
@@ -2790,6 +2829,8 @@ class ListConfigRulesForTargetResponseBodyData(TeaModel):
             self.remediation = m.get('Remediation')
         if m.get('TagKey') is not None:
             self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         if m.get('TargetId') is not None:
             self.target_id = m.get('TargetId')
         if m.get('TargetType') is not None:
@@ -2915,7 +2956,9 @@ class ListPoliciesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The ID of a tag policy. This parameter specifies a filter condition for the query.
         self.policy_ids = policy_ids
+        # The name of a tag policy. This parameter specifies a filter condition for the query.
         self.policy_names = policy_names
         # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
@@ -3152,17 +3195,19 @@ class ListPoliciesForTargetRequest(TeaModel):
         target_id: str = None,
         target_type: str = None,
     ):
-        # The token that is used to start the next query.
-        self.max_result = max_result
-        # The ID of the object. This parameter specifies a filter condition for the query.
-        self.next_token = next_token
-        self.owner_account = owner_account
-        self.owner_id = owner_id
         # The number of entries to return on each page.
         # 
         # Default value: 50. Maximum value: 1000.
+        self.max_result = max_result
+        # The token that is used to start the next query.
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
+        # The ID of the object. This parameter specifies a filter condition for the query.
+        self.target_id = target_id
         # The type of the object. This parameter specifies a filter condition for the query. Valid values:
         # 
         # *   USER: the current logon account. This value is available if you use the Tag Policy feature in single-account mode.
@@ -3171,8 +3216,6 @@ class ListPoliciesForTargetRequest(TeaModel):
         # *   ACCOUNT: a member in a resource directory. This value is available if you use the Tag Policy feature in multi-account mode.
         # 
         # >  The value of this parameter is not case-sensitive.
-        self.target_id = target_id
-        # The tag policies that are attached to the object.
         self.target_type = target_type
 
     def validate(self):
@@ -3232,20 +3275,20 @@ class ListPoliciesForTargetResponseBodyData(TeaModel):
         policy_name: str = None,
         user_type: str = None,
     ):
+        # The document of the tag policy.
+        self.policy_content = policy_content
+        # The description of the tag policy.
+        self.policy_desc = policy_desc
+        # The ID of the tag policy.
+        self.policy_id = policy_id
+        # The name of the tag policy.
+        self.policy_name = policy_name
         # The mode of the Tag Policy feature. Valid values:
         # 
         # *   USER: single-account mode
         # *   RD: multi-account mode
         # 
         # For more information about the modes of the Tag Policy feature, see [Modes of the Tag Policy feature](~~417434~~).
-        self.policy_content = policy_content
-        # The document of the tag policy.
-        self.policy_desc = policy_desc
-        # The name of the tag policy.
-        self.policy_id = policy_id
-        # The description of the tag policy.
-        self.policy_name = policy_name
-        # The ID of the request.
         self.user_type = user_type
 
     def validate(self):
@@ -3291,13 +3334,14 @@ class ListPoliciesForTargetResponseBody(TeaModel):
         next_token: str = None,
         request_id: str = None,
     ):
-        # The ID of the tag policy.
+        # The tag policies that are attached to the object.
         self.data = data
-        self.next_token = next_token
         # Indicates whether the next query is required.
         # 
         # *   If the value of this parameter is empty (`"NextToken": ""`), all results are returned, and the next query is not required.
         # *   If the value of this parameter is not empty, the next query is required, and the value is the token used to start the next query.
+        self.next_token = next_token
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3454,12 +3498,12 @@ class ListResourcesByTagRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # For more information about the region ID, see [Endpoints](~~170112~~).
+        # For more information about region IDs, see [Endpoints](~~2330902~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         # The resource type. This parameter specifies a filter condition for the query.
         # 
-        # *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a resource type provided in [Types of resources that support Tag API operations](~~172061~~).
+        # *   If you set the FuzzyType parameter to EQUAL, you can set this parameter to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
         # *   If you set the FuzzyType parameter to NOT, you can set this parameter to a resource type provided in **Types of resources that support queries based on the NOT operator**.
         self.resource_type = resource_type
 
@@ -3812,14 +3856,17 @@ class ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems(TeaMo
         self,
         support: bool = None,
         support_code: str = None,
+        support_details: List[Dict[str, str]] = None,
     ):
         # Indicates whether the tag-related capability item is supported. Valid values:
         # 
-        # *   true: The tag-related capability item is supported.
-        # *   false: The tag-related capability item is not supported.
+        # *   true
+        # *   false
         self.support = support
         # The code of the tag-related capability item.
         self.support_code = support_code
+        # The details of the support for the tag-related capability item.
+        self.support_details = support_details
 
     def validate(self):
         pass
@@ -3834,6 +3881,8 @@ class ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems(TeaMo
             result['Support'] = self.support
         if self.support_code is not None:
             result['SupportCode'] = self.support_code
+        if self.support_details is not None:
+            result['SupportDetails'] = self.support_details
         return result
 
     def from_map(self, m: dict = None):
@@ -3842,6 +3891,8 @@ class ListSupportResourceTypesResponseBodySupportResourceTypesSupportItems(TeaMo
             self.support = m.get('Support')
         if m.get('SupportCode') is not None:
             self.support_code = m.get('SupportCode')
+        if m.get('SupportDetails') is not None:
+            self.support_details = m.get('SupportDetails')
         return self
 
 
@@ -4074,12 +4125,15 @@ class ListTagKeysRequest(TeaModel):
         self.query_type = query_type
         # The region ID.
         # 
-        # For more information about the region ID, see [Endpoints](~~170112~~).
+        # For more information about region IDs, see [Endpoints](~~2330902~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The type of the resources. This parameter specifies a filter condition for the query.
+        # The resource type. This parameter specifies a filter condition for the query.
         # 
-        # For more information about supported resource types, see [Types of resources that support Tag API operations](~~172061~~).
+        # Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
+        # 
+        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
         self.resource_type = resource_type
 
     def validate(self):
@@ -4346,6 +4400,7 @@ class ListTagResourcesRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the resources.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of a resource.
         self.resource_arn = resource_arn
         self.resource_owner_account = resource_owner_account
         # The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -4671,12 +4726,15 @@ class ListTagValuesRequest(TeaModel):
         self.query_type = query_type
         # The region ID.
         # 
-        # For more information about the region ID, see [Endpoints](~~170112~~).
+        # For more information about region IDs, see [Endpoints](~~2330902~~).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
-        # The type of the resources. This parameter specifies a filter condition for the query.
+        # The resource type. This parameter specifies a filter condition for the query.
         # 
-        # For more information about supported resource types, see [Types of resources that support Tag API operations](~~172061~~).
+        # Format: `ALIYUN::${ProductCode}::${ResourceType}`. All letters in the value of this parameter must be in uppercase.
+        # 
+        # *   `ProductCode`: the service code. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
+        # *   `ResourceType`: the resource type. You can set this field to a value obtained from the response of the [ListSupportResourceTypes](~~2330915~~) operation.
         self.resource_type = resource_type
 
     def validate(self):
@@ -5257,6 +5315,7 @@ class OpenCreatedByRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID. Set the value to cn-shanghai.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5302,6 +5361,7 @@ class OpenCreatedByResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5382,6 +5442,7 @@ class TagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the resources.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of a resource.
         self.resource_arn = resource_arn
         self.resource_owner_account = resource_owner_account
         # The key-value pairs of tags. You can specify 1 to 10 key-value pairs.
@@ -5479,7 +5540,7 @@ class TagResourcesResponseBodyFailedResourcesFailedResource(TeaModel):
     ):
         # The ARN of the resource.
         self.resource_arn = resource_arn
-        # The information of the error.
+        # The information about the error.
         self.result = result
 
     def validate(self):
@@ -5549,11 +5610,13 @@ class TagResourcesResponseBody(TeaModel):
         failed_resources: TagResourcesResponseBodyFailedResources = None,
         request_id: str = None,
     ):
-        # The information of the resources to which tags fail to be added.
+        # The information about the resources to which tags fail to be added.
         # 
         # > 
+        # 
         # *   If tags are added to all resources, the value of `FailedResources` is empty.
-        # *   If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information of the resources.
+        # 
+        # *   If tags fail to be added to some or all resources, the value of `FailedResources` contains the detailed information about the resources.
         self.failed_resources = failed_resources
         # The ID of the request.
         self.request_id = request_id
@@ -5642,8 +5705,10 @@ class UntagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the resources.
         self.region_id = region_id
+        # The Alibaba Cloud Resource Name (ARN) of a resource.
         self.resource_arn = resource_arn
         self.resource_owner_account = resource_owner_account
+        # A tag key.
         self.tag_key = tag_key
 
     def validate(self):
@@ -5729,7 +5794,7 @@ class UntagResourcesResponseBodyFailedResourcesFailedResource(TeaModel):
     ):
         # The ARN of the resource.
         self.resource_arn = resource_arn
-        # The information of the error.
+        # The information about the error.
         self.result = result
 
     def validate(self):
@@ -5799,11 +5864,13 @@ class UntagResourcesResponseBody(TeaModel):
         failed_resources: UntagResourcesResponseBodyFailedResources = None,
         request_id: str = None,
     ):
-        # The information of resources from which tags fail to be removed.
+        # The information about the resources from which tags fail to be removed.
         # 
         # > 
+        # 
         # *   If tags are removed from all resources, the value of FailedResources is empty.
-        # *   If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information of the resources.
+        # 
+        # *   If tags fail to be removed from some or all resources, the value of FailedResources contains the detailed information about the resources.
         self.failed_resources = failed_resources
         # The ID of the request.
         self.request_id = request_id

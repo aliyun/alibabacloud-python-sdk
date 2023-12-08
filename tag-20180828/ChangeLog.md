@@ -1,3 +1,6 @@
+2023-12-08 Version: 1.0.6
+- Generated python 2018-08-28 for Tag.
+
 2023-06-14 Version: 1.0.5
 - Add EnablePolicy APIs.
 
