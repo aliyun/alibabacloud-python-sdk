@@ -1181,8 +1181,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >    You can specify up to 50 domain names in each request.
-        >*   You can call this operation up to 30 times per second per account.
+        You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1225,8 +1225,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >    You can specify up to 50 domain names in each request.
-        >*   You can call this operation up to 30 times per second per account.
+        You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1268,8 +1268,8 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchSetDcdnDomainConfigsRequest,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >    You can specify up to 50 domain names in each request.
-        >*   You can call this operation up to 30 times per second per account.
+        You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @return: BatchSetDcdnDomainConfigsResponse
@@ -1282,8 +1282,8 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.BatchSetDcdnDomainConfigsRequest,
     ) -> dcdn_20180115_models.BatchSetDcdnDomainConfigsResponse:
         """
-        >    You can specify up to 50 domain names in each request.
-        >*   You can call this operation up to 30 times per second per account.
+        You can specify up to 50 domain names in each request. Separate multiple domain names with commas (,).
+        *   You can call this operation up to 30 times per second per account.
         
         @param request: BatchSetDcdnDomainConfigsRequest
         @return: BatchSetDcdnDomainConfigsResponse
@@ -2177,9 +2177,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        >
-        *   This operation allows you to customize an operations report for a specific domain name. You can view the statistics about the domain name in the report.
-        *   You can call this operation up to three times per second per account.
+        *\
+        ****\
+        *\
+        *\
         
         @param request: CreateDcdnSubTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2216,9 +2217,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        >
-        *   This operation allows you to customize an operations report for a specific domain name. You can view the statistics about the domain name in the report.
-        *   You can call this operation up to three times per second per account.
+        *\
+        ****\
+        *\
+        *\
         
         @param request: CreateDcdnSubTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2254,9 +2256,10 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        >
-        *   This operation allows you to customize an operations report for a specific domain name. You can view the statistics about the domain name in the report.
-        *   You can call this operation up to three times per second per account.
+        *\
+        ****\
+        *\
+        *\
         
         @param request: CreateDcdnSubTaskRequest
         @return: CreateDcdnSubTaskResponse
@@ -2269,9 +2272,10 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.CreateDcdnSubTaskRequest,
     ) -> dcdn_20180115_models.CreateDcdnSubTaskResponse:
         """
-        >
-        *   This operation allows you to customize an operations report for a specific domain name. You can view the statistics about the domain name in the report.
-        *   You can call this operation up to three times per second per account.
+        *\
+        ****\
+        *\
+        *\
         
         @param request: CreateDcdnSubTaskRequest
         @return: CreateDcdnSubTaskResponse
@@ -2475,10 +2479,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.CreateRoutineResponse:
         """
-        >
-        *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   You can only specify the production and staging environments when you call this operation.
-        *   You can call this operation up to 100 times per second.
+        >    The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
+        >*   You can only specify the production and staging environments when you call this operation.
+        >*   You can call this operation up to 100 times per second per account.
         
         @param tmp_req: CreateRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2521,10 +2524,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.CreateRoutineResponse:
         """
-        >
-        *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   You can only specify the production and staging environments when you call this operation.
-        *   You can call this operation up to 100 times per second.
+        >    The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
+        >*   You can only specify the production and staging environments when you call this operation.
+        >*   You can call this operation up to 100 times per second per account.
         
         @param tmp_req: CreateRoutineRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2566,10 +2568,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.CreateRoutineRequest,
     ) -> dcdn_20180115_models.CreateRoutineResponse:
         """
-        >
-        *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   You can only specify the production and staging environments when you call this operation.
-        *   You can call this operation up to 100 times per second.
+        >    The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
+        >*   You can only specify the production and staging environments when you call this operation.
+        >*   You can call this operation up to 100 times per second per account.
         
         @param request: CreateRoutineRequest
         @return: CreateRoutineResponse
@@ -2582,10 +2583,9 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.CreateRoutineRequest,
     ) -> dcdn_20180115_models.CreateRoutineResponse:
         """
-        >
-        *   The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
-        *   You can only specify the production and staging environments when you call this operation.
-        *   You can call this operation up to 100 times per second.
+        >    The parameters must comply with the rules of EnvConf. The description of a routine cannot exceed 50 characters in length.
+        >*   You can only specify the production and staging environments when you call this operation.
+        >*   You can call this operation up to 100 times per second per account.
         
         @param request: CreateRoutineRequest
         @return: CreateRoutineResponse
@@ -5113,8 +5113,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
         """
-        *\
-        **You can call this operation up to three times per second.
+        >You can call this operation up to three times per second.
         
         @param request: DescribeDcdnDeliverListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5149,8 +5148,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
         """
-        *\
-        **You can call this operation up to three times per second.
+        >You can call this operation up to three times per second.
         
         @param request: DescribeDcdnDeliverListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5184,8 +5182,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDeliverListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
         """
-        *\
-        **You can call this operation up to three times per second.
+        >You can call this operation up to three times per second.
         
         @param request: DescribeDcdnDeliverListRequest
         @return: DescribeDcdnDeliverListResponse
@@ -5198,8 +5195,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnDeliverListRequest,
     ) -> dcdn_20180115_models.DescribeDcdnDeliverListResponse:
         """
-        *\
-        **You can call this operation up to three times per second.
+        >You can call this operation up to three times per second.
         
         @param request: DescribeDcdnDeliverListRequest
         @return: DescribeDcdnDeliverListResponse
@@ -12471,8 +12467,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshTasksResponse:
         """
-        >
-        *   You can query the refresh or prefetch tasks by ID or URL.
+        You can query the refresh or prefetch tasks by ID or URL.
         *   You can set both **TaskId** and **ObjectPath** in a request. If you do not set **TaskId** or **ObjectPath**, the data in the last 3 days on the first page is returned. By default, a maximum of 20 entries can be displayed on each page.
         *   If you specify **DomainName** or **Status**, you must also specify **ObjectType**.
         *   You can call this operation up to 10 times per second per account.
@@ -12530,8 +12525,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshTasksResponse:
         """
-        >
-        *   You can query the refresh or prefetch tasks by ID or URL.
+        You can query the refresh or prefetch tasks by ID or URL.
         *   You can set both **TaskId** and **ObjectPath** in a request. If you do not set **TaskId** or **ObjectPath**, the data in the last 3 days on the first page is returned. By default, a maximum of 20 entries can be displayed on each page.
         *   If you specify **DomainName** or **Status**, you must also specify **ObjectType**.
         *   You can call this operation up to 10 times per second per account.
@@ -12588,8 +12582,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnRefreshTasksRequest,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshTasksResponse:
         """
-        >
-        *   You can query the refresh or prefetch tasks by ID or URL.
+        You can query the refresh or prefetch tasks by ID or URL.
         *   You can set both **TaskId** and **ObjectPath** in a request. If you do not set **TaskId** or **ObjectPath**, the data in the last 3 days on the first page is returned. By default, a maximum of 20 entries can be displayed on each page.
         *   If you specify **DomainName** or **Status**, you must also specify **ObjectType**.
         *   You can call this operation up to 10 times per second per account.
@@ -12605,8 +12598,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnRefreshTasksRequest,
     ) -> dcdn_20180115_models.DescribeDcdnRefreshTasksResponse:
         """
-        >
-        *   You can query the refresh or prefetch tasks by ID or URL.
+        You can query the refresh or prefetch tasks by ID or URL.
         *   You can set both **TaskId** and **ObjectPath** in a request. If you do not set **TaskId** or **ObjectPath**, the data in the last 3 days on the first page is returned. By default, a maximum of 20 entries can be displayed on each page.
         *   If you specify **DomainName** or **Status**, you must also specify **ObjectType**.
         *   You can call this operation up to 10 times per second per account.
@@ -22049,7 +22041,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
         """
-        The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+        > You can call this operation up to three times per second per account.
         
         @param request: UpdateDcdnDeliverTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22094,7 +22086,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
         """
-        The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+        > You can call this operation up to three times per second per account.
         
         @param request: UpdateDcdnDeliverTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22138,7 +22130,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.UpdateDcdnDeliverTaskRequest,
     ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
         """
-        The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+        > You can call this operation up to three times per second per account.
         
         @param request: UpdateDcdnDeliverTaskRequest
         @return: UpdateDcdnDeliverTaskResponse
@@ -22151,7 +22143,7 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.UpdateDcdnDeliverTaskRequest,
     ) -> dcdn_20180115_models.UpdateDcdnDeliverTaskResponse:
         """
-        The parameters that specify the time interval at which the tracking task sends operations reports. The settings must be escaped in JSON.
+        > You can call this operation up to three times per second per account.
         
         @param request: UpdateDcdnDeliverTaskRequest
         @return: UpdateDcdnDeliverTaskResponse
