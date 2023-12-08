@@ -1,3 +1,6 @@
+2023-12-08 Version: 2.0.0
+- Generated python 2021-12-16 for nis.
+
 2023-08-31 Version: 1.2.0
 - Generated python 2021-12-16 for nis.
 

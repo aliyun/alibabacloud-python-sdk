@@ -7,7 +7,6 @@ from typing import Dict, List
 class CreateAndAnalyzeNetworkPathRequest(TeaModel):
     def __init__(
         self,
-        audit_param: str = None,
         protocol: str = None,
         region_id: str = None,
         source_id: str = None,
@@ -19,7 +18,6 @@ class CreateAndAnalyzeNetworkPathRequest(TeaModel):
         target_port: int = None,
         target_type: str = None,
     ):
-        self.audit_param = audit_param
         # The protocol type. Valid values:
         # 
         # *   **tcp**: Transmission Control Protocol (TCP)
@@ -67,8 +65,6 @@ class CreateAndAnalyzeNetworkPathRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.audit_param is not None:
-            result['AuditParam'] = self.audit_param
         if self.protocol is not None:
             result['Protocol'] = self.protocol
         if self.region_id is not None:
@@ -93,8 +89,6 @@ class CreateAndAnalyzeNetworkPathRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuditParam') is not None:
-            self.audit_param = m.get('AuditParam')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
         if m.get('RegionId') is not None:
@@ -266,7 +260,13 @@ class CreateNetworkPathRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # 
+        # You can add up to 20 tags in each call.
         self.key = key
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -300,6 +300,7 @@ class CreateNetworkPathRequest(TeaModel):
         network_path_name: str = None,
         protocol: str = None,
         region_id: str = None,
+        resource_group_id: str = None,
         source_id: str = None,
         source_ip_address: str = None,
         source_port: int = None,
@@ -322,6 +323,7 @@ class CreateNetworkPathRequest(TeaModel):
         self.protocol = protocol
         # The region ID of the network path that you want to create.
         self.region_id = region_id
+        self.resource_group_id = resource_group_id
         # The ID of the source resource.
         self.source_id = source_id
         # The source IP address.
@@ -336,6 +338,7 @@ class CreateNetworkPathRequest(TeaModel):
         # *   **vpn**: the VPN gateway
         # *   **vbr**: the virtual border router (VBR)
         self.source_type = source_type
+        # The tags to add to the resource.
         self.tag = tag
         # The ID of the destination resource.
         self.target_id = target_id
@@ -373,6 +376,8 @@ class CreateNetworkPathRequest(TeaModel):
             result['Protocol'] = self.protocol
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
         if self.source_id is not None:
             result['SourceId'] = self.source_id
         if self.source_ip_address is not None:
@@ -405,6 +410,8 @@ class CreateNetworkPathRequest(TeaModel):
             self.protocol = m.get('Protocol')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
         if m.get('SourceId') is not None:
             self.source_id = m.get('SourceId')
         if m.get('SourceIpAddress') is not None:
@@ -514,7 +521,13 @@ class CreateNetworkReachableAnalysisRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of tag N to add to the resource. The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+        # 
+        # You can add up to 20 tags in each call.
         self.key = key
+        # The value of tag N to add to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -544,16 +557,15 @@ class CreateNetworkReachableAnalysisRequestTag(TeaModel):
 class CreateNetworkReachableAnalysisRequest(TeaModel):
     def __init__(
         self,
-        audit_param: str = None,
         network_path_id: str = None,
         region_id: str = None,
         tag: List[CreateNetworkReachableAnalysisRequestTag] = None,
     ):
-        self.audit_param = audit_param
         # The ID of the network path. You can call the **CreateNetworkPath** operation to obtain the ID of the network path.
         self.network_path_id = network_path_id
         # The ID of the region for which you want to create a task for analyzing network reachability.
         self.region_id = region_id
+        # The tags to add to the resource.
         self.tag = tag
 
     def validate(self):
@@ -568,8 +580,6 @@ class CreateNetworkReachableAnalysisRequest(TeaModel):
             return _map
 
         result = dict()
-        if self.audit_param is not None:
-            result['AuditParam'] = self.audit_param
         if self.network_path_id is not None:
             result['NetworkPathId'] = self.network_path_id
         if self.region_id is not None:
@@ -582,8 +592,6 @@ class CreateNetworkReachableAnalysisRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AuditParam') is not None:
-            self.audit_param = m.get('AuditParam')
         if m.get('NetworkPathId') is not None:
             self.network_path_id = m.get('NetworkPathId')
         if m.get('RegionId') is not None:
@@ -962,7 +970,7 @@ class DeleteNetworkReachableAnalysisResponse(TeaModel):
 class GetInternetTupleRequest(TeaModel):
     def __init__(
         self,
-        account_ids: List[str] = None,
+        account_ids: List[int] = None,
         begin_time: int = None,
         cloud_ip: str = None,
         cloud_isp: str = None,
@@ -996,12 +1004,12 @@ class GetInternetTupleRequest(TeaModel):
         self.cloud_isp = cloud_isp
         # The local port.
         # 
-        # > This parameter is required only when you set **TupleType** to **5**.
+        # >  This parameter is required only if you set the **TupleType** parameter to **5**.
         self.cloud_port = cloud_port
         # The direction of the Internet traffic that you want to query. Valid values:
         # 
-        # - **in**: inbound
-        # - **out**: outbound
+        # *   **in**: inbound
+        # *   **out**: outbound
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
@@ -1009,7 +1017,7 @@ class GetInternetTupleRequest(TeaModel):
         self.instance_id = instance_id
         # The instance IDs for filtering.
         self.instance_list = instance_list
-        # The metric for instance ranking. Default value: **ByteCount**. This value specifies that instances are ranked by traffic volume.
+        # The metric for data ranking. Default value: **ByteCount**. This value specifies that data is ranked by traffic volume.
         self.order_by = order_by
         # The remote city.
         # 
@@ -1039,20 +1047,20 @@ class GetInternetTupleRequest(TeaModel):
         self.region_id = region_id
         # The order in which instances are ranked by Internet traffic. Valid values:
         # 
-        # - **desc**: the descending order
-        # - **asc**: the ascending order
+        # *   **desc**: the descending order
+        # *   **asc**: the ascending order
         self.sort = sort
-        # Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
+        # Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
         self.top_n = top_n
-        # The type of the tuple. Valid values:
+        # The type of the tuple. Valid values:
         # 
-        # - **1**: 1-tuple
-        # - **2**: 2-tuples
-        # - **5**: 5-tuples
+        # *   **1**: 1-tuple
+        # *   **2**: 2-tuple
+        # *   **5**: 5-tuple
         self.tuple_type = tuple_type
-        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
         # 
-        # > By default, the multi-account management feature is disabled. If you want to enable this feature, contact your customer business manager.
+        # >  By default, the multi-account management feature is not available. If you want to use this feature, contact your customer business manager to apply for permissions.
         self.use_multi_account = use_multi_account
 
     def validate(self):
@@ -1158,7 +1166,7 @@ class GetInternetTupleRequest(TeaModel):
 class GetInternetTupleShrinkRequest(TeaModel):
     def __init__(
         self,
-        account_ids: List[str] = None,
+        account_ids: List[int] = None,
         begin_time: int = None,
         cloud_ip: str = None,
         cloud_isp: str = None,
@@ -1192,12 +1200,12 @@ class GetInternetTupleShrinkRequest(TeaModel):
         self.cloud_isp = cloud_isp
         # The local port.
         # 
-        # > This parameter is required only when you set **TupleType** to **5**.
+        # >  This parameter is required only if you set the **TupleType** parameter to **5**.
         self.cloud_port = cloud_port
         # The direction of the Internet traffic that you want to query. Valid values:
         # 
-        # - **in**: inbound
-        # - **out**: outbound
+        # *   **in**: inbound
+        # *   **out**: outbound
         self.direction = direction
         # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
@@ -1205,7 +1213,7 @@ class GetInternetTupleShrinkRequest(TeaModel):
         self.instance_id = instance_id
         # The instance IDs for filtering.
         self.instance_list_shrink = instance_list_shrink
-        # The metric for instance ranking. Default value: **ByteCount**. This value specifies that instances are ranked by traffic volume.
+        # The metric for data ranking. Default value: **ByteCount**. This value specifies that data is ranked by traffic volume.
         self.order_by = order_by
         # The remote city.
         # 
@@ -1235,20 +1243,20 @@ class GetInternetTupleShrinkRequest(TeaModel):
         self.region_id = region_id
         # The order in which instances are ranked by Internet traffic. Valid values:
         # 
-        # - **desc**: the descending order
-        # - **asc**: the ascending order
+        # *   **desc**: the descending order
+        # *   **asc**: the ascending order
         self.sort = sort
-        # Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
+        # Specifies top-N traffic data to display. Default value: **10**. This value specifies to display top-10 traffic data by default.
         self.top_n = top_n
-        # The type of the tuple. Valid values:
+        # The type of the tuple. Valid values:
         # 
-        # - **1**: 1-tuple
-        # - **2**: 2-tuples
-        # - **5**: 5-tuples
+        # *   **1**: 1-tuple
+        # *   **2**: 2-tuple
+        # *   **5**: 5-tuple
         self.tuple_type = tuple_type
-        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
         # 
-        # > By default, the multi-account management feature is disabled. If you want to enable this feature, contact your customer business manager.
+        # >  By default, the multi-account management feature is not available. If you want to use this feature, contact your customer business manager to apply for permissions.
         self.use_multi_account = use_multi_account
 
     def validate(self):
@@ -1384,7 +1392,7 @@ class GetInternetTupleResponseBodyData(TeaModel):
         out_retran_count: float = None,
         packet_count: float = None,
         protocol: str = None,
-        retran_count: float = None,
+        retransmit_rate: float = None,
         rtt: float = None,
     ):
         # The access point of Alibaba Cloud.
@@ -1452,8 +1460,7 @@ class GetInternetTupleResponseBodyData(TeaModel):
         self.packet_count = packet_count
         # The protocol number.
         self.protocol = protocol
-        # The number of repeated packets.
-        self.retran_count = retran_count
+        self.retransmit_rate = retransmit_rate
         # The round-trip time (RTT). Unit: milliseconds.
         self.rtt = rtt
 
@@ -1526,8 +1533,8 @@ class GetInternetTupleResponseBodyData(TeaModel):
             result['PacketCount'] = self.packet_count
         if self.protocol is not None:
             result['Protocol'] = self.protocol
-        if self.retran_count is not None:
-            result['RetranCount'] = self.retran_count
+        if self.retransmit_rate is not None:
+            result['RetransmitRate'] = self.retransmit_rate
         if self.rtt is not None:
             result['Rtt'] = self.rtt
         return result
@@ -1594,8 +1601,8 @@ class GetInternetTupleResponseBodyData(TeaModel):
             self.packet_count = m.get('PacketCount')
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
-        if m.get('RetranCount') is not None:
-            self.retran_count = m.get('RetranCount')
+        if m.get('RetransmitRate') is not None:
+            self.retransmit_rate = m.get('RetransmitRate')
         if m.get('Rtt') is not None:
             self.rtt = m.get('Rtt')
         return self
@@ -2120,7 +2127,7 @@ class GetNetworkReachableAnalysisResponse(TeaModel):
 class GetTransitRouterFlowTopNRequest(TeaModel):
     def __init__(
         self,
-        account_ids: List[str] = None,
+        account_ids: List[int] = None,
         bandwith_package_id: str = None,
         begin_time: int = None,
         cen_id: str = None,
@@ -2139,23 +2146,59 @@ class GetTransitRouterFlowTopNRequest(TeaModel):
         top_n: int = None,
         use_multi_account: bool = None,
     ):
+        # The IDs of member accounts.
         self.account_ids = account_ids
+        # The ID of the CEN bandwidth plan.
         self.bandwith_package_id = bandwith_package_id
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.begin_time = begin_time
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The direction of the inter-region traffic in the local regions or for the local IP addresses. Valid values:
+        # 
+        # *   in: inbound traffic
+        # *   out: outbound traffic
         self.direction = direction
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.end_time = end_time
+        # The dimension for ranking inter-region traffic data. The value of this parameter is case-sensitive. Valid values:
+        # 
+        # *   1Tuple: queries the rankings of inter-region traffic data for the local regions, Cloud Enterprise Network (CEN) instances, and IP addresses.
+        # *   2Tuple: queries the rankings of inter-region traffic data for the local and remote regions, and the local and remote IP addresses.
+        # *   5Tuple: queries the rankings of inter-region traffic data for the local and remote IP addresses, local and remote ports, and protocols in use.
+        # *   Cen: queries the rankings of inter-region traffic data for CEN instances.
+        # *   RegionPair: queries the rankings of inter-region traffic data for the local and remote regions.
+        # *   Port: queries the rankings of inter-region traffic data for the local and remote ports.
+        # *   Protocol: queries the rankings of inter-region traffic data for the protocols in use.
         self.group_by = group_by
+        # The metric for ranking inter-region traffic data. Default value: Bytes. This value specifies that inter-region traffic data is ranked by traffic volume.
         self.order_by = order_by
+        # The remote IP address.
         self.other_ip = other_ip
+        # The remote port.
         self.other_port = other_port
+        # The remote region.
         self.other_region = other_region
+        # The protocol number.
+        # 
+        # >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
         self.protocol = protocol
+        # The order for ranking inter-region traffic data. Valid values:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.sort = sort
+        # The local IP address.
         self.this_ip = this_ip
+        # The local port.
         self.this_port = this_port
+        # The local region where the **local IP address** resides.
         self.this_region = this_region
+        # Specifies the maximum number of data entries to display. Default value: **10**. Maximum value: 100.
         self.top_n = top_n
+        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+        # 
+        # >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
         self.use_multi_account = use_multi_account
 
     def validate(self):
@@ -2268,23 +2311,59 @@ class GetTransitRouterFlowTopNShrinkRequest(TeaModel):
         top_n: int = None,
         use_multi_account: bool = None,
     ):
+        # The IDs of member accounts.
         self.account_ids_shrink = account_ids_shrink
+        # The ID of the CEN bandwidth plan.
         self.bandwith_package_id = bandwith_package_id
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.begin_time = begin_time
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The direction of the inter-region traffic in the local regions or for the local IP addresses. Valid values:
+        # 
+        # *   in: inbound traffic
+        # *   out: outbound traffic
         self.direction = direction
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.end_time = end_time
+        # The dimension for ranking inter-region traffic data. The value of this parameter is case-sensitive. Valid values:
+        # 
+        # *   1Tuple: queries the rankings of inter-region traffic data for the local regions, Cloud Enterprise Network (CEN) instances, and IP addresses.
+        # *   2Tuple: queries the rankings of inter-region traffic data for the local and remote regions, and the local and remote IP addresses.
+        # *   5Tuple: queries the rankings of inter-region traffic data for the local and remote IP addresses, local and remote ports, and protocols in use.
+        # *   Cen: queries the rankings of inter-region traffic data for CEN instances.
+        # *   RegionPair: queries the rankings of inter-region traffic data for the local and remote regions.
+        # *   Port: queries the rankings of inter-region traffic data for the local and remote ports.
+        # *   Protocol: queries the rankings of inter-region traffic data for the protocols in use.
         self.group_by = group_by
+        # The metric for ranking inter-region traffic data. Default value: Bytes. This value specifies that inter-region traffic data is ranked by traffic volume.
         self.order_by = order_by
+        # The remote IP address.
         self.other_ip = other_ip
+        # The remote port.
         self.other_port = other_port
+        # The remote region.
         self.other_region = other_region
+        # The protocol number.
+        # 
+        # >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
         self.protocol = protocol
+        # The order for ranking inter-region traffic data. Valid values:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.sort = sort
+        # The local IP address.
         self.this_ip = this_ip
+        # The local port.
         self.this_port = this_port
+        # The local region where the **local IP address** resides.
         self.this_region = this_region
+        # Specifies the maximum number of data entries to display. Default value: **10**. Maximum value: 100.
         self.top_n = top_n
+        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+        # 
+        # >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
         self.use_multi_account = use_multi_account
 
     def validate(self):
@@ -2393,19 +2472,33 @@ class GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN(TeaModel):
         this_port: str = None,
         this_region: str = None,
     ):
+        # The account ID.
         self.account_id = account_id
+        # The ID of the CEN bandwidth plan.
         self.bandwith_package_id = bandwith_package_id
+        # The total volume of traffic in the specified time range.
         self.bytes = bytes
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The end of the time range that you queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.end_time = end_time
+        # The remote IP address.
         self.other_ip = other_ip
+        # The remote port.
         self.other_port = other_port
+        # The remote region where the remote IP address resides.
         self.other_region = other_region
+        # The total number of packets in the specified time range.
         self.packets = packets
+        # The protocol number.
         self.protocol = protocol
+        # The beginning of the time range that you queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
+        # The local IP address.
         self.this_ip = this_ip
+        # The local port.
         self.this_port = this_port
+        # The local region where the local IP address resides.
         self.this_region = this_region
 
     def validate(self):
@@ -2486,7 +2579,9 @@ class GetTransitRouterFlowTopNResponseBody(TeaModel):
         request_id: str = None,
         transit_router_flow_top_n: List[GetTransitRouterFlowTopNResponseBodyTransitRouterFlowTopN] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ranking result of inter-region traffic data.
         self.transit_router_flow_top_n = transit_router_flow_top_n
 
     def validate(self):
@@ -2568,7 +2663,7 @@ class GetTransitRouterFlowTopNResponse(TeaModel):
 class GetVbrFlowTopNRequest(TeaModel):
     def __init__(
         self,
-        account_ids: List[str] = None,
+        account_ids: List[int] = None,
         attachment_id: str = None,
         begin_time: int = None,
         cen_id: str = None,
@@ -2587,23 +2682,62 @@ class GetVbrFlowTopNRequest(TeaModel):
         use_multi_account: bool = None,
         virtual_border_router_id: str = None,
     ):
+        # The IDs of member accounts.
         self.account_ids = account_ids
+        # The CEN connection ID.
         self.attachment_id = attachment_id
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.begin_time = begin_time
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The local IP address.
         self.cloud_ip = cloud_ip
+        # The local port.
+        # 
+        # >  This parameter is required only if you set GroupBy to CloudPort.
         self.cloud_port = cloud_port
+        # The direction of the hybrid cloud traffic in the local regions or for the local IP addresses. Valid values:
+        # 
+        # *   in: traffic from a data center to Alibaba Cloud
+        # *   out: traffic from Alibaba Cloud to a data center
         self.direction = direction
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.end_time = end_time
+        # The dimension for ranking hybrid cloud traffic data. The value of this parameter is case-sensitive. Valid values:
+        # 
+        # *   1Tuple: queries the rankings of hybrid cloud traffic data for the Cloud Enterprise Network (CEN) instances, CEN connections, virtual border routers (VBRs), and IP addresses.
+        # *   2Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses.
+        # *   5Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses, local and remote ports, and protocols.
+        # *   CloudPort: queries the rankings of hybrid cloud traffic data for the local ports.
+        # *   OtherPort: queries the rankings of hybrid cloud traffic data for the remote ports.
+        # *   Protocol: queries the rankings of hybrid cloud traffic data for the protocols.
         self.group_by = group_by
+        # The metric for ranking hybrid cloud traffic data. Default value: Bytes. This value specifies that hybrid cloud traffic data is ranked by traffic volumes.
         self.order_by = order_by
+        # The remote IP address.
         self.other_ip = other_ip
+        # The remote port.
+        # 
+        # >  This parameter is required only if you set GroupBy to OtherPort.
         self.other_port = other_port
+        # The protocol number.
+        # 
+        # >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
         self.protocol = protocol
+        # The local region.
         self.region_id = region_id
+        # The order for ranking hybrid cloud traffic data. Valid values:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.sort = sort
+        # Specifies top-N traffic data to display. Default value: **10**. This value specifies that top-10 traffic data is displayed by default. Maximum value: **100**.
         self.top_n = top_n
+        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+        # 
+        # >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
         self.use_multi_account = use_multi_account
+        # The ID of the VBR that is associated with the Express Connect circuit.
         self.virtual_border_router_id = virtual_border_router_id
 
     def validate(self):
@@ -2716,23 +2850,62 @@ class GetVbrFlowTopNShrinkRequest(TeaModel):
         use_multi_account: bool = None,
         virtual_border_router_id: str = None,
     ):
+        # The IDs of member accounts.
         self.account_ids_shrink = account_ids_shrink
+        # The CEN connection ID.
         self.attachment_id = attachment_id
+        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.begin_time = begin_time
+        # The CEN instance ID.
         self.cen_id = cen_id
+        # The local IP address.
         self.cloud_ip = cloud_ip
+        # The local port.
+        # 
+        # >  This parameter is required only if you set GroupBy to CloudPort.
         self.cloud_port = cloud_port
+        # The direction of the hybrid cloud traffic in the local regions or for the local IP addresses. Valid values:
+        # 
+        # *   in: traffic from a data center to Alibaba Cloud
+        # *   out: traffic from Alibaba Cloud to a data center
         self.direction = direction
+        # The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. The maximum time range that you can query is 24 hours.
         self.end_time = end_time
+        # The dimension for ranking hybrid cloud traffic data. The value of this parameter is case-sensitive. Valid values:
+        # 
+        # *   1Tuple: queries the rankings of hybrid cloud traffic data for the Cloud Enterprise Network (CEN) instances, CEN connections, virtual border routers (VBRs), and IP addresses.
+        # *   2Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses.
+        # *   5Tuple: queries the rankings of hybrid cloud traffic data for the local and remote IP addresses, local and remote ports, and protocols.
+        # *   CloudPort: queries the rankings of hybrid cloud traffic data for the local ports.
+        # *   OtherPort: queries the rankings of hybrid cloud traffic data for the remote ports.
+        # *   Protocol: queries the rankings of hybrid cloud traffic data for the protocols.
         self.group_by = group_by
+        # The metric for ranking hybrid cloud traffic data. Default value: Bytes. This value specifies that hybrid cloud traffic data is ranked by traffic volumes.
         self.order_by = order_by
+        # The remote IP address.
         self.other_ip = other_ip
+        # The remote port.
+        # 
+        # >  This parameter is required only if you set GroupBy to OtherPort.
         self.other_port = other_port
+        # The protocol number.
+        # 
+        # >  All protocols are supported. This parameter is required only if you set GroupBy to 5Tuple or Protocol.
         self.protocol = protocol
+        # The local region.
         self.region_id = region_id
+        # The order for ranking hybrid cloud traffic data. Valid values:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.sort = sort
+        # Specifies top-N traffic data to display. Default value: **10**. This value specifies that top-10 traffic data is displayed by default. Maximum value: **100**.
         self.top_n = top_n
+        # Specifies whether to enable the multi-account management feature. Default value: **false**. This value specifies that the multi-account management feature is disabled.
+        # 
+        # >  By default, the multi-account management feature is not available. If you want to use this feature, contact your account manager to apply for permissions.
         self.use_multi_account = use_multi_account
+        # The ID of the VBR that is associated with the Express Connect circuit.
         self.virtual_border_router_id = virtual_border_router_id
 
     def validate(self):
@@ -2838,16 +3011,27 @@ class GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN(TeaModel):
         protocol: str = None,
         virtual_border_router_id: str = None,
     ):
+        # The account ID.
         self.account_id = account_id
+        # The CEN connection ID.
         self.attachment_id = attachment_id
+        # The total volume of traffic in the specified time range.
         self.bytes = bytes
+        # The local IP address.
         self.cloud_ip = cloud_ip
+        # The local port.
         self.cloud_port = cloud_port
+        # The local region where the local IP address resides.
         self.cloud_region = cloud_region
+        # The remote IP address.
         self.other_ip = other_ip
+        # The remote port.
         self.other_port = other_port
+        # The total number of packets in the specified time range.
         self.packets = packets
+        # The protocol number.
         self.protocol = protocol
+        # The ID of the VBR that is associated with the Express Connect circuit.
         self.virtual_border_router_id = virtual_border_router_id
 
     def validate(self):
@@ -2916,7 +3100,9 @@ class GetVbrFlowTopNResponseBody(TeaModel):
         request_id: str = None,
         virtual_border_router_flowlog_top_n: List[GetVbrFlowTopNResponseBodyVirtualBorderRouterFlowlogTopN] = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ranking result of hybrid cloud traffic data.
         self.virtual_border_router_flowlog_top_n = virtual_border_router_flowlog_top_n
 
     def validate(self):
