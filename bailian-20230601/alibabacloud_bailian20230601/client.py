@@ -41,6 +41,80 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_enterprise_tag_with_options(
+        self,
+        request: bailian_20230601_models.AddEnterpriseTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.AddEnterpriseTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddEnterpriseTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.AddEnterpriseTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_enterprise_tag_with_options_async(
+        self,
+        request: bailian_20230601_models.AddEnterpriseTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.AddEnterpriseTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddEnterpriseTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.AddEnterpriseTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_enterprise_tag(
+        self,
+        request: bailian_20230601_models.AddEnterpriseTagRequest,
+    ) -> bailian_20230601_models.AddEnterpriseTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_enterprise_tag_with_options(request, runtime)
+
+    async def add_enterprise_tag_async(
+        self,
+        request: bailian_20230601_models.AddEnterpriseTagRequest,
+    ) -> bailian_20230601_models.AddEnterpriseTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_enterprise_tag_with_options_async(request, runtime)
+
     def cancel_fine_tune_job_with_options(
         self,
         request: bailian_20230601_models.CancelFineTuneJobRequest,
@@ -466,6 +540,80 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.CreateTokenResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_token_with_options_async(request, runtime)
+
+    def del_enterprise_tag_with_options(
+        self,
+        request: bailian_20230601_models.DelEnterpriseTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.DelEnterpriseTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DelEnterpriseTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.DelEnterpriseTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def del_enterprise_tag_with_options_async(
+        self,
+        request: bailian_20230601_models.DelEnterpriseTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.DelEnterpriseTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DelEnterpriseTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.DelEnterpriseTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def del_enterprise_tag(
+        self,
+        request: bailian_20230601_models.DelEnterpriseTagRequest,
+    ) -> bailian_20230601_models.DelEnterpriseTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.del_enterprise_tag_with_options(request, runtime)
+
+    async def del_enterprise_tag_async(
+        self,
+        request: bailian_20230601_models.DelEnterpriseTagRequest,
+    ) -> bailian_20230601_models.DelEnterpriseTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.del_enterprise_tag_with_options_async(request, runtime)
 
     def delete_enterprise_data_with_options(
         self,
@@ -1402,6 +1550,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
         if not UtilClient.is_unset(request.document_list_shrink):
             query['DocumentList'] = request.document_list_shrink
         if not UtilClient.is_unset(request.owner_id):
@@ -1444,6 +1594,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_type):
+            query['DataType'] = request.data_type
         if not UtilClient.is_unset(request.document_list_shrink):
             query['DocumentList'] = request.document_list_shrink
         if not UtilClient.is_unset(request.owner_id):
@@ -1833,6 +1985,158 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_enterprise_data_list_with_options_async(request, runtime)
 
+    def query_enterprise_data_tag_with_options(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseDataTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.QueryEnterpriseDataTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEnterpriseDataTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.QueryEnterpriseDataTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_enterprise_data_tag_with_options_async(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseDataTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.QueryEnterpriseDataTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEnterpriseDataTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.QueryEnterpriseDataTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_enterprise_data_tag(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseDataTagRequest,
+    ) -> bailian_20230601_models.QueryEnterpriseDataTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_enterprise_data_tag_with_options(request, runtime)
+
+    async def query_enterprise_data_tag_async(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseDataTagRequest,
+    ) -> bailian_20230601_models.QueryEnterpriseDataTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_enterprise_data_tag_with_options_async(request, runtime)
+
+    def query_enterprise_tag_list_with_options(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseTagListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.QueryEnterpriseTagListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEnterpriseTagList',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.QueryEnterpriseTagListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_enterprise_tag_list_with_options_async(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseTagListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.QueryEnterpriseTagListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryEnterpriseTagList',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.QueryEnterpriseTagListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_enterprise_tag_list(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseTagListRequest,
+    ) -> bailian_20230601_models.QueryEnterpriseTagListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_enterprise_tag_list_with_options(request, runtime)
+
+    async def query_enterprise_tag_list_async(
+        self,
+        request: bailian_20230601_models.QueryEnterpriseTagListRequest,
+    ) -> bailian_20230601_models.QueryEnterpriseTagListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_enterprise_tag_list_with_options_async(request, runtime)
+
     def query_user_document_with_options(
         self,
         request: bailian_20230601_models.QueryUserDocumentRequest,
@@ -2016,3 +2320,253 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.SearchEnterpriseDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.search_enterprise_data_with_options_async(request, runtime)
+
+    def update_enterprise_data_info_with_options(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseDataInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.data_name):
+            query['DataName'] = request.data_name
+        if not UtilClient.is_unset(request.file_preview_link):
+            query['FilePreviewLink'] = request.file_preview_link
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseDataInfo',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.UpdateEnterpriseDataInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_enterprise_data_info_with_options_async(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseDataInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.data_name):
+            query['DataName'] = request.data_name
+        if not UtilClient.is_unset(request.file_preview_link):
+            query['FilePreviewLink'] = request.file_preview_link
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseDataInfo',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.UpdateEnterpriseDataInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_enterprise_data_info(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseDataInfoRequest,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_enterprise_data_info_with_options(request, runtime)
+
+    async def update_enterprise_data_info_async(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseDataInfoRequest,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_enterprise_data_info_with_options_async(request, runtime)
+
+    def update_enterprise_data_tag_with_options(
+        self,
+        tmp_req: bailian_20230601_models.UpdateEnterpriseDataTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataTagResponse:
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20230601_models.UpdateEnterpriseDataTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseDataTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.UpdateEnterpriseDataTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_enterprise_data_tag_with_options_async(
+        self,
+        tmp_req: bailian_20230601_models.UpdateEnterpriseDataTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataTagResponse:
+        UtilClient.validate_model(tmp_req)
+        request = bailian_20230601_models.UpdateEnterpriseDataTagShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tags):
+            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.data_id):
+            query['DataId'] = request.data_id
+        if not UtilClient.is_unset(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseDataTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.UpdateEnterpriseDataTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_enterprise_data_tag(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseDataTagRequest,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_enterprise_data_tag_with_options(request, runtime)
+
+    async def update_enterprise_data_tag_async(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseDataTagRequest,
+    ) -> bailian_20230601_models.UpdateEnterpriseDataTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_enterprise_data_tag_with_options_async(request, runtime)
+
+    def update_enterprise_tag_with_options(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.UpdateEnterpriseTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.UpdateEnterpriseTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_enterprise_tag_with_options_async(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.UpdateEnterpriseTagResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.tag_id):
+            query['TagId'] = request.tag_id
+        if not UtilClient.is_unset(request.tag_name):
+            query['TagName'] = request.tag_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateEnterpriseTag',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.UpdateEnterpriseTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_enterprise_tag(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseTagRequest,
+    ) -> bailian_20230601_models.UpdateEnterpriseTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_enterprise_tag_with_options(request, runtime)
+
+    async def update_enterprise_tag_async(
+        self,
+        request: bailian_20230601_models.UpdateEnterpriseTagRequest,
+    ) -> bailian_20230601_models.UpdateEnterpriseTagResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_enterprise_tag_with_options_async(request, runtime)

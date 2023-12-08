@@ -4,6 +4,169 @@ from Tea.model import TeaModel
 from typing import Dict, List
 
 
+class AddEnterpriseTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        tag_name: str = None,
+    ):
+        self.agent_key = agent_key
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class AddEnterpriseTagResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        tag_id: int = None,
+        tag_name: str = None,
+    ):
+        self.tag_id = tag_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class AddEnterpriseTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: AddEnterpriseTagResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = AddEnterpriseTagResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class AddEnterpriseTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddEnterpriseTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddEnterpriseTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelFineTuneJobRequest(TeaModel):
     def __init__(
         self,
@@ -893,6 +1056,134 @@ class CreateTokenResponse(TeaModel):
         return self
 
 
+class DelEnterpriseTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        tag_id: int = None,
+    ):
+        self.agent_key = agent_key
+        self.tag_id = tag_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        return self
+
+
+class DelEnterpriseTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DelEnterpriseTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DelEnterpriseTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DelEnterpriseTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteEnterpriseDataRequest(TeaModel):
     def __init__(
         self,
@@ -1624,7 +1915,6 @@ class GetEnterpriseDataByDataIdResponseBodyData(TeaModel):
         data_status_code: int = None,
         data_type: str = None,
         data_type_code: int = None,
-        download_url: str = None,
         status_detail: str = None,
         store_type: str = None,
         tags: str = None,
@@ -1637,7 +1927,6 @@ class GetEnterpriseDataByDataIdResponseBodyData(TeaModel):
         self.data_status_code = data_status_code
         self.data_type = data_type
         self.data_type_code = data_type_code
-        self.download_url = download_url
         self.status_detail = status_detail
         self.store_type = store_type
         self.tags = tags
@@ -1666,8 +1955,6 @@ class GetEnterpriseDataByDataIdResponseBodyData(TeaModel):
             result['DataType'] = self.data_type
         if self.data_type_code is not None:
             result['DataTypeCode'] = self.data_type_code
-        if self.download_url is not None:
-            result['DownloadUrl'] = self.download_url
         if self.status_detail is not None:
             result['StatusDetail'] = self.status_detail
         if self.store_type is not None:
@@ -1694,8 +1981,6 @@ class GetEnterpriseDataByDataIdResponseBodyData(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('DataTypeCode') is not None:
             self.data_type_code = m.get('DataTypeCode')
-        if m.get('DownloadUrl') is not None:
-            self.download_url = m.get('DownloadUrl')
         if m.get('StatusDetail') is not None:
             self.status_detail = m.get('StatusDetail')
         if m.get('StoreType') is not None:
@@ -2961,12 +3246,14 @@ class ImportEnterpriseDocumentRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
+        data_type: int = None,
         document_list: List[ImportEnterpriseDocumentRequestDocumentList] = None,
         owner_id: int = None,
         store_id: int = None,
         tags: List[str] = None,
     ):
         self.agent_key = agent_key
+        self.data_type = data_type
         self.document_list = document_list
         self.owner_id = owner_id
         self.store_id = store_id
@@ -2986,6 +3273,8 @@ class ImportEnterpriseDocumentRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         result['DocumentList'] = []
         if self.document_list is not None:
             for k in self.document_list:
@@ -3002,6 +3291,8 @@ class ImportEnterpriseDocumentRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         self.document_list = []
         if m.get('DocumentList') is not None:
             for k in m.get('DocumentList'):
@@ -3020,12 +3311,14 @@ class ImportEnterpriseDocumentShrinkRequest(TeaModel):
     def __init__(
         self,
         agent_key: str = None,
+        data_type: int = None,
         document_list_shrink: str = None,
         owner_id: int = None,
         store_id: int = None,
         tags_shrink: str = None,
     ):
         self.agent_key = agent_key
+        self.data_type = data_type
         self.document_list_shrink = document_list_shrink
         self.owner_id = owner_id
         self.store_id = store_id
@@ -3042,6 +3335,8 @@ class ImportEnterpriseDocumentShrinkRequest(TeaModel):
         result = dict()
         if self.agent_key is not None:
             result['AgentKey'] = self.agent_key
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
         if self.document_list_shrink is not None:
             result['DocumentList'] = self.document_list_shrink
         if self.owner_id is not None:
@@ -3056,6 +3351,8 @@ class ImportEnterpriseDocumentShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AgentKey') is not None:
             self.agent_key = m.get('AgentKey')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
         if m.get('DocumentList') is not None:
             self.document_list_shrink = m.get('DocumentList')
         if m.get('OwnerId') is not None:
@@ -3924,7 +4221,6 @@ class QueryEnterpriseDataListResponseBodyDataList(TeaModel):
         data_status_code: int = None,
         data_type: str = None,
         data_type_code: int = None,
-        download_url: str = None,
         status_detail: str = None,
         store_type: str = None,
         tags: str = None,
@@ -3937,7 +4233,6 @@ class QueryEnterpriseDataListResponseBodyDataList(TeaModel):
         self.data_status_code = data_status_code
         self.data_type = data_type
         self.data_type_code = data_type_code
-        self.download_url = download_url
         self.status_detail = status_detail
         self.store_type = store_type
         self.tags = tags
@@ -3966,8 +4261,6 @@ class QueryEnterpriseDataListResponseBodyDataList(TeaModel):
             result['DataType'] = self.data_type
         if self.data_type_code is not None:
             result['DataTypeCode'] = self.data_type_code
-        if self.download_url is not None:
-            result['DownloadUrl'] = self.download_url
         if self.status_detail is not None:
             result['StatusDetail'] = self.status_detail
         if self.store_type is not None:
@@ -3994,8 +4287,6 @@ class QueryEnterpriseDataListResponseBodyDataList(TeaModel):
             self.data_type = m.get('DataType')
         if m.get('DataTypeCode') is not None:
             self.data_type_code = m.get('DataTypeCode')
-        if m.get('DownloadUrl') is not None:
-            self.download_url = m.get('DownloadUrl')
         if m.get('StatusDetail') is not None:
             self.status_detail = m.get('StatusDetail')
         if m.get('StoreType') is not None:
@@ -4153,6 +4444,403 @@ class QueryEnterpriseDataListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryEnterpriseDataListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryEnterpriseDataTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        data_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.data_id = data_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        return self
+
+
+class QueryEnterpriseDataTagResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        tag_id: int = None,
+        tag_name: str = None,
+    ):
+        self.data_id = data_id
+        self.tag_id = tag_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class QueryEnterpriseDataTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[QueryEnterpriseDataTagResponseBodyData] = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryEnterpriseDataTagResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryEnterpriseDataTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryEnterpriseDataTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryEnterpriseDataTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryEnterpriseTagListRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        page_no: int = None,
+        page_size: int = None,
+    ):
+        self.agent_key = agent_key
+        self.page_no = page_no
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class QueryEnterpriseTagListResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        tag_id: int = None,
+        tag_name: str = None,
+    ):
+        self.tag_id = tag_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class QueryEnterpriseTagListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[QueryEnterpriseTagListResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = QueryEnterpriseTagListResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class QueryEnterpriseTagListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: QueryEnterpriseTagListResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = QueryEnterpriseTagListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryEnterpriseTagListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryEnterpriseTagListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryEnterpriseTagListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4615,6 +5303,494 @@ class SearchEnterpriseDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchEnterpriseDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateEnterpriseDataInfoRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        biz_id: str = None,
+        data_id: str = None,
+        data_name: str = None,
+        file_preview_link: str = None,
+    ):
+        self.agent_key = agent_key
+        self.biz_id = biz_id
+        self.data_id = data_id
+        self.data_name = data_name
+        self.file_preview_link = file_preview_link
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.biz_id is not None:
+            result['BizId'] = self.biz_id
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.data_name is not None:
+            result['DataName'] = self.data_name
+        if self.file_preview_link is not None:
+            result['FilePreviewLink'] = self.file_preview_link
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('BizId') is not None:
+            self.biz_id = m.get('BizId')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('DataName') is not None:
+            self.data_name = m.get('DataName')
+        if m.get('FilePreviewLink') is not None:
+            self.file_preview_link = m.get('FilePreviewLink')
+        return self
+
+
+class UpdateEnterpriseDataInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateEnterpriseDataInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateEnterpriseDataInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateEnterpriseDataInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateEnterpriseDataTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        data_id: str = None,
+        tags: List[int] = None,
+    ):
+        self.agent_key = agent_key
+        self.data_id = data_id
+        self.tags = tags
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.tags is not None:
+            result['Tags'] = self.tags
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+        return self
+
+
+class UpdateEnterpriseDataTagShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        data_id: str = None,
+        tags_shrink: str = None,
+    ):
+        self.agent_key = agent_key
+        self.data_id = data_id
+        self.tags_shrink = tags_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('Tags') is not None:
+            self.tags_shrink = m.get('Tags')
+        return self
+
+
+class UpdateEnterpriseDataTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateEnterpriseDataTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateEnterpriseDataTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateEnterpriseDataTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateEnterpriseTagRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        tag_id: int = None,
+        tag_name: str = None,
+    ):
+        self.agent_key = agent_key
+        self.tag_id = tag_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class UpdateEnterpriseTagResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        tag_id: int = None,
+        tag_name: str = None,
+    ):
+        self.tag_id = tag_id
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_id is not None:
+            result['TagId'] = self.tag_id
+        if self.tag_name is not None:
+            result['TagName'] = self.tag_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagId') is not None:
+            self.tag_id = m.get('TagId')
+        if m.get('TagName') is not None:
+            self.tag_name = m.get('TagName')
+        return self
+
+
+class UpdateEnterpriseTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: UpdateEnterpriseTagResponseBodyData = None,
+        error_code: str = None,
+        error_msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_msg = error_msg
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_msg is not None:
+            result['ErrorMsg'] = self.error_msg
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = UpdateEnterpriseTagResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMsg') is not None:
+            self.error_msg = m.get('ErrorMsg')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateEnterpriseTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateEnterpriseTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateEnterpriseTagResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
