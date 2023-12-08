@@ -1048,10 +1048,18 @@ class Client(OpenApiClient):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
             query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_bak):
+            query['VSwitchBak'] = request.v_switch_bak
+        if not UtilClient.is_unset(request.v_switch_bak_2):
+            query['VSwitchBak2'] = request.v_switch_bak_2
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zond_id_bak_2):
+            query['ZondIdBak2'] = request.zond_id_bak_2
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_id_bak):
+            query['ZoneIdBak'] = request.zone_id_bak
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1124,10 +1132,18 @@ class Client(OpenApiClient):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.vpcid):
             query['VPCId'] = request.vpcid
+        if not UtilClient.is_unset(request.v_switch_bak):
+            query['VSwitchBak'] = request.v_switch_bak
+        if not UtilClient.is_unset(request.v_switch_bak_2):
+            query['VSwitchBak2'] = request.v_switch_bak_2
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
+        if not UtilClient.is_unset(request.zond_id_bak_2):
+            query['ZondIdBak2'] = request.zond_id_bak_2
         if not UtilClient.is_unset(request.zone_id):
             query['ZoneId'] = request.zone_id
+        if not UtilClient.is_unset(request.zone_id_bak):
+            query['ZoneIdBak'] = request.zone_id_bak
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

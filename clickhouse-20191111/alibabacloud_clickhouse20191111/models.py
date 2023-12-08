@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, List
+from typing import Dict, List, Any
 
 
 class AllocateClusterPublicConnectionRequest(TeaModel):
@@ -1486,8 +1486,12 @@ class CreateDBInstanceRequest(TeaModel):
         source_dbcluster_id: str = None,
         used_time: str = None,
         vpcid: str = None,
+        v_switch_bak: str = None,
+        v_switch_bak_2: str = None,
         v_switch_id: str = None,
+        zond_id_bak_2: str = None,
         zone_id: str = None,
+        zone_id_bak: str = None,
     ):
         # The ID of the backup set. You can call the [DescribeBackups](~~360339~~) operation to query the backup sets.
         # 
@@ -1578,10 +1582,14 @@ class CreateDBInstanceRequest(TeaModel):
         self.used_time = used_time
         # The VPC ID.
         self.vpcid = vpcid
+        self.v_switch_bak = v_switch_bak
+        self.v_switch_bak_2 = v_switch_bak_2
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
+        self.zond_id_bak_2 = zond_id_bak_2
         # The zone ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent zone list.
         self.zone_id = zone_id
+        self.zone_id_bak = zone_id_bak
 
     def validate(self):
         pass
@@ -1638,10 +1646,18 @@ class CreateDBInstanceRequest(TeaModel):
             result['UsedTime'] = self.used_time
         if self.vpcid is not None:
             result['VPCId'] = self.vpcid
+        if self.v_switch_bak is not None:
+            result['VSwitchBak'] = self.v_switch_bak
+        if self.v_switch_bak_2 is not None:
+            result['VSwitchBak2'] = self.v_switch_bak_2
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.zond_id_bak_2 is not None:
+            result['ZondIdBak2'] = self.zond_id_bak_2
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.zone_id_bak is not None:
+            result['ZoneIdBak'] = self.zone_id_bak
         return result
 
     def from_map(self, m: dict = None):
@@ -1692,10 +1708,18 @@ class CreateDBInstanceRequest(TeaModel):
             self.used_time = m.get('UsedTime')
         if m.get('VPCId') is not None:
             self.vpcid = m.get('VPCId')
+        if m.get('VSwitchBak') is not None:
+            self.v_switch_bak = m.get('VSwitchBak')
+        if m.get('VSwitchBak2') is not None:
+            self.v_switch_bak_2 = m.get('VSwitchBak2')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('ZondIdBak2') is not None:
+            self.zond_id_bak_2 = m.get('ZondIdBak2')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('ZoneIdBak') is not None:
+            self.zone_id_bak = m.get('ZoneIdBak')
         return self
 
 
@@ -5629,6 +5653,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         vpc_id: str = None,
         vpc_ip_addr: str = None,
         zone_id: str = None,
+        zone_id_vswitch_map: Dict[str, Any] = None,
         zookeeper_class: str = None,
     ):
         self.ali_uid = ali_uid
@@ -5681,6 +5706,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.vpc_id = vpc_id
         self.vpc_ip_addr = vpc_ip_addr
         self.zone_id = zone_id
+        self.zone_id_vswitch_map = zone_id_vswitch_map
         self.zookeeper_class = zookeeper_class
 
     def validate(self):
@@ -5793,6 +5819,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             result['VpcIpAddr'] = self.vpc_ip_addr
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
+        if self.zone_id_vswitch_map is not None:
+            result['ZoneIdVswitchMap'] = self.zone_id_vswitch_map
         if self.zookeeper_class is not None:
             result['ZookeeperClass'] = self.zookeeper_class
         return result
@@ -5899,6 +5927,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             self.vpc_ip_addr = m.get('VpcIpAddr')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+        if m.get('ZoneIdVswitchMap') is not None:
+            self.zone_id_vswitch_map = m.get('ZoneIdVswitchMap')
         if m.get('ZookeeperClass') is not None:
             self.zookeeper_class = m.get('ZookeeperClass')
         return self

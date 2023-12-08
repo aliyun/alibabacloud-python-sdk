@@ -1,3 +1,6 @@
+2023-12-08 Version: 3.1.6
+- Generated python 2019-11-11 for clickhouse.
+
 2023-11-07 Version: 3.1.5
 - Generated python 2019-11-11 for clickhouse.
 
