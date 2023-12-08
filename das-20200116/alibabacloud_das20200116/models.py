@@ -2261,6 +2261,187 @@ class CreateRequestDiagnosisResponse(TeaModel):
         return self
 
 
+class CreateStorageAnalysisTaskRequest(TeaModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        instance_id: str = None,
+        node_id: str = None,
+        table_name: str = None,
+    ):
+        self.db_name = db_name
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class CreateStorageAnalysisTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        create_task_success: bool = None,
+        error_message: str = None,
+        task_id: str = None,
+    ):
+        self.create_task_success = create_task_success
+        self.error_message = error_message
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_task_success is not None:
+            result['CreateTaskSuccess'] = self.create_task_success
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTaskSuccess') is not None:
+            self.create_task_success = m.get('CreateTaskSuccess')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class CreateStorageAnalysisTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: CreateStorageAnalysisTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = CreateStorageAnalysisTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateStorageAnalysisTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateStorageAnalysisTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateStorageAnalysisTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteCloudBenchTaskRequest(TeaModel):
     def __init__(
         self,
@@ -10049,6 +10230,264 @@ class GetAsyncErrorRequestStatResultResponse(TeaModel):
         return self
 
 
+class GetAutoIncrementUsageStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        db_names: str = None,
+        instance_id: str = None,
+        ratio_filter: float = None,
+        real_time: bool = None,
+    ):
+        self.db_names = db_names
+        self.instance_id = instance_id
+        self.ratio_filter = ratio_filter
+        self.real_time = real_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_names is not None:
+            result['DbNames'] = self.db_names
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.ratio_filter is not None:
+            result['RatioFilter'] = self.ratio_filter
+        if self.real_time is not None:
+            result['RealTime'] = self.real_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbNames') is not None:
+            self.db_names = m.get('DbNames')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RatioFilter') is not None:
+            self.ratio_filter = m.get('RatioFilter')
+        if m.get('RealTime') is not None:
+            self.real_time = m.get('RealTime')
+        return self
+
+
+class GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList(TeaModel):
+    def __init__(
+        self,
+        auto_increment_current_value: int = None,
+        auto_increment_ratio: float = None,
+        column_name: str = None,
+        db_name: str = None,
+        maximum_value: int = None,
+        table_name: str = None,
+    ):
+        self.auto_increment_current_value = auto_increment_current_value
+        self.auto_increment_ratio = auto_increment_ratio
+        self.column_name = column_name
+        self.db_name = db_name
+        self.maximum_value = maximum_value
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_increment_current_value is not None:
+            result['AutoIncrementCurrentValue'] = self.auto_increment_current_value
+        if self.auto_increment_ratio is not None:
+            result['AutoIncrementRatio'] = self.auto_increment_ratio
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.maximum_value is not None:
+            result['MaximumValue'] = self.maximum_value
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoIncrementCurrentValue') is not None:
+            self.auto_increment_current_value = m.get('AutoIncrementCurrentValue')
+        if m.get('AutoIncrementRatio') is not None:
+            self.auto_increment_ratio = m.get('AutoIncrementRatio')
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('MaximumValue') is not None:
+            self.maximum_value = m.get('MaximumValue')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetAutoIncrementUsageStatisticResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        auto_increment_usage_list: List[GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList] = None,
+        error_info: str = None,
+        finish: bool = None,
+        task_status: str = None,
+        timestamp: int = None,
+    ):
+        self.auto_increment_usage_list = auto_increment_usage_list
+        self.error_info = error_info
+        self.finish = finish
+        self.task_status = task_status
+        self.timestamp = timestamp
+
+    def validate(self):
+        if self.auto_increment_usage_list:
+            for k in self.auto_increment_usage_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AutoIncrementUsageList'] = []
+        if self.auto_increment_usage_list is not None:
+            for k in self.auto_increment_usage_list:
+                result['AutoIncrementUsageList'].append(k.to_map() if k else None)
+        if self.error_info is not None:
+            result['ErrorInfo'] = self.error_info
+        if self.finish is not None:
+            result['Finish'] = self.finish
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.auto_increment_usage_list = []
+        if m.get('AutoIncrementUsageList') is not None:
+            for k in m.get('AutoIncrementUsageList'):
+                temp_model = GetAutoIncrementUsageStatisticResponseBodyDataAutoIncrementUsageList()
+                self.auto_increment_usage_list.append(temp_model.from_map(k))
+        if m.get('ErrorInfo') is not None:
+            self.error_info = m.get('ErrorInfo')
+        if m.get('Finish') is not None:
+            self.finish = m.get('Finish')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class GetAutoIncrementUsageStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetAutoIncrementUsageStatisticResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetAutoIncrementUsageStatisticResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetAutoIncrementUsageStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetAutoIncrementUsageStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetAutoIncrementUsageStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetAutoResourceOptimizeRulesRequest(TeaModel):
     def __init__(
         self,
@@ -12823,21 +13262,21 @@ class GetErrorRequestSampleResponseBodyData(TeaModel):
         timestamp: int = None,
         user: str = None,
     ):
-        # The name of the database.
+        # The database name.
         self.database = database
-        # The error code.
+        # The error code that is returned.
         self.error_code = error_code
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
         # The IP address of the client that executes the SQL statement.
         self.origin_host = origin_host
         # The SQL statement.
         self.sql = sql
-        # The ID of the SQL query.
+        # The SQL query ID.
         self.sql_id = sql_id
         # The table information.
         self.tables = tables
-        # The time when the SQL query was executed. The value of this parameter is a UNIX timestamp. Unit: ms.
+        # The time when the SQL query was executed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.timestamp = timestamp
         # The username of the account that is used to log on to the database.
         self.user = user
@@ -16707,7 +17146,7 @@ class GetMongoDBCurrentOpRequest(TeaModel):
         node_id: str = None,
         role: str = None,
     ):
-        # The condition used to filter sessions during the query. For more information, see the currentOp command of MongoDB.
+        # The `db.currentOp()` command that is used to filter sessions. For more information, see [db.currentOp()](https://docs.mongodb.com/manual/reference/method/db.currentOp/) of MongoDB Documentation.
         self.filter_doc = filter_doc
         # The instance ID.
         self.instance_id = instance_id
@@ -16772,7 +17211,10 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(TeaModel):
         secs_running: int = None,
         shard: str = None,
     ):
-        # Indicates whether the operation is active.
+        # Indicates whether the operation is active. Valid values:
+        # 
+        # *   **true**\
+        # *   **false**\
         self.active = active
         # The IP address of the client.
         self.client = client
@@ -16782,11 +17224,14 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(TeaModel):
         self.connection_id = connection_id
         # The description of the connection.
         self.desc = desc
-        # The driver.
+        # The driver for MongoDB.
         self.driver = driver
         # The host.
         self.host = host
-        # Indicates whether the operation is marked as terminated. If the operation is marked as terminated, true is returned.
+        # Indicates whether the operation is marked as terminated.
+        # 
+        # *   **true**\
+        # *   **false**\
         self.kill_pending = kill_pending
         # The namespace.
         self.ns = ns
@@ -16806,7 +17251,9 @@ class GetMongoDBCurrentOpResponseBodyDataSessionList(TeaModel):
         self.platform = platform
         # The duration of the operation. Unit: seconds.
         self.secs_running = secs_running
-        # The shard.
+        # The ID of the data shard.
+        # 
+        # >  This parameter is returned for sharded cluster instances.
         self.shard = shard
 
     def validate(self):
@@ -17944,7 +18391,7 @@ class GetPfsMetricTrendsRequest(TeaModel):
     ):
         # The end of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         # 
-        # >  The end time must be later than the start time. You can view the data of up to seven days within the last month.
+        # >  The end time must be later than the start time. You can view the data of up to seven days in the previous 30 days.
         self.end_time = end_time
         # The instance ID.
         self.instance_id = instance_id
@@ -17957,7 +18404,7 @@ class GetPfsMetricTrendsRequest(TeaModel):
         self.metric = metric
         # The node ID.
         # 
-        # >  You must specify this parameter for an ApsaraDB RDS for MySQL Cluster Edition instance and a PolarDB for MySQL cluster.
+        # >  You must specify this parameter for an ApsaraDB RDS for MySQL cluster instance and a PolarDB for MySQL cluster.
         self.node_id = node_id
         # The beginning of the time range to query. Set this parameter to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
@@ -24305,6 +24752,449 @@ class GetSqlOptimizeAdviceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetSqlOptimizeAdviceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetStorageAnalysisResultRequest(TeaModel):
+    def __init__(
+        self,
+        instance_id: str = None,
+        node_id: str = None,
+        task_id: str = None,
+    ):
+        self.instance_id = instance_id
+        self.node_id = node_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList(TeaModel):
+    def __init__(
+        self,
+        associated_data: str = None,
+        db_name: str = None,
+        optimize_advice: str = None,
+        optimize_item_name: str = None,
+        table_name: str = None,
+    ):
+        self.associated_data = associated_data
+        self.db_name = db_name
+        self.optimize_advice = optimize_advice
+        self.optimize_item_name = optimize_item_name
+        self.table_name = table_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associated_data is not None:
+            result['AssociatedData'] = self.associated_data
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.optimize_advice is not None:
+            result['OptimizeAdvice'] = self.optimize_advice
+        if self.optimize_item_name is not None:
+            result['OptimizeItemName'] = self.optimize_item_name
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociatedData') is not None:
+            self.associated_data = m.get('AssociatedData')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('OptimizeAdvice') is not None:
+            self.optimize_advice = m.get('OptimizeAdvice')
+        if m.get('OptimizeItemName') is not None:
+            self.optimize_item_name = m.get('OptimizeItemName')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        return self
+
+
+class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats(TeaModel):
+    def __init__(
+        self,
+        avg_row_length: int = None,
+        data_free: int = None,
+        data_size: int = None,
+        db_name: str = None,
+        engine: str = None,
+        index_size: int = None,
+        phy_total_size: int = None,
+        physical_file_size: int = None,
+        table_name: str = None,
+        table_rows: int = None,
+        table_type: str = None,
+        total_size: int = None,
+    ):
+        self.avg_row_length = avg_row_length
+        self.data_free = data_free
+        self.data_size = data_size
+        self.db_name = db_name
+        self.engine = engine
+        self.index_size = index_size
+        self.phy_total_size = phy_total_size
+        self.physical_file_size = physical_file_size
+        self.table_name = table_name
+        self.table_rows = table_rows
+        self.table_type = table_type
+        self.total_size = total_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_row_length is not None:
+            result['AvgRowLength'] = self.avg_row_length
+        if self.data_free is not None:
+            result['DataFree'] = self.data_free
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.engine is not None:
+            result['Engine'] = self.engine
+        if self.index_size is not None:
+            result['IndexSize'] = self.index_size
+        if self.phy_total_size is not None:
+            result['PhyTotalSize'] = self.phy_total_size
+        if self.physical_file_size is not None:
+            result['PhysicalFileSize'] = self.physical_file_size
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
+        if self.table_rows is not None:
+            result['TableRows'] = self.table_rows
+        if self.table_type is not None:
+            result['TableType'] = self.table_type
+        if self.total_size is not None:
+            result['TotalSize'] = self.total_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgRowLength') is not None:
+            self.avg_row_length = m.get('AvgRowLength')
+        if m.get('DataFree') is not None:
+            self.data_free = m.get('DataFree')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('Engine') is not None:
+            self.engine = m.get('Engine')
+        if m.get('IndexSize') is not None:
+            self.index_size = m.get('IndexSize')
+        if m.get('PhyTotalSize') is not None:
+            self.phy_total_size = m.get('PhyTotalSize')
+        if m.get('PhysicalFileSize') is not None:
+            self.physical_file_size = m.get('PhysicalFileSize')
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
+        if m.get('TableRows') is not None:
+            self.table_rows = m.get('TableRows')
+        if m.get('TableType') is not None:
+            self.table_type = m.get('TableType')
+        if m.get('TotalSize') is not None:
+            self.total_size = m.get('TotalSize')
+        return self
+
+
+class GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult(TeaModel):
+    def __init__(
+        self,
+        analysis_error_type: str = None,
+        analysis_success: bool = None,
+        daily_increment: int = None,
+        estimate_available_days: int = None,
+        need_optimize_item_list: List[GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList] = None,
+        table_stats: List[GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats] = None,
+        total_free_storage_size: int = None,
+        total_storage_size: int = None,
+        total_used_storage_size: int = None,
+    ):
+        self.analysis_error_type = analysis_error_type
+        self.analysis_success = analysis_success
+        self.daily_increment = daily_increment
+        self.estimate_available_days = estimate_available_days
+        self.need_optimize_item_list = need_optimize_item_list
+        self.table_stats = table_stats
+        self.total_free_storage_size = total_free_storage_size
+        self.total_storage_size = total_storage_size
+        self.total_used_storage_size = total_used_storage_size
+
+    def validate(self):
+        if self.need_optimize_item_list:
+            for k in self.need_optimize_item_list:
+                if k:
+                    k.validate()
+        if self.table_stats:
+            for k in self.table_stats:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analysis_error_type is not None:
+            result['AnalysisErrorType'] = self.analysis_error_type
+        if self.analysis_success is not None:
+            result['AnalysisSuccess'] = self.analysis_success
+        if self.daily_increment is not None:
+            result['DailyIncrement'] = self.daily_increment
+        if self.estimate_available_days is not None:
+            result['EstimateAvailableDays'] = self.estimate_available_days
+        result['NeedOptimizeItemList'] = []
+        if self.need_optimize_item_list is not None:
+            for k in self.need_optimize_item_list:
+                result['NeedOptimizeItemList'].append(k.to_map() if k else None)
+        result['TableStats'] = []
+        if self.table_stats is not None:
+            for k in self.table_stats:
+                result['TableStats'].append(k.to_map() if k else None)
+        if self.total_free_storage_size is not None:
+            result['TotalFreeStorageSize'] = self.total_free_storage_size
+        if self.total_storage_size is not None:
+            result['TotalStorageSize'] = self.total_storage_size
+        if self.total_used_storage_size is not None:
+            result['TotalUsedStorageSize'] = self.total_used_storage_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalysisErrorType') is not None:
+            self.analysis_error_type = m.get('AnalysisErrorType')
+        if m.get('AnalysisSuccess') is not None:
+            self.analysis_success = m.get('AnalysisSuccess')
+        if m.get('DailyIncrement') is not None:
+            self.daily_increment = m.get('DailyIncrement')
+        if m.get('EstimateAvailableDays') is not None:
+            self.estimate_available_days = m.get('EstimateAvailableDays')
+        self.need_optimize_item_list = []
+        if m.get('NeedOptimizeItemList') is not None:
+            for k in m.get('NeedOptimizeItemList'):
+                temp_model = GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeItemList()
+                self.need_optimize_item_list.append(temp_model.from_map(k))
+        self.table_stats = []
+        if m.get('TableStats') is not None:
+            for k in m.get('TableStats'):
+                temp_model = GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats()
+                self.table_stats.append(temp_model.from_map(k))
+        if m.get('TotalFreeStorageSize') is not None:
+            self.total_free_storage_size = m.get('TotalFreeStorageSize')
+        if m.get('TotalStorageSize') is not None:
+            self.total_storage_size = m.get('TotalStorageSize')
+        if m.get('TotalUsedStorageSize') is not None:
+            self.total_used_storage_size = m.get('TotalUsedStorageSize')
+        return self
+
+
+class GetStorageAnalysisResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        analyzed_db_count: int = None,
+        storage_analysis_result: GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult = None,
+        task_finish: bool = None,
+        task_id: str = None,
+        task_progress: int = None,
+        task_state: str = None,
+        task_success: bool = None,
+        total_db_count: int = None,
+    ):
+        self.analyzed_db_count = analyzed_db_count
+        self.storage_analysis_result = storage_analysis_result
+        self.task_finish = task_finish
+        self.task_id = task_id
+        self.task_progress = task_progress
+        self.task_state = task_state
+        self.task_success = task_success
+        self.total_db_count = total_db_count
+
+    def validate(self):
+        if self.storage_analysis_result:
+            self.storage_analysis_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.analyzed_db_count is not None:
+            result['AnalyzedDbCount'] = self.analyzed_db_count
+        if self.storage_analysis_result is not None:
+            result['StorageAnalysisResult'] = self.storage_analysis_result.to_map()
+        if self.task_finish is not None:
+            result['TaskFinish'] = self.task_finish
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_progress is not None:
+            result['TaskProgress'] = self.task_progress
+        if self.task_state is not None:
+            result['TaskState'] = self.task_state
+        if self.task_success is not None:
+            result['TaskSuccess'] = self.task_success
+        if self.total_db_count is not None:
+            result['TotalDbCount'] = self.total_db_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalyzedDbCount') is not None:
+            self.analyzed_db_count = m.get('AnalyzedDbCount')
+        if m.get('StorageAnalysisResult') is not None:
+            temp_model = GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult()
+            self.storage_analysis_result = temp_model.from_map(m['StorageAnalysisResult'])
+        if m.get('TaskFinish') is not None:
+            self.task_finish = m.get('TaskFinish')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskProgress') is not None:
+            self.task_progress = m.get('TaskProgress')
+        if m.get('TaskState') is not None:
+            self.task_state = m.get('TaskState')
+        if m.get('TaskSuccess') is not None:
+            self.task_success = m.get('TaskSuccess')
+        if m.get('TotalDbCount') is not None:
+            self.total_db_count = m.get('TotalDbCount')
+        return self
+
+
+class GetStorageAnalysisResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: GetStorageAnalysisResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetStorageAnalysisResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetStorageAnalysisResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetStorageAnalysisResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetStorageAnalysisResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

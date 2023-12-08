@@ -1187,13 +1187,13 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
         *   This operation supports the following database engines:
-        *   RDS MySQL
-        *   RDS PostgreSQL
-        *   RDS SQL Server
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   ApsaraDB RDS for SQL Server
         *   PolarDB for MySQL
-        *   PolarDB for PostgreSQL (Compatible with Oracle)
+        *   PolarDB for PostgreSQL (compatible with Oracle)
         *   ApsaraDB for MongoDB
-        >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For information about how to update the minor engine version, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
+        >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
         
         @param request: CreateRequestDiagnosisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1237,13 +1237,13 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
         *   This operation supports the following database engines:
-        *   RDS MySQL
-        *   RDS PostgreSQL
-        *   RDS SQL Server
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   ApsaraDB RDS for SQL Server
         *   PolarDB for MySQL
-        *   PolarDB for PostgreSQL (Compatible with Oracle)
+        *   PolarDB for PostgreSQL (compatible with Oracle)
         *   ApsaraDB for MongoDB
-        >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For information about how to update the minor engine version, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
+        >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
         
         @param request: CreateRequestDiagnosisRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1286,13 +1286,13 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
         *   This operation supports the following database engines:
-        *   RDS MySQL
-        *   RDS PostgreSQL
-        *   RDS SQL Server
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   ApsaraDB RDS for SQL Server
         *   PolarDB for MySQL
-        *   PolarDB for PostgreSQL (Compatible with Oracle)
+        *   PolarDB for PostgreSQL (compatible with Oracle)
         *   ApsaraDB for MongoDB
-        >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For information about how to update the minor engine version, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
+        >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
         
         @param request: CreateRequestDiagnosisRequest
         @return: CreateRequestDiagnosisResponse
@@ -1308,19 +1308,101 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call Database Autonomy Service (DAS), you must set the region to cn-shanghai.
         *   This operation supports the following database engines:
-        *   RDS MySQL
-        *   RDS PostgreSQL
-        *   RDS SQL Server
+        *   ApsaraDB RDS for MySQL
+        *   ApsaraDB RDS for PostgreSQL
+        *   ApsaraDB RDS for SQL Server
         *   PolarDB for MySQL
-        *   PolarDB for PostgreSQL (Compatible with Oracle)
+        *   PolarDB for PostgreSQL (compatible with Oracle)
         *   ApsaraDB for MongoDB
-        >  The minor engine version of the Apsara RDS for PostgreSQL instance must be 20220130 or later. For information about how to update the minor engine version, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
+        >  The minor engine version of ApsaraDB RDS for PostgreSQL instances must be 20221230 or later. For more information about how to check and update the minor engine version of an ApsaraDB RDS for PostgreSQL instance, see [Update the minor engine version of an ApsaraDB RDS for PostgreSQL instance](~~146895~~).
         
         @param request: CreateRequestDiagnosisRequest
         @return: CreateRequestDiagnosisResponse
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_request_diagnosis_with_options_async(request, runtime)
+
+    def create_storage_analysis_task_with_options(
+        self,
+        request: das20200116_models.CreateStorageAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateStorageAnalysisTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStorageAnalysisTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateStorageAnalysisTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_storage_analysis_task_with_options_async(
+        self,
+        request: das20200116_models.CreateStorageAnalysisTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.CreateStorageAnalysisTaskResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_name):
+            query['DbName'] = request.db_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStorageAnalysisTask',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.CreateStorageAnalysisTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_storage_analysis_task(
+        self,
+        request: das20200116_models.CreateStorageAnalysisTaskRequest,
+    ) -> das20200116_models.CreateStorageAnalysisTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_storage_analysis_task_with_options(request, runtime)
+
+    async def create_storage_analysis_task_async(
+        self,
+        request: das20200116_models.CreateStorageAnalysisTaskRequest,
+    ) -> das20200116_models.CreateStorageAnalysisTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_storage_analysis_task_with_options_async(request, runtime)
 
     def delete_cloud_bench_task_with_options(
         self,
@@ -4282,6 +4364,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_async_error_request_stat_result_with_options_async(request, runtime)
 
+    def get_auto_increment_usage_statistic_with_options(
+        self,
+        request: das20200116_models.GetAutoIncrementUsageStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetAutoIncrementUsageStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_names):
+            query['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ratio_filter):
+            query['RatioFilter'] = request.ratio_filter
+        if not UtilClient.is_unset(request.real_time):
+            query['RealTime'] = request.real_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoIncrementUsageStatistic',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetAutoIncrementUsageStatisticResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_auto_increment_usage_statistic_with_options_async(
+        self,
+        request: das20200116_models.GetAutoIncrementUsageStatisticRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetAutoIncrementUsageStatisticResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.db_names):
+            query['DbNames'] = request.db_names
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.ratio_filter):
+            query['RatioFilter'] = request.ratio_filter
+        if not UtilClient.is_unset(request.real_time):
+            query['RealTime'] = request.real_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetAutoIncrementUsageStatistic',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetAutoIncrementUsageStatisticResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_auto_increment_usage_statistic(
+        self,
+        request: das20200116_models.GetAutoIncrementUsageStatisticRequest,
+    ) -> das20200116_models.GetAutoIncrementUsageStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_auto_increment_usage_statistic_with_options(request, runtime)
+
+    async def get_auto_increment_usage_statistic_async(
+        self,
+        request: das20200116_models.GetAutoIncrementUsageStatisticRequest,
+    ) -> das20200116_models.GetAutoIncrementUsageStatisticResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_auto_increment_usage_statistic_with_options_async(request, runtime)
+
     def get_auto_resource_optimize_rules_with_options(
         self,
         request: das20200116_models.GetAutoResourceOptimizeRulesRequest,
@@ -4403,8 +4567,8 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
         *   The database instance that you want to manage is of one of the following types:
-        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
-        *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+        *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
         
         @param request: GetAutoThrottleRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4444,8 +4608,8 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
         *   The database instance that you want to manage is of one of the following types:
-        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
-        *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+        *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
         
         @param request: GetAutoThrottleRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4484,8 +4648,8 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
         *   The database instance that you want to manage is of one of the following types:
-        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
-        *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+        *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
         
         @param request: GetAutoThrottleRulesRequest
         @return: GetAutoThrottleRulesResponse
@@ -4501,8 +4665,8 @@ class Client(OpenApiClient):
         Before you call this operation, take note of the following items:
         *   If you use an SDK to call API operations of Database Autonomy Service (DAS), you must set the region ID to cn-shanghai.
         *   The database instance that you want to manage is of one of the following types:
-        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0
-        *   PolarDB for MySQL Cluster Edition that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition that runs MySQL 8.0.
+        *   ApsaraDB RDS for MySQL High-availability Edition or Enterprise Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0.
+        *   PolarDB for MySQL Cluster Edition instance that runs MySQL 5.6, MySQL 5.7, or MySQL 8.0, or PolarDB for MySQL X-Engine Edition instance that runs MySQL 8.0.
         
         @param request: GetAutoThrottleRulesRequest
         @return: GetAutoThrottleRulesResponse
@@ -9227,6 +9391,84 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.get_sql_optimize_advice_with_options_async(request, runtime)
+
+    def get_storage_analysis_result_with_options(
+        self,
+        request: das20200116_models.GetStorageAnalysisResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetStorageAnalysisResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageAnalysisResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetStorageAnalysisResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_storage_analysis_result_with_options_async(
+        self,
+        request: das20200116_models.GetStorageAnalysisResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> das20200116_models.GetStorageAnalysisResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.node_id):
+            query['NodeId'] = request.node_id
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetStorageAnalysisResult',
+            version='2020-01-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            das20200116_models.GetStorageAnalysisResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_storage_analysis_result(
+        self,
+        request: das20200116_models.GetStorageAnalysisResultRequest,
+    ) -> das20200116_models.GetStorageAnalysisResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_storage_analysis_result_with_options(request, runtime)
+
+    async def get_storage_analysis_result_async(
+        self,
+        request: das20200116_models.GetStorageAnalysisResultRequest,
+    ) -> das20200116_models.GetStorageAnalysisResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_storage_analysis_result_with_options_async(request, runtime)
 
     def kill_instance_all_session_with_options(
         self,
