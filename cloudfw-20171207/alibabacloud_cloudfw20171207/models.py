@@ -3477,9 +3477,16 @@ class DescribeACLProtectTrendRequest(TeaModel):
         source_ip: str = None,
         start_time: str = None,
     ):
+        # The end of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
         self.end_time = end_time
+        # The language of the content within the request and the response. Valid values:
+        # 
+        # *   **zh** (default): Chinese
+        # *   **en**: English
         self.lang = lang
+        # This parameter is deprecated.
         self.source_ip = source_ip
+        # The beginning of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
         self.start_time = start_time
 
     def validate(self):
@@ -3520,7 +3527,9 @@ class DescribeACLProtectTrendResponseBodyTrendList(TeaModel):
         protect_cnt: int = None,
         time: int = None,
     ):
+        # The number of requests that are blocked by ACL on the current day.
         self.protect_cnt = protect_cnt
+        # The UNIX timestamp at midnight (00:00:00) of each day, which indicates the date of the current day. Unit: seconds.
         self.time = time
 
     def validate(self):
@@ -3558,12 +3567,19 @@ class DescribeACLProtectTrendResponseBody(TeaModel):
         total_protect_cnt: int = None,
         trend_list: List[DescribeACLProtectTrendResponseBodyTrendList] = None,
     ):
+        # The number of internal requests that are blocked by the ACL feature.
         self.in_protect_cnt = in_protect_cnt
+        # This parameter is deprecated.
         self.inter_vpcprotect_cnt = inter_vpcprotect_cnt
+        # The interval for returning data. Unit: seconds.
         self.interval = interval
+        # The number of external requests that are blocked by the ACL feature.
         self.out_protect_cnt = out_protect_cnt
+        # The request ID.
         self.request_id = request_id
+        # The total number of requests that are blocked by the ACL feature.
         self.total_protect_cnt = total_protect_cnt
+        # The statistics on the requests that are blocked by the ACL feature.
         self.trend_list = trend_list
 
     def validate(self):
@@ -11977,6 +11993,7 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         acl_group_id: str = None,
         acl_group_name: str = None,
         acl_rule_count: int = None,
+        is_default: bool = None,
         member_uid: str = None,
     ):
         # The ID of the policy group.
@@ -11997,6 +12014,7 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
         # *   If the VPC firewall is used to protect an Express Connect circuit, the value of this parameter is the name of the VPC firewall instance.
         self.acl_group_name = acl_group_name
         self.acl_rule_count = acl_rule_count
+        self.is_default = is_default
         # The UID of the member that is managed by your Alibaba Cloud account.
         self.member_uid = member_uid
 
@@ -12015,6 +12033,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
             result['AclGroupName'] = self.acl_group_name
         if self.acl_rule_count is not None:
             result['AclRuleCount'] = self.acl_rule_count
+        if self.is_default is not None:
+            result['IsDefault'] = self.is_default
         if self.member_uid is not None:
             result['MemberUid'] = self.member_uid
         return result
@@ -12027,6 +12047,8 @@ class DescribeVpcFirewallAclGroupListResponseBodyAclGroupList(TeaModel):
             self.acl_group_name = m.get('AclGroupName')
         if m.get('AclRuleCount') is not None:
             self.acl_rule_count = m.get('AclRuleCount')
+        if m.get('IsDefault') is not None:
+            self.is_default = m.get('IsDefault')
         if m.get('MemberUid') is not None:
             self.member_uid = m.get('MemberUid')
         return self
@@ -16159,6 +16181,9 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **in**: inbound traffic
         # *   **out**: outbound traffic
         self.direction = direction
+        # The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of StartTime.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.end_time = end_time
         # The language of the content within the request and the response. Valid values:
         # 
@@ -16179,9 +16204,32 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   true: enabled
         # *   false: disabled
         self.release = release
+        # The days of a week or of a month on which the access control policy takes effect.
+        # 
+        # *   If you set RepeatType to `Permanent`, `None`, or `Daily`, the value of this parameter is an empty array. Example: \[]
+        # *   If you set RepeatType to Weekly, you must specify this parameter. Example: \[0, 6]
+        # 
+        # >  If you set RepeatType to Weekly, the fields in the value of this parameter cannot be repeated.
+        # 
+        # *   If you set RepeatType to `Monthly`, you must specify this parameter. Example: \[1, 31]
+        # 
+        # >  If you set RepeatType to Monthly, the fields in the value of this parameter cannot be repeated.
         self.repeat_days = repeat_days
+        # The point in time when the recurrence ends. Example: 23:30. The value must be on the hour or on the half hour, and at least 30 minutes later than the value of RepeatStartTime.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_end_time = repeat_end_time
+        # The point in time when the recurrence starts. Example: 08:00. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of RepeatEndTime.
+        # 
+        # >  If you set RepeatType to Permanent or None, leave this parameter empty. If you set RepeatType to Daily, Weekly, or Monthly, you must specify this parameter.
         self.repeat_start_time = repeat_start_time
+        # The recurrence type for the access control policy to take effect. Valid values:
+        # 
+        # *   **Permanent** (default): The policy always takes effect.
+        # *   **None**: The policy takes effect for only once.
+        # *   **Daily**: The policy takes effect on a daily basis.
+        # *   **Weekly**: The policy takes effect on a weekly basis.
+        # *   **Monthly**: The policy takes effect on a monthly basis.
         self.repeat_type = repeat_type
         # The source address in the access control policy.
         # 
@@ -16195,6 +16243,9 @@ class ModifyControlPolicyRequest(TeaModel):
         # *   **group**: address book
         # *   **location**: location
         self.source_type = source_type
+        # The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the value of EndTime.
+        # 
+        # >  If you set RepeatType to Permanent, leave this parameter empty. If you set RepeatType to None, Daily, Weekly, or Monthly, you must specify this parameter.
         self.start_time = start_time
 
     def validate(self):
@@ -16942,6 +16993,7 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         dest_port_type: str = None,
         destination: str = None,
         destination_type: str = None,
+        direction: str = None,
         domain_resolve_type: str = None,
         end_time: int = None,
         lang: str = None,
@@ -16997,6 +17049,7 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
         # *   **domain**: domain name
         # *   **location**\
         self.destination_type = destination_type
+        self.direction = direction
         # The domain name resolution method of the access control policy. By default, an access control policy is enabled after it is created. Valid values:
         # 
         # *   **0**: Fully qualified domain name (FQDN)-based resolution
@@ -17077,6 +17130,8 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
             result['Destination'] = self.destination
         if self.destination_type is not None:
             result['DestinationType'] = self.destination_type
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.domain_resolve_type is not None:
             result['DomainResolveType'] = self.domain_resolve_type
         if self.end_time is not None:
@@ -17125,6 +17180,8 @@ class ModifyNatFirewallControlPolicyRequest(TeaModel):
             self.destination = m.get('Destination')
         if m.get('DestinationType') is not None:
             self.destination_type = m.get('DestinationType')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('DomainResolveType') is not None:
             self.domain_resolve_type = m.get('DomainResolveType')
         if m.get('EndTime') is not None:
@@ -17230,12 +17287,14 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
     def __init__(
         self,
         acl_uuid: str = None,
+        direction: str = None,
         lang: str = None,
         nat_gateway_id: str = None,
         new_order: int = None,
     ):
         # The UUID of the access control policy.
         self.acl_uuid = acl_uuid
+        self.direction = direction
         # The language of the content within the response. Valid values:
         # 
         # *   **zh**: Chinese (default)
@@ -17261,6 +17320,8 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
         result = dict()
         if self.acl_uuid is not None:
             result['AclUuid'] = self.acl_uuid
+        if self.direction is not None:
+            result['Direction'] = self.direction
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.nat_gateway_id is not None:
@@ -17273,6 +17334,8 @@ class ModifyNatFirewallControlPolicyPositionRequest(TeaModel):
         m = m or dict()
         if m.get('AclUuid') is not None:
             self.acl_uuid = m.get('AclUuid')
+        if m.get('Direction') is not None:
+            self.direction = m.get('Direction')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('NatGatewayId') is not None:

@@ -5225,8 +5225,6 @@ class Client(OpenApiClient):
             query['FirewallConfigureStatus'] = request.firewall_configure_status
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         req = open_api_models.OpenApiRequest(
@@ -5268,8 +5266,6 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.firewall_configure_status):
             query['FirewallConfigureStatus'] = request.firewall_configure_status
-        if not UtilClient.is_unset(request.lang):
-            query['Lang'] = request.lang
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -7145,6 +7141,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
@@ -7222,6 +7220,8 @@ class Client(OpenApiClient):
             query['Destination'] = request.destination
         if not UtilClient.is_unset(request.destination_type):
             query['DestinationType'] = request.destination_type
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.domain_resolve_type):
             query['DomainResolveType'] = request.domain_resolve_type
         if not UtilClient.is_unset(request.end_time):
@@ -7302,6 +7302,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acl_uuid):
             query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -7336,6 +7338,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.acl_uuid):
             query['AclUuid'] = request.acl_uuid
+        if not UtilClient.is_unset(request.direction):
+            query['Direction'] = request.direction
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.nat_gateway_id):
