@@ -25594,6 +25594,7 @@ class GetInstanceStatusStatisticRequest(TeaModel):
         dag_type: str = None,
         project_env: str = None,
         project_id: int = None,
+        scheduler_period: str = None,
         scheduler_type: str = None,
     ):
         # The date on which the numbers of instances in different states are obtained. Specify the date in the yyyy-MM-dd format.
@@ -25609,6 +25610,7 @@ class GetInstanceStatusStatisticRequest(TeaModel):
         self.project_env = project_env
         # The ID of the DataWorks workspace. You can log on to the DataWorks console and go to the Workspace Management page to obtain the workspace ID.
         self.project_id = project_id
+        self.scheduler_period = scheduler_period
         # The scheduling type of the node. Valid values:
         # 
         # *   NORMAL: auto triggered node
@@ -25634,6 +25636,8 @@ class GetInstanceStatusStatisticRequest(TeaModel):
             result['ProjectEnv'] = self.project_env
         if self.project_id is not None:
             result['ProjectId'] = self.project_id
+        if self.scheduler_period is not None:
+            result['SchedulerPeriod'] = self.scheduler_period
         if self.scheduler_type is not None:
             result['SchedulerType'] = self.scheduler_type
         return result
@@ -25648,6 +25652,8 @@ class GetInstanceStatusStatisticRequest(TeaModel):
             self.project_env = m.get('ProjectEnv')
         if m.get('ProjectId') is not None:
             self.project_id = m.get('ProjectId')
+        if m.get('SchedulerPeriod') is not None:
+            self.scheduler_period = m.get('SchedulerPeriod')
         if m.get('SchedulerType') is not None:
             self.scheduler_type = m.get('SchedulerType')
         return self
@@ -45638,8 +45644,6 @@ class ListEnabledExtensionsForProjectResponseBodyExtensions(TeaModel):
         extension_code: str = None,
         extension_desc: str = None,
         extension_name: str = None,
-        gmt_create: int = None,
-        gmt_modified: int = None,
         modify_user: str = None,
         owner: str = None,
         parameter_setting: str = None,
@@ -45653,9 +45657,6 @@ class ListEnabledExtensionsForProjectResponseBodyExtensions(TeaModel):
         self.extension_desc = extension_desc
         # The ID of the tenant.
         self.extension_name = extension_name
-        # The timestamp when extension was modified.
-        self.gmt_create = gmt_create
-        self.gmt_modified = gmt_modified
         # The description of the extension.
         self.modify_user = modify_user
         # The parameter settings of the extension. For more information, see [Configure extension parameters](~~405354~~).
@@ -45682,10 +45683,6 @@ class ListEnabledExtensionsForProjectResponseBodyExtensions(TeaModel):
             result['ExtensionDesc'] = self.extension_desc
         if self.extension_name is not None:
             result['ExtensionName'] = self.extension_name
-        if self.gmt_create is not None:
-            result['GmtCreate'] = self.gmt_create
-        if self.gmt_modified is not None:
-            result['GmtModified'] = self.gmt_modified
         if self.modify_user is not None:
             result['ModifyUser'] = self.modify_user
         if self.owner is not None:
@@ -45706,10 +45703,6 @@ class ListEnabledExtensionsForProjectResponseBodyExtensions(TeaModel):
             self.extension_desc = m.get('ExtensionDesc')
         if m.get('ExtensionName') is not None:
             self.extension_name = m.get('ExtensionName')
-        if m.get('GmtCreate') is not None:
-            self.gmt_create = m.get('GmtCreate')
-        if m.get('GmtModified') is not None:
-            self.gmt_modified = m.get('GmtModified')
         if m.get('ModifyUser') is not None:
             self.modify_user = m.get('ModifyUser')
         if m.get('Owner') is not None:
@@ -48636,6 +48629,7 @@ class ListInstancesRequest(TeaModel):
         end_bizdate: str = None,
         node_id: int = None,
         node_name: str = None,
+        order_by: str = None,
         owner: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -48661,6 +48655,7 @@ class ListInstancesRequest(TeaModel):
         self.node_id = node_id
         # Indicates whether the node can be rerun.
         self.node_name = node_name
+        self.order_by = order_by
         # The connection string.
         self.owner = owner
         # The operation that you want to perform.
@@ -48699,6 +48694,8 @@ class ListInstancesRequest(TeaModel):
             result['NodeId'] = self.node_id
         if self.node_name is not None:
             result['NodeName'] = self.node_name
+        if self.order_by is not None:
+            result['OrderBy'] = self.order_by
         if self.owner is not None:
             result['Owner'] = self.owner
         if self.page_number is not None:
@@ -48731,6 +48728,8 @@ class ListInstancesRequest(TeaModel):
             self.node_id = m.get('NodeId')
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+        if m.get('OrderBy') is not None:
+            self.order_by = m.get('OrderBy')
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
         if m.get('PageNumber') is not None:

@@ -9890,6 +9890,8 @@ class Client(OpenApiClient):
             body['ProjectEnv'] = request.project_env
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.scheduler_period):
+            body['SchedulerPeriod'] = request.scheduler_period
         if not UtilClient.is_unset(request.scheduler_type):
             body['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
@@ -9926,6 +9928,8 @@ class Client(OpenApiClient):
             body['ProjectEnv'] = request.project_env
         if not UtilClient.is_unset(request.project_id):
             body['ProjectId'] = request.project_id
+        if not UtilClient.is_unset(request.scheduler_period):
+            body['SchedulerPeriod'] = request.scheduler_period
         if not UtilClient.is_unset(request.scheduler_type):
             body['SchedulerType'] = request.scheduler_type
         req = open_api_models.OpenApiRequest(
@@ -16160,6 +16164,8 @@ class Client(OpenApiClient):
             body['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.node_name):
             body['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.order_by):
+            body['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
         if not UtilClient.is_unset(request.page_number):
@@ -16214,6 +16220,8 @@ class Client(OpenApiClient):
             body['NodeId'] = request.node_id
         if not UtilClient.is_unset(request.node_name):
             body['NodeName'] = request.node_name
+        if not UtilClient.is_unset(request.order_by):
+            body['OrderBy'] = request.order_by
         if not UtilClient.is_unset(request.owner):
             body['Owner'] = request.owner
         if not UtilClient.is_unset(request.page_number):
