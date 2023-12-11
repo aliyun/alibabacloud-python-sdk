@@ -2450,6 +2450,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_migration_job_with_options_async(request, runtime)
 
+    def create_reverse_dts_job_with_options(
+        self,
+        request: dts_20200101_models.CreateReverseDtsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateReverseDtsJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateReverseDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateReverseDtsJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_reverse_dts_job_with_options_async(
+        self,
+        request: dts_20200101_models.CreateReverseDtsJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.CreateReverseDtsJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateReverseDtsJob',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.CreateReverseDtsJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_reverse_dts_job(
+        self,
+        request: dts_20200101_models.CreateReverseDtsJobRequest,
+    ) -> dts_20200101_models.CreateReverseDtsJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_reverse_dts_job_with_options(request, runtime)
+
+    async def create_reverse_dts_job_async(
+        self,
+        request: dts_20200101_models.CreateReverseDtsJobRequest,
+    ) -> dts_20200101_models.CreateReverseDtsJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_reverse_dts_job_with_options_async(request, runtime)
+
     def create_subscription_instance_with_options(
         self,
         request: dts_20200101_models.CreateSubscriptionInstanceRequest,
@@ -7999,6 +8069,8 @@ class Client(OpenApiClient):
             query['DataSynchronization'] = request.data_synchronization
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.file_oss_url):
             query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.region_id):
@@ -8057,6 +8129,8 @@ class Client(OpenApiClient):
             query['DataSynchronization'] = request.data_synchronization
         if not UtilClient.is_unset(request.dts_instance_id):
             query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
         if not UtilClient.is_unset(request.file_oss_url):
             query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.region_id):
@@ -9953,6 +10027,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.start_migration_job_with_options_async(request, runtime)
+
+    def start_reverse_writer_with_options(
+        self,
+        request: dts_20200101_models.StartReverseWriterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StartReverseWriterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_point):
+            query['CheckPoint'] = request.check_point
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartReverseWriter',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StartReverseWriterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_reverse_writer_with_options_async(
+        self,
+        request: dts_20200101_models.StartReverseWriterRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.StartReverseWriterResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_point):
+            query['CheckPoint'] = request.check_point
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartReverseWriter',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.StartReverseWriterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_reverse_writer(
+        self,
+        request: dts_20200101_models.StartReverseWriterRequest,
+    ) -> dts_20200101_models.StartReverseWriterResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_reverse_writer_with_options(request, runtime)
+
+    async def start_reverse_writer_async(
+        self,
+        request: dts_20200101_models.StartReverseWriterRequest,
+    ) -> dts_20200101_models.StartReverseWriterResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_reverse_writer_with_options_async(request, runtime)
 
     def start_subscription_instance_with_options(
         self,

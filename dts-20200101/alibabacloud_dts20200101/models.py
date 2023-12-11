@@ -5415,6 +5415,140 @@ class CreateMigrationJobResponse(TeaModel):
         return self
 
 
+class CreateReverseDtsJobRequest(TeaModel):
+    def __init__(
+        self,
+        dts_job_id: str = None,
+    ):
+        self.dts_job_id = dts_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        return self
+
+
+class CreateReverseDtsJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateReverseDtsJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateReverseDtsJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateReverseDtsJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSubscriptionInstanceRequestSourceEndpoint(TeaModel):
     def __init__(
         self,
@@ -17685,11 +17819,103 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobErrorDetails(TeaModel):
         return self
 
 
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.percent = percent
+        self.progress = progress
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus(TeaModel):
+    def __init__(
+        self,
+        error_message: str = None,
+        percent: str = None,
+        progress: str = None,
+        status: str = None,
+    ):
+        self.error_message = error_message
+        self.percent = percent
+        self.progress = progress
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.percent is not None:
+            result['Percent'] = self.percent
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('Percent') is not None:
+            self.percent = m.get('Percent')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
     def __init__(
         self,
         data_initialization: bool = None,
         data_synchronization: bool = None,
+        full_data_check: bool = None,
+        inc_data_check: bool = None,
         structure_initialization: bool = None,
     ):
         # Indicates whether initial full data synchronization is performed. Valid values:
@@ -17701,6 +17927,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
         # -  **true**\
         # -  **false**\
         self.data_synchronization = data_synchronization
+        self.full_data_check = full_data_check
+        self.inc_data_check = inc_data_check
         # Indicates whether initial schema synchronization is performed. Valid values:
         # -  **true**\
         # -  **false**\
@@ -17719,6 +17947,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
             result['DataInitialization'] = self.data_initialization
         if self.data_synchronization is not None:
             result['DataSynchronization'] = self.data_synchronization
+        if self.full_data_check is not None:
+            result['FullDataCheck'] = self.full_data_check
+        if self.inc_data_check is not None:
+            result['IncDataCheck'] = self.inc_data_check
         if self.structure_initialization is not None:
             result['StructureInitialization'] = self.structure_initialization
         return result
@@ -17729,6 +17961,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode(TeaModel):
             self.data_initialization = m.get('DataInitialization')
         if m.get('DataSynchronization') is not None:
             self.data_synchronization = m.get('DataSynchronization')
+        if m.get('FullDataCheck') is not None:
+            self.full_data_check = m.get('FullDataCheck')
+        if m.get('IncDataCheck') is not None:
+            self.inc_data_check = m.get('IncDataCheck')
         if m.get('StructureInitialization') is not None:
             self.structure_initialization = m.get('StructureInitialization')
         return self
@@ -18065,6 +18301,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         error_message: str = None,
         etl_safe_checkpoint: str = None,
         expire_time: str = None,
+        full_data_check_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus = None,
+        inc_data_check_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus = None,
         mem_usage: str = None,
         migration_mode: DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode = None,
         pay_type: str = None,
@@ -18117,6 +18355,8 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         # 
         # > This parameter is returned only if the returned value of **PayType** is **PrePaid**.
         self.expire_time = expire_time
+        self.full_data_check_status = full_data_check_status
+        self.inc_data_check_status = inc_data_check_status
         # The memory that has been used. Unit: MB.
         self.mem_usage = mem_usage
         # The initial synchronization types.
@@ -18150,6 +18390,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             for k in self.error_details:
                 if k:
                     k.validate()
+        if self.full_data_check_status:
+            self.full_data_check_status.validate()
+        if self.inc_data_check_status:
+            self.inc_data_check_status.validate()
         if self.migration_mode:
             self.migration_mode.validate()
         if self.performance:
@@ -18207,6 +18451,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             result['EtlSafeCheckpoint'] = self.etl_safe_checkpoint
         if self.expire_time is not None:
             result['ExpireTime'] = self.expire_time
+        if self.full_data_check_status is not None:
+            result['FullDataCheckStatus'] = self.full_data_check_status.to_map()
+        if self.inc_data_check_status is not None:
+            result['IncDataCheckStatus'] = self.inc_data_check_status.to_map()
         if self.mem_usage is not None:
             result['MemUsage'] = self.mem_usage
         if self.migration_mode is not None:
@@ -18273,6 +18521,12 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             self.etl_safe_checkpoint = m.get('EtlSafeCheckpoint')
         if m.get('ExpireTime') is not None:
             self.expire_time = m.get('ExpireTime')
+        if m.get('FullDataCheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus()
+            self.full_data_check_status = temp_model.from_map(m['FullDataCheckStatus'])
+        if m.get('IncDataCheckStatus') is not None:
+            temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus()
+            self.inc_data_check_status = temp_model.from_map(m['IncDataCheckStatus'])
         if m.get('MemUsage') is not None:
             self.mem_usage = m.get('MemUsage')
         if m.get('MigrationMode') is not None:
@@ -34043,6 +34297,7 @@ class ModifyDtsJobRequest(TeaModel):
         data_synchronization: bool = None,
         db_list: Dict[str, Any] = None,
         dts_instance_id: str = None,
+        dts_job_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url: str = None,
         filter_table_name: str = None,
@@ -34062,6 +34317,7 @@ class ModifyDtsJobRequest(TeaModel):
         self.db_list = db_list
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
         # The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -34104,6 +34360,8 @@ class ModifyDtsJobRequest(TeaModel):
             result['DbList'] = self.db_list
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
         if self.etl_operator_column_reference is not None:
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
         if self.file_oss_url is not None:
@@ -34134,6 +34392,8 @@ class ModifyDtsJobRequest(TeaModel):
             self.db_list = m.get('DbList')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
         if m.get('EtlOperatorColumnReference') is not None:
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
         if m.get('FileOssUrl') is not None:
@@ -34161,6 +34421,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         data_synchronization: bool = None,
         db_list: Dict[str, Any] = None,
         dts_instance_id: str = None,
+        dts_job_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url_object: BinaryIO = None,
         filter_table_name: str = None,
@@ -34180,6 +34441,7 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.db_list = db_list
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
         # The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -34222,6 +34484,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             result['DbList'] = self.db_list
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
         if self.etl_operator_column_reference is not None:
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
         if self.file_oss_url_object is not None:
@@ -34252,6 +34516,8 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
             self.db_list = m.get('DbList')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
         if m.get('EtlOperatorColumnReference') is not None:
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
         if m.get('FileOssUrl') is not None:
@@ -34279,6 +34545,7 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         data_synchronization: bool = None,
         db_list_shrink: str = None,
         dts_instance_id: str = None,
+        dts_job_id: str = None,
         etl_operator_column_reference: str = None,
         file_oss_url: str = None,
         filter_table_name: str = None,
@@ -34298,6 +34565,7 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         self.db_list_shrink = db_list_shrink
         # The ID of the data synchronization instance.
         self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
         # The endpoint of the Object Storage Service (OSS) bucket in which the files to be synchronized are stored.
@@ -34340,6 +34608,8 @@ class ModifyDtsJobShrinkRequest(TeaModel):
             result['DbList'] = self.db_list_shrink
         if self.dts_instance_id is not None:
             result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
         if self.etl_operator_column_reference is not None:
             result['EtlOperatorColumnReference'] = self.etl_operator_column_reference
         if self.file_oss_url is not None:
@@ -34370,6 +34640,8 @@ class ModifyDtsJobShrinkRequest(TeaModel):
             self.db_list_shrink = m.get('DbList')
         if m.get('DtsInstanceId') is not None:
             self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
         if m.get('EtlOperatorColumnReference') is not None:
             self.etl_operator_column_reference = m.get('EtlOperatorColumnReference')
         if m.get('FileOssUrl') is not None:
@@ -37448,6 +37720,128 @@ class StartMigrationJobResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartMigrationJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class StartReverseWriterRequest(TeaModel):
+    def __init__(
+        self,
+        check_point: str = None,
+        dts_job_id: str = None,
+    ):
+        self.check_point = check_point
+        self.dts_job_id = dts_job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_point is not None:
+            result['CheckPoint'] = self.check_point
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckPoint') is not None:
+            self.check_point = m.get('CheckPoint')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        return self
+
+
+class StartReverseWriterResponseBody(TeaModel):
+    def __init__(
+        self,
+        err_code: str = None,
+        err_message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.err_code = err_code
+        self.err_message = err_message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class StartReverseWriterResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: StartReverseWriterResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = StartReverseWriterResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
