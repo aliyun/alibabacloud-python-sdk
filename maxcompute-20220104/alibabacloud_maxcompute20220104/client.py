@@ -1681,6 +1681,104 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_functions_with_options_async(project_name, request, headers, runtime)
 
+    def list_job_infos_with_options(
+        self,
+        request: max_compute_20220104_models.ListJobInfosRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListJobInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='ListJobInfos',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobInfosResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_infos_with_options_async(
+        self,
+        request: max_compute_20220104_models.ListJobInfosRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> max_compute_20220104_models.ListJobInfosResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.asc_order):
+            query['ascOrder'] = request.asc_order
+        if not UtilClient.is_unset(request.order_column):
+            query['orderColumn'] = request.order_column
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        if not UtilClient.is_unset(request.tenant_id):
+            query['tenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=request.body
+        )
+        params = open_api_models.Params(
+            action='ListJobInfos',
+            version='2022-01-04',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            max_compute_20220104_models.ListJobInfosResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_infos(
+        self,
+        request: max_compute_20220104_models.ListJobInfosRequest,
+    ) -> max_compute_20220104_models.ListJobInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_job_infos_with_options(request, headers, runtime)
+
+    async def list_job_infos_async(
+        self,
+        request: max_compute_20220104_models.ListJobInfosRequest,
+    ) -> max_compute_20220104_models.ListJobInfosResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_job_infos_with_options_async(request, headers, runtime)
+
     def list_packages_with_options(
         self,
         project_name: str,
