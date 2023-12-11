@@ -5680,6 +5680,45 @@ class AddServiceSourceRequestIngressOptionsRequest(TeaModel):
         return self
 
 
+class AddServiceSourceRequestToAuthorizeSecurityGroups(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        port_range: str = None,
+        security_group_id: str = None,
+    ):
+        self.description = description
+        self.port_range = port_range
+        self.security_group_id = security_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.port_range is not None:
+            result['PortRange'] = self.port_range
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('PortRange') is not None:
+            self.port_range = m.get('PortRange')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        return self
+
+
 class AddServiceSourceRequest(TeaModel):
     def __init__(
         self,
@@ -5691,6 +5730,7 @@ class AddServiceSourceRequest(TeaModel):
         name: str = None,
         path_list: List[str] = None,
         source: str = None,
+        to_authorize_security_groups: List[AddServiceSourceRequestToAuthorizeSecurityGroups] = None,
         type: str = None,
     ):
         # The language of the response. Valid values:
@@ -5716,6 +5756,7 @@ class AddServiceSourceRequest(TeaModel):
         # *   K8s: ACK cluster
         # *   NACOS: MSE Nacos instance
         self.source = source
+        self.to_authorize_security_groups = to_authorize_security_groups
         # The type of the service source.
         # 
         # *   K8s: Container Service for Kubernetes (ACK) cluster
@@ -5725,6 +5766,10 @@ class AddServiceSourceRequest(TeaModel):
     def validate(self):
         if self.ingress_options_request:
             self.ingress_options_request.validate()
+        if self.to_authorize_security_groups:
+            for k in self.to_authorize_security_groups:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5748,6 +5793,10 @@ class AddServiceSourceRequest(TeaModel):
             result['PathList'] = self.path_list
         if self.source is not None:
             result['Source'] = self.source
+        result['ToAuthorizeSecurityGroups'] = []
+        if self.to_authorize_security_groups is not None:
+            for k in self.to_authorize_security_groups:
+                result['ToAuthorizeSecurityGroups'].append(k.to_map() if k else None)
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -5771,6 +5820,11 @@ class AddServiceSourceRequest(TeaModel):
             self.path_list = m.get('PathList')
         if m.get('Source') is not None:
             self.source = m.get('Source')
+        self.to_authorize_security_groups = []
+        if m.get('ToAuthorizeSecurityGroups') is not None:
+            for k in m.get('ToAuthorizeSecurityGroups'):
+                temp_model = AddServiceSourceRequestToAuthorizeSecurityGroups()
+                self.to_authorize_security_groups.append(temp_model.from_map(k))
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -5787,6 +5841,7 @@ class AddServiceSourceShrinkRequest(TeaModel):
         name: str = None,
         path_list_shrink: str = None,
         source: str = None,
+        to_authorize_security_groups_shrink: str = None,
         type: str = None,
     ):
         # The language of the response. Valid values:
@@ -5812,6 +5867,7 @@ class AddServiceSourceShrinkRequest(TeaModel):
         # *   K8s: ACK cluster
         # *   NACOS: MSE Nacos instance
         self.source = source
+        self.to_authorize_security_groups_shrink = to_authorize_security_groups_shrink
         # The type of the service source.
         # 
         # *   K8s: Container Service for Kubernetes (ACK) cluster
@@ -5843,6 +5899,8 @@ class AddServiceSourceShrinkRequest(TeaModel):
             result['PathList'] = self.path_list_shrink
         if self.source is not None:
             result['Source'] = self.source
+        if self.to_authorize_security_groups_shrink is not None:
+            result['ToAuthorizeSecurityGroups'] = self.to_authorize_security_groups_shrink
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -5865,6 +5923,8 @@ class AddServiceSourceShrinkRequest(TeaModel):
             self.path_list_shrink = m.get('PathList')
         if m.get('Source') is not None:
             self.source = m.get('Source')
+        if m.get('ToAuthorizeSecurityGroups') is not None:
+            self.to_authorize_security_groups_shrink = m.get('ToAuthorizeSecurityGroups')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -9864,7 +9924,7 @@ class CreateOrUpdateSwimmingLaneRequest(TeaModel):
         self.namespace = namespace
         # The ID of the region.
         self.region_id = region_id
-        # The ID of the primary key. The value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+        # The tag.
         self.tag = tag
 
     def validate(self):
@@ -10117,7 +10177,7 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
         self.namespace = namespace
         # The ID of the region.
         self.region_id = region_id
-        # The ID of the primary key. The value -1 specifies a request that is used to create a lane. A value greater than 0 specifies a request that is used to modify a lane.
+        # The tag.
         self.tag = tag
 
     def validate(self):
@@ -10756,7 +10816,7 @@ class CreateOrUpdateSwimmingLaneGroupResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The details of the data.
+        # The response parameters.
         self.data = data
         # The error code.
         self.error_code = error_code
@@ -14792,6 +14852,7 @@ class DeleteSecurityGroupRuleRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        cascading_delete: bool = None,
         gateway_unique_id: str = None,
         id: int = None,
     ):
@@ -14800,6 +14861,7 @@ class DeleteSecurityGroupRuleRequest(TeaModel):
         # *   zh: Chinese
         # *   en: English
         self.accept_language = accept_language
+        self.cascading_delete = cascading_delete
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
         # The destination ID.
@@ -14816,6 +14878,8 @@ class DeleteSecurityGroupRuleRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        if self.cascading_delete is not None:
+            result['CascadingDelete'] = self.cascading_delete
         if self.gateway_unique_id is not None:
             result['GatewayUniqueId'] = self.gateway_unique_id
         if self.id is not None:
@@ -14826,6 +14890,8 @@ class DeleteSecurityGroupRuleRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        if m.get('CascadingDelete') is not None:
+            self.cascading_delete = m.get('CascadingDelete')
         if m.get('GatewayUniqueId') is not None:
             self.gateway_unique_id = m.get('GatewayUniqueId')
         if m.get('Id') is not None:
@@ -24644,7 +24710,7 @@ class GetServiceListPageRequest(TeaModel):
         self.accept_language = accept_language
         # The application ID.
         self.app_id = app_id
-        # 应用名字。
+        # The application name.
         self.app_name = app_name
         # The IP address from which the query is initiated.
         self.ip = ip
@@ -28474,7 +28540,7 @@ class ListApplicationsWithTagRulesRequest(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
-        # The Microservices Engine (MSE) namespace to which the application belongs.
+        # The MSE namespace to which the application belongs.
         self.namespace = namespace
         # The number of the page to return.
         self.page_number = page_number
@@ -41144,6 +41210,7 @@ class ListSecurityGroupRuleRequest(TeaModel):
 class ListSecurityGroupRuleResponseBodyData(TeaModel):
     def __init__(
         self,
+        auth_cidrs: List[str] = None,
         description: str = None,
         gateway_id: int = None,
         gateway_unique_id: str = None,
@@ -41154,6 +41221,7 @@ class ListSecurityGroupRuleResponseBodyData(TeaModel):
         port_range: str = None,
         security_group_id: str = None,
     ):
+        self.auth_cidrs = auth_cidrs
         # The rule description.
         self.description = description
         # The gateway ID.
@@ -41182,6 +41250,8 @@ class ListSecurityGroupRuleResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.auth_cidrs is not None:
+            result['AuthCidrs'] = self.auth_cidrs
         if self.description is not None:
             result['Description'] = self.description
         if self.gateway_id is not None:
@@ -41204,6 +41274,8 @@ class ListSecurityGroupRuleResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthCidrs') is not None:
+            self.auth_cidrs = m.get('AuthCidrs')
         if m.get('Description') is not None:
             self.description = m.get('Description')
         if m.get('GatewayId') is not None:
@@ -41359,7 +41431,7 @@ class ListServiceSourceRequest(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         # Specifies the type of the returned service source. If this parameter is not specified, service sources of all types are returned. Valid values:
         # 
-        # *   K8S
+        # *   K8s
         # *   MSE
         # *   MSE_ZK
         # *   SAE
@@ -45687,7 +45759,9 @@ class QueryClusterInfoResponseBodyDataMaintenancePeriod(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The start time of the O\&M time window.
         self.end_time = end_time
+        # The end time of the O\&M time window.
         self.start_time = start_time
 
     def validate(self):
@@ -45787,9 +45861,9 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.disk_capacity = disk_capacity
         # A deprecated parameter.
         self.disk_type = disk_type
-        # 弹性公网IP（EIP）的实例ID
+        # The ID of the instance that is associated with the Elastic IP Address (EIP).
         self.eip_instance_id = eip_instance_id
-        # 到期时间（包年包月）
+        # The time when the subscription instance expires.
         self.end_date = end_date
         # The zones to which the current cluster can be distributed.
         self.expect_zones = expect_zones
@@ -45817,6 +45891,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.intranet_domain = intranet_domain
         # The instance ports that are accessible over an internal network.
         self.intranet_port = intranet_port
+        # The O\&M time window.
         self.maintenance_period = maintenance_period
         # A deprecated parameter.
         self.memory_capacity = memory_capacity
@@ -45831,9 +45906,9 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.pub_network_flow = pub_network_flow
         # The ID of the region.
         self.region_id = region_id
-        # ENI网络接入的安全组ID
+        # The ID of the security group to which the elastic network interface (ENI) is connected.
         self.security_group_id = security_group_id
-        # ENI网络接入的安全组类型
+        # The type of the security group to which the ENI is connected.
         self.security_group_type = security_group_type
         # The tag.
         self.tags = tags
@@ -46042,7 +46117,7 @@ class QueryClusterInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The data returned.
+        # The details of the data.
         self.data = data
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -46516,6 +46591,7 @@ class QueryConfigResponseBodyData(TeaModel):
         # *   `true`: supported.
         # *   `false`: not supported.
         self.config_secret_supported = config_secret_supported
+        # Indicates whether the Nacos open source console is enabled.
         self.console_uienabled = console_uienabled
         # Indicates whether access port 8761 was enabled for Eureka. If this port is disabled, applications cannot use the Eureka protocol for service registration and discovery.
         self.eureka_supported = eureka_supported
@@ -51092,7 +51168,9 @@ class UpdateClusterRequest(TeaModel):
         self.cluster_alias_name = cluster_alias_name
         # The ID of the instance.
         self.instance_id = instance_id
+        # The end time of the O\&M window.
         self.maintenance_end_time = maintenance_end_time
+        # The start time of the O\&M window.
         self.maintenance_start_time = maintenance_start_time
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -55732,7 +55810,7 @@ class UpdateGatewayRouteHeaderOpRequest(TeaModel):
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The information about the header configuration policy.
+        # The description of user header settings.
         self.header_op_json = header_op_json
         # The ID of the record.
         self.id = id
