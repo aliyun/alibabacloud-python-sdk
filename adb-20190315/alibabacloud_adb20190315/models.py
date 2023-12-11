@@ -1046,8 +1046,10 @@ class CreateDBClusterRequest(TeaModel):
         dbcluster_version: str = None,
         dbnode_group_count: str = None,
         dbnode_storage: str = None,
+        disk_encryption: str = None,
         elastic_ioresource: str = None,
         executor_count: str = None,
+        kms_id: str = None,
         mode: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -1114,10 +1116,12 @@ class CreateDBClusterRequest(TeaModel):
         # > * This parameter is required if the Mode parameter is set to Reserver.
         # > * 1000 The storage capacity less than 1,000 GB increases in 100 GB increments. The storage capacity greater than 1,000 GB increases in 1,000 GB increments.
         self.dbnode_storage = dbnode_storage
+        self.disk_encryption = disk_encryption
         # The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
         self.elastic_ioresource = elastic_ioresource
         # A reserved parameter.
         self.executor_count = executor_count
+        self.kms_id = kms_id
         # The mode of the cluster. Valid values:
         # 
         # *   **Reserver**: the reserved mode
@@ -1208,10 +1212,14 @@ class CreateDBClusterRequest(TeaModel):
             result['DBNodeGroupCount'] = self.dbnode_group_count
         if self.dbnode_storage is not None:
             result['DBNodeStorage'] = self.dbnode_storage
+        if self.disk_encryption is not None:
+            result['DiskEncryption'] = self.disk_encryption
         if self.elastic_ioresource is not None:
             result['ElasticIOResource'] = self.elastic_ioresource
         if self.executor_count is not None:
             result['ExecutorCount'] = self.executor_count
+        if self.kms_id is not None:
+            result['KmsId'] = self.kms_id
         if self.mode is not None:
             result['Mode'] = self.mode
         if self.owner_account is not None:
@@ -1276,10 +1284,14 @@ class CreateDBClusterRequest(TeaModel):
             self.dbnode_group_count = m.get('DBNodeGroupCount')
         if m.get('DBNodeStorage') is not None:
             self.dbnode_storage = m.get('DBNodeStorage')
+        if m.get('DiskEncryption') is not None:
+            self.disk_encryption = m.get('DiskEncryption')
         if m.get('ElasticIOResource') is not None:
             self.elastic_ioresource = m.get('ElasticIOResource')
         if m.get('ExecutorCount') is not None:
             self.executor_count = m.get('ExecutorCount')
+        if m.get('KmsId') is not None:
+            self.kms_id = m.get('KmsId')
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
         if m.get('OwnerAccount') is not None:
@@ -2515,9 +2527,13 @@ class DeleteElasticPlanRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~612241~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
-        # The name of the elastic plan.
+        # The name of the scaling plan.
+        # 
+        # > You can call the [DescribeElasticPlans](~~601334~~) operation to query the names of scaling plans.
         self.elastic_plan_name = elastic_plan_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2569,7 +2585,7 @@ class DeleteElasticPlanResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -2647,12 +2663,12 @@ class DescribeAccountsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The account of the database.
+        # The name of the database account.
         self.account_name = account_name
-        # *   Normal: standard account
-        # *   Super: privileged account
+        # *   Normal: standard account.
+        # *   Super: privileged account.
         self.account_type = account_type
-        # The ID of the cluster.
+        # The cluster ID.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2711,18 +2727,18 @@ class DescribeAccountsResponseBodyAccountListDBAccount(TeaModel):
         account_status: str = None,
         account_type: str = None,
     ):
-        # The description of the account.
+        # The description of the database account.
         self.account_description = account_description
-        # The name of the account.
+        # The name of the database account.
         self.account_name = account_name
-        # The status of the account.
+        # The state of the database account. Valid values:
         # 
-        # *   Creating: The account is being created.
-        # *   Available: The account is available.
-        # *   Deleting: The account is being deleted.
+        # *   Creating
+        # *   Available
+        # *   Deleting
         self.account_status = account_status
-        # *   Normal: standard account
-        # *   Super: privileged account
+        # *   Normal: standard account.
+        # *   Super: privileged account.
         self.account_type = account_type
 
     def validate(self):
@@ -2798,9 +2814,9 @@ class DescribeAccountsResponseBody(TeaModel):
         account_list: DescribeAccountsResponseBodyAccountList = None,
         request_id: str = None,
     ):
-        # The list of database accounts.
+        # The queried database accounts.
         self.account_list = account_list
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4071,17 +4087,14 @@ class DescribeAuditLogRecordsRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The name of the database on which you want to execute the SQL statement.
         self.dbname = dbname
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
-        # > 
-        # 
-        # *   The end time must be later than the start time.
-        # 
-        # *   The maximum time range that can be specified is 24 hours.
+        # > - The end time must be later than the start time.
+        # > - The maximum time range that can be specified is 24 hours.
         self.end_time = end_time
         # The IP address and port number of the client that is used to execute the SQL statement.
         self.host_address = host_address
@@ -4136,9 +4149,9 @@ class DescribeAuditLogRecordsRequest(TeaModel):
         # *   **INSERT_INTO_SELECT**\
         # *   **ALTER**\
         # *   **DROP**\
-        # *   **INSERT**\
+        # *   **CREATE**\
         # 
-        # > You can query only a single type of SQL statements at a time. If this parameter is left empty, the **SELECT** SQL statements are queried.
+        # > You can query only a single type of SQL statements at a time. If you leave this parameter empty, the **SELECT** statements are queried.
         self.sql_type = sql_type
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
@@ -6392,9 +6405,13 @@ class DescribeComputeResourceRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # The version of the AnalyticDB for MySQL Data Warehouse Edition cluster. Set the value to **3**.
         self.dbcluster_version = dbcluster_version
+        # The available computing resources for migrating AnalyticDB MySQL Data Warehouse Edition to AnalyticDB MySQL Lakehouse Edition. Possible values are:
+        # - **true**\
+        # - **false**(default value)
         self.migrate = migrate
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7092,11 +7109,11 @@ class DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         # 
-        # > You can call the [TagResources](~~179253~~) operation to add a tag to the cluster.
+        # >  You can call the [TagResources](~~179253~~) operation to add a tag to the cluster.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7175,6 +7192,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         dbnode_count: int = None,
         dbnode_storage: int = None,
         dbversion: str = None,
+        disk_encryption: str = None,
         disk_performance_level: str = None,
         disk_type: str = None,
         dts_job_id: str = None,
@@ -7213,14 +7231,14 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **CLUSTER**: reserved mode for Cluster Edition.
         # *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
         # 
-        # > For more information about cluster editions, see [Editions](~~205001~~).
+        # >  For more information about cluster editions, see [Editions](~~205001~~).
         self.category = category
         # The billing method of the cluster. Valid values:
         # 
         # *   **ads**: pay-as-you-go.
         # *   **ads_pre**: subscription.
         self.commodity_code = commodity_code
-        # The specifications of computing resources that are used by the cluster in elastic mode. The increase of computing resources can speed up queries. You can adjust the value of this parameter to scale the cluster.
+        # The specifications of computing resources that are used in the cluster in elastic mode. The increase of computing resources can speed up queries. You can adjust the value of this parameter to scale the cluster.
         self.compute_resource = compute_resource
         # The Virtual Private Cloud (VPC) endpoint of the cluster.
         self.connection_string = connection_string
@@ -7247,6 +7265,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.dbnode_storage = dbnode_storage
         # The version of the database engine. **3.0** is returned.
         self.dbversion = dbversion
+        self.disk_encryption = disk_encryption
         # The ESSD performance level.
         self.disk_performance_level = disk_performance_level
         # The disk type of the cluster. Valid values:
@@ -7255,11 +7274,12 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         # *   **cloud**: basic disk.
         # *   **cloud_ssd**: standard SSD.
         # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+        # *   **cloud_essd0**: PL0 enhanced SSD (ESSD).
+        # *   **cloud_essd**: PL1 ESSD.
         # *   **cloud_essd2**: PL2 ESSD.
         # *   **cloud_essd3**: PL3 ESSD.
         # 
-        # > For more information about ESSDs, see [ESSD specifications](~~122389~~).
+        # >  For more information about ESSDs, see [ESSDs](~~122389~~).
         self.disk_type = disk_type
         # The ID of the Data Transmission Service (DTS) synchronization task. This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
@@ -7305,7 +7325,7 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.inner_port = inner_port
         # The ID of the key that is used to encrypt disk data.
         # 
-        # > This parameter is returned only when disk encryption is enabled.
+        # >  This parameter is returned only when disk encryption is enabled.
         self.kms_id = kms_id
         # The lock mode of the cluster. Valid values:
         # 
@@ -7317,18 +7337,18 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.lock_mode = lock_mode
         # The reason why the cluster is locked.
         # 
-        # > This parameter is returned only when the cluster was locked. The value is **instance_expire**.
+        # >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
         self.lock_reason = lock_reason
-        # The maintenance window of the cluster. The window is in the *HH:mmZ-HH:mmZ* format. The time is displayed in UTC. Example: *04:00Z-05:00Z*, which indicates that routine maintenance can be performed from 04:00 to 05:00.
+        # The maintenance window of the cluster. The window follows the ISO 8601 standard in the *HH:mmZ- HH:mmZ* format. The time is displayed in UTC. An example is *04:00Z-05:00Z*, which indicates that routine maintenance can be performed from 04:00 to 05:00.
         # 
-        # > For more information about maintenance windows, see [Configure a maintenance window](~~122569~~).
+        # >  For more information about maintenance windows, see [Configure a maintenance window](~~122569~~).
         self.maintain_time = maintain_time
         # The mode of the cluster. Valid values:
         # 
         # *   **flexible**: elastic mode.
         # *   **reserver**: reserved mode.
         # 
-        # > For more information about cluster modes, see [Editions](~~205001~~).
+        # >  For more information about cluster modes, see [Editions](~~205001~~).
         self.mode = mode
         # The billing method of the cluster. Valid values:
         # 
@@ -7341,9 +7361,9 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
         self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The specifications of storage resources that are used by the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
+        # The specifications of storage resources that are used in the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
         # The tags that are added to the cluster.
         self.tags = tags
@@ -7399,6 +7419,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             result['DBNodeStorage'] = self.dbnode_storage
         if self.dbversion is not None:
             result['DBVersion'] = self.dbversion
+        if self.disk_encryption is not None:
+            result['DiskEncryption'] = self.disk_encryption
         if self.disk_performance_level is not None:
             result['DiskPerformanceLevel'] = self.disk_performance_level
         if self.disk_type is not None:
@@ -7493,6 +7515,8 @@ class DescribeDBClusterAttributeResponseBodyItemsDBCluster(TeaModel):
             self.dbnode_storage = m.get('DBNodeStorage')
         if m.get('DBVersion') is not None:
             self.dbversion = m.get('DBVersion')
+        if m.get('DiskEncryption') is not None:
+            self.disk_encryption = m.get('DiskEncryption')
         if m.get('DiskPerformanceLevel') is not None:
             self.disk_performance_level = m.get('DiskPerformanceLevel')
         if m.get('DiskType') is not None:
@@ -8276,9 +8300,9 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         resource_pools: str = None,
         start_time: str = None,
     ):
-        # The cluster ID.
+        # The ID of the AnalyticDB for MySQL cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~129857~~) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
         self.dbcluster_id = dbcluster_id
         # The end time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         # 
@@ -8294,43 +8318,45 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         # 
         #     *   **AnalyticDB_Connections**: the number of database connections.
         # 
-        # *   Write
+        # *   Writes
         # 
         #     *   **AnalyticDB_TPS**: the write transactions per second (TPS).
         #     *   **AnalyticDB_InsertRT**: the write response time.
-        #     *   **AnalyticDB_InsertBytes**: the write throughout.
+        #     *   **AnalyticDB_InsertBytes**: the write throughput.
         # 
-        # *   Update
+        # *   Updates
         # 
         #     *   **AnalyticDB_UpdateRT**: the update response time.
         # 
-        # *   Delete
+        # *   Deletion
         # 
         #     *   **AnalyticDB_DeleteRT**: the delete response time.
         # 
-        # *   Query
+        # *   Queries
         # 
         #     *   **AnalyticDB_QPS**: the queries per second (QPS).
         #     *   **AnalyticDB_QueryRT**: the query response time.
         #     *   **AnalyticDB_QueryWaitTime**: the query wait time.
         # 
-        # *   Disk
+        # *   Disks
         # 
         #     *   **AnalyticDB_IO**: the disk I/O throughput.
         #     *   **AnalyticDB_IO_UTIL**: the I/O utilization.
         #     *   **AnalyticDB_IO_WAIT**: the I/O wait time.
         #     *   **AnalyticDB_IOPS**: the disk input/output operations per second (IOPS).
-        #     *   **AnalyticDB_DiskUsage**: the disk usage.
-        #     *   **AnalyticDB_HotDataDiskUsage**: the disk usage of hot data.
-        #     *   **AnalyticDB_ColdDataDiskUsage**: the disk usage of cold data.
+        #     *   **AnalyticDB_DiskUsage**: the disk space that is used.
+        #     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
+        #     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by cold data.
         # 
-        # > If you leave this parameter empty, the values of all the preceding performance metrics are returned.
+        # >  If you leave this parameter empty, the values of all the preceding performance metrics are returned.
         self.key = key
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The name of the resource group.
         self.resource_pools = resource_pools
         # The start time of the query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         self.start_time = start_time
@@ -8398,8 +8424,9 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         tags: str = None,
         values: List[str] = None,
     ):
-        # The name of the performance metric.
+        # The name of the performance metric value.
         self.name = name
+        # The tags that are added to the cluster.
         self.tags = tags
         # The values of the queried performance metrics.
         self.values = values
@@ -8443,7 +8470,7 @@ class DescribeDBClusterPerformanceResponseBodyPerformances(TeaModel):
         self.key = key
         # The queried performance metric data.
         self.series = series
-        # The unit of the performance metric.
+        # The unit of the performance metrics.
         self.unit = unit
 
     def validate(self):
@@ -9258,7 +9285,7 @@ class DescribeDBClustersResponseBodyItemsDBClusterTagsTag(TeaModel):
     ):
         # The tag key.
         # 
-        # > You can call the [TagResources](~~179253~~) operation to add tags to a cluster.
+        # >  You can call the [TagResources](~~179253~~) operation to add tags to a cluster.
         self.key = key
         # The tag value.
         self.value = value
@@ -9369,7 +9396,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **CLUSTER**: reserved mode for Cluster Edition.
         # *   **MIXED_STORAGE**: elastic mode for Cluster Edition.
         # 
-        # > For more information about cluster editions, see [Editions](~~205001~~).
+        # >  For more information about cluster editions, see [Editions](~~205001~~).
         self.category = category
         # The commodity code. **ads** is returned.
         self.commodity_code = commodity_code
@@ -9406,17 +9433,18 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         # *   **cloud**: basic disk.
         # *   **cloud_ssd**: standard SSD.
         # *   **cloud_efficiency**: ultra disk.
-        # *   **cloud_essd**: PL1 enhanced SSD (ESSD).
+        # *   **cloud_essd**: PL0 enhanced SSD (ESSD).
+        # *   **cloud_essd**: PL1 ESSD.
         # *   **cloud_essd2**: PL2 ESSD.
         # *   **cloud_essd3**: PL3 ESSD.
         # 
-        # > For more information, see [ESSDs](~~122389~~).
+        # >  For more information, see [ESSDs](~~122389~~).
         self.disk_type = disk_type
         # The ID of the Data Transmission Service (DTS) synchronization task. This parameter is returned only for MySQL analytic instances.
         self.dts_job_id = dts_job_id
         # The number of elastic I/O units (EIUs). For more information, see [Use EIUs to scale up storage resources](~~189505~~).
         # 
-        # > This parameter is returned only for clusters in elastic mode.
+        # >  This parameter is returned only for clusters in elastic mode.
         self.elastic_ioresource = elastic_ioresource
         # The engine of the cluster. **AnalyticDB** is returned.
         self.engine = engine
@@ -9449,7 +9477,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.lock_mode = lock_mode
         # The reason why the cluster is locked.
         # 
-        # > This parameter is returned only when the cluster was locked. **instance_expire** is returned.
+        # >  This parameter is returned only when the cluster was locked. **instance_expire** is returned.
         self.lock_reason = lock_reason
         # The mode of the cluster. Valid values:
         # 
@@ -9471,7 +9499,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.rds_instance_id = rds_instance_id
         # The region ID of the cluster.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The specifications of storage resources that are used in the cluster in elastic mode. These resources are used to read and write data. You can increase the value of this parameter to improve the read and write performance of the cluster.
         self.storage_resource = storage_resource
@@ -12043,6 +12071,7 @@ class DescribeEIURangeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13165,6 +13194,9 @@ class DescribeLoadTasksRecordsRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
+        # The region ID.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14857,6 +14889,369 @@ class DescribeRegionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeResubmitConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        group_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.group_name = group_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeResubmitConfigResponseBodyRules(TeaModel):
+    def __init__(
+        self,
+        exceed_memory_exception: bool = None,
+        group_name: str = None,
+        peak_memory: str = None,
+        query_time: str = None,
+        target_group_name: str = None,
+    ):
+        self.exceed_memory_exception = exceed_memory_exception
+        self.group_name = group_name
+        self.peak_memory = peak_memory
+        self.query_time = query_time
+        self.target_group_name = target_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exceed_memory_exception is not None:
+            result['ExceedMemoryException'] = self.exceed_memory_exception
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.peak_memory is not None:
+            result['PeakMemory'] = self.peak_memory
+        if self.query_time is not None:
+            result['QueryTime'] = self.query_time
+        if self.target_group_name is not None:
+            result['TargetGroupName'] = self.target_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExceedMemoryException') is not None:
+            self.exceed_memory_exception = m.get('ExceedMemoryException')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PeakMemory') is not None:
+            self.peak_memory = m.get('PeakMemory')
+        if m.get('QueryTime') is not None:
+            self.query_time = m.get('QueryTime')
+        if m.get('TargetGroupName') is not None:
+            self.target_group_name = m.get('TargetGroupName')
+        return self
+
+
+class DescribeResubmitConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        request_id: str = None,
+        rules: List[DescribeResubmitConfigResponseBodyRules] = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.request_id = request_id
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = DescribeResubmitConfigResponseBodyRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeResubmitConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeResubmitConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeResubmitConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeSQAConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        group_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        region_id: str = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.group_name = group_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.region_id = region_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeSQAConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        group_name: str = None,
+        request_id: str = None,
+        sqastatus: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.group_name = group_name
+        self.request_id = request_id
+        self.sqastatus = sqastatus
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.sqastatus is not None:
+            result['SQAStatus'] = self.sqastatus
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SQAStatus') is not None:
+            self.sqastatus = m.get('SQAStatus')
+        return self
+
+
+class DescribeSQAConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeSQAConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeSQAConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18012,6 +18407,7 @@ class DescribeTableStatisticsRequest(TeaModel):
         owner_id: int = None,
         page_number: int = None,
         page_size: int = None,
+        region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
@@ -18034,6 +18430,10 @@ class DescribeTableStatisticsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
         self.page_size = page_size
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
 
@@ -18058,6 +18458,8 @@ class DescribeTableStatisticsRequest(TeaModel):
             result['PageNumber'] = self.page_number
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
@@ -18078,6 +18480,8 @@ class DescribeTableStatisticsRequest(TeaModel):
             self.page_number = m.get('PageNumber')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
@@ -18319,10 +18723,13 @@ class DescribeTablesRequest(TeaModel):
         resource_owner_id: int = None,
         schema_name: str = None,
     ):
-        # The ID of the cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The region ID of the cluster.
+        # 
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18380,7 +18787,7 @@ class DescribeTablesResponseBodyItemsTable(TeaModel):
         schema_name: str = None,
         table_name: str = None,
     ):
-        # The ID of the cluster.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.schema_name = schema_name
@@ -18456,9 +18863,9 @@ class DescribeTablesResponseBody(TeaModel):
         items: DescribeTablesResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The list of tables.
+        # The queried tables.
         self.items = items
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -18760,7 +19167,7 @@ class DescribeVSwitchesRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # >  You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19656,7 +20063,7 @@ class GrantOperatorPermissionRequest(TeaModel):
     ):
         # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
+        # > You can call the [DescribeDBClusters](~~129857~~) operation to query cluster IDs.
         self.dbcluster_id = dbcluster_id
         # The expiration time of the service account permissions. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.expired_time = expired_time
@@ -19719,7 +20126,7 @@ class GrantOperatorPermissionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -20225,6 +20632,7 @@ class MigrateDBClusterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20272,6 +20680,7 @@ class MigrateDBClusterResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -22709,7 +23118,7 @@ class ModifyLogBackupPolicyRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID.
+        # The ID of the AnalyticDB for MySQL Data Warehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable log backup. Valid values:
         # 
@@ -22722,6 +23131,7 @@ class ModifyLogBackupPolicyRequest(TeaModel):
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22859,21 +23269,16 @@ class ModifyMaintenanceActionRequest(TeaModel):
         switch_time: str = None,
     ):
         # The ID of the pending O\&M event. You can specify multiple IDs to batch change the switchover time. Separate multiple IDs with commas (,).
-        # 
-        # > 
-        # 
-        # *   You can call the [DescribeMaintenanceAction](~~271738~~) operation to query the information about pending O\&M events, including the event ID.
-        # 
-        # *   You can change the switchover time only for pending O\&M events. The switchover time of historical O\&M events cannot be changed. For more information about the status of pending and historical O\&M events, see [DescribeMaintenanceAction](~~271738~~).
+        # > - You can call the [DescribeMaintenanceAction](~~271738~~) operation to query the information about pending O\&M events, including the event ID.
+        # > - You can change the switchover time only for pending O\&M events. The switchover time of historical O\&M events cannot be changed. For more information about the status of pending and historical O\&M events, see [DescribeMaintenanceAction](~~271738~~).
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the pending O\&M event occurs.
         # 
-        # > 
-        # 
-        # *   You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
+        # > - You can call the [DescribeRegions](~~143074~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23003,6 +23408,402 @@ class ModifyMaintenanceActionResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyMaintenanceActionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyResubmitConfigRequestRules(TeaModel):
+    def __init__(
+        self,
+        exceed_memory_exception: bool = None,
+        group_name: str = None,
+        peak_memory: str = None,
+        query_time: str = None,
+        target_group_name: str = None,
+    ):
+        self.exceed_memory_exception = exceed_memory_exception
+        self.group_name = group_name
+        self.peak_memory = peak_memory
+        self.query_time = query_time
+        self.target_group_name = target_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.exceed_memory_exception is not None:
+            result['ExceedMemoryException'] = self.exceed_memory_exception
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.peak_memory is not None:
+            result['PeakMemory'] = self.peak_memory
+        if self.query_time is not None:
+            result['QueryTime'] = self.query_time
+        if self.target_group_name is not None:
+            result['TargetGroupName'] = self.target_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExceedMemoryException') is not None:
+            self.exceed_memory_exception = m.get('ExceedMemoryException')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('PeakMemory') is not None:
+            self.peak_memory = m.get('PeakMemory')
+        if m.get('QueryTime') is not None:
+            self.query_time = m.get('QueryTime')
+        if m.get('TargetGroupName') is not None:
+            self.target_group_name = m.get('TargetGroupName')
+        return self
+
+
+class ModifyResubmitConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rules: List[ModifyResubmitConfigRequestRules] = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rules = rules
+
+    def validate(self):
+        if self.rules:
+            for k in self.rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        result['Rules'] = []
+        if self.rules is not None:
+            for k in self.rules:
+                result['Rules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        self.rules = []
+        if m.get('Rules') is not None:
+            for k in m.get('Rules'):
+                temp_model = ModifyResubmitConfigRequestRules()
+                self.rules.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyResubmitConfigShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        rules_shrink: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.rules_shrink = rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.rules_shrink is not None:
+            result['Rules'] = self.rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Rules') is not None:
+            self.rules_shrink = m.get('Rules')
+        return self
+
+
+class ModifyResubmitConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyResubmitConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyResubmitConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyResubmitConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifySQAConfigRequest(TeaModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        group_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_group_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        sqastatus: str = None,
+    ):
+        self.dbcluster_id = dbcluster_id
+        self.group_name = group_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_group_id = resource_group_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.sqastatus = sqastatus
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sqastatus is not None:
+            result['SQAStatus'] = self.sqastatus
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SQAStatus') is not None:
+            self.sqastatus = m.get('SQAStatus')
+        return self
+
+
+class ModifySQAConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifySQAConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifySQAConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifySQAConfigResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

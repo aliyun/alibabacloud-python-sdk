@@ -841,10 +841,14 @@ class Client(OpenApiClient):
             query['DBNodeGroupCount'] = request.dbnode_group_count
         if not UtilClient.is_unset(request.dbnode_storage):
             query['DBNodeStorage'] = request.dbnode_storage
+        if not UtilClient.is_unset(request.disk_encryption):
+            query['DiskEncryption'] = request.disk_encryption
         if not UtilClient.is_unset(request.elastic_ioresource):
             query['ElasticIOResource'] = request.elastic_ioresource
         if not UtilClient.is_unset(request.executor_count):
             query['ExecutorCount'] = request.executor_count
+        if not UtilClient.is_unset(request.kms_id):
+            query['KmsId'] = request.kms_id
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
         if not UtilClient.is_unset(request.owner_account):
@@ -936,10 +940,14 @@ class Client(OpenApiClient):
             query['DBNodeGroupCount'] = request.dbnode_group_count
         if not UtilClient.is_unset(request.dbnode_storage):
             query['DBNodeStorage'] = request.dbnode_storage
+        if not UtilClient.is_unset(request.disk_encryption):
+            query['DiskEncryption'] = request.disk_encryption
         if not UtilClient.is_unset(request.elastic_ioresource):
             query['ElasticIOResource'] = request.elastic_ioresource
         if not UtilClient.is_unset(request.executor_count):
             query['ExecutorCount'] = request.executor_count
+        if not UtilClient.is_unset(request.kms_id):
+            query['KmsId'] = request.kms_id
         if not UtilClient.is_unset(request.mode):
             query['Mode'] = request.mode
         if not UtilClient.is_unset(request.owner_account):
@@ -2522,7 +2530,7 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeAuditLogRecordsResponse:
         """
         Before you call the DescribeAuditLogRecords operation to query the SQL audit logs of an AnalyticDB for MySQL cluster, you must enable SQL audit for the cluster. You can call the [DescribeAuditLogConfig](~~190628~~) operation to query the status of SQL audit. If SQL audit is disabled, you can call the [ModifyAuditLogConfig](~~190629~~) operation to enable SQL audit.
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
         
         @param request: DescribeAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2592,7 +2600,7 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeAuditLogRecordsResponse:
         """
         Before you call the DescribeAuditLogRecords operation to query the SQL audit logs of an AnalyticDB for MySQL cluster, you must enable SQL audit for the cluster. You can call the [DescribeAuditLogConfig](~~190628~~) operation to query the status of SQL audit. If SQL audit is disabled, you can call the [ModifyAuditLogConfig](~~190629~~) operation to enable SQL audit.
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
         
         @param request: DescribeAuditLogRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2661,7 +2669,7 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeAuditLogRecordsResponse:
         """
         Before you call the DescribeAuditLogRecords operation to query the SQL audit logs of an AnalyticDB for MySQL cluster, you must enable SQL audit for the cluster. You can call the [DescribeAuditLogConfig](~~190628~~) operation to query the status of SQL audit. If SQL audit is disabled, you can call the [ModifyAuditLogConfig](~~190629~~) operation to enable SQL audit.
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
         
         @param request: DescribeAuditLogRecordsRequest
         @return: DescribeAuditLogRecordsResponse
@@ -2675,7 +2683,7 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.DescribeAuditLogRecordsResponse:
         """
         Before you call the DescribeAuditLogRecords operation to query the SQL audit logs of an AnalyticDB for MySQL cluster, you must enable SQL audit for the cluster. You can call the [DescribeAuditLogConfig](~~190628~~) operation to query the status of SQL audit. If SQL audit is disabled, you can call the [ModifyAuditLogConfig](~~190629~~) operation to enable SQL audit.
-        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried.
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
         
         @param request: DescribeAuditLogRecordsRequest
         @return: DescribeAuditLogRecordsResponse
@@ -6105,6 +6113,198 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def describe_resubmit_config_with_options(
+        self,
+        request: adb_20190315_models.DescribeResubmitConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeResubmitConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResubmitConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeResubmitConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_resubmit_config_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeResubmitConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeResubmitConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeResubmitConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeResubmitConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_resubmit_config(
+        self,
+        request: adb_20190315_models.DescribeResubmitConfigRequest,
+    ) -> adb_20190315_models.DescribeResubmitConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_resubmit_config_with_options(request, runtime)
+
+    async def describe_resubmit_config_async(
+        self,
+        request: adb_20190315_models.DescribeResubmitConfigRequest,
+    ) -> adb_20190315_models.DescribeResubmitConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_resubmit_config_with_options_async(request, runtime)
+
+    def describe_sqaconfig_with_options(
+        self,
+        request: adb_20190315_models.DescribeSQAConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSQAConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQAConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSQAConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqaconfig_with_options_async(
+        self,
+        request: adb_20190315_models.DescribeSQAConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.DescribeSQAConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSQAConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.DescribeSQAConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqaconfig(
+        self,
+        request: adb_20190315_models.DescribeSQAConfigRequest,
+    ) -> adb_20190315_models.DescribeSQAConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sqaconfig_with_options(request, runtime)
+
+    async def describe_sqaconfig_async(
+        self,
+        request: adb_20190315_models.DescribeSQAConfigRequest,
+    ) -> adb_20190315_models.DescribeSQAConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sqaconfig_with_options_async(request, runtime)
+
     def describe_sqlpatterns_with_options(
         self,
         request: adb_20190315_models.DescribeSQLPatternsRequest,
@@ -7107,6 +7307,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7156,6 +7358,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
@@ -7887,6 +8091,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.GrantOperatorPermissionResponse:
         """
+        ###
         If you need Alibaba Cloud technical support to perform operations on your AnalyticDB for MySQL cluster, you must grant permissions to the service account of your cluster. When the validity period of the authorization ends, the granted permissions are automatically revoked.
         
         @param request: GrantOperatorPermissionRequest
@@ -7934,6 +8139,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20190315_models.GrantOperatorPermissionResponse:
         """
+        ###
         If you need Alibaba Cloud technical support to perform operations on your AnalyticDB for MySQL cluster, you must grant permissions to the service account of your cluster. When the validity period of the authorization ends, the granted permissions are automatically revoked.
         
         @param request: GrantOperatorPermissionRequest
@@ -7980,6 +8186,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.GrantOperatorPermissionRequest,
     ) -> adb_20190315_models.GrantOperatorPermissionResponse:
         """
+        ###
         If you need Alibaba Cloud technical support to perform operations on your AnalyticDB for MySQL cluster, you must grant permissions to the service account of your cluster. When the validity period of the authorization ends, the granted permissions are automatically revoked.
         
         @param request: GrantOperatorPermissionRequest
@@ -7993,6 +8200,7 @@ class Client(OpenApiClient):
         request: adb_20190315_models.GrantOperatorPermissionRequest,
     ) -> adb_20190315_models.GrantOperatorPermissionResponse:
         """
+        ###
         If you need Alibaba Cloud technical support to perform operations on your AnalyticDB for MySQL cluster, you must grant permissions to the service account of your cluster. When the validity period of the authorization ends, the granted permissions are automatically revoked.
         
         @param request: GrantOperatorPermissionRequest
@@ -10006,6 +10214,206 @@ class Client(OpenApiClient):
     ) -> adb_20190315_models.ModifyMaintenanceActionResponse:
         runtime = util_models.RuntimeOptions()
         return await self.modify_maintenance_action_with_options_async(request, runtime)
+
+    def modify_resubmit_config_with_options(
+        self,
+        tmp_req: adb_20190315_models.ModifyResubmitConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyResubmitConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adb_20190315_models.ModifyResubmitConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rules):
+            request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyResubmitConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyResubmitConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_resubmit_config_with_options_async(
+        self,
+        tmp_req: adb_20190315_models.ModifyResubmitConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifyResubmitConfigResponse:
+        UtilClient.validate_model(tmp_req)
+        request = adb_20190315_models.ModifyResubmitConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.rules):
+            request.rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rules, 'Rules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.rules_shrink):
+            query['Rules'] = request.rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyResubmitConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifyResubmitConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_resubmit_config(
+        self,
+        request: adb_20190315_models.ModifyResubmitConfigRequest,
+    ) -> adb_20190315_models.ModifyResubmitConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_resubmit_config_with_options(request, runtime)
+
+    async def modify_resubmit_config_async(
+        self,
+        request: adb_20190315_models.ModifyResubmitConfigRequest,
+    ) -> adb_20190315_models.ModifyResubmitConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_resubmit_config_with_options_async(request, runtime)
+
+    def modify_sqaconfig_with_options(
+        self,
+        request: adb_20190315_models.ModifySQAConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifySQAConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sqastatus):
+            query['SQAStatus'] = request.sqastatus
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySQAConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifySQAConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_sqaconfig_with_options_async(
+        self,
+        request: adb_20190315_models.ModifySQAConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> adb_20190315_models.ModifySQAConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.sqastatus):
+            query['SQAStatus'] = request.sqastatus
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySQAConfig',
+            version='2019-03-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            adb_20190315_models.ModifySQAConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_sqaconfig(
+        self,
+        request: adb_20190315_models.ModifySQAConfigRequest,
+    ) -> adb_20190315_models.ModifySQAConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_sqaconfig_with_options(request, runtime)
+
+    async def modify_sqaconfig_async(
+        self,
+        request: adb_20190315_models.ModifySQAConfigRequest,
+    ) -> adb_20190315_models.ModifySQAConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_sqaconfig_with_options_async(request, runtime)
 
     def release_cluster_public_connection_with_options(
         self,
