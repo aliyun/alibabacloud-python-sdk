@@ -137,6 +137,156 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_task_with_options_async(request, headers, runtime)
 
+    def create_transcription_phrases_with_options(
+        self,
+        request: tingwu_20230930_models.CreateTranscriptionPhrasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.CreateTranscriptionPhrasesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.word_weights):
+            body['WordWeights'] = request.word_weights
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_transcription_phrases_with_options_async(
+        self,
+        request: tingwu_20230930_models.CreateTranscriptionPhrasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.CreateTranscriptionPhrasesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.word_weights):
+            body['WordWeights'] = request.word_weights
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.CreateTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_transcription_phrases(
+        self,
+        request: tingwu_20230930_models.CreateTranscriptionPhrasesRequest,
+    ) -> tingwu_20230930_models.CreateTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_transcription_phrases_with_options(request, headers, runtime)
+
+    async def create_transcription_phrases_async(
+        self,
+        request: tingwu_20230930_models.CreateTranscriptionPhrasesRequest,
+    ) -> tingwu_20230930_models.CreateTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_transcription_phrases_with_options_async(request, headers, runtime)
+
+    def delete_transcription_phrases_with_options(
+        self,
+        phrase_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.DeleteTranscriptionPhrasesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases/{OpenApiUtilClient.get_encode_param(phrase_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_transcription_phrases_with_options_async(
+        self,
+        phrase_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.DeleteTranscriptionPhrasesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases/{OpenApiUtilClient.get_encode_param(phrase_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.DeleteTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_transcription_phrases(
+        self,
+        phrase_id: str,
+    ) -> tingwu_20230930_models.DeleteTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_transcription_phrases_with_options(phrase_id, headers, runtime)
+
+    async def delete_transcription_phrases_async(
+        self,
+        phrase_id: str,
+    ) -> tingwu_20230930_models.DeleteTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_transcription_phrases_with_options_async(phrase_id, headers, runtime)
+
     def get_task_info_with_options(
         self,
         task_id: str,
@@ -202,3 +352,215 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_task_info_with_options_async(task_id, headers, runtime)
+
+    def get_transcription_phrases_with_options(
+        self,
+        phrase_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.GetTranscriptionPhrasesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases/{OpenApiUtilClient.get_encode_param(phrase_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_transcription_phrases_with_options_async(
+        self,
+        phrase_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.GetTranscriptionPhrasesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases/{OpenApiUtilClient.get_encode_param(phrase_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.GetTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_transcription_phrases(
+        self,
+        phrase_id: str,
+    ) -> tingwu_20230930_models.GetTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_transcription_phrases_with_options(phrase_id, headers, runtime)
+
+    async def get_transcription_phrases_async(
+        self,
+        phrase_id: str,
+    ) -> tingwu_20230930_models.GetTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_transcription_phrases_with_options_async(phrase_id, headers, runtime)
+
+    def list_transcription_phrases_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.ListTranscriptionPhrasesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transcription_phrases_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.ListTranscriptionPhrasesResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='ListTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.ListTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transcription_phrases(self) -> tingwu_20230930_models.ListTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_transcription_phrases_with_options(headers, runtime)
+
+    async def list_transcription_phrases_async(self) -> tingwu_20230930_models.ListTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_transcription_phrases_with_options_async(headers, runtime)
+
+    def update_transcription_phrases_with_options(
+        self,
+        phrase_id: str,
+        request: tingwu_20230930_models.UpdateTranscriptionPhrasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.UpdateTranscriptionPhrasesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.word_weights):
+            body['WordWeights'] = request.word_weights
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases/{OpenApiUtilClient.get_encode_param(phrase_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_transcription_phrases_with_options_async(
+        self,
+        phrase_id: str,
+        request: tingwu_20230930_models.UpdateTranscriptionPhrasesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> tingwu_20230930_models.UpdateTranscriptionPhrasesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.word_weights):
+            body['WordWeights'] = request.word_weights
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTranscriptionPhrases',
+            version='2023-09-30',
+            protocol='HTTPS',
+            pathname=f'/openapi/tingwu/v2/resources/phrases/{OpenApiUtilClient.get_encode_param(phrase_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            tingwu_20230930_models.UpdateTranscriptionPhrasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_transcription_phrases(
+        self,
+        phrase_id: str,
+        request: tingwu_20230930_models.UpdateTranscriptionPhrasesRequest,
+    ) -> tingwu_20230930_models.UpdateTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_transcription_phrases_with_options(phrase_id, request, headers, runtime)
+
+    async def update_transcription_phrases_async(
+        self,
+        phrase_id: str,
+        request: tingwu_20230930_models.UpdateTranscriptionPhrasesRequest,
+    ) -> tingwu_20230930_models.UpdateTranscriptionPhrasesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_transcription_phrases_with_options_async(phrase_id, request, headers, runtime)
