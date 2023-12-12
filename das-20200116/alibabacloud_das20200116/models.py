@@ -11863,6 +11863,312 @@ class GetAutonomousNotifyEventsInRangeResponse(TeaModel):
         return self
 
 
+class GetBlockingDetailListRequest(TeaModel):
+    def __init__(
+        self,
+        db_name_list: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        page_no: str = None,
+        page_size: str = None,
+        query_hash: str = None,
+        start_time: str = None,
+    ):
+        self.db_name_list = db_name_list
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.query_hash = query_hash
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name_list is not None:
+            result['DbNameList'] = self.db_name_list
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.query_hash is not None:
+            result['QueryHash'] = self.query_hash
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbNameList') is not None:
+            self.db_name_list = m.get('DbNameList')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('QueryHash') is not None:
+            self.query_hash = m.get('QueryHash')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetBlockingDetailListResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        batch_id: int = None,
+        client_app_name: str = None,
+        current_collection_time: int = None,
+        data_base: str = None,
+        host_name: str = None,
+        login_id: str = None,
+        query_hash: str = None,
+        spid: str = None,
+        sql_text: str = None,
+        start_time: str = None,
+        wait_time_ms: int = None,
+        wait_type: str = None,
+    ):
+        self.batch_id = batch_id
+        self.client_app_name = client_app_name
+        self.current_collection_time = current_collection_time
+        self.data_base = data_base
+        self.host_name = host_name
+        self.login_id = login_id
+        self.query_hash = query_hash
+        self.spid = spid
+        self.sql_text = sql_text
+        self.start_time = start_time
+        self.wait_time_ms = wait_time_ms
+        self.wait_type = wait_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        if self.client_app_name is not None:
+            result['ClientAppName'] = self.client_app_name
+        if self.current_collection_time is not None:
+            result['CurrentCollectionTime'] = self.current_collection_time
+        if self.data_base is not None:
+            result['DataBase'] = self.data_base
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.login_id is not None:
+            result['LoginId'] = self.login_id
+        if self.query_hash is not None:
+            result['QueryHash'] = self.query_hash
+        if self.spid is not None:
+            result['Spid'] = self.spid
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.wait_time_ms is not None:
+            result['WaitTimeMs'] = self.wait_time_ms
+        if self.wait_type is not None:
+            result['WaitType'] = self.wait_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        if m.get('ClientAppName') is not None:
+            self.client_app_name = m.get('ClientAppName')
+        if m.get('CurrentCollectionTime') is not None:
+            self.current_collection_time = m.get('CurrentCollectionTime')
+        if m.get('DataBase') is not None:
+            self.data_base = m.get('DataBase')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('LoginId') is not None:
+            self.login_id = m.get('LoginId')
+        if m.get('QueryHash') is not None:
+            self.query_hash = m.get('QueryHash')
+        if m.get('Spid') is not None:
+            self.spid = m.get('Spid')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('WaitTimeMs') is not None:
+            self.wait_time_ms = m.get('WaitTimeMs')
+        if m.get('WaitType') is not None:
+            self.wait_type = m.get('WaitType')
+        return self
+
+
+class GetBlockingDetailListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[GetBlockingDetailListResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetBlockingDetailListResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetBlockingDetailListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetBlockingDetailListResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetBlockingDetailListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetBlockingDetailListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetBlockingDetailListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetBlockingDetailListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetDBInstanceConnectivityDiagnosisRequest(TeaModel):
     def __init__(
         self,
@@ -12941,6 +13247,479 @@ class GetDasSQLLogHotDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetDasSQLLogHotDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetDeadLockDetailListRequest(TeaModel):
+    def __init__(
+        self,
+        db_name_list: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        page_no: str = None,
+        page_size: str = None,
+        start_time: str = None,
+    ):
+        self.db_name_list = db_name_list
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.page_no = page_no
+        self.page_size = page_size
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.db_name_list is not None:
+            result['DbNameList'] = self.db_name_list
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbNameList') is not None:
+            self.db_name_list = m.get('DbNameList')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class GetDeadLockDetailListResponseBodyDataListBlockProcessList(TeaModel):
+    def __init__(
+        self,
+        client_app: str = None,
+        database_name: str = None,
+        host_name: str = None,
+        last_tran_started: int = None,
+        lock_mode: str = None,
+        log_used: int = None,
+        login_name: str = None,
+        object_owned: str = None,
+        object_requested: str = None,
+        own_mode: str = None,
+        spid: int = None,
+        sql_text: str = None,
+        status: str = None,
+        victim: int = None,
+        wait_mode: str = None,
+        wait_resource: str = None,
+        wait_resource_description: str = None,
+    ):
+        self.client_app = client_app
+        self.database_name = database_name
+        self.host_name = host_name
+        self.last_tran_started = last_tran_started
+        self.lock_mode = lock_mode
+        self.log_used = log_used
+        self.login_name = login_name
+        self.object_owned = object_owned
+        self.object_requested = object_requested
+        self.own_mode = own_mode
+        self.spid = spid
+        self.sql_text = sql_text
+        self.status = status
+        self.victim = victim
+        self.wait_mode = wait_mode
+        self.wait_resource = wait_resource
+        self.wait_resource_description = wait_resource_description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_app is not None:
+            result['ClientApp'] = self.client_app
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.last_tran_started is not None:
+            result['LastTranStarted'] = self.last_tran_started
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.log_used is not None:
+            result['LogUsed'] = self.log_used
+        if self.login_name is not None:
+            result['LoginName'] = self.login_name
+        if self.object_owned is not None:
+            result['ObjectOwned'] = self.object_owned
+        if self.object_requested is not None:
+            result['ObjectRequested'] = self.object_requested
+        if self.own_mode is not None:
+            result['OwnMode'] = self.own_mode
+        if self.spid is not None:
+            result['Spid'] = self.spid
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.victim is not None:
+            result['Victim'] = self.victim
+        if self.wait_mode is not None:
+            result['WaitMode'] = self.wait_mode
+        if self.wait_resource is not None:
+            result['WaitResource'] = self.wait_resource
+        if self.wait_resource_description is not None:
+            result['WaitResourceDescription'] = self.wait_resource_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientApp') is not None:
+            self.client_app = m.get('ClientApp')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('LastTranStarted') is not None:
+            self.last_tran_started = m.get('LastTranStarted')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('LogUsed') is not None:
+            self.log_used = m.get('LogUsed')
+        if m.get('LoginName') is not None:
+            self.login_name = m.get('LoginName')
+        if m.get('ObjectOwned') is not None:
+            self.object_owned = m.get('ObjectOwned')
+        if m.get('ObjectRequested') is not None:
+            self.object_requested = m.get('ObjectRequested')
+        if m.get('OwnMode') is not None:
+            self.own_mode = m.get('OwnMode')
+        if m.get('Spid') is not None:
+            self.spid = m.get('Spid')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Victim') is not None:
+            self.victim = m.get('Victim')
+        if m.get('WaitMode') is not None:
+            self.wait_mode = m.get('WaitMode')
+        if m.get('WaitResource') is not None:
+            self.wait_resource = m.get('WaitResource')
+        if m.get('WaitResourceDescription') is not None:
+            self.wait_resource_description = m.get('WaitResourceDescription')
+        return self
+
+
+class GetDeadLockDetailListResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        batch_id: int = None,
+        block_process_list: List[GetDeadLockDetailListResponseBodyDataListBlockProcessList] = None,
+        client_app: str = None,
+        database_name: str = None,
+        host_name: str = None,
+        last_tran_started: int = None,
+        lock_mode: str = None,
+        log_used: int = None,
+        login_name: str = None,
+        object_owned: str = None,
+        object_requested: str = None,
+        own_mode: str = None,
+        spid: int = None,
+        sql_text: str = None,
+        status: str = None,
+        victim: int = None,
+        wait_mode: str = None,
+        wait_resource: str = None,
+        wait_resource_description: str = None,
+    ):
+        self.batch_id = batch_id
+        self.block_process_list = block_process_list
+        self.client_app = client_app
+        self.database_name = database_name
+        self.host_name = host_name
+        self.last_tran_started = last_tran_started
+        self.lock_mode = lock_mode
+        self.log_used = log_used
+        self.login_name = login_name
+        self.object_owned = object_owned
+        self.object_requested = object_requested
+        self.own_mode = own_mode
+        self.spid = spid
+        self.sql_text = sql_text
+        self.status = status
+        self.victim = victim
+        self.wait_mode = wait_mode
+        self.wait_resource = wait_resource
+        self.wait_resource_description = wait_resource_description
+
+    def validate(self):
+        if self.block_process_list:
+            for k in self.block_process_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+        result['BlockProcessList'] = []
+        if self.block_process_list is not None:
+            for k in self.block_process_list:
+                result['BlockProcessList'].append(k.to_map() if k else None)
+        if self.client_app is not None:
+            result['ClientApp'] = self.client_app
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.host_name is not None:
+            result['HostName'] = self.host_name
+        if self.last_tran_started is not None:
+            result['LastTranStarted'] = self.last_tran_started
+        if self.lock_mode is not None:
+            result['LockMode'] = self.lock_mode
+        if self.log_used is not None:
+            result['LogUsed'] = self.log_used
+        if self.login_name is not None:
+            result['LoginName'] = self.login_name
+        if self.object_owned is not None:
+            result['ObjectOwned'] = self.object_owned
+        if self.object_requested is not None:
+            result['ObjectRequested'] = self.object_requested
+        if self.own_mode is not None:
+            result['OwnMode'] = self.own_mode
+        if self.spid is not None:
+            result['Spid'] = self.spid
+        if self.sql_text is not None:
+            result['SqlText'] = self.sql_text
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.victim is not None:
+            result['Victim'] = self.victim
+        if self.wait_mode is not None:
+            result['WaitMode'] = self.wait_mode
+        if self.wait_resource is not None:
+            result['WaitResource'] = self.wait_resource
+        if self.wait_resource_description is not None:
+            result['WaitResourceDescription'] = self.wait_resource_description
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+        self.block_process_list = []
+        if m.get('BlockProcessList') is not None:
+            for k in m.get('BlockProcessList'):
+                temp_model = GetDeadLockDetailListResponseBodyDataListBlockProcessList()
+                self.block_process_list.append(temp_model.from_map(k))
+        if m.get('ClientApp') is not None:
+            self.client_app = m.get('ClientApp')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('HostName') is not None:
+            self.host_name = m.get('HostName')
+        if m.get('LastTranStarted') is not None:
+            self.last_tran_started = m.get('LastTranStarted')
+        if m.get('LockMode') is not None:
+            self.lock_mode = m.get('LockMode')
+        if m.get('LogUsed') is not None:
+            self.log_used = m.get('LogUsed')
+        if m.get('LoginName') is not None:
+            self.login_name = m.get('LoginName')
+        if m.get('ObjectOwned') is not None:
+            self.object_owned = m.get('ObjectOwned')
+        if m.get('ObjectRequested') is not None:
+            self.object_requested = m.get('ObjectRequested')
+        if m.get('OwnMode') is not None:
+            self.own_mode = m.get('OwnMode')
+        if m.get('Spid') is not None:
+            self.spid = m.get('Spid')
+        if m.get('SqlText') is not None:
+            self.sql_text = m.get('SqlText')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Victim') is not None:
+            self.victim = m.get('Victim')
+        if m.get('WaitMode') is not None:
+            self.wait_mode = m.get('WaitMode')
+        if m.get('WaitResource') is not None:
+            self.wait_resource = m.get('WaitResource')
+        if m.get('WaitResourceDescription') is not None:
+            self.wait_resource_description = m.get('WaitResourceDescription')
+        return self
+
+
+class GetDeadLockDetailListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[GetDeadLockDetailListResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetDeadLockDetailListResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetDeadLockDetailListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetDeadLockDetailListResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetDeadLockDetailListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetDeadLockDetailListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetDeadLockDetailListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetDeadLockDetailListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -16538,6 +17317,402 @@ class GetInstanceInspectionsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetInstanceInspectionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetInstanceMissingIndexListRequest(TeaModel):
+    def __init__(
+        self,
+        avg_total_user_cost: str = None,
+        avg_user_impact: str = None,
+        end_time: str = None,
+        index_count: str = None,
+        instance_id: str = None,
+        object_name: str = None,
+        page_no: str = None,
+        page_size: str = None,
+        reserved_pages: str = None,
+        reserved_size: str = None,
+        row_count: str = None,
+        start_time: str = None,
+        unique_compiles: str = None,
+        user_scans: str = None,
+        user_seeks: str = None,
+    ):
+        self.avg_total_user_cost = avg_total_user_cost
+        self.avg_user_impact = avg_user_impact
+        self.end_time = end_time
+        self.index_count = index_count
+        self.instance_id = instance_id
+        self.object_name = object_name
+        self.page_no = page_no
+        self.page_size = page_size
+        self.reserved_pages = reserved_pages
+        self.reserved_size = reserved_size
+        self.row_count = row_count
+        self.start_time = start_time
+        self.unique_compiles = unique_compiles
+        self.user_scans = user_scans
+        self.user_seeks = user_seeks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_total_user_cost is not None:
+            result['AvgTotalUserCost'] = self.avg_total_user_cost
+        if self.avg_user_impact is not None:
+            result['AvgUserImpact'] = self.avg_user_impact
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.index_count is not None:
+            result['IndexCount'] = self.index_count
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.object_name is not None:
+            result['ObjectName'] = self.object_name
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.reserved_pages is not None:
+            result['ReservedPages'] = self.reserved_pages
+        if self.reserved_size is not None:
+            result['ReservedSize'] = self.reserved_size
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.unique_compiles is not None:
+            result['UniqueCompiles'] = self.unique_compiles
+        if self.user_scans is not None:
+            result['UserScans'] = self.user_scans
+        if self.user_seeks is not None:
+            result['UserSeeks'] = self.user_seeks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgTotalUserCost') is not None:
+            self.avg_total_user_cost = m.get('AvgTotalUserCost')
+        if m.get('AvgUserImpact') is not None:
+            self.avg_user_impact = m.get('AvgUserImpact')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('IndexCount') is not None:
+            self.index_count = m.get('IndexCount')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ObjectName') is not None:
+            self.object_name = m.get('ObjectName')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ReservedPages') is not None:
+            self.reserved_pages = m.get('ReservedPages')
+        if m.get('ReservedSize') is not None:
+            self.reserved_size = m.get('ReservedSize')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UniqueCompiles') is not None:
+            self.unique_compiles = m.get('UniqueCompiles')
+        if m.get('UserScans') is not None:
+            self.user_scans = m.get('UserScans')
+        if m.get('UserSeeks') is not None:
+            self.user_seeks = m.get('UserSeeks')
+        return self
+
+
+class GetInstanceMissingIndexListResponseBodyDataList(TeaModel):
+    def __init__(
+        self,
+        avg_total_user_cost: float = None,
+        avg_user_impact: float = None,
+        create_index: str = None,
+        database_name: str = None,
+        equality_columns: str = None,
+        included_columns: str = None,
+        index_count: int = None,
+        inequality_columns: str = None,
+        last_user_seek: int = None,
+        object_name: str = None,
+        reserved_pages: int = None,
+        reserved_size: float = None,
+        row_count: int = None,
+        schema_name: str = None,
+        system_scans: int = None,
+        system_seeks: int = None,
+        unique_compiles: int = None,
+        user_scans: int = None,
+        user_seeks: int = None,
+    ):
+        self.avg_total_user_cost = avg_total_user_cost
+        self.avg_user_impact = avg_user_impact
+        self.create_index = create_index
+        self.database_name = database_name
+        self.equality_columns = equality_columns
+        self.included_columns = included_columns
+        self.index_count = index_count
+        self.inequality_columns = inequality_columns
+        self.last_user_seek = last_user_seek
+        self.object_name = object_name
+        self.reserved_pages = reserved_pages
+        self.reserved_size = reserved_size
+        self.row_count = row_count
+        self.schema_name = schema_name
+        self.system_scans = system_scans
+        self.system_seeks = system_seeks
+        self.unique_compiles = unique_compiles
+        self.user_scans = user_scans
+        self.user_seeks = user_seeks
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avg_total_user_cost is not None:
+            result['AvgTotalUserCost'] = self.avg_total_user_cost
+        if self.avg_user_impact is not None:
+            result['AvgUserImpact'] = self.avg_user_impact
+        if self.create_index is not None:
+            result['CreateIndex'] = self.create_index
+        if self.database_name is not None:
+            result['DatabaseName'] = self.database_name
+        if self.equality_columns is not None:
+            result['EqualityColumns'] = self.equality_columns
+        if self.included_columns is not None:
+            result['IncludedColumns'] = self.included_columns
+        if self.index_count is not None:
+            result['IndexCount'] = self.index_count
+        if self.inequality_columns is not None:
+            result['InequalityColumns'] = self.inequality_columns
+        if self.last_user_seek is not None:
+            result['LastUserSeek'] = self.last_user_seek
+        if self.object_name is not None:
+            result['ObjectName'] = self.object_name
+        if self.reserved_pages is not None:
+            result['ReservedPages'] = self.reserved_pages
+        if self.reserved_size is not None:
+            result['ReservedSize'] = self.reserved_size
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+        if self.schema_name is not None:
+            result['SchemaName'] = self.schema_name
+        if self.system_scans is not None:
+            result['SystemScans'] = self.system_scans
+        if self.system_seeks is not None:
+            result['SystemSeeks'] = self.system_seeks
+        if self.unique_compiles is not None:
+            result['UniqueCompiles'] = self.unique_compiles
+        if self.user_scans is not None:
+            result['UserScans'] = self.user_scans
+        if self.user_seeks is not None:
+            result['UserSeeks'] = self.user_seeks
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvgTotalUserCost') is not None:
+            self.avg_total_user_cost = m.get('AvgTotalUserCost')
+        if m.get('AvgUserImpact') is not None:
+            self.avg_user_impact = m.get('AvgUserImpact')
+        if m.get('CreateIndex') is not None:
+            self.create_index = m.get('CreateIndex')
+        if m.get('DatabaseName') is not None:
+            self.database_name = m.get('DatabaseName')
+        if m.get('EqualityColumns') is not None:
+            self.equality_columns = m.get('EqualityColumns')
+        if m.get('IncludedColumns') is not None:
+            self.included_columns = m.get('IncludedColumns')
+        if m.get('IndexCount') is not None:
+            self.index_count = m.get('IndexCount')
+        if m.get('InequalityColumns') is not None:
+            self.inequality_columns = m.get('InequalityColumns')
+        if m.get('LastUserSeek') is not None:
+            self.last_user_seek = m.get('LastUserSeek')
+        if m.get('ObjectName') is not None:
+            self.object_name = m.get('ObjectName')
+        if m.get('ReservedPages') is not None:
+            self.reserved_pages = m.get('ReservedPages')
+        if m.get('ReservedSize') is not None:
+            self.reserved_size = m.get('ReservedSize')
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+        if m.get('SchemaName') is not None:
+            self.schema_name = m.get('SchemaName')
+        if m.get('SystemScans') is not None:
+            self.system_scans = m.get('SystemScans')
+        if m.get('SystemSeeks') is not None:
+            self.system_seeks = m.get('SystemSeeks')
+        if m.get('UniqueCompiles') is not None:
+            self.unique_compiles = m.get('UniqueCompiles')
+        if m.get('UserScans') is not None:
+            self.user_scans = m.get('UserScans')
+        if m.get('UserSeeks') is not None:
+            self.user_seeks = m.get('UserSeeks')
+        return self
+
+
+class GetInstanceMissingIndexListResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        list: List[GetInstanceMissingIndexListResponseBodyDataList] = None,
+        page_no: int = None,
+        page_size: int = None,
+        total: int = None,
+    ):
+        self.list = list
+        self.page_no = page_no
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.list:
+            for k in self.list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['List'] = []
+        if self.list is not None:
+            for k in self.list:
+                result['List'].append(k.to_map() if k else None)
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.list = []
+        if m.get('List') is not None:
+            for k in m.get('List'):
+                temp_model = GetInstanceMissingIndexListResponseBodyDataList()
+                self.list.append(temp_model.from_map(k))
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetInstanceMissingIndexListResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GetInstanceMissingIndexListResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GetInstanceMissingIndexListResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GetInstanceMissingIndexListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetInstanceMissingIndexListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetInstanceMissingIndexListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

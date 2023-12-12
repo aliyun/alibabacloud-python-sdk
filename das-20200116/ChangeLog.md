@@ -1,3 +1,6 @@
+2023-12-12 Version: 2.3.0
+- Generated python 2020-01-16 for DAS.
+
 2023-12-08 Version: 2.2.0
 - Generated python 2020-01-16 for DAS.
 
