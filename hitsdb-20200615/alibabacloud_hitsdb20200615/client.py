@@ -41,6 +41,108 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def create_ldps_compute_group_with_options(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.properties):
+            query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ldps_compute_group_with_options_async(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.properties):
+            query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.CreateLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ldps_compute_group(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_ldps_compute_group_with_options(request, runtime)
+
+    async def create_ldps_compute_group_async(
+        self,
+        request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ldps_compute_group_with_options_async(request, runtime)
+
     def create_ldps_namespace_with_options(
         self,
         request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
@@ -159,6 +261,10 @@ class Client(OpenApiClient):
             query['ArbiterZoneId'] = request.arbiter_zone_id
         if not UtilClient.is_unset(request.arch_version):
             query['ArchVersion'] = request.arch_version
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            query['AutoRenewDuration'] = request.auto_renew_duration
+        if not UtilClient.is_unset(request.auto_renewal):
+            query['AutoRenewal'] = request.auto_renewal
         if not UtilClient.is_unset(request.cold_storage):
             query['ColdStorage'] = request.cold_storage
         if not UtilClient.is_unset(request.core_single_storage):
@@ -274,6 +380,10 @@ class Client(OpenApiClient):
             query['ArbiterZoneId'] = request.arbiter_zone_id
         if not UtilClient.is_unset(request.arch_version):
             query['ArchVersion'] = request.arch_version
+        if not UtilClient.is_unset(request.auto_renew_duration):
+            query['AutoRenewDuration'] = request.auto_renew_duration
+        if not UtilClient.is_unset(request.auto_renewal):
+            query['AutoRenewal'] = request.auto_renewal
         if not UtilClient.is_unset(request.cold_storage):
             query['ColdStorage'] = request.cold_storage
         if not UtilClient.is_unset(request.core_single_storage):
@@ -395,6 +505,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_lindorm_instance_with_options_async(request, runtime)
 
+    def delete_ldps_compute_group_with_options(
+        self,
+        request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ldps_compute_group_with_options_async(
+        self,
+        request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.DeleteLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ldps_compute_group(
+        self,
+        request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_ldps_compute_group_with_options(request, runtime)
+
+    async def delete_ldps_compute_group_async(
+        self,
+        request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_ldps_compute_group_with_options_async(request, runtime)
+
     def describe_regions_with_options(
         self,
         request: hitsdb_20200615_models.DescribeRegionsRequest,
@@ -485,6 +693,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def get_engine_default_auth_with_options(
+        self,
+        request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEngineDefaultAuth',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_engine_default_auth_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetEngineDefaultAuth',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetEngineDefaultAuthResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_engine_default_auth(
+        self,
+        request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
+    ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_engine_default_auth_with_options(request, runtime)
+
+    async def get_engine_default_auth_async(
+        self,
+        request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
+    ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_engine_default_auth_with_options_async(request, runtime)
+
     def get_instance_ip_white_list_with_options(
         self,
         request: hitsdb_20200615_models.GetInstanceIpWhiteListRequest,
@@ -574,6 +876,104 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_ip_white_list_with_options_async(request, runtime)
+
+    def get_ldps_compute_group_with_options(
+        self,
+        request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_ldps_compute_group_with_options_async(
+        self,
+        request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.GetLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_ldps_compute_group(
+        self,
+        request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_ldps_compute_group_with_options(request, runtime)
+
+    async def get_ldps_compute_group_async(
+        self,
+        request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_ldps_compute_group_with_options_async(request, runtime)
 
     def get_ldps_namespaced_quota_with_options(
         self,
@@ -1081,6 +1481,100 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_instance_list_with_options_async(request, runtime)
 
+    def list_ldps_compute_groups_with_options(
+        self,
+        request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLdpsComputeGroups',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_ldps_compute_groups_with_options_async(
+        self,
+        request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListLdpsComputeGroups',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.ListLdpsComputeGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_ldps_compute_groups(
+        self,
+        request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
+    ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_ldps_compute_groups_with_options(request, runtime)
+
+    async def list_ldps_compute_groups_async(
+        self,
+        request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
+    ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_ldps_compute_groups_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: hitsdb_20200615_models.ListTagResourcesRequest,
@@ -1545,6 +2039,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.renew_lindorm_instance_with_options_async(request, runtime)
 
+    def restart_ldps_compute_group_with_options(
+        self,
+        request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def restart_ldps_compute_group_with_options_async(
+        self,
+        request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RestartLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.RestartLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def restart_ldps_compute_group(
+        self,
+        request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.restart_ldps_compute_group_with_options(request, runtime)
+
+    async def restart_ldps_compute_group_async(
+        self,
+        request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.restart_ldps_compute_group_with_options_async(request, runtime)
+
     def switch_lsqlv3my_sqlservice_with_options(
         self,
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
@@ -1944,6 +2536,108 @@ class Client(OpenApiClient):
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_ip_white_list_with_options_async(request, runtime)
+
+    def update_ldps_compute_group_with_options(
+        self,
+        request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.properties):
+            query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_ldps_compute_group_with_options_async(
+        self,
+        request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.properties):
+            query['Properties'] = request.properties
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateLdpsComputeGroup',
+            version='2020-06-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            hitsdb_20200615_models.UpdateLdpsComputeGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_ldps_compute_group(
+        self,
+        request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_ldps_compute_group_with_options(request, runtime)
+
+    async def update_ldps_compute_group_async(
+        self,
+        request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
+    ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_ldps_compute_group_with_options_async(request, runtime)
 
     def upgrade_lindorm_instance_with_options(
         self,
