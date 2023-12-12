@@ -3101,7 +3101,9 @@ class CreateDBResourceGroupRequest(TeaModel):
         min_cluster_count: int = None,
         min_compute_resource: str = None,
     ):
+        # A reserved parameter.
         self.cluster_mode = cluster_mode
+        # A reserved parameter.
         self.cluster_size_resource = cluster_size_resource
         # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
         self.dbcluster_id = dbcluster_id
@@ -3118,17 +3120,19 @@ class CreateDBResourceGroupRequest(TeaModel):
         # 
         # > For information about resource groups of Data Lakehouse Edition, see [Resource groups](~~428610~~).
         self.group_type = group_type
+        # A reserved parameter.
         self.max_cluster_count = max_cluster_count
         # The maximum reserved computing resources. Unit: ACU.
         # 
         # *   If GroupType is set to Interactive, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 16 ACUs.
         # *   If GroupType is set to Job, the maximum amount of reserved computing resources refers to the amount of resources that are not allocated in the cluster. Set this parameter to a value in increments of 8 ACUs.
         self.max_compute_resource = max_compute_resource
+        # A reserved parameter.
         self.min_cluster_count = min_cluster_count
-        # The minimum reserved computing resources. Unit: AnalyticDB Compute Unit (ACU).
+        # The minimum reserved computing resources. Unit: AnalyticDB Compute Units (ACUs).
         # 
-        # *   If GroupType is set to Interactive, set the value to 16ACU.
-        # *   If GroupType is set to Job, set the value to 0ACU.
+        # *   When GroupType is set to Interactive, set this parameter to 16 ACUs.
+        # *   When GroupType is set to Job, set this parameter to 0 ACUs.
         self.min_compute_resource = min_compute_resource
 
     def validate(self):
@@ -17498,9 +17502,9 @@ class GetSparkAppInfoRequest(TeaModel):
         app_id: str = None,
         dbcluster_id: str = None,
     ):
-        # The ID of the application. 
+        # The application ID.
         # 
-        # >  You can call the [ListSparkApps](~~612475~~) operation to query the Spark application ID.
+        # >  You can call the [ListSparkApps](~~455888~~) operation to query the Spark application IDs.
         self.app_id = app_id
         self.dbcluster_id = dbcluster_id
 
@@ -17534,22 +17538,22 @@ class GetSparkAppInfoResponseBody(TeaModel):
         data: SparkAppInfo = None,
         request_id: str = None,
     ):
-        # Details of the Spark application. Fields in the response parameter:
+        # The queried Spark application. Fields in the response parameter:
         # 
-        # - **Data**: the data of the Spark application template.
-        # - **EstimateExecutionCpuTimeInSeconds**: the amount of time it takes to consume CPU resources for running the Spark application. Unit: milliseconds.
-        # - **LogRootPath**: the storage path of log files.
-        # - **LastAttemptId**: the most recent attempt ID.
-        # - **WebUiAddress**: the web UI URL.
-        # - **SubmittedTimeInMillis**: the time when the Spark application was submitted. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
-        # - **StartedTimeInMillis**: the time when the Spark application was created. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
-        # - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
-        # - **TerminatedTimeInMillis**: the time when the Spark application task was terminated. The time is displayed in the UNIX timestamp format. Unit: milliseconds.
-        # - **DBClusterId**: the ID of the cluster on which the Spark application runs.
-        # - **ResourceGroupName**: the name of the job resource group.
-        # - **DurationInMillis**: the amount of time it takes to run the Spark application. Unit: milliseconds.
+        # *   **Data**: the data of the Spark application template.
+        # *   **EstimateExecutionCpuTimeInSeconds**: the amount of time that is required to consume CPU resources for running the Spark application. Unit: milliseconds.
+        # *   **LogRootPath**: the storage path of log files.
+        # *   **LastAttemptId**: the most recent attempt ID.
+        # *   **WebUiAddress**: the web UI URL.
+        # *   **SubmittedTimeInMillis**: the time when the Spark application was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # *   **StartedTimeInMillis**: the time when the Spark application was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # *   **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # *   **TerminatedTimeInMillis**: the time when the Spark application was terminated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # *   **DBClusterId**: the ID of the cluster on which the Spark application runs.
+        # *   **ResourceGroupName**: the name of the job resource group.
+        # *   **DurationInMillis**: the amount of time that is required to run the Spark application. Unit: milliseconds.
         self.data = data
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
