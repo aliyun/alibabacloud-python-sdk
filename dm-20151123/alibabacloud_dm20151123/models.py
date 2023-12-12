@@ -1061,11 +1061,13 @@ class CreateTagRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag_description: str = None,
         tag_name: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag_description = tag_description
         self.tag_name = tag_name
 
     def validate(self):
@@ -1083,6 +1085,8 @@ class CreateTagRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tag_description is not None:
+            result['TagDescription'] = self.tag_description
         if self.tag_name is not None:
             result['TagName'] = self.tag_name
         return result
@@ -1095,6 +1099,8 @@ class CreateTagRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TagDescription') is not None:
+            self.tag_description = m.get('TagDescription')
         if m.get('TagName') is not None:
             self.tag_name = m.get('TagName')
         return self
@@ -3707,12 +3713,14 @@ class ModifyTagRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        tag_description: str = None,
         tag_id: int = None,
         tag_name: str = None,
     ):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.tag_description = tag_description
         # The ID of the tag.
         self.tag_id = tag_id
         # The name of the tag.
@@ -3733,6 +3741,8 @@ class ModifyTagRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.tag_description is not None:
+            result['TagDescription'] = self.tag_description
         if self.tag_id is not None:
             result['TagId'] = self.tag_id
         if self.tag_name is not None:
@@ -3747,6 +3757,8 @@ class ModifyTagRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('TagDescription') is not None:
+            self.tag_description = m.get('TagDescription')
         if m.get('TagId') is not None:
             self.tag_id = m.get('TagId')
         if m.get('TagName') is not None:
@@ -5194,9 +5206,11 @@ class QueryTagByParamRequest(TeaModel):
 class QueryTagByParamResponseBodyDataTag(TeaModel):
     def __init__(
         self,
+        tag_description: str = None,
         tag_id: str = None,
         tag_name: str = None,
     ):
+        self.tag_description = tag_description
         self.tag_id = tag_id
         self.tag_name = tag_name
 
@@ -5209,6 +5223,8 @@ class QueryTagByParamResponseBodyDataTag(TeaModel):
             return _map
 
         result = dict()
+        if self.tag_description is not None:
+            result['TagDescription'] = self.tag_description
         if self.tag_id is not None:
             result['TagId'] = self.tag_id
         if self.tag_name is not None:
@@ -5217,6 +5233,8 @@ class QueryTagByParamResponseBodyDataTag(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('TagDescription') is not None:
+            self.tag_description = m.get('TagDescription')
         if m.get('TagId') is not None:
             self.tag_id = m.get('TagId')
         if m.get('TagName') is not None:

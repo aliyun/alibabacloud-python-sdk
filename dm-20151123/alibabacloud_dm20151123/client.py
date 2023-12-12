@@ -762,6 +762,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_description):
+            query['TagDescription'] = request.tag_description
         if not UtilClient.is_unset(request.tag_name):
             query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
@@ -796,6 +798,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_description):
+            query['TagDescription'] = request.tag_description
         if not UtilClient.is_unset(request.tag_name):
             query['TagName'] = request.tag_name
         req = open_api_models.OpenApiRequest(
@@ -2146,6 +2150,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_description):
+            query['TagDescription'] = request.tag_description
         if not UtilClient.is_unset(request.tag_id):
             query['TagId'] = request.tag_id
         if not UtilClient.is_unset(request.tag_name):
@@ -2182,6 +2188,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.tag_description):
+            query['TagDescription'] = request.tag_description
         if not UtilClient.is_unset(request.tag_id):
             query['TagId'] = request.tag_id
         if not UtilClient.is_unset(request.tag_name):
