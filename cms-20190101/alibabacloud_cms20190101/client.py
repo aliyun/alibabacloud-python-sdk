@@ -15001,6 +15001,8 @@ class Client(OpenApiClient):
             query['NoDataPolicy'] = request.no_data_policy
         if not UtilClient.is_unset(request.no_effective_interval):
             query['NoEffectiveInterval'] = request.no_effective_interval
+        if not UtilClient.is_unset(request.options):
+            query['Options'] = request.options
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.rule_id):
@@ -15072,6 +15074,8 @@ class Client(OpenApiClient):
             query['NoDataPolicy'] = request.no_data_policy
         if not UtilClient.is_unset(request.no_effective_interval):
             query['NoEffectiveInterval'] = request.no_effective_interval
+        if not UtilClient.is_unset(request.options):
+            query['Options'] = request.options
         if not UtilClient.is_unset(request.period):
             query['Period'] = request.period
         if not UtilClient.is_unset(request.rule_id):

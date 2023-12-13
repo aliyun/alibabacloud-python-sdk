@@ -4725,6 +4725,7 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
         namespace: str = None,
         no_data_policy: str = None,
         no_effective_interval: str = None,
+        options: str = None,
         period: str = None,
         rule_id: str = None,
         rule_name: str = None,
@@ -4897,6 +4898,7 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
         self.no_data_policy = no_data_policy
         # The time period during which the alert rule is ineffective. Valid values of N: 1 to 200.
         self.no_effective_interval = no_effective_interval
+        self.options = options
         # The aggregation period of the metric data. Valid values of N: 1 to 200.
         # 
         # Set the `Period` parameter to an integral multiple of 60. Unit: seconds. Default value: 300.
@@ -4954,6 +4956,8 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             result['NoDataPolicy'] = self.no_data_policy
         if self.no_effective_interval is not None:
             result['NoEffectiveInterval'] = self.no_effective_interval
+        if self.options is not None:
+            result['Options'] = self.options
         if self.period is not None:
             result['Period'] = self.period
         if self.rule_id is not None:
@@ -4996,6 +5000,8 @@ class CreateGroupMetricRulesRequestGroupMetricRules(TeaModel):
             self.no_data_policy = m.get('NoDataPolicy')
         if m.get('NoEffectiveInterval') is not None:
             self.no_effective_interval = m.get('NoEffectiveInterval')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('RuleId') is not None:
@@ -49296,6 +49302,7 @@ class PutGroupMetricRuleRequest(TeaModel):
         namespace: str = None,
         no_data_policy: str = None,
         no_effective_interval: str = None,
+        options: str = None,
         period: str = None,
         rule_id: str = None,
         rule_name: str = None,
@@ -49351,6 +49358,7 @@ class PutGroupMetricRuleRequest(TeaModel):
         self.no_data_policy = no_data_policy
         # The time period during which the alert rule is ineffective.
         self.no_effective_interval = no_effective_interval
+        self.options = options
         # The aggregation period of the metric data.
         # 
         # Set the `Period` parameter to an integral multiple of 60. Unit: seconds. Default value: 300.
@@ -49418,6 +49426,8 @@ class PutGroupMetricRuleRequest(TeaModel):
             result['NoDataPolicy'] = self.no_data_policy
         if self.no_effective_interval is not None:
             result['NoEffectiveInterval'] = self.no_effective_interval
+        if self.options is not None:
+            result['Options'] = self.options
         if self.period is not None:
             result['Period'] = self.period
         if self.rule_id is not None:
@@ -49464,6 +49474,8 @@ class PutGroupMetricRuleRequest(TeaModel):
             self.no_data_policy = m.get('NoDataPolicy')
         if m.get('NoEffectiveInterval') is not None:
             self.no_effective_interval = m.get('NoEffectiveInterval')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
         if m.get('Period') is not None:
             self.period = m.get('Period')
         if m.get('RuleId') is not None:
