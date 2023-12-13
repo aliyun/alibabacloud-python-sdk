@@ -1299,6 +1299,8 @@ class Client(OpenApiClient):
             body['management'] = request.management
         if not UtilClient.is_unset(request.max_nodes):
             body['max_nodes'] = request.max_nodes
+        if not UtilClient.is_unset(request.node_config):
+            body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
@@ -1348,6 +1350,8 @@ class Client(OpenApiClient):
             body['management'] = request.management
         if not UtilClient.is_unset(request.max_nodes):
             body['max_nodes'] = request.max_nodes
+        if not UtilClient.is_unset(request.node_config):
+            body['node_config'] = request.node_config
         if not UtilClient.is_unset(request.nodepool_info):
             body['nodepool_info'] = request.nodepool_info
         if not UtilClient.is_unset(request.scaling_group):
