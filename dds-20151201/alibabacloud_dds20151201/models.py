@@ -15,7 +15,6 @@ class AllocateNodePrivateNetworkAddressRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         zone_id: str = None,
     ):
         # The name of the account.
@@ -39,7 +38,6 @@ class AllocateNodePrivateNetworkAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The zone ID of the instance.
         # 
         # >  You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the zone ID of the instance.
@@ -70,8 +68,6 @@ class AllocateNodePrivateNetworkAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
         return result
@@ -94,8 +90,6 @@ class AllocateNodePrivateNetworkAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
         return self
@@ -182,7 +176,6 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance
         # 
@@ -196,7 +189,6 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -219,8 +211,6 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -237,8 +227,6 @@ class AllocatePublicNetworkAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -322,7 +310,6 @@ class CheckCloudResourceAuthorizedRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         target_region_id: str = None,
     ):
         # The ID of the instance.
@@ -331,7 +318,6 @@ class CheckCloudResourceAuthorizedRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~62010~~) operation to query the region ID of the instance.
         self.target_region_id = target_region_id
 
@@ -354,8 +340,6 @@ class CheckCloudResourceAuthorizedRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.target_region_id is not None:
             result['TargetRegionId'] = self.target_region_id
         return result
@@ -372,8 +356,6 @@ class CheckCloudResourceAuthorizedRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('TargetRegionId') is not None:
             self.target_region_id = m.get('TargetRegionId')
         return self
@@ -482,7 +464,6 @@ class CheckRecoveryConditionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
-        security_token: str = None,
         source_dbinstance: str = None,
     ):
         # The point in time to which the instance is restored. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -506,7 +487,6 @@ class CheckRecoveryConditionRequest(TeaModel):
         # 
         # >  If you do not specify this parameter, all databases are restored.
         self.restore_time = restore_time
-        self.security_token = security_token
         # The operation that you want to perform. Set the value to **CheckRecoveryCondition**.
         self.source_dbinstance = source_dbinstance
 
@@ -535,8 +515,6 @@ class CheckRecoveryConditionRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.restore_time is not None:
             result['RestoreTime'] = self.restore_time
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.source_dbinstance is not None:
             result['SourceDBInstance'] = self.source_dbinstance
         return result
@@ -559,8 +537,6 @@ class CheckRecoveryConditionRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RestoreTime') is not None:
             self.restore_time = m.get('RestoreTime')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('SourceDBInstance') is not None:
             self.source_dbinstance = m.get('SourceDBInstance')
         return self
@@ -652,6 +628,140 @@ class CheckRecoveryConditionResponse(TeaModel):
         return self
 
 
+class CreateAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        account_password: str = None,
+        dbinstance_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.account_name = account_name
+        self.account_password = account_password
+        self.dbinstance_id = dbinstance_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.account_password is not None:
+            result['AccountPassword'] = self.account_password
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AccountPassword') is not None:
+            self.account_password = m.get('AccountPassword')
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class CreateAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateBackupRequest(TeaModel):
     def __init__(
         self,
@@ -661,7 +771,6 @@ class CreateBackupRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The backup method of the instance. Default value: Physical. Valid values:
         # 
@@ -676,7 +785,6 @@ class CreateBackupRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -699,8 +807,6 @@ class CreateBackupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -717,8 +823,6 @@ class CreateBackupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -869,7 +973,6 @@ class CreateDBInstanceRequest(TeaModel):
         restore_time: str = None,
         secondary_zone_id: str = None,
         security_iplist: str = None,
-        security_token: str = None,
         src_dbinstance_id: str = None,
         storage_engine: str = None,
         storage_type: str = None,
@@ -1016,7 +1119,6 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > When you set the **ChargeType** parameter to **PrePaid**, this parameter is valid and required.
         self.security_iplist = security_iplist
-        self.security_token = security_token
         # The business information. This is an additional parameter.
         self.src_dbinstance_id = src_dbinstance_id
         # The ID of the resource group to which the instance belongs.
@@ -1133,8 +1235,6 @@ class CreateDBInstanceRequest(TeaModel):
             result['SecondaryZoneId'] = self.secondary_zone_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.src_dbinstance_id is not None:
             result['SrcDBInstanceId'] = self.src_dbinstance_id
         if self.storage_engine is not None:
@@ -1219,8 +1319,6 @@ class CreateDBInstanceRequest(TeaModel):
             self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('SrcDBInstanceId') is not None:
             self.src_dbinstance_id = m.get('SrcDBInstanceId')
         if m.get('StorageEngine') is not None:
@@ -1544,7 +1642,6 @@ class CreateNodeRequest(TeaModel):
         readonly_replicas: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         shard_direct: bool = None,
     ):
         # The username of the account. The username must meet the following requirements:
@@ -1603,7 +1700,6 @@ class CreateNodeRequest(TeaModel):
         self.readonly_replicas = readonly_replicas
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # Specifies whether to apply for an endpoint for the shard node. Default value: false. Valid values:
         # 
         # *   **true**: applies for an endpoint for the shard node.
@@ -1649,8 +1745,6 @@ class CreateNodeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.shard_direct is not None:
             result['ShardDirect'] = self.shard_direct
         return result
@@ -1687,8 +1781,6 @@ class CreateNodeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('ShardDirect') is not None:
             self.shard_direct = m.get('ShardDirect')
         return self
@@ -1796,7 +1888,6 @@ class CreateNodeBatchRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         shard_direct: bool = None,
     ):
         self.account_name = account_name
@@ -1813,7 +1904,6 @@ class CreateNodeBatchRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         self.shard_direct = shard_direct
 
     def validate(self):
@@ -1851,8 +1941,6 @@ class CreateNodeBatchRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.shard_direct is not None:
             result['ShardDirect'] = self.shard_direct
         return result
@@ -1885,8 +1973,6 @@ class CreateNodeBatchRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('ShardDirect') is not None:
             self.shard_direct = m.get('ShardDirect')
         return self
@@ -2170,7 +2256,6 @@ class CreateShardingDBInstanceRequest(TeaModel):
         restore_time: str = None,
         secondary_zone_id: str = None,
         security_iplist: str = None,
-        security_token: str = None,
         src_dbinstance_id: str = None,
         storage_engine: str = None,
         storage_type: str = None,
@@ -2338,7 +2423,6 @@ class CreateShardingDBInstanceRequest(TeaModel):
         # 
         # *   If you enter 0.0.0.0/0, all IP addresses can access the instance. This may introduce security risks to the instance. Proceed with caution.
         self.security_iplist = security_iplist
-        self.security_token = security_token
         # The source instance ID.
         # 
         # > This parameter is required only if you call this operation to clone an instance. If you specify this parameter, you must also specify **RestoreTime**.
@@ -2456,8 +2540,6 @@ class CreateShardingDBInstanceRequest(TeaModel):
             result['SecondaryZoneId'] = self.secondary_zone_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.src_dbinstance_id is not None:
             result['SrcDBInstanceId'] = self.src_dbinstance_id
         if self.storage_engine is not None:
@@ -2541,8 +2623,6 @@ class CreateShardingDBInstanceRequest(TeaModel):
             self.secondary_zone_id = m.get('SecondaryZoneId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('SrcDBInstanceId') is not None:
             self.src_dbinstance_id = m.get('SrcDBInstanceId')
         if m.get('StorageEngine') is not None:
@@ -2658,7 +2738,6 @@ class DeleteDBInstanceRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -2668,7 +2747,6 @@ class DeleteDBInstanceRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -2691,8 +2769,6 @@ class DeleteDBInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -2709,8 +2785,6 @@ class DeleteDBInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -2936,7 +3010,6 @@ class DeleteNodeRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -2948,7 +3021,6 @@ class DeleteNodeRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -2973,8 +3045,6 @@ class DeleteNodeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -2993,8 +3063,6 @@ class DeleteNodeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -3093,7 +3161,6 @@ class DescribeAccountsRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The name of the account. Set the value to **root**.
         self.account_name = account_name
@@ -3103,7 +3170,6 @@ class DescribeAccountsRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -3126,8 +3192,6 @@ class DescribeAccountsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3144,8 +3208,6 @@ class DescribeAccountsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -3340,7 +3402,6 @@ class DescribeActiveOperationTaskCountRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3348,7 +3409,6 @@ class DescribeActiveOperationTaskCountRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -3369,8 +3429,6 @@ class DescribeActiveOperationTaskCountRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3385,8 +3443,6 @@ class DescribeActiveOperationTaskCountRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -3488,7 +3544,6 @@ class DescribeActiveOperationTaskTypeRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to return all O\&M tasks. Valid values:
         # 
@@ -3503,7 +3558,6 @@ class DescribeActiveOperationTaskTypeRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -3526,8 +3580,6 @@ class DescribeActiveOperationTaskTypeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3544,8 +3596,6 @@ class DescribeActiveOperationTaskTypeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -3688,6 +3738,442 @@ class DescribeActiveOperationTaskTypeResponse(TeaModel):
         return self
 
 
+class DescribeActiveOperationTasksRequest(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: int = None,
+        allow_change: int = None,
+        change_level: str = None,
+        db_type: str = None,
+        ins_name: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_id: str = None,
+        region: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: int = None,
+        task_type: str = None,
+    ):
+        # Specifies whether the task can be canceled.
+        self.allow_cancel = allow_cancel
+        # Specifies whether the time can be changed. Valid values: -**0**: The time cannot be changed. **1**: The time can be changed.
+        self.allow_change = allow_change
+        # The change type.
+        self.change_level = change_level
+        # The type of the database engine.
+        self.db_type = db_type
+        # The name of the instance.
+        self.ins_name = ins_name
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The number of the page to return.
+        self.page_number = page_number
+        # The number of entries to return per page. Valid values: **30, 50, and 100**. Default value: **30**.
+        self.page_size = page_size
+        # The ID of the service.
+        self.product_id = product_id
+        # The region of the instance.
+        self.region = region
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # Specifies the status of the task. Valid values: **0**: The task is waiting to be run. **1**: The task is running. **2**: The task is run. **3**: The task failed to be run.
+        self.status = status
+        # The task type.
+        self.task_type = task_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.product_id is not None:
+            result['ProductId'] = self.product_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ProductId') is not None:
+            self.product_id = m.get('ProductId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        allow_cancel: str = None,
+        allow_change: str = None,
+        change_level: str = None,
+        change_level_en: str = None,
+        change_level_zh: str = None,
+        created_time: str = None,
+        current_avz: str = None,
+        db_type: str = None,
+        db_version: str = None,
+        deadline: str = None,
+        id: int = None,
+        impact_en: str = None,
+        impact_zh: str = None,
+        ins_comment: str = None,
+        ins_name: str = None,
+        modified_time: str = None,
+        prepare_interval: str = None,
+        region: str = None,
+        result_info: str = None,
+        start_time: str = None,
+        status: int = None,
+        sub_ins_names: List[str] = None,
+        switch_time: str = None,
+        task_type: str = None,
+        task_type_en: str = None,
+        task_type_zh: str = None,
+    ):
+        # N/A
+        self.allow_cancel = allow_cancel
+        # Indicates whether the time can be changed. Valid values:
+        # 
+        # *   **0**: The time cannot be changed.
+        # *   **1**: The time can be changed.
+        self.allow_change = allow_change
+        # The change type.
+        self.change_level = change_level
+        # N/A
+        self.change_level_en = change_level_en
+        # The change type in Chinese.
+        self.change_level_zh = change_level_zh
+        # The time when the task was created.
+        self.created_time = created_time
+        # N/A
+        self.current_avz = current_avz
+        # The type of the database engine.
+        self.db_type = db_type
+        # The version of the database engine.
+        self.db_version = db_version
+        # The end time of the task.
+        self.deadline = deadline
+        # The ID of the task.
+        self.id = id
+        # N/A
+        self.impact_en = impact_en
+        # N/A
+        self.impact_zh = impact_zh
+        # The description of the task.
+        self.ins_comment = ins_comment
+        # The ID of the node.
+        self.ins_name = ins_name
+        # The time when the task was modified. The time is displayed in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
+        self.modified_time = modified_time
+        # The required preparation period between the task start time and the switchover time. The time is displayed in the *HH:mm:ss* format.
+        self.prepare_interval = prepare_interval
+        # The region of the instance.
+        self.region = region
+        # The result information. This parameter can be ignored.
+        self.result_info = result_info
+        # The start time of the task. The time is displayed in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in UTC.
+        self.start_time = start_time
+        # N/A
+        self.status = status
+        # The names of the subinstances.
+        self.sub_ins_names = sub_ins_names
+        # The time when the task was interrupted. The time is displayed in the *yyyy-mm-dd*t*hh:mm:ss*z format. The time is displayed in Coordinated Universal Time (UTC).
+        self.switch_time = switch_time
+        # The type of the task.
+        self.task_type = task_type
+        # N/A
+        self.task_type_en = task_type_en
+        # The type of the task in Chinese.
+        self.task_type_zh = task_type_zh
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.allow_cancel is not None:
+            result['AllowCancel'] = self.allow_cancel
+        if self.allow_change is not None:
+            result['AllowChange'] = self.allow_change
+        if self.change_level is not None:
+            result['ChangeLevel'] = self.change_level
+        if self.change_level_en is not None:
+            result['ChangeLevelEn'] = self.change_level_en
+        if self.change_level_zh is not None:
+            result['ChangeLevelZh'] = self.change_level_zh
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.current_avz is not None:
+            result['CurrentAVZ'] = self.current_avz
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.db_version is not None:
+            result['DbVersion'] = self.db_version
+        if self.deadline is not None:
+            result['Deadline'] = self.deadline
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.impact_en is not None:
+            result['ImpactEn'] = self.impact_en
+        if self.impact_zh is not None:
+            result['ImpactZh'] = self.impact_zh
+        if self.ins_comment is not None:
+            result['InsComment'] = self.ins_comment
+        if self.ins_name is not None:
+            result['InsName'] = self.ins_name
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        if self.prepare_interval is not None:
+            result['PrepareInterval'] = self.prepare_interval
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.result_info is not None:
+            result['ResultInfo'] = self.result_info
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.sub_ins_names is not None:
+            result['SubInsNames'] = self.sub_ins_names
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.task_type_en is not None:
+            result['TaskTypeEn'] = self.task_type_en
+        if self.task_type_zh is not None:
+            result['TaskTypeZh'] = self.task_type_zh
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AllowCancel') is not None:
+            self.allow_cancel = m.get('AllowCancel')
+        if m.get('AllowChange') is not None:
+            self.allow_change = m.get('AllowChange')
+        if m.get('ChangeLevel') is not None:
+            self.change_level = m.get('ChangeLevel')
+        if m.get('ChangeLevelEn') is not None:
+            self.change_level_en = m.get('ChangeLevelEn')
+        if m.get('ChangeLevelZh') is not None:
+            self.change_level_zh = m.get('ChangeLevelZh')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('CurrentAVZ') is not None:
+            self.current_avz = m.get('CurrentAVZ')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('DbVersion') is not None:
+            self.db_version = m.get('DbVersion')
+        if m.get('Deadline') is not None:
+            self.deadline = m.get('Deadline')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('ImpactEn') is not None:
+            self.impact_en = m.get('ImpactEn')
+        if m.get('ImpactZh') is not None:
+            self.impact_zh = m.get('ImpactZh')
+        if m.get('InsComment') is not None:
+            self.ins_comment = m.get('InsComment')
+        if m.get('InsName') is not None:
+            self.ins_name = m.get('InsName')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        if m.get('PrepareInterval') is not None:
+            self.prepare_interval = m.get('PrepareInterval')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('ResultInfo') is not None:
+            self.result_info = m.get('ResultInfo')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('SubInsNames') is not None:
+            self.sub_ins_names = m.get('SubInsNames')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('TaskTypeEn') is not None:
+            self.task_type_en = m.get('TaskTypeEn')
+        if m.get('TaskTypeZh') is not None:
+            self.task_type_zh = m.get('TaskTypeZh')
+        return self
+
+
+class DescribeActiveOperationTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeActiveOperationTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_record_count: int = None,
+    ):
+        # The list of O\&M tasks.
+        self.items = items
+        # The number of the returned page.
+        self.page_number = page_number
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of returned entries.
+        self.total_record_count = total_record_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_record_count is not None:
+            result['TotalRecordCount'] = self.total_record_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeActiveOperationTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalRecordCount') is not None:
+            self.total_record_count = m.get('TotalRecordCount')
+        return self
+
+
+class DescribeActiveOperationTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeActiveOperationTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeActiveOperationTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAuditLogFilterRequest(TeaModel):
     def __init__(
         self,
@@ -3697,7 +4183,6 @@ class DescribeAuditLogFilterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_type: str = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -3711,7 +4196,6 @@ class DescribeAuditLogFilterRequest(TeaModel):
         # * **db** : shard node.
         # * **logic** : logical instance.
         self.role_type = role_type
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -3734,8 +4218,6 @@ class DescribeAuditLogFilterRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_type is not None:
             result['RoleType'] = self.role_type
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3752,8 +4234,6 @@ class DescribeAuditLogFilterRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleType') is not None:
             self.role_type = m.get('RoleType')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -3859,7 +4339,6 @@ class DescribeAuditPolicyRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -3867,7 +4346,6 @@ class DescribeAuditPolicyRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -3888,8 +4366,6 @@ class DescribeAuditPolicyRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -3904,8 +4380,6 @@ class DescribeAuditPolicyRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -4009,7 +4483,6 @@ class DescribeAuditRecordsRequest(TeaModel):
         query_keywords: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         start_time: str = None,
         user: str = None,
     ):
@@ -4047,7 +4520,6 @@ class DescribeAuditRecordsRequest(TeaModel):
         self.query_keywords = query_keywords
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.start_time = start_time
         # The account of the database. If you do not specify this parameter, this operation returns records of all accounts.
@@ -4088,8 +4560,6 @@ class DescribeAuditRecordsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         if self.user is not None:
@@ -4124,8 +4594,6 @@ class DescribeAuditRecordsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         if m.get('User') is not None:
@@ -4371,7 +4839,6 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         storage_support: str = None,
         storage_type: str = None,
         zone_id: str = None,
@@ -4405,7 +4872,6 @@ class DescribeAvailabilityZonesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The zones to be displayed. The values include the zones in which you can create an instance that uses cloud disks, the zones in which you can create an instance that uses local disks, and the zones in which you can create an instance that uses cloud disks and local disks.
         self.storage_support = storage_support
         # The storage type of the instance. Valid values:
@@ -4461,8 +4927,6 @@ class DescribeAvailabilityZonesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.storage_support is not None:
             result['StorageSupport'] = self.storage_support
         if self.storage_type is not None:
@@ -4501,8 +4965,6 @@ class DescribeAvailabilityZonesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StorageSupport') is not None:
             self.storage_support = m.get('StorageSupport')
         if m.get('StorageType') is not None:
@@ -4654,7 +5116,6 @@ class DescribeAvailableEngineVersionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -4662,7 +5123,6 @@ class DescribeAvailableEngineVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -4683,8 +5143,6 @@ class DescribeAvailableEngineVersionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -4699,8 +5157,6 @@ class DescribeAvailableEngineVersionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -4827,20 +5283,21 @@ class DescribeAvailableResourceRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         storage_type: str = None,
         zone_id: str = None,
     ):
+        # The instance type of the instance.
         self.dbinstance_class = dbinstance_class
         # The architecture of the instance. Valid values:
         # 
         # *   **normal**: replica set instance
         # *   **sharding**: sharded cluster instance
         self.db_type = db_type
+        # The database engine version of the instance.
         self.engine_version = engine_version
-        # The billing method of the instance. Default value: PrePaid. Valid values:
+        # The billing method of the instance. Valid values:
         # 
-        # *   **PrePaid**: subscription
+        # *   **PrePaid** (default): subscription
         # *   **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
         self.owner_account = owner_account
@@ -4851,7 +5308,15 @@ class DescribeAvailableResourceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
+        # The storage type of the instance. Valid values:
+        # 
+        # - **local_ssd**: local SSD 
+        # - **cloud_essd1**: PL1 enhanced SSD (ESSD) 
+        # - **cloud_essd2**: PL2 ESSD 
+        # - **cloud_essd3**: PL3 ESSD 
+        # - **cloud_auto**: ESSD AutoPL 
+        # 
+        # By default, this parameter is empty, which indicates that all types of storage resources are queried.
         self.storage_type = storage_type
         # The ID of the zone. You can call the [DescribeRegions](~~61933~~) operation to query the available zones.
         self.zone_id = zone_id
@@ -4885,8 +5350,6 @@ class DescribeAvailableResourceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.storage_type is not None:
             result['StorageType'] = self.storage_type
         if self.zone_id is not None:
@@ -4915,8 +5378,6 @@ class DescribeAvailableResourceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StorageType') is not None:
             self.storage_type = m.get('StorageType')
         if m.get('ZoneId') is not None:
@@ -5515,7 +5976,6 @@ class DescribeBackupDBsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         restore_time: str = None,
-        security_token: str = None,
         source_dbinstance: str = None,
     ):
         # The ID of the backup set.
@@ -5538,7 +5998,6 @@ class DescribeBackupDBsRequest(TeaModel):
         # > * The time can be a point in time within the past seven days. The time must be earlier than the current time, but later than the time when the instance was created.
         # > * You must specify one of the RestoreTime and **BackupId** parameters.
         self.restore_time = restore_time
-        self.security_token = security_token
         # The ID of the source instance.
         self.source_dbinstance = source_dbinstance
 
@@ -5569,8 +6028,6 @@ class DescribeBackupDBsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.restore_time is not None:
             result['RestoreTime'] = self.restore_time
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.source_dbinstance is not None:
             result['SourceDBInstance'] = self.source_dbinstance
         return result
@@ -5595,8 +6052,6 @@ class DescribeBackupDBsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RestoreTime') is not None:
             self.restore_time = m.get('RestoreTime')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('SourceDBInstance') is not None:
             self.source_dbinstance = m.get('SourceDBInstance')
         return self
@@ -5984,7 +6439,6 @@ class DescribeBackupsRequest(TeaModel):
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         start_time: str = None,
     ):
         # The ID of the backup set. You can call the [CreateBackup](~~62171~~) operation to obtain the value of this parameter.
@@ -6009,7 +6463,6 @@ class DescribeBackupsRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
@@ -6042,8 +6495,6 @@ class DescribeBackupsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -6070,8 +6521,6 @@ class DescribeBackupsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6340,20 +6789,32 @@ class DescribeClusterBackupsRequest(TeaModel):
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         start_time: str = None,
     ):
+        # The ID of the cluster backup set.
         self.backup_id = backup_id
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
+        # The end of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC. The end time must be later than the start time.
         self.end_time = end_time
+        # Specifies whether to query information about child nodes in the cluster backup. Valid values:
+        # 
+        # *   **true**: The system returns only the basic information of the cluster backup.
+        # *   **false** (default): The system returns the backup information of all child nodes.
         self.is_only_get_cluster_back_up = is_only_get_cluster_back_up
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # The page number. Default value: **1**. The page number must be a positive integer.
         self.page_no = page_no
+        # The number of entries to return on each page. Valid values:
+        # 
+        # *   **30** (default)
+        # *   **50**\
+        # *   **100**\
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -6385,8 +6846,6 @@ class DescribeClusterBackupsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -6413,8 +6872,6 @@ class DescribeClusterBackupsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -6434,15 +6891,31 @@ class DescribeClusterBackupsResponseBodyClusterBackupsBackups(TeaModel):
         instance_name: str = None,
         is_avail: str = None,
     ):
+        # The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, an empty string is returned.
         self.backup_download_url = backup_download_url
+        # The end of the backup time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
+        # The ID of the backup set.
         self.backup_id = backup_id
+        # The URL that is used to download the backup set over an internal network. If the backup set cannot be downloaded, null is returned.
         self.backup_intranet_download_url = backup_intranet_download_url
+        # The backup name.
         self.backup_name = backup_name
+        # The size of the backup file. Unit: bytes.
         self.backup_size = backup_size
+        # The beginning of the backup time range. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
+        # The status of the backup task. Valid values:
+        # 
+        # *   **Success**: The backup task is successful.
+        # *   **Failed**: The backup task failed.
         self.backup_status = backup_status
+        # The name of the shard.
         self.instance_name = instance_name
+        # Indicates whether the backup set is available. Valid values:
+        # 
+        # *   **0**: unavailable
+        # *   **1**: available
         self.is_avail = is_avail
 
     def validate(self):
@@ -6506,6 +6979,7 @@ class DescribeClusterBackupsResponseBodyClusterBackupsExtraInfo(TeaModel):
         self,
         registry_from_history: str = None,
     ):
+        # Indicates whether the cluster backups are from the historical backup sets. If the value of this parameter is **1**, the cluster backups are migrated from the historical backup sets.
         self.registry_from_history = registry_from_history
 
     def validate(self):
@@ -6542,15 +7016,28 @@ class DescribeClusterBackupsResponseBodyClusterBackups(TeaModel):
         is_avail: int = None,
         progress: str = None,
     ):
+        # The collection of the backup sets of each child node in a cluster backup set.
         self.backups = backups
+        # The end of the time range within which the cluster backup is performed.
         self.cluster_backup_end_time = cluster_backup_end_time
+        # The ID of the cluster backup set.
         self.cluster_backup_id = cluster_backup_id
+        # The cluster backup mode.
         self.cluster_backup_mode = cluster_backup_mode
+        # The size of the cluster backup set. Unit: bytes.
         self.cluster_backup_size = cluster_backup_size
+        # The beginning of the time range within which the cluster backup is performed.
         self.cluster_backup_start_time = cluster_backup_start_time
+        # The status of the cluster backup set.
         self.cluster_backup_status = cluster_backup_status
+        # The additional information in JSON format.
         self.extra_info = extra_info
+        # Indicates whether the cluster backup sets take effect. Valid values:
+        # 
+        # *   **1**: The cluster backup sets take effect.
+        # *   **0**: The backup sets of child nodes are incomplete or fail.
         self.is_avail = is_avail
+        # The progress of the backup task. Unit: %. The progress is returned only for running backup tasks.
         self.progress = progress
 
     def validate(self):
@@ -6629,10 +7116,15 @@ class DescribeClusterBackupsResponseBody(TeaModel):
         page_size: int = None,
         request_id: str = None,
     ):
+        # The cluster backup sets. A cluster backup file contains the backup sets of each node.
         self.cluster_backups = cluster_backups
+        # The maximum number of entries returned.
         self.max_results = max_results
+        # The page number of the page returned.
         self.page_number = page_number
+        # The maximum number of entries returned.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -6731,14 +7223,13 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
+        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -6759,8 +7250,6 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -6775,8 +7264,6 @@ class DescribeClusterRecoverTimeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -6787,8 +7274,13 @@ class DescribeClusterRecoverTimeResponseBodyRestoreRanges(TeaModel):
         restore_end_time: str = None,
         restore_type: str = None,
     ):
+        # The beginning of the time range to which data can be restored.
         self.restore_begin_time = restore_begin_time
+        # The end of the time range to which data can be restored.
         self.restore_end_time = restore_end_time
+        # The method used to restore data. Valid values:
+        # 
+        # *   \*\* PointInTime\*\* (default): Data is restored based on point in time
         self.restore_type = restore_type
 
     def validate(self):
@@ -6825,8 +7317,9 @@ class DescribeClusterRecoverTimeResponseBody(TeaModel):
         request_id: str = None,
         restore_ranges: List[DescribeClusterRecoverTimeResponseBodyRestoreRanges] = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The cluster backup sets of the instance. A cluster backup file contains the backup sets of each node.
         self.restore_ranges = restore_ranges
 
     def validate(self):
@@ -7008,17 +7501,17 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceConfigserverLi
         self.max_connections = max_connections
         # The maximum IOPS of the Configserver node.
         self.max_iops = max_iops
-        # The type of the Configserver node.
+        # The instance type of the Configserver node.
         self.node_class = node_class
         # The name of the Configserver node.
         self.node_description = node_description
         # The ID of the Configserver node.
         self.node_id = node_id
-        # The storage capacity of the Configserver node.
+        # The storage capacity of the Configserver node. Unit: GB.
         self.node_storage = node_storage
         # The port number that is used to connect to the Configserver node.
         self.port = port
-        # The state of the Configserver node. For more information, see [Instance states](~~63870~~).
+        # The status of the Configserver node. For more information, see [Instance states](~~63870~~).
         self.status = status
 
     def validate(self):
@@ -7129,7 +7622,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         self.max_connections = max_connections
         # The maximum IOPS of the mongos node.
         self.max_iops = max_iops
-        # The type of the mongos node.
+        # The instance type of the mongos node.
         self.node_class = node_class
         # The name of the mongos node.
         self.node_description = node_description
@@ -7137,15 +7630,15 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMong
         self.node_id = node_id
         # The port number that is used to connect to the mongos node.
         self.port = port
-        # The state of the mongos node. For more information, see [Instance states](~~63870~~).
+        # The status of the mongos node. For more information, see [Instance states](~~63870~~).
         self.status = status
         # The VPC ID of the instance.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
         # The vSwitch ID of the instance.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.v_switch_id = v_switch_id
         # The ID of the mongos node.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
@@ -7262,8 +7755,8 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsRep
         self.connection_port = connection_port
         # The network type of the instance. Valid values:
         # 
-        # *   **Classic**\
-        # *   **VPC**\
+        # *   **Classic**: classic network
+        # *   **VPC**: VPC
         self.network_type = network_type
         # The role of the node. Valid values:
         # 
@@ -7272,15 +7765,15 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSetsRep
         self.replica_set_role = replica_set_role
         # The instance ID.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpccloud_instance_id = vpccloud_instance_id
         # The VPC ID of the instance.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
         # The vSwitch ID of the instance.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is virtual private cloud (VPC).
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -7382,19 +7875,19 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardListShard
         self.max_connections = max_connections
         # The maximum IOPS of the shard node.
         self.max_iops = max_iops
-        # The type of the shard node.
+        # The instance type of the shard node.
         self.node_class = node_class
         # The name of the shard node.
         self.node_description = node_description
         # The ID of the shard node.
         self.node_id = node_id
-        # The storage capacity of the shard node.
+        # The storage capacity of the shard node. Unit: GB.
         self.node_storage = node_storage
         # The port number that is used to connect to the shard node.
         self.port = port
         # The number of read-only nodes in the shard node. Valid values: **0** to **5**. The value must be an integer.
         self.readonly_replicas = readonly_replicas
-        # The state of the shard node. For more information, see [Instance states](~~63870~~).
+        # The status of the shard node. For more information, see [Instance states](~~63870~~).
         self.status = status
 
     def validate(self):
@@ -7494,9 +7987,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTagsTag(TeaMod
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the instance.
+        # The tag key.
         self.key = key
-        # The tag value of the instance.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -7613,6 +8106,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         vpc_auth_mode: str = None,
         zone_id: str = None,
     ):
+        # Indicates whether performance burst is enabled for the ESSD AutoPL disk.
         self.bursting_enabled = bursting_enabled
         # The read and write throughput consumed by the instance.
         self.capacity_unit = capacity_unit
@@ -7621,15 +8115,15 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # *   **PrePaid**: subscription
         # *   **PostPaid**: pay-as-you-go
         self.charge_type = charge_type
-        # The details of the Configserver nodes.
+        # The information of the Configserver nodes.
         # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
+        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.configserver_list = configserver_list
         # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
         # The minor version of the current database in the instance.
         self.current_kernel_version = current_kernel_version
-        # The instance type.
+        # The instance type of the instance.
         self.dbinstance_class = dbinstance_class
         # The name of the instance.
         self.dbinstance_description = dbinstance_description
@@ -7639,19 +8133,19 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # 
         # *   **all_completed**: All orders are being produced or complete.
         # *   **order_unpaid**: The instance has unpaid orders.
-        # *   **order_wait_for_produce**: The order is being delivered for production.
+        # *   **order_wait_for_produce**: Orders are being delivered for production.
         # 
-        # > The order production process includes placing an order, paying for an order, delivering an order for production, producing an order, and complete.
+        # >  The order production process includes the following steps: place an order, pay for an order, deliver an order for production, produce an order, and complete the production.
         # 
         # *   If an order is in the **order_wait_for_produce** state for a long time, an error occurs when the order is being delivered for production. The system will automatically retry.
-        # *   The instance status change only when the order is in the producing and complete state, such as changing configurations and running.
+        # *   The instance status changes only when the order is in the producing and complete state, such as changing configurations and running.
         self.dbinstance_order_status = dbinstance_order_status
         # Indicates whether release protection is enabled for the instance. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.dbinstance_release_protection = dbinstance_release_protection
-        # The state of the instance. For more information, see [Instance states](~~63870~~).
+        # The status of the instance. For more information, see [Instance states](~~63870~~).
         self.dbinstance_status = dbinstance_status
         # The storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
@@ -7662,9 +8156,9 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.dbinstance_type = dbinstance_type
         # The time when the instance data was destroyed. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.destroy_time = destroy_time
-        # 是否开启云盘加密
+        # Indicates whether disk encryption is enabled.
         self.encrypted = encrypted
-        # 云盘加密对应的kms-key
+        # The Key Management Service (KMS) key used for disk encryption.
         self.encryption_key = encryption_key
         # The database engine of the instance.
         self.engine = engine
@@ -7678,7 +8172,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.engine_version = engine_version
         # The time when the subscription instance expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         # 
-        # > This parameter is returned if the instance is a subscription instance.
+        # >  This parameter is returned if the instance is a subscription instance.
         self.expire_time = expire_time
         # The ID of the secondary zone 2 of the instance. Valid values:
         # 
@@ -7705,7 +8199,7 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # 
         # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
         # 
-        # *   This parameter is returned only if you use the Chine site (aliyun.com).
+        # *   This parameter is returned only if you use the China site (aliyun.com).
         self.hidden_zone_id = hidden_zone_id
         # The kind code of the instance. Valid values:
         # 
@@ -7716,13 +8210,13 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.kind_code = kind_code
         # The date when the last downgrade operation was performed on the instance.
         self.last_downgrade_time = last_downgrade_time
-        # The lock state of the instance. Valid values:
+        # The lock status of the instance. Valid values:
         # 
         # *   **Unlock**: The instance is not locked.
         # *   **ManualLock**: The instance is manually locked.
         # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
-        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage capacity.
+        # *   **LockByRestoration**: The instance is automatically locked before the instance is rolled back.
+        # *   **LockByDiskQuota**: The instance is automatically locked after the storage space is exhausted.
         # *   **Released**: The instance is released.
         self.lock_mode = lock_mode
         # The end time of the maintenance window. The time follows the ISO 8601 standard in the *HH:mm*Z format. The time is displayed in UTC.
@@ -7733,46 +8227,47 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         self.max_connections = max_connections
         # The maximum IOPS of the instance.
         self.max_iops = max_iops
-        # The details of the mongos nodes.
+        # The information of the mongos nodes.
         # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
+        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.mongos_list = mongos_list
         # The network type of the instance. Valid values:
         # 
-        # *   **Classic**\
-        # *   **VPC**\
+        # *   **Classic**: classic network
+        # *   **VPC**: VPC
         self.network_type = network_type
         # The access protocol type of the instance. Valid values:
         # 
         # *   **mongodb**\
         # *   **dynamodb**\
         # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
+        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.protocol_type = protocol_type
+        # The provisioned performance of the ESSD AutoPL disk.
         self.provisioned_iops = provisioned_iops
         # The number of read-only nodes in the instance.
         self.readonly_replicas = readonly_replicas
         # The region ID of the instance.
         self.region_id = region_id
-        # The logical ID of the replica instance.
+        # The logical ID of the replica set instance.
         # 
-        # > ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica instances.
+        # >  ApsaraDB for MongoDB does not support new instances of this type. This parameter applies only to previous-version replica set instances.
         self.replacate_id = replacate_id
         # The name of the replica set instance.
         # 
-        # > This parameter is returned if the instance is a replica set instance.
+        # >  This parameter is returned if the instance is a replica set instance.
         self.replica_set_name = replica_set_name
-        # The details of the replica set instances.
+        # The information of the replica set instance.
         # 
-        # > This parameter is returned if the instance is a replica set instance.
+        # >  This parameter is returned if the instance is a replica set instance.
         self.replica_sets = replica_sets
         # The number of nodes in the instance.
         # 
-        # > This parameter is returned if the instance is a replica set instance.
+        # >  This parameter is returned if the instance is a replica set instance.
         self.replication_factor = replication_factor
-        # The ID of the resource group.
+        # The ID of the resource group to which the instance belongs.
         # 
-        # > This parameter is returned only if you use the China site (aliyun.com).
+        # >  This parameter is returned only if you use the China site (aliyun.com).
         self.resource_group_id = resource_group_id
         # The ID of the secondary zone 1 of the instance. Valid values:
         # 
@@ -7799,41 +8294,46 @@ class DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance(TeaModel):
         # 
         # *   This parameter is returned if the instance is a replica set or sharded cluster instance that runs MongoDB 4.4 or 5.0 and uses multi-zone deployment.
         # 
-        # *   This parameter is returned only if you use the Chine site (aliyun.com).
+        # *   This parameter is returned only if you use the China site (aliyun.com).
         self.secondary_zone_id = secondary_zone_id
-        # The details of the shard nodes.
+        # The information of the shard nodes.
         # 
-        # > This parameter is returned if the instance is a sharded cluster instance.
+        # >  This parameter is returned if the instance is a sharded cluster instance.
         self.shard_list = shard_list
         # The storage engine of the instance.
         self.storage_engine = storage_engine
         # The storage type of the instance. Valid values:
         # 
-        # **cloud_essd1**: ESSD PL1 **cloud_essd2**: ESSD of PL2 **cloud_essd3**: ESSD of PL3 **local_ssd**: local SSD
+        # **cloud_essd1**: ESSD PL1 **cloud_essd2**: ESSD PL2 **cloud_essd3**: ESSD PL3 **local_ssd**: local SSD **cloud_essd_dbfs_s**: DBFS disk
         self.storage_type = storage_type
+        # The progress of data synchronization in percentage. When you are changing the configurations of the instance, you must synchronize the data of the instance. You can obtain the data synchronization progress based on the value returned for this parameter.
         self.sync_percent = sync_percent
         # The details of the instance tags.
         self.tags = tags
+        # Indicates whether the cluster backup mode is enabled. Valid values:
+        # 
+        # *   **true**: The cluster backup mode is enabled.
+        # *   **false**: The cluster backup mode is disabled.
         self.use_cluster_backup = use_cluster_backup
         # The instance ID.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpccloud_instance_ids = vpccloud_instance_ids
         # The VPC ID of the instance.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.vpcid = vpcid
         # The vSwitch ID of the instance.
         # 
-        # > This parameter is returned if the network type of the instance is VPC.
+        # >  This parameter is returned if the network type of the instance is VPC.
         self.v_switch_id = v_switch_id
         # Indicates whether password-free access within the VPC is enabled. Valid values:
         # 
-        # *   **Open**: Password-free access is enabled.
-        # *   **Close**: Password-free access is disabled, and you must use a password for access.
-        # *   **NotSupport**: Password-free access is not supported.
+        # *   **Open**: Password-free access within the VPC is enabled.
+        # *   **Close**: Password-free access within the VPC is disabled, and you must use a password for access.
+        # *   **NotSupport**: Password-free access within the VPC is not supported.
         self.vpc_auth_mode = vpc_auth_mode
-        # The zone ID of the instance.
+        # The ID of the zone in which the instance resides.
         self.zone_id = zone_id
 
     def validate(self):
@@ -8111,7 +8611,7 @@ class DescribeDBInstanceAttributeResponseBody(TeaModel):
         dbinstances: DescribeDBInstanceAttributeResponseBodyDBInstances = None,
         request_id: str = None,
     ):
-        # The details of the instances.
+        # The information of the instance.
         self.dbinstances = dbinstances
         # The request ID.
         self.request_id = request_id
@@ -8195,7 +8695,6 @@ class DescribeDBInstanceEncryptionKeyRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -8205,7 +8704,6 @@ class DescribeDBInstanceEncryptionKeyRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -8228,8 +8726,6 @@ class DescribeDBInstanceEncryptionKeyRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -8246,8 +8742,6 @@ class DescribeDBInstanceEncryptionKeyRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -8390,7 +8884,6 @@ class DescribeDBInstanceMonitorRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -8398,7 +8891,6 @@ class DescribeDBInstanceMonitorRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -8419,8 +8911,6 @@ class DescribeDBInstanceMonitorRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -8435,8 +8925,6 @@ class DescribeDBInstanceMonitorRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -8532,7 +9020,6 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_id: str = None,
-        security_token: str = None,
         start_time: str = None,
     ):
         # The ID of the instance.
@@ -8565,7 +9052,6 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
         # 
         # >  This parameter is valid only when you specify the **DBInstanceId** parameter to the ID of a standalone instance or a replica set instance.
         self.role_id = role_id
-        self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
@@ -8598,8 +9084,6 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_id is not None:
             result['RoleId'] = self.role_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -8626,8 +9110,6 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleId') is not None:
             self.role_id = m.get('RoleId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -8894,7 +9376,6 @@ class DescribeDBInstanceSSLRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -8902,7 +9383,6 @@ class DescribeDBInstanceSSLRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -8923,8 +9403,6 @@ class DescribeDBInstanceSSLRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -8939,8 +9417,6 @@ class DescribeDBInstanceSSLRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -9040,6 +9516,217 @@ class DescribeDBInstanceSSLResponse(TeaModel):
         return self
 
 
+class DescribeDBInstanceSwitchLogRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        end_time: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        resource_owner_id: int = None,
+        start_time: str = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.end_time = end_time
+        self.page_number = page_number
+        self.page_size = page_size
+        self.resource_owner_id = resource_owner_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeDBInstanceSwitchLogResponseBodyLogItems(TeaModel):
+    def __init__(
+        self,
+        node_id: str = None,
+        switch_code: str = None,
+        switch_status: str = None,
+        switch_time: str = None,
+    ):
+        self.node_id = node_id
+        self.switch_code = switch_code
+        self.switch_status = switch_status
+        self.switch_time = switch_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        if self.switch_code is not None:
+            result['SwitchCode'] = self.switch_code
+        if self.switch_status is not None:
+            result['SwitchStatus'] = self.switch_status
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        if m.get('SwitchCode') is not None:
+            self.switch_code = m.get('SwitchCode')
+        if m.get('SwitchStatus') is not None:
+            self.switch_status = m.get('SwitchStatus')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        return self
+
+
+class DescribeDBInstanceSwitchLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        log_items: List[DescribeDBInstanceSwitchLogResponseBodyLogItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.dbinstance_id = dbinstance_id
+        self.log_items = log_items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.log_items:
+            for k in self.log_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        result['LogItems'] = []
+        if self.log_items is not None:
+            for k in self.log_items:
+                result['LogItems'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        self.log_items = []
+        if m.get('LogItems') is not None:
+            for k in m.get('LogItems'):
+                temp_model = DescribeDBInstanceSwitchLogResponseBodyLogItems()
+                self.log_items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDBInstanceSwitchLogResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBInstanceSwitchLogResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBInstanceSwitchLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBInstanceTDEInfoRequest(TeaModel):
     def __init__(
         self,
@@ -9048,14 +9735,13 @@ class DescribeDBInstanceTDEInfoRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -9076,8 +9762,6 @@ class DescribeDBInstanceTDEInfoRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -9092,8 +9776,6 @@ class DescribeDBInstanceTDEInfoRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -9106,10 +9788,28 @@ class DescribeDBInstanceTDEInfoResponseBody(TeaModel):
         role_arn: str = None,
         tdestatus: str = None,
     ):
+        # The custom key of the instance.
+        # 
+        # The Bring Your Own Key (BYOK) feature allows you to manage and obtain your own encryption key. This feature is supported only in the following regions:
+        # 
+        # *   cn-hangzhou
+        # *   cn-shanghai
+        # *   cn-beijing
+        # *   cn-shenzhen
+        # *   cn-hongkong
+        # *   ap-southeast-1
+        # *   ap-southeast-3
         self.encryption_key = encryption_key
+        # The encryption algorithm.
         self.encryptor_name = encryptor_name
+        # The request ID.
         self.request_id = request_id
+        # The Alibaba Cloud Resource Name (ARN) of the Resource Access Management (RAM) role to which you want to grant permissions.
         self.role_arn = role_arn
+        # The TDE status. Valid values:
+        # 
+        # *   **enabled**\
+        # *   **disabled**\
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -9260,7 +9960,6 @@ class DescribeDBInstancesRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         tag: List[DescribeDBInstancesRequestTag] = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -9340,7 +10039,6 @@ class DescribeDBInstancesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The tags of the instance.
         self.tag = tag
         # The vSwitch ID of the instance.
@@ -9406,8 +10104,6 @@ class DescribeDBInstancesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         result['Tag'] = []
         if self.tag is not None:
             for k in self.tag:
@@ -9466,8 +10162,6 @@ class DescribeDBInstancesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         self.tag = []
         if m.get('Tag') is not None:
             for k in m.get('Tag'):
@@ -10195,7 +10889,6 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -10241,7 +10934,6 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
         # The ID of the virtual private cloud (VPC).
@@ -10284,8 +10976,6 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -10322,8 +11012,6 @@ class DescribeDBInstancesOverviewRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -10842,7 +11530,6 @@ class DescribeErrorLogRecordsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_type: str = None,
-        security_token: str = None,
         start_time: str = None,
     ):
         # The ID of the instance.
@@ -10874,7 +11561,6 @@ class DescribeErrorLogRecordsRequest(TeaModel):
         # 
         # >  If you set the **NodeId** parameter to the ID of a mongos node, the RoleType parameter must be set to **primary**.
         self.role_type = role_type
-        self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
@@ -10911,8 +11597,6 @@ class DescribeErrorLogRecordsRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_type is not None:
             result['RoleType'] = self.role_type
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -10943,8 +11627,6 @@ class DescribeErrorLogRecordsRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleType') is not None:
             self.role_type = m.get('RoleType')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -11169,7 +11851,6 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
@@ -11177,7 +11858,6 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -11200,8 +11880,6 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -11218,8 +11896,6 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -11368,7 +12044,6 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
@@ -11376,7 +12051,6 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -11399,8 +12073,6 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -11417,8 +12089,6 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -11558,6 +12228,560 @@ class DescribeGlobalSecurityIPGroupRelationResponse(TeaModel):
         return self
 
 
+class DescribeHistoryTasksRequest(TeaModel):
+    def __init__(
+        self,
+        from_exec_time: int = None,
+        from_start_time: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        to_exec_time: int = None,
+        to_start_time: str = None,
+    ):
+        self.from_exec_time = from_exec_time
+        self.from_start_time = from_start_time
+        self.instance_id = instance_id
+        self.instance_type = instance_type
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.to_exec_time = to_exec_time
+        self.to_start_time = to_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_exec_time is not None:
+            result['FromExecTime'] = self.from_exec_time
+        if self.from_start_time is not None:
+            result['FromStartTime'] = self.from_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.to_exec_time is not None:
+            result['ToExecTime'] = self.to_exec_time
+        if self.to_start_time is not None:
+            result['ToStartTime'] = self.to_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromExecTime') is not None:
+            self.from_exec_time = m.get('FromExecTime')
+        if m.get('FromStartTime') is not None:
+            self.from_start_time = m.get('FromStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('ToExecTime') is not None:
+            self.to_exec_time = m.get('ToExecTime')
+        if m.get('ToStartTime') is not None:
+            self.to_start_time = m.get('ToStartTime')
+        return self
+
+
+class DescribeHistoryTasksResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        action_info: str = None,
+        caller_source: str = None,
+        caller_uid: str = None,
+        current_step_name: str = None,
+        db_type: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        instance_type: str = None,
+        product: str = None,
+        progress: float = None,
+        reason_code: str = None,
+        region_id: str = None,
+        remain_time: int = None,
+        start_time: str = None,
+        status: int = None,
+        task_detail: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        uid: str = None,
+    ):
+        self.action_info = action_info
+        self.caller_source = caller_source
+        self.caller_uid = caller_uid
+        self.current_step_name = current_step_name
+        self.db_type = db_type
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.instance_type = instance_type
+        self.product = product
+        self.progress = progress
+        self.reason_code = reason_code
+        self.region_id = region_id
+        self.remain_time = remain_time
+        self.start_time = start_time
+        self.status = status
+        self.task_detail = task_detail
+        self.task_id = task_id
+        self.task_type = task_type
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_info is not None:
+            result['ActionInfo'] = self.action_info
+        if self.caller_source is not None:
+            result['CallerSource'] = self.caller_source
+        if self.caller_uid is not None:
+            result['CallerUid'] = self.caller_uid
+        if self.current_step_name is not None:
+            result['CurrentStepName'] = self.current_step_name
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+        if self.product is not None:
+            result['Product'] = self.product
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.remain_time is not None:
+            result['RemainTime'] = self.remain_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_detail is not None:
+            result['TaskDetail'] = self.task_detail
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionInfo') is not None:
+            self.action_info = m.get('ActionInfo')
+        if m.get('CallerSource') is not None:
+            self.caller_source = m.get('CallerSource')
+        if m.get('CallerUid') is not None:
+            self.caller_uid = m.get('CallerUid')
+        if m.get('CurrentStepName') is not None:
+            self.current_step_name = m.get('CurrentStepName')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+        if m.get('Product') is not None:
+            self.product = m.get('Product')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RemainTime') is not None:
+            self.remain_time = m.get('RemainTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskDetail') is not None:
+            self.task_detail = m.get('TaskDetail')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class DescribeHistoryTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeHistoryTasksResponseBodyItems] = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.items = items
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeHistoryTasksResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeHistoryTasksStatRequest(TeaModel):
+    def __init__(
+        self,
+        from_exec_time: int = None,
+        from_start_time: str = None,
+        instance_id: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        status: str = None,
+        task_id: str = None,
+        task_type: str = None,
+        to_exec_time: int = None,
+        to_start_time: str = None,
+    ):
+        self.from_exec_time = from_exec_time
+        self.from_start_time = from_start_time
+        self.instance_id = instance_id
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.status = status
+        self.task_id = task_id
+        self.task_type = task_type
+        self.to_exec_time = to_exec_time
+        self.to_start_time = to_start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_exec_time is not None:
+            result['FromExecTime'] = self.from_exec_time
+        if self.from_start_time is not None:
+            result['FromStartTime'] = self.from_start_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+        if self.to_exec_time is not None:
+            result['ToExecTime'] = self.to_exec_time
+        if self.to_start_time is not None:
+            result['ToStartTime'] = self.to_start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FromExecTime') is not None:
+            self.from_exec_time = m.get('FromExecTime')
+        if m.get('FromStartTime') is not None:
+            self.from_start_time = m.get('FromStartTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
+        if m.get('ToExecTime') is not None:
+            self.to_exec_time = m.get('ToExecTime')
+        if m.get('ToStartTime') is not None:
+            self.to_start_time = m.get('ToStartTime')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBodyItems(TeaModel):
+    def __init__(
+        self,
+        status: str = None,
+        total_count: int = None,
+    ):
+        self.status = status
+        self.total_count = total_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeHistoryTasksStatResponseBody(TeaModel):
+    def __init__(
+        self,
+        items: List[DescribeHistoryTasksStatResponseBodyItems] = None,
+        request_id: str = None,
+    ):
+        self.items = items
+        self.request_id = request_id
+
+    def validate(self):
+        if self.items:
+            for k in self.items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Items'] = []
+        if self.items is not None:
+            for k in self.items:
+                result['Items'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.items = []
+        if m.get('Items') is not None:
+            for k in m.get('Items'):
+                temp_model = DescribeHistoryTasksStatResponseBodyItems()
+                self.items.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeHistoryTasksStatResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeHistoryTasksStatResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeHistoryTasksStatResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
     def __init__(
         self,
@@ -11570,7 +12794,6 @@ class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -11593,7 +12816,6 @@ class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -11622,8 +12844,6 @@ class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -11646,8 +12866,6 @@ class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -11861,7 +13079,6 @@ class DescribeKernelReleaseNotesRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The number of the minor database version. For example: **mongodb\_20180522\_0.4.8**.
         # 
@@ -11872,7 +13089,6 @@ class DescribeKernelReleaseNotesRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -11893,8 +13109,6 @@ class DescribeKernelReleaseNotesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -11909,8 +13123,6 @@ class DescribeKernelReleaseNotesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -12065,6 +13277,169 @@ class DescribeKernelReleaseNotesResponse(TeaModel):
         return self
 
 
+class DescribeKmsKeysRequest(TeaModel):
+    def __init__(
+        self,
+        owner_account: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.owner_account = owner_account
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeKmsKeysResponseBodyKmsKeys(TeaModel):
+    def __init__(
+        self,
+        key_alias: str = None,
+        key_id: str = None,
+    ):
+        self.key_alias = key_alias
+        self.key_id = key_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_alias is not None:
+            result['KeyAlias'] = self.key_alias
+        if self.key_id is not None:
+            result['KeyId'] = self.key_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyAlias') is not None:
+            self.key_alias = m.get('KeyAlias')
+        if m.get('KeyId') is not None:
+            self.key_id = m.get('KeyId')
+        return self
+
+
+class DescribeKmsKeysResponseBody(TeaModel):
+    def __init__(
+        self,
+        kms_keys: List[DescribeKmsKeysResponseBodyKmsKeys] = None,
+        request_id: str = None,
+    ):
+        self.kms_keys = kms_keys
+        self.request_id = request_id
+
+    def validate(self):
+        if self.kms_keys:
+            for k in self.kms_keys:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['KmsKeys'] = []
+        if self.kms_keys is not None:
+            for k in self.kms_keys:
+                result['KmsKeys'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.kms_keys = []
+        if m.get('KmsKeys') is not None:
+            for k in m.get('KmsKeys'):
+                temp_model = DescribeKmsKeysResponseBodyKmsKeys()
+                self.kms_keys.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeKmsKeysResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeKmsKeysResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeKmsKeysResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeMongoDBLogConfigRequest(TeaModel):
     def __init__(
         self,
@@ -12073,7 +13448,6 @@ class DescribeMongoDBLogConfigRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance. You can call the [DescribeDBInstances](~~61939~~) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -12081,7 +13455,6 @@ class DescribeMongoDBLogConfigRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -12102,8 +13475,6 @@ class DescribeMongoDBLogConfigRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -12118,8 +13489,6 @@ class DescribeMongoDBLogConfigRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -12295,7 +13664,6 @@ class DescribeParameterModificationHistoryRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         start_time: str = None,
     ):
         # The role of the instance. Valid values:
@@ -12319,7 +13687,6 @@ class DescribeParameterModificationHistoryRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The beginning of the time range to query. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
 
@@ -12348,8 +13715,6 @@ class DescribeParameterModificationHistoryRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -12372,8 +13737,6 @@ class DescribeParameterModificationHistoryRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -12554,7 +13917,6 @@ class DescribeParameterTemplatesRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The database engine of the instance. Set the value to **MongoDB**.
         self.engine = engine
@@ -12572,7 +13934,6 @@ class DescribeParameterTemplatesRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -12597,8 +13958,6 @@ class DescribeParameterTemplatesRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -12617,8 +13976,6 @@ class DescribeParameterTemplatesRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -12839,7 +14196,6 @@ class DescribeParametersRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The role of the instance. Valid values:
         # 
@@ -12861,7 +14217,6 @@ class DescribeParametersRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -12888,8 +14243,6 @@ class DescribeParametersRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -12910,8 +14263,6 @@ class DescribeParametersRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -13255,7 +14606,6 @@ class DescribePriceRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The business information. This is an additional parameter.
         self.business_info = business_info
@@ -13266,7 +14616,10 @@ class DescribePriceRequest(TeaModel):
         # *   **dds_sharding**: a sharded cluster instance that uses the pay-as-you-go billing method
         # *   **badds_sharding**: a sharded cluster instance that uses the subscription billing method
         # *   **badds_sharding_intl**: a sharded cluster instance that uses the subscription billing method and is available on the International site (alibabacloud.com)
+        # *   **dds_sharding_intl**: a sharded cluster instance that uses the pay-as-you-go billing method and is available on the International site (alibabacloud.com)
         # *   **badds_sharding_jp**: a sharded cluster instance that uses the subscription billing method and is available on the Japan site (jp.alibabacloud.com)
+        # *   **badds_intl**: a replica set instance that uses the subscription billing method and is available on the International site (alibabacloud.com)
+        # *   **dds_intl**: a replica set instance that uses the pay-as-you-go billing method and is available on the International site (alibabacloud.com)
         self.commodity_code = commodity_code
         # The coupon code. Default value: **youhuiquan_promotion_option_id_for_blank**.
         self.coupon_no = coupon_no
@@ -13293,7 +14646,6 @@ class DescribePriceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -13330,8 +14682,6 @@ class DescribePriceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -13362,8 +14712,6 @@ class DescribePriceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -13406,7 +14754,10 @@ class DescribePriceResponseBodyOrderCouponsCoupon(TeaModel):
         promotion_option_code: str = None,
         promotion_rule_id_list: DescribePriceResponseBodyOrderCouponsCouponPromotionRuleIdList = None,
     ):
-        # The billing method to which the coupon was applied. Valid values: **payondemand**: subscription. **payasyougo**: pay-as-you-go.
+        # The activity type of the coupon. Valid values:
+        # 
+        # *   **payondemand**: subscription
+        # *   **payasyougo**: pay-as-you-go
         self.activity_category = activity_category
         # The coupon ID.
         self.coupon_no = coupon_no
@@ -13423,7 +14774,7 @@ class DescribePriceResponseBodyOrderCouponsCoupon(TeaModel):
         self.option_code = option_code
         # The promotional option code.
         self.promotion_option_code = promotion_option_code
-        # The rules that match the coupon.
+        # Details about the rules that match the coupon.
         self.promotion_rule_id_list = promotion_rule_id_list
 
     def validate(self):
@@ -13549,7 +14900,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         show_discount_info: bool = None,
         trade_amount: str = None,
     ):
-        # The coupons.
+        # The information of coupons.
         self.coupons = coupons
         # The currency.
         self.currency = currency
@@ -13559,6 +14910,7 @@ class DescribePriceResponseBodyOrder(TeaModel):
         self.original_amount = original_amount
         # The rules of the order.
         self.rule_ids = rule_ids
+        # Indicates whether the information of the discount is displayed.
         self.show_discount_info = show_discount_info
         # The final price of the order.
         self.trade_amount = trade_amount
@@ -13619,11 +14971,11 @@ class DescribePriceResponseBodyRulesRule(TeaModel):
         rule_desc_id: int = None,
         title: str = None,
     ):
-        # The name of the rule.
+        # The rule name.
         self.name = name
-        # The ID of the policy.
+        # The rule ID.
         self.rule_desc_id = rule_desc_id
-        # The title of the rule.
+        # The rule title.
         self.title = title
 
     def validate(self):
@@ -13727,9 +15079,9 @@ class DescribePriceResponseBodySubOrdersSubOrder(TeaModel):
     ):
         # The discount amount of the order.
         self.discount_amount = discount_amount
-        # The ID of the instance.
+        # The instance ID.
         self.instance_id = instance_id
-        # The original price of the order.
+        # The list price of the order.
         self.original_amount = original_amount
         # The promotion rules.
         self.rule_ids = rule_ids
@@ -13935,22 +15287,20 @@ class DescribeRegionsRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
-        # Specifies the language of the returned **RegionName** and **ZoneName** values. Default value: zh. Valid values:
+        # The language of the values of the returned **RegionName** and **ZoneName** parameters. Valid values:
         # 
-        # *   **zh**: Chinese.
-        # *   **en**: English
+        # *   **zh** (default)
+        # *   **en**\
         self.accept_language = accept_language
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region.
+        # The region ID.
         # 
         # >  If you do not specify this parameter, all supported regions are queried.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -13973,8 +15323,6 @@ class DescribeRegionsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -13991,8 +15339,6 @@ class DescribeRegionsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -14008,11 +15354,14 @@ class DescribeRegionsResponseBodyRegionsDdsRegionZonesZone(TeaModel):
         # *   **true**: VPC is supported.
         # *   **false**: VPC is not supported.
         self.vpc_enabled = vpc_enabled
-        # The ID of the zone.
+        # The zone ID.
         self.zone_id = zone_id
         # The name of the zone.
         # 
-        # The return value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter.
+        # The value of the ZoneName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is **cn-hangzhou-h**, the following values are returned for the ZoneName parameter:
+        # 
+        # *   If the value of the **AcceptLanguage** parameter is **zh**, the value ** H** is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **en**, the value **Hangzhou Zone H** is returned for the ZoneName parameter.
         self.zone_name = zone_name
 
     def validate(self):
@@ -14086,14 +15435,22 @@ class DescribeRegionsResponseBodyRegionsDdsRegion(TeaModel):
         region_name: str = None,
         zones: DescribeRegionsResponseBodyRegionsDdsRegionZones = None,
     ):
+        # The public endpoint of the region.
+        # 
+        # For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following value is returned for the EndPoint parameter:
+        # 
+        # *   mongodb.aliyuncs.com
         self.end_point = end_point
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
         # The name of the region.
         # 
-        # The return value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter.
+        # The value of the LocalName parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is **cn-hangzhou**, the following values are returned for the LocalName parameter:
+        # 
+        # *   If the value of the **AcceptLanguage** parameter is **zh**, the value **1** is returned for the LocalName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **en**, the value **China (Hangzhou)** is returned for the LocalName parameter.
         self.region_name = region_name
-        # Details about the zones.
+        # The zones.
         self.zones = zones
 
     def validate(self):
@@ -14171,9 +15528,9 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # Details about the regions.
+        # The regions.
         self.regions = regions
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -14256,7 +15613,6 @@ class DescribeRenewalPriceRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The business information. This is an additional parameter.
         self.business_info = business_info
@@ -14268,7 +15624,6 @@ class DescribeRenewalPriceRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -14293,8 +15648,6 @@ class DescribeRenewalPriceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -14313,8 +15666,6 @@ class DescribeRenewalPriceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -14806,15 +16157,13 @@ class DescribeReplicaSetRoleRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -14835,8 +16184,6 @@ class DescribeReplicaSetRoleRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -14851,8 +16198,6 @@ class DescribeReplicaSetRoleRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -14868,17 +16213,17 @@ class DescribeReplicaSetRoleResponseBodyReplicaSetsReplicaSet(TeaModel):
     ):
         # The endpoint of the node.
         self.connection_domain = connection_domain
-        # The port of the node.
+        # The port number that is used to connect to the node.
         self.connection_port = connection_port
         # The remaining duration of the classic network endpoint. Unit: seconds.
         self.expired_time = expired_time
-        # The network type. Valid values:
+        # The network type of the instance. Valid values:
         # 
-        # *   **VPC**\
-        # *   **Classic**\
-        # *   **Public**\
+        # *   **VPC**: the virtual private cloud (VPC)
+        # *   **Classic**: the classic network
+        # *   **Public**: the Internet
         self.network_type = network_type
-        # The role of the node in the replica set.
+        # The role of the node in the replica set instance. Valid values:
         # 
         # *   **Primary**\
         # *   **Secondary**\
@@ -14968,11 +16313,11 @@ class DescribeReplicaSetRoleResponseBody(TeaModel):
         replica_sets: DescribeReplicaSetRoleResponseBodyReplicaSets = None,
         request_id: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # Details about the replica set roles.
+        # The details of the roles of the replica set instance.
         self.replica_sets = replica_sets
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -15057,15 +16402,13 @@ class DescribeRoleZoneInfoRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -15086,8 +16429,6 @@ class DescribeRoleZoneInfoRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -15102,8 +16443,6 @@ class DescribeRoleZoneInfoRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -15125,9 +16464,9 @@ class DescribeRoleZoneInfoResponseBodyZoneInfosZoneInfo(TeaModel):
         # *   **shard**\
         # *   **mongos**\
         # 
-        # >  Valid value for replica set instances: **normal**. Valid values for replica set instances: **configServer**, **shard**, and **mongos**.
+        # > Valid value for replica set instances: **normal**. Valid values for sharded cluster instances: **configServer**, **shard**, and **mongos**.
         self.node_type = node_type
-        # The ID of the role.
+        # The role ID.
         self.role_id = role_id
         # The role of the node. Valid values:
         # 
@@ -15135,7 +16474,7 @@ class DescribeRoleZoneInfoResponseBodyZoneInfosZoneInfo(TeaModel):
         # *   **Secondary**\
         # *   **Hidden**\
         self.role_type = role_type
-        # The zone ID.
+        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):
@@ -15215,9 +16554,9 @@ class DescribeRoleZoneInfoResponseBody(TeaModel):
         request_id: str = None,
         zone_infos: DescribeRoleZoneInfoResponseBodyZoneInfos = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # An array that consists of information of nodes in the zone.
+        # The information of nodes in the zone.
         self.zone_infos = zone_infos
 
     def validate(self):
@@ -15307,7 +16646,6 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         resource_owner_id: int = None,
         role_id: str = None,
         role_type: str = None,
-        security_token: str = None,
         start_time: str = None,
     ):
         # The ID of the instance.
@@ -15348,7 +16686,6 @@ class DescribeRunningLogRecordsRequest(TeaModel):
         # 
         # >  If you set the **NodeId** parameter to the ID of a mongos node, the **RoleType** parameter must be set to **primary**.
         self.role_type = role_type
-        self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
@@ -15389,8 +16726,6 @@ class DescribeRunningLogRecordsRequest(TeaModel):
             result['RoleId'] = self.role_id
         if self.role_type is not None:
             result['RoleType'] = self.role_type
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -15425,8 +16760,6 @@ class DescribeRunningLogRecordsRequest(TeaModel):
             self.role_id = m.get('RoleId')
         if m.get('RoleType') is not None:
             self.role_type = m.get('RoleType')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -15633,7 +16966,6 @@ class DescribeSecurityGroupConfigurationRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -15641,7 +16973,6 @@ class DescribeSecurityGroupConfigurationRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -15662,8 +16993,6 @@ class DescribeSecurityGroupConfigurationRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -15678,8 +17007,6 @@ class DescribeSecurityGroupConfigurationRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -15852,7 +17179,6 @@ class DescribeSecurityIpsRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -15860,7 +17186,6 @@ class DescribeSecurityIpsRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -15881,8 +17206,6 @@ class DescribeSecurityIpsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -15897,8 +17220,6 @@ class DescribeSecurityIpsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -16076,7 +17397,6 @@ class DescribeShardingNetworkAddressRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of an instance.
         self.dbinstance_id = dbinstance_id
@@ -16088,7 +17408,6 @@ class DescribeShardingNetworkAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -16111,8 +17430,6 @@ class DescribeShardingNetworkAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -16129,8 +17446,6 @@ class DescribeShardingNetworkAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -16494,7 +17809,6 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         start_time: str = None,
     ):
         # The ID of the instance.
@@ -16530,7 +17844,6 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The beginning of the time range to query. Specify the time in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.start_time = start_time
 
@@ -16567,8 +17880,6 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.start_time is not None:
             result['StartTime'] = self.start_time
         return result
@@ -16599,8 +17910,6 @@ class DescribeSlowLogRecordsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
         return self
@@ -17055,7 +18364,6 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         target_region_id: str = None,
     ):
         # The ID of the instance.
@@ -17064,7 +18372,6 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The zone ID of the instance. You can call the [DescribeRegions](~~61933~~) operation to query the most recent zone list.
         self.target_region_id = target_region_id
 
@@ -17087,8 +18394,6 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.target_region_id is not None:
             result['TargetRegionId'] = self.target_region_id
         return result
@@ -17105,8 +18410,6 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('TargetRegionId') is not None:
             self.target_region_id = m.get('TargetRegionId')
         return self
@@ -17231,7 +18534,6 @@ class DestroyInstanceRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -17249,7 +18551,6 @@ class DestroyInstanceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -17276,8 +18577,6 @@ class DestroyInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -17298,8 +18597,6 @@ class DestroyInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -17389,7 +18686,6 @@ class EvaluateResourceRequest(TeaModel):
         replication_factor: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         shards_info: str = None,
         storage: str = None,
         zone_id: str = None,
@@ -17427,7 +18723,6 @@ class EvaluateResourceRequest(TeaModel):
         self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The node information about the sharded cluster instance. This parameter is required when you check whether resources are sufficient for creating or upgrading a sharded cluster instance.
         # 
         # To check whether resources are sufficient for creating a sharded cluster instance, specify the specifications of each node in the instance. The value must be a JSON string. Example:
@@ -17498,8 +18793,6 @@ class EvaluateResourceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.shards_info is not None:
             result['ShardsInfo'] = self.shards_info
         if self.storage is not None:
@@ -17532,8 +18825,6 @@ class EvaluateResourceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('ShardsInfo') is not None:
             self.shards_info = m.get('ShardsInfo')
         if m.get('Storage') is not None:
@@ -18265,7 +19556,6 @@ class ModifyAccountDescriptionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The description of the account.
         # 
@@ -18281,7 +19571,6 @@ class ModifyAccountDescriptionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -18306,8 +19595,6 @@ class ModifyAccountDescriptionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -18326,8 +19613,6 @@ class ModifyAccountDescriptionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -18413,7 +19698,6 @@ class ModifyAuditLogFilterRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_type: str = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -18436,7 +19720,6 @@ class ModifyAuditLogFilterRequest(TeaModel):
         # *   **primary**\
         # *   **secondary**\
         self.role_type = role_type
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -18461,8 +19744,6 @@ class ModifyAuditLogFilterRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_type is not None:
             result['RoleType'] = self.role_type
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -18481,8 +19762,6 @@ class ModifyAuditLogFilterRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleType') is not None:
             self.role_type = m.get('RoleType')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -18568,7 +19847,6 @@ class ModifyAuditPolicyRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         service_type: str = None,
         storage_period: int = None,
     ):
@@ -18585,7 +19863,6 @@ class ModifyAuditPolicyRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The type of the audit log feature. Valid values:
         # 
         # *   **Trail**: the free trial edition
@@ -18619,8 +19896,6 @@ class ModifyAuditPolicyRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.service_type is not None:
             result['ServiceType'] = self.service_type
         if self.storage_period is not None:
@@ -18643,8 +19918,6 @@ class ModifyAuditPolicyRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('ServiceType') is not None:
             self.service_type = m.get('ServiceType')
         if m.get('StoragePeriod') is not None:
@@ -18952,7 +20225,6 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The current connection string, which is to be modified.
         self.current_connection_string = current_connection_string
@@ -18975,7 +20247,6 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19004,8 +20275,6 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19028,8 +20297,6 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -19115,7 +20382,6 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The name of the instance.
         # 
@@ -19139,7 +20405,6 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19164,8 +20429,6 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19184,8 +20447,6 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -19271,7 +20532,6 @@ class ModifyDBInstanceMaintainTimeRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -19285,7 +20545,6 @@ class ModifyDBInstanceMaintainTimeRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19310,8 +20569,6 @@ class ModifyDBInstanceMaintainTimeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19330,8 +20587,6 @@ class ModifyDBInstanceMaintainTimeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -19416,7 +20671,6 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -19426,7 +20680,6 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19449,8 +20702,6 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19467,8 +20718,6 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -19554,7 +20803,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The retention period of the original classic network address. Valid values: **14**, **30**, **60**, and** 120**. Unit: day.
         self.classic_expend_expired_days = classic_expend_expired_days
@@ -19566,7 +20814,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19591,8 +20838,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19611,8 +20856,6 @@ class ModifyDBInstanceNetExpireTimeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -19699,21 +20942,19 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         retain_classic: str = None,
-        security_token: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
     ):
         # The retention period of the original classic network address when you change the network type to VPC. Valid values: **14**, **30**, **60**, and **120**. Unit: days.
         # 
-        # >  This parameter is required when the **NetworkType** parameter is set to **VPC** and the **RetainClassic** parameter is set to **True**.
+        # > This parameter is required when the **NetworkType** parameter is set to **VPC** and the **RetainClassic** parameter is set to **True**.
         self.classic_expired_days = classic_expired_days
-        # The ID of the instance.
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The network type to switch to. Valid values:
+        # The network type to switch to. Valid value:
         # 
         # *   **VPC**\
-        # *   **Classic**\
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19721,22 +20962,24 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # Specifies whether to retain the original classic network address when you change the network type to VPC. Valid values:
         # 
-        # - **True**: retains the original classic network address.
-        # - **False**: does not retain the original classic network address.
+        # *   **True**: retains the original classic network address.
+        # *   **False**: does not retain the original classic network address.
         # 
-        # > * This parameter is required when the **NetworkType** parameter is set to **VPC**.
-        # > * If you set this parameter to **True**, you must also specify the **ClassicExpiredDays** parameter.
+        # > 
+        # 
+        # *   This parameter is required when the **NetworkType** parameter is set to **VPC**.
+        # 
+        # *   If you set this parameter to **True**, you must also specify the **ClassicExpiredDays** parameter.
         self.retain_classic = retain_classic
-        self.security_token = security_token
-        # The ID of the vSwitch.
+        # The ID of the vSwitch in the VPC.
         # 
-        # >  This parameter is required when the **NetworkType** parameter is set to **VPC**.
+        # > This parameter is required when the **NetworkType** parameter is set to **VPC**.
         self.v_switch_id = v_switch_id
-        # The ID of the virtual private cloud (VPC).
+        # The ID of the VPC.
         # 
-        # >  This parameter is required when the **NetworkType** parameter is set to **VPC**.
+        # > This parameter is required when the **NetworkType** parameter is set to **VPC**.
         self.vpc_id = vpc_id
-        # The zone ID of the instance. You can call the [DescribeRegions](~~468365~~) operation to query the most recent zone list.
+        # 可用区ID，您可以通过调用[DescribeRegions](~~61933~~)接口查询可用区ID。
         self.zone_id = zone_id
 
     def validate(self):
@@ -19764,8 +21007,6 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.retain_classic is not None:
             result['RetainClassic'] = self.retain_classic
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
         if self.vpc_id is not None:
@@ -19792,8 +21033,6 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RetainClassic') is not None:
             self.retain_classic = m.get('RetainClassic')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
         if m.get('VpcId') is not None:
@@ -19808,7 +21047,7 @@ class ModifyDBInstanceNetworkTypeResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -19884,7 +21123,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         sslaction: str = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -19898,7 +21136,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         # *   **Close**: disables SSL encryption.
         # *   **Update**: updates the SSL certificate.
         self.sslaction = sslaction
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -19921,8 +21158,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.sslaction is not None:
             result['SSLAction'] = self.sslaction
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -19939,8 +21174,6 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SSLAction') is not None:
             self.sslaction = m.get('SSLAction')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -20034,7 +21267,6 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         replication_factor: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to enable automatic payment. Default value: true. Valid values:
         # 
@@ -20090,7 +21322,6 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.replication_factor = replication_factor
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -20131,8 +21362,6 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -20167,8 +21396,6 @@ class ModifyDBInstanceSpecRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -20262,7 +21489,6 @@ class ModifyDBInstanceTDERequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_arn: str = None,
-        security_token: str = None,
         tdestatus: str = None,
     ):
         # The ID of the instance.
@@ -20285,7 +21511,6 @@ class ModifyDBInstanceTDERequest(TeaModel):
         # 
         # *   `$roleName`: specifies the name of the RAM role. To view the RAM role name, log on to the RAM console. In the left-side navigation pane, choose Identities > Roles. On the Roles page, view the name of the RAM role.
         self.role_arn = role_arn
-        self.security_token = security_token
         # The TDE status. When the value of this parameter is set to **Enabled**, TDE is enabled.
         # 
         # > You cannot disable TDE after it is enabled. Proceed with caution.
@@ -20316,8 +21541,6 @@ class ModifyDBInstanceTDERequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_arn is not None:
             result['RoleARN'] = self.role_arn
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.tdestatus is not None:
             result['TDEStatus'] = self.tdestatus
         return result
@@ -20340,8 +21563,6 @@ class ModifyDBInstanceTDERequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleARN') is not None:
             self.role_arn = m.get('RoleARN')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('TDEStatus') is not None:
             self.tdestatus = m.get('TDEStatus')
         return self
@@ -20430,7 +21651,6 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         self.gip_list = gip_list
         self.global_ig_name = global_ig_name
@@ -20440,7 +21660,6 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -20467,8 +21686,6 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -20489,8 +21706,6 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -20575,7 +21790,6 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         self.global_ig_name = global_ig_name
         self.global_security_group_id = global_security_group_id
@@ -20584,7 +21798,6 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -20609,8 +21822,6 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -20629,8 +21840,6 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -20774,7 +21983,6 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         self.dbcluster_id = dbcluster_id
         self.global_security_group_id = global_security_group_id
@@ -20783,7 +21991,6 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -20808,8 +22015,6 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -20828,8 +22033,6 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -20915,7 +22118,6 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to enable auto-renewal. Valid values:
         # 
@@ -20936,7 +22138,6 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -20963,8 +22164,6 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -20985,8 +22184,6 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -21071,7 +22268,6 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         vpc_auth_mode: str = None,
     ):
         # The operation that you want to perform. Set the value to **ModifyInstanceVpcAuthMode**.
@@ -21082,7 +22278,6 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The ID of the mongos node in the specified sharded cluster instance.
         # 
         # >  This parameter can be used only when the instance type is sharded cluster.
@@ -21109,8 +22304,6 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.vpc_auth_mode is not None:
             result['VpcAuthMode'] = self.vpc_auth_mode
         return result
@@ -21129,8 +22322,6 @@ class ModifyInstanceVpcAuthModeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('VpcAuthMode') is not None:
             self.vpc_auth_mode = m.get('VpcAuthMode')
         return self
@@ -21230,7 +22421,6 @@ class ModifyNodeSpecRequest(TeaModel):
         readonly_replicas: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
         switch_time: str = None,
     ):
         # Specifies whether to enable automatic payment. Default value: true. Valid values:
@@ -21282,7 +22472,6 @@ class ModifyNodeSpecRequest(TeaModel):
         self.readonly_replicas = readonly_replicas
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
         # The execution time. Specify the time in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.switch_time = switch_time
 
@@ -21327,8 +22516,6 @@ class ModifyNodeSpecRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.switch_time is not None:
             result['SwitchTime'] = self.switch_time
         return result
@@ -21367,8 +22554,6 @@ class ModifyNodeSpecRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('SwitchTime') is not None:
             self.switch_time = m.get('SwitchTime')
         return self
@@ -21469,7 +22654,6 @@ class ModifyNodeSpecBatchRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to enable automatic payment for the instance. Valid values:
         # 
@@ -21514,7 +22698,6 @@ class ModifyNodeSpecBatchRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -21551,8 +22734,6 @@ class ModifyNodeSpecBatchRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -21583,8 +22764,6 @@ class ModifyNodeSpecBatchRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -21679,7 +22858,6 @@ class ModifyParametersRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The role of the instance. Valid values:
         # 
@@ -21706,7 +22884,6 @@ class ModifyParametersRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -21735,8 +22912,6 @@ class ModifyParametersRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -21759,8 +22934,6 @@ class ModifyParametersRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -21846,7 +23019,6 @@ class ModifyResourceGroupRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -21858,7 +23030,6 @@ class ModifyResourceGroupRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -21883,8 +23054,6 @@ class ModifyResourceGroupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -21903,8 +23072,6 @@ class ModifyResourceGroupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -21989,7 +23156,6 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_group_id: str = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -22002,7 +23168,6 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
         # > * You can bind up to 10 ECS security groups to an ApsaraDB for MongoDB instance.
         # > * You can call the [DescribeSecurityGroup](~~25556~~) operation of ECS to query the security groups in the specified region.
         self.security_group_id = security_group_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22025,8 +23190,6 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22043,8 +23206,6 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -22132,7 +23293,6 @@ class ModifySecurityIpsRequest(TeaModel):
         security_ip_group_attribute: str = None,
         security_ip_group_name: str = None,
         security_ips: str = None,
-        security_token: str = None,
     ):
         # The ID of an instance.
         self.dbinstance_id = dbinstance_id
@@ -22159,7 +23319,6 @@ class ModifySecurityIpsRequest(TeaModel):
         # *   IP addresses. Example: 10.23.12.24.
         # *   Classless Inter-Domain Routing (CIDR) blocks, such as 10.23.12.24/24, where 24 indicates that the prefix of the CIDR block is 24-bit long. You can replace 24 with a value within the range of 1 to 32.
         self.security_ips = security_ips
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22188,8 +23347,6 @@ class ModifySecurityIpsRequest(TeaModel):
             result['SecurityIpGroupName'] = self.security_ip_group_name
         if self.security_ips is not None:
             result['SecurityIps'] = self.security_ips
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22212,8 +23369,6 @@ class ModifySecurityIpsRequest(TeaModel):
             self.security_ip_group_name = m.get('SecurityIpGroupName')
         if m.get('SecurityIps') is not None:
             self.security_ips = m.get('SecurityIps')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -22289,6 +23444,158 @@ class ModifySecurityIpsResponse(TeaModel):
         return self
 
 
+class ModifyTaskInfoRequest(TeaModel):
+    def __init__(
+        self,
+        action_params: str = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        step_name: str = None,
+        task_action: str = None,
+        task_id: str = None,
+    ):
+        self.action_params = action_params
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.step_name = step_name
+        self.task_action = task_action
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_params is not None:
+            result['ActionParams'] = self.action_params
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        if self.step_name is not None:
+            result['StepName'] = self.step_name
+        if self.task_action is not None:
+            result['TaskAction'] = self.task_action
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionParams') is not None:
+            self.action_params = m.get('ActionParams')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('StepName') is not None:
+            self.step_name = m.get('StepName')
+        if m.get('TaskAction') is not None:
+            self.task_action = m.get('TaskAction')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ModifyTaskInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        error_code: str = None,
+        error_task_id: str = None,
+        request_id: str = None,
+        success_count: str = None,
+    ):
+        self.error_code = error_code
+        self.error_task_id = error_task_id
+        self.request_id = request_id
+        self.success_count = success_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_task_id is not None:
+            result['ErrorTaskId'] = self.error_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorTaskId') is not None:
+            self.error_task_id = m.get('ErrorTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+        return self
+
+
+class ModifyTaskInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTaskInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTaskInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ReleaseNodePrivateNetworkAddressRequest(TeaModel):
     def __init__(
         self,
@@ -22299,7 +23606,6 @@ class ReleaseNodePrivateNetworkAddressRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the sharded cluster instance.
         self.dbinstance_id = dbinstance_id
@@ -22318,7 +23624,6 @@ class ReleaseNodePrivateNetworkAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22343,8 +23648,6 @@ class ReleaseNodePrivateNetworkAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22363,8 +23666,6 @@ class ReleaseNodePrivateNetworkAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -22449,7 +23750,6 @@ class ReleasePublicNetworkAddressRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         # 
@@ -22464,7 +23764,6 @@ class ReleasePublicNetworkAddressRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22487,8 +23786,6 @@ class ReleasePublicNetworkAddressRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22505,8 +23802,6 @@ class ReleasePublicNetworkAddressRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -22595,7 +23890,6 @@ class RenewDBInstanceRequest(TeaModel):
         period: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to enable automatic payment for the instance. Valid values:
         # 
@@ -22618,7 +23912,6 @@ class RenewDBInstanceRequest(TeaModel):
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22649,8 +23942,6 @@ class RenewDBInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22675,8 +23966,6 @@ class RenewDBInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -22770,7 +24059,6 @@ class ResetAccountPasswordRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The operation that you want to perform. Set the value to **ResetAccountPassword**.
         self.account_name = account_name
@@ -22787,7 +24075,6 @@ class ResetAccountPasswordRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22814,8 +24101,6 @@ class ResetAccountPasswordRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22836,8 +24121,6 @@ class ResetAccountPasswordRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -22922,7 +24205,6 @@ class RestartDBInstanceRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -22934,7 +24216,6 @@ class RestartDBInstanceRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -22957,8 +24238,6 @@ class RestartDBInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -22975,8 +24254,6 @@ class RestartDBInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -23061,7 +24338,6 @@ class RestoreDBInstanceRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the backup.
         # 
@@ -23073,7 +24349,6 @@ class RestoreDBInstanceRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -23096,8 +24371,6 @@ class RestoreDBInstanceRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -23114,8 +24387,6 @@ class RestoreDBInstanceRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -23201,7 +24472,6 @@ class SwitchDBInstanceHARequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         role_ids: str = None,
-        security_token: str = None,
         switch_mode: int = None,
     ):
         # The ID of the instance
@@ -23222,7 +24492,6 @@ class SwitchDBInstanceHARequest(TeaModel):
         # 
         # *   If you set the **DBInstanceId** parameter to the ID of a sharded cluster instance, the roles who switch the primary and secondary nodes for the instance must belong to one shard node.
         self.role_ids = role_ids
-        self.security_token = security_token
         # The time when the primary and secondary nodes are switched. Valid values:
         # 
         # *   0: The primary and secondary nodes are immediately switched.
@@ -23252,8 +24521,6 @@ class SwitchDBInstanceHARequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.role_ids is not None:
             result['RoleIds'] = self.role_ids
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         if self.switch_mode is not None:
             result['SwitchMode'] = self.switch_mode
         return result
@@ -23274,8 +24541,6 @@ class SwitchDBInstanceHARequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('RoleIds') is not None:
             self.role_ids = m.get('RoleIds')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         if m.get('SwitchMode') is not None:
             self.switch_mode = m.get('SwitchMode')
         return self
@@ -23566,14 +24831,13 @@ class TransferClusterBackupRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
+        # The instance ID.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -23594,8 +24858,6 @@ class TransferClusterBackupRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -23610,8 +24872,6 @@ class TransferClusterBackupRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -23621,7 +24881,9 @@ class TransferClusterBackupResponseBody(TeaModel):
         already_done: str = None,
         request_id: str = None,
     ):
+        # Indicates whether the instance is switched to the cluster backup mode. If the value of this parameter is **1**, the instance is switched to the cluster backup mode.
         self.already_done = already_done
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23707,14 +24969,13 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         pricing_cycle: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         # 
-        # > Default value: **true**.
+        # >  Default value: **true**.
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal. Valid values:
         # 
@@ -23736,12 +24997,20 @@ class TransformInstanceChargeTypeRequest(TeaModel):
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The subscription duration of the instance. Unit: months. Valid values: **1, 2, 3, 4, 5, 6, 7, 8, 9******, **12**, **24**, and **36**.
+        # The subscription duration. Valid values:
+        # 
+        # *   If the PricingCycle parameter is set to Month, the valid values of this parameter range from **1** to **9**.
+        # *   If the PricingCycle parameter is set to Year, the valid values of this parameter are **1**, **2**, **3**, and **5**.
         self.period = period
+        # The unit of the subscription duration. Valid values:
+        # 
+        # *   **Month**\
+        # *   **Year**\
+        # 
+        # Default value: Month.
         self.pricing_cycle = pricing_cycle
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -23776,8 +25045,6 @@ class TransformInstanceChargeTypeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -23806,8 +25073,6 @@ class TransformInstanceChargeTypeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -23903,7 +25168,6 @@ class TransformToPrePaidRequest(TeaModel):
         period: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # Specifies whether to enable automatic payment. Valid values:
         # 
@@ -23931,7 +25195,6 @@ class TransformToPrePaidRequest(TeaModel):
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -23962,8 +25225,6 @@ class TransformToPrePaidRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -23988,8 +25249,6 @@ class TransformToPrePaidRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -24249,7 +25508,6 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -24261,7 +25519,6 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -24284,8 +25541,6 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -24302,8 +25557,6 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
@@ -24387,7 +25640,6 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
-        security_token: str = None,
     ):
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
@@ -24395,7 +25647,6 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        self.security_token = security_token
 
     def validate(self):
         pass
@@ -24416,8 +25667,6 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.security_token is not None:
-            result['SecurityToken'] = self.security_token
         return result
 
     def from_map(self, m: dict = None):
@@ -24432,8 +25681,6 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('SecurityToken') is not None:
-            self.security_token = m.get('SecurityToken')
         return self
 
 
