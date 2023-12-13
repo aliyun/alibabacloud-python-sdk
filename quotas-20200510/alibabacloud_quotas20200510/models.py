@@ -6270,6 +6270,7 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditSta
 class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaModel):
     def __init__(
         self,
+        aliyun_uids: List[str] = None,
         apply_time: str = None,
         audit_status_vos: List[ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplicationsAuditStatusVos] = None,
         batch_quota_application_id: str = None,
@@ -6280,7 +6281,9 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
         product_code: str = None,
         quota_action_code: str = None,
         quota_category: str = None,
+        reason: str = None,
     ):
+        self.aliyun_uids = aliyun_uids
         # The time when the quota increase application was submitted. The value is displayed in UTC.
         self.apply_time = apply_time
         # The number of applications in different approval states.
@@ -6307,6 +6310,7 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
         # *   FlowControl: API rate limit
         # *   WhiteListLabel: privilege
         self.quota_category = quota_category
+        self.reason = reason
 
     def validate(self):
         if self.audit_status_vos:
@@ -6320,6 +6324,8 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
             return _map
 
         result = dict()
+        if self.aliyun_uids is not None:
+            result['AliyunUids'] = self.aliyun_uids
         if self.apply_time is not None:
             result['ApplyTime'] = self.apply_time
         result['AuditStatusVos'] = []
@@ -6342,10 +6348,14 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
             result['QuotaActionCode'] = self.quota_action_code
         if self.quota_category is not None:
             result['QuotaCategory'] = self.quota_category
+        if self.reason is not None:
+            result['Reason'] = self.reason
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliyunUids') is not None:
+            self.aliyun_uids = m.get('AliyunUids')
         if m.get('ApplyTime') is not None:
             self.apply_time = m.get('ApplyTime')
         self.audit_status_vos = []
@@ -6369,6 +6379,8 @@ class ListQuotaApplicationsForTemplateResponseBodyQuotaBatchApplications(TeaMode
             self.quota_action_code = m.get('QuotaActionCode')
         if m.get('QuotaCategory') is not None:
             self.quota_category = m.get('QuotaCategory')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         return self
 
 
