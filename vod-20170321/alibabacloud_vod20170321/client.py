@@ -768,6 +768,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_vod_domain_with_options_async(request, runtime)
 
+    def add_vod_storage_for_app_with_options(
+        self,
+        request: vod_20170321_models.AddVodStorageForAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.AddVodStorageForAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddVodStorageForApp',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.AddVodStorageForAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_vod_storage_for_app_with_options_async(
+        self,
+        request: vod_20170321_models.AddVodStorageForAppRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> vod_20170321_models.AddVodStorageForAppResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.storage_location):
+            query['StorageLocation'] = request.storage_location
+        if not UtilClient.is_unset(request.storage_type):
+            query['StorageType'] = request.storage_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='AddVodStorageForApp',
+            version='2017-03-21',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            vod_20170321_models.AddVodStorageForAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_vod_storage_for_app(
+        self,
+        request: vod_20170321_models.AddVodStorageForAppRequest,
+    ) -> vod_20170321_models.AddVodStorageForAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.add_vod_storage_for_app_with_options(request, runtime)
+
+    async def add_vod_storage_for_app_async(
+        self,
+        request: vod_20170321_models.AddVodStorageForAppRequest,
+    ) -> vod_20170321_models.AddVodStorageForAppResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.add_vod_storage_for_app_with_options_async(request, runtime)
+
     def add_vod_template_with_options(
         self,
         request: vod_20170321_models.AddVodTemplateRequest,
@@ -15385,6 +15463,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_update_without_time_limit):
+            query['AllowUpdateWithoutTimeLimit'] = request.allow_update_without_time_limit
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
         if not UtilClient.is_unset(request.restore_tier):
@@ -15429,6 +15509,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.allow_update_without_time_limit):
+            query['AllowUpdateWithoutTimeLimit'] = request.allow_update_without_time_limit
         if not UtilClient.is_unset(request.media_ids):
             query['MediaIds'] = request.media_ids
         if not UtilClient.is_unset(request.restore_tier):

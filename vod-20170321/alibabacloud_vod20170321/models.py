@@ -1111,6 +1111,122 @@ class AddVodDomainResponse(TeaModel):
         return self
 
 
+class AddVodStorageForAppRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        storage_location: str = None,
+        storage_type: str = None,
+    ):
+        self.app_id = app_id
+        self.storage_location = storage_location
+        self.storage_type = storage_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.storage_location is not None:
+            result['StorageLocation'] = self.storage_location
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('StorageLocation') is not None:
+            self.storage_location = m.get('StorageLocation')
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
+        return self
+
+
+class AddVodStorageForAppResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        storage_location: str = None,
+    ):
+        self.request_id = request_id
+        self.storage_location = storage_location
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.storage_location is not None:
+            result['StorageLocation'] = self.storage_location
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('StorageLocation') is not None:
+            self.storage_location = m.get('StorageLocation')
+        return self
+
+
+class AddVodStorageForAppResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddVodStorageForAppResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddVodStorageForAppResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddVodTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -21026,6 +21142,7 @@ class GetPlayInfoResponseBodyVideoBase(TeaModel):
         duration: str = None,
         media_type: str = None,
         status: str = None,
+        storage_class: str = None,
         title: str = None,
         video_id: str = None,
     ):
@@ -21044,6 +21161,7 @@ class GetPlayInfoResponseBodyVideoBase(TeaModel):
         self.media_type = media_type
         # The status of the audio or video file. For more information about the value range and description, see the [Status](~~52839~~) table.
         self.status = status
+        self.storage_class = storage_class
         # The title of the audio or video file.
         self.title = title
         # The ID of the media file.
@@ -21070,6 +21188,8 @@ class GetPlayInfoResponseBodyVideoBase(TeaModel):
             result['MediaType'] = self.media_type
         if self.status is not None:
             result['Status'] = self.status
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
         if self.title is not None:
             result['Title'] = self.title
         if self.video_id is not None:
@@ -21090,6 +21210,8 @@ class GetPlayInfoResponseBodyVideoBase(TeaModel):
             self.media_type = m.get('MediaType')
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
         if m.get('Title') is not None:
             self.title = m.get('Title')
         if m.get('VideoId') is not None:
@@ -27717,6 +27839,7 @@ class ProduceEditingProjectVideoRequest(TeaModel):
         title: str = None,
         user_data: str = None,
     ):
+        # The ID of the application. Default value: **app-1000000**. For more information, see [Multi-application service](~~113600~~).
         self.app_id = app_id
         # The thumbnail URL of the online editing project.
         self.cover_url = cover_url
@@ -34044,11 +34167,13 @@ class UpdateImageInfosResponse(TeaModel):
 class UpdateMediaStorageClassRequest(TeaModel):
     def __init__(
         self,
+        allow_update_without_time_limit: bool = None,
         media_ids: str = None,
         restore_tier: str = None,
         scope: str = None,
         storage_class: str = None,
     ):
+        self.allow_update_without_time_limit = allow_update_without_time_limit
         # The media asset ID. You can specify a maximum of 20 IDs. Separate multiple IDs with commas (,). You can use one of the following methods to obtain the ID:
         # 
         # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, you can view the ID of the media asset. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
@@ -34083,6 +34208,8 @@ class UpdateMediaStorageClassRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.allow_update_without_time_limit is not None:
+            result['AllowUpdateWithoutTimeLimit'] = self.allow_update_without_time_limit
         if self.media_ids is not None:
             result['MediaIds'] = self.media_ids
         if self.restore_tier is not None:
@@ -34095,6 +34222,8 @@ class UpdateMediaStorageClassRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllowUpdateWithoutTimeLimit') is not None:
+            self.allow_update_without_time_limit = m.get('AllowUpdateWithoutTimeLimit')
         if m.get('MediaIds') is not None:
             self.media_ids = m.get('MediaIds')
         if m.get('RestoreTier') is not None:
