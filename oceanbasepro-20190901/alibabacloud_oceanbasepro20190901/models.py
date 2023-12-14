@@ -26610,11 +26610,11 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         disk_reads: float = None,
         elapsed_time: float = None,
         execute_time: float = None,
-        executor_rpc: float = None,
+        executor_rpc: bool = None,
         expected_worker_count: float = None,
         full_sql_text: str = None,
         get_plan_time: float = None,
-        hit_plan: float = None,
+        hit_plan: bool = None,
         inner: bool = None,
         memstore_read_rows: float = None,
         net_time: float = None,
@@ -26638,7 +26638,7 @@ class DescribeSQLSamplesResponseBodyData(TeaModel):
         sql_type: str = None,
         ssstore_read_rows: float = None,
         statement: str = None,
-        table_scan: float = None,
+        table_scan: bool = None,
         trace_id: str = None,
         trans_hash: str = None,
         used_worker_count: float = None,
@@ -37155,6 +37155,116 @@ class ModifyInstanceTagsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyInstanceTagsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyInstanceTemporaryCapacityRequest(TeaModel):
+    def __init__(
+        self,
+        disk_size: str = None,
+        instance_id: str = None,
+        spec: str = None,
+    ):
+        self.disk_size = disk_size
+        self.instance_id = instance_id
+        self.spec = spec
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.spec is not None:
+            result['Spec'] = self.spec
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DiskSize') is not None:
+            self.disk_size = m.get('DiskSize')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Spec') is not None:
+            self.spec = m.get('Spec')
+        return self
+
+
+class ModifyInstanceTemporaryCapacityResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyInstanceTemporaryCapacityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyInstanceTemporaryCapacityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyInstanceTemporaryCapacityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
