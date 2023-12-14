@@ -1,3 +1,6 @@
+2023-12-14 Version: 2.3.3
+- Generated python 2022-01-30 for avatar.
+
 2023-11-09 Version: 2.3.2
 - Generated python 2022-01-30 for avatar.
 
