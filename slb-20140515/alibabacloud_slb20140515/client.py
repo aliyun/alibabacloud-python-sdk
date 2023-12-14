@@ -1208,10 +1208,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -1321,10 +1325,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -1468,10 +1476,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -1585,10 +1597,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -3455,6 +3471,14 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteTLSCipherPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
+        
+        @param request: DeleteTLSCipherPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTLSCipherPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3493,6 +3517,14 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteTLSCipherPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
+        
+        @param request: DeleteTLSCipherPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTLSCipherPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3530,6 +3562,13 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteTLSCipherPolicyRequest,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
+        
+        @param request: DeleteTLSCipherPolicyRequest
+        @return: DeleteTLSCipherPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tlscipher_policy_with_options(request, runtime)
 
@@ -3537,6 +3576,13 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteTLSCipherPolicyRequest,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
+        """
+        ## Debugging
+        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
+        
+        @param request: DeleteTLSCipherPolicyRequest
+        @return: DeleteTLSCipherPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tlscipher_policy_with_options_async(request, runtime)
 
@@ -9024,10 +9070,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -9131,10 +9181,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -9275,10 +9329,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
@@ -9389,10 +9447,14 @@ class Client(OpenApiClient):
             query['VServerGroupId'] = request.vserver_group_id
         if not UtilClient.is_unset(request.xforwarded_for):
             query['XForwardedFor'] = request.xforwarded_for
+        if not UtilClient.is_unset(request.xforwarded_for__client_src_port):
+            query['XForwardedFor_ClientSrcPort'] = request.xforwarded_for__client_src_port
         if not UtilClient.is_unset(request.xforwarded_for__slbid):
             query['XForwardedFor_SLBID'] = request.xforwarded_for__slbid
         if not UtilClient.is_unset(request.xforwarded_for__slbip):
             query['XForwardedFor_SLBIP'] = request.xforwarded_for__slbip
+        if not UtilClient.is_unset(request.xforwarded_for__slbport):
+            query['XForwardedFor_SLBPORT'] = request.xforwarded_for__slbport
         if not UtilClient.is_unset(request.xforwarded_for_proto):
             query['XForwardedFor_proto'] = request.xforwarded_for_proto
         req = open_api_models.OpenApiRequest(
