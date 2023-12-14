@@ -1457,6 +1457,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_id_for_filter):
+            query['UserIdForFilter'] = request.user_id_for_filter
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(
@@ -1525,6 +1527,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not UtilClient.is_unset(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not UtilClient.is_unset(request.user_id_for_filter):
+            query['UserIdForFilter'] = request.user_id_for_filter
         if not UtilClient.is_unset(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_models.OpenApiRequest(

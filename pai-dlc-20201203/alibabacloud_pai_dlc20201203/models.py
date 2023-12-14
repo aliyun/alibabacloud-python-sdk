@@ -1531,6 +1531,8 @@ class JobSettings(TeaModel):
         enable_rdma: bool = None,
         enable_tide_resource: bool = None,
         error_monitoring_args: str = None,
+        job_reserved_minutes: int = None,
+        job_reserved_policy: str = None,
         oversold_type: str = None,
         pipeline_id: str = None,
         tags: Dict[str, str] = None,
@@ -1544,6 +1546,8 @@ class JobSettings(TeaModel):
         self.enable_rdma = enable_rdma
         self.enable_tide_resource = enable_tide_resource
         self.error_monitoring_args = error_monitoring_args
+        self.job_reserved_minutes = job_reserved_minutes
+        self.job_reserved_policy = job_reserved_policy
         self.oversold_type = oversold_type
         self.pipeline_id = pipeline_id
         self.tags = tags
@@ -1575,6 +1579,10 @@ class JobSettings(TeaModel):
             result['EnableTideResource'] = self.enable_tide_resource
         if self.error_monitoring_args is not None:
             result['ErrorMonitoringArgs'] = self.error_monitoring_args
+        if self.job_reserved_minutes is not None:
+            result['JobReservedMinutes'] = self.job_reserved_minutes
+        if self.job_reserved_policy is not None:
+            result['JobReservedPolicy'] = self.job_reserved_policy
         if self.oversold_type is not None:
             result['OversoldType'] = self.oversold_type
         if self.pipeline_id is not None:
@@ -1603,6 +1611,10 @@ class JobSettings(TeaModel):
             self.enable_tide_resource = m.get('EnableTideResource')
         if m.get('ErrorMonitoringArgs') is not None:
             self.error_monitoring_args = m.get('ErrorMonitoringArgs')
+        if m.get('JobReservedMinutes') is not None:
+            self.job_reserved_minutes = m.get('JobReservedMinutes')
+        if m.get('JobReservedPolicy') is not None:
+            self.job_reserved_policy = m.get('JobReservedPolicy')
         if m.get('OversoldType') is not None:
             self.oversold_type = m.get('OversoldType')
         if m.get('PipelineId') is not None:
@@ -2756,9 +2768,11 @@ class CreateJobRequestDataSources(TeaModel):
         self,
         data_source_id: str = None,
         mount_path: str = None,
+        uri: str = None,
     ):
         self.data_source_id = data_source_id
         self.mount_path = mount_path
+        self.uri = uri
 
     def validate(self):
         pass
@@ -2773,6 +2787,8 @@ class CreateJobRequestDataSources(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.uri is not None:
+            result['Uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
@@ -2781,6 +2797,8 @@ class CreateJobRequestDataSources(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
         return self
 
 
@@ -3542,9 +3560,11 @@ class GetJobResponseBodyDataSources(TeaModel):
         self,
         data_source_id: str = None,
         mount_path: str = None,
+        uri: str = None,
     ):
         self.data_source_id = data_source_id
         self.mount_path = mount_path
+        self.uri = uri
 
     def validate(self):
         pass
@@ -3559,6 +3579,8 @@ class GetJobResponseBodyDataSources(TeaModel):
             result['DataSourceId'] = self.data_source_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.uri is not None:
+            result['Uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
@@ -3567,6 +3589,8 @@ class GetJobResponseBodyDataSources(TeaModel):
             self.data_source_id = m.get('DataSourceId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
         return self
 
 
@@ -5182,6 +5206,7 @@ class ListJobsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
         tags: Dict[str, str] = None,
+        user_id_for_filter: str = None,
         workspace_id: str = None,
     ):
         self.business_user_id = business_user_id
@@ -5201,6 +5226,7 @@ class ListJobsRequest(TeaModel):
         self.start_time = start_time
         self.status = status
         self.tags = tags
+        self.user_id_for_filter = user_id_for_filter
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5246,6 +5272,8 @@ class ListJobsRequest(TeaModel):
             result['Status'] = self.status
         if self.tags is not None:
             result['Tags'] = self.tags
+        if self.user_id_for_filter is not None:
+            result['UserIdForFilter'] = self.user_id_for_filter
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5286,6 +5314,8 @@ class ListJobsRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+        if m.get('UserIdForFilter') is not None:
+            self.user_id_for_filter = m.get('UserIdForFilter')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
@@ -5311,6 +5341,7 @@ class ListJobsShrinkRequest(TeaModel):
         start_time: str = None,
         status: str = None,
         tags_shrink: str = None,
+        user_id_for_filter: str = None,
         workspace_id: str = None,
     ):
         self.business_user_id = business_user_id
@@ -5330,6 +5361,7 @@ class ListJobsShrinkRequest(TeaModel):
         self.start_time = start_time
         self.status = status
         self.tags_shrink = tags_shrink
+        self.user_id_for_filter = user_id_for_filter
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5375,6 +5407,8 @@ class ListJobsShrinkRequest(TeaModel):
             result['Status'] = self.status
         if self.tags_shrink is not None:
             result['Tags'] = self.tags_shrink
+        if self.user_id_for_filter is not None:
+            result['UserIdForFilter'] = self.user_id_for_filter
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
         return result
@@ -5415,6 +5449,8 @@ class ListJobsShrinkRequest(TeaModel):
             self.status = m.get('Status')
         if m.get('Tags') is not None:
             self.tags_shrink = m.get('Tags')
+        if m.get('UserIdForFilter') is not None:
+            self.user_id_for_filter = m.get('UserIdForFilter')
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
         return self
