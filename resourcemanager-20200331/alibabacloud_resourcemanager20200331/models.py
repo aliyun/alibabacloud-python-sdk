@@ -2620,11 +2620,45 @@ class CreateResourceAccountResponse(TeaModel):
         return self
 
 
+class CreateResourceGroupRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateResourceGroupRequest(TeaModel):
     def __init__(
         self,
         display_name: str = None,
         name: str = None,
+        tag: List[CreateResourceGroupRequestTag] = None,
     ):
         # The ID of the request.
         self.display_name = display_name
@@ -2632,9 +2666,13 @@ class CreateResourceGroupRequest(TeaModel):
         # 
         # The name must be 1 to 50 characters in length.
         self.name = name
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2646,6 +2684,10 @@ class CreateResourceGroupRequest(TeaModel):
             result['DisplayName'] = self.display_name
         if self.name is not None:
             result['Name'] = self.name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -2654,6 +2696,11 @@ class CreateResourceGroupRequest(TeaModel):
             self.display_name = m.get('DisplayName')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateResourceGroupRequestTag()
+                self.tag.append(temp_model.from_map(k))
         return self
 
 
@@ -9993,6 +10040,183 @@ class ListAncestorsResponse(TeaModel):
         return self
 
 
+class ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings(TeaModel):
+    def __init__(
+        self,
+        associated_resource_type: str = None,
+        associated_service: str = None,
+        master_resource_type: str = None,
+        master_service: str = None,
+        status: str = None,
+    ):
+        self.associated_resource_type = associated_resource_type
+        self.associated_service = associated_service
+        self.master_resource_type = master_resource_type
+        self.master_service = master_service
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associated_resource_type is not None:
+            result['AssociatedResourceType'] = self.associated_resource_type
+        if self.associated_service is not None:
+            result['AssociatedService'] = self.associated_service
+        if self.master_resource_type is not None:
+            result['MasterResourceType'] = self.master_resource_type
+        if self.master_service is not None:
+            result['MasterService'] = self.master_service
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociatedResourceType') is not None:
+            self.associated_resource_type = m.get('AssociatedResourceType')
+        if m.get('AssociatedService') is not None:
+            self.associated_service = m.get('AssociatedService')
+        if m.get('MasterResourceType') is not None:
+            self.master_resource_type = m.get('MasterResourceType')
+        if m.get('MasterService') is not None:
+            self.master_service = m.get('MasterService')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+        rule_settings: List[ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings] = None,
+        status: str = None,
+    ):
+        self.account_id = account_id
+        self.rule_settings = rule_settings
+        self.status = status
+
+    def validate(self):
+        if self.rule_settings:
+            for k in self.rule_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        result['RuleSettings'] = []
+        if self.rule_settings is not None:
+            for k in self.rule_settings:
+                result['RuleSettings'].append(k.to_map() if k else None)
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        self.rule_settings = []
+        if m.get('RuleSettings') is not None:
+            for k in m.get('RuleSettings'):
+                temp_model = ListAssociatedTransferSettingResponseBodyAssociatedTransferSettingRuleSettings()
+                self.rule_settings.append(temp_model.from_map(k))
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class ListAssociatedTransferSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        associated_transfer_setting: ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting = None,
+        request_id: str = None,
+    ):
+        self.associated_transfer_setting = associated_transfer_setting
+        self.request_id = request_id
+
+    def validate(self):
+        if self.associated_transfer_setting:
+            self.associated_transfer_setting.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associated_transfer_setting is not None:
+            result['AssociatedTransferSetting'] = self.associated_transfer_setting.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociatedTransferSetting') is not None:
+            temp_model = ListAssociatedTransferSettingResponseBodyAssociatedTransferSetting()
+            self.associated_transfer_setting = temp_model.from_map(m['AssociatedTransferSetting'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListAssociatedTransferSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListAssociatedTransferSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListAssociatedTransferSettingResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListControlPoliciesRequest(TeaModel):
     def __init__(
         self,
@@ -17035,6 +17259,163 @@ class UpdateAccountResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateAssociatedTransferSettingRequestRuleSettings(TeaModel):
+    def __init__(
+        self,
+        associated_resource_type: str = None,
+        associated_service: str = None,
+        master_resource_type: str = None,
+        master_service: str = None,
+        status: str = None,
+    ):
+        self.associated_resource_type = associated_resource_type
+        self.associated_service = associated_service
+        self.master_resource_type = master_resource_type
+        self.master_service = master_service
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associated_resource_type is not None:
+            result['AssociatedResourceType'] = self.associated_resource_type
+        if self.associated_service is not None:
+            result['AssociatedService'] = self.associated_service
+        if self.master_resource_type is not None:
+            result['MasterResourceType'] = self.master_resource_type
+        if self.master_service is not None:
+            result['MasterService'] = self.master_service
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociatedResourceType') is not None:
+            self.associated_resource_type = m.get('AssociatedResourceType')
+        if m.get('AssociatedService') is not None:
+            self.associated_service = m.get('AssociatedService')
+        if m.get('MasterResourceType') is not None:
+            self.master_resource_type = m.get('MasterResourceType')
+        if m.get('MasterService') is not None:
+            self.master_service = m.get('MasterService')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class UpdateAssociatedTransferSettingRequest(TeaModel):
+    def __init__(
+        self,
+        rule_settings: List[UpdateAssociatedTransferSettingRequestRuleSettings] = None,
+    ):
+        self.rule_settings = rule_settings
+
+    def validate(self):
+        if self.rule_settings:
+            for k in self.rule_settings:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['RuleSettings'] = []
+        if self.rule_settings is not None:
+            for k in self.rule_settings:
+                result['RuleSettings'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.rule_settings = []
+        if m.get('RuleSettings') is not None:
+            for k in m.get('RuleSettings'):
+                temp_model = UpdateAssociatedTransferSettingRequestRuleSettings()
+                self.rule_settings.append(temp_model.from_map(k))
+        return self
+
+
+class UpdateAssociatedTransferSettingResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UpdateAssociatedTransferSettingResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateAssociatedTransferSettingResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateAssociatedTransferSettingResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

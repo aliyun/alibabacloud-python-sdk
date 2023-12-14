@@ -1587,6 +1587,8 @@ class Client(OpenApiClient):
             query['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -1624,6 +1626,8 @@ class Client(OpenApiClient):
             query['DisplayName'] = request.display_name
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5031,6 +5035,56 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_ancestors_with_options_async(request, runtime)
 
+    def list_associated_transfer_setting_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAssociatedTransferSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_associated_transfer_setting_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListAssociatedTransferSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_associated_transfer_setting(self) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_associated_transfer_setting_with_options(runtime)
+
+    async def list_associated_transfer_setting_async(self) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_associated_transfer_setting_with_options_async(runtime)
+
     def list_control_policies_with_options(
         self,
         request: resource_manager_20200331_models.ListControlPoliciesRequest,
@@ -8270,6 +8324,76 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_account_with_options_async(request, runtime)
+
+    def update_associated_transfer_setting_with_options(
+        self,
+        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_settings):
+            query['RuleSettings'] = request.rule_settings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAssociatedTransferSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_associated_transfer_setting_with_options_async(
+        self,
+        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.rule_settings):
+            query['RuleSettings'] = request.rule_settings
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateAssociatedTransferSetting',
+            version='2020-03-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_associated_transfer_setting(
+        self,
+        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
+    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_associated_transfer_setting_with_options(request, runtime)
+
+    async def update_associated_transfer_setting_async(
+        self,
+        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
+    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_associated_transfer_setting_with_options_async(request, runtime)
 
     def update_control_policy_with_options(
         self,
