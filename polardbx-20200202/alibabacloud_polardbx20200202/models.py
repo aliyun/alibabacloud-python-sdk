@@ -1256,6 +1256,7 @@ class CreateDBInstanceRequest(TeaModel):
         dnnode_count: str = None,
         dn_class: str = None,
         engine_version: str = None,
+        is_columnar_read_dbinstance: bool = None,
         is_read_dbinstance: bool = None,
         network_type: str = None,
         pay_type: str = None,
@@ -1281,6 +1282,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.dnnode_count = dnnode_count
         self.dn_class = dn_class
         self.engine_version = engine_version
+        self.is_columnar_read_dbinstance = is_columnar_read_dbinstance
         self.is_read_dbinstance = is_read_dbinstance
         self.network_type = network_type
         self.pay_type = pay_type
@@ -1325,6 +1327,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['DnClass'] = self.dn_class
         if self.engine_version is not None:
             result['EngineVersion'] = self.engine_version
+        if self.is_columnar_read_dbinstance is not None:
+            result['IsColumnarReadDBInstance'] = self.is_columnar_read_dbinstance
         if self.is_read_dbinstance is not None:
             result['IsReadDBInstance'] = self.is_read_dbinstance
         if self.network_type is not None:
@@ -1377,6 +1381,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.dn_class = m.get('DnClass')
         if m.get('EngineVersion') is not None:
             self.engine_version = m.get('EngineVersion')
+        if m.get('IsColumnarReadDBInstance') is not None:
+            self.is_columnar_read_dbinstance = m.get('IsColumnarReadDBInstance')
         if m.get('IsReadDBInstance') is not None:
             self.is_read_dbinstance = m.get('IsReadDBInstance')
         if m.get('NetworkType') is not None:

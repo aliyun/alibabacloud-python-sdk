@@ -883,6 +883,8 @@ class Client(OpenApiClient):
             query['DnClass'] = request.dn_class
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.is_columnar_read_dbinstance):
+            query['IsColumnarReadDBInstance'] = request.is_columnar_read_dbinstance
         if not UtilClient.is_unset(request.is_read_dbinstance):
             query['IsReadDBInstance'] = request.is_read_dbinstance
         if not UtilClient.is_unset(request.network_type):
@@ -957,6 +959,8 @@ class Client(OpenApiClient):
             query['DnClass'] = request.dn_class
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.is_columnar_read_dbinstance):
+            query['IsColumnarReadDBInstance'] = request.is_columnar_read_dbinstance
         if not UtilClient.is_unset(request.is_read_dbinstance):
             query['IsReadDBInstance'] = request.is_read_dbinstance
         if not UtilClient.is_unset(request.network_type):
