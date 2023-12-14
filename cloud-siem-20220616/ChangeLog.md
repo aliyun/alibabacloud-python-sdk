@@ -1,3 +1,6 @@
+2023-12-14 Version: 3.0.0
+- Generated python 2022-06-16 for cloud-siem.
+
 2023-12-11 Version: 2.3.0
 - Generated python 2022-06-16 for cloud-siem.
 

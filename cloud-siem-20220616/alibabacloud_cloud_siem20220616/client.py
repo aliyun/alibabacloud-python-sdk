@@ -541,6 +541,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.batch_job_submit_with_options_async(request, runtime)
 
+    def bind_account_with_options(
+        self,
+        request: cloud_siem_20220616_models.BindAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.BindAccountResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.access_id):
+            body['AccessId'] = request.access_id
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.cloud_code):
+            body['CloudCode'] = request.cloud_code
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BindAccount',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.BindAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_account_with_options_async(
+        self,
+        request: cloud_siem_20220616_models.BindAccountRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_siem_20220616_models.BindAccountResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.access_id):
+            body['AccessId'] = request.access_id
+        if not UtilClient.is_unset(request.account_id):
+            body['AccountId'] = request.account_id
+        if not UtilClient.is_unset(request.account_name):
+            body['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.cloud_code):
+            body['CloudCode'] = request.cloud_code
+        if not UtilClient.is_unset(request.region_id):
+            body['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BindAccount',
+            version='2022-06-16',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_siem_20220616_models.BindAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_account(
+        self,
+        request: cloud_siem_20220616_models.BindAccountRequest,
+    ) -> cloud_siem_20220616_models.BindAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.bind_account_with_options(request, runtime)
+
+    async def bind_account_async(
+        self,
+        request: cloud_siem_20220616_models.BindAccountRequest,
+    ) -> cloud_siem_20220616_models.BindAccountResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_account_with_options_async(request, runtime)
+
     def close_delivery_with_options(
         self,
         request: cloud_siem_20220616_models.CloseDeliveryRequest,

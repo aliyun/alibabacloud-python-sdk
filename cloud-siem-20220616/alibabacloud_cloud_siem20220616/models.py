@@ -1469,6 +1469,163 @@ class BatchJobSubmitResponse(TeaModel):
         return self
 
 
+class BindAccountRequest(TeaModel):
+    def __init__(
+        self,
+        access_id: str = None,
+        account_id: str = None,
+        account_name: str = None,
+        cloud_code: str = None,
+        region_id: str = None,
+    ):
+        self.access_id = access_id
+        self.account_id = account_id
+        self.account_name = account_name
+        self.cloud_code = cloud_code
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.access_id is not None:
+            result['AccessId'] = self.access_id
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.cloud_code is not None:
+            result['CloudCode'] = self.cloud_code
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessId') is not None:
+            self.access_id = m.get('AccessId')
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('CloudCode') is not None:
+            self.cloud_code = m.get('CloudCode')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class BindAccountResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        count: int = None,
+    ):
+        self.count = count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.count is not None:
+            result['Count'] = self.count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        return self
+
+
+class BindAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: BindAccountResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = BindAccountResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BindAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CloseDeliveryRequest(TeaModel):
     def __init__(
         self,
@@ -1541,37 +1698,16 @@ class CloseDeliveryRequest(TeaModel):
 class CloseDeliveryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the threat analysis feature was disabled. Valid values:
         # 
         # *   true
         # *   false
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -1582,42 +1718,18 @@ class CloseDeliveryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -1671,7 +1783,12 @@ class DeleteAutomateResponseConfigRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # The ID of the rule.
         self.id = id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -1707,10 +1824,18 @@ class DeleteAutomateResponseConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -1956,7 +2081,9 @@ class DeleteCustomizeRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: int = None,
     ):
+        # The region in which the service is deployed.
         self.region_id = region_id
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -1992,10 +2119,18 @@ class DeleteCustomizeRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2433,37 +2568,16 @@ class DeleteQuickQueryRequest(TeaModel):
 class DeleteQuickQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the saved search is deleted. Valid values:
         # 
         # *   true
         # *   false
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -2474,42 +2588,18 @@ class DeleteQuickQueryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -2673,7 +2763,12 @@ class DeleteWhiteRuleListRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # The unique ID of the whitelist rule.
         self.id = id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -2709,10 +2804,18 @@ class DeleteWhiteRuleListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -2800,6 +2903,10 @@ class DescribeAggregateFunctionRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -2828,7 +2935,9 @@ class DescribeAggregateFunctionResponseBodyData(TeaModel):
         function: str = None,
         function_name: str = None,
     ):
+        # The aggregate function.
         self.function = function
+        # The display name of the aggregate function.
         self.function_name = function_name
 
     def validate(self):
@@ -2864,10 +2973,18 @@ class DescribeAggregateFunctionResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3210,7 +3327,12 @@ class DescribeAlertSceneByEventRequest(TeaModel):
         incident_uuid: str = None,
         region_id: str = None,
     ):
+        # The ID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -3245,9 +3367,13 @@ class DescribeAlertSceneByEventResponseBodyDataTargets(TeaModel):
         value: str = None,
         values: List[str] = None,
     ):
+        # The display name of the entity attribute field that can be added to the whitelist.
         self.name = name
+        # The entity attribute field that can be added to the whitelist.
         self.type = type
+        # The right operand that is displayed by default in the whitelist rule.
         self.value = value
+        # The supported right operands of the whitelist rule.
         self.values = values
 
     def validate(self):
@@ -3293,12 +3419,19 @@ class DescribeAlertSceneByEventResponseBodyData(TeaModel):
         alert_type_id: str = None,
         targets: List[DescribeAlertSceneByEventResponseBodyDataTargets] = None,
     ):
+        # The alert name. The display name of the alert name varies based on the language of the system, such as Chinese and English.
         self.alert_name = alert_name
+        # The ID of the alert name.
         self.alert_name_id = alert_name_id
+        # The alert title. The display name of the alert title varies based on the language of the system, such as Chinese and English.
         self.alert_tile = alert_tile
+        # The ID of the alert title.
         self.alert_tile_id = alert_tile_id
+        # The alert type. The display name of the alert type varies based on the language of the system, such as Chinese and English.
         self.alert_type = alert_type
+        # The ID of the alert type.
         self.alert_type_id = alert_type_id
+        # The objects that can be added to the whitelist.
         self.targets = targets
 
     def validate(self):
@@ -3362,10 +3495,18 @@ class DescribeAlertSceneByEventResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3464,9 +3605,20 @@ class DescribeAlertSourceRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The risk levels. The value is a JSON array. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.level = level
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -3507,7 +3659,9 @@ class DescribeAlertSourceResponseBodyData(TeaModel):
         source: str = None,
         source_name: str = None,
     ):
+        # The internal code of the alert data source.
         self.source = source
+        # The name of the alert data source.
         self.source_name = source_name
 
     def validate(self):
@@ -3543,10 +3697,18 @@ class DescribeAlertSourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3643,7 +3805,12 @@ class DescribeAlertSourceWithEventRequest(TeaModel):
         incident_uuid: str = None,
         region_id: str = None,
     ):
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -3676,7 +3843,9 @@ class DescribeAlertSourceWithEventResponseBodyData(TeaModel):
         source: str = None,
         source_name: str = None,
     ):
+        # The internal code of the alert data source.
         self.source = source
+        # The name of the alert data source.
         self.source_name = source_name
 
     def validate(self):
@@ -3712,10 +3881,18 @@ class DescribeAlertSourceWithEventResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3811,6 +3988,10 @@ class DescribeAlertTypeRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -3839,7 +4020,9 @@ class DescribeAlertTypeResponseBodyData(TeaModel):
         alert_type: str = None,
         alert_type_mds: str = None,
     ):
+        # The type of the risk.
         self.alert_type = alert_type
+        # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
 
     def validate(self):
@@ -3875,10 +4058,18 @@ class DescribeAlertTypeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -3984,16 +4175,37 @@ class DescribeAlertsRequest(TeaModel):
         start_time: int = None,
         sub_user_id: str = None,
     ):
+        # The title of the alert.
         self.alert_title = alert_title
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # Specifies whether an attack is defended. Valid values:
+        # 
+        # *   0: detected.
+        # *   1: blocked.
         self.is_defend = is_defend
+        # The risk level. The value is a JSON array. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.level = level
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The source of the alert.
         self.source = source
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
+        # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -4063,8 +4275,11 @@ class DescribeAlertsResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4102,8 +4317,11 @@ class DescribeAlertsResponseBodyDataResponseDataAlertInfoList(TeaModel):
         key_name: str = None,
         values: str = None,
     ):
+        # The attribute key.
         self.key = key
+        # The name of the key.
         self.key_name = key_name
+        # The value of the key.
         self.values = values
 
     def validate(self):
@@ -4170,37 +4388,80 @@ class DescribeAlertsResponseBodyDataResponseData(TeaModel):
         start_time: str = None,
         sub_user_id: int = None,
     ):
+        # The description of the alert.
         self.alert_desc = alert_desc
+        # The internal code of the alert description.
         self.alert_desc_code = alert_desc_code
+        # The description of the alert in English.
         self.alert_desc_en = alert_desc_en
+        # The details of the alert.
         self.alert_detail = alert_detail
+        # The displayed details of the alert.
         self.alert_info_list = alert_info_list
+        # The threat level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.alert_level = alert_level
+        # The name of the alert.
         self.alert_name = alert_name
+        # The internal code of the alert name.
         self.alert_name_code = alert_name_code
+        # The name of the alert in English.
         self.alert_name_en = alert_name_en
+        # The service for which the alert associated with the event is generated.
         self.alert_src_prod = alert_src_prod
+        # The sub-module of ther alert source.
         self.alert_src_prod_module = alert_src_prod_module
+        # The title of the alert.
         self.alert_title = alert_title
+        # The title of the alert in English.
         self.alert_title_en = alert_title_en
+        # The alert type.
         self.alert_type = alert_type
+        # The internal code of the alert type.
         self.alert_type_code = alert_type_code
+        # The type of the alert in English.
         self.alert_type_en = alert_type_en
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
+        # The details of the asset.
         self.asset_list = asset_list
+        # The tag of the ATT\&CK attack.
         self.att_ck = att_ck
+        # The cloud code. Valid values:
+        # 
+        # *   aliyun: Alibaba Cloud
+        # *   qcloud: Tencent Cloud
+        # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        # The time when the alert was closed.
         self.end_time = end_time
+        # The time when the alert was received.
         self.gmt_create = gmt_create
+        # The time when the alert was last updated.
         self.gmt_modified = gmt_modified
+        # The unique ID of the alert.
         self.id = id
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # Indicates whether an attack is defended. Valid values:
+        # 
+        # *   0: detected.
+        # *   1: blocked.
         self.is_defend = is_defend
+        # The time when the alert was recorded.
         self.log_time = log_time
+        # The UUID of the alert log.
         self.log_uuid = log_uuid
+        # The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
         self.main_user_id = main_user_id
+        # The time when the alert is triggered.
         self.occur_time = occur_time
+        # The time at which the alert was first generated.
         self.start_time = start_time
+        # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -4361,7 +4622,9 @@ class DescribeAlertsResponseBodyData(TeaModel):
         page_info: DescribeAlertsResponseBodyDataPageInfo = None,
         response_data: List[DescribeAlertsResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -4408,10 +4671,18 @@ class DescribeAlertsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4503,8 +4774,14 @@ class DescribeAlertsCountRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -4544,10 +4821,15 @@ class DescribeAlertsCountResponseBodyData(TeaModel):
         medium: int = None,
         product_num: int = None,
     ):
+        # The total number of alerts.
         self.all = all
+        # The number of high-risk alerts.
         self.high = high
+        # The number of low-risk alerts.
         self.low = low
+        # The number of medium-risk alerts.
         self.medium = medium
+        # The number of connected services.
         self.product_num = product_num
 
     def validate(self):
@@ -4595,10 +4877,18 @@ class DescribeAlertsCountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -4693,11 +4983,20 @@ class DescribeAlertsWithEntityRequest(TeaModel):
         region_id: str = None,
         sophon_task_id: str = None,
     ):
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the SOAR handing policy.
         self.sophon_task_id = sophon_task_id
 
     def validate(self):
@@ -4747,8 +5046,11 @@ class DescribeAlertsWithEntityResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -4786,8 +5088,11 @@ class DescribeAlertsWithEntityResponseBodyDataResponseDataAlertInfoList(TeaModel
         key_name: str = None,
         values: str = None,
     ):
+        # The attribute key.
         self.key = key
+        # The name of the key.
         self.key_name = key_name
+        # The value of the key.
         self.values = values
 
     def validate(self):
@@ -4854,37 +5159,80 @@ class DescribeAlertsWithEntityResponseBodyDataResponseData(TeaModel):
         start_time: str = None,
         sub_user_id: int = None,
     ):
+        # The description of the alert.
         self.alert_desc = alert_desc
+        # The internal code of the alert description.
         self.alert_desc_code = alert_desc_code
+        # The alert description in English.
         self.alert_desc_en = alert_desc_en
+        # The details of the alert.
         self.alert_detail = alert_detail
+        # The displayed details of the alert.
         self.alert_info_list = alert_info_list
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.alert_level = alert_level
+        # The name of the alert.
         self.alert_name = alert_name
+        # The internal code of the alert name.
         self.alert_name_code = alert_name_code
+        # The name of the alert.
         self.alert_name_en = alert_name_en
+        # The source of the alert.
         self.alert_src_prod = alert_src_prod
+        # The sub-module of the alert source.
         self.alert_src_prod_module = alert_src_prod_module
+        # The title of the alert.
         self.alert_title = alert_title
+        # The alert title in English.
         self.alert_title_en = alert_title_en
+        # The type of the alert.
         self.alert_type = alert_type
+        # The internal code of the alert type.
         self.alert_type_code = alert_type_code
+        # The alert type in English.
         self.alert_type_en = alert_type_en
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
+        # The details of the asset.
         self.asset_list = asset_list
+        # The tag of the ATT\&CK attack.
         self.att_ck = att_ck
+        # The cloud code. Valid values:
+        # 
+        # *   aliyun: Alibaba Cloud
+        # *   qcloud: Tencent Cloud
+        # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        # The time when the alert was closed.
         self.end_time = end_time
+        # The time when the alert was received.
         self.gmt_create = gmt_create
+        # The time when the alert was last updated.
         self.gmt_modified = gmt_modified
+        # The unique ID of the alert.
         self.id = id
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # Specifies whether an attack is defended. Valid values:
+        # 
+        # *   0: detected
+        # *   1: blocked
         self.is_defend = is_defend
+        # The time when the alert was recorded.
         self.log_time = log_time
+        # The UUID of the alert log.
         self.log_uuid = log_uuid
+        # The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
         self.main_user_id = main_user_id
+        # The time when the alert was triggered.
         self.occur_time = occur_time
+        # The time at which the alert was first generated.
         self.start_time = start_time
+        # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -5045,7 +5393,9 @@ class DescribeAlertsWithEntityResponseBodyData(TeaModel):
         page_info: DescribeAlertsWithEntityResponseBodyDataPageInfo = None,
         response_data: List[DescribeAlertsWithEntityResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -5092,10 +5442,18 @@ class DescribeAlertsWithEntityResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5193,14 +5551,33 @@ class DescribeAlertsWithEventRequest(TeaModel):
         source: str = None,
         sub_user_id: int = None,
     ):
+        # The title of the alert.
         self.alert_title = alert_title
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The ID of the event.
         self.incident_uuid = incident_uuid
+        # Specifies whether an attack is defended. Valid values:
+        # 
+        # *   0: detected
+        # *   1: blocked
         self.is_defend = is_defend
+        # The risk levels. The value is a JSON array. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.level = level
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The data source of the alert.
         self.source = source
+        # The ID of the account within which the alert is generated.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -5262,8 +5639,11 @@ class DescribeAlertsWithEventResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -5301,8 +5681,11 @@ class DescribeAlertsWithEventResponseBodyDataResponseDataAlertInfoList(TeaModel)
         key_name: str = None,
         values: str = None,
     ):
+        # The attribute key.
         self.key = key
+        # The name of the key.
         self.key_name = key_name
+        # The value of the key.
         self.values = values
 
     def validate(self):
@@ -5369,37 +5752,80 @@ class DescribeAlertsWithEventResponseBodyDataResponseData(TeaModel):
         start_time: str = None,
         sub_user_id: int = None,
     ):
+        # The description of the alert.
         self.alert_desc = alert_desc
+        # The internal code of the alert description.
         self.alert_desc_code = alert_desc_code
+        # The alert description in English.
         self.alert_desc_en = alert_desc_en
+        # The details of the alert.
         self.alert_detail = alert_detail
+        # The displayed details of the alert.
         self.alert_info_list = alert_info_list
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.alert_level = alert_level
+        # The name of the alert.
         self.alert_name = alert_name
+        # The internal code of the alert name.
         self.alert_name_code = alert_name_code
+        # The alert name in English.
         self.alert_name_en = alert_name_en
+        # The source of the alert.
         self.alert_src_prod = alert_src_prod
+        # The sub-module of the alert source.
         self.alert_src_prod_module = alert_src_prod_module
+        # The title of the alert.
         self.alert_title = alert_title
+        # The alert title in English.
         self.alert_title_en = alert_title_en
+        # The type of the alert.
         self.alert_type = alert_type
+        # The internal code of the alert type.
         self.alert_type_code = alert_type_code
+        # The alert type in English.
         self.alert_type_en = alert_type_en
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
+        # The details of the asset.
         self.asset_list = asset_list
+        # The tag of the ATT\&CK attack.
         self.att_ck = att_ck
+        # The cloud code. Valid values:
+        # 
+        # *   aliyun: Alibaba Cloud
+        # *   qcloud: Tencent Cloud
+        # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        # The time when the alert was closed.
         self.end_time = end_time
+        # The time when the alert was received.
         self.gmt_create = gmt_create
+        # The time when the alert was last updated.
         self.gmt_modified = gmt_modified
+        # The unique ID of the alert.
         self.id = id
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # Indicates whether an attack is defended. Valid values:
+        # 
+        # *   0: detected
+        # *   1: blocked
         self.is_defend = is_defend
+        # The time when the alert was recorded.
         self.log_time = log_time
+        # The UUID of the alert log.
         self.log_uuid = log_uuid
+        # The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
         self.main_user_id = main_user_id
+        # The time when the alert was triggered.
         self.occur_time = occur_time
+        # The time at which the alert was first generated.
         self.start_time = start_time
+        # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -5560,7 +5986,9 @@ class DescribeAlertsWithEventResponseBodyData(TeaModel):
         page_info: DescribeAlertsWithEventResponseBodyDataPageInfo = None,
         response_data: List[DescribeAlertsWithEventResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -5607,10 +6035,18 @@ class DescribeAlertsWithEventResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -5704,10 +6140,18 @@ class DescribeAttackTimeLineRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The name of the asset.
         self.asset_name = asset_name
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The ID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -5770,25 +6214,53 @@ class DescribeAttackTimeLineResponseBodyData(TeaModel):
         incident_uuid: str = None,
         log_time: str = None,
     ):
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.alert_level = alert_level
+        # The alert name in English.
         self.alert_name = alert_name
+        # The internal code of the alert name.
         self.alert_name_code = alert_name_code
+        # The alert name in English.
         self.alert_name_en = alert_name_en
+        # The source of the alert.
         self.alert_src_prod = alert_src_prod
+        # The sub-module of the alert source.
         self.alert_src_prod_module = alert_src_prod_module
+        # The time when the alert was triggered.
         self.alert_time = alert_time
+        # The title of the alert.
         self.alert_title = alert_title
+        # The alert title in English.
         self.alert_title_en = alert_title_en
+        # The type of the alert.
         self.alert_type = alert_type
+        # The internal code of the alert type.
         self.alert_type_code = alert_type_code
+        # The alert type in English.
         self.alert_type_en = alert_type_en
+        # The UUID of the alert
         self.alert_uuid = alert_uuid
+        # The logical ID of the asset.
         self.asset_id = asset_id
+        # The details of the asset.
         self.asset_list = asset_list
+        # The name of the asset.
         self.asset_name = asset_name
+        # The tag of the ATT\&CK attack.
         self.att_ck = att_ck
+        # The cloud code. Valid values:
+        # 
+        # *   aliyun: Alibaba Cloud
+        # *   qcloud: Tencent Cloud
+        # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The time when the alert was recorded.
         self.log_time = log_time
 
     def validate(self):
@@ -5896,10 +6368,18 @@ class DescribeAttackTimeLineResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6099,6 +6579,10 @@ class DescribeAutomateResponseConfigCounterRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -6127,7 +6611,9 @@ class DescribeAutomateResponseConfigCounterResponseBodyData(TeaModel):
         all: int = None,
         online: int = None,
     ):
+        # The total number of rules.
         self.all = all
+        # The number of enabled rules.
         self.online = online
 
     def validate(self):
@@ -6163,10 +6649,18 @@ class DescribeAutomateResponseConfigCounterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6257,7 +6751,15 @@ class DescribeAutomateResponseConfigFeatureRequest(TeaModel):
         auto_response_type: str = None,
         region_id: str = None,
     ):
+        # The type of the automated response rule. Valid values:
+        # 
+        # *   event
+        # *   alert
         self.auto_response_type = auto_response_type
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -6290,7 +6792,9 @@ class DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums(TeaMo
         value: str = None,
         value_mds: str = None,
     ):
+        # The enumerated value of the right operand.
         self.value = value
+        # The internal code of the enumerated value.
         self.value_mds = value_mds
 
     def validate(self):
@@ -6329,13 +6833,24 @@ class DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators(TeaM
         support_data_type: str = None,
         support_tag: List[str] = None,
     ):
+        # Indicates whether the right operand is required. Valid values:
+        # 
+        # *   true
+        # *   false
         self.has_right_value = has_right_value
+        # The position of the operator in the operator list.
         self.index = index
+        # The operator.
         self.operator = operator
+        # The description of the operator in Chinese.
         self.operator_desc_cn = operator_desc_cn
+        # The description of the operator in English.
         self.operator_desc_en = operator_desc_en
+        # The display name of the operator.
         self.operator_name = operator_name
+        # The data types that are supported by the current operator. The data types are separated by commas (,).
         self.support_data_type = support_data_type
+        # The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as aggregation scenarios. This parameter is empty by default.
         self.support_tag = support_tag
 
     def validate(self):
@@ -6394,9 +6909,13 @@ class DescribeAutomateResponseConfigFeatureResponseBodyData(TeaModel):
         right_value_enums: List[DescribeAutomateResponseConfigFeatureResponseBodyDataRightValueEnums] = None,
         support_operators: List[DescribeAutomateResponseConfigFeatureResponseBodyDataSupportOperators] = None,
     ):
+        # The data type of the condition field in the automated response rule.
         self.data_type = data_type
+        # The name of the condition field in the automated response rule.
         self.feature = feature
+        # The enumerated values of the right operand for the field.
         self.right_value_enums = right_value_enums
+        # The operators that are supported for the condition field.
         self.support_operators = support_operators
 
     def validate(self):
@@ -6457,10 +6976,18 @@ class DescribeAutomateResponseConfigFeatureResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6558,8 +7085,21 @@ class DescribeAutomateResponseConfigPlayBooksRequest(TeaModel):
         entity_type: str = None,
         region_id: str = None,
     ):
+        # The type of the automated response rule. Valid values:
+        # 
+        # *   event
+        # *   alert
         self.auto_response_type = auto_response_type
+        # The entity type of the playbook. Valid values:
+        # 
+        # *   ip
+        # *   process
+        # *   file
         self.entity_type = entity_type
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -6599,10 +7139,19 @@ class DescribeAutomateResponseConfigPlayBooksResponseBodyData(TeaModel):
         param_type: str = None,
         uuid: str = None,
     ):
+        # The description of the playbook.
         self.description = description
+        # The display name of the playbook.
         self.display_name = display_name
+        # The unique identifier name of the playbook.
         self.name = name
+        # The input parameter template of the playbook. Valid values:
+        # 
+        # *   template-ip: IP address
+        # *   template-process: process
+        # *   template-filee: file
         self.param_type = param_type
+        # The UUID of the playbook.
         self.uuid = uuid
 
     def validate(self):
@@ -6650,10 +7199,18 @@ class DescribeAutomateResponseConfigPlayBooksResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6753,10 +7310,25 @@ class DescribeCloudSiemAssetsRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The type of the asset. Valid values:
+        # 
+        # *   ip
+        # *   domain
+        # *   url
+        # *   process
+        # *   file
+        # *   host
         self.asset_type = asset_type
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -6802,8 +7374,11 @@ class DescribeCloudSiemAssetsResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -6841,8 +7416,11 @@ class DescribeCloudSiemAssetsResponseBodyDataResponseDataAssetInfo(TeaModel):
         key_name: str = None,
         values: str = None,
     ):
+        # The attribute key.
         self.key = key
+        # The name of the key.
         self.key_name = key_name
+        # The value of the key.
         self.values = values
 
     def validate(self):
@@ -6889,17 +7467,40 @@ class DescribeCloudSiemAssetsResponseBodyDataResponseData(TeaModel):
         incident_uuid: str = None,
         sub_user_id: int = None,
     ):
+        # The UUID of the alert associated with the event.
         self.alert_uuid = alert_uuid
+        # The ID of the Alibaba Cloud account in SIEM.
         self.aliuid = aliuid
+        # The logical ID of the asset.
         self.asset_id = asset_id
+        # The display information of the asset is in the JSON format.
         self.asset_info = asset_info
+        # The name of the asset.
         self.asset_name = asset_name
+        # The type of the asset. Valid values:
+        # 
+        # *   ip
+        # *   domain
+        # *   url
+        # *   process
+        # *   file
+        # *   host
         self.asset_type = asset_type
+        # The cloud code of the entity. Valid values:
+        # 
+        # *   aliyun: Alibaba Cloud
+        # *   qcloud: Tencent Cloud
+        # *   hcloud: Huawei Cloud
         self.cloud_code = cloud_code
+        # The time when the asset was synchronized.
         self.gmt_create = gmt_create
+        # The time when the asset was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the asset.
         self.id = id
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The ID of the associated account to which the asset belongs.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -6980,7 +7581,9 @@ class DescribeCloudSiemAssetsResponseBodyData(TeaModel):
         page_info: DescribeCloudSiemAssetsResponseBodyDataPageInfo = None,
         response_data: List[DescribeCloudSiemAssetsResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -7027,10 +7630,18 @@ class DescribeCloudSiemAssetsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7121,7 +7732,12 @@ class DescribeCloudSiemAssetsCounterRequest(TeaModel):
         incident_uuid: str = None,
         region_id: str = None,
     ):
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -7154,7 +7770,16 @@ class DescribeCloudSiemAssetsCounterResponseBodyData(TeaModel):
         asset_num: int = None,
         asset_type: str = None,
     ):
+        # The number of assets.
         self.asset_num = asset_num
+        # The type of the asset. Valid values:
+        # 
+        # *   ip
+        # *   domain
+        # *   url
+        # *   process
+        # *   file
+        # *   host
         self.asset_type = asset_type
 
     def validate(self):
@@ -7190,10 +7815,18 @@ class DescribeCloudSiemAssetsCounterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7290,7 +7923,12 @@ class DescribeCloudSiemEventDetailRequest(TeaModel):
         incident_uuid: str = None,
         region_id: str = None,
     ):
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -7338,22 +7976,48 @@ class DescribeCloudSiemEventDetailResponseBodyData(TeaModel):
         threat_level: str = None,
         threat_score: float = None,
     ):
+        # The number of alerts that are associated with the event.
         self.alert_num = alert_num
+        # The ID of the Alibaba Cloud account to which the event belongs.
         self.aliuid = aliuid
+        # The number of assets that are associated with the event.
         self.asset_num = asset_num
+        # The tags of the ATT\&CK attacks.
         self.att_ck_labels = att_ck_labels
+        # The source of the alert.
         self.data_sources = data_sources
+        # The description of the event.
         self.description = description
+        # The description of the event in English.
         self.description_en = description_en
+        # The extended information of the event in the JSON format.
         self.ext_content = ext_content
+        # The time when the event occurred.
         self.gmt_create = gmt_create
+        # The time when the event was last updated.
         self.gmt_modified = gmt_modified
+        # The name of the event.
         self.incident_name = incident_name
+        # The name of the event in English.
         self.incident_name_en = incident_name_en
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The remarks of the event.
         self.remark = remark
+        # The status of the event. Valid values:
+        # 
+        # *   0: not handled
+        # *   1: handing
+        # *   5: handling failed
+        # *   10: handled
         self.status = status
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
+        # The risk score of the event. The score ranges from 0 to 100. A higher score indicates a higher risk level.
         self.threat_score = threat_score
 
     def validate(self):
@@ -7449,10 +8113,18 @@ class DescribeCloudSiemEventDetailResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -7553,17 +8225,47 @@ class DescribeCloudSiemEventsRequest(TeaModel):
         status: int = None,
         thread_level: List[str] = None,
     ):
+        # The ID of the asset that is associated with the event.
         self.asset_id = asset_id
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The name of the event.
         self.event_name = event_name
+        # The ID of the event.
         self.incident_uuid = incident_uuid
+        # The sort order. Valid values:
+        # 
+        # *   desc: descending order
+        # *   asc: ascending order
         self.order = order
+        # The sort field. Valid values:
+        # 
+        # *   GmtModified: sorts the events by creation time. This is the default value.
+        # *   ThreatScore: sorts the events by risk score.
         self.order_field = order_field
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the event. Valid values:
+        # 
+        # *   0: unhandled
+        # *   1: handling
+        # *   5: handling failed
+        # *   10: handled
         self.status = status
+        # The risk levels of the events. The value is a JSON array. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.thread_level = thread_level
 
     def validate(self):
@@ -7637,8 +8339,11 @@ class DescribeCloudSiemEventsResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -7690,22 +8395,48 @@ class DescribeCloudSiemEventsResponseBodyDataResponseData(TeaModel):
         threat_level: str = None,
         threat_score: float = None,
     ):
+        # The number of alerts that are associated with the event.
         self.alert_num = alert_num
+        # The ID of the Alibaba Cloud account to which the event belongs.
         self.aliuid = aliuid
+        # The number of assets that are associated with the event.
         self.asset_num = asset_num
+        # The tags of the ATT\&CK attack.
         self.att_ck_labels = att_ck_labels
+        # The sources of the alert.
         self.data_sources = data_sources
+        # The description of the event.
         self.description = description
+        # The event description in English.
         self.description_en = description_en
+        # The extended event information in the JSON format.
         self.ext_content = ext_content
+        # The time when the event occurred.
         self.gmt_create = gmt_create
+        # The time when the event was last updated.
         self.gmt_modified = gmt_modified
+        # The name of the event.
         self.incident_name = incident_name
+        # The event name in English.
         self.incident_name_en = incident_name_en
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The remarks of the event.
         self.remark = remark
+        # The status of the event. Valid values:
+        # 
+        # *   0: unhandled
+        # *   1: handling
+        # *   5: handling failed
+        # *   10: handled
         self.status = status
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
+        # The risk score of the event. Valid values: 0 to 100. A higher value indicates a higher risk level.
         self.threat_score = threat_score
 
     def validate(self):
@@ -7798,7 +8529,9 @@ class DescribeCloudSiemEventsResponseBodyData(TeaModel):
         page_info: DescribeCloudSiemEventsResponseBodyDataPageInfo = None,
         response_data: List[DescribeCloudSiemEventsResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -7845,10 +8578,18 @@ class DescribeCloudSiemEventsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8055,7 +8796,12 @@ class DescribeCustomizeRuleRequest(TeaModel):
         region_id: str = None,
         rule_id: int = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -8108,27 +8854,69 @@ class DescribeCustomizeRuleResponseBodyData(TeaModel):
         status: int = None,
         threat_level: str = None,
     ):
+        # The risk type.
         self.alert_type = alert_type
+        # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
+        # The ID of the Alibaba Cloud account in SIEM.
         self.aliuid = aliuid
+        # The extended information about event generation. If the value of eventTransferType is allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
         self.event_transfer_ext = event_transfer_ext
+        # Indicates whether the alert generates an event. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.event_transfer_switch = event_transfer_switch
+        # The event generation method. Valid values:
+        # 
+        # *   default: The default method is used.
+        # *   singleToSingle: The system generates an event for each alert.
+        # *   allToSingle: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
+        # The time when the custom rule was created.
         self.gmt_create = gmt_create
+        # The time when the custom rule was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the custom rule.
         self.id = id
+        # The log source of the rule.
         self.log_source = log_source
+        # The internal code of the log source.
         self.log_source_mds = log_source_mds
+        # The log type of the rule.
         self.log_type = log_type
+        # The internal code of the log type.
         self.log_type_mds = log_type_mds
+        # The window length of the rule. The HTML escape characters are reversed.
         self.query_cycle = query_cycle
+        # The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
         self.rule_condition = rule_condition
+        # The description of the rule.
         self.rule_desc = rule_desc
+        # The log aggregation field. The value is in the JSON format. The HTML escape characters are reversed.
         self.rule_group = rule_group
+        # The name of the rule.
         self.rule_name = rule_name
+        # The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
         self.rule_threshold = rule_threshold
+        # The type of the rule. Valid values:
+        # 
+        # *   predefine
+        # *   customize
         self.rule_type = rule_type
+        # The rule status. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   10: The simulation data is tested.
+        # *   15: The business data is being tested.
+        # *   20: The business data test ends.
+        # *   100: The rule takes effect.
         self.status = status
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -8244,10 +9032,18 @@ class DescribeCustomizeRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8337,6 +9133,10 @@ class DescribeCustomizeRuleCountRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -8367,9 +9167,13 @@ class DescribeCustomizeRuleCountResponseBodyData(TeaModel):
         low_rule_num: int = None,
         medium_rule_num: int = None,
     ):
+        # The number of rules that are used to identify high-risk threats.
         self.high_rule_num = high_rule_num
+        # The total number of rules.
         self.in_use_rule_num = in_use_rule_num
+        # The number of rules that are used to identify low-risk threats.
         self.low_rule_num = low_rule_num
+        # The number of rules that are used to identify medium-risk threats.
         self.medium_rule_num = medium_rule_num
 
     def validate(self):
@@ -8413,10 +9217,18 @@ class DescribeCustomizeRuleCountResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8507,7 +9319,12 @@ class DescribeCustomizeRuleTestRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # The ID of the rule.
         self.id = id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -8541,8 +9358,17 @@ class DescribeCustomizeRuleTestResponseBodyData(TeaModel):
         simulate_data: str = None,
         status: int = None,
     ):
+        # The ID of the rule.
         self.id = id
+        # The historical data that is used in the simulation test.
         self.simulate_data = simulate_data
+        # The status of the rule. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   10: The simulation data is tested.
+        # *   15: The business data is being tested.
+        # *   20: The business data test ends.
+        # *   100: The rule takes effect.
         self.status = status
 
     def validate(self):
@@ -8582,10 +9408,18 @@ class DescribeCustomizeRuleTestResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -8676,7 +9510,12 @@ class DescribeCustomizeRuleTestHistogramRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # The ID of the rule.
         self.id = id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -8710,8 +9549,11 @@ class DescribeCustomizeRuleTestHistogramResponseBodyData(TeaModel):
         from_: int = None,
         to: int = None,
     ):
+        # The number of alerts that are generated in the query time range.
         self.count = count
+        # The start of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
         self.from_ = from_
+        # The end of the time range for querying alerts. The value is a UNIX timestamp. Unit: seconds.
         self.to = to
 
     def validate(self):
@@ -8751,10 +9593,18 @@ class DescribeCustomizeRuleTestHistogramResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9334,10 +10184,22 @@ class DescribeDisposeAndPlaybookRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The entity type. Valid values:
+        # 
+        # *   ip: IP address
+        # *   process: process
+        # *   file: file
         self.entity_type = entity_type
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The number of entries to return on each page. Maximum value: 100.
         self.page_size = page_size
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -9383,8 +10245,11 @@ class DescribeDisposeAndPlaybookResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -9426,12 +10291,25 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList(TeaMode
         task_config: str = None,
         waf_playbook: bool = None,
     ):
+        # The playbook description.
         self.description = description
+        # The display name of the playbook.
         self.display_name = display_name
+        # The playbook name, which is the unique identifier of the playbook.
         self.name = name
+        # The opcode of the playbook, which corresponds to the opcode of the playbook recommended for entity handling.
         self.op_code = op_code
+        # Indicates whether quick event handling is selected by default. Valid values:
+        # 
+        # *   2: Quick event handling is selected.
+        # *   1: Quick event handling is displayed but not selected.
         self.op_level = op_level
+        # The opcode configuration.
         self.task_config = task_config
+        # Indicates whether the playbook is intended for Web Application Firewall (WAF). Valid values:
+        # 
+        # *   true
+        # *   false
         self.waf_playbook = waf_playbook
 
     def validate(self):
@@ -9490,13 +10368,21 @@ class DescribeDisposeAndPlaybookResponseBodyDataResponseData(TeaModel):
         playbook_list: List[DescribeDisposeAndPlaybookResponseBodyDataResponseDataPlaybookList] = None,
         scope: List[Any] = None,
     ):
+        # The number of alerts that are associated with the entity.
         self.alert_num = alert_num
+        # The object for handling.
         self.dispose = dispose
+        # The entity ID
         self.entity_id = entity_id
+        # The entity information.
         self.entity_info = entity_info
+        # The key-value pairs each of which consists of opcode and oplevel.
         self.opcode_map = opcode_map
+        # An array consisting of the codes of playbooks that are recommended for entity handling.
         self.opcode_set = opcode_set
+        # The playbooks that can handle the entity.
         self.playbook_list = playbook_list
+        # An array consisting of the IDs of the users who can handle objects.
         self.scope = scope
 
     def validate(self):
@@ -9561,7 +10447,9 @@ class DescribeDisposeAndPlaybookResponseBodyData(TeaModel):
         page_info: DescribeDisposeAndPlaybookResponseBodyDataPageInfo = None,
         response_data: List[DescribeDisposeAndPlaybookResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data
         self.response_data = response_data
 
     def validate(self):
@@ -9608,10 +10496,18 @@ class DescribeDisposeAndPlaybookResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9703,8 +10599,14 @@ class DescribeDisposeStrategyPlaybookRequest(TeaModel):
         region_id: str = None,
         start_time: int = None,
     ):
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -9741,7 +10643,9 @@ class DescribeDisposeStrategyPlaybookResponseBodyData(TeaModel):
         playbook_name: str = None,
         playbook_uuid: str = None,
     ):
+        # The playbook name, which is the unique identifier of the playbook.
         self.playbook_name = playbook_name
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
 
     def validate(self):
@@ -9777,10 +10681,18 @@ class DescribeDisposeStrategyPlaybookResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -9880,10 +10792,18 @@ class DescribeEntityInfoRequest(TeaModel):
         region_id: str = None,
         sophon_task_id: str = None,
     ):
+        # The logical ID of the entity.
         self.entity_id = entity_id
+        # The feature value of the entity. Fuzzy match is supported.
         self.entity_identity = entity_identity
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the SOAR handling policy.
         self.sophon_task_id = sophon_task_id
 
     def validate(self):
@@ -9930,9 +10850,20 @@ class DescribeEntityInfoResponseBodyData(TeaModel):
         entity_type: str = None,
         tip_info: Dict[str, Any] = None,
     ):
+        # The logical ID of the entity.
         self.entity_id = entity_id
+        # The information about the entry.
         self.entity_info = entity_info
+        # The type of the entity. Valid values:
+        # 
+        # *   ip
+        # *   domain
+        # *   url
+        # *   process
+        # *   file
+        # *   host
         self.entity_type = entity_type
+        # The information about the risk Intelligence.
         self.tip_info = tip_info
 
     def validate(self):
@@ -9976,10 +10907,18 @@ class DescribeEntityInfoResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10069,6 +11008,10 @@ class DescribeEventCountByThreatLevelRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -10100,10 +11043,15 @@ class DescribeEventCountByThreatLevelResponseBodyData(TeaModel):
         medium_level_event_num: int = None,
         undeal_event_num: int = None,
     ):
+        # The total number of events.
         self.event_num = event_num
+        # The number of high-risk events.
         self.high_level_event_num = high_level_event_num
+        # The number of low-risk events.
         self.low_level_event_num = low_level_event_num
+        # The number of medium-risk events.
         self.medium_level_event_num = medium_level_event_num
+        # The number of unhandled events.
         self.undeal_event_num = undeal_event_num
 
     def validate(self):
@@ -10151,10 +11099,18 @@ class DescribeEventCountByThreatLevelResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10247,9 +11203,16 @@ class DescribeEventDisposeRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The number of entries to return on each page. Maximum value: 100.
         self.page_size = page_size
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -10296,13 +11259,27 @@ class DescribeEventDisposeResponseBodyDataReceiverInfo(TeaModel):
         receiver: str = None,
         status: int = None,
     ):
+        # The channel of the contact information. Valid values:
+        # 
+        # *   message
+        # *   mail
         self.channel = channel
+        # The creation time.
         self.gmt_create = gmt_create
+        # The modification time.
         self.gmt_modified = gmt_modified
+        # The ID of the recipient who receives the event handling result.
         self.id = id
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The message title.
         self.message_title = message_title
+        # The contact information of the recipient.
         self.receiver = receiver
+        # Indicates whether the message is sent. Valid values:
+        # 
+        # *   0: not sent
+        # *   1: sent
         self.status = status
 
     def validate(self):
@@ -10361,9 +11338,18 @@ class DescribeEventDisposeResponseBodyData(TeaModel):
         remark: str = None,
         status: int = None,
     ):
+        # An array consisting of JSON objects that are configured for event handling.
         self.event_dispose = event_dispose
+        # The JSON object that is configured for an alert recipient.
         self.receiver_info = receiver_info
+        # The description of the event.
         self.remark = remark
+        # The status of the event. Valid values:
+        # 
+        # *   0: not handled
+        # *   1: handing
+        # *   5: handling failed
+        # *   10: handled
         self.status = status
 
     def validate(self):
@@ -10409,10 +11395,18 @@ class DescribeEventDisposeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -10995,8 +11989,14 @@ class DescribeLogFieldsRequest(TeaModel):
         log_type: str = None,
         region_id: str = None,
     ):
+        # The log source of the rule.
         self.log_source = log_source
+        # The log type of the rule.
         self.log_type = log_type
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -11036,10 +12036,18 @@ class DescribeLogFieldsResponseBodyData(TeaModel):
         field_type: str = None,
         log_code: str = None,
     ):
+        # The type of the log to which the field belongs.
         self.activity_name = activity_name
+        # The internal code of the field description.
         self.field_desc = field_desc
+        # The name of the field.
         self.field_name = field_name
+        # The data type of the field. Valid values:
+        # 
+        # *   varchar
+        # *   bigint
         self.field_type = field_type
+        # The log source to which the field belongs.
         self.log_code = log_code
 
     def validate(self):
@@ -11087,10 +12095,18 @@ class DescribeLogFieldsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11187,7 +12203,12 @@ class DescribeLogSourceRequest(TeaModel):
         log_type: str = None,
         region_id: str = None,
     ):
+        # The log type of the rule.
         self.log_type = log_type
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -11220,7 +12241,9 @@ class DescribeLogSourceResponseBodyData(TeaModel):
         log_source: str = None,
         log_source_name: str = None,
     ):
+        # The log source of the rule.
         self.log_source = log_source
+        # The internal code of the log source.
         self.log_source_name = log_source_name
 
     def validate(self):
@@ -11256,10 +12279,18 @@ class DescribeLogSourceResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11463,34 +12494,13 @@ class DescribeLogStoreResponseBodyData(TeaModel):
 class DescribeLogStoreResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: DescribeLogStoreResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The response of the threat analysis feature.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -11502,43 +12512,19 @@ class DescribeLogStoreResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = DescribeLogStoreResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -11591,6 +12577,10 @@ class DescribeLogTypeRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -11619,7 +12609,9 @@ class DescribeLogTypeResponseBodyData(TeaModel):
         log_type: str = None,
         log_type_name: str = None,
     ):
+        # The log type of the rule.
         self.log_type = log_type
+        # The internal code of the log type.
         self.log_type_name = log_type_name
 
     def validate(self):
@@ -11655,10 +12647,18 @@ class DescribeLogTypeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -11755,7 +12755,15 @@ class DescribeOperatorsRequest(TeaModel):
         region_id: str = None,
         scene_type: str = None,
     ):
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The type of the scenario in which the operator is used. Valid values:
+        # 
+        # *   If you do not specify this parameter, the default scenario is used.
+        # *   AGGREGATE: AGGREGATE scenario.
         self.scene_type = scene_type
 
     def validate(self):
@@ -11793,12 +12801,19 @@ class DescribeOperatorsResponseBodyData(TeaModel):
         support_data_type: str = None,
         support_tag: List[str] = None,
     ):
+        # The position of the operator in the operator list.
         self.index = index
+        # The operator.
         self.operator = operator
+        # The description of the operator in Chinese.
         self.operator_desc_cn = operator_desc_cn
+        # The description of the operator in English.
         self.operator_desc_en = operator_desc_en
+        # The display name of the operator.
         self.operator_name = operator_name
+        # The data types that are supported by the current operator. The data types are separated by commas (,).
         self.support_data_type = support_data_type
+        # The scenarios that are supported by the operator. Multiple scenarios are separated by commas (,), such as AGGREGATE scenarios. This parameter is empty by default.
         self.support_tag = support_tag
 
     def validate(self):
@@ -11854,10 +12869,18 @@ class DescribeOperatorsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12098,6 +13121,10 @@ class DescribeScopeUsersRequest(TeaModel):
         self,
         region_id: str = None,
     ):
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -12128,9 +13155,13 @@ class DescribeScopeUsersResponseBodyData(TeaModel):
         instance_id: str = None,
         user_name: str = None,
     ):
+        # The ID of the security information and event management (SIEM) user.
         self.ali_uid = ali_uid
+        # An array consisting of the domain names that are protected by the WAF instance.
         self.domains = domains
+        # The ID of the Web Application Firewall (WAF) instance.
         self.instance_id = instance_id
+        # The username.
         self.user_name = user_name
 
     def validate(self):
@@ -12174,10 +13205,18 @@ class DescribeScopeUsersResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -12406,37 +13445,16 @@ class DescribeStorageRequest(TeaModel):
 class DescribeStorageResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the projects and Logstores that are created for the threat analysis feature exist in Simple Log Service. Valid values:
         # 
         # *   true
         # *   false
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -12447,42 +13465,18 @@ class DescribeStorageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -12735,7 +13729,12 @@ class DescribeWafScopeRequest(TeaModel):
         entity_id: int = None,
         region_id: str = None,
     ):
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -12769,8 +13768,11 @@ class DescribeWafScopeResponseBodyData(TeaModel):
         domains: List[str] = None,
         instance_id: str = None,
     ):
+        # The ID of the Alibaba Cloud account in SIEM.
         self.aliuid = aliuid
+        # The domain names that are protected by the WAF instance.
         self.domains = domains
+        # The ID of the WAF instance.
         self.instance_id = instance_id
 
     def validate(self):
@@ -12810,10 +13812,18 @@ class DescribeWafScopeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -13618,34 +14628,13 @@ class DoQuickFieldResponseBodyData(TeaModel):
 class DoQuickFieldResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: DoQuickFieldResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The response of the quick analysis.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -13657,43 +14646,19 @@ class DoQuickFieldResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = DoQuickFieldResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -13792,37 +14757,16 @@ class DoSelfDelegateRequest(TeaModel):
 class DoSelfDelegateResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether a regular member is authorized. Valid values:
         # 
         # *   true: The member is authorized.
         # *   false: The authorization is canceled.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -13833,42 +14777,18 @@ class DoSelfDelegateResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -14203,34 +15123,13 @@ class GetCapacityResponseBodyData(TeaModel):
 class GetCapacityResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: GetCapacityResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The information about the storage capacity.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -14242,43 +15141,19 @@ class GetCapacityResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = GetCapacityResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -14483,34 +15358,13 @@ class GetHistogramsResponseBodyData(TeaModel):
 class GetHistogramsResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: GetHistogramsResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The data of the charts.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -14522,43 +15376,19 @@ class GetHistogramsResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = GetHistogramsResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -14986,34 +15816,13 @@ class GetQuickQueryRequest(TeaModel):
 class GetQuickQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: str = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The query statement.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -15024,42 +15833,18 @@ class GetQuickQueryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -15196,34 +15981,13 @@ class GetStorageResponseBodyData(TeaModel):
 class GetStorageResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: GetStorageResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The information about the storage.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -15235,43 +15999,19 @@ class GetStorageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = GetStorageResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -15935,15 +16675,38 @@ class ListAutomateResponseConfigsRequest(TeaModel):
         status: int = None,
         sub_user_id: int = None,
     ):
+        # The type of the handling action. Valid values:
+        # 
+        # *   doPlaybook: runs a playbook.
+        # *   changeEventStatus: changes the status of an event.
+        # *   changeThreatLevel: changes the risk level of an event.
         self.action_type = action_type
+        # The type of the automated response rule. Valid values:
+        # 
+        # *   event
+        # *   alert
         self.auto_response_type = auto_response_type
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The ID of the automated response rule.
         self.id = id
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The name of the automated response rule.
         self.rule_name = rule_name
+        # The status of the rule. Valid values:
+        # 
+        # *   0: disabled
+        # *   100: enabled
         self.status = status
+        # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -16009,8 +16772,11 @@ class ListAutomateResponseConfigsResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16056,16 +16822,37 @@ class ListAutomateResponseConfigsResponseBodyDataResponseData(TeaModel):
         status: int = None,
         sub_user_id: int = None,
     ):
+        # The configuration of the action that is performed after the rule is hit. The value is in JSON format.
         self.action_config = action_config
+        # The type of the handling action. Multiple types are separated by commas (,). Valid values:
+        # 
+        # *   doPlaybook: runs a playbook.
+        # *   changeEventStatus: changes the status of an event.
+        # *   changeThreatLevel: changes the risk level of an event.
         self.action_type = action_type
+        # The ID of the Alibaba Cloud account that is associated with the rule in SIEM.
         self.aliuid = aliuid
+        # The type of the automated response rule. Valid values:
+        # 
+        # *   event
+        # *   alert
         self.auto_response_type = auto_response_type
+        # The trigger condition of the rule. The value is in the JSON format.
         self.execution_condition = execution_condition
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The ID of the automated response rule.
         self.id = id
+        # The name of the automated response rule.
         self.rule_name = rule_name
+        # The status of the rule. Valid values:
+        # 
+        # *   0: disabled
+        # *   100: enabled
         self.status = status
+        # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -16134,7 +16921,9 @@ class ListAutomateResponseConfigsResponseBodyData(TeaModel):
         page_info: ListAutomateResponseConfigsResponseBodyDataPageInfo = None,
         response_data: List[ListAutomateResponseConfigsResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -16181,10 +16970,18 @@ class ListAutomateResponseConfigsResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -16670,16 +17467,43 @@ class ListCloudSiemCustomizeRulesRequest(TeaModel):
         status: int = None,
         threat_level: List[str] = None,
     ):
+        # The alert type.
         self.alert_type = alert_type
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The ID of the custom rule.
         self.id = id
+        # The number of entries per page. The value can be up to 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
         self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   predefine
+        # *   customize
         self.rule_type = rule_type
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the rule. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   10: The simulation data is tested.
+        # *   15: The business data is being tested.
+        # *   20: The business data test ends.
+        # *   100: The rule takes effect.
         self.status = status
+        # The risk level. The value is a JSON array. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -16749,8 +17573,11 @@ class ListCloudSiemCustomizeRulesResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -16807,27 +17634,69 @@ class ListCloudSiemCustomizeRulesResponseBodyDataResponseData(TeaModel):
         status: int = None,
         threat_level: str = None,
     ):
+        # The type of the risk.
         self.alert_type = alert_type
+        # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
+        # The ID of the Alibaba Cloud account in SIEM.
         self.aliuid = aliuid
+        # The extended information about event generation. If the value of eventTransferType is allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
         self.event_transfer_ext = event_transfer_ext
+        # Indicates whether the system generates an event for the alert. Valid values:
+        # 
+        # *   0: no.
+        # *   1: yes.
         self.event_transfer_switch = event_transfer_switch
+        # The event generation method. Valid values:
+        # 
+        # *   default: The default method is used.
+        # *   singleToSingle: The system generates an event for each alert.
+        # *   allToSingle: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
+        # The time when the custom rule was created.
         self.gmt_create = gmt_create
+        # The time when the custom rule was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the custom rule.
         self.id = id
+        # The log source of the rule.
         self.log_source = log_source
+        # The internal code of the log source.
         self.log_source_mds = log_source_mds
+        # The log type of the rule.
         self.log_type = log_type
+        # The internal code of the log type.
         self.log_type_mds = log_type_mds
+        # The window length of the rule. The HTML escape characters are reversed.
         self.query_cycle = query_cycle
+        # The query condition of the rule in the JSON format. The HTML escape characters are reversed.
         self.rule_condition = rule_condition
+        # The description of the rule.
         self.rule_desc = rule_desc
+        # The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
         self.rule_group = rule_group
+        # The name of the rule.
         self.rule_name = rule_name
+        # The threshold configurations of the rule in the JSON format. The HTML escape characters are reversed.
         self.rule_threshold = rule_threshold
+        # The type of the rule. Valid values:
+        # 
+        # *   predefine
+        # *   customize
         self.rule_type = rule_type
+        # The rule status. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   10: The simulation data is tested.
+        # *   15: The business data is being tested.
+        # *   20: The business data test ends.
+        # *   100: The rule takes effect.
         self.status = status
+        # The threat level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -16940,7 +17809,9 @@ class ListCloudSiemCustomizeRulesResponseBodyData(TeaModel):
         page_info: ListCloudSiemCustomizeRulesResponseBodyDataPageInfo = None,
         response_data: List[ListCloudSiemCustomizeRulesResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -16987,10 +17858,18 @@ class ListCloudSiemCustomizeRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17090,16 +17969,43 @@ class ListCloudSiemPredefinedRulesRequest(TeaModel):
         status: int = None,
         threat_level: List[str] = None,
     ):
+        # The alert type.
         self.alert_type = alert_type
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The ID of the rule.
         self.id = id
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The name of the rule. The name can contain letters, digits, underscores (\_), and periods (.).
         self.rule_name = rule_name
+        # The type of the rule. Valid values:
+        # 
+        # *   predefine
+        # *   customize
         self.rule_type = rule_type
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
+        # The status of the rule. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   10: The simulation data is tested.
+        # *   15: The business data is being tested.
+        # *   20: The business data test ends.
+        # *   100: The rule takes effect.
         self.status = status
+        # The risk level. The value is a JSON array. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -17169,8 +18075,11 @@ class ListCloudSiemPredefinedRulesResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -17215,15 +18124,32 @@ class ListCloudSiemPredefinedRulesResponseBodyDataResponseData(TeaModel):
         status: int = None,
         threat_level: str = None,
     ):
+        # The type of the risk.
         self.alert_type = alert_type
+        # The time when the rule was created.
         self.gmt_create = gmt_create
+        # The time when the rule was modified.
         self.gmt_modified = gmt_modified
+        # The ID of the predefined rule.
         self.id = id
+        # The internal code of the rule description.
         self.rule_desc_mds = rule_desc_mds
+        # The name of the rule.
         self.rule_name = rule_name
+        # The internal code of the rule name.
         self.rule_name_mds = rule_name_mds
+        # The log source of the rule.
         self.source = source
+        # The status of the predefined rule. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   100: The rule takes effect.
         self.status = status
+        # The threat level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -17288,7 +18214,9 @@ class ListCloudSiemPredefinedRulesResponseBodyData(TeaModel):
         page_info: ListCloudSiemPredefinedRulesResponseBodyDataPageInfo = None,
         response_data: List[ListCloudSiemPredefinedRulesResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -17335,10 +18263,18 @@ class ListCloudSiemPredefinedRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -17431,9 +18367,16 @@ class ListCustomizeRuleTestResultRequest(TeaModel):
         page_size: int = None,
         region_id: str = None,
     ):
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The ID of the rule.
         self.id = id
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -17475,8 +18418,11 @@ class ListCustomizeRuleTestResultResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -17526,20 +18472,42 @@ class ListCustomizeRuleTestResultResponseBodyDataResponseData(TeaModel):
         sub_user_id: str = None,
         uuid: str = None,
     ):
+        # The description of the alert.
         self.alert_desc = alert_desc
+        # The alert details in the JSON format.
         self.alert_detail = alert_detail
+        # The source of the alert.
         self.alert_src_prod = alert_src_prod
+        # The sub-module of the source.
         self.alert_src_prod_module = alert_src_prod_module
+        # The tag of the ATT\&CK attack.
         self.att_ck = att_ck
+        # The name of the alert, which corresponds to the name of the custom rule.
         self.event_name = event_name
+        # The risk type, which indicates the alert type.
         self.event_type = event_type
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.level = level
+        # The log source of the rule.
         self.log_source = log_source
+        # The time when the alert was recorded.
         self.log_time = log_time
+        # The log type of the rule.
         self.log_type = log_type
+        # The ID of the Alibaba Cloud account that is associated with the alert in SIEM.
         self.main_user_id = main_user_id
+        # The status of the alert data. Valid values:
+        # 
+        # *   test: business test data
+        # *   online: online data
         self.online_status = online_status
+        # The ID of the Alibaba Cloud account within which the alert is generated.
         self.sub_user_id = sub_user_id
+        # The UUID of the alert.
         self.uuid = uuid
 
     def validate(self):
@@ -17624,7 +18592,9 @@ class ListCustomizeRuleTestResultResponseBodyData(TeaModel):
         page_info: ListCustomizeRuleTestResultResponseBodyDataPageInfo = None,
         response_data: List[ListCustomizeRuleTestResultResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -17671,10 +18641,18 @@ class ListCustomizeRuleTestResultResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -18528,70 +19506,13 @@ class ListDeliveryResponseBodyData(TeaModel):
 class ListDeliveryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: ListDeliveryResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        # 
-        # Valid values:
-        # 
-        # *   200
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   500
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        self.code = code
         # The response parameters.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic error message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The error message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # Valid values:
-        # 
-        # *   True
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   False
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -18603,43 +19524,19 @@ class ListDeliveryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = ListDeliveryResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -18705,19 +19602,56 @@ class ListDisposeStrategyRequest(TeaModel):
         sophon_task_id: str = None,
         start_time: int = None,
     ):
+        # The page number. Pages start from page 1.
         self.current_page = current_page
+        # The status of the policy. Valid values:
+        # 
+        # *   0: invalid
+        # *   1: valid
         self.effective_status = effective_status
+        # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
+        # The feature value of the entity. Fuzzy match is supported.
         self.entity_identity = entity_identity
+        # The entity type of the playbook. Valid values:
+        # 
+        # *   ip
+        # *   process
+        # *   file
         self.entity_type = entity_type
+        # The sort order. Valid values:
+        # 
+        # *   desc: descending order.
+        # *   asc: ascending order.
         self.order = order
+        # The sort field. Valid values:
+        # 
+        # *   GmtModified: sorts the policies by update time.
+        # *   GmtCreate: sorts the policies by creation time.
+        # *   FinishTime: sorts the policies by end time.
         self.order_field = order_field
+        # The number of entries per page. Maximum value: 100.
         self.page_size = page_size
+        # The name of the playbook, which is the unique identifier of the playbook.
         self.playbook_name = playbook_name
+        # The type of the playbook. Valid values:
+        # 
+        # *   system: user-triggered playbook
+        # *   custom: event-triggered playbook
+        # *   custom_alert: alert-triggered playbook
+        # *   soar-manual: user-run playbook
+        # *   soar-mdr: MDR-run playbook
         self.playbook_types = playbook_types
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The ID of the SOAR handling policy.
         self.sophon_task_id = sophon_task_id
+        # The beginning of the time range to query. Unit: milliseconds.
         self.start_time = start_time
 
     def validate(self):
@@ -18799,8 +19733,11 @@ class ListDisposeStrategyResponseBodyDataPageInfo(TeaModel):
         page_size: int = None,
         total_count: int = None,
     ):
+        # The current page number.
         self.current_page = current_page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of entries returned.
         self.total_count = total_count
 
     def validate(self):
@@ -18856,26 +19793,65 @@ class ListDisposeStrategyResponseBodyDataResponseData(TeaModel):
         sub_aliuid: int = None,
         task_param: str = None,
     ):
+        # The UUID of the alert.
         self.alert_uuid = alert_uuid
+        # The ID of the Alibaba Cloud account that is associated with the policy in SIEM.
         self.aliuid = aliuid
+        # The status of the policy. Valid values:
+        # 
+        # *   0: invalid
+        # *   1: valid
         self.effective_status = effective_status
+        # The details of the entity. The value is a JSON array.
         self.entity = entity
+        # The ID of the entity.
         self.entity_id = entity_id
+        # The type of the entity. Valid values:
+        # 
+        # *   ip
+        # *   process
+        # *   file
         self.entity_type = entity_type
+        # The summary information about the failed task.
         self.error_message = error_message
+        # The end time of the task.
         self.finish_time = finish_time
+        # The creation time.
         self.gmt_create = gmt_create
+        # The update time.
         self.gmt_modified = gmt_modified
+        # The ID of the policy.
         self.id = id
+        # The name of the event.
         self.incident_name = incident_name
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The name of the playbook, which is the unique identifier of the playbook.
         self.playbook_name = playbook_name
+        # The type of the playbook. Valid values:
+        # 
+        # *   system: user-triggered playbook
+        # *   custom: event-triggered playbook
+        # *   custom_alert: alert-triggered playbook
+        # *   soar-manual: user-run playbook
+        # *   soar-mdr: MDR-run playbook
         self.playbook_type = playbook_type
+        # The UUID of the playbook.
         self.playbook_uuid = playbook_uuid
+        # The scope of the policy.
         self.scope = scope
+        # The ID of the SOAR handling policy.
         self.sophon_task_id = sophon_task_id
+        # The running status of the playbook. Valid values:
+        # 
+        # *   200: successful
+        # *   10: deleted
+        # *   5: failed
+        # *   0: initial
         self.status = status
+        # The ID of the Alibaba account that is used to configure the policy.
         self.sub_aliuid = sub_aliuid
+        # The parameters that are used to trigger the playbook. The value is in the JSON format.
         self.task_param = task_param
 
     def validate(self):
@@ -18984,7 +19960,9 @@ class ListDisposeStrategyResponseBodyData(TeaModel):
         page_info: ListDisposeStrategyResponseBodyDataPageInfo = None,
         response_data: List[ListDisposeStrategyResponseBodyDataResponseData] = None,
     ):
+        # The pagination information.
         self.page_info = page_info
+        # The detailed data.
         self.response_data = response_data
 
     def validate(self):
@@ -19031,10 +20009,18 @@ class ListDisposeStrategyResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -19396,34 +20382,13 @@ class ListOperationResponseBodyData(TeaModel):
 class ListOperationResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: ListOperationResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The response parameters.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The message returned.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -19435,43 +20400,19 @@ class ListOperationResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = ListOperationResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -19858,34 +20799,13 @@ class ListQuickQueryResponseBodyData(TeaModel):
 class ListQuickQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: ListQuickQueryResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The response parameters.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -19897,43 +20817,19 @@ class ListQuickQueryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = ListQuickQueryResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -21145,37 +22041,16 @@ class OpenDeliveryRequest(TeaModel):
 class OpenDeliveryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the log delivery feature is enabled. Valid values:
         # 
         # *   true
         # *   false
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -21186,42 +22061,18 @@ class OpenDeliveryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -21281,13 +22132,31 @@ class PostAutomateResponseConfigRequest(TeaModel):
         rule_name: str = None,
         sub_user_id: int = None,
     ):
+        # The configuration of the action that is performed after the rule is hit. The value is in JSON format.
         self.action_config = action_config
+        # The action that is performed after the rule is hit. Separate multiple values with commas (,). Valid values:
+        # 
+        # *   doPlaybook: Execute a playbook.
+        # *   changeEventStatus: Change the event status.
+        # *   changeThreatLevel: Change the threat level of the event.
         self.action_type = action_type
+        # The rule type. Valid values:
+        # 
+        # *   event
+        # *   alert
         self.auto_response_type = auto_response_type
+        # The trigger condition of the rule. The value is in JSON format.
         self.execution_condition = execution_condition
+        # The rule ID.
         self.id = id
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The rule name.
         self.rule_name = rule_name
+        # The ID of the user who created the rule.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -21347,10 +22216,18 @@ class PostAutomateResponseConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -21455,23 +22332,55 @@ class PostCustomizeRuleRequest(TeaModel):
         rule_threshold: str = None,
         threat_level: str = None,
     ):
+        # The risk type.
         self.alert_type = alert_type
+        # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
+        # The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window.
         self.event_transfer_ext = event_transfer_ext
+        # Specifies whether to convert an alert to an event. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.event_transfer_switch = event_transfer_switch
+        # The event generation method. Valid values:
+        # 
+        # *   default: The default method is used.
+        # *   singleToSingle: The system generates an event for each alert.
+        # *   allToSingle: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
+        # The ID of the rule.
         self.id = id
+        # The log source of the rule.
         self.log_source = log_source
+        # The internal code of the log source.
         self.log_source_mds = log_source_mds
+        # The log type of the rule.
         self.log_type = log_type
+        # The internal code of the log type.
         self.log_type_mds = log_type_mds
+        # The window length of the rule.
         self.query_cycle = query_cycle
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The query condition of the rule. The value is in the JSON format.
         self.rule_condition = rule_condition
+        # The description of the rule.
         self.rule_desc = rule_desc
+        # The log aggregation field of the rule. The value is a JSON string.
         self.rule_group = rule_group
+        # The name of the rule.
         self.rule_name = rule_name
+        # The threshold configuration of the rule. The value is in the JSON format.
         self.rule_threshold = rule_threshold
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -21588,27 +22497,69 @@ class PostCustomizeRuleResponseBodyData(TeaModel):
         status: int = None,
         threat_level: str = None,
     ):
+        # The risk type.
         self.alert_type = alert_type
+        # The internal code of the risk type.
         self.alert_type_mds = alert_type_mds
+        # The ID of the Alibaba Cloud account that is used to purchase the threat analysis feature.
         self.aliuid = aliuid
+        # The extended information about event generation. If eventTransferType is set to allToSingle, the value of this parameter indicates the length and unit of the alert aggregation window. The HTML escape characters are reversed.
         self.event_transfer_ext = event_transfer_ext
+        # Indicates whether the system generates an event for the alert. Valid values:
+        # 
+        # *   0: no
+        # *   1: yes
         self.event_transfer_switch = event_transfer_switch
+        # The event generation method. Valid values:
+        # 
+        # *   default: The default method is used.
+        # *   singleToSingle: The system generates an event for each alert.
+        # *   allToSingle: The system generates an event for alerts within a period of time.
         self.event_transfer_type = event_transfer_type
+        # The time when the custom rule was created.
         self.gmt_create = gmt_create
+        # The time when the custom rule was last updated.
         self.gmt_modified = gmt_modified
+        # The ID of the custom rule.
         self.id = id
+        # The log source of the rule.
         self.log_source = log_source
+        # The internal code of the log source.
         self.log_source_mds = log_source_mds
+        # The log type of the rule.
         self.log_type = log_type
+        # The internal code of the log type.
         self.log_type_mds = log_type_mds
+        # The window length of the rule. The HTML escape characters are reversed.
         self.query_cycle = query_cycle
+        # The query condition of the rule. The value is in the JSON format. The HTML escape characters are reversed.
         self.rule_condition = rule_condition
+        # The description of the rule.
         self.rule_desc = rule_desc
+        # The log aggregation field of the rule. The value is a JSON string. The HTML escape characters are reversed.
         self.rule_group = rule_group
+        # The name of the rule.
         self.rule_name = rule_name
+        # The threshold configuration of the rule. The value is in the JSON format. The HTML escape characters are reversed.
         self.rule_threshold = rule_threshold
+        # The type of the rule. Valid values:
+        # 
+        # *   predefine
+        # *   customize
         self.rule_type = rule_type
+        # The rule status. Valid values:
+        # 
+        # *   0: The rule is in the initial state.
+        # *   10: The simulation data is tested.
+        # *   15: The business data is being tested.
+        # *   20: The business data test ends.
+        # *   100: The rule takes effect.
         self.status = status
+        # The risk level. Valid values:
+        # 
+        # *   serious: high
+        # *   suspicious: medium
+        # *   remind: low
         self.threat_level = threat_level
 
     def validate(self):
@@ -21724,10 +22675,18 @@ class PostCustomizeRuleResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -21820,9 +22779,19 @@ class PostCustomizeRuleTestRequest(TeaModel):
         simulated_data: str = None,
         test_type: str = None,
     ):
+        # The ID of the rule.
         self.id = id
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The simulation data for the testing. This parameter is available only when TestType is set to simulate.
         self.simulated_data = simulated_data
+        # The testing type. Valid values:
+        # 
+        # *   simulate: simulation data test
+        # *   business: business data test
         self.test_type = test_type
 
     def validate(self):
@@ -21866,10 +22835,18 @@ class PostCustomizeRuleTestResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -21962,11 +22939,25 @@ class PostEventDisposeAndWhiteruleListRequest(TeaModel):
         remark: str = None,
         status: int = None,
     ):
+        # The configuration of event handling. The value is a JSON object.
         self.event_dispose = event_dispose
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The configuration of the alert recipient. The value is a JSON object.
         self.receiver_info = receiver_info
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The remarks of the event.
         self.remark = remark
+        # The status of the event. Valid values:
+        # 
+        # *   0: unhandled
+        # *   1: handing
+        # *   5: handling failed
+        # *   10: handled
         self.status = status
 
     def validate(self):
@@ -22018,10 +23009,18 @@ class PostEventDisposeAndWhiteruleListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -22111,8 +23110,14 @@ class PostEventWhiteruleListRequest(TeaModel):
         region_id: str = None,
         whiterule_list: str = None,
     ):
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The alert whitelist rule. The value is a JSON object.
         self.whiterule_list = whiterule_list
 
     def validate(self):
@@ -22152,10 +23157,18 @@ class PostEventWhiteruleListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -22244,7 +23257,12 @@ class PostFinishCustomizeRuleTestRequest(TeaModel):
         id: int = None,
         region_id: str = None,
     ):
+        # The ID of the rule.
         self.id = id
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -22280,10 +23298,18 @@ class PostFinishCustomizeRuleTestResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -22374,9 +23400,22 @@ class PostRuleStatusChangeRequest(TeaModel):
         region_id: str = None,
         rule_type: str = None,
     ):
+        # The rule IDs. The value is a JSON array.
         self.ids = ids
+        # Specifies whether to enable the rule. Valid values:
+        # 
+        # *   true
+        # *   false
         self.in_use = in_use
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The type of the rule. Valid values:
+        # 
+        # *   predefine
+        # *   customize
         self.rule_type = rule_type
 
     def validate(self):
@@ -22420,10 +23459,18 @@ class PostRuleStatusChangeResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -22540,37 +23587,16 @@ class RestoreCapacityRequest(TeaModel):
 class RestoreCapacityResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the release command has been sent. Valid values:
         # 
         # *   true: The command has been sent and the storage space is being released.
         # *   false: The command failed to be sent.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -22581,42 +23607,18 @@ class RestoreCapacityResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -22712,37 +23714,16 @@ class SaveQuickQueryRequest(TeaModel):
 class SaveQuickQueryResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the query statement is saved as a saved search. Valid values:
         # 
         # *   true
         # *   false
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -22753,42 +23734,18 @@ class SaveQuickQueryResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -22884,37 +23841,16 @@ class SetStorageRequest(TeaModel):
 class SetStorageResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: bool = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # Indicates whether the settings are saved. Valid values:
         # 
         # *   true
         # *   false
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         pass
@@ -22925,42 +23861,18 @@ class SetStorageResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             self.data = m.get('Data')
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -23070,34 +23982,13 @@ class ShowQuickAnalysisResponseBodyData(TeaModel):
 class ShowQuickAnalysisResponseBody(TeaModel):
     def __init__(
         self,
-        code: int = None,
         data: ShowQuickAnalysisResponseBodyData = None,
-        dy_code: str = None,
-        dy_message: str = None,
-        err_code: str = None,
-        message: str = None,
         request_id: str = None,
-        success: bool = None,
     ):
-        # The HTTP status code.
-        self.code = code
         # The index fields.
         self.data = data
-        # The dynamic error code.
-        self.dy_code = dy_code
-        # The dynamic message.
-        self.dy_message = dy_message
-        # The error code.
-        self.err_code = err_code
-        # The returned message.
-        self.message = message
         # The request ID.
         self.request_id = request_id
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true
-        # *   false
-        self.success = success
 
     def validate(self):
         if self.data:
@@ -23109,43 +24000,19 @@ class ShowQuickAnalysisResponseBody(TeaModel):
             return _map
 
         result = dict()
-        if self.code is not None:
-            result['Code'] = self.code
         if self.data is not None:
             result['Data'] = self.data.to_map()
-        if self.dy_code is not None:
-            result['DyCode'] = self.dy_code
-        if self.dy_message is not None:
-            result['DyMessage'] = self.dy_message
-        if self.err_code is not None:
-            result['ErrCode'] = self.err_code
-        if self.message is not None:
-            result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        if self.success is not None:
-            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Code') is not None:
-            self.code = m.get('Code')
         if m.get('Data') is not None:
             temp_model = ShowQuickAnalysisResponseBodyData()
             self.data = temp_model.from_map(m['Data'])
-        if m.get('DyCode') is not None:
-            self.dy_code = m.get('DyCode')
-        if m.get('DyMessage') is not None:
-            self.dy_message = m.get('DyMessage')
-        if m.get('ErrCode') is not None:
-            self.err_code = m.get('ErrCode')
-        if m.get('Message') is not None:
-            self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        if m.get('Success') is not None:
-            self.success = m.get('Success')
         return self
 
 
@@ -23473,8 +24340,17 @@ class UpdateAutomateResponseConfigStatusRequest(TeaModel):
         in_use: bool = None,
         region_id: str = None,
     ):
+        # The IDs of the automatic response rules. The value is a JSON array.
         self.ids = ids
+        # Specifies whether the rule is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
         self.in_use = in_use
+        # The data management center of the threat analysis feature. Specify this parameter based on the region in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions inside China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
 
     def validate(self):
@@ -23514,10 +24390,18 @@ class UpdateAutomateResponseConfigStatusResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code that is returned.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -23608,9 +24492,16 @@ class UpdateWhiteRuleListRequest(TeaModel):
         region_id: str = None,
         white_rule_id: int = None,
     ):
+        # The alert whitelist rule. The value is a JSON object.
         self.expression = expression
+        # The UUID of the event.
         self.incident_uuid = incident_uuid
+        # The region in which the data management center of the threat analysis feature resides. Specify this parameter based on the regions in which your assets reside. Valid values:
+        # 
+        # *   cn-hangzhou: Your assets reside in regions in China.
+        # *   ap-southeast-1: Your assets reside in regions outside China.
         self.region_id = region_id
+        # The unique ID of the whitelist rule.
         self.white_rule_id = white_rule_id
 
     def validate(self):
@@ -23654,10 +24545,18 @@ class UpdateWhiteRuleListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
