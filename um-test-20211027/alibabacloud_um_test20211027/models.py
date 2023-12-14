@@ -12,13 +12,9 @@ class GetOssUploadParamRequest(TeaModel):
         file_name: str = None,
         file_type: int = None,
     ):
-        # App版本号
         self.app_version = app_version
-        # 数据源id（appKey)
         self.data_source_id = data_source_id
-        # 文件名称，后缀只允许为txt,so,sym,zip,gz
         self.file_name = file_name
-        # 文件类型(1 mapping文件；2 so文件；3 dSYM文件压缩包)
         self.file_type = file_type
 
     def validate(self):
@@ -63,17 +59,11 @@ class GetOssUploadParamResponseBodyData(TeaModel):
         signature: str = None,
         upload_address: str = None,
     ):
-        # 文件上传表单必要参数
         self.access_key_id = access_key_id
-        # 文件上传表单必要参数
         self.callback = callback
-        # 文件上传表单必要参数
         self.key = key
-        # 文件上传表单必要参数
         self.policy = policy
-        # 文件上传表单必要参数
         self.signature = signature
-        # 文件上传地址
         self.upload_address = upload_address
 
     def validate(self):
@@ -126,15 +116,12 @@ class GetOssUploadParamResponseBody(TeaModel):
         success: bool = None,
         trace_id: str = None,
     ):
-        # 请求唯一ID
         self.request_id = request_id
         # code
         self.code = code
         # data
         self.data = data
-        # 异常描述
         self.msg = msg
-        # 是否成功
         self.success = success
         # traceId
         self.trace_id = trace_id
@@ -185,13 +172,16 @@ class GetOssUploadParamResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: GetOssUploadParamResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -204,6 +194,8 @@ class GetOssUploadParamResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -212,6 +204,8 @@ class GetOssUploadParamResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetOssUploadParamResponseBody()
             self.body = temp_model.from_map(m['body'])
@@ -226,6 +220,7 @@ class UploadNotaryResponseBody(TeaModel):
         detail_msg: str = None,
         msg: str = None,
     ):
+        # code
         self.code = code
         self.data = data
         self.detail_msg = detail_msg
@@ -267,13 +262,16 @@ class UploadNotaryResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
+        status_code: int = None,
         body: UploadNotaryResponseBody = None,
     ):
         self.headers = headers
+        self.status_code = status_code
         self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
         self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
@@ -286,6 +284,8 @@ class UploadNotaryResponse(TeaModel):
         result = dict()
         if self.headers is not None:
             result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
         if self.body is not None:
             result['body'] = self.body.to_map()
         return result
@@ -294,6 +294,8 @@ class UploadNotaryResponse(TeaModel):
         m = m or dict()
         if m.get('headers') is not None:
             self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UploadNotaryResponseBody()
             self.body = temp_model.from_map(m['body'])
