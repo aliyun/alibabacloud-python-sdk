@@ -1035,8 +1035,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        The description of the CEN instance.
-        The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
+        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        * If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1087,8 +1088,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        The description of the CEN instance.
-        The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
+        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        * If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1138,8 +1140,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRequest,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        The description of the CEN instance.
-        The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
+        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        * If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @return: CreateCenResponse
@@ -1152,8 +1155,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRequest,
     ) -> cbn_20170912_models.CreateCenResponse:
         """
-        The description of the CEN instance.
-        The description must be 2 to 256 characters in length. It must start with a letter and cannot start with `http://` or `https://`.
+        *CreateCen** is an asynchronous operation. After you send a request, the system returns the CEN instance ID but the operation is still being performed in the system background. You can call **DescribeCens** to query the status of a CEN instance.
+        * If a CEN instance is in the **Creating** state, the CEN instance is being created. You can query the CEN instance but cannot perform other operations.
+        * If a CEN instance is in the **Active** state, the CEN instance is created.
         
         @param request: CreateCenRequest
         @return: CreateCenResponse
@@ -1943,8 +1947,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
-        You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+        Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](~~124157~~).
+        `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
+        *   If a routing policy is in the **Creating** state, the routing policy is being created. In this case, you can query the routing policy but cannot perform other operations.
+        *   If a routing policy is in the **Active** state, the routing policy is created.
         
         @param request: CreateCenRouteMapRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2043,8 +2049,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
-        You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+        Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](~~124157~~).
+        `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
+        *   If a routing policy is in the **Creating** state, the routing policy is being created. In this case, you can query the routing policy but cannot perform other operations.
+        *   If a routing policy is in the **Active** state, the routing policy is created.
         
         @param request: CreateCenRouteMapRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2142,8 +2150,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRouteMapRequest,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
-        You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+        Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](~~124157~~).
+        `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
+        *   If a routing policy is in the **Creating** state, the routing policy is being created. In this case, you can query the routing policy but cannot perform other operations.
+        *   If a routing policy is in the **Active** state, the routing policy is created.
         
         @param request: CreateCenRouteMapRequest
         @return: CreateCenRouteMapResponse
@@ -2156,8 +2166,10 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateCenRouteMapRequest,
     ) -> cbn_20170912_models.CreateCenRouteMapResponse:
         """
-        The IDs of the source regions from which routes are evaluated. You can enter at most 32 region IDs.
-        You can call the [DescribeChildInstanceRegions](~~132080~~) operation to query the most recent region list.
+        Routing policies are sorted by priority. A smaller value indicates a higher priority. Each routing policy is a collection of conditional statements and execution statements. Starting from the routing policy with the highest priority, the system matches routes against the match conditions specified by routing policies. If a route meets all the match conditions of a routing policy, the system permits or denies the route based on the action specified in the routing policy. You can also modify the attributes of permitted routes. By default, the system permits routes that meet none of the match conditions. For more information, see [Routing policy overview](~~124157~~).
+        `CreateCenRouteMap` is an asynchronous operation. After you send a request, the routing policy ID is returned but the operation is still being performed in the system background. You can call `DescribeCenRouteMaps` to query the status of a routing policy.
+        *   If a routing policy is in the **Creating** state, the routing policy is being created. In this case, you can query the routing policy but cannot perform other operations.
+        *   If a routing policy is in the **Active** state, the routing policy is created.
         
         @param request: CreateCenRouteMapRequest
         @return: CreateCenRouteMapResponse
@@ -2807,9 +2819,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        The client token that is used to ensure the idempotence of the request.
-        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
+        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
+        The CIDR block must meet the following requirements:
+        *   Only Enterprise Edition transit routers support custom CIDR blocks.
+        *   For more information, see [Limits in transit router CIDR blocks](~~462635~~).
+        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
+        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
+        *   The CIDR block cannot overlap with the CIDR blocks of the network instances that communicate with each other by using the CEN instance.
+        *   On the same CEN instance, each transit router CIDR block must be unique.
+        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
+        You can call the [ListTransitRouterCidrAllocation](~~464173~~) operation to query reserved CIDR blocks and IP addresses allocated to network connections.
         
         @param request: CreateTransitRouterCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2866,9 +2886,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        The client token that is used to ensure the idempotence of the request.
-        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
+        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
+        The CIDR block must meet the following requirements:
+        *   Only Enterprise Edition transit routers support custom CIDR blocks.
+        *   For more information, see [Limits in transit router CIDR blocks](~~462635~~).
+        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
+        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
+        *   The CIDR block cannot overlap with the CIDR blocks of the network instances that communicate with each other by using the CEN instance.
+        *   On the same CEN instance, each transit router CIDR block must be unique.
+        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
+        You can call the [ListTransitRouterCidrAllocation](~~464173~~) operation to query reserved CIDR blocks and IP addresses allocated to network connections.
         
         @param request: CreateTransitRouterCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2924,9 +2952,17 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterCidrRequest,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        The client token that is used to ensure the idempotence of the request.
-        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
+        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
+        The CIDR block must meet the following requirements:
+        *   Only Enterprise Edition transit routers support custom CIDR blocks.
+        *   For more information, see [Limits in transit router CIDR blocks](~~462635~~).
+        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
+        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
+        *   The CIDR block cannot overlap with the CIDR blocks of the network instances that communicate with each other by using the CEN instance.
+        *   On the same CEN instance, each transit router CIDR block must be unique.
+        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
+        You can call the [ListTransitRouterCidrAllocation](~~464173~~) operation to query reserved CIDR blocks and IP addresses allocated to network connections.
         
         @param request: CreateTransitRouterCidrRequest
         @return: CreateTransitRouterCidrResponse
@@ -2939,9 +2975,17 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.CreateTransitRouterCidrRequest,
     ) -> cbn_20170912_models.CreateTransitRouterCidrResponse:
         """
-        The client token that is used to ensure the idempotence of the request.
-        You can use the client to generate the value, but you must make sure that it is unique among different requests. ClientToken can contain only ASCII characters.
-        >  If you do not set this parameter, ClientToken is set to the value of RequestId. The value of RequestId for each API request may be different.
+        You can specify a CIDR block for a transit router. The CIDR block works in a similar way as the CIDR block of the loopback interface on a router. IP addresses within the CIDR block can be assigned to IPsec-VPN connections. For more information, see [Transit router CIDR blocks](~~462635~~).
+        The **CreateTransitRouterCidr** operation can be used to create a CIDR block only after you create a transit router.
+        The CIDR block must meet the following requirements:
+        *   Only Enterprise Edition transit routers support custom CIDR blocks.
+        *   For more information, see [Limits in transit router CIDR blocks](~~462635~~).
+        *   Each transit router supports at most five CIDR blocks. The subnet mask of a CIDR block must be 16 bits to 24 bits in length.
+        *   The following CIDR blocks and their subnets are not supported: 100.64.0.0/10, 224.0.0.0/4, 127.0.0.0/8, and 169.254.0.0/16.
+        *   The CIDR block cannot overlap with the CIDR blocks of the network instances that communicate with each other by using the CEN instance.
+        *   On the same CEN instance, each transit router CIDR block must be unique.
+        *   When you create the first VPN connection after you add a CIDR block for a transit router, three CIDR blocks within the CIDR block are reserved. An IP address is allocated from the remaining CIDR blocks to the IPsec-VPN connection.
+        You can call the [ListTransitRouterCidrAllocation](~~464173~~) operation to query reserved CIDR blocks and IP addresses allocated to network connections.
         
         @param request: CreateTransitRouterCidrRequest
         @return: CreateTransitRouterCidrResponse
@@ -3134,6 +3178,8 @@ class Client(OpenApiClient):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_link_type):
+            query['DefaultLinkType'] = request.default_link_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
@@ -3206,6 +3252,8 @@ class Client(OpenApiClient):
             query['CenId'] = request.cen_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_link_type):
+            query['DefaultLinkType'] = request.default_link_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
@@ -14069,7 +14117,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRoutersResponse:
         """
-        The tag value.
+        You can set the *RegionId** and **TransitRouterId** parameters based on your requirements.
+        *   If you do not set **RegionId** or **TransitRouterId**, the system queries all transit routers that are connected to the specified CEN instance.
+        *   If you set only **RegionId**, the system queries transit routers that are deployed in the specified region.
+        *   If you set only **TransitRouterId**, the system queries the specified transit router.
+        *   If you set both **RegionId** and **TransitRouterId**, the system queries the specified transit router in the specified region.
         
         @param request: ListTransitRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14130,7 +14182,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ListTransitRoutersResponse:
         """
-        The tag value.
+        You can set the *RegionId** and **TransitRouterId** parameters based on your requirements.
+        *   If you do not set **RegionId** or **TransitRouterId**, the system queries all transit routers that are connected to the specified CEN instance.
+        *   If you set only **RegionId**, the system queries transit routers that are deployed in the specified region.
+        *   If you set only **TransitRouterId**, the system queries the specified transit router.
+        *   If you set both **RegionId** and **TransitRouterId**, the system queries the specified transit router in the specified region.
         
         @param request: ListTransitRoutersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14190,7 +14246,11 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRoutersRequest,
     ) -> cbn_20170912_models.ListTransitRoutersResponse:
         """
-        The tag value.
+        You can set the *RegionId** and **TransitRouterId** parameters based on your requirements.
+        *   If you do not set **RegionId** or **TransitRouterId**, the system queries all transit routers that are connected to the specified CEN instance.
+        *   If you set only **RegionId**, the system queries transit routers that are deployed in the specified region.
+        *   If you set only **TransitRouterId**, the system queries the specified transit router.
+        *   If you set both **RegionId** and **TransitRouterId**, the system queries the specified transit router in the specified region.
         
         @param request: ListTransitRoutersRequest
         @return: ListTransitRoutersResponse
@@ -14203,7 +14263,11 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ListTransitRoutersRequest,
     ) -> cbn_20170912_models.ListTransitRoutersResponse:
         """
-        The tag value.
+        You can set the *RegionId** and **TransitRouterId** parameters based on your requirements.
+        *   If you do not set **RegionId** or **TransitRouterId**, the system queries all transit routers that are connected to the specified CEN instance.
+        *   If you set only **RegionId**, the system queries transit routers that are deployed in the specified region.
+        *   If you set only **TransitRouterId**, the system queries the specified transit router.
+        *   If you set both **RegionId** and **TransitRouterId**, the system queries the specified transit router in the specified region.
         
         @param request: ListTransitRoutersRequest
         @return: ListTransitRoutersResponse
@@ -14533,7 +14597,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        The response.
+        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
+        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
+        *   **Active**: indicates that the routing policy is modified.
         
         @param request: ModifyCenRouteMapRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14630,7 +14696,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        The response.
+        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
+        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
+        *   **Active**: indicates that the routing policy is modified.
         
         @param request: ModifyCenRouteMapRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14726,7 +14794,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyCenRouteMapRequest,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        The response.
+        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
+        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
+        *   **Active**: indicates that the routing policy is modified.
         
         @param request: ModifyCenRouteMapRequest
         @return: ModifyCenRouteMapResponse
@@ -14739,7 +14809,9 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyCenRouteMapRequest,
     ) -> cbn_20170912_models.ModifyCenRouteMapResponse:
         """
-        The response.
+        `ModifyCenRouteMap` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeCenRouteMaps` operation to query the status of a routing policy.
+        *   **Modifying**: indicates that the system is modifying the routing policy. You can only query the routing policy, but cannot perform other operations.
+        *   **Active**: indicates that the routing policy is modified.
         
         @param request: ModifyCenRouteMapRequest
         @return: ModifyCenRouteMapResponse
@@ -14752,6 +14824,15 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
+        """
+        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
+        *   If a flow log is in the **Active** state, the flow log is modified.
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFlowLogAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -14798,6 +14879,15 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
+        """
+        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
+        *   If a flow log is in the **Active** state, the flow log is modified.
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFlowLogAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cen_id):
@@ -14843,6 +14933,14 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
+        """
+        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
+        *   If a flow log is in the **Active** state, the flow log is modified.
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @return: ModifyFlowLogAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_flow_log_attribute_with_options(request, runtime)
 
@@ -14850,6 +14948,14 @@ class Client(OpenApiClient):
         self,
         request: cbn_20170912_models.ModifyFlowLogAttributeRequest,
     ) -> cbn_20170912_models.ModifyFlowLogAttributeResponse:
+        """
+        `ModifyFlowLogAttribute` is an asynchronous operation. After you send a request, the system returns a *request ID** and runs the task in the background. You can call the `DescribeFlowlogs` operation to query the status of a flow log.
+        *   If a flow log is in the **Modifying** state, the flow log is being modified. In this case, you can query the flow log but cannot perform other operations.
+        *   If a flow log is in the **Active** state, the flow log is modified.
+        
+        @param request: ModifyFlowLogAttributeRequest
+        @return: ModifyFlowLogAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_flow_log_attribute_with_options_async(request, runtime)
 
@@ -14859,8 +14965,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        The new description of the transit router CIDR block.
-        The description must be 1 to 256 characters in length.
+        Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](~~462635~~).
+        *   If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
+        *   When you call **ModifyTransitRouterCidr**, if no parameter of the **PublishCidrRoute** operation is modified, ModifyTransitRouterCidr is a synchronous operation. After you call the operation, the new settings are immediately applied.
+        *   If a parameter of the **PublishCidrRoute** operation is modified, **ModifyTransitRouterCidr** is an asynchronous operation. After you call the operation, the request ID (**RequestId**) is returned but the operation is still being performed in the system background. You can call **ListTransitRouterCidr** to query the status of the CIDR block of the transit router.
+        *   If the CIDR block of the transit router remains unchanged, the CIDR block is still being modified.
+        *   If the CIDR block of the transit router is changed to the one that you specify in the request, the CIDR block has been modified.
         
         @param request: ModifyTransitRouterCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14919,8 +15029,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        The new description of the transit router CIDR block.
-        The description must be 1 to 256 characters in length.
+        Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](~~462635~~).
+        *   If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
+        *   When you call **ModifyTransitRouterCidr**, if no parameter of the **PublishCidrRoute** operation is modified, ModifyTransitRouterCidr is a synchronous operation. After you call the operation, the new settings are immediately applied.
+        *   If a parameter of the **PublishCidrRoute** operation is modified, **ModifyTransitRouterCidr** is an asynchronous operation. After you call the operation, the request ID (**RequestId**) is returned but the operation is still being performed in the system background. You can call **ListTransitRouterCidr** to query the status of the CIDR block of the transit router.
+        *   If the CIDR block of the transit router remains unchanged, the CIDR block is still being modified.
+        *   If the CIDR block of the transit router is changed to the one that you specify in the request, the CIDR block has been modified.
         
         @param request: ModifyTransitRouterCidrRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14978,8 +15092,12 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        The new description of the transit router CIDR block.
-        The description must be 1 to 256 characters in length.
+        Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](~~462635~~).
+        *   If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
+        *   When you call **ModifyTransitRouterCidr**, if no parameter of the **PublishCidrRoute** operation is modified, ModifyTransitRouterCidr is a synchronous operation. After you call the operation, the new settings are immediately applied.
+        *   If a parameter of the **PublishCidrRoute** operation is modified, **ModifyTransitRouterCidr** is an asynchronous operation. After you call the operation, the request ID (**RequestId**) is returned but the operation is still being performed in the system background. You can call **ListTransitRouterCidr** to query the status of the CIDR block of the transit router.
+        *   If the CIDR block of the transit router remains unchanged, the CIDR block is still being modified.
+        *   If the CIDR block of the transit router is changed to the one that you specify in the request, the CIDR block has been modified.
         
         @param request: ModifyTransitRouterCidrRequest
         @return: ModifyTransitRouterCidrResponse
@@ -14992,8 +15110,12 @@ class Client(OpenApiClient):
         request: cbn_20170912_models.ModifyTransitRouterCidrRequest,
     ) -> cbn_20170912_models.ModifyTransitRouterCidrResponse:
         """
-        The new description of the transit router CIDR block.
-        The description must be 1 to 256 characters in length.
+        Before you modify the CIDR block of a transit router, we recommend that you read the [limits on transit router CIDR blocks](~~462635~~).
+        *   If IP addresses within the CIDR block have been allocated to network instances, you cannot modify the CIDR block.
+        *   When you call **ModifyTransitRouterCidr**, if no parameter of the **PublishCidrRoute** operation is modified, ModifyTransitRouterCidr is a synchronous operation. After you call the operation, the new settings are immediately applied.
+        *   If a parameter of the **PublishCidrRoute** operation is modified, **ModifyTransitRouterCidr** is an asynchronous operation. After you call the operation, the request ID (**RequestId**) is returned but the operation is still being performed in the system background. You can call **ListTransitRouterCidr** to query the status of the CIDR block of the transit router.
+        *   If the CIDR block of the transit router remains unchanged, the CIDR block is still being modified.
+        *   If the CIDR block of the transit router is changed to the one that you specify in the request, the CIDR block has been modified.
         
         @param request: ModifyTransitRouterCidrRequest
         @return: ModifyTransitRouterCidrResponse
@@ -17899,6 +18021,8 @@ class Client(OpenApiClient):
             query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_link_type):
+            query['DefaultLinkType'] = request.default_link_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
@@ -17960,6 +18084,8 @@ class Client(OpenApiClient):
             query['CenBandwidthPackageId'] = request.cen_bandwidth_package_id
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.default_link_type):
+            query['DefaultLinkType'] = request.default_link_type
         if not UtilClient.is_unset(request.dry_run):
             query['DryRun'] = request.dry_run
         if not UtilClient.is_unset(request.owner_account):
