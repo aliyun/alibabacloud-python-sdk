@@ -570,15 +570,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.AllocateReadWriteSplittingConnectionResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
         If read-only instances are attached to a primary ApsaraDB RDS for SQL Server instance, you can call this operation to apply for a unified read-only routing endpoint for the primary instance. After you apply for a read-only routing endpoint for a primary instance, the existing endpoints of the primary instance and its read-only instances remain valid. In addition, you can still apply for internal and public endpoints.
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        *   If the instance runs MySQL, the instance uses a shared proxy.
+        *   The shared proxy feature is enabled for your ApsaraDB RDS for MySQL instance.
         *   The instance is in the Running state.
         *   Read-only instances are attached to the primary instance.
         *   The instance does not have an ongoing Data Transmission Service (DTS) migration task.
         *   The instance runs one of the following database versions and RDS editions:
-        *   SQL Server (cluster edition)
-        *   MySQL 5.7 on RDS High-availability Edition with local SSDs
+        *   SQL Server on RDS Cluster Edition
+        *   MySQL 5.7 on RDS High-availability Edition (with local disks)
         *   MySQL 5.6
         
         @param request: AllocateReadWriteSplittingConnectionRequest
@@ -634,15 +639,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.AllocateReadWriteSplittingConnectionResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
         If read-only instances are attached to a primary ApsaraDB RDS for SQL Server instance, you can call this operation to apply for a unified read-only routing endpoint for the primary instance. After you apply for a read-only routing endpoint for a primary instance, the existing endpoints of the primary instance and its read-only instances remain valid. In addition, you can still apply for internal and public endpoints.
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        *   If the instance runs MySQL, the instance uses a shared proxy.
+        *   The shared proxy feature is enabled for your ApsaraDB RDS for MySQL instance.
         *   The instance is in the Running state.
         *   Read-only instances are attached to the primary instance.
         *   The instance does not have an ongoing Data Transmission Service (DTS) migration task.
         *   The instance runs one of the following database versions and RDS editions:
-        *   SQL Server (cluster edition)
-        *   MySQL 5.7 on RDS High-availability Edition with local SSDs
+        *   SQL Server on RDS Cluster Edition
+        *   MySQL 5.7 on RDS High-availability Edition (with local disks)
         *   MySQL 5.6
         
         @param request: AllocateReadWriteSplittingConnectionRequest
@@ -697,15 +707,20 @@ class Client(OpenApiClient):
         request: rds_20140815_models.AllocateReadWriteSplittingConnectionRequest,
     ) -> rds_20140815_models.AllocateReadWriteSplittingConnectionResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
         If read-only instances are attached to a primary ApsaraDB RDS for SQL Server instance, you can call this operation to apply for a unified read-only routing endpoint for the primary instance. After you apply for a read-only routing endpoint for a primary instance, the existing endpoints of the primary instance and its read-only instances remain valid. In addition, you can still apply for internal and public endpoints.
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        *   If the instance runs MySQL, the instance uses a shared proxy.
+        *   The shared proxy feature is enabled for your ApsaraDB RDS for MySQL instance.
         *   The instance is in the Running state.
         *   Read-only instances are attached to the primary instance.
         *   The instance does not have an ongoing Data Transmission Service (DTS) migration task.
         *   The instance runs one of the following database versions and RDS editions:
-        *   SQL Server (cluster edition)
-        *   MySQL 5.7 on RDS High-availability Edition with local SSDs
+        *   SQL Server on RDS Cluster Edition
+        *   MySQL 5.7 on RDS High-availability Edition (with local disks)
         *   MySQL 5.6
         
         @param request: AllocateReadWriteSplittingConnectionRequest
@@ -719,15 +734,20 @@ class Client(OpenApiClient):
         request: rds_20140815_models.AllocateReadWriteSplittingConnectionRequest,
     ) -> rds_20140815_models.AllocateReadWriteSplittingConnectionResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
         If read-only instances are attached to a primary ApsaraDB RDS for SQL Server instance, you can call this operation to apply for a unified read-only routing endpoint for the primary instance. After you apply for a read-only routing endpoint for a primary instance, the existing endpoints of the primary instance and its read-only instances remain valid. In addition, you can still apply for internal and public endpoints.
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
-        *   If the instance runs MySQL, the instance uses a shared proxy.
+        *   The shared proxy feature is enabled for your ApsaraDB RDS for MySQL instance.
         *   The instance is in the Running state.
         *   Read-only instances are attached to the primary instance.
         *   The instance does not have an ongoing Data Transmission Service (DTS) migration task.
         *   The instance runs one of the following database versions and RDS editions:
-        *   SQL Server (cluster edition)
-        *   MySQL 5.7 on RDS High-availability Edition with local SSDs
+        *   SQL Server on RDS Cluster Edition
+        *   MySQL 5.7 on RDS High-availability Edition (with local disks)
         *   MySQL 5.6
         
         @param request: AllocateReadWriteSplittingConnectionRequest
@@ -1010,8 +1030,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~26301~~).
-        >  This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
+        ### [](#)Precautions
+        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1058,8 +1082,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~26301~~).
-        >  This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
+        ### [](#)Precautions
+        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1105,8 +1133,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CancelImportRequest,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~26301~~).
-        >  This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
+        ### [](#)Precautions
+        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
         @return: CancelImportResponse
@@ -1119,8 +1151,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CancelImportRequest,
     ) -> rds_20140815_models.CancelImportResponse:
         """
-        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~26301~~).
-        >  This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is supported for instances that run SQL Server and belong to the dedicated or dedicated host instance family. For more information about how to start a migration task, see [ImportDatabaseBetweenInstances](~~610592~~).
+        ### [](#)Precautions
+        This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
         @param request: CancelImportRequest
         @return: CancelImportResponse
@@ -1133,6 +1169,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CheckAccountNameAvailableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CheckAccountNameAvailableResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: CheckAccountNameAvailableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAccountNameAvailableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1171,6 +1218,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CheckAccountNameAvailableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CheckAccountNameAvailableResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: CheckAccountNameAvailableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckAccountNameAvailableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1208,6 +1266,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.CheckAccountNameAvailableRequest,
     ) -> rds_20140815_models.CheckAccountNameAvailableResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: CheckAccountNameAvailableRequest
+        @return: CheckAccountNameAvailableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_account_name_available_with_options(request, runtime)
 
@@ -1215,6 +1283,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.CheckAccountNameAvailableRequest,
     ) -> rds_20140815_models.CheckAccountNameAvailableResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: CheckAccountNameAvailableRequest
+        @return: CheckAccountNameAvailableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_account_name_available_with_options_async(request, runtime)
 
@@ -1368,11 +1446,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CheckCreateDdrDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
-        > : If your RDS instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        >  If your ApsaraDB RDS for PostgreSQL instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~) and [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for PostgreSQL instance](~~206671~~) and [Restore the data of an ApsaraDB RDS for PostgreSQL across regions](~~206662~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for SQL Server instance](~~187923~~) and [Restore the data of an ApsaraDB RDS for SQL Server across regions](~~187924~~)
         
         @param request: CheckCreateDdrDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1433,11 +1516,16 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CheckCreateDdrDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
-        > : If your RDS instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        >  If your ApsaraDB RDS for PostgreSQL instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~) and [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for PostgreSQL instance](~~206671~~) and [Restore the data of an ApsaraDB RDS for PostgreSQL across regions](~~206662~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for SQL Server instance](~~187923~~) and [Restore the data of an ApsaraDB RDS for SQL Server across regions](~~187924~~)
         
         @param request: CheckCreateDdrDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1497,11 +1585,16 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CheckCreateDdrDBInstanceRequest,
     ) -> rds_20140815_models.CheckCreateDdrDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
-        > : If your RDS instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        >  If your ApsaraDB RDS for PostgreSQL instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~) and [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for PostgreSQL instance](~~206671~~) and [Restore the data of an ApsaraDB RDS for PostgreSQL across regions](~~206662~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for SQL Server instance](~~187923~~) and [Restore the data of an ApsaraDB RDS for SQL Server across regions](~~187924~~)
         
         @param request: CheckCreateDdrDBInstanceRequest
         @return: CheckCreateDdrDBInstanceResponse
@@ -1514,11 +1607,16 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CheckCreateDdrDBInstanceRequest,
     ) -> rds_20140815_models.CheckCreateDdrDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
-        > : If your RDS instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        >  If your ApsaraDB RDS for PostgreSQL instance uses the new architecture and is created after October 10, 2022, this feature is not supported for the RDS instance. For more information, see [\\[Notice\\] SLR authorization is required to create an ApsaraDB RDS for PostgreSQL instance from October 10, 2022](~~452313~~).
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~) and [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for PostgreSQL instance](~~206671~~) and [Restore the data of an ApsaraDB RDS for PostgreSQL across regions](~~206662~~)
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for SQL Server instance](~~187923~~) and [Restore the data of an ApsaraDB RDS for SQL Server across regions](~~187924~~)
         
         @param request: CheckCreateDdrDBInstanceRequest
         @return: CheckCreateDdrDBInstanceResponse
@@ -2278,7 +2376,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ConfirmNotifyResponse:
         """
-        After you call the QueryNotify operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed. For more information, see [Query notifications for an ApsaraDB RDS instance](~~427959~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)Feature description
+        After you call the [QueryNotify](~~610443~~) operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed.
         
         @param tmp_req: ConfirmNotifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2319,7 +2423,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ConfirmNotifyResponse:
         """
-        After you call the QueryNotify operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed. For more information, see [Query notifications for an ApsaraDB RDS instance](~~427959~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)Feature description
+        After you call the [QueryNotify](~~610443~~) operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed.
         
         @param tmp_req: ConfirmNotifyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2359,7 +2469,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ConfirmNotifyRequest,
     ) -> rds_20140815_models.ConfirmNotifyResponse:
         """
-        After you call the QueryNotify operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed. For more information, see [Query notifications for an ApsaraDB RDS instance](~~427959~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)Feature description
+        After you call the [QueryNotify](~~610443~~) operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed.
         
         @param request: ConfirmNotifyRequest
         @return: ConfirmNotifyResponse
@@ -2372,7 +2488,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ConfirmNotifyRequest,
     ) -> rds_20140815_models.ConfirmNotifyResponse:
         """
-        After you call the QueryNotify operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed. For more information, see [Query notifications for an ApsaraDB RDS instance](~~427959~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)Feature description
+        After you call the [QueryNotify](~~610443~~) operation to query notifications for an instance, you can call this operation to mark the notifications as confirmed.
         
         @param request: ConfirmNotifyRequest
         @return: ConfirmNotifyResponse
@@ -2986,7 +3108,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Use the cloud migration feature](~~365562~~)
+        [Use the cloud migration feature](~~365562~~)
         
         @param request: CreateCloudMigrationPrecheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3039,7 +3161,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Use the cloud migration feature](~~365562~~)
+        [Use the cloud migration feature](~~365562~~)
         
         @param request: CreateCloudMigrationPrecheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3091,7 +3213,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Use the cloud migration feature](~~365562~~)
+        [Use the cloud migration feature](~~365562~~)
         
         @param request: CreateCloudMigrationPrecheckTaskRequest
         @return: CreateCloudMigrationPrecheckTaskResponse
@@ -3108,7 +3230,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
-        *   [Use the cloud migration feature](~~365562~~)
+        [Use the cloud migration feature](~~365562~~)
         
         @param request: CreateCloudMigrationPrecheckTaskRequest
         @return: CreateCloudMigrationPrecheckTaskResponse
@@ -4874,7 +4996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateDiagnosticReportResponse:
         """
-        > This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
+        >  This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
         After you call this operation to create a diagnostic report, you can call the DescribeDiagnosticReportList operation to download the diagnostic report.
         
         @param request: CreateDiagnosticReportRequest
@@ -4914,7 +5036,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateDiagnosticReportResponse:
         """
-        > This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
+        >  This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
         After you call this operation to create a diagnostic report, you can call the DescribeDiagnosticReportList operation to download the diagnostic report.
         
         @param request: CreateDiagnosticReportRequest
@@ -4953,7 +5075,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateDiagnosticReportRequest,
     ) -> rds_20140815_models.CreateDiagnosticReportResponse:
         """
-        > This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
+        >  This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
         After you call this operation to create a diagnostic report, you can call the DescribeDiagnosticReportList operation to download the diagnostic report.
         
         @param request: CreateDiagnosticReportRequest
@@ -4967,7 +5089,7 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateDiagnosticReportRequest,
     ) -> rds_20140815_models.CreateDiagnosticReportResponse:
         """
-        > This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
+        >  This operation is no longer maintained. You can use the CreateDiagnosticReport operation of Database Autonomy Service (DAS) to create a diagnostic report.
         After you call this operation to create a diagnostic report, you can call the DescribeDiagnosticReportList operation to download the diagnostic report.
         
         @param request: CreateDiagnosticReportRequest
@@ -5126,9 +5248,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateGadInstanceMemberResponse:
         """
-        ## [](#)Prerequisites
-        An ApsaraDB RDS global active database cluster is created. You can call the [CreateGADInstance](~~336893~~) operation to create a global active database cluster.
-        For more information, see [Add unit nodes to or move unit nodes from an ApsaraDB RDS global active database cluster](~~331851~~).
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Add or remove unit nodes](~~331851~~)
         
         @param request: CreateGadInstanceMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5175,9 +5299,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.CreateGadInstanceMemberResponse:
         """
-        ## [](#)Prerequisites
-        An ApsaraDB RDS global active database cluster is created. You can call the [CreateGADInstance](~~336893~~) operation to create a global active database cluster.
-        For more information, see [Add unit nodes to or move unit nodes from an ApsaraDB RDS global active database cluster](~~331851~~).
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Add or remove unit nodes](~~331851~~)
         
         @param request: CreateGadInstanceMemberRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5223,9 +5349,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateGadInstanceMemberRequest,
     ) -> rds_20140815_models.CreateGadInstanceMemberResponse:
         """
-        ## [](#)Prerequisites
-        An ApsaraDB RDS global active database cluster is created. You can call the [CreateGADInstance](~~336893~~) operation to create a global active database cluster.
-        For more information, see [Add unit nodes to or move unit nodes from an ApsaraDB RDS global active database cluster](~~331851~~).
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Add or remove unit nodes](~~331851~~)
         
         @param request: CreateGadInstanceMemberRequest
         @return: CreateGadInstanceMemberResponse
@@ -5238,9 +5366,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.CreateGadInstanceMemberRequest,
     ) -> rds_20140815_models.CreateGadInstanceMemberResponse:
         """
-        ## [](#)Prerequisites
-        An ApsaraDB RDS global active database cluster is created. You can call the [CreateGADInstance](~~336893~~) operation to create a global active database cluster.
-        For more information, see [Add unit nodes to or move unit nodes from an ApsaraDB RDS global active database cluster](~~331851~~).
+        ### [](#)Supported database engines
+        *   RDS MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Add or remove unit nodes](~~331851~~)
         
         @param request: CreateGadInstanceMemberRequest
         @return: CreateGadInstanceMemberResponse
@@ -6114,6 +6244,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.risk_confirmed):
+            query['RiskConfirmed'] = request.risk_confirmed
         if not UtilClient.is_unset(request.source_database):
             query['SourceDatabase'] = request.source_database
         req = open_api_models.OpenApiRequest(
@@ -6177,6 +6309,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.risk_confirmed):
+            query['RiskConfirmed'] = request.risk_confirmed
         if not UtilClient.is_unset(request.source_database):
             query['SourceDatabase'] = request.source_database
         req = open_api_models.OpenApiRequest(
@@ -6784,13 +6918,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         Your RDS instance runs SQL Server 2008 R2 with local disks.
-        ### [](#)Description
-        You can create a temporary instance based on a backup set or a point in time within the past seven days. Before you call this operation, make sure that the following requirements are met:
-        *   Your instance runs SQL Server 2008 R2 with local disks.
-        *   Your instance is in the Running state.
-        *   Your instance does not have ongoing migration tasks.
-        *   The last creation of a backup file is complete.
-        >  After a temporary instance is created, the temporary instance inherits the accounts and databases in the backup set.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance by using a temporary RDS instance](~~95724~~)
         
         @param request: CreateTempDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6841,13 +6971,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         Your RDS instance runs SQL Server 2008 R2 with local disks.
-        ### [](#)Description
-        You can create a temporary instance based on a backup set or a point in time within the past seven days. Before you call this operation, make sure that the following requirements are met:
-        *   Your instance runs SQL Server 2008 R2 with local disks.
-        *   Your instance is in the Running state.
-        *   Your instance does not have ongoing migration tasks.
-        *   The last creation of a backup file is complete.
-        >  After a temporary instance is created, the temporary instance inherits the accounts and databases in the backup set.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance by using a temporary RDS instance](~~95724~~)
         
         @param request: CreateTempDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6897,13 +7023,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         Your RDS instance runs SQL Server 2008 R2 with local disks.
-        ### [](#)Description
-        You can create a temporary instance based on a backup set or a point in time within the past seven days. Before you call this operation, make sure that the following requirements are met:
-        *   Your instance runs SQL Server 2008 R2 with local disks.
-        *   Your instance is in the Running state.
-        *   Your instance does not have ongoing migration tasks.
-        *   The last creation of a backup file is complete.
-        >  After a temporary instance is created, the temporary instance inherits the accounts and databases in the backup set.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance by using a temporary RDS instance](~~95724~~)
         
         @param request: CreateTempDBInstanceRequest
         @return: CreateTempDBInstanceResponse
@@ -6918,13 +7040,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         Your RDS instance runs SQL Server 2008 R2 with local disks.
-        ### [](#)Description
-        You can create a temporary instance based on a backup set or a point in time within the past seven days. Before you call this operation, make sure that the following requirements are met:
-        *   Your instance runs SQL Server 2008 R2 with local disks.
-        *   Your instance is in the Running state.
-        *   Your instance does not have ongoing migration tasks.
-        *   The last creation of a backup file is complete.
-        >  After a temporary instance is created, the temporary instance inherits the accounts and databases in the backup set.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance by using a temporary RDS instance](~~95724~~)
         
         @param request: CreateTempDBInstanceRequest
         @return: CreateTempDBInstanceResponse
@@ -7460,10 +7578,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteBackupFileResponse:
         """
-        ### Supported database engine
-        SQL Server
-        ### Usage notes
-        This operation is available for users whose accounts are added to the whitelist. If your account is not added to the whitelist, you can join the Database Backup (DBS) DingTalk group whose ID is 35585947 and contact the on-duty engineer to add your account to the whitelist.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        >  This operation is available only for users that are added to the whitelist.
         
         @param request: DeleteBackupFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7512,10 +7629,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteBackupFileResponse:
         """
-        ### Supported database engine
-        SQL Server
-        ### Usage notes
-        This operation is available for users whose accounts are added to the whitelist. If your account is not added to the whitelist, you can join the Database Backup (DBS) DingTalk group whose ID is 35585947 and contact the on-duty engineer to add your account to the whitelist.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        >  This operation is available only for users that are added to the whitelist.
         
         @param request: DeleteBackupFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7563,10 +7679,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteBackupFileRequest,
     ) -> rds_20140815_models.DeleteBackupFileResponse:
         """
-        ### Supported database engine
-        SQL Server
-        ### Usage notes
-        This operation is available for users whose accounts are added to the whitelist. If your account is not added to the whitelist, you can join the Database Backup (DBS) DingTalk group whose ID is 35585947 and contact the on-duty engineer to add your account to the whitelist.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        >  This operation is available only for users that are added to the whitelist.
         
         @param request: DeleteBackupFileRequest
         @return: DeleteBackupFileResponse
@@ -7579,10 +7694,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteBackupFileRequest,
     ) -> rds_20140815_models.DeleteBackupFileResponse:
         """
-        ### Supported database engine
-        SQL Server
-        ### Usage notes
-        This operation is available for users whose accounts are added to the whitelist. If your account is not added to the whitelist, you can join the Database Backup (DBS) DingTalk group whose ID is 35585947 and contact the on-duty engineer to add your account to the whitelist.
+        ### [](#)Supported database engines
+        RDS SQL Server
+        >  This operation is available only for users that are added to the whitelist.
         
         @param request: DeleteBackupFileRequest
         @return: DeleteBackupFileResponse
@@ -8559,8 +8673,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -8612,8 +8724,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -8664,8 +8774,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -8685,8 +8793,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -9094,11 +9200,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteUserBackupFileResponse:
         """
-        ### [](#)Supported database engines
+        ### [](#)Supported database engine
         *   MySQL
-        ### [](#)Description
+        ### [](#)Usage notes
         *   A full backup file contains the data of a self-managed MySQL instance. You can restore the data of a self-managed MySQL instance from a full backup file to an ApsaraDB RDS for MySQL instance. For more information, see [Migrate the data of a self-managed MySQL 5.7 instance to the cloud](~~251779~~).
-        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the [ImportUserBackupFile](~~260266~~) operation to import the full backup file again.
+        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the ImportUserBackupFile operation to reimport the full backup file.
         
         @param request: DeleteUserBackupFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9143,11 +9249,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DeleteUserBackupFileResponse:
         """
-        ### [](#)Supported database engines
+        ### [](#)Supported database engine
         *   MySQL
-        ### [](#)Description
+        ### [](#)Usage notes
         *   A full backup file contains the data of a self-managed MySQL instance. You can restore the data of a self-managed MySQL instance from a full backup file to an ApsaraDB RDS for MySQL instance. For more information, see [Migrate the data of a self-managed MySQL 5.7 instance to the cloud](~~251779~~).
-        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the [ImportUserBackupFile](~~260266~~) operation to import the full backup file again.
+        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the ImportUserBackupFile operation to reimport the full backup file.
         
         @param request: DeleteUserBackupFileRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9191,11 +9297,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteUserBackupFileRequest,
     ) -> rds_20140815_models.DeleteUserBackupFileResponse:
         """
-        ### [](#)Supported database engines
+        ### [](#)Supported database engine
         *   MySQL
-        ### [](#)Description
+        ### [](#)Usage notes
         *   A full backup file contains the data of a self-managed MySQL instance. You can restore the data of a self-managed MySQL instance from a full backup file to an ApsaraDB RDS for MySQL instance. For more information, see [Migrate the data of a self-managed MySQL 5.7 instance to the cloud](~~251779~~).
-        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the [ImportUserBackupFile](~~260266~~) operation to import the full backup file again.
+        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the ImportUserBackupFile operation to reimport the full backup file.
         
         @param request: DeleteUserBackupFileRequest
         @return: DeleteUserBackupFileResponse
@@ -9208,11 +9314,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DeleteUserBackupFileRequest,
     ) -> rds_20140815_models.DeleteUserBackupFileResponse:
         """
-        ### [](#)Supported database engines
+        ### [](#)Supported database engine
         *   MySQL
-        ### [](#)Description
+        ### [](#)Usage notes
         *   A full backup file contains the data of a self-managed MySQL instance. You can restore the data of a self-managed MySQL instance from a full backup file to an ApsaraDB RDS for MySQL instance. For more information, see [Migrate the data of a self-managed MySQL 5.7 instance to the cloud](~~251779~~).
-        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the [ImportUserBackupFile](~~260266~~) operation to import the full backup file again.
+        *   This operation deletes full backup files only from the ApsaraDB RDS console. This operation does not affect the full backup files that are stored as objects in Object Storage Service (OSS) buckets. After you call this operation to delete a full backup file, you can call the ImportUserBackupFile operation to reimport the full backup file.
         
         @param request: DeleteUserBackupFileRequest
         @return: DeleteUserBackupFileResponse
@@ -11725,6 +11831,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeClassDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeClassDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClassDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.class_code):
@@ -11771,6 +11888,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeClassDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeClassDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeClassDetailsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.class_code):
@@ -11816,6 +11944,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeClassDetailsRequest,
     ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeClassDetailsRequest
+        @return: DescribeClassDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_class_details_with_options(request, runtime)
 
@@ -11823,6 +11961,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeClassDetailsRequest,
     ) -> rds_20140815_models.DescribeClassDetailsResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeClassDetailsRequest
+        @return: DescribeClassDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_class_details_with_options_async(request, runtime)
 
@@ -12657,7 +12805,8 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
-        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
         >  For more information about how to query cross-region data backup files, see [DescribeCrossRegionBackups](~~121733~~).
@@ -12718,7 +12867,8 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
-        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
         >  For more information about how to query cross-region data backup files, see [DescribeCrossRegionBackups](~~121733~~).
@@ -12778,7 +12928,8 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
-        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
         >  For more information about how to query cross-region data backup files, see [DescribeCrossRegionBackups](~~121733~~).
@@ -12799,7 +12950,8 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
-        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
         >  For more information about how to query cross-region data backup files, see [DescribeCrossRegionBackups](~~121733~~).
@@ -14868,7 +15020,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstanceProxyConfigurationResponse:
         """
-        This operation is used to query the original settings of shared proxies rather than the latest settings of dedicated proxies. For more information about how to query the settings of dedicated proxies, see [DescribeDBProxy](~~141055~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
+        This operation is used to query the shared proxy settings of an instance that runs MySQL or the read/write splitting settings of an instance that runs SQL Server. For more information about how to query the dedicated proxy settings of an ApsaraDB RDS for MySQL instance, see [DescribeDBProxy](~~610506~~).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         *   The shared proxy feature must be enabled for the primary instance.
         *   The read/write splitting feature must be enabled for the primary instance.
@@ -14912,7 +15069,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBInstanceProxyConfigurationResponse:
         """
-        This operation is used to query the original settings of shared proxies rather than the latest settings of dedicated proxies. For more information about how to query the settings of dedicated proxies, see [DescribeDBProxy](~~141055~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
+        This operation is used to query the shared proxy settings of an instance that runs MySQL or the read/write splitting settings of an instance that runs SQL Server. For more information about how to query the dedicated proxy settings of an ApsaraDB RDS for MySQL instance, see [DescribeDBProxy](~~610506~~).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         *   The shared proxy feature must be enabled for the primary instance.
         *   The read/write splitting feature must be enabled for the primary instance.
@@ -14955,7 +15117,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstanceProxyConfigurationRequest,
     ) -> rds_20140815_models.DescribeDBInstanceProxyConfigurationResponse:
         """
-        This operation is used to query the original settings of shared proxies rather than the latest settings of dedicated proxies. For more information about how to query the settings of dedicated proxies, see [DescribeDBProxy](~~141055~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
+        This operation is used to query the shared proxy settings of an instance that runs MySQL or the read/write splitting settings of an instance that runs SQL Server. For more information about how to query the dedicated proxy settings of an ApsaraDB RDS for MySQL instance, see [DescribeDBProxy](~~610506~~).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         *   The shared proxy feature must be enabled for the primary instance.
         *   The read/write splitting feature must be enabled for the primary instance.
@@ -14971,7 +15138,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBInstanceProxyConfigurationRequest,
     ) -> rds_20140815_models.DescribeDBInstanceProxyConfigurationResponse:
         """
-        This operation is used to query the original settings of shared proxies rather than the latest settings of dedicated proxies. For more information about how to query the settings of dedicated proxies, see [DescribeDBProxy](~~141055~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   SQL Server
+        ### [](#)Feature description
+        This operation is used to query the shared proxy settings of an instance that runs MySQL or the read/write splitting settings of an instance that runs SQL Server. For more information about how to query the dedicated proxy settings of an ApsaraDB RDS for MySQL instance, see [DescribeDBProxy](~~610506~~).
+        ### [](#)Prerequisites
         Before you call this operation, make sure that the following requirements are met:
         *   The shared proxy feature must be enabled for the primary instance.
         *   The read/write splitting feature must be enabled for the primary instance.
@@ -16116,6 +16288,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)Usage notes
         Before you purchase or upgrade an instance that runs MySQL or PostgreSQL, you can call the DescribeDBMiniEngineVersions operation to query the minor engine versions that are available for the instance.
         
         @param request: DescribeDBMiniEngineVersionsRequest
@@ -16167,6 +16343,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)Usage notes
         Before you purchase or upgrade an instance that runs MySQL or PostgreSQL, you can call the DescribeDBMiniEngineVersions operation to query the minor engine versions that are available for the instance.
         
         @param request: DescribeDBMiniEngineVersionsRequest
@@ -16217,6 +16397,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBMiniEngineVersionsRequest,
     ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)Usage notes
         Before you purchase or upgrade an instance that runs MySQL or PostgreSQL, you can call the DescribeDBMiniEngineVersions operation to query the minor engine versions that are available for the instance.
         
         @param request: DescribeDBMiniEngineVersionsRequest
@@ -16230,6 +16414,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeDBMiniEngineVersionsRequest,
     ) -> rds_20140815_models.DescribeDBMiniEngineVersionsResponse:
         """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)Usage notes
         Before you purchase or upgrade an instance that runs MySQL or PostgreSQL, you can call the DescribeDBMiniEngineVersions operation to query the minor engine versions that are available for the instance.
         
         @param request: DescribeDBMiniEngineVersionsRequest
@@ -18154,6 +18342,222 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_haswitch_config_with_options_async(request, runtime)
 
+    def describe_history_events_with_options(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_status):
+            query['EventStatus'] = request.event_status
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEvents',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryEventsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not UtilClient.is_unset(request.event_status):
+            query['EventStatus'] = request.event_status
+        if not UtilClient.is_unset(request.event_type):
+            query['EventType'] = request.event_type
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEvents',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsRequest,
+    ) -> rds_20140815_models.DescribeHistoryEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_events_with_options(request, runtime)
+
+    async def describe_history_events_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsRequest,
+    ) -> rds_20140815_models.DescribeHistoryEventsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_events_with_options_async(request, runtime)
+
+    def describe_history_events_stat_with_options(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEventsStat',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryEventsStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_stat_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryEventsStat',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryEventsStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events_stat(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsStatRequest,
+    ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_events_stat_with_options(request, runtime)
+
+    async def describe_history_events_stat_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryEventsStatRequest,
+    ) -> rds_20140815_models.DescribeHistoryEventsStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_events_stat_with_options_async(request, runtime)
+
     def describe_history_tasks_with_options(
         self,
         request: rds_20140815_models.DescribeHistoryTasksRequest,
@@ -18346,6 +18750,128 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_history_tasks_with_options_async(request, runtime)
 
+    def describe_history_tasks_stat_with_options(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryTasksStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_tasks_stat_with_options_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.from_exec_time):
+            query['FromExecTime'] = request.from_exec_time
+        if not UtilClient.is_unset(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_type):
+            query['TaskType'] = request.task_type
+        if not UtilClient.is_unset(request.to_exec_time):
+            query['ToExecTime'] = request.to_exec_time
+        if not UtilClient.is_unset(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHistoryTasksStat',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.DescribeHistoryTasksStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_tasks_stat(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_history_tasks_stat_with_options(request, runtime)
+
+    async def describe_history_tasks_stat_async(
+        self,
+        request: rds_20140815_models.DescribeHistoryTasksStatRequest,
+    ) -> rds_20140815_models.DescribeHistoryTasksStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_history_tasks_stat_with_options_async(request, runtime)
+
     def describe_host_group_elastic_strategy_parameters_with_options(
         self,
         request: rds_20140815_models.DescribeHostGroupElasticStrategyParametersRequest,
@@ -18434,15 +18960,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHostWebShellResponse:
         """
-        >  This operation is available only for instances that run SQL Server. If you require this operation, contact *Alibaba Cloud technical support**.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is available only for ApsaraDB RDS for SQL Server instances and specific users. If you want to call this operation, contact **Alibaba Cloud technical support**.
         ### [](#)Prerequisites
-        The instance meets the following requirements:
+        *   The instance meets the following requirements:
         *   The instance resides in a region other than the China (Zhangjiakou) region.
         *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
         *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
         *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
-        Your **Alibaba Cloud account** is used for logons.
+        *   Your **Alibaba Cloud account** is used for logons.
         
         @param request: DescribeHostWebShellRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18491,15 +19020,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeHostWebShellResponse:
         """
-        >  This operation is available only for instances that run SQL Server. If you require this operation, contact *Alibaba Cloud technical support**.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is available only for ApsaraDB RDS for SQL Server instances and specific users. If you want to call this operation, contact **Alibaba Cloud technical support**.
         ### [](#)Prerequisites
-        The instance meets the following requirements:
+        *   The instance meets the following requirements:
         *   The instance resides in a region other than the China (Zhangjiakou) region.
         *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
         *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
         *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
-        Your **Alibaba Cloud account** is used for logons.
+        *   Your **Alibaba Cloud account** is used for logons.
         
         @param request: DescribeHostWebShellRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18547,15 +19079,18 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHostWebShellRequest,
     ) -> rds_20140815_models.DescribeHostWebShellResponse:
         """
-        >  This operation is available only for instances that run SQL Server. If you require this operation, contact *Alibaba Cloud technical support**.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is available only for ApsaraDB RDS for SQL Server instances and specific users. If you want to call this operation, contact **Alibaba Cloud technical support**.
         ### [](#)Prerequisites
-        The instance meets the following requirements:
+        *   The instance meets the following requirements:
         *   The instance resides in a region other than the China (Zhangjiakou) region.
         *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
         *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
         *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
-        Your **Alibaba Cloud account** is used for logons.
+        *   Your **Alibaba Cloud account** is used for logons.
         
         @param request: DescribeHostWebShellRequest
         @return: DescribeHostWebShellResponse
@@ -18568,15 +19103,18 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeHostWebShellRequest,
     ) -> rds_20140815_models.DescribeHostWebShellResponse:
         """
-        >  This operation is available only for instances that run SQL Server. If you require this operation, contact *Alibaba Cloud technical support**.
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
+        This operation is available only for ApsaraDB RDS for SQL Server instances and specific users. If you want to call this operation, contact **Alibaba Cloud technical support**.
         ### [](#)Prerequisites
-        The instance meets the following requirements:
+        *   The instance meets the following requirements:
         *   The instance resides in a region other than the China (Zhangjiakou) region.
         *   The instance runs RDS Basic Edition, RDS Cluster Edition, or RDS High-availability Edition. If your instance runs RDS High-availability Edition, make sure that the instance runs SQL Server 2012 or later.
         *   The instance belongs to the general-purpose or dedicated instance family. The shared instance family is not supported.
         *   The instance resides in a virtual private cloud (VPC). For more information about how to change the network type of an RDS instance, see [Change the network type](~~95707~~).
         *   If the instance runs RDS High-availability Edition or RDS Cluster Edition, the instance is created on or after January 1, 2021. If the instance runs RDS Basic Edition, the instance is created on or after September 02, 2022. You can view the **Creation Time** parameter of an instance in the **Status** section of the **Basic Information** page in the ApsaraDB RDS console.
-        Your **Alibaba Cloud account** is used for logons.
+        *   Your **Alibaba Cloud account** is used for logons.
         
         @param request: DescribeHostWebShellRequest
         @return: DescribeHostWebShellResponse
@@ -19734,8 +20272,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeMigrateTasksResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
         This operation allows you to query the migration tasks that are created for the instance over the last week.
-        >
+        ### [](#)Precautions
         *   This operation is supported only for migration tasks that are created to migrate full backup files.
         *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
@@ -19788,8 +20329,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeMigrateTasksResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
         This operation allows you to query the migration tasks that are created for the instance over the last week.
-        >
+        ### [](#)Precautions
         *   This operation is supported only for migration tasks that are created to migrate full backup files.
         *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
@@ -19841,8 +20385,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeMigrateTasksRequest,
     ) -> rds_20140815_models.DescribeMigrateTasksResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
         This operation allows you to query the migration tasks that are created for the instance over the last week.
-        >
+        ### [](#)Precautions
         *   This operation is supported only for migration tasks that are created to migrate full backup files.
         *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
@@ -19857,8 +20404,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeMigrateTasksRequest,
     ) -> rds_20140815_models.DescribeMigrateTasksResponse:
         """
+        ### [](#)Supported database engine
+        *   SQL Server
+        ### [](#)Usage notes
         This operation allows you to query the migration tasks that are created for the instance over the last week.
-        >
+        ### [](#)Precautions
         *   This operation is supported only for migration tasks that are created to migrate full backup files.
         *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
         
@@ -20541,8 +21091,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -20592,8 +21140,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -20642,8 +21188,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -20663,8 +21207,6 @@ class Client(OpenApiClient):
         ### [](#)Supported database engines
         *   MySQL
         *   PostgreSQL
-        *   SQL Server
-        *   MariaDB
         ### [](#)References
         > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use a parameter template to configure the parameters of ApsaraDB RDS for MySQL instances](~~130565~~)
@@ -21500,9 +22042,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeReadDBInstanceDelayResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The primary instance must run the MySQL or PostgreSQL database engine.
-        *   The primary instance must be attached with a read-only instance.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
         
         @param request: DescribeReadDBInstanceDelayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21551,9 +22093,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeReadDBInstanceDelayResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The primary instance must run the MySQL or PostgreSQL database engine.
-        *   The primary instance must be attached with a read-only instance.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
         
         @param request: DescribeReadDBInstanceDelayRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21601,9 +22143,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeReadDBInstanceDelayRequest,
     ) -> rds_20140815_models.DescribeReadDBInstanceDelayResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The primary instance must run the MySQL or PostgreSQL database engine.
-        *   The primary instance must be attached with a read-only instance.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
         
         @param request: DescribeReadDBInstanceDelayRequest
         @return: DescribeReadDBInstanceDelayResponse
@@ -21616,9 +22158,9 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeReadDBInstanceDelayRequest,
     ) -> rds_20140815_models.DescribeReadDBInstanceDelayResponse:
         """
-        Before you call this operation, make sure that the following requirements are met:
-        *   The primary instance must run the MySQL or PostgreSQL database engine.
-        *   The primary instance must be attached with a read-only instance.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
         
         @param request: DescribeReadDBInstanceDelayRequest
         @return: DescribeReadDBInstanceDelayResponse
@@ -22390,8 +22932,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLCollectorRetentionResponse:
         """
-        The SQL explorer feature must be enabled for the instance.
-        The instance must run MySQL. For more information, see [SQL Explorer](~~96123~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
         
         @param request: DescribeSQLCollectorRetentionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22438,8 +22982,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLCollectorRetentionResponse:
         """
-        The SQL explorer feature must be enabled for the instance.
-        The instance must run MySQL. For more information, see [SQL Explorer](~~96123~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
         
         @param request: DescribeSQLCollectorRetentionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22485,8 +23031,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLCollectorRetentionRequest,
     ) -> rds_20140815_models.DescribeSQLCollectorRetentionResponse:
         """
-        The SQL explorer feature must be enabled for the instance.
-        The instance must run MySQL. For more information, see [SQL Explorer](~~96123~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
         
         @param request: DescribeSQLCollectorRetentionRequest
         @return: DescribeSQLCollectorRetentionResponse
@@ -22499,8 +23047,10 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLCollectorRetentionRequest,
     ) -> rds_20140815_models.DescribeSQLCollectorRetentionResponse:
         """
-        The SQL explorer feature must be enabled for the instance.
-        The instance must run MySQL. For more information, see [SQL Explorer](~~96123~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
         
         @param request: DescribeSQLCollectorRetentionRequest
         @return: DescribeSQLCollectorRetentionResponse
@@ -22514,13 +23064,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLLogFilesResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server 2008 R2
         *   PostgreSQL
-        >
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
+        *   SQL Server
+        **\
+        **Note** Only SQL Server 2008 R2 is supported.
+        ### [](#)Precautions
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
         
         @param request: DescribeSQLLogFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22569,13 +23121,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLLogFilesResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server 2008 R2
         *   PostgreSQL
-        >
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
+        *   SQL Server
+        **\
+        **Note** Only SQL Server 2008 R2 is supported.
+        ### [](#)Precautions
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
         
         @param request: DescribeSQLLogFilesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -22623,13 +23177,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLLogFilesRequest,
     ) -> rds_20140815_models.DescribeSQLLogFilesResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server 2008 R2
         *   PostgreSQL
-        >
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
+        *   SQL Server
+        **\
+        **Note** Only SQL Server 2008 R2 is supported.
+        ### [](#)Precautions
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
         
         @param request: DescribeSQLLogFilesRequest
         @return: DescribeSQLLogFilesResponse
@@ -22642,13 +23198,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLLogFilesRequest,
     ) -> rds_20140815_models.DescribeSQLLogFilesResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server 2008 R2
         *   PostgreSQL
-        >
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
-        *   The DescribeSQLLogFiles operation cannot be called to query the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation can be called to query the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
+        *   SQL Server
+        **\
+        **Note** Only SQL Server 2008 R2 is supported.
+        ### [](#)Precautions
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
+        *   The DescribeSQLLogFiles operation does not return the log files that are generated by the SQL Explorer feature and manually exported from the ApsaraDB RDS console. The DescribeSQLLogFiles operation returns the SQL Explorer log files that are generated by calling the [DescribeSQLLogRecords](~~610533~~) operation with the request parameter **Form** set to **File**.
         
         @param request: DescribeSQLLogFilesRequest
         @return: DescribeSQLLogFilesResponse
@@ -22662,11 +23220,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLLogRecordsResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server
         *   PostgreSQL
-        >
+        *   SQL Server
+        ### [Usage notes](#)
         *   You can call this operation up to 1,000 times per minute per account. The calls initiated by using both your Alibaba Cloud account and RAM users within your Alibaba Cloud account are counted.
         *   This operation cannot be used to query the logs that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, a maximum of 1 million log entries can be recorded in the audit file, and you cannot filter log entries by keyword.
@@ -22732,11 +23290,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLLogRecordsResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server
         *   PostgreSQL
-        >
+        *   SQL Server
+        ### [Usage notes](#)
         *   You can call this operation up to 1,000 times per minute per account. The calls initiated by using both your Alibaba Cloud account and RAM users within your Alibaba Cloud account are counted.
         *   This operation cannot be used to query the logs that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, a maximum of 1 million log entries can be recorded in the audit file, and you cannot filter log entries by keyword.
@@ -22801,11 +23359,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLLogRecordsRequest,
     ) -> rds_20140815_models.DescribeSQLLogRecordsResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server
         *   PostgreSQL
-        >
+        *   SQL Server
+        ### [Usage notes](#)
         *   You can call this operation up to 1,000 times per minute per account. The calls initiated by using both your Alibaba Cloud account and RAM users within your Alibaba Cloud account are counted.
         *   This operation cannot be used to query the logs that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, a maximum of 1 million log entries can be recorded in the audit file, and you cannot filter log entries by keyword.
@@ -22821,11 +23379,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLLogRecordsRequest,
     ) -> rds_20140815_models.DescribeSQLLogRecordsResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
+        ### [](#)Supported database engines
         *   MySQL
-        *   SQL Server
         *   PostgreSQL
-        >
+        *   SQL Server
+        ### [Usage notes](#)
         *   You can call this operation up to 1,000 times per minute per account. The calls initiated by using both your Alibaba Cloud account and RAM users within your Alibaba Cloud account are counted.
         *   This operation cannot be used to query the logs that are generated by SQL Explorer Trial Edition for an ApsaraDB RDS for MySQL instance.
         *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, a maximum of 1 million log entries can be recorded in the audit file, and you cannot filter log entries by keyword.
@@ -22841,6 +23399,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLLogReportListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLLogReportListResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeSQLLogReportListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLLogReportListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -22885,6 +23454,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSQLLogReportListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSQLLogReportListResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeSQLLogReportListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLLogReportListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -22928,6 +23508,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeSQLLogReportListRequest,
     ) -> rds_20140815_models.DescribeSQLLogReportListResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeSQLLogReportListRequest
+        @return: DescribeSQLLogReportListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sqllog_report_list_with_options(request, runtime)
 
@@ -22935,6 +23525,16 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.DescribeSQLLogReportListRequest,
     ) -> rds_20140815_models.DescribeSQLLogReportListResponse:
+        """
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        
+        @param request: DescribeSQLLogReportListRequest
+        @return: DescribeSQLLogReportListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqllog_report_list_with_options_async(request, runtime)
 
@@ -23084,7 +23684,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23125,7 +23733,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23165,7 +23781,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSecurityGroupConfigurationRequest,
     ) -> rds_20140815_models.DescribeSecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @return: DescribeSecurityGroupConfigurationResponse
@@ -23178,7 +23802,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSecurityGroupConfigurationRequest,
     ) -> rds_20140815_models.DescribeSecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: DescribeSecurityGroupConfigurationRequest
         @return: DescribeSecurityGroupConfigurationResponse
@@ -23480,16 +24112,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSlowLogsResponse:
         """
-        ### Supported database engines
+        ### [](#)Supported database engines
         *   MySQL
         **\
-        **Note**MySQL 5.7 on RDS Basic Edition is not supported.
+        **Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         *   SQL Server
         **\
-        **Note**Only SQL Server 2008 R2 is supported.
+        **Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         *   MariaDB
-        ### Usage notes
-        Slow query logs are not collected in real time and may show a latency of 6 hours to 8 hours.
+        ### [](#)Precautions
+        *   Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
+        *   If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
         
         @param request: DescribeSlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23544,16 +24177,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeSlowLogsResponse:
         """
-        ### Supported database engines
+        ### [](#)Supported database engines
         *   MySQL
         **\
-        **Note**MySQL 5.7 on RDS Basic Edition is not supported.
+        **Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         *   SQL Server
         **\
-        **Note**Only SQL Server 2008 R2 is supported.
+        **Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         *   MariaDB
-        ### Usage notes
-        Slow query logs are not collected in real time and may show a latency of 6 hours to 8 hours.
+        ### [](#)Precautions
+        *   Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
+        *   If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
         
         @param request: DescribeSlowLogsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -23607,16 +24241,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSlowLogsRequest,
     ) -> rds_20140815_models.DescribeSlowLogsResponse:
         """
-        ### Supported database engines
+        ### [](#)Supported database engines
         *   MySQL
         **\
-        **Note**MySQL 5.7 on RDS Basic Edition is not supported.
+        **Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         *   SQL Server
         **\
-        **Note**Only SQL Server 2008 R2 is supported.
+        **Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         *   MariaDB
-        ### Usage notes
-        Slow query logs are not collected in real time and may show a latency of 6 hours to 8 hours.
+        ### [](#)Precautions
+        *   Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
+        *   If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
         
         @param request: DescribeSlowLogsRequest
         @return: DescribeSlowLogsResponse
@@ -23629,16 +24264,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeSlowLogsRequest,
     ) -> rds_20140815_models.DescribeSlowLogsResponse:
         """
-        ### Supported database engines
+        ### [](#)Supported database engines
         *   MySQL
         **\
-        **Note**MySQL 5.7 on RDS Basic Edition is not supported.
+        **Note** This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
         *   SQL Server
         **\
-        **Note**Only SQL Server 2008 R2 is supported.
+        **Note** This operation is supported only for RDS instances that run SQL Server 2008 R2.
         *   MariaDB
-        ### Usage notes
-        Slow query logs are not collected in real time and may show a latency of 6 hours to 8 hours.
+        ### [](#)Precautions
+        *   Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
+        *   If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
         
         @param request: DescribeSlowLogsRequest
         @return: DescribeSlowLogsResponse
@@ -24052,8 +24688,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        Before you upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance, you must perform an upgrade check and make sure that the check result is *Success**. You can call this operation to query the upgrade check report.
-        If the check result is **Fail**, you must handle the errors that occurred. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/introduction-to-the-check-report-of-a-major-engine-version-upgrade-for-an-apsaradb-rds-for-postgresql-instance).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~)
+        *   [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](~~218391~~)
         
         @param request: DescribeUpgradeMajorVersionPrecheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24104,8 +24744,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        Before you upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance, you must perform an upgrade check and make sure that the check result is *Success**. You can call this operation to query the upgrade check report.
-        If the check result is **Fail**, you must handle the errors that occurred. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/introduction-to-the-check-report-of-a-major-engine-version-upgrade-for-an-apsaradb-rds-for-postgresql-instance).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~)
+        *   [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](~~218391~~)
         
         @param request: DescribeUpgradeMajorVersionPrecheckTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -24155,8 +24799,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskRequest,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        Before you upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance, you must perform an upgrade check and make sure that the check result is *Success**. You can call this operation to query the upgrade check report.
-        If the check result is **Fail**, you must handle the errors that occurred. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/introduction-to-the-check-report-of-a-major-engine-version-upgrade-for-an-apsaradb-rds-for-postgresql-instance).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~)
+        *   [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](~~218391~~)
         
         @param request: DescribeUpgradeMajorVersionPrecheckTaskRequest
         @return: DescribeUpgradeMajorVersionPrecheckTaskResponse
@@ -24169,8 +24817,12 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskRequest,
     ) -> rds_20140815_models.DescribeUpgradeMajorVersionPrecheckTaskResponse:
         """
-        Before you upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance, you must perform an upgrade check and make sure that the check result is *Success**. You can call this operation to query the upgrade check report.
-        If the check result is **Fail**, you must handle the errors that occurred. For more information about how to handle common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/introduction-to-the-check-report-of-a-major-engine-version-upgrade-for-an-apsaradb-rds-for-postgresql-instance).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~)
+        *   [Introduction to the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance](~~218391~~)
         
         @param request: DescribeUpgradeMajorVersionPrecheckTaskRequest
         @return: DescribeUpgradeMajorVersionPrecheckTaskResponse
@@ -26442,7 +27094,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.LockAccountResponse:
         """
-        You cannot use a locked account to log on to the corresponding instance. You must first unlock the account. For more information, see [Lock and delete an account](~~147649~~).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Lock an account of an ApsaraDB RDS for PostgreSQL instance](~~147649~~)
         
         @param request: LockAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26485,7 +27141,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.LockAccountResponse:
         """
-        You cannot use a locked account to log on to the corresponding instance. You must first unlock the account. For more information, see [Lock and delete an account](~~147649~~).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Lock an account of an ApsaraDB RDS for PostgreSQL instance](~~147649~~)
         
         @param request: LockAccountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26527,7 +27187,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.LockAccountRequest,
     ) -> rds_20140815_models.LockAccountResponse:
         """
-        You cannot use a locked account to log on to the corresponding instance. You must first unlock the account. For more information, see [Lock and delete an account](~~147649~~).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Lock an account of an ApsaraDB RDS for PostgreSQL instance](~~147649~~)
         
         @param request: LockAccountRequest
         @return: LockAccountResponse
@@ -26540,7 +27204,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.LockAccountRequest,
     ) -> rds_20140815_models.LockAccountResponse:
         """
-        You cannot use a locked account to log on to the corresponding instance. You must first unlock the account. For more information, see [Lock and delete an account](~~147649~~).
+        ### [](#)Supported database engines
+        PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Lock an account of an ApsaraDB RDS for PostgreSQL instance](~~147649~~)
         
         @param request: LockAccountRequest
         @return: LockAccountResponse
@@ -26838,11 +27506,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.MigrateSecurityIPModeResponse:
         """
-        In standard whitelist mode, IP addresses in the whitelist apply to both the classic network and VPCs. To minimize security risks, we recommend that you use the enhanced whitelist mode.
-        *   In enhanced whitelist mode, IP addresses in the whitelist are divided into VPC IP addresses and IP addresses of the classic network and Internet.
-        >
-        *   You cannot change the whitelist mode from the enhanced whitelist mode to the standard whitelist mode.
-        *   This operation is not supported for instances that run SQL Server and MariaDB.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Change the whitelist mode of an ApsaraDB RDS for MySQL instance to the enhanced whitelist mode](~~96117~~)
+        *   [Change the whitelist mode of an ApsaraDB RDS for PostgreSQL instance to the enhanced whitelist mode](~~96767~~)
         
         @param request: MigrateSecurityIPModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26883,11 +27553,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.MigrateSecurityIPModeResponse:
         """
-        In standard whitelist mode, IP addresses in the whitelist apply to both the classic network and VPCs. To minimize security risks, we recommend that you use the enhanced whitelist mode.
-        *   In enhanced whitelist mode, IP addresses in the whitelist are divided into VPC IP addresses and IP addresses of the classic network and Internet.
-        >
-        *   You cannot change the whitelist mode from the enhanced whitelist mode to the standard whitelist mode.
-        *   This operation is not supported for instances that run SQL Server and MariaDB.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Change the whitelist mode of an ApsaraDB RDS for MySQL instance to the enhanced whitelist mode](~~96117~~)
+        *   [Change the whitelist mode of an ApsaraDB RDS for PostgreSQL instance to the enhanced whitelist mode](~~96767~~)
         
         @param request: MigrateSecurityIPModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26927,11 +27599,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.MigrateSecurityIPModeRequest,
     ) -> rds_20140815_models.MigrateSecurityIPModeResponse:
         """
-        In standard whitelist mode, IP addresses in the whitelist apply to both the classic network and VPCs. To minimize security risks, we recommend that you use the enhanced whitelist mode.
-        *   In enhanced whitelist mode, IP addresses in the whitelist are divided into VPC IP addresses and IP addresses of the classic network and Internet.
-        >
-        *   You cannot change the whitelist mode from the enhanced whitelist mode to the standard whitelist mode.
-        *   This operation is not supported for instances that run SQL Server and MariaDB.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Change the whitelist mode of an ApsaraDB RDS for MySQL instance to the enhanced whitelist mode](~~96117~~)
+        *   [Change the whitelist mode of an ApsaraDB RDS for PostgreSQL instance to the enhanced whitelist mode](~~96767~~)
         
         @param request: MigrateSecurityIPModeRequest
         @return: MigrateSecurityIPModeResponse
@@ -26944,11 +27618,13 @@ class Client(OpenApiClient):
         request: rds_20140815_models.MigrateSecurityIPModeRequest,
     ) -> rds_20140815_models.MigrateSecurityIPModeResponse:
         """
-        In standard whitelist mode, IP addresses in the whitelist apply to both the classic network and VPCs. To minimize security risks, we recommend that you use the enhanced whitelist mode.
-        *   In enhanced whitelist mode, IP addresses in the whitelist are divided into VPC IP addresses and IP addresses of the classic network and Internet.
-        >
-        *   You cannot change the whitelist mode from the enhanced whitelist mode to the standard whitelist mode.
-        *   This operation is not supported for instances that run SQL Server and MariaDB.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Change the whitelist mode of an ApsaraDB RDS for MySQL instance to the enhanced whitelist mode](~~96117~~)
+        *   [Change the whitelist mode of an ApsaraDB RDS for PostgreSQL instance to the enhanced whitelist mode](~~96767~~)
         
         @param request: MigrateSecurityIPModeRequest
         @return: MigrateSecurityIPModeResponse
@@ -27434,7 +28110,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyActionEventPolicyResponse:
         """
-        The event history feature enables you to view historical events that occurred in a region over a specific time range. These events include instance creation and parameter reconfiguration. For more information, see [Event history](~~129759~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [View the event history of an ApsaraDB RDS for MySQL instance](~~129759~~)
+        *   [View the event history of an ApsaraDB RDS for PostgreSQL instance](~~131008~~)
+        *   [View the event history of an ApsaraDB RDS for SQL Server instance](~~131013~~)
+        *   [View the event history of an ApsaraDB RDS for MariaDB instance](~~131010~~)
         
         @param request: ModifyActionEventPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27477,7 +28163,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyActionEventPolicyResponse:
         """
-        The event history feature enables you to view historical events that occurred in a region over a specific time range. These events include instance creation and parameter reconfiguration. For more information, see [Event history](~~129759~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [View the event history of an ApsaraDB RDS for MySQL instance](~~129759~~)
+        *   [View the event history of an ApsaraDB RDS for PostgreSQL instance](~~131008~~)
+        *   [View the event history of an ApsaraDB RDS for SQL Server instance](~~131013~~)
+        *   [View the event history of an ApsaraDB RDS for MariaDB instance](~~131010~~)
         
         @param request: ModifyActionEventPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -27519,7 +28215,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyActionEventPolicyRequest,
     ) -> rds_20140815_models.ModifyActionEventPolicyResponse:
         """
-        The event history feature enables you to view historical events that occurred in a region over a specific time range. These events include instance creation and parameter reconfiguration. For more information, see [Event history](~~129759~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [View the event history of an ApsaraDB RDS for MySQL instance](~~129759~~)
+        *   [View the event history of an ApsaraDB RDS for PostgreSQL instance](~~131008~~)
+        *   [View the event history of an ApsaraDB RDS for SQL Server instance](~~131013~~)
+        *   [View the event history of an ApsaraDB RDS for MariaDB instance](~~131010~~)
         
         @param request: ModifyActionEventPolicyRequest
         @return: ModifyActionEventPolicyResponse
@@ -27532,7 +28238,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyActionEventPolicyRequest,
     ) -> rds_20140815_models.ModifyActionEventPolicyResponse:
         """
-        The event history feature enables you to view historical events that occurred in a region over a specific time range. These events include instance creation and parameter reconfiguration. For more information, see [Event history](~~129759~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [View the event history of an ApsaraDB RDS for MySQL instance](~~129759~~)
+        *   [View the event history of an ApsaraDB RDS for PostgreSQL instance](~~131008~~)
+        *   [View the event history of an ApsaraDB RDS for SQL Server instance](~~131013~~)
+        *   [View the event history of an ApsaraDB RDS for MariaDB instance](~~131010~~)
         
         @param request: ModifyActionEventPolicyRequest
         @return: ModifyActionEventPolicyResponse
@@ -31427,6 +32143,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.persistent_connection_status):
+            query['PersistentConnectionStatus'] = request.persistent_connection_status
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -31495,6 +32213,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.persistent_connection_status):
+            query['PersistentConnectionStatus'] = request.persistent_connection_status
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_group_id):
@@ -32052,8 +32772,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDTCSecurityIpHostsForSQLServerResponse:
         """
-        Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an RDS instance. For more information, see [Configure a distributed transaction whitelist](~~124321~~).
-        This operation is applicable to instances that run one of the following SQL Server versions in the RDS High-Availability Edition: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
+        ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Configure a distributed transaction whitelist](~~124321~~)
         
         @param request: ModifyDTCSecurityIpHostsForSQLServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32104,8 +32827,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyDTCSecurityIpHostsForSQLServerResponse:
         """
-        Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an RDS instance. For more information, see [Configure a distributed transaction whitelist](~~124321~~).
-        This operation is applicable to instances that run one of the following SQL Server versions in the RDS High-Availability Edition: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
+        ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Configure a distributed transaction whitelist](~~124321~~)
         
         @param request: ModifyDTCSecurityIpHostsForSQLServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32155,8 +32881,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyDTCSecurityIpHostsForSQLServerRequest,
     ) -> rds_20140815_models.ModifyDTCSecurityIpHostsForSQLServerResponse:
         """
-        Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an RDS instance. For more information, see [Configure a distributed transaction whitelist](~~124321~~).
-        This operation is applicable to instances that run one of the following SQL Server versions in the RDS High-Availability Edition: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
+        ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Configure a distributed transaction whitelist](~~124321~~)
         
         @param request: ModifyDTCSecurityIpHostsForSQLServerRequest
         @return: ModifyDTCSecurityIpHostsForSQLServerResponse
@@ -32169,8 +32898,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyDTCSecurityIpHostsForSQLServerRequest,
     ) -> rds_20140815_models.ModifyDTCSecurityIpHostsForSQLServerResponse:
         """
-        Distributed transaction whitelists allow for distributed transactions between an Elastic Compute Service (ECS) instance and an RDS instance. For more information, see [Configure a distributed transaction whitelist](~~124321~~).
-        This operation is applicable to instances that run one of the following SQL Server versions in the RDS High-Availability Edition: 2012 SE, 2012 EE, 2014 SE, 2016 SE, 2016 EE, and 2017 SE.
+        ### [](#)Supported database engine
+        SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Configure a distributed transaction whitelist](~~124321~~)
         
         @param request: ModifyDTCSecurityIpHostsForSQLServerRequest
         @return: ModifyDTCSecurityIpHostsForSQLServerResponse
@@ -32590,6 +33322,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_db_proxy_instance_ssl_with_options_async(request, runtime)
 
+    def modify_event_info_with_options(
+        self,
+        request: rds_20140815_models.ModifyEventInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyEventInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.event_action):
+            query['EventAction'] = request.event_action
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEventInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyEventInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_event_info_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyEventInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyEventInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.event_action):
+            query['EventAction'] = request.event_action
+        if not UtilClient.is_unset(request.event_id):
+            query['EventId'] = request.event_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyEventInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyEventInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_event_info(
+        self,
+        request: rds_20140815_models.ModifyEventInfoRequest,
+    ) -> rds_20140815_models.ModifyEventInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_event_info_with_options(request, runtime)
+
+    async def modify_event_info_async(
+        self,
+        request: rds_20140815_models.ModifyEventInfoRequest,
+    ) -> rds_20140815_models.ModifyEventInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_event_info_with_options_async(request, runtime)
+
     def modify_hadiagnose_config_with_options(
         self,
         request: rds_20140815_models.ModifyHADiagnoseConfigRequest,
@@ -32900,7 +33718,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        If you enable auto-renewal for your instance, you do not need to manually renew your subscription or be concerned about business interruptions caused by subscription expiration. For more information, see [Configure auto-renewal](~~96049~~).
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        ><notice>Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:></notice>
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MySQL instance](~~96049~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for PostgreSQL instance](~~96740~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for SQL Server instance](~~95635~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MariaDB instance](~~97121~~)
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -32951,7 +33779,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        If you enable auto-renewal for your instance, you do not need to manually renew your subscription or be concerned about business interruptions caused by subscription expiration. For more information, see [Configure auto-renewal](~~96049~~).
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        ><notice>Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:></notice>
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MySQL instance](~~96049~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for PostgreSQL instance](~~96740~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for SQL Server instance](~~95635~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MariaDB instance](~~97121~~)
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33001,7 +33839,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> rds_20140815_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        If you enable auto-renewal for your instance, you do not need to manually renew your subscription or be concerned about business interruptions caused by subscription expiration. For more information, see [Configure auto-renewal](~~96049~~).
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        ><notice>Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:></notice>
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MySQL instance](~~96049~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for PostgreSQL instance](~~96740~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for SQL Server instance](~~95635~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MariaDB instance](~~97121~~)
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @return: ModifyInstanceAutoRenewalAttributeResponse
@@ -33014,7 +33862,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyInstanceAutoRenewalAttributeRequest,
     ) -> rds_20140815_models.ModifyInstanceAutoRenewalAttributeResponse:
         """
-        If you enable auto-renewal for your instance, you do not need to manually renew your subscription or be concerned about business interruptions caused by subscription expiration. For more information, see [Configure auto-renewal](~~96049~~).
+        ### Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### References
+        ><notice>Fees are generated if the call is successful. Before you call this operation, carefully read the following topics:></notice>
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MySQL instance](~~96049~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for PostgreSQL instance](~~96740~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for SQL Server instance](~~95635~~)
+        *   [Use the auto-renewal feature for an ApsaraDB RDS for MariaDB instance](~~97121~~)
         
         @param request: ModifyInstanceAutoRenewalAttributeRequest
         @return: ModifyInstanceAutoRenewalAttributeResponse
@@ -33340,8 +34198,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyParameterResponse:
         """
-        You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance. For information about configurable parameters, see [Configure the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~).
-        > Before the system runs a parameter modification task, the system checks whether the parameters exist, whether they are configurable, and whether the new parameter values are valid.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~)
+        *   [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~)
+        *   [Modify the parameters of an ApsaraDB RDS for SQL Server instance](~~95667~~)
+        *   [Modify the parameters of an ApsaraDB RDS for MariaDB instance](~~97130~~)
         
         @param request: ModifyParameterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33396,8 +34263,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifyParameterResponse:
         """
-        You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance. For information about configurable parameters, see [Configure the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~).
-        > Before the system runs a parameter modification task, the system checks whether the parameters exist, whether they are configurable, and whether the new parameter values are valid.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~)
+        *   [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~)
+        *   [Modify the parameters of an ApsaraDB RDS for SQL Server instance](~~95667~~)
+        *   [Modify the parameters of an ApsaraDB RDS for MariaDB instance](~~97130~~)
         
         @param request: ModifyParameterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -33451,8 +34327,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyParameterRequest,
     ) -> rds_20140815_models.ModifyParameterResponse:
         """
-        You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance. For information about configurable parameters, see [Configure the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~).
-        > Before the system runs a parameter modification task, the system checks whether the parameters exist, whether they are configurable, and whether the new parameter values are valid.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~)
+        *   [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~)
+        *   [Modify the parameters of an ApsaraDB RDS for SQL Server instance](~~95667~~)
+        *   [Modify the parameters of an ApsaraDB RDS for MariaDB instance](~~97130~~)
         
         @param request: ModifyParameterRequest
         @return: ModifyParameterResponse
@@ -33465,8 +34350,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifyParameterRequest,
     ) -> rds_20140815_models.ModifyParameterResponse:
         """
-        You can modify the parameters directly or by using a parameter template. After you submit the parameter modification request, ApsaraDB RDS starts a task to apply the new parameter values to the instance. If a new parameter value takes effect only after the instance restarts, ApsaraDB RDS restarts the instance. For information about configurable parameters, see [Configure the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~).
-        > Before the system runs a parameter modification task, the system checks whether the parameters exist, whether they are configurable, and whether the new parameter values are valid.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~)
+        *   [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~)
+        *   [Modify the parameters of an ApsaraDB RDS for SQL Server instance](~~95667~~)
+        *   [Modify the parameters of an ApsaraDB RDS for MariaDB instance](~~97130~~)
         
         @param request: ModifyParameterRequest
         @return: ModifyParameterResponse
@@ -34388,7 +35282,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifySecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34431,7 +35333,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ModifySecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: ModifySecurityGroupConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -34473,7 +35383,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifySecurityGroupConfigurationRequest,
     ) -> rds_20140815_models.ModifySecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -34486,7 +35404,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ModifySecurityGroupConfigurationRequest,
     ) -> rds_20140815_models.ModifySecurityGroupConfigurationResponse:
         """
-        After an RDS instance is added to an ECS security group, all ECS instances in the security group can access the RDS instance. For more information, see [Configure a whitelist for an RDS instance](~~96118~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Configure a security group for an ApsaraDB RDS for MySQL instance](~~201042~~)
+        *   [Configure a security group for an ApsaraDB RDS for PostgreSQL instance](~~206310~~)
+        *   [Configure a security group for an ApsaraDB RDS for SQL Server instance](~~2392322~~)
         
         @param request: ModifySecurityGroupConfigurationRequest
         @return: ModifySecurityGroupConfigurationResponse
@@ -34661,6 +35587,104 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_task_info_with_options(
+        self,
+        request: rds_20140815_models.ModifyTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyTaskInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.step_name):
+            query['StepName'] = request.step_name
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTaskInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyTaskInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_task_info_with_options_async(
+        self,
+        request: rds_20140815_models.ModifyTaskInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rds_20140815_models.ModifyTaskInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_params):
+            query['ActionParams'] = request.action_params
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        if not UtilClient.is_unset(request.step_name):
+            query['StepName'] = request.step_name
+        if not UtilClient.is_unset(request.task_action):
+            query['TaskAction'] = request.task_action
+        if not UtilClient.is_unset(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyTaskInfo',
+            version='2014-08-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rds_20140815_models.ModifyTaskInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_task_info(
+        self,
+        request: rds_20140815_models.ModifyTaskInfoRequest,
+    ) -> rds_20140815_models.ModifyTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_task_info_with_options(request, runtime)
+
+    async def modify_task_info_async(
+        self,
+        request: rds_20140815_models.ModifyTaskInfoRequest,
+    ) -> rds_20140815_models.ModifyTaskInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_task_info_with_options_async(request, runtime)
 
     def modify_whitelist_template_with_options(
         self,
@@ -35678,11 +36702,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RecoveryDBInstanceResponse:
         """
-        You can call this operation to restore databases to a new instance or an existing instance. If you want to restore databases to an existing instance, we recommend that you call the [Copy databases](~~88810~~) operation.
-        If you want to restore databases to a new instance, you must create an instance and then restore specific or all databases to the new instance.
-        *   If you specify the name of a database, only the specified database is restored to the new instance.
-        *   If you do not specify the name of a database, all databases are restored to the new instance.
-        > This operation is supported only for instances that run SQL Server 2012 or later.
+        ### [](#)Supported database engines
+        SQL Server 2012 or later
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance](~~95722~~)
         
         @param request: RecoveryDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35747,11 +36771,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RecoveryDBInstanceResponse:
         """
-        You can call this operation to restore databases to a new instance or an existing instance. If you want to restore databases to an existing instance, we recommend that you call the [Copy databases](~~88810~~) operation.
-        If you want to restore databases to a new instance, you must create an instance and then restore specific or all databases to the new instance.
-        *   If you specify the name of a database, only the specified database is restored to the new instance.
-        *   If you do not specify the name of a database, all databases are restored to the new instance.
-        > This operation is supported only for instances that run SQL Server 2012 or later.
+        ### [](#)Supported database engines
+        SQL Server 2012 or later
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance](~~95722~~)
         
         @param request: RecoveryDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -35815,11 +36839,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RecoveryDBInstanceRequest,
     ) -> rds_20140815_models.RecoveryDBInstanceResponse:
         """
-        You can call this operation to restore databases to a new instance or an existing instance. If you want to restore databases to an existing instance, we recommend that you call the [Copy databases](~~88810~~) operation.
-        If you want to restore databases to a new instance, you must create an instance and then restore specific or all databases to the new instance.
-        *   If you specify the name of a database, only the specified database is restored to the new instance.
-        *   If you do not specify the name of a database, all databases are restored to the new instance.
-        > This operation is supported only for instances that run SQL Server 2012 or later.
+        ### [](#)Supported database engines
+        SQL Server 2012 or later
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance](~~95722~~)
         
         @param request: RecoveryDBInstanceRequest
         @return: RecoveryDBInstanceResponse
@@ -35832,11 +36856,11 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RecoveryDBInstanceRequest,
     ) -> rds_20140815_models.RecoveryDBInstanceResponse:
         """
-        You can call this operation to restore databases to a new instance or an existing instance. If you want to restore databases to an existing instance, we recommend that you call the [Copy databases](~~88810~~) operation.
-        If you want to restore databases to a new instance, you must create an instance and then restore specific or all databases to the new instance.
-        *   If you specify the name of a database, only the specified database is restored to the new instance.
-        *   If you do not specify the name of a database, all databases are restored to the new instance.
-        > This operation is supported only for instances that run SQL Server 2012 or later.
+        ### [](#)Supported database engines
+        SQL Server 2012 or later
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore the data of an ApsaraDB RDS for SQL Server instance](~~95722~~)
         
         @param request: RecoveryDBInstanceRequest
         @return: RecoveryDBInstanceResponse
@@ -36006,7 +37030,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ReleaseInstancePublicConnectionResponse:
         """
-        To ensure data security, you can release the public endpoint when you do not need to access the database from the Internet.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release the public endpoint of an ApsaraDB RDS for MySQL instance](~~26128~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for PostgreSQL instance](~~97738~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for SQL Server instance](~~97736~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for MariaDB instance](~~97740~~)
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36051,7 +37085,17 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.ReleaseInstancePublicConnectionResponse:
         """
-        To ensure data security, you can release the public endpoint when you do not need to access the database from the Internet.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release the public endpoint of an ApsaraDB RDS for MySQL instance](~~26128~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for PostgreSQL instance](~~97738~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for SQL Server instance](~~97736~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for MariaDB instance](~~97740~~)
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -36095,7 +37139,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ReleaseInstancePublicConnectionRequest,
     ) -> rds_20140815_models.ReleaseInstancePublicConnectionResponse:
         """
-        To ensure data security, you can release the public endpoint when you do not need to access the database from the Internet.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release the public endpoint of an ApsaraDB RDS for MySQL instance](~~26128~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for PostgreSQL instance](~~97738~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for SQL Server instance](~~97736~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for MariaDB instance](~~97740~~)
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -36108,7 +37162,17 @@ class Client(OpenApiClient):
         request: rds_20140815_models.ReleaseInstancePublicConnectionRequest,
     ) -> rds_20140815_models.ReleaseInstancePublicConnectionResponse:
         """
-        To ensure data security, you can release the public endpoint when you do not need to access the database from the Internet.
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        *   MariaDB
+        ### [](#)References
+        > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Release the public endpoint of an ApsaraDB RDS for MySQL instance](~~26128~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for PostgreSQL instance](~~97738~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for SQL Server instance](~~97736~~)
+        *   [Release the public endpoint of an ApsaraDB RDS for MariaDB instance](~~97740~~)
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -37073,6 +38137,19 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RestoreDdrTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RestoreDdrTableResponse:
+        """
+        >  Before restoration, you can call the [CheckCreateDdrDBInstance](~~121721~~) operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engine
+        MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~)
+        *   [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        
+        @param request: RestoreDdrTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreDdrTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -37125,6 +38202,19 @@ class Client(OpenApiClient):
         request: rds_20140815_models.RestoreDdrTableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.RestoreDdrTableResponse:
+        """
+        >  Before restoration, you can call the [CheckCreateDdrDBInstance](~~121721~~) operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engine
+        MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~)
+        *   [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        
+        @param request: RestoreDdrTableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestoreDdrTableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backup_id):
@@ -37176,6 +38266,18 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.RestoreDdrTableRequest,
     ) -> rds_20140815_models.RestoreDdrTableResponse:
+        """
+        >  Before restoration, you can call the [CheckCreateDdrDBInstance](~~121721~~) operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engine
+        MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~)
+        *   [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        
+        @param request: RestoreDdrTableRequest
+        @return: RestoreDdrTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restore_ddr_table_with_options(request, runtime)
 
@@ -37183,6 +38285,18 @@ class Client(OpenApiClient):
         self,
         request: rds_20140815_models.RestoreDdrTableRequest,
     ) -> rds_20140815_models.RestoreDdrTableResponse:
+        """
+        >  Before restoration, you can call the [CheckCreateDdrDBInstance](~~121721~~) operation to check whether a cross-region backup set can be used for cross-region restoration.
+        ### [](#)Supported database engine
+        MySQL
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        *   [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~)
+        *   [Restore the data of an ApsaraDB RDS for MySQL instance across regions](~~120875~~)
+        
+        @param request: RestoreDdrTableRequest
+        @return: RestoreDdrTableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restore_ddr_table_with_options_async(request, runtime)
 
@@ -37194,13 +38308,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         MySQL
-        ### [](#)Description
-        ApsaraDB RDS for MySQL supports the restoration of individual databases and tables. If you delete databases or tables from an instance, you can restore the databases or tables by using a backup file. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~). Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the Running state.
-        *   The instance does not have ongoing migration tasks.
-        *   If you want to restore data to a specific point in time, make sure that the log backup feature is enabled for the instance. For more information, see [Back up an ApsaraDB RDS for MySQL instance](~~98818~~).
-        *   The restoration of individual databases or tables is enabled, and new backups are created. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~).
-        *   The names that you want to use for the restored tables do not exist in the instance.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore individual databases and tables](~~103175~~)
         
         @param request: RestoreTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37255,13 +38365,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         MySQL
-        ### [](#)Description
-        ApsaraDB RDS for MySQL supports the restoration of individual databases and tables. If you delete databases or tables from an instance, you can restore the databases or tables by using a backup file. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~). Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the Running state.
-        *   The instance does not have ongoing migration tasks.
-        *   If you want to restore data to a specific point in time, make sure that the log backup feature is enabled for the instance. For more information, see [Back up an ApsaraDB RDS for MySQL instance](~~98818~~).
-        *   The restoration of individual databases or tables is enabled, and new backups are created. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~).
-        *   The names that you want to use for the restored tables do not exist in the instance.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore individual databases and tables](~~103175~~)
         
         @param request: RestoreTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -37315,13 +38421,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         MySQL
-        ### [](#)Description
-        ApsaraDB RDS for MySQL supports the restoration of individual databases and tables. If you delete databases or tables from an instance, you can restore the databases or tables by using a backup file. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~). Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the Running state.
-        *   The instance does not have ongoing migration tasks.
-        *   If you want to restore data to a specific point in time, make sure that the log backup feature is enabled for the instance. For more information, see [Back up an ApsaraDB RDS for MySQL instance](~~98818~~).
-        *   The restoration of individual databases or tables is enabled, and new backups are created. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~).
-        *   The names that you want to use for the restored tables do not exist in the instance.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore individual databases and tables](~~103175~~)
         
         @param request: RestoreTableRequest
         @return: RestoreTableResponse
@@ -37336,13 +38438,9 @@ class Client(OpenApiClient):
         """
         ### [](#)Supported database engines
         MySQL
-        ### [](#)Description
-        ApsaraDB RDS for MySQL supports the restoration of individual databases and tables. If you delete databases or tables from an instance, you can restore the databases or tables by using a backup file. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~). Before you call this operation, make sure that the following requirements are met:
-        *   The instance is in the Running state.
-        *   The instance does not have ongoing migration tasks.
-        *   If you want to restore data to a specific point in time, make sure that the log backup feature is enabled for the instance. For more information, see [Back up an ApsaraDB RDS for MySQL instance](~~98818~~).
-        *   The restoration of individual databases or tables is enabled, and new backups are created. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~).
-        *   The names that you want to use for the restored tables do not exist in the instance.
+        ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
+        [Restore individual databases and tables](~~103175~~)
         
         @param request: RestoreTableRequest
         @return: RestoreTableResponse
