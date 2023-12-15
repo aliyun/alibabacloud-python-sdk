@@ -1828,6 +1828,81 @@ class Permission(TeaModel):
         return self
 
 
+class QueueInfo(TeaModel):
+    def __init__(
+        self,
+        gmt_enqueued_time: str = None,
+        gmt_position_modified_time: str = None,
+        position: int = None,
+        priority: int = None,
+        queue_strategy: str = None,
+        quota_id: str = None,
+        workload_id: str = None,
+        workload_type: str = None,
+        workspace_id: str = None,
+    ):
+        self.gmt_enqueued_time = gmt_enqueued_time
+        self.gmt_position_modified_time = gmt_position_modified_time
+        self.position = position
+        self.priority = priority
+        self.queue_strategy = queue_strategy
+        self.quota_id = quota_id
+        self.workload_id = workload_id
+        self.workload_type = workload_type
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_enqueued_time is not None:
+            result['GmtEnqueuedTime'] = self.gmt_enqueued_time
+        if self.gmt_position_modified_time is not None:
+            result['GmtPositionModifiedTime'] = self.gmt_position_modified_time
+        if self.position is not None:
+            result['Position'] = self.position
+        if self.priority is not None:
+            result['Priority'] = self.priority
+        if self.queue_strategy is not None:
+            result['QueueStrategy'] = self.queue_strategy
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+        if self.workload_id is not None:
+            result['WorkloadId'] = self.workload_id
+        if self.workload_type is not None:
+            result['WorkloadType'] = self.workload_type
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GmtEnqueuedTime') is not None:
+            self.gmt_enqueued_time = m.get('GmtEnqueuedTime')
+        if m.get('GmtPositionModifiedTime') is not None:
+            self.gmt_position_modified_time = m.get('GmtPositionModifiedTime')
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
+        if m.get('QueueStrategy') is not None:
+            self.queue_strategy = m.get('QueueStrategy')
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+        if m.get('WorkloadId') is not None:
+            self.workload_id = m.get('WorkloadId')
+        if m.get('WorkloadType') is not None:
+            self.workload_type = m.get('WorkloadType')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
 class ResourceSpec(TeaModel):
     def __init__(
         self,
@@ -3980,11 +4055,13 @@ class CreateTrainingJobRequestScheduler(TeaModel):
 class CreateTrainingJobRequestUserVpc(TeaModel):
     def __init__(
         self,
+        default_route: str = None,
         extended_cidrs: List[str] = None,
         security_group_id: str = None,
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.default_route = default_route
         self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.switch_id = switch_id
@@ -3999,6 +4076,8 @@ class CreateTrainingJobRequestUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
         if self.security_group_id is not None:
@@ -4011,6 +4090,8 @@ class CreateTrainingJobRequestUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
         if m.get('SecurityGroupId') is not None:
@@ -8840,11 +8921,13 @@ class ListTrainingJobsResponseBodyTrainingJobsStatusTransitions(TeaModel):
 class ListTrainingJobsResponseBodyTrainingJobsUserVpc(TeaModel):
     def __init__(
         self,
+        default_route: str = None,
         extended_cidrs: List[str] = None,
         security_group_id: str = None,
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        self.default_route = default_route
         self.extended_cidrs = extended_cidrs
         self.security_group_id = security_group_id
         self.switch_id = switch_id
@@ -8859,6 +8942,8 @@ class ListTrainingJobsResponseBodyTrainingJobsUserVpc(TeaModel):
             return _map
 
         result = dict()
+        if self.default_route is not None:
+            result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
         if self.security_group_id is not None:
@@ -8871,6 +8956,8 @@ class ListTrainingJobsResponseBodyTrainingJobsUserVpc(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultRoute') is not None:
+            self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
         if m.get('SecurityGroupId') is not None:
@@ -9617,9 +9704,11 @@ class UpdateQuotaRequest(TeaModel):
         self,
         description: str = None,
         labels: List[Label] = None,
+        queue_strategy: str = None,
     ):
         self.description = description
         self.labels = labels
+        self.queue_strategy = queue_strategy
 
     def validate(self):
         if self.labels:
@@ -9639,6 +9728,8 @@ class UpdateQuotaRequest(TeaModel):
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.queue_strategy is not None:
+            result['QueueStrategy'] = self.queue_strategy
         return result
 
     def from_map(self, m: dict = None):
@@ -9650,6 +9741,8 @@ class UpdateQuotaRequest(TeaModel):
             for k in m.get('Labels'):
                 temp_model = Label()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('QueueStrategy') is not None:
+            self.queue_strategy = m.get('QueueStrategy')
         return self
 
 

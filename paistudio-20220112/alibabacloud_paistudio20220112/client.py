@@ -2890,6 +2890,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.queue_strategy):
+            body['QueueStrategy'] = request.queue_strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -2923,6 +2925,8 @@ class Client(OpenApiClient):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.queue_strategy):
+            body['QueueStrategy'] = request.queue_strategy
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
