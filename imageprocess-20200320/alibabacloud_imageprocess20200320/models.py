@@ -9250,6 +9250,74 @@ class ScreenECRequest(TeaModel):
         return self
 
 
+class ScreenECAdvanceRequestURLList(TeaModel):
+    def __init__(
+        self,
+        urlobject: BinaryIO = None,
+    ):
+        self.urlobject = urlobject
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.urlobject is not None:
+            result['URL'] = self.urlobject
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('URL') is not None:
+            self.urlobject = m.get('URL')
+        return self
+
+
+class ScreenECAdvanceRequest(TeaModel):
+    def __init__(
+        self,
+        data_source_type: str = None,
+        urllist: List[ScreenECAdvanceRequestURLList] = None,
+    ):
+        self.data_source_type = data_source_type
+        self.urllist = urllist
+
+    def validate(self):
+        if self.urllist:
+            for k in self.urllist:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_source_type is not None:
+            result['DataSourceType'] = self.data_source_type
+        result['URLList'] = []
+        if self.urllist is not None:
+            for k in self.urllist:
+                result['URLList'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataSourceType') is not None:
+            self.data_source_type = m.get('DataSourceType')
+        self.urllist = []
+        if m.get('URLList') is not None:
+            for k in m.get('URLList'):
+                temp_model = ScreenECAdvanceRequestURLList()
+                self.urllist.append(temp_model.from_map(k))
+        return self
+
+
 class ScreenECResponseBodyDataLesion(TeaModel):
     def __init__(
         self,
