@@ -11572,6 +11572,227 @@ class ApplyQueryResponse(TeaModel):
         return self
 
 
+class BaseCityInfoSearchHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_access_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_access_token = x_acs_btrip_access_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_access_token is not None:
+            result['x-acs-btrip-access-token'] = self.x_acs_btrip_access_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-access-token') is not None:
+            self.x_acs_btrip_access_token = m.get('x-acs-btrip-access-token')
+        return self
+
+
+class BaseCityInfoSearchRequest(TeaModel):
+    def __init__(
+        self,
+        keyword: str = None,
+        region: str = None,
+    ):
+        self.keyword = keyword
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class BaseCityInfoSearchResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        name: str = None,
+        name_tree: str = None,
+        region: str = None,
+    ):
+        self.code = code
+        self.name = name
+        self.name_tree = name_tree
+        self.region = region
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.name is not None:
+            result['name'] = self.name
+        if self.name_tree is not None:
+            result['nameTree'] = self.name_tree
+        if self.region is not None:
+            result['region'] = self.region
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('nameTree') is not None:
+            self.name_tree = m.get('nameTree')
+        if m.get('region') is not None:
+            self.region = m.get('region')
+        return self
+
+
+class BaseCityInfoSearchResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        module: List[BaseCityInfoSearchResponseBodyModule] = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.module = module
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            for k in self.module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        result['module'] = []
+        if self.module is not None:
+            for k in self.module:
+                result['module'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.module = []
+        if m.get('module') is not None:
+            for k in m.get('module'):
+                temp_model = BaseCityInfoSearchResponseBodyModule()
+                self.module.append(temp_model.from_map(k))
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class BaseCityInfoSearchResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BaseCityInfoSearchResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BaseCityInfoSearchResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class BtripBillInfoAdjustHeaders(TeaModel):
     def __init__(
         self,
@@ -19878,6 +20099,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         advance_day: int = None,
         airline_corp_code: str = None,
         airline_corp_name: str = None,
+        alipay_id: str = None,
         alipay_trade_no: str = None,
         apply_arr_city_code: str = None,
         apply_arr_city_name: str = None,
@@ -19973,6 +20195,7 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.advance_day = advance_day
         self.airline_corp_code = airline_corp_code
         self.airline_corp_name = airline_corp_name
+        self.alipay_id = alipay_id
         self.alipay_trade_no = alipay_trade_no
         self.apply_arr_city_code = apply_arr_city_code
         self.apply_arr_city_name = apply_arr_city_name
@@ -20082,6 +20305,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['airline_corp_code'] = self.airline_corp_code
         if self.airline_corp_name is not None:
             result['airline_corp_name'] = self.airline_corp_name
+        if self.alipay_id is not None:
+            result['alipay_id'] = self.alipay_id
         if self.alipay_trade_no is not None:
             result['alipay_trade_no'] = self.alipay_trade_no
         if self.apply_arr_city_code is not None:
@@ -20274,6 +20499,8 @@ class FlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.airline_corp_code = m.get('airline_corp_code')
         if m.get('airline_corp_name') is not None:
             self.airline_corp_name = m.get('airline_corp_name')
+        if m.get('alipay_id') is not None:
+            self.alipay_id = m.get('alipay_id')
         if m.get('alipay_trade_no') is not None:
             self.alipay_trade_no = m.get('alipay_trade_no')
         if m.get('apply_arr_city_code') is not None:
@@ -81491,6 +81718,7 @@ class TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList(TeaModel):
         segment_index: int = None,
         start_time: str = None,
         ticket_no: str = None,
+        ticket_status: int = None,
         to_city_name: str = None,
         to_station_name: str = None,
         use_ticket: str = None,
@@ -81516,6 +81744,7 @@ class TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList(TeaModel):
         self.segment_index = segment_index
         self.start_time = start_time
         self.ticket_no = ticket_no
+        self.ticket_status = ticket_status
         self.to_city_name = to_city_name
         self.to_station_name = to_station_name
         self.use_ticket = use_ticket
@@ -81570,6 +81799,8 @@ class TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList(TeaModel):
             result['start_time'] = self.start_time
         if self.ticket_no is not None:
             result['ticket_no'] = self.ticket_no
+        if self.ticket_status is not None:
+            result['ticket_status'] = self.ticket_status
         if self.to_city_name is not None:
             result['to_city_name'] = self.to_city_name
         if self.to_station_name is not None:
@@ -81622,6 +81853,8 @@ class TrainOrderQueryV2ResponseBodyModuleChangeTicketInfoList(TeaModel):
             self.start_time = m.get('start_time')
         if m.get('ticket_no') is not None:
             self.ticket_no = m.get('ticket_no')
+        if m.get('ticket_status') is not None:
+            self.ticket_status = m.get('ticket_status')
         if m.get('to_city_name') is not None:
             self.to_city_name = m.get('to_city_name')
         if m.get('to_station_name') is not None:

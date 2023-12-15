@@ -1451,6 +1451,96 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ApplyQueryHeaders()
         return await self.apply_query_with_options_async(request, headers, runtime)
 
+    def base_city_info_search_with_options(
+        self,
+        request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
+        headers: btrip_open_20220520_models.BaseCityInfoSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_access_token):
+            real_headers['x-acs-btrip-access-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_access_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BaseCityInfoSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/city/v1/cities/action/search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.BaseCityInfoSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def base_city_info_search_with_options_async(
+        self,
+        request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
+        headers: btrip_open_20220520_models.BaseCityInfoSearchHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.keyword):
+            query['keyword'] = request.keyword
+        if not UtilClient.is_unset(request.region):
+            query['region'] = request.region
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_access_token):
+            real_headers['x-acs-btrip-access-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_access_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BaseCityInfoSearch',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/city/v1/cities/action/search',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.BaseCityInfoSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def base_city_info_search(
+        self,
+        request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
+    ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.BaseCityInfoSearchHeaders()
+        return self.base_city_info_search_with_options(request, headers, runtime)
+
+    async def base_city_info_search_async(
+        self,
+        request: btrip_open_20220520_models.BaseCityInfoSearchRequest,
+    ) -> btrip_open_20220520_models.BaseCityInfoSearchResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.BaseCityInfoSearchHeaders()
+        return await self.base_city_info_search_with_options_async(request, headers, runtime)
+
     def btrip_bill_info_adjust_with_options(
         self,
         request: btrip_open_20220520_models.BtripBillInfoAdjustRequest,
