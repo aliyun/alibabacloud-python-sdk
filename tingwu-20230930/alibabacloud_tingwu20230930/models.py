@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import List, Dict, Any
 
 
 class CreateTaskRequestInput(TeaModel):
@@ -64,6 +64,33 @@ class CreateTaskRequestInput(TeaModel):
             self.task_id = m.get('TaskId')
         if m.get('TaskKey') is not None:
             self.task_key = m.get('TaskKey')
+        return self
+
+
+class CreateTaskRequestParametersMeetingAssistance(TeaModel):
+    def __init__(
+        self,
+        types: List[str] = None,
+    ):
+        self.types = types
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.types is not None:
+            result['Types'] = self.types
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Types') is not None:
+            self.types = m.get('Types')
         return self
 
 
@@ -256,6 +283,7 @@ class CreateTaskRequestParameters(TeaModel):
     def __init__(
         self,
         auto_chapters_enabled: bool = None,
+        meeting_assistance: CreateTaskRequestParametersMeetingAssistance = None,
         meeting_assistance_enabled: bool = None,
         ppt_extraction_enabled: bool = None,
         summarization: CreateTaskRequestParametersSummarization = None,
@@ -266,6 +294,7 @@ class CreateTaskRequestParameters(TeaModel):
         translation_enabled: bool = None,
     ):
         self.auto_chapters_enabled = auto_chapters_enabled
+        self.meeting_assistance = meeting_assistance
         self.meeting_assistance_enabled = meeting_assistance_enabled
         self.ppt_extraction_enabled = ppt_extraction_enabled
         self.summarization = summarization
@@ -276,6 +305,8 @@ class CreateTaskRequestParameters(TeaModel):
         self.translation_enabled = translation_enabled
 
     def validate(self):
+        if self.meeting_assistance:
+            self.meeting_assistance.validate()
         if self.summarization:
             self.summarization.validate()
         if self.transcoding:
@@ -293,6 +324,8 @@ class CreateTaskRequestParameters(TeaModel):
         result = dict()
         if self.auto_chapters_enabled is not None:
             result['AutoChaptersEnabled'] = self.auto_chapters_enabled
+        if self.meeting_assistance is not None:
+            result['MeetingAssistance'] = self.meeting_assistance.to_map()
         if self.meeting_assistance_enabled is not None:
             result['MeetingAssistanceEnabled'] = self.meeting_assistance_enabled
         if self.ppt_extraction_enabled is not None:
@@ -315,6 +348,9 @@ class CreateTaskRequestParameters(TeaModel):
         m = m or dict()
         if m.get('AutoChaptersEnabled') is not None:
             self.auto_chapters_enabled = m.get('AutoChaptersEnabled')
+        if m.get('MeetingAssistance') is not None:
+            temp_model = CreateTaskRequestParametersMeetingAssistance()
+            self.meeting_assistance = temp_model.from_map(m['MeetingAssistance'])
         if m.get('MeetingAssistanceEnabled') is not None:
             self.meeting_assistance_enabled = m.get('MeetingAssistanceEnabled')
         if m.get('PptExtractionEnabled') is not None:
