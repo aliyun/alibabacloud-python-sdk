@@ -120,6 +120,14 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.AddBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param tmp_req: AddBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBackendServersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.AddBackendServersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -154,6 +162,14 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.AddBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param tmp_req: AddBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBackendServersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.AddBackendServersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -187,6 +203,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddBackendServersRequest,
     ) -> ens_20171110_models.AddBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: AddBackendServersRequest
+        @return: AddBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_backend_servers_with_options(request, runtime)
 
@@ -194,6 +217,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddBackendServersRequest,
     ) -> ens_20171110_models.AddBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: AddBackendServersRequest
+        @return: AddBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_backend_servers_with_options_async(request, runtime)
 
@@ -268,6 +298,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        *   Internal networks and IPv4 addresses are not supported.
+        
+        @param request: AddNetworkInterfaceToInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddNetworkInterfaceToInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start):
@@ -300,6 +340,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        *   Internal networks and IPv4 addresses are not supported.
+        
+        @param request: AddNetworkInterfaceToInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddNetworkInterfaceToInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_start):
@@ -331,6 +381,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        *   Internal networks and IPv4 addresses are not supported.
+        
+        @param request: AddNetworkInterfaceToInstanceRequest
+        @return: AddNetworkInterfaceToInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_network_interface_to_instance_with_options(request, runtime)
 
@@ -338,6 +397,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        *   Internal networks and IPv4 addresses are not supported.
+        
+        @param request: AddNetworkInterfaceToInstanceRequest
+        @return: AddNetworkInterfaceToInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_network_interface_to_instance_with_options_async(request, runtime)
 
@@ -654,6 +722,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AttachEnsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 10 times per second per account.
+        *   After you execute the command, the instance restarts loading.
+        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        
+        @param request: AttachEnsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEnsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -684,6 +762,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AttachEnsInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 10 times per second per account.
+        *   After you execute the command, the instance restarts loading.
+        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        
+        @param request: AttachEnsInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachEnsInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -713,6 +801,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AttachEnsInstancesRequest,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 10 times per second per account.
+        *   After you execute the command, the instance restarts loading.
+        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        
+        @param request: AttachEnsInstancesRequest
+        @return: AttachEnsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_ens_instances_with_options(request, runtime)
 
@@ -720,6 +817,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AttachEnsInstancesRequest,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
+        """
+        # [](#)Usage notes
+        *   You can call this operation up to 10 times per second per account.
+        *   After you execute the command, the instance restarts loading.
+        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        
+        @param request: AttachEnsInstancesRequest
+        @return: AttachEnsInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_ens_instances_with_options_async(request, runtime)
 
@@ -826,6 +932,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AuthorizeSecurityGroupEgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
+        """
+        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        
+        @param request: AuthorizeSecurityGroupEgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeSecurityGroupEgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_cidr_ip):
@@ -868,6 +981,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AuthorizeSecurityGroupEgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
+        """
+        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        
+        @param request: AuthorizeSecurityGroupEgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeSecurityGroupEgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_cidr_ip):
@@ -909,6 +1029,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AuthorizeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
+        """
+        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        
+        @param request: AuthorizeSecurityGroupEgressRequest
+        @return: AuthorizeSecurityGroupEgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.authorize_security_group_egress_with_options(request, runtime)
 
@@ -916,6 +1042,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AuthorizeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
+        """
+        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        
+        @param request: AuthorizeSecurityGroupEgressRequest
+        @return: AuthorizeSecurityGroupEgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.authorize_security_group_egress_with_options_async(request, runtime)
 
@@ -1001,6 +1133,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.clean_dist_data_with_options_async(request, runtime)
 
+    def copy_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.CopySDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CopySDGResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CopySDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopySDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CopySDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.CopySDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CopySDGResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CopySDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopySDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CopySDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_sdg(
+        self,
+        request: ens_20171110_models.CopySDGRequest,
+    ) -> ens_20171110_models.CopySDGResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_sdgwith_options(request, runtime)
+
+    async def copy_sdg_async(
+        self,
+        request: ens_20171110_models.CopySDGRequest,
+    ) -> ens_20171110_models.CopySDGResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_sdgwith_options_async(request, runtime)
+
+    def copy_snapshot_with_options(
+        self,
+        tmp_req: ens_20171110_models.CopySnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CopySnapshotResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CopySnapshotShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.destination_region_ids_shrink):
+            query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.destination_snapshot_description):
+            query['DestinationSnapshotDescription'] = request.destination_snapshot_description
+        if not UtilClient.is_unset(request.destination_snapshot_name):
+            query['DestinationSnapshotName'] = request.destination_snapshot_name
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopySnapshot',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CopySnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def copy_snapshot_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.CopySnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CopySnapshotResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.CopySnapshotShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.destination_region_ids):
+            request.destination_region_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.destination_region_ids, 'DestinationRegionIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.destination_region_ids_shrink):
+            query['DestinationRegionIds'] = request.destination_region_ids_shrink
+        if not UtilClient.is_unset(request.destination_snapshot_description):
+            query['DestinationSnapshotDescription'] = request.destination_snapshot_description
+        if not UtilClient.is_unset(request.destination_snapshot_name):
+            query['DestinationSnapshotName'] = request.destination_snapshot_name
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CopySnapshot',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CopySnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def copy_snapshot(
+        self,
+        request: ens_20171110_models.CopySnapshotRequest,
+    ) -> ens_20171110_models.CopySnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.copy_snapshot_with_options(request, runtime)
+
+    async def copy_snapshot_async(
+        self,
+        request: ens_20171110_models.CopySnapshotRequest,
+    ) -> ens_20171110_models.CopySnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.copy_snapshot_with_options_async(request, runtime)
+
     def create_armserver_instances_with_options(
         self,
         request: ens_20171110_models.CreateARMServerInstancesRequest,
@@ -1012,6 +1308,8 @@ class Client(OpenApiClient):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.frequency):
@@ -1066,6 +1364,8 @@ class Client(OpenApiClient):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.frequency):
@@ -1288,10 +1588,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.kmskey_id):
+            query['KMSKeyId'] = request.kmskey_id
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.snapshot_id):
@@ -1324,10 +1630,16 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not UtilClient.is_unset(request.encrypted):
+            query['Encrypted'] = request.encrypted
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_charge_type):
             query['InstanceChargeType'] = request.instance_charge_type
+        if not UtilClient.is_unset(request.kmskey_id):
+            query['KMSKeyId'] = request.kmskey_id
         if not UtilClient.is_unset(request.size):
             query['Size'] = request.size
         if not UtilClient.is_unset(request.snapshot_id):
@@ -1370,10 +1682,20 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEipInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
+        """
+        You can call this operation up to 5,000 times per second per account.
+        *   You can call this operation up to 50 times per second per user.
+        
+        @param request: CreateEipInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEipInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -1408,10 +1730,20 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEipInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
+        """
+        You can call this operation up to 5,000 times per second per account.
+        *   You can call this operation up to 50 times per second per user.
+        
+        @param request: CreateEipInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEipInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bandwidth):
             query['Bandwidth'] = request.bandwidth
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_charge_type):
@@ -1445,6 +1777,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEipInstanceRequest,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
+        """
+        You can call this operation up to 5,000 times per second per account.
+        *   You can call this operation up to 50 times per second per user.
+        
+        @param request: CreateEipInstanceRequest
+        @return: CreateEipInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_eip_instance_with_options(request, runtime)
 
@@ -1452,6 +1791,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEipInstanceRequest,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
+        """
+        You can call this operation up to 5,000 times per second per account.
+        *   You can call this operation up to 50 times per second per user.
+        
+        @param request: CreateEipInstanceRequest
+        @return: CreateEipInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_eip_instance_with_options_async(request, runtime)
 
@@ -2058,6 +2404,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateInstanceResponse:
+        """
+        You can call this operation up to 10 times per second per account.
+        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -2130,6 +2485,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateInstanceResponse:
+        """
+        You can call this operation up to 10 times per second per account.
+        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -2201,6 +2565,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateInstanceRequest,
     ) -> ens_20171110_models.CreateInstanceResponse:
+        """
+        You can call this operation up to 10 times per second per account.
+        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -2208,6 +2580,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateInstanceRequest,
     ) -> ens_20171110_models.CreateInstanceResponse:
+        """
+        You can call this operation up to 10 times per second per account.
+        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -2294,6 +2674,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateKeyPairResponse:
+        """
+        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        
+        @param request: CreateKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateKeyPairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -2324,6 +2711,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateKeyPairResponse:
+        """
+        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        
+        @param request: CreateKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateKeyPairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -2353,6 +2747,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateKeyPairRequest,
     ) -> ens_20171110_models.CreateKeyPairResponse:
+        """
+        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        
+        @param request: CreateKeyPairRequest
+        @return: CreateKeyPairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_key_pair_with_options(request, runtime)
 
@@ -2360,6 +2760,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateKeyPairRequest,
     ) -> ens_20171110_models.CreateKeyPairResponse:
+        """
+        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        
+        @param request: CreateKeyPairRequest
+        @return: CreateKeyPairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_key_pair_with_options_async(request, runtime)
 
@@ -2368,6 +2774,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -2406,6 +2820,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateLoadBalancerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -2443,6 +2865,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateLoadBalancerRequest
+        @return: CreateLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_load_balancer_with_options(request, runtime)
 
@@ -2450,6 +2879,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateLoadBalancerRequest
+        @return: CreateLoadBalancerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_with_options_async(request, runtime)
 
@@ -2458,6 +2894,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerHTTPListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2522,6 +2966,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerHTTPListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -2585,6 +3037,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerHTTPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPListenerRequest
+        @return: CreateLoadBalancerHTTPListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_load_balancer_httplistener_with_options(request, runtime)
 
@@ -2592,6 +3051,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerHTTPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPListenerRequest
+        @return: CreateLoadBalancerHTTPListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_httplistener_with_options_async(request, runtime)
 
@@ -2600,6 +3066,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPSListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPSListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerHTTPSListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cookie):
@@ -2670,6 +3144,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPSListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPSListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerHTTPSListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cookie):
@@ -2739,6 +3221,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerHTTPSListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPSListenerRequest
+        @return: CreateLoadBalancerHTTPSListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_load_balancer_httpslistener_with_options(request, runtime)
 
@@ -2746,6 +3235,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerHTTPSListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerHTTPSListenerRequest
+        @return: CreateLoadBalancerHTTPSListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_httpslistener_with_options_async(request, runtime)
 
@@ -2754,6 +3250,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerTCPListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerTCPListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerTCPListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_server_port):
@@ -2814,6 +3318,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerTCPListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerTCPListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerTCPListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_server_port):
@@ -2873,6 +3385,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerTCPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerTCPListenerRequest
+        @return: CreateLoadBalancerTCPListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_load_balancer_tcplistener_with_options(request, runtime)
 
@@ -2880,6 +3399,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerTCPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerTCPListenerRequest
+        @return: CreateLoadBalancerTCPListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_tcplistener_with_options_async(request, runtime)
 
@@ -2888,6 +3414,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerUDPListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerUDPListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerUDPListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_server_port):
@@ -2940,6 +3474,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerUDPListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerUDPListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLoadBalancerUDPListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_server_port):
@@ -2991,6 +3533,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerUDPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerUDPListenerRequest
+        @return: CreateLoadBalancerUDPListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_load_balancer_udplistener_with_options(request, runtime)
 
@@ -2998,6 +3547,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateLoadBalancerUDPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: CreateLoadBalancerUDPListenerRequest
+        @return: CreateLoadBalancerUDPListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_load_balancer_udplistener_with_options_async(request, runtime)
 
@@ -3006,6 +3562,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateMountTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateMountTargetResponse:
+        """
+        ## [](#)Precautions
+        After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        
+        @param request: CreateMountTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMountTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -3040,6 +3604,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateMountTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateMountTargetResponse:
+        """
+        ## [](#)Precautions
+        After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        
+        @param request: CreateMountTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMountTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -3073,6 +3645,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateMountTargetRequest,
     ) -> ens_20171110_models.CreateMountTargetResponse:
+        """
+        ## [](#)Precautions
+        After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        
+        @param request: CreateMountTargetRequest
+        @return: CreateMountTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mount_target_with_options(request, runtime)
 
@@ -3080,6 +3659,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateMountTargetRequest,
     ) -> ens_20171110_models.CreateMountTargetResponse:
+        """
+        ## [](#)Precautions
+        After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
+        
+        @param request: CreateMountTargetRequest
+        @return: CreateMountTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mount_target_with_options_async(request, runtime)
 
@@ -3174,6 +3760,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -3208,6 +3802,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -3241,6 +3843,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNetworkRequest,
     ) -> ens_20171110_models.CreateNetworkResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateNetworkRequest
+        @return: CreateNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_network_with_options(request, runtime)
 
@@ -3248,6 +3857,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNetworkRequest,
     ) -> ens_20171110_models.CreateNetworkResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: CreateNetworkRequest
+        @return: CreateNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_network_with_options_async(request, runtime)
 
@@ -3438,8 +4054,6 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_group_name):
             query['SecurityGroupName'] = request.security_group_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3470,8 +4084,6 @@ class Client(OpenApiClient):
             query['Description'] = request.description
         if not UtilClient.is_unset(request.security_group_name):
             query['SecurityGroupName'] = request.security_group_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -3504,6 +4116,88 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.CreateSecurityGroupResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_security_group_with_options_async(request, runtime)
+
+    def create_snapshot_with_options(
+        self,
+        request: ens_20171110_models.CreateSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSnapshot',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_snapshot_with_options_async(
+        self,
+        request: ens_20171110_models.CreateSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSnapshot',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_snapshot(
+        self,
+        request: ens_20171110_models.CreateSnapshotRequest,
+    ) -> ens_20171110_models.CreateSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_snapshot_with_options(request, runtime)
+
+    async def create_snapshot_async(
+        self,
+        request: ens_20171110_models.CreateSnapshotRequest,
+    ) -> ens_20171110_models.CreateSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_snapshot_with_options_async(request, runtime)
 
     def create_snat_entry_with_options(
         self,
@@ -3759,6 +4453,150 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
 
+    def delete_bucket_with_options(
+        self,
+        request: ens_20171110_models.DeleteBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteBucketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBucket',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteBucketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_bucket_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteBucketResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBucket',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteBucketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_bucket(
+        self,
+        request: ens_20171110_models.DeleteBucketRequest,
+    ) -> ens_20171110_models.DeleteBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_bucket_with_options(request, runtime)
+
+    async def delete_bucket_async(
+        self,
+        request: ens_20171110_models.DeleteBucketRequest,
+    ) -> ens_20171110_models.DeleteBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_bucket_with_options_async(request, runtime)
+
+    def delete_bucket_lifecycle_with_options(
+        self,
+        request: ens_20171110_models.DeleteBucketLifecycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBucketLifecycle',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteBucketLifecycleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_bucket_lifecycle_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteBucketLifecycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteBucketLifecycle',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteBucketLifecycleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_bucket_lifecycle(
+        self,
+        request: ens_20171110_models.DeleteBucketLifecycleRequest,
+    ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_bucket_lifecycle_with_options(request, runtime)
+
+    async def delete_bucket_lifecycle_async(
+        self,
+        request: ens_20171110_models.DeleteBucketLifecycleRequest,
+    ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_bucket_lifecycle_with_options_async(request, runtime)
+
     def delete_device_internet_port_with_options(
         self,
         request: ens_20171110_models.DeleteDeviceInternetPortRequest,
@@ -3830,6 +4668,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteDiskResponse:
+        """
+        When you release a disk, the disk must be in the Available state.
+        
+        @param request: DeleteDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -3858,6 +4703,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteDiskResponse:
+        """
+        When you release a disk, the disk must be in the Available state.
+        
+        @param request: DeleteDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -3885,6 +4737,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteDiskRequest,
     ) -> ens_20171110_models.DeleteDiskResponse:
+        """
+        When you release a disk, the disk must be in the Available state.
+        
+        @param request: DeleteDiskRequest
+        @return: DeleteDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_disk_with_options(request, runtime)
 
@@ -3892,6 +4750,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteDiskRequest,
     ) -> ens_20171110_models.DeleteDiskResponse:
+        """
+        When you release a disk, the disk must be in the Available state.
+        
+        @param request: DeleteDiskRequest
+        @return: DeleteDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_disk_with_options_async(request, runtime)
 
@@ -4418,12 +5282,18 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
+        """
+        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        
+        @param request: DeleteKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4448,12 +5318,18 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
+        """
+        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        
+        @param request: DeleteKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4477,6 +5353,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteKeyPairsRequest,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
+        """
+        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        
+        @param request: DeleteKeyPairsRequest
+        @return: DeleteKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_key_pairs_with_options(request, runtime)
 
@@ -4484,6 +5367,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteKeyPairsRequest,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
+        """
+        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        
+        @param request: DeleteKeyPairsRequest
+        @return: DeleteKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_key_pairs_with_options_async(request, runtime)
 
@@ -4492,6 +5382,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteLoadBalancerListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DeleteLoadBalancerListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoadBalancerListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -4524,6 +5422,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteLoadBalancerListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DeleteLoadBalancerListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLoadBalancerListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -4555,6 +5461,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteLoadBalancerListenerRequest,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DeleteLoadBalancerListenerRequest
+        @return: DeleteLoadBalancerListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_load_balancer_listener_with_options(request, runtime)
 
@@ -4562,6 +5475,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteLoadBalancerListenerRequest,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DeleteLoadBalancerListenerRequest
+        @return: DeleteLoadBalancerListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_load_balancer_listener_with_options_async(request, runtime)
 
@@ -4570,6 +5490,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteMountTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
+        """
+        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        
+        @param request: DeleteMountTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMountTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -4602,6 +5529,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteMountTargetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
+        """
+        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        
+        @param request: DeleteMountTargetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMountTargetResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -4633,6 +5567,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteMountTargetRequest,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
+        """
+        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        
+        @param request: DeleteMountTargetRequest
+        @return: DeleteMountTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mount_target_with_options(request, runtime)
 
@@ -4640,6 +5580,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteMountTargetRequest,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
+        """
+        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        
+        @param request: DeleteMountTargetRequest
+        @return: DeleteMountTargetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mount_target_with_options_async(request, runtime)
 
@@ -4923,11 +5869,92 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_acl_entry_with_options_async(request, runtime)
 
+    def delete_object_with_options(
+        self,
+        request: ens_20171110_models.DeleteObjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteObjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteObject',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteObjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_object_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteObjectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteObjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.object_key):
+            query['ObjectKey'] = request.object_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteObject',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteObjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_object(
+        self,
+        request: ens_20171110_models.DeleteObjectRequest,
+    ) -> ens_20171110_models.DeleteObjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_object_with_options(request, runtime)
+
+    async def delete_object_async(
+        self,
+        request: ens_20171110_models.DeleteObjectRequest,
+    ) -> ens_20171110_models.DeleteObjectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_object_with_options_async(request, runtime)
+
     def delete_security_group_with_options(
         self,
         request: ens_20171110_models.DeleteSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
+        """
+        Before you delete a security group, make sure that no instances exist in the security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_group_id):
@@ -4958,6 +5985,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
+        """
+        Before you delete a security group, make sure that no instances exist in the security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_group_id):
@@ -4987,6 +6021,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSecurityGroupRequest,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
+        """
+        Before you delete a security group, make sure that no instances exist in the security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @return: DeleteSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_group_with_options(request, runtime)
 
@@ -4994,8 +6034,84 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSecurityGroupRequest,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
+        """
+        Before you delete a security group, make sure that no instances exist in the security group.
+        
+        @param request: DeleteSecurityGroupRequest
+        @return: DeleteSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_group_with_options_async(request, runtime)
+
+    def delete_snapshot_with_options(
+        self,
+        request: ens_20171110_models.DeleteSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnapshot',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_snapshot_with_options_async(
+        self,
+        request: ens_20171110_models.DeleteSnapshotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSnapshotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSnapshot',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_snapshot(
+        self,
+        request: ens_20171110_models.DeleteSnapshotRequest,
+    ) -> ens_20171110_models.DeleteSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_snapshot_with_options(request, runtime)
+
+    async def delete_snapshot_async(
+        self,
+        request: ens_20171110_models.DeleteSnapshotRequest,
+    ) -> ens_20171110_models.DeleteSnapshotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_snapshot_with_options_async(request, runtime)
 
     def delete_snat_entry_with_options(
         self,
@@ -5146,6 +6262,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteVSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
+        """
+        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        
+        @param request: DeleteVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
@@ -5176,6 +6299,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteVSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
+        """
+        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        
+        @param request: DeleteVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.v_switch_id):
@@ -5205,6 +6335,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteVSwitchRequest,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
+        """
+        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        
+        @param request: DeleteVSwitchRequest
+        @return: DeleteVSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_vswitch_with_options(request, runtime)
 
@@ -5212,8 +6348,88 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteVSwitchRequest,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
+        """
+        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        
+        @param request: DeleteVSwitchRequest
+        @return: DeleteVSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vswitch_with_options_async(request, runtime)
+
+    def deploy_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.DeploySDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeploySDGResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeploySDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeploySDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeploySDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeploySDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeploySDGResponse:
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeploySDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeploySDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeploySDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_sdg(
+        self,
+        request: ens_20171110_models.DeploySDGRequest,
+    ) -> ens_20171110_models.DeploySDGResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.deploy_sdgwith_options(request, runtime)
+
+    async def deploy_sdg_async(
+        self,
+        request: ens_20171110_models.DeploySDGRequest,
+    ) -> ens_20171110_models.DeploySDGResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.deploy_sdgwith_options_async(request, runtime)
 
     def describe_aicimages_with_options(
         self,
@@ -5685,16 +6901,9 @@ class Client(OpenApiClient):
 
     def describe_band_withd_charge_type_with_options(
         self,
-        request: ens_20171110_models.DescribeBandWithdChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeBandWithdChargeType',
             version='2017-11-10',
@@ -5713,16 +6922,9 @@ class Client(OpenApiClient):
 
     async def describe_band_withd_charge_type_with_options_async(
         self,
-        request: ens_20171110_models.DescribeBandWithdChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
+        req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeBandWithdChargeType',
             version='2017-11-10',
@@ -5739,19 +6941,13 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_band_withd_charge_type(
-        self,
-        request: ens_20171110_models.DescribeBandWithdChargeTypeRequest,
-    ) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
+    def describe_band_withd_charge_type(self) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
         runtime = util_models.RuntimeOptions()
-        return self.describe_band_withd_charge_type_with_options(request, runtime)
+        return self.describe_band_withd_charge_type_with_options(runtime)
 
-    async def describe_band_withd_charge_type_async(
-        self,
-        request: ens_20171110_models.DescribeBandWithdChargeTypeRequest,
-    ) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
+    async def describe_band_withd_charge_type_async(self) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.describe_band_withd_charge_type_with_options_async(request, runtime)
+        return await self.describe_band_withd_charge_type_with_options_async(runtime)
 
     def describe_bandwitdh_by_internet_charge_type_with_options(
         self,
@@ -7028,8 +8224,6 @@ class Client(OpenApiClient):
             query['NetDistrictCode'] = request.net_district_code
         if not UtilClient.is_unset(request.net_level_code):
             query['NetLevelCode'] = request.net_level_code
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7060,8 +8254,6 @@ class Client(OpenApiClient):
             query['NetDistrictCode'] = request.net_district_code
         if not UtilClient.is_unset(request.net_level_code):
             query['NetLevelCode'] = request.net_level_code
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7104,8 +8296,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -7134,8 +8324,6 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
             query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8200,6 +9388,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeExportImageInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
+        """
+        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        *   Empty strings are returned for images that are not exported.
+        *   The download links may become invalid if you delete objects in OSS.
+        
+        @param request: DescribeExportImageInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExportImageInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -8234,6 +9431,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeExportImageInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
+        """
+        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        *   Empty strings are returned for images that are not exported.
+        *   The download links may become invalid if you delete objects in OSS.
+        
+        @param request: DescribeExportImageInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExportImageInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -8267,6 +9473,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeExportImageInfoRequest,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
+        """
+        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        *   Empty strings are returned for images that are not exported.
+        *   The download links may become invalid if you delete objects in OSS.
+        
+        @param request: DescribeExportImageInfoRequest
+        @return: DescribeExportImageInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_export_image_info_with_options(request, runtime)
 
@@ -8274,6 +9488,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeExportImageInfoRequest,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
+        """
+        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        *   Empty strings are returned for images that are not exported.
+        *   The download links may become invalid if you delete objects in OSS.
+        
+        @param request: DescribeExportImageInfoRequest
+        @return: DescribeExportImageInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_export_image_info_with_options_async(request, runtime)
 
@@ -9140,6 +10362,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstancesResponse:
+        """
+        You can call this operation up to 800 times per second per account.
+        *   You can call this operation up to 100 times per second per user.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -9200,6 +10431,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstancesResponse:
+        """
+        You can call this operation up to 800 times per second per account.
+        *   You can call this operation up to 100 times per second per user.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -9259,6 +10499,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstancesRequest,
     ) -> ens_20171110_models.DescribeInstancesResponse:
+        """
+        You can call this operation up to 800 times per second per account.
+        *   You can call this operation up to 100 times per second per user.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -9266,6 +10514,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstancesRequest,
     ) -> ens_20171110_models.DescribeInstancesResponse:
+        """
+        You can call this operation up to 800 times per second per account.
+        *   You can call this operation up to 100 times per second per user.
+        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -9356,6 +10612,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9384,6 +10649,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9411,6 +10685,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerAttributeRequest
+        @return: DescribeLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_attribute_with_options(request, runtime)
 
@@ -9418,6 +10700,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerAttributeRequest
+        @return: DescribeLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_attribute_with_options_async(request, runtime)
 
@@ -9426,6 +10716,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerHTTPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9456,6 +10755,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerHTTPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9485,6 +10793,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
+        @return: DescribeLoadBalancerHTTPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_httplistener_attribute_with_options(request, runtime)
 
@@ -9492,6 +10808,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
+        """
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
+        @return: DescribeLoadBalancerHTTPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_httplistener_attribute_with_options_async(request, runtime)
 
@@ -9500,6 +10824,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9530,6 +10862,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9559,6 +10899,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
+        @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_httpslistener_attribute_with_options(request, runtime)
 
@@ -9566,6 +10913,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
+        @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_httpslistener_attribute_with_options_async(request, runtime)
 
@@ -9640,6 +10994,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9670,6 +11032,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9699,6 +11069,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_tcplistener_attribute_with_options(request, runtime)
 
@@ -9706,6 +11083,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_tcplistener_attribute_with_options_async(request, runtime)
 
@@ -9714,6 +11098,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9744,6 +11136,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -9773,6 +11173,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_udplistener_attribute_with_options(request, runtime)
 
@@ -9780,6 +11187,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_udplistener_attribute_with_options_async(request, runtime)
 
@@ -9788,6 +11202,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9814,6 +11236,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9839,6 +11269,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancersRequest,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancersRequest
+        @return: DescribeLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancers_with_options(request, runtime)
 
@@ -9846,6 +11283,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancersRequest,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: DescribeLoadBalancersRequest
+        @return: DescribeLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancers_with_options_async(request, runtime)
 
@@ -10216,6 +11660,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworkAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_id):
@@ -10244,6 +11696,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworkAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_id):
@@ -10271,6 +11731,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworkAttributeRequest
+        @return: DescribeNetworkAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_network_attribute_with_options(request, runtime)
 
@@ -10278,6 +11745,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworkAttributeRequest
+        @return: DescribeNetworkAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_network_attribute_with_options_async(request, runtime)
 
@@ -10292,12 +11766,24 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.network_interface_name):
+            query['NetworkInterfaceName'] = request.network_interface_name
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.primary_ip_address):
             query['PrimaryIpAddress'] = request.primary_ip_address
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -10330,12 +11816,24 @@ class Client(OpenApiClient):
             query['EnsRegionId'] = request.ens_region_id
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_id):
+            query['NetworkId'] = request.network_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
+        if not UtilClient.is_unset(request.network_interface_name):
+            query['NetworkInterfaceName'] = request.network_interface_name
         if not UtilClient.is_unset(request.page_number):
             query['PageNumber'] = request.page_number
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.primary_ip_address):
             query['PrimaryIpAddress'] = request.primary_ip_address
+        if not UtilClient.is_unset(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
         if not UtilClient.is_unset(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         req = open_api_models.OpenApiRequest(
@@ -10376,6 +11874,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworksResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -10412,6 +11918,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworksResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -10447,6 +11961,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworksRequest,
     ) -> ens_20171110_models.DescribeNetworksResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworksRequest
+        @return: DescribeNetworksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_networks_with_options(request, runtime)
 
@@ -10454,6 +11975,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworksRequest,
     ) -> ens_20171110_models.DescribeNetworksResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: DescribeNetworksRequest
+        @return: DescribeNetworksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_networks_with_options_async(request, runtime)
 
@@ -10648,72 +12176,6 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribePriceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
-
-    def describe_region_bandwidth_quota_with_options(
-        self,
-        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRegionBandwidthQuota',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DescribeRegionBandwidthQuotaResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_region_bandwidth_quota_with_options_async(
-        self,
-        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeRegionBandwidthQuota',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DescribeRegionBandwidthQuotaResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_region_bandwidth_quota(
-        self,
-        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
-    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_region_bandwidth_quota_with_options(request, runtime)
-
-    async def describe_region_bandwidth_quota_async(
-        self,
-        request: ens_20171110_models.DescribeRegionBandwidthQuotaRequest,
-    ) -> ens_20171110_models.DescribeRegionBandwidthQuotaResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_region_bandwidth_quota_with_options_async(request, runtime)
 
     def describe_region_isps_with_options(
         self,
@@ -10982,6 +12444,72 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeResourceTimelineResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_timeline_with_options_async(request, runtime)
+
+    def describe_sdgdeployment_status_with_options(
+        self,
+        request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDGDeploymentStatus',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGDeploymentStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sdgdeployment_status_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDGDeploymentStatus',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGDeploymentStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sdgdeployment_status(
+        self,
+        request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
+    ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sdgdeployment_status_with_options(request, runtime)
+
+    async def describe_sdgdeployment_status_async(
+        self,
+        request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
+    ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sdgdeployment_status_with_options_async(request, runtime)
 
     def describe_security_group_attribute_with_options(
         self,
@@ -11302,6 +12830,96 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.DescribeServcieScheduleResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_servcie_schedule_with_options_async(request, runtime)
+
+    def describe_snapshots_with_options(
+        self,
+        request: ens_20171110_models.DescribeSnapshotsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnapshots',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_snapshots_with_options_async(
+        self,
+        request: ens_20171110_models.DescribeSnapshotsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not UtilClient.is_unset(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSnapshots',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_snapshots(
+        self,
+        request: ens_20171110_models.DescribeSnapshotsRequest,
+    ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_snapshots_with_options(request, runtime)
+
+    async def describe_snapshots_async(
+        self,
+        request: ens_20171110_models.DescribeSnapshotsRequest,
+    ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_snapshots_with_options_async(request, runtime)
 
     def describe_snat_attribute_with_options(
         self,
@@ -12197,6 +13815,216 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.export_measurement_data_with_options_async(request, runtime)
 
+    def get_bucket_acl_with_options(
+        self,
+        request: ens_20171110_models.GetBucketAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.GetBucketAclResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBucketAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.GetBucketAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bucket_acl_with_options_async(
+        self,
+        request: ens_20171110_models.GetBucketAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.GetBucketAclResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBucketAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.GetBucketAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bucket_acl(
+        self,
+        request: ens_20171110_models.GetBucketAclRequest,
+    ) -> ens_20171110_models.GetBucketAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_bucket_acl_with_options(request, runtime)
+
+    async def get_bucket_acl_async(
+        self,
+        request: ens_20171110_models.GetBucketAclRequest,
+    ) -> ens_20171110_models.GetBucketAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bucket_acl_with_options_async(request, runtime)
+
+    def get_bucket_info_with_options(
+        self,
+        request: ens_20171110_models.GetBucketInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.GetBucketInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBucketInfo',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.GetBucketInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bucket_info_with_options_async(
+        self,
+        request: ens_20171110_models.GetBucketInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.GetBucketInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBucketInfo',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.GetBucketInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bucket_info(
+        self,
+        request: ens_20171110_models.GetBucketInfoRequest,
+    ) -> ens_20171110_models.GetBucketInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_bucket_info_with_options(request, runtime)
+
+    async def get_bucket_info_async(
+        self,
+        request: ens_20171110_models.GetBucketInfoRequest,
+    ) -> ens_20171110_models.GetBucketInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bucket_info_with_options_async(request, runtime)
+
+    def get_bucket_lifecycle_with_options(
+        self,
+        request: ens_20171110_models.GetBucketLifecycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBucketLifecycle',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.GetBucketLifecycleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bucket_lifecycle_with_options_async(
+        self,
+        request: ens_20171110_models.GetBucketLifecycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetBucketLifecycle',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.GetBucketLifecycleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bucket_lifecycle(
+        self,
+        request: ens_20171110_models.GetBucketLifecycleRequest,
+    ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_bucket_lifecycle_with_options(request, runtime)
+
+    async def get_bucket_lifecycle_async(
+        self,
+        request: ens_20171110_models.GetBucketLifecycleRequest,
+    ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_bucket_lifecycle_with_options_async(request, runtime)
+
     def get_device_internet_port_with_options(
         self,
         request: ens_20171110_models.GetDeviceInternetPortRequest,
@@ -12334,6 +14162,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetOssUsageDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
+        """
+        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        
+        @param request: GetOssUsageDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssUsageDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12360,6 +14195,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetOssUsageDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
+        """
+        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        
+        @param request: GetOssUsageDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssUsageDataResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12385,6 +14227,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetOssUsageDataRequest,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
+        """
+        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        
+        @param request: GetOssUsageDataRequest
+        @return: GetOssUsageDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_oss_usage_data_with_options(request, runtime)
 
@@ -12392,6 +14240,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetOssUsageDataRequest,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
+        """
+        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        
+        @param request: GetOssUsageDataRequest
+        @return: GetOssUsageDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_oss_usage_data_with_options_async(request, runtime)
 
@@ -12400,6 +14254,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ImportKeyPairResponse:
+        """
+        After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        *   The key pair can be only in the ssh-rsa format.
+        
+        @param request: ImportKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportKeyPairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -12432,6 +14294,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ImportKeyPairRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ImportKeyPairResponse:
+        """
+        After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        *   The key pair can be only in the ssh-rsa format.
+        
+        @param request: ImportKeyPairRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportKeyPairResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_name):
@@ -12463,6 +14333,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ImportKeyPairRequest,
     ) -> ens_20171110_models.ImportKeyPairResponse:
+        """
+        After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        *   The key pair can be only in the ssh-rsa format.
+        
+        @param request: ImportKeyPairRequest
+        @return: ImportKeyPairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_key_pair_with_options(request, runtime)
 
@@ -12470,6 +14347,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ImportKeyPairRequest,
     ) -> ens_20171110_models.ImportKeyPairResponse:
+        """
+        After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        *   The key pair can be only in the ssh-rsa format.
+        
+        @param request: ImportKeyPairRequest
+        @return: ImportKeyPairResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_key_pair_with_options_async(request, runtime)
 
@@ -12552,10 +14436,19 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
+        """
+        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        
+        @param request: JoinSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         req = open_api_models.OpenApiRequest(
@@ -12582,10 +14475,19 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
+        """
+        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        
+        @param request: JoinSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
         req = open_api_models.OpenApiRequest(
@@ -12611,6 +14513,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.JoinSecurityGroupRequest,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
+        """
+        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        
+        @param request: JoinSecurityGroupRequest
+        @return: JoinSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.join_security_group_with_options(request, runtime)
 
@@ -12618,6 +14526,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.JoinSecurityGroupRequest,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
+        """
+        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        
+        @param request: JoinSecurityGroupRequest
+        @return: JoinSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.join_security_group_with_options_async(request, runtime)
 
@@ -12700,14 +14614,21 @@ class Client(OpenApiClient):
         request: ens_20171110_models.LeaveSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
+        """
+        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        
+        @param request: LeaveSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LeaveSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12732,14 +14653,21 @@ class Client(OpenApiClient):
         request: ens_20171110_models.LeaveSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
+        """
+        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        
+        @param request: LeaveSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LeaveSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.network_interface_id):
+            query['NetworkInterfaceId'] = request.network_interface_id
         if not UtilClient.is_unset(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.version):
-            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12763,6 +14691,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.LeaveSecurityGroupRequest,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
+        """
+        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        
+        @param request: LeaveSecurityGroupRequest
+        @return: LeaveSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.leave_security_group_with_options(request, runtime)
 
@@ -12770,6 +14704,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.LeaveSecurityGroupRequest,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
+        """
+        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        
+        @param request: LeaveSecurityGroupRequest
+        @return: LeaveSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.leave_security_group_with_options_async(request, runtime)
 
@@ -12870,6 +14810,178 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.ListApplicationsResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
+
+    def list_buckets_with_options(
+        self,
+        request: ens_20171110_models.ListBucketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListBucketsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBuckets',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListBucketsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_buckets_with_options_async(
+        self,
+        request: ens_20171110_models.ListBucketsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListBucketsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListBuckets',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListBucketsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_buckets(
+        self,
+        request: ens_20171110_models.ListBucketsRequest,
+    ) -> ens_20171110_models.ListBucketsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_buckets_with_options(request, runtime)
+
+    async def list_buckets_async(
+        self,
+        request: ens_20171110_models.ListBucketsRequest,
+    ) -> ens_20171110_models.ListBucketsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_buckets_with_options_async(request, runtime)
+
+    def list_objects_with_options(
+        self,
+        request: ens_20171110_models.ListObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.continuation_token):
+            query['ContinuationToken'] = request.continuation_token
+        if not UtilClient.is_unset(request.encoding_type):
+            query['EncodingType'] = request.encoding_type
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_keys):
+            query['MaxKeys'] = request.max_keys
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.start_after):
+            query['StartAfter'] = request.start_after
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListObjects',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListObjectsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_objects_with_options_async(
+        self,
+        request: ens_20171110_models.ListObjectsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ListObjectsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.continuation_token):
+            query['ContinuationToken'] = request.continuation_token
+        if not UtilClient.is_unset(request.encoding_type):
+            query['EncodingType'] = request.encoding_type
+        if not UtilClient.is_unset(request.marker):
+            query['Marker'] = request.marker
+        if not UtilClient.is_unset(request.max_keys):
+            query['MaxKeys'] = request.max_keys
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.start_after):
+            query['StartAfter'] = request.start_after
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListObjects',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ListObjectsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_objects(
+        self,
+        request: ens_20171110_models.ListObjectsRequest,
+    ) -> ens_20171110_models.ListObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_objects_with_options(request, runtime)
+
+    async def list_objects_async(
+        self,
+        request: ens_20171110_models.ListObjectsRequest,
+    ) -> ens_20171110_models.ListObjectsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_objects_with_options_async(request, runtime)
 
     def modify_ens_eip_address_attribute_with_options(
         self,
@@ -13356,6 +15468,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
+        """
+        If an instance is in the Starting state, you cannot reset the password of the instance.
+        *   When the instance is in the Running state, you cannot change the password of the instance.
+        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        
+        @param request: ModifyInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host_name):
@@ -13392,6 +15513,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
+        """
+        If an instance is in the Starting state, you cannot reset the password of the instance.
+        *   When the instance is in the Running state, you cannot change the password of the instance.
+        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        
+        @param request: ModifyInstanceAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.host_name):
@@ -13427,6 +15557,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyInstanceAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
+        """
+        If an instance is in the Starting state, you cannot reset the password of the instance.
+        *   When the instance is in the Running state, you cannot change the password of the instance.
+        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        
+        @param request: ModifyInstanceAttributeRequest
+        @return: ModifyInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_attribute_with_options(request, runtime)
 
@@ -13434,6 +15572,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyInstanceAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
+        """
+        If an instance is in the Starting state, you cannot reset the password of the instance.
+        *   When the instance is in the Running state, you cannot change the password of the instance.
+        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        
+        @param request: ModifyInstanceAttributeRequest
+        @return: ModifyInstanceAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_attribute_with_options_async(request, runtime)
 
@@ -13528,6 +15674,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: ModifyLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -13558,6 +15712,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyLoadBalancerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: ModifyLoadBalancerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLoadBalancerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -13587,6 +15749,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: ModifyLoadBalancerAttributeRequest
+        @return: ModifyLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_load_balancer_attribute_with_options(request, runtime)
 
@@ -13594,6 +15763,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: ModifyLoadBalancerAttributeRequest
+        @return: ModifyLoadBalancerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_load_balancer_attribute_with_options_async(request, runtime)
 
@@ -13602,6 +15778,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyNetworkAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyNetworkAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNetworkAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -13634,6 +15818,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyNetworkAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyNetworkAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyNetworkAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -13665,6 +15857,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyNetworkAttributeRequest,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyNetworkAttributeRequest
+        @return: ModifyNetworkAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_network_attribute_with_options(request, runtime)
 
@@ -13672,6 +15871,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyNetworkAttributeRequest,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyNetworkAttributeRequest
+        @return: ModifyNetworkAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_network_attribute_with_options_async(request, runtime)
 
@@ -13754,6 +15960,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifySecurityGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -13786,6 +16000,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifySecurityGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -13817,6 +16039,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifySecurityGroupAttributeRequest,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @return: ModifySecurityGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_security_group_attribute_with_options(request, runtime)
 
@@ -13824,14 +16053,107 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifySecurityGroupAttributeRequest,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifySecurityGroupAttributeRequest
+        @return: ModifySecurityGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_group_attribute_with_options_async(request, runtime)
+
+    def modify_snapshot_attribute_with_options(
+        self,
+        request: ens_20171110_models.ModifySnapshotAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySnapshotAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifySnapshotAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_snapshot_attribute_with_options_async(
+        self,
+        request: ens_20171110_models.ModifySnapshotAttributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        if not UtilClient.is_unset(request.snapshot_name):
+            query['SnapshotName'] = request.snapshot_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifySnapshotAttribute',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.ModifySnapshotAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_snapshot_attribute(
+        self,
+        request: ens_20171110_models.ModifySnapshotAttributeRequest,
+    ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_snapshot_attribute_with_options(request, runtime)
+
+    async def modify_snapshot_attribute_async(
+        self,
+        request: ens_20171110_models.ModifySnapshotAttributeRequest,
+    ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_snapshot_attribute_with_options_async(request, runtime)
 
     def modify_vswitch_attribute_with_options(
         self,
         request: ens_20171110_models.ModifyVSwitchAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyVSwitchAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVSwitchAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -13864,6 +16186,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyVSwitchAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyVSwitchAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyVSwitchAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -13895,6 +16225,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyVSwitchAttributeRequest,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyVSwitchAttributeRequest
+        @return: ModifyVSwitchAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_vswitch_attribute_with_options(request, runtime)
 
@@ -13902,6 +16239,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyVSwitchAttributeRequest,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 5 times per second per user.
+        
+        @param request: ModifyVSwitchAttributeRequest
+        @return: ModifyVSwitchAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_vswitch_attribute_with_options_async(request, runtime)
 
@@ -13986,6 +16330,290 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.PushApplicationDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.push_application_data_with_options_async(request, runtime)
+
+    def put_bucket_with_options(
+        self,
+        request: ens_20171110_models.PutBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PutBucketResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.bucket_acl):
+            body['BucketAcl'] = request.bucket_acl
+        if not UtilClient.is_unset(request.bucket_name):
+            body['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.ens_region_id):
+            body['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.logical_bucket_type):
+            body['LogicalBucketType'] = request.logical_bucket_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutBucket',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PutBucketResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_bucket_with_options_async(
+        self,
+        request: ens_20171110_models.PutBucketRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PutBucketResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.bucket_acl):
+            body['BucketAcl'] = request.bucket_acl
+        if not UtilClient.is_unset(request.bucket_name):
+            body['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.comment):
+            body['Comment'] = request.comment
+        if not UtilClient.is_unset(request.ens_region_id):
+            body['EnsRegionId'] = request.ens_region_id
+        if not UtilClient.is_unset(request.logical_bucket_type):
+            body['LogicalBucketType'] = request.logical_bucket_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PutBucket',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PutBucketResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_bucket(
+        self,
+        request: ens_20171110_models.PutBucketRequest,
+    ) -> ens_20171110_models.PutBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.put_bucket_with_options(request, runtime)
+
+    async def put_bucket_async(
+        self,
+        request: ens_20171110_models.PutBucketRequest,
+    ) -> ens_20171110_models.PutBucketResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.put_bucket_with_options_async(request, runtime)
+
+    def put_bucket_acl_with_options(
+        self,
+        request: ens_20171110_models.PutBucketAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PutBucketAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_acl):
+            query['BucketAcl'] = request.bucket_acl
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutBucketAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PutBucketAclResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_bucket_acl_with_options_async(
+        self,
+        request: ens_20171110_models.PutBucketAclRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PutBucketAclResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.bucket_acl):
+            query['BucketAcl'] = request.bucket_acl
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutBucketAcl',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PutBucketAclResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_bucket_acl(
+        self,
+        request: ens_20171110_models.PutBucketAclRequest,
+    ) -> ens_20171110_models.PutBucketAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.put_bucket_acl_with_options(request, runtime)
+
+    async def put_bucket_acl_async(
+        self,
+        request: ens_20171110_models.PutBucketAclRequest,
+    ) -> ens_20171110_models.PutBucketAclResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.put_bucket_acl_with_options_async(request, runtime)
+
+    def put_bucket_lifecycle_with_options(
+        self,
+        request: ens_20171110_models.PutBucketLifecycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PutBucketLifecycleResponse:
+        """
+        - You can configure up to 1000 rules.
+        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        
+        @param request: PutBucketLifecycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutBucketLifecycleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_same_action_overlap):
+            query['AllowSameActionOverlap'] = request.allow_same_action_overlap
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.created_before_date):
+            query['CreatedBeforeDate'] = request.created_before_date
+        if not UtilClient.is_unset(request.expiration_days):
+            query['ExpirationDays'] = request.expiration_days
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutBucketLifecycle',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PutBucketLifecycleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_bucket_lifecycle_with_options_async(
+        self,
+        request: ens_20171110_models.PutBucketLifecycleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.PutBucketLifecycleResponse:
+        """
+        - You can configure up to 1000 rules.
+        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        
+        @param request: PutBucketLifecycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutBucketLifecycleResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.allow_same_action_overlap):
+            query['AllowSameActionOverlap'] = request.allow_same_action_overlap
+        if not UtilClient.is_unset(request.bucket_name):
+            query['BucketName'] = request.bucket_name
+        if not UtilClient.is_unset(request.created_before_date):
+            query['CreatedBeforeDate'] = request.created_before_date
+        if not UtilClient.is_unset(request.expiration_days):
+            query['ExpirationDays'] = request.expiration_days
+        if not UtilClient.is_unset(request.prefix):
+            query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.rule_id):
+            query['RuleId'] = request.rule_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PutBucketLifecycle',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.PutBucketLifecycleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_bucket_lifecycle(
+        self,
+        request: ens_20171110_models.PutBucketLifecycleRequest,
+    ) -> ens_20171110_models.PutBucketLifecycleResponse:
+        """
+        - You can configure up to 1000 rules.
+        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        
+        @param request: PutBucketLifecycleRequest
+        @return: PutBucketLifecycleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.put_bucket_lifecycle_with_options(request, runtime)
+
+    async def put_bucket_lifecycle_async(
+        self,
+        request: ens_20171110_models.PutBucketLifecycleRequest,
+    ) -> ens_20171110_models.PutBucketLifecycleResponse:
+        """
+        - You can configure up to 1000 rules.
+        - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+        
+        @param request: PutBucketLifecycleRequest
+        @return: PutBucketLifecycleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.put_bucket_lifecycle_with_options_async(request, runtime)
 
     def re_init_disk_with_options(
         self,
@@ -14141,14 +16769,10 @@ class Client(OpenApiClient):
 
     def reboot_armserver_instance_with_options(
         self,
-        tmp_req: ens_20171110_models.RebootARMServerInstanceRequest,
+        request: ens_20171110_models.RebootARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RebootARMServerInstanceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.server_ids):
-            request.server_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_ids, 'ServerIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -14171,14 +16795,10 @@ class Client(OpenApiClient):
 
     async def reboot_armserver_instance_with_options_async(
         self,
-        tmp_req: ens_20171110_models.RebootARMServerInstanceRequest,
+        request: ens_20171110_models.RebootARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RebootARMServerInstanceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.server_ids):
-            request.server_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.server_ids, 'ServerIds', 'json')
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -14218,6 +16838,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RebootInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootInstanceResponse:
+        """
+        Only instances that are in the Running state can be restarted.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: RebootInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_stop):
@@ -14248,6 +16876,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RebootInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootInstanceResponse:
+        """
+        Only instances that are in the Running state can be restarted.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: RebootInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_stop):
@@ -14277,6 +16913,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootInstanceRequest,
     ) -> ens_20171110_models.RebootInstanceResponse:
+        """
+        Only instances that are in the Running state can be restarted.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: RebootInstanceRequest
+        @return: RebootInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_instance_with_options(request, runtime)
 
@@ -14284,6 +16927,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootInstanceRequest,
     ) -> ens_20171110_models.RebootInstanceResponse:
+        """
+        Only instances that are in the Running state can be restarted.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: RebootInstanceRequest
+        @return: RebootInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_instance_with_options_async(request, runtime)
 
@@ -14740,6 +17390,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
+        """
+        You can call this operation up to 10,000 times per second per account.
+        *   The maximum number of times that each user can call this operation per second is 50.
+        
+        @param request: ReleaseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -14768,6 +17426,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
+        """
+        You can call this operation up to 10,000 times per second per account.
+        *   The maximum number of times that each user can call this operation per second is 50.
+        
+        @param request: ReleaseInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -14795,6 +17461,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleaseInstanceRequest,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
+        """
+        You can call this operation up to 10,000 times per second per account.
+        *   The maximum number of times that each user can call this operation per second is 50.
+        
+        @param request: ReleaseInstanceRequest
+        @return: ReleaseInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_instance_with_options(request, runtime)
 
@@ -14802,6 +17475,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleaseInstanceRequest,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
+        """
+        You can call this operation up to 10,000 times per second per account.
+        *   The maximum number of times that each user can call this operation per second is 50.
+        
+        @param request: ReleaseInstanceRequest
+        @return: ReleaseInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_instance_with_options_async(request, runtime)
 
@@ -14950,6 +17630,14 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RemoveBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param tmp_req: RemoveBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveBackendServersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RemoveBackendServersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14984,6 +17672,14 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RemoveBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param tmp_req: RemoveBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveBackendServersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RemoveBackendServersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15017,6 +17713,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RemoveBackendServersRequest,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: RemoveBackendServersRequest
+        @return: RemoveBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_backend_servers_with_options(request, runtime)
 
@@ -15024,6 +17727,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RemoveBackendServersRequest,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: RemoveBackendServersRequest
+        @return: RemoveBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_backend_servers_with_options_async(request, runtime)
 
@@ -15664,6 +18374,17 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResetDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetDiskResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        
+        @param request: ResetDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -15694,6 +18415,17 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResetDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetDiskResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        
+        @param request: ResetDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -15723,6 +18455,16 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResetDiskRequest,
     ) -> ens_20171110_models.ResetDiskResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        
+        @param request: ResetDiskRequest
+        @return: ResetDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_disk_with_options(request, runtime)
 
@@ -15730,6 +18472,16 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResetDiskRequest,
     ) -> ens_20171110_models.ResetDiskResponse:
+        """
+        When you call this operation, take note of the following items:
+        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        
+        @param request: ResetDiskRequest
+        @return: ResetDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_disk_with_options_async(request, runtime)
 
@@ -16034,6 +18786,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
+        """
+        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        
+        @param request: RevokeSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_protocol):
@@ -16076,6 +18837,15 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
+        """
+        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        
+        @param request: RevokeSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_protocol):
@@ -16117,6 +18887,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RevokeSecurityGroupRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
+        """
+        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        
+        @param request: RevokeSecurityGroupRequest
+        @return: RevokeSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_security_group_with_options(request, runtime)
 
@@ -16124,6 +18902,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RevokeSecurityGroupRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
+        """
+        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        
+        @param request: RevokeSecurityGroupRequest
+        @return: RevokeSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_security_group_with_options_async(request, runtime)
 
@@ -16132,6 +18918,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupEgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
+        """
+        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        
+        @param request: RevokeSecurityGroupEgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeSecurityGroupEgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_cidr_ip):
@@ -16174,6 +18967,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupEgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
+        """
+        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        
+        @param request: RevokeSecurityGroupEgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokeSecurityGroupEgressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dest_cidr_ip):
@@ -16215,6 +19015,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RevokeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
+        """
+        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        
+        @param request: RevokeSecurityGroupEgressRequest
+        @return: RevokeSecurityGroupEgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_security_group_egress_with_options(request, runtime)
 
@@ -16222,6 +19028,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RevokeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
+        """
+        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        
+        @param request: RevokeSecurityGroupEgressRequest
+        @return: RevokeSecurityGroupEgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_security_group_egress_with_options_async(request, runtime)
 
@@ -16402,6 +19214,10 @@ class Client(OpenApiClient):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
         if not UtilClient.is_unset(request.carrier):
             query['Carrier'] = request.carrier
         if not UtilClient.is_unset(request.data_disk_shrink):
@@ -16424,6 +19240,8 @@ class Client(OpenApiClient):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.internet_max_bandwidth_out):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.net_district_code):
@@ -16494,6 +19312,10 @@ class Client(OpenApiClient):
             query['Amount'] = request.amount
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
+        if not UtilClient.is_unset(request.auto_use_coupon):
+            query['AutoUseCoupon'] = request.auto_use_coupon
+        if not UtilClient.is_unset(request.billing_cycle):
+            query['BillingCycle'] = request.billing_cycle
         if not UtilClient.is_unset(request.carrier):
             query['Carrier'] = request.carrier
         if not UtilClient.is_unset(request.data_disk_shrink):
@@ -16516,6 +19338,8 @@ class Client(OpenApiClient):
             query['InternetChargeType'] = request.internet_charge_type
         if not UtilClient.is_unset(request.internet_max_bandwidth_out):
             query['InternetMaxBandwidthOut'] = request.internet_max_bandwidth_out
+        if not UtilClient.is_unset(request.ip_type):
+            query['IpType'] = request.ip_type
         if not UtilClient.is_unset(request.key_pair_name):
             query['KeyPairName'] = request.key_pair_name
         if not UtilClient.is_unset(request.net_district_code):
@@ -16690,6 +19514,14 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.SetBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param tmp_req: SetBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetBackendServersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.SetBackendServersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16724,6 +19556,14 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.SetBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param tmp_req: SetBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetBackendServersResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.SetBackendServersShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16757,6 +19597,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetBackendServersRequest,
     ) -> ens_20171110_models.SetBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: SetBackendServersRequest
+        @return: SetBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_backend_servers_with_options(request, runtime)
 
@@ -16764,6 +19611,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetBackendServersRequest,
     ) -> ens_20171110_models.SetBackendServersResponse:
+        """
+        You can call this operation up to 100 times per second.
+        *   You can call this operation up to 10 times per second per account.
+        
+        @param request: SetBackendServersRequest
+        @return: SetBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_backend_servers_with_options_async(request, runtime)
 
@@ -16772,6 +19626,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerHTTPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -16830,6 +19692,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerHTTPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -16887,6 +19757,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPListenerAttributeRequest
+        @return: SetLoadBalancerHTTPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_httplistener_attribute_with_options(request, runtime)
 
@@ -16894,6 +19771,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPListenerAttributeRequest
+        @return: SetLoadBalancerHTTPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_httplistener_attribute_with_options_async(request, runtime)
 
@@ -16902,6 +19786,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPSListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerHTTPSListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -16962,6 +19854,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPSListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerHTTPSListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -17021,6 +19921,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPSListenerAttributeRequest
+        @return: SetLoadBalancerHTTPSListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_httpslistener_attribute_with_options(request, runtime)
 
@@ -17028,6 +19935,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerHTTPSListenerAttributeRequest
+        @return: SetLoadBalancerHTTPSListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_httpslistener_attribute_with_options_async(request, runtime)
 
@@ -17036,6 +19950,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -17066,6 +19988,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -17095,6 +20025,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerStatusRequest,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @return: SetLoadBalancerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_status_with_options(request, runtime)
 
@@ -17102,6 +20039,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerStatusRequest,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @return: SetLoadBalancerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_status_with_options_async(request, runtime)
 
@@ -17110,6 +20054,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerTCPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerTCPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -17168,6 +20120,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerTCPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerTCPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -17225,6 +20185,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerTCPListenerAttributeRequest
+        @return: SetLoadBalancerTCPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_tcplistener_attribute_with_options(request, runtime)
 
@@ -17232,6 +20199,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.SetLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: SetLoadBalancerTCPListenerAttributeRequest
+        @return: SetLoadBalancerTCPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_tcplistener_attribute_with_options_async(request, runtime)
 
@@ -17242,6 +20216,9 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
         @deprecated
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17300,6 +20277,9 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
         @deprecated
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17357,6 +20337,9 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
         @deprecated
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
@@ -17371,6 +20354,9 @@ class Client(OpenApiClient):
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
         @deprecated
+        >
+        *   You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
@@ -17454,6 +20440,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartInstanceResponse:
+        """
+        You can call the operation only when the instance is in the Stopped state.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: StartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17482,6 +20476,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartInstanceResponse:
+        """
+        You can call the operation only when the instance is in the Stopped state.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: StartInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17509,6 +20511,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartInstanceRequest,
     ) -> ens_20171110_models.StartInstanceResponse:
+        """
+        You can call the operation only when the instance is in the Stopped state.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: StartInstanceRequest
+        @return: StartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_instance_with_options(request, runtime)
 
@@ -17516,6 +20525,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartInstanceRequest,
     ) -> ens_20171110_models.StartInstanceResponse:
+        """
+        You can call the operation only when the instance is in the Stopped state.
+        *   If the operation is successful, the status of the instance becomes Starting.
+        
+        @param request: StartInstanceRequest
+        @return: StartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_instance_with_options_async(request, runtime)
 
@@ -17602,6 +20618,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartLoadBalancerListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StartLoadBalancerListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartLoadBalancerListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -17634,6 +20658,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartLoadBalancerListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StartLoadBalancerListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartLoadBalancerListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -17665,6 +20697,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StartLoadBalancerListenerRequest
+        @return: StartLoadBalancerListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_load_balancer_listener_with_options(request, runtime)
 
@@ -17672,6 +20711,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StartLoadBalancerListenerRequest
+        @return: StartLoadBalancerListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_load_balancer_listener_with_options_async(request, runtime)
 
@@ -17824,6 +20870,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopInstanceResponse:
+        """
+        You can call this operation to stop instances that are only in the Running state.
+        *   If the call is successful, the state of the instance becomes Stopping.
+        *   Once the instance is stopped, the state of the instance becomes Stopped.
+        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_stop):
@@ -17856,6 +20912,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopInstanceResponse:
+        """
+        You can call this operation to stop instances that are only in the Running state.
+        *   If the call is successful, the state of the instance becomes Stopping.
+        *   Once the instance is stopped, the state of the instance becomes Stopped.
+        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force_stop):
@@ -17887,6 +20953,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopInstanceRequest,
     ) -> ens_20171110_models.StopInstanceResponse:
+        """
+        You can call this operation to stop instances that are only in the Running state.
+        *   If the call is successful, the state of the instance becomes Stopping.
+        *   Once the instance is stopped, the state of the instance becomes Stopped.
+        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_instance_with_options(request, runtime)
 
@@ -17894,6 +20969,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopInstanceRequest,
     ) -> ens_20171110_models.StopInstanceResponse:
+        """
+        You can call this operation to stop instances that are only in the Running state.
+        *   If the call is successful, the state of the instance becomes Stopping.
+        *   Once the instance is stopped, the state of the instance becomes Stopped.
+        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
@@ -17980,6 +21064,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopLoadBalancerListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StopLoadBalancerListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopLoadBalancerListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -18012,6 +21104,14 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopLoadBalancerListenerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StopLoadBalancerListenerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopLoadBalancerListenerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -18043,6 +21143,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StopLoadBalancerListenerRequest
+        @return: StopLoadBalancerListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_load_balancer_listener_with_options(request, runtime)
 
@@ -18050,6 +21157,13 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
+        """
+        You can call this operation up to 100 times per second per account.
+        *   You can call this operation up to 10 times per second per user.
+        
+        @param request: StopLoadBalancerListenerRequest
+        @return: StopLoadBalancerListenerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_load_balancer_listener_with_options_async(request, runtime)
 
