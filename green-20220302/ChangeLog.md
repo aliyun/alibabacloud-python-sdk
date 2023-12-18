@@ -1,3 +1,6 @@
+2023-12-18 Version: 1.2.0
+- Add VideoModerationCancel API.
+
 2023-10-30 Version: 1.1.0
 - Generated python 2022-03-02 for Green.
 
