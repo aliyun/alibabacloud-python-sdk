@@ -2993,6 +2993,7 @@ class DestroyResourceDirectoryResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -3421,7 +3422,14 @@ class EnableControlPolicyResponseBody(TeaModel):
         enablement_status: str = None,
         request_id: str = None,
     ):
+        # The status of the Control Policy feature. Valid values:
+        # 
+        # *   Enabled: The feature is enabled.
+        # *   PendingEnable: The feature is being enabled.
+        # *   Disabled: The feature is disabled.
+        # *   PendingDisable: The feature is being disabled.
         self.enablement_status = enablement_status
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -10565,6 +10573,7 @@ class PrecheckForConsolidatedBillingAccountRequest(TeaModel):
         self,
         billing_account_id: str = None,
     ):
+        # The ID of the management account or member to be used as a main financial account.
         self.billing_account_id = billing_account_id
 
     def validate(self):
@@ -10593,7 +10602,9 @@ class PrecheckForConsolidatedBillingAccountResponseBodyReasons(TeaModel):
         code: str = None,
         message: str = None,
     ):
+        # The error code.
         self.code = code
+        # The error message.
         self.message = message
 
     def validate(self):
@@ -10627,8 +10638,14 @@ class PrecheckForConsolidatedBillingAccountResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The cause of the check failure.
         self.reasons = reasons
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the check was successful. Valid values:
+        # 
+        # *   true
+        # *   false
         self.result = result
 
     def validate(self):
