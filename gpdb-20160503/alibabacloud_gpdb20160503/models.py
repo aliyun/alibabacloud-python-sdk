@@ -660,6 +660,7 @@ class CreateDBInstanceRequest(TeaModel):
         dbinstance_description: str = None,
         dbinstance_group_count: str = None,
         dbinstance_mode: str = None,
+        enable_ssl: bool = None,
         encryption_key: str = None,
         encryption_type: str = None,
         engine: str = None,
@@ -729,6 +730,7 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # > This parameter must be specified.
         self.dbinstance_mode = dbinstance_mode
+        self.enable_ssl = enable_ssl
         # The ID of the encryption key.
         # 
         # > If EncryptionType is set to CloudDisk, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
@@ -932,6 +934,8 @@ class CreateDBInstanceRequest(TeaModel):
             result['DBInstanceGroupCount'] = self.dbinstance_group_count
         if self.dbinstance_mode is not None:
             result['DBInstanceMode'] = self.dbinstance_mode
+        if self.enable_ssl is not None:
+            result['EnableSSL'] = self.enable_ssl
         if self.encryption_key is not None:
             result['EncryptionKey'] = self.encryption_key
         if self.encryption_type is not None:
@@ -1014,6 +1018,8 @@ class CreateDBInstanceRequest(TeaModel):
             self.dbinstance_group_count = m.get('DBInstanceGroupCount')
         if m.get('DBInstanceMode') is not None:
             self.dbinstance_mode = m.get('DBInstanceMode')
+        if m.get('EnableSSL') is not None:
+            self.enable_ssl = m.get('EnableSSL')
         if m.get('EncryptionKey') is not None:
             self.encryption_key = m.get('EncryptionKey')
         if m.get('EncryptionType') is not None:
