@@ -1510,6 +1510,7 @@ class MassPushRequestPushTask(TeaModel):
         android_render_style: str = None,
         android_target_user_type: int = None,
         android_vivo_push_mode: int = None,
+        android_vivo_receipt_id: str = None,
         android_xiao_mi_activity: str = None,
         android_xiao_mi_notify_body: str = None,
         android_xiao_mi_notify_title: str = None,
@@ -1577,6 +1578,7 @@ class MassPushRequestPushTask(TeaModel):
         self.android_render_style = android_render_style
         self.android_target_user_type = android_target_user_type
         self.android_vivo_push_mode = android_vivo_push_mode
+        self.android_vivo_receipt_id = android_vivo_receipt_id
         self.android_xiao_mi_activity = android_xiao_mi_activity
         self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
@@ -1686,6 +1688,8 @@ class MassPushRequestPushTask(TeaModel):
             result['AndroidTargetUserType'] = self.android_target_user_type
         if self.android_vivo_push_mode is not None:
             result['AndroidVivoPushMode'] = self.android_vivo_push_mode
+        if self.android_vivo_receipt_id is not None:
+            result['AndroidVivoReceiptId'] = self.android_vivo_receipt_id
         if self.android_xiao_mi_activity is not None:
             result['AndroidXiaoMiActivity'] = self.android_xiao_mi_activity
         if self.android_xiao_mi_notify_body is not None:
@@ -1822,6 +1826,8 @@ class MassPushRequestPushTask(TeaModel):
             self.android_target_user_type = m.get('AndroidTargetUserType')
         if m.get('AndroidVivoPushMode') is not None:
             self.android_vivo_push_mode = m.get('AndroidVivoPushMode')
+        if m.get('AndroidVivoReceiptId') is not None:
+            self.android_vivo_receipt_id = m.get('AndroidVivoReceiptId')
         if m.get('AndroidXiaoMiActivity') is not None:
             self.android_xiao_mi_activity = m.get('AndroidXiaoMiActivity')
         if m.get('AndroidXiaoMiNotifyBody') is not None:
@@ -2074,6 +2080,7 @@ class PushRequest(TeaModel):
         android_render_style: int = None,
         android_target_user_type: int = None,
         android_vivo_push_mode: int = None,
+        android_vivo_receipt_id: str = None,
         android_xiao_mi_activity: str = None,
         android_xiao_mi_notify_body: str = None,
         android_xiao_mi_notify_title: str = None,
@@ -2147,6 +2154,7 @@ class PushRequest(TeaModel):
         self.android_render_style = android_render_style
         self.android_target_user_type = android_target_user_type
         self.android_vivo_push_mode = android_vivo_push_mode
+        self.android_vivo_receipt_id = android_vivo_receipt_id
         self.android_xiao_mi_activity = android_xiao_mi_activity
         self.android_xiao_mi_notify_body = android_xiao_mi_notify_body
         self.android_xiao_mi_notify_title = android_xiao_mi_notify_title
@@ -2262,6 +2270,8 @@ class PushRequest(TeaModel):
             result['AndroidTargetUserType'] = self.android_target_user_type
         if self.android_vivo_push_mode is not None:
             result['AndroidVivoPushMode'] = self.android_vivo_push_mode
+        if self.android_vivo_receipt_id is not None:
+            result['AndroidVivoReceiptId'] = self.android_vivo_receipt_id
         if self.android_xiao_mi_activity is not None:
             result['AndroidXiaoMiActivity'] = self.android_xiao_mi_activity
         if self.android_xiao_mi_notify_body is not None:
@@ -2410,6 +2420,8 @@ class PushRequest(TeaModel):
             self.android_target_user_type = m.get('AndroidTargetUserType')
         if m.get('AndroidVivoPushMode') is not None:
             self.android_vivo_push_mode = m.get('AndroidVivoPushMode')
+        if m.get('AndroidVivoReceiptId') is not None:
+            self.android_vivo_receipt_id = m.get('AndroidVivoReceiptId')
         if m.get('AndroidXiaoMiActivity') is not None:
             self.android_xiao_mi_activity = m.get('AndroidXiaoMiActivity')
         if m.get('AndroidXiaoMiNotifyBody') is not None:

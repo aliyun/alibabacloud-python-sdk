@@ -1112,6 +1112,8 @@ class Client(OpenApiClient):
             query['AndroidTargetUserType'] = request.android_target_user_type
         if not UtilClient.is_unset(request.android_vivo_push_mode):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
+        if not UtilClient.is_unset(request.android_vivo_receipt_id):
+            query['AndroidVivoReceiptId'] = request.android_vivo_receipt_id
         if not UtilClient.is_unset(request.android_xiao_mi_activity):
             query['AndroidXiaoMiActivity'] = request.android_xiao_mi_activity
         if not UtilClient.is_unset(request.android_xiao_mi_notify_body):
@@ -1282,6 +1284,8 @@ class Client(OpenApiClient):
             query['AndroidTargetUserType'] = request.android_target_user_type
         if not UtilClient.is_unset(request.android_vivo_push_mode):
             query['AndroidVivoPushMode'] = request.android_vivo_push_mode
+        if not UtilClient.is_unset(request.android_vivo_receipt_id):
+            query['AndroidVivoReceiptId'] = request.android_vivo_receipt_id
         if not UtilClient.is_unset(request.android_xiao_mi_activity):
             query['AndroidXiaoMiActivity'] = request.android_xiao_mi_activity
         if not UtilClient.is_unset(request.android_xiao_mi_notify_body):
