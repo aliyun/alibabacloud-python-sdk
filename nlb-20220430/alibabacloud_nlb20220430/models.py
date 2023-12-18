@@ -4180,9 +4180,9 @@ class GetListenerAttributeRequest(TeaModel):
 class GetListenerAttributeResponseBodyProxyProtocolV2Config(TeaModel):
     def __init__(
         self,
-        ppv_2private_link_ep_id_enabled: str = None,
-        ppv_2private_link_eps_id_enabled: str = None,
-        ppv_2vpc_id_enabled: str = None,
+        ppv_2private_link_ep_id_enabled: bool = None,
+        ppv_2private_link_eps_id_enabled: bool = None,
+        ppv_2vpc_id_enabled: bool = None,
     ):
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled
@@ -5964,9 +5964,9 @@ class ListListenersRequest(TeaModel):
 class ListListenersResponseBodyListenersProxyProtocolV2Config(TeaModel):
     def __init__(
         self,
-        ppv_2private_link_ep_id_enabled: str = None,
-        ppv_2private_link_eps_id_enabled: str = None,
-        ppv_2vpc_id_enabled: str = None,
+        ppv_2private_link_ep_id_enabled: bool = None,
+        ppv_2private_link_eps_id_enabled: bool = None,
+        ppv_2vpc_id_enabled: bool = None,
     ):
         self.ppv_2private_link_ep_id_enabled = ppv_2private_link_ep_id_enabled
         self.ppv_2private_link_eps_id_enabled = ppv_2private_link_eps_id_enabled

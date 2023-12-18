@@ -1,3 +1,6 @@
+2023-12-18 Version: 3.0.0
+- Generated python 2022-04-30 for Nlb.
+
 2023-11-27 Version: 2.0.3
 - Generated python 2022-04-30 for Nlb.
 
