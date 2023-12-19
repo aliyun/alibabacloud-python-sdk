@@ -2041,6 +2041,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.retry_timeout_ms):
             query['RetryTimeoutMs'] = request.retry_timeout_ms
         if not UtilClient.is_unset(request.stat_interval_ms):
@@ -2097,6 +2099,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.retry_timeout_ms):
             query['RetryTimeoutMs'] = request.retry_timeout_ms
         if not UtilClient.is_unset(request.stat_interval_ms):
@@ -2437,6 +2441,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.threshold):
             query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(
@@ -2483,6 +2489,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource):
             query['Resource'] = request.resource
+        if not UtilClient.is_unset(request.resource_type):
+            query['ResourceType'] = request.resource_type
         if not UtilClient.is_unset(request.threshold):
             query['Threshold'] = request.threshold
         req = open_api_models.OpenApiRequest(

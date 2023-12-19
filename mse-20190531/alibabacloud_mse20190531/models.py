@@ -4006,7 +4006,7 @@ class AddGatewayRouteResponseBody(TeaModel):
     ):
         # The status code returned.
         self.code = code
-        # The response data.
+        # The ID of the created route.
         self.data = data
         # The error code that is returned.
         # 
@@ -7213,6 +7213,7 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
+        resource_type: int = None,
         retry_timeout_ms: int = None,
         stat_interval_ms: int = None,
         strategy: int = None,
@@ -7261,6 +7262,7 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         self.region_id = region_id
         # The name of the interface to which the rule applies. The interface name must be the same as the name on the interface details page in the console.
         self.resource = resource
+        self.resource_type = resource_type
         # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
         self.retry_timeout_ms = retry_timeout_ms
         # The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes. The default value is 20000. This value indicates 20 seconds.
@@ -7327,6 +7329,8 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource is not None:
             result['Resource'] = self.resource
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.retry_timeout_ms is not None:
             result['RetryTimeoutMs'] = self.retry_timeout_ms
         if self.stat_interval_ms is not None:
@@ -7361,6 +7365,8 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Resource') is not None:
             self.resource = m.get('Resource')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RetryTimeoutMs') is not None:
             self.retry_timeout_ms = m.get('RetryTimeoutMs')
         if m.get('StatIntervalMs') is not None:
@@ -8333,6 +8339,7 @@ class CreateFlowRuleRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
+        resource_type: int = None,
         threshold: int = None,
     ):
         # The language of the response. Valid values:
@@ -8400,6 +8407,7 @@ class CreateFlowRuleRequest(TeaModel):
         self.region_id = region_id
         # The name of the API resource.
         self.resource = resource
+        self.resource_type = resource_type
         # The throttling threshold.
         self.threshold = threshold
 
@@ -8430,6 +8438,8 @@ class CreateFlowRuleRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource is not None:
             result['Resource'] = self.resource
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.threshold is not None:
             result['Threshold'] = self.threshold
         return result
@@ -8454,6 +8464,8 @@ class CreateFlowRuleRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Resource') is not None:
             self.resource = m.get('Resource')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('Threshold') is not None:
             self.threshold = m.get('Threshold')
         return self
@@ -18258,7 +18270,18 @@ class GetGatewayResponseBodyData(TeaModel):
         self.security_group = security_group
         # The specifications of the gateway.
         self.spec = spec
-        # The status of the gateway. Valid values: 0: The gateway is being created. 1: The gateway fails to be created. 2: The gateway is running. 3: The gateway is changing. 4: The gateway is scaling down. 6: The gateway is scaling up. 8: The gateway is being deleted. 10: The gateway is restarting. 11: The gateway is being rebuilt. 12: The gateway is updating. 13: The gateway fails to be updated.
+        # The status of the gateway. Valid values: 
+        # * 0: The gateway is being created. 
+        # * 1: The gateway fails to be created. 
+        # * 2: The gateway is running. 
+        # * 3: The gateway is changing. 
+        # * 4: The gateway is scaling down. 
+        # * 6: The gateway is scaling up. 
+        # * 8: The gateway is being deleted. 
+        # * 10: The gateway is restarting. 
+        # * 11: The gateway is being rebuilt. 
+        # * 12: The gateway is updating. 
+        # * 13: The gateway fails to be updated.
         self.status = status
         # The description of the status.
         self.status_desc = status_desc
@@ -29913,6 +29936,7 @@ class ListCircuitBreakerRulesResponseBodyDataResult(TeaModel):
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
+        resource_type: int = None,
         retry_timeout_ms: int = None,
         rule_id: int = None,
         stat_interval_ms: int = None,
@@ -29941,6 +29965,7 @@ class ListCircuitBreakerRulesResponseBodyDataResult(TeaModel):
         self.region_id = region_id
         # The name of the interface to which the rule is applicable. The interface name must be the same as the name on the interface details page in the console.
         self.resource = resource
+        self.resource_type = resource_type
         # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period.
         self.retry_timeout_ms = retry_timeout_ms
         # The ID of the rule.
@@ -30009,6 +30034,8 @@ class ListCircuitBreakerRulesResponseBodyDataResult(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource is not None:
             result['Resource'] = self.resource
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.retry_timeout_ms is not None:
             result['RetryTimeoutMs'] = self.retry_timeout_ms
         if self.rule_id is not None:
@@ -30045,6 +30072,8 @@ class ListCircuitBreakerRulesResponseBodyDataResult(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Resource') is not None:
             self.resource = m.get('Resource')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RetryTimeoutMs') is not None:
             self.retry_timeout_ms = m.get('RetryTimeoutMs')
         if m.get('RuleId') is not None:
@@ -33444,6 +33473,7 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
         namespace: str = None,
         region_id: str = None,
         resource: str = None,
+        resource_type: int = None,
         rule_id: int = None,
         threshold: float = None,
         traffic_tags: Dict[str, Any] = None,
@@ -33512,6 +33542,7 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
         self.region_id = region_id
         # The name of the interface resource.
         self.resource = resource
+        self.resource_type = resource_type
         # The ID of the rule.
         self.rule_id = rule_id
         # The throttling threshold.
@@ -33548,6 +33579,8 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource is not None:
             result['Resource'] = self.resource
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
         if self.rule_id is not None:
             result['RuleId'] = self.rule_id
         if self.threshold is not None:
@@ -33578,6 +33611,8 @@ class ListFlowRulesResponseBodyDataResult(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('Resource') is not None:
             self.resource = m.get('Resource')
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
         if m.get('RuleId') is not None:
             self.rule_id = m.get('RuleId')
         if m.get('Threshold') is not None:
@@ -42652,7 +42687,9 @@ class ModifyGovernanceKubernetesClusterRequestNamespaceInfos(TeaModel):
         mse_namespace: str = None,
         name: str = None,
     ):
+        # The microservice namespace.If you do not specify this parameter, Microservice Governance is not enabled for the namespace.
         self.mse_namespace = mse_namespace
+        # The name of the Kubernetes namespace.
         self.name = name
 
     def validate(self):
@@ -42694,8 +42731,9 @@ class ModifyGovernanceKubernetesClusterRequest(TeaModel):
         self.accept_language = accept_language
         # The ID of the instance.
         self.cluster_id = cluster_id
+        # The information about the namespace for which Microservices Engine(MSE) Microservices Governance is enabled.
         self.namespace_infos = namespace_infos
-        # The region in which the cluster resides.
+        # The ID of the region in which the instance resides. The region is supported by MSE.
         self.region_id = region_id
 
     def validate(self):
@@ -42753,8 +42791,9 @@ class ModifyGovernanceKubernetesClusterShrinkRequest(TeaModel):
         self.accept_language = accept_language
         # The ID of the instance.
         self.cluster_id = cluster_id
+        # The information about the namespace for which Microservices Engine(MSE) Microservices Governance is enabled.
         self.namespace_infos_shrink = namespace_infos_shrink
-        # The region in which the cluster resides.
+        # The ID of the region in which the instance resides. The region is supported by MSE.
         self.region_id = region_id
 
     def validate(self):
@@ -42799,9 +42838,9 @@ class ModifyGovernanceKubernetesClusterResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The status code returned.
+        # The response code returned.
         self.code = code
-        # The details of the data.
+        # The deletion result.
         self.data = data
         # The HTTP status code returned.
         self.http_status_code = http_status_code
