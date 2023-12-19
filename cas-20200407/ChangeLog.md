@@ -1,3 +1,6 @@
+2023-12-19 Version: 1.0.14
+- Generated python 2020-04-07 for cas.
+
 2022-11-30 Version: 1.0.13
 - Support resourceGroup.
 
