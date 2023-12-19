@@ -8076,6 +8076,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_opa_strategy_new_with_options_async(request, runtime)
 
+    def delete_oss_scan_config_with_options(
+        self,
+        request: sas_20181203_models.DeleteOssScanConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteOssScanConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOssScanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteOssScanConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_oss_scan_config_with_options_async(
+        self,
+        request: sas_20181203_models.DeleteOssScanConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DeleteOssScanConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.id):
+            query['Id'] = request.id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteOssScanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DeleteOssScanConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_oss_scan_config(
+        self,
+        request: sas_20181203_models.DeleteOssScanConfigRequest,
+    ) -> sas_20181203_models.DeleteOssScanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_oss_scan_config_with_options(request, runtime)
+
+    async def delete_oss_scan_config_async(
+        self,
+        request: sas_20181203_models.DeleteOssScanConfigRequest,
+    ) -> sas_20181203_models.DeleteOssScanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_oss_scan_config_with_options_async(request, runtime)
+
     def delete_private_registry_with_options(
         self,
         request: sas_20181203_models.DeletePrivateRegistryRequest,
@@ -40579,6 +40649,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListK8sAccessInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListK8sAccessInfoResponse:
+        """
+        You can use this operation to query the access information about Kubernetes clusters.
+        
+        @param request: ListK8sAccessInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListK8sAccessInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_yundun_gateway_api_name):
@@ -40613,6 +40690,13 @@ class Client(OpenApiClient):
         request: sas_20181203_models.ListK8sAccessInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.ListK8sAccessInfoResponse:
+        """
+        You can use this operation to query the access information about Kubernetes clusters.
+        
+        @param request: ListK8sAccessInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListK8sAccessInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_yundun_gateway_api_name):
@@ -40646,6 +40730,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.ListK8sAccessInfoRequest,
     ) -> sas_20181203_models.ListK8sAccessInfoResponse:
+        """
+        You can use this operation to query the access information about Kubernetes clusters.
+        
+        @param request: ListK8sAccessInfoRequest
+        @return: ListK8sAccessInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_k8s_access_info_with_options(request, runtime)
 
@@ -40653,6 +40743,12 @@ class Client(OpenApiClient):
         self,
         request: sas_20181203_models.ListK8sAccessInfoRequest,
     ) -> sas_20181203_models.ListK8sAccessInfoResponse:
+        """
+        You can use this operation to query the access information about Kubernetes clusters.
+        
+        @param request: ListK8sAccessInfoRequest
+        @return: ListK8sAccessInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_k8s_access_info_with_options_async(request, runtime)
 
@@ -41105,6 +41201,72 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListOssBucketScanInfoResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_oss_bucket_scan_info_with_options_async(request, runtime)
+
+    def list_oss_scan_config_with_options(
+        self,
+        request: sas_20181203_models.ListOssScanConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListOssScanConfigResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOssScanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListOssScanConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_oss_scan_config_with_options_async(
+        self,
+        request: sas_20181203_models.ListOssScanConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListOssScanConfigResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListOssScanConfig',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListOssScanConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_oss_scan_config(
+        self,
+        request: sas_20181203_models.ListOssScanConfigRequest,
+    ) -> sas_20181203_models.ListOssScanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_oss_scan_config_with_options(request, runtime)
+
+    async def list_oss_scan_config_async(
+        self,
+        request: sas_20181203_models.ListOssScanConfigRequest,
+    ) -> sas_20181203_models.ListOssScanConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_oss_scan_config_with_options_async(request, runtime)
 
     def list_plugin_for_uuid_with_options(
         self,
@@ -51474,6 +51636,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_check_result_white_list_with_options_async(request, runtime)
 
+    def reset_honeypot_with_options(
+        self,
+        request: sas_20181203_models.ResetHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ResetHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.honeypot_id):
+            query['HoneypotId'] = request.honeypot_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ResetHoneypotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_honeypot_with_options_async(
+        self,
+        request: sas_20181203_models.ResetHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ResetHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.honeypot_id):
+            query['HoneypotId'] = request.honeypot_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResetHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ResetHoneypotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_honeypot(
+        self,
+        request: sas_20181203_models.ResetHoneypotRequest,
+    ) -> sas_20181203_models.ResetHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.reset_honeypot_with_options(request, runtime)
+
+    async def reset_honeypot_async(
+        self,
+        request: sas_20181203_models.ResetHoneypotRequest,
+    ) -> sas_20181203_models.ResetHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.reset_honeypot_with_options_async(request, runtime)
+
     def retry_agentless_task_with_options(
         self,
         request: sas_20181203_models.RetryAgentlessTaskRequest,
@@ -52383,6 +52619,80 @@ class Client(OpenApiClient):
     async def start_discover_database_task_async(self) -> sas_20181203_models.StartDiscoverDatabaseTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.start_discover_database_task_with_options_async(runtime)
+
+    def start_honeypot_with_options(
+        self,
+        request: sas_20181203_models.StartHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.StartHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.honeypot_id):
+            query['HoneypotId'] = request.honeypot_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.StartHoneypotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_honeypot_with_options_async(
+        self,
+        request: sas_20181203_models.StartHoneypotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.StartHoneypotResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.honeypot_id):
+            query['HoneypotId'] = request.honeypot_id
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='StartHoneypot',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.StartHoneypotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_honeypot(
+        self,
+        request: sas_20181203_models.StartHoneypotRequest,
+    ) -> sas_20181203_models.StartHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.start_honeypot_with_options(request, runtime)
+
+    async def start_honeypot_async(
+        self,
+        request: sas_20181203_models.StartHoneypotRequest,
+    ) -> sas_20181203_models.StartHoneypotResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.start_honeypot_with_options_async(request, runtime)
 
     def start_pre_check_database_with_options(
         self,
