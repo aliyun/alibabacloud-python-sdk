@@ -1,3 +1,6 @@
+2023-12-19 Version: 4.0.0
+- Generated python 2019-12-30 for ocr.
+
 2023-07-04 Version: 3.0.0
 - Update TrimDocument.
 - Update RecognizeTakeoutOrder.
