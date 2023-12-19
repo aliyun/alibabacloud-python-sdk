@@ -784,6 +784,8 @@ class Client(OpenApiClient):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -828,6 +830,8 @@ class Client(OpenApiClient):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9208,6 +9212,8 @@ class Client(OpenApiClient):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9252,6 +9258,8 @@ class Client(OpenApiClient):
             query['MinClusterCount'] = request.min_cluster_count
         if not UtilClient.is_unset(request.min_compute_resource):
             query['MinComputeResource'] = request.min_compute_resource
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

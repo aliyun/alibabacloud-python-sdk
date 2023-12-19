@@ -2411,7 +2411,11 @@ class CheckBindRamUserRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The region ID of the cluster.
         self.region_id = region_id
 
     def validate(self):
@@ -2444,7 +2448,12 @@ class CheckBindRamUserResponseBody(TeaModel):
         request_id: str = None,
         result: bool = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned result of the request. Valid values:
+        # 
+        # *   **true**: the database account is associated with a RAM user.
+        # *   **false**: the database account is not associated with a RAM user.
         self.result = result
 
     def validate(self):
@@ -3100,6 +3109,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         max_compute_resource: str = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        region_id: str = None,
     ):
         # A reserved parameter.
         self.cluster_mode = cluster_mode
@@ -3134,6 +3144,7 @@ class CreateDBResourceGroupRequest(TeaModel):
         # *   When GroupType is set to Interactive, set this parameter to 16 ACUs.
         # *   When GroupType is set to Job, set this parameter to 0 ACUs.
         self.min_compute_resource = min_compute_resource
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -3162,6 +3173,8 @@ class CreateDBResourceGroupRequest(TeaModel):
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -3184,6 +3197,8 @@ class CreateDBResourceGroupRequest(TeaModel):
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
@@ -10193,11 +10208,56 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         resource_pools: str = None,
         start_time: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
+        # 
+        # > The end time must be later than the start time. The maximum time range that can be specified is two days.
         self.end_time = end_time
+        # The performance metrics to be queried. Separate multiple values with commas (,). Valid values:
+        # 
+        # *   CPU
+        # 
+        #     *   **AnalyticDB_CPU_Usage_Percentage**: the average CPU utilization.
+        # 
+        # *   Connections
+        # 
+        #     *   **AnalyticDB_Instance_Connection_Count**: the number of database connections.
+        # 
+        # *   Writes
+        # 
+        #     *   **AnalyticDB_TPS**: the write transactions per second (TPS).
+        #     *   **AnalyticDB_InsertRT**: the write response time.
+        #     *   **AnalyticDB_InsertBytes**: the write throughput.
+        # 
+        # *   Queries
+        # 
+        #     *   **AnalyticDB_QPS**: the queries per second (QPS).
+        #     *   **AnalyticDB_QueryRT**: the query response time.
+        #     *   **AnalyticDB_QueryWaitTime**: the query wait time.
+        # 
+        # *   Disks
+        # 
+        #     *   **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O utilization.
+        #     *   **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
+        #     *   **AnalyticDB_IO_Throughput**: the disk throughput.
+        #     *   **AnalyticDB_IOPS**: the disk IOPS.
+        #     *   **AnalyticDB_Disk_Usage**: the disk space that is used.
+        #     *   **AnalyticDB_Disk_Usage_Percentage**: the disk usage.
+        #     *   **AnalyticDB_HotDataDiskUsage**: the disk space that is used by hot data.
+        #     *   **AnalyticDB_ColdDataDiskUsage**: the disk space that is used by hot data.
+        # 
+        # > This parameter must be specified.
         self.key = key
+        # The region ID of the cluster.
+        # 
+        # > You can call the [DescribeRegions](~~612393~~) operation to query the most recent region list.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_pools = resource_pools
+        # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time must be in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -10247,8 +10307,11 @@ class DescribeDBClusterPerformanceResponseBodyPerformancesSeries(TeaModel):
         tags: str = None,
         values: List[str] = None,
     ):
+        # The name of the performance metric value.
         self.name = name
+        # The tag value.
         self.tags = tags
+        # The values of the performance metric at different points in time.
         self.values = values
 
     def validate(self):
@@ -10286,8 +10349,11 @@ class DescribeDBClusterPerformanceResponseBodyPerformances(TeaModel):
         series: List[DescribeDBClusterPerformanceResponseBodyPerformancesSeries] = None,
         unit: str = None,
     ):
+        # The name of the performance metric.
         self.key = key
+        # The queried performance metric data.
         self.series = series
+        # The unit of the performance metric.
         self.unit = unit
 
     def validate(self):
@@ -10335,10 +10401,17 @@ class DescribeDBClusterPerformanceResponseBody(TeaModel):
         request_id: str = None,
         start_time: str = None,
     ):
+        # The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+        # 
+        # > You can call the [DescribeDBClusters](~~454250~~) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
         self.dbcluster_id = dbcluster_id
+        # The end time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
         self.end_time = end_time
+        # The queried performance metrics.
         self.performances = performances
+        # The request ID.
         self.request_id = request_id
+        # The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ* format. The time is displayed in UTC.
         self.start_time = start_time
 
     def validate(self):
@@ -10539,7 +10612,9 @@ class DescribeDBClustersRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 实例的标签键。
         self.key = key
+        # 实例的标签值。
         self.value = value
 
     def validate(self):
@@ -10615,6 +10690,7 @@ class DescribeDBClustersRequest(TeaModel):
         # 
         # If you do not specify this parameter, the information of all resource groups in the cluster is returned.
         self.resource_group_id = resource_group_id
+        # 实例的标签信息。
         self.tag = tag
 
     def validate(self):
@@ -10679,7 +10755,10 @@ class DescribeDBClustersResponseBodyItemsDBClusterTagsTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # 标签键。
+        # > 您可以调用[TagResources](~~179253~~)接口为目标集群创建标签。
         self.key = key
+        # 标签值。
         self.value = value
 
     def validate(self):
@@ -10846,6 +10925,7 @@ class DescribeDBClustersResponseBodyItemsDBCluster(TeaModel):
         self.resource_group_id = resource_group_id
         # The specifications of the reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources serve read and write requests. The amount of storage resources is proportional to the read and write performance of the cluster.
         self.storage_resource = storage_resource
+        # 标签列表。
         self.tags = tags
         # The ID of the virtual private cloud (VPC).
         self.vpcid = vpcid
@@ -16451,6 +16531,7 @@ class DetachUserENIRequest(TeaModel):
         self,
         dbcluster_id: str = None,
     ):
+        # The instance ID.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -16478,6 +16559,7 @@ class DetachUserENIResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -23203,6 +23285,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         max_compute_resource: str = None,
         min_cluster_count: int = None,
         min_compute_resource: str = None,
+        region_id: str = None,
     ):
         self.cluster_mode = cluster_mode
         self.cluster_size_resource = cluster_size_resource
@@ -23231,6 +23314,7 @@ class ModifyDBResourceGroupRequest(TeaModel):
         # *   If GroupType is set to Interactive, set the value to 16ACU.
         # *   If GroupType is set to Job, set the value to 0ACU.
         self.min_compute_resource = min_compute_resource
+        self.region_id = region_id
 
     def validate(self):
         pass
@@ -23259,6 +23343,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             result['MinClusterCount'] = self.min_cluster_count
         if self.min_compute_resource is not None:
             result['MinComputeResource'] = self.min_compute_resource
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         return result
 
     def from_map(self, m: dict = None):
@@ -23281,6 +23367,8 @@ class ModifyDBResourceGroupRequest(TeaModel):
             self.min_cluster_count = m.get('MinClusterCount')
         if m.get('MinComputeResource') is not None:
             self.min_compute_resource = m.get('MinComputeResource')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         return self
 
 
