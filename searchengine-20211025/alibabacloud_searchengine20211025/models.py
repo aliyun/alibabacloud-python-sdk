@@ -1342,7 +1342,9 @@ class DeleteDataSourceResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request
         self.request_id = request_id
+        # The result returned
         self.result = result
 
     def validate(self):
@@ -7028,8 +7030,12 @@ class ListDateSourceGenerationsRequest(TeaModel):
         domain_name: str = None,
         valid_status: bool = None,
     ):
+        # The data center where the data source is deployed.
         self.domain_name = domain_name
-        # Obtains the data restoration version of a data source.
+        # The valid state of the data source. Valid values: true and false. The default value of this parameter is true.
+        # 
+        # 1.  true indicates that the generations that have not expired and of which the tasks have been executed are returned.
+        # 2.  false indicates that all generations are returned.
         self.valid_status = valid_status
 
     def validate(self):
@@ -7069,11 +7075,17 @@ class ListDateSourceGenerationsResponseBodyResult(TeaModel):
     ):
         # buildDeployId
         self.build_deploy_id = build_deploy_id
+        # The time to start index building.
         self.create_time = create_time
+        # The directory where the index file created by using the dump table is saved.
         self.data_dump_root = data_dump_root
+        # The primary key of the generation.
         self.generation = generation
+        # Key indicates the name of the index. value indicates the number of shards.
         self.partition = partition
+        # The status.
         self.status = status
+        # The timestamp when the offline indexing was initiated.
         self.timestamp = timestamp
 
     def validate(self):
@@ -8850,6 +8862,7 @@ class ModifyClusterDescRequest(TeaModel):
         self,
         body: Dict[str, Any] = None,
     ):
+        # The parameters in the request body
         self.body = body
 
     def validate(self):
@@ -8878,6 +8891,7 @@ class ModifyClusterDescResponseBody(TeaModel):
         request_id: str = None,
         result: Dict[str, Any] = None,
     ):
+        # The ID of the request
         self.request_id = request_id
         # Map
         self.result = result
@@ -9645,9 +9659,11 @@ class ModifyIndexVersionRequestBody(TeaModel):
         index_name: str = None,
         version: str = None,
     ):
+        # The ID of the index deployed in offline mode.
         self.build_deploy_id = build_deploy_id
-        # WB01240825
+        # The name of the index.
         self.index_name = index_name
+        # The version of the index.
         self.version = version
 
     def validate(self):
@@ -9683,37 +9699,7 @@ class ModifyIndexVersionRequest(TeaModel):
         self,
         body: List[ModifyIndexVersionRequestBody] = None,
     ):
-        # ## Sample requests
-        # 
-        # ﻿
-        # 
-        #     PUT /openapi/ha3/instances/ha3_instance_nameclusters/test_cluster/index-version
-        # 
-        # ﻿
-        # 
-        #     [
-        #     ﻿
-        #       {
-        #     ﻿
-        #         "indexName": "index1",
-        #     ﻿
-        #         "version": "123456",
-        #     ﻿
-        #         "buildDeployId": "20201010"
-        #     ﻿
-        #       },
-        #     ﻿
-        #       {
-        #     ﻿
-        #         "indexName": "index1",
-        #     ﻿
-        #         "version": "123456",
-        #     ﻿
-        #         "buildDeployId": "20201010"
-        #     ﻿
-        #       }
-        #     ﻿
-        #     ]
+        # The keyword used to search for a version. Fuzzy match is supported.
         self.body = body
 
     def validate(self):
@@ -10424,9 +10410,11 @@ class RecoverIndexRequest(TeaModel):
     ):
         # buildDeployId
         self.build_deploy_id = build_deploy_id
+        # The name of the data source
         self.data_source_name = data_source_name
         # generation
         self.generation = generation
+        # The name of the index
         self.index_name = index_name
 
     def validate(self):

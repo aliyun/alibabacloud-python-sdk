@@ -863,7 +863,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        The result returned
+        ## Method
+        `DELETE`
+        ## URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -896,7 +899,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        The result returned
+        ## Method
+        `DELETE`
+        ## URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -927,7 +933,10 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        The result returned
+        ## Method
+        `DELETE`
+        ## URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
         
         @return: DeleteDataSourceResponse
         """
@@ -941,7 +950,10 @@ class Client(OpenApiClient):
         data_source_name: str,
     ) -> searchengine_20211025_models.DeleteDataSourceResponse:
         """
-        The result returned
+        ## Method
+        `DELETE`
+        ## URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}`
         
         @return: DeleteDataSourceResponse
         """
@@ -2673,7 +2685,6 @@ class Client(OpenApiClient):
 
     def list_cluster_names_with_options(
         self,
-        instance_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClusterNamesResponse:
@@ -2694,7 +2705,7 @@ class Client(OpenApiClient):
             action='ListClusterNames',
             version='2021-10-25',
             protocol='HTTPS',
-            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/cluster-names',
+            pathname=f'/openapi/ha3/cluster-names',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2708,7 +2719,6 @@ class Client(OpenApiClient):
 
     async def list_cluster_names_with_options_async(
         self,
-        instance_id: str,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListClusterNamesResponse:
@@ -2729,7 +2739,7 @@ class Client(OpenApiClient):
             action='ListClusterNames',
             version='2021-10-25',
             protocol='HTTPS',
-            pathname=f'/openapi/ha3/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/cluster-names',
+            pathname=f'/openapi/ha3/cluster-names',
             method='GET',
             auth_type='AK',
             style='ROA',
@@ -2741,10 +2751,7 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_cluster_names(
-        self,
-        instance_id: str,
-    ) -> searchengine_20211025_models.ListClusterNamesResponse:
+    def list_cluster_names(self) -> searchengine_20211025_models.ListClusterNamesResponse:
         """
         ### Sample requests
         ```java
@@ -2755,12 +2762,9 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_cluster_names_with_options(instance_id, headers, runtime)
+        return self.list_cluster_names_with_options(headers, runtime)
 
-    async def list_cluster_names_async(
-        self,
-        instance_id: str,
-    ) -> searchengine_20211025_models.ListClusterNamesResponse:
+    async def list_cluster_names_async(self) -> searchengine_20211025_models.ListClusterNamesResponse:
         """
         ### Sample requests
         ```java
@@ -2771,7 +2775,7 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_cluster_names_with_options_async(instance_id, headers, runtime)
+        return await self.list_cluster_names_with_options_async(headers, runtime)
 
     def list_cluster_tasks_with_options(
         self,
@@ -3163,6 +3167,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
+        """
+        ### Method
+        `GET`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
+        
+        @param request: ListDateSourceGenerationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDateSourceGenerationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3197,6 +3212,17 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
+        """
+        ### Method
+        `GET`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
+        
+        @param request: ListDateSourceGenerationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDateSourceGenerationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3229,6 +3255,15 @@ class Client(OpenApiClient):
         data_source_name: str,
         request: searchengine_20211025_models.ListDateSourceGenerationsRequest,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
+        """
+        ### Method
+        `GET`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
+        
+        @param request: ListDateSourceGenerationsRequest
+        @return: ListDateSourceGenerationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_date_source_generations_with_options(instance_id, data_source_name, request, headers, runtime)
@@ -3239,6 +3274,15 @@ class Client(OpenApiClient):
         data_source_name: str,
         request: searchengine_20211025_models.ListDateSourceGenerationsRequest,
     ) -> searchengine_20211025_models.ListDateSourceGenerationsResponse:
+        """
+        ### Method
+        `GET`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/data-sources/{dataSourceName}/generations?domainName={domainName}`
+        
+        @param request: ListDateSourceGenerationsRequest
+        @return: ListDateSourceGenerationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_date_source_generations_with_options_async(instance_id, data_source_name, request, headers, runtime)
@@ -3960,7 +4004,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        The name of the cluster
+        ### Method
+        `PUT`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
         
         @param request: ModifyClusterDescRequest
         @param headers: map
@@ -4000,7 +4047,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        The name of the cluster
+        ### Method
+        `PUT`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
         
         @param request: ModifyClusterDescRequest
         @param headers: map
@@ -4038,7 +4088,10 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterDescRequest,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        The name of the cluster
+        ### Method
+        `PUT`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
         
         @param request: ModifyClusterDescRequest
         @return: ModifyClusterDescResponse
@@ -4054,7 +4107,10 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.ModifyClusterDescRequest,
     ) -> searchengine_20211025_models.ModifyClusterDescResponse:
         """
-        The name of the cluster
+        ### Method
+        `PUT`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
         
         @param request: ModifyClusterDescRequest
         @return: ModifyClusterDescResponse
@@ -5549,7 +5605,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        The name of the index
+        ### Method
+        `POST`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/recover-index`
         
         @param request: RecoverIndexRequest
         @param headers: map
@@ -5594,7 +5653,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        The name of the index
+        ### Method
+        `POST`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/recover-index`
         
         @param request: RecoverIndexRequest
         @param headers: map
@@ -5637,7 +5699,10 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.RecoverIndexRequest,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        The name of the index
+        ### Method
+        `POST`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/recover-index`
         
         @param request: RecoverIndexRequest
         @return: RecoverIndexResponse
@@ -5652,7 +5717,10 @@ class Client(OpenApiClient):
         request: searchengine_20211025_models.RecoverIndexRequest,
     ) -> searchengine_20211025_models.RecoverIndexResponse:
         """
-        The name of the index
+        ### Method
+        `POST`
+        ### URI
+        `/openapi/ha3/instances/{instanceId}/recover-index`
         
         @param request: RecoverIndexRequest
         @return: RecoverIndexResponse
