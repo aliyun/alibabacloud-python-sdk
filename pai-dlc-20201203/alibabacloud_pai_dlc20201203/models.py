@@ -4,6 +4,63 @@ from Tea.model import TeaModel
 from typing import Dict, List, Any
 
 
+class AIMasterMessage(TeaModel):
+    def __init__(
+        self,
+        extended: str = None,
+        job_restart_count: int = None,
+        message_content: str = None,
+        message_event: str = None,
+        message_version: int = None,
+        restart_type: str = None,
+    ):
+        self.extended = extended
+        self.job_restart_count = job_restart_count
+        self.message_content = message_content
+        self.message_event = message_event
+        self.message_version = message_version
+        self.restart_type = restart_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.extended is not None:
+            result['Extended'] = self.extended
+        if self.job_restart_count is not None:
+            result['JobRestartCount'] = self.job_restart_count
+        if self.message_content is not None:
+            result['MessageContent'] = self.message_content
+        if self.message_event is not None:
+            result['MessageEvent'] = self.message_event
+        if self.message_version is not None:
+            result['MessageVersion'] = self.message_version
+        if self.restart_type is not None:
+            result['RestartType'] = self.restart_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Extended') is not None:
+            self.extended = m.get('Extended')
+        if m.get('JobRestartCount') is not None:
+            self.job_restart_count = m.get('JobRestartCount')
+        if m.get('MessageContent') is not None:
+            self.message_content = m.get('MessageContent')
+        if m.get('MessageEvent') is not None:
+            self.message_event = m.get('MessageEvent')
+        if m.get('MessageVersion') is not None:
+            self.message_version = m.get('MessageVersion')
+        if m.get('RestartType') is not None:
+            self.restart_type = m.get('RestartType')
+        return self
+
+
 class AliyunAccounts(TeaModel):
     def __init__(
         self,
@@ -1529,12 +1586,14 @@ class JobSettings(TeaModel):
         enable_error_monitoring_in_aimaster: bool = None,
         enable_oss_append: bool = None,
         enable_rdma: bool = None,
+        enable_sanity_check: bool = None,
         enable_tide_resource: bool = None,
         error_monitoring_args: str = None,
         job_reserved_minutes: int = None,
         job_reserved_policy: str = None,
         oversold_type: str = None,
         pipeline_id: str = None,
+        sanity_check_args: str = None,
         tags: Dict[str, str] = None,
     ):
         self.advanced_settings = advanced_settings
@@ -1544,12 +1603,14 @@ class JobSettings(TeaModel):
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
         self.enable_oss_append = enable_oss_append
         self.enable_rdma = enable_rdma
+        self.enable_sanity_check = enable_sanity_check
         self.enable_tide_resource = enable_tide_resource
         self.error_monitoring_args = error_monitoring_args
         self.job_reserved_minutes = job_reserved_minutes
         self.job_reserved_policy = job_reserved_policy
         self.oversold_type = oversold_type
         self.pipeline_id = pipeline_id
+        self.sanity_check_args = sanity_check_args
         self.tags = tags
 
     def validate(self):
@@ -1575,6 +1636,8 @@ class JobSettings(TeaModel):
             result['EnableOssAppend'] = self.enable_oss_append
         if self.enable_rdma is not None:
             result['EnableRDMA'] = self.enable_rdma
+        if self.enable_sanity_check is not None:
+            result['EnableSanityCheck'] = self.enable_sanity_check
         if self.enable_tide_resource is not None:
             result['EnableTideResource'] = self.enable_tide_resource
         if self.error_monitoring_args is not None:
@@ -1587,6 +1650,8 @@ class JobSettings(TeaModel):
             result['OversoldType'] = self.oversold_type
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
+        if self.sanity_check_args is not None:
+            result['SanityCheckArgs'] = self.sanity_check_args
         if self.tags is not None:
             result['Tags'] = self.tags
         return result
@@ -1607,6 +1672,8 @@ class JobSettings(TeaModel):
             self.enable_oss_append = m.get('EnableOssAppend')
         if m.get('EnableRDMA') is not None:
             self.enable_rdma = m.get('EnableRDMA')
+        if m.get('EnableSanityCheck') is not None:
+            self.enable_sanity_check = m.get('EnableSanityCheck')
         if m.get('EnableTideResource') is not None:
             self.enable_tide_resource = m.get('EnableTideResource')
         if m.get('ErrorMonitoringArgs') is not None:
@@ -1619,6 +1686,8 @@ class JobSettings(TeaModel):
             self.oversold_type = m.get('OversoldType')
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
+        if m.get('SanityCheckArgs') is not None:
+            self.sanity_check_args = m.get('SanityCheckArgs')
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
         return self
@@ -2506,6 +2575,57 @@ class SmartCache(TeaModel):
             self.type = m.get('Type')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
+        return self
+
+
+class StatusTransitionItem(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.end_time = end_time
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.reason_code is not None:
+            result['ReasonCode'] = self.reason_code
+        if self.reason_message is not None:
+            result['ReasonMessage'] = self.reason_message
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('ReasonCode') is not None:
+            self.reason_code = m.get('ReasonCode')
+        if m.get('ReasonMessage') is not None:
+            self.reason_message = m.get('ReasonMessage')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
         return self
 
 
