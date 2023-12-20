@@ -8002,9 +8002,9 @@ class Client(OpenApiClient):
         request = retailcloud_20180313_models.UpdateNormalDeployConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.container_resource_limit):
-            request.container_resource_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_limit), 'ContainerResourceLimit', 'json')
+            request.container_resource_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.container_resource_limit, 'ContainerResourceLimit', 'json')
         if not UtilClient.is_unset(tmp_req.container_resource_request):
-            request.container_resource_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_request), 'ContainerResourceRequest', 'json')
+            request.container_resource_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.container_resource_request, 'ContainerResourceRequest', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
@@ -8042,9 +8042,9 @@ class Client(OpenApiClient):
         request = retailcloud_20180313_models.UpdateNormalDeployConfigShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
         if not UtilClient.is_unset(tmp_req.container_resource_limit):
-            request.container_resource_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_limit), 'ContainerResourceLimit', 'json')
+            request.container_resource_limit_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.container_resource_limit, 'ContainerResourceLimit', 'json')
         if not UtilClient.is_unset(tmp_req.container_resource_request):
-            request.container_resource_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(TeaCore.to_map(tmp_req.container_resource_request), 'ContainerResourceRequest', 'json')
+            request.container_resource_request_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.container_resource_request, 'ContainerResourceRequest', 'json')
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
