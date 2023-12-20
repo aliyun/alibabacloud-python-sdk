@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict, Any
+from typing import List, Dict
 
 
 class CreateTaskRequestInput(TeaModel):
@@ -97,7 +97,7 @@ class CreateTaskRequestParametersMeetingAssistance(TeaModel):
 class CreateTaskRequestParametersSummarization(TeaModel):
     def __init__(
         self,
-        types: Dict[str, Any] = None,
+        types: List[str] = None,
     ):
         self.types = types
 
@@ -250,7 +250,7 @@ class CreateTaskRequestParametersTranslation(TeaModel):
     def __init__(
         self,
         output_level: int = None,
-        target_languages: Dict[str, Any] = None,
+        target_languages: List[str] = None,
     ):
         self.output_level = output_level
         self.target_languages = target_languages
