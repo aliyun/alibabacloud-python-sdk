@@ -10357,6 +10357,337 @@ class ListDomainsResponse(TeaModel):
         return self
 
 
+class ListEiamInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        instance_ids: List[str] = None,
+        instance_region_id: str = None,
+    ):
+        # 实例ID列表，支持0到100个
+        self.instance_ids = instance_ids
+        # 实例所属Region
+        self.instance_region_id = instance_region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+        if self.instance_region_id is not None:
+            result['InstanceRegionId'] = self.instance_region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+        if m.get('InstanceRegionId') is not None:
+            self.instance_region_id = m.get('InstanceRegionId')
+        return self
+
+
+class ListEiamInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        developer_apiprivate_domain: str = None,
+        developer_apipublic_domain: str = None,
+        instance_id: str = None,
+        instance_status: str = None,
+        instance_version: str = None,
+        open_apiprivate_domain: str = None,
+        open_apipublic_domain: str = None,
+        ssodomain: str = None,
+        start_time: int = None,
+    ):
+        # 实例描述信息
+        self.description = description
+        # 实例developer私网域名地址
+        self.developer_apiprivate_domain = developer_apiprivate_domain
+        # 实例developer公网域名地址
+        self.developer_apipublic_domain = developer_apipublic_domain
+        # 实例id
+        self.instance_id = instance_id
+        # 实例状态，Pending(初始状态)、Creating(创建中)、Running(运行中)、Disabled(禁用)、CreateFailed(创建失败)
+        self.instance_status = instance_status
+        # 实例版本，EIAM2.0/ EIAM1.0
+        self.instance_version = instance_version
+        # 实例openApi私网域名地址
+        self.open_apiprivate_domain = open_apiprivate_domain
+        # 实例openApi公网域名地址
+        self.open_apipublic_domain = open_apipublic_domain
+        # 实例域名地址
+        self.ssodomain = ssodomain
+        # 实例的创建时间
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.developer_apiprivate_domain is not None:
+            result['DeveloperAPIPrivateDomain'] = self.developer_apiprivate_domain
+        if self.developer_apipublic_domain is not None:
+            result['DeveloperAPIPublicDomain'] = self.developer_apipublic_domain
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_status is not None:
+            result['InstanceStatus'] = self.instance_status
+        if self.instance_version is not None:
+            result['InstanceVersion'] = self.instance_version
+        if self.open_apiprivate_domain is not None:
+            result['OpenAPIPrivateDomain'] = self.open_apiprivate_domain
+        if self.open_apipublic_domain is not None:
+            result['OpenAPIPublicDomain'] = self.open_apipublic_domain
+        if self.ssodomain is not None:
+            result['SSODomain'] = self.ssodomain
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('DeveloperAPIPrivateDomain') is not None:
+            self.developer_apiprivate_domain = m.get('DeveloperAPIPrivateDomain')
+        if m.get('DeveloperAPIPublicDomain') is not None:
+            self.developer_apipublic_domain = m.get('DeveloperAPIPublicDomain')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceStatus') is not None:
+            self.instance_status = m.get('InstanceStatus')
+        if m.get('InstanceVersion') is not None:
+            self.instance_version = m.get('InstanceVersion')
+        if m.get('OpenAPIPrivateDomain') is not None:
+            self.open_apiprivate_domain = m.get('OpenAPIPrivateDomain')
+        if m.get('OpenAPIPublicDomain') is not None:
+            self.open_apipublic_domain = m.get('OpenAPIPublicDomain')
+        if m.get('SSODomain') is not None:
+            self.ssodomain = m.get('SSODomain')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class ListEiamInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: List[ListEiamInstancesResponseBodyInstances] = None,
+        request_id: str = None,
+    ):
+        self.instances = instances
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instances:
+            for k in self.instances:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instances'] = []
+        if self.instances is not None:
+            for k in self.instances:
+                result['Instances'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instances = []
+        if m.get('Instances') is not None:
+            for k in m.get('Instances'):
+                temp_model = ListEiamInstancesResponseBodyInstances()
+                self.instances.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListEiamInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEiamInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEiamInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListEiamRegionsResponseBodyRegions(TeaModel):
+    def __init__(
+        self,
+        local_name: str = None,
+        region_id: str = None,
+    ):
+        # 地域名称
+        self.local_name = local_name
+        # 地域ID
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.local_name is not None:
+            result['LocalName'] = self.local_name
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LocalName') is not None:
+            self.local_name = m.get('LocalName')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        return self
+
+
+class ListEiamRegionsResponseBody(TeaModel):
+    def __init__(
+        self,
+        regions: List[ListEiamRegionsResponseBodyRegions] = None,
+        request_id: str = None,
+    ):
+        self.regions = regions
+        self.request_id = request_id
+
+    def validate(self):
+        if self.regions:
+            for k in self.regions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Regions'] = []
+        if self.regions is not None:
+            for k in self.regions:
+                result['Regions'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.regions = []
+        if m.get('Regions') is not None:
+            for k in m.get('Regions'):
+                temp_model = ListEiamRegionsResponseBodyRegions()
+                self.regions.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListEiamRegionsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEiamRegionsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEiamRegionsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListGroupsRequest(TeaModel):
     def __init__(
         self,
