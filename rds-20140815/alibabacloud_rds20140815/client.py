@@ -31380,6 +31380,8 @@ class Client(OpenApiClient):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.force_encryption):
+            query['ForceEncryption'] = request.force_encryption
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -31396,6 +31398,8 @@ class Client(OpenApiClient):
             query['ServerCert'] = request.server_cert
         if not UtilClient.is_unset(request.server_key):
             query['ServerKey'] = request.server_key
+        if not UtilClient.is_unset(request.tls_version):
+            query['TlsVersion'] = request.tls_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -31453,6 +31457,8 @@ class Client(OpenApiClient):
             query['ConnectionString'] = request.connection_string
         if not UtilClient.is_unset(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.force_encryption):
+            query['ForceEncryption'] = request.force_encryption
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -31469,6 +31475,8 @@ class Client(OpenApiClient):
             query['ServerCert'] = request.server_cert
         if not UtilClient.is_unset(request.server_key):
             query['ServerKey'] = request.server_key
+        if not UtilClient.is_unset(request.tls_version):
+            query['TlsVersion'] = request.tls_version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

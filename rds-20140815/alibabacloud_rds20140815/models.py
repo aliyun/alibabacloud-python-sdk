@@ -27758,6 +27758,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         client_cacert_expire_time: str = None,
         client_cert_revocation_list: str = None,
         connection_string: str = None,
+        force_encryption: str = None,
         last_modify_status: str = None,
         modify_status_reason: str = None,
         replication_acl: str = None,
@@ -27771,6 +27772,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         server_caurl: str = None,
         server_cert: str = None,
         server_key: str = None,
+        tls_version: str = None,
     ):
         # The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
         # 
@@ -27792,6 +27794,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         self.client_cert_revocation_list = client_cert_revocation_list
         # The endpoint that is protected by SSL encryption.
         self.connection_string = connection_string
+        self.force_encryption = force_encryption
         # The status of the SSL link. This parameter is supported only when the instance runs PostgreSQL with cloud disks. Valid values:
         # 
         # *   **success**\
@@ -27847,6 +27850,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         self.server_cert = server_cert
         # The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
         self.server_key = server_key
+        self.tls_version = tls_version
 
     def validate(self):
         pass
@@ -27869,6 +27873,8 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
             result['ClientCertRevocationList'] = self.client_cert_revocation_list
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
+        if self.force_encryption is not None:
+            result['ForceEncryption'] = self.force_encryption
         if self.last_modify_status is not None:
             result['LastModifyStatus'] = self.last_modify_status
         if self.modify_status_reason is not None:
@@ -27895,6 +27901,8 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
             result['ServerCert'] = self.server_cert
         if self.server_key is not None:
             result['ServerKey'] = self.server_key
+        if self.tls_version is not None:
+            result['TlsVersion'] = self.tls_version
         return result
 
     def from_map(self, m: dict = None):
@@ -27911,6 +27919,8 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
             self.client_cert_revocation_list = m.get('ClientCertRevocationList')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
+        if m.get('ForceEncryption') is not None:
+            self.force_encryption = m.get('ForceEncryption')
         if m.get('LastModifyStatus') is not None:
             self.last_modify_status = m.get('LastModifyStatus')
         if m.get('ModifyStatusReason') is not None:
@@ -27937,6 +27947,8 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
             self.server_cert = m.get('ServerCert')
         if m.get('ServerKey') is not None:
             self.server_key = m.get('ServerKey')
+        if m.get('TlsVersion') is not None:
+            self.tls_version = m.get('TlsVersion')
         return self
 
 
@@ -60196,6 +60208,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         client_crl_enabled: int = None,
         connection_string: str = None,
         dbinstance_id: str = None,
+        force_encryption: str = None,
         owner_account: str = None,
         owner_id: int = None,
         replication_acl: str = None,
@@ -60204,6 +60217,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         sslenabled: int = None,
         server_cert: str = None,
         server_key: str = None,
+        tls_version: str = None,
     ):
         # The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
         # 
@@ -60235,6 +60249,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         self.connection_string = connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
+        self.force_encryption = force_encryption
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with cloud disks. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -60255,6 +60270,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         self.server_cert = server_cert
         # The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
         self.server_key = server_key
+        self.tls_version = tls_version
 
     def validate(self):
         pass
@@ -60281,6 +60297,8 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             result['ConnectionString'] = self.connection_string
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
+        if self.force_encryption is not None:
+            result['ForceEncryption'] = self.force_encryption
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -60297,6 +60315,8 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             result['ServerCert'] = self.server_cert
         if self.server_key is not None:
             result['ServerKey'] = self.server_key
+        if self.tls_version is not None:
+            result['TlsVersion'] = self.tls_version
         return result
 
     def from_map(self, m: dict = None):
@@ -60317,6 +60337,8 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             self.connection_string = m.get('ConnectionString')
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('ForceEncryption') is not None:
+            self.force_encryption = m.get('ForceEncryption')
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -60333,6 +60355,8 @@ class ModifyDBInstanceSSLRequest(TeaModel):
             self.server_cert = m.get('ServerCert')
         if m.get('ServerKey') is not None:
             self.server_key = m.get('ServerKey')
+        if m.get('TlsVersion') is not None:
+            self.tls_version = m.get('TlsVersion')
         return self
 
 
