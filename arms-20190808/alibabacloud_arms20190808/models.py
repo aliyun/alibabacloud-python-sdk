@@ -14896,6 +14896,7 @@ class DeleteContactGroupRequest(TeaModel):
         self,
         contact_group_id: int = None,
     ):
+        # The ID of the alert contact group.
         self.contact_group_id = contact_group_id
 
     def validate(self):
@@ -14924,7 +14925,12 @@ class DeleteContactGroupResponseBody(TeaModel):
         is_success: bool = None,
         request_id: str = None,
     ):
+        # Indicates whether the alert contact group was deleted. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.is_success = is_success
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33574,17 +33580,35 @@ class InstallEnvironmentFeatureRequest(TeaModel):
         region: str = None,
         region_id: str = None,
     ):
-        # Language,the default language is Chinese.
+        # The language. Valid values: zh and en. Default value: zh.
         self.aliyun_lang = aliyun_lang
-        # Config information of Feature.
+        # The metadata of the feature.
         self.config = config
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Name of Feature.
+        # The name of the feature.
+        # 
+        # Valid values:
+        # 
+        # *   app-agent-pilot
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   metric-agent
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.feature_name = feature_name
-        # Version of Feature.
+        # The version of the feature.
         self.feature_version = feature_version
-        # Region of Feature.
+        # The region ID of the feature.
         self.region = region
         # The region ID.
         self.region_id = region_id
@@ -33642,18 +33666,18 @@ class InstallEnvironmentFeatureResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Status code: 200 indicates success.
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
-        # ReleaseId after installation.
+        # The release ID.
         self.data = data
-        # Prompt message.
+        # The returned message.
         self.message = message
-        # Id of the request
+        # The ID of the request.
         self.request_id = request_id
-        # api was successful:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # - true: success.
-        # - false: fails.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -36656,11 +36680,13 @@ class ListDashboardsResponseBody(TeaModel):
     def __init__(
         self,
         dashboard_vos: List[ListDashboardsResponseBodyDashboardVos] = None,
+        environment_id: str = None,
         prometheus_service_opened: str = None,
         request_id: str = None,
     ):
         # The information about the Grafana dashboard.
         self.dashboard_vos = dashboard_vos
+        self.environment_id = environment_id
         # The indicators of whether the Prometheus service has been activated.
         self.prometheus_service_opened = prometheus_service_opened
         # The request ID.
@@ -36682,6 +36708,8 @@ class ListDashboardsResponseBody(TeaModel):
         if self.dashboard_vos is not None:
             for k in self.dashboard_vos:
                 result['DashboardVos'].append(k.to_map() if k else None)
+        if self.environment_id is not None:
+            result['EnvironmentId'] = self.environment_id
         if self.prometheus_service_opened is not None:
             result['PrometheusServiceOpened'] = self.prometheus_service_opened
         if self.request_id is not None:
@@ -36695,6 +36723,8 @@ class ListDashboardsResponseBody(TeaModel):
             for k in m.get('DashboardVos'):
                 temp_model = ListDashboardsResponseBodyDashboardVos()
                 self.dashboard_vos.append(temp_model.from_map(k))
+        if m.get('EnvironmentId') is not None:
+            self.environment_id = m.get('EnvironmentId')
         if m.get('PrometheusServiceOpened') is not None:
             self.prometheus_service_opened = m.get('PrometheusServiceOpened')
         if m.get('RequestId') is not None:
@@ -41903,6 +41933,7 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
+        # Auth Token string.
         self.auth_token = auth_token
         # The ID of the Prometheus instance.
         self.cluster_id = cluster_id
@@ -41918,24 +41949,32 @@ class ListPrometheusInstanceByTagAndResourceGroupIdResponseBodyDataPrometheusIns
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
         self.grafana_instance_id = grafana_instance_id
+        # HTTP Api internet url.
         self.http_api_inter_url = http_api_inter_url
+        # HTTP Api intranet url.
         self.http_api_intra_url = http_api_intra_url
         # The billing method. Valid values:
         # 
         # *   PREPAY: subscription.
         # *   POSTPAY: pay-as-you-go.
         self.payment_type = payment_type
+        # Push Gateway internet url.
         self.push_gateway_inter_url = push_gateway_inter_url
+        # Push Gateway intranet url.
         self.push_gateway_intra_url = push_gateway_intra_url
         # The region ID of the Prometheus instance.
         self.region_id = region_id
+        # Remote Read internet url.
         self.remote_read_inter_url = remote_read_inter_url
+        # Remote Read intranet url.
         self.remote_read_intra_url = remote_read_intra_url
+        # Remote Write internet url.
         self.remote_write_inter_url = remote_write_inter_url
+        # Remote Write intranet url.
         self.remote_write_intra_url = remote_write_intra_url
         # The ID of the resource group to which the Prometheus instance belongs.
         self.resource_group_id = resource_group_id
-        # 资源类型
+        # Resource type.
         self.resource_type = resource_type
         # The ID of the security group.
         self.security_group_id = security_group_id
@@ -45670,6 +45709,295 @@ class QueryAppMetadataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = QueryAppMetadataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryAppTopologyRequest(TeaModel):
+    def __init__(
+        self,
+        app_type: str = None,
+        db: str = None,
+        db_name: str = None,
+        end_time: int = None,
+        filters: Dict[str, str] = None,
+        pid: str = None,
+        region_id: str = None,
+        rpc: str = None,
+        start_time: int = None,
+        type: str = None,
+    ):
+        # The application type
+        self.app_type = app_type
+        # The database domain name.
+        self.db = db
+        # The name of the database.
+        self.db_name = db_name
+        # The end of the time range to query. Unit: milliseconds.
+        self.end_time = end_time
+        # The filter conditions.
+        self.filters = filters
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        self.pid = pid
+        # The ID of the region.
+        self.region_id = region_id
+        # RPC interface name.
+        self.rpc = rpc
+        # The start of the time range to query. Unit: milliseconds.
+        self.start_time = start_time
+        # The type kind of topology.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.filters is not None:
+            result['Filters'] = self.filters
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.rpc is not None:
+            result['Rpc'] = self.rpc
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Filters') is not None:
+            self.filters = m.get('Filters')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Rpc') is not None:
+            self.rpc = m.get('Rpc')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QueryAppTopologyShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_type: str = None,
+        db: str = None,
+        db_name: str = None,
+        end_time: int = None,
+        filters_shrink: str = None,
+        pid: str = None,
+        region_id: str = None,
+        rpc: str = None,
+        start_time: int = None,
+        type: str = None,
+    ):
+        # The application type
+        self.app_type = app_type
+        # The database domain name.
+        self.db = db
+        # The name of the database.
+        self.db_name = db_name
+        # The end of the time range to query. Unit: milliseconds.
+        self.end_time = end_time
+        # The filter conditions.
+        self.filters_shrink = filters_shrink
+        # The ID of the application.
+        # 
+        # Log on to the **ARMS console**. In the left-side navigation pane, choose **Browser Monitoring** > **Browser Monitoring**. On the Browser Monitoring page, click the name of an application. The URL in the address bar contains the process ID (PID) of the application. The PID is indicated in the pid=xxx format. The PID is usually percent encoded as xxx%40xxx. You must modify this value to remove the percent encoding. For example, if the PID in the URL is eb4zdose6v%409781be0f44d\*\*\*\*, you must replace %40 with an at sign (@) to obtain eb4zdose6v@9781be0f44d\*\*\*\*.
+        self.pid = pid
+        # The ID of the region.
+        self.region_id = region_id
+        # RPC interface name.
+        self.rpc = rpc
+        # The start of the time range to query. Unit: milliseconds.
+        self.start_time = start_time
+        # The type kind of topology.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_type is not None:
+            result['AppType'] = self.app_type
+        if self.db is not None:
+            result['Db'] = self.db
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.filters_shrink is not None:
+            result['Filters'] = self.filters_shrink
+        if self.pid is not None:
+            result['Pid'] = self.pid
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.rpc is not None:
+            result['Rpc'] = self.rpc
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppType') is not None:
+            self.app_type = m.get('AppType')
+        if m.get('Db') is not None:
+            self.db = m.get('Db')
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Filters') is not None:
+            self.filters_shrink = m.get('Filters')
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('Rpc') is not None:
+            self.rpc = m.get('Rpc')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class QueryAppTopologyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: Any = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
+        self.code = code
+        # The returned struct.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   true: The call was successful.
+        # *   false: The call failed.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryAppTopologyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryAppTopologyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryAppTopologyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
