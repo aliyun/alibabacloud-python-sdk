@@ -45833,6 +45833,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         acl_entry_list: str = None,
         acl_id: str = None,
         app_version: str = None,
+        can_update: bool = None,
         charge_type: str = None,
         cluster_alias_name: str = None,
         cluster_name: str = None,
@@ -45870,6 +45871,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         security_group_type: str = None,
         tags: Dict[str, Any] = None,
         v_switch_id: str = None,
+        version_code: str = None,
         vpc_id: str = None,
     ):
         # The public IP address whitelist.
@@ -45878,6 +45880,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.acl_id = acl_id
         # The version of the instance.
         self.app_version = app_version
+        self.can_update = can_update
         # The billing method, such as subscription or pay-as-you-go.
         self.charge_type = charge_type
         # The alias of the instance.
@@ -45953,6 +45956,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.tags = tags
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        self.version_code = version_code
         # The ID of the VPC where the instance resides.
         self.vpc_id = vpc_id
 
@@ -45976,6 +45980,8 @@ class QueryClusterInfoResponseBodyData(TeaModel):
             result['AclId'] = self.acl_id
         if self.app_version is not None:
             result['AppVersion'] = self.app_version
+        if self.can_update is not None:
+            result['CanUpdate'] = self.can_update
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
         if self.cluster_alias_name is not None:
@@ -46052,6 +46058,8 @@ class QueryClusterInfoResponseBodyData(TeaModel):
             result['Tags'] = self.tags
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
         return result
@@ -46064,6 +46072,8 @@ class QueryClusterInfoResponseBodyData(TeaModel):
             self.acl_id = m.get('AclId')
         if m.get('AppVersion') is not None:
             self.app_version = m.get('AppVersion')
+        if m.get('CanUpdate') is not None:
+            self.can_update = m.get('CanUpdate')
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterAliasName') is not None:
@@ -46142,6 +46152,8 @@ class QueryClusterInfoResponseBodyData(TeaModel):
             self.tags = m.get('Tags')
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
         return self
