@@ -4062,6 +4062,7 @@ class AssociateRouteTableWithGatewayRequest(TeaModel):
         # 
         # The IPv4 gateway must be in the **Activated** state.
         self.gateway_id = gateway_id
+        # The type of a gateway to be associated with a route table.
         self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14452,6 +14453,7 @@ class CreateRouteEntryRequest(TeaModel):
         self.destination_cidr_block = destination_cidr_block
         # The ID of the next hop.
         self.next_hop_id = next_hop_id
+        # The next hop list.
         self.next_hop_list = next_hop_list
         # The type of next hop of the custom route entry. Valid values:
         # 
@@ -14641,7 +14643,13 @@ class CreateRouteTableRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag to add to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -14710,6 +14718,7 @@ class CreateRouteTableRequest(TeaModel):
         # 
         # The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.route_table_name = route_table_name
+        # The tags.
         self.tag = tag
         # The ID of the VPC to which the custom route table belongs.
         # 
@@ -26296,6 +26305,7 @@ class DeleteRouteEntryRequest(TeaModel):
         # *   To delete a route other than an equal-cost multi-path (ECMP) route, set the **NextHopId** parameter and ignore the **NextHopList** parameter.
         # *   To delete an ECMP route, set the **NextHopList** parameter and ignore the **NextHopId** parameter.
         self.next_hop_id = next_hop_id
+        # The list of the next hop of the ECMP route.
         self.next_hop_list = next_hop_list
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -45814,6 +45824,9 @@ class DescribeRouteTableListRequest(TeaModel):
         self.route_table_id = route_table_id
         # The name of the route table that you want to query.
         self.route_table_name = route_table_name
+        # The type of the route table. Valid values:
+        # - **System**\
+        # - **Custom**\
         self.route_table_type = route_table_type
         # The ID of the router to which the route table belongs.
         self.router_id = router_id
@@ -62497,6 +62510,7 @@ class DissociateRouteTableFromGatewayRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the IPv4 gateway.
         self.gateway_id = gateway_id
+        # The type of a gateway to be disassociated from a route table.
         self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -62650,14 +62664,14 @@ class DissociateRouteTablesFromVpcGatewayEndpointRequest(TeaModel):
         resource_owner_id: int = None,
         route_table_ids: List[str] = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. **ClientToken** can contain only ASCII characters and cannot exceed 64 characters in length.
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **token** can contain only ASCII characters and cannot exceed 64 characters in length.
         # 
-        # >  If you do not set this parameter, the system automatically uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
-        # Specifies whether to precheck this request. Valid values:
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         # 
-        # *   **true**: prechecks the request. The gateway endpoint is not disassociated from the route table. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user is authorized, and whether required parameters are set. If the request fails the precheck, the corresponding error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
-        # *   **false**: sends the API request. After the request passes the check, a 2XX HTTP status code is returned and the gateway endpoint is disassociated from the route table. This is the default value.
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the gateway endpoint to be disassociated from the route table.
         self.endpoint_id = endpoint_id
@@ -62669,6 +62683,7 @@ class DissociateRouteTablesFromVpcGatewayEndpointRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the route table. Valid values of **N** are **1** to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
         self.route_table_ids = route_table_ids
 
     def validate(self):
@@ -62728,7 +62743,7 @@ class DissociateRouteTablesFromVpcGatewayEndpointResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68582,6 +68597,8 @@ class ListFullNatEntriesRequest(TeaModel):
         ip_protocol: str = None,
         max_results: int = None,
         nat_gateway_id: str = None,
+        nat_ip: str = None,
+        nat_ip_port: str = None,
         network_interface_ids: List[str] = None,
         next_token: str = None,
         owner_account: str = None,
@@ -68617,6 +68634,8 @@ class ListFullNatEntriesRequest(TeaModel):
         # 
         # >  You must specify at least one of **FullNatTableId** and **NatGatewayId**.
         self.nat_gateway_id = nat_gateway_id
+        self.nat_ip = nat_ip
+        self.nat_ip_port = nat_ip_port
         # The ID of the elastic network interface (ENI) that you want to query.
         self.network_interface_ids = network_interface_ids
         # The pagination token that is used in the next request to retrieve a new page of results. Valid values:
@@ -68656,6 +68675,10 @@ class ListFullNatEntriesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
+        if self.nat_ip is not None:
+            result['NatIp'] = self.nat_ip
+        if self.nat_ip_port is not None:
+            result['NatIpPort'] = self.nat_ip_port
         if self.network_interface_ids is not None:
             result['NetworkInterfaceIds'] = self.network_interface_ids
         if self.next_token is not None:
@@ -68688,6 +68711,10 @@ class ListFullNatEntriesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('NatIp') is not None:
+            self.nat_ip = m.get('NatIp')
+        if m.get('NatIpPort') is not None:
+            self.nat_ip_port = m.get('NatIpPort')
         if m.get('NetworkInterfaceIds') is not None:
             self.network_interface_ids = m.get('NetworkInterfaceIds')
         if m.get('NextToken') is not None:
