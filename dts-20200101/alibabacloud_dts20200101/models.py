@@ -35202,6 +35202,224 @@ class ModifyDtsJobDuLimitResponse(TeaModel):
         return self
 
 
+class ModifyDtsJobEndpointRequest(TeaModel):
+    def __init__(
+        self,
+        aliyun_uid: str = None,
+        database: str = None,
+        dry_run: bool = None,
+        dts_instance_id: str = None,
+        dts_job_id: str = None,
+        endpoint: str = None,
+        endpoint_instance_id: str = None,
+        endpoint_instance_type: str = None,
+        endpoint_ip: str = None,
+        endpoint_port: str = None,
+        password: str = None,
+        region_id: str = None,
+        role_name: str = None,
+        shard_password: str = None,
+        shard_username: str = None,
+        synchronization_direction: str = None,
+        username: str = None,
+    ):
+        self.aliyun_uid = aliyun_uid
+        self.database = database
+        self.dry_run = dry_run
+        self.dts_instance_id = dts_instance_id
+        self.dts_job_id = dts_job_id
+        self.endpoint = endpoint
+        self.endpoint_instance_id = endpoint_instance_id
+        self.endpoint_instance_type = endpoint_instance_type
+        self.endpoint_ip = endpoint_ip
+        self.endpoint_port = endpoint_port
+        self.password = password
+        self.region_id = region_id
+        self.role_name = role_name
+        self.shard_password = shard_password
+        self.shard_username = shard_username
+        self.synchronization_direction = synchronization_direction
+        self.username = username
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.aliyun_uid is not None:
+            result['AliyunUid'] = self.aliyun_uid
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+        if self.dts_instance_id is not None:
+            result['DtsInstanceId'] = self.dts_instance_id
+        if self.dts_job_id is not None:
+            result['DtsJobId'] = self.dts_job_id
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.endpoint_instance_id is not None:
+            result['EndpointInstanceId'] = self.endpoint_instance_id
+        if self.endpoint_instance_type is not None:
+            result['EndpointInstanceType'] = self.endpoint_instance_type
+        if self.endpoint_ip is not None:
+            result['EndpointIp'] = self.endpoint_ip
+        if self.endpoint_port is not None:
+            result['EndpointPort'] = self.endpoint_port
+        if self.password is not None:
+            result['Password'] = self.password
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.role_name is not None:
+            result['RoleName'] = self.role_name
+        if self.shard_password is not None:
+            result['ShardPassword'] = self.shard_password
+        if self.shard_username is not None:
+            result['ShardUsername'] = self.shard_username
+        if self.synchronization_direction is not None:
+            result['SynchronizationDirection'] = self.synchronization_direction
+        if self.username is not None:
+            result['Username'] = self.username
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AliyunUid') is not None:
+            self.aliyun_uid = m.get('AliyunUid')
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+        if m.get('DtsInstanceId') is not None:
+            self.dts_instance_id = m.get('DtsInstanceId')
+        if m.get('DtsJobId') is not None:
+            self.dts_job_id = m.get('DtsJobId')
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('EndpointInstanceId') is not None:
+            self.endpoint_instance_id = m.get('EndpointInstanceId')
+        if m.get('EndpointInstanceType') is not None:
+            self.endpoint_instance_type = m.get('EndpointInstanceType')
+        if m.get('EndpointIp') is not None:
+            self.endpoint_ip = m.get('EndpointIp')
+        if m.get('EndpointPort') is not None:
+            self.endpoint_port = m.get('EndpointPort')
+        if m.get('Password') is not None:
+            self.password = m.get('Password')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('RoleName') is not None:
+            self.role_name = m.get('RoleName')
+        if m.get('ShardPassword') is not None:
+            self.shard_password = m.get('ShardPassword')
+        if m.get('ShardUsername') is not None:
+            self.shard_username = m.get('ShardUsername')
+        if m.get('SynchronizationDirection') is not None:
+            self.synchronization_direction = m.get('SynchronizationDirection')
+        if m.get('Username') is not None:
+            self.username = m.get('Username')
+        return self
+
+
+class ModifyDtsJobEndpointResponseBody(TeaModel):
+    def __init__(
+        self,
+        err_code: str = None,
+        err_message: str = None,
+        http_status_code: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.err_code = err_code
+        self.err_message = err_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyDtsJobEndpointResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDtsJobEndpointResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDtsJobEndpointResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyDtsJobNameRequest(TeaModel):
     def __init__(
         self,

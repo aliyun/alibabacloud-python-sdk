@@ -8602,6 +8602,140 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dts_job_du_limit_with_options_async(request, runtime)
 
+    def modify_dts_job_endpoint_with_options(
+        self,
+        request: dts_20200101_models.ModifyDtsJobEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobEndpointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_uid):
+            query['AliyunUid'] = request.aliyun_uid
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.endpoint_instance_id):
+            query['EndpointInstanceId'] = request.endpoint_instance_id
+        if not UtilClient.is_unset(request.endpoint_instance_type):
+            query['EndpointInstanceType'] = request.endpoint_instance_type
+        if not UtilClient.is_unset(request.endpoint_ip):
+            query['EndpointIp'] = request.endpoint_ip
+        if not UtilClient.is_unset(request.endpoint_port):
+            query['EndpointPort'] = request.endpoint_port
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.shard_password):
+            query['ShardPassword'] = request.shard_password
+        if not UtilClient.is_unset(request.shard_username):
+            query['ShardUsername'] = request.shard_username
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobEndpoint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dts_job_endpoint_with_options_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobEndpointRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dts_20200101_models.ModifyDtsJobEndpointResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.aliyun_uid):
+            query['AliyunUid'] = request.aliyun_uid
+        if not UtilClient.is_unset(request.database):
+            query['Database'] = request.database
+        if not UtilClient.is_unset(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not UtilClient.is_unset(request.dts_instance_id):
+            query['DtsInstanceId'] = request.dts_instance_id
+        if not UtilClient.is_unset(request.dts_job_id):
+            query['DtsJobId'] = request.dts_job_id
+        if not UtilClient.is_unset(request.endpoint):
+            query['Endpoint'] = request.endpoint
+        if not UtilClient.is_unset(request.endpoint_instance_id):
+            query['EndpointInstanceId'] = request.endpoint_instance_id
+        if not UtilClient.is_unset(request.endpoint_instance_type):
+            query['EndpointInstanceType'] = request.endpoint_instance_type
+        if not UtilClient.is_unset(request.endpoint_ip):
+            query['EndpointIp'] = request.endpoint_ip
+        if not UtilClient.is_unset(request.endpoint_port):
+            query['EndpointPort'] = request.endpoint_port
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.role_name):
+            query['RoleName'] = request.role_name
+        if not UtilClient.is_unset(request.shard_password):
+            query['ShardPassword'] = request.shard_password
+        if not UtilClient.is_unset(request.shard_username):
+            query['ShardUsername'] = request.shard_username
+        if not UtilClient.is_unset(request.synchronization_direction):
+            query['SynchronizationDirection'] = request.synchronization_direction
+        if not UtilClient.is_unset(request.username):
+            query['Username'] = request.username
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDtsJobEndpoint',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dts_20200101_models.ModifyDtsJobEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dts_job_endpoint(
+        self,
+        request: dts_20200101_models.ModifyDtsJobEndpointRequest,
+    ) -> dts_20200101_models.ModifyDtsJobEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dts_job_endpoint_with_options(request, runtime)
+
+    async def modify_dts_job_endpoint_async(
+        self,
+        request: dts_20200101_models.ModifyDtsJobEndpointRequest,
+    ) -> dts_20200101_models.ModifyDtsJobEndpointResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dts_job_endpoint_with_options_async(request, runtime)
+
     def modify_dts_job_name_with_options(
         self,
         request: dts_20200101_models.ModifyDtsJobNameRequest,
