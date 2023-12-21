@@ -1,3 +1,6 @@
+2023-12-21 Version: 3.0.0
+- Generated python 2021-02-04 for AIWorkSpace.
+
 2023-10-21 Version: 2.0.4
 - Generated python 2021-02-04 for AIWorkSpace.
 
