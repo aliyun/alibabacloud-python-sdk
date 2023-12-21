@@ -30733,6 +30733,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not UtilClient.is_unset(request.vendors):
+            query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -30763,6 +30765,8 @@ class Client(OpenApiClient):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.resource_directory_account_id):
             query['ResourceDirectoryAccountId'] = request.resource_directory_account_id
+        if not UtilClient.is_unset(request.vendors):
+            query['Vendors'] = request.vendors
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -31210,9 +31214,16 @@ class Client(OpenApiClient):
 
     def get_cloud_asset_summary_with_options(
         self,
+        request: sas_20181203_models.GetCloudAssetSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetCloudAssetSummaryResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vendors):
+            query['Vendors'] = request.vendors
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetCloudAssetSummary',
             version='2018-12-03',
@@ -31231,9 +31242,16 @@ class Client(OpenApiClient):
 
     async def get_cloud_asset_summary_with_options_async(
         self,
+        request: sas_20181203_models.GetCloudAssetSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sas_20181203_models.GetCloudAssetSummaryResponse:
-        req = open_api_models.OpenApiRequest()
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.vendors):
+            query['Vendors'] = request.vendors
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
         params = open_api_models.Params(
             action='GetCloudAssetSummary',
             version='2018-12-03',
@@ -31250,13 +31268,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_cloud_asset_summary(self) -> sas_20181203_models.GetCloudAssetSummaryResponse:
+    def get_cloud_asset_summary(
+        self,
+        request: sas_20181203_models.GetCloudAssetSummaryRequest,
+    ) -> sas_20181203_models.GetCloudAssetSummaryResponse:
         runtime = util_models.RuntimeOptions()
-        return self.get_cloud_asset_summary_with_options(runtime)
+        return self.get_cloud_asset_summary_with_options(request, runtime)
 
-    async def get_cloud_asset_summary_async(self) -> sas_20181203_models.GetCloudAssetSummaryResponse:
+    async def get_cloud_asset_summary_async(
+        self,
+        request: sas_20181203_models.GetCloudAssetSummaryRequest,
+    ) -> sas_20181203_models.GetCloudAssetSummaryResponse:
         runtime = util_models.RuntimeOptions()
-        return await self.get_cloud_asset_summary_with_options_async(runtime)
+        return await self.get_cloud_asset_summary_with_options_async(request, runtime)
 
     def get_cluster_check_item_warning_statistics_with_options(
         self,
@@ -48741,6 +48765,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config):
             query['Config'] = request.config
+        if not UtilClient.is_unset(request.no_target_as_on):
+            query['NoTargetAsOn'] = request.no_target_as_on
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type):
@@ -48773,6 +48799,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.config):
             query['Config'] = request.config
+        if not UtilClient.is_unset(request.no_target_as_on):
+            query['NoTargetAsOn'] = request.no_target_as_on
         if not UtilClient.is_unset(request.source_ip):
             query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.type):
