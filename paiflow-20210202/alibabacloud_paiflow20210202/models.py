@@ -1378,9 +1378,11 @@ class GetPipelineRunRequest(TeaModel):
     def __init__(
         self,
         manifest_type: str = None,
+        token_id: str = None,
         verbose: bool = None,
     ):
         self.manifest_type = manifest_type
+        self.token_id = token_id
         self.verbose = verbose
 
     def validate(self):
@@ -1394,6 +1396,8 @@ class GetPipelineRunRequest(TeaModel):
         result = dict()
         if self.manifest_type is not None:
             result['ManifestType'] = self.manifest_type
+        if self.token_id is not None:
+            result['TokenId'] = self.token_id
         if self.verbose is not None:
             result['Verbose'] = self.verbose
         return result
@@ -1402,6 +1406,8 @@ class GetPipelineRunRequest(TeaModel):
         m = m or dict()
         if m.get('ManifestType') is not None:
             self.manifest_type = m.get('ManifestType')
+        if m.get('TokenId') is not None:
+            self.token_id = m.get('TokenId')
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
         return self
@@ -1608,9 +1614,11 @@ class GetPipelineRunNodeRequest(TeaModel):
     def __init__(
         self,
         depth: int = None,
+        token_id: str = None,
         type: str = None,
     ):
         self.depth = depth
+        self.token_id = token_id
         self.type = type
 
     def validate(self):
@@ -1624,6 +1632,8 @@ class GetPipelineRunNodeRequest(TeaModel):
         result = dict()
         if self.depth is not None:
             result['Depth'] = self.depth
+        if self.token_id is not None:
+            result['TokenId'] = self.token_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -1632,6 +1642,8 @@ class GetPipelineRunNodeRequest(TeaModel):
         m = m or dict()
         if m.get('Depth') is not None:
             self.depth = m.get('Depth')
+        if m.get('TokenId') is not None:
+            self.token_id = m.get('TokenId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2063,6 +2075,7 @@ class ListPipelineRunNodeLogsRequest(TeaModel):
         page_size: int = None,
         reverse: bool = None,
         to_time_in_seconds: int = None,
+        token_id: str = None,
     ):
         self.from_time_in_seconds = from_time_in_seconds
         self.keyword = keyword
@@ -2070,6 +2083,7 @@ class ListPipelineRunNodeLogsRequest(TeaModel):
         self.page_size = page_size
         self.reverse = reverse
         self.to_time_in_seconds = to_time_in_seconds
+        self.token_id = token_id
 
     def validate(self):
         pass
@@ -2092,6 +2106,8 @@ class ListPipelineRunNodeLogsRequest(TeaModel):
             result['Reverse'] = self.reverse
         if self.to_time_in_seconds is not None:
             result['ToTimeInSeconds'] = self.to_time_in_seconds
+        if self.token_id is not None:
+            result['TokenId'] = self.token_id
         return result
 
     def from_map(self, m: dict = None):
@@ -2108,6 +2124,8 @@ class ListPipelineRunNodeLogsRequest(TeaModel):
             self.reverse = m.get('Reverse')
         if m.get('ToTimeInSeconds') is not None:
             self.to_time_in_seconds = m.get('ToTimeInSeconds')
+        if m.get('TokenId') is not None:
+            self.token_id = m.get('TokenId')
         return self
 
 
@@ -2203,6 +2221,7 @@ class ListPipelineRunNodeOutputsRequest(TeaModel):
         page_number: int = None,
         page_size: int = None,
         sort_by: str = None,
+        token_id: str = None,
         type: str = None,
     ):
         self.depth = depth
@@ -2211,6 +2230,7 @@ class ListPipelineRunNodeOutputsRequest(TeaModel):
         self.page_number = page_number
         self.page_size = page_size
         self.sort_by = sort_by
+        self.token_id = token_id
         self.type = type
 
     def validate(self):
@@ -2234,6 +2254,8 @@ class ListPipelineRunNodeOutputsRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
+        if self.token_id is not None:
+            result['TokenId'] = self.token_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2252,6 +2274,8 @@ class ListPipelineRunNodeOutputsRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
+        if m.get('TokenId') is not None:
+            self.token_id = m.get('TokenId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self
@@ -2427,9 +2451,11 @@ class ListPipelineRunNodeStatusRequest(TeaModel):
     def __init__(
         self,
         depth: int = None,
+        token_id: str = None,
         type: str = None,
     ):
         self.depth = depth
+        self.token_id = token_id
         self.type = type
 
     def validate(self):
@@ -2443,6 +2469,8 @@ class ListPipelineRunNodeStatusRequest(TeaModel):
         result = dict()
         if self.depth is not None:
             result['Depth'] = self.depth
+        if self.token_id is not None:
+            result['TokenId'] = self.token_id
         if self.type is not None:
             result['Type'] = self.type
         return result
@@ -2451,6 +2479,8 @@ class ListPipelineRunNodeStatusRequest(TeaModel):
         m = m or dict()
         if m.get('Depth') is not None:
             self.depth = m.get('Depth')
+        if m.get('TokenId') is not None:
+            self.token_id = m.get('TokenId')
         if m.get('Type') is not None:
             self.type = m.get('Type')
         return self

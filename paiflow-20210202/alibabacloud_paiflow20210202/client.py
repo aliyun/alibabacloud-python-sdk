@@ -443,6 +443,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.manifest_type):
             query['ManifestType'] = request.manifest_type
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
@@ -476,6 +478,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.manifest_type):
             query['ManifestType'] = request.manifest_type
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.verbose):
             query['Verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
@@ -528,6 +532,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -562,6 +568,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -626,6 +634,8 @@ class Client(OpenApiClient):
             query['Reverse'] = request.reverse
         if not UtilClient.is_unset(request.to_time_in_seconds):
             query['ToTimeInSeconds'] = request.to_time_in_seconds
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -668,6 +678,8 @@ class Client(OpenApiClient):
             query['Reverse'] = request.reverse
         if not UtilClient.is_unset(request.to_time_in_seconds):
             query['ToTimeInSeconds'] = request.to_time_in_seconds
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         req = open_api_models.OpenApiRequest(
             headers=headers,
             query=OpenApiUtilClient.query(query)
@@ -730,6 +742,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -774,6 +788,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.sort_by):
             query['SortBy'] = request.sort_by
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -828,6 +844,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
@@ -862,6 +880,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.depth):
             query['Depth'] = request.depth
+        if not UtilClient.is_unset(request.token_id):
+            query['TokenId'] = request.token_id
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         req = open_api_models.OpenApiRequest(
