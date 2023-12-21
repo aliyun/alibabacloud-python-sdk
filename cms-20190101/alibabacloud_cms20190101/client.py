@@ -1355,8 +1355,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
+        # [](#)Description
+        This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1399,8 +1401,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
+        # [](#)Description
+        This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1442,8 +1446,10 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
+        # [](#)Description
+        This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
         @return: CreateHybridMonitorNamespaceResponse
@@ -1456,8 +1462,10 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorNamespaceRequest,
     ) -> cms_20190101_models.CreateHybridMonitorNamespaceResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
+        # [](#)Description
+        This topic provides an example on how to create a namespace named `aliyun`. In this example, the data retention period of the namespace is set to `cms.s1.3xlarge`. The returned result indicates that the namespace is created.
         
         @param request: CreateHybridMonitorNamespaceRequest
         @return: CreateHybridMonitorNamespaceResponse
@@ -1587,9 +1595,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         *   Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
-        *   If you want to create a metric for logs imported from Log Service, make sure that you have activated Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        *   If you want to create a metric for logs imported from Simple Log Service, make sure that you have activated Simple Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        # [](#)Description
+        This topic provides an example on how to create a metric import task named `aliyun_task` for Elastic Compute Service (ECS). The task imports the `cpu_total` metric to the `aliyun` namespace. The response shows that the metric import task is created.
         
         @param request: CreateHybridMonitorTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1599,6 +1609,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.attach_labels):
             query['AttachLabels'] = request.attach_labels
+        if not UtilClient.is_unset(request.cloud_access_id):
+            query['CloudAccessId'] = request.cloud_access_id
         if not UtilClient.is_unset(request.collect_interval):
             query['CollectInterval'] = request.collect_interval
         if not UtilClient.is_unset(request.collect_target_type):
@@ -1646,9 +1658,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         *   Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
-        *   If you want to create a metric for logs imported from Log Service, make sure that you have activated Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        *   If you want to create a metric for logs imported from Simple Log Service, make sure that you have activated Simple Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        # [](#)Description
+        This topic provides an example on how to create a metric import task named `aliyun_task` for Elastic Compute Service (ECS). The task imports the `cpu_total` metric to the `aliyun` namespace. The response shows that the metric import task is created.
         
         @param request: CreateHybridMonitorTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1658,6 +1672,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.attach_labels):
             query['AttachLabels'] = request.attach_labels
+        if not UtilClient.is_unset(request.cloud_access_id):
+            query['CloudAccessId'] = request.cloud_access_id
         if not UtilClient.is_unset(request.collect_interval):
             query['CollectInterval'] = request.collect_interval
         if not UtilClient.is_unset(request.collect_target_type):
@@ -1704,9 +1720,11 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorTaskRequest,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         *   Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
-        *   If you want to create a metric for logs imported from Log Service, make sure that you have activated Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        *   If you want to create a metric for logs imported from Simple Log Service, make sure that you have activated Simple Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        # [](#)Description
+        This topic provides an example on how to create a metric import task named `aliyun_task` for Elastic Compute Service (ECS). The task imports the `cpu_total` metric to the `aliyun` namespace. The response shows that the metric import task is created.
         
         @param request: CreateHybridMonitorTaskRequest
         @return: CreateHybridMonitorTaskResponse
@@ -1719,9 +1737,11 @@ class Client(OpenApiClient):
         request: cms_20190101_models.CreateHybridMonitorTaskRequest,
     ) -> cms_20190101_models.CreateHybridMonitorTaskResponse:
         """
-        ## Prerequisites
+        # [](#)Prerequisites
         *   Hybrid Cloud Monitoring is activated. For more information, see [Activate Hybrid Cloud Monitoring](~~250773~~).
-        *   If you want to create a metric for logs imported from Log Service, make sure that you have activated Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        *   If you want to create a metric for logs imported from Simple Log Service, make sure that you have activated Simple Log Service and created a project and a Logstore. For more information, see [Getting Started](~~54604~~).
+        # [](#)Description
+        This topic provides an example on how to create a metric import task named `aliyun_task` for Elastic Compute Service (ECS). The task imports the `cpu_total` metric to the `aliyun` namespace. The response shows that the metric import task is created.
         
         @param request: CreateHybridMonitorTaskRequest
         @return: CreateHybridMonitorTaskResponse
@@ -5121,7 +5141,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
         """
-        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        Queries the statistics of alert logs.
+        This topic provides an example on how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5190,7 +5211,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
         """
-        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        Queries the statistics of alert logs.
+        This topic provides an example on how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogCountRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5258,7 +5280,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogCountRequest,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
         """
-        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        Queries the statistics of alert logs.
+        This topic provides an example on how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogCountRequest
         @return: DescribeAlertLogCountResponse
@@ -5271,7 +5294,8 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogCountRequest,
     ) -> cms_20190101_models.DescribeAlertLogCountResponse:
         """
-        This topic provides an example to show how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
+        Queries the statistics of alert logs.
+        This topic provides an example on how to query the statistics of alert logs for Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogCountRequest
         @return: DescribeAlertLogCountResponse
@@ -5449,6 +5473,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
         """
+        You can call the operation to query only the alert logs within the last year.
         This topic provides an example to show how to query the alert logs of Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogListRequest
@@ -5518,6 +5543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
         """
+        You can call the operation to query only the alert logs within the last year.
         This topic provides an example to show how to query the alert logs of Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogListRequest
@@ -5586,6 +5612,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogListRequest,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
         """
+        You can call the operation to query only the alert logs within the last year.
         This topic provides an example to show how to query the alert logs of Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogListRequest
@@ -5599,6 +5626,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.DescribeAlertLogListRequest,
     ) -> cms_20190101_models.DescribeAlertLogListResponse:
         """
+        You can call the operation to query only the alert logs within the last year.
         This topic provides an example to show how to query the alert logs of Elastic Compute Service (ECS) based on the `product` dimension.
         
         @param request: DescribeAlertLogListRequest
@@ -15835,7 +15863,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
         """
-        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo***` instance that belongs to Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. In this example, the alert contact group of the alert rule is `ECS_Group`, the name of the alert rule is `test123`, and the ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`, the comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`, the threshold for Critical-level alerts is `90`, and the consecutive number of times for which the metric value is measured before a Critical-level alert is triggered is `3`.
+        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
         @param request: PutResourceMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15870,7 +15898,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
         """
-        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo***` instance that belongs to Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. In this example, the alert contact group of the alert rule is `ECS_Group`, the name of the alert rule is `test123`, and the ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`, the comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`, the threshold for Critical-level alerts is `90`, and the consecutive number of times for which the metric value is measured before a Critical-level alert is triggered is `3`.
+        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
         @param request: PutResourceMetricRulesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15904,7 +15932,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutResourceMetricRulesRequest,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
         """
-        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo***` instance that belongs to Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. In this example, the alert contact group of the alert rule is `ECS_Group`, the name of the alert rule is `test123`, and the ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`, the comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`, the threshold for Critical-level alerts is `90`, and the consecutive number of times for which the metric value is measured before a Critical-level alert is triggered is `3`.
+        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
         @param request: PutResourceMetricRulesRequest
         @return: PutResourceMetricRulesResponse
@@ -15917,7 +15945,7 @@ class Client(OpenApiClient):
         request: cms_20190101_models.PutResourceMetricRulesRequest,
     ) -> cms_20190101_models.PutResourceMetricRulesResponse:
         """
-        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of the `i-uf6j91r34rnwawoo***` instance that belongs to Elastic Compute Service (ECS). The namespace of ECS is `acs_ecs_dashboard`. In this example, the alert contact group of the alert rule is `ECS_Group`, the name of the alert rule is `test123`, and the ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`, the comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`, the threshold for Critical-level alerts is `90`, and the consecutive number of times for which the metric value is measured before a Critical-level alert is triggered is `3`.
+        This topic provides an example on how to create a threshold-triggered alert rule for the `cpu_total` metric of an Elastic Compute Service (ECS) instance whose ID is `i-uf6j91r34rnwawoo***`. The namespace of ECS metrics is `acs_ecs_dashboard`. The alert contact group of the alert rule is `ECS_Group`. The name of the alert rule is `test123`. The ID of the alert rule is `a151cd6023eacee2f0978e03863cc1697c89508****`. The statistical method for Critical-level alerts is `Average`. The comparison operator for Critical-level alerts is `GreaterThanOrEqualToThreshold`. The threshold for Critical-level alerts is `90`. The consecutive number of times for which the metric value meets the trigger condition before a Critical-level alert is triggered is `3`.
         
         @param request: PutResourceMetricRulesRequest
         @return: PutResourceMetricRulesResponse

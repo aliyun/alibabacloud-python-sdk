@@ -2424,6 +2424,7 @@ class Subscription(TeaModel):
         conditions: List[SubscriptionConditions] = None,
         create_time: str = None,
         description: str = None,
+        enabled: bool = None,
         name: str = None,
         relation: str = None,
         strategy_uuid: str = None,
@@ -2433,6 +2434,7 @@ class Subscription(TeaModel):
         self.conditions = conditions
         self.create_time = create_time
         self.description = description
+        self.enabled = enabled
         self.name = name
         self.relation = relation
         self.strategy_uuid = strategy_uuid
@@ -2459,6 +2461,8 @@ class Subscription(TeaModel):
             result['CreateTime'] = self.create_time
         if self.description is not None:
             result['Description'] = self.description
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
         if self.name is not None:
             result['Name'] = self.name
         if self.relation is not None:
@@ -2482,6 +2486,8 @@ class Subscription(TeaModel):
             self.create_time = m.get('CreateTime')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Relation') is not None:
@@ -6319,17 +6325,24 @@ class CreateHybridMonitorNamespaceRequest(TeaModel):
         # 
         # The name can contain lowercase letters, digits, and hyphens (-).
         self.namespace = namespace
+        # The region where the metric data is stored.
         self.namespace_region = namespace_region
+        # The storage scheme of metric data. Valid values:
+        # 
+        # *   m_prom_pool: The metric data is stored in Simple Log Service.
+        # *   m_prometheus: The metric data is stored in the storage space provided by CloudMonitor.
+        # 
+        # >  For more information about the storage schemes of metric data, see [Storage schemes of metric data in Hybrid Cloud Monitoring](~~2594921~~).
         self.namespace_type = namespace_type
         self.region_id = region_id
-        # The data retention period of the namespace. Valid values:
+        # The data retention period. Valid values:
         # 
-        # *   cms.s1.large: 15 days
-        # *   cms.s1.xlarge: 32 days
-        # *   cms.s1.2xlarge: 63 days
-        # *   cms.s1.3xlarge (default value): 93 days
-        # *   cms.s1.6xlarge: 185 days
-        # *   cms.s1.12xlarge: 376 days
+        # *   cms.s1.large (Retention Period 15 Days)
+        # *   cms.s1.xlarge (Retention Period 32 Days)
+        # *   cms.s1.2xlarge (Retention Period 63 Days)
+        # *   cms.s1.3xlarge (Retention Period 93 Days) (default)
+        # *   cms.s1.6xlarge (Retention Period 185 Days)
+        # *   cms.s1.12xlarge (Retention Period 367 Days)
         # 
         # For information about the pricing for different retention periods, see the **Pricing** section in [Billing of the dashboard feature](~~223532~~).
         self.spec = spec
@@ -6382,16 +6395,16 @@ class CreateHybridMonitorNamespaceResponseBody(TeaModel):
         request_id: str = None,
         success: str = None,
     ):
-        # The returned message.
+        # The response code.
         self.code = code
-        # The error message.
+        # The error message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -6730,9 +6743,9 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigExpress(TeaModel):
         alias: str = None,
         express: str = None,
     ):
-        # The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+        # The alias of the extended field that specifies the result of basic operations performed on aggregation results.
         self.alias = alias
-        # The extended field that specifies the result of basic operations that are performed on aggregation results.
+        # The extended field that specifies the result of basic operations performed on aggregation results.
         self.express = express
 
     def validate(self):
@@ -6766,7 +6779,7 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters(TeaModel):
         slskey_name: str = None,
         value: str = None,
     ):
-        # The method that is used to filter logs imported from Log Service. Valid values:
+        # The method that is used to filter logs imported from Simple Log Service. Valid values:
         # 
         # *   `contain`: contains
         # *   `notContain`: does not contain
@@ -6777,9 +6790,9 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters(TeaModel):
         # *   `>=`: greater than or equal to
         # *   `<=`: less than or equal to
         self.operator = operator
-        # The name of the key that is used to filter logs imported from Log Service.
+        # The name of the key that is used to filter logs imported from Simple Log Service.
         self.slskey_name = slskey_name
-        # The value of the key that is used to filter logs imported from Log Service.
+        # The value of the key that is used to filter logs imported from Simple Log Service.
         self.value = value
 
     def validate(self):
@@ -6816,11 +6829,11 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigFilter(TeaModel):
         filters: List[CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters] = None,
         relation: str = None,
     ):
-        # The conditions that are used to filter logs imported from Log Service.
+        # The conditions that are used to filter logs imported from Simple Log Service.
         self.filters = filters
         # The relationship between multiple filter conditions. Valid values:
         # 
-        # *   and (default value): Logs are processed only if all filter conditions are met.
+        # *   and (default): Logs are processed only if all filter conditions are met.
         # *   or: Logs are processed if one of the filter conditions is met.
         self.relation = relation
 
@@ -6864,7 +6877,7 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy(TeaModel):
     ):
         # The alias of the aggregation result.
         self.alias = alias
-        # The name of the key that is used to aggregate logs imported from Log Service.
+        # The name of the key that is used to aggregate logs imported from Simple Log Service.
         self.slskey_name = slskey_name
 
     def validate(self):
@@ -6900,10 +6913,32 @@ class CreateHybridMonitorTaskRequestSLSProcessConfigStatistics(TeaModel):
         parameter_2: str = None,
         slskey_name: str = None,
     ):
+        # The alias of the aggregation result.
         self.alias = alias
+        # The function that is used to aggregate the log data of a statistical period. Valid values:
+        # 
+        # *   count: counts the number.
+        # *   sum: calculates the total value.
+        # *   avg: calculates the average value.
+        # *   max: calculates the maximum value.
+        # *   min: calculates the minimum value.
+        # *   value: collects samples within the statistical period.
+        # *   countps: calculates the number of values of the specified field divided by the total number of seconds within a statistical period.
+        # *   sumps: calculates the sum of the values of the specified field divided by the total number of seconds within a statistical period.
+        # *   distinct: calculates the number of unique values of the specified field within a statistical period.
+        # *   distribution: calculates the number of logs that meet a specified condition within the statistical period.
+        # *   percentile: sorts the values of the specified field in ascending order, and then returns the value that is at the specified percentile within the statistical period. Example: P50.
         self.function = function
+        # The value of the function that is used to aggregate logs imported from Simple Log Service.
+        # 
+        # *   If the `Function` parameter is set to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
+        # *   If the `Function` parameter is set to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
         self.parameter_1 = parameter_1
+        # The value of the function that is used to aggregate logs imported from Simple Log Service.
+        # 
+        # >  This parameter is required only if the `Function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 299.
         self.parameter_2 = parameter_2
+        # The name of the key that is used to aggregate logs imported from Simple Log Service.
         self.slskey_name = slskey_name
 
     def validate(self):
@@ -6950,12 +6985,13 @@ class CreateHybridMonitorTaskRequestSLSProcessConfig(TeaModel):
         group_by: List[CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy] = None,
         statistics: List[CreateHybridMonitorTaskRequestSLSProcessConfigStatistics] = None,
     ):
-        # The extended fields that specify the results of basic operations that are performed on aggregation results.
+        # The extended fields that specify the results of basic operations performed on aggregation results.
         self.express = express
-        # The conditions that are used to filter logs imported from Log Service.
+        # The conditions that are used to filter logs imported from Simple Log Service.
         self.filter = filter
         # The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
         self.group_by = group_by
+        # The method that is used to aggregate logs imported from Simple Log Service.
         self.statistics = statistics
 
     def validate(self):
@@ -7023,6 +7059,7 @@ class CreateHybridMonitorTaskRequest(TeaModel):
     def __init__(
         self,
         attach_labels: List[CreateHybridMonitorTaskRequestAttachLabels] = None,
+        cloud_access_id: List[str] = None,
         collect_interval: str = None,
         collect_target_type: str = None,
         description: str = None,
@@ -7036,11 +7073,15 @@ class CreateHybridMonitorTaskRequest(TeaModel):
         task_type: str = None,
         yarmconfig: str = None,
     ):
+        # The tags of the metric.
+        # 
+        # >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
         self.attach_labels = attach_labels
-        # The interval at which metrics are collected. Valid values:
+        self.cloud_access_id = cloud_access_id
+        # The collection period of the metric. Valid values:
         # 
         # *   15
-        # *   60 (default value)
+        # *   60 (default)
         # 
         # Unit: seconds.
         # 
@@ -7064,13 +7105,13 @@ class CreateHybridMonitorTaskRequest(TeaModel):
         # For information about how to obtain the name of a namespace, see [DescribeHybridMonitorNamespaceList](~~428880~~).
         self.namespace = namespace
         self.region_id = region_id
-        # The configurations of the logs that are imported from Log Service.
+        # The configurations of the logs that are imported from Simple Log Service.
         # 
         # >  This parameter is required only if the `TaskType` parameter is set to `aliyun_sls`.
         self.slsprocess_config = slsprocess_config
         # The ID of the member account.
         # 
-        # If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in a resource directory to Hybrid Cloud Monitoring. You can use the resource directory to monitor Alibaba Cloud services across enterprise accounts.
+        # If you call this operation by using the management account of a resource directory, you can connect the Alibaba Cloud services that are activated for all members in the resource directory to Hybrid Cloud Monitoring. You can use the resource directory to monitor Alibaba Cloud services across enterprise accounts.
         # 
         # >  This parameter is required only if the `TaskType` parameter is set to `aliyun_fc`.
         self.target_user_id = target_user_id
@@ -7081,12 +7122,12 @@ class CreateHybridMonitorTaskRequest(TeaModel):
         # The name of the metric import task.
         # 
         # *   If the `TaskType` parameter is set to `aliyun_fc`, enter the name of the metric import task.
-        # *   If the `TaskType` parameter is set to `aliyun_sls`, enter the name of the metric for logs imported from Log Service.
+        # *   If the `TaskType` parameter is set to `aliyun_sls`, enter the name of the metric for logs imported from Simple Log Service.
         self.task_name = task_name
-        # Specifies whether to create a metric import task for an Alibaba Cloud service or create a metric for logs imported from Log Service. Valid values:
+        # The type of the metric import task. Valid values:
         # 
-        # *   aliyun_fc: creates a metric import task for an Alibaba Cloud service
-        # *   aliyun_sls: creates a metric for logs imported from Log Service
+        # *   aliyun_fc: metric import tasks for Alibaba Cloud services.
+        # *   aliyun_sls: metrics for logs imported from Simple Log Service.
         self.task_type = task_type
         # The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         # 
@@ -7095,26 +7136,23 @@ class CreateHybridMonitorTaskRequest(TeaModel):
         # 
         # The following code shows a sample configuration file:
         # 
-        # ```
-        # 
-        # products:
-        # - namespace: acs_ecs_dashboard
-        #   metric_info:
-        #   - metric_list:
-        #     - cpu_total
-        #     - cpu_idle
-        #     - diskusage_utilization
-        #     - CPUUtilization
-        #     - DiskReadBPS
-        #     - InternetOut
-        #     - IntranetOut
-        #     - cpu_system
-        # - namespace: acs_rds_dashboard
-        #   metric_info:
-        #   - metric_list:
-        #     - MySQL_QPS
-        #     - MySQL_TPS
-        # ```
+        #     products:
+        #     - namespace: acs_ecs_dashboard
+        #       metric_info:
+        #       - metric_list:
+        #         - cpu_total
+        #         - cpu_idle
+        #         - diskusage_utilization
+        #         - CPUUtilization
+        #         - DiskReadBPS
+        #         - InternetOut
+        #         - IntranetOut
+        #         - cpu_system
+        #     - namespace: acs_rds_dashboard
+        #       metric_info:
+        #       - metric_list:
+        #         - MySQL_QPS
+        #         - MySQL_TPS
         # 
         # >  This parameter is required only if the `TaskType` parameter is set to `aliyun_fc`.
         self.yarmconfig = yarmconfig
@@ -7137,6 +7175,8 @@ class CreateHybridMonitorTaskRequest(TeaModel):
         if self.attach_labels is not None:
             for k in self.attach_labels:
                 result['AttachLabels'].append(k.to_map() if k else None)
+        if self.cloud_access_id is not None:
+            result['CloudAccessId'] = self.cloud_access_id
         if self.collect_interval is not None:
             result['CollectInterval'] = self.collect_interval
         if self.collect_target_type is not None:
@@ -7170,6 +7210,8 @@ class CreateHybridMonitorTaskRequest(TeaModel):
             for k in m.get('AttachLabels'):
                 temp_model = CreateHybridMonitorTaskRequestAttachLabels()
                 self.attach_labels.append(temp_model.from_map(k))
+        if m.get('CloudAccessId') is not None:
+            self.cloud_access_id = m.get('CloudAccessId')
         if m.get('CollectInterval') is not None:
             self.collect_interval = m.get('CollectInterval')
         if m.get('CollectTargetType') is not None:
@@ -7207,20 +7249,20 @@ class CreateHybridMonitorTaskResponseBody(TeaModel):
         success: str = None,
         task_id: int = None,
     ):
-        # The HTTP status code.
+        # The response code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
-        # The error message.
+        # The error message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
-        # The ID of the metric import task.
+        # The ID of the monitoring task.
         self.task_id = task_id
 
     def validate(self):
@@ -15161,7 +15203,7 @@ class DescribeAlertLogCountRequest(TeaModel):
         # 
         # You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
         # 
-        # >  The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
+        # >  The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
         self.end_time = end_time
         self.event_type = event_type
         # The dimension based on which data is aggregated. This parameter is similar to the Group By clause of SQL statements. Valid values:
@@ -15225,7 +15267,7 @@ class DescribeAlertLogCountRequest(TeaModel):
         # 
         # You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogCount` parameter is empty.
         # 
-        # >  The interval between the start time (`StartTime`) and end time (`EndTime`) must be less than or equal to 15 days.
+        # >  The interval between the start time (StartTime) and end time (EndTime) must be less than or equal to 15 days. The start time and end time must be specified or left empty at the same time. If you do not specify the start time and end time, the alert logs within the last 15 minutes are queried by default.
         self.start_time = start_time
 
     def validate(self):
@@ -15887,10 +15929,16 @@ class DescribeAlertLogListRequest(TeaModel):
     ):
         # The alert contact group.
         self.contact_group = contact_group
-        # The end timestamp of the alert logs to be queried. Unit: milliseconds.
+        # The end timestamp of the alert logs to be queried.
+        # 
+        # Unit: milliseconds.
+        # 
+        # You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogList` parameter is empty.
+        # 
+        # >  The time period between the start time specified by `StartTime` and end time specified by `EndTime` must be less than or equal to 15 days. You must specify StartTime and EndTime at the same time, or leave StartTime and EndTime empty at the same time. If you do not specify this parameter, the alert logs within the last 15 minutes are queried by default.
         self.end_time = end_time
         self.event_type = event_type
-        # The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
+        # The dimensions based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. Valid values:
         # 
         # *   `product`: aggregates data by cloud service.
         # *   `level`: aggregates data by alert level.
@@ -15913,16 +15961,24 @@ class DescribeAlertLogListRequest(TeaModel):
         self.metric_name = metric_name
         # The namespace of the cloud service.
         # 
-        # > For more information about the namespaces of different cloud services, see [Appendix 1: Metrics](~~163515~~).
+        # >  For information about how to query the namespace of a cloud service, see [Appendix 1: Metrics](~~163515~~).
         self.namespace = namespace
-        # The page number. Default value: 1.
+        # The page number.
+        # 
+        # Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10.
+        # The number of entries per page.
+        # 
+        # Default value: 10.
         self.page_size = page_size
-        # The abbreviation of the cloud service name.
+        # The abbreviation of the service name.
+        # 
+        # For information about how to obtain the abbreviation of a cloud service name, see [DescribeProductsOfActiveMetricRule](~~114930~~).
         self.product = product
         self.region_id = region_id
-        # The ID of the alert rule. For more information about how to query the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
+        # The ID of the alert rule.
+        # 
+        # For information about how to obtain the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
         self.rule_id = rule_id
         # The name of the alert rule.
         self.rule_name = rule_name
@@ -15938,8 +15994,15 @@ class DescribeAlertLogListRequest(TeaModel):
         # 
         # If the value of the SendStatus parameter is 0, the value P4 of the Level parameter indicates a triggered alert and the value OK indicates a cleared alert.
         self.send_status = send_status
+        # The type of the alert rule. Valid value: METRIC. This value indicates an alert rule for time series metrics.
         self.source_type = source_type
-        # The start timestamp of the alert logs to be queried. Unit: milliseconds.
+        # The start timestamp of the alert logs to be queried.
+        # 
+        # Unit: milliseconds.
+        # 
+        # You can query only the alert logs within the last year. If the query time is longer than one year, the return value of the `AlertLogList` parameter is empty.
+        # 
+        # >  The time period between the start time specified by `StartTime` and the end time specified by `EndTime` must be less than or equal to 15 days. You must specify StartTime and EndTime at the same time, or leave StartTime and EndTime empty at the same time. If you do not specify this parameter, the alert logs within the last 15 minutes are queried by default.
         self.start_time = start_time
 
     def validate(self):
@@ -16078,9 +16141,9 @@ class DescribeAlertLogListResponseBodyAlertLogListEscalation(TeaModel):
     ):
         # The description of the alert rule.
         # 
-        # > The content of the alert rule. If the metric value meets the alert condition, an alert is triggered.
+        # >  The content of the alert rule. This parameter indicates the conditions that trigger an alert.
         self.expression = expression
-        # The severity level and notification methods of the alert. Valid values:
+        # The alert level and the methods that are used to send alert notifications. Valid values:
         # 
         # *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
         # *   OK: No alert is generated.
@@ -16174,7 +16237,6 @@ class DescribeAlertLogListResponseBodyAlertLogListSendDetailChannelResultListRes
         # *   true
         # *   false
         self.success = success
-        # The queried resources.
         self.notify_target_list = notify_target_list
 
     def validate(self):
@@ -16318,14 +16380,14 @@ class DescribeAlertLogListResponseBodyAlertLogListSendResultList(TeaModel):
     ):
         # The category of the alert notification method. Valid values:
         # 
-        # *   Mail: email
+        # *   MAIL: email
         # *   ALIIM: TradeManager
         # *   SMS: text message
         # *   CALL: phone call
         # *   DING: DingTalk chatbot
         # *   Merged: alert merging
         self.key = key
-        # The alert notification methods.
+        # The notification object corresponding to the alert notification method.
         self.value = value
 
     def validate(self):
@@ -16430,7 +16492,9 @@ class DescribeAlertLogListResponseBodyAlertLogList(TeaModel):
         send_status: str = None,
         webhook_list: List[DescribeAlertLogListResponseBodyAlertLogListWebhookList] = None,
     ):
-        # The timestamp that was generated when the alert was triggered. Unit: milliseconds.
+        # The timestamp that was generated when the alert was triggered.
+        # 
+        # Unit: milliseconds.
         self.alert_time = alert_time
         # The details of the blacklist policy.
         self.black_list_detail = black_list_detail
@@ -16438,27 +16502,14 @@ class DescribeAlertLogListResponseBodyAlertLogList(TeaModel):
         self.black_list_name = black_list_name
         # The ID of the blacklist policy.
         self.black_list_uuid = black_list_uuid
-        # The TradeManager IDs of the alert contacts.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
         self.contact_aliiwwlist = contact_aliiwwlist
-        # The DingTalk chatbots of the alert contacts.
         self.contact_ding_list = contact_ding_list
-        # The alert contact groups.
         self.contact_groups = contact_groups
-        # The email addresses of the alert contacts.
         self.contact_mail_list = contact_mail_list
-        # The phone numbers of the alert contacts that receive alert phone calls.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
         self.contact_on_call_list = contact_on_call_list
-        # The phone numbers of the alert contacts that receive alert text messages.
-        # 
-        # > This parameter is valid only on the China site (aliyun.com).
         self.contact_smslist = contact_smslist
         # The dimensions of the resource that triggered alerts.
         self.dimensions = dimensions
-        # The webhook URLs of the alert contacts.
         self.dingding_webhook_list = dingding_webhook_list
         # The alert rule based on which the alert is triggered.
         self.escalation = escalation
@@ -16474,7 +16525,7 @@ class DescribeAlertLogListResponseBodyAlertLogList(TeaModel):
         self.instance_id = instance_id
         # The resource name.
         self.instance_name = instance_name
-        # The severity level and notification methods of the alert. Valid values:
+        # The alert level and the methods that are used to send alert notifications. Valid values:
         # 
         # *   P4: Alert notifications are sent by using emails and DingTalk chatbots.
         # *   OK: No alert is generated.
@@ -16501,7 +16552,7 @@ class DescribeAlertLogListResponseBodyAlertLogList(TeaModel):
         self.rule_id = rule_id
         # The name of the alert rule.
         self.rule_name = rule_name
-        # The details of the alert notification method.
+        # The details about the sending results of alert notifications.
         self.send_detail = send_detail
         # The sending results of alert notifications.
         self.send_result_list = send_result_list
@@ -39504,30 +39555,30 @@ class DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent(TeaModel):
         status: str = None,
         time: int = None,
     ):
-        # The details of the system event.
+        # The details of the event.
         self.content = content
         # The ID of the application group.
         self.group_id = group_id
         self.id = id
-        # The name of the instance.
+        # The instance name.
         self.instance_name = instance_name
-        # The level of the system event. Valid values:
+        # The severity level of the alert. Valid values:
         # 
-        # *   CRITICAL: critical
-        # *   WARN: warning
-        # *   INFO: information
+        # *   CRITICAL
+        # *   WARN
+        # *   INFO
         self.level = level
-        # The name of the system event.
+        # The event name.
         self.name = name
         # The abbreviation of the service name.
         self.product = product
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The status of the system event.
+        # The status of the event.
         self.status = status
-        # The timestamp when the system event occurred.
+        # The time when the event occurred. The value is a timestamp.
         # 
         # Unit: milliseconds.
         self.time = time
@@ -39646,7 +39697,7 @@ class DescribeSystemEventAttributeResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the call is successful. Valid values: True: The call is successful. false: The call fails.
         self.success = success
-        # The details of the system event.
+        # The details of the event.
         self.system_events = system_events
 
     def validate(self):
@@ -52636,9 +52687,9 @@ class PutResourceMetricRulesRequestRulesLabels(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.key = key
-        # The value of the tag.
+        # The tag value.
         # 
         # >  You can use a template parameter to specify a tag value. CloudMonitor replaces the value of the template parameter with an actual tag value.
         self.value = value
@@ -52688,7 +52739,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         webhook: str = None,
     ):
         self.escalations = escalations
-        # The alert contact group. The alert notifications are sent to the alert contacts in the alert contact group.
+        # The alert contact groups. The alert notifications are sent to the alert contacts in the alert contact group.
         # 
         # Valid values of N: 1 to 500.
         # 
@@ -52702,7 +52753,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         # 
         # Valid values of N: 1 to 500.
         self.email_subject = email_subject
-        # The interval at which the alert rule is executed.
+        # The interval at which alerts are triggered based on the alert rule.
         # 
         # Unit: seconds.
         # 
@@ -52710,8 +52761,9 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         # 
         # >  For information about how to query the statistical period of a metric, see [Appendix 1: Metrics](~~163515~~).
         self.interval = interval
+        # If the metric meets the specified condition in the alert rule and CloudMonitor sends an alert notification, the tag is also written to the metric and displayed in the alert notification.
         self.labels = labels
-        # The name of the metric.
+        # The metric name.
         # 
         # Valid values of N: 1 to 500.
         # 
@@ -52725,7 +52777,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         self.namespace = namespace
         # The method that is used to handle alerts when no monitoring data is found. Valid values:
         # 
-        # *   KEEP_LAST_STATE (default value): No operation is performed.
+        # *   KEEP_LAST_STATE (default): No operation is performed.
         # *   INSUFFICIENT_DATA: An alert whose content is "Insufficient data" is triggered.
         # *   OK: The status is considered normal.
         # 
@@ -52743,7 +52795,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         # 
         # >  For information about how to query the statistical period of a metric, see [Appendix 1: Metrics](~~163515~~).
         self.period = period
-        # The information about the resource. Examples: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` and `[{"userId":"100931896542****"}]`.
+        # The information about the resource. Example: `[{"instanceId":"i-uf6j91r34rnwawoo****"}]` or `[{"userId":"100931896542****"}]`.
         # 
         # Valid values of N: 1 to 500.
         # 
@@ -52755,7 +52807,7 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         # 
         # You can specify a new ID or the ID of an existing alert rule. For information about how to query the ID of an alert rule, see [DescribeMetricRuleList](~~114941~~).
         # 
-        # >  If you specify a new ID, you create a threshold-triggered alert rule.
+        # >  If you specify a new ID, a threshold-triggered alert rule is created.
         self.rule_id = rule_id
         # The name of the alert rule.
         # 
@@ -52763,9 +52815,9 @@ class PutResourceMetricRulesRequestRules(TeaModel):
         # 
         # You can specify a new name or the name of an existing alert rule. For information about how to query the name of an alert rule, see [DescribeMetricRuleList](~~114941~~).
         # 
-        # >  If you specify a new name, you create a threshold-triggered alert rule.
+        # >  If you specify a new name, a threshold-triggered alert rule is created.
         self.rule_name = rule_name
-        # The mute period during which new alerts are not sent even if the trigger conditions are met.
+        # The mute period during which new alert notifications are not sent even if the trigger conditions are met.
         # 
         # Unit: seconds. Default value: 86400.
         # 
@@ -52874,6 +52926,9 @@ class PutResourceMetricRulesRequest(TeaModel):
         self,
         rules: List[PutResourceMetricRulesRequestRules] = None,
     ):
+        # The threshold-triggered alert rules.
+        # 
+        # Valid values of N: 1 to 500.
         self.rules = rules
 
     def validate(self):
@@ -52911,14 +52966,14 @@ class PutResourceMetricRulesResponseBodyFailedListResultTargetResult(TeaModel):
         message: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         self.code = code
-        # The error message.
+        # The error message returned.
         self.message = message
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
@@ -53030,20 +53085,20 @@ class PutResourceMetricRulesResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code.
+        # The response code.
         # 
-        # >  The status code 200 indicates that the call was successful.
+        # >  The status code 200 indicates that the request was successful.
         self.code = code
         # The alert rules that failed to be created for the resource.
         self.failed_list_result = failed_list_result
-        # The error message.
+        # The error message returned.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call was successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   true: The call was successful.
-        # *   false: The call failed.
+        # *   true
+        # *   false
         self.success = success
 
     def validate(self):
