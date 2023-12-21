@@ -779,6 +779,8 @@ class Client(OpenApiClient):
             query['SecurityAccountName'] = request.security_account_name
         if not UtilClient.is_unset(request.security_account_password):
             query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.storage_pool_name):
+            query['StoragePoolName'] = request.storage_pool_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -825,6 +827,8 @@ class Client(OpenApiClient):
             query['SecurityAccountName'] = request.security_account_name
         if not UtilClient.is_unset(request.security_account_password):
             query['SecurityAccountPassword'] = request.security_account_password
+        if not UtilClient.is_unset(request.storage_pool_name):
+            query['StoragePoolName'] = request.storage_pool_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4365,6 +4369,14 @@ class Client(OpenApiClient):
             query['DnClass'] = request.dn_class
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.specified_dnscale):
+            query['SpecifiedDNScale'] = request.specified_dnscale
+        if not UtilClient.is_unset(request.specified_dnspec_map_json):
+            query['SpecifiedDNSpecMapJson'] = request.specified_dnspec_map_json
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         if not UtilClient.is_unset(request.target_dbinstance_class):
             query['TargetDBInstanceClass'] = request.target_dbinstance_class
         req = open_api_models.OpenApiRequest(
@@ -4403,6 +4415,14 @@ class Client(OpenApiClient):
             query['DnClass'] = request.dn_class
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.specified_dnscale):
+            query['SpecifiedDNScale'] = request.specified_dnscale
+        if not UtilClient.is_unset(request.specified_dnspec_map_json):
+            query['SpecifiedDNSpecMapJson'] = request.specified_dnspec_map_json
+        if not UtilClient.is_unset(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not UtilClient.is_unset(request.switch_time_mode):
+            query['SwitchTimeMode'] = request.switch_time_mode
         if not UtilClient.is_unset(request.target_dbinstance_class):
             query['TargetDBInstanceClass'] = request.target_dbinstance_class
         req = open_api_models.OpenApiRequest(
@@ -5849,6 +5869,8 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.add_dnspec):
+            query['AddDNSpec'] = request.add_dnspec
         if not UtilClient.is_unset(request.cnnode_count):
             query['CNNodeCount'] = request.cnnode_count
         if not UtilClient.is_unset(request.client_token):
@@ -5859,8 +5881,12 @@ class Client(OpenApiClient):
             query['DNNodeCount'] = request.dnnode_count
         if not UtilClient.is_unset(request.db_instance_node_count):
             query['DbInstanceNodeCount'] = request.db_instance_node_count
+        if not UtilClient.is_unset(request.delete_dnids):
+            query['DeleteDNIds'] = request.delete_dnids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.storage_pool_name):
+            query['StoragePoolName'] = request.storage_pool_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -5887,6 +5913,8 @@ class Client(OpenApiClient):
     ) -> polardbx_20200202_models.UpdatePolarDBXInstanceNodeResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.add_dnspec):
+            query['AddDNSpec'] = request.add_dnspec
         if not UtilClient.is_unset(request.cnnode_count):
             query['CNNodeCount'] = request.cnnode_count
         if not UtilClient.is_unset(request.client_token):
@@ -5897,8 +5925,12 @@ class Client(OpenApiClient):
             query['DNNodeCount'] = request.dnnode_count
         if not UtilClient.is_unset(request.db_instance_node_count):
             query['DbInstanceNodeCount'] = request.db_instance_node_count
+        if not UtilClient.is_unset(request.delete_dnids):
+            query['DeleteDNIds'] = request.delete_dnids
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.storage_pool_name):
+            query['StoragePoolName'] = request.storage_pool_name
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )

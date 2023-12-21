@@ -1093,6 +1093,7 @@ class CreateDBRequest(TeaModel):
         region_id: str = None,
         security_account_name: str = None,
         security_account_password: str = None,
+        storage_pool_name: str = None,
     ):
         self.account_name = account_name
         self.account_privilege = account_privilege
@@ -1104,6 +1105,7 @@ class CreateDBRequest(TeaModel):
         self.region_id = region_id
         self.security_account_name = security_account_name
         self.security_account_password = security_account_password
+        self.storage_pool_name = storage_pool_name
 
     def validate(self):
         pass
@@ -1134,6 +1136,8 @@ class CreateDBRequest(TeaModel):
             result['SecurityAccountName'] = self.security_account_name
         if self.security_account_password is not None:
             result['SecurityAccountPassword'] = self.security_account_password
+        if self.storage_pool_name is not None:
+            result['StoragePoolName'] = self.storage_pool_name
         return result
 
     def from_map(self, m: dict = None):
@@ -1158,6 +1162,8 @@ class CreateDBRequest(TeaModel):
             self.security_account_name = m.get('SecurityAccountName')
         if m.get('SecurityAccountPassword') is not None:
             self.security_account_password = m.get('SecurityAccountPassword')
+        if m.get('StoragePoolName') is not None:
+            self.storage_pool_name = m.get('StoragePoolName')
         return self
 
 
@@ -11187,6 +11193,10 @@ class ModifyDBInstanceClassRequest(TeaModel):
         dbinstance_name: str = None,
         dn_class: str = None,
         region_id: str = None,
+        specified_dnscale: bool = None,
+        specified_dnspec_map_json: str = None,
+        switch_time: str = None,
+        switch_time_mode: str = None,
         target_dbinstance_class: str = None,
     ):
         self.client_token = client_token
@@ -11194,6 +11204,10 @@ class ModifyDBInstanceClassRequest(TeaModel):
         self.dbinstance_name = dbinstance_name
         self.dn_class = dn_class
         self.region_id = region_id
+        self.specified_dnscale = specified_dnscale
+        self.specified_dnspec_map_json = specified_dnspec_map_json
+        self.switch_time = switch_time
+        self.switch_time_mode = switch_time_mode
         self.target_dbinstance_class = target_dbinstance_class
 
     def validate(self):
@@ -11215,6 +11229,14 @@ class ModifyDBInstanceClassRequest(TeaModel):
             result['DnClass'] = self.dn_class
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.specified_dnscale is not None:
+            result['SpecifiedDNScale'] = self.specified_dnscale
+        if self.specified_dnspec_map_json is not None:
+            result['SpecifiedDNSpecMapJson'] = self.specified_dnspec_map_json
+        if self.switch_time is not None:
+            result['SwitchTime'] = self.switch_time
+        if self.switch_time_mode is not None:
+            result['SwitchTimeMode'] = self.switch_time_mode
         if self.target_dbinstance_class is not None:
             result['TargetDBInstanceClass'] = self.target_dbinstance_class
         return result
@@ -11231,6 +11253,14 @@ class ModifyDBInstanceClassRequest(TeaModel):
             self.dn_class = m.get('DnClass')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('SpecifiedDNScale') is not None:
+            self.specified_dnscale = m.get('SpecifiedDNScale')
+        if m.get('SpecifiedDNSpecMapJson') is not None:
+            self.specified_dnspec_map_json = m.get('SpecifiedDNSpecMapJson')
+        if m.get('SwitchTime') is not None:
+            self.switch_time = m.get('SwitchTime')
+        if m.get('SwitchTimeMode') is not None:
+            self.switch_time_mode = m.get('SwitchTimeMode')
         if m.get('TargetDBInstanceClass') is not None:
             self.target_dbinstance_class = m.get('TargetDBInstanceClass')
         return self
@@ -13697,19 +13727,25 @@ class UpdateDBInstanceTDEResponse(TeaModel):
 class UpdatePolarDBXInstanceNodeRequest(TeaModel):
     def __init__(
         self,
+        add_dnspec: str = None,
         cnnode_count: str = None,
         client_token: str = None,
         dbinstance_name: str = None,
         dnnode_count: str = None,
         db_instance_node_count: str = None,
+        delete_dnids: str = None,
         region_id: str = None,
+        storage_pool_name: str = None,
     ):
+        self.add_dnspec = add_dnspec
         self.cnnode_count = cnnode_count
         self.client_token = client_token
         self.dbinstance_name = dbinstance_name
         self.dnnode_count = dnnode_count
         self.db_instance_node_count = db_instance_node_count
+        self.delete_dnids = delete_dnids
         self.region_id = region_id
+        self.storage_pool_name = storage_pool_name
 
     def validate(self):
         pass
@@ -13720,6 +13756,8 @@ class UpdatePolarDBXInstanceNodeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.add_dnspec is not None:
+            result['AddDNSpec'] = self.add_dnspec
         if self.cnnode_count is not None:
             result['CNNodeCount'] = self.cnnode_count
         if self.client_token is not None:
@@ -13730,12 +13768,18 @@ class UpdatePolarDBXInstanceNodeRequest(TeaModel):
             result['DNNodeCount'] = self.dnnode_count
         if self.db_instance_node_count is not None:
             result['DbInstanceNodeCount'] = self.db_instance_node_count
+        if self.delete_dnids is not None:
+            result['DeleteDNIds'] = self.delete_dnids
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.storage_pool_name is not None:
+            result['StoragePoolName'] = self.storage_pool_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AddDNSpec') is not None:
+            self.add_dnspec = m.get('AddDNSpec')
         if m.get('CNNodeCount') is not None:
             self.cnnode_count = m.get('CNNodeCount')
         if m.get('ClientToken') is not None:
@@ -13746,8 +13790,12 @@ class UpdatePolarDBXInstanceNodeRequest(TeaModel):
             self.dnnode_count = m.get('DNNodeCount')
         if m.get('DbInstanceNodeCount') is not None:
             self.db_instance_node_count = m.get('DbInstanceNodeCount')
+        if m.get('DeleteDNIds') is not None:
+            self.delete_dnids = m.get('DeleteDNIds')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('StoragePoolName') is not None:
+            self.storage_pool_name = m.get('StoragePoolName')
         return self
 
 
