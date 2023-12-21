@@ -1806,6 +1806,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         if not UtilClient.is_unset(tmp_req.user_id_list):
             request.user_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_id_list, 'UserIdList', 'json')
         body = {}
@@ -1817,6 +1819,8 @@ class Client(OpenApiClient):
             body['ResId'] = request.res_id
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         if not UtilClient.is_unset(request.user_id_list_shrink):
             body['UserIdList'] = request.user_id_list_shrink
         real_headers = {}
@@ -1859,6 +1863,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         if not UtilClient.is_unset(tmp_req.user_id_list):
             request.user_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_id_list, 'UserIdList', 'json')
         body = {}
@@ -1870,6 +1876,8 @@ class Client(OpenApiClient):
             body['ResId'] = request.res_id
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         if not UtilClient.is_unset(request.user_id_list_shrink):
             body['UserIdList'] = request.user_id_list_shrink
         real_headers = {}
@@ -14026,6 +14034,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
         if not UtilClient.is_unset(request.content_shrink):
             body['Content'] = request.content_shrink
@@ -14033,6 +14043,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14073,6 +14085,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
         if not UtilClient.is_unset(request.content_shrink):
             body['Content'] = request.content_shrink
@@ -14080,6 +14094,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14136,6 +14152,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
         if not UtilClient.is_unset(request.content_shrink):
             body['Content'] = request.content_shrink
@@ -14143,6 +14161,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14183,6 +14203,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
         if not UtilClient.is_unset(request.content_shrink):
             body['Content'] = request.content_shrink
@@ -14190,6 +14212,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14246,6 +14270,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
         if not UtilClient.is_unset(request.content_shrink):
             body['Content'] = request.content_shrink
@@ -14253,6 +14279,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -14293,6 +14321,8 @@ class Client(OpenApiClient):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
         if not UtilClient.is_unset(tmp_req.content):
             request.content_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not UtilClient.is_unset(tmp_req.tenant_context):
+            request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
         if not UtilClient.is_unset(request.content_shrink):
             body['Content'] = request.content_shrink
@@ -14300,6 +14330,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.start_time):
             body['StartTime'] = request.start_time
+        if not UtilClient.is_unset(request.tenant_context_shrink):
+            body['TenantContext'] = request.tenant_context_shrink
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers

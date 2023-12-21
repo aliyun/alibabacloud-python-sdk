@@ -5099,6 +5099,33 @@ class CreateDeliveryPlanShrinkHeaders(TeaModel):
         return self
 
 
+class CreateDeliveryPlanRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
 class CreateDeliveryPlanRequest(TeaModel):
     def __init__(
         self,
@@ -5106,16 +5133,19 @@ class CreateDeliveryPlanRequest(TeaModel):
         end_time: int = None,
         res_id: str = None,
         start_time: int = None,
+        tenant_context: CreateDeliveryPlanRequestTenantContext = None,
         user_id_list: List[str] = None,
     ):
         self.content = content
         self.end_time = end_time
         self.res_id = res_id
         self.start_time = start_time
+        self.tenant_context = tenant_context
         self.user_id_list = user_id_list
 
     def validate(self):
-        pass
+        if self.tenant_context:
+            self.tenant_context.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5131,6 +5161,8 @@ class CreateDeliveryPlanRequest(TeaModel):
             result['ResId'] = self.res_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
         if self.user_id_list is not None:
             result['UserIdList'] = self.user_id_list
         return result
@@ -5145,6 +5177,9 @@ class CreateDeliveryPlanRequest(TeaModel):
             self.res_id = m.get('ResId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            temp_model = CreateDeliveryPlanRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
         if m.get('UserIdList') is not None:
             self.user_id_list = m.get('UserIdList')
         return self
@@ -5157,12 +5192,14 @@ class CreateDeliveryPlanShrinkRequest(TeaModel):
         end_time: int = None,
         res_id: str = None,
         start_time: int = None,
+        tenant_context_shrink: str = None,
         user_id_list_shrink: str = None,
     ):
         self.content_shrink = content_shrink
         self.end_time = end_time
         self.res_id = res_id
         self.start_time = start_time
+        self.tenant_context_shrink = tenant_context_shrink
         self.user_id_list_shrink = user_id_list_shrink
 
     def validate(self):
@@ -5182,6 +5219,8 @@ class CreateDeliveryPlanShrinkRequest(TeaModel):
             result['ResId'] = self.res_id
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
         if self.user_id_list_shrink is not None:
             result['UserIdList'] = self.user_id_list_shrink
         return result
@@ -5196,6 +5235,8 @@ class CreateDeliveryPlanShrinkRequest(TeaModel):
             self.res_id = m.get('ResId')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
         if m.get('UserIdList') is not None:
             self.user_id_list_shrink = m.get('UserIdList')
         return self
@@ -47748,19 +47789,49 @@ class SendBannerShrinkHeaders(TeaModel):
         return self
 
 
+class SendBannerRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
 class SendBannerRequest(TeaModel):
     def __init__(
         self,
         content: Dict[str, Any] = None,
         end_time: int = None,
         start_time: int = None,
+        tenant_context: SendBannerRequestTenantContext = None,
     ):
         self.content = content
         self.end_time = end_time
         self.start_time = start_time
+        self.tenant_context = tenant_context
 
     def validate(self):
-        pass
+        if self.tenant_context:
+            self.tenant_context.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -47774,6 +47845,8 @@ class SendBannerRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -47784,6 +47857,9 @@ class SendBannerRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            temp_model = SendBannerRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
         return self
 
 
@@ -47793,10 +47869,12 @@ class SendBannerShrinkRequest(TeaModel):
         content_shrink: str = None,
         end_time: int = None,
         start_time: int = None,
+        tenant_context_shrink: str = None,
     ):
         self.content_shrink = content_shrink
         self.end_time = end_time
         self.start_time = start_time
+        self.tenant_context_shrink = tenant_context_shrink
 
     def validate(self):
         pass
@@ -47813,6 +47891,8 @@ class SendBannerShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -47823,6 +47903,8 @@ class SendBannerShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
         return self
 
 
@@ -48016,19 +48098,49 @@ class SendPopupShrinkHeaders(TeaModel):
         return self
 
 
+class SendPopupRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
 class SendPopupRequest(TeaModel):
     def __init__(
         self,
         content: Dict[str, Any] = None,
         end_time: int = None,
         start_time: int = None,
+        tenant_context: SendPopupRequestTenantContext = None,
     ):
         self.content = content
         self.end_time = end_time
         self.start_time = start_time
+        self.tenant_context = tenant_context
 
     def validate(self):
-        pass
+        if self.tenant_context:
+            self.tenant_context.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -48042,6 +48154,8 @@ class SendPopupRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -48052,6 +48166,9 @@ class SendPopupRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            temp_model = SendPopupRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
         return self
 
 
@@ -48061,10 +48178,12 @@ class SendPopupShrinkRequest(TeaModel):
         content_shrink: str = None,
         end_time: int = None,
         start_time: int = None,
+        tenant_context_shrink: str = None,
     ):
         self.content_shrink = content_shrink
         self.end_time = end_time
         self.start_time = start_time
+        self.tenant_context_shrink = tenant_context_shrink
 
     def validate(self):
         pass
@@ -48081,6 +48200,8 @@ class SendPopupShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -48091,6 +48212,8 @@ class SendPopupShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
         return self
 
 
@@ -48284,19 +48407,49 @@ class SendSearchShadeShrinkHeaders(TeaModel):
         return self
 
 
+class SendSearchShadeRequestTenantContext(TeaModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+        return self
+
+
 class SendSearchShadeRequest(TeaModel):
     def __init__(
         self,
         content: Dict[str, Any] = None,
         end_time: int = None,
         start_time: int = None,
+        tenant_context: SendSearchShadeRequestTenantContext = None,
     ):
         self.content = content
         self.end_time = end_time
         self.start_time = start_time
+        self.tenant_context = tenant_context
 
     def validate(self):
-        pass
+        if self.tenant_context:
+            self.tenant_context.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -48310,6 +48463,8 @@ class SendSearchShadeRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -48320,6 +48475,9 @@ class SendSearchShadeRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            temp_model = SendSearchShadeRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m['TenantContext'])
         return self
 
 
@@ -48329,10 +48487,12 @@ class SendSearchShadeShrinkRequest(TeaModel):
         content_shrink: str = None,
         end_time: int = None,
         start_time: int = None,
+        tenant_context_shrink: str = None,
     ):
         self.content_shrink = content_shrink
         self.end_time = end_time
         self.start_time = start_time
+        self.tenant_context_shrink = tenant_context_shrink
 
     def validate(self):
         pass
@@ -48349,6 +48509,8 @@ class SendSearchShadeShrinkRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.start_time is not None:
             result['StartTime'] = self.start_time
+        if self.tenant_context_shrink is not None:
+            result['TenantContext'] = self.tenant_context_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -48359,6 +48521,8 @@ class SendSearchShadeShrinkRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+        if m.get('TenantContext') is not None:
+            self.tenant_context_shrink = m.get('TenantContext')
         return self
 
 
