@@ -1933,6 +1933,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.jwt_token):
             query['JwtToken'] = request.jwt_token
         body = {}
+        if not UtilClient.is_unset(request.biz_usage):
+            body['BizUsage'] = request.biz_usage
         if not UtilClient.is_unset(request.ext_info):
             body['ExtInfo'] = request.ext_info
         if not UtilClient.is_unset(request.intro):
@@ -1969,6 +1971,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.jwt_token):
             query['JwtToken'] = request.jwt_token
         body = {}
+        if not UtilClient.is_unset(request.biz_usage):
+            body['BizUsage'] = request.biz_usage
         if not UtilClient.is_unset(request.ext_info):
             body['ExtInfo'] = request.ext_info
         if not UtilClient.is_unset(request.intro):

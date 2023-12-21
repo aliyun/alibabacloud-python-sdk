@@ -2223,10 +2223,12 @@ class PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset(TeaModel
 class PopBatchQueryObjectGenerationProjectStatusResponseBodyData(TeaModel):
     def __init__(
         self,
+        biz_usage: str = None,
         dataset: PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset = None,
         id: str = None,
         status: str = None,
     ):
+        self.biz_usage = biz_usage
         self.dataset = dataset
         self.id = id
         self.status = status
@@ -2241,6 +2243,8 @@ class PopBatchQueryObjectGenerationProjectStatusResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
         if self.dataset is not None:
             result['Dataset'] = self.dataset.to_map()
         if self.id is not None:
@@ -2251,6 +2255,8 @@ class PopBatchQueryObjectGenerationProjectStatusResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
         if m.get('Dataset') is not None:
             temp_model = PopBatchQueryObjectGenerationProjectStatusResponseBodyDataDataset()
             self.dataset = temp_model.from_map(m['Dataset'])
@@ -4223,11 +4229,13 @@ class PopCreateMaterialResponse(TeaModel):
 class PopCreateObjectGenerationProjectRequest(TeaModel):
     def __init__(
         self,
+        biz_usage: str = None,
         ext_info: str = None,
         intro: str = None,
         jwt_token: str = None,
         title: str = None,
     ):
+        self.biz_usage = biz_usage
         self.ext_info = ext_info
         self.intro = intro
         self.jwt_token = jwt_token
@@ -4242,6 +4250,8 @@ class PopCreateObjectGenerationProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
         if self.ext_info is not None:
             result['ExtInfo'] = self.ext_info
         if self.intro is not None:
@@ -4254,6 +4264,8 @@ class PopCreateObjectGenerationProjectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
         if m.get('ExtInfo') is not None:
             self.ext_info = m.get('ExtInfo')
         if m.get('Intro') is not None:
@@ -13407,6 +13419,7 @@ class PopListObjectGenerationProjectResponseBodyDataDataset(TeaModel):
 class PopListObjectGenerationProjectResponseBodyData(TeaModel):
     def __init__(
         self,
+        biz_usage: str = None,
         build_detail: PopListObjectGenerationProjectResponseBodyDataBuildDetail = None,
         dataset: PopListObjectGenerationProjectResponseBodyDataDataset = None,
         ext: str = None,
@@ -13415,6 +13428,7 @@ class PopListObjectGenerationProjectResponseBodyData(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        self.biz_usage = biz_usage
         self.build_detail = build_detail
         self.dataset = dataset
         self.ext = ext
@@ -13435,6 +13449,8 @@ class PopListObjectGenerationProjectResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
         if self.build_detail is not None:
             result['BuildDetail'] = self.build_detail.to_map()
         if self.dataset is not None:
@@ -13453,6 +13469,8 @@ class PopListObjectGenerationProjectResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
         if m.get('BuildDetail') is not None:
             temp_model = PopListObjectGenerationProjectResponseBodyDataBuildDetail()
             self.build_detail = temp_model.from_map(m['BuildDetail'])
@@ -17419,6 +17437,7 @@ class PopQueryObjectGenerationProjectDetailResponseBodyDataDataset(TeaModel):
 class PopQueryObjectGenerationProjectDetailResponseBodyData(TeaModel):
     def __init__(
         self,
+        biz_usage: str = None,
         build_detail: PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail = None,
         dataset: PopQueryObjectGenerationProjectDetailResponseBodyDataDataset = None,
         ext: str = None,
@@ -17427,6 +17446,7 @@ class PopQueryObjectGenerationProjectDetailResponseBodyData(TeaModel):
         status: str = None,
         title: str = None,
     ):
+        self.biz_usage = biz_usage
         self.build_detail = build_detail
         self.dataset = dataset
         self.ext = ext
@@ -17447,6 +17467,8 @@ class PopQueryObjectGenerationProjectDetailResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.biz_usage is not None:
+            result['BizUsage'] = self.biz_usage
         if self.build_detail is not None:
             result['BuildDetail'] = self.build_detail.to_map()
         if self.dataset is not None:
@@ -17465,6 +17487,8 @@ class PopQueryObjectGenerationProjectDetailResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BizUsage') is not None:
+            self.biz_usage = m.get('BizUsage')
         if m.get('BuildDetail') is not None:
             temp_model = PopQueryObjectGenerationProjectDetailResponseBodyDataBuildDetail()
             self.build_detail = temp_model.from_map(m['BuildDetail'])
