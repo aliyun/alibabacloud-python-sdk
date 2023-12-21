@@ -153,6 +153,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.backflow_feature_consistency_check_job_data_with_options_async(request, headers, runtime)
 
+    def check_instance_resources_with_options(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CheckInstanceResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CheckInstanceResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckInstanceResources',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/action/checkresources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CheckInstanceResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_instance_resources_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CheckInstanceResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CheckInstanceResourcesResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckInstanceResources',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/action/checkresources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CheckInstanceResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_instance_resources(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CheckInstanceResourcesRequest,
+    ) -> pai_rec_service_20221213_models.CheckInstanceResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.check_instance_resources_with_options(instance_id, request, headers, runtime)
+
+    async def check_instance_resources_async(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CheckInstanceResourcesRequest,
+    ) -> pai_rec_service_20221213_models.CheckInstanceResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.check_instance_resources_with_options_async(instance_id, request, headers, runtime)
+
     def clone_experiment_with_options(
         self,
         experiment_id: str,
@@ -488,6 +572,314 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.clone_laboratory_with_options_async(laboratory_id, request, headers, runtime)
+
+    def create_abmetric_with_options(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateABMetricResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.left_metric_id):
+            body['LeftMetricId'] = request.left_metric_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.operator):
+            body['Operator'] = request.operator
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.result_resource_id):
+            body['ResultResourceId'] = request.result_resource_id
+        if not UtilClient.is_unset(request.right_metric_id):
+            body['RightMetricId'] = request.right_metric_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.statistics_cycle):
+            body['StatisticsCycle'] = request.statistics_cycle
+        if not UtilClient.is_unset(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateABMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_abmetric_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateABMetricResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.left_metric_id):
+            body['LeftMetricId'] = request.left_metric_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.operator):
+            body['Operator'] = request.operator
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.result_resource_id):
+            body['ResultResourceId'] = request.result_resource_id
+        if not UtilClient.is_unset(request.right_metric_id):
+            body['RightMetricId'] = request.right_metric_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.statistics_cycle):
+            body['StatisticsCycle'] = request.statistics_cycle
+        if not UtilClient.is_unset(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateABMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_abmetric(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricRequest,
+    ) -> pai_rec_service_20221213_models.CreateABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_abmetric_with_options(request, headers, runtime)
+
+    async def create_abmetric_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricRequest,
+    ) -> pai_rec_service_20221213_models.CreateABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_abmetric_with_options_async(request, headers, runtime)
+
+    def create_abmetric_group_with_options(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abmetric_ids):
+            body['ABMetricIds'] = request.abmetric_ids
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateABMetricGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_abmetric_group_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abmetric_ids):
+            body['ABMetricIds'] = request.abmetric_ids
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateABMetricGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_abmetric_group(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.CreateABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_abmetric_group_with_options(request, headers, runtime)
+
+    async def create_abmetric_group_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.CreateABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_abmetric_group_with_options_async(request, headers, runtime)
+
+    def create_calculation_jobs_with_options(
+        self,
+        request: pai_rec_service_20221213_models.CreateCalculationJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateCalculationJobsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abmetric_ids):
+            body['ABMetricIds'] = request.abmetric_ids
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCalculationJobs',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/batch/calculationjobs/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateCalculationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_calculation_jobs_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateCalculationJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateCalculationJobsResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abmetric_ids):
+            body['ABMetricIds'] = request.abmetric_ids
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCalculationJobs',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/batch/calculationjobs/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateCalculationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_calculation_jobs(
+        self,
+        request: pai_rec_service_20221213_models.CreateCalculationJobsRequest,
+    ) -> pai_rec_service_20221213_models.CreateCalculationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_calculation_jobs_with_options(request, headers, runtime)
+
+    async def create_calculation_jobs_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateCalculationJobsRequest,
+    ) -> pai_rec_service_20221213_models.CreateCalculationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_calculation_jobs_with_options_async(request, headers, runtime)
 
     def create_crowd_with_options(
         self,
@@ -1077,6 +1469,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_feature_consistency_check_job_config_with_options_async(request, headers, runtime)
 
+    def create_instance_resource_with_options(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CreateInstanceResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateInstanceResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.group):
+            body['Group'] = request.group
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateInstanceResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_resource_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CreateInstanceResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateInstanceResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.category):
+            body['Category'] = request.category
+        if not UtilClient.is_unset(request.group):
+            body['Group'] = request.group
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateInstanceResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_resource(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CreateInstanceResourceRequest,
+    ) -> pai_rec_service_20221213_models.CreateInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_instance_resource_with_options(instance_id, request, headers, runtime)
+
+    async def create_instance_resource_async(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.CreateInstanceResourceRequest,
+    ) -> pai_rec_service_20221213_models.CreateInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_instance_resource_with_options_async(instance_id, request, headers, runtime)
+
     def create_laboratory_with_options(
         self,
         request: pai_rec_service_20221213_models.CreateLaboratoryRequest,
@@ -1553,6 +2037,266 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_sub_crowd_with_options_async(crowd_id, request, headers, runtime)
 
+    def create_table_meta_with_options(
+        self,
+        request: pai_rec_service_20221213_models.CreateTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateTableMetaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.fields):
+            body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            body['Module'] = request.module
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateTableMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_table_meta_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.CreateTableMetaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.fields):
+            body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            body['Module'] = request.module
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.CreateTableMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_table_meta(
+        self,
+        request: pai_rec_service_20221213_models.CreateTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.CreateTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_table_meta_with_options(request, headers, runtime)
+
+    async def create_table_meta_async(
+        self,
+        request: pai_rec_service_20221213_models.CreateTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.CreateTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_table_meta_with_options_async(request, headers, runtime)
+
+    def delete_abmetric_with_options(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics/{OpenApiUtilClient.get_encode_param(abmetric_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteABMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_abmetric_with_options_async(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics/{OpenApiUtilClient.get_encode_param(abmetric_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteABMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_abmetric(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricRequest,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_abmetric_with_options(abmetric_id, request, headers, runtime)
+
+    async def delete_abmetric_async(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricRequest,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_abmetric_with_options_async(abmetric_id, request, headers, runtime)
+
+    def delete_abmetric_group_with_options(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteABMetricGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_abmetric_group_with_options_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteABMetricGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_abmetric_group(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_abmetric_group_with_options(abmetric_group_id, request, headers, runtime)
+
+    async def delete_abmetric_group_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.DeleteABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.DeleteABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_abmetric_group_with_options_async(abmetric_group_id, request, headers, runtime)
+
     def delete_crowd_with_options(
         self,
         crowd_id: str,
@@ -1792,6 +2536,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_experiment_group_with_options_async(experiment_group_id, request, headers, runtime)
+
+    def delete_instance_resource_with_options(
+        self,
+        instance_id: str,
+        resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteInstanceResourceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteInstanceResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_resource_with_options_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteInstanceResourceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='DeleteInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteInstanceResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance_resource(
+        self,
+        instance_id: str,
+        resource_id: str,
+    ) -> pai_rec_service_20221213_models.DeleteInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_instance_resource_with_options(instance_id, resource_id, headers, runtime)
+
+    async def delete_instance_resource_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+    ) -> pai_rec_service_20221213_models.DeleteInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_instance_resource_with_options_async(instance_id, resource_id, headers, runtime)
 
     def delete_laboratory_with_options(
         self,
@@ -2197,6 +3011,326 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_sub_crowd_with_options_async(crowd_id, sub_crowd_id, request, headers, runtime)
 
+    def delete_table_meta_with_options(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.DeleteTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteTableMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas/{OpenApiUtilClient.get_encode_param(table_meta_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteTableMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_table_meta_with_options_async(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.DeleteTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.DeleteTableMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas/{OpenApiUtilClient.get_encode_param(table_meta_id)}',
+            method='DELETE',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.DeleteTableMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_table_meta(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.DeleteTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.DeleteTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.delete_table_meta_with_options(table_meta_id, request, headers, runtime)
+
+    async def delete_table_meta_async(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.DeleteTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.DeleteTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.delete_table_meta_with_options_async(table_meta_id, request, headers, runtime)
+
+    def get_abmetric_with_options(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetABMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics/{OpenApiUtilClient.get_encode_param(abmetric_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetABMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_abmetric_with_options_async(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetABMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics/{OpenApiUtilClient.get_encode_param(abmetric_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetABMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_abmetric(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricRequest,
+    ) -> pai_rec_service_20221213_models.GetABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_abmetric_with_options(abmetric_id, request, headers, runtime)
+
+    async def get_abmetric_async(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricRequest,
+    ) -> pai_rec_service_20221213_models.GetABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_abmetric_with_options_async(abmetric_id, request, headers, runtime)
+
+    def get_abmetric_group_with_options(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetABMetricGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_abmetric_group_with_options_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetABMetricGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_abmetric_group(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.GetABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_abmetric_group_with_options(abmetric_group_id, request, headers, runtime)
+
+    async def get_abmetric_group_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.GetABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.GetABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_abmetric_group_with_options_async(abmetric_group_id, request, headers, runtime)
+
+    def get_calculation_job_with_options(
+        self,
+        calculation_job_id: str,
+        request: pai_rec_service_20221213_models.GetCalculationJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetCalculationJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCalculationJob',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/calculationjobs/{OpenApiUtilClient.get_encode_param(calculation_job_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetCalculationJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_calculation_job_with_options_async(
+        self,
+        calculation_job_id: str,
+        request: pai_rec_service_20221213_models.GetCalculationJobRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetCalculationJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetCalculationJob',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/calculationjobs/{OpenApiUtilClient.get_encode_param(calculation_job_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetCalculationJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_calculation_job(
+        self,
+        calculation_job_id: str,
+        request: pai_rec_service_20221213_models.GetCalculationJobRequest,
+    ) -> pai_rec_service_20221213_models.GetCalculationJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_calculation_job_with_options(calculation_job_id, request, headers, runtime)
+
+    async def get_calculation_job_async(
+        self,
+        calculation_job_id: str,
+        request: pai_rec_service_20221213_models.GetCalculationJobRequest,
+    ) -> pai_rec_service_20221213_models.GetCalculationJobResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_calculation_job_with_options_async(calculation_job_id, request, headers, runtime)
+
     def get_experiment_with_options(
         self,
         experiment_id: str,
@@ -2583,6 +3717,150 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
 
+    def get_instance_resource_with_options(
+        self,
+        instance_id: str,
+        resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetInstanceResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_resource_with_options_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetInstanceResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_resource(
+        self,
+        instance_id: str,
+        resource_id: str,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instance_resource_with_options(instance_id, resource_id, headers, runtime)
+
+    async def get_instance_resource_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instance_resource_with_options_async(instance_id, resource_id, headers, runtime)
+
+    def get_instance_resource_table_with_options(
+        self,
+        instance_id: str,
+        resource_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetInstanceResourceTable',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetInstanceResourceTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_resource_table_with_options_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        table_name: str,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceTableResponse:
+        req = open_api_models.OpenApiRequest(
+            headers=headers
+        )
+        params = open_api_models.Params(
+            action='GetInstanceResourceTable',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}/tables/{OpenApiUtilClient.get_encode_param(table_name)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetInstanceResourceTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_resource_table(
+        self,
+        instance_id: str,
+        resource_id: str,
+        table_name: str,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_instance_resource_table_with_options(instance_id, resource_id, table_name, headers, runtime)
+
+    async def get_instance_resource_table_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        table_name: str,
+    ) -> pai_rec_service_20221213_models.GetInstanceResourceTableResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_instance_resource_table_with_options_async(instance_id, resource_id, table_name, headers, runtime)
+
     def get_laboratory_with_options(
         self,
         laboratory_id: str,
@@ -2906,6 +4184,374 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_sub_crowd_with_options_async(crowd_id, sub_crowd_id, request, headers, runtime)
+
+    def get_table_meta_with_options(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.GetTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetTableMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas/{OpenApiUtilClient.get_encode_param(table_meta_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetTableMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_table_meta_with_options_async(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.GetTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.GetTableMetaResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas/{OpenApiUtilClient.get_encode_param(table_meta_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.GetTableMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_table_meta(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.GetTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.GetTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_table_meta_with_options(table_meta_id, request, headers, runtime)
+
+    async def get_table_meta_async(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.GetTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.GetTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_table_meta_with_options_async(table_meta_id, request, headers, runtime)
+
+    def list_abmetric_groups_with_options(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListABMetricGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.realtime):
+            query['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListABMetricGroups',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListABMetricGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_abmetric_groups_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricGroupsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListABMetricGroupsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.realtime):
+            query['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListABMetricGroups',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListABMetricGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_abmetric_groups(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricGroupsRequest,
+    ) -> pai_rec_service_20221213_models.ListABMetricGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_abmetric_groups_with_options(request, headers, runtime)
+
+    async def list_abmetric_groups_async(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricGroupsRequest,
+    ) -> pai_rec_service_20221213_models.ListABMetricGroupsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_abmetric_groups_with_options_async(request, headers, runtime)
+
+    def list_abmetrics_with_options(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListABMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.realtime):
+            query['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.table_meta_id):
+            query['TableMetaId'] = request.table_meta_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListABMetrics',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListABMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_abmetrics_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListABMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.realtime):
+            query['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.table_meta_id):
+            query['TableMetaId'] = request.table_meta_id
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListABMetrics',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListABMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_abmetrics(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricsRequest,
+    ) -> pai_rec_service_20221213_models.ListABMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_abmetrics_with_options(request, headers, runtime)
+
+    async def list_abmetrics_async(
+        self,
+        request: pai_rec_service_20221213_models.ListABMetricsRequest,
+    ) -> pai_rec_service_20221213_models.ListABMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_abmetrics_with_options_async(request, headers, runtime)
+
+    def list_calculation_jobs_with_options(
+        self,
+        request: pai_rec_service_20221213_models.ListCalculationJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListCalculationJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCalculationJobs',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/calculationjobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListCalculationJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_calculation_jobs_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.ListCalculationJobsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListCalculationJobsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.scene_id):
+            query['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCalculationJobs',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/calculationjobs',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListCalculationJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_calculation_jobs(
+        self,
+        request: pai_rec_service_20221213_models.ListCalculationJobsRequest,
+    ) -> pai_rec_service_20221213_models.ListCalculationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_calculation_jobs_with_options(request, headers, runtime)
+
+    async def list_calculation_jobs_async(
+        self,
+        request: pai_rec_service_20221213_models.ListCalculationJobsRequest,
+    ) -> pai_rec_service_20221213_models.ListCalculationJobsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_calculation_jobs_with_options_async(request, headers, runtime)
 
     def list_crowd_users_with_options(
         self,
@@ -3607,6 +5253,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_feature_consistency_check_jobs_with_options_async(request, headers, runtime)
 
+    def list_instance_resources_with_options(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.ListInstanceResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListInstanceResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceResources',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListInstanceResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_resources_with_options_async(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.ListInstanceResourcesRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListInstanceResourcesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
+        if not UtilClient.is_unset(request.group):
+            query['Group'] = request.group
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceResources',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListInstanceResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_resources(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.ListInstanceResourcesRequest,
+    ) -> pai_rec_service_20221213_models.ListInstanceResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_instance_resources_with_options(instance_id, request, headers, runtime)
+
+    async def list_instance_resources_async(
+        self,
+        instance_id: str,
+        request: pai_rec_service_20221213_models.ListInstanceResourcesRequest,
+    ) -> pai_rec_service_20221213_models.ListInstanceResourcesResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_instance_resources_with_options_async(instance_id, request, headers, runtime)
+
     def list_instances_with_options(
         self,
         request: pai_rec_service_20221213_models.ListInstancesRequest,
@@ -4126,6 +5860,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_sub_crowds_with_options_async(crowd_id, request, headers, runtime)
+
+    def list_table_metas_with_options(
+        self,
+        request: pai_rec_service_20221213_models.ListTableMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListTableMetasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTableMetas',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListTableMetasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_table_metas_with_options_async(
+        self,
+        request: pai_rec_service_20221213_models.ListTableMetasRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ListTableMetasResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            query['Module'] = request.module
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTableMetas',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ListTableMetasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_table_metas(
+        self,
+        request: pai_rec_service_20221213_models.ListTableMetasRequest,
+    ) -> pai_rec_service_20221213_models.ListTableMetasResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_table_metas_with_options(request, headers, runtime)
+
+    async def list_table_metas_async(
+        self,
+        request: pai_rec_service_20221213_models.ListTableMetasRequest,
+    ) -> pai_rec_service_20221213_models.ListTableMetasResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_table_metas_with_options_async(request, headers, runtime)
 
     def offline_experiment_with_options(
         self,
@@ -4687,6 +6517,122 @@ class Client(OpenApiClient):
         headers = {}
         return await self.push_all_experiment_with_options_async(experiment_id, request, headers, runtime)
 
+    def report_abmetric_group_with_options(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.ReportABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ReportABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_experiment_id):
+            body['BaseExperimentId'] = request.base_experiment_id
+        if not UtilClient.is_unset(request.dimension_fields):
+            body['DimensionFields'] = request.dimension_fields
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.experiment_group_id):
+            body['ExperimentGroupId'] = request.experiment_group_id
+        if not UtilClient.is_unset(request.experiment_ids):
+            body['ExperimentIds'] = request.experiment_ids
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.report_type):
+            body['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.time_statistics_method):
+            body['TimeStatisticsMethod'] = request.time_statistics_method
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReportABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}/action/report',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ReportABMetricGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def report_abmetric_group_with_options_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.ReportABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.ReportABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.base_experiment_id):
+            body['BaseExperimentId'] = request.base_experiment_id
+        if not UtilClient.is_unset(request.dimension_fields):
+            body['DimensionFields'] = request.dimension_fields
+        if not UtilClient.is_unset(request.end_date):
+            body['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.experiment_group_id):
+            body['ExperimentGroupId'] = request.experiment_group_id
+        if not UtilClient.is_unset(request.experiment_ids):
+            body['ExperimentIds'] = request.experiment_ids
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.report_type):
+            body['ReportType'] = request.report_type
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.start_date):
+            body['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.time_statistics_method):
+            body['TimeStatisticsMethod'] = request.time_statistics_method
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ReportABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}/action/report',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.ReportABMetricGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def report_abmetric_group(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.ReportABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.ReportABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.report_abmetric_group_with_options(abmetric_group_id, request, headers, runtime)
+
+    async def report_abmetric_group_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.ReportABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.ReportABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.report_abmetric_group_with_options_async(abmetric_group_id, request, headers, runtime)
+
     def sync_feature_consistency_check_job_replay_log_with_options(
         self,
         request: pai_rec_service_20221213_models.SyncFeatureConsistencyCheckJobReplayLogRequest,
@@ -4878,6 +6824,234 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.terminate_feature_consistency_check_job_with_options_async(feature_consistency_check_job_id, request, headers, runtime)
+
+    def update_abmetric_with_options(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.left_metric_id):
+            body['LeftMetricId'] = request.left_metric_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.operator):
+            body['Operator'] = request.operator
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.result_resource_id):
+            body['ResultResourceId'] = request.result_resource_id
+        if not UtilClient.is_unset(request.right_metric_id):
+            body['RightMetricId'] = request.right_metric_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.statistics_cycle):
+            body['StatisticsCycle'] = request.statistics_cycle
+        if not UtilClient.is_unset(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics/{OpenApiUtilClient.get_encode_param(abmetric_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateABMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_abmetric_with_options_async(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.definition):
+            body['Definition'] = request.definition
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.left_metric_id):
+            body['LeftMetricId'] = request.left_metric_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.operator):
+            body['Operator'] = request.operator
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.result_resource_id):
+            body['ResultResourceId'] = request.result_resource_id
+        if not UtilClient.is_unset(request.right_metric_id):
+            body['RightMetricId'] = request.right_metric_id
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        if not UtilClient.is_unset(request.statistics_cycle):
+            body['StatisticsCycle'] = request.statistics_cycle
+        if not UtilClient.is_unset(request.table_meta_id):
+            body['TableMetaId'] = request.table_meta_id
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateABMetric',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetrics/{OpenApiUtilClient.get_encode_param(abmetric_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateABMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_abmetric(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricRequest,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_abmetric_with_options(abmetric_id, request, headers, runtime)
+
+    async def update_abmetric_async(
+        self,
+        abmetric_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricRequest,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_abmetric_with_options_async(abmetric_id, request, headers, runtime)
+
+    def update_abmetric_group_with_options(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abmetric_ids):
+            body['ABMetricIds'] = request.abmetric_ids
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateABMetricGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_abmetric_group_with_options_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricGroupRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricGroupResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.abmetric_ids):
+            body['ABMetricIds'] = request.abmetric_ids
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.realtime):
+            body['Realtime'] = request.realtime
+        if not UtilClient.is_unset(request.scene_id):
+            body['SceneId'] = request.scene_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateABMetricGroup',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/abmetricgroups/{OpenApiUtilClient.get_encode_param(abmetric_group_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateABMetricGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_abmetric_group(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_abmetric_group_with_options(abmetric_group_id, request, headers, runtime)
+
+    async def update_abmetric_group_async(
+        self,
+        abmetric_group_id: str,
+        request: pai_rec_service_20221213_models.UpdateABMetricGroupRequest,
+    ) -> pai_rec_service_20221213_models.UpdateABMetricGroupResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_abmetric_group_with_options_async(abmetric_group_id, request, headers, runtime)
 
     def update_crowd_with_options(
         self,
@@ -5379,6 +7553,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_feature_consistency_check_job_config_with_options_async(feature_consistency_check_job_config_id, request, headers, runtime)
 
+    def update_instance_resource_with_options(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: pai_rec_service_20221213_models.UpdateInstanceResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateInstanceResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateInstanceResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_resource_with_options_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: pai_rec_service_20221213_models.UpdateInstanceResourceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateInstanceResourceResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.config):
+            body['Config'] = request.config
+        if not UtilClient.is_unset(request.uri):
+            body['Uri'] = request.uri
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateInstanceResource',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/instances/{OpenApiUtilClient.get_encode_param(instance_id)}/resources/{OpenApiUtilClient.get_encode_param(resource_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateInstanceResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance_resource(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: pai_rec_service_20221213_models.UpdateInstanceResourceRequest,
+    ) -> pai_rec_service_20221213_models.UpdateInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_instance_resource_with_options(instance_id, resource_id, request, headers, runtime)
+
+    async def update_instance_resource_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: pai_rec_service_20221213_models.UpdateInstanceResourceRequest,
+    ) -> pai_rec_service_20221213_models.UpdateInstanceResourceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_instance_resource_with_options_async(instance_id, resource_id, request, headers, runtime)
+
     def update_laboratory_with_options(
         self,
         laboratory_id: str,
@@ -5762,3 +8024,107 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_scene_with_options_async(scene_id, request, headers, runtime)
+
+    def update_table_meta_with_options(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.UpdateTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateTableMetaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.fields):
+            body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            body['Module'] = request.module
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas/{OpenApiUtilClient.get_encode_param(table_meta_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateTableMetaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_table_meta_with_options_async(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.UpdateTableMetaRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_rec_service_20221213_models.UpdateTableMetaResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.description):
+            body['Description'] = request.description
+        if not UtilClient.is_unset(request.fields):
+            body['Fields'] = request.fields
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.module):
+            body['Module'] = request.module
+        if not UtilClient.is_unset(request.name):
+            body['Name'] = request.name
+        if not UtilClient.is_unset(request.resource_id):
+            body['ResourceId'] = request.resource_id
+        if not UtilClient.is_unset(request.table_name):
+            body['TableName'] = request.table_name
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateTableMeta',
+            version='2022-12-13',
+            protocol='HTTPS',
+            pathname=f'/api/v1/tablemetas/{OpenApiUtilClient.get_encode_param(table_meta_id)}',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_rec_service_20221213_models.UpdateTableMetaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_table_meta(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.UpdateTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.UpdateTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.update_table_meta_with_options(table_meta_id, request, headers, runtime)
+
+    async def update_table_meta_async(
+        self,
+        table_meta_id: str,
+        request: pai_rec_service_20221213_models.UpdateTableMetaRequest,
+    ) -> pai_rec_service_20221213_models.UpdateTableMetaResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.update_table_meta_with_options_async(table_meta_id, request, headers, runtime)
