@@ -192,8 +192,10 @@ class VerifyIntelligentCaptchaRequest(TeaModel):
 class VerifyIntelligentCaptchaResponseBodyResult(TeaModel):
     def __init__(
         self,
+        verify_code: str = None,
         verify_result: bool = None,
     ):
+        self.verify_code = verify_code
         self.verify_result = verify_result
 
     def validate(self):
@@ -205,12 +207,16 @@ class VerifyIntelligentCaptchaResponseBodyResult(TeaModel):
             return _map
 
         result = dict()
+        if self.verify_code is not None:
+            result['VerifyCode'] = self.verify_code
         if self.verify_result is not None:
             result['VerifyResult'] = self.verify_result
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('VerifyCode') is not None:
+            self.verify_code = m.get('VerifyCode')
         if m.get('VerifyResult') is not None:
             self.verify_result = m.get('VerifyResult')
         return self
