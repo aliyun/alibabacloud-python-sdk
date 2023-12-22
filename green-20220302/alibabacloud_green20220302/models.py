@@ -4,6 +4,449 @@ from Tea.model import TeaModel
 from typing import List, Dict, Any
 
 
+class DescribeFileModerationResultRequest(TeaModel):
+    def __init__(
+        self,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        label: str = None,
+    ):
+        self.confidence = confidence
+        self.label = label
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        if self.label is not None:
+            result['Label'] = self.label
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation(TeaModel):
+    def __init__(
+        self,
+        h: int = None,
+        w: int = None,
+        x: int = None,
+        y: int = None,
+    ):
+        self.h = h
+        self.w = w
+        self.x = x
+        self.y = y
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.h is not None:
+            result['H'] = self.h
+        if self.w is not None:
+            result['W'] = self.w
+        if self.x is not None:
+            result['X'] = self.x
+        if self.y is not None:
+            result['Y'] = self.y
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('H') is not None:
+            self.h = m.get('H')
+        if m.get('W') is not None:
+            self.w = m.get('W')
+        if m.get('X') is not None:
+            self.x = m.get('X')
+        if m.get('Y') is not None:
+            self.y = m.get('Y')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageResultImageResult(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        label_result: List[DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult] = None,
+        location: DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation = None,
+        service: str = None,
+    ):
+        self.description = description
+        self.label_result = label_result
+        self.location = location
+        self.service = service
+
+    def validate(self):
+        if self.label_result:
+            for k in self.label_result:
+                if k:
+                    k.validate()
+        if self.location:
+            self.location.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        result['LabelResult'] = []
+        if self.label_result is not None:
+            for k in self.label_result:
+                result['LabelResult'].append(k.to_map() if k else None)
+        if self.location is not None:
+            result['Location'] = self.location.to_map()
+        if self.service is not None:
+            result['Service'] = self.service
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        self.label_result = []
+        if m.get('LabelResult') is not None:
+            for k in m.get('LabelResult'):
+                temp_model = DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult()
+                self.label_result.append(temp_model.from_map(k))
+        if m.get('Location') is not None:
+            temp_model = DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation()
+            self.location = temp_model.from_map(m['Location'])
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageResultTextResult(TeaModel):
+    def __init__(
+        self,
+        description: str = None,
+        labels: str = None,
+        risk_tips: str = None,
+        risk_words: str = None,
+        service: str = None,
+        text: str = None,
+        text_segment: str = None,
+    ):
+        self.description = description
+        self.labels = labels
+        self.risk_tips = risk_tips
+        self.risk_words = risk_words
+        self.service = service
+        self.text = text
+        self.text_segment = text_segment
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        if self.risk_tips is not None:
+            result['RiskTips'] = self.risk_tips
+        if self.risk_words is not None:
+            result['RiskWords'] = self.risk_words
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.text is not None:
+            result['Text'] = self.text
+        if self.text_segment is not None:
+            result['TextSegment'] = self.text_segment
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('RiskTips') is not None:
+            self.risk_tips = m.get('RiskTips')
+        if m.get('RiskWords') is not None:
+            self.risk_words = m.get('RiskWords')
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        if m.get('TextSegment') is not None:
+            self.text_segment = m.get('TextSegment')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyDataPageResult(TeaModel):
+    def __init__(
+        self,
+        image_result: List[DescribeFileModerationResultResponseBodyDataPageResultImageResult] = None,
+        image_url: str = None,
+        page_num: int = None,
+        text_result: List[DescribeFileModerationResultResponseBodyDataPageResultTextResult] = None,
+        text_url: str = None,
+    ):
+        self.image_result = image_result
+        self.image_url = image_url
+        self.page_num = page_num
+        self.text_result = text_result
+        self.text_url = text_url
+
+    def validate(self):
+        if self.image_result:
+            for k in self.image_result:
+                if k:
+                    k.validate()
+        if self.text_result:
+            for k in self.text_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ImageResult'] = []
+        if self.image_result is not None:
+            for k in self.image_result:
+                result['ImageResult'].append(k.to_map() if k else None)
+        if self.image_url is not None:
+            result['ImageUrl'] = self.image_url
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        result['TextResult'] = []
+        if self.text_result is not None:
+            for k in self.text_result:
+                result['TextResult'].append(k.to_map() if k else None)
+        if self.text_url is not None:
+            result['TextUrl'] = self.text_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.image_result = []
+        if m.get('ImageResult') is not None:
+            for k in m.get('ImageResult'):
+                temp_model = DescribeFileModerationResultResponseBodyDataPageResultImageResult()
+                self.image_result.append(temp_model.from_map(k))
+        if m.get('ImageUrl') is not None:
+            self.image_url = m.get('ImageUrl')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        self.text_result = []
+        if m.get('TextResult') is not None:
+            for k in m.get('TextResult'):
+                temp_model = DescribeFileModerationResultResponseBodyDataPageResultTextResult()
+                self.text_result.append(temp_model.from_map(k))
+        if m.get('TextUrl') is not None:
+            self.text_url = m.get('TextUrl')
+        return self
+
+
+class DescribeFileModerationResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        data_id: str = None,
+        doc_type: str = None,
+        page_result: List[DescribeFileModerationResultResponseBodyDataPageResult] = None,
+        url: str = None,
+    ):
+        self.data_id = data_id
+        self.doc_type = doc_type
+        self.page_result = page_result
+        self.url = url
+
+    def validate(self):
+        if self.page_result:
+            for k in self.page_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_id is not None:
+            result['DataId'] = self.data_id
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
+        result['PageResult'] = []
+        if self.page_result is not None:
+            for k in self.page_result:
+                result['PageResult'].append(k.to_map() if k else None)
+        if self.url is not None:
+            result['Url'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataId') is not None:
+            self.data_id = m.get('DataId')
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
+        self.page_result = []
+        if m.get('PageResult') is not None:
+            for k in m.get('PageResult'):
+                temp_model = DescribeFileModerationResultResponseBodyDataPageResult()
+                self.page_result.append(temp_model.from_map(k))
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        return self
+
+
+class DescribeFileModerationResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: DescribeFileModerationResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = DescribeFileModerationResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeFileModerationResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeFileModerationResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeFileModerationResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeImageModerationResultRequest(TeaModel):
     def __init__(
         self,
@@ -656,6 +1099,158 @@ class DescribeUploadTokenResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeUploadTokenResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class FileModerationRequest(TeaModel):
+    def __init__(
+        self,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class FileModerationResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class FileModerationResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: FileModerationResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = FileModerationResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class FileModerationResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: FileModerationResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = FileModerationResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
