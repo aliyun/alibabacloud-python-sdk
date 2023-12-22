@@ -19486,6 +19486,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_machine_can_reboot_with_options_async(request, runtime)
 
+    def describe_matched_malicious_names_with_options(
+        self,
+        request: sas_20181203_models.DescribeMatchedMaliciousNamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeMatchedMaliciousNamesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.levels):
+            query['Levels'] = request.levels
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMatchedMaliciousNames',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeMatchedMaliciousNamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_matched_malicious_names_with_options_async(
+        self,
+        request: sas_20181203_models.DescribeMatchedMaliciousNamesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.DescribeMatchedMaliciousNamesResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.levels):
+            query['Levels'] = request.levels
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeMatchedMaliciousNames',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.DescribeMatchedMaliciousNamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_matched_malicious_names(
+        self,
+        request: sas_20181203_models.DescribeMatchedMaliciousNamesRequest,
+    ) -> sas_20181203_models.DescribeMatchedMaliciousNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_matched_malicious_names_with_options(request, runtime)
+
+    async def describe_matched_malicious_names_async(
+        self,
+        request: sas_20181203_models.DescribeMatchedMaliciousNamesRequest,
+    ) -> sas_20181203_models.DescribeMatchedMaliciousNamesResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_matched_malicious_names_with_options_async(request, runtime)
+
     def describe_module_config_with_options(
         self,
         runtime: util_models.RuntimeOptions,
@@ -40019,6 +40093,76 @@ class Client(OpenApiClient):
     ) -> sas_20181203_models.ListHoneypotProbeUuidResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_honeypot_probe_uuid_with_options_async(request, runtime)
+
+    def list_image_build_risk_item_with_options(
+        self,
+        request: sas_20181203_models.ListImageBuildRiskItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListImageBuildRiskItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListImageBuildRiskItem',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListImageBuildRiskItemResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_image_build_risk_item_with_options_async(
+        self,
+        request: sas_20181203_models.ListImageBuildRiskItemRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> sas_20181203_models.ListImageBuildRiskItemResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListImageBuildRiskItem',
+            version='2018-12-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            sas_20181203_models.ListImageBuildRiskItemResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_image_build_risk_item(
+        self,
+        request: sas_20181203_models.ListImageBuildRiskItemRequest,
+    ) -> sas_20181203_models.ListImageBuildRiskItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_image_build_risk_item_with_options(request, runtime)
+
+    async def list_image_build_risk_item_async(
+        self,
+        request: sas_20181203_models.ListImageBuildRiskItemRequest,
+    ) -> sas_20181203_models.ListImageBuildRiskItemResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_image_build_risk_item_with_options_async(request, runtime)
 
     def list_image_registry_region_with_options(
         self,
