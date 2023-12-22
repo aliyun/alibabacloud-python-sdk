@@ -1,3 +1,6 @@
+2023-12-22 Version: 2.0.10
+- Generated python 2021-04-06 for FC-Open.
+
 2023-05-30 Version: 2.0.9
 - Add Request Level Stateful Invocation.
 

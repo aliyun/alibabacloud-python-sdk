@@ -2474,6 +2474,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @param headers: GetFunctionAsyncInvokeConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2515,6 +2523,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @param headers: GetFunctionAsyncInvokeConfigHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.qualifier):
@@ -2554,6 +2570,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc__open_20210406_models.GetFunctionAsyncInvokeConfigRequest,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders()
         return self.get_function_async_invoke_config_with_options(service_name, function_name, request, headers, runtime)
@@ -2564,6 +2586,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc__open_20210406_models.GetFunctionAsyncInvokeConfigRequest,
     ) -> fc__open_20210406_models.GetFunctionAsyncInvokeConfigResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If the value of StatefulAsyncInvocation is true, the asynchronous task feature is enabled. All asynchronous invocations change to asynchronous task mode.
+        
+        @param request: GetFunctionAsyncInvokeConfigRequest
+        @return: GetFunctionAsyncInvokeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = fc__open_20210406_models.GetFunctionAsyncInvokeConfigHeaders()
         return await self.get_function_async_invoke_config_with_options_async(service_name, function_name, request, headers, runtime)
@@ -3404,9 +3432,9 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
-        body = ''
+        body = None
         if not UtilClient.is_unset(request.body):
-            body = UtilClient.to_string(request.body)
+            body = request.body
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3437,7 +3465,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='byte',
             body_type='byte'
         )
         return TeaCore.from_map(
@@ -3457,9 +3485,9 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.qualifier):
             query['qualifier'] = request.qualifier
-        body = ''
+        body = None
         if not UtilClient.is_unset(request.body):
-            body = UtilClient.to_string(request.body)
+            body = request.body
         real_headers = {}
         if not UtilClient.is_unset(headers.common_headers):
             real_headers = headers.common_headers
@@ -3490,7 +3518,7 @@ class Client(OpenApiClient):
             method='POST',
             auth_type='AK',
             style='ROA',
-            req_body_type='json',
+            req_body_type='byte',
             body_type='byte'
         )
         return TeaCore.from_map(
@@ -3844,6 +3872,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @param headers: ListFunctionAsyncInvokeConfigsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -3893,6 +3929,14 @@ class Client(OpenApiClient):
         headers: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders,
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @param headers: ListFunctionAsyncInvokeConfigsHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.limit):
@@ -3940,6 +3984,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsRequest,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders()
         return self.list_function_async_invoke_configs_with_options(service_name, function_name, request, headers, runtime)
@@ -3950,6 +4000,12 @@ class Client(OpenApiClient):
         function_name: str,
         request: fc__open_20210406_models.ListFunctionAsyncInvokeConfigsRequest,
     ) -> fc__open_20210406_models.ListFunctionAsyncInvokeConfigsResponse:
+        """
+        StatefulAsyncInvocation indicates whether the asynchronous task feature is enabled. If StatefulAsyncInvocation is set to true, the asynchronous task is enabled. All asynchronous invocations to the function corresponding to this configuration change to asynchronous task mode.
+        
+        @param request: ListFunctionAsyncInvokeConfigsRequest
+        @return: ListFunctionAsyncInvokeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = fc__open_20210406_models.ListFunctionAsyncInvokeConfigsHeaders()
         return await self.list_function_async_invoke_configs_with_options_async(service_name, function_name, request, headers, runtime)
@@ -4077,8 +4133,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListInstancesResponse:
         """
-        The maximum number of resources to return. Valid values: \\[0,1000].
-        The number of returned resources is less than or equal to the specified number.
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
         
         @param request: ListInstancesRequest
         @param headers: ListInstancesHeaders
@@ -4127,8 +4183,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> fc__open_20210406_models.ListInstancesResponse:
         """
-        The maximum number of resources to return. Valid values: \\[0,1000].
-        The number of returned resources is less than or equal to the specified number.
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
         
         @param request: ListInstancesRequest
         @param headers: ListInstancesHeaders
@@ -4175,8 +4231,8 @@ class Client(OpenApiClient):
         request: fc__open_20210406_models.ListInstancesRequest,
     ) -> fc__open_20210406_models.ListInstancesResponse:
         """
-        The maximum number of resources to return. Valid values: \\[0,1000].
-        The number of returned resources is less than or equal to the specified number.
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -4192,8 +4248,8 @@ class Client(OpenApiClient):
         request: fc__open_20210406_models.ListInstancesRequest,
     ) -> fc__open_20210406_models.ListInstancesResponse:
         """
-        The maximum number of resources to return. Valid values: \\[0,1000].
-        The number of returned resources is less than or equal to the specified number.
+        The ListInstances operation allows you to query the available instances of a function.
+        Available instances are instances that are processing requests or can be scheduled to process requests. Available instances queried by the ListInstances operation are the same as those that can be used when you call the InvokeFunction operation with the same values specified for the `serviceName`, `functionName`, and `qualifier` parameters.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
