@@ -2242,6 +2242,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_header, headers)
         if not UtilClient.is_unset(tmp_header.account_context):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.reservation_authority):
+            request.reservation_authority_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reservation_authority, 'ReservationAuthority', 'json')
         if not UtilClient.is_unset(tmp_req.room_label_ids):
             request.room_label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_label_ids, 'RoomLabelIds', 'json')
         if not UtilClient.is_unset(tmp_req.room_location):
@@ -2249,10 +2251,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
+        if not UtilClient.is_unset(request.enable_cycle_reservation):
+            body['EnableCycleReservation'] = request.enable_cycle_reservation
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.isv_room_id):
             body['IsvRoomId'] = request.isv_room_id
+        if not UtilClient.is_unset(request.reservation_authority_shrink):
+            body['ReservationAuthority'] = request.reservation_authority_shrink
         if not UtilClient.is_unset(request.room_capacity):
             body['RoomCapacity'] = request.room_capacity
         if not UtilClient.is_unset(request.room_label_ids_shrink):
@@ -2305,6 +2311,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_header, headers)
         if not UtilClient.is_unset(tmp_header.account_context):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.reservation_authority):
+            request.reservation_authority_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reservation_authority, 'ReservationAuthority', 'json')
         if not UtilClient.is_unset(tmp_req.room_label_ids):
             request.room_label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_label_ids, 'RoomLabelIds', 'json')
         if not UtilClient.is_unset(tmp_req.room_location):
@@ -2312,10 +2320,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
+        if not UtilClient.is_unset(request.enable_cycle_reservation):
+            body['EnableCycleReservation'] = request.enable_cycle_reservation
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.isv_room_id):
             body['IsvRoomId'] = request.isv_room_id
+        if not UtilClient.is_unset(request.reservation_authority_shrink):
+            body['ReservationAuthority'] = request.reservation_authority_shrink
         if not UtilClient.is_unset(request.room_capacity):
             body['RoomCapacity'] = request.room_capacity
         if not UtilClient.is_unset(request.room_label_ids_shrink):
@@ -15958,6 +15970,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_header, headers)
         if not UtilClient.is_unset(tmp_header.account_context):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.reservation_authority):
+            request.reservation_authority_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reservation_authority, 'ReservationAuthority', 'json')
         if not UtilClient.is_unset(tmp_req.room_label_ids):
             request.room_label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_label_ids, 'RoomLabelIds', 'json')
         if not UtilClient.is_unset(tmp_req.room_location):
@@ -15965,10 +15979,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
+        if not UtilClient.is_unset(request.enable_cycle_reservation):
+            body['EnableCycleReservation'] = request.enable_cycle_reservation
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.isv_room_id):
             body['IsvRoomId'] = request.isv_room_id
+        if not UtilClient.is_unset(request.reservation_authority_shrink):
+            body['ReservationAuthority'] = request.reservation_authority_shrink
         if not UtilClient.is_unset(request.room_capacity):
             body['RoomCapacity'] = request.room_capacity
         if not UtilClient.is_unset(request.room_id):
@@ -16023,6 +16041,8 @@ class Client(OpenApiClient):
         OpenApiUtilClient.convert(tmp_header, headers)
         if not UtilClient.is_unset(tmp_header.account_context):
             headers.account_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not UtilClient.is_unset(tmp_req.reservation_authority):
+            request.reservation_authority_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reservation_authority, 'ReservationAuthority', 'json')
         if not UtilClient.is_unset(tmp_req.room_label_ids):
             request.room_label_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.room_label_ids, 'RoomLabelIds', 'json')
         if not UtilClient.is_unset(tmp_req.room_location):
@@ -16030,10 +16050,14 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.tenant_context):
             request.tenant_context_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tenant_context, 'TenantContext', 'json')
         body = {}
+        if not UtilClient.is_unset(request.enable_cycle_reservation):
+            body['EnableCycleReservation'] = request.enable_cycle_reservation
         if not UtilClient.is_unset(request.group_id):
             body['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.isv_room_id):
             body['IsvRoomId'] = request.isv_room_id
+        if not UtilClient.is_unset(request.reservation_authority_shrink):
+            body['ReservationAuthority'] = request.reservation_authority_shrink
         if not UtilClient.is_unset(request.room_capacity):
             body['RoomCapacity'] = request.room_capacity
         if not UtilClient.is_unset(request.room_id):
