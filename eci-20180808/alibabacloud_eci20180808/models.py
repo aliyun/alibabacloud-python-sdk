@@ -9171,6 +9171,7 @@ class DescribeContainerGroupsRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        security_group_id: str = None,
         status: str = None,
         tag: List[DescribeContainerGroupsRequestTag] = None,
         v_switch_id: str = None,
@@ -9197,6 +9198,7 @@ class DescribeContainerGroupsRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.security_group_id = security_group_id
         # The status of the elastic container instance. Valid values:
         # 
         # *   Pending: The instance is being started.
@@ -9253,6 +9255,8 @@ class DescribeContainerGroupsRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
         if self.status is not None:
             result['Status'] = self.status
         result['Tag'] = []
@@ -9289,6 +9293,8 @@ class DescribeContainerGroupsRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         self.tag = []
@@ -11338,6 +11344,7 @@ class DescribeContainerGroupsResponseBodyContainerGroupsVolumes(TeaModel):
 class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
     def __init__(
         self,
+        compute_category: str = None,
         container_group_id: str = None,
         container_group_name: str = None,
         containers: List[DescribeContainerGroupsResponseBodyContainerGroupsContainers] = None,
@@ -11377,6 +11384,7 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.compute_category = compute_category
         # The instance ID.
         self.container_group_id = container_group_id
         # The instance name.
@@ -11511,6 +11519,8 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
             return _map
 
         result = dict()
+        if self.compute_category is not None:
+            result['ComputeCategory'] = self.compute_category
         if self.container_group_id is not None:
             result['ContainerGroupId'] = self.container_group_id
         if self.container_group_name is not None:
@@ -11603,6 +11613,8 @@ class DescribeContainerGroupsResponseBodyContainerGroups(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputeCategory') is not None:
+            self.compute_category = m.get('ComputeCategory')
         if m.get('ContainerGroupId') is not None:
             self.container_group_id = m.get('ContainerGroupId')
         if m.get('ContainerGroupName') is not None:
