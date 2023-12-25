@@ -5730,8 +5730,12 @@ class DeleteClusterShrinkRequest(TeaModel):
 class DeleteClusterResponseBody(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
+        request_id: str = None,
         task_id: str = None,
     ):
+        self.cluster_id = cluster_id
+        self.request_id = request_id
         # The task ID.
         self.task_id = task_id
 
@@ -5744,12 +5748,20 @@ class DeleteClusterResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
         if self.task_id is not None:
             result['task_id'] = self.task_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
         if m.get('task_id') is not None:
             self.task_id = m.get('task_id')
         return self
@@ -6569,6 +6581,235 @@ class DescirbeWorkflowResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescirbeWorkflowResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeAddonRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        cluster_spec: str = None,
+        cluster_type: str = None,
+        cluster_version: str = None,
+        profile: str = None,
+        region_id: str = None,
+        version: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.cluster_spec = cluster_spec
+        self.cluster_type = cluster_type
+        self.cluster_version = cluster_version
+        self.profile = profile
+        self.region_id = region_id
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.cluster_spec is not None:
+            result['cluster_spec'] = self.cluster_spec
+        if self.cluster_type is not None:
+            result['cluster_type'] = self.cluster_type
+        if self.cluster_version is not None:
+            result['cluster_version'] = self.cluster_version
+        if self.profile is not None:
+            result['profile'] = self.profile
+        if self.region_id is not None:
+            result['region_id'] = self.region_id
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('cluster_spec') is not None:
+            self.cluster_spec = m.get('cluster_spec')
+        if m.get('cluster_type') is not None:
+            self.cluster_type = m.get('cluster_type')
+        if m.get('cluster_version') is not None:
+            self.cluster_version = m.get('cluster_version')
+        if m.get('profile') is not None:
+            self.profile = m.get('profile')
+        if m.get('region_id') is not None:
+            self.region_id = m.get('region_id')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeAddonResponseBodyNewerVersions(TeaModel):
+    def __init__(
+        self,
+        minimum_cluster_version: str = None,
+        upgradable: bool = None,
+        version: str = None,
+    ):
+        self.minimum_cluster_version = minimum_cluster_version
+        self.upgradable = upgradable
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.minimum_cluster_version is not None:
+            result['minimum_cluster_version'] = self.minimum_cluster_version
+        if self.upgradable is not None:
+            result['upgradable'] = self.upgradable
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('minimum_cluster_version') is not None:
+            self.minimum_cluster_version = m.get('minimum_cluster_version')
+        if m.get('upgradable') is not None:
+            self.upgradable = m.get('upgradable')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeAddonResponseBody(TeaModel):
+    def __init__(
+        self,
+        architecture: List[str] = None,
+        category: str = None,
+        config_schema: str = None,
+        install_by_default: bool = None,
+        managed: bool = None,
+        name: str = None,
+        newer_versions: List[DescribeAddonResponseBodyNewerVersions] = None,
+        supported_actions: List[str] = None,
+        version: str = None,
+    ):
+        self.architecture = architecture
+        self.category = category
+        self.config_schema = config_schema
+        self.install_by_default = install_by_default
+        self.managed = managed
+        self.name = name
+        self.newer_versions = newer_versions
+        self.supported_actions = supported_actions
+        self.version = version
+
+    def validate(self):
+        if self.newer_versions:
+            for k in self.newer_versions:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.architecture is not None:
+            result['architecture'] = self.architecture
+        if self.category is not None:
+            result['category'] = self.category
+        if self.config_schema is not None:
+            result['config_schema'] = self.config_schema
+        if self.install_by_default is not None:
+            result['install_by_default'] = self.install_by_default
+        if self.managed is not None:
+            result['managed'] = self.managed
+        if self.name is not None:
+            result['name'] = self.name
+        result['newer_versions'] = []
+        if self.newer_versions is not None:
+            for k in self.newer_versions:
+                result['newer_versions'].append(k.to_map() if k else None)
+        if self.supported_actions is not None:
+            result['supported_actions'] = self.supported_actions
+        if self.version is not None:
+            result['version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('architecture') is not None:
+            self.architecture = m.get('architecture')
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('config_schema') is not None:
+            self.config_schema = m.get('config_schema')
+        if m.get('install_by_default') is not None:
+            self.install_by_default = m.get('install_by_default')
+        if m.get('managed') is not None:
+            self.managed = m.get('managed')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        self.newer_versions = []
+        if m.get('newer_versions') is not None:
+            for k in m.get('newer_versions'):
+                temp_model = DescribeAddonResponseBodyNewerVersions()
+                self.newer_versions.append(temp_model.from_map(k))
+        if m.get('supported_actions') is not None:
+            self.supported_actions = m.get('supported_actions')
+        if m.get('version') is not None:
+            self.version = m.get('version')
+        return self
+
+
+class DescribeAddonResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAddonResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAddonResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18908,6 +19149,193 @@ class ListClusterChecksResponse(TeaModel):
         return self
 
 
+class ListOperationPlansRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListOperationPlansResponseBodyPlans(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        created: str = None,
+        end_time: str = None,
+        plan_id: str = None,
+        start_time: str = None,
+        state: str = None,
+        target_id: str = None,
+        target_type: str = None,
+        type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.created = created
+        self.end_time = end_time
+        self.plan_id = plan_id
+        self.start_time = start_time
+        self.state = state
+        self.target_id = target_id
+        self.target_type = target_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.created is not None:
+            result['created'] = self.created
+        if self.end_time is not None:
+            result['end_time'] = self.end_time
+        if self.plan_id is not None:
+            result['plan_id'] = self.plan_id
+        if self.start_time is not None:
+            result['start_time'] = self.start_time
+        if self.state is not None:
+            result['state'] = self.state
+        if self.target_id is not None:
+            result['target_id'] = self.target_id
+        if self.target_type is not None:
+            result['target_type'] = self.target_type
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('created') is not None:
+            self.created = m.get('created')
+        if m.get('end_time') is not None:
+            self.end_time = m.get('end_time')
+        if m.get('plan_id') is not None:
+            self.plan_id = m.get('plan_id')
+        if m.get('start_time') is not None:
+            self.start_time = m.get('start_time')
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('target_id') is not None:
+            self.target_id = m.get('target_id')
+        if m.get('target_type') is not None:
+            self.target_type = m.get('target_type')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ListOperationPlansResponseBody(TeaModel):
+    def __init__(
+        self,
+        plans: List[ListOperationPlansResponseBodyPlans] = None,
+    ):
+        self.plans = plans
+
+    def validate(self):
+        if self.plans:
+            for k in self.plans:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['plans'] = []
+        if self.plans is not None:
+            for k in self.plans:
+                result['plans'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.plans = []
+        if m.get('plans') is not None:
+            for k in m.get('plans'):
+                temp_model = ListOperationPlansResponseBodyPlans()
+                self.plans.append(temp_model.from_map(k))
+        return self
+
+
+class ListOperationPlansResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListOperationPlansResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListOperationPlansResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequest(TeaModel):
     def __init__(
         self,
@@ -20732,6 +21160,7 @@ class ModifyClusterNodePoolRequest(TeaModel):
     def __init__(
         self,
         auto_scaling: ModifyClusterNodePoolRequestAutoScaling = None,
+        concurrency: bool = None,
         kubernetes_config: ModifyClusterNodePoolRequestKubernetesConfig = None,
         management: ModifyClusterNodePoolRequestManagement = None,
         nodepool_info: ModifyClusterNodePoolRequestNodepoolInfo = None,
@@ -20741,6 +21170,7 @@ class ModifyClusterNodePoolRequest(TeaModel):
     ):
         # The configurations about auto scaling.
         self.auto_scaling = auto_scaling
+        self.concurrency = concurrency
         # The configurations about the cluster.
         self.kubernetes_config = kubernetes_config
         # The configurations about the managed node pool feature.
@@ -20776,6 +21206,8 @@ class ModifyClusterNodePoolRequest(TeaModel):
         result = dict()
         if self.auto_scaling is not None:
             result['auto_scaling'] = self.auto_scaling.to_map()
+        if self.concurrency is not None:
+            result['concurrency'] = self.concurrency
         if self.kubernetes_config is not None:
             result['kubernetes_config'] = self.kubernetes_config.to_map()
         if self.management is not None:
@@ -20795,6 +21227,8 @@ class ModifyClusterNodePoolRequest(TeaModel):
         if m.get('auto_scaling') is not None:
             temp_model = ModifyClusterNodePoolRequestAutoScaling()
             self.auto_scaling = temp_model.from_map(m['auto_scaling'])
+        if m.get('concurrency') is not None:
+            self.concurrency = m.get('concurrency')
         if m.get('kubernetes_config') is not None:
             temp_model = ModifyClusterNodePoolRequestKubernetesConfig()
             self.kubernetes_config = temp_model.from_map(m['kubernetes_config'])
@@ -21534,11 +21968,13 @@ class RemoveClusterNodesResponse(TeaModel):
 class RemoveNodePoolNodesRequest(TeaModel):
     def __init__(
         self,
+        concurrency: bool = None,
         drain_node: bool = None,
         instance_ids: List[str] = None,
         nodes: List[str] = None,
         release_node: bool = None,
     ):
+        self.concurrency = concurrency
         # Specifies whether to drain the nodes that you want to remove. Valid values:
         # 
         # *   true: drain the nodes that you want to remove.
@@ -21563,6 +21999,8 @@ class RemoveNodePoolNodesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.concurrency is not None:
+            result['concurrency'] = self.concurrency
         if self.drain_node is not None:
             result['drain_node'] = self.drain_node
         if self.instance_ids is not None:
@@ -21575,6 +22013,8 @@ class RemoveNodePoolNodesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('concurrency') is not None:
+            self.concurrency = m.get('concurrency')
         if m.get('drain_node') is not None:
             self.drain_node = m.get('drain_node')
         if m.get('instance_ids') is not None:
@@ -21589,11 +22029,13 @@ class RemoveNodePoolNodesRequest(TeaModel):
 class RemoveNodePoolNodesShrinkRequest(TeaModel):
     def __init__(
         self,
+        concurrency: bool = None,
         drain_node: bool = None,
         instance_ids_shrink: str = None,
         nodes_shrink: str = None,
         release_node: bool = None,
     ):
+        self.concurrency = concurrency
         # Specifies whether to drain the nodes that you want to remove. Valid values:
         # 
         # *   true: drain the nodes that you want to remove.
@@ -21618,6 +22060,8 @@ class RemoveNodePoolNodesShrinkRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.concurrency is not None:
+            result['concurrency'] = self.concurrency
         if self.drain_node is not None:
             result['drain_node'] = self.drain_node
         if self.instance_ids_shrink is not None:
@@ -21630,6 +22074,8 @@ class RemoveNodePoolNodesShrinkRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('concurrency') is not None:
+            self.concurrency = m.get('concurrency')
         if m.get('drain_node') is not None:
             self.drain_node = m.get('drain_node')
         if m.get('instance_ids') is not None:
@@ -23968,18 +24414,62 @@ class UpdateControlPlaneLogRequest(TeaModel):
         return self
 
 
+class UpdateControlPlaneLogResponseBody(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        request_id: str = None,
+        task_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.request_id = request_id
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['cluster_id'] = self.cluster_id
+        if self.request_id is not None:
+            result['request_id'] = self.request_id
+        if self.task_id is not None:
+            result['task_id'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cluster_id') is not None:
+            self.cluster_id = m.get('cluster_id')
+        if m.get('request_id') is not None:
+            self.request_id = m.get('request_id')
+        if m.get('task_id') is not None:
+            self.task_id = m.get('task_id')
+        return self
+
+
 class UpdateControlPlaneLogResponse(TeaModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
+        body: UpdateControlPlaneLogResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
+        self.body = body
 
     def validate(self):
         self.validate_required(self.headers, 'headers')
         self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -23991,6 +24481,8 @@ class UpdateControlPlaneLogResponse(TeaModel):
             result['headers'] = self.headers
         if self.status_code is not None:
             result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
         return result
 
     def from_map(self, m: dict = None):
@@ -23999,6 +24491,9 @@ class UpdateControlPlaneLogResponse(TeaModel):
             self.headers = m.get('headers')
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateControlPlaneLogResponseBody()
+            self.body = temp_model.from_map(m['body'])
         return self
 
 
