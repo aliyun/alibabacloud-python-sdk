@@ -923,7 +923,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.ChangeResourceGroupResponse:
         """
-        You cannot call the *ChangeResourceGroup** operation again on the same GA instance before the previous operation is complete.
+        ### [](#)Description
+        The **ChangeResourceGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -966,7 +967,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.ChangeResourceGroupResponse:
         """
-        You cannot call the *ChangeResourceGroup** operation again on the same GA instance before the previous operation is complete.
+        ### [](#)Description
+        The **ChangeResourceGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
         
         @param request: ChangeResourceGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1008,7 +1010,8 @@ class Client(OpenApiClient):
         request: ga_20191120_models.ChangeResourceGroupRequest,
     ) -> ga_20191120_models.ChangeResourceGroupResponse:
         """
-        You cannot call the *ChangeResourceGroup** operation again on the same GA instance before the previous operation is complete.
+        ### [](#)Description
+        The **ChangeResourceGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -1021,7 +1024,8 @@ class Client(OpenApiClient):
         request: ga_20191120_models.ChangeResourceGroupRequest,
     ) -> ga_20191120_models.ChangeResourceGroupResponse:
         """
-        You cannot call the *ChangeResourceGroup** operation again on the same GA instance before the previous operation is complete.
+        ### [](#)Description
+        The **ChangeResourceGroup** operation cannot be repeatedly called for the same GA instance within a specific period of time.
         
         @param request: ChangeResourceGroupRequest
         @return: ChangeResourceGroupResponse
@@ -1475,11 +1479,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.CreateApplicationMonitorResponse:
         """
-        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between the client and origin server and checks the availability of the origin.
+        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between a client and an origin server and checks the availability of the origin server.
         Before you call this operation, take note of the following items:
-        *   **CreateApplicationMonitor** is an asynchronous operation. After you send a request, the system returns the ID of an origin probing task, but the origin probing task is still being created in the system background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the state of the origin probing task.
-        *   If the origin probing task is in the **init** state, it indicates that the task is being created. In this case, you can only perform query operations.
-        *   If the origin probing task is in the **active** state, it indicates that the task is created.
+        *   **CreateApplicationMonitor** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the status of the origin probing task.
+        *   If the origin probing task is in the **init** state, the task is being created. You can perform only query operations.
+        *   If the origin probing task is in the **active** state, the task is created.
         *   The **CreateApplicationMonitor** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateApplicationMonitorRequest
@@ -1535,11 +1539,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.CreateApplicationMonitorResponse:
         """
-        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between the client and origin server and checks the availability of the origin.
+        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between a client and an origin server and checks the availability of the origin server.
         Before you call this operation, take note of the following items:
-        *   **CreateApplicationMonitor** is an asynchronous operation. After you send a request, the system returns the ID of an origin probing task, but the origin probing task is still being created in the system background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the state of the origin probing task.
-        *   If the origin probing task is in the **init** state, it indicates that the task is being created. In this case, you can only perform query operations.
-        *   If the origin probing task is in the **active** state, it indicates that the task is created.
+        *   **CreateApplicationMonitor** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the status of the origin probing task.
+        *   If the origin probing task is in the **init** state, the task is being created. You can perform only query operations.
+        *   If the origin probing task is in the **active** state, the task is created.
         *   The **CreateApplicationMonitor** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateApplicationMonitorRequest
@@ -1594,11 +1598,11 @@ class Client(OpenApiClient):
         request: ga_20191120_models.CreateApplicationMonitorRequest,
     ) -> ga_20191120_models.CreateApplicationMonitorResponse:
         """
-        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between the client and origin server and checks the availability of the origin.
+        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between a client and an origin server and checks the availability of the origin server.
         Before you call this operation, take note of the following items:
-        *   **CreateApplicationMonitor** is an asynchronous operation. After you send a request, the system returns the ID of an origin probing task, but the origin probing task is still being created in the system background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the state of the origin probing task.
-        *   If the origin probing task is in the **init** state, it indicates that the task is being created. In this case, you can only perform query operations.
-        *   If the origin probing task is in the **active** state, it indicates that the task is created.
+        *   **CreateApplicationMonitor** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the status of the origin probing task.
+        *   If the origin probing task is in the **init** state, the task is being created. You can perform only query operations.
+        *   If the origin probing task is in the **active** state, the task is created.
         *   The **CreateApplicationMonitor** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateApplicationMonitorRequest
@@ -1612,11 +1616,11 @@ class Client(OpenApiClient):
         request: ga_20191120_models.CreateApplicationMonitorRequest,
     ) -> ga_20191120_models.CreateApplicationMonitorResponse:
         """
-        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between the client and origin server and checks the availability of the origin.
+        You can call the *CreateApplicationMonitor** operation to create an origin probing task. An origin probing task monitors the network quality between a client and an origin server and checks the availability of the origin server.
         Before you call this operation, take note of the following items:
-        *   **CreateApplicationMonitor** is an asynchronous operation. After you send a request, the system returns the ID of an origin probing task, but the origin probing task is still being created in the system background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the state of the origin probing task.
-        *   If the origin probing task is in the **init** state, it indicates that the task is being created. In this case, you can only perform query operations.
-        *   If the origin probing task is in the **active** state, it indicates that the task is created.
+        *   **CreateApplicationMonitor** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeApplicationMonitor](~~408463~~) or [ListApplicationMonitor](~~408462~~) operation to query the status of the origin probing task.
+        *   If the origin probing task is in the **init** state, the task is being created. You can perform only query operations.
+        *   If the origin probing task is in the **active** state, the task is created.
         *   The **CreateApplicationMonitor** operation cannot be called repeatedly for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateApplicationMonitorRequest
@@ -3743,9 +3747,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.CreateEndpointGroupsResponse:
         """
-        **CreateEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) to query the state of an endpoint group.
-        *   If an endpoint group is in the **init** state, the endpoint group is being created. In this case, you can perform only query operations.
-        *   If all endpoint groups are in the **active**, endpoint groups are created.
+        **CreateEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the status of the task:
+        *   If the endpoint groups are in the **init** state, the endpoint groups are being created. In this case, you can perform only query operations.
+        *   If all endpoint groups are in the **active** state, the endpoint groups are created.
         *   The **CreateEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateEndpointGroupsRequest
@@ -3791,9 +3795,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.CreateEndpointGroupsResponse:
         """
-        **CreateEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) to query the state of an endpoint group.
-        *   If an endpoint group is in the **init** state, the endpoint group is being created. In this case, you can perform only query operations.
-        *   If all endpoint groups are in the **active**, endpoint groups are created.
+        **CreateEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the status of the task:
+        *   If the endpoint groups are in the **init** state, the endpoint groups are being created. In this case, you can perform only query operations.
+        *   If all endpoint groups are in the **active** state, the endpoint groups are created.
         *   The **CreateEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateEndpointGroupsRequest
@@ -3838,9 +3842,9 @@ class Client(OpenApiClient):
         request: ga_20191120_models.CreateEndpointGroupsRequest,
     ) -> ga_20191120_models.CreateEndpointGroupsResponse:
         """
-        **CreateEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) to query the state of an endpoint group.
-        *   If an endpoint group is in the **init** state, the endpoint group is being created. In this case, you can perform only query operations.
-        *   If all endpoint groups are in the **active**, endpoint groups are created.
+        **CreateEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the status of the task:
+        *   If the endpoint groups are in the **init** state, the endpoint groups are being created. In this case, you can perform only query operations.
+        *   If all endpoint groups are in the **active** state, the endpoint groups are created.
         *   The **CreateEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateEndpointGroupsRequest
@@ -3854,9 +3858,9 @@ class Client(OpenApiClient):
         request: ga_20191120_models.CreateEndpointGroupsRequest,
     ) -> ga_20191120_models.CreateEndpointGroupsResponse:
         """
-        **CreateEndpointGroups** is an asynchronous operation. After you send a request, the system returns a request ID, but the operation is still being performed in the system background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) to query the state of an endpoint group.
-        *   If an endpoint group is in the **init** state, the endpoint group is being created. In this case, you can perform only query operations.
-        *   If all endpoint groups are in the **active**, endpoint groups are created.
+        **CreateEndpointGroups** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeEndpointGroup](~~153260~~) or [ListEndpointGroups](~~153261~~) operation to query the status of the task:
+        *   If the endpoint groups are in the **init** state, the endpoint groups are being created. In this case, you can perform only query operations.
+        *   If all endpoint groups are in the **active** state, the endpoint groups are created.
         *   The **CreateEndpointGroups** operation cannot be repeatedly called for the same Global Accelerator (GA) instance within a specific period of time.
         
         @param request: CreateEndpointGroupsRequest
@@ -11460,6 +11464,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accelerator_id):
             query['AcceleratorId'] = request.accelerator_id
+        if not UtilClient.is_unset(request.access_log_switch):
+            query['AccessLogSwitch'] = request.access_log_switch
         if not UtilClient.is_unset(request.endpoint_group_id):
             query['EndpointGroupId'] = request.endpoint_group_id
         if not UtilClient.is_unset(request.listener_id):
@@ -11506,6 +11512,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.accelerator_id):
             query['AcceleratorId'] = request.accelerator_id
+        if not UtilClient.is_unset(request.access_log_switch):
+            query['AccessLogSwitch'] = request.access_log_switch
         if not UtilClient.is_unset(request.endpoint_group_id):
             query['EndpointGroupId'] = request.endpoint_group_id
         if not UtilClient.is_unset(request.listener_id):
@@ -12919,10 +12927,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.********\
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        ### [](#)Description
+        *   Specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
         *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        *   If you specify multiple key-value pairs, resources that contain the key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12967,10 +12976,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ga_20191120_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.********\
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        ### [](#)Description
+        *   Specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
         *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        *   If you specify multiple key-value pairs, resources that contain the key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13014,10 +13024,11 @@ class Client(OpenApiClient):
         request: ga_20191120_models.ListTagResourcesRequest,
     ) -> ga_20191120_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.********\
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        ### [](#)Description
+        *   Specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
         *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        *   If you specify multiple key-value pairs, resources that contain the key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -13030,10 +13041,11 @@ class Client(OpenApiClient):
         request: ga_20191120_models.ListTagResourcesRequest,
     ) -> ga_20191120_models.ListTagResourcesResponse:
         """
-        You must specify **ResourceId.N** or **Tag.N** in the request to specify the object that you want to query.********\
-        *   **Tag.N** is a resource tag that consists of a key-value pair (Tag.N.Key and Tag.N.Value). If you specify only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you specify only **Tag.N.Value**, an error message is returned.
+        ### [](#)Description
+        *   Specify **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        *   **Tag.N** is a resource tag that consists of a key-value pair. If you specify only **Tag.N.Key**, all tag values that are associated with the specified key are returned. If you specify only **Tag.N.Value**, an error message is returned.
         *   If you specify **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        *   If you specify multiple key-value pairs, resources that contain the key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
