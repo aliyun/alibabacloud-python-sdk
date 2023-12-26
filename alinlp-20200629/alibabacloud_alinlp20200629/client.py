@@ -4388,6 +4388,8 @@ class Client(OpenApiClient):
             body['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.sub_path):
             body['SubPath'] = request.sub_path
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4424,6 +4426,8 @@ class Client(OpenApiClient):
             body['ServiceId'] = request.service_id
         if not UtilClient.is_unset(request.sub_path):
             body['SubPath'] = request.sub_path
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -4646,6 +4650,144 @@ class Client(OpenApiClient):
     async def post_msconv_search_token_generated_async(self) -> alinlp_20200629_models.PostMSConvSearchTokenGeneratedResponse:
         runtime = util_models.RuntimeOptions()
         return await self.post_msconv_search_token_generated_with_options_async(runtime)
+
+    def post_mssearch_enhance_with_options(
+        self,
+        tmp_req: alinlp_20200629_models.PostMSSearchEnhanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.PostMSSearchEnhanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.PostMSSearchEnhanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_config_info):
+            request.custom_config_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_config_info, 'CustomConfigInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        if not UtilClient.is_unset(tmp_req.rank_model_info):
+            request.rank_model_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rank_model_info, 'RankModelInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.custom_config_info_shrink):
+            body['CustomConfigInfo'] = request.custom_config_info_shrink
+        if not UtilClient.is_unset(request.debug):
+            body['Debug'] = request.debug
+        if not UtilClient.is_unset(request.fields_shrink):
+            body['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.filters):
+            body['Filters'] = request.filters
+        if not UtilClient.is_unset(request.page):
+            body['Page'] = request.page
+        if not UtilClient.is_unset(request.queries):
+            body['Queries'] = request.queries
+        if not UtilClient.is_unset(request.rank_model_info_shrink):
+            body['RankModelInfo'] = request.rank_model_info_shrink
+        if not UtilClient.is_unset(request.rows):
+            body['Rows'] = request.rows
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            body['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.uq):
+            body['Uq'] = request.uq
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PostMSSearchEnhance',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.PostMSSearchEnhanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def post_mssearch_enhance_with_options_async(
+        self,
+        tmp_req: alinlp_20200629_models.PostMSSearchEnhanceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alinlp_20200629_models.PostMSSearchEnhanceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = alinlp_20200629_models.PostMSSearchEnhanceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.custom_config_info):
+            request.custom_config_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.custom_config_info, 'CustomConfigInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.fields):
+            request.fields_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.fields, 'Fields', 'json')
+        if not UtilClient.is_unset(tmp_req.rank_model_info):
+            request.rank_model_info_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.rank_model_info, 'RankModelInfo', 'json')
+        if not UtilClient.is_unset(tmp_req.sort):
+            request.sort_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sort, 'Sort', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.body):
+            body['Body'] = request.body
+        if not UtilClient.is_unset(request.custom_config_info_shrink):
+            body['CustomConfigInfo'] = request.custom_config_info_shrink
+        if not UtilClient.is_unset(request.debug):
+            body['Debug'] = request.debug
+        if not UtilClient.is_unset(request.fields_shrink):
+            body['Fields'] = request.fields_shrink
+        if not UtilClient.is_unset(request.filters):
+            body['Filters'] = request.filters
+        if not UtilClient.is_unset(request.page):
+            body['Page'] = request.page
+        if not UtilClient.is_unset(request.queries):
+            body['Queries'] = request.queries
+        if not UtilClient.is_unset(request.rank_model_info_shrink):
+            body['RankModelInfo'] = request.rank_model_info_shrink
+        if not UtilClient.is_unset(request.rows):
+            body['Rows'] = request.rows
+        if not UtilClient.is_unset(request.service_id):
+            body['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.sort_shrink):
+            body['Sort'] = request.sort_shrink
+        if not UtilClient.is_unset(request.type):
+            body['Type'] = request.type
+        if not UtilClient.is_unset(request.uq):
+            body['Uq'] = request.uq
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='PostMSSearchEnhance',
+            version='2020-06-29',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alinlp_20200629_models.PostMSSearchEnhanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def post_mssearch_enhance(
+        self,
+        request: alinlp_20200629_models.PostMSSearchEnhanceRequest,
+    ) -> alinlp_20200629_models.PostMSSearchEnhanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.post_mssearch_enhance_with_options(request, runtime)
+
+    async def post_mssearch_enhance_async(
+        self,
+        request: alinlp_20200629_models.PostMSSearchEnhanceRequest,
+    ) -> alinlp_20200629_models.PostMSSearchEnhanceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.post_mssearch_enhance_with_options_async(request, runtime)
 
     def request_table_qawith_options(
         self,
