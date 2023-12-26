@@ -8311,6 +8311,7 @@ class CreateStandardGroupResponseBodyStandardGroup(TeaModel):
         self,
         db_type: str = None,
         description: str = None,
+        group_id: int = None,
         group_mode: str = None,
         group_name: str = None,
         last_mender_id: int = None,
@@ -8319,6 +8320,7 @@ class CreateStandardGroupResponseBodyStandardGroup(TeaModel):
         self.db_type = db_type
         # The description of the security rule set.
         self.description = description
+        self.group_id = group_id
         # The control mode. Valid values:
         # 
         # *   **NONE_CONTROL**: Flexible Management
@@ -8343,6 +8345,8 @@ class CreateStandardGroupResponseBodyStandardGroup(TeaModel):
             result['DbType'] = self.db_type
         if self.description is not None:
             result['Description'] = self.description
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
         if self.group_mode is not None:
             result['GroupMode'] = self.group_mode
         if self.group_name is not None:
@@ -8357,6 +8361,8 @@ class CreateStandardGroupResponseBodyStandardGroup(TeaModel):
             self.db_type = m.get('DbType')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
         if m.get('GroupMode') is not None:
             self.group_mode = m.get('GroupMode')
         if m.get('GroupName') is not None:
@@ -48308,6 +48314,7 @@ class RegisterInstanceRequest(TeaModel):
         self.database_user = database_user
         # The ID of the user who assumes the DBA role of the database instance. You can call the [ListUsers](~~141938~~) or [GetInstance](~~141567~~) operation to query the user ID.
         self.dba_uid = dba_uid
+        # The ID of the user who assumes the DBA role of the database instance. If the user ID is a non-numeric value such as a role or an account, you can use this parameter to replace DbaUid.
         self.dba_uid_by_string = dba_uid_by_string
         # Specifies whether to enable the lock-free schema change feature for the database instance. Valid values:
         # 
