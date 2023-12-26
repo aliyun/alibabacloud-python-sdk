@@ -4529,7 +4529,7 @@ class GetProvisionedProductPlanResponseBodyPlanDetailApprovalDetailOperationReco
         # *   Submit: submits the plan.
         # *   Cancel: cancels the plan.
         # *   Approve: approves the plan.
-        # *   reject: rejectes the plan.
+        # *   reject: rejects the plan.
         self.approval_action = approval_action
         # The review comment of the operator.
         self.comment = comment
@@ -5172,7 +5172,7 @@ class GetProvisionedProductPlanResponseBodyProductVersionDetail(TeaModel):
     ):
         # Indicates whether the product version is visible to end users. Valid values:
         # 
-        # *   true (defaut)
+        # *   true (default)
         # *   false
         self.active = active
         # The time when the product version was created.
@@ -5806,7 +5806,13 @@ class GetTaskResponseBodyTaskDetailTaskTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The custom tag key.
+        # 
+        # The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.key = key
+        # The custom tag value.
+        # 
+        # The value must be 1 to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):
@@ -5858,11 +5864,11 @@ class GetTaskResponseBodyTaskDetail(TeaModel):
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The logs of the product instance.
+        # The logs of the instance.
         self.log = log
         # The output parameters of the template.
         self.outputs = outputs
-        # The input parameters of the template.
+        # The parameters that are specified in the template.
         self.parameters = parameters
         # The ID of the product portfolio.
         self.portfolio_id = portfolio_id
@@ -5890,6 +5896,7 @@ class GetTaskResponseBodyTaskDetail(TeaModel):
         self.status_message = status_message
         # The ID of the task.
         self.task_id = task_id
+        # The custom tags.
         self.task_tags = task_tags
         # The type of the task. Valid values:
         # 
