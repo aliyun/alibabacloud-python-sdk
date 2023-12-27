@@ -1054,6 +1054,8 @@ class Client(OpenApiClient):
             body['encrypt_conf'] = request.encrypt_conf
         if not UtilClient.is_unset(request.hot_ttl):
             body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
@@ -1117,6 +1119,8 @@ class Client(OpenApiClient):
             body['encrypt_conf'] = request.encrypt_conf
         if not UtilClient.is_unset(request.hot_ttl):
             body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
@@ -10132,6 +10136,8 @@ class Client(OpenApiClient):
             body['encrypt_conf'] = request.encrypt_conf
         if not UtilClient.is_unset(request.hot_ttl):
             body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
@@ -10197,6 +10203,8 @@ class Client(OpenApiClient):
             body['encrypt_conf'] = request.encrypt_conf
         if not UtilClient.is_unset(request.hot_ttl):
             body['hot_ttl'] = request.hot_ttl
+        if not UtilClient.is_unset(request.infrequent_access_ttl):
+            body['infrequentAccessTTL'] = request.infrequent_access_ttl
         if not UtilClient.is_unset(request.logstore_name):
             body['logstoreName'] = request.logstore_name
         if not UtilClient.is_unset(request.max_split_shard):
