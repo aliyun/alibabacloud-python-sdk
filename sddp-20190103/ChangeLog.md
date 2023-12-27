@@ -1,3 +1,6 @@
+2023-12-27 Version: 1.1.1
+- Generated python 2019-01-03 for Sddp.
+
 2023-08-29 Version: 1.1.0
 - Generated python 2019-01-03 for Sddp.
 

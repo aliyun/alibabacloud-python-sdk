@@ -64,8 +64,12 @@ class Client(OpenApiClient):
             query['Code'] = request.code
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
@@ -107,8 +111,12 @@ class Client(OpenApiClient):
             query['Code'] = request.code
         if not UtilClient.is_unset(request.description):
             query['Description'] = request.description
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.value):
             query['Value'] = request.value
         req = open_api_models.OpenApiRequest(
@@ -188,6 +196,8 @@ class Client(OpenApiClient):
             query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.event_status):
             query['EventStatus'] = request.event_status
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.log_store_day):
@@ -206,6 +216,8 @@ class Client(OpenApiClient):
             query['SamplingSize'] = request.sampling_size
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
@@ -255,6 +267,8 @@ class Client(OpenApiClient):
             query['EngineType'] = request.engine_type
         if not UtilClient.is_unset(request.event_status):
             query['EventStatus'] = request.event_status
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.log_store_day):
@@ -273,6 +287,8 @@ class Client(OpenApiClient):
             query['SamplingSize'] = request.sampling_size
         if not UtilClient.is_unset(request.service_region_id):
             query['ServiceRegionId'] = request.service_region_id
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.user_name):
             query['UserName'] = request.user_name
         req = open_api_models.OpenApiRequest(
@@ -353,6 +369,8 @@ class Client(OpenApiClient):
             query['RiskLevelId'] = request.risk_level_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.stat_express):
             query['StatExpress'] = request.stat_express
         if not UtilClient.is_unset(request.status):
@@ -411,6 +429,8 @@ class Client(OpenApiClient):
             query['RiskLevelId'] = request.risk_level_id
         if not UtilClient.is_unset(request.rule_type):
             query['RuleType'] = request.rule_type
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.stat_express):
             query['StatExpress'] = request.stat_express
         if not UtilClient.is_unset(request.status):
@@ -472,6 +492,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.data_limit_id):
             query['DataLimitId'] = request.data_limit_id
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.interval_day):
             query['IntervalDay'] = request.interval_day
         if not UtilClient.is_unset(request.lang):
@@ -488,6 +510,8 @@ class Client(OpenApiClient):
             query['ScanRange'] = request.scan_range
         if not UtilClient.is_unset(request.scan_range_content):
             query['ScanRangeContent'] = request.scan_range_content
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.task_name):
             query['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.task_user_name):
@@ -529,6 +553,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.data_limit_id):
             query['DataLimitId'] = request.data_limit_id
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.interval_day):
             query['IntervalDay'] = request.interval_day
         if not UtilClient.is_unset(request.lang):
@@ -545,6 +571,8 @@ class Client(OpenApiClient):
             query['ScanRange'] = request.scan_range
         if not UtilClient.is_unset(request.scan_range_content):
             query['ScanRangeContent'] = request.scan_range_content
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         if not UtilClient.is_unset(request.task_name):
             query['TaskName'] = request.task_name
         if not UtilClient.is_unset(request.task_user_name):
@@ -614,8 +642,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -651,8 +683,12 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -718,10 +754,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -757,10 +797,14 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -817,10 +861,14 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -847,10 +895,14 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DeleteRuleResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.source_ip):
+            query['SourceIp'] = request.source_ip
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -893,6 +945,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -927,6 +981,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -984,6 +1040,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -1029,6 +1087,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -1527,6 +1587,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeDataLimitDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -1559,6 +1621,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeDataLimitDetailResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -1614,6 +1678,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.parent_id):
@@ -1655,6 +1721,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.parent_id):
@@ -1731,6 +1799,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -1783,6 +1853,8 @@ class Client(OpenApiClient):
             query['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.page_size):
@@ -2109,6 +2181,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -2147,6 +2221,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -2199,6 +2275,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -2237,6 +2315,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -2291,6 +2371,10 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain_id):
             query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
+        if not UtilClient.is_unset(request.file_category_code):
+            query['FileCategoryCode'] = request.file_category_code
         if not UtilClient.is_unset(request.file_type):
             query['FileType'] = request.file_type
         if not UtilClient.is_unset(request.instance_id):
@@ -2345,6 +2429,10 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.domain_id):
             query['DomainId'] = request.domain_id
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
+        if not UtilClient.is_unset(request.file_category_code):
+            query['FileCategoryCode'] = request.file_category_code
         if not UtilClient.is_unset(request.file_type):
             query['FileType'] = request.file_type
         if not UtilClient.is_unset(request.instance_id):
@@ -2553,6 +2641,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.parent_type_id):
@@ -2587,6 +2677,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.parent_type_id):
@@ -2812,6 +2904,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
@@ -2871,6 +2965,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
@@ -3267,6 +3363,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.file_category_code):
+            query['FileCategoryCode'] = request.file_category_code
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
@@ -3315,6 +3413,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.current_page):
             query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.file_category_code):
+            query['FileCategoryCode'] = request.file_category_code
         if not UtilClient.is_unset(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.lang):
@@ -3516,6 +3616,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.template_id):
@@ -3555,6 +3657,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.template_id):
@@ -3623,6 +3727,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.custom_type):
             query['CustomType'] = request.custom_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword_compatible):
@@ -3683,6 +3789,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not UtilClient.is_unset(request.custom_type):
             query['CustomType'] = request.custom_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.group_id):
             query['GroupId'] = request.group_id
         if not UtilClient.is_unset(request.keyword_compatible):
@@ -3897,6 +4005,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.template_id):
@@ -3927,6 +4037,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.template_id):
@@ -3980,6 +4092,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
@@ -4017,6 +4131,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
@@ -4086,6 +4202,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.code):
             query['Code'] = request.code
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
@@ -4125,6 +4243,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.code):
             query['Code'] = request.code
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         req = open_api_models.OpenApiRequest(
@@ -4185,6 +4305,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.data):
             query['Data'] = request.data
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.template_id):
@@ -4217,6 +4339,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.data):
             query['Data'] = request.data
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.template_id):
@@ -4341,6 +4465,8 @@ class Client(OpenApiClient):
             query['AutoScan'] = request.auto_scan
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -4399,6 +4525,8 @@ class Client(OpenApiClient):
             query['AutoScan'] = request.auto_scan
         if not UtilClient.is_unset(request.engine_type):
             query['EngineType'] = request.engine_type
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.id):
             query['Id'] = request.id
         if not UtilClient.is_unset(request.lang):
@@ -4697,6 +4825,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.ModifyEventTypeStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.sub_type_ids):
@@ -4727,6 +4857,8 @@ class Client(OpenApiClient):
     ) -> sddp_20190103_models.ModifyEventTypeStatusResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.sub_type_ids):
@@ -4780,6 +4912,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.report_task_status):
@@ -4819,6 +4953,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.feature_type):
+            query['FeatureType'] = request.feature_type
         if not UtilClient.is_unset(request.lang):
             query['Lang'] = request.lang
         if not UtilClient.is_unset(request.report_task_status):

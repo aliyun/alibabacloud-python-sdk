@@ -9,7 +9,9 @@ class CreateConfigRequest(TeaModel):
         self,
         code: str = None,
         description: str = None,
+        feature_type: int = None,
         lang: str = None,
+        source_ip: str = None,
         value: str = None,
     ):
         # The code of the common configuration item. Valid values:
@@ -20,11 +22,13 @@ class CreateConfigRequest(TeaModel):
         self.code = code
         # The description of the common configuration item.
         self.description = description
+        self.feature_type = feature_type
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Chinese
         # *   **en_us**: English
         self.lang = lang
+        self.source_ip = source_ip
         # The value of the common configuration item. The meaning of this parameter varies with the value of the Code parameter.
         # 
         # *   If you set the Code parameter to **access_failed_cnt**, the Value parameter specifies the maximum number of access attempts allowed when DSC fails to access an unauthorized resource.
@@ -45,8 +49,12 @@ class CreateConfigRequest(TeaModel):
             result['Code'] = self.code
         if self.description is not None:
             result['Description'] = self.description
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         if self.value is not None:
             result['Value'] = self.value
         return result
@@ -57,8 +65,12 @@ class CreateConfigRequest(TeaModel):
             self.code = m.get('Code')
         if m.get('Description') is not None:
             self.description = m.get('Description')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         if m.get('Value') is not None:
             self.value = m.get('Value')
         return self
@@ -152,6 +164,7 @@ class CreateDataLimitRequest(TeaModel):
         enable: int = None,
         engine_type: str = None,
         event_status: int = None,
+        feature_type: int = None,
         lang: str = None,
         log_store_day: int = None,
         ocr_status: int = None,
@@ -161,6 +174,7 @@ class CreateDataLimitRequest(TeaModel):
         resource_type: int = None,
         sampling_size: int = None,
         service_region_id: str = None,
+        source_ip: str = None,
         user_name: str = None,
     ):
         # Specifies whether to enable the security audit feature. Valid values:
@@ -197,6 +211,7 @@ class CreateDataLimitRequest(TeaModel):
         # *   **0**: no
         # *   **1**: yes (default)
         self.event_status = event_status
+        self.feature_type = feature_type
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Chinese
@@ -244,6 +259,7 @@ class CreateDataLimitRequest(TeaModel):
         # *   **cn-shenzhen**: China (Shenzhen)
         # *   **cn-hongkong**: China (Hong Kong)
         self.service_region_id = service_region_id
+        self.source_ip = source_ip
         # The username that is used to access the database.
         self.user_name = user_name
 
@@ -268,6 +284,8 @@ class CreateDataLimitRequest(TeaModel):
             result['EngineType'] = self.engine_type
         if self.event_status is not None:
             result['EventStatus'] = self.event_status
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.log_store_day is not None:
@@ -286,6 +304,8 @@ class CreateDataLimitRequest(TeaModel):
             result['SamplingSize'] = self.sampling_size
         if self.service_region_id is not None:
             result['ServiceRegionId'] = self.service_region_id
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         if self.user_name is not None:
             result['UserName'] = self.user_name
         return result
@@ -304,6 +324,8 @@ class CreateDataLimitRequest(TeaModel):
             self.engine_type = m.get('EngineType')
         if m.get('EventStatus') is not None:
             self.event_status = m.get('EventStatus')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('LogStoreDay') is not None:
@@ -322,6 +344,8 @@ class CreateDataLimitRequest(TeaModel):
             self.sampling_size = m.get('SamplingSize')
         if m.get('ServiceRegionId') is not None:
             self.service_region_id = m.get('ServiceRegionId')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
         return self
@@ -420,6 +444,7 @@ class CreateRuleRequest(TeaModel):
         product_id: int = None,
         risk_level_id: int = None,
         rule_type: int = None,
+        source_ip: str = None,
         stat_express: str = None,
         status: int = None,
         support_form: int = None,
@@ -468,6 +493,7 @@ class CreateRuleRequest(TeaModel):
         # *   **3**: anomalous event detection rule
         # *   **99**: custom rule
         self.rule_type = rule_type
+        self.source_ip = source_ip
         # The statistical expression.
         self.stat_express = stat_express
         # Specifies whether to enable the sensitive data detection rule. Valid values:
@@ -475,6 +501,13 @@ class CreateRuleRequest(TeaModel):
         # *   **1**: yes
         # *   **0**: no
         self.status = status
+        # The type of the data asset. Valid values:
+        # 
+        # *   **0**: all data assets
+        # *   **1**: structured data asset
+        # *   **2**: unstructured data asset
+        # 
+        # > If you set the parameter to 1 or 2, rules that support all data assets and rules that support the queried data asset type are returned.
         self.support_form = support_form
         # The code of the service to which the sensitive data detection rule is applied. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
         self.target = target
@@ -516,6 +549,8 @@ class CreateRuleRequest(TeaModel):
             result['RiskLevelId'] = self.risk_level_id
         if self.rule_type is not None:
             result['RuleType'] = self.rule_type
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         if self.stat_express is not None:
             result['StatExpress'] = self.stat_express
         if self.status is not None:
@@ -552,6 +587,8 @@ class CreateRuleRequest(TeaModel):
             self.risk_level_id = m.get('RiskLevelId')
         if m.get('RuleType') is not None:
             self.rule_type = m.get('RuleType')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         if m.get('StatExpress') is not None:
             self.stat_express = m.get('StatExpress')
         if m.get('Status') is not None:
@@ -648,6 +685,7 @@ class CreateScanTaskRequest(TeaModel):
     def __init__(
         self,
         data_limit_id: int = None,
+        feature_type: int = None,
         interval_day: int = None,
         lang: str = None,
         oss_scan_path: str = None,
@@ -656,11 +694,13 @@ class CreateScanTaskRequest(TeaModel):
         run_minute: int = None,
         scan_range: int = None,
         scan_range_content: str = None,
+        source_ip: str = None,
         task_name: str = None,
         task_user_name: str = None,
     ):
         # The unique ID of the data asset, such as an instance, a database, and a bucket. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the unique ID.
         self.data_limit_id = data_limit_id
+        self.feature_type = feature_type
         # The interval between two consecutive custom scan tasks. Unit: days. Valid values: 1 to 2147483648.
         self.interval_day = interval_day
         # The language of the content within the request and response.
@@ -685,6 +725,7 @@ class CreateScanTaskRequest(TeaModel):
         self.scan_range = scan_range
         # The data to be scanned in a structured data asset. Prefix match, suffix match, and regular expression match are supported.
         self.scan_range_content = scan_range_content
+        self.source_ip = source_ip
         # The name of the scan task.
         self.task_name = task_name
         # The account that is used to create the scan task.
@@ -701,6 +742,8 @@ class CreateScanTaskRequest(TeaModel):
         result = dict()
         if self.data_limit_id is not None:
             result['DataLimitId'] = self.data_limit_id
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.interval_day is not None:
             result['IntervalDay'] = self.interval_day
         if self.lang is not None:
@@ -717,6 +760,8 @@ class CreateScanTaskRequest(TeaModel):
             result['ScanRange'] = self.scan_range
         if self.scan_range_content is not None:
             result['ScanRangeContent'] = self.scan_range_content
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         if self.task_name is not None:
             result['TaskName'] = self.task_name
         if self.task_user_name is not None:
@@ -727,6 +772,8 @@ class CreateScanTaskRequest(TeaModel):
         m = m or dict()
         if m.get('DataLimitId') is not None:
             self.data_limit_id = m.get('DataLimitId')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('IntervalDay') is not None:
             self.interval_day = m.get('IntervalDay')
         if m.get('Lang') is not None:
@@ -743,6 +790,8 @@ class CreateScanTaskRequest(TeaModel):
             self.scan_range = m.get('ScanRange')
         if m.get('ScanRangeContent') is not None:
             self.scan_range_content = m.get('ScanRangeContent')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         if m.get('TaskName') is not None:
             self.task_name = m.get('TaskName')
         if m.get('TaskUserName') is not None:
@@ -832,13 +881,17 @@ class CreateScanTaskResponse(TeaModel):
 class CreateSlrRoleRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
+        source_ip: str = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Simplified Chinese
         # *   **en_us**: English
         self.lang = lang
+        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -849,14 +902,22 @@ class CreateSlrRoleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -945,9 +1006,12 @@ class CreateSlrRoleResponse(TeaModel):
 class DeleteDataLimitRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         id: int = None,
         lang: str = None,
+        source_ip: str = None,
     ):
+        self.feature_type = feature_type
         # The ID of the data asset.
         # 
         # You can call the DescribeDataLimits operation to query the IDs of data assets. The value of the Id response parameter indicates the ID of a data asset.
@@ -957,6 +1021,7 @@ class DeleteDataLimitRequest(TeaModel):
         # *   **zh_cn**: Chinese
         # *   **en_us**: English
         self.lang = lang
+        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -967,18 +1032,26 @@ class DeleteDataLimitRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -1057,13 +1130,17 @@ class DeleteDataLimitResponse(TeaModel):
 class DeleteRuleRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         id: int = None,
         lang: str = None,
+        source_ip: str = None,
     ):
+        self.feature_type = feature_type
         # The ID of the sensitive data detection rule.
         self.id = id
         # The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
         self.lang = lang
+        self.source_ip = source_ip
 
     def validate(self):
         pass
@@ -1074,18 +1151,26 @@ class DeleteRuleRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
             result['Lang'] = self.lang
+        if self.source_ip is not None:
+            result['SourceIp'] = self.source_ip
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+        if m.get('SourceIp') is not None:
+            self.source_ip = m.get('SourceIp')
         return self
 
 
@@ -1165,11 +1250,13 @@ class DescribeCategoryTemplateListRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        feature_type: int = None,
         lang: str = None,
         page_size: int = None,
         usage_scenario: int = None,
     ):
         self.current_page = current_page
+        self.feature_type = feature_type
         self.lang = lang
         self.page_size = page_size
         self.usage_scenario = usage_scenario
@@ -1185,6 +1272,8 @@ class DescribeCategoryTemplateListRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.page_size is not None:
@@ -1197,6 +1286,8 @@ class DescribeCategoryTemplateListRequest(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('PageSize') is not None:
@@ -1400,6 +1491,7 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        feature_type: int = None,
         lang: str = None,
         page_size: int = None,
         risk_level_id: int = None,
@@ -1407,6 +1499,7 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
     ):
         # The number of the page to return. Default value: **1**.
         self.current_page = current_page
+        self.feature_type = feature_type
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Simplified Chinese
@@ -1447,6 +1540,8 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.page_size is not None:
@@ -1461,6 +1556,8 @@ class DescribeCategoryTemplateRuleListRequest(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('PageSize') is not None:
@@ -3118,10 +3215,12 @@ class DescribeDataAssetsResponse(TeaModel):
 class DescribeDataLimitDetailRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         id: int = None,
         lang: str = None,
         network_type: int = None,
     ):
+        self.feature_type = feature_type
         # The unique ID of the data asset that you want to query.
         # 
         # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
@@ -3146,6 +3245,8 @@ class DescribeDataLimitDetailRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
@@ -3156,6 +3257,8 @@ class DescribeDataLimitDetailRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
@@ -3367,10 +3470,12 @@ class DescribeDataLimitDetailResponse(TeaModel):
 class DescribeDataLimitSetRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
         parent_id: str = None,
         resource_type: int = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh_cn**: Simplified Chinese (default)
@@ -3398,6 +3503,8 @@ class DescribeDataLimitSetRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.parent_id is not None:
@@ -3408,6 +3515,8 @@ class DescribeDataLimitSetRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('ParentId') is not None:
@@ -3793,6 +3902,7 @@ class DescribeDataLimitsRequest(TeaModel):
         enable: int = None,
         end_time: int = None,
         engine_type: str = None,
+        feature_type: int = None,
         lang: str = None,
         page_size: int = None,
         parent_id: str = None,
@@ -3829,6 +3939,7 @@ class DescribeDataLimitsRequest(TeaModel):
         self.end_time = end_time
         # The type of the database engine. Valid values include **MySQL**, **SQLServer**, **Oracle**, **PostgreSQL**, and **MongoDB**.
         self.engine_type = engine_type
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese
@@ -3879,6 +3990,8 @@ class DescribeDataLimitsRequest(TeaModel):
             result['EndTime'] = self.end_time
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.page_size is not None:
@@ -3909,6 +4022,8 @@ class DescribeDataLimitsRequest(TeaModel):
             self.end_time = m.get('EndTime')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('PageSize') is not None:
@@ -5091,6 +5206,7 @@ class DescribeDataObjectColumnDetailRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        feature_type: int = None,
         id: int = None,
         lang: str = None,
         page_size: int = None,
@@ -5098,6 +5214,7 @@ class DescribeDataObjectColumnDetailRequest(TeaModel):
         template_id: int = None,
     ):
         self.current_page = current_page
+        self.feature_type = feature_type
         self.id = id
         self.lang = lang
         self.page_size = page_size
@@ -5115,6 +5232,8 @@ class DescribeDataObjectColumnDetailRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
@@ -5131,6 +5250,8 @@ class DescribeDataObjectColumnDetailRequest(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
@@ -5379,6 +5500,7 @@ class DescribeDataObjectColumnDetailV2Request(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        feature_type: int = None,
         id: str = None,
         lang: str = None,
         page_size: int = None,
@@ -5386,6 +5508,7 @@ class DescribeDataObjectColumnDetailV2Request(TeaModel):
         template_id: int = None,
     ):
         self.current_page = current_page
+        self.feature_type = feature_type
         self.id = id
         self.lang = lang
         self.page_size = page_size
@@ -5403,6 +5526,8 @@ class DescribeDataObjectColumnDetailV2Request(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
@@ -5419,6 +5544,8 @@ class DescribeDataObjectColumnDetailV2Request(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
@@ -5668,6 +5795,8 @@ class DescribeDataObjectsRequest(TeaModel):
         self,
         current_page: int = None,
         domain_id: int = None,
+        feature_type: int = None,
+        file_category_code: int = None,
         file_type: int = None,
         instance_id: str = None,
         lang: str = None,
@@ -5683,6 +5812,8 @@ class DescribeDataObjectsRequest(TeaModel):
     ):
         self.current_page = current_page
         self.domain_id = domain_id
+        self.feature_type = feature_type
+        self.file_category_code = file_category_code
         self.file_type = file_type
         self.instance_id = instance_id
         self.lang = lang
@@ -5709,6 +5840,10 @@ class DescribeDataObjectsRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.domain_id is not None:
             result['DomainId'] = self.domain_id
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
+        if self.file_category_code is not None:
+            result['FileCategoryCode'] = self.file_category_code
         if self.file_type is not None:
             result['FileType'] = self.file_type
         if self.instance_id is not None:
@@ -5741,6 +5876,10 @@ class DescribeDataObjectsRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('DomainId') is not None:
             self.domain_id = m.get('DomainId')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
+        if m.get('FileCategoryCode') is not None:
+            self.file_category_code = m.get('FileCategoryCode')
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
         if m.get('InstanceId') is not None:
@@ -5862,6 +6001,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         last_scan_time: int = None,
         model_tags: List[DescribeDataObjectsResponseBodyItemsModelTags] = None,
         name: str = None,
+        object_file_category: str = None,
         object_type: str = None,
         path: str = None,
         product_code: str = None,
@@ -5878,6 +6018,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         self.last_scan_time = last_scan_time
         self.model_tags = model_tags
         self.name = name
+        self.object_file_category = object_file_category
         self.object_type = object_type
         self.path = path
         self.product_code = product_code
@@ -5919,6 +6060,8 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
                 result['ModelTags'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
+        if self.object_file_category is not None:
+            result['ObjectFileCategory'] = self.object_file_category
         if self.object_type is not None:
             result['ObjectType'] = self.object_type
         if self.path is not None:
@@ -5958,6 +6101,8 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
                 self.model_tags.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('ObjectFileCategory') is not None:
+            self.object_file_category = m.get('ObjectFileCategory')
         if m.get('ObjectType') is not None:
             self.object_type = m.get('ObjectType')
         if m.get('Path') is not None:
@@ -6880,11 +7025,13 @@ class DescribeEventDetailResponse(TeaModel):
 class DescribeEventTypesRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
         parent_type_id: int = None,
         resource_id: int = None,
         status: int = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh**: Chinese
@@ -6913,6 +7060,8 @@ class DescribeEventTypesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.parent_type_id is not None:
@@ -6925,6 +7074,8 @@ class DescribeEventTypesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('ParentTypeId') is not None:
@@ -7619,6 +7770,7 @@ class DescribeInstanceSourcesRequest(TeaModel):
         auth_status: int = None,
         current_page: int = None,
         engine_type: str = None,
+        feature_type: int = None,
         instance_id: str = None,
         lang: str = None,
         page_size: int = None,
@@ -7642,6 +7794,7 @@ class DescribeInstanceSourcesRequest(TeaModel):
         self.current_page = current_page
         # The type of the database engine. Valid values: **MySQL, MariaDB, Oracle, PostgreSQL, and SQLServer**.
         self.engine_type = engine_type
+        self.feature_type = feature_type
         # The ID of the instance.
         self.instance_id = instance_id
         # The language of the content within the request and response. Valid values:
@@ -7683,6 +7836,8 @@ class DescribeInstanceSourcesRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.lang is not None:
@@ -7711,6 +7866,8 @@ class DescribeInstanceSourcesRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Lang') is not None:
@@ -8170,7 +8327,17 @@ class DescribeInstancesResponseBodyItemsModelTags(TeaModel):
         id: int = None,
         name: str = None,
     ):
+        # The ID of the tag. Valid values:
+        # 
+        # *   **101**: personal sensitive information
+        # *   **102**: personal information
+        # *   **107**: general information
         self.id = id
+        # The name of the tag. Valid values:
+        # 
+        # *   Personal sensitive information
+        # *   Personal information
+        # *   General information
         self.name = name
 
     def validate(self):
@@ -8221,11 +8388,11 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         tenant_name: str = None,
         total_count: int = None,
     ):
-        # The point in time when the data asset was created. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the data asset was created. The value is a UNIX timestamp. Unit: milliseconds.
         self.creation_time = creation_time
         # The name of the department to which the data asset belongs.
         self.depart_name = depart_name
-        # The unique ID of the data asset.
+        # The unique ID of the data asset in DSC.
         self.id = id
         # The description of the data asset.
         self.instance_description = instance_description
@@ -8234,8 +8401,9 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         # *   **true**: The data asset is secure.
         # *   **false**: The data asset is insecure.
         self.labelsec = labelsec
-        # The point in time when the data asset was last scanned. This value is a UNIX timestamp. Unit: milliseconds.
+        # The time when the data asset was last scanned. The value is a UNIX timestamp. Unit: milliseconds.
         self.last_finish_time = last_finish_time
+        # A list of tags.
         self.model_tags = model_tags
         # The name of the data asset.
         self.name = name
@@ -8243,7 +8411,7 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         self.odps_risk_level_name = odps_risk_level_name
         # The Alibaba Cloud account to which the data asset belongs.
         self.owner = owner
-        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets that DSC can scan to detect sensitive data, see [Supported data assets](~~212906~~).
         self.product_code = product_code
         # The ID of the service to which the data asset belongs.
         self.product_id = product_id
@@ -8252,12 +8420,12 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         # *   **true**: The data asset is being protected.
         # *   **false**: The data asset is not protected.
         self.protection = protection
-        # The sensitivity level of the data asset. A higher sensitivity level indicates that the identified data is more sensitive.
+        # The ID of the sensitivity level for the data asset. A higher sensitivity level ID indicates that the identified data is more sensitive.
         # 
-        # *   **1**: No sensitive data is identified.
+        # *   **1**: No sensitive data is detected.
         # *   **2**: sensitive data at level 1.
         # *   **3**: sensitive data at level 2.
-        # *   **4**: sensitive data at level 3
+        # *   **4**: sensitive data at level 3.
         # *   **5**: sensitive data at level 4.
         # *   **6**: sensitive data at level 5.
         # *   **7**: sensitive data at level 6.
@@ -8272,10 +8440,10 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         self.rule_name = rule_name
         # Indicates whether the data asset contains sensitive data. Valid values:
         # 
-        # *   **true**: yes
-        # *   **false**: no
+        # *   **true**\
+        # *   **false**\
         self.sensitive = sensitive
-        # The total number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the total number of sensitive tables in all databases of the instance.
+        # The number of sensitive data objects in the data asset. For example, if the data asset is an ApsaraDB RDS instance, the value indicates the number of sensitive tables in all databases of the instance.
         self.sensitive_count = sensitive_count
         # The name of the tenant.
         self.tenant_name = tenant_name
@@ -9074,6 +9242,7 @@ class DescribeOssObjectsRequest(TeaModel):
     def __init__(
         self,
         current_page: int = None,
+        file_category_code: int = None,
         instance_id: str = None,
         lang: str = None,
         last_scan_time_end: int = None,
@@ -9087,6 +9256,7 @@ class DescribeOssObjectsRequest(TeaModel):
     ):
         # The page number of the page to return.
         self.current_page = current_page
+        self.file_category_code = file_category_code
         # The ID of the instance to which the OSS object belongs.
         # 
         # > You can call the **DescribeInstances** operation to query the instance ID.
@@ -9132,6 +9302,8 @@ class DescribeOssObjectsRequest(TeaModel):
         result = dict()
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
+        if self.file_category_code is not None:
+            result['FileCategoryCode'] = self.file_category_code
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.lang is not None:
@@ -9158,6 +9330,8 @@ class DescribeOssObjectsRequest(TeaModel):
         m = m or dict()
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
+        if m.get('FileCategoryCode') is not None:
+            self.file_category_code = m.get('FileCategoryCode')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('Lang') is not None:
@@ -9235,6 +9409,8 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
         bucket_name: str = None,
         category: int = None,
         category_name: str = None,
+        file_category_code: int = None,
+        file_category_name: str = None,
         file_id: str = None,
         id: str = None,
         instance_id: int = None,
@@ -9253,6 +9429,8 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
         self.category = category
         # The file type of the OSS object.
         self.category_name = category_name
+        self.file_category_code = file_category_code
+        self.file_category_name = file_category_name
         # The file ID of the OSS object.
         self.file_id = file_id
         # The ID of the OSS object.
@@ -9300,6 +9478,10 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
             result['Category'] = self.category
         if self.category_name is not None:
             result['CategoryName'] = self.category_name
+        if self.file_category_code is not None:
+            result['FileCategoryCode'] = self.file_category_code
+        if self.file_category_name is not None:
+            result['FileCategoryName'] = self.file_category_name
         if self.file_id is not None:
             result['FileId'] = self.file_id
         if self.id is not None:
@@ -9334,6 +9516,10 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
             self.category = m.get('Category')
         if m.get('CategoryName') is not None:
             self.category_name = m.get('CategoryName')
+        if m.get('FileCategoryCode') is not None:
+            self.file_category_code = m.get('FileCategoryCode')
+        if m.get('FileCategoryName') is not None:
+            self.file_category_name = m.get('FileCategoryName')
         if m.get('FileId') is not None:
             self.file_id = m.get('FileId')
         if m.get('Id') is not None:
@@ -9773,9 +9959,11 @@ class DescribePackagesResponse(TeaModel):
 class DescribeRiskLevelsRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
         template_id: int = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
         # *   zh_cn: Chinese (default)
@@ -9793,6 +9981,8 @@ class DescribeRiskLevelsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.template_id is not None:
@@ -9801,6 +9991,8 @@ class DescribeRiskLevelsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('TemplateId') is not None:
@@ -9979,6 +10171,7 @@ class DescribeRulesRequest(TeaModel):
         content_category: int = None,
         current_page: int = None,
         custom_type: int = None,
+        feature_type: int = None,
         group_id: str = None,
         keyword_compatible: bool = None,
         lang: str = None,
@@ -10007,6 +10200,8 @@ class DescribeRulesRequest(TeaModel):
         # *   **0**: built-in rule
         # *   **1**: custom rule
         self.custom_type = custom_type
+        # This parameter is deprecated.
+        self.feature_type = feature_type
         # The parent group type of the rule.
         self.group_id = group_id
         # Specifies whether to allow earlier versions of request parameters to support keywords that are supported in later versions of request parameters. Valid values:
@@ -10086,6 +10281,8 @@ class DescribeRulesRequest(TeaModel):
             result['CurrentPage'] = self.current_page
         if self.custom_type is not None:
             result['CustomType'] = self.custom_type
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.group_id is not None:
             result['GroupId'] = self.group_id
         if self.keyword_compatible is not None:
@@ -10124,6 +10321,8 @@ class DescribeRulesRequest(TeaModel):
             self.current_page = m.get('CurrentPage')
         if m.get('CustomType') is not None:
             self.custom_type = m.get('CustomType')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
         if m.get('KeywordCompatible') is not None:
@@ -10191,6 +10390,8 @@ class DescribeRulesResponseBodyItems(TeaModel):
         # The name of the content type of the sensitive data detection rule.
         self.category_name = category_name
         # The content in the sensitive data detection rule.
+        # 
+        # >  A built-in detection rule whose CustomType is 0 does not return the content of the rule.
         self.content = content
         # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
@@ -10238,7 +10439,7 @@ class DescribeRulesResponseBodyItems(TeaModel):
         self.risk_level_id = risk_level_id
         # The sensitivity level of data that hits the sensitive data detection rule. Valid values:
         # 
-        # *   **N/A**: No sensitive data is detected.
+        # *   **N/A**: indicates that no sensitive data is detected.
         # *   **S1**: indicates the low sensitivity level.
         # *   **S2**: indicates the medium sensitivity level.
         # *   **S3**: indicates the high sensitivity level.
@@ -10251,12 +10452,17 @@ class DescribeRulesResponseBodyItems(TeaModel):
         # *   **0**: disabled
         # *   **1**: enabled
         self.status = status
+        # The data asset type that is supported by the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: all data assets
+        # *   **1**: structured data assets
+        # *   **2**: unstructured data assets
         self.support_form = support_form
         # The name of the service to which the data asset belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.target = target
         # The ID of the account that is used to create the sensitive data detection rule.
         self.user_id = user_id
-        # The severity level of the alert. Valid values:
+        # The severity level. Valid values:
         # 
         # *   **1**: low
         # *   **2**: medium
@@ -10927,9 +11133,11 @@ class DescribeTablesResponse(TeaModel):
 class DescribeTemplateAllRulesRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
         template_id: int = None,
     ):
+        self.feature_type = feature_type
         self.lang = lang
         self.template_id = template_id
 
@@ -10942,6 +11150,8 @@ class DescribeTemplateAllRulesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.template_id is not None:
@@ -10950,6 +11160,8 @@ class DescribeTemplateAllRulesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('TemplateId') is not None:
@@ -11078,8 +11290,10 @@ class DescribeTemplateAllRulesResponse(TeaModel):
 class DescribeUserStatusRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh_cn**: Simplified Chinese (default)
@@ -11095,12 +11309,16 @@ class DescribeUserStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         return self
@@ -11120,11 +11338,13 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         instance_total_count: int = None,
         lab_status: int = None,
         oss_total_size: int = None,
+        protection_days: int = None,
         purchased: bool = None,
         release_days: int = None,
         release_time: int = None,
         remain_days: int = None,
         trail: bool = None,
+        use_agent_audit: bool = None,
         use_instance_num: int = None,
         use_oss_size: int = None,
     ):
@@ -11166,6 +11386,7 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         # *   **0**: no
         self.lab_status = lab_status
         self.oss_total_size = oss_total_size
+        self.protection_days = protection_days
         # Indicates whether DSC is purchased. Valid values:
         # 
         # *   **true**: yes
@@ -11182,6 +11403,7 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         self.trail = trail
+        self.use_agent_audit = use_agent_audit
         # The number of instances that are used.
         self.use_instance_num = use_instance_num
         # The occupied space of the Object Storage Service (OSS) bucket. Unit: bytes.
@@ -11218,6 +11440,8 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             result['LabStatus'] = self.lab_status
         if self.oss_total_size is not None:
             result['OssTotalSize'] = self.oss_total_size
+        if self.protection_days is not None:
+            result['ProtectionDays'] = self.protection_days
         if self.purchased is not None:
             result['Purchased'] = self.purchased
         if self.release_days is not None:
@@ -11228,6 +11452,8 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             result['RemainDays'] = self.remain_days
         if self.trail is not None:
             result['Trail'] = self.trail
+        if self.use_agent_audit is not None:
+            result['UseAgentAudit'] = self.use_agent_audit
         if self.use_instance_num is not None:
             result['UseInstanceNum'] = self.use_instance_num
         if self.use_oss_size is not None:
@@ -11258,6 +11484,8 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             self.lab_status = m.get('LabStatus')
         if m.get('OssTotalSize') is not None:
             self.oss_total_size = m.get('OssTotalSize')
+        if m.get('ProtectionDays') is not None:
+            self.protection_days = m.get('ProtectionDays')
         if m.get('Purchased') is not None:
             self.purchased = m.get('Purchased')
         if m.get('ReleaseDays') is not None:
@@ -11268,6 +11496,8 @@ class DescribeUserStatusResponseBodyUserStatus(TeaModel):
             self.remain_days = m.get('RemainDays')
         if m.get('Trail') is not None:
             self.trail = m.get('Trail')
+        if m.get('UseAgentAudit') is not None:
+            self.use_agent_audit = m.get('UseAgentAudit')
         if m.get('UseInstanceNum') is not None:
             self.use_instance_num = m.get('UseInstanceNum')
         if m.get('UseOssSize') is not None:
@@ -11360,10 +11590,12 @@ class DisableUserConfigRequest(TeaModel):
     def __init__(
         self,
         code: str = None,
+        feature_type: int = None,
         lang: str = None,
     ):
         # The code of the configuration item. You can call the [DescribeConfigs](~~DescribeConfigs~~) operation to obtain the code of the configuration item.
         self.code = code
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values:
         # 
         # *   **zh_cn**: Chinese (default)
@@ -11381,6 +11613,8 @@ class DisableUserConfigRequest(TeaModel):
         result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         return result
@@ -11389,6 +11623,8 @@ class DisableUserConfigRequest(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         return self
@@ -11470,6 +11706,7 @@ class ExecDatamaskRequest(TeaModel):
     def __init__(
         self,
         data: str = None,
+        feature_type: int = None,
         lang: str = None,
         template_id: int = None,
     ):
@@ -11479,6 +11716,7 @@ class ExecDatamaskRequest(TeaModel):
         # *   **dataList**: the data that needs to be de-identified.
         # *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
         self.data = data
+        self.feature_type = feature_type
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Simplified Chinese
@@ -11501,6 +11739,8 @@ class ExecDatamaskRequest(TeaModel):
         result = dict()
         if self.data is not None:
             result['Data'] = self.data
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.template_id is not None:
@@ -11511,6 +11751,8 @@ class ExecDatamaskRequest(TeaModel):
         m = m or dict()
         if m.get('Data') is not None:
             self.data = m.get('Data')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('TemplateId') is not None:
@@ -11719,6 +11961,7 @@ class ModifyDataLimitRequest(TeaModel):
         audit_status: int = None,
         auto_scan: int = None,
         engine_type: str = None,
+        feature_type: int = None,
         id: int = None,
         lang: str = None,
         log_store_day: int = None,
@@ -11750,6 +11993,7 @@ class ModifyDataLimitRequest(TeaModel):
         # *   **MySQL**\
         # *   **SQLServer**\
         self.engine_type = engine_type
+        self.feature_type = feature_type
         # The unique ID of the data asset for which you want to modify configuration items.
         # 
         # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
@@ -11823,6 +12067,8 @@ class ModifyDataLimitRequest(TeaModel):
             result['AutoScan'] = self.auto_scan
         if self.engine_type is not None:
             result['EngineType'] = self.engine_type
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.id is not None:
             result['Id'] = self.id
         if self.lang is not None:
@@ -11859,6 +12105,8 @@ class ModifyDataLimitRequest(TeaModel):
             self.auto_scan = m.get('AutoScan')
         if m.get('EngineType') is not None:
             self.engine_type = m.get('EngineType')
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Id') is not None:
             self.id = m.get('Id')
         if m.get('Lang') is not None:
@@ -12231,9 +12479,11 @@ class ModifyEventStatusResponse(TeaModel):
 class ModifyEventTypeStatusRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
         sub_type_ids: str = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
         self.lang = lang
         # The ID of the anomalous event subtype. Separate multiple IDs with commas (,).
@@ -12250,6 +12500,8 @@ class ModifyEventTypeStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.sub_type_ids is not None:
@@ -12258,6 +12510,8 @@ class ModifyEventTypeStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('SubTypeIds') is not None:
@@ -12340,9 +12594,11 @@ class ModifyEventTypeStatusResponse(TeaModel):
 class ModifyReportTaskStatusRequest(TeaModel):
     def __init__(
         self,
+        feature_type: int = None,
         lang: str = None,
         report_task_status: int = None,
     ):
+        self.feature_type = feature_type
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
         # *   **zh_cn**: Simplified Chinese
@@ -12365,6 +12621,8 @@ class ModifyReportTaskStatusRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.feature_type is not None:
+            result['FeatureType'] = self.feature_type
         if self.lang is not None:
             result['Lang'] = self.lang
         if self.report_task_status is not None:
@@ -12373,6 +12631,8 @@ class ModifyReportTaskStatusRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FeatureType') is not None:
+            self.feature_type = m.get('FeatureType')
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
         if m.get('ReportTaskStatus') is not None:
@@ -12512,6 +12772,11 @@ class ModifyRuleRequest(TeaModel):
         # *   **2**: audit rule
         # *   **3**: anomalous event detection rule
         self.rule_type = rule_type
+        # The data assets supported by the sensitive data detection rule. Valid values:
+        # 
+        # *   **0**: all data assets
+        # *   **1**: structured data assets
+        # *   **2**: unstructured data assets
         self.support_form = support_form
         # The risk level of the alert that is triggered by the sensitive data detection rule. Valid values:
         # 
