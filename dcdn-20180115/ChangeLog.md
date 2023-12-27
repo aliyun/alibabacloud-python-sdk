@@ -1,3 +1,6 @@
+2023-12-27 Version: 2.1.0
+- Generated python 2018-01-15 for dcdn.
+
 2023-12-08 Version: 2.0.0
 - Generated python 2018-01-15 for dcdn.
 
