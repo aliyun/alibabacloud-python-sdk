@@ -6158,6 +6158,8 @@ class Client(OpenApiClient):
             query['DBType'] = request.dbtype
         if not UtilClient.is_unset(request.dbversion):
             query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.expired):
             query['Expired'] = request.expired
         if not UtilClient.is_unset(request.owner_account):
@@ -6224,6 +6226,8 @@ class Client(OpenApiClient):
             query['DBType'] = request.dbtype
         if not UtilClient.is_unset(request.dbversion):
             query['DBVersion'] = request.dbversion
+        if not UtilClient.is_unset(request.describe_type):
+            query['DescribeType'] = request.describe_type
         if not UtilClient.is_unset(request.expired):
             query['Expired'] = request.expired
         if not UtilClient.is_unset(request.owner_account):
@@ -6956,6 +6960,92 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbproxy_performance_with_options_async(request, runtime)
+
+    def describe_das_config_with_options(
+        self,
+        request: polardb_20170801_models.DescribeDasConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDasConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDasConfig',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDasConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_das_config_with_options_async(
+        self,
+        request: polardb_20170801_models.DescribeDasConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> polardb_20170801_models.DescribeDasConfigResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not UtilClient.is_unset(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDasConfig',
+            version='2017-08-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            polardb_20170801_models.DescribeDasConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_das_config(
+        self,
+        request: polardb_20170801_models.DescribeDasConfigRequest,
+    ) -> polardb_20170801_models.DescribeDasConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_das_config_with_options(request, runtime)
+
+    async def describe_das_config_async(
+        self,
+        request: polardb_20170801_models.DescribeDasConfigRequest,
+    ) -> polardb_20170801_models.DescribeDasConfigResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_das_config_with_options_async(request, runtime)
 
     def describe_databases_with_options(
         self,
@@ -9768,6 +9858,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.roll_back_for_disaster):
+            query['RollBackForDisaster'] = request.roll_back_for_disaster
         if not UtilClient.is_unset(request.target_dbnode_id):
             query['TargetDBNodeId'] = request.target_dbnode_id
         req = open_api_models.OpenApiRequest(
@@ -9808,6 +9900,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.roll_back_for_disaster):
+            query['RollBackForDisaster'] = request.roll_back_for_disaster
         if not UtilClient.is_unset(request.target_dbnode_id):
             query['TargetDBNodeId'] = request.target_dbnode_id
         req = open_api_models.OpenApiRequest(
@@ -10636,6 +10730,8 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ModifyDBClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.compress_storage):
+            query['CompressStorage'] = request.compress_storage
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.data_sync_mode):
@@ -10682,6 +10778,8 @@ class Client(OpenApiClient):
     ) -> polardb_20170801_models.ModifyDBClusterResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.compress_storage):
+            query['CompressStorage'] = request.compress_storage
         if not UtilClient.is_unset(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not UtilClient.is_unset(request.data_sync_mode):
