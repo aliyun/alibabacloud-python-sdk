@@ -57,6 +57,244 @@ class DemoCategory(TeaModel):
         return self
 
 
+class ForwardInfo(TeaModel):
+    def __init__(
+        self,
+        container_name: str = None,
+        eip_allocation_id: str = None,
+        enable: bool = None,
+        nat_gateway_id: str = None,
+        port: str = None,
+        sshpublic_key: str = None,
+    ):
+        self.container_name = container_name
+        self.eip_allocation_id = eip_allocation_id
+        self.enable = enable
+        self.nat_gateway_id = nat_gateway_id
+        self.port = port
+        self.sshpublic_key = sshpublic_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.container_name is not None:
+            result['ContainerName'] = self.container_name
+        if self.eip_allocation_id is not None:
+            result['EipAllocationId'] = self.eip_allocation_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.sshpublic_key is not None:
+            result['SSHPublicKey'] = self.sshpublic_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContainerName') is not None:
+            self.container_name = m.get('ContainerName')
+        if m.get('EipAllocationId') is not None:
+            self.eip_allocation_id = m.get('EipAllocationId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('SSHPublicKey') is not None:
+            self.sshpublic_key = m.get('SSHPublicKey')
+        return self
+
+
+class ForwardInfoResponseConnectInfoInternet(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        port: str = None,
+    ):
+        self.endpoint = endpoint
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class ForwardInfoResponseConnectInfoIntranet(TeaModel):
+    def __init__(
+        self,
+        endpoint: str = None,
+        port: str = None,
+    ):
+        self.endpoint = endpoint
+        self.port = port
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.endpoint is not None:
+            result['Endpoint'] = self.endpoint
+        if self.port is not None:
+            result['Port'] = self.port
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Endpoint') is not None:
+            self.endpoint = m.get('Endpoint')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        return self
+
+
+class ForwardInfoResponseConnectInfo(TeaModel):
+    def __init__(
+        self,
+        internet: ForwardInfoResponseConnectInfoInternet = None,
+        intranet: ForwardInfoResponseConnectInfoIntranet = None,
+        message: str = None,
+        phase: str = None,
+    ):
+        self.internet = internet
+        self.intranet = intranet
+        self.message = message
+        self.phase = phase
+
+    def validate(self):
+        if self.internet:
+            self.internet.validate()
+        if self.intranet:
+            self.intranet.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.internet is not None:
+            result['Internet'] = self.internet.to_map()
+        if self.intranet is not None:
+            result['Intranet'] = self.intranet.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Internet') is not None:
+            temp_model = ForwardInfoResponseConnectInfoInternet()
+            self.internet = temp_model.from_map(m['Internet'])
+        if m.get('Intranet') is not None:
+            temp_model = ForwardInfoResponseConnectInfoIntranet()
+            self.intranet = temp_model.from_map(m['Intranet'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        return self
+
+
+class ForwardInfoResponse(TeaModel):
+    def __init__(
+        self,
+        connect_info: ForwardInfoResponseConnectInfo = None,
+        container_name: str = None,
+        eip_allocation_id: str = None,
+        enable: bool = None,
+        nat_gateway_id: str = None,
+        port: str = None,
+        sshpublic_key: str = None,
+    ):
+        self.connect_info = connect_info
+        self.container_name = container_name
+        self.eip_allocation_id = eip_allocation_id
+        self.enable = enable
+        self.nat_gateway_id = nat_gateway_id
+        self.port = port
+        self.sshpublic_key = sshpublic_key
+
+    def validate(self):
+        if self.connect_info:
+            self.connect_info.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.connect_info is not None:
+            result['ConnectInfo'] = self.connect_info.to_map()
+        if self.container_name is not None:
+            result['ContainerName'] = self.container_name
+        if self.eip_allocation_id is not None:
+            result['EipAllocationId'] = self.eip_allocation_id
+        if self.enable is not None:
+            result['Enable'] = self.enable
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.sshpublic_key is not None:
+            result['SSHPublicKey'] = self.sshpublic_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConnectInfo') is not None:
+            temp_model = ForwardInfoResponseConnectInfo()
+            self.connect_info = temp_model.from_map(m['ConnectInfo'])
+        if m.get('ContainerName') is not None:
+            self.container_name = m.get('ContainerName')
+        if m.get('EipAllocationId') is not None:
+            self.eip_allocation_id = m.get('EipAllocationId')
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('SSHPublicKey') is not None:
+            self.sshpublic_key = m.get('SSHPublicKey')
+        return self
+
+
 class CreateIdleInstanceCullerRequest(TeaModel):
     def __init__(
         self,
@@ -358,18 +596,23 @@ class CreateInstanceRequestUserVpc(TeaModel):
         self,
         default_route: str = None,
         extended_cidrs: List[str] = None,
+        forward_infos: List[ForwardInfo] = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         self.default_route = default_route
         self.extended_cidrs = extended_cidrs
+        self.forward_infos = forward_infos
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.forward_infos:
+            for k in self.forward_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -381,6 +624,10 @@ class CreateInstanceRequestUserVpc(TeaModel):
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
+        result['ForwardInfos'] = []
+        if self.forward_infos is not None:
+            for k in self.forward_infos:
+                result['ForwardInfos'].append(k.to_map() if k else None)
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -395,6 +642,11 @@ class CreateInstanceRequestUserVpc(TeaModel):
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
+        self.forward_infos = []
+        if m.get('ForwardInfos') is not None:
+            for k in m.get('ForwardInfos'):
+                temp_model = ForwardInfo()
+                self.forward_infos.append(temp_model.from_map(k))
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -410,6 +662,7 @@ class CreateInstanceRequest(TeaModel):
         accessibility: str = None,
         cloud_disks: List[CreateInstanceRequestCloudDisks] = None,
         datasets: List[CreateInstanceRequestDatasets] = None,
+        driver: str = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         image_id: str = None,
@@ -427,6 +680,7 @@ class CreateInstanceRequest(TeaModel):
         self.accessibility = accessibility
         self.cloud_disks = cloud_disks
         self.datasets = datasets
+        self.driver = driver
         self.ecs_spec = ecs_spec
         self.environment_variables = environment_variables
         self.image_id = image_id
@@ -475,6 +729,8 @@ class CreateInstanceRequest(TeaModel):
         if self.datasets is not None:
             for k in self.datasets:
                 result['Datasets'].append(k.to_map() if k else None)
+        if self.driver is not None:
+            result['Driver'] = self.driver
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
@@ -519,6 +775,8 @@ class CreateInstanceRequest(TeaModel):
             for k in m.get('Datasets'):
                 temp_model = CreateInstanceRequestDatasets()
                 self.datasets.append(temp_model.from_map(k))
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
@@ -824,13 +1082,17 @@ class CreateInstanceSnapshotRequestLabels(TeaModel):
 class CreateInstanceSnapshotRequest(TeaModel):
     def __init__(
         self,
+        exclude_paths: List[str] = None,
         image_url: str = None,
         labels: List[CreateInstanceSnapshotRequestLabels] = None,
+        overwrite: bool = None,
         snapshot_description: str = None,
         snapshot_name: str = None,
     ):
+        self.exclude_paths = exclude_paths
         self.image_url = image_url
         self.labels = labels
+        self.overwrite = overwrite
         self.snapshot_description = snapshot_description
         self.snapshot_name = snapshot_name
 
@@ -846,12 +1108,16 @@ class CreateInstanceSnapshotRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_paths is not None:
+            result['ExcludePaths'] = self.exclude_paths
         if self.image_url is not None:
             result['ImageUrl'] = self.image_url
         result['Labels'] = []
         if self.labels is not None:
             for k in self.labels:
                 result['Labels'].append(k.to_map() if k else None)
+        if self.overwrite is not None:
+            result['Overwrite'] = self.overwrite
         if self.snapshot_description is not None:
             result['SnapshotDescription'] = self.snapshot_description
         if self.snapshot_name is not None:
@@ -860,6 +1126,8 @@ class CreateInstanceSnapshotRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExcludePaths') is not None:
+            self.exclude_paths = m.get('ExcludePaths')
         if m.get('ImageUrl') is not None:
             self.image_url = m.get('ImageUrl')
         self.labels = []
@@ -867,6 +1135,8 @@ class CreateInstanceSnapshotRequest(TeaModel):
             for k in m.get('Labels'):
                 temp_model = CreateInstanceSnapshotRequestLabels()
                 self.labels.append(temp_model.from_map(k))
+        if m.get('Overwrite') is not None:
+            self.overwrite = m.get('Overwrite')
         if m.get('SnapshotDescription') is not None:
             self.snapshot_description = m.get('SnapshotDescription')
         if m.get('SnapshotName') is not None:
@@ -1935,19 +2205,24 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
         self,
         default_route: str = None,
         extended_cidrs: List[str] = None,
+        forward_infos: List[ForwardInfoResponse] = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         self.default_route = default_route
         self.extended_cidrs = extended_cidrs
+        self.forward_infos = forward_infos
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         # Vpc Id。
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.forward_infos:
+            for k in self.forward_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1959,6 +2234,10 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
+        result['ForwardInfos'] = []
+        if self.forward_infos is not None:
+            for k in self.forward_infos:
+                result['ForwardInfos'].append(k.to_map() if k else None)
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -1973,6 +2252,11 @@ class GetInstanceResponseBodyUserVpc(TeaModel):
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
+        self.forward_infos = []
+        if m.get('ForwardInfos') is not None:
+            for k in m.get('ForwardInfos'):
+                temp_model = ForwardInfoResponse()
+                self.forward_infos.append(temp_model.from_map(k))
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -1991,6 +2275,7 @@ class GetInstanceResponseBody(TeaModel):
         cloud_disks: List[GetInstanceResponseBodyCloudDisks] = None,
         code: str = None,
         datasets: List[GetInstanceResponseBodyDatasets] = None,
+        driver: str = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         gmt_create_time: str = None,
@@ -2034,6 +2319,7 @@ class GetInstanceResponseBody(TeaModel):
         self.cloud_disks = cloud_disks
         self.code = code
         self.datasets = datasets
+        self.driver = driver
         self.ecs_spec = ecs_spec
         self.environment_variables = environment_variables
         self.gmt_create_time = gmt_create_time
@@ -2123,6 +2409,8 @@ class GetInstanceResponseBody(TeaModel):
         if self.datasets is not None:
             for k in self.datasets:
                 result['Datasets'].append(k.to_map() if k else None)
+        if self.driver is not None:
+            result['Driver'] = self.driver
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
@@ -2221,6 +2509,8 @@ class GetInstanceResponseBody(TeaModel):
             for k in m.get('Datasets'):
                 temp_model = GetInstanceResponseBodyDatasets()
                 self.datasets.append(temp_model.from_map(k))
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
@@ -2710,40 +3000,14 @@ class GetInstanceShutdownTimerResponse(TeaModel):
         return self
 
 
-class GetInstanceSnapshotResponseBody(TeaModel):
+class GetInstanceSnapshotResponseBodyLabels(TeaModel):
     def __init__(
         self,
-        code: str = None,
-        gmt_create_time: str = None,
-        gmt_modified_time: str = None,
-        http_status_code: int = None,
-        image_id: str = None,
-        image_url: str = None,
-        instance_id: str = None,
-        message: str = None,
-        reason_code: str = None,
-        reason_message: str = None,
-        request_id: str = None,
-        snapshot_id: str = None,
-        snapshot_name: str = None,
-        status: str = None,
-        success: bool = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.code = code
-        self.gmt_create_time = gmt_create_time
-        self.gmt_modified_time = gmt_modified_time
-        self.http_status_code = http_status_code
-        self.image_id = image_id
-        self.image_url = image_url
-        self.instance_id = instance_id
-        self.message = message
-        self.reason_code = reason_code
-        self.reason_message = reason_message
-        self.request_id = request_id
-        self.snapshot_id = snapshot_id
-        self.snapshot_name = snapshot_name
-        self.status = status
-        self.success = success
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -2754,8 +3018,76 @@ class GetInstanceSnapshotResponseBody(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetInstanceSnapshotResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        exclude_paths: List[str] = None,
+        gmt_create_time: str = None,
+        gmt_modified_time: str = None,
+        http_status_code: int = None,
+        image_id: str = None,
+        image_url: str = None,
+        instance_id: str = None,
+        labels: List[GetInstanceSnapshotResponseBodyLabels] = None,
+        message: str = None,
+        reason_code: str = None,
+        reason_message: str = None,
+        request_id: str = None,
+        snapshot_id: str = None,
+        snapshot_name: str = None,
+        status: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.exclude_paths = exclude_paths
+        self.gmt_create_time = gmt_create_time
+        self.gmt_modified_time = gmt_modified_time
+        self.http_status_code = http_status_code
+        self.image_id = image_id
+        self.image_url = image_url
+        self.instance_id = instance_id
+        self.labels = labels
+        self.message = message
+        self.reason_code = reason_code
+        self.reason_message = reason_message
+        self.request_id = request_id
+        self.snapshot_id = snapshot_id
+        self.snapshot_name = snapshot_name
+        self.status = status
+        self.success = success
+
+    def validate(self):
+        if self.labels:
+            for k in self.labels:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.code is not None:
             result['Code'] = self.code
+        if self.exclude_paths is not None:
+            result['ExcludePaths'] = self.exclude_paths
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
@@ -2768,6 +3100,10 @@ class GetInstanceSnapshotResponseBody(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        result['Labels'] = []
+        if self.labels is not None:
+            for k in self.labels:
+                result['Labels'].append(k.to_map() if k else None)
         if self.message is not None:
             result['Message'] = self.message
         if self.reason_code is not None:
@@ -2790,6 +3126,8 @@ class GetInstanceSnapshotResponseBody(TeaModel):
         m = m or dict()
         if m.get('Code') is not None:
             self.code = m.get('Code')
+        if m.get('ExcludePaths') is not None:
+            self.exclude_paths = m.get('ExcludePaths')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
@@ -2802,6 +3140,11 @@ class GetInstanceSnapshotResponseBody(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        self.labels = []
+        if m.get('Labels') is not None:
+            for k in m.get('Labels'):
+                temp_model = GetInstanceSnapshotResponseBodyLabels()
+                self.labels.append(temp_model.from_map(k))
         if m.get('Message') is not None:
             self.message = m.get('Message')
         if m.get('ReasonCode') is not None:
@@ -2999,7 +3342,7 @@ class GetLifecycleResponseBody(TeaModel):
                 l1 = []
                 for k1 in k:
                     l1.append(k1.to_map() if k1 else None)
-                result['lifecycle'].append(l1)
+                result['Lifecycle'].append(l1)
         if self.message is not None:
             result['Message'] = self.message
         if self.request_id is not None:
@@ -3946,6 +4289,7 @@ class ListInstanceSnapshotResponseBodySnapshotsLabels(TeaModel):
 class ListInstanceSnapshotResponseBodySnapshots(TeaModel):
     def __init__(
         self,
+        exclude_paths: List[str] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         image_id: str = None,
@@ -3958,6 +4302,7 @@ class ListInstanceSnapshotResponseBodySnapshots(TeaModel):
         snapshot_name: str = None,
         status: str = None,
     ):
+        self.exclude_paths = exclude_paths
         self.gmt_create_time = gmt_create_time
         self.gmt_modified_time = gmt_modified_time
         self.image_id = image_id
@@ -3982,6 +4327,8 @@ class ListInstanceSnapshotResponseBodySnapshots(TeaModel):
             return _map
 
         result = dict()
+        if self.exclude_paths is not None:
+            result['ExcludePaths'] = self.exclude_paths
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
         if self.gmt_modified_time is not None:
@@ -4010,6 +4357,8 @@ class ListInstanceSnapshotResponseBodySnapshots(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExcludePaths') is not None:
+            self.exclude_paths = m.get('ExcludePaths')
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')
         if m.get('GmtModifiedTime') is not None:
@@ -4793,18 +5142,23 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
         self,
         default_route: str = None,
         extended_cidrs: List[str] = None,
+        forward_infos: List[ForwardInfoResponse] = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         self.default_route = default_route
         self.extended_cidrs = extended_cidrs
+        self.forward_infos = forward_infos
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.forward_infos:
+            for k in self.forward_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4816,6 +5170,10 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
+        result['ForwardInfos'] = []
+        if self.forward_infos is not None:
+            for k in self.forward_infos:
+                result['ForwardInfos'].append(k.to_map() if k else None)
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -4830,6 +5188,11 @@ class ListInstancesResponseBodyInstancesUserVpc(TeaModel):
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
+        self.forward_infos = []
+        if m.get('ForwardInfos') is not None:
+            for k in m.get('ForwardInfos'):
+                temp_model = ForwardInfoResponse()
+                self.forward_infos.append(temp_model.from_map(k))
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -4847,6 +5210,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         accumulated_running_time_in_ms: int = None,
         cloud_disks: List[ListInstancesResponseBodyInstancesCloudDisks] = None,
         datasets: List[ListInstancesResponseBodyInstancesDatasets] = None,
+        driver: str = None,
         ecs_spec: str = None,
         environment_variables: Dict[str, str] = None,
         gmt_create_time: str = None,
@@ -4885,6 +5249,7 @@ class ListInstancesResponseBodyInstances(TeaModel):
         self.accumulated_running_time_in_ms = accumulated_running_time_in_ms
         self.cloud_disks = cloud_disks
         self.datasets = datasets
+        self.driver = driver
         self.ecs_spec = ecs_spec
         self.environment_variables = environment_variables
         self.gmt_create_time = gmt_create_time
@@ -4968,6 +5333,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
         if self.datasets is not None:
             for k in self.datasets:
                 result['Datasets'].append(k.to_map() if k else None)
+        if self.driver is not None:
+            result['Driver'] = self.driver
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.environment_variables is not None:
@@ -5056,6 +5423,8 @@ class ListInstancesResponseBodyInstances(TeaModel):
             for k in m.get('Datasets'):
                 temp_model = ListInstancesResponseBodyInstancesDatasets()
                 self.datasets.append(temp_model.from_map(k))
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('EnvironmentVariables') is not None:
@@ -5567,18 +5936,23 @@ class UpdateInstanceRequestUserVpc(TeaModel):
         self,
         default_route: str = None,
         extended_cidrs: List[str] = None,
+        forward_infos: List[ForwardInfo] = None,
         security_group_id: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
         self.default_route = default_route
         self.extended_cidrs = extended_cidrs
+        self.forward_infos = forward_infos
         self.security_group_id = security_group_id
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.forward_infos:
+            for k in self.forward_infos:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5590,6 +5964,10 @@ class UpdateInstanceRequestUserVpc(TeaModel):
             result['DefaultRoute'] = self.default_route
         if self.extended_cidrs is not None:
             result['ExtendedCIDRs'] = self.extended_cidrs
+        result['ForwardInfos'] = []
+        if self.forward_infos is not None:
+            for k in self.forward_infos:
+                result['ForwardInfos'].append(k.to_map() if k else None)
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
         if self.v_switch_id is not None:
@@ -5604,6 +5982,11 @@ class UpdateInstanceRequestUserVpc(TeaModel):
             self.default_route = m.get('DefaultRoute')
         if m.get('ExtendedCIDRs') is not None:
             self.extended_cidrs = m.get('ExtendedCIDRs')
+        self.forward_infos = []
+        if m.get('ForwardInfos') is not None:
+            for k in m.get('ForwardInfos'):
+                temp_model = ForwardInfo()
+                self.forward_infos.append(temp_model.from_map(k))
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
         if m.get('VSwitchId') is not None:
@@ -5619,11 +6002,14 @@ class UpdateInstanceRequest(TeaModel):
         accessibility: str = None,
         datasets: List[UpdateInstanceRequestDatasets] = None,
         disassociate_datasets: bool = None,
+        disassociate_driver: bool = None,
         disassociate_vpc: bool = None,
+        driver: str = None,
         ecs_spec: str = None,
         image_id: str = None,
         image_url: str = None,
         instance_name: str = None,
+        priority: int = None,
         requested_resource: UpdateInstanceRequestRequestedResource = None,
         user_id: str = None,
         user_vpc: UpdateInstanceRequestUserVpc = None,
@@ -5632,11 +6018,14 @@ class UpdateInstanceRequest(TeaModel):
         self.accessibility = accessibility
         self.datasets = datasets
         self.disassociate_datasets = disassociate_datasets
+        self.disassociate_driver = disassociate_driver
         self.disassociate_vpc = disassociate_vpc
+        self.driver = driver
         self.ecs_spec = ecs_spec
         self.image_id = image_id
         self.image_url = image_url
         self.instance_name = instance_name
+        self.priority = priority
         self.requested_resource = requested_resource
         self.user_id = user_id
         self.user_vpc = user_vpc
@@ -5666,8 +6055,12 @@ class UpdateInstanceRequest(TeaModel):
                 result['Datasets'].append(k.to_map() if k else None)
         if self.disassociate_datasets is not None:
             result['DisassociateDatasets'] = self.disassociate_datasets
+        if self.disassociate_driver is not None:
+            result['DisassociateDriver'] = self.disassociate_driver
         if self.disassociate_vpc is not None:
             result['DisassociateVpc'] = self.disassociate_vpc
+        if self.driver is not None:
+            result['Driver'] = self.driver
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
         if self.image_id is not None:
@@ -5676,6 +6069,8 @@ class UpdateInstanceRequest(TeaModel):
             result['ImageUrl'] = self.image_url
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.priority is not None:
+            result['Priority'] = self.priority
         if self.requested_resource is not None:
             result['RequestedResource'] = self.requested_resource.to_map()
         if self.user_id is not None:
@@ -5697,8 +6092,12 @@ class UpdateInstanceRequest(TeaModel):
                 self.datasets.append(temp_model.from_map(k))
         if m.get('DisassociateDatasets') is not None:
             self.disassociate_datasets = m.get('DisassociateDatasets')
+        if m.get('DisassociateDriver') is not None:
+            self.disassociate_driver = m.get('DisassociateDriver')
         if m.get('DisassociateVpc') is not None:
             self.disassociate_vpc = m.get('DisassociateVpc')
+        if m.get('Driver') is not None:
+            self.driver = m.get('Driver')
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')
         if m.get('ImageId') is not None:
@@ -5707,6 +6106,8 @@ class UpdateInstanceRequest(TeaModel):
             self.image_url = m.get('ImageUrl')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
         if m.get('RequestedResource') is not None:
             temp_model = UpdateInstanceRequestRequestedResource()
             self.requested_resource = temp_model.from_map(m['RequestedResource'])

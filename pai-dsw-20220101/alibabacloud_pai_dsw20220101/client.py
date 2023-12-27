@@ -143,6 +143,8 @@ class Client(OpenApiClient):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.driver):
+            body['Driver'] = request.driver
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.environment_variables):
@@ -203,6 +205,8 @@ class Client(OpenApiClient):
             body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
+        if not UtilClient.is_unset(request.driver):
+            body['Driver'] = request.driver
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.environment_variables):
@@ -358,10 +362,14 @@ class Client(OpenApiClient):
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.exclude_paths):
+            body['ExcludePaths'] = request.exclude_paths
         if not UtilClient.is_unset(request.image_url):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.overwrite):
+            body['Overwrite'] = request.overwrite
         if not UtilClient.is_unset(request.snapshot_description):
             body['SnapshotDescription'] = request.snapshot_description
         if not UtilClient.is_unset(request.snapshot_name):
@@ -395,10 +403,14 @@ class Client(OpenApiClient):
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.exclude_paths):
+            body['ExcludePaths'] = request.exclude_paths
         if not UtilClient.is_unset(request.image_url):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.labels):
             body['Labels'] = request.labels
+        if not UtilClient.is_unset(request.overwrite):
+            body['Overwrite'] = request.overwrite
         if not UtilClient.is_unset(request.snapshot_description):
             body['SnapshotDescription'] = request.snapshot_description
         if not UtilClient.is_unset(request.snapshot_name):
@@ -1932,8 +1944,12 @@ class Client(OpenApiClient):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.disassociate_datasets):
             body['DisassociateDatasets'] = request.disassociate_datasets
+        if not UtilClient.is_unset(request.disassociate_driver):
+            body['DisassociateDriver'] = request.disassociate_driver
         if not UtilClient.is_unset(request.disassociate_vpc):
             body['DisassociateVpc'] = request.disassociate_vpc
+        if not UtilClient.is_unset(request.driver):
+            body['Driver'] = request.driver
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.image_id):
@@ -1942,6 +1958,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.user_id):
@@ -1985,8 +2003,12 @@ class Client(OpenApiClient):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.disassociate_datasets):
             body['DisassociateDatasets'] = request.disassociate_datasets
+        if not UtilClient.is_unset(request.disassociate_driver):
+            body['DisassociateDriver'] = request.disassociate_driver
         if not UtilClient.is_unset(request.disassociate_vpc):
             body['DisassociateVpc'] = request.disassociate_vpc
+        if not UtilClient.is_unset(request.driver):
+            body['Driver'] = request.driver
         if not UtilClient.is_unset(request.ecs_spec):
             body['EcsSpec'] = request.ecs_spec
         if not UtilClient.is_unset(request.image_id):
@@ -1995,6 +2017,8 @@ class Client(OpenApiClient):
             body['ImageUrl'] = request.image_url
         if not UtilClient.is_unset(request.instance_name):
             body['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.priority):
+            body['Priority'] = request.priority
         if not UtilClient.is_unset(request.requested_resource):
             body['RequestedResource'] = request.requested_resource
         if not UtilClient.is_unset(request.user_id):
