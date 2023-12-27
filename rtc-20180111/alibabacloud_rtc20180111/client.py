@@ -76,6 +76,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket):
             query['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
         if not UtilClient.is_unset(request.oss_file_prefix):
             query['OssFilePrefix'] = request.oss_file_prefix
         if not UtilClient.is_unset(request.owner_id):
@@ -138,6 +140,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket):
             query['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
         if not UtilClient.is_unset(request.oss_file_prefix):
             query['OssFilePrefix'] = request.oss_file_prefix
         if not UtilClient.is_unset(request.owner_id):
@@ -298,6 +302,8 @@ class Client(OpenApiClient):
             query['NeedCallbackAuth'] = request.need_callback_auth
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         if not UtilClient.is_unset(request.users):
             query['Users'] = request.users
         req = open_api_models.OpenApiRequest(
@@ -340,6 +346,8 @@ class Client(OpenApiClient):
             query['NeedCallbackAuth'] = request.need_callback_auth
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.role):
+            query['Role'] = request.role
         if not UtilClient.is_unset(request.users):
             query['Users'] = request.users
         req = open_api_models.OpenApiRequest(
@@ -1089,6 +1097,112 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_live_stream_rule_with_options_async(request, runtime)
 
+    def describe_call_list_with_options(
+        self,
+        request: rtc_20180111_models.DescribeCallListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCallListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.call_status):
+            query['CallStatus'] = request.call_status
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_mode):
+            query['QueryMode'] = request.query_mode
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCallListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_call_list_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeCallListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCallListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.call_status):
+            query['CallStatus'] = request.call_status
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.query_mode):
+            query['QueryMode'] = request.query_mode
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCallList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCallListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_call_list(
+        self,
+        request: rtc_20180111_models.DescribeCallListRequest,
+    ) -> rtc_20180111_models.DescribeCallListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_call_list_with_options(request, runtime)
+
+    async def describe_call_list_async(
+        self,
+        request: rtc_20180111_models.DescribeCallListRequest,
+    ) -> rtc_20180111_models.DescribeCallListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_call_list_with_options_async(request, runtime)
+
     def describe_channel_participants_with_options(
         self,
         request: rtc_20180111_models.DescribeChannelParticipantsRequest,
@@ -1530,6 +1644,460 @@ class Client(OpenApiClient):
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_templates_with_options_async(request, runtime)
+
+    def describe_rtc_channel_list_with_options(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcChannelList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcChannelListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_channel_list_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.sort_type):
+            query['SortType'] = request.sort_type
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcChannelList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcChannelListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_channel_list(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelListRequest,
+    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rtc_channel_list_with_options(request, runtime)
+
+    async def describe_rtc_channel_list_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelListRequest,
+    ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rtc_channel_list_with_options_async(request, runtime)
+
+    def describe_rtc_channel_metric_with_options(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcChannelMetric',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcChannelMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_channel_metric_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.time_point):
+            query['TimePoint'] = request.time_point
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcChannelMetric',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcChannelMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_channel_metric(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
+    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rtc_channel_metric_with_options(request, runtime)
+
+    async def describe_rtc_channel_metric_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
+    ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rtc_channel_metric_with_options_async(request, runtime)
+
+    def describe_rtc_duration_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcDurationData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcDurationDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_duration_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcDurationData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcDurationDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_duration_data(
+        self,
+        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
+    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rtc_duration_data_with_options(request, runtime)
+
+    async def describe_rtc_duration_data_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcDurationDataRequest,
+    ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rtc_duration_data_with_options_async(request, runtime)
+
+    def describe_rtc_peak_channel_cnt_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcPeakChannelCntData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_peak_channel_cnt_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcPeakChannelCntData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_peak_channel_cnt_data(
+        self,
+        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
+    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rtc_peak_channel_cnt_data_with_options(request, runtime)
+
+    async def describe_rtc_peak_channel_cnt_data_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
+    ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rtc_peak_channel_cnt_data_with_options_async(request, runtime)
+
+    def describe_rtc_user_cnt_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcUserCntData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcUserCntDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_user_cnt_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.service_area):
+            query['ServiceArea'] = request.service_area
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRtcUserCntData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeRtcUserCntDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_user_cnt_data(
+        self,
+        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
+    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_rtc_user_cnt_data_with_options(request, runtime)
+
+    async def describe_rtc_user_cnt_data_async(
+        self,
+        request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
+    ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_rtc_user_cnt_data_with_options_async(request, runtime)
 
     def describe_user_info_in_channel_with_options(
         self,
@@ -2858,8 +3426,12 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.layout_ids):
             query['LayoutIds'] = request.layout_ids
+        if not UtilClient.is_unset(request.media_encode):
+            query['MediaEncode'] = request.media_encode
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sub_spec_audio_users):
@@ -2872,6 +3444,8 @@ class Client(OpenApiClient):
             query['SubSpecUsers'] = request.sub_spec_users
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_profile):
+            query['TaskProfile'] = request.task_profile
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.unsub_spec_audio_users):
@@ -2912,8 +3486,12 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not UtilClient.is_unset(request.channel_id):
             query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.crop_mode):
+            query['CropMode'] = request.crop_mode
         if not UtilClient.is_unset(request.layout_ids):
             query['LayoutIds'] = request.layout_ids
+        if not UtilClient.is_unset(request.media_encode):
+            query['MediaEncode'] = request.media_encode
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.sub_spec_audio_users):
@@ -2926,6 +3504,8 @@ class Client(OpenApiClient):
             query['SubSpecUsers'] = request.sub_spec_users
         if not UtilClient.is_unset(request.task_id):
             query['TaskId'] = request.task_id
+        if not UtilClient.is_unset(request.task_profile):
+            query['TaskProfile'] = request.task_profile
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         if not UtilClient.is_unset(request.unsub_spec_audio_users):
@@ -3004,6 +3584,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket):
             query['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
         if not UtilClient.is_unset(request.oss_file_prefix):
             query['OssFilePrefix'] = request.oss_file_prefix
         if not UtilClient.is_unset(request.owner_id):
@@ -3068,6 +3650,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket):
             query['OssBucket'] = request.oss_bucket
+        if not UtilClient.is_unset(request.oss_endpoint):
+            query['OssEndpoint'] = request.oss_endpoint
         if not UtilClient.is_unset(request.oss_file_prefix):
             query['OssFilePrefix'] = request.oss_file_prefix
         if not UtilClient.is_unset(request.owner_id):
