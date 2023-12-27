@@ -386,7 +386,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        r-bp1zxszhcgatnx***\
+        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
         
         @param request: AllocateInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -435,7 +435,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        r-bp1zxszhcgatnx***\
+        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
         
         @param request: AllocateInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -483,7 +483,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        r-bp1zxszhcgatnx***\
+        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
         
         @param request: AllocateInstancePublicConnectionRequest
         @return: AllocateInstancePublicConnectionResponse
@@ -496,7 +496,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.AllocateInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.AllocateInstancePublicConnectionResponse:
         """
-        r-bp1zxszhcgatnx***\
+        You can also apply for public endpoints in the ApsaraDB for Redis console. For more information, see [Use a public endpoint to connect to an ApsaraDB for Redis instance](~~43850~~).
         
         @param request: AllocateInstancePublicConnectionRequest
         @return: AllocateInstancePublicConnectionResponse
@@ -2091,6 +2091,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        """
+        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        
+        @param request: DeleteGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.global_ig_name):
@@ -2135,6 +2142,13 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        """
+        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        
+        @param request: DeleteGlobalSecurityIPGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGlobalSecurityIPGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.global_ig_name):
@@ -2178,6 +2192,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        """
+        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        
+        @param request: DeleteGlobalSecurityIPGroupRequest
+        @return: DeleteGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_global_security_ipgroup_with_options(request, runtime)
 
@@ -2185,6 +2205,12 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupRequest,
     ) -> r_kvstore_20150101_models.DeleteGlobalSecurityIPGroupResponse:
+        """
+        Before you delete an IP whitelist template, you must unbind (disassociate) the instances that are currently associated with the template.
+        
+        @param request: DeleteGlobalSecurityIPGroupRequest
+        @return: DeleteGlobalSecurityIPGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_global_security_ipgroup_with_options_async(request, runtime)
 
@@ -2470,7 +2496,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        Details about returned accounts of the instance.
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2517,7 +2543,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        Details about returned accounts of the instance.
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2563,7 +2589,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAccountsRequest,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        Details about returned accounts of the instance.
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -2576,7 +2602,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeAccountsRequest,
     ) -> r_kvstore_20150101_models.DescribeAccountsResponse:
         """
-        Details about returned accounts of the instance.
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: DescribeAccountsRequest
         @return: DescribeAccountsResponse
@@ -6285,7 +6311,7 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
         >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~61107~~) operation to query monitoring history of the instance.
+        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6329,7 +6355,7 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
         >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~61107~~) operation to query monitoring history of the instance.
+        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6372,7 +6398,7 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
         >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~61107~~) operation to query monitoring history of the instance.
+        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @return: DescribeMonitorItemsResponse
@@ -6386,7 +6412,7 @@ class Client(OpenApiClient):
     ) -> r_kvstore_20150101_models.DescribeMonitorItemsResponse:
         """
         >  ApsaraDB for Redis has upgraded the monitoring metrics. The DescribeMonitorItems operation is phased out. For more information, see [The DescribeMonitorItems operation supported by ApsaraDB for Redis is phased out](~~189893~~).
-        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~61107~~) operation to query monitoring history of the instance.
+        After you call this operation to retrieve a list of metrics for a specified ApsaraDB for Redis instance, you can call the [DescribeHistoryMonitorValues](~~DescribeHistoryMonitorValues~~) operation to query monitoring history of the instance.
         
         @param request: DescribeMonitorItemsRequest
         @return: DescribeMonitorItemsResponse
@@ -7001,14 +7027,6 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeRoleZoneInfo\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeRoleZoneInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRoleZoneInfoResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7053,14 +7071,6 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeRoleZoneInfo\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeRoleZoneInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRoleZoneInfoResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7104,13 +7114,6 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeRoleZoneInfo\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeRoleZoneInfoRequest
-        @return: DescribeRoleZoneInfoResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.describe_role_zone_info_with_options(request, runtime)
 
@@ -7118,13 +7121,6 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.DescribeRoleZoneInfoRequest,
     ) -> r_kvstore_20150101_models.DescribeRoleZoneInfoResponse:
-        """
-        ## Debugging
-        [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=R-kvstore\\&api=DescribeRoleZoneInfo\\&type=RPC\\&version=2015-01-01)
-        
-        @param request: DescribeRoleZoneInfoRequest
-        @return: DescribeRoleZoneInfoResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_role_zone_info_with_options_async(request, runtime)
 
@@ -8020,10 +8016,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        The time when the minor version is upgraded. Valid values:
-        *   **Immediately**: immediately deletes expired keys.
-        *   **MaintainTime:**deletes expired key in the maintenance window.
-        >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8070,10 +8064,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        The time when the minor version is upgraded. Valid values:
-        *   **Immediately**: immediately deletes expired keys.
-        *   **MaintainTime:**deletes expired key in the maintenance window.
-        >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8119,10 +8111,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        The time when the minor version is upgraded. Valid values:
-        *   **Immediately**: immediately deletes expired keys.
-        *   **MaintainTime:**deletes expired key in the maintenance window.
-        >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
         @return: FlushExpireKeysResponse
@@ -8135,10 +8125,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushExpireKeysRequest,
     ) -> r_kvstore_20150101_models.FlushExpireKeysResponse:
         """
-        The time when the minor version is upgraded. Valid values:
-        *   **Immediately**: immediately deletes expired keys.
-        *   **MaintainTime:**deletes expired key in the maintenance window.
-        >  You can call the [ModifyInstanceMaintainTime](~~61000~~) operation to modify the maintenance window of an ApsaraDB for Redis instance.
+        For more information about how to clear the expired keys in the ApsaraDB for Redis console, see [Clear data](~~43881~~).
+        >  Expired keys cannot be recovered after they are deleted. Exercise caution when you call this operation.
         
         @param request: FlushExpireKeysRequest
         @return: FlushExpireKeysResponse
@@ -8151,13 +8139,6 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
-        """
-        The ID of the instance.
-        
-        @param request: FlushInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FlushInstanceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8196,13 +8177,6 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.FlushInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
-        """
-        The ID of the instance.
-        
-        @param request: FlushInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FlushInstanceResponse
-        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8240,12 +8214,6 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.FlushInstanceRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
-        """
-        The ID of the instance.
-        
-        @param request: FlushInstanceRequest
-        @return: FlushInstanceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return self.flush_instance_with_options(request, runtime)
 
@@ -8253,12 +8221,6 @@ class Client(OpenApiClient):
         self,
         request: r_kvstore_20150101_models.FlushInstanceRequest,
     ) -> r_kvstore_20150101_models.FlushInstanceResponse:
-        """
-        The ID of the instance.
-        
-        @param request: FlushInstanceRequest
-        @return: FlushInstanceResponse
-        """
         runtime = util_models.RuntimeOptions()
         return await self.flush_instance_with_options_async(request, runtime)
 
@@ -8388,7 +8350,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        The name of the account. You can call the [DescribeAccounts](~~95802~~) operation to obtain the name of the account.
+        >
+        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        *   The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8437,7 +8401,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        The name of the account. You can call the [DescribeAccounts](~~95802~~) operation to obtain the name of the account.
+        >
+        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        *   The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8485,7 +8451,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.GrantAccountPrivilegeRequest,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        The name of the account. You can call the [DescribeAccounts](~~95802~~) operation to obtain the name of the account.
+        >
+        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        *   The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @return: GrantAccountPrivilegeResponse
@@ -8498,7 +8466,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.GrantAccountPrivilegeRequest,
     ) -> r_kvstore_20150101_models.GrantAccountPrivilegeResponse:
         """
-        The name of the account. You can call the [DescribeAccounts](~~95802~~) operation to obtain the name of the account.
+        >
+        *   Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
+        *   The ApsaraDB for Redis instance must be in the running state.
         
         @param request: GrantAccountPrivilegeRequest
         @return: GrantAccountPrivilegeResponse
@@ -8512,7 +8482,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The ID of the request.
+        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
         
         @param request: InitializeKvstorePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8557,7 +8527,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The ID of the request.
+        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
         
         @param request: InitializeKvstorePermissionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8601,7 +8571,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.InitializeKvstorePermissionRequest,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The ID of the request.
+        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
         
         @param request: InitializeKvstorePermissionRequest
         @return: InitializeKvstorePermissionResponse
@@ -8614,7 +8584,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.InitializeKvstorePermissionRequest,
     ) -> r_kvstore_20150101_models.InitializeKvstorePermissionResponse:
         """
-        The ID of the request.
+        The log management feature of ApsaraDB for Redis requires the resources of [Log Service](~~48869~~). To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance. For more information, see [Associated RAM roles of ApsaraDB for Redis](~~184337~~).
         
         @param request: InitializeKvstorePermissionRequest
         @return: InitializeKvstorePermissionResponse
@@ -10972,10 +10942,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        Modifies SSL encryption configurations. Valid values:
-        *   **Disable**: The SSL encryption is disabled.
-        *   **Enable**: The SSL encryption is enabled.
-        *   **Update**: The SSL certificate is updated.
+        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11022,10 +10990,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        Modifies SSL encryption configurations. Valid values:
-        *   **Disable**: The SSL encryption is disabled.
-        *   **Enable**: The SSL encryption is enabled.
-        *   **Update**: The SSL certificate is updated.
+        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11071,10 +11037,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        Modifies SSL encryption configurations. Valid values:
-        *   **Disable**: The SSL encryption is disabled.
-        *   **Enable**: The SSL encryption is enabled.
-        *   **Update**: The SSL certificate is updated.
+        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @return: ModifyInstanceSSLResponse
@@ -11087,10 +11051,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ModifyInstanceSSLRequest,
     ) -> r_kvstore_20150101_models.ModifyInstanceSSLResponse:
         """
-        Modifies SSL encryption configurations. Valid values:
-        *   **Disable**: The SSL encryption is disabled.
-        *   **Enable**: The SSL encryption is enabled.
-        *   **Update**: The SSL certificate is updated.
+        You can also modify SSL encryption configurations in the ApsaraDB for Redis console. For more information, see [Configure SSL encryption](~~84898~~).
+        >  To specify the earliest supported SSL version, you can call the [ModifyInstanceConfig](~~ModifyInstanceConfig~~) operation to modify the required parameter.
         
         @param request: ModifyInstanceSSLRequest
         @return: ModifyInstanceSSLResponse
@@ -12156,7 +12118,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        The ID of the request.
+        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12203,7 +12165,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        The ID of the request.
+        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12249,7 +12211,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        The ID of the request.
+        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -12262,7 +12224,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ReleaseInstancePublicConnectionRequest,
     ) -> r_kvstore_20150101_models.ReleaseInstancePublicConnectionResponse:
         """
-        The ID of the request.
+        For more information about how to perform the API operation in the ApsaraDB for Redis console, see [Release public endpoints](~~125424~~).
         
         @param request: ReleaseInstancePublicConnectionRequest
         @return: ReleaseInstancePublicConnectionResponse
@@ -12680,7 +12642,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        r-bp1zxszhcgatnx***\
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12729,7 +12691,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        r-bp1zxszhcgatnx***\
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12777,7 +12739,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ResetAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        r-bp1zxszhcgatnx***\
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -12790,7 +12752,7 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.ResetAccountPasswordRequest,
     ) -> r_kvstore_20150101_models.ResetAccountPasswordResponse:
         """
-        r-bp1zxszhcgatnx***\
+        >  Only ApsaraDB for Redis instances of Redis 4.0 or later are supported.
         
         @param request: ResetAccountPasswordRequest
         @return: ResetAccountPasswordResponse
@@ -13674,7 +13636,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        1
+        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        *   [Change the billing method to subscription](~~54542~~).
+        *   [Change the billing method to pay-as-you-go](~~211549~~).
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13729,7 +13693,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        1
+        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        *   [Change the billing method to subscription](~~54542~~).
+        *   [Change the billing method to pay-as-you-go](~~211549~~).
         
         @param request: TransformInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13783,7 +13749,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        1
+        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        *   [Change the billing method to subscription](~~54542~~).
+        *   [Change the billing method to pay-as-you-go](~~211549~~).
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -13796,7 +13764,9 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformInstanceChargeTypeRequest,
     ) -> r_kvstore_20150101_models.TransformInstanceChargeTypeResponse:
         """
-        1
+        Before you call this operation, make sure that you understand relevant precautions and billing rules. For more information, see the following topics:
+        *   [Change the billing method to subscription](~~54542~~).
+        *   [Change the billing method to pay-as-you-go](~~211549~~).
         
         @param request: TransformInstanceChargeTypeRequest
         @return: TransformInstanceChargeTypeResponse
@@ -13810,7 +13780,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13859,7 +13830,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13907,7 +13879,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @return: TransformToPrePaidResponse
@@ -13920,7 +13893,8 @@ class Client(OpenApiClient):
         request: r_kvstore_20150101_models.TransformToPrePaidRequest,
     ) -> r_kvstore_20150101_models.TransformToPrePaidResponse:
         """
-        The ID of the instance. You can call the [DescribeInstances](~~60933~~) operation to query the ID of the instance.
+        For more information about how to change the billing method in the ApsaraDB for Redis console, see [Switch to subscription](~~54542~~).
+        >  You cannot change the billing method of an ApsaraDB for Redis instance from subscription to pay-as-you-go.
         
         @param request: TransformToPrePaidRequest
         @return: TransformToPrePaidResponse
