@@ -1097,6 +1097,96 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_live_stream_rule_with_options_async(request, runtime)
 
+    def describe_call_with_options(
+        self,
+        request: rtc_20180111_models.DescribeCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.ext_data_type):
+            query['ExtDataType'] = request.ext_data_type
+        if not UtilClient.is_unset(request.query_exp_info):
+            query['QueryExpInfo'] = request.query_exp_info
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCall',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_call_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeCallRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeCallResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.ext_data_type):
+            query['ExtDataType'] = request.ext_data_type
+        if not UtilClient.is_unset(request.query_exp_info):
+            query['QueryExpInfo'] = request.query_exp_info
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCall',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_call(
+        self,
+        request: rtc_20180111_models.DescribeCallRequest,
+    ) -> rtc_20180111_models.DescribeCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_call_with_options(request, runtime)
+
+    async def describe_call_async(
+        self,
+        request: rtc_20180111_models.DescribeCallRequest,
+    ) -> rtc_20180111_models.DescribeCallResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_call_with_options_async(request, runtime)
+
     def describe_call_list_with_options(
         self,
         request: rtc_20180111_models.DescribeCallListRequest,
@@ -1203,6 +1293,260 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_call_list_with_options_async(request, runtime)
 
+    def describe_channel_area_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.parent_area):
+            query['ParentArea'] = request.parent_area
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelAreaDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channel_area_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.parent_area):
+            query['ParentArea'] = request.parent_area
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelAreaDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channel_area_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channel_area_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_channel_area_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channel_area_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_channel_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channel_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channel_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channel_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_channel_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channel_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_channel_overall_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeChannelOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelOverallDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channel_overall_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelOverallDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channel_overall_data(
+        self,
+        request: rtc_20180111_models.DescribeChannelOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channel_overall_data_with_options(request, runtime)
+
+    async def describe_channel_overall_data_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channel_overall_data_with_options_async(request, runtime)
+
     def describe_channel_participants_with_options(
         self,
         request: rtc_20180111_models.DescribeChannelParticipantsRequest,
@@ -1293,6 +1637,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_participants_with_options_async(request, runtime)
 
+    def describe_channel_top_pub_user_list_with_options(
+        self,
+        request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelTopPubUserList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelTopPubUserListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channel_top_pub_user_list_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelTopPubUserList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelTopPubUserListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channel_top_pub_user_list(
+        self,
+        request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
+    ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channel_top_pub_user_list_with_options(request, runtime)
+
+    async def describe_channel_top_pub_user_list_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
+    ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channel_top_pub_user_list_with_options_async(request, runtime)
+
+    def describe_channel_user_metrics_with_options(
+        self,
+        request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelUserMetrics',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelUserMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_channel_user_metrics_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeChannelUserMetrics',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeChannelUserMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_channel_user_metrics(
+        self,
+        request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
+    ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_channel_user_metrics_with_options(request, runtime)
+
+    async def describe_channel_user_metrics_async(
+        self,
+        request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
+    ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_channel_user_metrics_with_options_async(request, runtime)
+
     def describe_channel_users_with_options(
         self,
         request: rtc_20180111_models.DescribeChannelUsersRequest,
@@ -1370,6 +1878,538 @@ class Client(OpenApiClient):
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_users_with_options_async(request, runtime)
+
+    def describe_end_point_event_list_with_options(
+        self,
+        request: rtc_20180111_models.DescribeEndPointEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.user_id_list):
+            query['UserIdList'] = request.user_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEndPointEventList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeEndPointEventListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_end_point_event_list_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeEndPointEventListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.user_id_list):
+            query['UserIdList'] = request.user_id_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEndPointEventList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeEndPointEventListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_end_point_event_list(
+        self,
+        request: rtc_20180111_models.DescribeEndPointEventListRequest,
+    ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_end_point_event_list_with_options(request, runtime)
+
+    async def describe_end_point_event_list_async(
+        self,
+        request: rtc_20180111_models.DescribeEndPointEventListRequest,
+    ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_end_point_event_list_with_options_async(request, runtime)
+
+    def describe_end_point_metric_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.pub_call_id_list):
+            query['PubCallIdList'] = request.pub_call_id_list
+        if not UtilClient.is_unset(request.pub_user_id):
+            query['PubUserId'] = request.pub_user_id
+        if not UtilClient.is_unset(request.sub_user_id):
+            query['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEndPointMetricData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeEndPointMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_end_point_metric_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.metrics):
+            query['Metrics'] = request.metrics
+        if not UtilClient.is_unset(request.pub_call_id_list):
+            query['PubCallIdList'] = request.pub_call_id_list
+        if not UtilClient.is_unset(request.pub_user_id):
+            query['PubUserId'] = request.pub_user_id
+        if not UtilClient.is_unset(request.sub_user_id):
+            query['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeEndPointMetricData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeEndPointMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_end_point_metric_data(
+        self,
+        request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
+    ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_end_point_metric_data_with_options(request, runtime)
+
+    async def describe_end_point_metric_data_async(
+        self,
+        request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
+    ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_end_point_metric_data_with_options_async(request, runtime)
+
+    def describe_fault_diagnosis_factor_distribution_stat_with_options(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisFactorDistributionStat',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fault_diagnosis_factor_distribution_stat_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisFactorDistributionStat',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fault_diagnosis_factor_distribution_stat(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fault_diagnosis_factor_distribution_stat_with_options(request, runtime)
+
+    async def describe_fault_diagnosis_factor_distribution_stat_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fault_diagnosis_factor_distribution_stat_with_options_async(request, runtime)
+
+    def describe_fault_diagnosis_overall_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fault_diagnosis_overall_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fault_diagnosis_overall_data(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fault_diagnosis_overall_data_with_options(request, runtime)
+
+    async def describe_fault_diagnosis_overall_data_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fault_diagnosis_overall_data_with_options_async(request, runtime)
+
+    def describe_fault_diagnosis_user_detail_with_options(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.fault_type):
+            query['FaultType'] = request.fault_type
+        if not UtilClient.is_unset(request.query_call_user_info):
+            query['QueryCallUserInfo'] = request.query_call_user_info
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisUserDetail',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fault_diagnosis_user_detail_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.fault_type):
+            query['FaultType'] = request.fault_type
+        if not UtilClient.is_unset(request.query_call_user_info):
+            query['QueryCallUserInfo'] = request.query_call_user_info
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisUserDetail',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fault_diagnosis_user_detail(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fault_diagnosis_user_detail_with_options(request, runtime)
+
+    async def describe_fault_diagnosis_user_detail_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fault_diagnosis_user_detail_with_options_async(request, runtime)
+
+    def describe_fault_diagnosis_user_list_with_options(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.fault_types):
+            query['FaultTypes'] = request.fault_types
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisUserList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisUserListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_fault_diagnosis_user_list_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.end_ts):
+            query['EndTs'] = request.end_ts
+        if not UtilClient.is_unset(request.fault_types):
+            query['FaultTypes'] = request.fault_types
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_ts):
+            query['StartTs'] = request.start_ts
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeFaultDiagnosisUserList',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeFaultDiagnosisUserListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_fault_diagnosis_user_list(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_fault_diagnosis_user_list_with_options(request, runtime)
+
+    async def describe_fault_diagnosis_user_list_async(
+        self,
+        request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
+    ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_fault_diagnosis_user_list_with_options_async(request, runtime)
 
     def describe_mpulayout_info_list_with_options(
         self,
@@ -1460,6 +2500,502 @@ class Client(OpenApiClient):
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_mpulayout_info_list_with_options_async(request, runtime)
+
+    def describe_pub_user_list_by_sub_user_with_options(
+        self,
+        request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.sub_user_id):
+            query['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePubUserListBySubUser',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribePubUserListBySubUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_pub_user_list_by_sub_user_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.sub_user_id):
+            query['SubUserId'] = request.sub_user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribePubUserListBySubUser',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribePubUserListBySubUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_pub_user_list_by_sub_user(
+        self,
+        request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
+    ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_pub_user_list_by_sub_user_with_options(request, runtime)
+
+    async def describe_pub_user_list_by_sub_user_async(
+        self,
+        request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
+    ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_pub_user_list_by_sub_user_with_options_async(request, runtime)
+
+    def describe_qoe_metric_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeQoeMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQoeMetricData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQoeMetricDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_qoe_metric_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeQoeMetricDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not UtilClient.is_unset(request.created_ts):
+            query['CreatedTs'] = request.created_ts
+        if not UtilClient.is_unset(request.destroyed_ts):
+            query['DestroyedTs'] = request.destroyed_ts
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQoeMetricData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQoeMetricDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_qoe_metric_data(
+        self,
+        request: rtc_20180111_models.DescribeQoeMetricDataRequest,
+    ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_qoe_metric_data_with_options(request, runtime)
+
+    async def describe_qoe_metric_data_async(
+        self,
+        request: rtc_20180111_models.DescribeQoeMetricDataRequest,
+    ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_qoe_metric_data_with_options_async(request, runtime)
+
+    def describe_quality_area_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_area):
+            query['ParentArea'] = request.parent_area
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityAreaDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_quality_area_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_area):
+            query['ParentArea'] = request.parent_area
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityAreaDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_quality_area_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_quality_area_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_quality_area_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_quality_area_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_quality_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_quality_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_quality_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_quality_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_quality_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_quality_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_quality_os_sdk_version_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityOsSdkVersionDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_quality_os_sdk_version_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityOsSdkVersionDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_quality_os_sdk_version_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_quality_os_sdk_version_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_quality_os_sdk_version_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_quality_os_sdk_version_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_quality_overall_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeQualityOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityOverallDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_quality_overall_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeQualityOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeQualityOverallDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_quality_overall_data(
+        self,
+        request: rtc_20180111_models.DescribeQualityOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_quality_overall_data_with_options(request, runtime)
+
+    async def describe_quality_overall_data_async(
+        self,
+        request: rtc_20180111_models.DescribeQualityOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_quality_overall_data_with_options_async(request, runtime)
 
     def describe_record_files_with_options(
         self,
@@ -2098,6 +3634,330 @@ class Client(OpenApiClient):
     ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_user_cnt_data_with_options_async(request, runtime)
+
+    def describe_usage_area_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_area):
+            query['ParentArea'] = request.parent_area
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageAreaDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_usage_area_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.parent_area):
+            query['ParentArea'] = request.parent_area
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageAreaDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_usage_area_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_usage_area_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_usage_area_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_usage_area_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_usage_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_usage_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.stat_dim):
+            query['StatDim'] = request.stat_dim
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_usage_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_usage_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_usage_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_usage_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_usage_os_sdk_version_distribution_stat_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageOsSdkVersionDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_usage_os_sdk_version_distribution_stat_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageOsSdkVersionDistributionStatData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_usage_os_sdk_version_distribution_stat_data(
+        self,
+        request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_usage_os_sdk_version_distribution_stat_data_with_options(request, runtime)
+
+    async def describe_usage_os_sdk_version_distribution_stat_data_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_usage_os_sdk_version_distribution_stat_data_with_options_async(request, runtime)
+
+    def describe_usage_overall_data_with_options(
+        self,
+        request: rtc_20180111_models.DescribeUsageOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageOverallDataResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_usage_overall_data_with_options_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageOverallDataRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.types):
+            query['Types'] = request.types
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeUsageOverallData',
+            version='2018-01-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            rtc_20180111_models.DescribeUsageOverallDataResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_usage_overall_data(
+        self,
+        request: rtc_20180111_models.DescribeUsageOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.describe_usage_overall_data_with_options(request, runtime)
+
+    async def describe_usage_overall_data_async(
+        self,
+        request: rtc_20180111_models.DescribeUsageOverallDataRequest,
+    ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_usage_overall_data_with_options_async(request, runtime)
 
     def describe_user_info_in_channel_with_options(
         self,
