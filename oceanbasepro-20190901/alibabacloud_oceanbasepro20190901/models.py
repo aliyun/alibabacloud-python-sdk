@@ -498,6 +498,8 @@ class CreateInstanceRequest(TeaModel):
         ob_version: str = None,
         period: int = None,
         period_unit: str = None,
+        primary_instance: str = None,
+        primary_region: str = None,
         replica_mode: str = None,
         resource_group_id: str = None,
         series: str = None,
@@ -551,6 +553,8 @@ class CreateInstanceRequest(TeaModel):
         # Valid value for subscription: Month or Year.
         # Default value: Month for subscription, and Hour for pay-as-you-go.
         self.period_unit = period_unit
+        self.primary_instance = primary_instance
+        self.primary_region = primary_region
         self.replica_mode = replica_mode
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -596,6 +600,10 @@ class CreateInstanceRequest(TeaModel):
             result['Period'] = self.period
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
+        if self.primary_instance is not None:
+            result['PrimaryInstance'] = self.primary_instance
+        if self.primary_region is not None:
+            result['PrimaryRegion'] = self.primary_region
         if self.replica_mode is not None:
             result['ReplicaMode'] = self.replica_mode
         if self.resource_group_id is not None:
@@ -632,6 +640,10 @@ class CreateInstanceRequest(TeaModel):
             self.period = m.get('Period')
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
+        if m.get('PrimaryInstance') is not None:
+            self.primary_instance = m.get('PrimaryInstance')
+        if m.get('PrimaryRegion') is not None:
+            self.primary_region = m.get('PrimaryRegion')
         if m.get('ReplicaMode') is not None:
             self.replica_mode = m.get('ReplicaMode')
         if m.get('ResourceGroupId') is not None:
@@ -5454,11 +5466,7 @@ class CreateTenantUserResponseBodyTenantUserRoles(TeaModel):
         database: str = None,
         role: str = None,
     ):
-        # The name of the database.
         self.database = database
-        # The role of the account.  In Oracle mode, a role is a schema-level role. Valid values: - ReadWrite: a role that has the read and write privileges, including CREATE TABLE, CREATE VIEW, CREATE PROCEDURE, CREATE SYNONYM, CREATE SEQUENCE, CREATE TRIGGER, CREATE TYPE, CREATE SESSION, EXECUTE ANY PROCEDURE, CREATE ANY OUTLINE, ALTER ANY OUTLINE, DROP ANY OUTLINE, CREATE ANY PROCEDURE, ALTER ANY PROCEDURE, DROP ANY PROCEDURE, CREATE ANY SEQUENCE, ALTER ANY SEQUENCE, DROP ANY SEQUENCE, CREATE ANY TYPE, ALTER ANY TYPE, DROP ANY TYPE, SYSKM, CREATE ANY TRIGGER, ALTER ANY TRIGGER, DROP ANY TRIGGER, CREATE PROFILE, ALTER PROFILE, and DROP PROFILE. - ReadOnly: a role that has only the read-only privilege SELECT.
-        # In MySQL mode, a role is a database-level role. Valid values: - ReadWrite: a role that has the read and write privileges, namely ALL PRIVILEGES. - ReadOnly: a role that has only the read-only privilege SELECT. - DDL: a role that has the DDL privileges such as CREATE, DROP, ALTER, SHOW VIEW, and CREATE VIEW. - DML: a role that has the DML privileges such as SELECT, INSERT, UPDATE, DELETE, and SHOW VIEW. 
-        # * By default, an Oracle account has the read and write privileges on its own schema, which are not listed here.
         self.role = role
 
     def validate(self):
@@ -5493,13 +5501,9 @@ class CreateTenantUserResponseBodyTenantUser(TeaModel):
         user_status: str = None,
         user_type: str = None,
     ):
-        # The roles of the accounts.
         self.roles = roles
-        # The name of the database account.
         self.user_name = user_name
-        # The status of the database account. Valid values:  - Locked: The account is locked. - ONLINE: The account is unlocked. The default status of a new account is ONLINE after it is created.
         self.user_status = user_status
-        # The type of the database account. Valid values:  - Admin: the super administrator account. - Normal: a general account.
         self.user_type = user_type
 
     def validate(self):
@@ -5546,7 +5550,7 @@ class CreateTenantUserResponseBody(TeaModel):
     def __init__(
         self,
         request_id: str = None,
-        tenant_user: List[CreateTenantUserResponseBodyTenantUser] = None,
+        tenant_user: CreateTenantUserResponseBodyTenantUser = None,
     ):
         # The request ID.
         self.request_id = request_id
@@ -5555,9 +5559,7 @@ class CreateTenantUserResponseBody(TeaModel):
 
     def validate(self):
         if self.tenant_user:
-            for k in self.tenant_user:
-                if k:
-                    k.validate()
+            self.tenant_user.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -5567,21 +5569,17 @@ class CreateTenantUserResponseBody(TeaModel):
         result = dict()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
-        result['TenantUser'] = []
         if self.tenant_user is not None:
-            for k in self.tenant_user:
-                result['TenantUser'].append(k.to_map() if k else None)
+            result['TenantUser'] = self.tenant_user.to_map()
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
-        self.tenant_user = []
         if m.get('TenantUser') is not None:
-            for k in m.get('TenantUser'):
-                temp_model = CreateTenantUserResponseBodyTenantUser()
-                self.tenant_user.append(temp_model.from_map(k))
+            temp_model = CreateTenantUserResponseBodyTenantUser()
+            self.tenant_user = temp_model.from_map(m['TenantUser'])
         return self
 
 
@@ -7898,12 +7896,14 @@ class DescribeAvailableSpecResponseBodyDataAvailableSpecifications(TeaModel):
     def __init__(
         self,
         disk_size_range: DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange = None,
+        disk_types: List[str] = None,
         instance_class: str = None,
         log_disk_size_range: DescribeAvailableSpecResponseBodyDataAvailableSpecificationsLogDiskSizeRange = None,
         node_num: List[int] = None,
         spec: str = None,
     ):
         self.disk_size_range = disk_size_range
+        self.disk_types = disk_types
         self.instance_class = instance_class
         self.log_disk_size_range = log_disk_size_range
         self.node_num = node_num
@@ -7923,6 +7923,8 @@ class DescribeAvailableSpecResponseBodyDataAvailableSpecifications(TeaModel):
         result = dict()
         if self.disk_size_range is not None:
             result['DiskSizeRange'] = self.disk_size_range.to_map()
+        if self.disk_types is not None:
+            result['DiskTypes'] = self.disk_types
         if self.instance_class is not None:
             result['InstanceClass'] = self.instance_class
         if self.log_disk_size_range is not None:
@@ -7938,6 +7940,8 @@ class DescribeAvailableSpecResponseBodyDataAvailableSpecifications(TeaModel):
         if m.get('DiskSizeRange') is not None:
             temp_model = DescribeAvailableSpecResponseBodyDataAvailableSpecificationsDiskSizeRange()
             self.disk_size_range = temp_model.from_map(m['DiskSizeRange'])
+        if m.get('DiskTypes') is not None:
+            self.disk_types = m.get('DiskTypes')
         if m.get('InstanceClass') is not None:
             self.instance_class = m.get('InstanceClass')
         if m.get('LogDiskSizeRange') is not None:
@@ -9081,6 +9085,326 @@ class DescribeInstanceResponseBodyInstanceDataDiskAutoScaleConfig(TeaModel):
         return self
 
 
+class DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit(TeaModel):
+    def __init__(
+        self,
+        max_capacity_unit: int = None,
+        min_capacity_unit: int = None,
+        used_capacity_unit: str = None,
+    ):
+        self.max_capacity_unit = max_capacity_unit
+        self.min_capacity_unit = min_capacity_unit
+        self.used_capacity_unit = used_capacity_unit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity_unit is not None:
+            result['MaxCapacityUnit'] = self.max_capacity_unit
+        if self.min_capacity_unit is not None:
+            result['MinCapacityUnit'] = self.min_capacity_unit
+        if self.used_capacity_unit is not None:
+            result['UsedCapacityUnit'] = self.used_capacity_unit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacityUnit') is not None:
+            self.max_capacity_unit = m.get('MaxCapacityUnit')
+        if m.get('MinCapacityUnit') is not None:
+            self.min_capacity_unit = m.get('MinCapacityUnit')
+        if m.get('UsedCapacityUnit') is not None:
+            self.used_capacity_unit = m.get('UsedCapacityUnit')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu(TeaModel):
+    def __init__(
+        self,
+        original_total_cpu: int = None,
+        total_cpu: int = None,
+        unit_cpu: int = None,
+        used_cpu: int = None,
+    ):
+        self.original_total_cpu = original_total_cpu
+        self.total_cpu = total_cpu
+        self.unit_cpu = unit_cpu
+        self.used_cpu = used_cpu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.original_total_cpu is not None:
+            result['OriginalTotalCpu'] = self.original_total_cpu
+        if self.total_cpu is not None:
+            result['TotalCpu'] = self.total_cpu
+        if self.unit_cpu is not None:
+            result['UnitCpu'] = self.unit_cpu
+        if self.used_cpu is not None:
+            result['UsedCpu'] = self.used_cpu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginalTotalCpu') is not None:
+            self.original_total_cpu = m.get('OriginalTotalCpu')
+        if m.get('TotalCpu') is not None:
+            self.total_cpu = m.get('TotalCpu')
+        if m.get('UnitCpu') is not None:
+            self.unit_cpu = m.get('UnitCpu')
+        if m.get('UsedCpu') is not None:
+            self.used_cpu = m.get('UsedCpu')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize(TeaModel):
+    def __init__(
+        self,
+        data_used_size: float = None,
+        max_disk_size: float = None,
+        max_disk_used_ob_server: List[str] = None,
+        max_disk_used_percent: float = None,
+        original_total_disk_size: int = None,
+        total_disk_size: int = None,
+        unit_disk_size: int = None,
+        used_disk_size: int = None,
+    ):
+        self.data_used_size = data_used_size
+        self.max_disk_size = max_disk_size
+        self.max_disk_used_ob_server = max_disk_used_ob_server
+        self.max_disk_used_percent = max_disk_used_percent
+        self.original_total_disk_size = original_total_disk_size
+        self.total_disk_size = total_disk_size
+        self.unit_disk_size = unit_disk_size
+        self.used_disk_size = used_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data_used_size is not None:
+            result['DataUsedSize'] = self.data_used_size
+        if self.max_disk_size is not None:
+            result['MaxDiskSize'] = self.max_disk_size
+        if self.max_disk_used_ob_server is not None:
+            result['MaxDiskUsedObServer'] = self.max_disk_used_ob_server
+        if self.max_disk_used_percent is not None:
+            result['MaxDiskUsedPercent'] = self.max_disk_used_percent
+        if self.original_total_disk_size is not None:
+            result['OriginalTotalDiskSize'] = self.original_total_disk_size
+        if self.total_disk_size is not None:
+            result['TotalDiskSize'] = self.total_disk_size
+        if self.unit_disk_size is not None:
+            result['UnitDiskSize'] = self.unit_disk_size
+        if self.used_disk_size is not None:
+            result['UsedDiskSize'] = self.used_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataUsedSize') is not None:
+            self.data_used_size = m.get('DataUsedSize')
+        if m.get('MaxDiskSize') is not None:
+            self.max_disk_size = m.get('MaxDiskSize')
+        if m.get('MaxDiskUsedObServer') is not None:
+            self.max_disk_used_ob_server = m.get('MaxDiskUsedObServer')
+        if m.get('MaxDiskUsedPercent') is not None:
+            self.max_disk_used_percent = m.get('MaxDiskUsedPercent')
+        if m.get('OriginalTotalDiskSize') is not None:
+            self.original_total_disk_size = m.get('OriginalTotalDiskSize')
+        if m.get('TotalDiskSize') is not None:
+            self.total_disk_size = m.get('TotalDiskSize')
+        if m.get('UnitDiskSize') is not None:
+            self.unit_disk_size = m.get('UnitDiskSize')
+        if m.get('UsedDiskSize') is not None:
+            self.used_disk_size = m.get('UsedDiskSize')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize(TeaModel):
+    def __init__(
+        self,
+        log_assigned_size: str = None,
+        max_log_assigned_ob_server: List[str] = None,
+        max_log_assigned_percent: str = None,
+        total_disk_size: int = None,
+        unit_disk_size: int = None,
+    ):
+        self.log_assigned_size = log_assigned_size
+        self.max_log_assigned_ob_server = max_log_assigned_ob_server
+        self.max_log_assigned_percent = max_log_assigned_percent
+        self.total_disk_size = total_disk_size
+        self.unit_disk_size = unit_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.log_assigned_size is not None:
+            result['LogAssignedSize'] = self.log_assigned_size
+        if self.max_log_assigned_ob_server is not None:
+            result['MaxLogAssignedObServer'] = self.max_log_assigned_ob_server
+        if self.max_log_assigned_percent is not None:
+            result['MaxLogAssignedPercent'] = self.max_log_assigned_percent
+        if self.total_disk_size is not None:
+            result['TotalDiskSize'] = self.total_disk_size
+        if self.unit_disk_size is not None:
+            result['UnitDiskSize'] = self.unit_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LogAssignedSize') is not None:
+            self.log_assigned_size = m.get('LogAssignedSize')
+        if m.get('MaxLogAssignedObServer') is not None:
+            self.max_log_assigned_ob_server = m.get('MaxLogAssignedObServer')
+        if m.get('MaxLogAssignedPercent') is not None:
+            self.max_log_assigned_percent = m.get('MaxLogAssignedPercent')
+        if m.get('TotalDiskSize') is not None:
+            self.total_disk_size = m.get('TotalDiskSize')
+        if m.get('UnitDiskSize') is not None:
+            self.unit_disk_size = m.get('UnitDiskSize')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory(TeaModel):
+    def __init__(
+        self,
+        original_total_memory: int = None,
+        total_memory: int = None,
+        unit_memory: int = None,
+        used_memory: int = None,
+    ):
+        self.original_total_memory = original_total_memory
+        self.total_memory = total_memory
+        self.unit_memory = unit_memory
+        self.used_memory = used_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.original_total_memory is not None:
+            result['OriginalTotalMemory'] = self.original_total_memory
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.unit_memory is not None:
+            result['UnitMemory'] = self.unit_memory
+        if self.used_memory is not None:
+            result['UsedMemory'] = self.used_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OriginalTotalMemory') is not None:
+            self.original_total_memory = m.get('OriginalTotalMemory')
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('UnitMemory') is not None:
+            self.unit_memory = m.get('UnitMemory')
+        if m.get('UsedMemory') is not None:
+            self.used_memory = m.get('UsedMemory')
+        return self
+
+
+class DescribeInstanceResponseBodyInstanceReadOnlyResource(TeaModel):
+    def __init__(
+        self,
+        capacity_unit: DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit = None,
+        cpu: DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu = None,
+        disk_size: DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize = None,
+        log_disk_size: DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize = None,
+        memory: DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory = None,
+        unit_count: int = None,
+    ):
+        self.capacity_unit = capacity_unit
+        self.cpu = cpu
+        self.disk_size = disk_size
+        self.log_disk_size = log_disk_size
+        self.memory = memory
+        self.unit_count = unit_count
+
+    def validate(self):
+        if self.capacity_unit:
+            self.capacity_unit.validate()
+        if self.cpu:
+            self.cpu.validate()
+        if self.disk_size:
+            self.disk_size.validate()
+        if self.log_disk_size:
+            self.log_disk_size.validate()
+        if self.memory:
+            self.memory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit.to_map()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu.to_map()
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size.to_map()
+        if self.log_disk_size is not None:
+            result['LogDiskSize'] = self.log_disk_size.to_map()
+        if self.memory is not None:
+            result['Memory'] = self.memory.to_map()
+        if self.unit_count is not None:
+            result['UnitCount'] = self.unit_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceReadOnlyResourceCapacityUnit()
+            self.capacity_unit = temp_model.from_map(m['CapacityUnit'])
+        if m.get('Cpu') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceReadOnlyResourceCpu()
+            self.cpu = temp_model.from_map(m['Cpu'])
+        if m.get('DiskSize') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceReadOnlyResourceDiskSize()
+            self.disk_size = temp_model.from_map(m['DiskSize'])
+        if m.get('LogDiskSize') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceReadOnlyResourceLogDiskSize()
+            self.log_disk_size = temp_model.from_map(m['LogDiskSize'])
+        if m.get('Memory') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceReadOnlyResourceMemory()
+            self.memory = temp_model.from_map(m['Memory'])
+        if m.get('UnitCount') is not None:
+            self.unit_count = m.get('UnitCount')
+        return self
+
+
 class DescribeInstanceResponseBodyInstanceResourceCapacityUnit(TeaModel):
     def __init__(
         self,
@@ -9262,12 +9586,14 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
         log_assigned_size: str = None,
         max_log_assigned_ob_server: List[str] = None,
         max_log_assigned_percent: str = None,
+        original_total_disk_size: int = None,
         total_disk_size: int = None,
         unit_disk_size: int = None,
     ):
         self.log_assigned_size = log_assigned_size
         self.max_log_assigned_ob_server = max_log_assigned_ob_server
         self.max_log_assigned_percent = max_log_assigned_percent
+        self.original_total_disk_size = original_total_disk_size
         # The ID of the region.
         self.total_disk_size = total_disk_size
         # The request ID.
@@ -9288,6 +9614,8 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
             result['MaxLogAssignedObServer'] = self.max_log_assigned_ob_server
         if self.max_log_assigned_percent is not None:
             result['MaxLogAssignedPercent'] = self.max_log_assigned_percent
+        if self.original_total_disk_size is not None:
+            result['OriginalTotalDiskSize'] = self.original_total_disk_size
         if self.total_disk_size is not None:
             result['TotalDiskSize'] = self.total_disk_size
         if self.unit_disk_size is not None:
@@ -9302,6 +9630,8 @@ class DescribeInstanceResponseBodyInstanceResourceLogDiskSize(TeaModel):
             self.max_log_assigned_ob_server = m.get('MaxLogAssignedObServer')
         if m.get('MaxLogAssignedPercent') is not None:
             self.max_log_assigned_percent = m.get('MaxLogAssignedPercent')
+        if m.get('OriginalTotalDiskSize') is not None:
+            self.original_total_disk_size = m.get('OriginalTotalDiskSize')
         if m.get('TotalDiskSize') is not None:
             self.total_disk_size = m.get('TotalDiskSize')
         if m.get('UnitDiskSize') is not None:
@@ -9500,6 +9830,7 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         pay_type: str = None,
         proxy_cluster_id: str = None,
         proxy_service_status: str = None,
+        read_only_resource: DescribeInstanceResponseBodyInstanceReadOnlyResource = None,
         replica_mode: str = None,
         resource: DescribeInstanceResponseBodyInstanceResource = None,
         series: str = None,
@@ -9551,6 +9882,7 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
         self.pay_type = pay_type
         self.proxy_cluster_id = proxy_cluster_id
         self.proxy_service_status = proxy_service_status
+        self.read_only_resource = read_only_resource
         self.replica_mode = replica_mode
         # The size of used memory in the cluster, in GB.
         self.resource = resource
@@ -9566,6 +9898,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
     def validate(self):
         if self.data_disk_auto_scale_config:
             self.data_disk_auto_scale_config.validate()
+        if self.read_only_resource:
+            self.read_only_resource.validate()
         if self.resource:
             self.resource.validate()
         if self.tenant_creatable:
@@ -9635,6 +9969,8 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             result['ProxyClusterId'] = self.proxy_cluster_id
         if self.proxy_service_status is not None:
             result['ProxyServiceStatus'] = self.proxy_service_status
+        if self.read_only_resource is not None:
+            result['ReadOnlyResource'] = self.read_only_resource.to_map()
         if self.replica_mode is not None:
             result['ReplicaMode'] = self.replica_mode
         if self.resource is not None:
@@ -9712,6 +10048,9 @@ class DescribeInstanceResponseBodyInstance(TeaModel):
             self.proxy_cluster_id = m.get('ProxyClusterId')
         if m.get('ProxyServiceStatus') is not None:
             self.proxy_service_status = m.get('ProxyServiceStatus')
+        if m.get('ReadOnlyResource') is not None:
+            temp_model = DescribeInstanceResponseBodyInstanceReadOnlyResource()
+            self.read_only_resource = temp_model.from_map(m['ReadOnlyResource'])
         if m.get('ReplicaMode') is not None:
             self.replica_mode = m.get('ReplicaMode')
         if m.get('Resource') is not None:
@@ -10662,6 +11001,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnit
         enable_migrate_unit: bool = None,
         manual_migrate: bool = None,
         node_id: str = None,
+        replica_type: str = None,
         unit_cpu: float = None,
         unit_data_size: int = None,
         unit_id: str = None,
@@ -10677,6 +11017,7 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnit
         self.manual_migrate = manual_migrate
         # It is an online CLI tool that allows you to quickly retrieve and debug APIs. It can dynamically generate executable SDK code samples.
         self.node_id = node_id
+        self.replica_type = replica_type
         # Alibaba Cloud CLI
         self.unit_cpu = unit_cpu
         # The operation that you want to perform.   
@@ -10706,6 +11047,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnit
             result['ManualMigrate'] = self.manual_migrate
         if self.node_id is not None:
             result['NodeId'] = self.node_id
+        if self.replica_type is not None:
+            result['ReplicaType'] = self.replica_type
         if self.unit_cpu is not None:
             result['UnitCpu'] = self.unit_cpu
         if self.unit_data_size is not None:
@@ -10728,6 +11071,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyTenantsTenantZonesUnit
             self.manual_migrate = m.get('ManualMigrate')
         if m.get('NodeId') is not None:
             self.node_id = m.get('NodeId')
+        if m.get('ReplicaType') is not None:
+            self.replica_type = m.get('ReplicaType')
         if m.get('UnitCpu') is not None:
             self.unit_cpu = m.get('UnitCpu')
         if m.get('UnitDataSize') is not None:
@@ -11066,11 +11411,15 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource
 class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
     def __init__(
         self,
+        full_copy_id: int = None,
         node_copy_id: int = None,
         node_id: str = None,
         node_resource: List[DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource] = None,
         node_status: str = None,
+        read_only_copy_id: int = None,
+        replica_type: str = None,
     ):
+        self.full_copy_id = full_copy_id
         # The information of zones.
         self.node_copy_id = node_copy_id
         # The ID of the resource unit.
@@ -11079,6 +11428,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
         self.node_resource = node_resource
         # The ID of the OBServer where the resource unit resides.
         self.node_status = node_status
+        self.read_only_copy_id = read_only_copy_id
+        self.replica_type = replica_type
 
     def validate(self):
         if self.node_resource:
@@ -11092,6 +11443,8 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
             return _map
 
         result = dict()
+        if self.full_copy_id is not None:
+            result['FullCopyId'] = self.full_copy_id
         if self.node_copy_id is not None:
             result['NodeCopyId'] = self.node_copy_id
         if self.node_id is not None:
@@ -11102,10 +11455,16 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
                 result['NodeResource'].append(k.to_map() if k else None)
         if self.node_status is not None:
             result['NodeStatus'] = self.node_status
+        if self.read_only_copy_id is not None:
+            result['ReadOnlyCopyId'] = self.read_only_copy_id
+        if self.replica_type is not None:
+            result['ReplicaType'] = self.replica_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('FullCopyId') is not None:
+            self.full_copy_id = m.get('FullCopyId')
         if m.get('NodeCopyId') is not None:
             self.node_copy_id = m.get('NodeCopyId')
         if m.get('NodeId') is not None:
@@ -11117,6 +11476,10 @@ class DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes(TeaModel):
                 self.node_resource.append(temp_model.from_map(k))
         if m.get('NodeStatus') is not None:
             self.node_status = m.get('NodeStatus')
+        if m.get('ReadOnlyCopyId') is not None:
+            self.read_only_copy_id = m.get('ReadOnlyCopyId')
+        if m.get('ReplicaType') is not None:
+            self.replica_type = m.get('ReplicaType')
         return self
 
 
@@ -12110,6 +12473,7 @@ class DescribeMetricsDataRequest(TeaModel):
         labels: str = None,
         limit: str = None,
         metrics: str = None,
+        replica_type: str = None,
         sort_metric_key: str = None,
         sort_order: str = None,
         start_time: str = None,
@@ -12120,6 +12484,7 @@ class DescribeMetricsDataRequest(TeaModel):
         self.labels = labels
         self.limit = limit
         self.metrics = metrics
+        self.replica_type = replica_type
         self.sort_metric_key = sort_metric_key
         self.sort_order = sort_order
         self.start_time = start_time
@@ -12145,6 +12510,8 @@ class DescribeMetricsDataRequest(TeaModel):
             result['Limit'] = self.limit
         if self.metrics is not None:
             result['Metrics'] = self.metrics
+        if self.replica_type is not None:
+            result['ReplicaType'] = self.replica_type
         if self.sort_metric_key is not None:
             result['SortMetricKey'] = self.sort_metric_key
         if self.sort_order is not None:
@@ -12167,6 +12534,8 @@ class DescribeMetricsDataRequest(TeaModel):
             self.limit = m.get('Limit')
         if m.get('Metrics') is not None:
             self.metrics = m.get('Metrics')
+        if m.get('ReplicaType') is not None:
+            self.replica_type = m.get('ReplicaType')
         if m.get('SortMetricKey') is not None:
             self.sort_metric_key = m.get('SortMetricKey')
         if m.get('SortOrder') is not None:
@@ -28409,10 +28778,259 @@ class DescribeTenantRequest(TeaModel):
         return self
 
 
+class DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit(TeaModel):
+    def __init__(
+        self,
+        max_capacity_unit: int = None,
+        min_capacity_unit: int = None,
+        used_capacit: int = None,
+    ):
+        self.max_capacity_unit = max_capacity_unit
+        self.min_capacity_unit = min_capacity_unit
+        self.used_capacit = used_capacit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_capacity_unit is not None:
+            result['MaxCapacityUnit'] = self.max_capacity_unit
+        if self.min_capacity_unit is not None:
+            result['MinCapacityUnit'] = self.min_capacity_unit
+        if self.used_capacit is not None:
+            result['UsedCapacit'] = self.used_capacit
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxCapacityUnit') is not None:
+            self.max_capacity_unit = m.get('MaxCapacityUnit')
+        if m.get('MinCapacityUnit') is not None:
+            self.min_capacity_unit = m.get('MinCapacityUnit')
+        if m.get('UsedCapacit') is not None:
+            self.used_capacit = m.get('UsedCapacit')
+        return self
+
+
+class DescribeTenantResponseBodyTenantReadOnlyResourceCpu(TeaModel):
+    def __init__(
+        self,
+        total_cpu: float = None,
+        unit_cpu: float = None,
+        used_cpu: float = None,
+    ):
+        self.total_cpu = total_cpu
+        self.unit_cpu = unit_cpu
+        self.used_cpu = used_cpu
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_cpu is not None:
+            result['TotalCpu'] = self.total_cpu
+        if self.unit_cpu is not None:
+            result['UnitCpu'] = self.unit_cpu
+        if self.used_cpu is not None:
+            result['UsedCpu'] = self.used_cpu
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCpu') is not None:
+            self.total_cpu = m.get('TotalCpu')
+        if m.get('UnitCpu') is not None:
+            self.unit_cpu = m.get('UnitCpu')
+        if m.get('UsedCpu') is not None:
+            self.used_cpu = m.get('UsedCpu')
+        return self
+
+
+class DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize(TeaModel):
+    def __init__(
+        self,
+        used_disk_size: float = None,
+    ):
+        self.used_disk_size = used_disk_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.used_disk_size is not None:
+            result['UsedDiskSize'] = self.used_disk_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('UsedDiskSize') is not None:
+            self.used_disk_size = m.get('UsedDiskSize')
+        return self
+
+
+class DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize(TeaModel):
+    def __init__(
+        self,
+        total_log_disk: int = None,
+        unit_log_disk: int = None,
+    ):
+        self.total_log_disk = total_log_disk
+        self.unit_log_disk = unit_log_disk
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_log_disk is not None:
+            result['TotalLogDisk'] = self.total_log_disk
+        if self.unit_log_disk is not None:
+            result['UnitLogDisk'] = self.unit_log_disk
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalLogDisk') is not None:
+            self.total_log_disk = m.get('TotalLogDisk')
+        if m.get('UnitLogDisk') is not None:
+            self.unit_log_disk = m.get('UnitLogDisk')
+        return self
+
+
+class DescribeTenantResponseBodyTenantReadOnlyResourceMemory(TeaModel):
+    def __init__(
+        self,
+        total_memory: float = None,
+        unit_memory: float = None,
+        used_memory: float = None,
+    ):
+        self.total_memory = total_memory
+        self.unit_memory = unit_memory
+        self.used_memory = used_memory
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.total_memory is not None:
+            result['TotalMemory'] = self.total_memory
+        if self.unit_memory is not None:
+            result['UnitMemory'] = self.unit_memory
+        if self.used_memory is not None:
+            result['UsedMemory'] = self.used_memory
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalMemory') is not None:
+            self.total_memory = m.get('TotalMemory')
+        if m.get('UnitMemory') is not None:
+            self.unit_memory = m.get('UnitMemory')
+        if m.get('UsedMemory') is not None:
+            self.used_memory = m.get('UsedMemory')
+        return self
+
+
+class DescribeTenantResponseBodyTenantReadOnlyResource(TeaModel):
+    def __init__(
+        self,
+        capacity_unit: DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit = None,
+        cpu: DescribeTenantResponseBodyTenantReadOnlyResourceCpu = None,
+        disk_size: DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize = None,
+        log_disk_size: DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize = None,
+        memory: DescribeTenantResponseBodyTenantReadOnlyResourceMemory = None,
+        unit_num: int = None,
+    ):
+        self.capacity_unit = capacity_unit
+        self.cpu = cpu
+        self.disk_size = disk_size
+        self.log_disk_size = log_disk_size
+        self.memory = memory
+        self.unit_num = unit_num
+
+    def validate(self):
+        if self.capacity_unit:
+            self.capacity_unit.validate()
+        if self.cpu:
+            self.cpu.validate()
+        if self.disk_size:
+            self.disk_size.validate()
+        if self.log_disk_size:
+            self.log_disk_size.validate()
+        if self.memory:
+            self.memory.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.capacity_unit is not None:
+            result['CapacityUnit'] = self.capacity_unit.to_map()
+        if self.cpu is not None:
+            result['Cpu'] = self.cpu.to_map()
+        if self.disk_size is not None:
+            result['DiskSize'] = self.disk_size.to_map()
+        if self.log_disk_size is not None:
+            result['LogDiskSize'] = self.log_disk_size.to_map()
+        if self.memory is not None:
+            result['Memory'] = self.memory.to_map()
+        if self.unit_num is not None:
+            result['UnitNum'] = self.unit_num
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CapacityUnit') is not None:
+            temp_model = DescribeTenantResponseBodyTenantReadOnlyResourceCapacityUnit()
+            self.capacity_unit = temp_model.from_map(m['CapacityUnit'])
+        if m.get('Cpu') is not None:
+            temp_model = DescribeTenantResponseBodyTenantReadOnlyResourceCpu()
+            self.cpu = temp_model.from_map(m['Cpu'])
+        if m.get('DiskSize') is not None:
+            temp_model = DescribeTenantResponseBodyTenantReadOnlyResourceDiskSize()
+            self.disk_size = temp_model.from_map(m['DiskSize'])
+        if m.get('LogDiskSize') is not None:
+            temp_model = DescribeTenantResponseBodyTenantReadOnlyResourceLogDiskSize()
+            self.log_disk_size = temp_model.from_map(m['LogDiskSize'])
+        if m.get('Memory') is not None:
+            temp_model = DescribeTenantResponseBodyTenantReadOnlyResourceMemory()
+            self.memory = temp_model.from_map(m['Memory'])
+        if m.get('UnitNum') is not None:
+            self.unit_num = m.get('UnitNum')
+        return self
+
+
 class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
     def __init__(
         self,
         address_type: str = None,
+        connection_replica_type: str = None,
         connection_zones: List[str] = None,
         enable_transaction_split: bool = None,
         internet_address: str = None,
@@ -28432,6 +29050,7 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
     ):
         # The primary zone of the tenant.
         self.address_type = address_type
+        self.connection_replica_type = connection_replica_type
         # The Internet address for accessing the tenant.
         self.connection_zones = connection_zones
         self.enable_transaction_split = enable_transaction_split
@@ -28478,6 +29097,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         result = dict()
         if self.address_type is not None:
             result['AddressType'] = self.address_type
+        if self.connection_replica_type is not None:
+            result['ConnectionReplicaType'] = self.connection_replica_type
         if self.connection_zones is not None:
             result['ConnectionZones'] = self.connection_zones
         if self.enable_transaction_split is not None:
@@ -28516,6 +29137,8 @@ class DescribeTenantResponseBodyTenantTenantConnections(TeaModel):
         m = m or dict()
         if m.get('AddressType') is not None:
             self.address_type = m.get('AddressType')
+        if m.get('ConnectionReplicaType') is not None:
+            self.connection_replica_type = m.get('ConnectionReplicaType')
         if m.get('ConnectionZones') is not None:
             self.connection_zones = m.get('ConnectionZones')
         if m.get('EnableTransactionSplit') is not None:
@@ -28825,22 +29448,84 @@ class DescribeTenantResponseBodyTenantTenantResource(TeaModel):
         return self
 
 
+class DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas(TeaModel):
+    def __init__(
+        self,
+        full_copy_id: int = None,
+        logic_zone_name: str = None,
+        read_only_copy_id: str = None,
+        zone_copy_id: int = None,
+        zone_nodes: str = None,
+        zone_replica_type: str = None,
+    ):
+        self.full_copy_id = full_copy_id
+        self.logic_zone_name = logic_zone_name
+        self.read_only_copy_id = read_only_copy_id
+        self.zone_copy_id = zone_copy_id
+        self.zone_nodes = zone_nodes
+        self.zone_replica_type = zone_replica_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.full_copy_id is not None:
+            result['FullCopyId'] = self.full_copy_id
+        if self.logic_zone_name is not None:
+            result['LogicZoneName'] = self.logic_zone_name
+        if self.read_only_copy_id is not None:
+            result['ReadOnlyCopyId'] = self.read_only_copy_id
+        if self.zone_copy_id is not None:
+            result['ZoneCopyId'] = self.zone_copy_id
+        if self.zone_nodes is not None:
+            result['ZoneNodes'] = self.zone_nodes
+        if self.zone_replica_type is not None:
+            result['ZoneReplicaType'] = self.zone_replica_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FullCopyId') is not None:
+            self.full_copy_id = m.get('FullCopyId')
+        if m.get('LogicZoneName') is not None:
+            self.logic_zone_name = m.get('LogicZoneName')
+        if m.get('ReadOnlyCopyId') is not None:
+            self.read_only_copy_id = m.get('ReadOnlyCopyId')
+        if m.get('ZoneCopyId') is not None:
+            self.zone_copy_id = m.get('ZoneCopyId')
+        if m.get('ZoneNodes') is not None:
+            self.zone_nodes = m.get('ZoneNodes')
+        if m.get('ZoneReplicaType') is not None:
+            self.zone_replica_type = m.get('ZoneReplicaType')
+        return self
+
+
 class DescribeTenantResponseBodyTenantTenantZones(TeaModel):
     def __init__(
         self,
         region: str = None,
         tenant_zone_id: str = None,
+        tenant_zone_replicas: List[DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas] = None,
         tenant_zone_role: str = None,
     ):
         # 是否允许开启读写分离地址
         self.region = region
         # The intranet port for accessing the tenant.
         self.tenant_zone_id = tenant_zone_id
+        self.tenant_zone_replicas = tenant_zone_replicas
         # The character set.
         self.tenant_zone_role = tenant_zone_role
 
     def validate(self):
-        pass
+        if self.tenant_zone_replicas:
+            for k in self.tenant_zone_replicas:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -28852,6 +29537,10 @@ class DescribeTenantResponseBodyTenantTenantZones(TeaModel):
             result['Region'] = self.region
         if self.tenant_zone_id is not None:
             result['TenantZoneId'] = self.tenant_zone_id
+        result['TenantZoneReplicas'] = []
+        if self.tenant_zone_replicas is not None:
+            for k in self.tenant_zone_replicas:
+                result['TenantZoneReplicas'].append(k.to_map() if k else None)
         if self.tenant_zone_role is not None:
             result['TenantZoneRole'] = self.tenant_zone_role
         return result
@@ -28862,6 +29551,11 @@ class DescribeTenantResponseBodyTenantTenantZones(TeaModel):
             self.region = m.get('Region')
         if m.get('TenantZoneId') is not None:
             self.tenant_zone_id = m.get('TenantZoneId')
+        self.tenant_zone_replicas = []
+        if m.get('TenantZoneReplicas') is not None:
+            for k in m.get('TenantZoneReplicas'):
+                temp_model = DescribeTenantResponseBodyTenantTenantZonesTenantZoneReplicas()
+                self.tenant_zone_replicas.append(temp_model.from_map(k))
         if m.get('TenantZoneRole') is not None:
             self.tenant_zone_role = m.get('TenantZoneRole')
         return self
@@ -28875,6 +29569,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         clog_service_status: str = None,
         collation: str = None,
         create_time: str = None,
+        data_merge_time: str = None,
         deploy_mode: str = None,
         deploy_type: str = None,
         description: str = None,
@@ -28890,6 +29585,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         pay_type: str = None,
         primary_zone: str = None,
         primary_zone_deploy_type: str = None,
+        read_only_resource: DescribeTenantResponseBodyTenantReadOnlyResource = None,
         series: str = None,
         status: str = None,
         tenant_connections: List[DescribeTenantResponseBodyTenantTenantConnections] = None,
@@ -28911,6 +29607,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.collation = collation
         # You can call this operation to create a single tenant in a specific cluster.
         self.create_time = create_time
+        self.data_merge_time = data_merge_time
         # The list of zones.
         self.deploy_mode = deploy_mode
         # The series of the instance.
@@ -28998,6 +29695,7 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.primary_zone = primary_zone
         # Example 1
         self.primary_zone_deploy_type = primary_zone_deploy_type
+        self.read_only_resource = read_only_resource
         # <DescribeTenantResponse>
         #     <RequestId>EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C</RequestId>
         #     <Tenant>
@@ -29080,6 +29778,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
         self.vpc_id = vpc_id
 
     def validate(self):
+        if self.read_only_resource:
+            self.read_only_resource.validate()
         if self.tenant_connections:
             for k in self.tenant_connections:
                 if k:
@@ -29107,6 +29807,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['Collation'] = self.collation
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.data_merge_time is not None:
+            result['DataMergeTime'] = self.data_merge_time
         if self.deploy_mode is not None:
             result['DeployMode'] = self.deploy_mode
         if self.deploy_type is not None:
@@ -29137,6 +29839,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             result['PrimaryZone'] = self.primary_zone
         if self.primary_zone_deploy_type is not None:
             result['PrimaryZoneDeployType'] = self.primary_zone_deploy_type
+        if self.read_only_resource is not None:
+            result['ReadOnlyResource'] = self.read_only_resource.to_map()
         if self.series is not None:
             result['Series'] = self.series
         if self.status is not None:
@@ -29175,6 +29879,8 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.collation = m.get('Collation')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('DataMergeTime') is not None:
+            self.data_merge_time = m.get('DataMergeTime')
         if m.get('DeployMode') is not None:
             self.deploy_mode = m.get('DeployMode')
         if m.get('DeployType') is not None:
@@ -29205,6 +29911,9 @@ class DescribeTenantResponseBodyTenant(TeaModel):
             self.primary_zone = m.get('PrimaryZone')
         if m.get('PrimaryZoneDeployType') is not None:
             self.primary_zone_deploy_type = m.get('PrimaryZoneDeployType')
+        if m.get('ReadOnlyResource') is not None:
+            temp_model = DescribeTenantResponseBodyTenantReadOnlyResource()
+            self.read_only_resource = temp_model.from_map(m['ReadOnlyResource'])
         if m.get('Series') is not None:
             self.series = m.get('Series')
         if m.get('Status') is not None:
@@ -36894,11 +37603,13 @@ class ModifyInstanceSpecRequest(TeaModel):
     def __init__(
         self,
         disk_size: int = None,
+        disk_type: str = None,
         dry_run: bool = None,
         instance_class: str = None,
         instance_id: str = None,
     ):
         self.disk_size = disk_size
+        self.disk_type = disk_type
         self.dry_run = dry_run
         self.instance_class = instance_class
         self.instance_id = instance_id
@@ -36914,6 +37625,8 @@ class ModifyInstanceSpecRequest(TeaModel):
         result = dict()
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
         if self.instance_class is not None:
@@ -36926,6 +37639,8 @@ class ModifyInstanceSpecRequest(TeaModel):
         m = m or dict()
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
         if m.get('InstanceClass') is not None:
@@ -37162,12 +37877,17 @@ class ModifyInstanceTagsResponse(TeaModel):
 class ModifyInstanceTemporaryCapacityRequest(TeaModel):
     def __init__(
         self,
+        accept_language: str = None,
         disk_size: str = None,
         instance_id: str = None,
         spec: str = None,
     ):
+        self.accept_language = accept_language
+        # The disk size. Unit: GB.
         self.disk_size = disk_size
+        # The ID of the OceanBase cluster.
         self.instance_id = instance_id
+        # Specification.
         self.spec = spec
 
     def validate(self):
@@ -37179,6 +37899,8 @@ class ModifyInstanceTemporaryCapacityRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
         if self.disk_size is not None:
             result['DiskSize'] = self.disk_size
         if self.instance_id is not None:
@@ -37189,6 +37911,8 @@ class ModifyInstanceTemporaryCapacityRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
         if m.get('DiskSize') is not None:
             self.disk_size = m.get('DiskSize')
         if m.get('InstanceId') is not None:
@@ -37203,6 +37927,7 @@ class ModifyInstanceTemporaryCapacityResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -37768,8 +38493,10 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
         instance_id: str = None,
         master_intranet_address_zone: str = None,
         primary_zone: str = None,
+        tenant_endpoint_direct_id: str = None,
         tenant_endpoint_id: str = None,
         tenant_id: str = None,
+        user_direct_vswitch_id: str = None,
         user_vswitch_id: str = None,
     ):
         # The primary zone of the tenant.    
@@ -37785,9 +38512,11 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
         self.master_intranet_address_zone = master_intranet_address_zone
         # The ID of the vSwitch.
         self.primary_zone = primary_zone
+        self.tenant_endpoint_direct_id = tenant_endpoint_direct_id
         self.tenant_endpoint_id = tenant_endpoint_id
         # The return result of the request.
         self.tenant_id = tenant_id
+        self.user_direct_vswitch_id = user_direct_vswitch_id
         # The request ID.
         self.user_vswitch_id = user_vswitch_id
 
@@ -37806,10 +38535,14 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
             result['MasterIntranetAddressZone'] = self.master_intranet_address_zone
         if self.primary_zone is not None:
             result['PrimaryZone'] = self.primary_zone
+        if self.tenant_endpoint_direct_id is not None:
+            result['TenantEndpointDirectId'] = self.tenant_endpoint_direct_id
         if self.tenant_endpoint_id is not None:
             result['TenantEndpointId'] = self.tenant_endpoint_id
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
+        if self.user_direct_vswitch_id is not None:
+            result['UserDirectVSwitchId'] = self.user_direct_vswitch_id
         if self.user_vswitch_id is not None:
             result['UserVSwitchId'] = self.user_vswitch_id
         return result
@@ -37822,10 +38555,14 @@ class ModifyTenantPrimaryZoneRequest(TeaModel):
             self.master_intranet_address_zone = m.get('MasterIntranetAddressZone')
         if m.get('PrimaryZone') is not None:
             self.primary_zone = m.get('PrimaryZone')
+        if m.get('TenantEndpointDirectId') is not None:
+            self.tenant_endpoint_direct_id = m.get('TenantEndpointDirectId')
         if m.get('TenantEndpointId') is not None:
             self.tenant_endpoint_id = m.get('TenantEndpointId')
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+        if m.get('UserDirectVSwitchId') is not None:
+            self.user_direct_vswitch_id = m.get('UserDirectVSwitchId')
         if m.get('UserVSwitchId') is not None:
             self.user_vswitch_id = m.get('UserVSwitchId')
         return self

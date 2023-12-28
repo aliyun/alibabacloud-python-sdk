@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_oceanbasepro20190901.
 
-Created on 14/12/2023
+Created on 28/12/2023
 
 @author: Alibaba Cloud SDK
 """
