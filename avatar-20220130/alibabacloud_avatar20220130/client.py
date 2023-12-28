@@ -365,6 +365,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.close_timed_reset_operate_with_options_async(request, runtime)
 
+    def confirm_avatar_2d_train_with_options(
+        self,
+        request: avatar_20220130_models.ConfirmAvatar2dTrainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.ConfirmAvatar2dTrainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.confirm):
+            query['Confirm'] = request.confirm
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmAvatar2dTrain',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.ConfirmAvatar2dTrainResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def confirm_avatar_2d_train_with_options_async(
+        self,
+        request: avatar_20220130_models.ConfirmAvatar2dTrainRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> avatar_20220130_models.ConfirmAvatar2dTrainResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.code):
+            query['Code'] = request.code
+        if not UtilClient.is_unset(request.confirm):
+            query['Confirm'] = request.confirm
+        if not UtilClient.is_unset(request.tenant_id):
+            query['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfirmAvatar2dTrain',
+            version='2022-01-30',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            avatar_20220130_models.ConfirmAvatar2dTrainResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def confirm_avatar_2d_train(
+        self,
+        request: avatar_20220130_models.ConfirmAvatar2dTrainRequest,
+    ) -> avatar_20220130_models.ConfirmAvatar2dTrainResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.confirm_avatar_2d_train_with_options(request, runtime)
+
+    async def confirm_avatar_2d_train_async(
+        self,
+        request: avatar_20220130_models.ConfirmAvatar2dTrainRequest,
+    ) -> avatar_20220130_models.ConfirmAvatar2dTrainResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.confirm_avatar_2d_train_with_options_async(request, runtime)
+
     def create_2d_avatar_with_options(
         self,
         request: avatar_20220130_models.Create2dAvatarRequest,
