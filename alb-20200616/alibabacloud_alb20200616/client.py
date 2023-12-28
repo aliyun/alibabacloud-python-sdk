@@ -989,7 +989,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        *CreateAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
+        ## Usage notes
+        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
         *   If an ACL is in the **Creating** state, the ACL is being created.
         *   If an ACL is in the **Available** state, the ACL is created.
         
@@ -1034,7 +1035,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        *CreateAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
+        ## Usage notes
+        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
         *   If an ACL is in the **Creating** state, the ACL is being created.
         *   If an ACL is in the **Available** state, the ACL is created.
         
@@ -1078,7 +1080,8 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateAclRequest,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        *CreateAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
+        ## Usage notes
+        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
         *   If an ACL is in the **Creating** state, the ACL is being created.
         *   If an ACL is in the **Available** state, the ACL is created.
         
@@ -1093,7 +1096,8 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateAclRequest,
     ) -> alb_20200616_models.CreateAclResponse:
         """
-        *CreateAcl** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListAcls](~~213617~~) operation to query the status of the task.
+        ## Usage notes
+        The **CreateAcl** operation is asynchronous. After you send a request, the system returns a request ID. However, the operation is still being performed in the system background. You can call the [ListAcls](~~213617~~) operation to query the status of an ACL:
         *   If an ACL is in the **Creating** state, the ACL is being created.
         *   If an ACL is in the **Available** state, the ACL is created.
         
@@ -1235,9 +1239,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        *CreateListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, the listener is created.
+        ## Usage notes
+        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1306,9 +1311,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        *CreateListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, the listener is created.
+        ## Usage notes
+        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1376,9 +1382,10 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateListenerRequest,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        *CreateListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, the listener is created.
+        ## Usage notes
+        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @return: CreateListenerResponse
@@ -1391,9 +1398,10 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateListenerRequest,
     ) -> alb_20200616_models.CreateListenerResponse:
         """
-        *CreateListener** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetListenerAttribute](~~2254865~~) operation to query the status of the task.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, the listener is being created.
-        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, the listener is created.
+        ## Usage notes
+        **CreateListener** is an asynchronous operation. After you call this operation, the system returns a request ID. However, the operation is still being performed in the background. You can call the [GetListenerAttribute](~~214353~~) operation to query the status of the HTTP, HTTPS, or QUIC listener.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Provisioning** state, it indicates that the listener is being created.
+        *   If the HTTP, HTTPS, or QUIC listener is in the **Running** state, it indicates that the listener has been created successfully.
         
         @param request: CreateListenerRequest
         @return: CreateListenerResponse
@@ -1957,7 +1965,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
+        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
         *   If a server group is in the **Creating** state, it indicates that the server group is being created.
         *   If a server group is in the **Available** state, it indicates that the server group is created.
         
@@ -2020,7 +2028,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
+        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
         *   If a server group is in the **Creating** state, it indicates that the server group is being created.
         *   If a server group is in the **Available** state, it indicates that the server group is created.
         
@@ -2082,7 +2090,7 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateServerGroupRequest,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
+        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
         *   If a server group is in the **Creating** state, it indicates that the server group is being created.
         *   If a server group is in the **Available** state, it indicates that the server group is created.
         
@@ -2097,7 +2105,7 @@ class Client(OpenApiClient):
         request: alb_20200616_models.CreateServerGroupRequest,
     ) -> alb_20200616_models.CreateServerGroupResponse:
         """
-        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListServerGroups](~~213627~~) operation to query the status of the task.
+        *CreateServerGroup** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [ListServerGroups](~~213627~~) to query the status of a server group.
         *   If a server group is in the **Creating** state, it indicates that the server group is being created.
         *   If a server group is in the **Available** state, it indicates that the server group is created.
         
@@ -5586,6 +5594,8 @@ class Client(OpenApiClient):
             query['ServerGroupIds'] = request.server_group_ids
         if not UtilClient.is_unset(request.server_group_names):
             query['ServerGroupNames'] = request.server_group_names
+        if not UtilClient.is_unset(request.server_group_type):
+            query['ServerGroupType'] = request.server_group_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
@@ -5626,6 +5636,8 @@ class Client(OpenApiClient):
             query['ServerGroupIds'] = request.server_group_ids
         if not UtilClient.is_unset(request.server_group_names):
             query['ServerGroupNames'] = request.server_group_names
+        if not UtilClient.is_unset(request.server_group_type):
+            query['ServerGroupType'] = request.server_group_type
         if not UtilClient.is_unset(request.tag):
             query['Tag'] = request.tag
         if not UtilClient.is_unset(request.vpc_id):
@@ -8043,8 +8055,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        ## Description
-        *   **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
+        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
         *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
         *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
         *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
@@ -8096,8 +8107,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        ## Description
-        *   **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
+        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
         *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
         *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
         *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
@@ -8148,8 +8158,7 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateRuleAttributeRequest,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        ## Description
-        *   **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
+        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
         *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
         *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
         *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
@@ -8167,8 +8176,7 @@ class Client(OpenApiClient):
         request: alb_20200616_models.UpdateRuleAttributeRequest,
     ) -> alb_20200616_models.UpdateRuleAttributeResponse:
         """
-        ## Description
-        *   **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
+        **UpdateRuleAttribute** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListRules](~~214379~~) operation to query the status of a forwarding rule:
         *   If a forwarding rule is in the **Configuring** state, the forwarding rule is being updated.
         *   If a forwarding rule is in the **Available** state, the forwarding rule is updated.
         *   You can set **RuleConditions** and **RuleActions** to add conditions and actions to a forwarding rule. Take note of the following limits on the number of conditions and the number of actions in each forwarding rule:
