@@ -277,6 +277,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_resource_with_options_async(request_path, request, headers, runtime)
 
+    def get_price_with_options(
+        self,
+        request_path: str,
+        tmp_req: cloudcontrol_20220830_models.GetPriceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloudcontrol_20220830_models.GetPriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_attributes):
+            request.resource_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_attributes, 'resourceAttributes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_attributes_shrink):
+            query['resourceAttributes'] = request.resource_attributes_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrice',
+            version='2022-08-30',
+            protocol='HTTPS',
+            pathname=f'{request_path}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudcontrol_20220830_models.GetPriceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_price_with_options_async(
+        self,
+        request_path: str,
+        tmp_req: cloudcontrol_20220830_models.GetPriceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        UtilClient.validate_model(tmp_req)
+        request = cloudcontrol_20220830_models.GetPriceShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_attributes):
+            request.resource_attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_attributes, 'resourceAttributes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.resource_attributes_shrink):
+            query['resourceAttributes'] = request.resource_attributes_shrink
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetPrice',
+            version='2022-08-30',
+            protocol='HTTPS',
+            pathname=f'{request_path}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloudcontrol_20220830_models.GetPriceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_price(
+        self,
+        request_path: str,
+        request: cloudcontrol_20220830_models.GetPriceRequest,
+    ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_price_with_options(request_path, request, headers, runtime)
+
+    async def get_price_async(
+        self,
+        request_path: str,
+        request: cloudcontrol_20220830_models.GetPriceRequest,
+    ) -> cloudcontrol_20220830_models.GetPriceResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_price_with_options_async(request_path, request, headers, runtime)
+
     def get_resource_type_with_options(
         self,
         request_path: str,
