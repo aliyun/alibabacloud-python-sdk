@@ -400,6 +400,8 @@ class Client(OpenApiClient):
     ) -> oosops_20190601_models.CreatePublicTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.popularity):
@@ -436,6 +438,8 @@ class Client(OpenApiClient):
     ) -> oosops_20190601_models.CreatePublicTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.popularity):
@@ -2638,6 +2642,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.type_name):
             query['TypeName'] = request.type_name
         req = open_api_models.OpenApiRequest(
@@ -2676,6 +2682,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not UtilClient.is_unset(request.next_token):
             query['NextToken'] = request.next_token
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.type_name):
             query['TypeName'] = request.type_name
         req = open_api_models.OpenApiRequest(

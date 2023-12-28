@@ -781,12 +781,14 @@ class CreatePublicPatchBaselineResponse(TeaModel):
 class CreatePublicTemplateRequest(TeaModel):
     def __init__(
         self,
+        category: str = None,
         content: str = None,
         popularity: int = None,
         publisher: str = None,
         region_id: str = None,
         template_name: str = None,
     ):
+        self.category = category
         self.content = content
         self.popularity = popularity
         self.publisher = publisher
@@ -802,6 +804,8 @@ class CreatePublicTemplateRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.content is not None:
             result['Content'] = self.content
         if self.popularity is not None:
@@ -816,6 +820,8 @@ class CreatePublicTemplateRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('Content') is not None:
             self.content = m.get('Content')
         if m.get('Popularity') is not None:
@@ -832,6 +838,7 @@ class CreatePublicTemplateRequest(TeaModel):
 class CreatePublicTemplateResponseBodyTemplate(TeaModel):
     def __init__(
         self,
+        category: str = None,
         created_by: str = None,
         created_date: str = None,
         description: str = None,
@@ -845,6 +852,7 @@ class CreatePublicTemplateResponseBodyTemplate(TeaModel):
         updated_by: str = None,
         updated_date: str = None,
     ):
+        self.category = category
         self.created_by = created_by
         self.created_date = created_date
         self.description = description
@@ -867,6 +875,8 @@ class CreatePublicTemplateResponseBodyTemplate(TeaModel):
             return _map
 
         result = dict()
+        if self.category is not None:
+            result['Category'] = self.category
         if self.created_by is not None:
             result['CreatedBy'] = self.created_by
         if self.created_date is not None:
@@ -895,6 +905,8 @@ class CreatePublicTemplateResponseBodyTemplate(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Category') is not None:
+            self.category = m.get('Category')
         if m.get('CreatedBy') is not None:
             self.created_by = m.get('CreatedBy')
         if m.get('CreatedDate') is not None:
@@ -5955,6 +5967,7 @@ class ListUserInventoryEntriesRequest(TeaModel):
         instance_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        region_id: str = None,
         type_name: str = None,
     ):
         self.ali_uid = ali_uid
@@ -5962,6 +5975,7 @@ class ListUserInventoryEntriesRequest(TeaModel):
         self.instance_id = instance_id
         self.max_results = max_results
         self.next_token = next_token
+        self.region_id = region_id
         self.type_name = type_name
 
     def validate(self):
@@ -5988,6 +6002,8 @@ class ListUserInventoryEntriesRequest(TeaModel):
             result['MaxResults'] = self.max_results
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
         if self.type_name is not None:
             result['TypeName'] = self.type_name
         return result
@@ -6007,6 +6023,8 @@ class ListUserInventoryEntriesRequest(TeaModel):
             self.max_results = m.get('MaxResults')
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
         if m.get('TypeName') is not None:
             self.type_name = m.get('TypeName')
         return self
