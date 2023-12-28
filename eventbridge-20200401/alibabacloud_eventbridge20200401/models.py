@@ -1668,7 +1668,7 @@ class CreateEventSourceRequest(TeaModel):
         self.source_rocket_mqparameters = source_rocket_mqparameters
         # The parameters that are configured if the event source is Log Service.
         self.source_slsparameters = source_slsparameters
-        # The parameters that are configured if the event source is scheduled events.
+        # The parameters that are configured if you specify scheduled events as the event source.
         self.source_scheduled_event_parameters = source_scheduled_event_parameters
 
     def validate(self):
@@ -1779,7 +1779,7 @@ class CreateEventSourceShrinkRequest(TeaModel):
         self.source_rocket_mqparameters_shrink = source_rocket_mqparameters_shrink
         # The parameters that are configured if the event source is Log Service.
         self.source_slsparameters_shrink = source_slsparameters_shrink
-        # The parameters that are configured if the event source is scheduled events.
+        # The parameters that are configured if you specify scheduled events as the event source.
         self.source_scheduled_event_parameters_shrink = source_scheduled_event_parameters_shrink
 
     def validate(self):
@@ -5371,6 +5371,45 @@ class CreateEventStreamingRequestSourceSourceMQTTParameters(TeaModel):
         return self
 
 
+class CreateEventStreamingRequestSourceSourcePrometheusParameters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        data_type: str = None,
+        labels: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.data_type = data_type
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
 class CreateEventStreamingRequestSourceSourceRabbitMQParameters(TeaModel):
     def __init__(
         self,
@@ -5660,6 +5699,7 @@ class CreateEventStreamingRequestSource(TeaModel):
         source_kafka_parameters: CreateEventStreamingRequestSourceSourceKafkaParameters = None,
         source_mnsparameters: CreateEventStreamingRequestSourceSourceMNSParameters = None,
         source_mqttparameters: CreateEventStreamingRequestSourceSourceMQTTParameters = None,
+        source_prometheus_parameters: CreateEventStreamingRequestSourceSourcePrometheusParameters = None,
         source_rabbit_mqparameters: CreateEventStreamingRequestSourceSourceRabbitMQParameters = None,
         source_rocket_mqparameters: CreateEventStreamingRequestSourceSourceRocketMQParameters = None,
         source_slsparameters: CreateEventStreamingRequestSourceSourceSLSParameters = None,
@@ -5672,6 +5712,7 @@ class CreateEventStreamingRequestSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are configured if you specify the event source as Message Queue for MQTT.
         self.source_mqttparameters = source_mqttparameters
+        self.source_prometheus_parameters = source_prometheus_parameters
         # The parameters that are configured if you specify the event source as Message Queue for RabbitMQ.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         # The parameters that are configured if you specify the event source as Message Queue for Apache RocketMQ.
@@ -5688,6 +5729,8 @@ class CreateEventStreamingRequestSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_prometheus_parameters:
+            self.source_prometheus_parameters.validate()
         if self.source_rabbit_mqparameters:
             self.source_rabbit_mqparameters.validate()
         if self.source_rocket_mqparameters:
@@ -5709,6 +5752,8 @@ class CreateEventStreamingRequestSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_prometheus_parameters is not None:
+            result['SourcePrometheusParameters'] = self.source_prometheus_parameters.to_map()
         if self.source_rabbit_mqparameters is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters.to_map()
         if self.source_rocket_mqparameters is not None:
@@ -5731,6 +5776,9 @@ class CreateEventStreamingRequestSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = CreateEventStreamingRequestSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourcePrometheusParameters') is not None:
+            temp_model = CreateEventStreamingRequestSourceSourcePrometheusParameters()
+            self.source_prometheus_parameters = temp_model.from_map(m['SourcePrometheusParameters'])
         if m.get('SourceRabbitMQParameters') is not None:
             temp_model = CreateEventStreamingRequestSourceSourceRabbitMQParameters()
             self.source_rabbit_mqparameters = temp_model.from_map(m['SourceRabbitMQParameters'])
@@ -11597,6 +11645,45 @@ class GetEventStreamingResponseBodyDataSourceSourceMQTTParameters(TeaModel):
         return self
 
 
+class GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        data_type: str = None,
+        labels: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.data_type = data_type
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
 class GetEventStreamingResponseBodyDataSourceSourceRabbitMQParameters(TeaModel):
     def __init__(
         self,
@@ -11833,6 +11920,7 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         source_kafka_parameters: GetEventStreamingResponseBodyDataSourceSourceKafkaParameters = None,
         source_mnsparameters: GetEventStreamingResponseBodyDataSourceSourceMNSParameters = None,
         source_mqttparameters: GetEventStreamingResponseBodyDataSourceSourceMQTTParameters = None,
+        source_prometheus_parameters: GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters = None,
         source_rabbit_mqparameters: GetEventStreamingResponseBodyDataSourceSourceRabbitMQParameters = None,
         source_rocket_mqparameters: GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters = None,
         source_slsparameters: GetEventStreamingResponseBodyDataSourceSourceSLSParameters = None,
@@ -11845,6 +11933,7 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are returned if the event source is Message Queue for MQTT.
         self.source_mqttparameters = source_mqttparameters
+        self.source_prometheus_parameters = source_prometheus_parameters
         # Source RabbitMQ Parameters
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         # Source RocketMQ Parameters
@@ -11861,6 +11950,8 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_prometheus_parameters:
+            self.source_prometheus_parameters.validate()
         if self.source_rabbit_mqparameters:
             self.source_rabbit_mqparameters.validate()
         if self.source_rocket_mqparameters:
@@ -11882,6 +11973,8 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_prometheus_parameters is not None:
+            result['SourcePrometheusParameters'] = self.source_prometheus_parameters.to_map()
         if self.source_rabbit_mqparameters is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters.to_map()
         if self.source_rocket_mqparameters is not None:
@@ -11904,6 +11997,9 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourcePrometheusParameters') is not None:
+            temp_model = GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters()
+            self.source_prometheus_parameters = temp_model.from_map(m['SourcePrometheusParameters'])
         if m.get('SourceRabbitMQParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSourceSourceRabbitMQParameters()
             self.source_rabbit_mqparameters = temp_model.from_map(m['SourceRabbitMQParameters'])
@@ -19246,6 +19342,7 @@ class QueryEventRequest(TeaModel):
         self.event_bus_name = event_bus_name
         # The event ID.
         self.event_id = event_id
+        # EventSource is required for querying default bus events.
         self.event_source = event_source
 
     def validate(self):
@@ -24884,6 +24981,45 @@ class UpdateEventStreamingRequestSourceSourceMQTTParameters(TeaModel):
         return self
 
 
+class UpdateEventStreamingRequestSourceSourcePrometheusParameters(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        data_type: str = None,
+        labels: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.data_type = data_type
+        self.labels = labels
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.labels is not None:
+            result['Labels'] = self.labels
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        return self
+
+
 class UpdateEventStreamingRequestSourceSourceRabbitMQParameters(TeaModel):
     def __init__(
         self,
@@ -25092,6 +25228,7 @@ class UpdateEventStreamingRequestSource(TeaModel):
         source_kafka_parameters: UpdateEventStreamingRequestSourceSourceKafkaParameters = None,
         source_mnsparameters: UpdateEventStreamingRequestSourceSourceMNSParameters = None,
         source_mqttparameters: UpdateEventStreamingRequestSourceSourceMQTTParameters = None,
+        source_prometheus_parameters: UpdateEventStreamingRequestSourceSourcePrometheusParameters = None,
         source_rabbit_mqparameters: UpdateEventStreamingRequestSourceSourceRabbitMQParameters = None,
         source_rocket_mqparameters: UpdateEventStreamingRequestSourceSourceRocketMQParameters = None,
         source_slsparameters: UpdateEventStreamingRequestSourceSourceSLSParameters = None,
@@ -25104,6 +25241,7 @@ class UpdateEventStreamingRequestSource(TeaModel):
         self.source_mnsparameters = source_mnsparameters
         # The parameters that are configured if the event source is Message Queue for MQTT.
         self.source_mqttparameters = source_mqttparameters
+        self.source_prometheus_parameters = source_prometheus_parameters
         # The parameters that are configured if the event source is Message Queue for RabbitMQ.
         self.source_rabbit_mqparameters = source_rabbit_mqparameters
         # The parameters that are configured if the event source is Message Queue for Apache RocketMQ.
@@ -25120,6 +25258,8 @@ class UpdateEventStreamingRequestSource(TeaModel):
             self.source_mnsparameters.validate()
         if self.source_mqttparameters:
             self.source_mqttparameters.validate()
+        if self.source_prometheus_parameters:
+            self.source_prometheus_parameters.validate()
         if self.source_rabbit_mqparameters:
             self.source_rabbit_mqparameters.validate()
         if self.source_rocket_mqparameters:
@@ -25141,6 +25281,8 @@ class UpdateEventStreamingRequestSource(TeaModel):
             result['SourceMNSParameters'] = self.source_mnsparameters.to_map()
         if self.source_mqttparameters is not None:
             result['SourceMQTTParameters'] = self.source_mqttparameters.to_map()
+        if self.source_prometheus_parameters is not None:
+            result['SourcePrometheusParameters'] = self.source_prometheus_parameters.to_map()
         if self.source_rabbit_mqparameters is not None:
             result['SourceRabbitMQParameters'] = self.source_rabbit_mqparameters.to_map()
         if self.source_rocket_mqparameters is not None:
@@ -25163,6 +25305,9 @@ class UpdateEventStreamingRequestSource(TeaModel):
         if m.get('SourceMQTTParameters') is not None:
             temp_model = UpdateEventStreamingRequestSourceSourceMQTTParameters()
             self.source_mqttparameters = temp_model.from_map(m['SourceMQTTParameters'])
+        if m.get('SourcePrometheusParameters') is not None:
+            temp_model = UpdateEventStreamingRequestSourceSourcePrometheusParameters()
+            self.source_prometheus_parameters = temp_model.from_map(m['SourcePrometheusParameters'])
         if m.get('SourceRabbitMQParameters') is not None:
             temp_model = UpdateEventStreamingRequestSourceSourceRabbitMQParameters()
             self.source_rabbit_mqparameters = temp_model.from_map(m['SourceRabbitMQParameters'])
