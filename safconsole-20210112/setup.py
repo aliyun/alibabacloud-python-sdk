@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_safconsole20210112.
 
-Created on 27/12/2023
+Created on 28/12/2023
 
 @author: Alibaba Cloud SDK
 """
