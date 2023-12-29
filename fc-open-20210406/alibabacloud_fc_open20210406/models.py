@@ -3032,6 +3032,7 @@ class StatefulAsyncInvocation(TeaModel):
         self,
         already_retried_times: int = None,
         destination_status: str = None,
+        duration_ms: int = None,
         end_time: int = None,
         events: List[StatefulAsyncInvocationEvent] = None,
         function_name: str = None,
@@ -3041,12 +3042,14 @@ class StatefulAsyncInvocation(TeaModel):
         invocation_payload: str = None,
         qualifier: str = None,
         request_id: str = None,
+        return_payload: str = None,
         service_name: str = None,
         started_time: int = None,
         status: str = None,
     ):
         self.already_retried_times = already_retried_times
         self.destination_status = destination_status
+        self.duration_ms = duration_ms
         self.end_time = end_time
         self.events = events
         self.function_name = function_name
@@ -3056,6 +3059,7 @@ class StatefulAsyncInvocation(TeaModel):
         self.invocation_payload = invocation_payload
         self.qualifier = qualifier
         self.request_id = request_id
+        self.return_payload = return_payload
         self.service_name = service_name
         self.started_time = started_time
         self.status = status
@@ -3076,6 +3080,8 @@ class StatefulAsyncInvocation(TeaModel):
             result['alreadyRetriedTimes'] = self.already_retried_times
         if self.destination_status is not None:
             result['destinationStatus'] = self.destination_status
+        if self.duration_ms is not None:
+            result['durationMs'] = self.duration_ms
         if self.end_time is not None:
             result['endTime'] = self.end_time
         result['events'] = []
@@ -3096,6 +3102,8 @@ class StatefulAsyncInvocation(TeaModel):
             result['qualifier'] = self.qualifier
         if self.request_id is not None:
             result['requestId'] = self.request_id
+        if self.return_payload is not None:
+            result['returnPayload'] = self.return_payload
         if self.service_name is not None:
             result['serviceName'] = self.service_name
         if self.started_time is not None:
@@ -3110,6 +3118,8 @@ class StatefulAsyncInvocation(TeaModel):
             self.already_retried_times = m.get('alreadyRetriedTimes')
         if m.get('destinationStatus') is not None:
             self.destination_status = m.get('destinationStatus')
+        if m.get('durationMs') is not None:
+            self.duration_ms = m.get('durationMs')
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
         self.events = []
@@ -3131,6 +3141,8 @@ class StatefulAsyncInvocation(TeaModel):
             self.qualifier = m.get('qualifier')
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
+        if m.get('returnPayload') is not None:
+            self.return_payload = m.get('returnPayload')
         if m.get('serviceName') is not None:
             self.service_name = m.get('serviceName')
         if m.get('startedTime') is not None:
@@ -3587,9 +3599,9 @@ class ClaimGPUInstanceRequest(TeaModel):
     ):
         # The disk performance level of the GPU rendering instance.
         self.disk_performance_level = disk_performance_level
-        # The system disk space of the GPU rendering instance.
+        # The system disk space of the GPU rendering instance. Unit: GB.
         self.disk_size_gigabytes = disk_size_gigabytes
-        # The image ID of the GPU-rendered instance.
+        # The image ID of the GPU rendering instance.
         self.image_id = image_id
         # The specifications of the GPU rendering instance.
         self.instance_type = instance_type
@@ -3597,9 +3609,9 @@ class ClaimGPUInstanceRequest(TeaModel):
         self.internet_bandwidth_out = internet_bandwidth_out
         # The password of the GPU rendering instance.
         self.password = password
-        # The role of the user.
+        # The user role.
         self.role = role
-        # The ID of the security group.
+        # The security group ID.
         self.sg_id = sg_id
         # The source IPv4 CIDR block of the GPU rendering instance.
         self.source_cidr_ip = source_cidr_ip
@@ -3609,7 +3621,7 @@ class ClaimGPUInstanceRequest(TeaModel):
         self.udp_port_range = udp_port_range
         # The ID of the VPC in which the instance resides.
         self.vpc_id = vpc_id
-        # The ID of the vSwitch.
+        # The vSwitch ID of the instance.
         self.vsw_id = vsw_id
 
     def validate(self):
@@ -3824,19 +3836,19 @@ class CreateAliasRequest(TeaModel):
         route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
-        # The additional version to which the alias points and the weight of the additional version.
+        # The canary release version to which the alias points and the weight of the canary release version.
         # 
-        # *   The additional version takes effect only when the function is invoked.
+        # *   The canary release version takes effect only when the function is invoked.
         # *   The value consists of a version number and a specific weight. For example, 2:0.05 indicates that when a function is invoked, Version 2 is the canary release version, 5% of the traffic is distributed to the canary release version, and 95% of the traffic is distributed to the major version.
         self.additional_version_weight = additional_version_weight
         # The name of the alias. The name can contain letters, digits, underscores (\_), and hyphens (-) only. The name cannot start with a digit or a hyphen (-). The name must be 1 to 128 characters in length. The name cannot be set to **LATEST**\
         self.alias_name = alias_name
         # The description of the alias.
         self.description = description
-        # The canary release mode. Valid values:
+        # The canary release mode. Default values: off. Valid values:
         # 
-        # *   **Random**: random canary release. This is the default value.
-        # *   **Content**: rule-based canary release.
+        # *   **Random**: random canary release.
+        # *   **Content**: rule-based canary release. By default, this parameter is empty.
         self.resolve_policy = resolve_policy
         # The canary release rule. Traffic that meets the canary release rule is routed to the canary release instance.
         self.route_policy = route_policy
@@ -3893,6 +3905,8 @@ class CreateAliasResponseBody(TeaModel):
         created_time: str = None,
         description: str = None,
         last_modified_time: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
         # The additional version to which the alias points and the weight of the additional version.
@@ -3908,11 +3922,14 @@ class CreateAliasResponseBody(TeaModel):
         self.description = description
         # The time when the alias was last modified.
         self.last_modified_time = last_modified_time
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
         # The ID of the version to which the alias points.
         self.version_id = version_id
 
     def validate(self):
-        pass
+        if self.route_policy:
+            self.route_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -3930,6 +3947,10 @@ class CreateAliasResponseBody(TeaModel):
             result['description'] = self.description
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -3946,6 +3967,11 @@ class CreateAliasResponseBody(TeaModel):
             self.description = m.get('description')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -4355,13 +4381,13 @@ class CreateFunctionRequest(TeaModel):
     ):
         # The port on which the HTTP server listens for the custom runtime or custom container runtime.
         self.ca_port = ca_port
-        # The code of the function. The code must be packaged into a ZIP file. Choose **code** or **customContainerConfig** for the function.
+        # The code of the function. The code must be packaged into a ZIP file. Configure **code** or **customContainerConfig**.
         self.code = code
         # The number of vCPUs of the function. The value is a multiple of 0.05.
         self.cpu = cpu
-        # The configurations of the custom container runtime. After you configure the custom container runtime, Function Compute can execute the function in a container created from a custom image. Choose **code** or **customContainerConfig** for the function.
+        # The configurations of the Custom Container runtime. After you configure the Custom Container runtime, Function Compute can execute the function in a container created from a custom image. Configure **code** or **customContainerConfig**.
         self.custom_container_config = custom_container_config
-        # The custom Domain Name System (DNS) configurations of the function.
+        # The custom DNS configurations of the function.
         self.custom_dns = custom_dns
         # The custom health check configuration of the function. This parameter is applicable only to custom runtimes and custom containers.
         self.custom_health_check_config = custom_health_check_config
@@ -4398,16 +4424,18 @@ class CreateFunctionRequest(TeaModel):
         # *   **fc.gpu.tesla.1**: GPU-accelerated instance (Tesla T4)
         # *   **fc.gpu.ampere.1**: GPU-accelerated instance (Ampere A10)
         # *   **g1**: same as **fc.gpu.tesla.1**\
+        # 
+        # Default value: e1
         self.instance_type = instance_type
         # An array that consists of the information of layers.
         # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
+        # >  If multiple layers exist, the layers are merged based on the array subscripts in descending order. The content of a layer with a smaller subscript overwrites that of a larger subscript.
         self.layers = layers
-        # The memory size for the function. Unit: MB. The value must be a multiple of 64. The memory size varies based on the function instance type. For more information, see [Instance types](~~179379~~).
+        # The memory size of the function. Unit: MB. The value must be a multiple of 64. The memory size varies based on the function instance type. For more information, see the "Instance types" section of the [Instance types and usage modes](~~179379~~) topic.
         self.memory_size = memory_size
-        # The runtime environment of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.10**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom.debian10**, **custom**, and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
+        # The runtime of the function. Valid values: **nodejs16**, **nodejs14**, **nodejs12**, **nodejs10**, **nodejs8**, **nodejs6**, **nodejs4.4**, **python3.10**, **python3.9**, **python3**, **python2.7**, **java11**, **java8**, **go1**, **php7.2**, **dotnetcore3.1**, **dotnetcore2.1**, **custom.debian10**, **custom**, and **custom-container**. For more information, see [Supported function runtime environments](~~73338~~).
         self.runtime = runtime
-        # The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When the period ends, the execution of the function is terminated.
+        # The timeout period for the execution of the function. Unit: seconds. Default value: 3. Minimum value: 1. When this period is elapsed, the function execution is terminated.
         self.timeout = timeout
 
     def validate(self):
@@ -4623,7 +4651,7 @@ class CreateFunctionResponseBody(TeaModel):
         self.last_modified_time = last_modified_time
         # An array that consists of the information of layers.
         # 
-        # > Multiple layers are merged based on the order of array subscripts. The content of a layer with a smaller subscript overwrites the file that has the same name as a layer with a larger subscript.
+        # >  If multiple layers exist, the layers are merged based on the array subscripts in descending order. The content of a layer with a smaller subscript overwrites that of a larger subscript.
         self.layers = layers
         # ARN list of layers
         self.layers_arn_v2 = layers_arn_v2
@@ -4877,7 +4905,7 @@ class CreateLayerVersionRequest(TeaModel):
     ):
         # The layer code.
         self.code = code
-        # The runtime environments that are supported by the layer.
+        # The runtimes that are supported by the layer.
         self.compatible_runtime = compatible_runtime
         # The layer description. The description can be up to 256 characters in length.
         self.description = description
@@ -4926,7 +4954,7 @@ class CreateLayerVersionResponseBody(TeaModel):
         layer_name: str = None,
         version: int = None,
     ):
-        # The access mode of the layer.
+        # The access mode of the layer. Digit 0 specifies that the layer is private and digit 1 specifies that the layer is public. By default, public layers are public. Custom layers can be set to private or public.
         self.acl = acl
         # The Alibaba Cloud Resource Name (ARN) of the layer.
         self.arn = arn
@@ -4936,7 +4964,7 @@ class CreateLayerVersionResponseBody(TeaModel):
         self.code_checksum = code_checksum
         # The size of the layer code package. Unit: bytes.
         self.codesize = codesize
-        # The runtime environments that are supported by the layer.
+        # The runtimes that are supported by the layer.
         self.compatible_runtime = compatible_runtime
         # The time when the layer version was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
         self.create_time = create_time
@@ -5215,6 +5243,7 @@ class CreateServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
+        use_slrauthentication: bool = None,
         vpc_config: VPCConfig = None,
     ):
         # The time when the service was created.
@@ -5245,6 +5274,7 @@ class CreateServiceResponseBody(TeaModel):
         self.service_name = service_name
         # The configuration of Tracing Analysis. After Function Compute is integrated with Tracing Analysis, you can record the duration of a request in Function Compute, view the cold start time of a function, and record the execution duration of a function. For more information, see [Tracing Analysis](~~189804~~).
         self.tracing_config = tracing_config
+        self.use_slrauthentication = use_slrauthentication
         # The VPC configurations. The configurations allow functions in the specified service to access the specified VPC.
         self.vpc_config = vpc_config
 
@@ -5288,6 +5318,8 @@ class CreateServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
+        if self.use_slrauthentication is not None:
+            result['useSLRAuthentication'] = self.use_slrauthentication
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -5320,6 +5352,8 @@ class CreateServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('useSLRAuthentication') is not None:
+            self.use_slrauthentication = m.get('useSLRAuthentication')
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -5431,7 +5465,7 @@ class CreateTriggerRequest(TeaModel):
     ):
         # The description of the trigger.
         self.description = description
-        # The role that is used by the event source such as OSS to invoke the function. For more information, see [Overview](~~53102~~).
+        # The role that is used by the event source such as Object Storage Service (OSS) to invoke the function. For more information, see [Overview](~~53102~~).
         self.invocation_role = invocation_role
         # The version or alias of the service.
         self.qualifier = qualifier
@@ -5439,25 +5473,27 @@ class CreateTriggerRequest(TeaModel):
         self.source_arn = source_arn
         # The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
         # 
-        # * OSS trigger: [OSSTriggerConfig](~~415697~~).
-        # * Log Service trigger: [LogTriggerConfig](~~415694~~).
-        # * Time trigger: [TimeTriggerConfig](~~415712~~).
-        # * HTTP trigger: [HTTPTriggerConfig](~~415685~~).
-        # * Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-        # * Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~415674~~).
-        # * MNS topic trigger: [MnsTopicTriggerConfig](~~415695~~).
+        # *   Object Storage Service (OSS) trigger: [OSSTriggerConfig](~~415697~~).
+        # *   Simple Log Service trigger: [LogTriggerConfig](~~415694~~).
+        # *   Time trigger: [TimeTriggerConfig](~~415712~~).
+        # *   HTTP trigger: [HTTPTriggerConfig](~~415685~~).
+        # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
+        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~415674~~).
+        # *   Message Service (MNS) topic trigger: [MnsTopicTriggerConfig](~~415695~~).
+        # *   EventBridge triggers: [EventBridgeTriggerConfig](~~2508622~~).
         self.trigger_config = trigger_config
         # The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
         self.trigger_name = trigger_name
         # The type of the trigger. Valid values:
         # 
         # *   **oss**: OSS event trigger. For more information, see [Overview](~~62922~~).
-        # *   **log**: Log Service trigger. For more information, see [Overview](~~84386~~).
+        # *   **log**: Simple Log Service trigger. For more information, see [Overview](~~84386~~).
         # *   **timer**: time trigger. For more information, see [Overview](~~68172~~).
         # *   **http**: HTTP trigger. For more information, see [Overview](~~71229~~).
         # *   **tablestore**: Tablestore trigger. For more information, see [Overview](~~100092~~).
         # *   **cdn_events**: CDN event trigger. For more information, see [Overview](~~73333~~).
         # *   **mns_topic**: MNS topic trigger. For more information, see [Overview](~~97032~~).
+        # *   **eventbridge**: EventBridge triggers.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -5541,7 +5577,7 @@ class CreateTriggerResponseBody(TeaModel):
         self.trigger_id = trigger_id
         # The name of the trigger. The name contains only letters, digits, hyphens (-), and underscores (\_). The name must be 1 to 128 characters in length and cannot start with a digit or hyphen (-).
         self.trigger_name = trigger_name
-        # The trigger type, such as **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, and **mns_topic**.
+        # The trigger type. Valid values: **oss**, **log**, **tablestore**, **timer**, **http**, **cdn_events**, **mns_topic**, and **eventbridge**.
         self.trigger_type = trigger_type
         # The public domain address. You can access HTTP triggers over the Internet by using HTTP or HTTPS.
         self.url_internet = url_internet
@@ -8729,6 +8765,7 @@ class GetServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
+        use_slrauthentication: bool = None,
         vpc_config: VPCConfig = None,
     ):
         # The time when the service was created.
@@ -8759,6 +8796,7 @@ class GetServiceResponseBody(TeaModel):
         self.service_name = service_name
         # The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
         self.tracing_config = tracing_config
+        self.use_slrauthentication = use_slrauthentication
         # The VPC configuration. The configuration allows a function to access the specified VPC.
         self.vpc_config = vpc_config
 
@@ -8802,6 +8840,8 @@ class GetServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
+        if self.use_slrauthentication is not None:
+            result['useSLRAuthentication'] = self.use_slrauthentication
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -8834,6 +8874,8 @@ class GetServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('useSLRAuthentication') is not None:
+            self.use_slrauthentication = m.get('useSLRAuthentication')
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -9112,7 +9154,7 @@ class GetTriggerResponseBody(TeaModel):
         # *   HTTP trigger: [HTTPTriggerConfig](~~415685~~).
         # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
         # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~415674~~).
-        # *   MNS topic trigger: [MnsTopicTriggerConfig](~~415695~~).
+        # *   Message Service (MNS) topic trigger: [MnsTopicTriggerConfig](~~415695~~).
         # *   EventBridge triggers: [EventBridgeTriggerConfig](~~2508622~~).
         self.trigger_config = trigger_config
         # The unique ID of the trigger.
@@ -9255,10 +9297,12 @@ class InvokeFunctionHeaders(TeaModel):
         self.x_fc_account_id = x_fc_account_id
         # The time when the function is invoked. The format is **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
-        # The method used to invoke the function. Valid values:
+        # The invocation method. Valid values:
         # 
-        # *   **Sync**: synchronous
-        # *   **Async**: asynchronous
+        # *   **Sync**: synchronous invocations
+        # *   **Async**: asynchronous invocations
+        # 
+        # Default value: Sync
         self.x_fc_invocation_type = x_fc_invocation_type
         # The method used to return logs. Valid values:
         # 
@@ -10236,7 +10280,7 @@ class ListFunctionAsyncInvokeConfigsRequest(TeaModel):
         limit: int = None,
         next_token: str = None,
     ):
-        # The maximum number of resources to return.
+        # The maximum number of resources to return. Default value: 20. The value cannot exceed 100. The number of returned configurations is less than or equal to the specified number.
         self.limit = limit
         # The token required to obtain more results. If the number of resources exceeds the limit, the nextToken parameter is returned. You can include the parameter in subsequent calls to obtain more results. You do not need to provide this parameter in the first call.
         self.next_token = next_token
@@ -10278,15 +10322,15 @@ class ListFunctionAsyncInvokeConfigsResponseBodyConfigs(TeaModel):
         service: str = None,
         stateful_invocation: bool = None,
     ):
-        # The time when the desktop group was created.
+        # The time when the application was created.
         self.created_time = created_time
-        # The configuration structure of the destination for asynchronous invocations. If you have not configured this parameter, this parameter is null.
+        # The configuration structure of the destination for the asynchronous invocation. If you have not configured this parameter, this parameter is null.
         self.destination_config = destination_config
-        # The name of the function.
+        # The function name.
         self.function = function
         # The time when the configuration was last modified.
         self.last_modified_time = last_modified_time
-        # The maximum validity period of a message. If you have not configured this parameter, this parameter is null.
+        # The maximum validity period of messages. If you have not configured this parameter, this parameter is null.
         self.max_async_event_age_in_seconds = max_async_event_age_in_seconds
         # The maximum number of retries allowed after an asynchronous invocation fails. If you have not configured this parameter, this parameter is null.
         self.max_async_retry_attempts = max_async_retry_attempts
@@ -10294,10 +10338,10 @@ class ListFunctionAsyncInvokeConfigsResponseBodyConfigs(TeaModel):
         self.qualifier = qualifier
         # The name of the service.
         self.service = service
-        # Indicates whether the asynchronous task feature is enabled.
+        # Specifies whether to enable the asynchronous task feature.
         # 
-        # *   **true**: The asynchronous task feature is enabled.
-        # *   **false**: The asynchronous task feature is disabled.
+        # *   **true**\
+        # *   **false**\
         # 
         # If you have not configured this parameter, this parameter is null.
         self.stateful_invocation = stateful_invocation
@@ -11076,7 +11120,7 @@ class ListLayerVersionsHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+        # The time when the operation is called. The format is: **EEE,d MMM yyyy HH:mm:ss GMT**.
         self.x_fc_date = x_fc_date
         # The trace ID of the request for Function Compute API.
         self.x_fc_trace_id = x_fc_trace_id
@@ -11119,7 +11163,7 @@ class ListLayerVersionsRequest(TeaModel):
         limit: int = None,
         start_version: int = None,
     ):
-        # The maximum number of resources to return. Default value: 20. Maximum value: 100. The number of returned resources is less than or equal to the specified number.
+        # The maximum number of resources to return. Default value: 20. The value cannot exceed 100. The number of returned configurations is less than or equal to the specified number.
         self.limit = limit
         # The initial version of the layer.
         self.start_version = start_version
@@ -12413,6 +12457,7 @@ class ListServicesResponseBodyServices(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
+        use_slrauthentication: bool = None,
         vpc_config: VPCConfig = None,
     ):
         # The time when the service was created.
@@ -12443,6 +12488,7 @@ class ListServicesResponseBodyServices(TeaModel):
         self.service_name = service_name
         # The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
         self.tracing_config = tracing_config
+        self.use_slrauthentication = use_slrauthentication
         # The VPC configuration. The configuration allows a function to access the specified VPC.
         self.vpc_config = vpc_config
 
@@ -12486,6 +12532,8 @@ class ListServicesResponseBodyServices(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
+        if self.use_slrauthentication is not None:
+            result['useSLRAuthentication'] = self.use_slrauthentication
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -12518,6 +12566,8 @@ class ListServicesResponseBodyServices(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('useSLRAuthentication') is not None:
+            self.use_slrauthentication = m.get('useSLRAuthentication')
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -13314,7 +13364,7 @@ class ListTriggersResponseBodyTriggers(TeaModel):
         self.description = description
         # The domain name used to invoke the function by using HTTP. You can add this domain name as the prefix to the endpoint of Function Compute. This way, you can invoke the function that corresponds to the trigger by using HTTP. Example: `{domainName}.cn-shanghai.fc.aliyuncs.com`.
         self.domain_name = domain_name
-        # The ARN of the RAM role that is used by the event source to invoke the function.
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role that is used by the event source to invoke the function.
         self.invocation_role = invocation_role
         # The time when the trigger was last modified.
         self.last_modified_time = last_modified_time
@@ -13324,14 +13374,14 @@ class ListTriggersResponseBodyTriggers(TeaModel):
         self.source_arn = source_arn
         # The configurations of the trigger. The configurations vary based on the trigger type. For more information about the format, see the following topics:
         # 
-        # *   Object Storage Service (OSS) trigger: [OSSTriggerConfig](~~415697~~)).
+        # *   Object Storage Service (OSS) trigger: [OSSTriggerConfig](~~415697~~).
         # *   Simple Log Service trigger: [LogTriggerConfig](~~415694~~).
         # *   Time trigger: [TimeTriggerConfig](~~415712~~).
         # *   HTTP trigger: [HTTPTriggerConfig](~~415685~~).
         # *   Tablestore trigger: Specify the **SourceArn** parameter and leave this parameter empty.
-        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](~~415674~~).
+        # *   Alibaba Cloud CDN event trigger: [CDNEventsTriggerConfig](javascript:void\(0\)).
         # *   MNS topic trigger: [MnsTopicTriggerConfig](~~415695~~).
-        # *   EventBridge triggers: [EventBridgeTriggerConfig](~~2508622~~).
+        # *   EventBridge triggers: [EventBridgeTriggerConfig](javascript:void\(0\)).
         self.trigger_config = trigger_config
         # The unique ID of the trigger.
         self.trigger_id = trigger_id
@@ -14330,7 +14380,7 @@ class PutProvisionConfigHeaders(TeaModel):
         self.common_headers = common_headers
         # The ID of your Alibaba Cloud account.
         self.x_fc_account_id = x_fc_account_id
-        # The time when Function Compute API is called. Specify the time in the **EEE,d MMM yyyy HH:mm:ss GMT** format.
+        # The time when the function is invoked. The value follows the **EEE,d MMM yyyy HH:mm:ss GMT** format.
         self.x_fc_date = x_fc_date
         # The trace ID of the invocation request of Function Compute.
         self.x_fc_trace_id = x_fc_trace_id
@@ -14380,11 +14430,11 @@ class PutProvisionConfigRequest(TeaModel):
         self.always_allocate_cpu = always_allocate_cpu
         # The configurations of scheduled auto scaling.
         self.scheduled_actions = scheduled_actions
-        # The number of provisioned instances. Value range: [1,100000].
+        # The number of target provisioned instances. Valid values: \[0,10000].
         self.target = target
         # The configurations of metric-based auto scaling.
         self.target_tracking_policies = target_tracking_policies
-        # The name of the alias.
+        # The service alias or latest version. Other versions are not supported.
         self.qualifier = qualifier
 
     def validate(self):
@@ -14458,7 +14508,7 @@ class PutProvisionConfigResponseBody(TeaModel):
         self.resource = resource
         # The configurations of scheduled auto scaling.
         self.scheduled_actions = scheduled_actions
-        # The expected number of provisioned instances.
+        # The number of target provisioned instances.
         self.target = target
         # The configurations of metric-based auto scaling.
         self.target_tracking_policies = target_tracking_policies
@@ -15295,6 +15345,8 @@ class UpdateAliasResponseBody(TeaModel):
         created_time: str = None,
         description: str = None,
         last_modified_time: str = None,
+        resolve_policy: str = None,
+        route_policy: RoutePolicy = None,
         version_id: str = None,
     ):
         # The additional version to which the alias points and the weight of the additional version.
@@ -15310,11 +15362,14 @@ class UpdateAliasResponseBody(TeaModel):
         self.description = description
         # The time when the alias was last modified.
         self.last_modified_time = last_modified_time
+        self.resolve_policy = resolve_policy
+        self.route_policy = route_policy
         # The ID of the version to which the alias points.
         self.version_id = version_id
 
     def validate(self):
-        pass
+        if self.route_policy:
+            self.route_policy.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -15332,6 +15387,10 @@ class UpdateAliasResponseBody(TeaModel):
             result['description'] = self.description
         if self.last_modified_time is not None:
             result['lastModifiedTime'] = self.last_modified_time
+        if self.resolve_policy is not None:
+            result['resolvePolicy'] = self.resolve_policy
+        if self.route_policy is not None:
+            result['routePolicy'] = self.route_policy.to_map()
         if self.version_id is not None:
             result['versionId'] = self.version_id
         return result
@@ -15348,6 +15407,11 @@ class UpdateAliasResponseBody(TeaModel):
             self.description = m.get('description')
         if m.get('lastModifiedTime') is not None:
             self.last_modified_time = m.get('lastModifiedTime')
+        if m.get('resolvePolicy') is not None:
+            self.resolve_policy = m.get('resolvePolicy')
+        if m.get('routePolicy') is not None:
+            temp_model = RoutePolicy()
+            self.route_policy = temp_model.from_map(m['routePolicy'])
         if m.get('versionId') is not None:
             self.version_id = m.get('versionId')
         return self
@@ -16346,6 +16410,7 @@ class UpdateServiceResponseBody(TeaModel):
         service_id: str = None,
         service_name: str = None,
         tracing_config: TracingConfig = None,
+        use_slrauthentication: bool = None,
         vpc_config: VPCConfig = None,
     ):
         # The time when the service was created.
@@ -16376,6 +16441,7 @@ class UpdateServiceResponseBody(TeaModel):
         self.service_name = service_name
         # The configuration of Tracing Analysis. After you configure Tracing Analysis for a service in Function Compute, you can record the execution duration of a request, view the amount of cold start time for a function, and record the execution duration of a function. For more information, see [Overview](~~189804~~).
         self.tracing_config = tracing_config
+        self.use_slrauthentication = use_slrauthentication
         # The VPC configuration. The configuration allows a function to access the specified VPC.
         self.vpc_config = vpc_config
 
@@ -16419,6 +16485,8 @@ class UpdateServiceResponseBody(TeaModel):
             result['serviceName'] = self.service_name
         if self.tracing_config is not None:
             result['tracingConfig'] = self.tracing_config.to_map()
+        if self.use_slrauthentication is not None:
+            result['useSLRAuthentication'] = self.use_slrauthentication
         if self.vpc_config is not None:
             result['vpcConfig'] = self.vpc_config.to_map()
         return result
@@ -16451,6 +16519,8 @@ class UpdateServiceResponseBody(TeaModel):
         if m.get('tracingConfig') is not None:
             temp_model = TracingConfig()
             self.tracing_config = temp_model.from_map(m['tracingConfig'])
+        if m.get('useSLRAuthentication') is not None:
+            self.use_slrauthentication = m.get('useSLRAuthentication')
         if m.get('vpcConfig') is not None:
             temp_model = VPCConfig()
             self.vpc_config = temp_model.from_map(m['vpcConfig'])
@@ -16624,6 +16694,8 @@ class UpdateTriggerResponseBody(TeaModel):
         last_modified_time: str = None,
         qualifier: str = None,
         source_arn: str = None,
+        status: str = None,
+        target_arn: str = None,
         trigger_config: str = None,
         trigger_id: str = None,
         trigger_name: str = None,
@@ -16645,6 +16717,8 @@ class UpdateTriggerResponseBody(TeaModel):
         self.qualifier = qualifier
         # The ARN of the event source.
         self.source_arn = source_arn
+        self.status = status
+        self.target_arn = target_arn
         # The configurations of the trigger. The configurations vary based on the trigger type.
         self.trigger_config = trigger_config
         # The unique ID of the trigger.
@@ -16681,6 +16755,10 @@ class UpdateTriggerResponseBody(TeaModel):
             result['qualifier'] = self.qualifier
         if self.source_arn is not None:
             result['sourceArn'] = self.source_arn
+        if self.status is not None:
+            result['status'] = self.status
+        if self.target_arn is not None:
+            result['targetArn'] = self.target_arn
         if self.trigger_config is not None:
             result['triggerConfig'] = self.trigger_config
         if self.trigger_id is not None:
@@ -16711,6 +16789,10 @@ class UpdateTriggerResponseBody(TeaModel):
             self.qualifier = m.get('qualifier')
         if m.get('sourceArn') is not None:
             self.source_arn = m.get('sourceArn')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('targetArn') is not None:
+            self.target_arn = m.get('targetArn')
         if m.get('triggerConfig') is not None:
             self.trigger_config = m.get('triggerConfig')
         if m.get('triggerId') is not None:
