@@ -6325,16 +6325,20 @@ class CopyNetworkAclEntriesRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region where the network ACL is deployed. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # The region ID of the network ACL. You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6398,7 +6402,7 @@ class CopyNetworkAclEntriesResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17147,7 +17151,13 @@ class CreateVSwitchRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key. You can specify at most 20 tag keys. The tag key cannot be an empty string.
+        # 
+        # The tag key can be at most 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
+        # The tag value. You can specify at most 20 tag values. The tag value can be an empty string.
+        # 
+        # The tag value can be up to 128 characters in length, but cannot contain `http://` or `https://`. The tag value cannot start with `aliyun` or `acs:`.
         self.value = value
 
     def validate(self):
@@ -17218,6 +17228,7 @@ class CreateVSwitchRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The tag of the resource.
         self.tag = tag
         # The name of the vSwitch.
         # 
@@ -25383,10 +25394,15 @@ class DeleteNetworkAclRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request.
         # 
-        # You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         # 
-        # >  If you do not set this parameter, the system uses **RequestId** as **ClientToken**. **RequestId** may be different for each API request.
+        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        # 
+        # **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+        # 
+        # **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -25452,7 +25468,7 @@ class DeleteNetworkAclResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -33057,7 +33073,7 @@ class DescribeEipAddressesRequest(TeaModel):
         self.allocation_id = allocation_id
         # The ID of the instance associated with the EIP.
         self.associated_instance_id = associated_instance_id
-        # The type of the cloud resource with which you want to associate the EIP. Valid values:
+        # The type of the cloud resource with which you want to associate the elastic IP address (EIP). Valid values:
         # 
         # *   **EcsInstance** (default): an Elastic Compute Service (ECS) instance in a virtual private cloud (VPC).
         # *   **SlbInstance**: a Server Load Balancer (SLB) instance in a VPC.
@@ -33066,7 +33082,7 @@ class DescribeEipAddressesRequest(TeaModel):
         # *   **NetworkInterface**: a secondary elastic network interface (ENI).
         # *   **IpAddress**: an IP address.
         # 
-        # >  You can associate only one EIP with each ECS instance, SLB instance, HAVIP, or IP address. You can associate multiple EIPs with each NAT gateway. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [Associate EIPs with and disassociate EIPs from cloud resources](~~72125~~).
+        # >  Each ECS instance, CLB instance, HAVIP, and IP address can be associated with only one EIP. A NAT gateway can be associated with multiple EIPs. The number of EIPs that you can associate with a secondary ENI depends on the association mode. For more information, see [EIP overview](~~72125~~).
         self.associated_instance_type = associated_instance_type
         # The billing method of the EIP. Valid values:
         # 
@@ -33132,9 +33148,9 @@ class DescribeEipAddressesRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # Specifies whether to enable Anti-DDoS Pro/Premium. Valid values:
+        # Specifies whether Anti-DDoS Pro/Premium is activated. Valid value:
         # 
-        # *   **false** (default)
+        # *   **false**\
         # *   **true**\
         self.security_protection_enabled = security_protection_enabled
         # The ID of the contiguous EIP group.
@@ -33497,14 +33513,14 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.bandwidth_package_bandwidth = bandwidth_package_bandwidth
         # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The type of the bandwidth. Only **CommonBandwidthPackage** may be returned, which indicates Internet Shared Bandwidth.
+        # The bandwidth type. Only **CommonBandwidthPackage** may be returned, which indicates Internet Shared Bandwidth.
         self.bandwidth_package_type = bandwidth_package_type
         # The service type. Valid values:
         # 
         # *   **CloudBox** Only cloud box users can select this type.
         # *   **Default** (default)
         self.biz_type = biz_type
-        # The service state of the EIP. Valid values:
+        # The service status of the EIP. Valid values:
         # 
         # *   **Normal**\
         # *   **FinancialLocked**\
@@ -33537,8 +33553,8 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.has_reservation_data = has_reservation_data
         # The line type. Valid values:
         # 
-        # *   **BGP**: BGP (Multi-ISP) lines. All regions support BGP (Multi-ISP) EIPs.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. Only the following regions support BGP (Multi-ISP) Pro lines: China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok).
+        # *   **BGP**: BGP (Multi-ISP). All regions support BGP (Multi-ISP) EIPs.
+        # *   **BGP_PRO**: BGP (Multi-ISP) Pro. BGP (Multi-ISP) Pro is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
         # 
         # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](~~32321~~) section of the "What is EIP?" topic.
         # 
@@ -33560,7 +33576,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         # The type of the associated instance. Valid values:
         # 
         # *   **EcsInstance**: an ECS instance in a VPC.
-        # *   **SlbInstance**: an SLB instance in a VPC.
+        # *   **SlbInstance**: a CLB instance in a VPC.
         # *   **Nat**: a NAT gateway.
         # *   **HaVip**: an HAVIP.
         # *   **NetworkInterface**: a secondary ENI.
@@ -33568,11 +33584,16 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.instance_type = instance_type
         # The metering method of the EIP. Valid values:
         # 
-        # *   **PayByBandwidth**: pay-by-bandwidth.
-        # *   **PayByTraffic**: pay-by-traffic.
+        # *   **PayByBandwidth**\
+        # *   **PayByTraffic**\
         self.internet_charge_type = internet_charge_type
-        # The EIP.
+        # The IP address of the EIP.
         self.ip_address = ip_address
+        # The association mode. Valid values:
+        # 
+        # *   **NAT**: NAT mode
+        # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
+        # *   **BINDED**: cut-through mode
         self.mode = mode
         # The name of the EIP.
         self.name = name
@@ -33580,6 +33601,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.netmode = netmode
         # The details about the locked EIP.
         self.operation_locks = operation_locks
+        # The private IP address of the secondary ENI with which the EIP is associated.
         self.private_ip_address = private_ip_address
         # The ID of the IP address pool to which the EIP belongs.
         self.public_ip_address_pool_id = public_ip_address_pool_id
@@ -33591,8 +33613,8 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         self.reservation_bandwidth = reservation_bandwidth
         # The metering method that is used after the renewal takes effect. Valid values:
         # 
-        # *   **PayByBandwidth**: pay-by-bandwidth.
-        # *   **PayByTraffic**: pay-by-traffic.
+        # *   **PayByBandwidth**\
+        # *   **PayByTraffic**\
         self.reservation_internet_charge_type = reservation_internet_charge_type
         # The type of the renewal order. Valid values:
         # 
@@ -33600,7 +33622,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         # *   **TEMP_UPGRADE**: temporary upgrade.
         # *   **UPGRADE**: upgrade.
         self.reservation_order_type = reservation_order_type
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # Indicates whether level-2 throttling is configured. Valid values:
         # 
@@ -33612,16 +33634,16 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(TeaModel):
         # *   If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
         # *   If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium is used.
         self.security_protection_types = security_protection_types
-        # The ID of the contiguous EIP group.
+        # The IDs of contiguous EIPs.
         # 
         # This value is returned only when you query contiguous EIPs.
         self.segment_instance_id = segment_instance_id
         # Indicates whether the resource is created by the service account. Valid values:
         # 
-        # *   **0**: The resource is not created by the service account.
-        # *   **1**: The resource is created by the service account.
+        # *   **0**: no
+        # *   **1**: yes
         self.service_managed = service_managed
-        # The state of the EIP. Valid values:
+        # The status of the EIP. Valid values:
         # 
         # *   **Associating**\
         # *   **Unassociating**\
@@ -53322,6 +53344,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         description: str = None,
         detect_multiplier: int = None,
         ecc_id: str = None,
+        ecr_attatch_status: str = None,
+        ecr_id: str = None,
         enable_ipv_6: bool = None,
         local_gateway_ip: str = None,
         local_ipv_6gateway_ip: str = None,
@@ -53341,6 +53365,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         recovery_time: str = None,
         resource_group_id: str = None,
         route_table_id: str = None,
+        sitelink_enable: bool = None,
         status: str = None,
         tags: DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorderRouterTypeTags = None,
         termination_time: str = None,
@@ -53375,6 +53400,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         self.detect_multiplier = detect_multiplier
         # The ID of the ECC instance.
         self.ecc_id = ecc_id
+        self.ecr_attatch_status = ecr_attatch_status
+        self.ecr_id = ecr_id
         # Indicates whether IPv6 is enabled. Valid values:
         # 
         # *   **true**\
@@ -53433,6 +53460,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         self.resource_group_id = resource_group_id
         # The ID of the VBR route table.
         self.route_table_id = route_table_id
+        self.sitelink_enable = sitelink_enable
         # The status of the VBR. Valid values:
         # 
         # *   **unconfirmed**\
@@ -53491,6 +53519,10 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             result['DetectMultiplier'] = self.detect_multiplier
         if self.ecc_id is not None:
             result['EccId'] = self.ecc_id
+        if self.ecr_attatch_status is not None:
+            result['EcrAttatchStatus'] = self.ecr_attatch_status
+        if self.ecr_id is not None:
+            result['EcrId'] = self.ecr_id
         if self.enable_ipv_6 is not None:
             result['EnableIpv6'] = self.enable_ipv_6
         if self.local_gateway_ip is not None:
@@ -53529,6 +53561,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             result['ResourceGroupId'] = self.resource_group_id
         if self.route_table_id is not None:
             result['RouteTableId'] = self.route_table_id
+        if self.sitelink_enable is not None:
+            result['SitelinkEnable'] = self.sitelink_enable
         if self.status is not None:
             result['Status'] = self.status
         if self.tags is not None:
@@ -53571,6 +53605,10 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             self.detect_multiplier = m.get('DetectMultiplier')
         if m.get('EccId') is not None:
             self.ecc_id = m.get('EccId')
+        if m.get('EcrAttatchStatus') is not None:
+            self.ecr_attatch_status = m.get('EcrAttatchStatus')
+        if m.get('EcrId') is not None:
+            self.ecr_id = m.get('EcrId')
         if m.get('EnableIpv6') is not None:
             self.enable_ipv_6 = m.get('EnableIpv6')
         if m.get('LocalGatewayIp') is not None:
@@ -53609,6 +53647,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('RouteTableId') is not None:
             self.route_table_id = m.get('RouteTableId')
+        if m.get('SitelinkEnable') is not None:
+            self.sitelink_enable = m.get('SitelinkEnable')
         if m.get('Status') is not None:
             self.status = m.get('Status')
         if m.get('Tags') is not None:
@@ -68399,10 +68439,44 @@ class ListDhcpOptionsSetsResponse(TeaModel):
         return self
 
 
+class ListEnhanhcedNatGatewayAvailableZonesRequestFilter(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
     def __init__(
         self,
         accept_language: str = None,
+        filter: List[ListEnhanhcedNatGatewayAvailableZonesRequestFilter] = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -68414,6 +68488,7 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         # *   **zh-CN** (default): Chinese
         # *   **en-US**: English
         self.accept_language = accept_language
+        self.filter = filter
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region that you want to query.
@@ -68426,7 +68501,10 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
 
     def validate(self):
-        pass
+        if self.filter:
+            for k in self.filter:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -68436,6 +68514,10 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         result = dict()
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
+        result['Filter'] = []
+        if self.filter is not None:
+            for k in self.filter:
+                result['Filter'].append(k.to_map() if k else None)
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
         if self.owner_id is not None:
@@ -68452,6 +68534,11 @@ class ListEnhanhcedNatGatewayAvailableZonesRequest(TeaModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+        self.filter = []
+        if m.get('Filter') is not None:
+            for k in m.get('Filter'):
+                temp_model = ListEnhanhcedNatGatewayAvailableZonesRequestFilter()
+                self.filter.append(temp_model.from_map(k))
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')
         if m.get('OwnerId') is not None:
@@ -68634,7 +68721,9 @@ class ListFullNatEntriesRequest(TeaModel):
         # 
         # >  You must specify at least one of **FullNatTableId** and **NatGatewayId**.
         self.nat_gateway_id = nat_gateway_id
+        # The NAT IP address that provides address translation in FULLNAT entries.
         self.nat_ip = nat_ip
+        # The frontend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
         self.nat_ip_port = nat_ip_port
         # The ID of the elastic network interface (ENI) that you want to query.
         self.network_interface_ids = network_interface_ids
@@ -83869,6 +83958,7 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        sitelink_enable: bool = None,
         vbr_id: str = None,
         vlan_id: int = None,
     ):
@@ -83944,6 +84034,7 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.sitelink_enable = sitelink_enable
         # The VBR ID.
         self.vbr_id = vbr_id
         # The VLAN ID of the VBR. Valid values: **0 to 2999**.
@@ -84002,6 +84093,8 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
             result['ResourceOwnerAccount'] = self.resource_owner_account
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.sitelink_enable is not None:
+            result['SitelinkEnable'] = self.sitelink_enable
         if self.vbr_id is not None:
             result['VbrId'] = self.vbr_id
         if self.vlan_id is not None:
@@ -84052,6 +84145,8 @@ class ModifyVirtualBorderRouterAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SitelinkEnable') is not None:
+            self.sitelink_enable = m.get('SitelinkEnable')
         if m.get('VbrId') is not None:
             self.vbr_id = m.get('VbrId')
         if m.get('VlanId') is not None:
