@@ -259,6 +259,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVerifySchemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -323,6 +331,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVerifySchemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -386,6 +402,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
     ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateVerifySchemeRequest
+        @return: CreateVerifySchemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_verify_scheme_with_options(request, runtime)
 
@@ -393,6 +416,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.CreateVerifySchemeRequest,
     ) -> dypnsapi_20170525_models.CreateVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: CreateVerifySchemeRequest
+        @return: CreateVerifySchemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_verify_scheme_with_options_async(request, runtime)
 
@@ -401,6 +431,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVerifySchemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.customer_id):
@@ -437,6 +475,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVerifySchemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.customer_id):
@@ -472,6 +518,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
     ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteVerifySchemeRequest
+        @return: DeleteVerifySchemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_verify_scheme_with_options(request, runtime)
 
@@ -479,6 +532,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.DeleteVerifySchemeRequest,
     ) -> dypnsapi_20170525_models.DeleteVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DeleteVerifySchemeRequest
+        @return: DeleteVerifySchemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_verify_scheme_with_options_async(request, runtime)
 
@@ -487,6 +547,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DescribeVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifySchemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.customer_id):
@@ -523,6 +591,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DescribeVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVerifySchemeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.customer_id):
@@ -558,6 +634,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
     ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DescribeVerifySchemeRequest
+        @return: DescribeVerifySchemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_verify_scheme_with_options(request, runtime)
 
@@ -565,6 +648,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.DescribeVerifySchemeRequest,
     ) -> dypnsapi_20170525_models.DescribeVerifySchemeResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 100 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: DescribeVerifySchemeRequest
+        @return: DescribeVerifySchemeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_verify_scheme_with_options_async(request, runtime)
 
@@ -573,6 +663,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetAuthTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.origin):
@@ -583,6 +683,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -609,6 +711,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetAuthTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.origin):
@@ -619,6 +731,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
         if not UtilClient.is_unset(request.url):
             query['Url'] = request.url
         req = open_api_models.OpenApiRequest(
@@ -644,6 +758,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetAuthTokenRequest,
     ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthTokenRequest
+        @return: GetAuthTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_auth_token_with_options(request, runtime)
 
@@ -651,6 +774,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetAuthTokenRequest,
     ) -> dypnsapi_20170525_models.GetAuthTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthTokenRequest
+        @return: GetAuthTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_auth_token_with_options_async(request, runtime)
 
@@ -659,6 +791,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](~~196922~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthorizationUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorizationUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -697,6 +839,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](~~196922~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthorizationUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAuthorizationUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -734,6 +886,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
     ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](~~196922~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthorizationUrlRequest
+        @return: GetAuthorizationUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_authorization_url_with_options(request, runtime)
 
@@ -741,6 +902,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetAuthorizationUrlRequest,
     ) -> dypnsapi_20170525_models.GetAuthorizationUrlResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account and obtain an Alibaba Cloud AccessKey pair. For more information, see [Process of communication authorization](~~196922~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetAuthorizationUrlRequest
+        @return: GetAuthorizationUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_authorization_url_with_options_async(request, runtime)
 
@@ -851,6 +1021,17 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetMobileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMobileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMobileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -887,6 +1068,17 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetMobileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMobileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMobileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -922,6 +1114,16 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetMobileRequest,
     ) -> dypnsapi_20170525_models.GetMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMobileRequest
+        @return: GetMobileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mobile_with_options(request, runtime)
 
@@ -929,6 +1131,16 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetMobileRequest,
     ) -> dypnsapi_20170525_models.GetMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration. You can call this operation only after you confirm the authorization on the authorization page provided by the SDK for one-click logon. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetMobileRequest
+        @return: GetMobileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mobile_with_options_async(request, runtime)
 
@@ -937,6 +1149,17 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneWithTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneWithTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -971,6 +1194,17 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneWithTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPhoneWithTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1004,6 +1238,16 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
     ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneWithTokenRequest
+        @return: GetPhoneWithTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_phone_with_token_with_options(request, runtime)
 
@@ -1011,6 +1255,16 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetPhoneWithTokenRequest,
     ) -> dypnsapi_20170525_models.GetPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable only to one-click logon or registration in HTML5 pages. You can call this operation only after you confirm the authorization on the authorization page provided by the JavaScript SDK. You are prohibited from simulating or bypassing the authorization process. Alibaba Cloud reserves the right to terminate our services and take legal actions against such violations.
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetPhoneWithTokenRequest
+        @return: GetPhoneWithTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_phone_with_token_with_options_async(request, runtime)
 
@@ -1019,6 +1273,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSmsAuthTokensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsAuthTokensResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -1067,6 +1331,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSmsAuthTokensRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmsAuthTokensResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bundle_id):
@@ -1114,6 +1388,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
     ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSmsAuthTokensRequest
+        @return: GetSmsAuthTokensResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_sms_auth_tokens_with_options(request, runtime)
 
@@ -1121,14 +1404,287 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.GetSmsAuthTokensRequest,
     ) -> dypnsapi_20170525_models.GetSmsAuthTokensResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: GetSmsAuthTokensRequest
+        @return: GetSmsAuthTokensResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_sms_auth_tokens_with_options_async(request, runtime)
+
+    def jy_create_verify_scheme_with_options(
+        self,
+        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
+        """
+        @deprecated : JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
+        
+        @param request: JyCreateVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JyCreateVerifySchemeResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.cm_api_code):
+            query['CmApiCode'] = request.cm_api_code
+        if not UtilClient.is_unset(request.ct_api_code):
+            query['CtApiCode'] = request.ct_api_code
+        if not UtilClient.is_unset(request.cu_api_code):
+            query['CuApiCode'] = request.cu_api_code
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pack_name):
+            query['PackName'] = request.pack_name
+        if not UtilClient.is_unset(request.pack_sign):
+            query['PackSign'] = request.pack_sign
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='JyCreateVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.JyCreateVerifySchemeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def jy_create_verify_scheme_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
+        """
+        @deprecated : JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
+        
+        @param request: JyCreateVerifySchemeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JyCreateVerifySchemeResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_name):
+            query['AppName'] = request.app_name
+        if not UtilClient.is_unset(request.bundle_id):
+            query['BundleId'] = request.bundle_id
+        if not UtilClient.is_unset(request.cm_api_code):
+            query['CmApiCode'] = request.cm_api_code
+        if not UtilClient.is_unset(request.ct_api_code):
+            query['CtApiCode'] = request.ct_api_code
+        if not UtilClient.is_unset(request.cu_api_code):
+            query['CuApiCode'] = request.cu_api_code
+        if not UtilClient.is_unset(request.os_type):
+            query['OsType'] = request.os_type
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.pack_name):
+            query['PackName'] = request.pack_name
+        if not UtilClient.is_unset(request.pack_sign):
+            query['PackSign'] = request.pack_sign
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scheme_name):
+            query['SchemeName'] = request.scheme_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='JyCreateVerifyScheme',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.JyCreateVerifySchemeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def jy_create_verify_scheme(
+        self,
+        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
+        """
+        @deprecated : JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
+        
+        @param request: JyCreateVerifySchemeRequest
+        @return: JyCreateVerifySchemeResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.jy_create_verify_scheme_with_options(request, runtime)
+
+    async def jy_create_verify_scheme_async(
+        self,
+        request: dypnsapi_20170525_models.JyCreateVerifySchemeRequest,
+    ) -> dypnsapi_20170525_models.JyCreateVerifySchemeResponse:
+        """
+        @deprecated : JyCreateVerifyScheme is deprecated, please use Dypnsapi::2017-05-25::CreateVerifyScheme instead.
+        
+        @param request: JyCreateVerifySchemeRequest
+        @return: JyCreateVerifySchemeResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.jy_create_verify_scheme_with_options_async(request, runtime)
+
+    def jy_query_app_info_by_scene_code_with_options(
+        self,
+        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
+        """
+        @deprecated : JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
+        
+        @param request: JyQueryAppInfoBySceneCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JyQueryAppInfoBySceneCodeResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='JyQueryAppInfoBySceneCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def jy_query_app_info_by_scene_code_with_options_async(
+        self,
+        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
+        """
+        @deprecated : JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
+        
+        @param request: JyQueryAppInfoBySceneCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JyQueryAppInfoBySceneCodeResponse
+        Deprecated
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not UtilClient.is_unset(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not UtilClient.is_unset(request.scene_code):
+            query['SceneCode'] = request.scene_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='JyQueryAppInfoBySceneCode',
+            version='2017-05-25',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def jy_query_app_info_by_scene_code(
+        self,
+        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
+    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
+        """
+        @deprecated : JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
+        
+        @param request: JyQueryAppInfoBySceneCodeRequest
+        @return: JyQueryAppInfoBySceneCodeResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.jy_query_app_info_by_scene_code_with_options(request, runtime)
+
+    async def jy_query_app_info_by_scene_code_async(
+        self,
+        request: dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeRequest,
+    ) -> dypnsapi_20170525_models.JyQueryAppInfoBySceneCodeResponse:
+        """
+        @deprecated : JyQueryAppInfoBySceneCode is deprecated, please use Dypnsapi::2017-05-25::QueryAppInfoBySceneCode instead.
+        
+        @param request: JyQueryAppInfoBySceneCodeRequest
+        @return: JyQueryAppInfoBySceneCodeResponse
+        Deprecated
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.jy_query_app_info_by_scene_code_with_options_async(request, runtime)
 
     def query_gate_verify_billing_public_with_options(
         self,
         request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyBillingPublicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGateVerifyBillingPublicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_type):
@@ -1163,6 +1719,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyBillingPublicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGateVerifyBillingPublicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_type):
@@ -1196,6 +1760,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
     ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyBillingPublicRequest
+        @return: QueryGateVerifyBillingPublicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_gate_verify_billing_public_with_options(request, runtime)
 
@@ -1203,6 +1774,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.QueryGateVerifyBillingPublicRequest,
     ) -> dypnsapi_20170525_models.QueryGateVerifyBillingPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyBillingPublicRequest
+        @return: QueryGateVerifyBillingPublicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_gate_verify_billing_public_with_options_async(request, runtime)
 
@@ -1211,6 +1789,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyStatisticPublicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGateVerifyStatisticPublicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_type):
@@ -1251,6 +1837,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyStatisticPublicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGateVerifyStatisticPublicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_type):
@@ -1290,6 +1884,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
     ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyStatisticPublicRequest
+        @return: QueryGateVerifyStatisticPublicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_gate_verify_statistic_public_with_options(request, runtime)
 
@@ -1297,6 +1898,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.QueryGateVerifyStatisticPublicRequest,
     ) -> dypnsapi_20170525_models.QueryGateVerifyStatisticPublicResponse:
+        """
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: QueryGateVerifyStatisticPublicRequest
+        @return: QueryGateVerifyStatisticPublicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_gate_verify_statistic_public_with_options_async(request, runtime)
 
@@ -1305,6 +1913,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.QuerySendDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @deprecated
+        
+        @param request: QuerySendDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySendDetailsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1347,6 +1963,14 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.QuerySendDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @deprecated
+        
+        @param request: QuerySendDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySendDetailsResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.biz_id):
@@ -1388,6 +2012,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.QuerySendDetailsRequest,
     ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @deprecated
+        
+        @param request: QuerySendDetailsRequest
+        @return: QuerySendDetailsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_send_details_with_options(request, runtime)
 
@@ -1395,6 +2026,13 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.QuerySendDetailsRequest,
     ) -> dypnsapi_20170525_models.QuerySendDetailsResponse:
+        """
+        @deprecated
+        
+        @param request: QuerySendDetailsRequest
+        @return: QuerySendDetailsResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_send_details_with_options_async(request, runtime)
 
@@ -1537,6 +2175,17 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.VerifyMobileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](~~189865~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyMobileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyMobileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_code):
@@ -1575,6 +2224,17 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.VerifyMobileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](~~189865~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyMobileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyMobileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_code):
@@ -1612,6 +2272,16 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.VerifyMobileRequest,
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](~~189865~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyMobileRequest
+        @return: VerifyMobileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_mobile_with_options(request, runtime)
 
@@ -1619,6 +2289,16 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.VerifyMobileRequest,
     ) -> dypnsapi_20170525_models.VerifyMobileResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Getting Started](~~84541~~).
+        >  This operation is applicable to only the verification of thephone number that you use. To obtain a phone number for one-click logon, call [GetMobile](~~189865~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 5,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyMobileRequest
+        @return: VerifyMobileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_mobile_with_options_async(request, runtime)
 
@@ -1627,6 +2307,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyPhoneWithTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyPhoneWithTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1663,6 +2353,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyPhoneWithTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyPhoneWithTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_id):
@@ -1698,6 +2398,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
     ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyPhoneWithTokenRequest
+        @return: VerifyPhoneWithTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_phone_with_token_with_options(request, runtime)
 
@@ -1705,6 +2414,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.VerifyPhoneWithTokenRequest,
     ) -> dypnsapi_20170525_models.VerifyPhoneWithTokenResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the phone number verification feature for HTML5 pages](~~169786~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 1,000 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifyPhoneWithTokenRequest
+        @return: VerifyPhoneWithTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_phone_with_token_with_options_async(request, runtime)
 
@@ -1713,6 +2431,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.VerifySmsCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifySmsCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifySmsCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.phone_number):
@@ -1745,6 +2473,16 @@ class Client(OpenApiClient):
         request: dypnsapi_20170525_models.VerifySmsCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifySmsCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifySmsCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.phone_number):
@@ -1776,6 +2514,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.VerifySmsCodeRequest,
     ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifySmsCodeRequest
+        @return: VerifySmsCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_sms_code_with_options(request, runtime)
 
@@ -1783,6 +2530,15 @@ class Client(OpenApiClient):
         self,
         request: dypnsapi_20170525_models.VerifySmsCodeRequest,
     ) -> dypnsapi_20170525_models.VerifySmsCodeResponse:
+        """
+        ### [](#)Preparations
+        You must register an Alibaba Cloud account, obtain an Alibaba Cloud AccessKey pair, and create a verification service. For more information, see [Use the SMS verification feature](~~313209~~).
+        ### [](#qps)QPS limits
+        You can call this operation up to 500 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        
+        @param request: VerifySmsCodeRequest
+        @return: VerifySmsCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_sms_code_with_options_async(request, runtime)
 
