@@ -39,6 +39,8 @@ class ConfigureDtsJobRequest(TeaModel):
         error_phone: str = None,
         file_oss_url: str = None,
         job_type: str = None,
+        max_du: float = None,
+        min_du: float = None,
         owner_id: str = None,
         region_id: str = None,
         reserve: str = None,
@@ -211,6 +213,8 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.job_type = job_type
+        self.max_du = max_du
+        self.min_du = min_du
         self.owner_id = owner_id
         # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
         self.region_id = region_id
@@ -408,6 +412,10 @@ class ConfigureDtsJobRequest(TeaModel):
             result['FileOssUrl'] = self.file_oss_url
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -516,6 +524,10 @@ class ConfigureDtsJobRequest(TeaModel):
             self.file_oss_url = m.get('FileOssUrl')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -594,6 +606,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         error_phone: str = None,
         file_oss_url_object: BinaryIO = None,
         job_type: str = None,
+        max_du: float = None,
+        min_du: float = None,
         owner_id: str = None,
         region_id: str = None,
         reserve: str = None,
@@ -766,6 +780,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
         self.job_type = job_type
+        self.max_du = max_du
+        self.min_du = min_du
         self.owner_id = owner_id
         # The URL of the Object Storage Service (OSS) bucket that stores the files related to the DTS task.
         self.region_id = region_id
@@ -963,6 +979,10 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             result['FileOssUrl'] = self.file_oss_url_object
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.region_id is not None:
@@ -1071,6 +1091,10 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
             self.file_oss_url_object = m.get('FileOssUrl')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('RegionId') is not None:
@@ -1957,6 +1981,8 @@ class ConfigureSubscriptionRequest(TeaModel):
         dts_job_name: str = None,
         error_notice: bool = None,
         error_phone: str = None,
+        max_du: float = None,
+        min_du: float = None,
         region_id: str = None,
         reserve: str = None,
         source_endpoint_database_name: str = None,
@@ -2020,6 +2046,8 @@ class ConfigureSubscriptionRequest(TeaModel):
         # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
         # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
         self.error_phone = error_phone
+        self.max_du = max_du
+        self.min_du = min_du
         # The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
         self.region_id = region_id
         # The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
@@ -2133,6 +2161,10 @@ class ConfigureSubscriptionRequest(TeaModel):
             result['ErrorNotice'] = self.error_notice
         if self.error_phone is not None:
             result['ErrorPhone'] = self.error_phone
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.reserve is not None:
@@ -2199,6 +2231,10 @@ class ConfigureSubscriptionRequest(TeaModel):
             self.error_notice = m.get('ErrorNotice')
         if m.get('ErrorPhone') is not None:
             self.error_phone = m.get('ErrorPhone')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Reserve') is not None:
@@ -4661,6 +4697,8 @@ class CreateDtsInstanceRequest(TeaModel):
         fee_type: str = None,
         instance_class: str = None,
         job_id: str = None,
+        max_du: float = None,
+        min_du: float = None,
         pay_type: str = None,
         period: str = None,
         quantity: int = None,
@@ -4738,6 +4776,8 @@ class CreateDtsInstanceRequest(TeaModel):
         # 
         # >  If this parameter is specified, you do not need to specify the **SourceRegion**, **DestinationRegion**, **Type**, **SourceEndpointEngineName**, or **DestinationEndpointEngineName** parameter. Even if these parameters are specified, the value of the **JobId** parameter takes precedence.
         self.job_id = job_id
+        self.max_du = max_du
+        self.min_du = min_du
         # The billing method. Valid values:
         # 
         # *   **PrePaid**: subscription
@@ -4843,6 +4883,10 @@ class CreateDtsInstanceRequest(TeaModel):
             result['InstanceClass'] = self.instance_class
         if self.job_id is not None:
             result['JobId'] = self.job_id
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.period is not None:
@@ -4887,6 +4931,10 @@ class CreateDtsInstanceRequest(TeaModel):
             self.instance_class = m.get('InstanceClass')
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Period') is not None:
@@ -12650,7 +12698,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob(TeaModel):
         group_id: str = None,
         is_demo_job: bool = None,
         job_type: str = None,
+        max_du: float = None,
         migration_mode: DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode = None,
+        min_du: float = None,
         origin_type: str = None,
         pay_type: str = None,
         performance: DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobPerformance = None,
@@ -12695,7 +12745,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob(TeaModel):
         self.group_id = group_id
         self.is_demo_job = is_demo_job
         self.job_type = job_type
+        self.max_du = max_du
         self.migration_mode = migration_mode
+        self.min_du = min_du
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -12803,8 +12855,12 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob(TeaModel):
             result['IsDemoJob'] = self.is_demo_job
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.origin_type is not None:
             result['OriginType'] = self.origin_type
         if self.pay_type is not None:
@@ -12901,9 +12957,13 @@ class DescribeDtsJobDetailResponseBodySubDistributedJobReverseJob(TeaModel):
             self.is_demo_job = m.get('IsDemoJob')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodySubDistributedJobReverseJobMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('OriginType') is not None:
             self.origin_type = m.get('OriginType')
         if m.get('PayType') is not None:
@@ -13296,7 +13356,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJob(TeaModel):
         group_id: str = None,
         is_demo_job: bool = None,
         job_type: str = None,
+        max_du: float = None,
         migration_mode: DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode = None,
+        min_du: float = None,
         origin_type: str = None,
         pay_type: str = None,
         performance: DescribeDtsJobDetailResponseBodySubDistributedJobPerformance = None,
@@ -13342,7 +13404,9 @@ class DescribeDtsJobDetailResponseBodySubDistributedJob(TeaModel):
         self.group_id = group_id
         self.is_demo_job = is_demo_job
         self.job_type = job_type
+        self.max_du = max_du
         self.migration_mode = migration_mode
+        self.min_du = min_du
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -13453,8 +13517,12 @@ class DescribeDtsJobDetailResponseBodySubDistributedJob(TeaModel):
             result['IsDemoJob'] = self.is_demo_job
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.origin_type is not None:
             result['OriginType'] = self.origin_type
         if self.pay_type is not None:
@@ -13553,9 +13621,13 @@ class DescribeDtsJobDetailResponseBodySubDistributedJob(TeaModel):
             self.is_demo_job = m.get('IsDemoJob')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodySubDistributedJobMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('OriginType') is not None:
             self.origin_type = m.get('OriginType')
         if m.get('PayType') is not None:
@@ -15593,7 +15665,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJob(TeaModel):
         group_id: str = None,
         is_demo_job: bool = None,
         job_type: str = None,
+        max_du: float = None,
         migration_mode: DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode = None,
+        min_du: float = None,
         origin_type: str = None,
         pay_type: str = None,
         performance: DescribeDtsJobDetailResponseBodySubSyncJobPerformance = None,
@@ -15639,7 +15713,9 @@ class DescribeDtsJobDetailResponseBodySubSyncJob(TeaModel):
         self.group_id = group_id
         self.is_demo_job = is_demo_job
         self.job_type = job_type
+        self.max_du = max_du
         self.migration_mode = migration_mode
+        self.min_du = min_du
         self.origin_type = origin_type
         self.pay_type = pay_type
         self.performance = performance
@@ -15750,8 +15826,12 @@ class DescribeDtsJobDetailResponseBodySubSyncJob(TeaModel):
             result['IsDemoJob'] = self.is_demo_job
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.origin_type is not None:
             result['OriginType'] = self.origin_type
         if self.pay_type is not None:
@@ -15850,9 +15930,13 @@ class DescribeDtsJobDetailResponseBodySubSyncJob(TeaModel):
             self.is_demo_job = m.get('IsDemoJob')
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodySubSyncJobMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('OriginType') is not None:
             self.origin_type = m.get('OriginType')
         if m.get('PayType') is not None:
@@ -16025,7 +16109,9 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         http_status_code: int = None,
         job_type: str = None,
         last_update_time: str = None,
+        max_du: float = None,
         migration_mode: DescribeDtsJobDetailResponseBodyMigrationMode = None,
+        min_du: float = None,
         pay_type: str = None,
         request_id: str = None,
         reserved: str = None,
@@ -16150,8 +16236,10 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.http_status_code = http_status_code
         self.job_type = job_type
         self.last_update_time = last_update_time
+        self.max_du = max_du
         # The type of the destination instance.
         self.migration_mode = migration_mode
+        self.min_du = min_du
         # The error message returned if the task failed.
         self.pay_type = pay_type
         # The network type of the consumer client. Valid values:
@@ -16295,8 +16383,12 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             result['JobType'] = self.job_type
         if self.last_update_time is not None:
             result['LastUpdateTime'] = self.last_update_time
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.request_id is not None:
@@ -16416,9 +16508,13 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
             self.job_type = m.get('JobType')
         if m.get('LastUpdateTime') is not None:
             self.last_update_time = m.get('LastUpdateTime')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobDetailResponseBodyMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('RequestId') is not None:
@@ -18303,8 +18399,10 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         expire_time: str = None,
         full_data_check_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobFullDataCheckStatus = None,
         inc_data_check_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus = None,
+        max_du: float = None,
         mem_usage: str = None,
         migration_mode: DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode = None,
+        min_du: float = None,
         pay_type: str = None,
         performance: DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance = None,
         precheck_status: DescribeDtsJobsResponseBodyDtsJobListReverseJobPrecheckStatus = None,
@@ -18357,10 +18455,12 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         self.expire_time = expire_time
         self.full_data_check_status = full_data_check_status
         self.inc_data_check_status = inc_data_check_status
+        self.max_du = max_du
         # The memory that has been used. Unit: MB.
         self.mem_usage = mem_usage
         # The initial synchronization types.
         self.migration_mode = migration_mode
+        self.min_du = min_du
         # The billing method of the DTS instance. Valid values:
         # 
         # - **PrePaid**: subscription
@@ -18455,10 +18555,14 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
             result['FullDataCheckStatus'] = self.full_data_check_status.to_map()
         if self.inc_data_check_status is not None:
             result['IncDataCheckStatus'] = self.inc_data_check_status.to_map()
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
         if self.mem_usage is not None:
             result['MemUsage'] = self.mem_usage
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
         if self.performance is not None:
@@ -18527,11 +18631,15 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         if m.get('IncDataCheckStatus') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobIncDataCheckStatus()
             self.inc_data_check_status = temp_model.from_map(m['IncDataCheckStatus'])
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
         if m.get('MemUsage') is not None:
             self.mem_usage = m.get('MemUsage')
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
         if m.get('Performance') is not None:
@@ -18773,6 +18881,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         full_data_check_status: DescribeDtsJobsResponseBodyDtsJobListFullDataCheckStatus = None,
         inc_data_check_status: DescribeDtsJobsResponseBodyDtsJobListIncDataCheckStatus = None,
         job_type: str = None,
+        max_du: float = None,
         mem_usage: str = None,
         migration_err_code: str = None,
         migration_err_help_doc_id: str = None,
@@ -18781,6 +18890,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         migration_err_type: str = None,
         migration_err_workaround: str = None,
         migration_mode: DescribeDtsJobsResponseBodyDtsJobListMigrationMode = None,
+        min_du: float = None,
         origin_type: str = None,
         pay_type: str = None,
         performance: DescribeDtsJobsResponseBodyDtsJobListPerformance = None,
@@ -18866,6 +18976,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         # - **SYNC**: data synchronization task 
         # - **SUBSCRIBE**: change tracking task
         self.job_type = job_type
+        self.max_du = max_du
         # The memory that has been used. Unit: MB.
         self.mem_usage = mem_usage
         # The error code.
@@ -18882,6 +18993,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.migration_err_workaround = migration_err_workaround
         # The migration or synchronization modes.
         self.migration_mode = migration_mode
+        self.min_du = min_du
         # The source of the task. Valid values:
         # 
         # *   **PTS**\
@@ -19024,6 +19136,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['IncDataCheckStatus'] = self.inc_data_check_status.to_map()
         if self.job_type is not None:
             result['JobType'] = self.job_type
+        if self.max_du is not None:
+            result['MaxDu'] = self.max_du
         if self.mem_usage is not None:
             result['MemUsage'] = self.mem_usage
         if self.migration_err_code is not None:
@@ -19040,6 +19154,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             result['MigrationErrWorkaround'] = self.migration_err_workaround
         if self.migration_mode is not None:
             result['MigrationMode'] = self.migration_mode.to_map()
+        if self.min_du is not None:
+            result['MinDu'] = self.min_du
         if self.origin_type is not None:
             result['OriginType'] = self.origin_type
         if self.pay_type is not None:
@@ -19142,6 +19258,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
             self.inc_data_check_status = temp_model.from_map(m['IncDataCheckStatus'])
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+        if m.get('MaxDu') is not None:
+            self.max_du = m.get('MaxDu')
         if m.get('MemUsage') is not None:
             self.mem_usage = m.get('MemUsage')
         if m.get('MigrationErrCode') is not None:
@@ -19159,6 +19277,8 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         if m.get('MigrationMode') is not None:
             temp_model = DescribeDtsJobsResponseBodyDtsJobListMigrationMode()
             self.migration_mode = temp_model.from_map(m['MigrationMode'])
+        if m.get('MinDu') is not None:
+            self.min_du = m.get('MinDu')
         if m.get('OriginType') is not None:
             self.origin_type = m.get('OriginType')
         if m.get('PayType') is not None:

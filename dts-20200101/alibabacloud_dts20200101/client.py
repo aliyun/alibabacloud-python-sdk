@@ -180,6 +180,10 @@ class Client(OpenApiClient):
             query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -319,6 +323,10 @@ class Client(OpenApiClient):
             query['FileOssUrl'] = request.file_oss_url
         if not UtilClient.is_unset(request.job_type):
             query['JobType'] = request.job_type
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not UtilClient.is_unset(request.region_id):
@@ -827,6 +835,10 @@ class Client(OpenApiClient):
             query['ErrorNotice'] = request.error_notice
         if not UtilClient.is_unset(request.error_phone):
             query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reserve):
@@ -915,6 +927,10 @@ class Client(OpenApiClient):
             query['ErrorNotice'] = request.error_notice
         if not UtilClient.is_unset(request.error_phone):
             query['ErrorPhone'] = request.error_phone
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.reserve):
@@ -2045,6 +2061,10 @@ class Client(OpenApiClient):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -2119,6 +2139,10 @@ class Client(OpenApiClient):
             query['InstanceClass'] = request.instance_class
         if not UtilClient.is_unset(request.job_id):
             query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.max_du):
+            query['MaxDu'] = request.max_du
+        if not UtilClient.is_unset(request.min_du):
+            query['MinDu'] = request.min_du
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
