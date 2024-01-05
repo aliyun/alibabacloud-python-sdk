@@ -173,6 +173,251 @@ class AuthUserResponse(TeaModel):
         return self
 
 
+class BatchQueryMotionShopTaskStatusRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        task_id: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        share_url: str = None,
+        video_url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.share_url = share_url
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.share_url is not None:
+            result['ShareUrl'] = self.share_url
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('ShareUrl') is not None:
+            self.share_url = m.get('ShareUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class BatchQueryMotionShopTaskStatusResponseBodyDataTasks(TeaModel):
+    def __init__(
+        self,
+        result: BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.result = result
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            temp_model = BatchQueryMotionShopTaskStatusResponseBodyDataTasksResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class BatchQueryMotionShopTaskStatusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        tasks: List[BatchQueryMotionShopTaskStatusResponseBodyDataTasks] = None,
+    ):
+        self.tasks = tasks
+
+    def validate(self):
+        if self.tasks:
+            for k in self.tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tasks'] = []
+        if self.tasks is not None:
+            for k in self.tasks:
+                result['Tasks'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tasks = []
+        if m.get('Tasks') is not None:
+            for k in m.get('Tasks'):
+                temp_model = BatchQueryMotionShopTaskStatusResponseBodyDataTasks()
+                self.tasks.append(temp_model.from_map(k))
+        return self
+
+
+class BatchQueryMotionShopTaskStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: BatchQueryMotionShopTaskStatusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = BatchQueryMotionShopTaskStatusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class BatchQueryMotionShopTaskStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BatchQueryMotionShopTaskStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BatchQueryMotionShopTaskStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDigitalHumanProjectRequest(TeaModel):
     def __init__(
         self,
@@ -649,6 +894,163 @@ class CreateLivePortraitProjectResponse(TeaModel):
         return self
 
 
+class GenerateMotionShopVideoUploadUrlRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+    ):
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class GenerateMotionShopVideoUploadUrlResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        oss_key: str = None,
+        upload_url: str = None,
+    ):
+        self.oss_key = oss_key
+        self.upload_url = upload_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.upload_url is not None:
+            result['UploadUrl'] = self.upload_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('UploadUrl') is not None:
+            self.upload_url = m.get('UploadUrl')
+        return self
+
+
+class GenerateMotionShopVideoUploadUrlResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: GenerateMotionShopVideoUploadUrlResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = GenerateMotionShopVideoUploadUrlResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class GenerateMotionShopVideoUploadUrlResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateMotionShopVideoUploadUrlResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateMotionShopVideoUploadUrlResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetMapDataRequest(TeaModel):
     def __init__(
         self,
@@ -1065,6 +1467,205 @@ class InitLocateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = InitLocateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCommonMaterialsRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        type: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListCommonMaterialsResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        ext: str = None,
+        file_url: str = None,
+        id: str = None,
+        name: str = None,
+        oss_key: str = None,
+        type: str = None,
+    ):
+        self.cover_url = cover_url
+        self.ext = ext
+        self.file_url = file_url
+        self.id = id
+        self.name = name
+        self.oss_key = oss_key
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.ext is not None:
+            result['Ext'] = self.ext
+        if self.file_url is not None:
+            result['FileUrl'] = self.file_url
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('Ext') is not None:
+            self.ext = m.get('Ext')
+        if m.get('FileUrl') is not None:
+            self.file_url = m.get('FileUrl')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListCommonMaterialsResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[ListCommonMaterialsResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListCommonMaterialsResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ListCommonMaterialsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCommonMaterialsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCommonMaterialsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -1652,6 +2253,252 @@ class ListLocationServiceResponse(TeaModel):
         return self
 
 
+class ListMotionShopTasksRequest(TeaModel):
+    def __init__(
+        self,
+        current: int = None,
+        jwt_token: str = None,
+        size: int = None,
+    ):
+        self.current = current
+        self.jwt_token = jwt_token
+        self.size = size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.current is not None:
+            result['Current'] = self.current
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.size is not None:
+            result['Size'] = self.size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        return self
+
+
+class ListMotionShopTasksResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        cover_url: str = None,
+        share_url: str = None,
+        video_url: str = None,
+    ):
+        self.cover_url = cover_url
+        self.share_url = share_url
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.share_url is not None:
+            result['ShareUrl'] = self.share_url
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('ShareUrl') is not None:
+            self.share_url = m.get('ShareUrl')
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+        return self
+
+
+class ListMotionShopTasksResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        result: ListMotionShopTasksResponseBodyDataResult = None,
+        status: str = None,
+        task_id: str = None,
+    ):
+        self.result = result
+        self.status = status
+        self.task_id = task_id
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Result') is not None:
+            temp_model = ListMotionShopTasksResponseBodyDataResult()
+            self.result = temp_model.from_map(m['Result'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class ListMotionShopTasksResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        current: int = None,
+        data: List[ListMotionShopTasksResponseBodyData] = None,
+        message: str = None,
+        pages: int = None,
+        request_id: str = None,
+        size: int = None,
+        success: bool = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.current = current
+        self.data = data
+        self.message = message
+        self.pages = pages
+        self.request_id = request_id
+        self.size = size
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.current is not None:
+            result['Current'] = self.current
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.pages is not None:
+            result['Pages'] = self.pages
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Current') is not None:
+            self.current = m.get('Current')
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = ListMotionShopTasksResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Pages') is not None:
+            self.pages = m.get('Pages')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class ListMotionShopTasksResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListMotionShopTasksResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListMotionShopTasksResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class LivePortraitFaceDetectRequest(TeaModel):
     def __init__(
         self,
@@ -2156,6 +3003,163 @@ class LoginModelScopeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = LoginModelScopeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class MotionShopVideoDetectRequest(TeaModel):
+    def __init__(
+        self,
+        jwt_token: str = None,
+        oss_key: str = None,
+    ):
+        self.jwt_token = jwt_token
+        self.oss_key = oss_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.oss_key is not None:
+            result['OssKey'] = self.oss_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('OssKey') is not None:
+            self.oss_key = m.get('OssKey')
+        return self
+
+
+class MotionShopVideoDetectResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+    ):
+        self.job_id = job_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        return self
+
+
+class MotionShopVideoDetectResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: MotionShopVideoDetectResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = MotionShopVideoDetectResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class MotionShopVideoDetectResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: MotionShopVideoDetectResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = MotionShopVideoDetectResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -18668,6 +19672,228 @@ class QueryLongTtsResultResponse(TeaModel):
         return self
 
 
+class QueryMotionShopVideoDetectResultRequest(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        jwt_token: str = None,
+    ):
+        self.job_id = job_id
+        self.jwt_token = jwt_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        return self
+
+
+class QueryMotionShopVideoDetectResultResponseBodyDataDetectResult(TeaModel):
+    def __init__(
+        self,
+        box: List[float] = None,
+        code: int = None,
+        cover_url: str = None,
+        message: str = None,
+        selected_frame_index: int = None,
+    ):
+        self.box = box
+        self.code = code
+        self.cover_url = cover_url
+        self.message = message
+        self.selected_frame_index = selected_frame_index
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.box is not None:
+            result['Box'] = self.box
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.cover_url is not None:
+            result['CoverUrl'] = self.cover_url
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.selected_frame_index is not None:
+            result['SelectedFrameIndex'] = self.selected_frame_index
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Box') is not None:
+            self.box = m.get('Box')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CoverUrl') is not None:
+            self.cover_url = m.get('CoverUrl')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('SelectedFrameIndex') is not None:
+            self.selected_frame_index = m.get('SelectedFrameIndex')
+        return self
+
+
+class QueryMotionShopVideoDetectResultResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        detect_result: QueryMotionShopVideoDetectResultResponseBodyDataDetectResult = None,
+        status: str = None,
+        video_id: str = None,
+    ):
+        self.detect_result = detect_result
+        self.status = status
+        self.video_id = video_id
+
+    def validate(self):
+        if self.detect_result:
+            self.detect_result.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.detect_result is not None:
+            result['DetectResult'] = self.detect_result.to_map()
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DetectResult') is not None:
+            temp_model = QueryMotionShopVideoDetectResultResponseBodyDataDetectResult()
+            self.detect_result = temp_model.from_map(m['DetectResult'])
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        return self
+
+
+class QueryMotionShopVideoDetectResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: QueryMotionShopVideoDetectResultResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = QueryMotionShopVideoDetectResultResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class QueryMotionShopVideoDetectResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryMotionShopVideoDetectResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryMotionShopVideoDetectResultResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SubmitLongTtsTaskRequest(TeaModel):
     def __init__(
         self,
@@ -18798,6 +20024,175 @@ class SubmitLongTtsTaskResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SubmitLongTtsTaskResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitMotionShopTaskRequest(TeaModel):
+    def __init__(
+        self,
+        avatar_id: str = None,
+        jwt_token: str = None,
+        title: str = None,
+        video_id: str = None,
+    ):
+        self.avatar_id = avatar_id
+        self.jwt_token = jwt_token
+        self.title = title
+        self.video_id = video_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.avatar_id is not None:
+            result['AvatarId'] = self.avatar_id
+        if self.jwt_token is not None:
+            result['JwtToken'] = self.jwt_token
+        if self.title is not None:
+            result['Title'] = self.title
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AvatarId') is not None:
+            self.avatar_id = m.get('AvatarId')
+        if m.get('JwtToken') is not None:
+            self.jwt_token = m.get('JwtToken')
+        if m.get('Title') is not None:
+            self.title = m.get('Title')
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+        return self
+
+
+class SubmitMotionShopTaskResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        task_id: str = None,
+    ):
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class SubmitMotionShopTaskResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: SubmitMotionShopTaskResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = SubmitMotionShopTaskResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class SubmitMotionShopTaskResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitMotionShopTaskResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitMotionShopTaskResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

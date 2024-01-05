@@ -169,6 +169,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.auth_user_with_options_async(request, runtime)
 
+    def batch_query_motion_shop_task_status_with_options(
+        self,
+        request: xr_engine_20230313_models.BatchQueryMotionShopTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.BatchQueryMotionShopTaskStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryMotionShopTaskStatus',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.BatchQueryMotionShopTaskStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_motion_shop_task_status_with_options_async(
+        self,
+        request: xr_engine_20230313_models.BatchQueryMotionShopTaskStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.BatchQueryMotionShopTaskStatusResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.task_id):
+            body['TaskId'] = request.task_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryMotionShopTaskStatus',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.BatchQueryMotionShopTaskStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_motion_shop_task_status(
+        self,
+        request: xr_engine_20230313_models.BatchQueryMotionShopTaskStatusRequest,
+    ) -> xr_engine_20230313_models.BatchQueryMotionShopTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_query_motion_shop_task_status_with_options(request, runtime)
+
+    async def batch_query_motion_shop_task_status_async(
+        self,
+        request: xr_engine_20230313_models.BatchQueryMotionShopTaskStatusRequest,
+    ) -> xr_engine_20230313_models.BatchQueryMotionShopTaskStatusResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_query_motion_shop_task_status_with_options_async(request, runtime)
+
     def create_digital_human_project_with_options(
         self,
         request: xr_engine_20230313_models.CreateDigitalHumanProjectRequest,
@@ -433,6 +507,76 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_live_portrait_project_with_options_async(request, runtime)
 
+    def generate_motion_shop_video_upload_url_with_options(
+        self,
+        request: xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateMotionShopVideoUploadUrl',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def generate_motion_shop_video_upload_url_with_options_async(
+        self,
+        request: xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GenerateMotionShopVideoUploadUrl',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def generate_motion_shop_video_upload_url(
+        self,
+        request: xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlRequest,
+    ) -> xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.generate_motion_shop_video_upload_url_with_options(request, runtime)
+
+    async def generate_motion_shop_video_upload_url_async(
+        self,
+        request: xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlRequest,
+    ) -> xr_engine_20230313_models.GenerateMotionShopVideoUploadUrlResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.generate_motion_shop_video_upload_url_with_options_async(request, runtime)
+
     def get_map_data_with_options(
         self,
         request: xr_engine_20230313_models.GetMapDataRequest,
@@ -655,6 +799,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.init_locate_with_options_async(request, runtime)
 
+    def list_common_materials_with_options(
+        self,
+        request: xr_engine_20230313_models.ListCommonMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.ListCommonMaterialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCommonMaterials',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.ListCommonMaterialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_common_materials_with_options_async(
+        self,
+        request: xr_engine_20230313_models.ListCommonMaterialsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.ListCommonMaterialsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCommonMaterials',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.ListCommonMaterialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_common_materials(
+        self,
+        request: xr_engine_20230313_models.ListCommonMaterialsRequest,
+    ) -> xr_engine_20230313_models.ListCommonMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_common_materials_with_options(request, runtime)
+
+    async def list_common_materials_async(
+        self,
+        request: xr_engine_20230313_models.ListCommonMaterialsRequest,
+    ) -> xr_engine_20230313_models.ListCommonMaterialsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_common_materials_with_options_async(request, runtime)
+
     def list_digital_human_materials_with_options(
         self,
         request: xr_engine_20230313_models.ListDigitalHumanMaterialsRequest,
@@ -830,6 +1048,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.ListLocationServiceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_location_service_with_options_async(request, runtime)
+
+    def list_motion_shop_tasks_with_options(
+        self,
+        request: xr_engine_20230313_models.ListMotionShopTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.ListMotionShopTasksResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMotionShopTasks',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.ListMotionShopTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_motion_shop_tasks_with_options_async(
+        self,
+        request: xr_engine_20230313_models.ListMotionShopTasksRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.ListMotionShopTasksResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.current):
+            body['Current'] = request.current
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.size):
+            body['Size'] = request.size
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ListMotionShopTasks',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.ListMotionShopTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_motion_shop_tasks(
+        self,
+        request: xr_engine_20230313_models.ListMotionShopTasksRequest,
+    ) -> xr_engine_20230313_models.ListMotionShopTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_motion_shop_tasks_with_options(request, runtime)
+
+    async def list_motion_shop_tasks_async(
+        self,
+        request: xr_engine_20230313_models.ListMotionShopTasksRequest,
+    ) -> xr_engine_20230313_models.ListMotionShopTasksResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_motion_shop_tasks_with_options_async(request, runtime)
 
     def live_portrait_face_detect_with_options(
         self,
@@ -1068,6 +1364,84 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.LoginModelScopeResponse:
         runtime = util_models.RuntimeOptions()
         return await self.login_model_scope_with_options_async(request, runtime)
+
+    def motion_shop_video_detect_with_options(
+        self,
+        request: xr_engine_20230313_models.MotionShopVideoDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.MotionShopVideoDetectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.oss_key):
+            body['OssKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MotionShopVideoDetect',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.MotionShopVideoDetectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def motion_shop_video_detect_with_options_async(
+        self,
+        request: xr_engine_20230313_models.MotionShopVideoDetectRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.MotionShopVideoDetectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.oss_key):
+            body['OssKey'] = request.oss_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='MotionShopVideoDetect',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.MotionShopVideoDetectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def motion_shop_video_detect(
+        self,
+        request: xr_engine_20230313_models.MotionShopVideoDetectRequest,
+    ) -> xr_engine_20230313_models.MotionShopVideoDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.motion_shop_video_detect_with_options(request, runtime)
+
+    async def motion_shop_video_detect_async(
+        self,
+        request: xr_engine_20230313_models.MotionShopVideoDetectRequest,
+    ) -> xr_engine_20230313_models.MotionShopVideoDetectResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.motion_shop_video_detect_with_options_async(request, runtime)
 
     def pop_batch_query_object_generation_project_status_with_options(
         self,
@@ -4301,6 +4675,84 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_long_tts_result_with_options_async(request, runtime)
 
+    def query_motion_shop_video_detect_result_with_options(
+        self,
+        request: xr_engine_20230313_models.QueryMotionShopVideoDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.QueryMotionShopVideoDetectResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryMotionShopVideoDetectResult',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.QueryMotionShopVideoDetectResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_motion_shop_video_detect_result_with_options_async(
+        self,
+        request: xr_engine_20230313_models.QueryMotionShopVideoDetectResultRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.QueryMotionShopVideoDetectResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.jwt_token):
+            query['JwtToken'] = request.jwt_token
+        body = {}
+        if not UtilClient.is_unset(request.job_id):
+            body['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryMotionShopVideoDetectResult',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.QueryMotionShopVideoDetectResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_motion_shop_video_detect_result(
+        self,
+        request: xr_engine_20230313_models.QueryMotionShopVideoDetectResultRequest,
+    ) -> xr_engine_20230313_models.QueryMotionShopVideoDetectResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_motion_shop_video_detect_result_with_options(request, runtime)
+
+    async def query_motion_shop_video_detect_result_async(
+        self,
+        request: xr_engine_20230313_models.QueryMotionShopVideoDetectResultRequest,
+    ) -> xr_engine_20230313_models.QueryMotionShopVideoDetectResultResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_motion_shop_video_detect_result_with_options_async(request, runtime)
+
     def submit_long_tts_task_with_options(
         self,
         request: xr_engine_20230313_models.SubmitLongTtsTaskRequest,
@@ -4382,6 +4834,88 @@ class Client(OpenApiClient):
     ) -> xr_engine_20230313_models.SubmitLongTtsTaskResponse:
         runtime = util_models.RuntimeOptions()
         return await self.submit_long_tts_task_with_options_async(request, runtime)
+
+    def submit_motion_shop_task_with_options(
+        self,
+        request: xr_engine_20230313_models.SubmitMotionShopTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.SubmitMotionShopTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            body['AvatarId'] = request.avatar_id
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.video_id):
+            body['VideoId'] = request.video_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitMotionShopTask',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.SubmitMotionShopTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_motion_shop_task_with_options_async(
+        self,
+        request: xr_engine_20230313_models.SubmitMotionShopTaskRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> xr_engine_20230313_models.SubmitMotionShopTaskResponse:
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.avatar_id):
+            body['AvatarId'] = request.avatar_id
+        if not UtilClient.is_unset(request.jwt_token):
+            body['JwtToken'] = request.jwt_token
+        if not UtilClient.is_unset(request.title):
+            body['Title'] = request.title
+        if not UtilClient.is_unset(request.video_id):
+            body['VideoId'] = request.video_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='SubmitMotionShopTask',
+            version='2023-03-13',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            xr_engine_20230313_models.SubmitMotionShopTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_motion_shop_task(
+        self,
+        request: xr_engine_20230313_models.SubmitMotionShopTaskRequest,
+    ) -> xr_engine_20230313_models.SubmitMotionShopTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_motion_shop_task_with_options(request, runtime)
+
+    async def submit_motion_shop_task_async(
+        self,
+        request: xr_engine_20230313_models.SubmitMotionShopTaskRequest,
+    ) -> xr_engine_20230313_models.SubmitMotionShopTaskResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_motion_shop_task_with_options_async(request, runtime)
 
     def update_user_email_with_options(
         self,

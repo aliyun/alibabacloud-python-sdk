@@ -1,3 +1,6 @@
+2024-01-05 Version: 2.7.0
+- Generated python 2023-03-13 for xrEngine.
+
 2023-12-21 Version: 2.6.2
 - Generated python 2023-03-13 for xrEngine.
 
