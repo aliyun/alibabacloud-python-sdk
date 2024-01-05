@@ -172,7 +172,6 @@ class CheckCreateDBInstanceRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_id: int = None,
         security_iplist: str = None,
-        storage_size: str = None,
         used_time: int = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -191,7 +190,6 @@ class CheckCreateDBInstanceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         self.security_iplist = security_iplist
-        self.storage_size = storage_size
         self.used_time = used_time
         self.v_switch_id = v_switch_id
         # VPC ID。
@@ -233,8 +231,6 @@ class CheckCreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
-        if self.storage_size is not None:
-            result['StorageSize'] = self.storage_size
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.v_switch_id is not None:
@@ -273,8 +269,6 @@ class CheckCreateDBInstanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
-        if m.get('StorageSize') is not None:
-            self.storage_size = m.get('StorageSize')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VSwitchId') is not None:
@@ -499,7 +493,6 @@ class CreateDBClusterRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
         resource_owner_id: int = None,
-        storage_size: str = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -518,7 +511,6 @@ class CreateDBClusterRequest(TeaModel):
         # 代表资源组的资源属性字段
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
-        self.storage_size = storage_size
         self.used_time = used_time
         self.v_switch_id = v_switch_id
         # VPC ID。
@@ -556,8 +548,6 @@ class CreateDBClusterRequest(TeaModel):
             result['ResourceGroupId'] = self.resource_group_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
-        if self.storage_size is not None:
-            result['StorageSize'] = self.storage_size
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.v_switch_id is not None:
@@ -592,8 +582,6 @@ class CreateDBClusterRequest(TeaModel):
             self.resource_group_id = m.get('ResourceGroupId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
-        if m.get('StorageSize') is not None:
-            self.storage_size = m.get('StorageSize')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VSwitchId') is not None:
@@ -733,7 +721,6 @@ class CreateDBInstanceRequest(TeaModel):
         resource_group_id: str = None,
         resource_owner_id: int = None,
         security_iplist: str = None,
-        storage_size: str = None,
         used_time: int = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -753,7 +740,6 @@ class CreateDBInstanceRequest(TeaModel):
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         self.security_iplist = security_iplist
-        self.storage_size = storage_size
         self.used_time = used_time
         self.v_switch_id = v_switch_id
         # VPC ID。
@@ -795,8 +781,6 @@ class CreateDBInstanceRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.security_iplist is not None:
             result['SecurityIPList'] = self.security_iplist
-        if self.storage_size is not None:
-            result['StorageSize'] = self.storage_size
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
         if self.v_switch_id is not None:
@@ -835,8 +819,6 @@ class CreateDBInstanceRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('SecurityIPList') is not None:
             self.security_iplist = m.get('SecurityIPList')
-        if m.get('StorageSize') is not None:
-            self.storage_size = m.get('StorageSize')
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
         if m.get('VSwitchId') is not None:
@@ -1382,7 +1364,6 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
     def __init__(
         self,
         cache_storage_size_gb: str = None,
-        cache_storage_size_gi_b: int = None,
         cache_storage_type: str = None,
         charge_type: str = None,
         cpu_cores: int = None,
@@ -1392,13 +1373,11 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         db_cluster_name: str = None,
         db_instance_name: str = None,
         memory: int = None,
-        object_store_size_gi_b: int = None,
         performance_level: str = None,
         start_time: str = None,
         status: str = None,
     ):
         self.cache_storage_size_gb = cache_storage_size_gb
-        self.cache_storage_size_gi_b = cache_storage_size_gi_b
         self.cache_storage_type = cache_storage_type
         self.charge_type = charge_type
         self.cpu_cores = cpu_cores
@@ -1408,7 +1387,6 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         self.db_cluster_name = db_cluster_name
         self.db_instance_name = db_instance_name
         self.memory = memory
-        self.object_store_size_gi_b = object_store_size_gi_b
         self.performance_level = performance_level
         self.start_time = start_time
         self.status = status
@@ -1424,8 +1402,6 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         result = dict()
         if self.cache_storage_size_gb is not None:
             result['CacheStorageSizeGB'] = self.cache_storage_size_gb
-        if self.cache_storage_size_gi_b is not None:
-            result['CacheStorageSizeGiB'] = self.cache_storage_size_gi_b
         if self.cache_storage_type is not None:
             result['CacheStorageType'] = self.cache_storage_type
         if self.charge_type is not None:
@@ -1444,8 +1420,6 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             result['DbInstanceName'] = self.db_instance_name
         if self.memory is not None:
             result['Memory'] = self.memory
-        if self.object_store_size_gi_b is not None:
-            result['ObjectStoreSizeGiB'] = self.object_store_size_gi_b
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
         if self.start_time is not None:
@@ -1458,8 +1432,6 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
         m = m or dict()
         if m.get('CacheStorageSizeGB') is not None:
             self.cache_storage_size_gb = m.get('CacheStorageSizeGB')
-        if m.get('CacheStorageSizeGiB') is not None:
-            self.cache_storage_size_gi_b = m.get('CacheStorageSizeGiB')
         if m.get('CacheStorageType') is not None:
             self.cache_storage_type = m.get('CacheStorageType')
         if m.get('ChargeType') is not None:
@@ -1478,8 +1450,6 @@ class DescribeDBInstanceAttributeResponseBodyDBClusterList(TeaModel):
             self.db_instance_name = m.get('DbInstanceName')
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
-        if m.get('ObjectStoreSizeGiB') is not None:
-            self.object_store_size_gi_b = m.get('ObjectStoreSizeGiB')
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
         if m.get('StartTime') is not None:
@@ -1727,6 +1697,122 @@ class DescribeDBInstanceNetInfoRequest(TeaModel):
         return self
 
 
+class DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        protocol: str = None,
+    ):
+        self.port = port
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        connection_string: str = None,
+        ip: str = None,
+        net_type: str = None,
+        port_list: List[DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList] = None,
+        user_visible: bool = None,
+        vpc_id: str = None,
+        vpc_instance_id: str = None,
+        vswitch_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.connection_string = connection_string
+        self.ip = ip
+        self.net_type = net_type
+        self.port_list = port_list
+        self.user_visible = user_visible
+        self.vpc_id = vpc_id
+        self.vpc_instance_id = vpc_instance_id
+        self.vswitch_id = vswitch_id
+
+    def validate(self):
+        if self.port_list:
+            for k in self.port_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.connection_string is not None:
+            result['ConnectionString'] = self.connection_string
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        if self.net_type is not None:
+            result['NetType'] = self.net_type
+        result['PortList'] = []
+        if self.port_list is not None:
+            for k in self.port_list:
+                result['PortList'].append(k.to_map() if k else None)
+        if self.user_visible is not None:
+            result['UserVisible'] = self.user_visible
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        if self.vpc_instance_id is not None:
+            result['VpcInstanceId'] = self.vpc_instance_id
+        if self.vswitch_id is not None:
+            result['VswitchId'] = self.vswitch_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('ConnectionString') is not None:
+            self.connection_string = m.get('ConnectionString')
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        if m.get('NetType') is not None:
+            self.net_type = m.get('NetType')
+        self.port_list = []
+        if m.get('PortList') is not None:
+            for k in m.get('PortList'):
+                temp_model = DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList()
+                self.port_list.append(temp_model.from_map(k))
+        if m.get('UserVisible') is not None:
+            self.user_visible = m.get('UserVisible')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        if m.get('VpcInstanceId') is not None:
+            self.vpc_instance_id = m.get('VpcInstanceId')
+        if m.get('VswitchId') is not None:
+            self.vswitch_id = m.get('VswitchId')
+        return self
+
+
 class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList(TeaModel):
     def __init__(
         self,
@@ -1763,6 +1849,7 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList(TeaModel):
 class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(TeaModel):
     def __init__(
         self,
+        cluster_id: str = None,
         connection_string: str = None,
         ip: str = None,
         net_type: str = None,
@@ -1772,6 +1859,7 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(TeaModel):
         vpc_instance_id: str = None,
         vswitch_id: str = None,
     ):
+        self.cluster_id = cluster_id
         self.connection_string = connection_string
         self.ip = ip
         self.net_type = net_type
@@ -1794,6 +1882,8 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(TeaModel):
             return _map
 
         result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
         if self.ip is not None:
@@ -1816,6 +1906,8 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
         if m.get('Ip') is not None:
@@ -1841,13 +1933,19 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos(TeaModel):
 class DescribeDBInstanceNetInfoResponseBody(TeaModel):
     def __init__(
         self,
+        dbclusters_net_infos: List[DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos] = None,
         dbinstance_net_infos: List[DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos] = None,
         request_id: str = None,
     ):
+        self.dbclusters_net_infos = dbclusters_net_infos
         self.dbinstance_net_infos = dbinstance_net_infos
         self.request_id = request_id
 
     def validate(self):
+        if self.dbclusters_net_infos:
+            for k in self.dbclusters_net_infos:
+                if k:
+                    k.validate()
         if self.dbinstance_net_infos:
             for k in self.dbinstance_net_infos:
                 if k:
@@ -1859,6 +1957,10 @@ class DescribeDBInstanceNetInfoResponseBody(TeaModel):
             return _map
 
         result = dict()
+        result['DBClustersNetInfos'] = []
+        if self.dbclusters_net_infos is not None:
+            for k in self.dbclusters_net_infos:
+                result['DBClustersNetInfos'].append(k.to_map() if k else None)
         result['DBInstanceNetInfos'] = []
         if self.dbinstance_net_infos is not None:
             for k in self.dbinstance_net_infos:
@@ -1869,6 +1971,11 @@ class DescribeDBInstanceNetInfoResponseBody(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.dbclusters_net_infos = []
+        if m.get('DBClustersNetInfos') is not None:
+            for k in m.get('DBClustersNetInfos'):
+                temp_model = DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos()
+                self.dbclusters_net_infos.append(temp_model.from_map(k))
         self.dbinstance_net_infos = []
         if m.get('DBInstanceNetInfos') is not None:
             for k in m.get('DBInstanceNetInfos'):
@@ -1992,99 +2099,6 @@ class DescribeDBInstancesRequest(TeaModel):
         return self
 
 
-class DescribeDBInstancesResponseBodyItemsDBClusterList(TeaModel):
-    def __init__(
-        self,
-        cache_storage_size_gi_b: int = None,
-        cache_storage_type: str = None,
-        cpu_cores: int = None,
-        created_time: str = None,
-        dbinstance_id: str = None,
-        db_cluster_class: str = None,
-        db_cluster_id: str = None,
-        db_cluster_name: str = None,
-        memory: int = None,
-        performance_level: str = None,
-        status: str = None,
-        object_store_size_gi_b: int = None,
-    ):
-        self.cache_storage_size_gi_b = cache_storage_size_gi_b
-        self.cache_storage_type = cache_storage_type
-        self.cpu_cores = cpu_cores
-        self.created_time = created_time
-        self.dbinstance_id = dbinstance_id
-        self.db_cluster_class = db_cluster_class
-        self.db_cluster_id = db_cluster_id
-        self.db_cluster_name = db_cluster_name
-        self.memory = memory
-        self.performance_level = performance_level
-        self.status = status
-        self.object_store_size_gi_b = object_store_size_gi_b
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        _map = super().to_map()
-        if _map is not None:
-            return _map
-
-        result = dict()
-        if self.cache_storage_size_gi_b is not None:
-            result['CacheStorageSizeGiB'] = self.cache_storage_size_gi_b
-        if self.cache_storage_type is not None:
-            result['CacheStorageType'] = self.cache_storage_type
-        if self.cpu_cores is not None:
-            result['CpuCores'] = self.cpu_cores
-        if self.created_time is not None:
-            result['CreatedTime'] = self.created_time
-        if self.dbinstance_id is not None:
-            result['DBInstanceId'] = self.dbinstance_id
-        if self.db_cluster_class is not None:
-            result['DbClusterClass'] = self.db_cluster_class
-        if self.db_cluster_id is not None:
-            result['DbClusterId'] = self.db_cluster_id
-        if self.db_cluster_name is not None:
-            result['DbClusterName'] = self.db_cluster_name
-        if self.memory is not None:
-            result['Memory'] = self.memory
-        if self.performance_level is not None:
-            result['PerformanceLevel'] = self.performance_level
-        if self.status is not None:
-            result['Status'] = self.status
-        if self.object_store_size_gi_b is not None:
-            result['objectStoreSizeGiB'] = self.object_store_size_gi_b
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('CacheStorageSizeGiB') is not None:
-            self.cache_storage_size_gi_b = m.get('CacheStorageSizeGiB')
-        if m.get('CacheStorageType') is not None:
-            self.cache_storage_type = m.get('CacheStorageType')
-        if m.get('CpuCores') is not None:
-            self.cpu_cores = m.get('CpuCores')
-        if m.get('CreatedTime') is not None:
-            self.created_time = m.get('CreatedTime')
-        if m.get('DBInstanceId') is not None:
-            self.dbinstance_id = m.get('DBInstanceId')
-        if m.get('DbClusterClass') is not None:
-            self.db_cluster_class = m.get('DbClusterClass')
-        if m.get('DbClusterId') is not None:
-            self.db_cluster_id = m.get('DbClusterId')
-        if m.get('DbClusterName') is not None:
-            self.db_cluster_name = m.get('DbClusterName')
-        if m.get('Memory') is not None:
-            self.memory = m.get('Memory')
-        if m.get('PerformanceLevel') is not None:
-            self.performance_level = m.get('PerformanceLevel')
-        if m.get('Status') is not None:
-            self.status = m.get('Status')
-        if m.get('objectStoreSizeGiB') is not None:
-            self.object_store_size_gi_b = m.get('objectStoreSizeGiB')
-        return self
-
-
 class DescribeDBInstancesResponseBodyItemsTags(TeaModel):
     def __init__(
         self,
@@ -2124,8 +2138,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         category: str = None,
         charge_type: str = None,
         cluster_count: int = None,
-        create_time: str = None,
-        dbcluster_list: List[DescribeDBInstancesResponseBodyItemsDBClusterList] = None,
         dbinstance_id: str = None,
         description: str = None,
         engine: str = None,
@@ -2133,7 +2145,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         expire_time: str = None,
         gmt_created: str = None,
         gmt_modified: str = None,
-        instance_class: str = None,
         instance_used_type: str = None,
         is_deleted: bool = None,
         lock_mode: int = None,
@@ -2166,8 +2177,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.category = category
         self.charge_type = charge_type
         self.cluster_count = cluster_count
-        self.create_time = create_time
-        self.dbcluster_list = dbcluster_list
         self.dbinstance_id = dbinstance_id
         self.description = description
         self.engine = engine
@@ -2175,7 +2184,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.expire_time = expire_time
         self.gmt_created = gmt_created
         self.gmt_modified = gmt_modified
-        self.instance_class = instance_class
         self.instance_used_type = instance_used_type
         self.is_deleted = is_deleted
         self.lock_mode = lock_mode
@@ -2207,10 +2215,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
         self.connection_string = connection_string
 
     def validate(self):
-        if self.dbcluster_list:
-            for k in self.dbcluster_list:
-                if k:
-                    k.validate()
         if self.tags:
             for k in self.tags:
                 if k:
@@ -2228,12 +2232,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             result['ChargeType'] = self.charge_type
         if self.cluster_count is not None:
             result['ClusterCount'] = self.cluster_count
-        if self.create_time is not None:
-            result['CreateTime'] = self.create_time
-        result['DBClusterList'] = []
-        if self.dbcluster_list is not None:
-            for k in self.dbcluster_list:
-                result['DBClusterList'].append(k.to_map() if k else None)
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
         if self.description is not None:
@@ -2248,8 +2246,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             result['GmtCreated'] = self.gmt_created
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
-        if self.instance_class is not None:
-            result['InstanceClass'] = self.instance_class
         if self.instance_used_type is not None:
             result['InstanceUsedType'] = self.instance_used_type
         if self.is_deleted is not None:
@@ -2318,13 +2314,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             self.charge_type = m.get('ChargeType')
         if m.get('ClusterCount') is not None:
             self.cluster_count = m.get('ClusterCount')
-        if m.get('CreateTime') is not None:
-            self.create_time = m.get('CreateTime')
-        self.dbcluster_list = []
-        if m.get('DBClusterList') is not None:
-            for k in m.get('DBClusterList'):
-                temp_model = DescribeDBInstancesResponseBodyItemsDBClusterList()
-                self.dbcluster_list.append(temp_model.from_map(k))
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
         if m.get('Description') is not None:
@@ -2339,8 +2328,6 @@ class DescribeDBInstancesResponseBodyItems(TeaModel):
             self.gmt_created = m.get('GmtCreated')
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
-        if m.get('InstanceClass') is not None:
-            self.instance_class = m.get('InstanceClass')
         if m.get('InstanceUsedType') is not None:
             self.instance_used_type = m.get('InstanceUsedType')
         if m.get('IsDeleted') is not None:
@@ -4034,11 +4021,13 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         engine_version: str = None,
         region_id: str = None,
         resource_owner_id: int = None,
+        switch_time_mode: str = None,
     ):
         self.dbinstance_id = dbinstance_id
         self.engine_version = engine_version
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
+        self.switch_time_mode = switch_time_mode
 
     def validate(self):
         pass
@@ -4057,6 +4046,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+        if self.switch_time_mode is not None:
+            result['SwitchTimeMode'] = self.switch_time_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -4069,6 +4060,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        if m.get('SwitchTimeMode') is not None:
+            self.switch_time_mode = m.get('SwitchTimeMode')
         return self
 
 

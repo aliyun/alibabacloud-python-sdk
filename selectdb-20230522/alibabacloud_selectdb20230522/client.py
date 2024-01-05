@@ -160,8 +160,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        if not UtilClient.is_unset(request.storage_size):
-            query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -222,8 +220,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        if not UtilClient.is_unset(request.storage_size):
-            query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -364,8 +360,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.storage_size):
-            query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -424,8 +418,6 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
-        if not UtilClient.is_unset(request.storage_size):
-            query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -504,8 +496,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        if not UtilClient.is_unset(request.storage_size):
-            query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
@@ -568,8 +558,6 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.security_iplist):
             query['SecurityIPList'] = request.security_iplist
-        if not UtilClient.is_unset(request.storage_size):
-            query['StorageSize'] = request.storage_size
         if not UtilClient.is_unset(request.used_time):
             query['UsedTime'] = request.used_time
         if not UtilClient.is_unset(request.v_switch_id):
