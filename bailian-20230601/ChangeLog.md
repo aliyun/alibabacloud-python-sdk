@@ -1,3 +1,6 @@
+2024-01-05 Version: 1.5.0
+- Generated python 2023-06-01 for bailian.
+
 2023-12-08 Version: 1.4.0
 - Generated python 2023-06-01 for bailian.
 

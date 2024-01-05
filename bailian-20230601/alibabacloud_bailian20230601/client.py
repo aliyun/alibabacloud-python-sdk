@@ -1535,6 +1535,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_prompt_with_options_async(request, runtime)
 
+    def get_text_2image_job_with_options(
+        self,
+        request: bailian_20230601_models.GetText2ImageJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.GetText2ImageJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetText2ImageJob',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.GetText2ImageJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_text_2image_job_with_options_async(
+        self,
+        request: bailian_20230601_models.GetText2ImageJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.GetText2ImageJobResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetText2ImageJob',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.GetText2ImageJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_text_2image_job(
+        self,
+        request: bailian_20230601_models.GetText2ImageJobRequest,
+    ) -> bailian_20230601_models.GetText2ImageJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.get_text_2image_job_with_options(request, runtime)
+
+    async def get_text_2image_job_async(
+        self,
+        request: bailian_20230601_models.GetText2ImageJobRequest,
+    ) -> bailian_20230601_models.GetText2ImageJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.get_text_2image_job_with_options_async(request, runtime)
+
     def import_enterprise_document_with_options(
         self,
         tmp_req: bailian_20230601_models.ImportEnterpriseDocumentRequest,
@@ -2320,6 +2386,104 @@ class Client(OpenApiClient):
     ) -> bailian_20230601_models.SearchEnterpriseDataResponse:
         runtime = util_models.RuntimeOptions()
         return await self.search_enterprise_data_with_options_async(request, runtime)
+
+    def submit_text_2image_job_with_options(
+        self,
+        request: bailian_20230601_models.SubmitText2ImageJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.SubmitText2ImageJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.n):
+            query['N'] = request.n
+        if not UtilClient.is_unset(request.negative_prompt):
+            query['NegativePrompt'] = request.negative_prompt
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.seed):
+            query['Seed'] = request.seed
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.style):
+            query['Style'] = request.style
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitText2ImageJob',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.SubmitText2ImageJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_text_2image_job_with_options_async(
+        self,
+        request: bailian_20230601_models.SubmitText2ImageJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> bailian_20230601_models.SubmitText2ImageJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.n):
+            query['N'] = request.n
+        if not UtilClient.is_unset(request.negative_prompt):
+            query['NegativePrompt'] = request.negative_prompt
+        if not UtilClient.is_unset(request.prompt):
+            query['Prompt'] = request.prompt
+        if not UtilClient.is_unset(request.seed):
+            query['Seed'] = request.seed
+        if not UtilClient.is_unset(request.size):
+            query['Size'] = request.size
+        if not UtilClient.is_unset(request.style):
+            query['Style'] = request.style
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SubmitText2ImageJob',
+            version='2023-06-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bailian_20230601_models.SubmitText2ImageJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_text_2image_job(
+        self,
+        request: bailian_20230601_models.SubmitText2ImageJobRequest,
+    ) -> bailian_20230601_models.SubmitText2ImageJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.submit_text_2image_job_with_options(request, runtime)
+
+    async def submit_text_2image_job_async(
+        self,
+        request: bailian_20230601_models.SubmitText2ImageJobRequest,
+    ) -> bailian_20230601_models.SubmitText2ImageJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.submit_text_2image_job_with_options_async(request, runtime)
 
     def update_enterprise_data_info_with_options(
         self,

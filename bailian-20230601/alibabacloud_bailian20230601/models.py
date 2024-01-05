@@ -3191,6 +3191,265 @@ class GetPromptResponse(TeaModel):
         return self
 
 
+class GetText2ImageJobRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        task_id: str = None,
+    ):
+        self.agent_key = agent_key
+        self.task_id = task_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        return self
+
+
+class GetText2ImageJobResponseBodyImages(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        message: str = None,
+        url: str = None,
+    ):
+        self.code = code
+        self.message = message
+        self.url = url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.url is not None:
+            result['URL'] = self.url
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('URL') is not None:
+            self.url = m.get('URL')
+        return self
+
+
+class GetText2ImageJobResponseBodyTaskMetrics(TeaModel):
+    def __init__(
+        self,
+        failed: int = None,
+        succeeded: int = None,
+        total: int = None,
+    ):
+        self.failed = failed
+        self.succeeded = succeeded
+        self.total = total
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.failed is not None:
+            result['Failed'] = self.failed
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Failed') is not None:
+            self.failed = m.get('Failed')
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class GetText2ImageJobResponseBodyUsage(TeaModel):
+    def __init__(
+        self,
+        image_count: int = None,
+    ):
+        self.image_count = image_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.image_count is not None:
+            result['ImageCount'] = self.image_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ImageCount') is not None:
+            self.image_count = m.get('ImageCount')
+        return self
+
+
+class GetText2ImageJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        images: List[GetText2ImageJobResponseBodyImages] = None,
+        request_id: str = None,
+        task_id: str = None,
+        task_metrics: GetText2ImageJobResponseBodyTaskMetrics = None,
+        task_status: str = None,
+        usage: List[GetText2ImageJobResponseBodyUsage] = None,
+    ):
+        self.images = images
+        self.request_id = request_id
+        self.task_id = task_id
+        self.task_metrics = task_metrics
+        self.task_status = task_status
+        self.usage = usage
+
+    def validate(self):
+        if self.images:
+            for k in self.images:
+                if k:
+                    k.validate()
+        if self.task_metrics:
+            self.task_metrics.validate()
+        if self.usage:
+            for k in self.usage:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Images'] = []
+        if self.images is not None:
+            for k in self.images:
+                result['Images'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_metrics is not None:
+            result['TaskMetrics'] = self.task_metrics.to_map()
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        result['Usage'] = []
+        if self.usage is not None:
+            for k in self.usage:
+                result['Usage'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.images = []
+        if m.get('Images') is not None:
+            for k in m.get('Images'):
+                temp_model = GetText2ImageJobResponseBodyImages()
+                self.images.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskMetrics') is not None:
+            temp_model = GetText2ImageJobResponseBodyTaskMetrics()
+            self.task_metrics = temp_model.from_map(m['TaskMetrics'])
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        self.usage = []
+        if m.get('Usage') is not None:
+            for k in m.get('Usage'):
+                temp_model = GetText2ImageJobResponseBodyUsage()
+                self.usage.append(temp_model.from_map(k))
+        return self
+
+
+class GetText2ImageJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetText2ImageJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetText2ImageJobResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportEnterpriseDocumentRequestDocumentList(TeaModel):
     def __init__(
         self,
@@ -5303,6 +5562,158 @@ class SearchEnterpriseDataResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = SearchEnterpriseDataResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SubmitText2ImageJobRequest(TeaModel):
+    def __init__(
+        self,
+        agent_key: str = None,
+        app_id: str = None,
+        n: int = None,
+        negative_prompt: str = None,
+        prompt: str = None,
+        seed: int = None,
+        size: str = None,
+        style: str = None,
+    ):
+        self.agent_key = agent_key
+        self.app_id = app_id
+        self.n = n
+        self.negative_prompt = negative_prompt
+        self.prompt = prompt
+        self.seed = seed
+        self.size = size
+        self.style = style
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.agent_key is not None:
+            result['AgentKey'] = self.agent_key
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.n is not None:
+            result['N'] = self.n
+        if self.negative_prompt is not None:
+            result['NegativePrompt'] = self.negative_prompt
+        if self.prompt is not None:
+            result['Prompt'] = self.prompt
+        if self.seed is not None:
+            result['Seed'] = self.seed
+        if self.size is not None:
+            result['Size'] = self.size
+        if self.style is not None:
+            result['Style'] = self.style
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AgentKey') is not None:
+            self.agent_key = m.get('AgentKey')
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('N') is not None:
+            self.n = m.get('N')
+        if m.get('NegativePrompt') is not None:
+            self.negative_prompt = m.get('NegativePrompt')
+        if m.get('Prompt') is not None:
+            self.prompt = m.get('Prompt')
+        if m.get('Seed') is not None:
+            self.seed = m.get('Seed')
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+        if m.get('Style') is not None:
+            self.style = m.get('Style')
+        return self
+
+
+class SubmitText2ImageJobResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        task_id: str = None,
+        task_status: str = None,
+    ):
+        self.request_id = request_id
+        self.task_id = task_id
+        self.task_status = task_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+        if self.task_status is not None:
+            result['TaskStatus'] = self.task_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+        if m.get('TaskStatus') is not None:
+            self.task_status = m.get('TaskStatus')
+        return self
+
+
+class SubmitText2ImageJobResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SubmitText2ImageJobResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SubmitText2ImageJobResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
