@@ -25965,7 +25965,7 @@ class GetOnCallSchedulesDetailResponseBodyData(TeaModel):
                 l1 = []
                 for k1 in k:
                     l1.append(k1.to_map() if k1 else None)
-                result['renderedLayerEntries'].append(l1)
+                result['RenderedLayerEntries'].append(l1)
         result['RenderedSubstitudeEntries'] = []
         if self.rendered_substitude_entries is not None:
             for k in self.rendered_substitude_entries:
@@ -28678,8 +28678,13 @@ class GetSyntheticMonitorsRequestFilter(TeaModel):
         network: int = None,
         task_type: int = None,
     ):
+        # The type of the monitoring point. Valid values: 1: PC. 2: mobile device.
         self.monitor_category = monitor_category
+        # The network type. Valid values: 1: private network. 2: Internet.
         self.network = network
+        # The type of the monitoring task. Valid values:
+        # 
+        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed. 6: file download.
         self.task_type = task_type
 
     def validate(self):
@@ -28716,7 +28721,9 @@ class GetSyntheticMonitorsRequest(TeaModel):
         filter: GetSyntheticMonitorsRequestFilter = None,
         region_id: str = None,
     ):
+        # The query conditions.
         self.filter = filter
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -28751,7 +28758,9 @@ class GetSyntheticMonitorsShrinkRequest(TeaModel):
         filter_shrink: str = None,
         region_id: str = None,
     ):
+        # The query conditions.
         self.filter_shrink = filter_shrink
+        # The region ID.
         self.region_id = region_id
 
     def validate(self):
@@ -28792,15 +28801,25 @@ class GetSyntheticMonitorsResponseBodyData(TeaModel):
         operator_code: str = None,
         region: str = None,
     ):
+        # Indicates whether the monitoring point is available. Valid values: true and false.
         self.available = available
+        # Indicates whether the monitoring point is selected. Valid values: true and false.
         self.can_be_selected = can_be_selected
+        # The city.
         self.city = city
+        # The city code.
         self.city_code = city_code
+        # The client type of the monitoring point. Valid values: 1: data center. 2: Internet. 3: mobile device. 4: ECS instance.
         self.client_type = client_type
+        # The country.
         self.country = country
+        # Indicates whether IPv6 is supported. Valid values: 0: IPv6 is not supported. 1: IPv6 is supported.
         self.ipv_6 = ipv_6
+        # The carrier.
         self.operator = operator
+        # The carrier code.
         self.operator_code = operator_code
+        # The region.
         self.region = region
 
     def validate(self):
@@ -28867,9 +28886,13 @@ class GetSyntheticMonitorsResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The list of monitoring points.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30685,7 +30708,9 @@ class GetTimingSyntheticTaskRequest(TeaModel):
         region_id: str = None,
         task_id: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
 
     def validate(self):
@@ -30720,9 +30745,13 @@ class GetTimingSyntheticTaskResponseBodyDataAvailableAssertions(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The expected value.
         self.expect = expect
+        # The condition. gt: greater than. gte: greater than or equal to. lt: less than. lte: less than or equal to. eq: equal to. neq: not equal to. ctn: contain. nctn: does not contain. exist: exist. n_exist: does not exist. belong: belong to. n_belong: does not belong to. reg_match: regular expression.
         self.operator = operator
+        # The check target. If you set the type parameter to HttpResCode, HttpResBody, or HttpResponseTime, you do not need to set the target parameter. If you set the type parameter to HttpResHead, you must specify the key in the header. If you set the type parameter to HttpResBodyJson, use jsonPath.
         self.target = target
+        # The assertion type. Valid values: HttpResCode, HttpResHead, HttpResBody, HttpResBodyJson, HttpResponseTime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet latency), IcmpPackAvgLatency (average packet latency), TraceRouteHops (number of hops), DnsARecord (A record), DnsCName (CNAME), websiteTTFB (time to first packet), websiteTTLB (time to last packet), websiteFST (first paint time), websiteFFST (first meaningful paint), websiteOnload (full loaded time). For more information, see the following description.
         self.type = type
 
     def validate(self):
@@ -30764,8 +30793,15 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts(TeaMode
         ip_type: int = None,
         ips: List[str] = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4
+        # *   2: IPv6
         self.ip_type = ip_type
+        # The list of IP addresses.
         self.ips = ips
 
     def validate(self):
@@ -30802,7 +30838,9 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHost(TeaModel):
         hosts: List[GetTimingSyntheticTaskResponseBodyDataCommonSettingCustomHostHosts] = None,
         select_type: int = None,
     ):
+        # The list of hosts.
         self.hosts = hosts
+        # The selection mode. 0: Random. 1: Polling.
         self.select_type = select_type
 
     def validate(self):
@@ -30847,11 +30885,28 @@ class GetTimingSyntheticTaskResponseBodyDataCommonSetting(TeaModel):
         trace_client_type: int = None,
         xtrace_region: str = None,
     ):
+        # The custom host.
         self.custom_host = custom_host
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4
+        # *   2: IPv6
         self.ip_type = ip_type
+        # 是否开启链路追踪。
         self.is_open_trace = is_open_trace
+        # Specifies whether to evenly distribute monitoring samples. Valid values:
+        # 
+        # *   0: No
+        # *   1: Yes
         self.monitor_samples = monitor_samples
+        # 链路追踪客户端类型：
+        # 
+        # - 0：ARMS Agent
+        # - 1：OpenTelemetry
+        # - 2：Jaeger
         self.trace_client_type = trace_client_type
+        # 链路数据上报region。
         self.xtrace_region = xtrace_region
 
     def validate(self):
@@ -30902,7 +30957,9 @@ class GetTimingSyntheticTaskResponseBodyDataCustomPeriod(TeaModel):
         end_hour: int = None,
         start_hour: int = None,
     ):
+        # The hour at which the test ends. Valid values: 0 to 24.
         self.end_hour = end_hour
+        # The hour at which the test starts. Valid values: 0 to 24.
         self.start_hour = start_hour
 
     def validate(self):
@@ -30935,7 +30992,9 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTPRequestBody(TeaMod
         content: str = None,
         type: str = None,
     ):
+        # The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
         self.content = content
+        # The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
         self.type = type
 
     def validate(self):
@@ -30972,11 +31031,20 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfApiHTTP(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
         self.connect_timeout = connect_timeout
+        # The request method.
+        # 
+        # *   POST
+        # *   GET
         self.method = method
+        # The HTTP request body.
         self.request_body = request_body
+        # The HTTP request header.
         self.request_headers = request_headers
+        # The URL for synthetic monitoring.
         self.target_url = target_url
+        # The timeout period. Unit: milliseconds. Default value: 10000. Minimum value: 1000. Maximum value: 300000.
         self.timeout = timeout
 
     def validate(self):
@@ -31043,23 +31111,52 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfFileDownload(TeaModel):
         verify_way: int = None,
         white_list: str = None,
     ):
+        # The connection timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
         self.connection_timeout = connection_timeout
+        # The content of the custom request header.
         self.custom_header_content = custom_header_content
+        # The kernel type.
+        # 
+        # *   1: curl
+        # *   0: WinInet
         self.download_kernel = download_kernel
+        # Specifies whether to ignore CA certificate authentication errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_auth_error = ignore_certificate_auth_error
+        # Specifies whether to ignore certificate revocation errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
+        # Specifies whether to ignore certificate invalidity. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
+        # Specifies whether to ignore certificate status errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_status_error = ignore_certificate_status_error
+        # Specifies whether to ignore certificate incredibility. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
+        # Specifies whether to ignore certificate usage errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_using_error = ignore_certificate_using_error
+        # Specifies whether to ignore host invalidity. 0: No. 1: Yes. Default value: 1.
         self.ignore_invalid_host_error = ignore_invalid_host_error
+        # The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
         self.monitor_timeout = monitor_timeout
+        # The QUIC protocol type.
+        # 
+        # *   1: http1
+        # *   2: http2
+        # *   3: http3
         self.quick_protocol = quick_protocol
+        # Specifies whether to support redirection. 0: No. 1: Yes. Default value: 1.
         self.redirection = redirection
+        # The file download URL.
         self.target_url = target_url
+        # The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
         self.transmission_size = transmission_size
+        # 验证关键词。
         self.validate_keywords = validate_keywords
+        # 验证方式。
+        # 
+        # - 0：不验证 
+        # - 1：验证字符串 
+        # - 2：MD5验证
         self.verify_way = verify_way
+        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
         self.white_list = white_list
 
     def validate(self):
@@ -31159,10 +31256,15 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfNetDNS(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # The IP version of the DNS server. 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
         self.dns_server_ip_type = dns_server_ip_type
+        # The IP address of the DNS server. Default value: 114.114.114.114.
         self.ns_server = ns_server
+        # The DNS query. 0: recursive, 1: iterative. Default value: 0.
         self.query_method = query_method
+        # The destination domain name.
         self.target_url = target_url
+        # The timeout period for the DNS synthetic test. Unit: milliseconds. The minimum value is 1000 and the maximum value is 45000. Default value: 5000.
         self.timeout = timeout
 
     def validate(self):
@@ -31214,14 +31316,23 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfNetICMP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
+        # The interval at which ICMP packets are sent. Unit: milliseconds. Minimum value: 200. Maximum value: 2000. Default value: 200.
         self.interval = interval
+        # The number of ICMP packets that are sent. Minimum value: 1. Maximum value: 50. Default value: 4.
         self.package_num = package_num
+        # The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024.
         self.package_size = package_size
+        # Specifies whether to split ICMP packets. Default value: true.
         self.split_package = split_package
+        # The destination host IP address or domain name
         self.target_url = target_url
+        # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
+        # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
+        # The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 64.
         self.tracert_num_max = tracert_num_max
+        # The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -31287,12 +31398,19 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfNetTCP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
+        # The number of TCP connections that are established in a test. Minimum value: 1. Maximum value: 16. Default value: 4.
         self.connect_times = connect_times
+        # The interval at which TCP connections are established. Unit: milliseconds. Minimum value: 200. Maximum value: 10000. Default value: 200.
         self.interval = interval
+        # The destination host IP address.
         self.target_url = target_url
+        # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
+        # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
+        # The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 20.
         self.tracert_num_max = tracert_num_max
+        # The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -31350,12 +31468,25 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfStream(TeaModel):
         target_url: str = None,
         white_list: str = None,
     ):
+        # 自定义header，JSON Map格式。
         self.custom_header_content = custom_header_content
+        # 播放器，不传默认12。
+        # 
+        # - 12：VLC
+        # - 2：FlashPlayer
         self.player_type = player_type
+        # 资源地址类型：
+        # 
+        # - 1：资源地址。
+        # - 0：页面地址。不传默认0。
         self.stream_address_type = stream_address_type
+        # 监测时长，单位秒，最长支持60s，不传默认60。
         self.stream_monitor_timeout = stream_monitor_timeout
+        # 音视频标志：0-视频，1-音频。
         self.stream_type = stream_type
+        # 流媒体资源地址。
         self.target_url = target_url
+        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
         self.white_list = white_list
 
     def validate(self):
@@ -31425,24 +31556,50 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite(TeaModel):
         verify_string_whitelist: str = None,
         wait_completion_time: int = None,
     ):
+        # Specifies whether to automatically scroll up and down the screen to load a page. 0: No. 1: Yes. Default value: 0.
         self.automatic_scrolling = automatic_scrolling
+        # Specifies whether to create a custom header. 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
         self.custom_header = custom_header
+        # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
+        # 域名（例如www.aliyun.com）解析时，解析出的IP地址或者CNAME不在DNS劫持白名单内，用户就会访问失败或者返回一个非Aliyun的目标IP；若解析结果中的IP或者CNAME在DNS白名单内，则会被认定为没有发生DNS劫持。
+        # 
+        # 填写格式：域名:匹配规则。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
         self.dnshijack_whitelist = dnshijack_whitelist
+        # Specifies whether to disable the cache. 0: No. 1: Yes. Default value: 1.
         self.disable_cache = disable_cache
+        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. 0: No. 1: Yes. Default value: 0.
         self.disable_compression = disable_compression
+        # 在页面加载过程中如果出现元素黑名单中配置的元素，不会请求加载该元素 。
         self.element_blacklist = element_blacklist
+        # Specifies whether to exclude invalid IP addresses.
+        # 
+        # *   1: No
+        # *   0: Yes
         self.filter_invalid_ip = filter_invalid_ip
+        # 识别元素：设置浏览页面元素总个数。
         self.flow_hijack_jump_times = flow_hijack_jump_times
+        # 劫持标识：设置匹配的关键信息。填写劫持判断关键字或关键元素，允许带星号（*）。
         self.flow_hijack_logo = flow_hijack_logo
+        # Specifies whether to ignore SSL certificate errors during browsing. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_error = ignore_certificate_error
+        # The monitoring timeout period. Unit: milliseconds. Default value: 20000. Minimum value: 5000. Maximum value: 300000.
         self.monitor_timeout = monitor_timeout
+        # 监测页面出现了域名设置之外的元素都属于页面被篡改。常见的表现形式为弹出广告、浮动广告、跳转等。
+        # 
+        # 填写格式：域名:元素。元素支持填写通配符，可以填写多个元素，多个元素以竖线（|）隔开。例如：www.aliyun.com:|/cc/bb/a.gif|/vv/bb/cc.jpg，表示www.aliyun.com域名下除基础文档、/cc/bb/a.gif和/vv/bb/cc.jpg之外的其他元素都属于页面被篡改。
         self.page_tamper = page_tamper
+        # Specifies whether to continue browsing after redirection. 0: No, 1:Yes. Default value: 1.
         self.redirection = redirection
+        # The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
         self.slow_element_threshold = slow_element_threshold
+        # The destination URL.
         self.target_url = target_url
+        # 验证字符串即监测页面源代码中的某个任意字符串。若客户端返回的源码中包含任一黑名单中的字符串则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
         self.verify_string_blacklist = verify_string_blacklist
+        # 验证字符串即监测页面源代码中的某个任意字符串。客户端返回的源码必须包含所有白名单中的字符串，否则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
         self.verify_string_whitelist = verify_string_whitelist
+        # The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
         self.wait_completion_time = wait_completion_time
 
     def validate(self):
@@ -31548,12 +31705,19 @@ class GetTimingSyntheticTaskResponseBodyDataMonitorConf(TeaModel):
         stream: GetTimingSyntheticTaskResponseBodyDataMonitorConfStream = None,
         website: GetTimingSyntheticTaskResponseBodyDataMonitorConfWebsite = None,
     ):
+        # The HTTP(S) synthetic test parameters.
         self.api_http = api_http
+        # The file download parameters.
         self.file_download = file_download
+        # The DNS synthetic test parameters. This parameter is required if the TaskType parameter is set to 3.
         self.net_dns = net_dns
+        # The ICMP synthetic test parameters. This parameter is required if the TaskType parameter is set to 1.
         self.net_icmp = net_icmp
+        # The TCP synthetic tests parameters. This parameter is required if the TaskType parameter is set to 2.
         self.net_tcp = net_tcp
+        # 流媒体拨测配置。
         self.stream = stream
+        # The website-speed measurement parameters.
         self.website = website
 
     def validate(self):
@@ -31627,8 +31791,11 @@ class GetTimingSyntheticTaskResponseBodyDataMonitors(TeaModel):
         client_type: int = None,
         operator_code: str = None,
     ):
+        # The city code.
         self.city_code = city_code
+        # The client type of the monitoring point. Valid values: 1: data center. 2: Internet. 3: mobile device. 4: ECS instance.
         self.client_type = client_type
+        # The carrier code.
         self.operator_code = operator_code
 
     def validate(self):
@@ -31665,7 +31832,9 @@ class GetTimingSyntheticTaskResponseBodyDataTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -31710,19 +31879,35 @@ class GetTimingSyntheticTaskResponseBodyData(TeaModel):
         task_id: str = None,
         task_type: int = None,
     ):
+        # The list of assertions.
         self.available_assertions = available_assertions
+        # The general settings.
         self.common_setting = common_setting
+        # The custom cycle.
         self.custom_period = custom_period
+        # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
+        # The detection point type. 1: PC. 2: mobile device.
         self.monitor_category = monitor_category
+        # The monitoring configurations.
         self.monitor_conf = monitor_conf
+        # The list of monitoring points.
         self.monitors = monitors
+        # The name of the task.
         self.name = name
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # CREATING: The task is being created. RUNNING: The task is running. PARTIAL_RUNNING: The task is partially running. STOP: The task is stopped. LIMIT_STOP: The task is stopped due to quota insufficiency. EXCEPTION: The task is abnormal. DELETE: The task is deleted. DELETE_EXCEPTION: The task failed to be deleted.
         self.status = status
+        # The tag.
         self.tags = tags
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # ICMP TCP DNS HTTP Website speed measurement File download
         self.task_type = task_type
 
     def validate(self):
@@ -31840,9 +32025,13 @@ class GetTimingSyntheticTaskResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code returned. The status code 200 indicates that the request was successful.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -43922,13 +44111,21 @@ class ListTimingSyntheticTasksRequestSearch(TeaModel):
         task_ids: List[str] = None,
         task_types: List[int] = None,
     ):
+        # The task name.
         self.name = name
+        # The order by which tasks are sorted. 1: ascending order. -1: descending order.
         self.order = order
+        # The condition by which tasks are sorted. You can sort tasks by gmtCreate, gmtModified, status, or monitorCount.
         self.order_field = order_field
+        # The page number. This parameter is required.
         self.page = page
+        # The number of entries per page. This parameter is required.
         self.page_size = page_size
+        # The task status. CREATING: The task is being created. RUNNING: The task is running. PARTIAL_RUNNING: The task is partially running. STOP: The task is stopped. LIMIT_STOP: The task is stopped due to quota limit. EXCEPTION: The task is abnormal. DELETE: The task is deleted. DELETE_EXCEPTION: An exception occurs while deleting the task.
         self.status = status
+        # The task IDs.
         self.task_ids = task_ids
+        # The task types.
         self.task_types = task_types
 
     def validate(self):
@@ -43985,7 +44182,9 @@ class ListTimingSyntheticTasksRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -44020,9 +44219,13 @@ class ListTimingSyntheticTasksRequest(TeaModel):
         search: ListTimingSyntheticTasksRequestSearch = None,
         tags: List[ListTimingSyntheticTasksRequestTags] = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The search keyword.
         self.search = search
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -44076,9 +44279,13 @@ class ListTimingSyntheticTasksShrinkRequest(TeaModel):
         search_shrink: str = None,
         tags_shrink: str = None,
     ):
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The search keyword.
         self.search_shrink = search_shrink
+        # The tags.
         self.tags_shrink = tags_shrink
 
     def validate(self):
@@ -44119,7 +44326,9 @@ class ListTimingSyntheticTasksResponseBodyDataItemsTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The tag key.
         self.key = key
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -44163,18 +44372,33 @@ class ListTimingSyntheticTasksResponseBodyDataItems(TeaModel):
         task_type: int = None,
         url: str = None,
     ):
+        # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
+        # The time when the task was created.
         self.gmt_create = gmt_create
+        # The time when the task was modified.
         self.gmt_modified = gmt_modified
+        # The detection point type. 1: PC. 2: mobile device.
         self.monitor_category = monitor_category
+        # The number of detection points.
         self.monitor_num = monitor_num
+        # The task name.
         self.name = name
+        # The region ID.
         self.region_id = region_id
+        # The ID of the resource group.
         self.resource_group_id = resource_group_id
+        # The task status. CREATING: The task is being created. RUNNING: The task is running. PARTIAL_RUNNING: The task is partially running. STOP: The task is stopped. LIMIT_STOP: The task is stopped due to quota limit. EXCEPTION: The task is abnormal. DELETE: The task is deleted. DELETE_EXCEPTION: An exception occurs while deleting the task.
         self.status = status
+        # The tags.
         self.tags = tags
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed. 6: file download.
         self.task_type = task_type
+        # The URL for synthetic monitoring.
         self.url = url
 
     def validate(self):
@@ -44261,9 +44485,13 @@ class ListTimingSyntheticTasksResponseBodyData(TeaModel):
         page_size: int = None,
         total: int = None,
     ):
+        # The queried tasks.
         self.items = items
+        # The page number.
         self.page = page
+        # The number of entries per page.
         self.page_size = page_size
+        # The total number of tasks.
         self.total = total
 
     def validate(self):
@@ -44314,9 +44542,13 @@ class ListTimingSyntheticTasksResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful.
         self.code = code
+        # The returned struct.
         self.data = data
+        # The returned message.
         self.message = message
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -56440,9 +56672,13 @@ class UpdateTimingSyntheticTaskRequestAvailableAssertions(TeaModel):
         target: str = None,
         type: str = None,
     ):
+        # The expected value.
         self.expect = expect
+        # The condition. gt: greater than. gte: greater than or equal to. lt: less than. lte: less than or equal to. eq: equal to. neq: not equal to. ctn: contain. nctn: does not contain. exist: exist. n_exist: does not exist. belong: belong to. n_belong: does not belong to. reg_match: regular expression.
         self.operator = operator
+        # The check target. If you set the type parameter to HttpResCode, HttpResBody, or HttpResponseTime, you do not need to set the target parameter. If you set the type parameter to HttpResHead, you must specify the key in the header. If you set the type parameter to HttpResBodyJson, use jsonPath.
         self.target = target
+        # The assertion type. Valid values: HttpResCode, HttpResHead, HttpResBody, HttpResBodyJson, HttpResponseTime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet latency), IcmpPackAvgLatency (average packet latency), TraceRouteHops (number of hops), DnsARecord (A record), DnsCName (CNAME), websiteTTFB (time to first packet), websiteTTLB (time to last packet), websiteFST (first paint time), websiteFFST (first meaningful paint), websiteOnload (full loaded time). For more information, see the following description.
         self.type = type
 
     def validate(self):
@@ -56484,8 +56720,15 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts(TeaModel):
         ip_type: int = None,
         ips: List[str] = None,
     ):
+        # The domain name.
         self.domain = domain
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4
+        # *   2: IPv6
         self.ip_type = ip_type
+        # The list of IP addresses.
         self.ips = ips
 
     def validate(self):
@@ -56522,7 +56765,9 @@ class UpdateTimingSyntheticTaskRequestCommonSettingCustomHost(TeaModel):
         hosts: List[UpdateTimingSyntheticTaskRequestCommonSettingCustomHostHosts] = None,
         select_type: int = None,
     ):
+        # The list of hosts.
         self.hosts = hosts
+        # The selection mode. 0: Random. 1: Polling.
         self.select_type = select_type
 
     def validate(self):
@@ -56567,11 +56812,28 @@ class UpdateTimingSyntheticTaskRequestCommonSetting(TeaModel):
         trace_client_type: int = None,
         xtrace_region: str = None,
     ):
+        # The custom host.
         self.custom_host = custom_host
+        # The IP version. Valid values:
+        # 
+        # *   0: A version is automatically selected.
+        # *   1: IPv4
+        # *   2: IPv6
         self.ip_type = ip_type
+        # 是否开启链路追踪。
         self.is_open_trace = is_open_trace
+        # Specifies whether to evenly distribute monitoring samples. Valid values:
+        # 
+        # *   0: No
+        # *   1: Yes
         self.monitor_samples = monitor_samples
+        # 链路追踪客户端类型：
+        # 
+        # - 0：ARMS Agent
+        # - 1：OpenTelemetry
+        # - 2：Jaeger
         self.trace_client_type = trace_client_type
+        # 链路数据上报region。
         self.xtrace_region = xtrace_region
 
     def validate(self):
@@ -56622,7 +56884,9 @@ class UpdateTimingSyntheticTaskRequestCustomPeriod(TeaModel):
         end_hour: int = None,
         start_hour: int = None,
     ):
+        # The hour at which the test ends. Valid values: 0 to 24.
         self.end_hour = end_hour
+        # The hour at which the test starts. Valid values: 0 to 24.
         self.start_hour = start_hour
 
     def validate(self):
@@ -56655,7 +56919,9 @@ class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTPRequestBody(TeaModel):
         content: str = None,
         type: str = None,
     ):
+        # The content of the request body. Format: JSON string. The parameter is required if the type parameter is set to text/plain, application/json, application/xml, or text/html. Format: JSON string.
         self.content = content
+        # The type of the request body. Valid values: text/plain, application/json, application/x-www-form-urlencoded, multipart/form-data, application/xml, and text/html.
         self.type = type
 
     def validate(self):
@@ -56692,11 +56958,20 @@ class UpdateTimingSyntheticTaskRequestMonitorConfApiHTTP(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # The connection timeout period. Unit: milliseconds. Default value: 5000. Minimum value: 1000. Maximum value: 300000.
         self.connect_timeout = connect_timeout
+        # The request method.
+        # 
+        # *   POST
+        # *   GET
         self.method = method
+        # The HTTP request body.
         self.request_body = request_body
+        # The custom header field.
         self.request_headers = request_headers
+        # The URL or request path for synthetic monitoring.
         self.target_url = target_url
+        # The timeout period. Unit: milliseconds. Default value: 10000. Minimum value: 1000. Maximum value: 300000.
         self.timeout = timeout
 
     def validate(self):
@@ -56763,23 +57038,52 @@ class UpdateTimingSyntheticTaskRequestMonitorConfFileDownload(TeaModel):
         verify_way: int = None,
         white_list: str = None,
     ):
+        # The connection timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 5000.
         self.connection_timeout = connection_timeout
+        # The content of the custom request header.
         self.custom_header_content = custom_header_content
+        # The kernel type.
+        # 
+        # *   1: curl
+        # *   0: WinInet
         self.download_kernel = download_kernel
+        # Specifies whether to ignore CA certificate authentication errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_auth_error = ignore_certificate_auth_error
+        # Specifies whether to ignore certificate revocation errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_canceled_error = ignore_certificate_canceled_error
+        # Specifies whether to ignore certificate invalidity. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_out_of_date_error = ignore_certificate_out_of_date_error
+        # Specifies whether to ignore certificate status errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_status_error = ignore_certificate_status_error
+        # Specifies whether to ignore certificate incredibility. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_untrustworthy_error = ignore_certificate_untrustworthy_error
+        # Specifies whether to ignore certificate usage errors. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_using_error = ignore_certificate_using_error
+        # Specifies whether to ignore host invalidity. 0: No. 1: Yes. Default value: 1.
         self.ignore_invalid_host_error = ignore_invalid_host_error
+        # The monitoring timeout period. Unit: milliseconds. Minimum value: 1000. Maximum value: 120000. Default value: 60000.
         self.monitor_timeout = monitor_timeout
+        # The QUIC protocol type.
+        # 
+        # *   1: http1
+        # *   2: http2
+        # *   3: http3
         self.quick_protocol = quick_protocol
+        # Specifies whether to support redirection. 0: No. 1: Yes. Default value: 1.
         self.redirection = redirection
+        # The file download URL.
         self.target_url = target_url
+        # The maximum file size of a single transfer. Unit: KB. Minimum value: 1. Maximum value: 20480. Valid values: 2048.
         self.transmission_size = transmission_size
+        # 验证关键词。
         self.validate_keywords = validate_keywords
+        # 验证方式。
+        # 
+        # - 0：不验证 
+        # - 1：验证字符串 
+        # - 2：MD5验证
         self.verify_way = verify_way
+        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
         self.white_list = white_list
 
     def validate(self):
@@ -56880,11 +57184,17 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetDNS(TeaModel):
         target_url: str = None,
         timeout: int = None,
     ):
+        # Specifies whether to use dig to display the data. 0: No. 1: Yes.
         self.dig = dig
+        # The IP version of the DNS server. 0: IPv4. 1: IPv6. 2: A version is automatically selected. Default value: 0.
         self.dns_server_ip_type = dns_server_ip_type
+        # The IP address of the DNS server. Default value: 114.114.114.114.
         self.ns_server = ns_server
+        # The DNS query. 0: recursive, 1: iterative. Default value: 0.
         self.query_method = query_method
+        # The destination domain name.
         self.target_url = target_url
+        # The timeout period for the DNS synthetic test. Unit: milliseconds. The minimum value is 1000 and the maximum value is 45000. Default value: 5000.
         self.timeout = timeout
 
     def validate(self):
@@ -56940,14 +57250,23 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetICMP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
+        # The interval at which ICMP packets are sent. Unit: milliseconds. Minimum value: 200. Maximum value: 10000.
         self.interval = interval
+        # The number of ICMP packets that are sent. Minimum value: 1. Maximum value: 50. Default value: 4.
         self.package_num = package_num
+        # The size of each ICMP packet. Unit: bytes. Valid values: 32, 64, 128, 256, 512, 1024.
         self.package_size = package_size
+        # Specifies whether to split ICMP packets. Default value: true.
         self.split_package = split_package
+        # The destination host IP address or domain name. Port numbers, protocol headers, or request paths are not supported.
         self.target_url = target_url
+        # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
+        # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
+        # The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 64.
         self.tracert_num_max = tracert_num_max
+        # The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -57013,12 +57332,19 @@ class UpdateTimingSyntheticTaskRequestMonitorConfNetTCP(TeaModel):
         tracert_num_max: int = None,
         tracert_timeout: int = None,
     ):
+        # The number of TCP connections that are established in a test. Minimum value: 1. Maximum value: 16. Default value: 4.
         self.connect_times = connect_times
+        # The interval at which TCP connections are established. Unit: milliseconds. Minimum value: 200. Maximum value: 10000. Default value: 200.
         self.interval = interval
+        # The destination host IP address.
         self.target_url = target_url
+        # The timeout period for the TCP synthetic test. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 20000.
         self.timeout = timeout
+        # Specifies whether to enable the tracert command. Default value: true.
         self.tracert_enable = tracert_enable
+        # The maximum number of hops for tracert. Minimum value: 1. Maximum value: 128. Default value: 20.
         self.tracert_num_max = tracert_num_max
+        # The timeout period of tracert. Unit: milliseconds. Minimum value: 1000. Maximum value: 300000. Default value: 60000.
         self.tracert_timeout = tracert_timeout
 
     def validate(self):
@@ -57076,12 +57402,25 @@ class UpdateTimingSyntheticTaskRequestMonitorConfStream(TeaModel):
         target_url: str = None,
         white_list: str = None,
     ):
+        # 自定义header，JSON Map格式。
         self.custom_header_content = custom_header_content
+        # 播放器，不传默认12。
+        # 
+        # - 12：VLC
+        # - 2：FlashPlayer
         self.player_type = player_type
+        # 资源地址类型：
+        # 
+        # - 1：资源地址。
+        # - 0：页面地址。不传默认0。
         self.stream_address_type = stream_address_type
+        # 监测时长，单位秒，最长支持60s，不传默认60。
         self.stream_monitor_timeout = stream_monitor_timeout
+        # 音视频标志：0-视频，1-音频。
         self.stream_type = stream_type
+        # 流媒体地址。
         self.target_url = target_url
+        # DNS劫持白名单。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
         self.white_list = white_list
 
     def validate(self):
@@ -57151,24 +57490,48 @@ class UpdateTimingSyntheticTaskRequestMonitorConfWebsite(TeaModel):
         verify_string_whitelist: str = None,
         wait_completion_time: int = None,
     ):
+        # Specifies whether to automatically scroll up and down the screen to load a page. 0: No. 1: Yes. Default value: 0.
         self.automatic_scrolling = automatic_scrolling
+        # Specifies whether to create a custom header. 0: No. 1: The first packet is modified. 2: All packets are modified. Default value: 0.
         self.custom_header = custom_header
+        # The custom header. Format: JSON map.
         self.custom_header_content = custom_header_content
+        # 域名（例如www.aliyun.com）解析时，解析出的IP地址或者CNAME不在DNS劫持白名单内，用户就会访问失败或者返回一个非Aliyun的目标IP；若解析结果中的IP或者CNAME在DNS白名单内，则会被认定为没有发生DNS劫持。
+        # 
+        # 填写格式：域名:匹配规则。匹配规则支持IP、IP通配符、子网掩码和CNAME，可以填写多个匹配规则，多个匹配规则以竖线（|）隔开。例如：www.aliyun.com:203.0.3.55|203.3.44.67，表示www.aliyun.com域名下除203.0.3.55和203.3.44.67之外的其他IP都是被劫持的。
         self.dnshijack_whitelist = dnshijack_whitelist
+        # Specifies whether to disable the cache. 0: No. 1: Yes. Default value: 1.
         self.disable_cache = disable_cache
+        # Specifies whether to accept compressed files based on the HTTP Accept-Encoding request header. 0: No. 1: Yes. Default value: 0.
         self.disable_compression = disable_compression
+        # 在页面加载过程中如果出现元素黑名单中配置的元素，不会请求加载该元素 。
         self.element_blacklist = element_blacklist
+        # Specifies whether to filter invalid IP addresses.
+        # 
+        # *   1: No
+        # *   0: Yes
         self.filter_invalid_ip = filter_invalid_ip
+        # 识别元素：设置浏览页面元素总个数。
         self.flow_hijack_jump_times = flow_hijack_jump_times
+        # 劫持标识：设置匹配的关键信息。填写劫持判断关键字或关键元素，允许带星号（*）。
         self.flow_hijack_logo = flow_hijack_logo
+        # Specifies whether to ignore SSL certificate errors during browsing. 0: No. 1: Yes. Default value: 1.
         self.ignore_certificate_error = ignore_certificate_error
+        # The monitoring timeout period. Unit: milliseconds. Minimum value: 5000. Maximum value: 300000. Default value: 40000.
         self.monitor_timeout = monitor_timeout
+        # 监测页面出现了域名设置之外的元素都属于页面被篡改。常见的表现形式为弹出广告、浮动广告、跳转等。
         self.page_tamper = page_tamper
+        # Specifies whether to continue browsing after redirection. 0: No, 1:Yes. Default value: 1.
         self.redirection = redirection
+        # The time threshold that is used to define a slow element. Unit: milliseconds. Default value: 5000. Minimum value: 1. Maximum value: 300000.
         self.slow_element_threshold = slow_element_threshold
+        # The destination URL.
         self.target_url = target_url
+        # 验证字符串即监测页面源代码中的某个任意字符串。若客户端返回的源码中包含任一黑名单中的字符串则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
         self.verify_string_blacklist = verify_string_blacklist
+        # 验证字符串即监测页面源代码中的某个任意字符串。客户端返回的源码必须包含所有白名单中的字符串，否则报650验证字符串失败的错误。多个字符串以竖线（|）隔开。
         self.verify_string_whitelist = verify_string_whitelist
+        # The maximum waiting time. Unit: milliseconds. Default value: 5000. Minimum value: 5000. Maximum value: 300000.
         self.wait_completion_time = wait_completion_time
 
     def validate(self):
@@ -57274,12 +57637,19 @@ class UpdateTimingSyntheticTaskRequestMonitorConf(TeaModel):
         stream: UpdateTimingSyntheticTaskRequestMonitorConfStream = None,
         website: UpdateTimingSyntheticTaskRequestMonitorConfWebsite = None,
     ):
+        # The HTTP(S) synthetic test parameters.
         self.api_http = api_http
+        # The file download parameters.
         self.file_download = file_download
+        # The DNS synthetic test parameters.
         self.net_dns = net_dns
+        # The ICMP synthetic test parameters.
         self.net_icmp = net_icmp
+        # The TCP synthetic tests parameters. This parameter is required if the TaskType parameter is set to 2.
         self.net_tcp = net_tcp
+        # 流媒体拨测配置。
         self.stream = stream
+        # The website-speed measurement parameters.
         self.website = website
 
     def validate(self):
@@ -57353,8 +57723,11 @@ class UpdateTimingSyntheticTaskRequestMonitors(TeaModel):
         client_type: int = None,
         operator_code: str = None,
     ):
+        # The city code.
         self.city_code = city_code
+        # The client type of the monitoring point. Valid values: 1: data center. 2: Internet. 3: mobile device. 4: ECS instance.
         self.client_type = client_type
+        # The carrier code.
         self.operator_code = operator_code
 
     def validate(self):
@@ -57391,7 +57764,9 @@ class UpdateTimingSyntheticTaskRequestTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
         self.key = key
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -57435,18 +57810,33 @@ class UpdateTimingSyntheticTaskRequest(TeaModel):
         task_id: str = None,
         task_type: int = None,
     ):
+        # The list of assertions.
         self.available_assertions = available_assertions
+        # The general settings.
         self.common_setting = common_setting
+        # The custom cycle.
         self.custom_period = custom_period
+        # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
+        # The detection point type. 1: PC. 2: mobile device.
         self.monitor_category = monitor_category
+        # The monitoring configurations.
         self.monitor_conf = monitor_conf
+        # The list of monitoring points.
         self.monitors = monitors
+        # The name of the task.
         self.name = name
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of tags.
         self.tags = tags
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
         self.task_type = task_type
 
     def validate(self):
@@ -57569,18 +57959,33 @@ class UpdateTimingSyntheticTaskShrinkRequest(TeaModel):
         task_id: str = None,
         task_type: int = None,
     ):
+        # The list of assertions.
         self.available_assertions_shrink = available_assertions_shrink
+        # The general settings.
         self.common_setting_shrink = common_setting_shrink
+        # The custom cycle.
         self.custom_period_shrink = custom_period_shrink
+        # The detection frequency. Valid values: 1m, 5m, 10m, 15m, 20m, 30m, 1h, 2h, 3h, 4h, 6h, 8h, 12h, and 24h.
         self.frequency = frequency
+        # The detection point type. 1: PC. 2: mobile device.
         self.monitor_category = monitor_category
+        # The monitoring configurations.
         self.monitor_conf_shrink = monitor_conf_shrink
+        # The list of monitoring points.
         self.monitors_shrink = monitors_shrink
+        # The name of the task.
         self.name = name
+        # The region ID.
         self.region_id = region_id
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The list of tags.
         self.tags_shrink = tags_shrink
+        # The ID of the synthetic monitoring task.
         self.task_id = task_id
+        # The type of the task. Valid values:
+        # 
+        # 1: ICMP. 2: TCP. 3: DNS. 4: HTTP. 5: website speed measurement. 6: file download.
         self.task_type = task_type
 
     def validate(self):
@@ -57656,6 +58061,7 @@ class UpdateTimingSyntheticTaskResponseBodyData(TeaModel):
         self,
         task_id: str = None,
     ):
+        # The task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -57687,10 +58093,18 @@ class UpdateTimingSyntheticTaskResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
         self.code = code
+        # The struct returned.
         self.data = data
+        # The message returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   `true`
+        # *   `false`
         self.success = success
 
     def validate(self):
