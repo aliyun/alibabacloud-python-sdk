@@ -2560,6 +2560,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAuditLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
+        """
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        
+        @param request: DescribeAuditLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2624,6 +2631,13 @@ class Client(OpenApiClient):
         request: adb_20211201_models.DescribeAuditLogRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
+        """
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        
+        @param request: DescribeAuditLogRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAuditLogRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbcluster_id):
@@ -2687,6 +2701,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAuditLogRecordsRequest,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
+        """
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        
+        @param request: DescribeAuditLogRecordsRequest
+        @return: DescribeAuditLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_audit_log_records_with_options(request, runtime)
 
@@ -2694,6 +2714,12 @@ class Client(OpenApiClient):
         self,
         request: adb_20211201_models.DescribeAuditLogRecordsRequest,
     ) -> adb_20211201_models.DescribeAuditLogRecordsResponse:
+        """
+        SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: *INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+        
+        @param request: DescribeAuditLogRecordsRequest
+        @return: DescribeAuditLogRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_audit_log_records_with_options_async(request, runtime)
 
@@ -7017,7 +7043,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        ### [](#)Usage notes
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7052,7 +7079,8 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        ### [](#)Usage notes
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7086,7 +7114,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        ### [](#)Usage notes
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @return: GetSparkTemplateFolderTreeResponse
@@ -7099,7 +7128,8 @@ class Client(OpenApiClient):
         request: adb_20211201_models.GetSparkTemplateFolderTreeRequest,
     ) -> adb_20211201_models.GetSparkTemplateFolderTreeResponse:
         """
-        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~456205~~) operation.
+        ### [](#)Usage notes
+        You can call this operation to query the directory structure but not application data in the directory. To query the directory structure that contains application data, call the [GetSparkTemplateFullTree](~~612467~~) operation.
         
         @param request: GetSparkTemplateFolderTreeRequest
         @return: GetSparkTemplateFolderTreeResponse
