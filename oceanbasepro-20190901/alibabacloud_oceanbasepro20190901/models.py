@@ -332,6 +332,116 @@ class DataExtraInfoSubDbsValue(TeaModel):
         return self
 
 
+class CreateBackupSetDownloadLinkRequest(TeaModel):
+    def __init__(
+        self,
+        backup_set_id: str = None,
+        instance_id: str = None,
+    ):
+        self.backup_set_id = backup_set_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_set_id is not None:
+            result['BackupSetId'] = self.backup_set_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupSetId') is not None:
+            self.backup_set_id = m.get('BackupSetId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class CreateBackupSetDownloadLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        download_task_id: int = None,
+        request_id: str = None,
+    ):
+        self.download_task_id = download_task_id
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateBackupSetDownloadLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateBackupSetDownloadLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateBackupSetDownloadLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDatabaseRequest(TeaModel):
     def __init__(
         self,
@@ -8607,6 +8717,478 @@ class DescribeCharsetResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCharsetResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeDataBackupSetRequest(TeaModel):
+    def __init__(
+        self,
+        backup_object_type: str = None,
+        end_time: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_time: str = None,
+        status: str = None,
+    ):
+        self.backup_object_type = backup_object_type
+        self.end_time = end_time
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.start_time = start_time
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_object_type is not None:
+            result['BackupObjectType'] = self.backup_object_type
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupObjectType') is not None:
+            self.backup_object_type = m.get('BackupObjectType')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList(TeaModel):
+    def __init__(
+        self,
+        database: str = None,
+        tables: List[str] = None,
+    ):
+        self.database = database
+        self.tables = tables
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.tables is not None:
+            result['Tables'] = self.tables
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('Tables') is not None:
+            self.tables = m.get('Tables')
+        return self
+
+
+class DescribeDataBackupSetResponseBodyDataBackupObjects(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        database_tables_list: List[DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList] = None,
+        tenant_name: str = None,
+    ):
+        self.cluster_name = cluster_name
+        self.database_tables_list = database_tables_list
+        self.tenant_name = tenant_name
+
+    def validate(self):
+        if self.database_tables_list:
+            for k in self.database_tables_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        result['DatabaseTablesList'] = []
+        if self.database_tables_list is not None:
+            for k in self.database_tables_list:
+                result['DatabaseTablesList'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        self.database_tables_list = []
+        if m.get('DatabaseTablesList') is not None:
+            for k in m.get('DatabaseTablesList'):
+                temp_model = DescribeDataBackupSetResponseBodyDataBackupObjectsDatabaseTablesList()
+                self.database_tables_list.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        return self
+
+
+class DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults(TeaModel):
+    def __init__(
+        self,
+        database: str = None,
+        message: str = None,
+        status: str = None,
+        table: str = None,
+    ):
+        self.database = database
+        self.message = message
+        self.status = status
+        self.table = table
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.database is not None:
+            result['Database'] = self.database
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.table is not None:
+            result['Table'] = self.table
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Database') is not None:
+            self.database = m.get('Database')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('Table') is not None:
+            self.table = m.get('Table')
+        return self
+
+
+class DescribeDataBackupSetResponseBodyDataBackupResults(TeaModel):
+    def __init__(
+        self,
+        cluster_name: str = None,
+        table_backup_results: List[DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults] = None,
+        tenant_name: str = None,
+    ):
+        self.cluster_name = cluster_name
+        self.table_backup_results = table_backup_results
+        self.tenant_name = tenant_name
+
+    def validate(self):
+        if self.table_backup_results:
+            for k in self.table_backup_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_name is not None:
+            result['ClusterName'] = self.cluster_name
+        result['TableBackupResults'] = []
+        if self.table_backup_results is not None:
+            for k in self.table_backup_results:
+                result['TableBackupResults'].append(k.to_map() if k else None)
+        if self.tenant_name is not None:
+            result['TenantName'] = self.tenant_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterName') is not None:
+            self.cluster_name = m.get('ClusterName')
+        self.table_backup_results = []
+        if m.get('TableBackupResults') is not None:
+            for k in m.get('TableBackupResults'):
+                temp_model = DescribeDataBackupSetResponseBodyDataBackupResultsTableBackupResults()
+                self.table_backup_results.append(temp_model.from_map(k))
+        if m.get('TenantName') is not None:
+            self.tenant_name = m.get('TenantName')
+        return self
+
+
+class DescribeDataBackupSetResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        backup_object_type: str = None,
+        backup_objects: List[DescribeDataBackupSetResponseBodyDataBackupObjects] = None,
+        backup_results: List[DescribeDataBackupSetResponseBodyDataBackupResults] = None,
+        checkpoint: str = None,
+        data_size: int = None,
+        data_version: int = None,
+        download_task_id: int = None,
+        download_task_status: str = None,
+        end_time: str = None,
+        method: str = None,
+        policy: str = None,
+        progress: str = None,
+        set_id: int = None,
+        start_time: str = None,
+        status: str = None,
+        storage_class: str = None,
+        type: str = None,
+        validity: str = None,
+    ):
+        self.backup_object_type = backup_object_type
+        self.backup_objects = backup_objects
+        self.backup_results = backup_results
+        self.checkpoint = checkpoint
+        self.data_size = data_size
+        self.data_version = data_version
+        self.download_task_id = download_task_id
+        self.download_task_status = download_task_status
+        self.end_time = end_time
+        self.method = method
+        self.policy = policy
+        self.progress = progress
+        self.set_id = set_id
+        self.start_time = start_time
+        self.status = status
+        self.storage_class = storage_class
+        self.type = type
+        self.validity = validity
+
+    def validate(self):
+        if self.backup_objects:
+            for k in self.backup_objects:
+                if k:
+                    k.validate()
+        if self.backup_results:
+            for k in self.backup_results:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.backup_object_type is not None:
+            result['BackupObjectType'] = self.backup_object_type
+        result['BackupObjects'] = []
+        if self.backup_objects is not None:
+            for k in self.backup_objects:
+                result['BackupObjects'].append(k.to_map() if k else None)
+        result['BackupResults'] = []
+        if self.backup_results is not None:
+            for k in self.backup_results:
+                result['BackupResults'].append(k.to_map() if k else None)
+        if self.checkpoint is not None:
+            result['Checkpoint'] = self.checkpoint
+        if self.data_size is not None:
+            result['DataSize'] = self.data_size
+        if self.data_version is not None:
+            result['DataVersion'] = self.data_version
+        if self.download_task_id is not None:
+            result['DownloadTaskId'] = self.download_task_id
+        if self.download_task_status is not None:
+            result['DownloadTaskStatus'] = self.download_task_status
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.method is not None:
+            result['Method'] = self.method
+        if self.policy is not None:
+            result['Policy'] = self.policy
+        if self.progress is not None:
+            result['Progress'] = self.progress
+        if self.set_id is not None:
+            result['SetId'] = self.set_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.storage_class is not None:
+            result['StorageClass'] = self.storage_class
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.validity is not None:
+            result['Validity'] = self.validity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackupObjectType') is not None:
+            self.backup_object_type = m.get('BackupObjectType')
+        self.backup_objects = []
+        if m.get('BackupObjects') is not None:
+            for k in m.get('BackupObjects'):
+                temp_model = DescribeDataBackupSetResponseBodyDataBackupObjects()
+                self.backup_objects.append(temp_model.from_map(k))
+        self.backup_results = []
+        if m.get('BackupResults') is not None:
+            for k in m.get('BackupResults'):
+                temp_model = DescribeDataBackupSetResponseBodyDataBackupResults()
+                self.backup_results.append(temp_model.from_map(k))
+        if m.get('Checkpoint') is not None:
+            self.checkpoint = m.get('Checkpoint')
+        if m.get('DataSize') is not None:
+            self.data_size = m.get('DataSize')
+        if m.get('DataVersion') is not None:
+            self.data_version = m.get('DataVersion')
+        if m.get('DownloadTaskId') is not None:
+            self.download_task_id = m.get('DownloadTaskId')
+        if m.get('DownloadTaskStatus') is not None:
+            self.download_task_status = m.get('DownloadTaskStatus')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Method') is not None:
+            self.method = m.get('Method')
+        if m.get('Policy') is not None:
+            self.policy = m.get('Policy')
+        if m.get('Progress') is not None:
+            self.progress = m.get('Progress')
+        if m.get('SetId') is not None:
+            self.set_id = m.get('SetId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StorageClass') is not None:
+            self.storage_class = m.get('StorageClass')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('Validity') is not None:
+            self.validity = m.get('Validity')
+        return self
+
+
+class DescribeDataBackupSetResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeDataBackupSetResponseBodyData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeDataBackupSetResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeDataBackupSetResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDataBackupSetResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDataBackupSetResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -20473,14 +21055,14 @@ class DescribeProjectResponseBodyDataExtraInfo(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subConds'][k] = l1
+                result['SubConds'][k] = l1
         result['SubDbs'] = {}
         if self.sub_dbs is not None:
             for k, v in self.sub_dbs.items():
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subDbs'][k] = l1
+                result['SubDbs'][k] = l1
         if self.sub_ids is not None:
             result['SubIds'] = self.sub_ids
         if self.subtopics is not None:
@@ -35267,14 +35849,14 @@ class ListProjectsResponseBodyDataExtraInfo(TeaModel):
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subConds'][k] = l1
+                result['SubConds'][k] = l1
         result['SubDbs'] = {}
         if self.sub_dbs is not None:
             for k, v in self.sub_dbs.items():
                 l1 = []
                 for k1 in v:
                     l1.append(k1.to_map() if k1 else None)
-                result['subDbs'][k] = l1
+                result['SubDbs'][k] = l1
         if self.sub_ids is not None:
             result['SubIds'] = self.sub_ids
         if self.subtopics is not None:
