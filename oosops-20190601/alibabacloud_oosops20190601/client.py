@@ -3646,6 +3646,8 @@ class Client(OpenApiClient):
     ) -> oosops_20190601_models.UpdatePublicTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.popularity):
@@ -3682,6 +3684,8 @@ class Client(OpenApiClient):
     ) -> oosops_20190601_models.UpdatePublicTemplateResponse:
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.category):
+            query['Category'] = request.category
         if not UtilClient.is_unset(request.content):
             query['Content'] = request.content
         if not UtilClient.is_unset(request.popularity):
