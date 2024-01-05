@@ -1118,8 +1118,11 @@ class AddVodStorageForAppRequest(TeaModel):
         storage_location: str = None,
         storage_type: str = None,
     ):
+        # The ID of the application. You can obtain the application ID from the response to the [CreateAppInfo](https://help.aliyun.com/zh/vod/developer-reference/api-vod-2017-03-21-createappinfo) or [ListAppInfo](https://help.aliyun.com/zh/vod/developer-reference/api-vod-2017-03-21-listappinfo) operation.
         self.app_id = app_id
+        # The address of an Object Storage Service (OSS) bucket. This parameter does not take effect. You can call this operation to add only VOD buckets.
         self.storage_location = storage_location
+        # The storage type. Default value: vod_oss_bucket.
         self.storage_type = storage_type
 
     def validate(self):
@@ -1156,7 +1159,9 @@ class AddVodStorageForAppResponseBody(TeaModel):
         request_id: str = None,
         storage_location: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
+        # The address of the VOD bucket.
         self.storage_location = storage_location
 
     def validate(self):
@@ -2087,14 +2092,17 @@ class CancelUrlUploadJobsRequest(TeaModel):
         job_ids: str = None,
         upload_urls: str = None,
     ):
-        # The IDs of the upload jobs. You can obtain the job IDs in the response parameter PlayInfo of the [GetPlayInfo](~~56124~~) operation.
+        # The IDs of the upload jobs. You can obtain the job IDs from PlayInfo in the response to the [GetPlayInfo](~~56124~~) operation.
+        # 
         # *   You can specify a maximum of 10 IDs.
         # *   Separate multiple IDs with commas (,).
-        # > You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+        # 
+        # >  You must specify either JobIds or UploadUrls. If you specify both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
         self.job_ids = job_ids
-        # The upload URLs of source files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+        # The upload URLs of source video files. Separate multiple URLs with commas (,). You can specify a maximum of 10 URLs.
+        # 
         # > *   You must encode the URLs before you use the URLs.
-        # > *   You must set one of the JobIds and the UploadUrls parameters. If you set both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
+        # > *   You must specify either JobIds or UploadUrls. If you specify both the JobIds and UploadUrls parameters, only the value of the JobIds parameter takes effect.
         self.upload_urls = upload_urls
 
     def validate(self):
@@ -2130,9 +2138,7 @@ class CancelUrlUploadJobsResponseBody(TeaModel):
     ):
         # The IDs of canceled jobs.
         self.canceled_jobs = canceled_jobs
-        # The job IDs or upload URLs that do not exist.
-        # 
-        # If you set the request parameter JobIds, the job IDs that do not exist are returned. If you set the request parameter UploadUrls, the upload URLs that do not exist are returned.
+        # The jobs that do not exist.
         self.non_exists = non_exists
         # The ID of the request.
         self.request_id = request_id
@@ -11403,6 +11409,134 @@ class DetachAppPolicyFromIdentityResponse(TeaModel):
         return self
 
 
+class GenerateDownloadSecretKeyRequest(TeaModel):
+    def __init__(
+        self,
+        app_decrypt_key: str = None,
+        app_identification: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        self.app_decrypt_key = app_decrypt_key
+        self.app_identification = app_identification
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_decrypt_key is not None:
+            result['AppDecryptKey'] = self.app_decrypt_key
+        if self.app_identification is not None:
+            result['AppIdentification'] = self.app_identification
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppDecryptKey') is not None:
+            self.app_decrypt_key = m.get('AppDecryptKey')
+        if m.get('AppIdentification') is not None:
+            self.app_identification = m.get('AppIdentification')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class GenerateDownloadSecretKeyResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_encrypt_key: str = None,
+        request_id: str = None,
+    ):
+        self.app_encrypt_key = app_encrypt_key
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_encrypt_key is not None:
+            result['AppEncryptKey'] = self.app_encrypt_key
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppEncryptKey') is not None:
+            self.app_encrypt_key = m.get('AppEncryptKey')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class GenerateDownloadSecretKeyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GenerateDownloadSecretKeyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GenerateDownloadSecretKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GenerateKMSDataKeyRequest(TeaModel):
     def __init__(
         self,
@@ -20148,24 +20282,24 @@ class GetMezzanineInfoResponseBodyMezzanineAudioStreamList(TeaModel):
         self.bitrate = bitrate
         # The output layout of the sound channels. Valid values:
         # 
-        # *   **mono**: mono sound channel
-        # *   **stereo**: two sound channels
+        # *   **mono**\
+        # *   **stereo**\
         self.channel_layout = channel_layout
         # The number of sound channels.
         self.channels = channels
-        # The full name of the codec format.
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec format.
+        # The short name of the encoding format.
         self.codec_name = codec_name
-        # The tag of the codec format.
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
-        # The tag string of the codec format.
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
         # The codec time base.
         self.codec_time_base = codec_time_base
-        # The duration of the audio stream.
+        # The duration of the audio file.
         self.duration = duration
-        # The sequence number of the audio stream, which specifies the position of the audio stream in all audio streams.
+        # The sequence number of the audio stream. The value indicates the position of the audio stream in all audio streams.
         self.index = index
         # The language.
         self.lang = lang
@@ -20173,11 +20307,11 @@ class GetMezzanineInfoResponseBodyMezzanineAudioStreamList(TeaModel):
         self.num_frames = num_frames
         # The sampling format.
         self.sample_fmt = sample_fmt
-        # The sample rate.
+        # The sampling rate of the audio stream.
         self.sample_rate = sample_rate
-        # The beginning of the time range that was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The time base.
+        # The time base of the audio stream.
         self.timebase = timebase
 
     def validate(self):
@@ -20290,31 +20424,31 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(TeaModel):
     ):
         # The average frame rate.
         self.avg_fps = avg_fps
-        # The bitrate of the file. Unit: Kbit/s.
+        # The bitrate. Unit: Kbit/s.
         self.bitrate = bitrate
-        # The full name of the codec format.
+        # The full name of the encoding format.
         self.codec_long_name = codec_long_name
-        # The short name of the codec format.
+        # The short name of the encoding format.
         self.codec_name = codec_name
-        # The tag of the codec format.
+        # The tag of the encoding format.
         self.codec_tag = codec_tag
-        # The tag string of the codec format.
+        # The tag string of the encoding format.
         self.codec_tag_string = codec_tag_string
         # The codec time base.
         self.codec_time_base = codec_time_base
-        # The display aspect ratio.
+        # The display aspect ratio (DAR) of the video stream.
         self.dar = dar
-        # The duration of the video stream.
+        # The duration of the audio file.
         self.duration = duration
-        # The target frame rate.
+        # The frame rate of the output file.
         self.fps = fps
-        # The HDR type.
+        # The HDR type of the video stream.
         self.hdrtype = hdrtype
-        # Indicates whether the video stream contains bidirectional frames (B-frames).
+        # Indicates whether the video stream contains B-frames.
         self.has_bframes = has_bframes
-        # The height of the video resolution.
+        # The height of the video stream.
         self.height = height
-        # The sequence number of the video stream, which indicates the position of the video stream in all video streams.
+        # The sequence number of the video stream. The value indicates the position of the video stream in all video streams.
         self.index = index
         # The language.
         self.lang = lang
@@ -20326,15 +20460,15 @@ class GetMezzanineInfoResponseBodyMezzanineVideoStreamList(TeaModel):
         self.pix_fmt = pix_fmt
         # The codec profile.
         self.profile = profile
-        # The rotation angle of the video. Valid values: **\[0, 360)**.
+        # The rotation angle of the video. Valid values: **\[0,360)**.
         self.rotate = rotate
-        # The sample aspect ratio.
+        # The sample aspect ratio (SAR) of the video stream.
         self.sar = sar
-        # The beginning of the time range that was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The time base.
+        # The time base of the audio stream.
         self.timebase = timebase
-        # The width of the video resolution.
+        # The width of the video in pixels.
         self.width = width
 
     def validate(self):
@@ -20510,7 +20644,7 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         # *   **UploadFail**: The file fails to be uploaded.
         # *   **Deleted**: The file is deleted.
         self.status = status
-        # The storage class of the audio or video file. Valid values:
+        # The storage class of the audio file. Valid values:
         # 
         # *   **Standard**: All media resources are stored as Standard objects.
         # *   **IA**: All media resources are stored as IA objects.
@@ -20519,7 +20653,8 @@ class GetMezzanineInfoResponseBodyMezzanine(TeaModel):
         # *   **SourceIA**: Only the source files are IA objects.
         # *   **SourceArchive**: Only the source files are Archive objects.
         # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # *   **Changing**: The storage class is being modified.
+        # *   **Changing**: The storage class of the audio file is being changed.
+        # *   **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
         # The ID of the video.
         self.video_id = video_id
@@ -23082,7 +23217,8 @@ class GetVideoInfoResponseBodyVideo(TeaModel):
         # *   **SourceIA**: Only the source files are IA objects.
         # *   **SourceArchive**: Only the source files are Archive objects.
         # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # *   **Changing**: The storage class is being modified.
+        # *   **Changing**: The storage class of the audio or video file is being changed.
+        # *   **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
         # The storage address of the media file.
         self.storage_location = storage_location
@@ -23335,60 +23471,63 @@ class GetVideoInfosResponseBodyVideoList(TeaModel):
     ):
         # The ID of the application.
         self.app_id = app_id
-        # The ID of the video category.
+        # The ID of the category.
         self.cate_id = cate_id
-        # The name of the video category.
+        # The name of the category.
         self.cate_name = cate_name
-        # The URL of the video thumbnail.
+        # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The time when the video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the video.
+        # The description of the audio or video file.
         self.description = description
-        # The duration of the video. Unit: seconds.
+        # The duration of the audio or video file. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
         self.duration = duration
-        # The time when the video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The period of time in which the object remains in the restored state.
+        # The period of time in which the audio or video file remains in the restored state.
         self.restore_expiration = restore_expiration
         # The restoration status of the audio or video file. Valid values:
-        # - **Processing**\
-        # - **Success**\
-        # - **Failed**\
+        # 
+        # *   **Processing**\
+        # *   **Success**\
+        # *   **Failed**\
         self.restore_status = restore_status
-        # The size of the video mezzanine file. Unit: byte.
+        # The size of the source file. Unit: bytes.
         self.size = size
         # The URL array of video snapshots.
         self.snapshots = snapshots
-        # The status of the video. By default, videos in all states are returned. Multiple states are separated by commas (,). Valid values:
+        # The status of the video. Valid values:
         # 
         # *   **Uploading**: The video is being uploaded.
-        # *   **UploadFail**: The video fails to be uploaded.
+        # *   **UploadFail**: The video failed to be uploaded.
         # *   **UploadSucc**: The video is uploaded.
         # *   **Transcoding**: The video is being transcoded.
-        # *   **TranscodeFail**: The video fails to be transcoded.
+        # *   **TranscodeFail**: The video failed to be transcoded.
         # *   **Blocked**: The video is blocked.
-        # *   **Normal**: The video can be played.
+        # *   **Normal**: The video is normal.
         self.status = status
         # The storage class of the audio or video file. Valid values:
-        # - **Standard**: All media resources are stored as Standard objects.
-        # - **IA**: All media resources are stored as IA objects.
-        # - **Archive**: All media resources are stored as Archive objects.
-        # - **ColdArchive**: All media resources are stored as Cold Archive objects.
-        # - **SourceIA**: Only the source files are IA objects.
-        # - **SourceArchive**: Only the source files are Archive objects.
-        # - **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # - **Changing**: The storage class is being modified.
+        # 
+        # *   **Standard**: All media resources are stored as Standard objects.
+        # *   **IA**: All media resources are stored as IA objects.
+        # *   **Archive**: All media resources are stored as Archive objects.
+        # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
+        # *   **SourceIA**: Only the source files are IA objects.
+        # *   **SourceArchive**: Only the source files are Archive objects.
+        # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
+        # *   **Changing**: The storage class of the audio or video file is being changed.
+        # *   **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
-        # The Object Storage Service (OSS) bucket where the video file is stored.
+        # The storage address of the audio or video file.
         self.storage_location = storage_location
-        # The tags of the video. Multiple tags are separated by commas (,).
+        # The tags of the audio or video file. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The ID of the template group that was used to transcode the video.
+        # The ID of the transcoding template group.
         self.template_group_id = template_group_id
-        # The title of the video.
+        # The title of the audio or video file.
         self.title = title
-        # The ID of the video.
+        # The ID of the audio or video file.
         self.video_id = video_id
 
     def validate(self):
@@ -23494,7 +23633,7 @@ class GetVideoInfosResponseBody(TeaModel):
         self.non_exist_video_ids = non_exist_video_ids
         # The ID of the request.
         self.request_id = request_id
-        # The period of time in which the object remains in the restored state.
+        # The information about the audio or video files.
         self.video_list = video_list
 
     def validate(self):
@@ -23724,37 +23863,37 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
     ):
         # The ID of the application. Default value: **app-1000000**.
         self.app_id = app_id
-        # The category ID of the media file.
+        # The category ID of the audio or video file.
         self.cate_id = cate_id
         # The name of the category.
         self.cate_name = cate_name
-        # The thumbnail URL of the media file.
+        # The thumbnail URL of the audio or video file.
         self.cover_url = cover_url
-        # The time when the media file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the audio or video file was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the media file.
+        # The description of the audio or video file.
         self.description = description
-        # The duration of the media file. Unit: seconds.
+        # The duration of the audio or video file. Unit: seconds. 86,400 seconds is equivalent to 24 hours.
         self.duration = duration
-        # The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
+        # The time when the video was updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*hh:mm:ss*Z format. The time is displayed in UTC.
         self.modification_time = modification_time
-        # The period of time in which the object remains in the restored state.
+        # The period of time in which the audio or video file remains in the restored state.
         self.restore_expiration = restore_expiration
-        # The restoration status of the media file. Valid values:
+        # The restoration status of the audio or video file. Valid values:
         # 
-        # - **Processing**\
-        # - **Success**\
-        # - **Failed**\
+        # *   **Processing**\
+        # *   **Success**\
+        # *   **Failed**\
         self.restore_status = restore_status
         # The size of the source file. Unit: bytes.
         self.size = size
-        # The video snapshot URLs.
+        # The URL array of video snapshots.
         self.snapshots = snapshots
-        # The status of the video. Valid values:
+        # The status of the audio or video file. Valid values:
         # 
         # *   **Uploading**: The video is being uploaded.
         # *   **UploadFail**: The video failed to be uploaded.
-        # *   **UploadSucc**: The video has been uploaded.
+        # *   **UploadSucc**: The video is uploaded.
         # *   **Transcoding**: The video is being transcoded.
         # *   **TranscodeFail**: The video failed to be transcoded.
         # *   **checking**: The video is being reviewed.
@@ -23764,24 +23903,25 @@ class GetVideoListResponseBodyVideoListVideo(TeaModel):
         # 
         # For more information about each video status, see the "Status: the status of a video" section of the [Basic data types](~~52839#section-p7c-jgy-070~~) topic.
         self.status = status
-        # The storage class of the media file. Valid values:
+        # The storage class of the audio or video file. Valid values:
         # 
-        # - **Standard**: All media resources are stored as Standard objects.
-        # - **IA**: All media resources are stored as IA objects.
-        # - **Archive**: All media resources are stored as Archive objects.
-        # - **ColdArchive**: All media resources are stored as Cold Archive objects.
-        # - **SourceIA**: Only the source files are IA objects.
-        # - **SourceArchive**: Only the source files are Archive objects.
-        # - **SourceColdArchive**: Only the source files are Cold Archive objects.
-        # - **Changing**: The storage class is being modified.
+        # *   **Standard**: All media resources are stored as Standard objects.
+        # *   **IA**: All media resources are stored as IA objects.
+        # *   **Archive**: All media resources are stored as Archive objects.
+        # *   **ColdArchive**: All media resources are stored as Cold Archive objects.
+        # *   **SourceIA**: Only the source files are IA objects.
+        # *   **SourceArchive**: Only the source files are Archive objects.
+        # *   **SourceColdArchive**: Only the source files are Cold Archive objects.
+        # *   **Changing**: The storage class of the audio or video file is being changed.
+        # *   **SourceChanging**: The storage class of the source file is being changed.
         self.storage_class = storage_class
-        # The storage address of the media file.
+        # The storage address of the audio or video file.
         self.storage_location = storage_location
-        # The tags of the media file. Multiple tags are separated by commas (,).
+        # The tags of the audio or video file. Multiple tags are separated by commas (,).
         self.tags = tags
-        # The title of the media file.
+        # The title of the audio or video file.
         self.title = title
-        # The ID of the media file.
+        # The ID of the audio or video file.
         self.video_id = video_id
 
     def validate(self):
@@ -23920,7 +24060,7 @@ class GetVideoListResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of media files returned.
         self.total = total
-        # The period of time in which the object remains in the restored state.
+        # The information about the audio or video files. Information about a maximum of 5,000 audio or video files can be returned.
         self.video_list = video_list
 
     def validate(self):
@@ -32116,23 +32256,26 @@ class SubmitAIMediaAuditJobRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
-        # The configuration information about the review task.
+        # The configuration information about the review job.
         # 
-        # *   Other configuration items of the review task. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
-        # *   If you want to adjust review standards and rules based on ResourceType, submit a ticket to request technical support.
+        # *   Other configuration items of the review job. Only the ResourceType field is supported. This field is used to specify the type of media files. You can adjust review standards and rules based on the type of media files.
+        # *   If you want to modify the review standard and rules based on ResourceType, [submit a request on Yida](https://yida.alibaba-inc.com/o/ticketapply) to reach technical support.
         # *   The value of ResourceType can contain only letters, digits, and underscores (\_).
         self.media_audit_configuration = media_audit_configuration
-        # The ID of the media file.
-        # 
-        # You can obtain the ID of the media file on the Content Moderation page in the ApsaraVideo VOD console.
+        # The ID of the video file. To obtain the file ID, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Review Management** > **Content Moderation** in the left-side navigation pane.
         self.media_id = media_id
         # The type of the media file. Only **video** is supported.
         self.media_type = media_type
-        # The ID of the AI template. If you do not specify this parameter, the ID of the default AI template for automated review is used.
-        self.template_id = template_id
-        # The custom settings. The value is a JSON string. You can configure settings such as message callbacks. For more information, see [Request parameters](~~86952~~).
+        # The ID of the AI template. You can use one of the following methods to obtain the ID of the AI template:
         # 
-        # >  The callback configurations take effect only if you specify the HTTP callback URL and select the specific callback events in the ApsaraVideo VOD console.
+        # *   Obtain the ID of the AI template from the response to the [AddAITemplate](~~102930~~) operation. The value of TemplateId is the ID of the AI template.
+        # *   Obtain the ID of the AI template from the response to the [ListAITemplate](~~102936~~) operation. The value of TemplateId is the ID of the AI template.
+        # 
+        # >  If you do not specify an ID, the ID of the default AI template is used.
+        self.template_id = template_id
+        # The custom settings. The value must be a JSON string. You can configure settings such as message callbacks. For more information, see [UserData](~~86952~~).
+        # 
+        # >  To use the callback configurations specified by this parameter, you must configure an HTTP callback URL and specify the types of the callback events in the ApsaraVideo VOD console. Otherwise, the callback configurations do not take effect. For more information about how to configure HTTP callback settings in the ApsaraVideo VOD console, see [Configure callback settings](~~86071~~).
         self.user_data = user_data
 
     def validate(self):
@@ -32178,9 +32321,9 @@ class SubmitAIMediaAuditJobResponseBody(TeaModel):
         media_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the task.
+        # The ID of the job.
         self.job_id = job_id
-        # The ID of the video.
+        # The ID of the media file.
         self.media_id = media_id
         # The ID of the request.
         self.request_id = request_id
@@ -33185,26 +33328,37 @@ class SubmitTranscodeJobsRequest(TeaModel):
         user_data: str = None,
         video_id: str = None,
     ):
-        # The encryption configurations. The value is a JSON-formatted string. This parameter is required only when HLS encryption is used.
-        # > *   In the JSON-formatted string of the [EncryptConfig](~~86952~~) parameter, you must set the **CipherText** parameter to an AES-128 ciphertext key that is generated by calling the [GenerateDataKey](~~28948~~) operation. Otherwise, the transcoding job that uses HLS encryption fails. For more information about how to use HLS encryption, see [HLS encryption](~~68612~~).
-        # > *   Regardless of whether HLS encryption or Alibaba Cloud proprietary cryptography is required, you must enable HLS encryption for the template group that is specified by the **TemplateGroupId** parameter. Otherwise, HLS encryption cannot be used.
+        # The encryption configurations. The value must be a JSON string. This parameter is required only when you use HLS encryption.
+        # 
+        # > 
+        # 
+        # *   You must set **CipherText** in [EncrptConfig](~~86952~~) to the AES\_128 cipher text that is obtained from the response to the [GenerateKMSDataKey](~~455051~~) operation. Otherwise, the HLS encryption fails. For more information about how to use HLS encryption, see [HLS encryption](~~68612~~).
+        # 
+        # *   You must select HLS encryption for the template specified by **TemplateGroupId** no matter you use HLS encryption or Alibaba Cloud proprietary cryptography. Otherwise, the transcoded file is not encrypted.
         self.encrypt_config = encrypt_config
-        # The parameters used for overriding. The value is a JSON-formatted string. You can set this parameter to override the watermark or subtitle that is associated with the transcoding template. You can override the file URL of an image watermark, the content of a text watermark, the URL of a subtitle file, and the encoding format of a subtitle file. For more information about the data structure, see the "OverrideParams" section of the [Media processing parameters](~~98618~~) topic.
+        # The override parameter. The value must be a JSON string. You can use this parameter to override the image watermark, text watermark, or subtitle file specified in the transcoding template, or override the encoding format of the subtitle file. For more information about the data structure, see [OverrideParams](~~98618~~).
         self.override_params = override_params
-        # The ID of the pipeline.
+        # The ID of the queue that you want to use to run the job.
         self.pipeline_id = pipeline_id
-        # The priority of the current transcoding job in all queued jobs.
+        # The priority of the transcoding job in all queued jobs.
+        # 
         # *   Valid values: **1** to **10**.
         # *   A value of **10** indicates the highest priority.
         # *   Default value: **6**.
-        # > This parameter specifies the priority of only the current transcoding job in all queued jobs and does not affect the priorities of jobs that are running.
+        # 
+        # >  This parameter takes effect only on the queued transcoding jobs. The priorities of the in-progress transcoding jobs are not affected.
         self.priority = priority
-        # The ID of the transcoding template group used when the video is transcoded. To specify a transcoding template group, you can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com/?spm=a2c4g.11186623.2.18.2f1a2267jCybwh#/vod/settings/transcode/vod) and view the ID of the transcoding template group on the Transcode page.
+        # The ID of the transcoding template group that you want to use. To view the template group ID, perform the following operations: Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Transcoding Template Groups**.
         self.template_group_id = template_group_id
-        # The custom configurations, including callback configurations. The value is a JSON-formatted string. For more information, see the "UserData" section of the [Request parameters](~~86952~~) topic.
-        # > The callback configurations take effect only when you specify an HTTP callback URL and select specific callback events in the ApsaraVideo VOD console.
+        # The custom settings. The value must be a JSON string. You can configure settings such as message callbacks. For more information, see [UserData](~~86952~~).
+        # 
+        # >  To use the callback configurations specified by this parameter, you must configure an HTTP callback URL and specify the types of the callback events in the ApsaraVideo VOD console. Otherwise, the callback configurations do not take effect.
         self.user_data = user_data
-        # The ID of the video.
+        # The ID of the video file. You can use one of the following methods to obtain the video ID:
+        # 
+        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+        # *   Obtain the value of VideoId from the response to the [CreateUploadVideo](~~55407~~) operation that you call to upload the video.
+        # *   Obtain the value of VideoId from the response to the [SearchMedia](~~86044~~) operation after you upload the video.
         self.video_id = video_id
 
     def validate(self):
@@ -33256,7 +33410,9 @@ class SubmitTranscodeJobsResponseBodyTranscodeJobsTranscodeJob(TeaModel):
         self,
         job_id: str = None,
     ):
-        # The ID of the job.
+        # The ID of the transcoding job.
+        # 
+        # >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
         self.job_id = job_id
 
     def validate(self):
@@ -33323,10 +33479,11 @@ class SubmitTranscodeJobsResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The transcoding jobs.
-        # > This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
+        # The information about the transcoding job.
+        # 
+        # >  This parameter is not returned for HLS packaging tasks. You must asynchronously receive the transcoding result.
         self.transcode_jobs = transcode_jobs
-        # The ID of the transcoding job that was submitted.
+        # The ID of the transcoding task that was submitted.
         self.transcode_task_id = transcode_task_id
 
     def validate(self):
@@ -33409,7 +33566,13 @@ class SubmitWorkflowJobRequest(TeaModel):
         media_id: str = None,
         workflow_id: str = None,
     ):
+        # The ID of the media file. You can use one of the following methods to obtain the ID:
+        # 
+        # *   Log on to the [ApsaraVideo VOD](https://vod.console.aliyun.com) console. In the left-side navigation pane, choose **Media Files** > **Audio/Video**. On the Video and Audio page, view the ID of the audio or video file. This method is applicable to files that are uploaded by using the ApsaraVideo VOD console.
+        # *   Obtain the value of the VideoId parameter when you call the [CreateUploadVideo](~~55407~~) operation to upload media files.
+        # *   Obtain the value of the VideoId parameter when you call the [SearchMedia](~~86044~~) operation after you upload media files.
         self.media_id = media_id
+        # The ID of the workflow. To view the ID of the workflow, log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management** > **Media Processing** > **Workflows**.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -33441,6 +33604,7 @@ class SubmitWorkflowJobResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
