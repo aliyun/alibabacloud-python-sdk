@@ -18135,9 +18135,11 @@ class DescribeMaskingRulesResponseBodyData(TeaModel):
     def __init__(
         self,
         rule_list: List[str] = None,
+        rule_version: str = None,
     ):
         # Details about the masking rules.
         self.rule_list = rule_list
+        self.rule_version = rule_version
 
     def validate(self):
         pass
@@ -18150,12 +18152,16 @@ class DescribeMaskingRulesResponseBodyData(TeaModel):
         result = dict()
         if self.rule_list is not None:
             result['RuleList'] = self.rule_list
+        if self.rule_version is not None:
+            result['RuleVersion'] = self.rule_version
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('RuleList') is not None:
             self.rule_list = m.get('RuleList')
+        if m.get('RuleVersion') is not None:
+            self.rule_version = m.get('RuleVersion')
         return self
 
 
@@ -29529,6 +29535,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         rule_config: str = None,
         rule_name: str = None,
         rule_name_list: str = None,
+        rule_version: str = None,
     ):
         # The ID of the cluster.
         # 
@@ -29564,6 +29571,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         # 
         # > You must specify either the `RuleName` or `RuleNameList` parameter.
         self.rule_name_list = rule_name_list
+        self.rule_version = rule_version
 
     def validate(self):
         pass
@@ -29584,6 +29592,8 @@ class ModifyMaskingRulesRequest(TeaModel):
             result['RuleName'] = self.rule_name
         if self.rule_name_list is not None:
             result['RuleNameList'] = self.rule_name_list
+        if self.rule_version is not None:
+            result['RuleVersion'] = self.rule_version
         return result
 
     def from_map(self, m: dict = None):
@@ -29598,6 +29608,8 @@ class ModifyMaskingRulesRequest(TeaModel):
             self.rule_name = m.get('RuleName')
         if m.get('RuleNameList') is not None:
             self.rule_name_list = m.get('RuleNameList')
+        if m.get('RuleVersion') is not None:
+            self.rule_version = m.get('RuleVersion')
         return self
 
 
