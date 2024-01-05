@@ -1,3 +1,6 @@
+2024-01-05 Version: 4.1.2
+- Generated python 2017-08-01 for polardb.
+
 2024-01-05 Version: 4.1.1
 - Generated python 2017-08-01 for polardb.
 
