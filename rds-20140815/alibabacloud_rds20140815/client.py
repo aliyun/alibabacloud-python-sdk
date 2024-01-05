@@ -2018,6 +2018,8 @@ class Client(OpenApiClient):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -2123,6 +2125,8 @@ class Client(OpenApiClient):
             query['DeletionProtection'] = request.deletion_protection
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -3428,6 +3432,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
         if not UtilClient.is_unset(request.connection_mode):
             query['ConnectionMode'] = request.connection_mode
         if not UtilClient.is_unset(request.connection_string):
@@ -3464,6 +3470,8 @@ class Client(OpenApiClient):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -3585,6 +3593,8 @@ class Client(OpenApiClient):
             query['Category'] = request.category
         if not UtilClient.is_unset(request.client_token):
             query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
         if not UtilClient.is_unset(request.connection_mode):
             query['ConnectionMode'] = request.connection_mode
         if not UtilClient.is_unset(request.connection_string):
@@ -3621,6 +3631,8 @@ class Client(OpenApiClient):
             query['EngineVersion'] = request.engine_version
         if not UtilClient.is_unset(request.instance_network_type):
             query['InstanceNetworkType'] = request.instance_network_type
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.pay_type):
             query['PayType'] = request.pay_type
         if not UtilClient.is_unset(request.period):
@@ -6430,6 +6442,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.instruction_set_arch):
             query['InstructionSetArch'] = request.instruction_set_arch
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -6539,6 +6553,8 @@ class Client(OpenApiClient):
             query['InstanceNetworkType'] = request.instance_network_type
         if not UtilClient.is_unset(request.instruction_set_arch):
             query['InstructionSetArch'] = request.instruction_set_arch
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -12492,10 +12508,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeCrossRegionBackupDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         
         @param request: DescribeCrossRegionBackupDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12542,10 +12563,15 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rds_20140815_models.DescribeCrossRegionBackupDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         
         @param request: DescribeCrossRegionBackupDBInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12591,10 +12617,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeCrossRegionBackupDBInstanceRequest,
     ) -> rds_20140815_models.DescribeCrossRegionBackupDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         
         @param request: DescribeCrossRegionBackupDBInstanceRequest
         @return: DescribeCrossRegionBackupDBInstanceResponse
@@ -12607,10 +12638,15 @@ class Client(OpenApiClient):
         request: rds_20140815_models.DescribeCrossRegionBackupDBInstanceRequest,
     ) -> rds_20140815_models.DescribeCrossRegionBackupDBInstanceResponse:
         """
-        Before you call this operation, make sure that the instance runs one of the following database engines:
-        *   MySQL. For more information, see [Back up an ApsaraDB RDS for MySQL instance across regions](~~120824~~).
-        *   SQL Server. For more information, see [Back up an ApsaraDB RDS for SQL Server instance across regions](~~187923~~).
-        *   PostgreSQL. For more information, see [Enable cross-region backups for an ApsaraDB RDS for PostgreSQL instance](~~206671~~).
+        ### [](#)Supported database engines
+        *   MySQL
+        *   PostgreSQL
+        *   SQL Server
+        ### [](#)References
+        > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+        *   [Use the cross-region backup feature of an ApsaraDB RDS for MySQL instance](~~120824~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
+        *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         
         @param request: DescribeCrossRegionBackupDBInstanceRequest
         @return: DescribeCrossRegionBackupDBInstanceResponse
@@ -12629,6 +12665,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
@@ -12696,6 +12733,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
@@ -12762,6 +12800,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
@@ -12783,6 +12822,7 @@ class Client(OpenApiClient):
         *   PostgreSQL
         *   SQL Server
         ### [](#)References
+        > Before you call this operation, carefully read the following documentation. Make sure that you fully understand the prerequisites and impacts for calling this operation.
         *   [Use the cross-region backup feature for an ApsaraDB RDS for MySQL instance](~~120824~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for SQL Server instance](~~187923~~)
         *   [Use the cross-region backup feature for an ApsaraDB RDS for PostgreSQL instance](~~206671~~)
@@ -26320,15 +26360,14 @@ class Client(OpenApiClient):
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
         ### [](#)Precautions
         *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, make sure that the following requirements are met:
+        *   Before you call this operation, **make sure that the following conditions are met**:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user credentials.
+        *   The source and destination instances must be created by using the same user.
         *   The instance is in the Running state.
         *   The source and destination databases must be in the Running state.
         *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        >
-        *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        *   You can migrate the data of multiple databases at a time.
+        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        > *   You can migrate the data of multiple databases at a time.
         
         @param request: ImportDatabaseBetweenInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26381,15 +26420,14 @@ class Client(OpenApiClient):
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
         ### [](#)Precautions
         *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, make sure that the following requirements are met:
+        *   Before you call this operation, **make sure that the following conditions are met**:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user credentials.
+        *   The source and destination instances must be created by using the same user.
         *   The instance is in the Running state.
         *   The source and destination databases must be in the Running state.
         *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        >
-        *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        *   You can migrate the data of multiple databases at a time.
+        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        > *   You can migrate the data of multiple databases at a time.
         
         @param request: ImportDatabaseBetweenInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -26441,15 +26479,14 @@ class Client(OpenApiClient):
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
         ### [](#)Precautions
         *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, make sure that the following requirements are met:
+        *   Before you call this operation, **make sure that the following conditions are met**:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user credentials.
+        *   The source and destination instances must be created by using the same user.
         *   The instance is in the Running state.
         *   The source and destination databases must be in the Running state.
         *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        >
-        *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        *   You can migrate the data of multiple databases at a time.
+        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        > *   You can migrate the data of multiple databases at a time.
         
         @param request: ImportDatabaseBetweenInstancesRequest
         @return: ImportDatabaseBetweenInstancesResponse
@@ -26468,15 +26505,14 @@ class Client(OpenApiClient):
         We recommend that you use Data Transmission Service (DTS). DTS provides data migration, subscription, and synchronization features that allow you to establish stable, secure transmission links. For more information, see [DTS API overview](~~49456~~).
         ### [](#)Precautions
         *   During the migration, the source instance is in the **Migrating** state, and the destination instance is in the **Importing** state.
-        *   Before you call this operation, make sure that the following requirements are met:
+        *   Before you call this operation, **make sure that the following conditions are met**:
         *   The source and destination instances must run SQL Server and belong to the dedicated or dedicated host instance family. For more information about the supported instance types, see [Primary instance types](~~26312~~).
-        *   The source and destination instances must be created by using the same user credentials.
+        *   The source and destination instances must be created by using the same user.
         *   The instance is in the Running state.
         *   The source and destination databases must be in the Running state.
         *   The remaining storage of the destination instance must be greater than the storage capacity of the source instance.
-        >
-        *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
-        *   You can migrate the data of multiple databases at a time.
+        > *   This operation is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        > *   You can migrate the data of multiple databases at a time.
         
         @param request: ImportDatabaseBetweenInstancesRequest
         @return: ImportDatabaseBetweenInstancesResponse
@@ -27664,6 +27700,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.effective_time):
             query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.is_modify_spec):
             query['IsModifySpec'] = request.is_modify_spec
         if not UtilClient.is_unset(request.owner_account):
@@ -27737,6 +27775,8 @@ class Client(OpenApiClient):
             query['DBInstanceStorage'] = request.dbinstance_storage
         if not UtilClient.is_unset(request.effective_time):
             query['EffectiveTime'] = request.effective_time
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.is_modify_spec):
             query['IsModifySpec'] = request.is_modify_spec
         if not UtilClient.is_unset(request.owner_account):
@@ -31572,6 +31612,8 @@ class Client(OpenApiClient):
             query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -31588,6 +31630,8 @@ class Client(OpenApiClient):
             query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
@@ -31665,6 +31709,8 @@ class Client(OpenApiClient):
             query['BurstingEnabled'] = request.bursting_enabled
         if not UtilClient.is_unset(request.category):
             query['Category'] = request.category
+        if not UtilClient.is_unset(request.cold_data_enabled):
+            query['ColdDataEnabled'] = request.cold_data_enabled
         if not UtilClient.is_unset(request.dbinstance_class):
             query['DBInstanceClass'] = request.dbinstance_class
         if not UtilClient.is_unset(request.dbinstance_id):
@@ -31681,6 +31727,8 @@ class Client(OpenApiClient):
             query['EffectiveTime'] = request.effective_time
         if not UtilClient.is_unset(request.engine_version):
             query['EngineVersion'] = request.engine_version
+        if not UtilClient.is_unset(request.io_acceleration_enabled):
+            query['IoAccelerationEnabled'] = request.io_acceleration_enabled
         if not UtilClient.is_unset(request.owner_account):
             query['OwnerAccount'] = request.owner_account
         if not UtilClient.is_unset(request.owner_id):
