@@ -837,6 +837,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.add_record_plan_device_with_options_async(request, runtime)
 
+    def batch_query_vision_device_info_with_options(
+        self,
+        request: linkvisual_20180120_models.BatchQueryVisionDeviceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.BatchQueryVisionDeviceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name_list):
+            query['DeviceNameList'] = request.device_name_list
+        if not UtilClient.is_unset(request.iot_id_list):
+            query['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryVisionDeviceInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.BatchQueryVisionDeviceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_query_vision_device_info_with_options_async(
+        self,
+        request: linkvisual_20180120_models.BatchQueryVisionDeviceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.BatchQueryVisionDeviceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name_list):
+            query['DeviceNameList'] = request.device_name_list
+        if not UtilClient.is_unset(request.iot_id_list):
+            query['IotIdList'] = request.iot_id_list
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BatchQueryVisionDeviceInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.BatchQueryVisionDeviceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_query_vision_device_info(
+        self,
+        request: linkvisual_20180120_models.BatchQueryVisionDeviceInfoRequest,
+    ) -> linkvisual_20180120_models.BatchQueryVisionDeviceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.batch_query_vision_device_info_with_options(request, runtime)
+
+    async def batch_query_vision_device_info_async(
+        self,
+        request: linkvisual_20180120_models.BatchQueryVisionDeviceInfoRequest,
+    ) -> linkvisual_20180120_models.BatchQueryVisionDeviceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_query_vision_device_info_with_options_async(request, runtime)
+
     def bind_picture_search_app_with_devices_with_options(
         self,
         request: linkvisual_20180120_models.BindPictureSearchAppWithDevicesRequest,
@@ -1169,6 +1251,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_event_record_plan_with_options_async(request, runtime)
 
+    def create_gb_device_with_options(
+        self,
+        request: linkvisual_20180120_models.CreateGbDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateGbDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.gb_id):
+            query['GbId'] = request.gb_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.media_net_protocol):
+            query['MediaNetProtocol'] = request.media_net_protocol
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.sub_product_key):
+            query['SubProductKey'] = request.sub_product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGbDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateGbDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_gb_device_with_options_async(
+        self,
+        request: linkvisual_20180120_models.CreateGbDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateGbDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.device_type):
+            query['DeviceType'] = request.device_type
+        if not UtilClient.is_unset(request.gb_id):
+            query['GbId'] = request.gb_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.media_net_protocol):
+            query['MediaNetProtocol'] = request.media_net_protocol
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.sub_product_key):
+            query['SubProductKey'] = request.sub_product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateGbDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateGbDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_gb_device(
+        self,
+        request: linkvisual_20180120_models.CreateGbDeviceRequest,
+    ) -> linkvisual_20180120_models.CreateGbDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_gb_device_with_options(request, runtime)
+
+    async def create_gb_device_async(
+        self,
+        request: linkvisual_20180120_models.CreateGbDeviceRequest,
+    ) -> linkvisual_20180120_models.CreateGbDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_gb_device_with_options_async(request, runtime)
+
     def create_local_file_upload_job_with_options(
         self,
         request: linkvisual_20180120_models.CreateLocalFileUploadJobRequest,
@@ -1242,6 +1422,100 @@ class Client(OpenApiClient):
     ) -> linkvisual_20180120_models.CreateLocalFileUploadJobResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_local_file_upload_job_with_options_async(request, runtime)
+
+    def create_local_record_download_by_time_job_with_options(
+        self,
+        request: linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLocalRecordDownloadByTimeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_local_record_download_by_time_job_with_options_async(
+        self,
+        request: linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.speed):
+            query['Speed'] = request.speed
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateLocalRecordDownloadByTimeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_local_record_download_by_time_job(
+        self,
+        request: linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobRequest,
+    ) -> linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_local_record_download_by_time_job_with_options(request, runtime)
+
+    async def create_local_record_download_by_time_job_async(
+        self,
+        request: linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobRequest,
+    ) -> linkvisual_20180120_models.CreateLocalRecordDownloadByTimeJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_local_record_download_by_time_job_with_options_async(request, runtime)
 
     def create_picture_search_app_with_options(
         self,
@@ -1415,6 +1689,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_picture_search_job_with_options_async(request, runtime)
 
+    def create_record_download_by_time_job_with_options(
+        self,
+        request: linkvisual_20180120_models.CreateRecordDownloadByTimeJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateRecordDownloadByTimeJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.record_type):
+            query['RecordType'] = request.record_type
+        if not UtilClient.is_unset(request.stream_type):
+            query['StreamType'] = request.stream_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecordDownloadByTimeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateRecordDownloadByTimeJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_record_download_by_time_job_with_options_async(
+        self,
+        request: linkvisual_20180120_models.CreateRecordDownloadByTimeJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateRecordDownloadByTimeJobResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.begin_time):
+            query['BeginTime'] = request.begin_time
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.record_type):
+            query['RecordType'] = request.record_type
+        if not UtilClient.is_unset(request.stream_type):
+            query['StreamType'] = request.stream_type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRecordDownloadByTimeJob',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateRecordDownloadByTimeJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_record_download_by_time_job(
+        self,
+        request: linkvisual_20180120_models.CreateRecordDownloadByTimeJobRequest,
+    ) -> linkvisual_20180120_models.CreateRecordDownloadByTimeJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_record_download_by_time_job_with_options(request, runtime)
+
+    async def create_record_download_by_time_job_async(
+        self,
+        request: linkvisual_20180120_models.CreateRecordDownloadByTimeJobRequest,
+    ) -> linkvisual_20180120_models.CreateRecordDownloadByTimeJobResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_record_download_by_time_job_with_options_async(request, runtime)
+
     def create_record_plan_with_options(
         self,
         request: linkvisual_20180120_models.CreateRecordPlanRequest,
@@ -1488,6 +1860,108 @@ class Client(OpenApiClient):
     ) -> linkvisual_20180120_models.CreateRecordPlanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.create_record_plan_with_options_async(request, runtime)
+
+    def create_rtmp_device_with_options(
+        self,
+        request: linkvisual_20180120_models.CreateRtmpDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateRtmpDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.pull_auth_key):
+            query['PullAuthKey'] = request.pull_auth_key
+        if not UtilClient.is_unset(request.pull_key_expire_time):
+            query['PullKeyExpireTime'] = request.pull_key_expire_time
+        if not UtilClient.is_unset(request.push_auth_key):
+            query['PushAuthKey'] = request.push_auth_key
+        if not UtilClient.is_unset(request.push_key_expire_time):
+            query['PushKeyExpireTime'] = request.push_key_expire_time
+        if not UtilClient.is_unset(request.sub_stream_name):
+            query['SubStreamName'] = request.sub_stream_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRtmpDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateRtmpDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rtmp_device_with_options_async(
+        self,
+        request: linkvisual_20180120_models.CreateRtmpDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.CreateRtmpDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.description):
+            query['Description'] = request.description
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.pull_auth_key):
+            query['PullAuthKey'] = request.pull_auth_key
+        if not UtilClient.is_unset(request.pull_key_expire_time):
+            query['PullKeyExpireTime'] = request.pull_key_expire_time
+        if not UtilClient.is_unset(request.push_auth_key):
+            query['PushAuthKey'] = request.push_auth_key
+        if not UtilClient.is_unset(request.push_key_expire_time):
+            query['PushKeyExpireTime'] = request.push_key_expire_time
+        if not UtilClient.is_unset(request.sub_stream_name):
+            query['SubStreamName'] = request.sub_stream_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateRtmpDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.CreateRtmpDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rtmp_device(
+        self,
+        request: linkvisual_20180120_models.CreateRtmpDeviceRequest,
+    ) -> linkvisual_20180120_models.CreateRtmpDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_rtmp_device_with_options(request, runtime)
+
+    async def create_rtmp_device_async(
+        self,
+        request: linkvisual_20180120_models.CreateRtmpDeviceRequest,
+    ) -> linkvisual_20180120_models.CreateRtmpDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_rtmp_device_with_options_async(request, runtime)
 
     def create_time_template_with_options(
         self,
@@ -2498,6 +2972,174 @@ class Client(OpenApiClient):
     ) -> linkvisual_20180120_models.DeleteRecordPlanDeviceResponse:
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_plan_device_with_options_async(request, runtime)
+
+    def delete_rtmp_device_with_options(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.DeleteRtmpDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRtmpDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRtmpDeviceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rtmp_device_with_options_async(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpDeviceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.DeleteRtmpDeviceResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRtmpDevice',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRtmpDeviceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rtmp_device(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpDeviceRequest,
+    ) -> linkvisual_20180120_models.DeleteRtmpDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rtmp_device_with_options(request, runtime)
+
+    async def delete_rtmp_device_async(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpDeviceRequest,
+    ) -> linkvisual_20180120_models.DeleteRtmpDeviceResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rtmp_device_with_options_async(request, runtime)
+
+    def delete_rtmp_key_with_options(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.DeleteRtmpKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRtmpKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRtmpKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_rtmp_key_with_options_async(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.DeleteRtmpKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteRtmpKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.DeleteRtmpKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_rtmp_key(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpKeyRequest,
+    ) -> linkvisual_20180120_models.DeleteRtmpKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.delete_rtmp_key_with_options(request, runtime)
+
+    async def delete_rtmp_key_async(
+        self,
+        request: linkvisual_20180120_models.DeleteRtmpKeyRequest,
+    ) -> linkvisual_20180120_models.DeleteRtmpKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_rtmp_key_with_options_async(request, runtime)
 
     def delete_time_template_with_options(
         self,
@@ -6005,6 +6647,170 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_record_by_record_id_with_options_async(request, runtime)
 
+    def query_record_download_job_by_id_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRecordDownloadJobById',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordDownloadJobByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_record_download_job_by_id_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobByIdRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobByIdResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRecordDownloadJobById',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordDownloadJobByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_record_download_job_by_id(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobByIdRequest,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_record_download_job_by_id_with_options(request, runtime)
+
+    async def query_record_download_job_by_id_async(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobByIdRequest,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobByIdResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_record_download_job_by_id_with_options_async(request, runtime)
+
+    def query_record_download_job_list_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRecordDownloadJobList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordDownloadJobListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_record_download_job_list_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobListResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRecordDownloadJobList',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRecordDownloadJobListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_record_download_job_list(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobListRequest,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_record_download_job_list_with_options(request, runtime)
+
+    async def query_record_download_job_list_async(
+        self,
+        request: linkvisual_20180120_models.QueryRecordDownloadJobListRequest,
+    ) -> linkvisual_20180120_models.QueryRecordDownloadJobListResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_record_download_job_list_with_options_async(request, runtime)
+
     def query_record_download_url_with_options(
         self,
         request: linkvisual_20180120_models.QueryRecordDownloadUrlRequest,
@@ -6591,6 +7397,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_record_url_by_time_with_options_async(request, runtime)
 
+    def query_rtmp_key_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryRtmpKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryRtmpKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRtmpKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRtmpKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_rtmp_key_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryRtmpKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryRtmpKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryRtmpKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryRtmpKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_rtmp_key(
+        self,
+        request: linkvisual_20180120_models.QueryRtmpKeyRequest,
+    ) -> linkvisual_20180120_models.QueryRtmpKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_rtmp_key_with_options(request, runtime)
+
+    async def query_rtmp_key_async(
+        self,
+        request: linkvisual_20180120_models.QueryRtmpKeyRequest,
+    ) -> linkvisual_20180120_models.QueryRtmpKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_rtmp_key_with_options_async(request, runtime)
+
     def query_time_template_with_options(
         self,
         request: linkvisual_20180120_models.QueryTimeTemplateRequest,
@@ -6735,6 +7623,88 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_time_template_detail_with_options_async(request, runtime)
 
+    def query_vision_device_info_with_options(
+        self,
+        request: linkvisual_20180120_models.QueryVisionDeviceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryVisionDeviceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVisionDeviceInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryVisionDeviceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_vision_device_info_with_options_async(
+        self,
+        request: linkvisual_20180120_models.QueryVisionDeviceInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.QueryVisionDeviceInfoResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryVisionDeviceInfo',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.QueryVisionDeviceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_vision_device_info(
+        self,
+        request: linkvisual_20180120_models.QueryVisionDeviceInfoRequest,
+    ) -> linkvisual_20180120_models.QueryVisionDeviceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_vision_device_info_with_options(request, runtime)
+
+    async def query_vision_device_info_async(
+        self,
+        request: linkvisual_20180120_models.QueryVisionDeviceInfoRequest,
+    ) -> linkvisual_20180120_models.QueryVisionDeviceInfoResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_vision_device_info_with_options_async(request, runtime)
+
     def query_voice_intercom_with_options(
         self,
         request: linkvisual_20180120_models.QueryVoiceIntercomRequest,
@@ -6750,6 +7720,8 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.scheme):
+            query['Scheme'] = request.scheme
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6784,6 +7756,8 @@ class Client(OpenApiClient):
             query['IotInstanceId'] = request.iot_instance_id
         if not UtilClient.is_unset(request.product_key):
             query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.scheme):
+            query['Scheme'] = request.scheme
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -8148,6 +9122,104 @@ class Client(OpenApiClient):
     ) -> linkvisual_20180120_models.UpdateRecordPlanResponse:
         runtime = util_models.RuntimeOptions()
         return await self.update_record_plan_with_options_async(request, runtime)
+
+    def update_rtmp_key_with_options(
+        self,
+        request: linkvisual_20180120_models.UpdateRtmpKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.UpdateRtmpKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.pull_auth_key):
+            query['PullAuthKey'] = request.pull_auth_key
+        if not UtilClient.is_unset(request.pull_key_expire_time):
+            query['PullKeyExpireTime'] = request.pull_key_expire_time
+        if not UtilClient.is_unset(request.push_auth_key):
+            query['PushAuthKey'] = request.push_auth_key
+        if not UtilClient.is_unset(request.push_key_expire_time):
+            query['PushKeyExpireTime'] = request.push_key_expire_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRtmpKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateRtmpKeyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rtmp_key_with_options_async(
+        self,
+        request: linkvisual_20180120_models.UpdateRtmpKeyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> linkvisual_20180120_models.UpdateRtmpKeyResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.device_name):
+            query['DeviceName'] = request.device_name
+        if not UtilClient.is_unset(request.iot_id):
+            query['IotId'] = request.iot_id
+        if not UtilClient.is_unset(request.iot_instance_id):
+            query['IotInstanceId'] = request.iot_instance_id
+        if not UtilClient.is_unset(request.product_key):
+            query['ProductKey'] = request.product_key
+        if not UtilClient.is_unset(request.pull_auth_key):
+            query['PullAuthKey'] = request.pull_auth_key
+        if not UtilClient.is_unset(request.pull_key_expire_time):
+            query['PullKeyExpireTime'] = request.pull_key_expire_time
+        if not UtilClient.is_unset(request.push_auth_key):
+            query['PushAuthKey'] = request.push_auth_key
+        if not UtilClient.is_unset(request.push_key_expire_time):
+            query['PushKeyExpireTime'] = request.push_key_expire_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateRtmpKey',
+            version='2018-01-20',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            linkvisual_20180120_models.UpdateRtmpKeyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rtmp_key(
+        self,
+        request: linkvisual_20180120_models.UpdateRtmpKeyRequest,
+    ) -> linkvisual_20180120_models.UpdateRtmpKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.update_rtmp_key_with_options(request, runtime)
+
+    async def update_rtmp_key_async(
+        self,
+        request: linkvisual_20180120_models.UpdateRtmpKeyRequest,
+    ) -> linkvisual_20180120_models.UpdateRtmpKeyResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.update_rtmp_key_with_options_async(request, runtime)
 
     def update_time_template_with_options(
         self,
