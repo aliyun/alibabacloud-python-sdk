@@ -1,3 +1,6 @@
+2024-01-08 Version: 2.0.2
+- Generated python 2023-09-30 for tingwu.
+
 2023-12-25 Version: 2.0.1
 - Generated python 2023-09-30 for tingwu.
 

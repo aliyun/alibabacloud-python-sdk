@@ -288,6 +288,7 @@ class CreateTaskRequestParameters(TeaModel):
         ppt_extraction_enabled: bool = None,
         summarization: CreateTaskRequestParametersSummarization = None,
         summarization_enabled: bool = None,
+        text_polish_enabled: bool = None,
         transcoding: CreateTaskRequestParametersTranscoding = None,
         transcription: CreateTaskRequestParametersTranscription = None,
         translation: CreateTaskRequestParametersTranslation = None,
@@ -299,6 +300,7 @@ class CreateTaskRequestParameters(TeaModel):
         self.ppt_extraction_enabled = ppt_extraction_enabled
         self.summarization = summarization
         self.summarization_enabled = summarization_enabled
+        self.text_polish_enabled = text_polish_enabled
         self.transcoding = transcoding
         self.transcription = transcription
         self.translation = translation
@@ -334,6 +336,8 @@ class CreateTaskRequestParameters(TeaModel):
             result['Summarization'] = self.summarization.to_map()
         if self.summarization_enabled is not None:
             result['SummarizationEnabled'] = self.summarization_enabled
+        if self.text_polish_enabled is not None:
+            result['TextPolishEnabled'] = self.text_polish_enabled
         if self.transcoding is not None:
             result['Transcoding'] = self.transcoding.to_map()
         if self.transcription is not None:
@@ -360,6 +364,8 @@ class CreateTaskRequestParameters(TeaModel):
             self.summarization = temp_model.from_map(m['Summarization'])
         if m.get('SummarizationEnabled') is not None:
             self.summarization_enabled = m.get('SummarizationEnabled')
+        if m.get('TextPolishEnabled') is not None:
+            self.text_polish_enabled = m.get('TextPolishEnabled')
         if m.get('Transcoding') is not None:
             temp_model = CreateTaskRequestParametersTranscoding()
             self.transcoding = temp_model.from_map(m['Transcoding'])
