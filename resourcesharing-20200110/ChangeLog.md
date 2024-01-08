@@ -1,3 +1,6 @@
+2024-01-08 Version: 2.1.2
+- Generated python 2020-01-10 for ResourceSharing.
+
 2023-12-25 Version: 2.1.1
 - Generated python 2020-01-10 for ResourceSharing.
 

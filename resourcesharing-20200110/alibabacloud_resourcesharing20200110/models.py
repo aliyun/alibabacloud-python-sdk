@@ -11,7 +11,7 @@ class AcceptResourceShareInvitationRequest(TeaModel):
     ):
         # The ID of the resource sharing invitation.
         # 
-        # You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID of a resource sharing invitation.
+        # You can call the [ListResourceShareInvitations](~~450564~~) operation to obtain the ID.
         self.resource_share_invitation_id = resource_share_invitation_id
 
     def validate(self):
@@ -43,10 +43,24 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvi
         status: str = None,
         status_message: str = None,
     ):
+        # The type of the sharing operation. Valid values:
+        # 
+        # *   Associate
         self.associate_type = associate_type
+        # The ID of the shared resource.
         self.resource_id = resource_id
+        # The type of the shared resource.
+        # 
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
         self.resource_type = resource_type
+        # The failure status. Valid values:
+        # 
+        # *   Unavailable: The resource cannot be shared.
+        # *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
+        # *   InternalError: An internal error occurred during the check.
         self.status = status
+        # The failure cause.
         self.status_message = status_message
 
     def validate(self):
@@ -97,6 +111,7 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         sender_account_id: str = None,
         status: str = None,
     ):
+        # The information about the failure.
         self.accept_invitation_failed_details = accept_invitation_failed_details
         # The time when the invitation was created. The time is displayed in UTC.
         self.create_time = create_time
@@ -104,7 +119,7 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         self.receiver_account_id = receiver_account_id
         # The ID of the resource share.
         self.resource_share_id = resource_share_id
-        # The ID of the invitation.
+        # The ID of the resource sharing invitation.
         self.resource_share_invitation_id = resource_share_invitation_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
@@ -112,11 +127,12 @@ class AcceptResourceShareInvitationResponseBodyResourceShareInvitation(TeaModel)
         self.sender_account_id = sender_account_id
         # The status of the invitation. Valid values:
         # 
-        # *   Pending: The invitation is waiting for confirmation.
-        # *   Accepted: The invitation is accepted.
-        # *   Cancelled: The invitation is canceled.
-        # *   Rejected: The invitation is rejected.
-        # *   Expired: The invitation has expired.
+        # *   Pending
+        # *   Accepted
+        # *   Cancelled
+        # *   Rejected
+        # *   Expired
+        # *   AcceptFailed
         self.status = status
 
     def validate(self):
@@ -181,9 +197,9 @@ class AcceptResourceShareInvitationResponseBody(TeaModel):
         request_id: str = None,
         resource_share_invitation: AcceptResourceShareInvitationResponseBodyResourceShareInvitation = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource sharing invitation.
+        # The information about the resource sharing invitation.
         self.resource_share_invitation = resource_share_invitation
 
     def validate(self):
@@ -369,6 +385,7 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         entity_type: str = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
+        target_property: str = None,
         update_time: str = None,
     ):
         # The association status. Valid values:
@@ -407,6 +424,7 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         self.resource_share_id = resource_share_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
+        self.target_property = target_property
         # The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
         # 
         # *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
@@ -438,6 +456,8 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
             result['ResourceShareName'] = self.resource_share_name
+        if self.target_property is not None:
+            result['TargetProperty'] = self.target_property
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -460,6 +480,8 @@ class AssociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
             self.resource_share_name = m.get('ResourceShareName')
+        if m.get('TargetProperty') is not None:
+            self.target_property = m.get('TargetProperty')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
@@ -1518,6 +1540,7 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         entity_type: str = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
+        target_property: str = None,
         update_time: str = None,
     ):
         # The association status. Valid values:
@@ -1556,6 +1579,7 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
         self.resource_share_id = resource_share_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
+        self.target_property = target_property
         # The time when the disassociation of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
         # 
         # *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the disassociation of the resource was updated.
@@ -1587,6 +1611,8 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
             result['ResourceShareName'] = self.resource_share_name
+        if self.target_property is not None:
+            result['TargetProperty'] = self.target_property
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -1609,6 +1635,8 @@ class DisassociateResourceShareResponseBodyResourceShareAssociations(TeaModel):
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
             self.resource_share_name = m.get('ResourceShareName')
+        if m.get('TargetProperty') is not None:
+            self.target_property = m.get('TargetProperty')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
@@ -2602,9 +2630,61 @@ class ListResourceShareAssociationsRequest(TeaModel):
         return self
 
 
+class ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails(TeaModel):
+    def __init__(
+        self,
+        associate_type: str = None,
+        entity_id: str = None,
+        entity_type: str = None,
+        status: str = None,
+        status_message: str = None,
+    ):
+        self.associate_type = associate_type
+        self.entity_id = entity_id
+        self.entity_type = entity_type
+        self.status = status
+        self.status_message = status_message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.associate_type is not None:
+            result['AssociateType'] = self.associate_type
+        if self.entity_id is not None:
+            result['EntityId'] = self.entity_id
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.status_message is not None:
+            result['StatusMessage'] = self.status_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssociateType') is not None:
+            self.associate_type = m.get('AssociateType')
+        if m.get('EntityId') is not None:
+            self.entity_id = m.get('EntityId')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('StatusMessage') is not None:
+            self.status_message = m.get('StatusMessage')
+        return self
+
+
 class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaModel):
     def __init__(
         self,
+        association_failed_details: List[ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails] = None,
         association_status: str = None,
         association_status_message: str = None,
         association_type: str = None,
@@ -2614,8 +2694,10 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         external: bool = None,
         resource_share_id: str = None,
         resource_share_name: str = None,
+        target_property: str = None,
         update_time: str = None,
     ):
+        self.association_failed_details = association_failed_details
         # The association status. Valid values:
         # 
         # *   Associating: The entity is being associated.
@@ -2657,6 +2739,7 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         self.resource_share_id = resource_share_id
         # The name of the resource share.
         self.resource_share_name = resource_share_name
+        self.target_property = target_property
         # The time when the association of the entity was updated. The value of this parameter depends on the value of the AssociationType parameter:
         # 
         # *   If the value of `AssociationType` is `Resource`, the value of this parameter is the time when the association of the shared resource was updated.
@@ -2664,7 +2747,10 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
         self.update_time = update_time
 
     def validate(self):
-        pass
+        if self.association_failed_details:
+            for k in self.association_failed_details:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2672,6 +2758,10 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
             return _map
 
         result = dict()
+        result['AssociationFailedDetails'] = []
+        if self.association_failed_details is not None:
+            for k in self.association_failed_details:
+                result['AssociationFailedDetails'].append(k.to_map() if k else None)
         if self.association_status is not None:
             result['AssociationStatus'] = self.association_status
         if self.association_status_message is not None:
@@ -2690,12 +2780,19 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
             result['ResourceShareId'] = self.resource_share_id
         if self.resource_share_name is not None:
             result['ResourceShareName'] = self.resource_share_name
+        if self.target_property is not None:
+            result['TargetProperty'] = self.target_property
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.association_failed_details = []
+        if m.get('AssociationFailedDetails') is not None:
+            for k in m.get('AssociationFailedDetails'):
+                temp_model = ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails()
+                self.association_failed_details.append(temp_model.from_map(k))
         if m.get('AssociationStatus') is not None:
             self.association_status = m.get('AssociationStatus')
         if m.get('AssociationStatusMessage') is not None:
@@ -2714,6 +2811,8 @@ class ListResourceShareAssociationsResponseBodyResourceShareAssociations(TeaMode
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('ResourceShareName') is not None:
             self.resource_share_name = m.get('ResourceShareName')
+        if m.get('TargetProperty') is not None:
+            self.target_property = m.get('TargetProperty')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
@@ -2825,7 +2924,7 @@ class ListResourceShareInvitationsRequest(TeaModel):
         # 
         # Valid values: 1 to 100. Default value: 20.
         self.max_results = max_results
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
         # The IDs of the resource shares.
         self.resource_share_ids = resource_share_ids
@@ -2873,10 +2972,26 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitation
         status: str = None,
         status_message: str = None,
     ):
+        # The type of the sharing operation. Valid values:
+        # 
+        # *   Associate
+        # *   Disassociate
         self.associate_type = associate_type
+        # The ID of the shared resource.
         self.resource_id = resource_id
+        # The type of the shared resource.
+        # 
+        # For more information about the types of resources that can be shared, see [Services that work with Resource Sharing](~~450526~~).
         self.resource_type = resource_type
+        # The failure status. Valid values:
+        # 
+        # *   Unavailable: The resource cannot be shared.
+        # *   LimitExceeded: The number of shared resources within the Alibaba Cloud account exceeds the upper limit.
+        # *   ZonalResourceInaccessible: The resource is unavailable in this region.
+        # *   UnsupportedOperation: The operation is not allowed because another association exists.
+        # *   InternalError: An internal error occurred during the check.
         self.status = status
+        # The failure cause.
         self.status_message = status_message
 
     def validate(self):
@@ -2929,6 +3044,7 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitations(TeaModel)
     ):
         # The time when the invitation was created. The time is displayed in UTC.
         self.create_time = create_time
+        # The information about the failure.
         self.invitation_failed_details = invitation_failed_details
         # The Alibaba Cloud account ID of the invitee.
         self.receiver_account_id = receiver_account_id
@@ -2942,11 +3058,12 @@ class ListResourceShareInvitationsResponseBodyResourceShareInvitations(TeaModel)
         self.sender_account_id = sender_account_id
         # The status of the invitation. Valid values:
         # 
-        # *   Pending: The invitation is waiting for confirmation.
-        # *   Accepted: The invitation is accepted.
-        # *   Cancelled: The invitation is canceled.
-        # *   Rejected: The invitation is rejected.
-        # *   Expired: The invitation has expired.
+        # *   Pending
+        # *   Accepted
+        # *   Cancelled
+        # *   Rejected
+        # *   Expired
+        # *   AcceptFailed
         self.status = status
 
     def validate(self):
@@ -3012,11 +3129,11 @@ class ListResourceShareInvitationsResponseBody(TeaModel):
         request_id: str = None,
         resource_share_invitations: List[ListResourceShareInvitationsResponseBodyResourceShareInvitations] = None,
     ):
-        # The `token` that is used to initiate the next request. If the response of the current request is truncated, you can use the token to initiate another request and obtain the remaining records.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # The information of the resource sharing invitations.
+        # The information about the resource sharing invitations.
         self.resource_share_invitations = resource_share_invitations
 
     def validate(self):
@@ -3918,6 +4035,7 @@ class ListSharedTargetsResponseBodySharedTargets(TeaModel):
         external: bool = None,
         resource_share_id: str = None,
         target_id: str = None,
+        target_property: str = None,
         update_time: str = None,
     ):
         # The time when the principal was associated with the resource share.
@@ -3934,6 +4052,7 @@ class ListSharedTargetsResponseBodySharedTargets(TeaModel):
         # *   If the value of `ResourceOwner` is `Self`, the value of this parameter is the ID of a principal.
         # *   If the value of `ResourceOwner` is `OtherAccounts`, the value of this parameter is the ID of a resource owner.
         self.target_id = target_id
+        self.target_property = target_property
         # The time when the association of the principal was updated.
         self.update_time = update_time
 
@@ -3954,6 +4073,8 @@ class ListSharedTargetsResponseBodySharedTargets(TeaModel):
             result['ResourceShareId'] = self.resource_share_id
         if self.target_id is not None:
             result['TargetId'] = self.target_id
+        if self.target_property is not None:
+            result['TargetProperty'] = self.target_property
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
         return result
@@ -3968,6 +4089,8 @@ class ListSharedTargetsResponseBodySharedTargets(TeaModel):
             self.resource_share_id = m.get('ResourceShareId')
         if m.get('TargetId') is not None:
             self.target_id = m.get('TargetId')
+        if m.get('TargetProperty') is not None:
+            self.target_property = m.get('TargetProperty')
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
         return self
