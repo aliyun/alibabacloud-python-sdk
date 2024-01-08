@@ -1935,6 +1935,104 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.commit_staging_routine_code_with_options_async(request, runtime)
 
+    def create_dcdn_certificate_signing_request_with_options(
+        self,
+        request: dcdn_20180115_models.CreateDcdnCertificateSigningRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.sans):
+            query['SANs'] = request.sans
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDcdnCertificateSigningRequest',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dcdn_certificate_signing_request_with_options_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnCertificateSigningRequestRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.common_name):
+            query['CommonName'] = request.common_name
+        if not UtilClient.is_unset(request.country):
+            query['Country'] = request.country
+        if not UtilClient.is_unset(request.email):
+            query['Email'] = request.email
+        if not UtilClient.is_unset(request.organization):
+            query['Organization'] = request.organization
+        if not UtilClient.is_unset(request.organization_unit):
+            query['OrganizationUnit'] = request.organization_unit
+        if not UtilClient.is_unset(request.sans):
+            query['SANs'] = request.sans
+        if not UtilClient.is_unset(request.state):
+            query['State'] = request.state
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDcdnCertificateSigningRequest',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dcdn_certificate_signing_request(
+        self,
+        request: dcdn_20180115_models.CreateDcdnCertificateSigningRequestRequest,
+    ) -> dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.create_dcdn_certificate_signing_request_with_options(request, runtime)
+
+    async def create_dcdn_certificate_signing_request_async(
+        self,
+        request: dcdn_20180115_models.CreateDcdnCertificateSigningRequestRequest,
+    ) -> dcdn_20180115_models.CreateDcdnCertificateSigningRequestResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dcdn_certificate_signing_request_with_options_async(request, runtime)
+
     def create_dcdn_deliver_task_with_options(
         self,
         request: dcdn_20180115_models.CreateDcdnDeliverTaskRequest,
@@ -9977,7 +10075,7 @@ class Client(OpenApiClient):
         """
         You can call this operation up to 10 times per second per account.
         * Usage data includes traffic (measured in bytes), bandwidth values (measured in bit/s), and the number of requests.
-        **Time granularity**:
+        **Time granularity**\
         The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
@@ -10034,7 +10132,7 @@ class Client(OpenApiClient):
         """
         You can call this operation up to 10 times per second per account.
         * Usage data includes traffic (measured in bytes), bandwidth values (measured in bit/s), and the number of requests.
-        **Time granularity**:
+        **Time granularity**\
         The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
@@ -10090,7 +10188,7 @@ class Client(OpenApiClient):
         """
         You can call this operation up to 10 times per second per account.
         * Usage data includes traffic (measured in bytes), bandwidth values (measured in bit/s), and the number of requests.
-        **Time granularity**:
+        **Time granularity**\
         The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
@@ -10111,7 +10209,7 @@ class Client(OpenApiClient):
         """
         You can call this operation up to 10 times per second per account.
         * Usage data includes traffic (measured in bytes), bandwidth values (measured in bit/s), and the number of requests.
-        **Time granularity**:
+        **Time granularity**\
         The time granularity supported by the Interval parameter, the maximum time period within which historical data is available, and the data delay vary with the maximum time range per query, as described in the following table.
         |Time granularity|Maximum time range per query|Historical data available|Data delay|
         |---|---|---|---|
@@ -15234,6 +15332,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnUserVipsByDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnUserVipsByDomainResponse:
+        """
+        You can call this operation up to 30 times per second per account.
+        
+        @param request: DescribeDcdnUserVipsByDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnUserVipsByDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.available):
@@ -15264,6 +15369,13 @@ class Client(OpenApiClient):
         request: dcdn_20180115_models.DescribeDcdnUserVipsByDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> dcdn_20180115_models.DescribeDcdnUserVipsByDomainResponse:
+        """
+        You can call this operation up to 30 times per second per account.
+        
+        @param request: DescribeDcdnUserVipsByDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDcdnUserVipsByDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.available):
@@ -15293,6 +15405,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnUserVipsByDomainRequest,
     ) -> dcdn_20180115_models.DescribeDcdnUserVipsByDomainResponse:
+        """
+        You can call this operation up to 30 times per second per account.
+        
+        @param request: DescribeDcdnUserVipsByDomainRequest
+        @return: DescribeDcdnUserVipsByDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dcdn_user_vips_by_domain_with_options(request, runtime)
 
@@ -15300,6 +15418,12 @@ class Client(OpenApiClient):
         self,
         request: dcdn_20180115_models.DescribeDcdnUserVipsByDomainRequest,
     ) -> dcdn_20180115_models.DescribeDcdnUserVipsByDomainResponse:
+        """
+        You can call this operation up to 30 times per second per account.
+        
+        @param request: DescribeDcdnUserVipsByDomainRequest
+        @return: DescribeDcdnUserVipsByDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dcdn_user_vips_by_domain_with_options_async(request, runtime)
 
@@ -20760,6 +20884,80 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.rollback_dcdn_staging_config_with_options_async(request, runtime)
+
+    def set_dcdn_domain_csrcertificate_with_options(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainCSRCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDcdnDomainCSRCertificate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_dcdn_domain_csrcertificate_with_options_async(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainCSRCertificateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not UtilClient.is_unset(request.server_certificate):
+            query['ServerCertificate'] = request.server_certificate
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SetDcdnDomainCSRCertificate',
+            version='2018-01-15',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_dcdn_domain_csrcertificate(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainCSRCertificateRequest,
+    ) -> dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.set_dcdn_domain_csrcertificate_with_options(request, runtime)
+
+    async def set_dcdn_domain_csrcertificate_async(
+        self,
+        request: dcdn_20180115_models.SetDcdnDomainCSRCertificateRequest,
+    ) -> dcdn_20180115_models.SetDcdnDomainCSRCertificateResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.set_dcdn_domain_csrcertificate_with_options_async(request, runtime)
 
     def set_dcdn_domain_certificate_with_options(
         self,

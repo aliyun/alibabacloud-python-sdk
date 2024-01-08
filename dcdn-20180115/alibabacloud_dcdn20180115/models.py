@@ -2430,6 +2430,164 @@ class CommitStagingRoutineCodeResponse(TeaModel):
         return self
 
 
+class CreateDcdnCertificateSigningRequestRequest(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        common_name: str = None,
+        country: str = None,
+        email: str = None,
+        organization: str = None,
+        organization_unit: str = None,
+        sans: str = None,
+        state: str = None,
+    ):
+        self.city = city
+        self.common_name = common_name
+        self.country = country
+        self.email = email
+        self.organization = organization
+        self.organization_unit = organization_unit
+        self.sans = sans
+        self.state = state
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.country is not None:
+            result['Country'] = self.country
+        if self.email is not None:
+            result['Email'] = self.email
+        if self.organization is not None:
+            result['Organization'] = self.organization
+        if self.organization_unit is not None:
+            result['OrganizationUnit'] = self.organization_unit
+        if self.sans is not None:
+            result['SANs'] = self.sans
+        if self.state is not None:
+            result['State'] = self.state
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('Country') is not None:
+            self.country = m.get('Country')
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+        if m.get('Organization') is not None:
+            self.organization = m.get('Organization')
+        if m.get('OrganizationUnit') is not None:
+            self.organization_unit = m.get('OrganizationUnit')
+        if m.get('SANs') is not None:
+            self.sans = m.get('SANs')
+        if m.get('State') is not None:
+            self.state = m.get('State')
+        return self
+
+
+class CreateDcdnCertificateSigningRequestResponseBody(TeaModel):
+    def __init__(
+        self,
+        common_name: str = None,
+        csr: str = None,
+        pub_md_5: str = None,
+        request_id: str = None,
+    ):
+        self.common_name = common_name
+        self.csr = csr
+        self.pub_md_5 = pub_md_5
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_name is not None:
+            result['CommonName'] = self.common_name
+        if self.csr is not None:
+            result['Csr'] = self.csr
+        if self.pub_md_5 is not None:
+            result['PubMd5'] = self.pub_md_5
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommonName') is not None:
+            self.common_name = m.get('CommonName')
+        if m.get('Csr') is not None:
+            self.csr = m.get('Csr')
+        if m.get('PubMd5') is not None:
+            self.pub_md_5 = m.get('PubMd5')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDcdnCertificateSigningRequestResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDcdnCertificateSigningRequestResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDcdnCertificateSigningRequestResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDcdnDeliverTaskRequest(TeaModel):
     def __init__(
         self,
@@ -2947,8 +3105,16 @@ class CreateDcdnWafGroupRequest(TeaModel):
         subscribe: str = None,
         template_id: int = None,
     ):
+        # The name of the WAF rule group. The name can be up to 128 characters in length. This parameter is required when you create a custom WAF rule group.
         self.name = name
+        # Specifies whether to enable subscription. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
+        # 
+        # When you replicate a custom rule group, do not specify this parameter.
         self.subscribe = subscribe
+        # The ID of the rule group to be replicated. This parameter is required when you replicate a custom WAF rule group. You can call the [DescribeDcdnWafGroups](~~DescribeDcdnWafGroups~~) operation to query the ID of the rule group. If no template is used, set the value to 0 or do not specify this parameter.
         self.template_id = template_id
 
     def validate(self):
@@ -2985,7 +3151,9 @@ class CreateDcdnWafGroupResponseBody(TeaModel):
         id: int = None,
         request_id: str = None,
     ):
+        # The ID of the created WAF rule group.
         self.id = id
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4619,6 +4787,7 @@ class DeleteDcdnUserConfigRequest(TeaModel):
         self,
         function_name: str = None,
     ):
+        # The name of the user feature that you want to delete. Currently, only DCDN Web Application Firewall (WAF) can be deleted. Default value: waf.
         self.function_name = function_name
 
     def validate(self):
@@ -4646,6 +4815,7 @@ class DeleteDcdnUserConfigResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -4717,6 +4887,7 @@ class DeleteDcdnWafGroupRequest(TeaModel):
         self,
         id: int = None,
     ):
+        # The ID of the custom WAF rule group.
         self.id = id
 
     def validate(self):
@@ -4744,6 +4915,7 @@ class DeleteDcdnWafGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -17759,22 +17931,22 @@ class DescribeDcdnDomainUsageDataRequest(TeaModel):
         # 
         # Default value: **CN**\
         self.area = area
-        # The protocol by which the data is queried. Valid values:
+        # The protocol of the data to query. Valid values:
         # 
         # *   **quic**: Quick UDP Internet Connections (QUIC)
         # *   **https**: HTTPS
         # *   **http**: HTTP
-        # *   **all**: HTTP, HTTPS, and QUIC
+        # *   **all**: all the preceding protocols
         # 
         # Default value: **all**\
         self.data_protocol = data_protocol
         # The accelerated domain name. You can specify up to 100 domain names in each request. Separate multiple domain names with commas (,).
         # 
-        # > If you do not specify this parameter, the usage data of all accelerated domain names that belong to your Alibaba Cloud account is returned.
+        # >  If you do not specify this parameter, the usage data of all accelerated domain names that belong to your Alibaba Cloud account is returned.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # > The end time must be later than the start time. The maximum time range that can be queried is 31 days.
+        # >  The end time must be later than the start time. The maximum time range that can be queried is 31 days.
         self.end_time = end_time
         # The type of data that you want to query. Valid values:
         # 
@@ -17782,7 +17954,7 @@ class DescribeDcdnDomainUsageDataRequest(TeaModel):
         # *   **traf**: traffic
         # *   **acc**: requests
         # 
-        # > If the value is set to **acc**, the **Area** parameter is not supported.
+        # >  **acc** does not support the **Area** parameter.
         self.field = field
         # The time interval between the data entries to return. Unit: seconds.
         # 
@@ -17790,15 +17962,15 @@ class DescribeDcdnDomainUsageDataRequest(TeaModel):
         self.interval = interval
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
-        # > The minimum time granularity at which the data is queried is 5 minutes.
+        # >  The minimum time granularity at which the data is queried is 5 minutes.
         self.start_time = start_time
-        # 请求数类型，取值：
+        # The type of the requests. Valid values:
         # 
-        # - **static**：静态。
-        # - **dynamic**：动态。
-        # - **all**：全部。
+        # *   **static**: static requests
+        # *   **dynamic**: dynamic requests
+        # *   **all**: all requests
         # 
-        # 默认为**all**。
+        # Default value: **all**\
         self.type = type
 
     def validate(self):
@@ -17861,11 +18033,11 @@ class DescribeDcdnDomainUsageDataResponseBodyUsageDataPerIntervalDataModule(TeaM
         self.peak_time = peak_time
         # The data usage in a specific scenario.
         # 
-        # > SpecialValue indicates the data usage in a specific scenario. If no special billable item is specified, ignore this parameter.
+        # >  This parameter indicates the data usage in a specific scenario. If no special billable item is specified, ignore this parameter.
         self.special_value = special_value
         # The timestamp of the returned data.
         self.time_stamp = time_stamp
-        # The amount of resource usage.
+        # The usage.
         self.value = value
 
     def validate(self):
@@ -17951,7 +18123,7 @@ class DescribeDcdnDomainUsageDataResponseBody(TeaModel):
         self.area = area
         # The time interval between the data entries returned. Unit: seconds.
         self.data_interval = data_interval
-        # The accelerated domain name.
+        # The accelerated domain name that was queried.
         self.domain_name = domain_name
         # The end of the time range during which data was queried.
         self.end_time = end_time
@@ -17959,9 +18131,9 @@ class DescribeDcdnDomainUsageDataResponseBody(TeaModel):
         self.request_id = request_id
         # The beginning of the time range during which data was queried.
         self.start_time = start_time
-        # The type of the content returned.
+        # The type of the returned data.
         self.type = type
-        # The network traffic that was collected at each interval.
+        # The traffic that was collected at each interval.
         self.usage_data_per_interval = usage_data_per_interval
 
     def validate(self):
@@ -22359,6 +22531,7 @@ class DescribeDcdnOriginSiteHealthStatusRequest(TeaModel):
         self,
         domain_name: str = None,
     ):
+        # The accelerated domain name. You can specify only one domain name in each request.
         self.domain_name = domain_name
 
     def validate(self):
@@ -22387,7 +22560,14 @@ class DescribeDcdnOriginSiteHealthStatusResponseBodyOriginSiteStatus(TeaModel):
         health_status: str = None,
         host: str = None,
     ):
+        # The health status of the origin server. Each point of presence (POP) periodically initiates a probe request to the configured origin domain name. If the POP receives a response from the origin server in 5 seconds, the probe is considered successful. After the probe data for each POP is collected, the health status of the origin server is calculated based on the proportion of successful probes. Valid values:
+        # 
+        # *   unknown: The probe data of the origin server is not obtained because the configurations of the origin server have been changed recently. Try again later.
+        # *   healthy: The proportion of successful probes is higher than 80%.
+        # *   degraded: The proportion of successful probes is higher than 0% and lower than or equal to 80%.
+        # *   critical: All probing requests to the origin server failed.
         self.health_status = health_status
+        # The origin domain name that you configured in the DCDN console, which can be an IPv4 address, IPv6 address, common domain name, or Object Storage Service (OSS) domain name.
         self.host = host
 
     def validate(self):
@@ -22420,7 +22600,9 @@ class DescribeDcdnOriginSiteHealthStatusResponseBody(TeaModel):
         origin_site_status: List[DescribeDcdnOriginSiteHealthStatusResponseBodyOriginSiteStatus] = None,
         request_id: str = None,
     ):
+        # The information about the origin server of the accelerated domain name.
         self.origin_site_status = origin_site_status
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -29177,7 +29359,14 @@ class DescribeDcdnUserVipsByDomainRequest(TeaModel):
         available: str = None,
         domain_name: str = None,
     ):
+        # Specifies whether to query the virtual IP addresses of only healthy POPs. Valid value:
+        # 
+        # *   **on**: queries healthy VIPs.
+        # *   **off**: queries all VIPs.
         self.available = available
+        # The accelerated domain name. You can specify only one domain name.
+        # 
+        # Enumeration values: example.com
         self.domain_name = domain_name
 
     def validate(self):
@@ -29238,8 +29427,11 @@ class DescribeDcdnUserVipsByDomainResponseBody(TeaModel):
         request_id: str = None,
         vips: DescribeDcdnUserVipsByDomainResponseBodyVips = None,
     ):
+        # The domain name.
         self.domain_name = domain_name
+        # The request ID.
         self.request_id = request_id
+        # The list of VIPs.
         self.vips = vips
 
     def validate(self):
@@ -29505,6 +29697,7 @@ class DescribeDcdnWafDefaultRulesRequest(TeaModel):
         self,
         query_args: str = None,
     ):
+        # The query conditions. The value is a string in the JSON format. Format: `QueryArgs={"DefenseScene":"anti_scan"}`
         self.query_args = query_args
 
     def validate(self):
@@ -29536,10 +29729,27 @@ class DescribeDcdnWafDefaultRulesResponseBodyContentRules(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The default action of the rule. Valid values:
+        # 
+        # *   **monitor**: monitors requests.
+        # *   **deny**: denies requests.
+        # *   **block**: blocks requests.
         self.action = action
+        # The default configuration of the rule.
         self.config = config
+        # The default name of the rule.
         self.name = name
+        # The default status of the rule. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.status = status
+        # The rule type. Valid values:
+        # 
+        # *   **waf_group**: basic web protection
+        # *   **high_frequency**: high-frequency scanning blocking
+        # *   **directory_traversal**: directory traversal blocking
+        # *   **scan_tools**: scanner blocking
         self.type = type
 
     def validate(self):
@@ -29584,7 +29794,12 @@ class DescribeDcdnWafDefaultRulesResponseBodyContent(TeaModel):
         defense_scene: str = None,
         rules: List[DescribeDcdnWafDefaultRulesResponseBodyContentRules] = None,
     ):
+        # The protection scenario. Valid values:
+        # 
+        # *   **waf_group**: basic web protection
+        # *   **anti_scan**: scan protection
         self.defense_scene = defense_scene
+        # The configurations of the rule.
         self.rules = rules
 
     def validate(self):
@@ -29625,7 +29840,9 @@ class DescribeDcdnWafDefaultRulesResponseBody(TeaModel):
         content: List[DescribeDcdnWafDefaultRulesResponseBodyContent] = None,
         request_id: str = None,
     ):
+        # The configurations of the rule.
         self.content = content
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -30891,11 +31108,27 @@ class DescribeDcdnWafGroupRequest(TeaModel):
         query_args: str = None,
         scope: str = None,
     ):
+        # The ID of the WAF rule group. You can query the ID by calling the [DescribeDcdnWafGroups](~~DescribeDcdnWafGroups~~) operation.
         self.id = id
+        # The language of the response. Valid values:
+        # 
+        # *   **en**: English
+        # *    **zh**: Chinese
         self.language = language
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The query conditions. The value needs to be a JSON string in the following format: Format:
+        # 
+        # `QueryArgs={"PolicyIds":"IDs of protection policies","RuleIds":"IDs of protection rules","RuleNameLike":"Names of protection rules","DomainNames":"Protected domain names","DefenseScenes":"waf_group","RuleStatus":"on","OrderBy":"GmtModified","Desc":"false"}`
+        # 
+        # > If you do not specify this parameter, all protection rules are queried.
         self.query_args = query_args
+        # The range of the rule group to be queried.
+        # 
+        # *   **in**: rules in the rule group are returned.
+        # *  **out**: rules that are in the full rule set but are not in the rule group are returned.
         self.scope = scope
 
     def validate(self):
@@ -30951,15 +31184,64 @@ class DescribeDcdnWafGroupResponseBodyRules(TeaModel):
         protection_type: int = None,
         risk_level: int = None,
     ):
+        # The type of the application. Valid values:
+        # 
+        # *   **0**: Common
+        # *   **1**: WordPress
+        # *   **2**: DedeCMS
+        # *   **3**: Discuz
+        # *   **4**: PHP CMS
+        # *   **5**: ECShop
+        # *   **6**: ShopEX
+        # *   **7**: Drupal
+        # *   **8**: Joomla
+        # *   **9**: MetInfo
+        # *   **10**: Struts2
+        # *   **11**: Spring Boot
+        # *   **12**: JBoss
+        # *   **13**: WebLogic
+        # *   **14**: WebSphere
+        # *   **15**: Tomcat
+        # *   **16**: Elastic Search
+        # *   **18**: ThinkPHP
+        # *   **19**: Fastjson
+        # *   **20**: ImageMagick
+        # *   **21**: PHPWind
+        # *   **22**: phpMyAdmin
+        # *   **23**: Resin
+        # *   **24**: IIS
+        # *   **99**: Others
         self.application_type = application_type
-        # CVE ID。
+        # The Common Vulnerabilities and Exposures (CVE) ID of the related vulnerability.
         self.cve_id = cve_id
+        # The CVE link.
         self.cve_url = cve_url
+        # The description of the WAF rule.
         self.description = description
+        # The time when the rule was modified.
         self.gmt_modified = gmt_modified
+        # The ID of the custom WAF rule.
         self.id = id
+        # The name of the WAF rule.
         self.name = name
+        # Protection type Valid values:
+        # 
+        # *   **11**: SQL injection
+        # *   **12**: cross-site scripting (XSS)
+        # *   **13**: code execution
+        # *   **14**: carriage return line feeds (CRLF)
+        # *   **15**: local file inclusion
+        # *   **16**: remote file inclusion
+        # *   **17**: webshells
+        # *   **19**: cross-site request forgery
+        # *   **20**: others
+        # *   **21**: SEMA
         self.protection_type = protection_type
+        # The risk level of the resources that do not comply with the managed rule. Valid values:
+        # 
+        # *   **1**: high risk
+        # *   **2**: medium risk
+        # *   **3**: low risk
         self.risk_level = risk_level
 
     def validate(self):
@@ -31027,14 +31309,26 @@ class DescribeDcdnWafGroupResponseBody(TeaModel):
         template_id: int = None,
         total_count: int = None,
     ):
+        # The ID of the custom WAF rule group.
         self.id = id
+        # The name of the WAF rule group.
         self.name = name
+        # The page number of the page returned.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The configurations of the rule.
         self.rules = rules
+        # Indicates whether to enable subscription. Valid values:
+        # 
+        # *   **on:**\
+        # *   **off**\
         self.subscribe = subscribe
+        # The ID of the template.
         self.template_id = template_id
+        # The total number of rules that are filtered out.
         self.total_count = total_count
 
     def validate(self):
@@ -31149,9 +31443,18 @@ class DescribeDcdnWafGroupsRequest(TeaModel):
         page_size: int = None,
         query_args: str = None,
     ):
+        # The language of the response. Valid values:
+        # 
+        # *  **en**: English
+        # *   **zh**: Chinese
         self.language = language
+        # The number of the page to return. Default value: **1**.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The query conditions. The value is a string in the JSON format. Format: `QueryArgs={"PolicyIds":"IDs of protection policies","RuleIds":"IDs of the protection rules","RuleNameLike":"Names of the protection rule","DomainNames":"Protected domain names","DefenseScenes":"waf_group","RuleStatus":"on","OrderBy":"GmtModified","Desc":"false"}`
+        # 
+        # > If you do not specify this parameter, all protection rules are queried.
         self.query_args = query_args
 
     def validate(self):
@@ -31193,8 +31496,14 @@ class DescribeDcdnWafGroupsResponseBodyWafGroupsPolicies(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # The ID of the policy.
         self.id = id
+        # The name of the policy.
         self.name = name
+        # The type of the policy. Valid values:
+        # 
+        # *   **custom**: a custom policy
+        # *   **default**: the default policy
         self.type = type
 
     def validate(self):
@@ -31236,12 +31545,22 @@ class DescribeDcdnWafGroupsResponseBodyWafGroups(TeaModel):
         subscribe: str = None,
         template_id: int = None,
     ):
+        # The time when the WAF rule group was modified.
         self.gmt_modified = gmt_modified
+        # The ID of the custom WAF rule group.
         self.id = id
+        # The name of the WAF rule.
         self.name = name
+        # The policy that is associated with the WAF rule group.
         self.policies = policies
+        # The number of WAF rules.
         self.rule_count = rule_count
+        # Indicates whether to enable subscription. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.subscribe = subscribe
+        # The ID of the template.
         self.template_id = template_id
 
     def validate(self):
@@ -31305,10 +31624,15 @@ class DescribeDcdnWafGroupsResponseBody(TeaModel):
         total_count: int = None,
         waf_groups: List[DescribeDcdnWafGroupsResponseBodyWafGroups] = None,
     ):
+        # The page number of the returned page. Default value: 1.
         self.page_number = page_number
+        # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The number of WAF rule groups.
         self.total_count = total_count
+        # The list of WAF rule groups.
         self.waf_groups = waf_groups
 
     def validate(self):
@@ -39082,6 +39406,110 @@ class RollbackDcdnStagingConfigResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RollbackDcdnStagingConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SetDcdnDomainCSRCertificateRequest(TeaModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        server_certificate: str = None,
+    ):
+        self.domain_name = domain_name
+        self.server_certificate = server_certificate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+        if self.server_certificate is not None:
+            result['ServerCertificate'] = self.server_certificate
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+        if m.get('ServerCertificate') is not None:
+            self.server_certificate = m.get('ServerCertificate')
+        return self
+
+
+class SetDcdnDomainCSRCertificateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class SetDcdnDomainCSRCertificateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SetDcdnDomainCSRCertificateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SetDcdnDomainCSRCertificateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
