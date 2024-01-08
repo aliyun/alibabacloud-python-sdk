@@ -774,11 +774,17 @@ class Client(OpenApiClient):
     def get_project_with_options(
         self,
         project_name: str,
+        request: max_compute_20220104_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -799,11 +805,17 @@ class Client(OpenApiClient):
     async def get_project_with_options_async(
         self,
         project_name: str,
+        request: max_compute_20220104_models.GetProjectRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> max_compute_20220104_models.GetProjectResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.verbose):
+            query['verbose'] = request.verbose
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='GetProject',
@@ -824,18 +836,20 @@ class Client(OpenApiClient):
     def get_project(
         self,
         project_name: str,
+        request: max_compute_20220104_models.GetProjectRequest,
     ) -> max_compute_20220104_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.get_project_with_options(project_name, headers, runtime)
+        return self.get_project_with_options(project_name, request, headers, runtime)
 
     async def get_project_async(
         self,
         project_name: str,
+        request: max_compute_20220104_models.GetProjectRequest,
     ) -> max_compute_20220104_models.GetProjectResponse:
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.get_project_with_options_async(project_name, headers, runtime)
+        return await self.get_project_with_options_async(project_name, request, headers, runtime)
 
     def get_quota_with_options(
         self,
