@@ -783,6 +783,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_job_metrics_with_options_async(job_id, request, headers, runtime)
 
+    def get_job_sanity_check_result_with_options(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sanity_check_number):
+            query['SanityCheckNumber'] = request.sanity_check_number
+        if not UtilClient.is_unset(request.sanity_check_phase):
+            query['SanityCheckPhase'] = request.sanity_check_phase
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobSanityCheckResult',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/sanitycheckresult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetJobSanityCheckResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_job_sanity_check_result_with_options_async(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.sanity_check_number):
+            query['SanityCheckNumber'] = request.sanity_check_number
+        if not UtilClient.is_unset(request.sanity_check_phase):
+            query['SanityCheckPhase'] = request.sanity_check_phase
+        if not UtilClient.is_unset(request.token):
+            query['Token'] = request.token
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetJobSanityCheckResult',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/sanitycheckresult',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.GetJobSanityCheckResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_job_sanity_check_result(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
+    ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_job_sanity_check_result_with_options(job_id, request, headers, runtime)
+
+    async def get_job_sanity_check_result_async(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.GetJobSanityCheckResultRequest,
+    ) -> pai_dlc_20201203_models.GetJobSanityCheckResultResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_job_sanity_check_result_with_options_async(job_id, request, headers, runtime)
+
     def get_pod_events_with_options(
         self,
         job_id: str,
@@ -1410,6 +1498,86 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_ecs_specs_with_options_async(request, headers, runtime)
+
+    def list_job_sanity_check_results_with_options(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobSanityCheckResults',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/sanitycheckresults',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.ListJobSanityCheckResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_job_sanity_check_results_with_options_async(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.order):
+            query['Order'] = request.order
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListJobSanityCheckResults',
+            version='2020-12-03',
+            protocol='HTTPS',
+            pathname=f'/api/v1/jobs/{OpenApiUtilClient.get_encode_param(job_id)}/sanitycheckresults',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            pai_dlc_20201203_models.ListJobSanityCheckResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_job_sanity_check_results(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
+    ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_job_sanity_check_results_with_options(job_id, request, headers, runtime)
+
+    async def list_job_sanity_check_results_async(
+        self,
+        job_id: str,
+        request: pai_dlc_20201203_models.ListJobSanityCheckResultsRequest,
+    ) -> pai_dlc_20201203_models.ListJobSanityCheckResultsResponse:
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_job_sanity_check_results_with_options_async(job_id, request, headers, runtime)
 
     def list_jobs_with_options(
         self,

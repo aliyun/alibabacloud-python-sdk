@@ -2461,6 +2461,63 @@ class Resources(TeaModel):
         return self
 
 
+class SanityCheckResultItem(TeaModel):
+    def __init__(
+        self,
+        check_number: int = None,
+        finished_at: str = None,
+        message: str = None,
+        phase: str = None,
+        started_at: str = None,
+        status: str = None,
+    ):
+        self.check_number = check_number
+        self.finished_at = finished_at
+        self.message = message
+        self.phase = phase
+        self.started_at = started_at
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_number is not None:
+            result['CheckNumber'] = self.check_number
+        if self.finished_at is not None:
+            result['FinishedAt'] = self.finished_at
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.phase is not None:
+            result['Phase'] = self.phase
+        if self.started_at is not None:
+            result['StartedAt'] = self.started_at
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckNumber') is not None:
+            self.check_number = m.get('CheckNumber')
+        if m.get('FinishedAt') is not None:
+            self.finished_at = m.get('FinishedAt')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('Phase') is not None:
+            self.phase = m.get('Phase')
+        if m.get('StartedAt') is not None:
+            self.started_at = m.get('StartedAt')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
 class SmartCache(TeaModel):
     def __init__(
         self,
@@ -3921,7 +3978,9 @@ class GetJobResponseBody(TeaModel):
         restart_times: str = None,
         settings: JobSettings = None,
         status: str = None,
+        status_history: List[StatusTransitionItem] = None,
         sub_status: str = None,
+        tenant_id: str = None,
         thirdparty_lib_dir: str = None,
         thirdparty_libs: List[str] = None,
         user_command: str = None,
@@ -3957,7 +4016,9 @@ class GetJobResponseBody(TeaModel):
         self.restart_times = restart_times
         self.settings = settings
         self.status = status
+        self.status_history = status_history
         self.sub_status = sub_status
+        self.tenant_id = tenant_id
         self.thirdparty_lib_dir = thirdparty_lib_dir
         self.thirdparty_libs = thirdparty_libs
         self.user_command = user_command
@@ -3984,6 +4045,10 @@ class GetJobResponseBody(TeaModel):
                     k.validate()
         if self.settings:
             self.settings.validate()
+        if self.status_history:
+            for k in self.status_history:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -4053,8 +4118,14 @@ class GetJobResponseBody(TeaModel):
             result['Settings'] = self.settings.to_map()
         if self.status is not None:
             result['Status'] = self.status
+        result['StatusHistory'] = []
+        if self.status_history is not None:
+            for k in self.status_history:
+                result['StatusHistory'].append(k.to_map() if k else None)
         if self.sub_status is not None:
             result['SubStatus'] = self.sub_status
+        if self.tenant_id is not None:
+            result['TenantId'] = self.tenant_id
         if self.thirdparty_lib_dir is not None:
             result['ThirdpartyLibDir'] = self.thirdparty_lib_dir
         if self.thirdparty_libs is not None:
@@ -4139,8 +4210,15 @@ class GetJobResponseBody(TeaModel):
             self.settings = temp_model.from_map(m['Settings'])
         if m.get('Status') is not None:
             self.status = m.get('Status')
+        self.status_history = []
+        if m.get('StatusHistory') is not None:
+            for k in m.get('StatusHistory'):
+                temp_model = StatusTransitionItem()
+                self.status_history.append(temp_model.from_map(k))
         if m.get('SubStatus') is not None:
             self.sub_status = m.get('SubStatus')
+        if m.get('TenantId') is not None:
+            self.tenant_id = m.get('TenantId')
         if m.get('ThirdpartyLibDir') is not None:
             self.thirdparty_lib_dir = m.get('ThirdpartyLibDir')
         if m.get('ThirdpartyLibs') is not None:
@@ -4460,6 +4538,136 @@ class GetJobMetricsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = GetJobMetricsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class GetJobSanityCheckResultRequest(TeaModel):
+    def __init__(
+        self,
+        sanity_check_number: int = None,
+        sanity_check_phase: str = None,
+        token: str = None,
+    ):
+        self.sanity_check_number = sanity_check_number
+        self.sanity_check_phase = sanity_check_phase
+        self.token = token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.sanity_check_number is not None:
+            result['SanityCheckNumber'] = self.sanity_check_number
+        if self.sanity_check_phase is not None:
+            result['SanityCheckPhase'] = self.sanity_check_phase
+        if self.token is not None:
+            result['Token'] = self.token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SanityCheckNumber') is not None:
+            self.sanity_check_number = m.get('SanityCheckNumber')
+        if m.get('SanityCheckPhase') is not None:
+            self.sanity_check_phase = m.get('SanityCheckPhase')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
+        return self
+
+
+class GetJobSanityCheckResultResponseBody(TeaModel):
+    def __init__(
+        self,
+        job_id: str = None,
+        request_id: str = None,
+        sanity_check_result: List[SanityCheckResultItem] = None,
+    ):
+        self.job_id = job_id
+        self.request_id = request_id
+        self.sanity_check_result = sanity_check_result
+
+    def validate(self):
+        if self.sanity_check_result:
+            for k in self.sanity_check_result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+        if self.request_id is not None:
+            result['RequestID'] = self.request_id
+        result['SanityCheckResult'] = []
+        if self.sanity_check_result is not None:
+            for k in self.sanity_check_result:
+                result['SanityCheckResult'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
+        self.sanity_check_result = []
+        if m.get('SanityCheckResult') is not None:
+            for k in m.get('SanityCheckResult'):
+                temp_model = SanityCheckResultItem()
+                self.sanity_check_result.append(temp_model.from_map(k))
+        return self
+
+
+class GetJobSanityCheckResultResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetJobSanityCheckResultResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetJobSanityCheckResultResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5302,6 +5510,131 @@ class ListEcsSpecsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ListEcsSpecsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListJobSanityCheckResultsRequest(TeaModel):
+    def __init__(
+        self,
+        order: str = None,
+    ):
+        self.order = order
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.order is not None:
+            result['Order'] = self.order
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        return self
+
+
+class ListJobSanityCheckResultsResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        sanity_check_results: List[List[SanityCheckResultItem]] = None,
+        total_count: int = None,
+    ):
+        self.request_id = request_id
+        self.sanity_check_results = sanity_check_results
+        self.total_count = total_count
+
+    def validate(self):
+        if self.sanity_check_results:
+            for k in self.sanity_check_results:
+                for k1 in k:
+                    if k1:
+                        k1.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestID'] = self.request_id
+        result['SanityCheckResults'] = []
+        if self.sanity_check_results is not None:
+            for k in self.sanity_check_results:
+                l1 = []
+                for k1 in k:
+                    l1.append(k1.to_map() if k1 else None)
+                result['SanityCheckResults'].append(l1)
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestID') is not None:
+            self.request_id = m.get('RequestID')
+        self.sanity_check_results = []
+        if m.get('SanityCheckResults') is not None:
+            for k in m.get('SanityCheckResults'):
+                l1 = []
+                for k1 in k:
+                    temp_model = SanityCheckResultItem()
+                    l1.append(temp_model.from_map(k1))
+                self.sanity_check_results.append(l1)
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class ListJobSanityCheckResultsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListJobSanityCheckResultsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListJobSanityCheckResultsResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
