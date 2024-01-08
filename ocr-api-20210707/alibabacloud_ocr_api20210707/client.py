@@ -233,15 +233,21 @@ class Client(OpenApiClient):
             request.advanced_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_config, 'AdvancedConfig', 'json')
         if not UtilClient.is_unset(tmp_req.id_card_config):
             request.id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.id_card_config, 'IdCardConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.international_business_license_config):
+            request.international_business_license_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.international_business_license_config, 'InternationalBusinessLicenseConfig', 'json')
         if not UtilClient.is_unset(tmp_req.international_id_card_config):
             request.international_id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.international_id_card_config, 'InternationalIdCardConfig', 'json')
         if not UtilClient.is_unset(tmp_req.multi_lan_config):
             request.multi_lan_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_lan_config, 'MultiLanConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.table_config):
+            request.table_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_config, 'TableConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.advanced_config_shrink):
             query['AdvancedConfig'] = request.advanced_config_shrink
         if not UtilClient.is_unset(request.id_card_config_shrink):
             query['IdCardConfig'] = request.id_card_config_shrink
+        if not UtilClient.is_unset(request.international_business_license_config_shrink):
+            query['InternationalBusinessLicenseConfig'] = request.international_business_license_config_shrink
         if not UtilClient.is_unset(request.international_id_card_config_shrink):
             query['InternationalIdCardConfig'] = request.international_id_card_config_shrink
         if not UtilClient.is_unset(request.multi_lan_config_shrink):
@@ -262,6 +268,8 @@ class Client(OpenApiClient):
             query['OutputStamp'] = request.output_stamp
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.table_config_shrink):
+            query['TableConfig'] = request.table_config_shrink
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.url):
@@ -299,15 +307,21 @@ class Client(OpenApiClient):
             request.advanced_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_config, 'AdvancedConfig', 'json')
         if not UtilClient.is_unset(tmp_req.id_card_config):
             request.id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.id_card_config, 'IdCardConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.international_business_license_config):
+            request.international_business_license_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.international_business_license_config, 'InternationalBusinessLicenseConfig', 'json')
         if not UtilClient.is_unset(tmp_req.international_id_card_config):
             request.international_id_card_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.international_id_card_config, 'InternationalIdCardConfig', 'json')
         if not UtilClient.is_unset(tmp_req.multi_lan_config):
             request.multi_lan_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.multi_lan_config, 'MultiLanConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.table_config):
+            request.table_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.table_config, 'TableConfig', 'json')
         query = {}
         if not UtilClient.is_unset(request.advanced_config_shrink):
             query['AdvancedConfig'] = request.advanced_config_shrink
         if not UtilClient.is_unset(request.id_card_config_shrink):
             query['IdCardConfig'] = request.id_card_config_shrink
+        if not UtilClient.is_unset(request.international_business_license_config_shrink):
+            query['InternationalBusinessLicenseConfig'] = request.international_business_license_config_shrink
         if not UtilClient.is_unset(request.international_id_card_config_shrink):
             query['InternationalIdCardConfig'] = request.international_id_card_config_shrink
         if not UtilClient.is_unset(request.multi_lan_config_shrink):
@@ -328,6 +342,8 @@ class Client(OpenApiClient):
             query['OutputStamp'] = request.output_stamp
         if not UtilClient.is_unset(request.page_no):
             query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.table_config_shrink):
+            query['TableConfig'] = request.table_config_shrink
         if not UtilClient.is_unset(request.type):
             query['Type'] = request.type
         if not UtilClient.is_unset(request.url):

@@ -1,3 +1,6 @@
+2024-01-08 Version: 2.0.2
+- Generated python 2021-07-07 for ocr-api.
+
 2023-11-23 Version: 2.0.1
 - Generated python 2021-07-07 for ocr-api.
 
