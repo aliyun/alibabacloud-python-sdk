@@ -1779,6 +1779,300 @@ class TextModerationResponse(TeaModel):
         return self
 
 
+class TextModerationPlusRequest(TeaModel):
+    def __init__(
+        self,
+        service: str = None,
+        service_parameters: str = None,
+    ):
+        self.service = service
+        self.service_parameters = service_parameters
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.service is not None:
+            result['Service'] = self.service
+        if self.service_parameters is not None:
+            result['ServiceParameters'] = self.service_parameters
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Service') is not None:
+            self.service = m.get('Service')
+        if m.get('ServiceParameters') is not None:
+            self.service_parameters = m.get('ServiceParameters')
+        return self
+
+
+class TextModerationPlusResponseBodyDataAdvice(TeaModel):
+    def __init__(
+        self,
+        answer: str = None,
+    ):
+        self.answer = answer
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.answer is not None:
+            result['Answer'] = self.answer
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Answer') is not None:
+            self.answer = m.get('Answer')
+        return self
+
+
+class TextModerationPlusResponseBodyDataResultCustomizedHit(TeaModel):
+    def __init__(
+        self,
+        key_words: str = None,
+        lib_name: str = None,
+    ):
+        self.key_words = key_words
+        self.lib_name = lib_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key_words is not None:
+            result['KeyWords'] = self.key_words
+        if self.lib_name is not None:
+            result['LibName'] = self.lib_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('KeyWords') is not None:
+            self.key_words = m.get('KeyWords')
+        if m.get('LibName') is not None:
+            self.lib_name = m.get('LibName')
+        return self
+
+
+class TextModerationPlusResponseBodyDataResult(TeaModel):
+    def __init__(
+        self,
+        confidence: float = None,
+        customized_hit: List[TextModerationPlusResponseBodyDataResultCustomizedHit] = None,
+        label: str = None,
+        risk_words: str = None,
+    ):
+        self.confidence = confidence
+        self.customized_hit = customized_hit
+        self.label = label
+        self.risk_words = risk_words
+
+    def validate(self):
+        if self.customized_hit:
+            for k in self.customized_hit:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.confidence is not None:
+            result['Confidence'] = self.confidence
+        result['CustomizedHit'] = []
+        if self.customized_hit is not None:
+            for k in self.customized_hit:
+                result['CustomizedHit'].append(k.to_map() if k else None)
+        if self.label is not None:
+            result['Label'] = self.label
+        if self.risk_words is not None:
+            result['RiskWords'] = self.risk_words
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Confidence') is not None:
+            self.confidence = m.get('Confidence')
+        self.customized_hit = []
+        if m.get('CustomizedHit') is not None:
+            for k in m.get('CustomizedHit'):
+                temp_model = TextModerationPlusResponseBodyDataResultCustomizedHit()
+                self.customized_hit.append(temp_model.from_map(k))
+        if m.get('Label') is not None:
+            self.label = m.get('Label')
+        if m.get('RiskWords') is not None:
+            self.risk_words = m.get('RiskWords')
+        return self
+
+
+class TextModerationPlusResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        advice: List[TextModerationPlusResponseBodyDataAdvice] = None,
+        result: List[TextModerationPlusResponseBodyDataResult] = None,
+        score: float = None,
+    ):
+        self.advice = advice
+        self.result = result
+        self.score = score
+
+    def validate(self):
+        if self.advice:
+            for k in self.advice:
+                if k:
+                    k.validate()
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Advice'] = []
+        if self.advice is not None:
+            for k in self.advice:
+                result['Advice'].append(k.to_map() if k else None)
+        result['Result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['Result'].append(k.to_map() if k else None)
+        if self.score is not None:
+            result['Score'] = self.score
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advice = []
+        if m.get('Advice') is not None:
+            for k in m.get('Advice'):
+                temp_model = TextModerationPlusResponseBodyDataAdvice()
+                self.advice.append(temp_model.from_map(k))
+        self.result = []
+        if m.get('Result') is not None:
+            for k in m.get('Result'):
+                temp_model = TextModerationPlusResponseBodyDataResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        return self
+
+
+class TextModerationPlusResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: TextModerationPlusResponseBodyData = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = TextModerationPlusResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class TextModerationPlusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TextModerationPlusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TextModerationPlusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class VideoModerationRequest(TeaModel):
     def __init__(
         self,
