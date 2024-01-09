@@ -1940,12 +1940,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.cloud_disks):
+            body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.disassociate_datasets):
             body['DisassociateDatasets'] = request.disassociate_datasets
         if not UtilClient.is_unset(request.disassociate_driver):
             body['DisassociateDriver'] = request.disassociate_driver
+        if not UtilClient.is_unset(request.disassociate_forward_infos):
+            body['DisassociateForwardInfos'] = request.disassociate_forward_infos
         if not UtilClient.is_unset(request.disassociate_vpc):
             body['DisassociateVpc'] = request.disassociate_vpc
         if not UtilClient.is_unset(request.driver):
@@ -1999,12 +2003,16 @@ class Client(OpenApiClient):
         body = {}
         if not UtilClient.is_unset(request.accessibility):
             body['Accessibility'] = request.accessibility
+        if not UtilClient.is_unset(request.cloud_disks):
+            body['CloudDisks'] = request.cloud_disks
         if not UtilClient.is_unset(request.datasets):
             body['Datasets'] = request.datasets
         if not UtilClient.is_unset(request.disassociate_datasets):
             body['DisassociateDatasets'] = request.disassociate_datasets
         if not UtilClient.is_unset(request.disassociate_driver):
             body['DisassociateDriver'] = request.disassociate_driver
+        if not UtilClient.is_unset(request.disassociate_forward_infos):
+            body['DisassociateForwardInfos'] = request.disassociate_forward_infos
         if not UtilClient.is_unset(request.disassociate_vpc):
             body['DisassociateVpc'] = request.disassociate_vpc
         if not UtilClient.is_unset(request.driver):
