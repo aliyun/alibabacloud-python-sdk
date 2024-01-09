@@ -1,3 +1,6 @@
+2024-01-09 Version: 1.2.1
+- Generated python 2022-07-11 for docmind-api.
+
 2023-11-01 Version: 1.2.0
 - Generated python 2022-07-11 for docmind-api.
 
