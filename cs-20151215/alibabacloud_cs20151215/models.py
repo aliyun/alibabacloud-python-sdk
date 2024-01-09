@@ -56,6 +56,8 @@ class DataDisk(TeaModel):
         auto_snapshot_policy_id: str = None,
         bursting_enabled: bool = None,
         category: str = None,
+        device: str = None,
+        disk_name: str = None,
         encrypted: str = None,
         file_system: str = None,
         kms_key_id: str = None,
@@ -63,11 +65,14 @@ class DataDisk(TeaModel):
         performance_level: str = None,
         provisioned_iops: int = None,
         size: int = None,
+        snapshot_id: str = None,
     ):
         self.auto_format = auto_format
         self.auto_snapshot_policy_id = auto_snapshot_policy_id
         self.bursting_enabled = bursting_enabled
         self.category = category
+        self.device = device
+        self.disk_name = disk_name
         self.encrypted = encrypted
         self.file_system = file_system
         self.kms_key_id = kms_key_id
@@ -75,6 +80,7 @@ class DataDisk(TeaModel):
         self.performance_level = performance_level
         self.provisioned_iops = provisioned_iops
         self.size = size
+        self.snapshot_id = snapshot_id
 
     def validate(self):
         pass
@@ -93,6 +99,10 @@ class DataDisk(TeaModel):
             result['bursting_enabled'] = self.bursting_enabled
         if self.category is not None:
             result['category'] = self.category
+        if self.device is not None:
+            result['device'] = self.device
+        if self.disk_name is not None:
+            result['disk_name'] = self.disk_name
         if self.encrypted is not None:
             result['encrypted'] = self.encrypted
         if self.file_system is not None:
@@ -107,6 +117,8 @@ class DataDisk(TeaModel):
             result['provisioned_iops'] = self.provisioned_iops
         if self.size is not None:
             result['size'] = self.size
+        if self.snapshot_id is not None:
+            result['snapshot_id'] = self.snapshot_id
         return result
 
     def from_map(self, m: dict = None):
@@ -119,6 +131,10 @@ class DataDisk(TeaModel):
             self.bursting_enabled = m.get('bursting_enabled')
         if m.get('category') is not None:
             self.category = m.get('category')
+        if m.get('device') is not None:
+            self.device = m.get('device')
+        if m.get('disk_name') is not None:
+            self.disk_name = m.get('disk_name')
         if m.get('encrypted') is not None:
             self.encrypted = m.get('encrypted')
         if m.get('file_system') is not None:
@@ -133,6 +149,8 @@ class DataDisk(TeaModel):
             self.provisioned_iops = m.get('provisioned_iops')
         if m.get('size') is not None:
             self.size = m.get('size')
+        if m.get('snapshot_id') is not None:
+            self.snapshot_id = m.get('snapshot_id')
         return self
 
 
@@ -2341,7 +2359,7 @@ class CreateAutoscalingConfigRequest(TeaModel):
         unneeded_duration: str = None,
         utilization_threshold: str = None,
     ):
-        # The cooldown period. Newly added nodes can be removed in scale-in activities only after the cooldown period ends. Unit: minutes.
+        # The waiting time before the auto scaling feature performs a scale-in activity. Only if the resource usage on a node remains below the scale-in threshold within the waiting time, the node is removed after the waiting time ends. Unit: minutes.
         self.cool_down_duration = cool_down_duration
         # Specifies whether to evict DaemonSet pods during scale-in activities. Valid values:
         # 
@@ -2371,7 +2389,7 @@ class CreateAutoscalingConfigRequest(TeaModel):
         self.scale_up_from_zero = scale_up_from_zero
         # The interval at which the cluster is scanned and evaluated for scaling. Unit: seconds.
         self.scan_interval = scan_interval
-        # Specifies whether to allow the cluster autoscaler to scale in nodes that host pods mounted with local storage (such as EmptyDir volumes or HostPath volumes). Valid values:
+        # Specifies whether to allow the cluster autoscaler to scale in nodes that host pods mounted with local storage, such as EmptyDir volumes or HostPath volumes. Valid values:
         # 
         # *   `true`: does not allow the cluster autoscaler to scale in these nodes.
         # *   `false`: allows the cluster autoscaler to scale in these nodes.
@@ -2381,7 +2399,7 @@ class CreateAutoscalingConfigRequest(TeaModel):
         # *   `true`: does not allow the cluster autoscaler to scale in these nodes.
         # *   `false`: allows the cluster autoscaler to scale in these nodes.
         self.skip_nodes_with_system_pods = skip_nodes_with_system_pods
-        # The waiting time before the auto scaling feature performs a scale-in activity. Only if the resource usage on a node remains below the scale-in threshold within the waiting time, the node is removed after the waiting time ends. Unit: minutes.
+        # The cooldown period. Newly added nodes can be removed in scale-in activities only after the cooldown period ends. Unit: minutes.
         self.unneeded_duration = unneeded_duration
         # The scale-in threshold. This threshold specifies the ratio of the resources that are requested by pods to the total resources on the node.
         self.utilization_threshold = utilization_threshold
@@ -3645,7 +3663,7 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         # 
         # Specifies whether to associate an elastic IP address (EIP) with the node pool. Valid values:
         # 
-        # *   `true`: associates an EIP with the node pool.
+        # *   `true`: associates an EIP with the node pool
         # *   `false`: does not associate an EIP with the node pool.
         # 
         # Default value: `false`.
@@ -3659,7 +3677,7 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         # *   `cpu`: regular instance.
         # *   `gpu`: GPU-accelerated instance.
         # *   `gpushare`: shared GPU-accelerated instance.
-        # *   `spot`: preemptible instance.
+        # *   `spot`: preemptible instance
         # 
         # Default value: `cpu`.
         self.type = type
@@ -3794,7 +3812,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         # 
         # Default value: `false`.
         self.cms_enabled = cms_enabled
-        # The CPU management policy. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
+        # The CPU management policy of the nodes in a node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
         # 
         # *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
         # *   `none`: specifies that the default CPU affinity is used.
@@ -3814,10 +3832,10 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         self.runtime = runtime
         # The version of the container runtime.
         self.runtime_version = runtime_version
-        # The configurations of the taints.
+        # The configuration of taints.
         self.taints = taints
         self.unschedulable = unschedulable
-        # The user data on the node.
+        # The user-defined data on nodes.
         self.user_data = user_data
 
     def validate(self):
@@ -3984,16 +4002,16 @@ class CreateClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
         surge: int = None,
         surge_percentage: int = None,
     ):
-        # Specifies whether to enable auto upgrade. Valid values:
+        # Indicates whether auto update is enabled. Valid values:
         # 
-        # *   `true`: enables auto update.
+        # *   `true`: enables auto upgrade.
         # *   `false`: disables auto update.
         self.auto_upgrade = auto_upgrade
         # The maximum number of nodes that can be in the Unschedulable state. Valid values: 1 to 1000.
         # 
         # Default value: 1.
         self.max_unavailable = max_unavailable
-        # The number of additional nodes.
+        # The number of nodes that are temporarily added to the node pool during an auto update.
         self.surge = surge
         # The percentage of additional nodes to the nodes in the node pool. You must set this parameter or `surge`.
         self.surge_percentage = surge_percentage
@@ -4042,7 +4060,7 @@ class CreateClusterNodePoolRequestManagement(TeaModel):
         enable: bool = None,
         upgrade_config: CreateClusterNodePoolRequestManagementUpgradeConfig = None,
     ):
-        # Specifies whether to enable auto repair. This parameter takes effect only when you specify `enable=true`.
+        # Specifies whether to enable auto repair. This parameter takes effect only when you specify `enable=true`. Valid values:
         # 
         # *   `true`: enables auto repair.
         # *   `false`: disables auto repair.
@@ -4057,7 +4075,7 @@ class CreateClusterNodePoolRequestManagement(TeaModel):
         # *   `true`: enables the managed node pool feature.
         # *   `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
         self.enable = enable
-        # The configurations about auto update. The configurations take effect only when you specify `enable=true`.
+        # The configuration of auto update. The configuration takes effect only when you specify `enable=true`.
         self.upgrade_config = upgrade_config
 
     def validate(self):
@@ -4201,11 +4219,11 @@ class CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private node pool.
         self.id = id
-        # The type of private node pool. This parameter specifies the type of private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. The system selects a private pool to start instances. Valid values:
+        # The type of private node pool. This parameter specifies the type of private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values:
         # 
-        # *   `Open`: specifies an open private pool. The system selects an open private pool to start instances. If no matching open private pools are available, the resources in the public pool are used.
-        # *   `Target`: specifies a private node pool. The system uses the resources of the specified private pool to start instances. If the specified private pool is unavailable, instances cannot be started.
-        # *   `None`: does not use private pools. The resources of private pools are not used to start instances.
+        # *   `Open`: open private pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used.
+        # *   `Target`: specific private pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be launched.
+        # *   `None`: no private pool is used. The resources of private node pools are not used to launch the instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -4238,11 +4256,9 @@ class CreateClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
         instance_type: str = None,
         price_limit: str = None,
     ):
-        # The instance type of the preemptible instances.
+        # The instance type of preemptible instance.
         self.instance_type = instance_type
         # The maximum bid price of a preemptible instance.
-        # 
-        # Unit: USD/hour.
         self.price_limit = price_limit
 
     def validate(self):
@@ -4275,9 +4291,9 @@ class CreateClusterNodePoolRequestScalingGroupTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the label.
+        # The key of a label.
         self.key = key
-        # The value of the label.
+        # The value of a label.
         self.value = value
 
     def validate(self):
@@ -4353,12 +4369,12 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
     ):
         # Specifies whether to enable auto-renewal for nodes in the node pool. This parameter takes effect only when you set `instance_charge_type` to `PrePaid`. Valid values:
         # 
-        # *   `true`: enables auto-renewal.
+        # *   `true`: enables auto-renewal
         # *   `false`: disables auto-renewal.
         # 
         # Default value: `true`.
         self.auto_renew = auto_renew
-        # The duration of the auto-renewal. This property takes effect and is required only when you set instance_charge_type to PrePaid and auto_renew to true. If `PeriodUnit=Month` is configured, the valid values are 1, 2, 3, 6, and 12.
+        # The duration of the auto-renewal. This parameter takes effect and is required only when you set instance_charge_type to PrePaid and auto_renew to true. If `PeriodUnit=Month` is configured, the valid values are 1, 2, 3, 6, and 12.
         # 
         # Default value: 1.
         self.auto_renew_period = auto_renew_period
@@ -4368,9 +4384,9 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # *   `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         # *   `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The configurations of the data disks that are mounted to the nodes in the node pool.
+        # The configuration of the data disks that are mounted to the nodes in the node pool.
         self.data_disks = data_disks
-        # The ID of the deployment set.
+        # The ID of the deployment set to which the ECS instances in the node pool belong.
         self.deploymentset_id = deploymentset_id
         # The expected number of nodes in the node pool.
         self.desired_size = desired_size
@@ -4398,27 +4414,27 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.instance_types = instance_types
         # The metering method of the public IP address. Valid values:
         # 
-        # *   PayByBandwidth: pay-by-bandwidth
-        # *   PayByTraffic: pay-by-data-transfer
+        # *   PayByBandwidth: pay-by-bandwidth.
+        # *   PayByTraffic: pay-by-data-transfer.
         self.internet_charge_type = internet_charge_type
         # The maximum outbound bandwidth of the public IP address of the node. Unit: Mbit/s. Valid values: 1 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
         # The name of the key pair. You must set this parameter or the `login_password` parameter.
         # 
-        # >  If you create a managed node pool, only `key_pair` is supported.
+        # >  If you want to create a managed node pool, you must set `key_pair`.
         self.key_pair = key_pair
         self.login_as_non_root = login_as_non_root
         # The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         self.login_password = login_password
         # The ECS instance scaling policy for a multi-zone scaling group. Valid values:
         # 
-        # *   `PRIORITY`: the scaling group is scaled based on the VSwitchIds.N parameter. If an ECS instance cannot be created in the zone where the vSwitch that has the highest priority resides, Auto Scaling creates the ECS instance in the zone where the vSwitch that has the next highest priority resides.
+        # *   `PRIORITY`: ECS instances are created based on the VSwitchIds.N parameter. If Auto Scaling fails to create ECS instances in the zone of the vSwitch with the highest priority, Auto Scaling attempts to create ECS instances in the zone of the vSwitch with a lower priority.
         # 
         # *   `COST_OPTIMIZED`: ECS instances are created based on the vCPU unit price in ascending order. Preemptible instances are preferably created when preemptible instance types are specified in the scaling configuration. You can set the `CompensateWithOnDemand` parameter to specify whether to automatically create pay-as-you-go instances when preemptible instances cannot be created due to insufficient resources.
         # 
         #     **\
         # 
-        #     **Note**The `COST_OPTIMIZED` setting takes effect only when multiple instance types are specified or at least one instance type is specified for preemptible instances.
+        #     **Note** `COST_OPTIMIZED` is valid only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
         # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call [RebalanceInstances](~~71516~~) of Auto Scaling to balance the instance distribution among zones.
         # 
@@ -4443,7 +4459,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # Default value: `AliyunLinux`.
         self.platform = platform
-        # The configurations of the private node pool.
+        # The configuration of the private node pool.
         self.private_pool_options = private_pool_options
         # A list of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
@@ -4459,28 +4475,29 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # The IDs of security groups to which you want to add the node pool. You must set this parameter or `security_group_id`. We recommend that you set `security_group_ids`. If you set both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
         self.security_group_ids = security_group_ids
         self.soc_enabled = soc_enabled
-        # The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+        # The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
-        # Specifies whether to supplement preemptible instances. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values: Valid values:
+        # Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values:
         # 
         # *   `true`: enables the supplementation of preemptible instances.
         # *   `false`: disables the supplementation of preemptible instances.
         self.spot_instance_remedy = spot_instance_remedy
-        # The instance type for preemptible instances and the price limit of the instance type.
+        # The instance type of preemptible instance and the maximum bid price.
         self.spot_price_limit = spot_price_limit
-        # The bidding policy for the instance. Valid values:
+        # The bidding policy of preemptible instances. Valid values:
         # 
         # *   `NoSpot`: non-preemptible instance.
-        # *   `SpotWithPriceLimit`: specifies the highest bid for the preemptible instance.
+        # *   `SpotWithPriceLimit`: specifies the highest bid.
         # *   `SpotAsPriceGo`: automatically submits bids based on the up-to-date market price.
         # 
         # For more information, see [Preemptible instances](~~165053~~).
         self.spot_strategy = spot_strategy
-        # 节点系统盘是否开启Burst（性能突发）。 取值：
-        # - true：是。
-        # - false：否。
+        # Specifies whether to enable the burst feature for system disks. Valid values:
         # 
-        # 当`SystemDiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
+        # *   true: enables the burst feature.
+        # *   false: disables the burst feature.
+        # 
+        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](~~368372~~).
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
         self.system_disk_categories = system_disk_categories
         # The type of system disk. Valid values:
@@ -4501,9 +4518,9 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # *   PL2: high maximum concurrent I/O performance and low I/O latency
         # *   PL3: ultra-high maximum concurrent I/O performance and ultra-low I/O latency
         self.system_disk_performance_level = system_disk_performance_level
-        # 节点系统盘预配置的读写IOPS。可能值：0~min{50,000, 1000\*容量-基准性能}。 基准性能=min{1,800+50\*容量, 50000}。
+        # The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
         # 
-        # 当`SystemDiskCategory`取值为`cloud_auto`时才支持设置该参数。更多信息，请参见[ESSD AutoPL云盘](~~368372~~)。
+        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](~~368372~~).
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
         # The system disk size of a node. Unit: GiB.
         # 
@@ -4513,9 +4530,9 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # Each key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
         self.tags = tags
-        # The IDs of vSwitches. You can specify 1 to 20 vSwitches.
+        # The vSwitch IDs. Valid values: 1 to 8.
         # 
-        # >  To ensure high availability, we recommend that you select VSwitches in different zones.
+        # >  To ensure high availability, we recommend that you select vSwitches that reside in different zones.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -4778,7 +4795,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         scaling_group: CreateClusterNodePoolRequestScalingGroup = None,
         tee_config: CreateClusterNodePoolRequestTeeConfig = None,
     ):
-        # The configuration about auto scaling.
+        # The configuration of auto scaling.
         self.auto_scaling = auto_scaling
         # This parameter is deprecated. Use the desired_size parameter instead.
         # 
@@ -4786,7 +4803,7 @@ class CreateClusterNodePoolRequest(TeaModel):
         self.count = count
         # This parameter is deprecated.
         # 
-        # The configurations of the edge node pool.
+        # The configuration of the edge node pool.
         self.interconnect_config = interconnect_config
         # The network type of the edge node pool. This parameter takes effect only when you set the `type` parameter of the node pool to `edge`. Valid values:
         # 
@@ -4794,18 +4811,18 @@ class CreateClusterNodePoolRequest(TeaModel):
         # *   `improved`: enhanced
         # *   `private`: dedicated Only Kubernetes 1.22 and later support this parameter.
         self.interconnect_mode = interconnect_mode
-        # The configurations about the cluster.
+        # The configuration of the cluster.
         self.kubernetes_config = kubernetes_config
-        # The configurations about the managed node pool feature.
+        # The configuration of the managed node pool feature.
         self.management = management
         # The maximum number of nodes that can be created in the edge node pool. You must specify a value that is equal to or larger than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools of the ess type or default edge node pools.
         self.max_nodes = max_nodes
         self.node_config = node_config
-        # The configurations of the node pool.
+        # The configuration of the node pool.
         self.nodepool_info = nodepool_info
         # The configuration of the scaling group that is used by the node pool.
         self.scaling_group = scaling_group
-        # The configurations about confidential computing for the cluster.
+        # The configuration of confidential computing for the cluster.
         self.tee_config = tee_config
 
     def validate(self):
@@ -4899,7 +4916,7 @@ class CreateClusterNodePoolResponseBody(TeaModel):
     ):
         # The node pool ID.
         self.nodepool_id = nodepool_id
-        # 任务ID
+        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -6838,10 +6855,9 @@ class DescribeAddonsRequest(TeaModel):
         self.cluster_spec = cluster_spec
         # The type of cluster. Valid values:
         # 
-        # *   `Kubernetes`: ACK dedicated cluster
-        # *   `ManagedKubernetes`: ACK managed cluster
-        # *   `Ask`: ACK Serverless cluster
-        # *   `ExternalKubernetes`: registered cluster
+        # *   `Kubernetes`: ACK dedicated cluster.
+        # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Pro clusters, ACK Basic clusters, ACK Serverless Pro clusters, ACK Serverless Basic clusters, ACK Edge Pro clusters, and ACK Edge Basic clusters.
+        # *   `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
         # The cluster version.
         self.cluster_version = cluster_version
@@ -9663,12 +9679,12 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
         min_instances: int = None,
         type: str = None,
     ):
-        # The maximum bandwidth of the elastic IP address (EIP).
+        # The maximum bandwidth of the EIP.
         self.eip_bandwidth = eip_bandwidth
         # The metering method of the EIP. Valid values:
         # 
         # *   `PayByBandwidth`: pay-by-bandwidth.
-        # *   `PayByTraffic`: pay-by-data-transfer.
+        # *   `PayByTraffic`: pay-by-traffic.
         self.eip_internet_charge_type = eip_internet_charge_type
         # Indicates whether auto scaling is enabled.
         # 
@@ -9682,9 +9698,9 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsAutoScaling(TeaModel):
         self.is_bond_eip = is_bond_eip
         # The maximum number of Elastic Compute Service (ECS) instances that can be created in the node pool.
         self.max_instances = max_instances
-        # The minimum number of ECS instances that must be kept in the node pool.
+        # The minimum number of ECS instances that must be retained in the node pool.
         self.min_instances = min_instances
-        # The instance types that can be used for the auto scaling of the node pool. Valid values:
+        # The instance types that can be used for the auto scaling of a node pool. Valid values:
         # 
         # *   `cpu`: regular instance.
         # *   `gpu`: GPU-accelerated instance.
@@ -9745,14 +9761,24 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsInterconnectConfig(TeaModel):
         cen_id: str = None,
         improved_period: str = None,
     ):
-        # The bandwidth of the enhanced edge node pool. Unit: M.
+        # This parameter is deprecated.
+        # 
+        # The bandwidth of the enhanced edge node pool. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # This parameter is deprecated.
+        # 
         # The ID of the Cloud Connect Network (CCN) instance that is associated with the enhanced edge node pool.
         self.ccn_id = ccn_id
-        # The region to which the CCN instance that is associated with the enhanced edge node pool belongs.
+        # This parameter is deprecated.
+        # 
+        # The region to which the CCN instance that is with the enhanced edge node pool belongs.
         self.ccn_region_id = ccn_region_id
+        # This parameter is deprecated.
+        # 
         # The ID of the Cloud Enterprise Network (CEN) instance that is associated with the enhanced edge node pool.
         self.cen_id = cen_id
+        # This parameter is deprecated.
+        # 
         # The subscription duration of the enhanced edge node pool. The duration is measured in months.
         self.improved_period = improved_period
 
@@ -9810,15 +9836,15 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         # *   `true`: The CloudMonitor agent is installed on ECS nodes.
         # *   `false`: The CloudMonitor agent is not installed on ECS nodes.
         self.cms_enabled = cms_enabled
-        # The CPU management policy of the nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
+        # The CPU management policy. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
         # 
-        # *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
+        # *   `static`: This policy allows pods with specific resource characteristics on the node to be granted with enhanced CPU affinity and exclusivity.
         # *   `none`: indicates that the default CPU affinity is used.
         self.cpu_policy = cpu_policy
         # The labels of the nodes in the node pool. You can add labels to the nodes in the cluster. You must add labels based on the following rules:
         # 
-        # *   Each label is a case-sensitive key-value pair. You can add up to 20 labels.
-        # *   A key must be unique and cannot exceed 64 characters in length. A value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+        # *   Each label is a case-sensitive key-value pair. You can add at most 20 labels.
+        # *   The key must be unique and cannot exceed 64 characters in length. The value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         self.labels = labels
         # A custom node name consists of a prefix, an IP substring, and a suffix.
         # 
@@ -9831,10 +9857,11 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsKubernetesConfig(TeaModel):
         self.runtime = runtime
         # The version of the container runtime.
         self.runtime_version = runtime_version
-        # The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
+        # The taints that you want to add to nodes. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
         self.taints = taints
+        # 扩容后的节点是否可调度。
         self.unschedulable = unschedulable
-        # The user data of the node pool. For more information, see [Generate user data](~~49121~~).
+        # The user data of the node pool. For more information, see [Generate user-defined data](~~49121~~).
         self.user_data = user_data
 
     def validate(self):
@@ -10010,15 +10037,15 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagementUpgradeConfig(TeaMo
         # *   `true`: Auto update is enabled.
         # *   `false`: Auto update is disabled.
         self.auto_upgrade = auto_upgrade
-        # The maximum number of nodes that can be in the Unavailable state. Valid values: 1 to 1000.
+        # The maximum number of nodes that can be in the unschedulable state. Valid values: 1 to 1000.
         # 
         # Default value: 1.
         self.max_unavailable = max_unavailable
         # The number of additional nodes.
         self.surge = surge
-        # The percentage of additional nodes to the nodes in the node pool. You must set this parameter or `surge`.
+        # The percentage of temporary nodes to the nodes in the node pool. You must set this parameter or `surge`.
         # 
-        # The number of additional nodes = The percentage of additional nodes × The number of nodes in the node pool. For example, the percentage of additional nodes is set to 50% and the number of nodes in the node pool is six. The number of additional nodes will be three.
+        # The number of extra nodes = The percentage of extra nodes × The number of nodes in the node pool. For example, the percentage of extra nodes is set to 50% and the number of nodes in the node pool is six. The number of extra nodes will be three.
         self.surge_percentage = surge_percentage
 
     def validate(self):
@@ -10085,7 +10112,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsManagement(TeaModel):
         # *   `true`: The managed node pool feature is enabled.
         # *   `false`: The managed node pool feature is disabled. Other parameters in this section take effect only when `enable=true` is specified.
         self.enable = enable
-        # The configuration of auto update. The configuration takes effect only when `enable=true` is specified.
+        # The configuration of auto update. The configuration take effects only when `enable=true` is specified.
         self.upgrade_config = upgrade_config
 
     def validate(self):
@@ -10152,7 +10179,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsNodeConfig(TeaModel):
         self,
         kubelet_configuration: KubeletConfig = None,
     ):
-        # Kubelet参数配置。
+        # The kubelet configuration.
         self.kubelet_configuration = kubelet_configuration
 
     def validate(self):
@@ -10191,24 +10218,24 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsNodepoolInfo(TeaModel):
     ):
         # The time when the node pool was created.
         self.created = created
-        # Indicates whether the node pool is a default node pool. An ACK cluster usually has only one default node pool. Valid values:
+        # Indicates whether the node pool is a default node pool. A Container Service for Kubernetes (ACK) cluster usually has only one default node pool. Valid values:
         # 
         # *   `true`: The node pool is a default node pool.
         # *   `false`: The node pool is not a default node pool.
         self.is_default = is_default
         # The name of the node pool.
         # 
-        # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). It cannot start with a hyphen (-).
+        # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
         self.name = name
         # The node pool ID.
         self.nodepool_id = nodepool_id
         # The region ID.
         self.region_id = region_id
-        # The ID of the resource group.
+        # The ID of the resource group to which the node pool belongs.
         self.resource_group_id = resource_group_id
         # The type of node pool. Valid values:
         # 
-        # *   `edge`: edge node pool.
+        # *   `edge`: edge node pool
         # *   `ess`: node pool in the cloud.
         self.type = type
         # The time when the node pool was last updated.
@@ -10268,13 +10295,13 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroupPrivatePoolOption
         id: str = None,
         match_criteria: str = None,
     ):
-        # The ID of the private node pool. The ID of a private node pool is the same as the ID of the elasticity assurance or capacity reservation for which the private node pool is generated.
+        # The private pool ID. The ID of a private pool is the same as the ID of the elasticity assurance or capacity reservation for which the private pool is generated.
         self.id = id
         # The type of private node pool. This parameter specifies the type of private node pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values:
         # 
-        # *   `Open`: open private pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used.
-        # *   `Target`: specific private pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be launched.
-        # *   `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
+        # *   `Open`: open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used.
+        # *   `Target`: specific private pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be started.
+        # *   `None`: no private node pool is used. The resources of private node pools are not used to lancuh instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -10396,6 +10423,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # 
         # If you specify `PeriodUnit=Month`, the valid values are 1, 2, 3, 6, and 12.
         self.auto_renew_period = auto_renew_period
+        # 是否开启CIS加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启CIS加固。
         self.cis_enabled = cis_enabled
         # Indicates whether pay-as-you-go instances are automatically created to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as cost or insufficient inventory. This parameter takes effect when `multi_az_policy` is set to `COST_OPTIMIZED`. Valid values:
         # 
@@ -10406,17 +10434,18 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.data_disks = data_disks
         # The ID of the deployment set to which the ECS instances in the node pool belong.
         self.deploymentset_id = deploymentset_id
-        # The expected number of nodes in the node pool.
+        # You can now specify the desired number of nodes for a node pool.
         self.desired_size = desired_size
         # The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK.
         self.image_id = image_id
+        # 操作系统镜像类型。
         self.image_type = image_type
-        # The billing method of the nodes in the node pool. Valid values:
+        # The billing method of the nodes in a node pool. Valid values:
         # 
         # *   `PrePaid`: the subscription billing method.
         # *   `PostPaid`: the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
-        # A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
+        # A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The actual instance types used to create nodes are subject to inventory availability.
         self.instance_types = instance_types
         # The billing method of the public IP address of the node.
         self.internet_charge_type = internet_charge_type
@@ -10426,6 +10455,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # 
         # You must set `key_pair` if the node pool is a managed node pool.
         self.key_pair = key_pair
+        # 弹出的ECS实例是否使用以非root用户登陆。
         self.login_as_non_root = login_as_non_root
         # The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
@@ -10439,7 +10469,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # 
         #     **\
         # 
-        #     **Note**The `COST_OPTIMIZED` setting takes effect only when multiple instance types are specified or at least one instance type is specified for preemptible instances.
+        #     **Note** `COST_OPTIMIZED` takes effect only when multiple instance types or preemptible instances are specified in the auto scaling conflagrations.
         # 
         # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call the `RebalanceInstances` operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](~~71516~~).
         self.multi_az_policy = multi_az_policy
@@ -10453,7 +10483,7 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.period = period
         # The billing cycle of the nodes. This parameter takes effect only when `instance_charge_type` is set to `PrePaid`.
         # 
-        # Valid value: `Month`.
+        # Valid value: `Month`
         self.period_unit = period_unit
         # The release version of the operating system. Valid values:
         # 
@@ -10464,25 +10494,26 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         self.platform = platform
         # The private node pool options.
         self.private_pool_options = private_pool_options
-        # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
+        # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes that are created on Elastic Compute Service (ECS) instances.
         self.ram_policy = ram_policy
-        # After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
+        # After you specify a list of ApsaraDB RDS instances, the ECS instances in the cluster are automatically added to the whitelists of the ApsaraDB RDS instances.
         self.rds_instances = rds_instances
         # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
         # The scaling mode of the scaling group. Valid values:
         # 
         # *   `release`: the standard mode. ECS instances are created and released based on resource usage.
-        # *   `recycle`: the swift mode. ECS instances are created, stopped, or started during scaling events. This reduces the time required for the next scale-out event. When the instance is stopped, you are charged only for the storage service. This does not apply to ECS instances that are attached with local disks.
+        # *   `recycle`: the swift mode. ECS instances are created, stopped, or started during scaling events. This reduces the time required for the next scale-out event. When the instance is stopped, you are charged only for the storage service. This does not apply to ECS instances attached with local disks.
         self.scaling_policy = scaling_policy
         # The ID of the security group to which the node pool is added. If the node pool is added to multiple security groups, the first ID in the value of `security_group_ids` is returned.
         self.security_group_id = security_group_id
         # The IDs of the security groups to which the node pool is added.
         self.security_group_ids = security_group_ids
+        # 是否开启等保加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启等保加固。阿里云为Alibaba Cloud Linux 2和Alibaba Cloud Linux 3等保2.0三级版镜像提供等保合规的基线检查标准和扫描程序。
         self.soc_enabled = soc_enabled
         # The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
-        # Indicates whether preemptible instances are supplemented when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values: Valid values:
+        # Indicates whether preemptible instances are supplemented when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values:
         # 
         # *   `true`: Supplementation of preemptible instances is enabled.
         # *   `false`: Supplementation of preemptible instances is disabled.
@@ -10497,30 +10528,36 @@ class DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup(TeaModel):
         # 
         # For more information, see [Preemptible instances](~~157759~~).
         self.spot_strategy = spot_strategy
+        # 节点系统盘是否开启Burst（性能突发），磁盘类型为cloud_auto时配置。
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        # 系统盘的多磁盘类型。当无法使用高优先级的磁盘类型时，自动尝试下一优先级的磁盘类型创建系统盘。取值范围：cloud：普通云盘。cloud_efficiency：高效云盘。cloud_ssd：SSD云盘。cloud_essd：ESSD云盘。
         self.system_disk_categories = system_disk_categories
         # The type of system disk. Valid values:
         # 
         # *   `cloud_efficiency`: ultra disk.
         # *   `cloud_ssd`: standard SSD.
         self.system_disk_category = system_disk_category
+        # 系统盘采用的加密算法。取值范围：aes-256。
         self.system_disk_encrypt_algorithm = system_disk_encrypt_algorithm
+        # 是否加密系统盘。取值范围：true：加密。false：不加密。
         self.system_disk_encrypted = system_disk_encrypted
+        # 系统盘使用的KMS密钥ID。
         self.system_disk_kms_key_id = system_disk_kms_key_id
         # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for enhanced SSDs (ESSDs).
         self.system_disk_performance_level = system_disk_performance_level
+        # 节点系统盘预配置的读写IOPS，磁盘类型为cloud_auto时配置。
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
         # The system disk size of a node. Unit: GiB.
         # 
-        # Valid values: 20 to 500.
+        # Valid values: 20 to 500
         self.system_disk_size = system_disk_size
         # The labels that you want to add to the ECS instances.
         # 
-        # A key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
+        # The key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
         self.tags = tags
-        # The IDs of vSwitches. You can specify 1 to 20 vSwitches.
+        # The vSwitch IDs. You can specify 1 to 20 vSwitches.
         # 
-        # > We recommend that you select vSwitches in different zones to ensure high availability.
+        # >  To ensure high availability, we recommend that you select vSwitches in different zones.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -10879,17 +10916,19 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
     ):
         # The configurations about auto scaling.
         self.auto_scaling = auto_scaling
+        # This parameter is deprecated.
+        # 
         # The network configuration of the edge node pool. This parameter takes effect only for edge node pools.
         self.interconnect_config = interconnect_config
-        # The network type of the edge node pool. Valid values: basic and enhanced. This parameter takes effect only for edge node pools.
+        # The network type of the edge node pool. basic: basic edge node pools. dedicated: dedicated edge node pools. This parameter takes effect only for edge node pools.
         self.interconnect_mode = interconnect_mode
-        # The configuration of the cluster where the node pool is deployed.
+        # The configurations of the cluster where the node pool is deployed.
         self.kubernetes_config = kubernetes_config
-        # The configuration of the managed node pool feature. The configuration takes effect only for ACK Pro managed clusters.
+        # The configurations of managed node pools. Managed node pools are available only in professional managed Kubernetes clusters.
         self.management = management
         # The maximum number of nodes that are supported by the edge node pool. The value of this parameter must be equal to or greater than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools whose types are ess or default edge node pools.
         self.max_nodes = max_nodes
-        # 节点配置。
+        # The configurations of nodes.
         self.node_config = node_config
         # The information about the node pool.
         self.nodepool_info = nodepool_info
@@ -10897,7 +10936,7 @@ class DescribeClusterNodePoolsResponseBodyNodepools(TeaModel):
         self.scaling_group = scaling_group
         # The status details about the node pool.
         self.status = status
-        # The configuration of confidential computing.
+        # The configurations of confidential computing.
         self.tee_config = tee_config
 
     def validate(self):
@@ -10991,7 +11030,7 @@ class DescribeClusterNodePoolsResponseBody(TeaModel):
         self,
         nodepools: List[DescribeClusterNodePoolsResponseBodyNodepools] = None,
     ):
-        # The list of the returned node pools.
+        # A list of node pools.
         self.nodepools = nodepools
 
     def validate(self):
@@ -11502,17 +11541,17 @@ class DescribeClusterResourcesResponseBody(TeaModel):
         auto_create: int = None,
         dependencies: List[DescribeClusterResourcesResponseBodyDependencies] = None,
     ):
-        # The ID of the cluster.
+        # The cluster ID.
         self.cluster_id = cluster_id
         # The time when the resource was created.
         self.created = created
-        # The ID of the resource.
+        # The resource ID.
         self.instance_id = instance_id
         # The information about the resource. For more information about how to query the source information about a resource, see [ListStackResources](~~133836~~).
         self.resource_info = resource_info
-        # The type of resource.
+        # The resource type.
         self.resource_type = resource_type
-        # The status of the resource. Valid values:
+        # The resource status. Valid values:
         # 
         # *   `CREATE_COMPLETE`: The resource is created.
         # *   `CREATE_FAILED`: The resource failed to be created.
@@ -12729,6 +12768,7 @@ class DescribeClustersV1Request(TeaModel):
         profile: str = None,
         region_id: str = None,
     ):
+        # 集群ID。
         self.cluster_id = cluster_id
         # The cluster type, which is available only when the cluster type is set to `ManagedKubernetes`. Valid values:
         # 
@@ -12737,14 +12777,11 @@ class DescribeClustersV1Request(TeaModel):
         # 
         # By default, this parameter is left empty, which means that ACK clusters are not filtered by this parameter.
         self.cluster_spec = cluster_spec
-        # The type of cluster. Valid values:
+        # The cluster type. Valid values:
         # 
-        # *   `Kubernetes`: ACK dedicated cluster
-        # *   `ManagedKubernetes`: ACK managed cluster, ACK Serverless cluster, or ACK Edge cluster
-        # *   `Ask`: ACK Serverless cluster
-        # *   `ExternalKubernetes`: registered cluster
-        # 
-        # If you want to query ACK Serverless clusters, specify ManagedKubernetes or Ask based on the value that you specified when you created the ACK Serverless clusters.
+        # *   `Kubernetes`: ACK dedicated cluster.
+        # *   `ManagedKubernetes`: ACK managed cluster. ACK managed clusters include ACK Pro clusters, ACK Basic clusters, ACK Serverless Pro clusters, ACK Serverless Basic clusters, ACK Edge Pro clusters, and ACK Edge Basic clusters.
+        # *   `ExternalKubernetes`: registered cluster.
         self.cluster_type = cluster_type
         # The cluster name.
         # 
@@ -12754,13 +12791,17 @@ class DescribeClustersV1Request(TeaModel):
         self.page_number = page_number
         # The number of entries per page.
         self.page_size = page_size
-        # The cluster identifier, which is available only when the cluster type is set to `ManagedKubernetes`. Valid values:
+        # The identifier of the cluster. Valid values when the cluster_type parameter is set to `ManagedKubernetes`:
         # 
         # *   `Default`: ACK managed cluster
         # *   `Serverless`: ACK Serverless cluster
         # *   `Edge`: ACK Edge cluster
         # 
-        # By default, this parameter is left empty, which means that ACK clusters are not filtered by this parameter.
+        # Valid values when the cluster_type parameter is set to `Ask`:
+        # 
+        # `ask.v2`: ACK Serverless cluster
+        # 
+        # By default, this parameter is left empty. If you leave this parameter empty, ACK clusters are not filtered by identifier.
         self.profile = profile
         # The region ID of the clusters. You can use this parameter to query all clusters in the specified region.
         self.region_id = region_id
@@ -12871,13 +12912,13 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.deletion_protection = deletion_protection
         # The Docker version that is used by the cluster.
         self.docker_version = docker_version
-        # The ID of the Server Load Balancer (SLB) instance that is used for the Ingress of the cluster.
+        # The ID of the Server Load Balancer (SLB) instance that is used by the Ingress of the cluster.
         # 
         # The default SLB specification is slb.s1.small, which belongs to the high-performance instance type.
         self.external_loadbalancer_id = external_loadbalancer_id
         # The Kubernetes version of the cluster. The Kubernetes versions supported by ACK are the same as the versions of open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not specify this parameter, the latest Kubernetes version is used.
         # 
-        # You can create clusters of the latest two Kubernetes versions in the ACK console. You can call a specific ACK API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](~~185269~~).
+        # You can create clusters of the latest two Kubernetes versions in the ACK console. You can call the corresponding ACK API operation to create clusters of other Kubernetes versions. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](~~185269~~).
         self.init_version = init_version
         # The maintenance window of the cluster. This feature is available only for ACK Pro clusters.
         self.maintenance_window = maintenance_window
@@ -12885,16 +12926,16 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.master_url = master_url
         # The metadata of the cluster.
         self.meta_data = meta_data
-        # The name of the cluster.
+        # The cluster name.
         # 
-        # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
+        # The name must be 1 to 63 characters in length and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
         self.name = name
         # The network mode of the cluster. Valid values:
         # 
         # *   `classic`: classic network
         # *   `vpc`: virtual private cloud (VPC)
         # *   `overlay`: overlay network
-        # *   `calico`: network powered by Calico
+        # *   `calico`: network powered by Calico.
         self.network_mode = network_mode
         # The Kubernetes version to which the cluster can be updated.
         self.next_version = next_version
@@ -12905,14 +12946,14 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.private_zone = private_zone
         # The cluster identifier. Valid values:
         # 
-        # *   `Edge`: ACK Edge cluster
-        # *   `Default`: non-ACK Edge cluster
+        # *   `Edge`: The cluster is an ACK Edge cluster.
+        # *   `Default`: The cluster is not an ACK Edge cluster.
         self.profile = profile
-        # The region ID of the associated cluster.
+        # The region ID of the cluster.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
-        # The ID of the security group to which the cluster belongs.
+        # The ID of the security group to which the instances of the cluster belong.
         self.security_group_id = security_group_id
         # The number of nodes in the cluster, including master nodes and worker nodes.
         self.size = size
@@ -12939,7 +12980,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         # 
         # For more information, see [Plan CIDR blocks for an ACK cluster](~~86500~~).
         self.subnet_cidr = subnet_cidr
-        # The labels of the cluster.
+        # The resource labels of the cluster.
         self.tags = tags
         # The time when the cluster was updated.
         self.updated = updated
@@ -12947,7 +12988,7 @@ class DescribeClustersV1ResponseBodyClusters(TeaModel):
         self.vpc_id = vpc_id
         # The IDs of the vSwitches. You can select one to three vSwitches when you create a cluster. We recommend that you select vSwitches in different zones to ensure high availability.
         self.vswitch_id = vswitch_id
-        # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage ECS instances.
+        # The name of the worker Resource Access Management (RAM) role. The RAM role is assigned to the worker nodes of the cluster to allow the worker nodes to manage Elastic Compute Service (ECS) instances.
         self.worker_ram_role_name = worker_ram_role_name
         # The zone ID.
         self.zone_id = zone_id
@@ -14226,7 +14267,9 @@ class DescribeExternalAgentRequest(TeaModel):
         agent_mode: str = None,
         private_ip_address: str = None,
     ):
-        # The agent mode.
+        # The permission mode of the agent. Valid values:
+        # 
+        # admin: the admin mode, which provides full permissions. restricted: the restricted mode, which provides partial permissions. Default value: admin.
         self.agent_mode = agent_mode
         # Specifies whether to obtain the credentials that are used to access the cluster over the internal network.
         # 
@@ -14671,6 +14714,11 @@ class DescribeNodePoolVulsRequest(TeaModel):
         self,
         necessity: str = None,
     ):
+        # The priority to fix the vulnerability. Separate multiple priorities with commas (,). Valid values:
+        # 
+        # *   `asap`: high
+        # *   `later`: medium
+        # *   `nntf`: low
         self.necessity = necessity
 
     def validate(self):
@@ -14701,9 +14749,57 @@ class DescribeNodePoolVulsResponseBodyVulRecordsVulList(TeaModel):
         name: str = None,
         necessity: str = None,
     ):
+        # The alias of the vulnerability.
         self.alias_name = alias_name
+        # A list of CVE names corresponding to the vulnerabilities.
         self.cve_list = cve_list
+        # The name of the vulnerability.
         self.name = name
+        # The severity level of the vulnerability.
+        # 
+        # Valid values:
+        # 
+        # *   nntf
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     You can ignore the vulnerability
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   later
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     You can fix the vulnerability later
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   asap
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     You need to fix the vulnerability at the earliest opportunity
+        # 
+        #     <!-- -->
+        # 
+        #     .
         self.necessity = necessity
 
     def validate(self):
@@ -14745,8 +14841,11 @@ class DescribeNodePoolVulsResponseBodyVulRecords(TeaModel):
         node_name: str = None,
         vul_list: List[DescribeNodePoolVulsResponseBodyVulRecordsVulList] = None,
     ):
+        # The node ID.
         self.instance_id = instance_id
+        # The node name. This name is the identifier of the node in the cluster.
         self.node_name = node_name
+        # A list of vulnerabilities.
         self.vul_list = vul_list
 
     def validate(self):
@@ -14791,6 +14890,7 @@ class DescribeNodePoolVulsResponseBody(TeaModel):
         vul_records: List[DescribeNodePoolVulsResponseBodyVulRecords] = None,
         vuls_fix_service_purchased: bool = None,
     ):
+        # The node pool vulnerabilities.
         self.vul_records = vul_records
         self.vuls_fix_service_purchased = vuls_fix_service_purchased
 
@@ -17966,11 +18066,17 @@ class GetClusterCheckResponseBody(TeaModel):
     ):
         # Id of the request
         self.check_id = check_id
+        # The list of check items.
         self.check_items = check_items
+        # The time when the cluster check task was created.
         self.created_at = created_at
+        # The time when the cluster check task was completed.
         self.finished_at = finished_at
+        # The message that indicates the status of the cluster check task.
         self.message = message
+        # The status of the cluster check.
         self.status = status
+        # The check method.
         self.type = type
 
     def validate(self):
@@ -18991,6 +19097,7 @@ class ListClusterChecksRequest(TeaModel):
         self,
         type: str = None,
     ):
+        # The check method.
         self.type = type
 
     def validate(self):
@@ -19023,11 +19130,17 @@ class ListClusterChecksResponseBodyChecks(TeaModel):
         status: str = None,
         type: str = None,
     ):
+        # The ID of the cluster check task.
         self.check_id = check_id
+        # The time when the cluster check task was created.
         self.created_at = created_at
+        # The time when the cluster check task was completed.
         self.finished_at = finished_at
+        # The message that indicates the status of the cluster check task.
         self.message = message
+        # The status of the cluster check.
         self.status = status
+        # The check method.
         self.type = type
 
     def validate(self):
@@ -19075,6 +19188,7 @@ class ListClusterChecksResponseBody(TeaModel):
         self,
         checks: List[ListClusterChecksResponseBodyChecks] = None,
     ):
+        # The list of check items.
         self.checks = checks
 
     def validate(self):
@@ -19756,7 +19870,9 @@ class ModifyClusterRequestSystemEventsLogging(TeaModel):
         enabled: bool = None,
         logging_project: str = None,
     ):
+        # 是否开启系统事件存储。
         self.enabled = enabled
+        # 系统事件存储的LogProject名称。
         self.logging_project = logging_project
 
     def validate(self):
@@ -19799,7 +19915,7 @@ class ModifyClusterRequest(TeaModel):
         resource_group_id: str = None,
         system_events_logging: ModifyClusterRequestSystemEventsLogging = None,
     ):
-        # 注册集群 API Server SLB 访问控制列表。
+        # The network access control list (ACL) of the SLB instance associated with the API server if the cluster is a registered cluster.
         self.access_control_list = access_control_list
         # Specifies whether to associate an elastic IP address (EIP) with the cluster API server. This enables Internet access for the cluster. Valid values:
         # 
@@ -19808,6 +19924,9 @@ class ModifyClusterRequest(TeaModel):
         self.api_server_eip = api_server_eip
         # The ID of the EIP that you want to associate with the cluster API server. The parameter takes effect only if `api_server_eip` is set to `true`.
         self.api_server_eip_id = api_server_eip_id
+        # The cluster name.
+        # 
+        # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
         self.cluster_name = cluster_name
         # Specifies whether to enable deletion protection for the cluster. If deletion protection is enabled, the cluster cannot be deleted in the ACK console or by calling API operations. Valid values:
         # 
@@ -19841,6 +19960,7 @@ class ModifyClusterRequest(TeaModel):
         self.maintenance_window = maintenance_window
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
+        # 系统事件存储配置。
         self.system_events_logging = system_events_logging
 
     def validate(self):
@@ -20219,7 +20339,7 @@ class ModifyClusterNodePoolRequestAutoScaling(TeaModel):
         min_instances: int = None,
         type: str = None,
     ):
-        # The peak bandwidth of the EIP.
+        # The maximum bandwidth of the elastic IP address (EIP).
         self.eip_bandwidth = eip_bandwidth
         # The metering method of the EIP. Valid values:
         # 
@@ -20251,7 +20371,7 @@ class ModifyClusterNodePoolRequestAutoScaling(TeaModel):
         # *   `cpu`: regular instance.
         # *   `gpu`: GPU-accelerated instance.
         # *   `gpushare`: shared GPU-accelerated instance.
-        # *   `spot`: preemptible instance.
+        # *   `spot`: preemptible instance
         # 
         # Default value: `cpu`.
         self.type = type
@@ -20318,17 +20438,17 @@ class ModifyClusterNodePoolRequestKubernetesConfig(TeaModel):
         # 
         # Default value: `false`.
         self.cms_enabled = cms_enabled
-        # The CPU management policy. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
+        # The CPU management policy of the nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
         # 
         # *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
         # *   `none`: specifies that the default CPU affinity is used.
         # 
         # Default value: `none`.
         self.cpu_policy = cpu_policy
-        # The labels that you want to add to the nodes in the cluster. You must add labels based on the following rules:
+        # The labels of the nodes in the node pool. You can add labels to the nodes in the cluster. You must add labels based on the following rules:
         # 
-        # *   Each label is a case-sensitive key-value pair. You can add up to 20 labels.
-        # *   A key must be unique and cannot exceed 64 characters in length. A value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+        # *   Each label is a case-sensitive key-value pair. You can add at most 20 labels.
+        # *   The key must be unique and cannot exceed 64 characters in length. The value can be empty and cannot exceed 128 characters in length. Keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`. For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
         self.labels = labels
         # The name of the container runtime.
         self.runtime = runtime
@@ -20405,6 +20525,10 @@ class ModifyClusterNodePoolRequestManagementAutoRepairPolicy(TeaModel):
         self,
         restart_node: bool = None,
     ):
+        # Specifies whether ACK is allowed to automatically restart nodes after patching CVE vulnerabilities. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.restart_node = restart_node
 
     def validate(self):
@@ -20432,6 +20556,10 @@ class ModifyClusterNodePoolRequestManagementAutoUpgradePolicy(TeaModel):
         self,
         auto_upgrade_kubelet: bool = None,
     ):
+        # Specifies whether ACK is allowed to automatically update the kubelet. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.auto_upgrade_kubelet = auto_upgrade_kubelet
 
     def validate(self):
@@ -20460,7 +20588,12 @@ class ModifyClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        # Specifies whether ACK is allowed to automatically restart nodes after patching CVE vulnerabilities. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.restart_node = restart_node
+        # The severity levels of vulnerabilities that ACK is allowed to automatically patch. Multiple severity levels are separated by commas (,).
         self.vul_level = vul_level
 
     def validate(self):
@@ -20508,9 +20641,9 @@ class ModifyClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
         # 
         # Default value: 1.
         self.max_unavailable = max_unavailable
-        # The number of additional nodes. Additional nodes are used to host the workloads of nodes that are being updated.
+        # The number of nodes that are temporarily added to the node pool during an auto update. Additional nodes are used to host the workloads of nodes that are being updated.
         # 
-        # > We recommend that you set the number of additional nodes to a value that is no greater than the current number of nodes.
+        # >  We recommend that you set the number of additional nodes to a value that does not exceed the current number of existing nodes.
         self.surge = surge
         # The percentage of additional nodes to the nodes in the node pool. You must set this parameter or `surge`.
         self.surge_percentage = surge_percentage
@@ -20566,10 +20699,21 @@ class ModifyClusterNodePoolRequestManagement(TeaModel):
         # 
         # Default value: `true`.
         self.auto_repair = auto_repair
+        # The auto node repair policy.
         self.auto_repair_policy = auto_repair_policy
+        # Specifies whether to enable auto update. Valid values:
+        # 
+        # *   `true`: enables auto update.
+        # *   `false`: disables auto update.
         self.auto_upgrade = auto_upgrade
+        # The auto update policy.
         self.auto_upgrade_policy = auto_upgrade_policy
+        # Specifies whether ACK is allowed to automatically patch CVE vulnerabilities. Valid values:
+        # 
+        # *   `true`: yes
+        # *   `false`: no
         self.auto_vul_fix = auto_vul_fix
+        # The auto CVE patching policy.
         self.auto_vul_fix_policy = auto_vul_fix_policy
         # Specifies whether to enable the managed node pool feature. Valid values:
         # 
@@ -20578,7 +20722,7 @@ class ModifyClusterNodePoolRequestManagement(TeaModel):
         # 
         # Default value: `false`.
         self.enable = enable
-        # The configurations about auto update. The configurations take effect only when you specify `enable=true`.
+        # The configuration of auto update. The configuration takes effect only when `enable=true` is specified.
         self.upgrade_config = upgrade_config
 
     def validate(self):
@@ -20650,7 +20794,7 @@ class ModifyClusterNodePoolRequestNodepoolInfo(TeaModel):
         # 
         # The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). It cannot start with a hyphen (-).
         self.name = name
-        # The ID of the resource group.
+        # The ID of the resource group to which the node pool belongs.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -20685,11 +20829,11 @@ class ModifyClusterNodePoolRequestScalingGroupPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private node pool.
         self.id = id
-        # The type of private node pool. This parameter specifies the type of private pool that you want to use to create instances. A private pool is generated when an elasticity assurance or a capacity reservation takes effect. The system selects a private pool to start instances. Valid values:
+        # The type of private node pool. This parameter specifies the type of private node pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values:
         # 
-        # *   `Open`: open private pool. The system selects an open private pool to start instances. If no matching open private pools are available, the resources in the public pool are used.
-        # *   `Target`: specific private pool. The system uses the resources of the specified private pool to start instances. If the specified private pool is unavailable, instances cannot be started.
-        # *   `None`: no private pool is used. The resources of private pools are not used to start instances.
+        # *   `Open`: specifies an open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used.
+        # *   `Target`: specifies a private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be launched.
+        # *   `None`: no private node pool is used. The resources of private node pools are not used to launch the instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -20722,7 +20866,7 @@ class ModifyClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
         instance_type: str = None,
         price_limit: str = None,
     ):
-        # The instance type of the preemptible instances.
+        # The instance type of preemptible instances.
         self.instance_type = instance_type
         # The maximum bid price of a preemptible instance.
         # 
@@ -20845,7 +20989,7 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         #     **\
         # 
-        #     **Note**The `COST_OPTIMIZED` setting takes effect only when multiple instance types are specified or at least one instance type is specified for preemptible instances.
+        #     **Note** `COST_OPTIMIZED` is valid only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
         # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call the `RebalanceInstances` operation of Auto Scaling to balance the instance distribution among zones. For more information, see [RebalanceInstances](~~71516~~).
         # 
@@ -20865,14 +21009,14 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         # Default value: `Month`.
         self.period_unit = period_unit
-        # The OS platform. Valid values:
+        # The operating system. Valid values:
         # 
         # *   `AliyunLinux`
         # *   `CentOS`
         # *   `Windows`
         # *   `WindowsCore`
         self.platform = platform
-        # The configurations of the private node pool.
+        # The configuration of the private node pool.
         self.private_pool_options = private_pool_options
         # A list of ApsaraDB RDS instances.
         self.rds_instances = rds_instances
@@ -20923,11 +21067,11 @@ class ModifyClusterNodePoolRequestScalingGroup(TeaModel):
         self.system_disk_size = system_disk_size
         # The labels that you want to add to the ECS instances.
         # 
-        # A key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
+        # The key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
         self.tags = tags
-        # The IDs of vSwitches. You can specify 1 to 20 vSwitches.
+        # The vSwitch IDs. You can specify 1 to 20 vSwitches.
         # 
-        # > We recommend that you select vSwitches in different zones to ensure high availability.
+        # >  To ensure high availability, we recommend that you select vSwitches in different zones.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -21168,12 +21312,12 @@ class ModifyClusterNodePoolRequest(TeaModel):
         tee_config: ModifyClusterNodePoolRequestTeeConfig = None,
         update_nodes: bool = None,
     ):
-        # The configurations about auto scaling.
+        # The configuration of auto scaling.
         self.auto_scaling = auto_scaling
         self.concurrency = concurrency
-        # The configurations about the cluster.
+        # The configuration of the cluster where the node pool is deployed.
         self.kubernetes_config = kubernetes_config
-        # The configurations about the managed node pool feature.
+        # The configuration of the managed node pool feature.
         self.management = management
         # The configurations of the node pool.
         self.nodepool_info = nodepool_info
@@ -21974,6 +22118,7 @@ class RemoveNodePoolNodesRequest(TeaModel):
         nodes: List[str] = None,
         release_node: bool = None,
     ):
+        # 是否并发移除。
         self.concurrency = concurrency
         # Specifies whether to drain the nodes that you want to remove. Valid values:
         # 
@@ -22035,6 +22180,7 @@ class RemoveNodePoolNodesShrinkRequest(TeaModel):
         nodes_shrink: str = None,
         release_node: bool = None,
     ):
+        # 是否并发移除。
         self.concurrency = concurrency
         # Specifies whether to drain the nodes that you want to remove. Valid values:
         # 
@@ -22421,7 +22567,9 @@ class RunClusterCheckRequest(TeaModel):
         options: Dict[str, str] = None,
         type: str = None,
     ):
+        # The cluster check items.
         self.options = options
+        # The check method.
         self.type = type
 
     def validate(self):
@@ -22454,6 +22602,7 @@ class RunClusterCheckResponseBody(TeaModel):
         check_id: str = None,
         request_id: str = None,
     ):
+        # The ID of the cluster check task.
         self.check_id = check_id
         # Id of the request
         self.request_id = request_id
