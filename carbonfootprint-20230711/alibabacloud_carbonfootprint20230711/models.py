@@ -444,6 +444,176 @@ class QueryCarbonTrackResponse(TeaModel):
         return self
 
 
+class QueryMultiAccountCarbonTrackRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        start_time: str = None,
+    ):
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class QueryMultiAccountCarbonTrackResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        carbon_actual_emission: str = None,
+        month: str = None,
+        product_code: str = None,
+        region: str = None,
+        uid: str = None,
+    ):
+        self.carbon_actual_emission = carbon_actual_emission
+        self.month = month
+        self.product_code = product_code
+        self.region = region
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.carbon_actual_emission is not None:
+            result['CarbonActualEmission'] = self.carbon_actual_emission
+        if self.month is not None:
+            result['Month'] = self.month
+        if self.product_code is not None:
+            result['ProductCode'] = self.product_code
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.uid is not None:
+            result['Uid'] = self.uid
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CarbonActualEmission') is not None:
+            self.carbon_actual_emission = m.get('CarbonActualEmission')
+        if m.get('Month') is not None:
+            self.month = m.get('Month')
+        if m.get('ProductCode') is not None:
+            self.product_code = m.get('ProductCode')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+        return self
+
+
+class QueryMultiAccountCarbonTrackResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[QueryMultiAccountCarbonTrackResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = QueryMultiAccountCarbonTrackResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class QueryMultiAccountCarbonTrackResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryMultiAccountCarbonTrackResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        self.validate_required(self.headers, 'headers')
+        self.validate_required(self.status_code, 'status_code')
+        self.validate_required(self.body, 'body')
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryMultiAccountCarbonTrackResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class VerifyResponseBodyData(TeaModel):
     def __init__(
         self,

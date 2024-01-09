@@ -247,6 +247,72 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.query_carbon_track_with_options_async(request, runtime)
 
+    def query_multi_account_carbon_track_with_options(
+        self,
+        request: carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMultiAccountCarbonTrack',
+            version='2023-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_multi_account_carbon_track_with_options_async(
+        self,
+        request: carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackResponse:
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='QueryMultiAccountCarbonTrack',
+            version='2023-07-11',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_multi_account_carbon_track(
+        self,
+        request: carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackRequest,
+    ) -> carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.query_multi_account_carbon_track_with_options(request, runtime)
+
+    async def query_multi_account_carbon_track_async(
+        self,
+        request: carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackRequest,
+    ) -> carbon_footprint_20230711_models.QueryMultiAccountCarbonTrackResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.query_multi_account_carbon_track_with_options_async(request, runtime)
+
     def verify_with_options(
         self,
         runtime: util_models.RuntimeOptions,
