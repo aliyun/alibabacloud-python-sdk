@@ -209,6 +209,10 @@ class Client(OpenApiClient):
             query['EventRW'] = request.event_rw
         if not UtilClient.is_unset(request.is_organization_trail):
             query['IsOrganizationTrail'] = request.is_organization_trail
+        if not UtilClient.is_unset(request.max_compute_project_arn):
+            query['MaxComputeProjectArn'] = request.max_compute_project_arn
+        if not UtilClient.is_unset(request.max_compute_write_role_arn):
+            query['MaxComputeWriteRoleArn'] = request.max_compute_write_role_arn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket_name):
@@ -264,6 +268,10 @@ class Client(OpenApiClient):
             query['EventRW'] = request.event_rw
         if not UtilClient.is_unset(request.is_organization_trail):
             query['IsOrganizationTrail'] = request.is_organization_trail
+        if not UtilClient.is_unset(request.max_compute_project_arn):
+            query['MaxComputeProjectArn'] = request.max_compute_project_arn
+        if not UtilClient.is_unset(request.max_compute_write_role_arn):
+            query['MaxComputeWriteRoleArn'] = request.max_compute_write_role_arn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket_name):
@@ -2041,6 +2049,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.event_rw):
             query['EventRW'] = request.event_rw
+        if not UtilClient.is_unset(request.max_compute_project_arn):
+            query['MaxComputeProjectArn'] = request.max_compute_project_arn
+        if not UtilClient.is_unset(request.max_compute_write_role_arn):
+            query['MaxComputeWriteRoleArn'] = request.max_compute_write_role_arn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket_name):
@@ -2090,6 +2102,10 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.event_rw):
             query['EventRW'] = request.event_rw
+        if not UtilClient.is_unset(request.max_compute_project_arn):
+            query['MaxComputeProjectArn'] = request.max_compute_project_arn
+        if not UtilClient.is_unset(request.max_compute_write_role_arn):
+            query['MaxComputeWriteRoleArn'] = request.max_compute_write_role_arn
         if not UtilClient.is_unset(request.name):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.oss_bucket_name):

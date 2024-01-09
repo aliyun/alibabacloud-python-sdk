@@ -127,6 +127,8 @@ class CreateTrailRequest(TeaModel):
         self,
         event_rw: str = None,
         is_organization_trail: bool = None,
+        max_compute_project_arn: str = None,
+        max_compute_write_role_arn: str = None,
         name: str = None,
         oss_bucket_name: str = None,
         oss_key_prefix: str = None,
@@ -146,6 +148,8 @@ class CreateTrailRequest(TeaModel):
         # *   true: creates a multi-account trail.
         # *   false (default): creates a single-account trail.
         self.is_organization_trail = is_organization_trail
+        self.max_compute_project_arn = max_compute_project_arn
+        self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail to be created.
         # 
         # The name must be 6 to 36 characters in length. The name must start with a lowercase letter and can contain lowercase letters, digits, hyphens (-), and underscores (\_).
@@ -196,6 +200,10 @@ class CreateTrailRequest(TeaModel):
             result['EventRW'] = self.event_rw
         if self.is_organization_trail is not None:
             result['IsOrganizationTrail'] = self.is_organization_trail
+        if self.max_compute_project_arn is not None:
+            result['MaxComputeProjectArn'] = self.max_compute_project_arn
+        if self.max_compute_write_role_arn is not None:
+            result['MaxComputeWriteRoleArn'] = self.max_compute_write_role_arn
         if self.name is not None:
             result['Name'] = self.name
         if self.oss_bucket_name is not None:
@@ -218,6 +226,10 @@ class CreateTrailRequest(TeaModel):
             self.event_rw = m.get('EventRW')
         if m.get('IsOrganizationTrail') is not None:
             self.is_organization_trail = m.get('IsOrganizationTrail')
+        if m.get('MaxComputeProjectArn') is not None:
+            self.max_compute_project_arn = m.get('MaxComputeProjectArn')
+        if m.get('MaxComputeWriteRoleArn') is not None:
+            self.max_compute_write_role_arn = m.get('MaxComputeWriteRoleArn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OssBucketName') is not None:
@@ -240,6 +252,8 @@ class CreateTrailResponseBody(TeaModel):
         self,
         event_rw: str = None,
         home_region: str = None,
+        max_compute_project_arn: str = None,
+        max_compute_write_role_arn: str = None,
         name: str = None,
         oss_bucket_name: str = None,
         oss_key_prefix: str = None,
@@ -253,6 +267,8 @@ class CreateTrailResponseBody(TeaModel):
         self.event_rw = event_rw
         # The home region of the trail.
         self.home_region = home_region
+        self.max_compute_project_arn = max_compute_project_arn
+        self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail.
         self.name = name
         # The name of the OSS bucket to which events are to be delivered.
@@ -283,6 +299,10 @@ class CreateTrailResponseBody(TeaModel):
             result['EventRW'] = self.event_rw
         if self.home_region is not None:
             result['HomeRegion'] = self.home_region
+        if self.max_compute_project_arn is not None:
+            result['MaxComputeProjectArn'] = self.max_compute_project_arn
+        if self.max_compute_write_role_arn is not None:
+            result['MaxComputeWriteRoleArn'] = self.max_compute_write_role_arn
         if self.name is not None:
             result['Name'] = self.name
         if self.oss_bucket_name is not None:
@@ -307,6 +327,10 @@ class CreateTrailResponseBody(TeaModel):
             self.event_rw = m.get('EventRW')
         if m.get('HomeRegion') is not None:
             self.home_region = m.get('HomeRegion')
+        if m.get('MaxComputeProjectArn') is not None:
+            self.max_compute_project_arn = m.get('MaxComputeProjectArn')
+        if m.get('MaxComputeWriteRoleArn') is not None:
+            self.max_compute_write_role_arn = m.get('MaxComputeWriteRoleArn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OssBucketName') is not None:
@@ -822,6 +846,8 @@ class DescribeTrailsResponseBodyTrailList(TeaModel):
         event_rw: str = None,
         home_region: str = None,
         is_organization_trail: bool = None,
+        max_compute_project_arn: str = None,
+        max_compute_write_role_arn: str = None,
         name: str = None,
         organization_id: str = None,
         oss_bucket_location: str = None,
@@ -853,6 +879,8 @@ class DescribeTrailsResponseBodyTrailList(TeaModel):
         # *   false (default)
         # *   true
         self.is_organization_trail = is_organization_trail
+        self.max_compute_project_arn = max_compute_project_arn
+        self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail.
         self.name = name
         # The ID of the resource directory.
@@ -907,6 +935,10 @@ class DescribeTrailsResponseBodyTrailList(TeaModel):
             result['HomeRegion'] = self.home_region
         if self.is_organization_trail is not None:
             result['IsOrganizationTrail'] = self.is_organization_trail
+        if self.max_compute_project_arn is not None:
+            result['MaxComputeProjectArn'] = self.max_compute_project_arn
+        if self.max_compute_write_role_arn is not None:
+            result['MaxComputeWriteRoleArn'] = self.max_compute_write_role_arn
         if self.name is not None:
             result['Name'] = self.name
         if self.organization_id is not None:
@@ -949,6 +981,10 @@ class DescribeTrailsResponseBodyTrailList(TeaModel):
             self.home_region = m.get('HomeRegion')
         if m.get('IsOrganizationTrail') is not None:
             self.is_organization_trail = m.get('IsOrganizationTrail')
+        if m.get('MaxComputeProjectArn') is not None:
+            self.max_compute_project_arn = m.get('MaxComputeProjectArn')
+        if m.get('MaxComputeWriteRoleArn') is not None:
+            self.max_compute_write_role_arn = m.get('MaxComputeWriteRoleArn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OrganizationId') is not None:
@@ -3415,6 +3451,8 @@ class UpdateTrailRequest(TeaModel):
     def __init__(
         self,
         event_rw: str = None,
+        max_compute_project_arn: str = None,
+        max_compute_write_role_arn: str = None,
         name: str = None,
         oss_bucket_name: str = None,
         oss_key_prefix: str = None,
@@ -3429,6 +3467,8 @@ class UpdateTrailRequest(TeaModel):
         # *   Read: read events.
         # *   All: read and write events.
         self.event_rw = event_rw
+        self.max_compute_project_arn = max_compute_project_arn
+        self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail whose configurations you want to update.
         # 
         # The name must be 6 to 36 characters in length and can contain lowercase letters, digits, hyphens (-), and underscores (\_). It must start with a lowercase letter.
@@ -3475,6 +3515,10 @@ class UpdateTrailRequest(TeaModel):
         result = dict()
         if self.event_rw is not None:
             result['EventRW'] = self.event_rw
+        if self.max_compute_project_arn is not None:
+            result['MaxComputeProjectArn'] = self.max_compute_project_arn
+        if self.max_compute_write_role_arn is not None:
+            result['MaxComputeWriteRoleArn'] = self.max_compute_write_role_arn
         if self.name is not None:
             result['Name'] = self.name
         if self.oss_bucket_name is not None:
@@ -3495,6 +3539,10 @@ class UpdateTrailRequest(TeaModel):
         m = m or dict()
         if m.get('EventRW') is not None:
             self.event_rw = m.get('EventRW')
+        if m.get('MaxComputeProjectArn') is not None:
+            self.max_compute_project_arn = m.get('MaxComputeProjectArn')
+        if m.get('MaxComputeWriteRoleArn') is not None:
+            self.max_compute_write_role_arn = m.get('MaxComputeWriteRoleArn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OssBucketName') is not None:
@@ -3517,6 +3565,8 @@ class UpdateTrailResponseBody(TeaModel):
         self,
         event_rw: str = None,
         home_region: str = None,
+        max_compute_project_arn: str = None,
+        max_compute_write_role_arn: str = None,
         name: str = None,
         oss_bucket_name: str = None,
         oss_key_prefix: str = None,
@@ -3530,6 +3580,8 @@ class UpdateTrailResponseBody(TeaModel):
         self.event_rw = event_rw
         # The home region of the trail.
         self.home_region = home_region
+        self.max_compute_project_arn = max_compute_project_arn
+        self.max_compute_write_role_arn = max_compute_write_role_arn
         # The name of the trail.
         self.name = name
         # The name of the OSS bucket.
@@ -3560,6 +3612,10 @@ class UpdateTrailResponseBody(TeaModel):
             result['EventRW'] = self.event_rw
         if self.home_region is not None:
             result['HomeRegion'] = self.home_region
+        if self.max_compute_project_arn is not None:
+            result['MaxComputeProjectArn'] = self.max_compute_project_arn
+        if self.max_compute_write_role_arn is not None:
+            result['MaxComputeWriteRoleArn'] = self.max_compute_write_role_arn
         if self.name is not None:
             result['Name'] = self.name
         if self.oss_bucket_name is not None:
@@ -3584,6 +3640,10 @@ class UpdateTrailResponseBody(TeaModel):
             self.event_rw = m.get('EventRW')
         if m.get('HomeRegion') is not None:
             self.home_region = m.get('HomeRegion')
+        if m.get('MaxComputeProjectArn') is not None:
+            self.max_compute_project_arn = m.get('MaxComputeProjectArn')
+        if m.get('MaxComputeWriteRoleArn') is not None:
+            self.max_compute_write_role_arn = m.get('MaxComputeWriteRoleArn')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('OssBucketName') is not None:
