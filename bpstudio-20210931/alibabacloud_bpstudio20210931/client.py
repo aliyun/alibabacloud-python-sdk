@@ -239,7 +239,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -276,7 +276,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -312,7 +312,7 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeleteApplicationRequest,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @return: DeleteApplicationResponse
@@ -325,7 +325,7 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.DeleteApplicationRequest,
     ) -> bpstudio_20210931_models.DeleteApplicationResponse:
         """
-        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/zh/bp-studio/latest/api-doc-bpstudio-2021-09-31-api-doc-getapplication) operation to query the status of an application.
+        Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
         
         @param request: DeleteApplicationRequest
         @return: DeleteApplicationResponse
@@ -422,6 +422,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.attributes):
             request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
         if not UtilClient.is_unset(request.attributes_shrink):
             body['Attributes'] = request.attributes_shrink
         if not UtilClient.is_unset(request.operation):
@@ -460,6 +462,8 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(tmp_req.attributes):
             request.attributes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.attributes, 'Attributes', 'json')
         body = {}
+        if not UtilClient.is_unset(request.application_id):
+            body['ApplicationId'] = request.application_id
         if not UtilClient.is_unset(request.attributes_shrink):
             body['Attributes'] = request.attributes_shrink
         if not UtilClient.is_unset(request.operation):
@@ -732,6 +736,15 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTokenResponse:
+        """
+        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        
+        @param request: GetTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -760,6 +773,15 @@ class Client(OpenApiClient):
         request: bpstudio_20210931_models.GetTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> bpstudio_20210931_models.GetTokenResponse:
+        """
+        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        
+        @param request: GetTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        Deprecated
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_group_id):
@@ -787,6 +809,14 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetTokenRequest,
     ) -> bpstudio_20210931_models.GetTokenResponse:
+        """
+        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_token_with_options(request, runtime)
 
@@ -794,6 +824,14 @@ class Client(OpenApiClient):
         self,
         request: bpstudio_20210931_models.GetTokenRequest,
     ) -> bpstudio_20210931_models.GetTokenResponse:
+        """
+        @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+        ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
+        
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        Deprecated
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_token_with_options_async(request, runtime)
 
@@ -886,6 +924,56 @@ class Client(OpenApiClient):
     ) -> bpstudio_20210931_models.ListApplicationResponse:
         runtime = util_models.RuntimeOptions()
         return await self.list_application_with_options_async(request, runtime)
+
+    def list_fo_created_apps_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListFoCreatedApps',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListFoCreatedAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_fo_created_apps_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='ListFoCreatedApps',
+            version='2021-09-31',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            bpstudio_20210931_models.ListFoCreatedAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_fo_created_apps(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return self.list_fo_created_apps_with_options(runtime)
+
+    async def list_fo_created_apps_async(self) -> bpstudio_20210931_models.ListFoCreatedAppsResponse:
+        runtime = util_models.RuntimeOptions()
+        return await self.list_fo_created_apps_with_options_async(runtime)
 
     def list_tag_resources_with_options(
         self,
